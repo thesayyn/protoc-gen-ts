@@ -7,11 +7,19 @@
     "name": "thesayyn",
     "url": "https://github.com/thesayyn"
   },
-  "scripts": {},
-  "devDependencies": {
-    "@bazel/bazel": "^1.2.0",
+  "bin": {
+    "protoc-gen-ts": "./bin/protoc-gen-ts"
+  },
+  "main": "index.js",
+  "license": "MIT",
+  "peerDependencies": {
     "typescript": "^3.7.2",
     "google-protobuf": "^3.11.0-rc.2",
     "@bazel/typescript": "^0.42.1"
+  },
+  "bazelWorkspaces": {
+    "protoc_gen_ts": {
+      "rootPath": "."
+    }
   }
 }

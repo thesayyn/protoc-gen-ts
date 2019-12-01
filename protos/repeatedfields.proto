@@ -1,6 +1,0 @@
-syntax = "proto3";
-
-message RepeatedMessages {
-    repeated string test = 1;
-}
-

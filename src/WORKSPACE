@@ -1,0 +1,1 @@
+workspace(name = "protoc_gen_ts")

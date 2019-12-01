@@ -14,6 +14,9 @@ This protoc plugin does generate fields as **getter** **setters**.
 
 ## Roadmap
 
-- Support for repeated non-integer fields
-- Generate appropriate service code that is usable with node **grpc** package.
+- <s>Support for repeated non-integer fields</s>
+- <s>Generate appropriate service code that is usable with node **grpc** package.</s>
+- Make services strongly typed.
+- Support `map<TYPE, TYPE>` types as EcmaScript `Map`s.
+- Support for `import` directive.
 - Support for creating protocol buffer messages directly from their constructors with an object.

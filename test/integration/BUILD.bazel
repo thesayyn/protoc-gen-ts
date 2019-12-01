@@ -1,0 +1,14 @@
+load("@protoc_gen_ts//:index.from-src.bzl", "ts_proto_library")
+load("@rules_proto//proto:defs.bzl", "proto_library")
+
+proto_library(
+    name = "protos",
+    srcs = glob(["protos/*.proto"]),
+)
+
+ts_proto_library(
+    name = "integration",
+    srcs = [
+        ":protos"
+    ]
+)
