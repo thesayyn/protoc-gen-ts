@@ -12,7 +12,6 @@ const codeGenResponse = new plugin.CodeGeneratorResponse();
 
 const descriptors = codeGenRequest.getProtoFileList();
 
-
 for (const descriptor of descriptors) {
   const name = descriptor.getName().replace(".proto", ".ts");
   const codegenFile = new plugin.CodeGeneratorResponse.File();
@@ -179,16 +178,50 @@ for (const descriptor of descriptors) {
               ];
 
               if (isMessage(fieldDescriptor)) {
-                propParameters.push(
-                  ts.createArrowFunction(
-                    undefined,
-                    undefined,
-                    [],
-                    undefined,
-                    ts.createToken(ts.SyntaxKind.EqualsGreaterThanToken),
-                    ts.createBlock([])
-                  )
-                );
+                if (isRepeated(fieldDescriptor)) {
+                  propParameters.push(
+                    ts.createArrowFunction(
+                      undefined,
+                      undefined,
+                      [
+                        ts.createParameter(
+                          undefined,
+                          undefined,
+                          undefined,
+                          "item",
+                          undefined,
+                          ts.createIdentifier(
+                            getTypeName(
+                              fieldDescriptor,
+                              descriptor.getPackage()
+                            )
+                          )
+                        )
+                      ],
+                      undefined,
+                      ts.createToken(ts.SyntaxKind.EqualsGreaterThanToken),
+                      ts.createCall(
+                        ts.createPropertyAccess(
+                          ts.createIdentifier("item"),
+                          "serialize"
+                        ),
+                        undefined,
+                        [ts.createIdentifier("writer")]
+                      )
+                    )
+                  );
+                } else {
+                  propParameters.push(
+                    ts.createArrowFunction(
+                      undefined,
+                      undefined,
+                      [],
+                      undefined,
+                      ts.createToken(ts.SyntaxKind.EqualsGreaterThanToken),
+                      ts.createBlock([])
+                    )
+                  );
+                }
               }
 
               return ts.createIf(
@@ -402,7 +435,7 @@ for (const descriptor of descriptors) {
                                             pbIdentifier,
                                             ts.createPropertyAccess(
                                               ts.createIdentifier("Message"),
-                                              "addToRepeatedField"
+                                              "addToRepeatedWrapperField"
                                             )
                                           ),
                                           undefined,
@@ -411,7 +444,13 @@ for (const descriptor of descriptors) {
                                             ts.createNumericLiteral(
                                               fd.getNumber().toString()
                                             ),
-                                            readCall
+                                            readCall,
+                                            ts.createIdentifier(
+                                              getTypeName(
+                                                fd,
+                                                descriptor.getPackage()
+                                              )
+                                            )
                                           ]
                                         )
                                       : ts.createBinary(
@@ -588,7 +627,13 @@ for (const descriptor of descriptors) {
                     ts.createPropertyAssignment(
                       "path",
                       ts.createStringLiteral(
-                        `/${serviceDescriptor.getName()}/${methodDescriptor.getName()}`
+                        `/${[
+                          descriptor.getPackage(),
+                          serviceDescriptor.getName(),
+                          methodDescriptor.getName()
+                        ]
+                          .filter(Boolean)
+                          .join("/")}`
                       )
                     ),
                     ts.createPropertyAssignment(

@@ -7,6 +7,11 @@ message Header {
     string value = 2;
 }
 
+message Param {
+    string key = 1;
+    string value = 2;
+}
+
 message WriteHead {
     string id = 1;
     int32 statusCode = 2;
@@ -18,18 +23,44 @@ message WriteHead {
 message Write {
     string id = 1;
     bytes data = 2;
+    string encoding = 3;
     message Result {}
 }
 
 message Request {
-    repeated Header headers = 1;
+    int32 statusCode = 1;
+    string statusMessage = 2;
+    string method = 3;
+    string url = 4;
+    string path = 5;
+
+    // Query changes regarding to user input so we don't have any structure here we will store it as json string;
+    string query = 6;
+
+    // Support array of headers
+    repeated Header headers = 7;
+    repeated Param params = 8;
+
+    bytes body = 9;
+
+    // cookies?
+
     message Pop {}
+}
+
+
+message End {
+    string id = 1;
+    bytes data = 2;
+    string encoding = 3;
+    message Result {}
 }
 
 service Queue {
     rpc pop(Request.Pop) returns (Request);
-    rpc writeHead (WriteHead) returns (WriteHead.Result);
-    rpc write (Write) returns (Write.Result);
+    rpc writeHead(WriteHead) returns (WriteHead.Result);
+    rpc write(Write) returns (Write.Result);
+    rpc end(End) returns (End.Result);
 }
 
  
