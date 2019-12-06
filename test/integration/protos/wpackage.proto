@@ -12,6 +12,7 @@ message SearchRequest {
     sfixed64 sfixed64 = 7;
     fixed32 fixed32 = 8;
     repeated Corpus corpus = 9;
+    int64 uint64string = 10; [jstype = JS_STRING]
     enum Corpus {
         UNIVERSAL = 0;
         WEB = 1;

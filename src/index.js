@@ -431,36 +431,36 @@ for (const descriptor of descriptors) {
                                     ),
                                     isRepeated(fd)
                                       ? ts.createCall(
+                                        ts.createPropertyAccess(
+                                          pbIdentifier,
                                           ts.createPropertyAccess(
-                                            pbIdentifier,
-                                            ts.createPropertyAccess(
-                                              ts.createIdentifier("Message"),
-                                              "addToRepeatedWrapperField"
-                                            )
+                                            ts.createIdentifier("Message"),
+                                            "addToRepeatedWrapperField"
+                                          )
+                                        ),
+                                        undefined,
+                                        [
+                                          ts.createIdentifier("message"),
+                                          ts.createNumericLiteral(
+                                            fd.getNumber().toString()
                                           ),
-                                          undefined,
-                                          [
-                                            ts.createIdentifier("message"),
-                                            ts.createNumericLiteral(
-                                              fd.getNumber().toString()
-                                            ),
-                                            readCall,
-                                            ts.createIdentifier(
-                                              getTypeName(
-                                                fd,
-                                                descriptor.getPackage()
-                                              )
+                                          readCall,
+                                          ts.createIdentifier(
+                                            getTypeName(
+                                              fd,
+                                              descriptor.getPackage()
                                             )
-                                          ]
-                                        )
+                                          )
+                                        ]
+                                      )
                                       : ts.createBinary(
-                                          ts.createPropertyAccess(
-                                            ts.createIdentifier("message"),
-                                            fd.getName()
-                                          ),
-                                          ts.SyntaxKind.EqualsToken,
-                                          readCall
-                                        )
+                                        ts.createPropertyAccess(
+                                          ts.createIdentifier("message"),
+                                          fd.getName()
+                                        ),
+                                        ts.SyntaxKind.EqualsToken,
+                                        readCall
+                                      )
                                   )
                                 ]
                               )
@@ -1059,17 +1059,17 @@ function getType(fieldDescriptor, packageName) {
     case descriptorpb.FieldDescriptorProto.Type.TYPE_DOUBLE:
     case descriptorpb.FieldDescriptorProto.Type.TYPE_FLOAT:
     case descriptorpb.FieldDescriptorProto.Type.TYPE_INT32:
-    case descriptorpb.FieldDescriptorProto.Type.TYPE_INT64:
     case descriptorpb.FieldDescriptorProto.Type.TYPE_UINT32:
-    case descriptorpb.FieldDescriptorProto.Type.TYPE_UINT64:
     case descriptorpb.FieldDescriptorProto.Type.TYPE_SINT32:
-    case descriptorpb.FieldDescriptorProto.Type.TYPE_SINT64:
     case descriptorpb.FieldDescriptorProto.Type.TYPE_FIXED32:
-    case descriptorpb.FieldDescriptorProto.Type.TYPE_FIXED64:
     case descriptorpb.FieldDescriptorProto.Type.TYPE_SFIXED32:
-    case descriptorpb.FieldDescriptorProto.Type.TYPE_SFIXED64:
-    case descriptorpb.FieldDescriptorProto.Type.TYPE_SFIXED64:
       return ts.createIdentifier("number");
+    case descriptorpb.FieldDescriptorProto.Type.TYPE_INT64:
+    case descriptorpb.FieldDescriptorProto.Type.TYPE_UINT64:
+    case descriptorpb.FieldDescriptorProto.Type.TYPE_SINT64:
+    case descriptorpb.FieldDescriptorProto.Type.TYPE_FIXED64:
+    case descriptorpb.FieldDescriptorProto.Type.TYPE_SFIXED64:
+      return isJsString(fieldDescriptor) ? ts.createIdentifier("string") : ts.createIdentifier("number");
     case descriptorpb.FieldDescriptorProto.Type.TYPE_STRING:
       return ts.createIdentifier("string");
     case descriptorpb.FieldDescriptorProto.Type.TYPE_BOOL:
@@ -1136,6 +1136,17 @@ function isPacked(fieldDescriptor, descriptor) {
   return options == null || !options.hasPacked() || options.getPacked();
 }
 
+function isJsString(fieldDescriptor) {
+  if (typeof fieldDescriptor != "undefined"
+    && typeof fieldDescriptor.getOptions() != "undefined"
+    && typeof fieldDescriptor.getOptions().getJstype() != "undefined"
+    && fieldDescriptor.getOptions().getJstype() == descriptorpb.FieldOptions.JSType.JS_STRING) {
+    return true
+  } else {
+    return false
+  }
+}
+
 function toBinaryMethodName(fieldDescriptor, descriptor, isWriter = true) {
   const typeNames = Object.keys(descriptorpb.FieldDescriptorProto.Type).map(n =>
     n.replace("TYPE_", "")
@@ -1143,9 +1154,12 @@ function toBinaryMethodName(fieldDescriptor, descriptor, isWriter = true) {
 
   let typeName = typeNames[fieldDescriptor.getType() - 1].toLowerCase();
   typeName = typeName.charAt(0).toUpperCase() + typeName.slice(1);
-  return isPacked(fieldDescriptor, descriptor)
+
+  let mathodName = isPacked(fieldDescriptor, descriptor)
     ? `Packed${typeName}`
     : isRepeated(fieldDescriptor) && isWriter
-    ? `Repeated${typeName}`
-    : typeName;
+      ? `Repeated${typeName}`
+      : typeName;
+
+  return isJsString(fieldDescriptor) ? mathodName + "String" : mathodName
 }
