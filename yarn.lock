@@ -111,10 +111,10 @@ buffer-from@^1.0.0:
   resolved "https://registry.yarnpkg.com/buffer-from/-/buffer-from-1.1.1.tgz#32713bc028f75c02fdb710d7c7bcec1f2c6070ef"
   integrity sha512-MQcXEUbCKtEo7bhqEs6560Hyd4XaovZlO/k9V3hjVUF/zwW7KBVdSK4gIt/bzwS9MbR5qob+F5jusZsb0YQK2A==
 
-google-protobuf@^3.11.0-rc.2:
-  version "3.11.0-rc.2"
-  resolved "https://registry.yarnpkg.com/google-protobuf/-/google-protobuf-3.11.0-rc.2.tgz#15e6b7cb589e999079b62f1840a0db4641f2e142"
-  integrity sha512-xnTxIDmEFeT5IlD0os1jO0qim7FRnoMCweW6uGZQUYpdjj1uMQCc/2AzfUM56hfVdP7dsd6cpgjEy8AXm//eiw==
+google-protobuf@^3.11.2:
+  version "3.11.2"
+  resolved "https://registry.yarnpkg.com/google-protobuf/-/google-protobuf-3.11.2.tgz#43272974521a5cec35a21f62730cf517a5a8e38c"
+  integrity sha512-T4fin7lcYLUPj2ChUZ4DvfuuHtg3xi1621qeRZt2J7SvOQusOzq+sDT4vbotWTCjUXJoR36CA016LlhtPy80uQ==
 
 long@^4.0.0:
   version "4.0.0"

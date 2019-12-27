@@ -7,11 +7,14 @@
     "name": "thesayyn",
     "url": "https://github.com/thesayyn"
   },
-  "scripts": {},
+  "license": "MIT",
+  "scripts": {
+    "dev": "./protoc -I=protos --plugin='protoc-gen-ts=./protoc-gen-ts' --ts_out='examples' temp.proto"
+  },
   "devDependencies": {
     "@bazel/bazel": "^1.2.0",
-    "typescript": "^3.7.2",
-    "google-protobuf": "^3.11.0-rc.2",
-    "@bazel/typescript": "^0.42.1"
+    "@bazel/typescript": "^0.42.1",
+    "google-protobuf": "^3.11.2",
+    "typescript": "^3.7.2"
   }
 }
