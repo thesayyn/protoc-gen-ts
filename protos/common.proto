@@ -1,0 +1,1269 @@
+syntax = "proto2";
+
+package common;
+
+//--------------------------------------------------------------------------------------------------玩家
+
+//角色资源枚举，对应item表
+enum PlayerPropertyType {
+  //属性 对应item id
+  exp = 1; //经验
+  diamond = 2; //钻石 //元宝
+  gold = 3; //金币 //黄金
+  physcal = 4; //体力值
+  activity = 5; //活跃度
+  commanderExpPool = 6; //武将经验池
+  vipExp = 7; //VIP经验
+  skillExp = 8; //技能经验
+  dramaCoin = 9; //剧本货币
+  arenaCoin = 15; //竞技币
+  gameCoin = 16; //游戏币
+  treasureScore = 20; // 宝物积分
+  treasureBaseCoin = 21; // 珍宝币
+  treasureCoin = 22; //宝物精华
+  peakCoin = 23; //巅峰币
+
+  slayCoin = 25; //演武币
+  guildContributionCoin = 27; //联盟贡献币
+  guildContributionExp = 28; //联盟经验（这个经验是加到联盟上的）
+  privilegeCoin = 29; //特权点
+  goldenDragon = 30; //龙气
+  guildExchangeCoin = 31; //联盟兑换币
+
+  rechargeDiamond = 999; // 充值元宝 发放充值福利专用
+
+  res_property_dividing_line = 9000; //资源和特殊资源的分割线
+
+  //----------------------------------------------------//
+  power = 9497; //战斗力
+  level = 9498; //等级
+  vipLevel = 9499; //vip等级
+}
+
+//UsedFunction 使用过的功能
+enum UsedFunction {
+  SoldierHasChange = 1; //主将换兵
+  ArenaEverEnter = 2; //进入过竞技场
+  ArenaEverChallenge = 3; //挑战过竞技场
+  PeakEverEnter = 4; //进入过巅峰
+  PeakEverChallenge = 5; //挑战过巅峰
+  CollectEverEnter = 6; // 进入过治所
+  PrivilegeEverEnter = 7; // 进入过特权
+}
+
+message PlayerHeadPortrait {
+  optional string name = 1; //名字
+  optional uint32 level = 2; //等级
+  optional int32 avatar = 3; //头像
+  optional int32 avatarFrame = 4; //头像框
+  optional uint32 vipLv = 5; //vip等级
+  optional uint64 uid = 6; //角色id
+}
+
+//玩家简单数据
+message PlayerSimpleData {
+  optional uint64 id = 1 [jstype = JS_STRING]; //id
+  optional string name = 2; //数量
+  optional uint64 serverId = 3 [jstype = JS_STRING]; //服务器id
+  optional uint32 level = 4; //等级
+  optional uint32 career = 5; //职业
+  optional int32 avatar = 6; //头像
+  optional int32 avatarFrame = 7; //头像框
+  optional string msg = 8; //宣言
+  optional uint32 vip = 9; //VIP
+  optional uint32 power = 10; //战斗力
+  optional int64 lastLogout = 11 [jstype = JS_STRING]; //上一次登出时间
+  optional uint64 guildId = 12 [jstype = JS_STRING]; //势力id
+  optional string guildName = 13; //势力名字
+  optional int32 counsellorId = 14; //竞技场防守阵型的军师(竞技场界面要显示)
+  optional int64 lastLogin = 15 [jstype = JS_STRING]; //上一次登陆时间
+  optional uint32 arenaRank = 16; //竞技场排名的显示数据（真实的在竞技场管理器里）
+  optional uint32 arenaDefencePower = 17; //竞技场Pve阵型的战斗力
+  optional int32 pveCounsellorId = 18; //军师
+  repeated int32 hideVipSystems = 19; //需要隐藏Vip标识的功能
+
+  //optional Formation formation = 16; //阵型数据
+  //repeated common.Commander commanders = 13; //上阵武将
+  optional Friends friends = 20; //好友
+  optional uint32 praise = 21; //点赞
+  optional bool hasPraise = 22; //今日是否点赞
+  optional uint32 peakRank = 23; //巅峰竞技场排名
+  optional uint32 maxPower = 24; // 最强战力
+  optional int32 showCommanderId = 25; //要展示的武将
+
+  optional bool online = 30; //是否在线
+}
+
+//玩家数据
+message PlayerSimpleDataEx {
+  optional uint64 id = 1 [jstype = JS_STRING]; //id
+  optional string name = 2; //数量
+  optional uint64 serverId = 3 [jstype = JS_STRING]; //服务器id
+  optional uint32 level = 4; //等级
+  optional uint32 career = 5; //职业
+  optional int32 avatar = 6; //头像
+  optional int32 avatarFrame = 7; //头像框
+  optional string msg = 8; //宣言
+  optional uint32 vip = 9; //VIP
+  optional uint32 power = 10; //战斗力
+  optional int64 lastLogout = 11 [jstype = JS_STRING]; //上一次登出时间
+  optional uint64 guildId = 12 [jstype = JS_STRING]; //势力id
+  optional string guildName = 13; //势力名字
+  optional int32 counsellorId = 14; //军师
+  optional int64 lastLogin = 15 [jstype = JS_STRING]; //上一次登陆时间
+  optional uint32 arenaRank = 16; //竞技场排名的显示数据（真实的在竞技场管理器里）
+  optional uint32 arenaDefencePower = 17; //竞技场Pve阵型的战斗力
+  optional uint32 praise = 18; //点赞
+  optional bool hasPraise = 19; //今日是否点赞
+
+  repeated common.Commander commanders = 20; //上阵武将
+  optional Formation formation = 21; //阵型数据
+  repeated common.Counsellor counsellors = 22; // 军师数据
+  repeated common.StrTalent strTalents = 23; // 计谋府
+  repeated common.Treasure treasures = 24; //宝物数据
+  optional common.TreasureFatesInfo treasureFates = 25; //宝物缘分数据
+  optional common.PokedexBattleInfo pokedexInfo = 26; //图鉴数据
+  repeated common.SoldierTech soldierTech = 27; // 兵营科技
+  optional uint32 peakRank = 28; //巅峰竞技场排名
+  repeated int32 hideVipSystems = 29; //需要隐藏Vip标识的功能
+  optional Collect collect = 30; // 治所
+}
+
+enum FormationType {
+  pve = 1; //主线
+  arenaAttack = 2; //竞技场进攻
+  arenaDefence = 3; //竞技场防御
+  peak = 4; //巅峰竞技场
+  dailyBoss1 = 5; //日常Boss 1
+  dailyBoss2 = 6; //日常Boss 2
+  dailyBoss3 = 7; //日常Boss 3
+  slayAttack = 8; //群雄割据1
+  drama = 9; // 剧本
+  trainAttack = 10; //试炼场自己进攻
+  trainDefend = 11; //试炼场自己防守
+  dailyExp = 13; //华容道（日常经验）
+  dailyCoin = 14; //长坂坡（日常金币）
+  slayAttack2 = 15; //群雄割据进攻2
+  slayAttack3 = 16; //群雄割据进攻3
+  chibi1 = 17; // 赤壁之战1
+  chibi2 = 18; // 赤壁之战2
+
+  // ！！！如果新加类型，需要修改对应MaxCount
+  MaxLimit = 19; // 最大值
+
+  // 100-200 试炼场专用
+}
+
+//开关类型
+enum SwitchID {
+  MUSIC = 1; //音乐
+  SOUNDEFFECT = 2; //音效
+  PUSH = 3; //推送
+}
+
+//段位
+enum Division {
+  Novice = 1; //新手
+  Apprentice = 2; //学徒
+  Elites = 3; //精英
+  Expert = 4; //专家
+  Teacher = 5; //大师
+  Master = 6; //宗师
+  Championer = 7; //冠军
+  King = 8; //王者
+  Legend = 9; //传奇
+}
+
+// DeviceInfo 设备信息
+message DeviceInfo {
+  optional string deviceType = 20; // 机型(同model)
+  optional string deviceOS = 21; // 操作系统（os）
+  optional string deviceID = 22; // 设备id(new_device_id)
+  optional string bundleID = 23; // 分包ID(package_name)
+  optional string region = 24; // 地区
+  optional string language = 25; // language
+  optional string gameVer = 26; // 客户端版本
+  optional string opId = 27; // 运营商
+  optional int32 vipLevel = 28; // Vip等级
+}
+
+message RoleSummary {
+  optional string account = 1;
+  optional uint64 roleId = 2 [jstype = JS_STRING];
+  optional uint64 serverId = 3 [jstype = JS_STRING];
+  optional string roleName = 4;
+  optional uint32 lv = 5;
+  optional uint32 vipLv = 6;
+  optional int64 upTime = 7 [jstype = JS_STRING];
+}
+
+//--------------------------------------------------------------------------------------------------玩家
+//爵位
+enum Peerage {
+  Civilian = 1; //平民
+  Baron = 2; //男爵
+  Viscount = 3; //子爵
+  Earl = 4; //伯爵
+  Marquis = 5; //侯爵
+  Duke = 6; //公爵
+}
+
+//道具
+message Item {
+  optional int32 id = 1; //id
+  optional uint32 count = 2; //数量
+  optional int64 validTime = 3 [jstype = JS_STRING]; //有效时间戳(永久有效0)
+}
+
+//技能别聊
+message CommanderSkill {
+  optional uint32 skillSlotId = 1; //技能插槽id，对应1，2，3，4
+  optional uint32 level = 2; //技能等级 无解锁为0
+  optional uint32 exp = 3; //技能当前经验  无解锁为 0
+}
+
+message CommanderEquip {
+  optional uint32 equipSlotId = 1; //装备插槽id
+  optional bool synthetical = 2; //是否已经合成
+}
+
+// 主将
+message Commander {
+  optional int32 id = 1; //模板id
+  optional uint32 level = 2; //等级
+  optional uint32 exp = 3; //当前等级的经验
+  optional Peerage peerage = 4; //爵位
+  optional uint32 awakenLevel = 5; //觉醒等级
+  optional uint32 quality = 6; //品级
+  optional uint32 starLevel = 7; //星级
+  optional uint32 littleStarLevel = 8; //当前小星等级
+  optional uint32 official = 9; //官职
+  optional uint32 basePower = 10; //基础战斗力
+  optional uint32 leadershipLevel = 11; //统率能力等级
+  optional int32 soldierId = 12; //携带的兵团ID -1无兵团ID
+  repeated CommanderSkill skills = 13; //技能
+  repeated CommanderEquip equips = 14; //装备
+  optional uint32 power = 15; //总战斗力（已经废弃，由客户端自己累加,为了让客户端不报错，先不删除，等客户端修改完再删）
+}
+
+//单个阵型数据
+message Grid {
+  // 1  2  3  4
+  // 5  6  7  8
+  // 9  10 11 12
+  // 13 14 15 16
+  optional int32 id = 1; //格子位置 1-16
+  optional int32 commanderId = 2; //放置的统帅
+  optional int32 soldierId = 3; //士兵id
+  optional int32 soldierNum = 4; //士兵数量
+}
+
+//单个阵型数据
+message Formation {
+  optional int32 type = 1; //阵型类型
+  optional int32 counsellorId = 2; //军师
+  repeated Grid grid = 3; //格子
+  optional uint32 treasureGroup = 4; //宝物组
+  optional uint32 illustratedGroup = 5; //图鉴组
+}
+
+//士兵
+message Soldier {
+  optional int32 id = 1; //士兵id
+}
+
+// 单个兵营科技
+message SoldierTech {
+  optional int32 id = 1; // 配置ID
+  optional int32 level = 2; // 等级
+}
+
+// 军师
+message Counsellor {
+  optional int32 id = 1;
+  optional uint32 star = 2; // 星
+  repeated common.CounsellorMagic magics = 4; // 法术
+  optional uint32 power = 5; // 战斗力
+  repeated CounsellorQiMen qiMen = 6; // 奇门
+  optional uint32 qiJi = 7; // 奇迹等级
+}
+
+// 军师法术
+message CounsellorMagic {
+  optional int32 id = 1; // 法术id
+  optional uint32 level = 2; // 阶数
+  optional uint32 progress = 3; // 进度
+}
+
+// 奇门
+message CounsellorQiMen {
+  optional int32 id = 1; // id
+  optional int32 level = 2; // 等级
+}
+
+// 任务状态
+enum MissionStatus {
+  Accepted = 0;
+  Finished = 1;
+}
+
+// 任务单元
+message MissionUnit {
+  optional int32 id = 1;
+  optional MissionStatus Status = 2; // 状态
+  repeated int32 interactFortress = 3; // 交互据点
+  optional int32 selectedFightID = 5; // 选择的战斗(一个任务可以选择不同战斗时使用)
+  optional bool isDoFightEventTrigger = 6; // 是否触发战斗内事件
+}
+
+// 任务目标奖励
+message MissionTargetChapter {
+  optional int32 targetId = 1;
+  optional bool reward = 2; // 是否领奖
+}
+
+// 任务章节
+message MissionChapter {
+  optional int32 chapterId = 1; // worldMissionChapter表id
+  repeated int32 rewardIndex = 3; // 已领取章节奖励索引（从1开始）
+}
+
+// 坐标
+message Position {
+  optional float x = 1;
+  optional float y = 2;
+}
+
+// 地图
+message WorldMap {
+  optional int32 index = 1; // 地图索引
+  optional int32 resId = 2; // 资源id
+}
+
+// 据点
+message Fortress {
+  optional int32 id = 1;
+  optional Position pos = 2; // 位置
+  optional int32 nationID = 3; // 势力
+  optional bool show = 4; // 是否显示
+  optional int32 status = 5; // 状态（着火等效果）
+  optional int32 descID = 6; // 描述
+  optional int32 dir = 7; // 方向
+  optional int32 action = 8; // 动作
+  optional int32 resId = 9; // 资源id
+}
+
+// 州
+message District {
+  optional int32 id = 1; // 州id
+  optional int32 nationID = 2; // 势力id
+  optional bool unlock = 3; // 解锁迷雾
+}
+
+// 副本关卡
+message DungeonLevel {
+  optional int32 id = 1;
+  optional uint32 star = 2;
+  optional int32 fightCount = 3; // 战斗次数(精英副本用)
+  optional uint32 eliteDungeonBuyTimes = 4; // 精英副本已购买次数
+}
+
+// 副本章节
+message DungeonChapter {
+  optional int32 id = 1;
+  repeated int32 connectStageId = 2; // 已领取连线奖励
+  repeated bool starRewards = 3; // 是否领取星奖励
+}
+
+//--------------------------------------------------------------------------------------------------邮件
+//玩具邮件的条件
+message MailCondition {
+  optional uint32 condition_type = 1; //1:等级 2:vip 3:创角时间
+  optional uint32 min = 2; //条件的最小值
+  optional uint32 max = 3; //条件的最大值
+}
+
+//单个邮件
+message Mail {
+  optional uint64 id = 1 [jstype = JS_STRING]; //邮件唯一iD
+  optional int32 TID = 2; //邮件的类型id （配置表 0为自定义）
+  optional bool hasRead = 3; //是否已经阅读
+  optional int64 receiveTime = 4 [jstype = JS_STRING]; //接收时间
+  optional bool hasGet = 5; //是否已经领取
+  optional string title = 6; //标题 用于需要的时候覆盖配置数据
+  optional string content = 7; //内容 用于需要的时候覆盖配置数据
+  repeated Item atachments = 8; //附件列表
+  repeated string stringParams = 9; //参数列表 如 恭喜xxx成为联盟长 获得第x名
+}
+
+//--------------------------------------------------------------------------------------------------好友
+
+message Friends {
+  repeated uint64 friendList = 1 [jstype = JS_STRING]; // 好友
+  repeated uint64 blackList = 2 [jstype = JS_STRING]; // 黑名单
+  repeated uint64 requestList = 3 [jstype = JS_STRING]; // 申请
+}
+
+message FriendCommonData {
+  optional uint64 id = 1 [jstype = JS_STRING]; //ID
+  optional string name = 2; //名字
+  optional uint32 level = 3; //等级
+  optional uint32 fightPower = 4; //战斗力
+  optional uint32 vip = 5; //VIP
+  optional int32 avatar = 6; //头像
+  optional int32 avatarFrame = 7; //头像框
+  optional string declaration = 8; //宣言
+  optional int64 logoutTime = 9 [jstype = JS_STRING]; //离线时间(在线：0)
+  optional bool requestFlag = 10; //申请标记
+  optional int32 physicalCollectState = 11; //体力领取状态 (-1:不可领取 0:可领取 1:已领取)
+  optional bool physicalGiveFlag = 12; //体力赠送标记
+  optional FriendType friendType = 13; //类型
+  optional bool isHideVip = 14; //是否隐藏vip标识
+}
+
+//好友类型
+enum FriendType {
+  Friend = 1; //好友
+  Request = 2; //申请
+  Black = 3; //黑名单
+  Recommend = 4; //推荐
+  Search = 5; //查询
+}
+
+//--------------------------------------------------------------------------------------------------聊天
+enum ChatChannel {
+  System = 0; // 系统聊天
+  World = 1; // 世界
+  Union = 2; // 联盟
+  Private = 3; // 联盟
+  Count = 4; // 最大频道数(增加频道需要修改这个数)
+  All = 1024; // 所有频道
+}
+
+// 语音数据
+message VoiceData {
+  optional string data = 1; // 语音数据
+  optional int32 duration = 2; // 持续时间
+}
+
+// 消息类型(对应resolving.csv)
+enum ChatCellType {
+  normal = 0; // 普通
+  callCommander = 1; // 召唤主将
+  drawCommander = 2; // 抽主将
+  arenaFirstChange = 3; // 竞技场第一变更
+  arenaSecondChange = 4; // 竞技场第2变更
+  arenaThirdChange = 5; // 竞技场第3变更
+
+  dragon = 100; // 真龙试炼
+
+  arenaFightReport = 200; // 竞技场战报
+  unionRecruit = 201; // 联盟招募
+  GMReserve = 999; // gm保留
+}
+
+// 聊天单元
+message ChatCell {
+  optional uint64 senderID = 1 [jstype = JS_STRING]; // 发送者id
+  optional int64 sendTime = 2 [jstype = JS_STRING]; // 发送时间
+  optional ChatCellType type = 3; // 消息类型
+  optional string msg = 4;
+  repeated string params = 5; // 消息参数
+  optional uint64 unionID = 6 [jstype = JS_STRING]; // 帮派id
+  optional uint64 battleId = 7 [jstype = JS_STRING]; // 战斗id
+  optional uint32 levelLimit = 8; //招募等级
+  optional bool confirm = 9; //是否需要审核
+}
+
+// 公告
+message Announce {
+  repeated AnnounceMessage msgs = 1; // 公告
+}
+
+// 循环时间
+message LoopTime {
+  optional int64 beginTime = 2 [jstype = JS_STRING]; // 开始时间
+  optional int64 endTime = 3 [jstype = JS_STRING]; // 结束时间
+  optional uint32 frequent = 4; // 间隔
+}
+
+// 公告消息
+message AnnounceMessage {
+  optional uint64 id = 1 [jstype = JS_STRING]; // 唯一id
+  optional LoopTime loopTime = 2; // 循环
+  optional uint32 priority = 3; // 优先级
+  optional int64 endTime = 4 [jstype = JS_STRING]; // 服务器用，如果结束了，则不同步客户端
+  optional ChatCell msg = 5; // 内容
+}
+
+//排行榜
+enum RankType {
+  FightPower = 0; // 战斗力
+  dailyBoss1Time = 1; // 日常Boss 1 通关时间
+  dailyBoss2Time = 2; // 日常Boss 2 通关时间
+  dailyBoss3Time = 3; // 日常Boss 3 通关时间
+  CounsellorPower = 4; // 军师战斗力
+  InstanceStar = 5; // 副本星星
+  CommanderPower = 6; // 主将战斗力
+  TreasurePower = 7; // 宝物排行
+  DailyExpKillNum = 8; // 日常经验 华容道
+  DailyCoinKillNum = 9; // 日常金币 长坂坡
+  FriendRecommend = 10; // 好友推荐
+  ArenaDefencePower = 11; // 竞技场防守阵型战力
+
+  Guild = 100; // 帮派
+  Peak = 101; // 巅峰竞技场
+}
+
+enum ShopType {
+  Physical = 1; //体力
+  Gold = 2; //黄金
+  CommanderExp = 3; //主将经验
+  GameCoin = 4; //幸运币
+  AdvanceStone = 5; //铸造石
+  MagicBook = 6; //法术书
+}
+
+message MarketGrid {
+  optional int32 marketItemID = 1; // marketItem 表格id
+  optional int32 itemId = 2; // 随机物品id
+  optional int32 buyTimes = 3; // 购买次数(没买过为0)
+  optional bool lock = 4; // true为未解锁；nil或false为解锁
+}
+
+// 单个市场数据
+message ItemMarket {
+  optional int32 marketId = 1; // 商店id
+  repeated MarketGrid grids = 2; // 全部商品
+  optional int64 autoRefreshTime = 3 [jstype = JS_STRING]; // 自动刷新时间
+  optional int32 manualRefreshCount = 4; // 手动刷新次数
+  optional int32 freeRefreshCount = 6; // 手动免费刷新次数
+}
+
+//每日购买记录
+message ShopDailyRecord {
+  optional uint32 physicalBuyTimes = 1; //体力次数
+  optional uint32 physicalFreeBuyTimes = 2; //免费体力次数
+  optional uint32 goldBuyTimes = 3; //黄金次数
+  optional uint32 goldFreeBuyTimes = 4; //免费黄金次数
+  optional uint32 commanderExpBuyTimes = 5; //主将经验次数
+  optional uint32 commanderExpFreeBuyTimes = 6; //免费主将经验次数
+  optional uint32 advanceStoneBuyTimes = 7; //铸造石次数
+  optional uint32 advanceStoneFreeBuyTimes = 8; //免费铸造石次数
+  optional uint32 magicBookBuyTimes = 9; //法术书次数
+  optional uint32 magicBookFreeBuyTimes = 10; //免费法术书次数
+}
+
+// 训练条目
+message TrainItem {
+  optional int32 id = 1;
+  optional int32 star = 2;
+  optional bool reward = 5; // 已领取为true，否则为nil
+}
+
+// 回放简要信息
+message ReplaySimple {
+  optional uint64 id = 1 [jstype = JS_STRING]; // 回放id
+  optional int64 battleTime = 2 [jstype = JS_STRING]; // 战斗开始时间
+  optional Formation formation = 3; // 布阵
+  optional Formation targetFormation = 4; // 布阵
+}
+
+//--------------------------------------------------------------------------------------------------Guild
+
+// 联盟权限
+enum GuildPowerType {
+  President = 1; // 盟主
+  VicePresident = 2; // 副盟主
+  Normal = 3; // 普通成员
+}
+
+//GuildHonorType 荣誉类型
+enum GuildHonorType {
+  OnlineTime = 0;
+  PowerUpgrade = 1;
+  RecvCommanderFragment = 2;
+  DiamondCost = 3;
+  physicalCost = 4;
+}
+
+//GuildHonorPlayer 荣誉玩家
+message GuildHonorPlayer {
+  optional uint64 uid = 1;
+  optional common.PlayerHeadPortrait icon = 2;
+  optional uint32 power = 3; //战斗力
+  optional GuildHonorType guildHonorType = 4; //荣誉类型
+  optional int32 value = 5; //值
+  optional int32 counsellorId = 6; //军师id
+}
+
+//事件日志
+message GuildLog {
+  optional int32 eventId = 1; //事件id
+  optional int64 time = 2 [jstype = JS_STRING]; //时间
+  optional uint64 playerID = 3 [jstype = JS_STRING]; //谁 (可能为空)
+  optional string playerName = 4; //名字 （可能为空）
+  repeated string params = 5; //参数列表 （可能为空）
+}
+
+//公告
+message GuildAnnouncement {
+  optional int64 time = 1 [jstype = JS_STRING];
+  optional string title = 2;
+  optional string content = 3;
+}
+//通知
+message GuildNotice {
+  optional int64 id = 1 [jstype = JS_STRING];
+  optional int64 time = 2 [jstype = JS_STRING];
+  optional string title = 3;
+  optional string content = 4;
+  optional string publisherName = 5;
+  optional uint64 publisherId = 6;
+}
+//通知模板 
+message GuildNoticeTemplate {
+  optional string content = 1;
+}
+
+//--------------------------------------------------------------------------------------------------宝物相关
+
+// 宝物
+message Treasure {
+  optional int32 id = 1; //宝物ID
+  optional uint32 advanceLevel = 2; //进阶等级
+  optional bool isAwake = 3; //是否觉醒
+}
+
+// 宝物缘分
+message TreasureFate {
+  optional int32 id = 1; //缘分ID
+  optional uint32 level = 2; //缘分等级
+}
+
+// 宝物缘分
+message TreasureFatesInfo {
+  repeated common.TreasureFate positiveFateSkills = 1; //主动技能
+  repeated common.TreasureFate startFateSkills = 2; //开场技能
+  repeated common.TreasureFate passiveFateSkills = 3; //被动技能
+}
+
+// 宝物缘分技能编组
+message FateSkillGroup {
+  optional int32 id = 1;
+  optional string name = 2;
+  repeated int32 startSkills = 3; //开场技能
+  optional int32 positiveSkill = 4; //主动技能
+}
+
+// 宝物品质
+enum TreasureQuality {
+  Green = 1;
+  Blue = 2;
+  Purple = 3;
+  Orange = 4;
+  Red = 5;
+}
+
+// 宝物缘分类型
+enum TreasureFateType {
+  Positive = 1; //主动
+  Start = 2; //开场
+  Passive = 3; //被动
+}
+
+//--------------------------------------------------------------------------------------------------竞技场
+//战报
+message ArenaBattleLogPlayerInfo {
+  optional uint64 uid = 1 [jstype = JS_STRING]; //uid
+  optional string name = 2;
+  optional uint32 power = 3;
+  optional uint32 level = 4;
+  optional uint32 vipLevel = 5;
+  optional int32 avatar = 6; //头像
+  optional int32 avatarFrame = 7; //头像框
+  optional int32 counsellorId = 8;
+  optional string msg = 9; //宣言
+  optional string guildName = 10;
+  optional uint32 beforeRank = 11; //战前排名
+  optional uint32 afterRank = 12; //战后排名
+}
+
+//ArenaBattleLog 战报
+message ArenaBattleLog {
+  optional uint64 battleId = 1 [jstype = JS_STRING]; //战斗id
+  optional int64 battleTime = 2 [jstype = JS_STRING]; //战斗时间
+  repeated ArenaBattleLogPlayerInfo players = 3; //参战人  //前一个是进攻方，后一个是防守方
+  optional uint64 winUid = 4 [jstype = JS_STRING]; //胜利者
+  optional bool complete = 5; //是否完成
+  optional bool close = 6; //是否结算
+}
+
+//--------------------------------------------------------------------------------------------------巅峰竞技场
+
+//巅峰竞技场的状态
+enum PeakStateStep {
+  NONE = 1; //不在巅峰竞技场中
+  FORMATION = 2; //在巅峰竞技场的布阵中
+  BATTLE = 3; //在巅峰竞技场的战斗中
+}
+//巅峰竞技场玩家数据
+message PeakMatchPlayer {
+  optional uint64 uid = 1 [jstype = JS_STRING]; //玩家id
+  optional common.PlayerHeadPortrait icon = 2; //头像
+  optional uint32 score = 3; //积分
+  optional uint32 power = 4; //战斗力
+  optional int32 counsellorId = 5; //军师id
+  repeated common.Commander commanders = 6; //拥有的热点英雄
+  optional bool isRobot = 7; //是否机器人
+  optional bool isReady = 8; //准备状态 //只在匹配成功之后才有
+}
+//巅峰竞技场玩家布阵数据
+message PeakFormationData {
+  optional int64 mathTime = 1 [jstype = JS_STRING]; //匹配完成的时间
+  repeated Counsellor counsellors = 2; //军师列表（某些情况用于覆盖背包的军师）
+}
+//巅峰竞技场玩家战斗数据
+message PeakBattleData {
+  optional string address = 1;
+  optional string secret = 2;
+  optional BattleStartInfo info = 3; // 战斗开始数据
+}
+
+//巅峰竞技场玩家状态数据
+message PeakStateData {
+  optional PeakStateStep peakStateStep = 1; //巅峰竞技场状态
+  repeated PeakMatchPlayer peakMatchPlayer = 2; //匹配到的数据 (双方玩家)
+  optional PeakFormationData peakFormationData = 3; //布阵中数据 （布阵数据）
+  optional PeakBattleData peakBattleData = 4; //战斗中数据 （战斗数据）
+}
+
+//巅峰竞技场上次结算数据
+message PeakBattleResult {
+  optional uint64 battleID = 1 [jstype = JS_STRING]; //战斗id
+  optional uint64 winUid = 2 [jstype = JS_STRING]; // 胜利者
+  optional uint32 maxScore = 3; // 最大积分
+  optional uint32 beforeScore = 4; // 战前积分
+  optional uint32 afterScore = 5; // 战后积分
+  optional int32 totalBattleTimes = 6; // 总次数
+  optional int32 totalBattleWinTimes = 7; // 总胜利次数
+  optional uint32 lastAccumulatePeakCoin = 8; //之前累计的积分
+  optional int64 nowAccumulatePeakCoinBeginTime = 9 [jstype = JS_STRING]; //本轮累计开始的时间
+  repeated int32 hotCommander = 10; //战斗结束积分变化可能引起 热点武将
+  optional int32 hotCounsellor = 11; //战斗结束积分变化可能引起 热点军师
+  optional uint32 leftChallengeTimes = 12; //进入战斗时候就扣次数
+}
+
+message PeakBattleLogPlayerInfo {
+  optional uint64 uid = 1 [jstype = JS_STRING]; //uid
+  optional PlayerHeadPortrait icon = 2;
+  optional uint32 power = 3;
+  optional uint32 beforeScore = 4; //战前积分
+  optional uint32 afterScore = 5; //战后积分
+}
+
+//PeakBattleLog 战报
+message PeakBattleLog {
+  optional uint64 battleId = 1 [jstype = JS_STRING]; //战斗id
+  optional int64 battleTime = 2 [jstype = JS_STRING]; //战斗时间
+  repeated PeakBattleLogPlayerInfo players = 3; //参战人
+  optional uint64 winUid = 4 [jstype = JS_STRING]; //胜利者
+}
+
+//--------------------------------------------------------------------------------------------------战斗
+
+enum AttrType {
+  AtkAddPro = 52; // 攻击力最终加成
+  HPAddPro = 53; // 生命最终加成
+  DefProEx = 55; // 护甲Ex%
+}
+
+// 战斗属性
+message BattleAttr {
+  optional AttrType attrType = 1; // 类型
+  optional int32 attrValue = 2; // 值
+}
+
+// 战斗技能
+message SoldierTechSkill {
+  optional int32 id = 1; // 技能id
+  optional int32 level = 2; // 技能等级
+  optional int32 skillType = 3; // 技能类型
+}
+
+
+//guild 技能
+message PlayerGuildSkill {
+  optional int32 slotId = 1;
+  optional uint32 level = 2;
+}
+
+// 战斗主将
+message BattleCommander {
+  optional Commander commander = 1; //上阵武将
+  optional int32 gridId = 2; // 站位格子
+  optional int32 Hp = 3; // 生命值(百分比)
+  optional int32 Armor = 4; // 盾甲值(百分比)
+  repeated BattleAttr attrs = 5; // 属性
+}
+
+// npc战斗主将
+message BattleNpcCommander {
+  optional int32 id = 1; // 上阵npc武将id
+  optional int32 gridId = 2; // 站位格子
+  optional int32 soldierId = 3; // 士兵id
+  optional int32 soldierNum = 4; // 士兵数量
+}
+
+// 战斗军师
+message BattleCounsellor {
+  optional Counsellor counsellor = 1; //上阵武将
+  optional bool assist = 2; //是否是助战英雄
+}
+
+// 日常Boss
+message BattleDailyBoss {
+  optional uint32 hp = 1; //生命值(百分比)
+  optional uint32 damage = 2; //造成的伤害值
+}
+
+// 日常经验
+message BattleDailyExp {
+  optional uint32 normalKillNum = 1; //普通怪击杀数量
+  optional uint32 eliteKillNum = 2; //精英怪击杀数量
+  optional uint32 roundNum = 3; //击杀波数
+}
+
+// 日常金币
+message BattleDailyCoin {
+  optional uint32 normalKillNum = 1; //普通怪击杀数量
+  optional uint32 eliteKillNum = 2; //精英怪击杀数量
+  optional uint32 roundNum = 3; //击杀波数
+  optional uint32 damage = 4; //造成的伤害值
+}
+
+message Skill {
+  optional int32 tableType = 1;
+  optional int32 id = 2;
+}
+
+//战斗玩家信息 //进入战斗发送给客户端的
+message BattlePlayerInfo {
+  optional uint64 id = 1 [jstype = JS_STRING]; //战斗id
+  optional string name = 2; //数量
+  optional uint32 level = 3; //等级
+  optional int32 avatar = 4; //头像
+  optional int32 avatarFrame = 5; //头像框
+  optional string msg = 6; //宣言
+  optional uint32 vipLevel = 7; //VIP
+  optional uint32 power = 8; //战斗力
+  optional string guildName = 9; //势力名字
+  optional uint64 serverId = 10 [jstype = JS_STRING]; //服务器id
+
+  optional common.FormationType formationType = 14; //布阵类型
+  optional bool isRobot = 15; //对方是否是机器人
+  optional int32 counsellorId = 16; //上阵军师
+  repeated BattleCounsellor battleCounsellors = 17; //拥有的所有军师
+  repeated BattleCommander battleCommanders = 18; //主将战斗数据
+  repeated BattleNpcCommander battleNpcCommanders = 19; //npc主将战斗数据
+
+  optional uint32 treasureGroup = 22; //宝物组
+  optional common.TreasureFatesInfo treasureFatesInfo = 23; //宝物缘分数据
+  repeated common.Treasure treasures = 24; //宝物数据
+  optional PokedexBattleInfo pokedexInfo = 25; //图鉴数据
+  repeated StrTalent strTalents = 26; //计谋府数据
+  repeated PlayerGuildSkill guild = 27; //guild技能数据
+  repeated SoldierTechSkill soldierTechs = 28; //兵营科技技能
+  repeated Skill extralSkills = 29; //附加技能
+  optional Collect collect = 30; // 治所
+}
+
+//战斗开始信息
+message BattleStartInfo {
+  optional uint64 id = 1 [jstype = JS_STRING]; //战斗id
+  optional int32 typeId = 2; //战斗类型
+  optional int32 stageId = 3; //关卡ID
+  optional int64 beginTime = 4 [jstype = JS_STRING]; //战斗时间
+  optional int32 randomSeed = 5; //随机种子
+  optional int32 speed = 6; //播放速度
+  repeated BattlePlayerInfo fighter = 10; //参战人员数据
+  //optional int32 version = 100; //版本号 等确定如何同步版本把这个字段废弃
+  optional string ver = 200; //版本号
+}
+
+//战斗玩家输入信息
+message BattlePlayerInput {
+  optional uint64 id = 1 [jstype = JS_STRING]; //id
+  optional int32 sid = 2; //技能id
+  optional int32 x = 3; //x
+  optional int32 y = 4; //y
+}
+
+//战斗帧数据
+message BattleFrameData {
+  optional uint32 frameId = 1; //帧id
+  repeated BattlePlayerInput input = 2; //输入
+}
+
+// 战斗结束玩家数据
+message BattleResultCommander {
+  repeated BattleCommander player = 1; //主将战斗数据
+  repeated BattleCommander target = 2; //对方数据
+}
+
+//战斗结束信息 客户端给返回
+message BattleResultInfo {
+  optional uint64 id = 1 [jstype = JS_STRING]; //战斗id
+  optional bool win = 2; //是否胜利
+  optional int32 star = 3; //星级
+  optional uint32 totalTime = 4; //战斗时间
+  optional uint32 commanderDieNum = 5; //己方主将死亡数量
+  optional uint32 targetCommanderDieNum = 6; //敌方主将死亡数量
+
+  repeated BattleFrameData frames = 10; //玩家输入数据
+  optional BattleResultCommander commander = 11; //武将数据
+  optional BattleDailyBoss dailyBoss = 12; //日常Boss数据
+  optional BattleDailyExp dailyExp = 13; //日常经验数据
+  optional BattleDailyCoin dailyCoin = 14; //日常金币数据
+
+}
+
+//战斗回放  //战斗回访时候使用的
+message BattleReplay {
+  optional BattleStartInfo info = 10; //战斗开始信息
+  repeated BattleFrameData frames = 11; //输入操作
+  optional string error = 12;
+}
+
+//--------------------------------------------------------------------------------------------------群雄割据
+
+message SlayCommander {
+  optional int32 level = 2; // 削弱等级
+  optional int32 hp = 3; // hp百分比（0-100）
+  optional Commander commander = 4; // 主将
+}
+
+message SlayCity {
+  optional int32 id = 1;
+  optional int32 powerId = 2; // 所属势力
+  optional int32 taxPer = 5; // 税收加成百分比(默认100)
+  optional uint32 fightPower = 6; // 战斗力
+}
+
+// 玩家武将数据
+message SlayPlayerCommander {
+  optional int32 id = 1; // commander id
+  optional int32 strength = 2; // 行动力(玩家有用)
+  optional int32 hp = 3; // hp百分比（0-100）
+}
+
+// 势力
+message SlayPower {
+  optional int32 id = 1;
+  optional int32 gold = 2;
+}
+
+// 城池攻打
+message SlayAttack {
+  optional int32 attackCityId = 1; // 进攻城池
+  optional int32 defendCityId = 2; // 防守城池
+}
+
+// 锦囊购买
+message SlaySilkBuy {
+  optional int32 silkId = 1; // 锦囊id
+  optional bool bought = 2; // 买过为true
+}
+
+// 锦囊
+message SilkBag {
+  repeated int32 items = 1; // 所有锦囊
+}
+
+// 世界事件
+message SlayEvent {
+  optional int32 eventId = 1; // slayWorldEvent 表格id
+  optional int32 cityId = 2; // 选择的城池id
+  optional int32 powerId = 3; // 选择的势力
+}
+
+// 战报类型
+enum SlayFightReportType {
+  AttackPowerSuccess = 1; // 攻打势力城成功战报
+  AttackPowerFail = 2; // 攻打势力城失败战报
+  AttackNeutralSuccess = 3; // 攻打中立城成功战报
+  AttackNeutralFail = 4; // 攻打中立城失败战报
+  CallArmy = 5; // 征兵
+  LevelUpArmy = 6; // 升级
+}
+// 1、actionPower攻打了defendPower（0为中立，999为玩家）的city
+// 2、actionPower的city扩张了teamNum队level的部队
+// 3、actionPower的city将teamNum队部队升级到了level
+message SlayFightReport {
+  optional SlayFightReportType typ = 1;
+  optional int32 actionPower = 2; // 行动势力id
+  optional int32 defendPower = 3; // 防守势力id
+  optional int32 city = 4; // 城池id
+  optional int32 teamNum = 5; // 多少队
+  optional int32 level = 6; // 等级
+}
+
+// 每回合战报
+message SlayRoundReport {
+  optional int32 round = 1; // 回合数
+  repeated SlayFightReport reports = 2;
+}
+
+//--------------------------------------------------------------------------------------------------生涯
+// 任务单元
+message TaskCell {
+  optional int32 id = 1;
+  optional uint32 progress = 2;
+}
+
+//--------------------------------------------------------------------------------------------------日常Boss
+
+message DailyBoss {
+  repeated DailyBossData bossDatas = 1;
+}
+
+message DailyBossData {
+  optional int32 bossId = 1; // BossID
+  repeated bool firstKillAwards = 2; // 首杀奖励领取记录
+  optional uint32 challengedTime = 3; // 今日已经挑战过的次数
+  optional int32 bestLevel = 4; // 通关最高难度
+  optional uint32 bestTime = 5; // 通关最短用时
+  optional int32 unlockLevel = 6; // 解锁难度
+  optional uint32 bestDamage = 7; // 历史最高伤害
+}
+
+//--------------------------------------------------------------------------------------------------日常经验
+
+message DailyExp {
+  optional uint32 challengedTime = 1; //今日已挑战次数
+  optional uint32 dayKillNum = 2; //今日累计击杀数
+  optional uint32 weekKillNum = 3; //本周累计击杀数
+  optional uint32 bestKillNum = 4; //历史最高击杀数
+  optional uint32 lastChallengePower = 5; //上次挑战时的战斗力
+  optional uint32 bestOutputPower = 6; // 历史最高产出时的战斗力
+  repeated int32 dayAwardTakenRecords = 7; //今日累计奖励领取记录
+}
+
+//--------------------------------------------------------------------------------------------------日常金币
+
+message DailyCoin {
+  optional uint32 challengedTime = 1; //今日已挑战次数
+  optional uint32 dayDamage = 2; //今日累计伤害
+  optional uint32 weekDamage = 3; //本周累计伤害
+  optional uint32 bestDamage = 4; //历史最高伤害
+  optional uint32 lastChallengePower = 5; //上次挑战时的战斗力
+  optional uint32 bestOutputPower = 6; // 历史最高产出时的战斗力
+  repeated int32 dayAwardTakenRecords = 7; //今日累计奖励领取记录
+}
+
+//--------------------------------------------------------------------------------------------------计谋府
+
+//页签类型
+enum StrMansionTabType {
+  Wind = 1; //风系
+  Fire = 2; //火系
+  Dirt = 3; //土系
+  Water = 4; //水系
+  Max = 10; //最大值（标记用）
+}
+
+message StrMansion {
+  repeated StrTalent talents = 1;
+  optional uint32 power = 2; // 太学总战斗力
+}
+
+message StrTalent {
+  optional int32 id = 1;
+  optional uint32 level = 2;
+}
+
+//--------------------------------------------------------------------------------------------------图鉴
+
+message Pokedex {
+  repeated PokedexData pokedexDatas = 1; //图鉴数据
+  repeated PokedexFormationData formationDatas = 2; //编组数据
+  optional int32 curFormationId = 3; //当前使用的编组ID
+  repeated PokedexFmtPower fmtPowers = 4; //编组战斗力加成
+}
+
+message PokedexFormationData {
+  optional int32 id = 1;
+  optional string name = 2;
+}
+
+message PokedexData {
+  optional int32 id = 1;
+  optional uint32 level = 2;
+  optional uint32 score = 3;
+  repeated PokedexPos posList = 4;
+}
+
+message PokedexPos {
+  optional int32 posId = 1;
+  optional int32 posValue = 2;
+}
+
+message PokedexPosList {
+  repeated PokedexPos poses = 1;
+}
+
+message PokedexScore {
+  optional int32 id = 1;
+  optional uint32 score = 2;
+}
+
+message PokedexPower {
+  optional int32 pokedexId = 1;
+  optional uint32 power = 2;
+  optional uint32 score = 3;
+}
+
+message PokedexFmtPower {
+  optional int32 fmtId = 1;
+  repeated PokedexPower powers = 2;
+}
+
+message PokedexBattleInfo {
+  repeated PokedexScore scores = 1;
+}
+
+//--------------------------------------------------------------------------------------------------特权
+
+message PrivilegeData {
+  optional int32 peerage = 1; //爵位
+  repeated PrivilegeAbility abilityList = 2; //能力列表
+  repeated PrivilegeEffect effectList = 3; //效果列表
+  repeated PrivilegeShopItem shop = 4; //特权商店
+  optional bool isPrivilegeWagesGet = 5; //每日特权俸禄是否领取
+}
+
+message PrivilegeAbility {
+  optional int32 id = 1;
+  optional uint32 level = 2; //等级
+}
+
+message PrivilegeEffect {
+  optional int32 id = 1;
+  optional uint32 level = 2; //等级
+}
+
+message PrivilegeShopItem {
+  optional int32 id = 1;
+  optional bool isBuy = 2; //是否已购买
+}
+
+//--------------------------------------------------------------------------------------------------Vip
+
+message VipData {
+  optional uint32 vipLevel = 1;
+  optional uint32 vipExp = 2;
+  repeated int32 giftBuyRecord = 3;
+  repeated int32 hideVipSystems = 4;
+}
+
+//屏蔽vip显示
+enum HideVipUI {
+  FriendUI = 1; //好友
+  UnionUI = 2; //联盟
+  ChatUI = 3; //聊天
+  PlayerInfoUI = 4; //玩家详情
+}
+
+//--------------------------------------------------------------------------------------------------领主手册
+
+message HandBook {
+  repeated int32 finishedPageIds = 1;
+  repeated HandBookQuest quests = 2;
+}
+
+message HandBookQuest {
+  optional int32 id = 1;
+  optional uint32 progress = 2;
+  optional bool finish = 3;
+}
+
+//单条问卷信息
+message QuestionnaireInfo {
+  optional uint64 id = 1 [jstype = JS_STRING]; //问卷id
+  optional uint32 type = 2; //问卷类型
+  optional string content = 3; //问卷内容(url)
+  optional string remark = 4; //备注
+  optional uint32 start_time = 5; //开始时间
+  optional uint32 finish_time = 6; //结束时间
+  optional uint32 min_level = 7; //最小等级
+  optional uint32 max_level = 8; //最高等级
+  optional uint32 min_vip = 9; //最小vip
+  optional uint32 max_vip = 10; //最大vip
+  optional uint32 createTm = 11; //创建时间
+  repeated Item items = 12; //物品
+
+}
+
+// 沙盘关卡
+message DramaStage {
+  optional int32 stageId = 1; // 关卡id
+  optional int32 buildId = 2; // 建筑id
+  optional bool passed = 3; // true 为通关
+  repeated DramaSkill skills = 4; // buff
+  optional DramaShop shop = 5; // 神秘商人
+  optional DramaBox box = 6; // 宝箱
+}
+
+message DramaSkill {
+  optional Skill skill = 1;
+  optional bool isRelive = 2;
+  optional int32 quality = 3; // 品质
+}
+
+// 神秘商人
+message DramaShop {
+  optional int32 buyCount = 1; // 购买次数（不包含特权）
+  optional int32 privilegeBuy = 2; // 特权购买次数
+  optional int32 freeBuyCount = 3; // 免费购买次数
+}
+
+// 宝箱
+message DramaBox {
+  repeated Item items = 1;
+}
+
+// 赤壁之战 排行榜类型
+enum ChibiRankType {
+  Date = 1; // 最近通关
+  Time = 2; // 最快通关
+  Power = 3; // 最低战力
+}
+
+//--------------------------------------------------------------------------------------------------etcd
+message EtcdValue {
+  repeated uint64 target = 1 [jstype = JS_STRING]; //目标服务器
+  optional string data = 2; //数据
+  optional bool enable = 3; //是否启用
+}
+
+//--------------------------------------------------------------------------------------------------治所
+
+message CollectPos {
+  optional int32 posId = 1; // 位置id
+  optional int32 posValue = 2; // 主将id
+  optional uint32 commanderScore = 3; // 主将评分
+  optional uint32 posAddScore = 4; // 位置加成评分
+}
+
+message Collect {
+  repeated CollectData collectDatas = 1;
+}
+
+message CollectData {
+  optional int32 collectId = 1;
+  optional uint32 collectLv = 2;
+  //optional uint32 OBSOLETE_collectScore = 3; // 废弃
+  repeated common.CollectPos posList = 4;
+  optional uint32 score = 5;
+  optional uint32 power = 6;
+}

@@ -1,9 +1,1 @@
-syntax="proto2";
-
-message Inner {
-    optional int32 a = 1;
-}
-
-message Outter {
-    optional Inner a = 1;
-}
+syntax = "proto2";

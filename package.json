@@ -9,7 +9,8 @@
   },
   "license": "MIT",
   "scripts": {
-    "dev": "./protoc -I=protos --plugin='protoc-gen-ts=./protoc-gen-ts' --ts_out='examples' temp.proto"
+    "dev": "./protoc -I=protos --plugin='protoc-gen-ts=./protoc-gen-ts' --ts_out='examples' temp.proto",
+    "build": "./protoc -I=protos --plugin='protoc-gen-ts=./protoc-gen-ts' --ts_out='examples' common.proto cl.proto cg.proto ret.proto"
   },
   "devDependencies": {
     "@bazel/bazel": "^1.2.0",

@@ -12,6 +12,8 @@ const codeGenResponse = new plugin.CodeGeneratorResponse();
 
 const descriptors = codeGenRequest.getProtoFileList();
 
+const isProto2 = String(codeGenRequest.toString()).endsWith("proto3")
+
 for (const descriptor of descriptors) {
   const name = descriptor.getName().replace(".proto", ".ts");
   const codegenFile = new plugin.CodeGeneratorResponse.File();
@@ -380,43 +382,70 @@ for (const descriptor of descriptors) {
                       ...messageDescriptor.getFieldList().map(fd => {
                         let statements = [];
 
-                        if (
-                          isRepeated(fd) &&
-                          !isPackageable(fd) &&
-                          !isMessage(fd)
-                        ) {
-                          statements.push(
-                            ts.createStatement(
-                              ts.createCall(
-                                ts.createPropertyAccess(
-                                  pbIdentifier,
+                        if (isRepeated(fd) && !isMessage(fd)) {
+                          if (!isPackageable(fd)) {
+                            statements.push(
+                              ts.createStatement(
+                                ts.createCall(
                                   ts.createPropertyAccess(
-                                    ts.createIdentifier("Message"),
-                                    "addToRepeatedField"
-                                  )
-                                ),
-                                undefined,
-                                [
-                                  ts.createIdentifier("message"),
-                                  ts.createNumericLiteral(
-                                    fd.getNumber().toString()
-                                  ),
-                                  ts.createCall(
+                                    pbIdentifier,
                                     ts.createPropertyAccess(
-                                      ts.createIdentifier("reader"),
-                                      `read${toBinaryMethodName(
-                                        fd,
-                                        descriptor,
-                                        false
-                                      )}`
+                                      ts.createIdentifier("Message"),
+                                      "addToRepeatedField"
+                                    )
+                                  ),
+                                  undefined,
+                                  [
+                                    ts.createIdentifier("message"),
+                                    ts.createNumericLiteral(
+                                      fd.getNumber().toString()
                                     ),
-                                    undefined,
-                                    []
-                                  )
-                                ]
+                                    ts.createCall(
+                                      ts.createPropertyAccess(
+                                        ts.createIdentifier("reader"),
+                                        `read${toBinaryMethodName(
+                                          fd,
+                                          descriptor,
+                                          false
+                                        )}`
+                                      ),
+                                      undefined,
+                                      []
+                                    )
+                                  ]
+                                )
                               )
-                            )
-                          );
+                            );
+                          } else {
+                            statements.push(
+                              ts.createStatement(
+                                ts.createCall(
+                                  ts.createPropertyAccess(
+                                    ts.createIdentifier("message"),
+                                    ts.createPropertyAccess(
+                                      ts.createIdentifier(fd.getName()),
+                                      "push"
+                                    )
+                                  ),
+                                  undefined,
+                                  [
+                                    ts.createCall(
+                                      ts.createPropertyAccess(
+                                        ts.createIdentifier("reader"),
+                                        `read${toBinaryMethodName(
+                                          fd,
+                                          descriptor,
+                                          false
+                                        )}`
+                                      ),
+                                      undefined,
+                                      []
+                                    )
+                                  ]
+                                )
+                              )
+                            );
+                          }
                         } else if (isMessage(fd)) {
                           const readCall = ts.createCall(
                             ts.createPropertyAccess(
@@ -1146,15 +1175,16 @@ function isPackageable(fieldDescriptor) {
 }
 
 function isPacked(fieldDescriptor, descriptor) {
-  if (!isPackageable(fieldDescriptor)) {
-    return false;
-  }
-  const options = fieldDescriptor.getOptions();
-  if (descriptor.getSyntax() == "proto2") {
-    return options && options.getPacked();
-  }
+  return false
+  // if (!isPackageable(fieldDescriptor)) {
+  //   return false;
+  // }
+  // const options = fieldDescriptor.getOptions();
+  // if (isProto2) {
+  //   return options && options.getPacked();
+  // }
 
-  return options == null || !options.hasPacked() || options.getPacked();
+  // return options == null || !options.hasPacked() || options.getPacked();
 }
 
 function isJsString(fieldDescriptor) {

@@ -1,0 +1,18 @@
+{
+    // 使用 IntelliSense 了解相关属性。 
+    // 悬停以查看现有属性的描述。
+    // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Launch via yarn",
+            "type": "node",
+            "request": "launch",
+            "runtimeExecutable": "yarn",
+            "runtimeArgs": [
+                "dev" //这里的dev就对应package.json中的scripts中的dev
+            ],
+            "port": 9229 //这个端口是调试的端口，不是项目启动的端口
+        },
+    ]
+}

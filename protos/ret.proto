@@ -1,0 +1,625 @@
+syntax = "proto2";
+package ret;
+
+enum RET {
+  //基本错误类型
+  ERROR = 0; //错误
+  OK = 1; //ok
+
+  //注意 3~20 是Gateway的，千万不要用
+
+  //系统错误
+  USER_NAME_ILLEGAL = 20; //用户名不合法
+  CREATE_USER_FALIED = 21; //创建角色失败
+  LOGIN_BY_OTHER = 22; //账号被其他人登陆
+  REQUEST_TOO_FAST = 23; //请求过于频繁
+  UNTREATED_MSG = 24; //未处理消息
+  USER_NOT_EXIST = 25; //用户不存在
+  USER_NAME_SAME_OLD = 26; //和老名字一样
+  KickOut = 27; //被GM踢下线
+  SERVER_ENTER_MAINTAIN = 28; //服务器已进入维护状态
+  KICK_ALL_RELOGIN = 29; //游戏发生重大变化，请重新登陆
+
+  // 通用
+  LEVEL_TOO_LOW = 30; //等级不足
+  PARAM_ERROR = 31; //参数错误
+  CONFIG_NOT_FOUND = 32; //配置没有发现
+  LV_CONFIG_NOT_FOUND = 33; //等级配置没有发现
+  FIGHT_FAILED = 34; //战斗失败
+  PHYSICAL_LOW = 35; //体力不足
+  AlreadyInBattle = 36; //已经在战斗中了
+  FUNCTION_NOT_OPEN = 37; //功能未开启
+  VIP_TOO_LOW = 38; //vip等级不足
+  RPC_CALL_ERR = 39; //远程调用失败
+  PHYSICAL_FULL = 40; //体力已达上限
+  PHYSICAL_CLOSE_TO_FULL = 41; //体力即将达到上限
+  THERE_ARE_TIMES = 42; //还有次数
+
+  // 邮件
+  MAIL_GLOBAL_SAVA_FAILED = 99; //全局邮件保存失败
+  MAIL_TEMPLATEID_NOT_EXIST = 100; //邮件模板ID不存在
+  MAIL_ID_NOT_EXIST = 101; //邮件ID不存在
+  MAIL_EXPIRE = 102; //邮件已过期
+  MAIL_NO_ATTACHMENT = 103; //邮件无附件
+  MAIL_ATTACHMENT_HAS_BEEN_GET = 104; //邮件附件已经被领取
+  MAIL_FAST_GET_ATTACHMENT_EMPY = 105; //邮件意见领取为空
+
+  // 聊天
+  CHAT_BAN = 106; // 禁言中
+  CHAT_IN_CD = 107; // CD中
+  CHAT_TOOMANY_CHARS = 108; // 聊天字符过多
+  CHAT_USER_NOT_ONLINE = 109; // 私聊玩家不在线
+  CHAT_EMPTY = 110; // 聊天内容为空
+  CHAT_IN_BLACK = 111; // 在对方黑名单中，发送私聊失败
+  CHAT_CANNOT_TALKTO_YOURSELF = 112; // 不能同自己说话
+
+  // 排行榜
+  RANK_ERROR_TYPE = 120; // 排行榜类型错误
+
+  //点赞
+  PRAISE_DAY_LIMIT = 130; //点赞次数限制
+  PRAISE_DAY_REPEATED = 131; //每日点赞重复
+
+  // 士兵
+  SoldierAlreadyUnlock = 150; // 士兵已经解锁了
+  SoldierNotUnlock = 151; //  士兵未解锁
+  SoldierNotMatchCommander = 152; // 士兵类型跟武将不匹配
+  SoldierCommanderNotUnlock = 153; // 所需主将未解锁
+
+  SoldierTechLocked = 160; // 兵营科技未解锁
+  SoldierTechMaxLevel = 161; // 兵营科技已达最大等级
+  SoldierPreTechLocked = 162; // 前置兵营科技未解锁
+  SoldierPreTechLevelLow = 163; // 前置兵营科技等级不足
+  SoldierTechAlreadyUnlock = 164; // 兵营科技已经解锁过了
+  SoldierTechClassLevelNotEnough = 165; // 需求本职业的科技等级不足
+  SoldierTechAlreadyReward = 166; // 兵营科技已经领取奖励
+
+  // 市场
+  MarketIsLocked = 200; // 市场未解锁
+  MarketGridNotExist = 201; // 市场商品格子不存在
+  MarketSellOut = 202; // 售罄
+  MarketCrossDay = 203; // 购买、刷新过程中跨天了
+  MarketRefreshMax = 204; // 达到刷新次数上限
+  MarketGridLocked = 205; // 格子未解锁
+
+  // 道具
+  ItemTreasureNotEnough = 297; // 宝物不足
+  ItemMaterialNotEnough = 298; // 材料不足
+  ItemPieceNotEnough = 299; // 碎片不足
+  ITEM_NOT_ENOUGH = 300; //道具不足
+  ITEM_INVALIDTIME = 301; //无效时间
+  ITEM_COUNT_OVERFLOW = 302; //数量太多
+  ITEM_INVALID_ITEMID = 303; //物品id不对
+  ITEM_NOT_GIFTITEM = 304; //不是礼包
+  ITEM_CANNOT_USE = 305; //不能使用
+  ITEM_NUM_ISZERO = 306; //物品数量为0
+  ITEM_NOT_EXIST = 307; //物品不存在
+  ITEM_CHANGE_NOT_FOUND = 308; //道具转换没有找到
+  ITEM_CANNOT_DECOMPOSE = 309; // 道具分解
+  ItemGameCoinNotEnough = 310; //幸运币不足
+  ItemDeleteError = 311; //物品类型不能删除
+
+  // 礼包
+  GIFT_RANGE_ERROR = 396; //礼包类型支持错误
+  GIFT_DONNOT_SUPPORT = 397; //礼包未实现
+  GIFT_CHOOSE_ERROR = 398; //礼包选择索引错误
+  GIFT_CHOOSE_TYPE_ERROR = 399; //N选多礼包选择错误
+
+  // 好友
+  FRIEND_MY_FRIENDFULL = 400; //自己好友满
+  FRIEND_OTHER_FRIENDFULL = 401; //对方好友满
+  FRIEND_ALREADY_FRIEND = 402; //已经是好友
+  FRIEND_NOT_FRIEND = 403; //不是好友
+  FRIEND_CAN_NOT_SEARCH_SELF = 404; //不能查找自己
+  FRIEND_CAN_NOT_ADD_FRIEND_SELF = 405; //不能添加自己为好友
+  FRIEND_ALREADY_REQUEST_ADD_FRIEND = 406; //已经发送过好友申请
+  FRIEND_IN_MY_BLACK = 407; //对方在自己黑名单
+  FRIEND_SEARCH_SELF = 408; //查找的是自己
+  FRIEND_SEARCH_NOT_FOUND = 409; //查找玩家不存在
+  FRIEND_BLACK_FULL = 410; //黑名单已满
+  FRIEND_REQUEST_FULL = 411; //申请列表已满
+  FRIEND_PHYSICAL_COLLECT_NUM_FULL = 412; //已达最大体力收取数
+  FRIEND_NEED_REFRESH_PHYSICAL_INFO = 413; //需要刷新体力数据
+  FRIEND_IN_OTHER_BLACK = 414; //自己在对方黑名单
+
+  //
+  COMMONDER_NOT_FOUND = 500; //没有找到武将
+  COMMONDER_LV_UP_LIMIT = 501; //不能超过玩家等级
+  COMMONDER_LV_UP_NO_EXP = 502; //经验池经验不足
+  COMMONDER_TABLE_NOT_FOUND = 503; //武将无配置
+  COMMONDER_LITTLE_STAR_LV_MAX = 504; //武将小星星达到已经最大等级
+  COMMONDER_LV_UP_TABLE_NOT_FOUND = 505; //武将无升级配置
+  COMMONDER_LITTLE_STAR_LV_NOT_ENOUGH = 506; //武将小星星等级不足
+  COMMONDER_BIG_STAR_MAX = 507; //武将大星星已经达到最大等级
+  COMMONDER_BIG_STAR_NOT_FOUND = 508; //武将大星星没有配置
+  COMMONDER_EQUIP_NOT_ALL_GET = 509; //武将的装备没有全
+  COMMONDER_QUALITY_MAX = 510; //武将的品质已达到最大等级
+  COMMONDER_QUALITY_NOT_FOUND = 511; //没有找到此品质配置
+  COMMONDER_QUALITY_EQUIP_NOT_FOUND = 512; //装备插槽错误
+  COMMONDER_QUALITY_EQUIP_HAS_FUSE = 513; //装备已经合成了
+  COMMONDER_QUALITY_EQUIP_FUSE_ERROR = 514; //合成失败，使用道具错误
+  COMMONDER_SKILL_LV_MAX = 515; //武将技能等级满
+  COMMONDER_SKILL_LV_NOT_FOUND = 516; //没有此技能
+  COMMONDER_SKILL_LV_CONFIG_NOT_FOUND = 517; //没有此技能配置
+  COMMONDER_SKILL_LV_HAS_UNLOCK = 518; //技能已经解锁过了
+  COMMONDER_HAS_BEEN_CALL = 519; //武将已经被召唤过了
+  COMMONDER_SKILL_LV_EXP_ERR = 520; //武将技能升级经验错误
+  COMMONDER_SKILL_UNLOCK_ERR = 521; //武将技能解锁不满足条件
+  COMMANDER_SKILL_NOT_UNLOCKED = 522; //武将技能未解锁
+  SOLDER_TID_NOT_FOUND = 523; //士兵模板id没找到
+  POSITION_TID_NOT_FOUND = 524; //站位模板id没找到
+  COMMANDER_POSITION_ERR = 525; //武将站位错误
+  COMMONDER_TID_NOT_FOUND = 526; //武将模板id没找到
+  COMMONDER_EQUIP_LV_LIMIT = 527; //武将装备合成等级限制
+  COMMONDER_SKILL_CAN_NOT_BREAK = 528; //武将技能不能突破
+  COMMONDER_LEADERSHIP_LV_UP_LIMIT = 529; //武将领导力等级限制
+
+  //签到
+  SIGNIN_REPLENISH_NOT_ENOUTH = 600; // 补签次数不足
+  SIGNIN_ALREADY_REPLENISH = 601; // 已经补签了
+  SIGNIN_CANNOT_REPLENISH = 602; // 全勤了，不能补签
+  SIGNIN_CANNOT_TAKE_DOUBLEAWARD = 603; // 不能领取双倍奖励
+  SIGNIN_NOT_SIGN = 604; // 还没签到
+  SIGNIN_ALREADY_TAKEAWARD = 605; // 已经领奖了
+  SIGNIN_NOT_FOUND_IN_TABLE = 606; // signcount表没有
+  SIGNIN_SIGNCOUNT_NOT_ENOUTH = 607; // 签到天数不够
+
+  //任务
+  MissionNotComplete = 616; // 主动触发任务未完成
+  MissionPrevMissionNotFinish = 617; // 前置任务未完成
+  MissionTargetChapterAlreadyReward = 618; // 目标奖励已领取
+  MissionChapterExplorerNotFinish = 619; // 章节任务未完成
+  MISSION_NOT_OWN = 620; // 没有任务
+  MISSION_NO_CONFIG = 621; // 没有任务配置
+  MISSION_FIGHTID_ERROR = 622; // 任务战斗ID错误
+  MISSION_TYPE_ERROR = 623; // 任务类型不对
+  MISSION_FIGHT_ERROR = 624; // 进入任务与战斗的ID不匹配
+  MISSION_CHAPTER_NOT_FOUND = 625; // 任务章节不存在
+  MISSION_CHAPTER_UNFINISH = 626; // 任务章节未完成
+  MISSION_FORTRESS_CANNOT_INTERACT = 627; // 不能交互
+  MISSION_NO_COMMANDER = 628; // 上阵武将不满足
+  MISSION_LEVEL_TOLOW = 629; // 等级不足
+  MISSION_CANNOT_SELECT = 630; // 任务战斗不能选择
+
+  //副本
+  DungeonRefreshed = 635; // 副本已刷新
+  DungeonNotPassed = 636; // 副本未通过
+  DungeonAlreadyHaveConnReward = 637; // 已领取连线奖励
+  DUNGEON_STAR_ERROR = 638; // 副本星星不是1-3星
+  DungeonResetMax = 639; // 副本重置已达到最大次数
+  DUNGEON_CHAPTER_STAR_CONFIG_ERROR = 640; // 副本章节星级奖励配置错误
+  DUNGEON_NOT_EXIST = 641; // 副本不存在
+  DUNGEON_NUM_MAX = 642; // 副本次数不足
+  DUNGEON_LOCKED = 643; // 副本未解锁
+  DUNGEON_CANNOT_SWEEP = 644; // 不能扫荡
+
+  // 训练
+  Train_IDNotExist = 645; // 训练表ID不存在
+  Train_PreTrainNotPass = 646; // 前置训练未通关
+  TrainNotPassed = 647; // 训练未通关
+  TrainAlreadyTaked = 648; // 训练奖励已经领取过了
+  TrainNoAttackFormation = 649; // 训练场没有进攻阵型
+  TrainNoDefendFormation = 650; // 训练场没有防守阵型
+
+  //军师
+  COUNSELLOR_STAR_MAX = 700; // 军师满星了
+  COUNSELLOR_LOCKED = 701; // 军师未解锁
+  COUNSELLOR_MAGIC_LOCKED = 702; // 军师法术未解锁
+  COUNSELLOR_MAGIC_MAXLEVEL = 703; // 法术达到最大等级了
+  COUNSELLOR_STARLEVEL_LOW = 704; // 专长等级不足
+  COUNSELLOR_STARLEVEL_MAX = 705; // 星级达到最大值了
+  COUNSELLOR_NO_MAGICLEVEL = 706; // 法术等级没找到
+  COUNSELLOR_MAGIC_NO_FOUND = 707; // 法术没找到
+  COUNSELLOR_ALREADY_UNLOCK = 708; // 已经解锁了
+  COUNSELLOR_NOT_EXSIT = 709; // 军师没有找到
+  COUNSELLOR_ALREADY_UNLOCK_QIMEN = 710; // 军师已经解锁奇门
+  COUNSELLOR_ALREADY_UNLOCK_QIJI = 711; // 军师已经解锁奇计
+
+  // 抽卡
+  DrawNoTimes = 730; // 没有抽卡次数
+  DrawCountError = 731; // 抽卡次数不对
+  DrawTimesNotEnough = 732; // 今日抽卡次数已达上限
+  DrawOpenTreasureBoxConfigError = 733; // 开宝物抽卡进度宝箱配置未发现
+  DrawOpenTreasureBoxNoTimes = 734; // 无开宝物抽卡进度宝箱次数
+
+  // 群雄割据
+  SlayFormationError = 760; // 阵型不对
+  SlayCityCannotAttack = 761; // 不能进攻
+  SlayCannotDefend = 762; // 不能防守
+  SlayNoBag = 763; // 没有锦囊
+  SlayBagCannotUse = 764; // 锦囊不能主动使用
+  SlayBagNotImplement = 765; // 锦囊没实现
+  SlayCityNotExist = 766; // 城池不存在
+  SlayBagTargetError = 767; // 锦囊使用城池错误
+  SlayNoPower = 768; // 没有势力
+  SlayConfigError = 769; // 配置错误
+  SlayGoldNotEnough = 770; // 军费不足
+  SlayNoCommander = 771; // 没有武将
+  SlayNeedDoAttack = 772; // 需要执行进攻
+  SlayNoAttack = 773; // 没有进攻
+  SlayNotStart = 774; // 未开始
+  SlayNotPowerCity = 775; // 不是势力城
+  SlaySelectError = 776; // 选择错误
+  SlayNoDefend = 777; // 没有防守需要选择
+  SlaySilkNotEnough = 778; // 锦囊不足
+  SlayCityNotConnect = 779; // 城池没有连接
+  SlayNeutralCityCannotAttack = 780; // 中立城池不能进攻
+  SlayPlayerCityCannotUseDoAttack = 781; // 玩家城池不能使用DoAttack
+  SlayNoTimes = 782; // 没次数
+  SlayNotSamePowerCity = 783; // 不是同一势力城池
+  SlayAlreadyBuy = 784; // 已经购买过了
+
+  AVATAR_HAS_EXSIT = 800; //头像已经存在
+  AVATAR_FRAME_HAS_EXSIT = 801; //头像框已经存在
+  AVATAR_NOT_EXSIT = 802; //头像不存在
+  AVATAR_FRAME_NOT_EXSIT = 803; //头像框不存在
+  AVATAR_NOT_GET = 804; //头像没有获得
+  AVATAR_FRAME_NOT_GET = 805; //头像框没有获得
+
+  //阵型
+  FORMATION_MUST_HAS_COMMAND = 900; // 阵型保存至少需要一个武将
+  FORMATION_COMMANDER_COUNT_LIMIT = 901; // 阵型武将数量限制
+  FORMATION_DATA_NULL = 902; // 阵型数据伟空
+  FormationGenderLimit = 903; // 布阵性别限制
+  FormationClassLimit = 904; // 布阵职业限制
+  FormationTeamLimit = 905; // 布阵国家限制
+  FormationNpcCommanderMustOnLimit = 906; // 己方必上npc主将不足
+  FormationCommanderSame = 907; // 重复的玩家主将上阵
+  SAVE_FORMATION_COMMANDER_SAME = 908; // 保存布阵时候有重复的主将上阵
+  FormationSameGrid = 909; // 重复的格子
+  FormationGridIdError = 910; // 格子错误
+  FormationTypeError = 911; // 布阵类型错误
+  FormationPeakNotOpen = 912; //巅峰竞技场布阵未开启
+  FormationIllustratedGroupInvalid = 913; //阵型图鉴编组id无效
+
+  //资源
+  DIAMOND_NOT_ENOUGH = 950; //钻石不足
+
+  //资源购买
+  PHYSICAL_BUY_TIME_NOT_ENOUGH = 1000; //体力购买次数不足
+  PHYSICAL_BUY_PHYSICAL_FULL = 1001; //体力已达上限
+  GOLD_BUY_TIME_NOT_ENOUGH = 1002; //黄金购买次数不足
+  COMMANDER_EXP_BUY_TIME_NOT_ENOUGH = 1003; //主将经验购买次数不足
+  ADVANCE_STONE_BUY_TIME_NOT_ENOUGH = 1004; //铸造石购买次数不足
+  MAGIC_BOOK_BUY_TIME_NOT_ENOUGH = 1005; //法术书购买次数不足
+  FREE_TIME_NOT_ENOUGH = 1006; //免费次数不足
+  EXCHANGE_SHOPTYPE_ERROR = 1007; //资源购买类型错误
+
+  //宝物
+  TREASURE_FATE_NOT_EXIST = 1050; //宝物缘分不存在
+  TREASURE_FATE_NO_CONFIG = 1051; //宝物缘分配置不存在
+  TREASURE_RESEARCH_CONFIG_ERROR = 1052; //宝物研究相关配置错误
+  TREASURE_NOT_EXIST = 1053; //宝物不存在
+  TREASURE_ALREADY_EXIST = 1054; //宝物已经存在
+  TREASURE_NO_CONFIG = 1055; //宝物配置不存在
+  TREASURE_ADVANCE_LEVEL_MAX = 1056; //宝物进阶等级已达上限
+  TREASURE_REFINE_LEVEL_NOT_ENOUGH = 1057; //宝物精练等级不足
+  TREASURE_NOT_NEED_REFINE = 1058; //不需要精练
+  TREASURE_UP_COST_NO_CONFIG = 1059; //宝物进阶消耗配置不存在
+  TREASURE_FATE_SKILL_NOT_EXIST = 1060; //宝物缘分技能不存在
+  TREASURE_FATE_SKILL_GROUP_DATA_ERROR = 1061; //宝物缘分技能编组数据错误
+  TREASURE_FATE_SKILL_GROUP_NOT_EXIST = 1062; //宝物缘分技能编组不存在
+  TREASURE_FATE_SKILL_GROUP_ALREADY_EXIST = 1063; //宝物缘分技能编组已经存在
+  TREASURE_NOT_NEED_RESEARCH = 1064; //不需要研究
+  TREASURE_RESEARCH_NOT_DONE = 1065; //研究未完成
+  TREASURE_RESEARCH_DONE = 1066; //研究已经完成
+  TREASURE_ALREADY_AWAKE = 1067; //宝物已经觉醒过
+  TREASURE_NO_AWAKE_COMMANDER = 1068; //没有觉醒对应的主将
+  TREASURE_FATE_CAN_NOT_ACTIVE = 1069; //缘分技能不能激活 条件不足
+  TREASURE_FATE_CAN_NOT_UPGRADE = 1070; //缘分技能不能升级 条件不足
+  TREASURE_FATE_ALREADY_ACTIVE = 1071; // 缘分技能已激活
+  TREASURE_FATE_NOT_ACTIVE = 1072; // 缘分技能未激活
+  TREASURE_FATE_FULL = 1073; // 缘分技能已满级
+
+  //guild
+  NO_GUILD = 1100; //无guild
+  HAS_GUILD = 1101; //已经拥有了guild
+  GUILD_NAME_REPEAT = 1102; //势力名字重复
+  GUILD_NOT_EXSIT = 1103; //势力不存在
+  GUILD_JOIN_LEVEL_LIMIT = 1104; //请求加入等级限制
+  GUILD_MEMBERS_FULL = 1105; //已满
+  GUILD_REQUEST_LIST_FULL = 1106; //申请列表已满
+  GUILD_HAS_IN_REQUST_LIST = 1107; //已经在申请列表了
+  GUILD_NOT_IN_REQUST_LIST = 1108; //不在申请列表
+  GUILD_NO_JURISDICTION = 1109; //无权限
+  GUILD_USER_NOT_EXIST = 1110; //玩家不存在
+  GUILD_TAGET_HAS_GUILD = 1111; //目标玩家已经有guild了
+  GUILD_PRESIDENT_LEAVE_MUST_AT_LAST = 1112; //主席只能是最后一个离开的
+  GUILD_NOT_IN_THIS_GUILD = 1113; //不在这个guild中
+  GUILD_NO_NOTICE_TIME = 1114; //无通知次数
+  GUILD_NOTICE_ID_NOT_FOUND = 1115; //通知id不存在
+  GUILD_GUILDVICEPRESIDENT_COUNT_FULL = 1116; //副会长满了
+  GUILD_NOT_DO_SELF = 1117; //不能操作自己
+  GUILD_NO_BUILD_TIMES = 1118; //无建造次数
+  GUILD_SKILL_NOT_FOUND = 1119; //guild技能没找到
+  GUILD_SKILL_LEVEL_LIMIT = 1120; //guild技能等级到限制
+  GUILD_NAME_ILLEGAL = 1121; //联盟名字非法
+  GUILD_TITLE_ILLEGAL = 1122; //联盟公告或者通知的标题不合法
+  GUILD_CONTENT_ILLEGAL = 1123; //联盟公告或者通知的内容不合法
+  GUILD_IMPEACH_ILLEGAL = 1124; //弹劾不合法(盟主满足时间条件)
+  GUILD_DATA_ERROR = 1125; //联盟数据错误
+  GUILD_IMPEACH_SELF_IS_GUILD_PRESIDENT = 1126; //自己已经是盟主了
+  GUILD_IMPEACH_ILLEGAL_GUILD_VICE_PRESIDENT_FIRST = 1127; //弹劾不合法（副盟主优先弹劾）
+  GUILD_BUILDING_NOT_FOUND = 1128; //建筑不存在
+  GUILD_DONATE_NOT_FOUND = 1129; //捐献类型不存在
+  GUILD_ACTIVITY_REWARD_NOT_EXIST = 1130; //活跃度宝箱不存在
+  GUILD_ACTIVITY_REWARD_HAS_GET = 1131; //活跃度宝箱已经存在
+  GUILD_ACTIVITY_NOT_ENOUGH = 1132; //活跃度不够
+  GUILD_SALARY_ALREADY_GET = 1133; // 每日俸禄已领取
+  GUILD_OFFICIAL_NOT_UNLOCK = 1134; // 官职类型未解锁
+  GUILD_OFFICIAL_TYPE_INVALID = 1135; // 无效官职类型
+  GUILD_OFFICIAL_SET_IN_COOL_DOWN = 1136; // 官职任命正在CD
+  GUILD_BUILD_NOT_ALLOW_DONATE = 1137; //不可捐献
+  GUILD_CREATE_ERROR = 1138; //创建失败
+  GUILD_ACTIVITY_REWARD_MUST_BUILD_THAN_0 = 1139;//获取活跃度必须要建设过
+  GUILD_DECLARATION_LEGAL = 1140;//联盟宣言不合法
+  GUILD_LV_LIMIT = 1141; //联盟等级限制
+  GUILD_EXCHANGE_ITEM_NOT_IN_TABLE = 1142; //商品不在配置表里
+  GUILD_EXCHANGE_ITEM_NOT_EXIST = 1143; //商品不存在
+  GUILD_EXCHANGE_ITEM_OVER_MAX = 1144; //个人商品发布达到上限
+  GUILD_EXCHANGE_ITEM_PRICE_SHIFT_NOT_EXIST = 1145; //商品发布的价格不合理
+  GUILD_EXCHANGE_ITEM_EXPIRED = 1146; //商品过期
+  GUILD_EXCHANGE_ITEM_TODAY_PUB_LIMIT = 1147; //今日发布已到上限
+  GUILD_EXCHANGE_ITEM_HAS_SOLD = 1148; //已售出
+  GUILD_EXCHANGE_ITEM_NOT_SOLD = 1149; //未售出
+  GUILD_EXCHANGE_ITEM_NOT_SELF = 1150; //不是自己的商品
+  GUILD_EXCHANGE_ITEM_IS_SELF = 1151; //自己的商品
+
+  //竞技场
+  ARENA_BUY_CHALLENGE_FAILED = 1200; //竞技场购买挑战次数失败
+  ARENA_BEGIN_BATTLE_FAILED = 1201; //竞技场开始战斗失败
+  ARENA_NO_CHALLENGE_TIMES = 1202; //没有挑战次数了
+  ARENA_RANK_REWARD_REPEAT_EXCHANGE = 1203; //竞技场排行榜奖励重复申请了
+  ARENA_RANK_REWARD_NOT_FOUND = 1204; //没有这个竞技场排行榜奖励
+  ARENA_RANK_REWARD_CAN_NOT_GET = 1205; //你还不能领取这个排行奖励
+  ARENA_PLAYER_HAS_IN_BATTLE = 1206; //玩家已经在战斗中了
+  ARENA_TARGART_IS_IN_BATTLE = 1207; //目标被挑战中
+  ARENA_PLAYER_NOT_HAS_BATTLE = 1208; //玩家没有在战斗
+  ARENA_BATTLE_NOT_EXIST = 1209; //战役不存在
+  ARENA_NOT_SELF_BATTLE = 1210; //不是自己的战斗id
+  ARENA_BATTLE_OUT_TIME = 1211; //战斗超时
+  ARENA_TARGART_NOT_EXIST = 1212; //目标玩家不存在
+  ARENA_BATTLE_VERIFY_FAILED = 1213; //战斗验证失败
+  ARENA_TARGET_RANK_CHANGED = 1214; //目标排名发生变化
+  ARENA_LOG_NO_LOG = 1215; //没有战斗日志
+  ARENA_LOG_NOT_LAST_ID = 1216; //不是最后一个战斗id
+  ARENA_LOG_HAD_COMPLETED = 1217; //战役已经完成过了
+  ARENA_TARGET_NOT_IN_RANGE = 1218; //目标不在挑战范围内
+
+  //战斗
+  BATTLE_NOT_INBATTLE = 1300; //不在这场战斗中
+  BATTLE_NO_BATTLE_REPLAY = 1301; //无战斗replay
+  MATCH_USER_NOT_FOUND = 1302; //匹配玩家不存在
+  BATTLE_BEGIN_ERROR = 1303; //进入战斗失败
+  MATCH_CLIENT_BATTLE_VERSION_DIFFERENT = 1304; //两个客户端战斗版本不一样
+
+  //日常Boss
+  DAILYBOSS_NO_BOSS = 1500; //没有Boss数据
+  DAILYBOSS_FIRSTKILL_AWARD_ALREADY_TOOK = 1501; //首杀奖励已领取
+  DAILYBOSS_NO_FIRSTKILL_AWARD = 1502; //没有首杀奖励
+  DAILYBOSS_DIFFLV_NO_CONFIG = 1503; //难度配置不存在
+  DAILYBOSS_BOSS_NO_CONFIG = 1504; //Boss配置不存在
+  DAILYBOSS_BOSS_NOT_OPEN = 1505; //Boss没有开启
+  DAILYBOSS_DIFFLV_LOCKED = 1506; //难度未解锁
+  DAILYBOSS_CHALLENGE_TIME_NOT_ENOUGH = 1507; //挑战次数不足
+  DAILYBOSS_DIFFLV_NEED_POWER_NOT_ENOUGH = 1508; //挑战难度所需战力不足
+  DAILYBOSS_DIFFLV_NEED_LEVEL_NOT_ENOUGH = 1509; //挑战难度所需等级不足
+  DAILYBOSS_LAST_DIFFLV_NOT_PASS = 1510; //上一个难度未通关
+  DAILYBOSS_BATTLEINFO_ID_ERROR = 1511; //战斗ID错误
+  DAILYBOSS_MONSTER_NO_CONFIG = 1512; //Monster配置不存在
+  DAILYBOSS_BOSSID_INVALID = 1513; // 无效bossID
+  DAILYBOSS_DIFFLV_INVALID = 1514; // 无效挑战难度
+  DAILYBOSS_DIFFLV_ALREADY_UNLOCK = 1515; // 难度已解锁
+
+  //计谋府
+  STRMANSION_TALENT_NO_CONFIG = 1550; //天赋配置不存在
+  STRMANSION_TAB_NOT_UNLOCK = 1551; //页签未解锁
+  STRMANSION_PRECONDITION_NOT_ENOUGH = 1552; //前置条件不足
+  STRMANSION_PLAYER_LEVEL_NOT_ENOUGH = 1553; //玩家等级不足
+  STRMANSION_TABTYPE_INVALID = 1554; //页签类型无效
+  STRMANSION_TALENT_LEVEL_MAX = 1555; //天赋等级已达上限
+
+  //巅峰竞技场
+  PEAK_NOT_OPEN = 1600; //巅峰竞技场未开放
+  PEAK_NOT_TIMES = 1601; //无次数
+  PEAK_READY_ERR = 1602; //准备/取消准备失败
+  PEAK_MATCH_ERR = 1603; //匹配失败
+  PEAK_MATCH_CANCEL_ERR = 1604; //取消匹配失败
+  PEAK_FORMATION_ACTION_ERR = 1605; //喊话失败
+  PEAK_RANK_REWARD_REPEAT_EXCHANGE = 1606; //竞技场排行榜奖励重复申请了
+  PEAK_RANK_REWARD_NOT_FOUND = 1607; //没有这个竞技场排行榜奖励
+  PEAK_RANK_REWARD_CAN_NOT_GET = 1608; //你还不能领取这个排行奖励
+  PEAK_NO_CHALLENGE_TIMES = 1609; //没有挑战次数了
+  PEAK_NO_COIN = 1610; //没有巅峰竞技币了
+  PEAK_BUY_CHALLENGE_FAILED = 1611; //购买次数失败了
+  PEAK_SESSION_CLOSED = 1612; //赛季已经结束
+  PEAK_GET_COIN_BUSY = 1613; //领取太快了,等会儿吧
+  PEAK_NOW_IN_BATTLE = 1614; //当前在战斗中了
+  PEAK_NOT_IN_BATTLE = 1615; //不在战斗中
+  PEAK_BATTLE_HAS_BEGIN = 1616; //战斗已经开始
+  PEAK_WILL_END_NOT_ALLOW_MATCH = 1617; //赛季即将结束，不能进入匹配
+  PEAK_MATCH_DATA_ABNORMITY = 1618; //匹配数据异常
+  PEAK_IN_LOCK = 1619; //在锁定中（战斗中）
+  PEAK_CROSS_MATCH_TIMEOUT = 1620; //跨服匹配超时
+  PEAK_CROSS_MATCH_CREATE_PVP_ERROR = 1621; //跨服匹配成功，创建pvp失败
+  PEAK_CREATE_PEAK_PVP_ROOM_FAILED = 1622; //创建巅峰竞技场战场失败
+  PEAK_NOT_NOT_IN_THIS_MATCH = 1623; //玩家不在这场皮赛中
+  PEAK_NOT_MATCH_NOT_EXIST = 1624; //比赛不存在
+
+  //特权
+  PRIVILEGE_PEERAGE_NO_CONFIG = 1800; //没有爵位配置
+  PRIVILEGE_ABILITY_NO_CONFIG = 1801; //没有能力配置
+  PRIVILEGE_EFFECT_NO_CONFIG = 1802; //没有效果配置
+  PRIVILEGE_ABILITY_LV_MAX = 1803; //能力等级已满
+  PRIVILEGE_BEFORE_ABILITY_LV_NOT_MAX = 1804; //前置能力等级未满
+  PRIVILEGE_WAGES_ALREADY_GET = 1805; //每日俸禄已领
+  PRIVILEGE_SHOP_NO_CONFIG = 1806; //没有商店配置
+  PRIVILEGE_STORE_NOT_OPEN = 1807; //特权商店未开启
+  PRIVILEGE_BUFF_ALREADY_BUY = 1808; //Buff已购买
+  PRIVILEGE_NOT_OPEN = 1809; //特权没开启
+
+  //生涯
+  TaskConfigError = 1900; // 任务配置错误
+  TaskAlreadyFinish = 1901; // 任务已经完成过了
+  TaskConditionNotReach = 1902; // 未达到完成条件
+  TaskNotOwn = 1903; // 没有这个任务
+  TaskGrowNotEnougth = 1904; // 成长积分不足
+  TaskDailyAlreadyReward = 1905; // 已经领取过每日奖励
+  TaskDailyNotEnougth = 1906; // 每日奖励积分未达到
+  TaskDailyRewardMaxRand = 1907; // 每日任务神秘奖励达到最大随机次数
+  TaskWeekAlreadyReward = 1908; // 每周奖励已领取过
+  TaskWeekScoreNotEnougth = 1909; // 每周积分不足
+  TaskTargetChapterLocked = 1910; // 目标章节未解锁
+
+  //活动
+  ActivityTaskIdError = 1950; // 活动任务id错误
+  ActivityAlreadyReward = 1951; // 已经领取过活动奖励
+  ActivityChoseRewardError = 1952; // 活动选择的物品错误
+  ActivityNotReachRewardTime = 1953; // 未到领奖时间
+  ActivityNotOpen = 1954; // 活动未开启
+  ActivityNotReachCondition = 1955; // 活动条件不满足
+  ActivityNoCloud = 1956; // 没有金云
+
+  //等级奖励
+  LevelGiftAlreadyTakeReward = 1970; // 已经领取过等级奖励
+
+  //累计登录
+  TotalLoginDaysNotEnough = 1980; // 累计登录天数不足
+  TotalLoginGiftAlreadyTake = 1981; // 已经领取过累计登录奖励
+
+  //Vip
+  VIP_NO_CONFIG = 2000; //没有vip配置
+  VIP_PRIVILEGE_GIFT_ALREADY_BUY = 2001; //特权礼包已购买
+
+  //领主手册
+  HANDBOOK_PAGE_NO_CONFIG = 2100; //没有页签配置
+  HANDBOOK_AWARD_ALREADY_TAKE = 2101; //奖励已领取
+  HANDBOOK_PAGE_QUEST_NOT_CLEAR = 2102; //任务没有完成
+  HANDBOOK_PAGE_NOT_UNLOCK = 2103; //页签没有解锁
+
+  DECLARATION_ILLEGAL = 2200; //宣言不合法
+
+  //日常金币
+  DAILYCOIN_DAILY_REWARD_NO_CONFIG = 2300; //没有每日奖励配置
+  DAILYCOIN_DAILY_REWARD_CAN_NOT_TAKE = 2301; //条件不足不能领奖
+  DAILYCOIN_DAILY_REWARD_ALREADY_TAKE = 2302; //奖励已经领取
+  DAILYCOIN_CHALLENGE_TIME_NOT_ENOUGH = 2303; //挑战次数不足
+  DAILYCOIN_CAN_NOT_SWEEP = 2304; //不可扫荡
+  DAILYCOIN_NO_CONFIG = 2305; //没有日常金币副本配置
+
+  //日常经验
+  DAILYEXP_DAILY_REWARD_NO_CONFIG = 2400; //没有每日奖励配置
+  DAILYEXP_DAILY_REWARD_CAN_NOT_TAKE = 2401; //条件不足不能领奖
+  DAILYEXP_DAILY_REWARD_ALREADY_TAKE = 2402; //奖励已经领取
+  DAILYEXP_CHALLENGE_TIME_NOT_ENOUGH = 2403; //挑战次数不足
+  DAILYEXP_CAN_NOT_SWEEP = 2404; //不可扫荡
+  DAILYEXP_NO_CONFIG = 2405; //没有日常金币副本配置
+
+  //每日体力
+  DAILYPHYSICAL_NO_CONFIG = 2500; // 没有每日体力配置
+  DAILYPHYSICAL_ALREADY_TAKEN = 2501; // 体力已经领取
+  DAILYPHYSICAL_TAKE_TIME_WRONG = 2502; // 领取时间错误
+  DAILYPHYSICAL_NOT_FULL_ATTEND = 2503; // 没有达成全勤
+  DAILYPHYSICAL_FULL_ATTEND_GIFTS_ALREADY_TAKEN = 2504; // 全勤奖励已领取
+  DAILYPHYSICAL_NOT_REACH_TAKE_TIME = 2505; // 还没到达领取时间
+
+  //web
+  QUESTIONNAIRE_NOT_EXIST = 2600; //问卷不存在
+  GIFT_USE_ERROR = 2601; //礼包码领取失败
+  GIFT_USE_TIME_OUT = 2602; //礼包码领取超时
+
+  // Drama
+  DramaTypeError = 2700; // 剧本类型错误
+  DramaPreStageNotPass = 2701; // 剧本前置关卡未通关
+  DramaResetTimesNotEnough = 2702; // 剧本重置次数不足
+  DramaDieCommanderOnFormation = 2703; // 死亡主将在阵型上
+  DramaBuildIdNotExist = 2704; // 剧本建筑id不存在
+  DramaAlreadyPassed = 2705; // 剧本已经通关了
+  DramaBuffIndexError = 2706; // 选择buff错误
+  DramaReliveCommanderNotExist = 2707; // 复活主将没死亡或不存在
+  DramaCannotSweep = 2708; // 剧本不能扫荡
+  DramaShopBuyMax = 2709; // 神秘商人购买次数到上限了
+  DramaTreasurePieceNotEnougth = 2710; // 宝物碎片不足
+  DramaShopBuyTimesNotEnougth = 2711; // 神秘商人购买次数不足
+  DramaCannotSelectLastBuff = 2712; // 特权没开启
+  DramaNotFindStage = 2713; // 没发现关卡id
+  DramaShopHasClosed = 2714; // 剧本商店已关闭
+  DramaBoxEmpty = 2715; // 宝箱奖励为空
+
+  // 史记
+  HISTORY_NO_CONFIG = 2800; // 没有史记配置
+  HISTORY_MISSION_NO_CONFIG = 2801; // 没有史记任务配置
+  HISTORY_MISSION_NOT_FINISH = 2802; // 史记任务没有完成
+  HISTORY_AWARDS_ALREADY_TAKEN = 2803; // 史记奖励已领取
+  HISTORY_AWARDS_INDEX_INVALID = 2804; // 史记奖励领取索引无效
+  HISTORY_AWARDS_CAN_NOT_TAKE = 2805; // 史记奖励不可领取
+  HISTORY_MISSION_ALREADY_UNLOCK = 2806; // 史记任务已解锁
+  HISTORY_AWARDS_TAKE_WITHOUT_ORDER = 2807; // 史记奖励没有顺序领取
+
+  // 充值
+  RECHARGE_WELCOME_GIFT_ALREADY_TAKEN = 2900; // 欢迎奖励已领取
+  RECHARGE_FIRSTRECHARGE_GIFT_ALREADY_TAKEN = 2901; // 首充奖励已领取
+  RECHARGE_FIRSTRECHARGE_NOT_FINISH = 2902; // 首充未达成
+  RECHARGE_ORDER_REPEAT = 2903; // 充值订单重复
+  RECHARGE_MONEY_ERROR = 2904; // 充值金额错误
+  RECHARGE_NO_CONFIG = 2905; // 充值配置不存在
+  RECHARGE_TYPE_ERROR = 2906; // 充值类型错误
+
+  // 月卡
+  MonthCard_No_Config = 2920; // 月卡配置不存在
+  MonthCard_Not_Exsit = 2921; // 月卡不存在
+  MonthCard_Is_Actived = 2922; // 月卡已激活
+  MonthCard_Is_Due = 2923; // 月卡已过期
+  MonthCard_Can_Not_Active = 2924; // 月卡不可激活
+  MonthCard_Prize_Already_Taken = 2925; // 月卡今日奖励已领取
+  MonthCard_PhyPrize_All_Taken = 2926; // 月卡今日体力奖励已全部领取
+  MonthCard_None_Actived = 2927; // 没有激活的月卡
+  MonthCard_Not_Actived = 2928; // 月卡未激活
+  MonthCard_Can_Not_Renew = 2929; // 月卡不可续费
+
+  // 直购
+  CashGoodsLib_No_Config = 2950; // 直购配置不存在
+  DirectRecharge_Type_Error = 2951; // 直购类型错误
+  DirectRecharge_Money_Error = 2952; // 直购金额错误
+
+  // 探索度
+  ExploratoryAlreadyReward = 3000; // 已领取探索奖励宝箱
+  ExploratoryNotEnough = 3001; // 探索度不足
+
+  // 赤壁之战
+  Chibi_ChibiFleet_No_Config = 3100; // 船队配置不存在
+  Chibi_ChibiStage_No_Config = 3101; // 关卡配置不存在
+  Chibi_ChibiTarget_No_Config = 3102; // 目标奖励配置不存在
+  Chibi_ChibiBuff_No_Config = 3103; // Buff配置不存在
+  Chibi_Setting_BuyTimes_Error = 3104; // 购买次数配置错误
+  Chibi_FreeTimes_Not_Use_Up = 3105; // 免费次数未用完
+  Chibi_BuyTimes_Use_Up = 3106; // 购买次数用完
+  Chibi_Can_Not_BuyTimes = 3107; // 不能购买次数
+  Chibi_PlayerLv_Not_Enough = 3108; // 玩家等级不足
+  Chibi_FightIndex_Invalid = 3109; // 战斗场次无效
+  Chibi_LastStage_Not_Finished = 3110; // 上个关卡没有通关
+  Chibi_Fight_Already_Finished = 3111; // 当前场次战斗已经完成
+  Chibi_Fight_Not_In_Order = 3112; // 战斗没有按照场次顺序
+  Chibi_ChallengeTimes_Not_Enough = 3113; // 挑战次数不足
+  Chibi_Can_Not_Sweep = 3114; // 不可扫荡 未通关
+  Chibi_TargetAwards_Can_Not_Take = 3115; // 目标奖励不可领取 条件不满足
+  Chibi_TargetAwards_Already_Taken = 3116; // 目标奖励已领取
+  Chibi_Formation_1_No_Counsellor = 3117; // 阵型1没有军师上阵
+  Chibi_Formation_2_No_Counsellor = 3118; // 阵型2没有军师上阵
+  Chibi_Formation_1_No_Commander = 3119; // 阵型1没有主将上阵
+  Chibi_Formation_2_No_Commander = 3120; // 阵型2没有主将上阵
+  Chibi_Formation_Counsellor_Repeat = 3121; // 阵型军师重复
+  Chibi_Formation_Commander_Repeat = 3122; // 阵型主将重复
+  Chibi_Formation_Num_Error = 3123; // 阵型数量错误
+
+  // 治所
+  Collect_No_Config = 3200; // 治所配置不存在
+  CollectUp_No_Config = 3201; // 治所升级配置不存在
+  Collect_Not_Unlock = 3202; // 治所未解锁
+  Collect_PosID_Invalid = 3203; // 治所位置ID无效
+  Collect_Pos_Not_Unlock = 3204; // 治所位置未解锁
+  Collect_PutOn_Error_Team = 3205; // 国家不满足
+  Collect_PutOn_Error_Class = 3206; // 职业不满足
+  Collect_PutOn_Error_Property = 3207; // 三维不满足
+  Collect_Lv_Max = 3208; // 治所已满级
+}
