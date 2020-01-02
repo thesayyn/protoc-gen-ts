@@ -12,7 +12,7 @@ const codeGenResponse = new plugin.CodeGeneratorResponse();
 
 const descriptors = codeGenRequest.getProtoFileList();
 
-const isProto2 = String(codeGenRequest.toString()).endsWith("proto3")
+const isProto2 = !String(codeGenRequest.toString()).endsWith("proto3")
 
 for (const descriptor of descriptors) {
   const name = descriptor.getName().replace(".proto", ".ts");
@@ -1175,16 +1175,15 @@ function isPackageable(fieldDescriptor) {
 }
 
 function isPacked(fieldDescriptor, descriptor) {
-  return false
-  // if (!isPackageable(fieldDescriptor)) {
-  //   return false;
-  // }
-  // const options = fieldDescriptor.getOptions();
-  // if (isProto2) {
-  //   return options && options.getPacked();
-  // }
+  if (!isPackageable(fieldDescriptor)) {
+    return false;
+  }
+  const options = fieldDescriptor.getOptions();
+  if (isProto2) {
+    return options && options.getPacked();
+  }
 
-  // return options == null || !options.hasPacked() || options.getPacked();
+  return options == null || !options.hasPacked() || options.getPacked();
 }
 
 function isJsString(fieldDescriptor) {
