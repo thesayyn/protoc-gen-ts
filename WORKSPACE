@@ -16,10 +16,14 @@ load("@build_bazel_rules_nodejs//:index.bzl", "node_repositories", "yarn_install
 node_repositories()
 
 yarn_install(
-    name = "protoc_gen_ts_deps",
+    name = "npm",
     package_json = "//:package.json",
     yarn_lock = "//:yarn.lock",
 )
+
+# Install any Bazel rules which were extracted earlier by the yarn_install rule.
+load("@npm//:install_bazel_dependencies.bzl", "install_bazel_dependencies")
+install_bazel_dependencies()
 
 # Setup Protocol Buffers toolchain
 http_archive(
@@ -44,7 +48,3 @@ local_repository(
     name = "protoc_gen_ts",
     path = "src"
 )
-
-load("@protoc_gen_ts//:package.bzl", "protoc_gen_ts_dependencies")
-
-protoc_gen_ts_dependencies()

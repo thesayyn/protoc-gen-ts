@@ -13,6 +13,8 @@
   },
   "devDependencies": {
     "@bazel/bazel": "^1.2.0",
+    "@bazel/jasmine": "^1.1.0",
+    "@types/jasmine": "2.8.7",
     "@bazel/typescript": "^1.1.0",
     "google-protobuf": "^3.11.0-rc.2",
     "typescript": "^3.7.2"

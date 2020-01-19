@@ -1,4 +1,3 @@
-load("@build_bazel_rules_nodejs//:providers.bzl", "DeclarationInfo", "JSEcmaScriptModuleInfo", "JSNamedModuleInfo")
 load("@rules_proto//proto:defs.bzl", "ProtoInfo")
 
 def _proto_path(proto):

@@ -1,8 +1,10 @@
 package(default_visibility = ["//visibility:public"])
 
-load("@build_bazel_rules_nodejs//:index.bzl", "npm_package")
+exports_files(["tsconfig.json"])
 
-npm_package(
+load("@build_bazel_rules_nodejs//:index.bzl", "pkg_npm")
+
+pkg_npm(
     name = "npm_package",
     srcs = [
         "@protoc_gen_ts//:package_contents",

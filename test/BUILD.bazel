@@ -1,0 +1,34 @@
+load("@protoc_gen_ts//:index.from-src.bzl", "ts_proto_library")
+load("@rules_proto//proto:defs.bzl", "proto_library")
+load("@npm_bazel_typescript//:index.bzl", "ts_library")
+load("@npm_bazel_jasmine//:index.bzl", "jasmine_node_test")
+
+proto_library(
+    name = "protos",
+    srcs = glob(["protos/*.proto"]),
+)
+
+ts_proto_library(
+    name = "proto_ts",
+    srcs = [
+        ":protos"
+    ]
+)
+
+ts_library(
+    name = "test_lib",
+    srcs = [
+        ":proto_ts"
+    ] + glob(["integration/*.spec.ts"]),
+    deps = [
+        "@npm//google-protobuf",
+        "@npm//@types/jasmine"
+    ]
+)
+
+jasmine_node_test(
+    name = "integration",
+    deps = [
+        ":test_lib"
+    ] 
+)

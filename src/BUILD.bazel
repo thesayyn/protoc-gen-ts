@@ -6,8 +6,8 @@ nodejs_binary(
     name = "protoc_gen_ts",
     entry_point = "index.js",
     data = [
-        "@protoc_gen_ts_deps//typescript",
-        "@protoc_gen_ts_deps//google-protobuf"
+        "@npm//typescript",
+        "@npm//google-protobuf"
     ]
 )
 

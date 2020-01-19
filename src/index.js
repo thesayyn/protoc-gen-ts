@@ -59,8 +59,101 @@ function createNamespace(packageName, statements) {
   return statements;
 }
 
-function createConstructor(descriptor, pbIdentifier) {
+function createTypeLiteral(rootDescriptor, messageDescriptor) {
+  const members = [];
+
+  for (const fieldDescriptor of messageDescriptor.getFieldList()) {
+    // TODO: Check if the field is optional
+    members.push(
+      ts.createPropertySignature(
+        undefined, 
+        fieldDescriptor.getName(), 
+        ts.createToken(ts.SyntaxKind.QuestionToken),
+        wrapRepeatedType(
+          getType(fieldDescriptor, rootDescriptor.getPackage()),
+          fieldDescriptor
+        ),
+        undefined
+      )
+    )
+  }
+  return ts.createTypeLiteralNode(members)
+}
+
+function createConstructor(rootDescriptor, messageDescriptor, pbIdentifier) {
+  const statements = [];
+
   const dataIdentifier = ts.createIdentifier("data");
+  const typeNode = ts.createUnionTypeNode([
+    ts.createArrayTypeNode(ts.createTypeReferenceNode(ts.createIdentifier("any"), undefined)) /* any[] */,
+    createTypeLiteral(rootDescriptor, messageDescriptor)
+  ])
+
+
+  // Create super(); statement
+  statements.push(ts.createStatement(ts.createCall(ts.createSuper(), undefined, undefined)))
+
+  // Create initialize(); statement
+  statements.push(
+    ts.createStatement(
+      ts.createCall(
+        ts.createPropertyAccess(
+          ts.createPropertyAccess(pbIdentifier, "Message"),
+          "initialize"
+        ),
+        undefined,
+        [
+          ts.createThis(),
+          ts.createBinary(
+            ts.createCall(ts.createPropertyAccess(ts.createIdentifier('Array'), 'isArray'), undefined, [dataIdentifier]),
+            ts.SyntaxKind.AmpersandAmpersandToken,
+            dataIdentifier
+          ),
+          ts.createNumericLiteral("0"),
+          ts.createNumericLiteral("-1") /* TODO: Handle extensions */,
+          ts.createArrayLiteral(
+            messageDescriptor
+              .getFieldList()
+              .filter(
+                fd =>
+                  fd.getLabel() ==
+                  descriptorpb.FieldDescriptorProto.Label.LABEL_REPEATED
+              )
+              .map(fd => ts.createNumericLiteral(fd.getNumber().toString()))
+          ),
+          ts.createNull() /* TODO: Handle oneofFields */
+        ]
+      )
+    )
+  )
+
+  // Create data variable and if block
+  statements.push(
+    ts.createIf(
+      ts.createBinary(
+        ts.createLogicalNot(ts.createCall(ts.createPropertyAccess(ts.createIdentifier('Array'), 'isArray'), undefined, [dataIdentifier])),
+        ts.SyntaxKind.AmpersandAmpersandToken,
+        ts.createBinary(
+          ts.createTypeOf(dataIdentifier),
+          ts.SyntaxKind.EqualsEqualsToken,
+          ts.createStringLiteral('object')
+        )
+      ),
+      ts.createBlock(
+        messageDescriptor.getFieldList().map( fieldDescriptor =>  
+          ts.createStatement(
+            ts.createBinary(
+              ts.createPropertyAccess(ts.createThis(), fieldDescriptor.getName()), 
+              ts.SyntaxKind.EqualsToken, 
+              ts.createPropertyAccess(dataIdentifier, fieldDescriptor.getName())
+            )
+          )
+        )
+      )
+     
+    )
+  )
+
   return ts.createConstructor(
     undefined,
     undefined,
@@ -71,44 +164,10 @@ function createConstructor(descriptor, pbIdentifier) {
         undefined,
         dataIdentifier,
         ts.createToken(ts.SyntaxKind.QuestionToken),
-        ts.createArrayTypeNode(ts.createTypeReferenceNode(ts.createIdentifier("any"), undefined)) /* any[] */
+        typeNode
       )
     ],
-
-    ts.createBlock(
-      [
-        ts.createStatement(
-          ts.createCall(ts.createSuper(), undefined, undefined)
-        ),
-        ts.createStatement(
-          ts.createCall(
-            ts.createPropertyAccess(
-              ts.createPropertyAccess(pbIdentifier, "Message"),
-              "initialize"
-            ),
-            undefined,
-            [
-              ts.createThis(),
-              dataIdentifier,
-              ts.createNumericLiteral("0"),
-              ts.createNumericLiteral("-1"),
-              ts.createArrayLiteral(
-                descriptor
-                  .getFieldList()
-                  .filter(
-                    fd =>
-                      fd.getLabel() ==
-                      descriptorpb.FieldDescriptorProto.Label.LABEL_REPEATED
-                  )
-                  .map(fd => ts.createNumericLiteral(fd.getNumber().toString()))
-              ),
-              ts.createNull() /* TODO: Handle oneofFields */
-            ]
-          )
-        )
-      ],
-      true
-    )
+    ts.createBlock(statements, true)
   );
 }
 
@@ -493,7 +552,11 @@ function createSerialize(rootDescriptor, fields, pbIdentifier) {
   )
 }
 
-// Returns the deserialize method for the message class
+
+/**
+ * Returns the deserialize method for the message class
+ * TODO: Split this function into chunk functions
+ */
 function createDeserialize(rootDescriptor, messageDescriptor, pbIdentifier) {
   return  ts.createMethod(
     undefined,
@@ -756,7 +819,7 @@ function createMessage(rootDescriptor, messageDescriptor, pbIdentifier) {
   const members = [];
 
   // Create constructor
-  members.push(createConstructor(messageDescriptor, pbIdentifier));
+  members.push(createConstructor(rootDescriptor, messageDescriptor, pbIdentifier));
 
 
   // Create getter and setters
