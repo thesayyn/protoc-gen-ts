@@ -9,7 +9,8 @@
     "url": "https://github.com/thesayyn"
   },
   "scripts": {
-    "test": "bazel test //test/..."
+    "test": "bazel test //test/...",
+    "publish": "bazel run -- //:npm_package.publish --access=public"
   },
   "devDependencies": {
     "@bazel/bazel": "^1.2.0",
