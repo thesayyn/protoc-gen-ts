@@ -67,7 +67,9 @@ protoc -I=sourcedir --ts_out=dist myproto.proto
 - <s>Support for repeated non-integer fields</s>
 - <s>Generate appropriate service code that is usable with node **grpc** package.</s>
 - <s>Support for creating protocol buffer messages directly from their constructors with an object.</s>
+- Support `map<TYPE, TYPE>` fields.
 - Support for `import` directive.
+- Interopability with well knowns.
 
 
 ## Ideas
