@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+message Message {
+    SubMessage sub_message = 1;
+}
+
+message SubMessage {
+    string field_1 = 1;
+    string field_2 = 2;
+}

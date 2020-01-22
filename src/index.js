@@ -13,6 +13,31 @@ function createImport(identifier, moduleSpecifier) {
 }
 
 function createToObject(messageDescriptor) {
+  const properties = [];
+
+  for (const fd of messageDescriptor.getFieldList()) {
+    let propertyAccessExpression  = ts.createPropertyAccess(ts.createThis(), fd.getName());
+
+    if ( isMessage(fd) ) {
+      propertyAccessExpression = ts.createBinary(
+        propertyAccessExpression, 
+        ts.SyntaxKind.AmpersandAmpersandToken, 
+        ts.createCall(
+          ts.createPropertyAccess(
+            propertyAccessExpression,
+            "toObject"
+          )
+        )
+      )
+    }
+    properties.push(
+      ts.createPropertyAssignment(
+        ts.createIdentifier(fd.getName()),
+        propertyAccessExpression
+      )
+    )
+  }
+
   return ts.createMethod(
     undefined,
     undefined,
@@ -25,15 +50,7 @@ function createToObject(messageDescriptor) {
     ts.createBlock(
       [
         ts.createReturn(
-          ts.createObjectLiteral(
-            messageDescriptor.getFieldList().map(fd => {
-              return ts.createPropertyAssignment(
-                ts.createIdentifier(fd.getName()),
-                ts.createPropertyAccess(ts.createThis(), fd.getName())
-              );
-            }),
-            true
-          )
+          ts.createObjectLiteral(properties, true)
         )
       ],
       true
@@ -505,7 +522,17 @@ function createSerialize(rootDescriptor, fields, pbIdentifier) {
                   [],
                   undefined,
                   ts.createToken(ts.SyntaxKind.EqualsGreaterThanToken),
-                  ts.createBlock([])
+                  ts.createCall(
+                    ts.createPropertyAccess(
+                      ts.createPropertyAccess(
+                        ts.createThis(),
+                        fieldDescriptor.getName()
+                      ),
+                      "serialize"
+                    ),
+                    undefined,
+                    [ts.createIdentifier("writer")]
+                  )
                 )
               );
             }
