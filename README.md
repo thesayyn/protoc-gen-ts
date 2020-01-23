@@ -25,9 +25,10 @@ enum Kind {
 
 ```typescript
 // Constructed message
-const change = new Change();
-change.kind = Kind.UPDATED;
-change.patch = "@@ -7,11 +7,15 @@"
+const change = new Change({
+    kind: Kind.UPDATED,
+    patch: "@@ -7,11 +7,15 @@"
+});
 
 // Sent over the wire
 const bytes: Uint8Array = change.serialize();
@@ -45,7 +46,7 @@ console.log(receivedChange.patch) // "@@ -7,11 +7,15 @@"
 This protoc plugin does generate;
 
 - Fields as **getter** **setters**.
-- Enums as **enums**
+- Enums as **enums**.
 - Messages within **namespace** if the proto has **package** directive.
 
 
@@ -76,3 +77,12 @@ protoc -I=sourcedir --ts_out=dist myproto.proto
 - Support `map<TYPE, TYPE>` types as ES `Map`.
 - Make services strongly typed.
 - Support for `Promise` in rpcs.
+
+
+## Alternatives
+
+| Plugin | google-protobuf | Typescript | Declarations | gRPC Node | gRPC Web | ES6 Support | Notes |
+|------------------------------|-----------------|:----------:|:------------:|:---------:|:--------:|:-----------:|:-----------------------------------------------------------------------------------------------------------------------------------:|
+| thesayyn/protoc-gen-ts | Yes | Yes | Yes | Yes | Partial | Yes | The generated messages are compatible with ever-green browsers.<br>However, you might need to use third-party packages to use rpcs. |
+| improbable-eng/ts-protoc-gen | Yes | No | Yes | No | Yes | Partial | Drawback: You can't bundle generated files with rollup since<br>they are not >= ES6 compatible. |
+| stephenh/ts-proto | No | Yes | Yes | No | No | Yes | There is no support for rpcs.<br>See: https://github.com/stephenh/ts-proto/issues/2 |
