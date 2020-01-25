@@ -907,9 +907,8 @@ function createService(rootDescriptor, serviceDescriptor) {
   return ts.createVariableStatement(
     [
       ts.createModifier(ts.SyntaxKind.ExportKeyword),
-      ts.createModifier(ts.SyntaxKind.ConstKeyword)
     ],
-    ts.createVariableDeclarationList([
+    [
       ts.createVariableDeclaration(
         ts.createIdentifier(serviceDescriptor.getName()),
         undefined,
@@ -1128,22 +1127,22 @@ function createService(rootDescriptor, serviceDescriptor) {
           true
         )
       )
-    ])
+    ]
   );
 }
 
 // Returns grpc-node compatible service client.
 function createServiceClient(serviceDescriptor, grpcIdentifier) {
-  return ts.createVariableStatement(
+  return ts.createClassDeclaration(
+    undefined,
     [
-      ts.createModifier(ts.SyntaxKind.ExportKeyword),
-      ts.createModifier(ts.SyntaxKind.ConstKeyword)
+      ts.createModifier(ts.SyntaxKind.ExportKeyword)
     ],
-    ts.createVariableDeclarationList([
-      ts.createVariableDeclaration(
-        ts.createIdentifier(`${serviceDescriptor.getName()}Client`),
-        undefined,
-        ts.createCall(
+    ts.createIdentifier(`${serviceDescriptor.getName()}Client`),
+    undefined,
+    [
+      ts.createHeritageClause(ts.SyntaxKind.ExtendsKeyword, [
+        ts.createExpressionWithTypeArguments(undefined, ts.createCall(
           ts.createPropertyAccess(
             grpcIdentifier,
             "makeGenericClientConstructor"
@@ -1154,10 +1153,31 @@ function createServiceClient(serviceDescriptor, grpcIdentifier) {
             ts.createStringLiteral(serviceDescriptor.getName()),
             ts.createObjectLiteral()
           ]
-        )
+        ))
+      ])
+    ],
+    [
+      ts.createConstructor(
+        undefined, 
+        undefined,
+        [
+          ts.createParameter(undefined, undefined, undefined, 'address', undefined, ts.createKeywordTypeNode(ts.SyntaxKind.StringKeyword)),
+          ts.createParameter(
+            undefined, 
+            undefined, 
+            undefined, 
+            'credentials', 
+            undefined, 
+            ts.createTypeReferenceNode(ts.createQualifiedName(grpcIdentifier, 'ChannelCredentials'))
+          )
+        ], 
+
+        ts.createBlock([
+          ts.createCall(ts.createSuper(), undefined, [ts.createIdentifier('address'), ts.createIdentifier('credentials')])
+        ], true)
       )
-    ])
-  );
+    ]
+  )
 }
 
 function main() {

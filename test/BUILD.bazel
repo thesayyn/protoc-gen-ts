@@ -22,7 +22,9 @@ ts_library(
     ] + glob(["integration/*.spec.ts"]),
     deps = [
         "@npm//google-protobuf",
-        "@npm//@types/jasmine"
+        "@npm//grpc",
+        "@npm//@types/jasmine",
+        "@npm//@types/node"
     ]
 )
 

@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+message Request {
+    string test = 1;
+}
+
+message Response {
+    string test = 1;
+}
+
+service Srv {
+    rpc List (Request) returns (Response);
+}
