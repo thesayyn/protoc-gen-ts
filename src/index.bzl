@@ -47,12 +47,18 @@ def _ts_proto_library(ctx):
 
     protoc_args.add_all(direct_sources)
 
+    env = dict()
+    
+    if ctx.attr.experimental_features:
+        env['EXPERIMENTAL_FEATURES'] = "true"
+
     ctx.actions.run(
         inputs = direct_sources + transitive_descriptors,
         tools = ctx.files.protoc_gen_ts_bin,
         executable = ctx.executable._protoc,
         outputs = ts_outputs,
         arguments = [protoc_args],
+        env = env,
         progress_message = "Generating Protocol Buffers for Typescript %s" % ctx.label,
     )
 
@@ -68,6 +74,10 @@ ts_proto_library = rule(
             doc = "Direct list of proto_library targets.",
             providers = [ProtoInfo],
             mandatory = True
+        ),
+        "experimental_features": attr.bool(
+            doc = "Enable experimental features",
+            default = False
         ),
         "protoc_gen_ts_bin": attr.label(
             allow_files = True,

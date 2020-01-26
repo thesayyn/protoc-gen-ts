@@ -122,7 +122,7 @@ function createConstructor(rootDescriptor, messageDescriptor, pbIdentifier) {
         [
           ts.createThis(),
           ts.createBinary(
-            ts.createCall(ts.createPropertyAccess(ts.createIdentifier('Array'), 'isArray'), undefined, [dataIdentifier]),
+            ts.createCall(ts.createPropertyAccess(ts.createIdentifier("Array"), "isArray"), undefined, [dataIdentifier]),
             ts.SyntaxKind.AmpersandAmpersandToken,
             dataIdentifier
           ),
@@ -148,12 +148,12 @@ function createConstructor(rootDescriptor, messageDescriptor, pbIdentifier) {
   statements.push(
     ts.createIf(
       ts.createBinary(
-        ts.createLogicalNot(ts.createCall(ts.createPropertyAccess(ts.createIdentifier('Array'), 'isArray'), undefined, [dataIdentifier])),
+        ts.createLogicalNot(ts.createCall(ts.createPropertyAccess(ts.createIdentifier("Array"), "isArray"), undefined, [dataIdentifier])),
         ts.SyntaxKind.AmpersandAmpersandToken,
         ts.createBinary(
           ts.createTypeOf(dataIdentifier),
           ts.SyntaxKind.EqualsEqualsToken,
-          ts.createStringLiteral('object')
+          ts.createStringLiteral("object")
         )
       ),
       ts.createBlock(
@@ -902,6 +902,34 @@ function createEnum(enumDescriptor) {
 }
 
 
+function getRPCOutputType(rootDescriptor, methodDescriptor) {
+  return normalizeTypeName(
+    methodDescriptor.getOutputType(),
+    rootDescriptor.getPackage()
+  );
+}
+
+function getRPCInputType(rootDescriptor, methodDescriptor) {
+  return  normalizeTypeName(
+    methodDescriptor.getInputType(),
+    rootDescriptor.getPackage()
+  );
+}
+
+function getRPCPath(rootDescriptor, serviceDescriptor, methodDescriptor) {
+  return `/${[
+    rootDescriptor.getPackage(),
+    serviceDescriptor.getName(),
+    methodDescriptor.getName()
+  ]
+    .filter(Boolean)
+    .join("/")}`
+}
+
+function isUnaryRPC(methodDescriptor) {
+  return methodDescriptor.getServerStreaming() == false && methodDescriptor.getClientStreaming() == false
+}
+
 // Returns grpc-node compatible service description
 function createService(rootDescriptor, serviceDescriptor) {
   return ts.createVariableStatement(
@@ -920,15 +948,7 @@ function createService(rootDescriptor, serviceDescriptor) {
                 [
                   ts.createPropertyAssignment(
                     "path",
-                    ts.createStringLiteral(
-                      `/${[
-                        rootDescriptor.getPackage(),
-                        serviceDescriptor.getName(),
-                        methodDescriptor.getName()
-                      ]
-                        .filter(Boolean)
-                        .join("/")}`
-                    )
+                    ts.createStringLiteral(getRPCPath(rootDescriptor, serviceDescriptor, methodDescriptor))
                   ),
                   ts.createPropertyAssignment(
                     "requestStream",
@@ -938,7 +958,7 @@ function createService(rootDescriptor, serviceDescriptor) {
                   ),
                   ts.createPropertyAssignment(
                     "responseStream",
-                    methodDescriptor.hasServerStreaming()
+                    methodDescriptor.getServerStreaming()
                       ? ts.createTrue()
                       : ts.createFalse()
                   ),
@@ -967,12 +987,8 @@ function createService(rootDescriptor, serviceDescriptor) {
                           "message",
                           undefined,
                           ts.createTypeReferenceNode(
-                            ts.createIdentifier(
-                              normalizeTypeName(
-                                methodDescriptor.getInputType(),
-                                rootDescriptor.getPackage()
-                              )
-                            ), undefined
+                            ts.createIdentifier(getRPCInputType(rootDescriptor, methodDescriptor)), 
+                            undefined
                           )
                         )
                       ],
@@ -991,7 +1007,7 @@ function createService(rootDescriptor, serviceDescriptor) {
                               "serialize"
                             ),
                             undefined,
-                            []
+                            undefined
                           )
                         ]
                       )
@@ -1019,12 +1035,7 @@ function createService(rootDescriptor, serviceDescriptor) {
                       ts.createToken(ts.SyntaxKind.EqualsGreaterThanToken),
                       ts.createCall(
                         ts.createPropertyAccess(
-                          ts.createIdentifier(
-                            normalizeTypeName(
-                              methodDescriptor.getInputType(),
-                              rootDescriptor.getPackage()
-                            )
-                          ),
+                          ts.createIdentifier(getRPCInputType(rootDescriptor, methodDescriptor)),
                           "deserialize"
                         ),
                         undefined,
@@ -1050,14 +1061,12 @@ function createService(rootDescriptor, serviceDescriptor) {
                           undefined,
                           "message",
                           undefined,
-
-
-                          ts.createTypeReferenceNode(ts.createIdentifier(
-                            normalizeTypeName(
-                              methodDescriptor.getOutputType(),
-                              rootDescriptor.getPackage()
-                            )
-                          ), undefined)
+                          ts.createTypeReferenceNode(
+                            ts.createIdentifier(
+                              getRPCOutputType(rootDescriptor, methodDescriptor)
+                            ),
+                            undefined
+                          )
                         )
                       ],
                       undefined,
@@ -1100,12 +1109,7 @@ function createService(rootDescriptor, serviceDescriptor) {
                       ts.createToken(ts.SyntaxKind.EqualsGreaterThanToken),
                       ts.createCall(
                         ts.createPropertyAccess(
-                          ts.createIdentifier(
-                            normalizeTypeName(
-                              methodDescriptor.getOutputType(),
-                              rootDescriptor.getPackage()
-                            )
-                          ),
+                          ts.createIdentifier(getRPCOutputType(rootDescriptor, methodDescriptor)),
                           "deserialize"
                         ),
                         undefined,
@@ -1131,8 +1135,181 @@ function createService(rootDescriptor, serviceDescriptor) {
   );
 }
 
+// Returns grpc-node compatible unary client method
+function createUnaryServiceClientMethod(rootDescriptor, methodDescriptor, grpcIdentifier) {
+  const responseType = ts.createTypeReferenceNode(
+    getRPCOutputType(rootDescriptor, methodDescriptor)
+  );
+  const requestType = ts.createTypeReferenceNode(
+    getRPCInputType(rootDescriptor, methodDescriptor)
+  )
+
+  const metadataType = ts.createQualifiedName(grpcIdentifier, "Metadata");
+
+  const errorType = ts.createQualifiedName(grpcIdentifier, "ServiceError");
+
+  const returnType = ts.createTypeReferenceNode(
+    "Promise", 
+    [
+      responseType
+    ]
+  )
+ 
+  const rpcName = methodDescriptor.getName();
+
+  const promiseBody = ts.createCall(
+    ts.createElementAccess(ts.createSuper(), ts.createStringLiteral(rpcName)),
+    undefined,
+    [
+      ts.createIdentifier("request"),
+      ts.createIdentifier("metadata"),
+      ts.createArrowFunction(
+        undefined,
+        undefined,
+        [
+          ts.createParameter(
+            undefined,
+            undefined,
+            undefined,
+            'error',
+            undefined,
+            errorType
+          ),
+          ts.createParameter(
+            undefined,
+            undefined,
+            undefined,
+            'response',
+            undefined,
+            responseType
+          )
+        ],
+        undefined,
+        ts.createToken(ts.SyntaxKind.EqualsGreaterThanToken),
+        ts.createBlock([
+          ts.createIf(
+            ts.createIdentifier('error'),
+            ts.createBlock([
+              ts.createStatement(
+                ts.createCall(
+                  ts.createIdentifier('reject'),
+                  undefined,
+                  [
+                    ts.createIdentifier('error')
+                  ]
+                )
+              )
+            ]),
+            ts.createBlock([
+              ts.createStatement(
+                ts.createCall(
+                  ts.createIdentifier('resolve'),
+                  undefined,
+                  [
+                    ts.createIdentifier('response')
+                  ]
+                )
+              )
+            ])
+          )
+        ], true)
+      )
+    ]
+  )
+
+  return ts.createMethod(
+    undefined,
+    undefined,
+    undefined,
+    rpcName,
+    undefined,
+    undefined,
+    [
+      ts.createParameter(
+        undefined,
+        undefined,
+        undefined,
+        "request",
+        undefined,
+        requestType
+      ),
+      ts.createParameter(
+        undefined,
+        undefined,
+        undefined,
+        "metadata",
+        ts.createToken(ts.SyntaxKind.QuestionToken),
+        metadataType
+      ),
+    ],
+    returnType,
+    ts.createBlock([
+      ts.createReturn(
+        ts.createNew(
+          ts.createIdentifier("Promise"),
+          undefined,
+          [
+            ts.createArrowFunction(
+              undefined,
+              undefined,
+              [
+                ts.createParameter(
+                  undefined,
+                  undefined,
+                  undefined,
+                  "resolve"
+                ),
+                ts.createParameter(
+                  undefined,
+                  undefined,
+                  undefined,
+                  "reject"
+                )
+              ],
+              undefined,
+              ts.createToken(ts.SyntaxKind.EqualsGreaterThanToken),
+              promiseBody
+            )
+          ]
+        )
+      )
+    ], true)
+  )
+}
+
 // Returns grpc-node compatible service client.
-function createServiceClient(serviceDescriptor, grpcIdentifier) {
+function createServiceClient(rootDescriptor, serviceDescriptor, grpcIdentifier) {
+  const members = [
+    ts.createConstructor(
+      undefined, 
+      undefined,
+      [
+        ts.createParameter(undefined, undefined, undefined, "address", undefined, ts.createKeywordTypeNode(ts.SyntaxKind.StringKeyword)),
+        ts.createParameter(
+          undefined, 
+          undefined, 
+          undefined, 
+          "credentials", 
+          undefined, 
+          ts.createTypeReferenceNode(ts.createQualifiedName(grpcIdentifier, "ChannelCredentials"))
+        )
+      ], 
+
+      ts.createBlock([
+        ts.createCall(ts.createSuper(), undefined, [ts.createIdentifier("address"), ts.createIdentifier("credentials")])
+      ], true)
+    )
+  ]
+
+  for (const methodDescriptor of serviceDescriptor.getMethodList()) {
+    if ( !isUnaryRPC(methodDescriptor) || !process.env.EXPERIMENTAL_FEATURES ) {
+      continue;
+    }
+    members.push(
+      createUnaryServiceClientMethod(rootDescriptor, methodDescriptor, grpcIdentifier)
+    )
+  }
+
   return ts.createClassDeclaration(
     undefined,
     [
@@ -1156,27 +1333,7 @@ function createServiceClient(serviceDescriptor, grpcIdentifier) {
         ))
       ])
     ],
-    [
-      ts.createConstructor(
-        undefined, 
-        undefined,
-        [
-          ts.createParameter(undefined, undefined, undefined, 'address', undefined, ts.createKeywordTypeNode(ts.SyntaxKind.StringKeyword)),
-          ts.createParameter(
-            undefined, 
-            undefined, 
-            undefined, 
-            'credentials', 
-            undefined, 
-            ts.createTypeReferenceNode(ts.createQualifiedName(grpcIdentifier, 'ChannelCredentials'))
-          )
-        ], 
-
-        ts.createBlock([
-          ts.createCall(ts.createSuper(), undefined, [ts.createIdentifier('address'), ts.createIdentifier('credentials')])
-        ], true)
-      )
-    ]
+    members
   )
 }
 
@@ -1259,7 +1416,7 @@ function main() {
         grpcImport = createImport(grpcIdentifier, "grpc");
       };
       statements.push(createService(descriptor, serviceDescriptor));
-      statements.push(createServiceClient(serviceDescriptor, grpcIdentifier))
+      statements.push(createServiceClient(descriptor, serviceDescriptor, grpcIdentifier))
     }
   
     // Wrap within the namespace
