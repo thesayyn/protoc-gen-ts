@@ -15,7 +15,6 @@ filegroup(
     name = "package_contents",
     srcs = [
         "bin/protoc-gen-ts",
-        "WORKSPACE",
         "index.bzl",
         "package.json",
         "index.js"

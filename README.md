@@ -53,14 +53,26 @@ This protoc plugin does generate;
 ## Usage
 
 ### Without Bazel
-```
+```properties
 npm install -g protoc-gen-ts
 
 protoc -I=sourcedir --ts_out=dist myproto.proto
 ```
 ### With Bazel
-```
-// TODO
+```py
+# Add protoc-gen-ts to dependencies section of your package.json file.
+# Then use it like you would use the other bazel compatible npm packages.
+
+load("@npm_protoc_gen_ts//:index.bzl", "ts_proto_library")
+
+ts_proto_library(
+    name = "protos",
+    srcs = [
+        ":some_proto_library_target"
+    ]
+)
+
+# Checkout the examples/bazel directory for an example.
 ```
 
 ## Roadmap

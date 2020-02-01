@@ -11,6 +11,5 @@ pkg_npm(
     ],
     vendor_external = [
         "protoc_gen_ts",
-    ],
-    deps = [],
+    ]
 )
