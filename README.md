@@ -47,7 +47,7 @@ This protoc plugin does generate;
 
 - Fields as **getter** **setters**.
 - Enums as **enums**.
-- Messages within **namespace** if the proto has **package** directive.
+- Messages within a **namespace** if the proto has a **package** directive.
 
 
 ## Usage
