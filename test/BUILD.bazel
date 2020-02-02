@@ -18,9 +18,9 @@ ts_proto_library(
 
 ts_library(
     name = "test_lib",
-    srcs = [
+    srcs = glob(["integration/*.spec.ts"]) + [
         ":proto_ts"
-    ] + glob(["integration/*.spec.ts"]),
+    ],
     deps = [
         "@npm//google-protobuf",
         "@npm//grpc",
