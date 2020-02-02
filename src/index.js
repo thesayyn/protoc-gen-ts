@@ -1337,6 +1337,40 @@ function createServiceClient(rootDescriptor, serviceDescriptor, grpcIdentifier) 
   )
 }
 
+function processProtoDescriptor(rootDescriptor, descriptor, pbIdentifier) {
+  const statements = [];
+
+  // Process messages
+  if (descriptor.getMessageTypeList) {
+    for (const messageDescriptor of descriptor.getMessageTypeList()) {
+      statements.push(createMessage(rootDescriptor, messageDescriptor, pbIdentifier));
+
+      // Process nested messages
+      if (
+        messageDescriptor.getNestedTypeList &&
+        messageDescriptor.getNestedTypeList().length
+      ) {
+        const namespacedStatements = processProtoDescriptor(rootDescriptor, messageDescriptor, pbIdentifier);
+        statements.push(createNamespace( messageDescriptor.getName(), namespacedStatements));
+      }
+    }
+  }
+
+  // Process nested messages
+  if (descriptor.getNestedTypeList) {
+    for (const nestedDescriptor of descriptor.getNestedTypeList()) {
+      statements.push(createMessage(rootDescriptor, nestedDescriptor, pbIdentifier));
+    }
+  }
+
+  // Process enums
+  for (const enumDescriptor of descriptor.getEnumTypeList()) {
+    statements.push(createEnum(enumDescriptor));
+  }
+
+  return statements;
+}
+
 function main() {
 
   const pbBuffer = fs.readFileSync(0);
@@ -1360,74 +1394,37 @@ function main() {
       ts.ScriptKind.TS
     );
   
-    let pbIdentifier = ts.createUniqueName("pb");
-    let pbImport;
-  
-    function processProtoDescriptor(rootDescriptor, descriptor, namespace) {
-      const statements = [];
-  
-      // Process messages
-      if (descriptor.getMessageTypeList) {
-        for (const messageDescriptor of descriptor.getMessageTypeList()) {
-          if (!pbImport) {
-            pbImport = createImport(pbIdentifier, "google-protobuf");
-          }
-          statements.push(createMessage(rootDescriptor, messageDescriptor, pbIdentifier));
-  
-          // Process nested messages
-          if (
-            messageDescriptor.getNestedTypeList &&
-            messageDescriptor.getNestedTypeList().length
-          ) {
-            statements.push(
-              createNamespace(
-                messageDescriptor.getName(),
-                processProtoDescriptor(rootDescriptor, messageDescriptor, namespace)
-              )
-            );
-          }
-        }
-      }
-  
-      // Process nested messages
-      if (descriptor.getNestedTypeList) {
-        for (const nestedDescriptor of descriptor.getNestedTypeList()) {
-          statements.push(createMessage(rootDescriptor, nestedDescriptor, pbIdentifier));
-        }
-      }
-  
-      // Process enums
-      for (const enumDescriptor of descriptor.getEnumTypeList()) {
-        statements.push(createEnum(enumDescriptor));
-      }
-  
-      return statements;
-    }
-  
+    const pbIdentifier = ts.createUniqueName("pb");
+    const grpcIdentifier = ts.createUniqueName("grpc");
+    
+    const importStatements = [];
+
     // Create all messages recursively
-    const statements = processProtoDescriptor(descriptor, descriptor, descriptor.getPackage());
-  
-    let grpcIdentifier = ts.createUniqueName("grpc");
-    let grpcImport;
-  
+    const statements = processProtoDescriptor(descriptor, descriptor, pbIdentifier);
+
+    if ( statements.length ) {
+      importStatements.push(createImport(pbIdentifier, "google-protobuf"));
+    }
+
     // Create all services and clients
     for (const serviceDescriptor of descriptor.getServiceList()) {
-      if (!grpcImport) {
-        grpcImport = createImport(grpcIdentifier, "grpc");
-      };
       statements.push(createService(descriptor, serviceDescriptor));
       statements.push(createServiceClient(descriptor, serviceDescriptor, grpcIdentifier))
     }
+
+    if ( descriptor.getServiceList().length ) {
+      importStatements.push(createImport(grpcIdentifier, "grpc"));
+    }
+
   
-    // Wrap within the namespace
+    // Wrap statements within the namespace
     if (descriptor.hasPackage()) {
       sf.statements = ts.createNodeArray([
-        pbImport,
-        grpcImport,
+        ...importStatements,
         createNamespace(descriptor.getPackage(), statements)
-      ].filter(Boolean));
+      ]);
     } else {
-      sf.statements = ts.createNodeArray([pbImport, grpcImport, ...statements].filter(Boolean));
+      sf.statements = ts.createNodeArray([...importStatements, ...statements]);
     }
   
     codegenFile.setName(name);
