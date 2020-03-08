@@ -12,23 +12,63 @@ function createImport(identifier, moduleSpecifier) {
   );
 }
 
-function createToObject(messageDescriptor) {
+function createToObject(rootDescriptor, messageDescriptor) {
   const properties = [];
 
   for (const fd of messageDescriptor.getFieldList()) {
     let propertyAccessExpression  = ts.createPropertyAccess(ts.createThis(), fd.getName());
 
     if ( isMessage(fd) ) {
-      propertyAccessExpression = ts.createBinary(
-        propertyAccessExpression, 
-        ts.SyntaxKind.AmpersandAmpersandToken, 
-        ts.createCall(
-          ts.createPropertyAccess(
-            propertyAccessExpression,
-            "toObject"
+      if(isRepeated(fd)) {
+          const arrowFunc = ts.createArrowFunction(
+            undefined,
+            undefined,
+            [
+              ts.createParameter(
+                  undefined,
+                  undefined,
+                  undefined,
+                  "item",
+                  undefined,
+                  ts.createTypeReferenceNode(ts.createIdentifier(
+                      getTypeName(
+                          fd,
+                          rootDescriptor.getPackage()
+                      )
+                  ), undefined)
+              )
+            ],
+            undefined,
+            ts.createToken(ts.SyntaxKind.EqualsGreaterThanToken),
+            ts.createCall(
+                ts.createPropertyAccess(
+                    ts.createIdentifier("item"),
+                    "toObject"
+                ),
+                undefined,
+                null
+            )
           )
+          propertyAccessExpression = ts.createCall(
+            ts.createPropertyAccess(
+                propertyAccessExpression,
+                "map",
+            ),
+            undefined,
+            [arrowFunc]
+          )
+      } else {
+        propertyAccessExpression = ts.createBinary(
+            propertyAccessExpression,
+            ts.SyntaxKind.AmpersandAmpersandToken,
+            ts.createCall(
+                ts.createPropertyAccess(
+                    propertyAccessExpression,
+                    "toObject"
+                )
+            )
         )
-      )
+      }
     }
     properties.push(
       ts.createPropertyAssignment(
@@ -857,7 +897,7 @@ function createMessage(rootDescriptor, messageDescriptor, pbIdentifier) {
 
 
   // Create toObject method
-  members.push(createToObject(messageDescriptor));
+  members.push(createToObject(rootDescriptor, messageDescriptor));
 
   // Create serialize  method
   members.push(createSerialize(rootDescriptor, messageDescriptor.getFieldList(), pbIdentifier));

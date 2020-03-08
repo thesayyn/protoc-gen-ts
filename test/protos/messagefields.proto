@@ -2,6 +2,7 @@ syntax = "proto3";
 
 message Message {
     SubMessage sub_message = 1;
+    repeated SubMessage array_prop = 2;
 }
 
 message SubMessage {
