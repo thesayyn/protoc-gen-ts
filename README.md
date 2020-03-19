@@ -67,7 +67,7 @@ load("@npm_protoc_gen_ts//:index.bzl", "ts_proto_library")
 
 ts_proto_library(
     name = "protos",
-    srcs = [
+    deps = [
         ":some_proto_library_target"
     ]
 )

@@ -10,7 +10,7 @@ proto_library(
 
 ts_proto_library(
     name = "proto_ts",
-    srcs = [
+    deps = [
         ":protos"
     ],
     experimental_features = True

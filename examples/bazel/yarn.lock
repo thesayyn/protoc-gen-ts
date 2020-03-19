@@ -565,10 +565,10 @@ protobufjs@^5.0.3:
     glob "^7.0.5"
     yargs "^3.10.0"
 
-protoc-gen-ts@^0.0.6:
-  version "0.0.6"
-  resolved "https://registry.yarnpkg.com/protoc-gen-ts/-/protoc-gen-ts-0.0.6.tgz#6f15ba6cf92580f6e651019f66b0a23ee70a5aab"
-  integrity sha512-lM4BU2ALM7F83U1nHcy05wI0eibNjdf3hXazVAT1sZeLO8I3G1hVZFZfZWfBQx5E+5QY/WxZ5dp2iKzzbDrgRw==
+protoc-gen-ts@^0.0.7:
+  version "0.0.7"
+  resolved "https://registry.yarnpkg.com/protoc-gen-ts/-/protoc-gen-ts-0.0.7.tgz#51a4cac53f40736a2e1d358bc9efaff38b4b3178"
+  integrity sha512-bjYf/z/55k8hRUsZsfhQs/GzM6P9xaRo7XRCntwX5a7LV86z7zRJpzjQNgrO2nutywNl4/jmtu/bIGcMMOzRDg==
 
 rc@^1.2.7:
   version "1.2.8"

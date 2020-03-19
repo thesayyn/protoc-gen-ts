@@ -23,9 +23,9 @@ def _ts_proto_library(ctx):
     transitive_descriptors = []
     direct_sources = []
 
-    for target in ctx.attr.srcs:
+    for target in ctx.attr.deps:
         if ProtoInfo not in target:
-            fail("All targets in the srcs attribute should be proto_library target.")
+            fail("All targets in the deps attribute should be proto_library target.")
         else:
             info = target[ProtoInfo]
             transitive_descriptors.extend(info.transitive_descriptor_sets.to_list())
@@ -70,7 +70,7 @@ def _ts_proto_library(ctx):
 ts_proto_library = rule(
     implementation = _ts_proto_library,
     attrs = {
-        "srcs": attr.label_list(
+        "deps": attr.label_list(
             doc = "Direct list of proto_library targets.",
             providers = [ProtoInfo],
             mandatory = True
