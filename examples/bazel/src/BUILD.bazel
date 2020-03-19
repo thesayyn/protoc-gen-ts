@@ -11,7 +11,7 @@ proto_library(
 
 ts_proto_library(
     name = "message",
-    srcs = [
+    deps = [
         ":message_proto"
     ]
 )
