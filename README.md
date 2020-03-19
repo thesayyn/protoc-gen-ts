@@ -1,4 +1,8 @@
-# Protoc Gen Typescript
+# Protoc Gen Typescript 
+
+![npm](https://img.shields.io/npm/v/protoc-gen-ts)
+![npm bundle size](https://img.shields.io/bundlephobia/min/protoc-gen-ts)
+![npm](https://img.shields.io/npm/dm/protoc-gen-ts)
 
 Generates appropriate Protocol Buffer sources from Proto files directly through _TypeScript Compiler API_.
 

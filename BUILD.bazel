@@ -1,6 +1,6 @@
 package(default_visibility = ["//visibility:public"])
 
-exports_files(["tsconfig.json"])
+exports_files(["tsconfig.json", "README.md"])
 
 load("@build_bazel_rules_nodejs//:index.bzl", "pkg_npm")
 
@@ -8,6 +8,7 @@ pkg_npm(
     name = "npm_package",
     srcs = [
         "@protoc_gen_ts//:package_contents",
+        "README.md"
     ],
     vendor_external = [
         "protoc_gen_ts",

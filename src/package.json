@@ -1,12 +1,16 @@
 {
   "name": "protoc-gen-ts",
   "description": "Compile proto files to typescript.",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "license": "MIT",
   "author": {
     "email": "thesayyn@gmail.com",
     "name": "thesayyn",
     "url": "https://github.com/thesayyn"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/thesayyn/protoc-gen-ts"
   },
   "bin": {
     "protoc-gen-ts": "./bin/protoc-gen-ts"
