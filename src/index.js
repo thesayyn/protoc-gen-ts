@@ -39,7 +39,7 @@ function createToObject(rootDescriptor, messageDescriptor) {
                 ),
                 undefined
               )
-            )
+            ),
           ],
           undefined,
           ts.createToken(ts.SyntaxKind.EqualsGreaterThanToken),
@@ -135,7 +135,7 @@ function createConstructor(rootDescriptor, messageDescriptor, pbIdentifier) {
     ts.createArrayTypeNode(
       ts.createTypeReferenceNode(ts.createIdentifier("any"), undefined)
     ) /* any[] */,
-    createTypeLiteral(rootDescriptor, messageDescriptor)
+    createTypeLiteral(rootDescriptor, messageDescriptor),
   ]);
 
   // Create super(); statement
@@ -169,13 +169,13 @@ function createConstructor(rootDescriptor, messageDescriptor, pbIdentifier) {
             messageDescriptor
               .getFieldList()
               .filter(
-                fd =>
+                (fd) =>
                   fd.getLabel() ==
                   descriptorpb.FieldDescriptorProto.Label.LABEL_REPEATED
               )
-              .map(fd => ts.createNumericLiteral(fd.getNumber().toString()))
+              .map((fd) => ts.createNumericLiteral(fd.getNumber().toString()))
           ),
-          ts.createNull() /* TODO: Handle oneofFields */
+          ts.createNull() /* TODO: Handle oneofFields */,
         ]
       )
     )
@@ -202,7 +202,7 @@ function createConstructor(rootDescriptor, messageDescriptor, pbIdentifier) {
       ts.createBlock(
         messageDescriptor
           .getFieldList()
-          .map(fieldDescriptor =>
+          .map((fieldDescriptor) =>
             ts.createStatement(
               ts.createBinary(
                 ts.createPropertyAccess(
@@ -232,7 +232,7 @@ function createConstructor(rootDescriptor, messageDescriptor, pbIdentifier) {
         dataIdentifier,
         ts.createToken(ts.SyntaxKind.QuestionToken),
         typeNode
-      )
+      ),
     ],
     ts.createBlock(statements, true)
   );
@@ -339,9 +339,9 @@ function isPacked(fieldDescriptor, descriptor) {
 }
 
 function toBinaryMethodName(fieldDescriptor, descriptor, isWriter = true) {
-  const typeNames = Object.keys(descriptorpb.FieldDescriptorProto.Type).map(n =>
-    n.replace("TYPE_", "")
-  );
+  const typeNames = Object.keys(
+    descriptorpb.FieldDescriptorProto.Type
+  ).map((n) => n.replace("TYPE_", ""));
 
   let typeName = typeNames[fieldDescriptor.getType() - 1].toLowerCase();
   typeName = typeName.charAt(0).toUpperCase() + typeName.slice(1);
@@ -374,7 +374,7 @@ function createGetter(rootDescriptor, fieldDescriptor, pbIdentifier) {
             getterType,
             rootDescriptor.getPackage()
           )
-        )
+        ),
       ],
       true
     )
@@ -388,7 +388,7 @@ function createGetterCall(fieldDescriptor, pbIdentifier, type, packageName) {
   let args = [
     ts.createThis(),
     ts.createNumericLiteral(fieldDescriptor.getNumber().toString()),
-    ts.createIdentifier("undefined")
+    ts.createIdentifier("undefined"),
   ];
 
   if (isRepeated(fieldDescriptor) && !isMessage(fieldDescriptor)) {
@@ -440,7 +440,7 @@ function createSetter(rootDescriptor, fieldDescriptor, pbIdentifier) {
         paramIdentifier,
         undefined,
         type
-      )
+      ),
     ],
     ts.createBlock(
       [
@@ -458,10 +458,10 @@ function createSetter(rootDescriptor, fieldDescriptor, pbIdentifier) {
             [
               ts.createThis(),
               ts.createNumericLiteral(fieldDescriptor.getNumber().toString()),
-              paramIdentifier
+              paramIdentifier,
             ]
           )
-        )
+        ),
       ],
       true
     )
@@ -492,11 +492,11 @@ function createSerialize(rootDescriptor, fields, pbIdentifier) {
           undefined
         ),
         undefined
-      )
+      ),
     ],
     ts.createUnionTypeNode([
       ts.createTypeReferenceNode(ts.createIdentifier("Uint8Array"), undefined),
-      ts.createTypeReferenceNode(ts.createIdentifier("undefined"), undefined)
+      ts.createTypeReferenceNode(ts.createIdentifier("undefined"), undefined),
     ]),
     ts.createBlock(
       [
@@ -516,12 +516,12 @@ function createSerialize(rootDescriptor, fields, pbIdentifier) {
                     []
                   )
                 )
-              )
+              ),
             ],
             ts.NodeFlags.Const
           )
         ),
-        ...fields.map(fieldDescriptor => {
+        ...fields.map((fieldDescriptor) => {
           const propAccessor = ts.createPropertyAccess(
             ts.createThis(),
             fieldDescriptor.getName()
@@ -529,7 +529,7 @@ function createSerialize(rootDescriptor, fields, pbIdentifier) {
 
           const propParameters = [
             ts.createNumericLiteral(fieldDescriptor.getNumber().toString()),
-            propAccessor
+            propAccessor,
           ];
 
           if (isMessage(fieldDescriptor)) {
@@ -554,7 +554,7 @@ function createSerialize(rootDescriptor, fields, pbIdentifier) {
                         ),
                         undefined
                       )
-                    )
+                    ),
                   ],
                   undefined,
                   ts.createToken(ts.SyntaxKind.EqualsGreaterThanToken),
@@ -633,7 +633,7 @@ function createSerialize(rootDescriptor, fields, pbIdentifier) {
               []
             )
           )
-        )
+        ),
       ],
       true
     )
@@ -667,9 +667,9 @@ function createDeserialize(rootDescriptor, messageDescriptor, pbIdentifier) {
           ts.createTypeReferenceNode(
             ts.createQualifiedName(pbIdentifier, "BinaryReader"),
             undefined
-          )
+          ),
         ])
-      )
+      ),
     ],
     ts.createTypeReferenceNode(messageDescriptor.getName(), undefined),
     ts.createBlock(
@@ -703,7 +703,7 @@ function createDeserialize(rootDescriptor, messageDescriptor, pbIdentifier) {
                   undefined,
                   []
                 )
-              )
+              ),
             ],
             ts.NodeFlags.Const
           )
@@ -737,7 +737,7 @@ function createDeserialize(rootDescriptor, messageDescriptor, pbIdentifier) {
                   []
                 ),
                 ts.createCaseBlock([
-                  ...messageDescriptor.getFieldList().map(fd => {
+                  ...messageDescriptor.getFieldList().map((fd) => {
                     let statements = [];
 
                     if (
@@ -769,7 +769,7 @@ function createDeserialize(rootDescriptor, messageDescriptor, pbIdentifier) {
                                 ),
                                 undefined,
                                 []
-                              )
+                              ),
                             ]
                           )
                         )
@@ -828,7 +828,7 @@ function createDeserialize(rootDescriptor, messageDescriptor, pbIdentifier) {
                                             fd,
                                             rootDescriptor.getPackage()
                                           )
-                                        )
+                                        ),
                                       ]
                                     )
                                   : ts.createBinary(
@@ -839,7 +839,7 @@ function createDeserialize(rootDescriptor, messageDescriptor, pbIdentifier) {
                                       ts.SyntaxKind.EqualsToken,
                                       readCall
                                     )
-                              )
+                              ),
                             ]
                           )
                         )
@@ -885,15 +885,15 @@ function createDeserialize(rootDescriptor, messageDescriptor, pbIdentifier) {
                         undefined,
                         []
                       )
-                    )
-                  ])
+                    ),
+                  ]),
                 ])
-              )
+              ),
             ],
             true
           )
         ),
-        ts.createReturn(ts.createIdentifier("message"))
+        ts.createReturn(ts.createIdentifier("message")),
       ],
       true
     )
@@ -943,8 +943,8 @@ function createMessage(rootDescriptor, messageDescriptor, pbIdentifier) {
         ts.createExpressionWithTypeArguments(
           undefined,
           ts.createPropertyAccess(pbIdentifier, ts.createIdentifier("Message"))
-        )
-      ])
+        ),
+      ]),
     ],
     members
   );
@@ -956,7 +956,7 @@ function createEnum(enumDescriptor) {
     undefined,
     [ts.createModifier(ts.SyntaxKind.ExportKeyword)],
     ts.createIdentifier(enumDescriptor.getName()),
-    enumDescriptor.getValueList().map(valueDescriptor => {
+    enumDescriptor.getValueList().map((valueDescriptor) => {
       return ts.createEnumMember(
         valueDescriptor.getName(),
         ts.createNumericLiteral(valueDescriptor.getNumber().toString())
@@ -980,13 +980,11 @@ function getRPCInputType(rootDescriptor, methodDescriptor) {
 }
 
 function getRPCPath(rootDescriptor, serviceDescriptor, methodDescriptor) {
-  return `/${[
-    rootDescriptor.getPackage(),
-    serviceDescriptor.getName(),
-    methodDescriptor.getName()
-  ]
-    .filter(Boolean)
-    .join("/")}`;
+  let name = serviceDescriptor.getName();
+  if (rootDescriptor.hasPackage()) {
+    name = `${rootDescriptor.getPackage()}.${name}`;
+  }
+  return `/${name}/${methodDescriptor.getName()}`;
 }
 
 function isUnaryRPC(methodDescriptor) {
@@ -1005,7 +1003,7 @@ function createService(rootDescriptor, serviceDescriptor) {
         ts.createIdentifier(serviceDescriptor.getName()),
         undefined,
         ts.createObjectLiteral(
-          serviceDescriptor.getMethodList().map(methodDescriptor => {
+          serviceDescriptor.getMethodList().map((methodDescriptor) => {
             return ts.createPropertyAssignment(
               methodDescriptor.getName(),
               ts.createObjectLiteral(
@@ -1062,7 +1060,7 @@ function createService(rootDescriptor, serviceDescriptor) {
                             ),
                             undefined
                           )
-                        )
+                        ),
                       ],
                       undefined,
                       ts.createToken(ts.SyntaxKind.EqualsGreaterThanToken),
@@ -1080,7 +1078,7 @@ function createService(rootDescriptor, serviceDescriptor) {
                             ),
                             undefined,
                             undefined
-                          )
+                          ),
                         ]
                       )
                     )
@@ -1101,7 +1099,7 @@ function createService(rootDescriptor, serviceDescriptor) {
                             ts.createIdentifier("Buffer"),
                             undefined
                           )
-                        )
+                        ),
                       ],
                       undefined,
                       ts.createToken(ts.SyntaxKind.EqualsGreaterThanToken),
@@ -1118,7 +1116,7 @@ function createService(rootDescriptor, serviceDescriptor) {
                             ts.createIdentifier("Uint8Array"),
                             undefined,
                             [ts.createIdentifier("bytes")]
-                          )
+                          ),
                         ]
                       )
                     )
@@ -1141,7 +1139,7 @@ function createService(rootDescriptor, serviceDescriptor) {
                             ),
                             undefined
                           )
-                        )
+                        ),
                       ],
                       undefined,
                       ts.createToken(ts.SyntaxKind.EqualsGreaterThanToken),
@@ -1159,7 +1157,7 @@ function createService(rootDescriptor, serviceDescriptor) {
                             ),
                             undefined,
                             []
-                          )
+                          ),
                         ]
                       )
                     )
@@ -1180,7 +1178,7 @@ function createService(rootDescriptor, serviceDescriptor) {
                             ts.createIdentifier("Buffer"),
                             undefined
                           )
-                        )
+                        ),
                       ],
                       undefined,
                       ts.createToken(ts.SyntaxKind.EqualsGreaterThanToken),
@@ -1197,11 +1195,11 @@ function createService(rootDescriptor, serviceDescriptor) {
                             ts.createIdentifier("Uint8Array"),
                             undefined,
                             [ts.createIdentifier("bytes")]
-                          )
+                          ),
                         ]
                       )
                     )
-                  )
+                  ),
                 ],
                 true
               )
@@ -1209,7 +1207,7 @@ function createService(rootDescriptor, serviceDescriptor) {
           }),
           true
         )
-      )
+      ),
     ]
   );
 }
@@ -1260,7 +1258,7 @@ function createUnaryServiceClientMethod(
             "response",
             undefined,
             responseType
-          )
+          ),
         ],
         undefined,
         ts.createToken(ts.SyntaxKind.EqualsGreaterThanToken),
@@ -1271,22 +1269,22 @@ function createUnaryServiceClientMethod(
               ts.createBlock([
                 ts.createStatement(
                   ts.createCall(ts.createIdentifier("reject"), undefined, [
-                    ts.createIdentifier("error")
+                    ts.createIdentifier("error"),
                   ])
-                )
+                ),
               ]),
               ts.createBlock([
                 ts.createStatement(
                   ts.createCall(ts.createIdentifier("resolve"), undefined, [
-                    ts.createIdentifier("response")
+                    ts.createIdentifier("response"),
                   ])
-                )
+                ),
               ])
-            )
+            ),
           ],
           true
         )
-      )
+      ),
     ]
   );
 
@@ -1313,7 +1311,7 @@ function createUnaryServiceClientMethod(
         "metadata",
         ts.createToken(ts.SyntaxKind.QuestionToken),
         metadataType
-      )
+      ),
     ],
     returnType,
     ts.createBlock(
@@ -1325,14 +1323,14 @@ function createUnaryServiceClientMethod(
               undefined,
               [
                 ts.createParameter(undefined, undefined, undefined, "resolve"),
-                ts.createParameter(undefined, undefined, undefined, "reject")
+                ts.createParameter(undefined, undefined, undefined, "reject"),
               ],
               undefined,
               ts.createToken(ts.SyntaxKind.EqualsGreaterThanToken),
               promiseBody
-            )
+            ),
           ])
-        )
+        ),
       ],
       true
     )
@@ -1367,19 +1365,19 @@ function createServiceClient(
           ts.createTypeReferenceNode(
             ts.createQualifiedName(grpcIdentifier, "ChannelCredentials")
           )
-        )
+        ),
       ],
 
       ts.createBlock(
         [
           ts.createCall(ts.createSuper(), undefined, [
             ts.createIdentifier("address"),
-            ts.createIdentifier("credentials")
-          ])
+            ts.createIdentifier("credentials"),
+          ]),
         ],
         true
       )
-    )
+    ),
   ];
 
   for (const methodDescriptor of serviceDescriptor.getMethodList()) {
@@ -1413,11 +1411,11 @@ function createServiceClient(
             [
               ts.createIdentifier(serviceDescriptor.getName()),
               ts.createStringLiteral(serviceDescriptor.getName()),
-              ts.createObjectLiteral()
+              ts.createObjectLiteral(),
             ]
           )
-        )
-      ])
+        ),
+      ]),
     ],
     members
   );
@@ -1439,7 +1437,7 @@ function processProtoDescriptor(rootDescriptor, descriptor, pbIdentifier) {
         enumStatements.push(createEnum(enumDescriptor));
       }
 
-      if (enumStatements) {
+      if (enumStatements.length) {
         statements.push(
           createNamespace(messageDescriptor.getName(), enumStatements)
         );
@@ -1535,7 +1533,7 @@ function main() {
     if (descriptor.hasPackage()) {
       sf.statements = ts.createNodeArray([
         ...importStatements,
-        createNamespace(descriptor.getPackage(), statements)
+        createNamespace(descriptor.getPackage(), statements),
       ]);
     } else {
       sf.statements = ts.createNodeArray([...importStatements, ...statements]);
@@ -1546,7 +1544,7 @@ function main() {
       ts
         .createPrinter({
           newLine: ts.NewLineKind.LineFeed,
-          omitTrailingSemicolon: true
+          omitTrailingSemicolon: true,
         })
         .printFile(sf)
     );
