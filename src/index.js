@@ -1434,6 +1434,18 @@ function processProtoDescriptor(rootDescriptor, descriptor, pbIdentifier) {
       );
 
       // Process nested messages
+      const enumStatements = [];
+      for (const enumDescriptor of messageDescriptor.getEnumTypeList()) {
+        enumStatements.push(createEnum(enumDescriptor));
+      }
+
+      if (enumStatements) {
+        statements.push(
+          createNamespace(messageDescriptor.getName(), enumStatements)
+        );
+      }
+
+      // Process nested messages
       if (
         messageDescriptor.getNestedTypeList &&
         messageDescriptor.getNestedTypeList().length
