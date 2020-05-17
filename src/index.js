@@ -1454,57 +1454,52 @@ function createServiceClient(
   );
 }
 
-function processProtoDescriptor(rootDescriptor, descriptor, pbIdentifier) {
+function processMessageDescriptor(rootDescriptor, descriptor, pbIdentifier) {
   const statements = [];
 
-  // Process messages
-  if (descriptor.getMessageTypeList) {
-    for (const messageDescriptor of descriptor.getMessageTypeList()) {
-      statements.push(
-        createMessage(rootDescriptor, messageDescriptor, pbIdentifier)
-      );
+  statements.push(createMessage(rootDescriptor, descriptor, pbIdentifier));
 
-      // Process nested messages
-      const enumStatements = [];
-      for (const enumDescriptor of messageDescriptor.getEnumTypeList()) {
-        enumStatements.push(createEnum(enumDescriptor));
-      }
+  const namespacedStatements = [];
 
-      if (enumStatements.length) {
-        statements.push(
-          createNamespace(messageDescriptor.getName(), enumStatements)
-        );
-      }
-
-      // Process nested messages
-      if (
-        messageDescriptor.getNestedTypeList &&
-        messageDescriptor.getNestedTypeList().length
-      ) {
-        const namespacedStatements = processProtoDescriptor(
-          rootDescriptor,
-          messageDescriptor,
-          pbIdentifier
-        );
-        statements.push(
-          createNamespace(messageDescriptor.getName(), namespacedStatements)
-        );
-      }
-    }
+  // Process nested enums
+  for (const enumDescriptor of descriptor.getEnumTypeList()) {
+    namespacedStatements.push(createEnum(enumDescriptor));
   }
 
   // Process nested messages
   if (descriptor.getNestedTypeList) {
     for (const nestedDescriptor of descriptor.getNestedTypeList()) {
-      statements.push(
-        createMessage(rootDescriptor, nestedDescriptor, pbIdentifier)
-      );
+      namespacedStatements.push(...processMessageDescriptor(
+        rootDescriptor,
+        nestedDescriptor,
+        pbIdentifier
+      ));
     }
   }
 
-  // Process enums
-  for (const enumDescriptor of descriptor.getEnumTypeList()) {
-    statements.push(createEnum(enumDescriptor));
+  if (namespacedStatements.length) {
+    statements.push(
+      createNamespace(descriptor.getName(), namespacedStatements)
+    );
+  }
+
+  return statements;
+}
+
+function processProtoDescriptor(rootDescriptor, descriptor, pbIdentifier) {
+  const statements = [];
+
+  // Process messages
+  if (descriptor.getMessageTypeList) {
+    for (messageDescriptor of descriptor.getMessageTypeList()) {
+      statements.push(
+        ...processMessageDescriptor(
+          rootDescriptor,
+          messageDescriptor,
+          pbIdentifier
+        )
+      );
+    }
   }
 
   return statements;
