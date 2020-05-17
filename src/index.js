@@ -641,6 +641,31 @@ function createSerialize(rootDescriptor, fields, pbIdentifier) {
 }
 
 /**
+ * Returns the serializeBinary method for the Message class
+ */
+function createSerializeBinary(rootDescriptor, fields, pbIdentifier) {
+  return ts.createMethod(
+    undefined,
+    undefined,
+    undefined,
+    ts.createIdentifier("serializeBinary"),
+    undefined,
+    undefined,
+    [],
+    ts.createUnionTypeNode([
+      ts.createTypeReferenceNode(ts.createIdentifier("Uint8Array"), []),
+    ]),
+    ts.createBlock([
+      ts.createThrow(
+        ts.createNew(ts.createIdentifier("Error"), undefined, [
+          ts.createLiteral("Method not implemented."),
+        ])
+      ),
+    ])
+  );
+}
+
+/**
  * Returns the deserialize method for the message class
  * TODO: Split this function into chunk functions
  */
@@ -921,6 +946,14 @@ function createMessage(rootDescriptor, messageDescriptor, pbIdentifier) {
   // Create serialize  method
   members.push(
     createSerialize(
+      rootDescriptor,
+      messageDescriptor.getFieldList(),
+      pbIdentifier
+    )
+  );
+  // Create serializeBinary method
+  members.push(
+    createSerializeBinary(
       rootDescriptor,
       messageDescriptor.getFieldList(),
       pbIdentifier
