@@ -1,37 +1,35 @@
-load("@npm_bazel_typescript//:index.bzl", "ts_library") 
+load("@npm//@bazel/typescript:index.bzl", "ts_library")
 load("@npm_protoc_gen_ts//:index.bzl", "ts_proto_library")
 load("@rules_proto//proto:defs.bzl", "proto_library")
 load("@build_bazel_rules_nodejs//:index.bzl", "nodejs_binary")
 
 proto_library(
     name = "message_proto",
-    srcs = ["message.proto"]
+    srcs = ["message.proto"],
 )
-
 
 ts_proto_library(
     name = "message",
     deps = [
-        ":message_proto"
-    ]
+        ":message_proto",
+    ],
 )
 
 ts_library(
     name = "src",
     srcs = [
+        "index.ts",
         ":message",
-        "index.ts"
     ],
     deps = [
-        "@npm//google-protobuf"
-    ]
+        "@npm//google-protobuf",
+    ],
 )
-
 
 nodejs_binary(
     name = "bin",
     data = [
-        ":src"
+        ":src",
     ],
-    entry_point = "index.ts"
+    entry_point = "index.ts",
 )

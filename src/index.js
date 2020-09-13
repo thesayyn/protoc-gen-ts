@@ -254,16 +254,6 @@ function wrapRepeatedType(type, fieldDescriptor) {
   return type;
 }
 
-function wrapOptinalType(type, fieldDescriptor) {
-  if (
-    fieldDescriptor.getLabel() ==
-    descriptorpb.FieldDescriptorProto.Label.LABEL_OPTIONAL
-  ) {
-    type = ts.createUnionTypeNode([type, ts.createIdentifier("undefined")]);
-  }
-  return type;
-}
-
 function getType(fieldDescriptor, packageName, getNamedImport) {
   switch (fieldDescriptor.getType()) {
     case descriptorpb.FieldDescriptorProto.Type.TYPE_DOUBLE:
@@ -375,11 +365,10 @@ function createGetter(
   pbIdentifier,
   getNamedImport
 ) {
-  let type = wrapRepeatedType(
+  let getterType = wrapRepeatedType(
     getType(fieldDescriptor, rootDescriptor.getPackage(), getNamedImport),
     fieldDescriptor
   );
-  const getterType = wrapOptinalType(type, fieldDescriptor);
   return ts.createGetAccessor(
     undefined,
     undefined,
@@ -1618,6 +1607,10 @@ function getExportPaths(prefix, descriptor) {
   return exports;
 }
 
+function removeExtension(filename, extension = ".ts") {
+  return filename.replace(/(.*?)\..*?$/, `$1${extension}`);
+}
+
 function main() {
   const pbBuffer = fs.readFileSync(0);
   const pbVector = new Uint8Array(pbBuffer.length);
@@ -1643,7 +1636,7 @@ function main() {
 
   for (const descriptor of descriptors) {
     const fileName = descriptor.getName();
-    const name = fileName.replace(".proto", ".ts");
+    const name = removeExtension(fileName);
     const codegenFile = new plugin.CodeGeneratorResponse.File();
 
     const sf = ts.createSourceFile(
@@ -1668,7 +1661,7 @@ function main() {
       descriptor,
       descriptor,
       pbIdentifier,
-      fieldDescriptor => {
+      (fieldDescriptor) => {
         const typeName = fieldDescriptor.getTypeName();
         if (!fileExports[typeName]) {
           return;
@@ -1678,7 +1671,7 @@ function main() {
           return;
         }
         if (!dependencies[file]) {
-          dependencies[file] = { };
+          dependencies[file] = {};
         }
         if (!dependencies[file][namedImport]) {
           dependencies[file][namedImport] = ts.createUniqueName(namedImport);
@@ -1689,9 +1682,10 @@ function main() {
 
     // Create all named imports from dependencies
     for (const [file, namedImports] of Object.entries(dependencies)) {
-      const name =
-        "./" +
-        path.relative(path.dirname(fileName), file).replace(".proto", "");
+      const name = `./${removeExtension(
+        path.relative(path.dirname(fileName), file),
+        ""
+      )}`;
       importStatements.push(
         ts.createImportDeclaration(
           undefined,
@@ -1748,4 +1742,8 @@ function main() {
   process.stdout.write(Buffer.from(codeGenResponse.serializeBinary()));
 }
 
+
+
+console = new console.Console(fs.createWriteStream("/tmp/debug.log"))
+console.log(process.env);
 main();

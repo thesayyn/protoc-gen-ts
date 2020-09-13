@@ -4,11 +4,11 @@ package(default_visibility = ["//visibility:public"])
 
 nodejs_binary(
     name = "protoc_gen_ts",
-    entry_point = "index.js",
     data = [
+        "@npm//google-protobuf",
         "@npm//typescript",
-        "@npm//google-protobuf"
-    ]
+    ],
+    entry_point = "index.js",
 )
 
 filegroup(
@@ -16,7 +16,7 @@ filegroup(
     srcs = [
         "bin/protoc-gen-ts",
         "index.bzl",
+        "index.js",
         "package.json",
-        "index.js"
-    ]
+    ],
 )

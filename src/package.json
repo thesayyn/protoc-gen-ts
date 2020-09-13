@@ -18,8 +18,7 @@
   "main": "index.js",
   "peerDependencies": {
     "typescript": "^3.8.3",
-    "google-protobuf": "^3.11.4",
-    "@bazel/typescript": "^1.4.1"
+    "google-protobuf": "^3.11.4"
   },
   "bazelWorkspaces": {
     "npm_protoc_gen_ts": {

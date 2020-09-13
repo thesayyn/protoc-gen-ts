@@ -7,8 +7,8 @@ load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 # Setup NodeJS toolchain
 http_archive(
     name = "build_bazel_rules_nodejs",
-    sha256 = "2eca5b934dee47b5ff304f502ae187c40ec4e33e12bcbce872a2eeb786e23269",
-    urls = ["https://github.com/bazelbuild/rules_nodejs/releases/download/1.4.1/rules_nodejs-1.4.1.tar.gz"],
+    sha256 = "4952ef879704ab4ad6729a29007e7094aef213ea79e9f2e94cbe1c9a753e63ef",
+    urls = ["https://github.com/bazelbuild/rules_nodejs/releases/download/2.2.0/rules_nodejs-2.2.0.tar.gz"],
 )
 
 load("@build_bazel_rules_nodejs//:index.bzl", "node_repositories", "yarn_install")
@@ -20,10 +20,6 @@ yarn_install(
     package_json = "//:package.json",
     yarn_lock = "//:yarn.lock",
 )
-
-# Install any Bazel rules which were extracted earlier by the yarn_install rule.
-load("@npm//:install_bazel_dependencies.bzl", "install_bazel_dependencies")
-install_bazel_dependencies()
 
 # Setup Protocol Buffers toolchain
 http_archive(

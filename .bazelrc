@@ -1,5 +1,3 @@
-common --experimental_allow_incremental_repository_updates
-
 build --nolegacy_external_runfiles
 run --nolegacy_external_runfiles
 test --nolegacy_external_runfiles
