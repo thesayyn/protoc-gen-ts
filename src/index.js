@@ -321,6 +321,13 @@ function isMessage(fieldDescriptor) {
   );
 }
 
+function isString(fieldDescriptor) {
+  return (
+    fieldDescriptor.getType() ==
+    descriptorpb.FieldDescriptorProto.Type.TYPE_STRING
+  );
+}
+
 function isPackageable(fieldDescriptor) {
   const type = fieldDescriptor.getType();
   return (
@@ -619,6 +626,19 @@ function createSerialize(rootDescriptor, fields, pbIdentifier, getNamedImport) {
             ts.createToken(ts.SyntaxKind.ExclamationEqualsEqualsToken),
             ts.createIdentifier("undefined")
           );
+
+          if (isString(fieldDescriptor) && !isRepeated(fieldDescriptor)) {
+            // typeof this.prop !== "string" && this.prop.length
+            condition = ts.createBinary(
+              ts.createBinary(
+                ts.createTypeOf(propAccessor),
+                ts.createToken(ts.SyntaxKind.EqualsEqualsEqualsToken),
+                ts.createStringLiteral("string")
+              ),
+              ts.createToken(ts.SyntaxKind.AmpersandAmpersandToken),
+              ts.createPropertyAccess(propAccessor, "length")
+            );
+          }
 
           return ts.createIf(
             condition,
@@ -1742,8 +1762,4 @@ function main() {
   process.stdout.write(Buffer.from(codeGenResponse.serializeBinary()));
 }
 
-
-
-console = new console.Console(fs.createWriteStream("/tmp/debug.log"))
-console.log(process.env);
 main();
