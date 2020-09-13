@@ -1,7 +1,7 @@
 {
   "name": "protoc-gen-ts",
   "description": "Compile proto files to typescript.",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "license": "MIT",
   "author": {
     "email": "thesayyn@gmail.com",
@@ -17,8 +17,8 @@
   },
   "main": "index.js",
   "peerDependencies": {
-    "typescript": "^3.8.3",
-    "google-protobuf": "^3.11.4"
+    "typescript": "^4.0.2",
+    "google-protobuf": "^3.13.0"
   },
   "bazelWorkspaces": {
     "npm_protoc_gen_ts": {
