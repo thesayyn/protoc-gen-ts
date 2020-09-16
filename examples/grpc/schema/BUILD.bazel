@@ -1,0 +1,28 @@
+load("@npm//@bazel/typescript:index.bzl", "ts_library")
+load("@rules_proto//proto:defs.bzl", "proto_library")
+load("@npm//protoc-gen-ts:index.bzl", "ts_proto_library")
+
+package(default_visibility = ["//visibility:public"])
+
+exports_files(["tsconfig.json"])
+
+proto_library(
+    name = "proto",
+    srcs = ["example.proto"],
+)
+
+ts_proto_library(
+    name = "lib",
+    deps = [":proto"],
+)
+
+ts_library(
+    name = "ts_lib",
+    srcs = [":lib"],
+    module_name = "@example/schema",
+    deps = [
+        "@npm//@types/google-protobuf",
+        "@npm//google-protobuf",
+        "@npm//grpc",
+    ],
+)

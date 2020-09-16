@@ -1,0 +1,21 @@
+load("@npm//@bazel/typescript:index.bzl", "ts_library")
+load("@io_bazel_rules_docker//nodejs:image.bzl", "nodejs_image")
+
+package(default_visibility = ["//visibility:public"])
+
+exports_files(["tsconfig.json"])
+
+ts_library(
+    name = "lib",
+    srcs = ["server.ts"],
+    deps = [
+        "//schema:ts_lib",
+        "@npm//grpc",
+    ],
+)
+
+nodejs_image(
+    name = "server",
+    data = [":lib"],
+    entry_point = ":server.ts",
+)
