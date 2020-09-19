@@ -23,6 +23,6 @@ ts_library(
     deps = [
         "@npm//@types/google-protobuf",
         "@npm//google-protobuf",
-        "@npm//grpc",
+        "@npm//@grpc/grpc-js",
     ],
 )

@@ -1,4 +1,4 @@
-import * as grpc from "grpc";
+import * as grpc from "@grpc/grpc-js";
 
 import { Request, Response, Example } from "@example/schema/example";
 
@@ -9,7 +9,7 @@ const host = "0.0.0.0";
 async function main() {
   const serviceImpl = {
     add: (
-      call: grpc.ServerUnaryCall<Request>,
+      call: grpc.ServerUnaryCall<Request, Response>,
       callback: grpc.sendUnaryData<Response>
     ) => {
       const a = call.request?.a;

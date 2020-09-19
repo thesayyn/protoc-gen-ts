@@ -10,7 +10,7 @@ ts_library(
     srcs = ["server.ts"],
     deps = [
         "//schema:ts_lib",
-        "@npm//grpc",
+        "@npm//@grpc/grpc-js",
     ],
 )
 

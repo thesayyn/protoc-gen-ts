@@ -1,5 +1,5 @@
 load("@npm//@bazel/typescript:index.bzl", "ts_library")
-load("@npm_protoc_gen_ts//:index.bzl", "ts_proto_library")
+load("@npm//protoc-gen-ts:index.bzl", "ts_proto_library")
 load("@rules_proto//proto:defs.bzl", "proto_library")
 load("@build_bazel_rules_nodejs//:index.bzl", "nodejs_binary")
 
