@@ -16,6 +16,10 @@
     "protoc-gen-ts": "./bin/protoc-gen-ts"
   },
   "main": "index.js",
+  "peerDependencies": {
+    "typescript": "^4.0.2",
+    "google-protobuf": "^3.13.0"
+  },
   "bazelWorkspaces": {
     "npm_protoc_gen_ts": {
       "rootPath": "."
