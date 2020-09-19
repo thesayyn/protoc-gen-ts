@@ -1766,7 +1766,4 @@ function main() {
   process.stdout.write(Buffer.from(codeGenResponse.serializeBinary()));
 }
 
-
-globalThis.console = new console.Console(require("fs").createWriteStream("/tmp/debug.log"));
-
 main();
