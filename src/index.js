@@ -1659,8 +1659,6 @@ function main() {
     const name = replaceExtension(fileName);
     const codegenFile = new plugin.CodeGeneratorResponse.File();
 
-    console.log(fileName);
-
     const sf = ts.createSourceFile(
       name,
       ``,
@@ -1747,8 +1745,6 @@ function main() {
     } else {
       sf.statements = ts.createNodeArray([...importStatements, ...statements]);
     }
-
-    console.log(name);
 
     codegenFile.setName(name);
     codegenFile.setContent(
