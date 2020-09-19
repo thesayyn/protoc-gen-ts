@@ -1,5 +1,6 @@
-import * as grpc from "grpc";
+import * as grpc from "@grpc/grpc-js";
 import { Request, Response, Srv, SrvClient } from "../protos/rpcs";
+import * as util from "util";
 
 describe("RPCs", () => {
   let server: grpc.Server;
@@ -8,14 +9,14 @@ describe("RPCs", () => {
 
   let client: SrvClient;
 
-  beforeEach(() => {
+  beforeEach(async () => {
     server = new grpc.Server();
     serviceImplSpy = {
       List: jasmine
         .createSpy("List")
         .and.callFake(
           (
-            call: grpc.ServerUnaryCall<Request>,
+            call: grpc.ServerUnaryCall<Request, Response>,
             callback: grpc.sendUnaryData<Response>
           ) => {
             callback(
@@ -28,7 +29,7 @@ describe("RPCs", () => {
         ),
     };
     server.addService(Srv, serviceImplSpy);
-    server.bind("0.0.0.0:4884", grpc.ServerCredentials.createInsecure());
+    await util.promisify(server.bindAsync).bind(server)("0.0.0.0:4884", grpc.ServerCredentials.createInsecure());
     server.start();
 
     client = new SrvClient("0.0.0.0:4884", grpc.credentials.createInsecure());

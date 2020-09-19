@@ -25,7 +25,7 @@ ts_library(
         "@npm//@types/jasmine",
         "@npm//@types/node",
         "@npm//google-protobuf",
-        "@npm//grpc",
+        "@npm//@grpc/grpc-js",
     ],
 )
 

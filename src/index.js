@@ -1733,7 +1733,7 @@ function main() {
     }
 
     if (descriptor.getServiceList().length) {
-      importStatements.push(createImport(grpcIdentifier, "grpc"));
+      importStatements.push(createImport(grpcIdentifier, process.env.GRPC_PACKAGE_NAME || "@grpc/grpc-js"));
     }
 
     // Wrap statements within the namespace

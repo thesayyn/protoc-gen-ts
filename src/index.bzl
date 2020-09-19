@@ -48,6 +48,8 @@ def _ts_proto_library(ctx):
     protoc_args.add_all(direct_sources)
 
     env = dict()
+
+    env["GRPC_PACKAGE_NAME"] = ctx.attr.grpc_package_name
     
     if ctx.attr.experimental_features:
         env['EXPERIMENTAL_FEATURES'] = "true"
@@ -76,8 +78,12 @@ ts_proto_library = rule(
             mandatory = True
         ),
         "experimental_features": attr.bool(
-            doc = "Enable experimental features",
+            doc = "Enable experimental features.",
             default = False
+        ),
+        "grpc_package_name": attr.string(
+            doc = "Configures name of the grpc package to use. '@grpc/grpc-js' or 'grpc'",
+            default = "@grpc/grpc-js"
         ),
         "protoc_gen_ts_bin": attr.label(
             allow_files = True,
