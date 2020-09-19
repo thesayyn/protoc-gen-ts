@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./",
+    "strict": false,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "moduleResolution": "node",
+    "lib": ["es6"],
+    "target": "es5",
+    "paths": {
+      "@example/schema/*": ["bazel-bin/schema/*"]
+    }
+  },
+  "exclude": ["node_modules", "bazel-out", "bazel-rpc", "bazel-testlogs"]
+}

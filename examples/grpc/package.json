@@ -1,0 +1,16 @@
+{
+  "scripts": {
+    "client": "bazelisk run //client",
+    "server": "bazelisk run //server",
+    "build": "bazelisk build //..."
+  },
+  "devDependencies": {
+    "@bazel/bazelisk": "^1.6.1",
+    "@bazel/typescript": "^2.2.0",
+    "@types/google-protobuf": "^3.7.3",
+    "google-protobuf": "^3.13.0",
+    "grpc": "^1.24.3",
+    "protoc-gen-ts": "^0.3.0",
+    "typescript": "^4.0.2"
+  }
+}
