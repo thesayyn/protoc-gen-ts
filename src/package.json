@@ -1,7 +1,7 @@
 {
   "name": "protoc-gen-ts",
   "description": "Compile proto files to typescript.",
-  "version": "0.3.0",
+  "version": "0.3.3",
   "license": "MIT",
   "author": {
     "email": "thesayyn@gmail.com",
