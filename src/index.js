@@ -1627,8 +1627,8 @@ function getExportPaths(prefix, descriptor) {
   return exports;
 }
 
-function removeExtension(filename, extension = ".ts") {
-  return filename.replace(/(.*?)\..*?$/, `$1${extension}`);
+function replaceExtension(filename, extension = ".ts") {
+  return filename.replace(/\.[^/.]+$/, extension)
 }
 
 function main() {
@@ -1656,8 +1656,10 @@ function main() {
 
   for (const descriptor of descriptors) {
     const fileName = descriptor.getName();
-    const name = removeExtension(fileName);
+    const name = replaceExtension(fileName);
     const codegenFile = new plugin.CodeGeneratorResponse.File();
+
+    console.log(fileName);
 
     const sf = ts.createSourceFile(
       name,
@@ -1702,7 +1704,7 @@ function main() {
 
     // Create all named imports from dependencies
     for (const [file, namedImports] of Object.entries(dependencies)) {
-      const name = `./${removeExtension(
+      const name = `./${replaceExtension(
         path.relative(path.dirname(fileName), file),
         ""
       )}`;
@@ -1746,6 +1748,8 @@ function main() {
       sf.statements = ts.createNodeArray([...importStatements, ...statements]);
     }
 
+    console.log(name);
+
     codegenFile.setName(name);
     codegenFile.setContent(
       ts
@@ -1761,5 +1765,8 @@ function main() {
 
   process.stdout.write(Buffer.from(codeGenResponse.serializeBinary()));
 }
+
+
+globalThis.console = new console.Console(require("fs").createWriteStream("/tmp/debug.log"));
 
 main();
