@@ -1583,19 +1583,25 @@ function processProtoDescriptor(
 ) {
   const statements = [];
 
-  // Process messages
-  if (descriptor.getMessageTypeList) {
-    for (messageDescriptor of descriptor.getMessageTypeList()) {
-      statements.push(
-        ...processMessageDescriptor(
-          rootDescriptor,
-          messageDescriptor,
-          pbIdentifier,
-          getNamedImport
-        )
-      );
-    }
+
+  // Process enums
+  for (const enumDescriptor of descriptor.getEnumTypeList()) {
+    statements.push(createEnum(enumDescriptor));
   }
+
+
+  // Process messages
+  for (messageDescriptor of descriptor.getMessageTypeList()) {
+    statements.push(
+      ...processMessageDescriptor(
+        rootDescriptor,
+        messageDescriptor,
+        pbIdentifier,
+        getNamedImport
+      )
+    );
+  }
+  
 
   return statements;
 }
