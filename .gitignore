@@ -3,3 +3,5 @@ compiled
 ast*.json
 *.txt
 bazel-*
+.devcontainer
+.editorconfig

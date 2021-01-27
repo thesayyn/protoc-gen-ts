@@ -1478,6 +1478,19 @@ function createServiceClient(
             ts.createQualifiedName(grpcIdentifier, "ChannelCredentials")
           )
         ),
+        ts.createParameter(
+          undefined,
+          undefined,
+          undefined,
+          "options",
+          ts.createToken(ts.SyntaxKind.QuestionToken),
+          ts.createTypeReferenceNode(
+            'Partial',
+            [
+              ts.createQualifiedName(grpcIdentifier, "ChannelOptions")
+            ]
+          )
+        ),
       ],
 
       ts.createBlock(
@@ -1485,6 +1498,7 @@ function createServiceClient(
           ts.createCall(ts.createSuper(), undefined, [
             ts.createIdentifier("address"),
             ts.createIdentifier("credentials"),
+            ts.createIdentifier("options"),
           ]),
         ],
         true
@@ -1601,7 +1615,7 @@ function processProtoDescriptor(
       )
     );
   }
-  
+
 
   return statements;
 }
