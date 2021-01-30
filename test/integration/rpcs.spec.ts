@@ -1,11 +1,11 @@
 import * as grpc from "@grpc/grpc-js";
-import { Request, Response, Srv, SrvClient } from "../protos/rpcs";
+import { Request, Response, Srv, SrvClient, ISrvServer } from "../protos/rpcs";
 import * as util from "util";
 
 describe("RPCs", () => {
   let server: grpc.Server;
 
-  let serviceImplSpy: jasmine.SpyObj<unknown>;
+  let serviceImplSpy: jasmine.SpyObj<ISrvServer>;
 
   let client: SrvClient;
 

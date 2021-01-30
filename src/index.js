@@ -1106,6 +1106,68 @@ function isUnaryRPC(methodDescriptor) {
   );
 }
 
+// Returns interface definition of the service description
+function createServiceInterface(rootDescriptor, serviceDescriptor, grpcIdentifier) {
+  return ts.createInterfaceDeclaration(
+    undefined,
+    [ts.createModifier(ts.SyntaxKind.ExportKeyword)],
+    ts.createIdentifier(`I${serviceDescriptor.getName()}Service`),
+    undefined,
+    [
+      ts.createHeritageClause(ts.SyntaxKind.ExtendsKeyword, [
+        ts.createTypeReferenceNode(
+          ts.createQualifiedName(grpcIdentifier, ts.createIdentifier("ServiceDefinition")),
+          [
+            ts.createQualifiedName(grpcIdentifier, ts.createIdentifier("UntypedServiceImplementation"))
+          ]
+        ),
+      ]),
+    ],
+    serviceDescriptor.getMethodList().map((methodDescriptor) => {
+      return ts.createPropertySignature(
+        undefined,
+        methodDescriptor.getName(),
+        undefined,
+        ts.createTypeReferenceNode(
+          ts.createQualifiedName(grpcIdentifier, ts.createIdentifier("MethodDefinition")),
+          [
+            ts.createIdentifier(getRPCInputType(rootDescriptor, methodDescriptor)),
+            ts.createIdentifier(getRPCOutputType(rootDescriptor, methodDescriptor))
+          ]
+        )
+      )
+    })
+  )
+}
+
+function createServerInterface(rootDescriptor, serviceDescriptor, grpcIdentifier) {
+  return ts.createInterfaceDeclaration(
+    undefined,
+    [ts.createModifier(ts.SyntaxKind.ExportKeyword)],
+    ts.createIdentifier(`I${serviceDescriptor.getName()}Server`),
+    undefined,
+    [
+      ts.createHeritageClause(ts.SyntaxKind.ExtendsKeyword, [
+        ts.createQualifiedName(grpcIdentifier, ts.createIdentifier("UntypedServiceImplementation")),
+      ]),
+    ],
+    serviceDescriptor.getMethodList().map((methodDescriptor) => {
+      return ts.createPropertySignature(
+        undefined,
+        methodDescriptor.getName(),
+        undefined,
+        ts.createTypeReferenceNode(
+          ts.createQualifiedName(grpcIdentifier, ts.createIdentifier("handleUnaryCall")),
+          [
+            ts.createIdentifier(getRPCInputType(rootDescriptor, methodDescriptor)),
+            ts.createIdentifier(getRPCOutputType(rootDescriptor, methodDescriptor))
+          ]
+        )
+      )
+    })
+  )
+}
+
 // Returns grpc-node compatible service description
 function createService(rootDescriptor, serviceDescriptor) {
   return ts.createVariableStatement(
@@ -1113,7 +1175,7 @@ function createService(rootDescriptor, serviceDescriptor) {
     [
       ts.createVariableDeclaration(
         ts.createIdentifier(serviceDescriptor.getName()),
-        undefined,
+        ts.createIdentifier(`I${serviceDescriptor.getName()}Service`),
         ts.createObjectLiteral(
           serviceDescriptor.getMethodList().map((methodDescriptor) => {
             return ts.createPropertyAssignment(
@@ -1141,18 +1203,6 @@ function createService(rootDescriptor, serviceDescriptor) {
                     methodDescriptor.getServerStreaming()
                       ? ts.createTrue()
                       : ts.createFalse()
-                  ),
-                  ts.createPropertyAssignment(
-                    "requestType",
-                    ts.createIdentifier(
-                      methodDescriptor.getInputType().slice(1)
-                    )
-                  ),
-                  ts.createPropertyAssignment(
-                    "responseType",
-                    ts.createIdentifier(
-                      methodDescriptor.getOutputType().slice(1)
-                    )
                   ),
                   ts.createPropertyAssignment(
                     "requestSerialize",
@@ -1601,7 +1651,7 @@ function processProtoDescriptor(
       )
     );
   }
-  
+
 
   return statements;
 }
@@ -1732,6 +1782,8 @@ function main() {
 
     // Create all services and clients
     for (const serviceDescriptor of descriptor.getServiceList()) {
+      statements.push(createServiceInterface(descriptor, serviceDescriptor, grpcIdentifier));
+      statements.push(createServerInterface(descriptor, serviceDescriptor, grpcIdentifier));
       statements.push(createService(descriptor, serviceDescriptor));
       statements.push(
         createServiceClient(descriptor, serviceDescriptor, grpcIdentifier)
