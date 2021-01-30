@@ -32,7 +32,29 @@ describe("RPCs", () => {
     await util.promisify(server.bindAsync).bind(server)("0.0.0.0:4884", grpc.ServerCredentials.createInsecure());
     server.start();
 
-    client = new SrvClient("0.0.0.0:4884", grpc.credentials.createInsecure());
+    client = new SrvClient("0.0.0.0:4884", grpc.credentials.createInsecure(), {
+      'grpc.lb_policy_name': 'round_robin',
+      'grpc.keepalive_time_ms': 1500,
+      'grpc.keepalive_timeout_ms': 1500,
+      'grpc.max_connection_idle_ms': 500,
+      'grpc.max_connection_age_ms': 999,
+      'grpc.keepalive_permit_without_calls': 1
+    });
+  });
+
+  afterEach(() => {
+    server.forceShutdown();
+  })
+
+  it("should set channel options", () => {
+    expect((<any>client.getChannel()).options).toEqual({
+      'grpc.lb_policy_name': 'round_robin',
+      'grpc.keepalive_time_ms': 1500,
+      'grpc.keepalive_timeout_ms': 1500,
+      'grpc.max_connection_idle_ms': 500,
+      'grpc.max_connection_age_ms': 999,
+      'grpc.keepalive_permit_without_calls': 1
+    });
   });
 
   it("should make unary call", async () => {
