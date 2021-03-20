@@ -49,7 +49,7 @@ function createToObject(rootDescriptor, messageDescriptor, getNamedImport) {
           ts.createCall(
             ts.createPropertyAccess(ts.createIdentifier("item"), "toObject"),
             undefined,
-            null
+            undefined
           )
         );
         propertyAccessExpression = ts.createCall(
