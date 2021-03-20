@@ -1110,217 +1110,220 @@ function isUnaryRPC(methodDescriptor) {
 function createService(rootDescriptor, serviceDescriptor) {
   return ts.createVariableStatement(
     [ts.createModifier(ts.SyntaxKind.ExportKeyword)],
-    [
-      ts.createVariableDeclaration(
-        ts.createIdentifier(serviceDescriptor.getName()),
-        undefined,
-        ts.createObjectLiteral(
-          serviceDescriptor.getMethodList().map((methodDescriptor) => {
-            return ts.createPropertyAssignment(
-              methodDescriptor.getName(),
-              ts.createObjectLiteral(
-                [
-                  ts.createPropertyAssignment(
-                    "path",
-                    ts.createStringLiteral(
-                      getRPCPath(
-                        rootDescriptor,
-                        serviceDescriptor,
-                        methodDescriptor
+    ts.createVariableDeclarationList(
+      [
+        ts.createVariableDeclaration(
+          ts.createIdentifier(serviceDescriptor.getName()),
+          undefined,
+          ts.createObjectLiteral(
+            serviceDescriptor.getMethodList().map((methodDescriptor) => {
+              return ts.createPropertyAssignment(
+                methodDescriptor.getName(),
+                ts.createObjectLiteral(
+                  [
+                    ts.createPropertyAssignment(
+                      "path",
+                      ts.createStringLiteral(
+                        getRPCPath(
+                          rootDescriptor,
+                          serviceDescriptor,
+                          methodDescriptor
+                        )
                       )
-                    )
-                  ),
-                  ts.createPropertyAssignment(
-                    "requestStream",
-                    methodDescriptor.getClientStreaming()
-                      ? ts.createTrue()
-                      : ts.createFalse()
-                  ),
-                  ts.createPropertyAssignment(
-                    "responseStream",
-                    methodDescriptor.getServerStreaming()
-                      ? ts.createTrue()
-                      : ts.createFalse()
-                  ),
-                  ts.createPropertyAssignment(
-                    "requestType",
-                    ts.createIdentifier(
-                      methodDescriptor.getInputType().slice(1)
-                    )
-                  ),
-                  ts.createPropertyAssignment(
-                    "responseType",
-                    ts.createIdentifier(
-                      methodDescriptor.getOutputType().slice(1)
-                    )
-                  ),
-                  ts.createPropertyAssignment(
-                    "requestSerialize",
-                    ts.createArrowFunction(
-                      undefined,
-                      undefined,
-                      [
-                        ts.createParameter(
+                    ),
+                    ts.createPropertyAssignment(
+                      "requestStream",
+                      methodDescriptor.getClientStreaming()
+                        ? ts.createTrue()
+                        : ts.createFalse()
+                    ),
+                    ts.createPropertyAssignment(
+                      "responseStream",
+                      methodDescriptor.getServerStreaming()
+                        ? ts.createTrue()
+                        : ts.createFalse()
+                    ),
+                    ts.createPropertyAssignment(
+                      "requestType",
+                      ts.createIdentifier(
+                        methodDescriptor.getInputType().slice(1)
+                      )
+                    ),
+                    ts.createPropertyAssignment(
+                      "responseType",
+                      ts.createIdentifier(
+                        methodDescriptor.getOutputType().slice(1)
+                      )
+                    ),
+                    ts.createPropertyAssignment(
+                      "requestSerialize",
+                      ts.createArrowFunction(
+                        undefined,
+                        undefined,
+                        [
+                          ts.createParameter(
+                            undefined,
+                            undefined,
+                            undefined,
+                            "message",
+                            undefined,
+                            ts.createTypeReferenceNode(
+                              ts.createIdentifier(
+                                getRPCInputType(rootDescriptor, methodDescriptor)
+                              ),
+                              undefined
+                            )
+                          ),
+                        ],
+                        undefined,
+                        ts.createToken(ts.SyntaxKind.EqualsGreaterThanToken),
+                        ts.createCall(
+                          ts.createPropertyAccess(
+                            ts.createIdentifier("Buffer"),
+                            "from"
+                          ),
                           undefined,
-                          undefined,
-                          undefined,
-                          "message",
-                          undefined,
-                          ts.createTypeReferenceNode(
+                          [
+                            ts.createCall(
+                              ts.createPropertyAccess(
+                                ts.createIdentifier("message"),
+                                "serialize"
+                              ),
+                              undefined,
+                              undefined
+                            ),
+                          ]
+                        )
+                      )
+                    ),
+                    ts.createPropertyAssignment(
+                      "requestDeserialize",
+                      ts.createArrowFunction(
+                        undefined,
+                        undefined,
+                        [
+                          ts.createParameter(
+                            undefined,
+                            undefined,
+                            undefined,
+                            "bytes",
+                            undefined,
+                            ts.createTypeReferenceNode(
+                              ts.createIdentifier("Buffer"),
+                              undefined
+                            )
+                          ),
+                        ],
+                        undefined,
+                        ts.createToken(ts.SyntaxKind.EqualsGreaterThanToken),
+                        ts.createCall(
+                          ts.createPropertyAccess(
                             ts.createIdentifier(
                               getRPCInputType(rootDescriptor, methodDescriptor)
                             ),
-                            undefined
-                          )
-                        ),
-                      ],
-                      undefined,
-                      ts.createToken(ts.SyntaxKind.EqualsGreaterThanToken),
-                      ts.createCall(
-                        ts.createPropertyAccess(
-                          ts.createIdentifier("Buffer"),
-                          "from"
-                        ),
-                        undefined,
-                        [
-                          ts.createCall(
-                            ts.createPropertyAccess(
-                              ts.createIdentifier("message"),
-                              "serialize"
+                            "deserialize"
+                          ),
+                          undefined,
+                          [
+                            ts.createNew(
+                              ts.createIdentifier("Uint8Array"),
+                              undefined,
+                              [ts.createIdentifier("bytes")]
                             ),
-                            undefined,
-                            undefined
-                          ),
-                        ]
+                          ]
+                        )
                       )
-                    )
-                  ),
-                  ts.createPropertyAssignment(
-                    "requestDeserialize",
-                    ts.createArrowFunction(
-                      undefined,
-                      undefined,
-                      [
-                        ts.createParameter(
-                          undefined,
-                          undefined,
-                          undefined,
-                          "bytes",
-                          undefined,
-                          ts.createTypeReferenceNode(
-                            ts.createIdentifier("Buffer"),
-                            undefined
-                          )
-                        ),
-                      ],
-                      undefined,
-                      ts.createToken(ts.SyntaxKind.EqualsGreaterThanToken),
-                      ts.createCall(
-                        ts.createPropertyAccess(
-                          ts.createIdentifier(
-                            getRPCInputType(rootDescriptor, methodDescriptor)
-                          ),
-                          "deserialize"
-                        ),
+                    ),
+                    ts.createPropertyAssignment(
+                      "responseSerialize",
+                      ts.createArrowFunction(
+                        undefined,
                         undefined,
                         [
-                          ts.createNew(
-                            ts.createIdentifier("Uint8Array"),
+                          ts.createParameter(
                             undefined,
-                            [ts.createIdentifier("bytes")]
+                            undefined,
+                            undefined,
+                            "message",
+                            undefined,
+                            ts.createTypeReferenceNode(
+                              ts.createIdentifier(
+                                getRPCOutputType(rootDescriptor, methodDescriptor)
+                              ),
+                              undefined
+                            )
                           ),
-                        ]
+                        ],
+                        undefined,
+                        ts.createToken(ts.SyntaxKind.EqualsGreaterThanToken),
+                        ts.createCall(
+                          ts.createPropertyAccess(
+                            ts.createIdentifier("Buffer"),
+                            "from"
+                          ),
+                          undefined,
+                          [
+                            ts.createCall(
+                              ts.createPropertyAccess(
+                                ts.createIdentifier("message"),
+                                "serialize"
+                              ),
+                              undefined,
+                              []
+                            ),
+                          ]
+                        )
                       )
-                    )
-                  ),
-                  ts.createPropertyAssignment(
-                    "responseSerialize",
-                    ts.createArrowFunction(
-                      undefined,
-                      undefined,
-                      [
-                        ts.createParameter(
-                          undefined,
-                          undefined,
-                          undefined,
-                          "message",
-                          undefined,
-                          ts.createTypeReferenceNode(
+                    ),
+                    ts.createPropertyAssignment(
+                      "responseDeserialize",
+                      ts.createArrowFunction(
+                        undefined,
+                        undefined,
+                        [
+                          ts.createParameter(
+                            undefined,
+                            undefined,
+                            undefined,
+                            "bytes",
+                            undefined,
+                            ts.createTypeReferenceNode(
+                              ts.createIdentifier("Buffer"),
+                              undefined
+                            )
+                          ),
+                        ],
+                        undefined,
+                        ts.createToken(ts.SyntaxKind.EqualsGreaterThanToken),
+                        ts.createCall(
+                          ts.createPropertyAccess(
                             ts.createIdentifier(
                               getRPCOutputType(rootDescriptor, methodDescriptor)
                             ),
-                            undefined
-                          )
-                        ),
-                      ],
-                      undefined,
-                      ts.createToken(ts.SyntaxKind.EqualsGreaterThanToken),
-                      ts.createCall(
-                        ts.createPropertyAccess(
-                          ts.createIdentifier("Buffer"),
-                          "from"
-                        ),
-                        undefined,
-                        [
-                          ts.createCall(
-                            ts.createPropertyAccess(
-                              ts.createIdentifier("message"),
-                              "serialize"
+                            "deserialize"
+                          ),
+                          undefined,
+                          [
+                            ts.createNew(
+                              ts.createIdentifier("Uint8Array"),
+                              undefined,
+                              [ts.createIdentifier("bytes")]
                             ),
-                            undefined,
-                            []
-                          ),
-                        ]
+                          ]
+                        )
                       )
-                    )
-                  ),
-                  ts.createPropertyAssignment(
-                    "responseDeserialize",
-                    ts.createArrowFunction(
-                      undefined,
-                      undefined,
-                      [
-                        ts.createParameter(
-                          undefined,
-                          undefined,
-                          undefined,
-                          "bytes",
-                          undefined,
-                          ts.createTypeReferenceNode(
-                            ts.createIdentifier("Buffer"),
-                            undefined
-                          )
-                        ),
-                      ],
-                      undefined,
-                      ts.createToken(ts.SyntaxKind.EqualsGreaterThanToken),
-                      ts.createCall(
-                        ts.createPropertyAccess(
-                          ts.createIdentifier(
-                            getRPCOutputType(rootDescriptor, methodDescriptor)
-                          ),
-                          "deserialize"
-                        ),
-                        undefined,
-                        [
-                          ts.createNew(
-                            ts.createIdentifier("Uint8Array"),
-                            undefined,
-                            [ts.createIdentifier("bytes")]
-                          ),
-                        ]
-                      )
-                    )
-                  ),
-                ],
-                true
-              )
-            );
-          }),
-          true
-        )
-      ),
-    ]
+                    ),
+                  ],
+                  true
+                )
+              );
+            }),
+            true
+          )
+        ),
+      ],
+      ts.NodeFlags.Const
+    )
   );
 }
 
@@ -1601,7 +1604,7 @@ function processProtoDescriptor(
       )
     );
   }
-  
+
 
   return statements;
 }
