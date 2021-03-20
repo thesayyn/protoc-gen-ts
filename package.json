@@ -20,7 +20,7 @@
     "@types/google-protobuf": "^3.7.2",
     "@types/jasmine": "^3.5.9",
     "google-protobuf": "^3.11.4",
-    "@grpc/grpc-js": "^1.1.7",
+    "@grpc/grpc-js": "^1.2.5",
     "jasmine": "^3.6.1",
     "jasmine-core": "^3.6.0",
     "typescript": "^3.8.3"
