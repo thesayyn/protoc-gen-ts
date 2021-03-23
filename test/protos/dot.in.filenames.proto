@@ -1,7 +1,0 @@
-syntax = "proto3";
-
-package dot;
-
-message Message {
-    repeated string name = 1;
-}

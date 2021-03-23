@@ -1,7 +1,0 @@
-syntax = "proto3";
-
-package pkg.mycompany;
-
-message Message {
-    repeated string field = 1;
-}
