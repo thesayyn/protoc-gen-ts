@@ -1,2 +1,2 @@
-#!/usr/bin/env node
-require('../src/index')
+#!/usr/bin/env sh
+echo $(which node)

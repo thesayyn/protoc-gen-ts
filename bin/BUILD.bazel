@@ -1,3 +1,8 @@
-exports_files([
-    "protoc-gen-ts"
-])
+
+load("@build_bazel_rules_nodejs//:index.bzl", "nodejs_binary")
+
+nodejs_binary(
+    name = "protoc-gen-ts",
+    entry_point = "protoc-gen-ts",
+    visibility = ["//visibility:public"],
+)

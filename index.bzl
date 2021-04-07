@@ -89,7 +89,7 @@ ts_proto_library = rule(
         "protoc_gen_ts_bin": attr.label(
             allow_single_file = True,
             executable = True,
-            cfg = "exec",
+            cfg = "host",
             default =  (
                 "//bin:protoc-gen-ts"
             ),
@@ -98,7 +98,9 @@ ts_proto_library = rule(
             allow_single_file = True,
             executable = True,
             cfg = "exec",
-            default = Label("@com_google_protobuf//:protoc"),
+            default = (
+                "@com_google_protobuf//:protoc"
+            ),
         ),
 
     }
