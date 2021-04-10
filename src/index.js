@@ -13,17 +13,22 @@ function createImport(identifier, moduleSpecifier) {
   );
 }
 
-function createToObject(rootDescriptor, messageDescriptor, getNamedImport) {
+/**
+ * 
+ * @param {descriptor.FileDescriptorProto} rootDescriptor 
+ * @param {descriptor.DescriptorProto} messageDescriptor
+ */
+function createToObject(rootDescriptor, messageDescriptor) {
   const properties = [];
 
-  for (const fd of messageDescriptor.getFieldList()) {
+  for (const fieldDescriptor of messageDescriptor.field) {
     let propertyAccessExpression = ts.factory.createPropertyAccess(
       ts.factory.createThis(),
-      fd.getName()
+      fieldDescriptor.name
     );
 
-    if (isMessage(fd)) {
-      if (isRepeated(fd)) {
+    if (isMessage(fieldDescriptor)) {
+      if (isRepeated(fieldDescriptor)) {
         const arrowFunc = ts.factory.createArrowFunction(
           undefined,
           undefined,
@@ -36,9 +41,8 @@ function createToObject(rootDescriptor, messageDescriptor, getNamedImport) {
               undefined,
               ts.factory.createTypeReferenceNode(
                 createTypeIdentifier(
-                  fd,
-                  rootDescriptor.getPackage(),
-                  getNamedImport
+                  fieldDescriptor,
+                  rootDescriptor
                 ),
                 undefined
               )
@@ -69,7 +73,7 @@ function createToObject(rootDescriptor, messageDescriptor, getNamedImport) {
     }
     properties.push(
       ts.factory.createPropertyAssignment(
-        ts.factory.createIdentifier(fd.getName()),
+        ts.factory.createIdentifier(fieldDescriptor.name),
         propertyAccessExpression
       )
     );
@@ -91,6 +95,12 @@ function createToObject(rootDescriptor, messageDescriptor, getNamedImport) {
   );
 }
 
+/**
+ * 
+ * @param {string} packageName 
+ * @param {ts.NodeArray<ts.Statement>} statements 
+ * @returns {ts.NodeArray<ts.Statement>}
+ */
 function createNamespace(packageName, statements) {
   const identifiers = String(packageName).split(".");
 
@@ -109,7 +119,12 @@ function createNamespace(packageName, statements) {
   return statements;
 }
 
-function createTypeLiteral(rootDescriptor, messageDescriptor, getNamedImport) {
+/**
+ * 
+ * @param {descriptor.FileDescriptorProto} rootDescriptor 
+ * @param {descriptor.DescriptorProto} messageDescriptor
+ */
+function createTypeLiteral(rootDescriptor, messageDescriptor) {
   const members = [];
 
   for (const fieldDescriptor of messageDescriptor.getFieldList()) {
@@ -120,7 +135,7 @@ function createTypeLiteral(rootDescriptor, messageDescriptor, getNamedImport) {
         fieldDescriptor.getName(),
         ts.factory.createToken(ts.factory.SyntaxKind.QuestionToken),
         wrapRepeatedType(
-          getType(fieldDescriptor, rootDescriptor.getPackage(), getNamedImport),
+          getType(fieldDescriptor, rootDescriptor),
           fieldDescriptor
         ),
         undefined
@@ -130,11 +145,16 @@ function createTypeLiteral(rootDescriptor, messageDescriptor, getNamedImport) {
   return ts.factory.createTypeLiteralNode(members);
 }
 
+/**
+ * 
+ * @param {descriptor.FileDescriptorProto} rootDescriptor 
+ * @param {descriptor.DescriptorProto} messageDescriptor 
+ * @param {string} pbIdentifier
+ */
 function createConstructor(
   rootDescriptor,
   messageDescriptor,
-  pbIdentifier,
-  getNamedImport
+  pbIdentifier
 ) {
   const statements = [];
 
@@ -143,16 +163,23 @@ function createConstructor(
     ts.factory.createArrayTypeNode(
       ts.factory.createTypeReferenceNode(ts.factory.createIdentifier("any"), undefined)
     ) /* any[] */,
-    createTypeLiteral(rootDescriptor, messageDescriptor, getNamedImport),
+    createTypeLiteral(rootDescriptor, messageDescriptor),
   ]);
 
+  // Get repeated fields numbers
+  const repeatedFields = messageDescriptor.field
+    .filter(
+      (fd) => isRepeated(fd)
+    )
+    .map((fd) => ts.factory.createNumericLiteral(fd.number))
+
   // Create super(); statement
-  statements.factory.push(
-    ts.factory.createStatement(ts.factory.createCall(ts.factory.createSuper(), undefined, undefined))
+  statements.push(
+    ts.factory.createStatement(ts.factory.createCall(ts.factory.createSuper()))
   );
 
   // Create initialize(); statement
-  statements.factory.push(
+  statements.push(
     ts.factory.createStatement(
       ts.factory.createCall(
         ts.factory.createPropertyAccess(
@@ -173,16 +200,7 @@ function createConstructor(
           ),
           ts.factory.createNumericLiteral("0"),
           ts.factory.createNumericLiteral("-1") /* TODO: Handle extensions */,
-          ts.factory.createArrayLiteral(
-            messageDescriptor
-              .getFieldList()
-              .filter(
-                (fd) =>
-                  fd.getLabel() ==
-                  descriptor.FieldDescriptorProto.Label.LABEL_REPEATED
-              )
-              .map((fd) => ts.factory.createNumericLiteral(fd.getNumber().toString()))
-          ),
+          ts.factory.createArrayLiteral(repeatedFields),
           ts.factory.createNull() /* TODO: Handle oneofFields */,
         ]
       )
@@ -190,7 +208,7 @@ function createConstructor(
   );
 
   // Create data variable and if block
-  statements.factory.push(
+  statements.push(
     ts.factory.createIf(
       ts.factory.createBinary(
         ts.factory.createLogicalNot(
@@ -208,19 +226,18 @@ function createConstructor(
         )
       ),
       ts.factory.createBlock(
-        messageDescriptor
-          .getFieldList()
+        messageDescriptor.field
           .map((fieldDescriptor) =>
             ts.factory.createStatement(
               ts.factory.createBinary(
                 ts.factory.createPropertyAccess(
                   ts.factory.createThis(),
-                  fieldDescriptor.getName()
+                  fieldDescriptor.name
                 ),
                 ts.factory.SyntaxKind.EqualsToken,
                 ts.factory.createPropertyAccess(
                   dataIdentifier,
-                  fieldDescriptor.getName()
+                  fieldDescriptor.name
                 )
               )
             )
@@ -246,6 +263,12 @@ function createConstructor(
   );
 }
 
+/**
+ * 
+ * @param {*} type 
+ * @param {descriptor.FieldDescriptorProto} fieldDescriptor 
+ * @returns 
+ */
 function wrapRepeatedType(type, fieldDescriptor) {
   if (isRepeated(fieldDescriptor)) {
     type = ts.factory.createArrayTypeNode(type);
@@ -254,8 +277,14 @@ function wrapRepeatedType(type, fieldDescriptor) {
   return type;
 }
 
-function getType(fieldDescriptor, packageName, getNamedImport) {
-  switch (fieldDescriptor.getType()) {
+/**
+ * 
+ * @param {descriptor.FieldDescriptorProto} fieldDescriptor 
+ * @param {descriptor.FileDescriptorProto} rootDescriptor
+ * @returns 
+ */
+function getType(fieldDescriptor, rootDescriptor) {
+  switch (fieldDescriptor.type) {
     case descriptor.FieldDescriptorProto.Type.TYPE_DOUBLE:
     case descriptor.FieldDescriptorProto.Type.TYPE_FLOAT:
     case descriptor.FieldDescriptorProto.Type.TYPE_INT32:
@@ -269,35 +298,33 @@ function getType(fieldDescriptor, packageName, getNamedImport) {
     case descriptor.FieldDescriptorProto.Type.TYPE_SFIXED32:
     case descriptor.FieldDescriptorProto.Type.TYPE_SFIXED64:
     case descriptor.FieldDescriptorProto.Type.TYPE_SFIXED64:
-      return ts.factory.createIdentifier("number");
+      return ts.factory.createTypeReferenceNode("number");
     case descriptor.FieldDescriptorProto.Type.TYPE_STRING:
-      return ts.factory.createIdentifier("string");
+      return ts.factory.createTypeReferenceNode("string");
     case descriptor.FieldDescriptorProto.Type.TYPE_BOOL:
-      return ts.factory.createIdentifier("boolean");
+      return ts.factory.createTypeReferenceNode("boolean");
     case descriptor.FieldDescriptorProto.Type.TYPE_BYTES:
-      return ts.factory.createIdentifier("Uint8Array");
+      return ts.factory.createTypeReferenceNode("Uint8Array");
     case descriptor.FieldDescriptorProto.Type.TYPE_MESSAGE:
     case descriptor.FieldDescriptorProto.Type.TYPE_ENUM:
-      return createTypeIdentifier(fieldDescriptor, packageName, getNamedImport);
+      return createTypeIdentifier(fieldDescriptor, rootDescriptor);
     default:
-      throw new Error("Unhandled type " + fieldDescriptor.getType());
+      throw new Error("Unhandled type " + fieldDescriptor.type);
   }
 }
 
-function createTypeIdentifier(fieldDescriptor, packageName, getNamedImport) {
-  if (packageName == undefined) {
-    throw new TypeError();
-  }
-
-  const namedImport = getNamedImport(fieldDescriptor);
-  const normalized = normalizeTypeName(
-    fieldDescriptor.getTypeName(),
-    packageName
-  );
-
-  return namedImport
-    ? ts.factory.createPropertyAccess(namedImport, normalized.replace(/^[^.]+./, ""))
-    : ts.factory.createIdentifier(normalized);
+/**
+ * @param {descriptor.FileDescriptorProto} rootDescriptor
+ * @param {descriptor.FieldDescriptorProto} fieldDescriptor 
+ */
+function createTypeIdentifier(rootDescriptor, fieldDescriptor) {
+  return ts.factory.createPropertyAccess(
+    getImport(fieldDescriptor), 
+    normalizeTypeName(
+      fieldDescriptor.name,
+      rootDescriptor.package
+    ).replace(/^[^.]+./, "")
+  )
 }
 
 function normalizeTypeName(name, packageName) {
@@ -328,6 +355,19 @@ function isMessage(fieldDescriptor) {
   );
 }
 
+/**
+ * @param {descriptor.FieldDescriptorProto} fieldDescriptor 
+ */
+ function isEnum(fieldDescriptor) {
+  return (
+    fieldDescriptor.type ==
+    descriptor.FieldDescriptorProto.Type.TYPE_ENUM
+  );
+}
+
+/**
+ * @param {descriptor.FieldDescriptorProto} fieldDescriptor 
+ */
 function isString(fieldDescriptor) {
   return (
     fieldDescriptor.type ==
@@ -376,8 +416,10 @@ function toBinaryMethodName(fieldDescriptor, rootDescriptor, isWriter = true) {
     descriptor.FieldDescriptorProto.Type
   ).map((n) => n.replace("TYPE_", ""));
 
-  let typeName = typeNames[fieldDescriptor.getType() - 1].toLowerCase();
+  let typeName = typeNames[fieldDescriptor.type - 1].toLowerCase();
+  //lowercase first char
   typeName = typeName.charAt(0).toUpperCase() + typeName.slice(1);
+
   if (isPacked(fieldDescriptor, rootDescriptor)) {
     return `Packed${typeName}`;
   } else {
@@ -398,22 +440,20 @@ function toBinaryMethodName(fieldDescriptor, rootDescriptor, isWriter = true) {
 function createGetter(
   rootDescriptor,
   fieldDescriptor,
-  pbIdentifier,
-  getNamedImport
+  pbIdentifier
 ) {
   const getterType = wrapRepeatedType(
-    getType(fieldDescriptor, rootDescriptor.package, getNamedImport),
+    getType(fieldDescriptor, rootDescriptor),
     fieldDescriptor
   );
   const block = ts.factory.createBlock(
     [
       ts.factory.createReturn(
         createGetterCall(
+          rootDescriptor,
           fieldDescriptor,
           pbIdentifier,
-          getterType,
-          rootDescriptor.package,
-          getNamedImport
+          getterType
         )
       ),
     ],
@@ -430,18 +470,16 @@ function createGetter(
 }
 
 /**
+ * @param {descriptor.FileDescriptorProto} rootDescriptor
  * @param {descriptor.FieldDescriptorProto} fieldDescriptor 
  * @param {ts.Identifier} pbIdentifier 
- * @param {string} type 
- * @param {string} packageName 
- * @param {*} getNamedImport 
+ * @param {string} type
  */
 function createGetterCall(
+  rootDescriptor,
   fieldDescriptor,
   pbIdentifier,
-  type,
-  packageName,
-  getNamedImport
+  type
 ) {
   let calle = ts.factory.createIdentifier("getFieldWithDefault");
 
@@ -465,7 +503,7 @@ function createGetterCall(
     args.splice(
       1,
       0,
-      createTypeIdentifier(fieldDescriptor, packageName, getNamedImport)
+      createTypeIdentifier(rootDescriptor, fieldDescriptor)
     );
     args.pop();
   }
@@ -488,16 +526,14 @@ function createGetterCall(
  * @param {descriptor.FileDescriptorProto} rootDescriptor 
  * @param {descriptor.FieldDescriptorProto} fieldDescriptor 
  * @param {ts.Identifier} pbIdentifier 
- * @param {*} getNamedImport 
  */
 function createSetter(
   rootDescriptor,
   fieldDescriptor,
-  pbIdentifier,
-  getNamedImport
+  pbIdentifier
 ) {
   const type = wrapRepeatedType(
-    getType(fieldDescriptor, rootDescriptor.getPackage(), getNamedImport),
+    getType(fieldDescriptor, rootDescriptor),
     fieldDescriptor
   );
   const paramIdentifier = ts.factory.createIdentifier("value");
@@ -549,7 +585,7 @@ function createSetter(
  * @param {descriptor.DescriptorProto} messageDescriptor
  * @param {ts.Identifier} pbIdentifier
  */
-function createSerialize(rootDescriptor, messageDescriptor, pbIdentifier, getNamedImport) {
+function createSerialize(rootDescriptor, messageDescriptor, pbIdentifier) {
   const statements = [
     ts.factory.createVariableStatement(
       undefined,
@@ -600,11 +636,9 @@ function createSerialize(rootDescriptor, messageDescriptor, pbIdentifier, getNam
                 undefined,
                 ts.factory.createTypeReferenceNode(
                   createTypeIdentifier(
-                    fieldDescriptor,
-                    rootDescriptor.getPackage(),
-                    getNamedImport
-                  ),
-                  undefined
+                    rootDescriptor,
+                    fieldDescriptor
+                  )
                 )
               ),
             ],
@@ -735,31 +769,6 @@ function createSerialize(rootDescriptor, messageDescriptor, pbIdentifier, getNam
 }
 
 /**
- * Returns the serializeBinary method for the Message class
- */
-function createSerializeBinary() {
-  return ts.factory.createMethod(
-    undefined,
-    undefined,
-    undefined,
-    ts.factory.createIdentifier("serializeBinary"),
-    undefined,
-    undefined,
-    [],
-    ts.factory.createUnionTypeNode([
-      ts.factory.createTypeReferenceNode(ts.factory.createIdentifier("Uint8Array"), []),
-    ]),
-    ts.factory.createBlock([
-      ts.factory.createThrow(
-        ts.factory.createNew(ts.factory.createIdentifier("Error"), undefined, [
-          ts.factory.createLiteral("Method not implemented."),
-        ])
-      ),
-    ])
-  );
-}
-
-/**
  * Returns the deserialize method for the message class
  * @param {descriptor.FileDescriptorProto} rootDescriptor
  * @param {descriptor.DescriptorProto} messageDescriptor
@@ -768,8 +777,7 @@ function createSerializeBinary() {
 function createDeserialize(
   rootDescriptor,
   messageDescriptor,
-  pbIdentifier,
-  getNamedImport
+  pbIdentifier
 ) {
   const statements = [
     ts.factory.createVariableStatement(
@@ -852,9 +860,8 @@ function createDeserialize(
       const readCall = ts.factory.createCall(
         ts.factory.createPropertyAccess(
           createTypeIdentifier(
-            fieldDescriptor,
-            rootDescriptor.getPackage(),
-            getNamedImport
+            rootDescriptor,
+            fieldDescriptor
           ),
           "deserialize"
         ),
@@ -897,7 +904,7 @@ function createDeserialize(
                       ts.factory.createIdentifier("message"),
                       ts.factory.createNumericLiteral(fieldDescriptor.number),
                       readCall,
-                      createTypeIdentifier(fieldDescriptor, rootDescriptor.package, getNamedImport),
+                      createTypeIdentifier(rootDescriptor, fieldDescriptor),
                     ]
                   )
                   : ts.factory.createBinary(
@@ -1035,12 +1042,42 @@ function createDeserialize(
   );
 }
 
-// Returns a class for the message descriptor
+/**
+ * Returns the serializeBinary method for the Message class
+ */
+function createSerializeBinary() {
+  return ts.factory.createMethod(
+    undefined,
+    undefined,
+    undefined,
+    ts.factory.createIdentifier("serializeBinary"),
+    undefined,
+    undefined,
+    [],
+    ts.factory.createUnionTypeNode([
+      ts.factory.createTypeReferenceNode(ts.factory.createIdentifier("Uint8Array"), []),
+    ]),
+    ts.factory.createBlock([
+      ts.factory.createThrow(
+        ts.factory.createNew(ts.factory.createIdentifier("Error"), undefined, [
+          ts.factory.createLiteral("Method not implemented."),
+        ])
+      ),
+    ])
+  );
+}
+
+/**
+ * Returns a class for the message descriptor
+ * @param {descriptor.FileDescriptorProto} rootDescriptor 
+ * @param {descriptor.DescriptorProto} messageDescriptor 
+ * @param {ts.Identifier} pbIdentifier
+ * @returns 
+ */
 function createMessage(
   rootDescriptor,
   messageDescriptor,
-  pbIdentifier,
-  getNamedImport
+  pbIdentifier
 ) {
   const members = [];
 
@@ -1049,34 +1086,31 @@ function createMessage(
     createConstructor(
       rootDescriptor,
       messageDescriptor,
-      pbIdentifier,
-      getNamedImport
+      pbIdentifier
     )
   );
 
   // Create getter and setters
-  for (const fieldDescriptor of messageDescriptor.getFieldList()) {
+  for (const fieldDescriptor of messageDescriptor.field) {
     members.push(
       createGetter(
         rootDescriptor,
         fieldDescriptor,
-        pbIdentifier,
-        getNamedImport
+        pbIdentifier
       )
     );
     members.push(
       createSetter(
         rootDescriptor,
         fieldDescriptor,
-        pbIdentifier,
-        getNamedImport
+        pbIdentifier
       )
     );
   }
 
   // Create toObject method
   members.push(
-    createToObject(rootDescriptor, messageDescriptor, getNamedImport)
+    createToObject(rootDescriptor, messageDescriptor)
   );
 
   // Create serialize  method
@@ -1084,8 +1118,7 @@ function createMessage(
     createSerialize(
       rootDescriptor,
       messageDescriptor,
-      pbIdentifier,
-      getNamedImport
+      pbIdentifier
     )
   );
 
@@ -1094,8 +1127,7 @@ function createMessage(
     createDeserialize(
       rootDescriptor,
       messageDescriptor,
-      pbIdentifier,
-      getNamedImport
+      pbIdentifier
     )
   );
 
@@ -1121,29 +1153,6 @@ function createMessage(
   );
 
 
-}
-
-/**
- * Returns a enum for the enum descriptor
- * @param {descriptor.EnumDescriptorProto} enumDescriptor 
- */
-function createEnum(enumDescriptor) {
-  const values = [];
-
-  for (const valueDescriptor of enumDescriptor.value) {
-    values.push(
-      ts.factory.createEnumMember(
-        valueDescriptor.name,
-        ts.factory.createNumericLiteral(valueDescriptor.getNumber().toString())
-      )
-    );
-  }
-  return ts.factory.createEnumDeclaration(
-    undefined,
-    [ts.factory.createModifier(ts.factory.SyntaxKind.ExportKeyword)],
-    ts.factory.createIdentifier(enumDescriptor.name),
-    values
-  );
 }
 
 /**
@@ -1707,94 +1716,86 @@ function createServiceClient(
   );
 }
 
+function replaceExtension(filename, extension = ".ts") {
+  return filename.replace(/\.[^/.]+$/, extension)
+}
+
+/**
+ * Returns a enum for the enum descriptor
+ * @param {descriptor.EnumDescriptorProto} enumDescriptor 
+ */
+ function createEnum(enumDescriptor) {
+  const values = [];
+
+  for (const valueDescriptor of enumDescriptor.value) {
+    values.push(
+      ts.factory.createEnumMember(
+        valueDescriptor.name,
+        ts.factory.createNumericLiteral(valueDescriptor.number)
+      )
+    );
+  }
+  return ts.factory.createEnumDeclaration(
+    undefined,
+    [ts.factory.createModifier(ts.factory.SyntaxKind.ExportKeyword)],
+    ts.factory.createIdentifier(enumDescriptor.name),
+    values
+  );
+}
+
+
 /**
  * @param {descriptor.FileDescriptorProto} rootDescriptor
  * @param {descriptor.DescriptorProto} descriptor
- * @param {ts.factory.Identifier} pbIdentifier
+ * @param {ts.Identifier} pbIdentifier
  */
 function processDescriptor(
   rootDescriptor,
   descriptor,
-  pbIdentifier,
-  getNamedImport
+  pbIdentifier
 ) {
 
-
-  const childStatments = [];
-
-  // Process nested enums
-  for (const eenum of descriptor.enum_type) {
-    childStatments.factory.push(createEnum(eenum));
-  }
   const statements = [];
 
-  statements.factory.push(
-    createMessage(rootDescriptor, descriptor, pbIdentifier, getNamedImport)
+  for (const eenum of messageDescriptor.enum_type) {
+    statements.push(createEnum(eenum));
+  }
+
+
+  statements.push(
+    createMessage(rootDescriptor, descriptor, pbIdentifier)
   );
 
-
-
-
-  // Process nested messages
-  if (descriptor.getNestedTypeList) {
-    for (const nestedDescriptor of descriptor.getNestedTypeList()) {
-      childStatments.factory.push(
-        ...processDescriptor(
-          rootDescriptor,
-          nestedDescriptor,
-          pbIdentifier,
-          getNamedImport
-        )
-      );
+    // Process nested messages
+    if () {
+      for (const nestedDescriptor of descriptor.getNestedTypeList()) {
+        childStatments.push(
+          ...processDescriptor(
+            rootDescriptor,
+            nestedDescriptor,
+            pbIdentifier
+          )
+        );
+      }
     }
-  }
-
-  if (childStatments.factory.length) {
-    statements.factory.push(
-      createNamespace(descriptor.getName(), childStatments)
-    );
-  }
-
   return statements;
 }
 
-function processProtoDescriptor(
-  rootDescriptor,
-  descriptor,
-  pbIdentifier,
-  getNamedImport
-) {
-  const statements = [];
 
 
-  // Process enums
-  for (const enumDescriptor of descriptor.getEnumTypeList()) {
-    statements.factory.push(createEnum(enumDescriptor));
-  }
+/**
+ * dependency import
+ * Beware that this object is mutated heavily.
+ */
 
-
-  // Process messages
-  for (const messageDescriptor of descriptor.getMessageTypeList()) {
-    statements.factory.push(
-      ...processDescriptor(
-        rootDescriptor,
-        messageDescriptor,
-        pbIdentifier,
-        getNamedImport
-      )
-    );
-  }
-
-
-  return statements;
-}
+let fileExports;
 
 function getExportPaths(prefix, descriptor) {
   const exports = [];
   if (descriptor.getMessageTypeList) {
     for (const messageDescriptor of descriptor.getMessageTypeList()) {
       const name = messageDescriptor.getName();
-      exports.factory.push(
+      exports.push(
         [...prefix, name],
         ...getExportPaths([...prefix, name], messageDescriptor)
       );
@@ -1803,7 +1804,7 @@ function getExportPaths(prefix, descriptor) {
   if (descriptor.getNestedTypeList) {
     for (const nestedDescriptor of descriptor.getNestedTypeList()) {
       const name = nestedDescriptor.getName();
-      exports.factory.push(
+      exports.push(
         [...prefix, name],
         ...getExportPaths([...prefix, name], nestedDescriptor)
       );
@@ -1811,25 +1812,59 @@ function getExportPaths(prefix, descriptor) {
   }
   for (const enumDescriptor of descriptor.getEnumTypeList()) {
     const name = enumDescriptor.getName();
-    exports.factory.push([...prefix, name]);
+    exports.push([...prefix, name]);
   }
   return exports;
 }
 
-function replaceExtension(filename, extension = ".ts") {
-  return filename.replace(/\.[^/.]+$/, extension)
-}
-
-const request = plugin.CodeGeneratorRequest.deserialize(new Uint8Array(fs.readFileSync(0)));
-const response = new plugin.CodeGeneratorResponse();
-
-for (const descriptor of request.proto_file) {
-
-  descriptor.message_type[0]
-
-  for (const path of getExportPaths(descriptor.package.split("."), descriptor)) {
+/**
+ * @param {descriptor.FileDescriptorProto} rootDescriptor 
+ */
+function scan(rootDescriptor) {
+  for (const path of getExportPaths(descriptor.package.split("."), rootDescriptor)) {
     fileExports["." + path.join(".")] = { file: descriptor.name, namedImport: path[0] };
   }
+}
+
+/**
+ * @param {descriptor.FieldDescriptorProto} fieldDescriptor 
+ */
+function getImport(fieldDescriptor) {
+  /* 
+  const typeName = fieldDescriptor.type_name;
+  if (!fileExports[typeName]) {
+    return;
+  }
+  const { file, namedImport } = fileExports[typeName];
+  if (file === fileName) {
+    return;
+  }
+  if (!dependencies[file]) {
+    dependencies[file] = {};
+  }
+  if (!dependencies[file][namedImport]) {
+    dependencies[file][namedImport] = ts.factory.createUniqueName(namedImport);
+  }
+  return dependencies[file][namedImport];
+  */
+  const fs = require("fs");
+}
+
+function getDependencies() {
+
+}
+/** end dependency import */
+
+const request = plugin.CodeGeneratorRequest.deserialize(new Uint8Array(fs.readFileSync(0)));
+const response = new plugin.CodeGeneratorResponse({
+  supported_features: plugin.CodeGeneratorResponse.Feature.FEATURE_PROTO3_OPTIONAL
+});
+
+for (const descriptor of request.proto_file) {
+  //scan(descriptor);
+}
+
+for (const descriptor of request.proto_file) {
 
   const name = replaceExtension(descriptor.name);
   const pbIdentifier = ts.factory.createUniqueName("pb");
@@ -1842,35 +1877,28 @@ for (const descriptor of request.proto_file) {
 
   // Create all messages recursively
   // For imported types, assign a unique identifier to each typeName
-  const statements = processProtoDescriptor(
-    descriptor,
-    descriptor,
-    pbIdentifier,
-    (fieldDescriptor) => {
-      const typeName = fieldDescriptor.getTypeName();
-      if (!fileExports[typeName]) {
-        return;
-      }
-      const { file, namedImport } = fileExports[typeName];
-      if (file === fileName) {
-        return;
-      }
-      if (!dependencies[file]) {
-        dependencies[file] = {};
-      }
-      if (!dependencies[file][namedImport]) {
-        dependencies[file][namedImport] = ts.factory.createUniqueName(namedImport);
-      }
-      return dependencies[file][namedImport];
-    }
-  );
+  const statements = [];
+
+  
+  // Process enums
+  for (const enumDescriptor of descriptor.enum_type) {
+    statements.push(createEnum(enumDescriptor));
+  }
+
+
+  // Process root messages
+  for (const messageDescriptor of descriptor.message_type) {
+    statements.push(
+      ...processDescriptor(descriptor, messageDescriptor)
+    )
+  }
 
   // Create all named imports from dependencies
-  for (const [file, namedImports] of Object.entries(dependencies)) {
+  /*for (const [file, namedImports] of Object.entries(dependencies)) {
     const name = `./${replaceExtension(
       path.relative(path.dirname(fileName), file),
     )}`;
-    importStatements.factory.push(
+    importStatements.push(
       ts.factory.createImportDeclaration(
         undefined,
         undefined,
@@ -1882,25 +1910,25 @@ for (const descriptor of request.proto_file) {
         ts.factory.createLiteral(name)
       )
     );
-  }
+  }*/
 
-  if (statements.factory.length) {
-    importStatements.factory.push(createImport(pbIdentifier, "google-protobuf"));
+  if (statements.length) {
+    importStatements.push(createImport(pbIdentifier, "google-protobuf"));
   }
 
   // Create all services and clients
   for (const serviceDescriptor of descriptor.service) {
-    statements.factory.push(createServiceInterface(descriptor, serviceDescriptor, grpcIdentifier));
-    statements.factory.push(createServerInterface(descriptor, serviceDescriptor, grpcIdentifier));
-    statements.factory.push(createService(descriptor, serviceDescriptor));
-    statements.factory.push(
+    statements.push(createServiceInterface(descriptor, serviceDescriptor, grpcIdentifier));
+    statements.push(createServerInterface(descriptor, serviceDescriptor, grpcIdentifier));
+    statements.push(createService(descriptor, serviceDescriptor));
+    statements.push(
       createServiceClient(descriptor, serviceDescriptor, grpcIdentifier)
     );
   }
 
   // Import grpc only if there is service statements
   if (descriptor.service.length) {
-    importStatements.factory.push(createImport(grpcIdentifier, process.env.GRPC_PACKAGE_NAME || "@grpc/grpc-js"));
+    importStatements.push(createImport(grpcIdentifier, process.env.GRPC_PACKAGE_NAME || "@grpc/grpc-js"));
   }
 
   // Create typescript AST file

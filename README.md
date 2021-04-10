@@ -101,9 +101,10 @@ export GRPC_PACKAGE_NAME="@grpc/grpc";
 - <s>Support for creating protocol buffer messages directly from their constructors with an object.</s>
 - <s>Support for `import` directive.</s>
 - <s>Support for `Promise` in rpcs.</s>
+- <s>Make services strongly typed.</s>
 - Support `map<TYPE, TYPE>` types as ES `Map`.
 - Interopability with well knowns.
-- Make services strongly typed.
+
 
 ## Alternatives
 
