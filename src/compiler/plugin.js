@@ -1,8 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CodeGeneratorResponse = exports.CodeGeneratorRequest = exports.Version = void 0;
+const dep_1 = require("./descriptor");
 const pb_1 = require("google-protobuf");
-const descriptor_1 = require("./descriptor");
 class Version extends pb_1.Message {
     constructor(data) {
         super();
@@ -15,25 +15,25 @@ class Version extends pb_1.Message {
         }
     }
     get major() {
-        return pb_1.Message.getFieldWithDefault(this, 1, undefined);
+        return pb_1.Message.getField(this, 1);
     }
     set major(value) {
         pb_1.Message.setField(this, 1, value);
     }
     get minor() {
-        return pb_1.Message.getFieldWithDefault(this, 2, undefined);
+        return pb_1.Message.getField(this, 2);
     }
     set minor(value) {
         pb_1.Message.setField(this, 2, value);
     }
     get patch() {
-        return pb_1.Message.getFieldWithDefault(this, 3, undefined);
+        return pb_1.Message.getField(this, 3);
     }
     set patch(value) {
         pb_1.Message.setField(this, 3, value);
     }
     get suffix() {
-        return pb_1.Message.getFieldWithDefault(this, 4, undefined);
+        return pb_1.Message.getField(this, 4);
     }
     set suffix(value) {
         pb_1.Message.setField(this, 4, value);
@@ -82,7 +82,12 @@ class Version extends pb_1.Message {
         }
         return message;
     }
-    serializeBinary() { throw new Error("Method not implemented."); }
+    serializeBinary() {
+        return this.serialize();
+    }
+    static deserializeBinary(bytes) {
+        return Version.deserialize(bytes);
+    }
 }
 exports.Version = Version;
 class CodeGeneratorRequest extends pb_1.Message {
@@ -103,13 +108,13 @@ class CodeGeneratorRequest extends pb_1.Message {
         pb_1.Message.setField(this, 1, value);
     }
     get parameter() {
-        return pb_1.Message.getFieldWithDefault(this, 2, undefined);
+        return pb_1.Message.getField(this, 2);
     }
     set parameter(value) {
         pb_1.Message.setField(this, 2, value);
     }
     get proto_file() {
-        return pb_1.Message.getRepeatedWrapperField(this, descriptor_1.FileDescriptorProto, 15);
+        return pb_1.Message.getRepeatedWrapperField(this, dep_1.FileDescriptorProto, 15);
     }
     set proto_file(value) {
         pb_1.Message.setRepeatedWrapperField(this, 15, value);
@@ -154,7 +159,7 @@ class CodeGeneratorRequest extends pb_1.Message {
                     message.parameter = reader.readString();
                     break;
                 case 15:
-                    reader.readMessage(message.proto_file, () => pb_1.Message.addToRepeatedWrapperField(message, 15, descriptor_1.FileDescriptorProto.deserialize(reader), descriptor_1.FileDescriptorProto));
+                    reader.readMessage(message.proto_file, () => pb_1.Message.addToRepeatedWrapperField(message, 15, dep_1.FileDescriptorProto.deserialize(reader), dep_1.FileDescriptorProto));
                     break;
                 case 3:
                     reader.readMessage(message.compiler_version, () => message.compiler_version = Version.deserialize(reader));
@@ -164,7 +169,12 @@ class CodeGeneratorRequest extends pb_1.Message {
         }
         return message;
     }
-    serializeBinary() { throw new Error("Method not implemented."); }
+    serializeBinary() {
+        return this.serialize();
+    }
+    static deserializeBinary(bytes) {
+        return CodeGeneratorRequest.deserialize(bytes);
+    }
 }
 exports.CodeGeneratorRequest = CodeGeneratorRequest;
 class CodeGeneratorResponse extends pb_1.Message {
@@ -178,13 +188,13 @@ class CodeGeneratorResponse extends pb_1.Message {
         }
     }
     get error() {
-        return pb_1.Message.getFieldWithDefault(this, 1, undefined);
+        return pb_1.Message.getField(this, 1);
     }
     set error(value) {
         pb_1.Message.setField(this, 1, value);
     }
     get supported_features() {
-        return pb_1.Message.getFieldWithDefault(this, 2, undefined);
+        return pb_1.Message.getField(this, 2);
     }
     set supported_features(value) {
         pb_1.Message.setField(this, 2, value);
@@ -233,7 +243,12 @@ class CodeGeneratorResponse extends pb_1.Message {
         }
         return message;
     }
-    serializeBinary() { throw new Error("Method not implemented."); }
+    serializeBinary() {
+        return this.serialize();
+    }
+    static deserializeBinary(bytes) {
+        return CodeGeneratorResponse.deserialize(bytes);
+    }
 }
 exports.CodeGeneratorResponse = CodeGeneratorResponse;
 (function (CodeGeneratorResponse) {
@@ -254,25 +269,25 @@ exports.CodeGeneratorResponse = CodeGeneratorResponse;
             }
         }
         get name() {
-            return pb_1.Message.getFieldWithDefault(this, 1, undefined);
+            return pb_1.Message.getField(this, 1);
         }
         set name(value) {
             pb_1.Message.setField(this, 1, value);
         }
         get insertion_point() {
-            return pb_1.Message.getFieldWithDefault(this, 2, undefined);
+            return pb_1.Message.getField(this, 2);
         }
         set insertion_point(value) {
             pb_1.Message.setField(this, 2, value);
         }
         get content() {
-            return pb_1.Message.getFieldWithDefault(this, 15, undefined);
+            return pb_1.Message.getField(this, 15);
         }
         set content(value) {
             pb_1.Message.setField(this, 15, value);
         }
         get generated_code_info() {
-            return pb_1.Message.getWrapperField(this, descriptor_1.GeneratedCodeInfo, 16);
+            return pb_1.Message.getWrapperField(this, dep_1.GeneratedCodeInfo, 16);
         }
         set generated_code_info(value) {
             pb_1.Message.setWrapperField(this, 16, value);
@@ -314,14 +329,19 @@ exports.CodeGeneratorResponse = CodeGeneratorResponse;
                         message.content = reader.readString();
                         break;
                     case 16:
-                        reader.readMessage(message.generated_code_info, () => message.generated_code_info = descriptor_1.GeneratedCodeInfo.deserialize(reader));
+                        reader.readMessage(message.generated_code_info, () => message.generated_code_info = dep_1.GeneratedCodeInfo.deserialize(reader));
                         break;
                     default: reader.skipField();
                 }
             }
             return message;
         }
-        serializeBinary() { throw new Error("Method not implemented."); }
+        serializeBinary() {
+            return this.serialize();
+        }
+        static deserializeBinary(bytes) {
+            return File.deserialize(bytes);
+        }
     }
     CodeGeneratorResponse.File = File;
 })(CodeGeneratorResponse = exports.CodeGeneratorResponse || (exports.CodeGeneratorResponse = {}));

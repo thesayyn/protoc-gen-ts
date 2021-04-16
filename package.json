@@ -11,7 +11,7 @@
   "scripts": {
     "test": "bazel build //test:codegen && node ./scripts/sync_generated_protos.js test && bazel test //test/... --test_output=errors",
     "release": "bazel run //:npm_package.publish --access public --tag latest",
-    "codegen": "node ./scripts/sync_compiler_protos.js && bazel build //src:codegen && node ./scripts/sync_generated_protos.js src/compiler && bazel build //src:codegen && node ./scripts/sync_generated_protos.js src/compiler dts"
+    "codegen": "node ./scripts/sync_compiler_protos.js && bazel build //src:codegen && node ./scripts/sync_generated_protos.js src/compiler && bazel build //src:compiler && node ./scripts/sync_generated_protos.js src/compiler js"
   },
   "bin": {
     "protoc-gen-ts": "./src/index.js"

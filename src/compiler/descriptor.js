@@ -42,7 +42,12 @@ class FileDescriptorSet extends pb_1.Message {
         }
         return message;
     }
-    serializeBinary() { throw new Error("Method not implemented."); }
+    serializeBinary() {
+        return this.serialize();
+    }
+    static deserializeBinary(bytes) {
+        return FileDescriptorSet.deserialize(bytes);
+    }
 }
 exports.FileDescriptorSet = FileDescriptorSet;
 class FileDescriptorProto extends pb_1.Message {
@@ -65,13 +70,13 @@ class FileDescriptorProto extends pb_1.Message {
         }
     }
     get name() {
-        return pb_1.Message.getFieldWithDefault(this, 1, undefined);
+        return pb_1.Message.getField(this, 1);
     }
     set name(value) {
         pb_1.Message.setField(this, 1, value);
     }
     get package() {
-        return pb_1.Message.getFieldWithDefault(this, 2, undefined);
+        return pb_1.Message.getField(this, 2);
     }
     set package(value) {
         pb_1.Message.setField(this, 2, value);
@@ -131,7 +136,7 @@ class FileDescriptorProto extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 9, value);
     }
     get syntax() {
-        return pb_1.Message.getFieldWithDefault(this, 12, undefined);
+        return pb_1.Message.getField(this, 12);
     }
     set syntax(value) {
         pb_1.Message.setField(this, 12, value);
@@ -228,7 +233,12 @@ class FileDescriptorProto extends pb_1.Message {
         }
         return message;
     }
-    serializeBinary() { throw new Error("Method not implemented."); }
+    serializeBinary() {
+        return this.serialize();
+    }
+    static deserializeBinary(bytes) {
+        return FileDescriptorProto.deserialize(bytes);
+    }
 }
 exports.FileDescriptorProto = FileDescriptorProto;
 class DescriptorProto extends pb_1.Message {
@@ -249,7 +259,7 @@ class DescriptorProto extends pb_1.Message {
         }
     }
     get name() {
-        return pb_1.Message.getFieldWithDefault(this, 1, undefined);
+        return pb_1.Message.getField(this, 1);
     }
     set name(value) {
         pb_1.Message.setField(this, 1, value);
@@ -388,7 +398,12 @@ class DescriptorProto extends pb_1.Message {
         }
         return message;
     }
-    serializeBinary() { throw new Error("Method not implemented."); }
+    serializeBinary() {
+        return this.serialize();
+    }
+    static deserializeBinary(bytes) {
+        return DescriptorProto.deserialize(bytes);
+    }
 }
 exports.DescriptorProto = DescriptorProto;
 (function (DescriptorProto) {
@@ -403,13 +418,13 @@ exports.DescriptorProto = DescriptorProto;
             }
         }
         get start() {
-            return pb_1.Message.getFieldWithDefault(this, 1, undefined);
+            return pb_1.Message.getField(this, 1);
         }
         set start(value) {
             pb_1.Message.setField(this, 1, value);
         }
         get end() {
-            return pb_1.Message.getFieldWithDefault(this, 2, undefined);
+            return pb_1.Message.getField(this, 2);
         }
         set end(value) {
             pb_1.Message.setField(this, 2, value);
@@ -458,7 +473,12 @@ exports.DescriptorProto = DescriptorProto;
             }
             return message;
         }
-        serializeBinary() { throw new Error("Method not implemented."); }
+        serializeBinary() {
+            return this.serialize();
+        }
+        static deserializeBinary(bytes) {
+            return ExtensionRange.deserialize(bytes);
+        }
     }
     DescriptorProto.ExtensionRange = ExtensionRange;
     class ReservedRange extends pb_1.Message {
@@ -471,13 +491,13 @@ exports.DescriptorProto = DescriptorProto;
             }
         }
         get start() {
-            return pb_1.Message.getFieldWithDefault(this, 1, undefined);
+            return pb_1.Message.getField(this, 1);
         }
         set start(value) {
             pb_1.Message.setField(this, 1, value);
         }
         get end() {
-            return pb_1.Message.getFieldWithDefault(this, 2, undefined);
+            return pb_1.Message.getField(this, 2);
         }
         set end(value) {
             pb_1.Message.setField(this, 2, value);
@@ -514,7 +534,12 @@ exports.DescriptorProto = DescriptorProto;
             }
             return message;
         }
-        serializeBinary() { throw new Error("Method not implemented."); }
+        serializeBinary() {
+            return this.serialize();
+        }
+        static deserializeBinary(bytes) {
+            return ReservedRange.deserialize(bytes);
+        }
     }
     DescriptorProto.ReservedRange = ReservedRange;
 })(DescriptorProto = exports.DescriptorProto || (exports.DescriptorProto = {}));
@@ -558,7 +583,12 @@ class ExtensionRangeOptions extends pb_1.Message {
         }
         return message;
     }
-    serializeBinary() { throw new Error("Method not implemented."); }
+    serializeBinary() {
+        return this.serialize();
+    }
+    static deserializeBinary(bytes) {
+        return ExtensionRangeOptions.deserialize(bytes);
+    }
 }
 exports.ExtensionRangeOptions = ExtensionRangeOptions;
 class FieldDescriptorProto extends pb_1.Message {
@@ -580,55 +610,55 @@ class FieldDescriptorProto extends pb_1.Message {
         }
     }
     get name() {
-        return pb_1.Message.getFieldWithDefault(this, 1, undefined);
+        return pb_1.Message.getField(this, 1);
     }
     set name(value) {
         pb_1.Message.setField(this, 1, value);
     }
     get number() {
-        return pb_1.Message.getFieldWithDefault(this, 3, undefined);
+        return pb_1.Message.getField(this, 3);
     }
     set number(value) {
         pb_1.Message.setField(this, 3, value);
     }
     get label() {
-        return pb_1.Message.getFieldWithDefault(this, 4, undefined);
+        return pb_1.Message.getField(this, 4);
     }
     set label(value) {
         pb_1.Message.setField(this, 4, value);
     }
     get type() {
-        return pb_1.Message.getFieldWithDefault(this, 5, undefined);
+        return pb_1.Message.getField(this, 5);
     }
     set type(value) {
         pb_1.Message.setField(this, 5, value);
     }
     get type_name() {
-        return pb_1.Message.getFieldWithDefault(this, 6, undefined);
+        return pb_1.Message.getField(this, 6);
     }
     set type_name(value) {
         pb_1.Message.setField(this, 6, value);
     }
     get extendee() {
-        return pb_1.Message.getFieldWithDefault(this, 2, undefined);
+        return pb_1.Message.getField(this, 2);
     }
     set extendee(value) {
         pb_1.Message.setField(this, 2, value);
     }
     get default_value() {
-        return pb_1.Message.getFieldWithDefault(this, 7, undefined);
+        return pb_1.Message.getField(this, 7);
     }
     set default_value(value) {
         pb_1.Message.setField(this, 7, value);
     }
     get oneof_index() {
-        return pb_1.Message.getFieldWithDefault(this, 9, undefined);
+        return pb_1.Message.getField(this, 9);
     }
     set oneof_index(value) {
         pb_1.Message.setField(this, 9, value);
     }
     get json_name() {
-        return pb_1.Message.getFieldWithDefault(this, 10, undefined);
+        return pb_1.Message.getField(this, 10);
     }
     set json_name(value) {
         pb_1.Message.setField(this, 10, value);
@@ -640,7 +670,7 @@ class FieldDescriptorProto extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 8, value);
     }
     get proto3_optional() {
-        return pb_1.Message.getFieldWithDefault(this, 17, undefined);
+        return pb_1.Message.getField(this, 17);
     }
     set proto3_optional(value) {
         pb_1.Message.setField(this, 17, value);
@@ -731,7 +761,12 @@ class FieldDescriptorProto extends pb_1.Message {
         }
         return message;
     }
-    serializeBinary() { throw new Error("Method not implemented."); }
+    serializeBinary() {
+        return this.serialize();
+    }
+    static deserializeBinary(bytes) {
+        return FieldDescriptorProto.deserialize(bytes);
+    }
 }
 exports.FieldDescriptorProto = FieldDescriptorProto;
 (function (FieldDescriptorProto) {
@@ -773,7 +808,7 @@ class OneofDescriptorProto extends pb_1.Message {
         }
     }
     get name() {
-        return pb_1.Message.getFieldWithDefault(this, 1, undefined);
+        return pb_1.Message.getField(this, 1);
     }
     set name(value) {
         pb_1.Message.setField(this, 1, value);
@@ -816,7 +851,12 @@ class OneofDescriptorProto extends pb_1.Message {
         }
         return message;
     }
-    serializeBinary() { throw new Error("Method not implemented."); }
+    serializeBinary() {
+        return this.serialize();
+    }
+    static deserializeBinary(bytes) {
+        return OneofDescriptorProto.deserialize(bytes);
+    }
 }
 exports.OneofDescriptorProto = OneofDescriptorProto;
 class EnumDescriptorProto extends pb_1.Message {
@@ -832,7 +872,7 @@ class EnumDescriptorProto extends pb_1.Message {
         }
     }
     get name() {
-        return pb_1.Message.getFieldWithDefault(this, 1, undefined);
+        return pb_1.Message.getField(this, 1);
     }
     set name(value) {
         pb_1.Message.setField(this, 1, value);
@@ -911,7 +951,12 @@ class EnumDescriptorProto extends pb_1.Message {
         }
         return message;
     }
-    serializeBinary() { throw new Error("Method not implemented."); }
+    serializeBinary() {
+        return this.serialize();
+    }
+    static deserializeBinary(bytes) {
+        return EnumDescriptorProto.deserialize(bytes);
+    }
 }
 exports.EnumDescriptorProto = EnumDescriptorProto;
 (function (EnumDescriptorProto) {
@@ -925,13 +970,13 @@ exports.EnumDescriptorProto = EnumDescriptorProto;
             }
         }
         get start() {
-            return pb_1.Message.getFieldWithDefault(this, 1, undefined);
+            return pb_1.Message.getField(this, 1);
         }
         set start(value) {
             pb_1.Message.setField(this, 1, value);
         }
         get end() {
-            return pb_1.Message.getFieldWithDefault(this, 2, undefined);
+            return pb_1.Message.getField(this, 2);
         }
         set end(value) {
             pb_1.Message.setField(this, 2, value);
@@ -968,7 +1013,12 @@ exports.EnumDescriptorProto = EnumDescriptorProto;
             }
             return message;
         }
-        serializeBinary() { throw new Error("Method not implemented."); }
+        serializeBinary() {
+            return this.serialize();
+        }
+        static deserializeBinary(bytes) {
+            return EnumReservedRange.deserialize(bytes);
+        }
     }
     EnumDescriptorProto.EnumReservedRange = EnumReservedRange;
 })(EnumDescriptorProto = exports.EnumDescriptorProto || (exports.EnumDescriptorProto = {}));
@@ -983,13 +1033,13 @@ class EnumValueDescriptorProto extends pb_1.Message {
         }
     }
     get name() {
-        return pb_1.Message.getFieldWithDefault(this, 1, undefined);
+        return pb_1.Message.getField(this, 1);
     }
     set name(value) {
         pb_1.Message.setField(this, 1, value);
     }
     get number() {
-        return pb_1.Message.getFieldWithDefault(this, 2, undefined);
+        return pb_1.Message.getField(this, 2);
     }
     set number(value) {
         pb_1.Message.setField(this, 2, value);
@@ -1038,7 +1088,12 @@ class EnumValueDescriptorProto extends pb_1.Message {
         }
         return message;
     }
-    serializeBinary() { throw new Error("Method not implemented."); }
+    serializeBinary() {
+        return this.serialize();
+    }
+    static deserializeBinary(bytes) {
+        return EnumValueDescriptorProto.deserialize(bytes);
+    }
 }
 exports.EnumValueDescriptorProto = EnumValueDescriptorProto;
 class ServiceDescriptorProto extends pb_1.Message {
@@ -1052,7 +1107,7 @@ class ServiceDescriptorProto extends pb_1.Message {
         }
     }
     get name() {
-        return pb_1.Message.getFieldWithDefault(this, 1, undefined);
+        return pb_1.Message.getField(this, 1);
     }
     set name(value) {
         pb_1.Message.setField(this, 1, value);
@@ -1107,7 +1162,12 @@ class ServiceDescriptorProto extends pb_1.Message {
         }
         return message;
     }
-    serializeBinary() { throw new Error("Method not implemented."); }
+    serializeBinary() {
+        return this.serialize();
+    }
+    static deserializeBinary(bytes) {
+        return ServiceDescriptorProto.deserialize(bytes);
+    }
 }
 exports.ServiceDescriptorProto = ServiceDescriptorProto;
 class MethodDescriptorProto extends pb_1.Message {
@@ -1124,19 +1184,19 @@ class MethodDescriptorProto extends pb_1.Message {
         }
     }
     get name() {
-        return pb_1.Message.getFieldWithDefault(this, 1, undefined);
+        return pb_1.Message.getField(this, 1);
     }
     set name(value) {
         pb_1.Message.setField(this, 1, value);
     }
     get input_type() {
-        return pb_1.Message.getFieldWithDefault(this, 2, undefined);
+        return pb_1.Message.getField(this, 2);
     }
     set input_type(value) {
         pb_1.Message.setField(this, 2, value);
     }
     get output_type() {
-        return pb_1.Message.getFieldWithDefault(this, 3, undefined);
+        return pb_1.Message.getField(this, 3);
     }
     set output_type(value) {
         pb_1.Message.setField(this, 3, value);
@@ -1148,13 +1208,13 @@ class MethodDescriptorProto extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 4, value);
     }
     get client_streaming() {
-        return pb_1.Message.getFieldWithDefault(this, 5, undefined);
+        return pb_1.Message.getFieldWithDefault(this, 5, false);
     }
     set client_streaming(value) {
         pb_1.Message.setField(this, 5, value);
     }
     get server_streaming() {
-        return pb_1.Message.getFieldWithDefault(this, 6, undefined);
+        return pb_1.Message.getFieldWithDefault(this, 6, false);
     }
     set server_streaming(value) {
         pb_1.Message.setField(this, 6, value);
@@ -1215,7 +1275,12 @@ class MethodDescriptorProto extends pb_1.Message {
         }
         return message;
     }
-    serializeBinary() { throw new Error("Method not implemented."); }
+    serializeBinary() {
+        return this.serialize();
+    }
+    static deserializeBinary(bytes) {
+        return MethodDescriptorProto.deserialize(bytes);
+    }
 }
 exports.MethodDescriptorProto = MethodDescriptorProto;
 class FileOptions extends pb_1.Message {
@@ -1247,121 +1312,121 @@ class FileOptions extends pb_1.Message {
         }
     }
     get java_package() {
-        return pb_1.Message.getFieldWithDefault(this, 1, undefined);
+        return pb_1.Message.getField(this, 1);
     }
     set java_package(value) {
         pb_1.Message.setField(this, 1, value);
     }
     get java_outer_classname() {
-        return pb_1.Message.getFieldWithDefault(this, 8, undefined);
+        return pb_1.Message.getField(this, 8);
     }
     set java_outer_classname(value) {
         pb_1.Message.setField(this, 8, value);
     }
     get java_multiple_files() {
-        return pb_1.Message.getFieldWithDefault(this, 10, undefined);
+        return pb_1.Message.getFieldWithDefault(this, 10, false);
     }
     set java_multiple_files(value) {
         pb_1.Message.setField(this, 10, value);
     }
     get java_generate_equals_and_hash() {
-        return pb_1.Message.getFieldWithDefault(this, 20, undefined);
+        return pb_1.Message.getField(this, 20);
     }
     set java_generate_equals_and_hash(value) {
         pb_1.Message.setField(this, 20, value);
     }
     get java_string_check_utf8() {
-        return pb_1.Message.getFieldWithDefault(this, 27, undefined);
+        return pb_1.Message.getFieldWithDefault(this, 27, false);
     }
     set java_string_check_utf8(value) {
         pb_1.Message.setField(this, 27, value);
     }
     get optimize_for() {
-        return pb_1.Message.getFieldWithDefault(this, 9, undefined);
+        return pb_1.Message.getFieldWithDefault(this, 9, FileOptions.OptimizeMode.SPEED);
     }
     set optimize_for(value) {
         pb_1.Message.setField(this, 9, value);
     }
     get go_package() {
-        return pb_1.Message.getFieldWithDefault(this, 11, undefined);
+        return pb_1.Message.getField(this, 11);
     }
     set go_package(value) {
         pb_1.Message.setField(this, 11, value);
     }
     get cc_generic_services() {
-        return pb_1.Message.getFieldWithDefault(this, 16, undefined);
+        return pb_1.Message.getFieldWithDefault(this, 16, false);
     }
     set cc_generic_services(value) {
         pb_1.Message.setField(this, 16, value);
     }
     get java_generic_services() {
-        return pb_1.Message.getFieldWithDefault(this, 17, undefined);
+        return pb_1.Message.getFieldWithDefault(this, 17, false);
     }
     set java_generic_services(value) {
         pb_1.Message.setField(this, 17, value);
     }
     get py_generic_services() {
-        return pb_1.Message.getFieldWithDefault(this, 18, undefined);
+        return pb_1.Message.getFieldWithDefault(this, 18, false);
     }
     set py_generic_services(value) {
         pb_1.Message.setField(this, 18, value);
     }
     get php_generic_services() {
-        return pb_1.Message.getFieldWithDefault(this, 42, undefined);
+        return pb_1.Message.getFieldWithDefault(this, 42, false);
     }
     set php_generic_services(value) {
         pb_1.Message.setField(this, 42, value);
     }
     get deprecated() {
-        return pb_1.Message.getFieldWithDefault(this, 23, undefined);
+        return pb_1.Message.getFieldWithDefault(this, 23, false);
     }
     set deprecated(value) {
         pb_1.Message.setField(this, 23, value);
     }
     get cc_enable_arenas() {
-        return pb_1.Message.getFieldWithDefault(this, 31, undefined);
+        return pb_1.Message.getFieldWithDefault(this, 31, true);
     }
     set cc_enable_arenas(value) {
         pb_1.Message.setField(this, 31, value);
     }
     get objc_class_prefix() {
-        return pb_1.Message.getFieldWithDefault(this, 36, undefined);
+        return pb_1.Message.getField(this, 36);
     }
     set objc_class_prefix(value) {
         pb_1.Message.setField(this, 36, value);
     }
     get csharp_namespace() {
-        return pb_1.Message.getFieldWithDefault(this, 37, undefined);
+        return pb_1.Message.getField(this, 37);
     }
     set csharp_namespace(value) {
         pb_1.Message.setField(this, 37, value);
     }
     get swift_prefix() {
-        return pb_1.Message.getFieldWithDefault(this, 39, undefined);
+        return pb_1.Message.getField(this, 39);
     }
     set swift_prefix(value) {
         pb_1.Message.setField(this, 39, value);
     }
     get php_class_prefix() {
-        return pb_1.Message.getFieldWithDefault(this, 40, undefined);
+        return pb_1.Message.getField(this, 40);
     }
     set php_class_prefix(value) {
         pb_1.Message.setField(this, 40, value);
     }
     get php_namespace() {
-        return pb_1.Message.getFieldWithDefault(this, 41, undefined);
+        return pb_1.Message.getField(this, 41);
     }
     set php_namespace(value) {
         pb_1.Message.setField(this, 41, value);
     }
     get php_metadata_namespace() {
-        return pb_1.Message.getFieldWithDefault(this, 44, undefined);
+        return pb_1.Message.getField(this, 44);
     }
     set php_metadata_namespace(value) {
         pb_1.Message.setField(this, 44, value);
     }
     get ruby_package() {
-        return pb_1.Message.getFieldWithDefault(this, 45, undefined);
+        return pb_1.Message.getField(this, 45);
     }
     set ruby_package(value) {
         pb_1.Message.setField(this, 45, value);
@@ -1518,7 +1583,12 @@ class FileOptions extends pb_1.Message {
         }
         return message;
     }
-    serializeBinary() { throw new Error("Method not implemented."); }
+    serializeBinary() {
+        return this.serialize();
+    }
+    static deserializeBinary(bytes) {
+        return FileOptions.deserialize(bytes);
+    }
 }
 exports.FileOptions = FileOptions;
 (function (FileOptions) {
@@ -1542,25 +1612,25 @@ class MessageOptions extends pb_1.Message {
         }
     }
     get message_set_wire_format() {
-        return pb_1.Message.getFieldWithDefault(this, 1, undefined);
+        return pb_1.Message.getFieldWithDefault(this, 1, false);
     }
     set message_set_wire_format(value) {
         pb_1.Message.setField(this, 1, value);
     }
     get no_standard_descriptor_accessor() {
-        return pb_1.Message.getFieldWithDefault(this, 2, undefined);
+        return pb_1.Message.getFieldWithDefault(this, 2, false);
     }
     set no_standard_descriptor_accessor(value) {
         pb_1.Message.setField(this, 2, value);
     }
     get deprecated() {
-        return pb_1.Message.getFieldWithDefault(this, 3, undefined);
+        return pb_1.Message.getFieldWithDefault(this, 3, false);
     }
     set deprecated(value) {
         pb_1.Message.setField(this, 3, value);
     }
     get map_entry() {
-        return pb_1.Message.getFieldWithDefault(this, 7, undefined);
+        return pb_1.Message.getField(this, 7);
     }
     set map_entry(value) {
         pb_1.Message.setField(this, 7, value);
@@ -1621,7 +1691,12 @@ class MessageOptions extends pb_1.Message {
         }
         return message;
     }
-    serializeBinary() { throw new Error("Method not implemented."); }
+    serializeBinary() {
+        return this.serialize();
+    }
+    static deserializeBinary(bytes) {
+        return MessageOptions.deserialize(bytes);
+    }
 }
 exports.MessageOptions = MessageOptions;
 class FieldOptions extends pb_1.Message {
@@ -1639,37 +1714,37 @@ class FieldOptions extends pb_1.Message {
         }
     }
     get ctype() {
-        return pb_1.Message.getFieldWithDefault(this, 1, undefined);
+        return pb_1.Message.getFieldWithDefault(this, 1, FieldOptions.CType.STRING);
     }
     set ctype(value) {
         pb_1.Message.setField(this, 1, value);
     }
     get packed() {
-        return pb_1.Message.getFieldWithDefault(this, 2, undefined);
+        return pb_1.Message.getField(this, 2);
     }
     set packed(value) {
         pb_1.Message.setField(this, 2, value);
     }
     get jstype() {
-        return pb_1.Message.getFieldWithDefault(this, 6, undefined);
+        return pb_1.Message.getFieldWithDefault(this, 6, FieldOptions.JSType.JS_NORMAL);
     }
     set jstype(value) {
         pb_1.Message.setField(this, 6, value);
     }
     get lazy() {
-        return pb_1.Message.getFieldWithDefault(this, 5, undefined);
+        return pb_1.Message.getFieldWithDefault(this, 5, false);
     }
     set lazy(value) {
         pb_1.Message.setField(this, 5, value);
     }
     get deprecated() {
-        return pb_1.Message.getFieldWithDefault(this, 3, undefined);
+        return pb_1.Message.getFieldWithDefault(this, 3, false);
     }
     set deprecated(value) {
         pb_1.Message.setField(this, 3, value);
     }
     get weak() {
-        return pb_1.Message.getFieldWithDefault(this, 10, undefined);
+        return pb_1.Message.getFieldWithDefault(this, 10, false);
     }
     set weak(value) {
         pb_1.Message.setField(this, 10, value);
@@ -1742,7 +1817,12 @@ class FieldOptions extends pb_1.Message {
         }
         return message;
     }
-    serializeBinary() { throw new Error("Method not implemented."); }
+    serializeBinary() {
+        return this.serialize();
+    }
+    static deserializeBinary(bytes) {
+        return FieldOptions.deserialize(bytes);
+    }
 }
 exports.FieldOptions = FieldOptions;
 (function (FieldOptions) {
@@ -1799,7 +1879,12 @@ class OneofOptions extends pb_1.Message {
         }
         return message;
     }
-    serializeBinary() { throw new Error("Method not implemented."); }
+    serializeBinary() {
+        return this.serialize();
+    }
+    static deserializeBinary(bytes) {
+        return OneofOptions.deserialize(bytes);
+    }
 }
 exports.OneofOptions = OneofOptions;
 class EnumOptions extends pb_1.Message {
@@ -1813,13 +1898,13 @@ class EnumOptions extends pb_1.Message {
         }
     }
     get allow_alias() {
-        return pb_1.Message.getFieldWithDefault(this, 2, undefined);
+        return pb_1.Message.getField(this, 2);
     }
     set allow_alias(value) {
         pb_1.Message.setField(this, 2, value);
     }
     get deprecated() {
-        return pb_1.Message.getFieldWithDefault(this, 3, undefined);
+        return pb_1.Message.getFieldWithDefault(this, 3, false);
     }
     set deprecated(value) {
         pb_1.Message.setField(this, 3, value);
@@ -1868,7 +1953,12 @@ class EnumOptions extends pb_1.Message {
         }
         return message;
     }
-    serializeBinary() { throw new Error("Method not implemented."); }
+    serializeBinary() {
+        return this.serialize();
+    }
+    static deserializeBinary(bytes) {
+        return EnumOptions.deserialize(bytes);
+    }
 }
 exports.EnumOptions = EnumOptions;
 class EnumValueOptions extends pb_1.Message {
@@ -1881,7 +1971,7 @@ class EnumValueOptions extends pb_1.Message {
         }
     }
     get deprecated() {
-        return pb_1.Message.getFieldWithDefault(this, 1, undefined);
+        return pb_1.Message.getFieldWithDefault(this, 1, false);
     }
     set deprecated(value) {
         pb_1.Message.setField(this, 1, value);
@@ -1924,7 +2014,12 @@ class EnumValueOptions extends pb_1.Message {
         }
         return message;
     }
-    serializeBinary() { throw new Error("Method not implemented."); }
+    serializeBinary() {
+        return this.serialize();
+    }
+    static deserializeBinary(bytes) {
+        return EnumValueOptions.deserialize(bytes);
+    }
 }
 exports.EnumValueOptions = EnumValueOptions;
 class ServiceOptions extends pb_1.Message {
@@ -1937,7 +2032,7 @@ class ServiceOptions extends pb_1.Message {
         }
     }
     get deprecated() {
-        return pb_1.Message.getFieldWithDefault(this, 33, undefined);
+        return pb_1.Message.getFieldWithDefault(this, 33, false);
     }
     set deprecated(value) {
         pb_1.Message.setField(this, 33, value);
@@ -1980,7 +2075,12 @@ class ServiceOptions extends pb_1.Message {
         }
         return message;
     }
-    serializeBinary() { throw new Error("Method not implemented."); }
+    serializeBinary() {
+        return this.serialize();
+    }
+    static deserializeBinary(bytes) {
+        return ServiceOptions.deserialize(bytes);
+    }
 }
 exports.ServiceOptions = ServiceOptions;
 class MethodOptions extends pb_1.Message {
@@ -1994,13 +2094,13 @@ class MethodOptions extends pb_1.Message {
         }
     }
     get deprecated() {
-        return pb_1.Message.getFieldWithDefault(this, 33, undefined);
+        return pb_1.Message.getFieldWithDefault(this, 33, false);
     }
     set deprecated(value) {
         pb_1.Message.setField(this, 33, value);
     }
     get idempotency_level() {
-        return pb_1.Message.getFieldWithDefault(this, 34, undefined);
+        return pb_1.Message.getFieldWithDefault(this, 34, MethodOptions.IdempotencyLevel.IDEMPOTENCY_UNKNOWN);
     }
     set idempotency_level(value) {
         pb_1.Message.setField(this, 34, value);
@@ -2049,7 +2149,12 @@ class MethodOptions extends pb_1.Message {
         }
         return message;
     }
-    serializeBinary() { throw new Error("Method not implemented."); }
+    serializeBinary() {
+        return this.serialize();
+    }
+    static deserializeBinary(bytes) {
+        return MethodOptions.deserialize(bytes);
+    }
 }
 exports.MethodOptions = MethodOptions;
 (function (MethodOptions) {
@@ -2081,37 +2186,37 @@ class UninterpretedOption extends pb_1.Message {
         pb_1.Message.setRepeatedWrapperField(this, 2, value);
     }
     get identifier_value() {
-        return pb_1.Message.getFieldWithDefault(this, 3, undefined);
+        return pb_1.Message.getField(this, 3);
     }
     set identifier_value(value) {
         pb_1.Message.setField(this, 3, value);
     }
     get positive_int_value() {
-        return pb_1.Message.getFieldWithDefault(this, 4, undefined);
+        return pb_1.Message.getField(this, 4);
     }
     set positive_int_value(value) {
         pb_1.Message.setField(this, 4, value);
     }
     get negative_int_value() {
-        return pb_1.Message.getFieldWithDefault(this, 5, undefined);
+        return pb_1.Message.getField(this, 5);
     }
     set negative_int_value(value) {
         pb_1.Message.setField(this, 5, value);
     }
     get double_value() {
-        return pb_1.Message.getFieldWithDefault(this, 6, undefined);
+        return pb_1.Message.getField(this, 6);
     }
     set double_value(value) {
         pb_1.Message.setField(this, 6, value);
     }
     get string_value() {
-        return pb_1.Message.getFieldWithDefault(this, 7, undefined);
+        return pb_1.Message.getField(this, 7);
     }
     set string_value(value) {
         pb_1.Message.setField(this, 7, value);
     }
     get aggregate_value() {
-        return pb_1.Message.getFieldWithDefault(this, 8, undefined);
+        return pb_1.Message.getField(this, 8);
     }
     set aggregate_value(value) {
         pb_1.Message.setField(this, 8, value);
@@ -2178,7 +2283,12 @@ class UninterpretedOption extends pb_1.Message {
         }
         return message;
     }
-    serializeBinary() { throw new Error("Method not implemented."); }
+    serializeBinary() {
+        return this.serialize();
+    }
+    static deserializeBinary(bytes) {
+        return UninterpretedOption.deserialize(bytes);
+    }
 }
 exports.UninterpretedOption = UninterpretedOption;
 (function (UninterpretedOption) {
@@ -2192,13 +2302,13 @@ exports.UninterpretedOption = UninterpretedOption;
             }
         }
         get name_part() {
-            return pb_1.Message.getFieldWithDefault(this, 1, undefined);
+            return pb_1.Message.getField(this, 1);
         }
         set name_part(value) {
             pb_1.Message.setField(this, 1, value);
         }
         get is_extension() {
-            return pb_1.Message.getFieldWithDefault(this, 2, undefined);
+            return pb_1.Message.getField(this, 2);
         }
         set is_extension(value) {
             pb_1.Message.setField(this, 2, value);
@@ -2235,7 +2345,12 @@ exports.UninterpretedOption = UninterpretedOption;
             }
             return message;
         }
-        serializeBinary() { throw new Error("Method not implemented."); }
+        serializeBinary() {
+            return this.serialize();
+        }
+        static deserializeBinary(bytes) {
+            return NamePart.deserialize(bytes);
+        }
     }
     UninterpretedOption.NamePart = NamePart;
 })(UninterpretedOption = exports.UninterpretedOption || (exports.UninterpretedOption = {}));
@@ -2279,7 +2394,12 @@ class SourceCodeInfo extends pb_1.Message {
         }
         return message;
     }
-    serializeBinary() { throw new Error("Method not implemented."); }
+    serializeBinary() {
+        return this.serialize();
+    }
+    static deserializeBinary(bytes) {
+        return SourceCodeInfo.deserialize(bytes);
+    }
 }
 exports.SourceCodeInfo = SourceCodeInfo;
 (function (SourceCodeInfo) {
@@ -2308,13 +2428,13 @@ exports.SourceCodeInfo = SourceCodeInfo;
             pb_1.Message.setField(this, 2, value);
         }
         get leading_comments() {
-            return pb_1.Message.getFieldWithDefault(this, 3, undefined);
+            return pb_1.Message.getField(this, 3);
         }
         set leading_comments(value) {
             pb_1.Message.setField(this, 3, value);
         }
         get trailing_comments() {
-            return pb_1.Message.getFieldWithDefault(this, 4, undefined);
+            return pb_1.Message.getField(this, 4);
         }
         set trailing_comments(value) {
             pb_1.Message.setField(this, 4, value);
@@ -2375,7 +2495,12 @@ exports.SourceCodeInfo = SourceCodeInfo;
             }
             return message;
         }
-        serializeBinary() { throw new Error("Method not implemented."); }
+        serializeBinary() {
+            return this.serialize();
+        }
+        static deserializeBinary(bytes) {
+            return Location.deserialize(bytes);
+        }
     }
     SourceCodeInfo.Location = Location;
 })(SourceCodeInfo = exports.SourceCodeInfo || (exports.SourceCodeInfo = {}));
@@ -2419,7 +2544,12 @@ class GeneratedCodeInfo extends pb_1.Message {
         }
         return message;
     }
-    serializeBinary() { throw new Error("Method not implemented."); }
+    serializeBinary() {
+        return this.serialize();
+    }
+    static deserializeBinary(bytes) {
+        return GeneratedCodeInfo.deserialize(bytes);
+    }
 }
 exports.GeneratedCodeInfo = GeneratedCodeInfo;
 (function (GeneratedCodeInfo) {
@@ -2441,19 +2571,19 @@ exports.GeneratedCodeInfo = GeneratedCodeInfo;
             pb_1.Message.setField(this, 1, value);
         }
         get source_file() {
-            return pb_1.Message.getFieldWithDefault(this, 2, undefined);
+            return pb_1.Message.getField(this, 2);
         }
         set source_file(value) {
             pb_1.Message.setField(this, 2, value);
         }
         get begin() {
-            return pb_1.Message.getFieldWithDefault(this, 3, undefined);
+            return pb_1.Message.getField(this, 3);
         }
         set begin(value) {
             pb_1.Message.setField(this, 3, value);
         }
         get end() {
-            return pb_1.Message.getFieldWithDefault(this, 4, undefined);
+            return pb_1.Message.getField(this, 4);
         }
         set end(value) {
             pb_1.Message.setField(this, 4, value);
@@ -2502,7 +2632,12 @@ exports.GeneratedCodeInfo = GeneratedCodeInfo;
             }
             return message;
         }
-        serializeBinary() { throw new Error("Method not implemented."); }
+        serializeBinary() {
+            return this.serialize();
+        }
+        static deserializeBinary(bytes) {
+            return Annotation.deserialize(bytes);
+        }
     }
     GeneratedCodeInfo.Annotation = Annotation;
 })(GeneratedCodeInfo = exports.GeneratedCodeInfo || (exports.GeneratedCodeInfo = {}));
