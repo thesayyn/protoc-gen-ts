@@ -18,6 +18,8 @@ jobs:
         os: [ubuntu-latest, windows-latest, macos-latest]
     steps:
       - uses: actions/checkout@v2
+        with:
+          submodules: 'recursive'
       - name: Setup node 12
         uses: actions/setup-node@v2
         with:
