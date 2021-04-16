@@ -19,7 +19,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          submodules: 'recursive'
+          submodules: true
       - name: Setup node 12
         uses: actions/setup-node@v2
         with:
