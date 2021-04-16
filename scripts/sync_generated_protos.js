@@ -9,7 +9,7 @@ const objects = fs.readdirSync(sourceDir);
 let check = (object) => object.endsWith(".ts") && !object.endsWith(".spec.ts") && !object.endsWith(".d.ts");
 
 if ( dtsAndJs ) {
-    check = (object) => object.endsWith(".js") || object.endsWith(".d.ts");
+    check = (object) => object.endsWith(".js");
 }
 
 for (const object of objects) {
