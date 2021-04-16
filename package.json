@@ -1,7 +1,7 @@
 {
   "name": "protoc-gen-ts",
-  "description": "Compile proto files to Typescript.",
-  "version": "",
+  "description": "Compile protocol buffers descriptors to Typescript.",
+  "version": "0.3.5",
   "license": "MIT",
   "author": {
     "email": "thesayyn@gmail.com",
