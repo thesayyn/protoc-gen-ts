@@ -87,15 +87,13 @@ ts_proto_library = rule(
             default = "@grpc/grpc-js"
         ),
         "protoc_gen_ts_bin": attr.label(
-            allow_single_file = True,
             executable = True,
-            cfg = "host",
-            default =  (
+            cfg = "exec",
+            default = (
                 "//bin:protoc-gen-ts"
             ),
         ),
         "_protoc": attr.label(
-            allow_single_file = True,
             executable = True,
             cfg = "exec",
             default = (

@@ -16,11 +16,8 @@ for (const object of objects) {
     if (check(object)) {
         const sourcePath = `${sourceDir}/${object}`;
         const targetPath = `${destDir}/${object}`;
-        if (fs.statSync(sourcePath).isFile()) {
-            if (fs.existsSync(targetPath)) {
-                fs.unlinkSync(targetPath);
-            }
-            fs.copyFileSync(sourcePath, targetPath);
-        }
+
+        fs.writeFileSync(targetPath, fs.readFileSync(sourcePath));
+        
     }
 }

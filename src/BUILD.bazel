@@ -1,3 +1,4 @@
+package(default_visibility = ["//visibility:public"])
 
 load("@npm//@bazel/typescript:index.bzl", "ts_project")
 load("@rules_proto//proto:defs.bzl", "proto_library")
@@ -5,7 +6,7 @@ load("//:index.bzl", "ts_proto_library")
 
 proto_library(
     name = "protos",
-    srcs = glob(["*.proto"])
+    srcs = glob(["compiler/*.proto"])
 )
 
 ts_proto_library(
@@ -18,10 +19,7 @@ ts_proto_library(
 
 ts_project(
     name = "compiler",
-    srcs = glob(
-        include = ["*.ts"],
-        exclude = ["*.d.ts"]
-    ),
+    srcs = glob(["compiler/*.ts"]),
     tsconfig = {
         "compilerOptions": {
             "target": "ES2020",
@@ -30,9 +28,22 @@ ts_project(
         },
     },
     deps = [
-        "@npm//@types/jasmine",
-        "@npm//@types/node",
         "@npm//google-protobuf",
         "@npm//@grpc/grpc-js",
     ],
 )
+
+load("@build_bazel_rules_nodejs//:index.bzl", "js_library")
+
+js_library(
+    name = "src",
+    srcs = glob(["**/*.js"]),
+    deps = [
+        "@npm//google-protobuf",
+        "@npm//@grpc/grpc-js",
+        "@npm//typescript",
+        "@npm//@types/node"
+    ]
+)
+
+exports_files(["index.js"])

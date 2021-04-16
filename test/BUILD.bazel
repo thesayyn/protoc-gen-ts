@@ -6,7 +6,7 @@ load("//:index.bzl", "ts_proto_library")
 
 proto_library(
     name = "protos",
-    srcs = glob(["*.proto"])
+    srcs = glob(["**/*.proto"])
 )
 
 ts_proto_library(
