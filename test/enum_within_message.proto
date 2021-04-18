@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package main;
+
+message Code {
+  enum Language {
+    UNKNOWN = 0;
+    C = 1;
+    CPP = 2;
+  }
+
+  Language language = 1;
+  int32 lines = 2;
+}

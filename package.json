@@ -1,7 +1,7 @@
 {
   "name": "protoc-gen-ts",
-  "description": "Compile proto files to typescript.",
-  "private": true,
+  "description": "Compile protocol buffers descriptors to Typescript.",
+  "version": "0.3.5",
   "license": "MIT",
   "author": {
     "email": "thesayyn@gmail.com",
@@ -9,20 +9,28 @@
     "url": "https://github.com/thesayyn"
   },
   "scripts": {
-    "bazel": "bazelisk",
-    "test": "yarn bazel test //test/... --test_output=errors",
-    "release": "yarn bazel run -- -- //:npm_package.publish --access public --tag latest"
+    "test": "bazel build //test:codegen && node ./scripts/sync_generated_protos.js test && bazel test //test/... --test_output=errors",
+    "release": "bazel run //:npm_package.publish --access public --tag latest",
+    "codegen": "node ./scripts/sync_compiler_protos.js && bazel build //src:codegen && node ./scripts/sync_generated_protos.js src/compiler && bazel build //src:compiler && node ./scripts/sync_generated_protos.js src/compiler js"
+  },
+  "bin": {
+    "protoc-gen-ts": "./src/index.js"
+  },
+  "peerDependencies": {
+    "google-protobuf": "^3.13.0",
+    "typescript": "^4.0.2"
   },
   "devDependencies": {
     "@bazel/bazelisk": "^1.6.1",
-    "@bazel/jasmine": "^2.2.0",
-    "@bazel/typescript": "^2.2.0",
-    "@types/google-protobuf": "^3.7.2",
+    "@bazel/jasmine": "^3.2.2",
+    "@bazel/typescript": "^3.2.2",
+    "@grpc/grpc-js": "^1.2.10",
+    "@types/google-protobuf": "^3.2.7",
     "@types/jasmine": "^3.5.9",
+    "@types/node": "^12.12.2",
     "google-protobuf": "^3.11.4",
-    "@grpc/grpc-js": "^1.2.5",
-    "jasmine": "^3.6.1",
-    "jasmine-core": "^3.6.0",
-    "typescript": "^3.8.3"
+    "jasmine": "^3.7.0",
+    "jasmine-core": "^3.7.1",
+    "typescript": "^4.0.2"
   }
 }

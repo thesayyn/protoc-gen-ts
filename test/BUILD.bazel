@@ -1,26 +1,31 @@
-load("@protoc_gen_ts//:index.from-src.bzl", "ts_proto_library")
-load("@rules_proto//proto:defs.bzl", "proto_library")
-load("@npm//@bazel/typescript:index.bzl", "ts_library")
+
 load("@npm//@bazel/jasmine:index.bzl", "jasmine_node_test")
+load("@npm//@bazel/typescript:index.bzl", "ts_project")
+load("@rules_proto//proto:defs.bzl", "proto_library")
+load("//:index.bzl", "ts_proto_library")
 
 proto_library(
     name = "protos",
-    srcs = glob(["protos/*.proto"]),
+    srcs = glob(["**/*.proto"])
 )
 
 ts_proto_library(
-    name = "proto_ts",
+    name = "codegen",
     experimental_features = True,
     deps = [
         ":protos",
     ],
 )
 
-ts_library(
+ts_project(
     name = "test_lib",
-    srcs = glob(["integration/*.spec.ts"]) + [
-        ":proto_ts",
-    ],
+    srcs = glob(["*.ts"]),
+    tsconfig = {
+        "compilerOptions": {
+            "target": "ES2020",
+            "module": "CommonJS"
+        },
+    },
     deps = [
         "@npm//@types/jasmine",
         "@npm//@types/node",
@@ -30,7 +35,7 @@ ts_library(
 )
 
 jasmine_node_test(
-    name = "integration",
+    name = "test",
     deps = [
         ":test_lib",
     ],

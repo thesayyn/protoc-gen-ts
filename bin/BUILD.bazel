@@ -1,0 +1,13 @@
+load("@build_bazel_rules_nodejs//:index.bzl", "nodejs_binary")
+
+package(default_visibility = ["//visibility:public"])
+
+nodejs_binary(
+    name = "protoc-gen-ts",
+    entry_point = "//src:index.js",
+    data = [
+        "//src",
+    ],
+    # See: https://github.com/bazelbuild/rules_nodejs/issues/2600
+    templated_args = ["--bazel_patch_module_resolver"],
+)

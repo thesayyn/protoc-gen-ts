@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package importdirective.a;
+
+import "test/imported.proto";
+
+message Message {
+    b.Imported importedField = 1;
+    b.Imported.SubMessage submessageField = 2;
+    b.Imported.SubMessage.MyEnum enumField = 3;
+}

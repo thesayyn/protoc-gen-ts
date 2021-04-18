@@ -18,6 +18,7 @@ If you find this plugin useful please consider supporting me to continue working
 <img height="40px" src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=🙌&slug=thesayyn&button_colour=FFDD00&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=ffffff">
 </a>
 
+
 ## Example
 
 ```proto
@@ -87,20 +88,31 @@ ts_proto_library(
 # Checkout the examples/bazel directory for an example.
 ```
 
+
+## Environment variables
+
+```sh
+# This controls experimental features such as 'Promise' based rpcs.
+export EXPERIMENTAL_FEATURES=true;
+
+
+# This controls the "import statement" for the outputs.
+# this is here for legacy purposes.
+export GRPC_PACKAGE_NAME="@grpc/grpc-js";
+# or 
+export GRPC_PACKAGE_NAME="@grpc/grpc";
+
+```
 ## Roadmap
 
 - <s>Support for repeated non-integer fields</s>
 - <s>Generate appropriate service code that is usable with node **grpc** package.</s>
 - <s>Support for creating protocol buffer messages directly from their constructors with an object.</s>
-- Support `map<TYPE, TYPE>` fields.
-- Support for `import` directive.
-- Interopability with well knowns.
-
-
-## Ideas
+- <s>Support for `import` directive.</s>
+- <s>Support for `Promise` in rpcs.</s>
+- <s>Make services strongly typed.</s>
 - Support `map<TYPE, TYPE>` types as ES `Map`.
-- Make services strongly typed.
-- Support for `Promise` in rpcs.
+- Interopability with well knowns.
 
 
 ## Alternatives
@@ -110,3 +122,14 @@ ts_proto_library(
 | thesayyn/protoc-gen-ts | Yes | Yes | Yes | Yes | Partial | Yes | The generated messages are compatible with ever-green browsers.<br>However, you might need to use third-party packages to use rpcs. |
 | improbable-eng/ts-protoc-gen | Yes | No | Yes | No | Yes | Partial | Drawback: You can't bundle generated files with rollup since<br>they are not >= ES6 compatible. |
 | stephenh/ts-proto | No | Yes | Yes | No | No | Yes | There is no support for rpcs.<br>See: https://github.com/stephenh/ts-proto/issues/2 |
+
+
+## Development
+
+```sh
+# to run test invoke
+yarn test
+# additionally if you want to see error details
+yarn test --test_output=errors
+
+```

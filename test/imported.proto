@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package importdirective.b;
+
+message Imported {
+  message SubMessage {
+    enum MyEnum {
+      VALUE = 0;
+    }
+  }
+}
