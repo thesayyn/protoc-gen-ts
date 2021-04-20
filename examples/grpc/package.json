@@ -7,12 +7,12 @@
   "dependencies": {
     "@grpc/grpc-js": "^1.1.7",
     "google-protobuf": "^3.11.4",
-    "protoc-gen-ts": "^0.3.3"
-},
-"devDependencies": {
-    "@bazel/typescript": "^2.2.0",
+    "protoc-gen-ts": "file:../../bazel-bin/package"
+  },
+  "devDependencies": {
     "@bazel/bazelisk": "^1.6.1",
+    "@bazel/typescript": "^2.2.0",
     "@types/google-protobuf": "^3.2.7",
     "typescript": "^3.8.3"
-}
+  }
 }

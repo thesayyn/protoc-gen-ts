@@ -19,7 +19,12 @@ function createImport(identifier, moduleSpecifier) {
  * @param {descriptor.DescriptorProto} messageDescriptor
  */
 function createToObject(rootDescriptor, messageDescriptor) {
+
+  const statements = [];
+
   const properties = [];
+
+  const dataIdentifier = ts.factory.createIdentifier("data");
 
   for (const fieldDescriptor of messageDescriptor.field) {
     let propertyAccessExpression = ts.factory.createPropertyAccessExpression(
@@ -62,22 +67,63 @@ function createToObject(rootDescriptor, messageDescriptor) {
           [arrowFunc]
         );
       } else {
-        propertyAccessExpression = ts.factory.createBinaryExpression(
-          propertyAccessExpression,
-          ts.SyntaxKind.AmpersandAmpersandToken,
-          ts.factory.createCallExpression(
-            ts.factory.createPropertyAccessExpression(propertyAccessExpression, "toObject")
-          )
+        propertyAccessExpression = ts.factory.createCallExpression(
+          ts.factory.createPropertyAccessExpression(propertyAccessExpression, "toObject")
         );
       }
     }
-    properties.push(
-      ts.factory.createPropertyAssignment(
-        ts.factory.createIdentifier(fieldDescriptor.name),
-        propertyAccessExpression
+
+    if (isOptional(fieldDescriptor)) {
+      statements.push(
+        ts.factory.createIfStatement(
+          ts.factory.createBinaryExpression(
+            ts.factory.createPropertyAccessExpression(
+              ts.factory.createThis(),
+              fieldDescriptor.name
+            ),
+            ts.factory.createToken(ts.SyntaxKind.ExclamationEqualsToken),
+            ts.factory.createNull()
+          ),
+          ts.factory.createBlock([
+            ts.factory.createExpressionStatement(
+              ts.factory.createBinaryExpression(
+                ts.factory.createPropertyAccessExpression(dataIdentifier, fieldDescriptor.name),
+                ts.factory.createToken(ts.SyntaxKind.EqualsToken),
+                propertyAccessExpression
+              )
+            )
+          ], true)
+        )
       )
-    );
+    } else {
+      properties.push(
+        ts.factory.createPropertyAssignment(
+          fieldDescriptor.name,
+          propertyAccessExpression
+        )
+      );
+    }
+
   }
+
+
+  statements.unshift(
+    ts.factory.createVariableStatement(undefined,
+      ts.factory.createVariableDeclarationList([
+        ts.factory.createVariableDeclaration(
+          "data",
+          undefined,
+          createFlatMessageSignature(rootDescriptor, messageDescriptor),
+          ts.factory.createObjectLiteralExpression(properties, true)
+        )
+      ])
+    )
+  )
+
+
+
+  statements.push(ts.factory.createReturnStatement(dataIdentifier))
+
 
   return ts.factory.createMethodDeclaration(
     undefined,
@@ -88,10 +134,7 @@ function createToObject(rootDescriptor, messageDescriptor) {
     undefined,
     undefined,
     undefined,
-    ts.factory.createBlock(
-      [ts.factory.createReturnStatement(ts.factory.createObjectLiteralExpression(properties, true))],
-      true
-    )
+    ts.factory.createBlock(statements, true)
   );
 }
 
@@ -124,26 +167,120 @@ function createNamespace(packageName, statements) {
  * @param {descriptor.FileDescriptorProto} rootDescriptor 
  * @param {descriptor.DescriptorProto} messageDescriptor
  */
-function createTypeLiteral(rootDescriptor, messageDescriptor) {
-  const members = [];
+function createMessageSignature(rootDescriptor, messageDescriptor) {
+
+  const oneOfSignatures = [];
+  for (const [index] of messageDescriptor.oneof_decl.entries()) {
+
+    const childSignatures = [];
+
+    for (const currentFieldDescriptor of messageDescriptor.field) {
+      if (currentFieldDescriptor.oneof_index != index) {
+        continue;
+      }
+
+      const members = [];
+
+      for (const fieldDescriptor of messageDescriptor.field) {
+        if (fieldDescriptor.oneof_index != index) {
+          continue;
+        }
+        let fieldType = ts.factory.createTypeReferenceNode("never")
+        let optional = ts.factory.createToken(ts.SyntaxKind.QuestionToken);
+        if (fieldDescriptor == currentFieldDescriptor) {
+          fieldType = wrapRepeatedType(
+            getType(fieldDescriptor, rootDescriptor),
+            fieldDescriptor
+          );
+          optional = undefined
+        }
+        members.push(ts.factory.createPropertySignature(
+          undefined,
+          fieldDescriptor.name,
+          optional,
+          fieldType
+        ))
+      }
+
+      childSignatures.push(
+        ts.factory.createTypeLiteralNode(members)
+      )
+    }
+
+    oneOfSignatures.push(ts.factory.createUnionTypeNode(childSignatures))
+  }
+
+  const fieldSignatures = [];
 
   for (const fieldDescriptor of messageDescriptor.field) {
-    // TODO: Check if the field is optional
-    members.push(
+
+    if (typeof fieldDescriptor.oneof_index == "number") {
+      continue;
+    }
+
+    const fieldType = wrapRepeatedType(
+      getType(fieldDescriptor, rootDescriptor),
+      fieldDescriptor
+    );
+
+    fieldSignatures.push(
       ts.factory.createPropertySignature(
         undefined,
         fieldDescriptor.name,
-        ts.factory.createToken(ts.SyntaxKind.QuestionToken),
-        wrapRepeatedType(
-          getType(fieldDescriptor, rootDescriptor),
-          fieldDescriptor
-        ),
-        undefined
+        isOptional(fieldDescriptor) ? ts.factory.createToken(ts.SyntaxKind.QuestionToken) : undefined,
+        fieldType
       )
     );
   }
-  return ts.factory.createTypeLiteralNode(members);
+
+  if (oneOfSignatures.length) {
+    return ts.factory.createIntersectionTypeNode([
+      ts.factory.createTypeLiteralNode(fieldSignatures),
+      ts.factory.createUnionTypeNode(oneOfSignatures)
+    ])
+  }
+
+  return ts.factory.createTypeLiteralNode(fieldSignatures);
 }
+
+/**
+ * 
+ * @param {descriptor.FileDescriptorProto} rootDescriptor 
+ * @param {descriptor.DescriptorProto} messageDescriptor
+ */
+ function createFlatMessageSignature(rootDescriptor, messageDescriptor) {
+
+  const fieldSignatures = [];
+
+  for (const fieldDescriptor of messageDescriptor.field) {
+    let fieldType =  getType(fieldDescriptor, rootDescriptor);
+
+    if ( isMessage(fieldDescriptor) ) {
+      fieldType = ts.factory.createTypeReferenceNode(
+        "ReturnType",
+        [
+          ts.factory.createTypeOfExpression(
+            ts.factory.createPropertyAccessExpression(ts.factory.createPropertyAccessExpression(fieldType, "prototype"), "toObject")
+          ) 
+        ]
+      )
+    }
+
+    fieldType = wrapRepeatedType(fieldType, fieldDescriptor);
+
+    fieldSignatures.push(
+      ts.factory.createPropertySignature(
+        undefined,
+        fieldDescriptor.name,
+        isOptional(fieldDescriptor) ? ts.factory.createToken(ts.SyntaxKind.QuestionToken) : undefined,
+        fieldType
+      )
+    );
+  }
+
+  return ts.factory.createTypeLiteralNode(fieldSignatures);
+}
+
 
 /**
  * 
@@ -163,8 +300,21 @@ function createConstructor(
     ts.factory.createArrayTypeNode(
       ts.factory.createTypeReferenceNode(ts.factory.createIdentifier("any"), undefined)
     ) /* any[] */,
-    createTypeLiteral(rootDescriptor, messageDescriptor),
+    createMessageSignature(rootDescriptor, messageDescriptor),
   ]);
+
+
+  // Create super(); statement
+  statements.push(
+    ts.factory.createExpressionStatement(ts.factory.createCallExpression(ts.factory.createSuper()))
+  );
+
+  // Get oneOfFields
+  const oneOfFields = messageDescriptor.oneof_decl.map((_, index) => {
+    return ts.factory.createArrayLiteralExpression(messageDescriptor.field
+      .filter(fd => index == fd.oneof_index)
+      .map((fd) => ts.factory.createNumericLiteral(fd.number)))
+  });
 
   // Get repeated fields numbers
   const repeatedFields = messageDescriptor.field
@@ -172,11 +322,6 @@ function createConstructor(
       (fd) => isRepeated(fd)
     )
     .map((fd) => ts.factory.createNumericLiteral(fd.number))
-
-  // Create super(); statement
-  statements.push(
-    ts.factory.createExpressionStatement(ts.factory.createCallExpression(ts.factory.createSuper()))
-  );
 
   // Create initialize(); statement
   statements.push(
@@ -189,19 +334,21 @@ function createConstructor(
         undefined,
         [
           ts.factory.createThis(),
-          ts.factory.createBinaryExpression(
+          ts.factory.createConditionalExpression(
             ts.factory.createCallExpression(
               ts.factory.createPropertyAccessExpression(ts.factory.createIdentifier("Array"), "isArray"),
               undefined,
               [dataIdentifier]
             ),
-            ts.SyntaxKind.AmpersandAmpersandToken,
-            dataIdentifier
+            ts.factory.createToken(ts.SyntaxKind.QuestionToken),
+            dataIdentifier,
+            ts.factory.createToken(ts.SyntaxKind.ColonToken),
+            ts.factory.createArrayLiteralExpression()
           ),
           ts.factory.createNumericLiteral("0"),
           ts.factory.createNumericLiteral("-1") /* TODO: Handle extensions */,
           ts.factory.createArrayLiteralExpression(repeatedFields),
-          ts.factory.createNull() /* TODO: Handle oneofFields */,
+          ts.factory.createArrayLiteralExpression(oneOfFields),
         ]
       )
     )
@@ -227,8 +374,8 @@ function createConstructor(
       ),
       ts.factory.createBlock(
         messageDescriptor.field
-          .map((fieldDescriptor) =>
-            ts.factory.createExpressionStatement(
+          .map((fieldDescriptor) => {
+            const assigmentExpression = ts.factory.createExpressionStatement(
               ts.factory.createBinaryExpression(
                 ts.factory.createPropertyAccessExpression(
                   ts.factory.createThis(),
@@ -240,8 +387,19 @@ function createConstructor(
                   fieldDescriptor.name
                 )
               )
+            );
+            if (!isOptional(fieldDescriptor)) {
+              return assigmentExpression;
+            }
+            return ts.factory.createIfStatement(
+              ts.factory.createBinaryExpression(
+                ts.factory.createStringLiteral(fieldDescriptor.name),
+                ts.factory.createToken(ts.SyntaxKind.InKeyword),
+                dataIdentifier
+              ),
+              ts.factory.createBlock([assigmentExpression], true)
             )
-          )
+          })
       )
     )
   );
@@ -351,6 +509,15 @@ function isEnum(fieldDescriptor) {
   );
 }
 
+/**
+ * @param {descriptor.FieldDescriptorProto} fieldDescriptor 
+ */
+function isOptional(fieldDescriptor) {
+  return (
+    fieldDescriptor.label ==
+    descriptor.FieldDescriptorProto.Label.LABEL_OPTIONAL || fieldDescriptor.proto3_optional
+  );
+}
 
 /**
  * @param {descriptor.FieldDescriptorProto} fieldDescriptor 

@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+message OneOfWithoutAnyOtherFields {
+    oneof NickNameOrRealName {
+       string nickname = 1;
+       string realname = 2;
+    }
+
+    oneof AgeOrDateOfBirth {
+        string date_of_birth = 3;
+        string age = 4;
+    }
+}
+
+
+
+message OneOf{
+
+    string nickname = 1;
+
+    oneof AgeOrDateOfBirth {
+        string date_of_birth = 3;
+        string age = 4;
+    }
+}

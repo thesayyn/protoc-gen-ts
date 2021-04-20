@@ -16,8 +16,6 @@ for (const object of objects) {
     if (check(object)) {
         const sourcePath = `${sourceDir}/${object}`;
         const targetPath = `${destDir}/${object}`;
-
         fs.writeFileSync(targetPath, fs.readFileSync(sourcePath));
-        
     }
 }
