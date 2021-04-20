@@ -3,7 +3,7 @@ package(default_visibility = ["//visibility:public"])
 load("@build_bazel_rules_nodejs//:index.bzl", "pkg_npm")
 
 pkg_npm(
-    name = "pkg",
+    name = "package",
     srcs = [
         "index.bzl",
         "package.json",

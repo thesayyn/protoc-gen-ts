@@ -1,15 +1,16 @@
 console.log(require("fs").readdirSync("."));
-import {Message, SubMessage} from "./messagefields";
+import { Message, SubMessage } from "./messagefields";
 
 describe("SubMessages", () => {
 
 
-    it("should be serialized",() => {
+    it("should be serialized", () => {
         const mymsg = new Message({
             sub_message: new SubMessage({
                 field_1: "field_1_value",
                 field_2: "field_2_value"
-            })
+            }),
+            array_prop: [new SubMessage()]
 
         });
 
@@ -25,7 +26,8 @@ describe("SubMessages", () => {
             sub_message: new SubMessage({
                 field_1: "field_1_value",
                 field_2: "field_2_value"
-            })
+            }),
+            array_prop: [new SubMessage()]
 
         });
 
@@ -34,24 +36,23 @@ describe("SubMessages", () => {
                 field_1: "field_1_value",
                 field_2: "field_2_value"
             },
-            array_prop: []
+            array_prop: [{}]
         })
     })
 
     it("should be converted to plain object arrays", () => {
         const mymsg = new Message({
             array_prop: [
-                new SubMessage({field_1: "field_1_value0", field_2: "field_2_value0"}),
-                new SubMessage({field_1: "field_1_value1", field_2: "field_2_value1"}),
+                new SubMessage({ field_1: "field_1_value0", field_2: "field_2_value0" }),
+                new SubMessage({ field_1: "field_1_value1", field_2: "field_2_value1" }),
             ]
         });
 
         expect(mymsg.toObject()).toEqual({
-            sub_message: undefined,
             array_prop: [
-                    {field_1: "field_1_value0", field_2: "field_2_value0"},
-                    {field_1: "field_1_value1",  field_2: "field_2_value1"},
-                ]
+                { field_1: "field_1_value0", field_2: "field_2_value0" },
+                { field_1: "field_1_value1", field_2: "field_2_value1" },
+            ]
         })
     })
 
@@ -59,7 +60,7 @@ describe("SubMessages", () => {
     it("should be converted to undefined", () => {
         const mymsg = new Message();
 
-        expect(mymsg.toObject()).toEqual({sub_message: undefined, array_prop: []})
+        expect(mymsg.toObject()).toEqual({ array_prop: [] })
     })
 
 })

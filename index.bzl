@@ -1,5 +1,11 @@
 load("@rules_proto//proto:defs.bzl", "ProtoInfo")
 
+def _get_bin(): 
+    # BEGIN-INTERNAL
+    return "//bin:protoc-gen-ts"
+    # END-INTERNAL
+    return "//protoc-gen-ts"
+
 def _proto_path(proto):
     """
     The proto path is not really a file path
@@ -70,6 +76,9 @@ def _ts_proto_library(ctx):
     ]
 
 
+
+
+
 ts_proto_library = rule(
     implementation = _ts_proto_library,
     attrs = {
@@ -89,9 +98,7 @@ ts_proto_library = rule(
         "protoc_gen_ts_bin": attr.label(
             executable = True,
             cfg = "exec",
-            default = (
-                "//bin:protoc-gen-ts"
-            ),
+            default = _get_bin(),
         ),
         "_protoc": attr.label(
             executable = True,
