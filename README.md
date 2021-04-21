@@ -10,19 +10,6 @@ This plugin generates plain **Typescript** files that can be used AMD, UMD, Comm
 
 Aim of this protoc plugin is to make usage of protocol buffers easy in Javascript/Typescript by taking modern approaches.
 
-## Support
-
-If you find this plugin useful please consider giving us a star to get into open collective.
-
-You can also support me directly by buying me one or two coffee, 
-
-<a href="https://www.buymeacoffee.com/thesayyn">
-<img height="40px" src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=🙌&slug=thesayyn&button_colour=FFDD00&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=ffffff">
-</a>
-
-
-<b>I really need your support to continue working on this plugin.</b>
-
 ## Example
 
 ```proto
@@ -58,6 +45,17 @@ console.log(receivedChange.kind == Kind.UPDATE) // true
 console.log(receivedChange.patch) // "@@ -7,11 +7,15 @@"
 console.log(receivedChange.tags) // ["no prefix", "as is"]
 ```
+
+## Support
+
+If you find this plugin useful please consider giving us a star to get into open collective.
+
+You can also support me directly by buying me one or two coffee, 
+
+<a href="https://www.buymeacoffee.com/thesayyn">
+<img height="40px" src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=🙌&slug=thesayyn&button_colour=FFDD00&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=ffffff">
+</a>
+
 
 
 ## Key Differences
