@@ -4,7 +4,7 @@ def _get_bin():
     # BEGIN-INTERNAL
     return "//bin:protoc-gen-ts"
     # END-INTERNAL
-    return "//protoc-gen-ts"
+    return "//protoc-gen-ts/bin:protoc-gen-ts"
 
 def _proto_path(proto):
     """

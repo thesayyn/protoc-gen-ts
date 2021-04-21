@@ -1,3 +1,0 @@
-build --incompatible_strict_action_env
-run --incompatible_strict_action_env
-test --incompatible_strict_action_env

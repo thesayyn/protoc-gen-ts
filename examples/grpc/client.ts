@@ -1,6 +1,5 @@
-import * as grpc from "grpc";
-
-import { ExampleClient, Request, Response } from "@example/schema/example";
+import * as grpc from "@grpc/grpc-js";
+import { ExampleClient, Request, Response } from "./type";
 
 const host = "0.0.0.0";
 const port = 9090;

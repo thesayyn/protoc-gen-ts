@@ -1,6 +1,5 @@
 import * as grpc from "@grpc/grpc-js";
-
-import { Request, Response, Example } from "@example/schema/example";
+import { Request, Response, Example } from "./type";
 
 const server = new grpc.Server();
 const port = 9090;
@@ -17,7 +16,7 @@ async function main() {
       callback(null, new Response({ result: a + b }));
     },
   };
-  server.addService(Example as any, serviceImpl);
+  server.addService(Example, serviceImpl);
   server.bindAsync(
     `${host}:${port}`,
     grpc.ServerCredentials.createInsecure(),
