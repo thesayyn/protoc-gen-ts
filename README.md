@@ -31,6 +31,7 @@ syntax = "proto3";
 message Change {
     Kind kind = 1;
     string patch = 2;
+    repeated string tags = 3; 
 }
 
 enum Kind {
@@ -44,7 +45,8 @@ enum Kind {
 // Constructed message
 const change = new Change({
     kind: Kind.UPDATED,
-    patch: "@@ -7,11 +7,15 @@"
+    patch: "@@ -7,11 +7,15 @@",
+    tags: ["no prefix", "as is"]
 });
 
 // Sent over the wire
@@ -54,7 +56,7 @@ const receivedChange: Change = Change.deserialize(bytes);
 
 console.log(receivedChange.kind == Kind.UPDATE) // true
 console.log(receivedChange.patch) // "@@ -7,11 +7,15 @@"
-
+console.log(receivedChange.tags) // ["no prefix", "as is"]
 ```
 
 
@@ -63,6 +65,7 @@ console.log(receivedChange.patch) // "@@ -7,11 +7,15 @@"
 This protoc plugin does generate;
 
 - Fields as **getter** **setters**.
+- No such prefixes as "getField" or "getFieldList". If you have repeated field named `users`, then the generated message class will have a `getter` named `users` not `getUsersList` 
 - Enums as **enums**.
 - Messages within a **namespace** if the proto has a **package** directive.
 
