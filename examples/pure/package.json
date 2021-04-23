@@ -1,0 +1,16 @@
+{
+    "name": "example",
+    "scripts": {
+        "preinstall": "cd ../.. && yarn bazel build :package",
+        "postinstall": "./scripts/download_protoc.sh && protoc -I=src --ts_out=src test.proto",
+        "test": "tsc && node ./dist/index"
+    },
+    "dependencies": {
+        "@grpc/grpc-js": "^1.2.12",
+        "google-protobuf": "^3.15.8"
+    },
+    "devDependencies": {
+        "protoc-gen-ts": "file:../../bazel-bin/package",
+        "typescript": "^4.2.4"
+    }
+}

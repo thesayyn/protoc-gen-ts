@@ -41,7 +41,7 @@ const bytes: Uint8Array = change.serialize();
 
 const receivedChange: Change = Change.deserialize(bytes);
 
-console.log(receivedChange.kind == Kind.UPDATE) // true
+console.log(receivedChange.kind == Kind.UPDATED) // true
 console.log(receivedChange.patch) // "@@ -7,11 +7,15 @@"
 console.log(receivedChange.tags) // ["no prefix", "as is"]
 ```
