@@ -2,7 +2,7 @@ load("@rules_proto//proto:defs.bzl", "ProtoInfo")
 
 def _get_bin(): 
     # BEGIN-INTERNAL
-    return "//bin:protoc-gen-ts"
+    return "//bin"
     # END-INTERNAL
     return "//protoc-gen-ts/bin:protoc-gen-ts"
 

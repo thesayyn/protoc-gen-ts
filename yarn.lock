@@ -2,12 +2,12 @@
 # yarn lockfile v1
 
 
-"@bazel/bazelisk@^1.6.1":
+"@bazel/bazelisk@^1.7.5":
   version "1.7.5"
   resolved "https://registry.npmjs.org/@bazel/bazelisk/-/bazelisk-1.7.5.tgz#dd1a52e3d23464f72de55aa3dc4777847fa85373"
   integrity sha512-JHwP9JhfZUSoj4sku471Bjw4uE773U2Agujnx0CdPkeRk25khy1l3VyjaPaHB+z1fmMnM6ED3M7tetQUsovUQg==
 
-"@bazel/jasmine@^3.2.2":
+"@bazel/jasmine@^3.4.0":
   version "3.4.0"
   resolved "https://registry.npmjs.org/@bazel/jasmine/-/jasmine-3.4.0.tgz#d85d8b9156821f1a2aadca55faedb3d7990bb018"
   integrity sha512-TnXLJ/4gcM9KyWtfjv8ZrzNbR0teUYRIoLborbJUXVbMYYKjKOQ+rWzwGUIb6Gf4gJ8M7VmfrpzK8vBUjowkJw==
@@ -15,7 +15,7 @@
     c8 "~7.5.0"
     jasmine-reporters "~2.4.0"
 
-"@bazel/typescript@^3.2.2":
+"@bazel/typescript@^3.4.0":
   version "3.4.0"
   resolved "https://registry.npmjs.org/@bazel/typescript/-/typescript-3.4.0.tgz#031d989682ff8605ed8745f31448c2f76a1b653a"
   integrity sha512-XlWrlQnsdQHTwsliUAf4mySHOgqRY2S57LKG2rKRjm+a015Lzlmxo6jRQaxjr68UmuhmlklRw0WfCFxdR81AvQ==
@@ -30,7 +30,7 @@
   resolved "https://registry.npmjs.org/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
-"@grpc/grpc-js@^1.2.10":
+"@grpc/grpc-js@^1.2.12":
   version "1.2.12"
   resolved "https://registry.npmjs.org/@grpc/grpc-js/-/grpc-js-1.2.12.tgz#0153f27512acf69184bb52c0a1035ca91d6c14b0"
   integrity sha512-+gPCklP1eqIgrNPyzddYQdt9+GvZqPlLpIjIo+TveE+gbtp74VV1A2ju8ExeO8ma8f7MbpaGZx/KJPYVWL9eDw==
@@ -97,10 +97,10 @@
   resolved "https://registry.npmjs.org/@protobufjs/utf8/-/utf8-1.1.0.tgz#a777360b5b39a1a2e5106f8e858f2fd2d060c570"
   integrity sha1-p3c2C1s5oaLlEG+OhY8v0tBgxXA=
 
-"@types/google-protobuf@^3.2.7":
-  version "3.15.0"
-  resolved "https://registry.npmjs.org/@types/google-protobuf/-/google-protobuf-3.15.0.tgz#1df2507453a5da732b31846f0c8a64116aef21be"
-  integrity sha512-IshlR1QWD9LYQRlYMfF8dG6PqxrZHddlWB8O5+HCGwH1nv2JQ887fMwRRlXOmUEFehvg+k1THx2h7RbqPUPkGA==
+"@types/google-protobuf@^3.15.0":
+  version "3.15.1"
+  resolved "https://registry.npmjs.org/@types/google-protobuf/-/google-protobuf-3.15.1.tgz#18328fd1bd3ae42dbdd55aaddbf466d17f8bfc88"
+  integrity sha512-GpEv+jQXPTK7U7oznibH/L6BZMANKNISVZaSM6d5O2nnuKw8N3YIoyxaKrbIR4H4HF8ksxoFzU0kpdksJK7jfw==
 
 "@types/is-windows@^1.0.0":
   version "1.0.0"
@@ -112,7 +112,7 @@
   resolved "https://registry.npmjs.org/@types/istanbul-lib-coverage/-/istanbul-lib-coverage-2.0.3.tgz#4ba8ddb720221f432e443bd5f9117fd22cfd4762"
   integrity sha512-sz7iLqvVUg1gIedBOvlkxPlc8/uVzyS5OwGz1cKjXzkl3FpL3al0crU8YGU1WoHkxn0Wxbw5tyi6hvzJKNzFsw==
 
-"@types/jasmine@^3.5.9":
+"@types/jasmine@^3.6.9":
   version "3.6.9"
   resolved "https://registry.npmjs.org/@types/jasmine/-/jasmine-3.6.9.tgz#8785870f87839b7d91b45d7b226380f28dee5d9f"
   integrity sha512-B53NIwMj/AO0O+xfSWLYmKB0Mo6TYxfv2Mk8/c1T2w/e38t55iaPR6p7pHXTTtqfTmevPK3i8T1YweYFTZlxDw==
