@@ -73,7 +73,7 @@ function createToObject(rootDescriptor, messageDescriptor) {
       }
     }
 
-    if (isOptional(fieldDescriptor)) {
+    if (isOptional(rootDescriptor, fieldDescriptor)) {
       statements.push(
         ts.factory.createIfStatement(
           ts.factory.createBinaryExpression(
@@ -227,7 +227,7 @@ function createMessageSignature(rootDescriptor, messageDescriptor) {
       ts.factory.createPropertySignature(
         undefined,
         fieldDescriptor.name,
-        isOptional(fieldDescriptor) ? ts.factory.createToken(ts.SyntaxKind.QuestionToken) : undefined,
+        isOptional(rootDescriptor, fieldDescriptor) ? ts.factory.createToken(ts.SyntaxKind.QuestionToken) : undefined,
         fieldType
       )
     );
@@ -248,20 +248,20 @@ function createMessageSignature(rootDescriptor, messageDescriptor) {
  * @param {descriptor.FileDescriptorProto} rootDescriptor 
  * @param {descriptor.DescriptorProto} messageDescriptor
  */
- function createFlatMessageSignature(rootDescriptor, messageDescriptor) {
+function createFlatMessageSignature(rootDescriptor, messageDescriptor) {
 
   const fieldSignatures = [];
 
   for (const fieldDescriptor of messageDescriptor.field) {
-    let fieldType =  getType(fieldDescriptor, rootDescriptor);
+    let fieldType = getType(fieldDescriptor, rootDescriptor);
 
-    if ( isMessage(fieldDescriptor) ) {
+    if (isMessage(fieldDescriptor)) {
       fieldType = ts.factory.createTypeReferenceNode(
         "ReturnType",
         [
           ts.factory.createTypeOfExpression(
             ts.factory.createPropertyAccessExpression(ts.factory.createPropertyAccessExpression(fieldType, "prototype"), "toObject")
-          ) 
+          )
         ]
       )
     }
@@ -272,7 +272,7 @@ function createMessageSignature(rootDescriptor, messageDescriptor) {
       ts.factory.createPropertySignature(
         undefined,
         fieldDescriptor.name,
-        isOptional(fieldDescriptor) ? ts.factory.createToken(ts.SyntaxKind.QuestionToken) : undefined,
+        isOptional(rootDescriptor, fieldDescriptor) ? ts.factory.createToken(ts.SyntaxKind.QuestionToken) : undefined,
         fieldType
       )
     );
@@ -388,14 +388,26 @@ function createConstructor(
                 )
               )
             );
-            if (!isOptional(fieldDescriptor)) {
+            if (!isOptional(rootDescriptor, fieldDescriptor)) {
               return assigmentExpression;
             }
             return ts.factory.createIfStatement(
               ts.factory.createBinaryExpression(
-                ts.factory.createStringLiteral(fieldDescriptor.name),
-                ts.factory.createToken(ts.SyntaxKind.InKeyword),
-                dataIdentifier
+                ts.factory.createBinaryExpression(
+                  ts.factory.createStringLiteral(fieldDescriptor.name),
+                  ts.factory.createToken(ts.SyntaxKind.InKeyword),
+                  dataIdentifier
+                ),
+
+                ts.factory.createToken(ts.SyntaxKind.AmpersandAmpersandToken),
+                ts.factory.createBinaryExpression(
+                  ts.factory.createPropertyAccessExpression(
+                    dataIdentifier,
+                    fieldDescriptor.name
+                  ),
+                  ts.factory.createToken(ts.SyntaxKind.ExclamationEqualsToken),
+                  ts.factory.createIdentifier("undefined"),
+                ),
               ),
               ts.factory.createBlock([assigmentExpression], true)
             )
@@ -510,13 +522,14 @@ function isEnum(fieldDescriptor) {
 }
 
 /**
+ * @param {descriptor.FileDescriptorProto} rootDescriptor 
  * @param {descriptor.FieldDescriptorProto} fieldDescriptor 
  */
-function isOptional(fieldDescriptor) {
-  return (
-    fieldDescriptor.label ==
-    descriptor.FieldDescriptorProto.Label.LABEL_OPTIONAL || fieldDescriptor.proto3_optional
-  );
+function isOptional(rootDescriptor, fieldDescriptor) {
+  if (rootDescriptor.syntax == "proto3") {
+    return fieldDescriptor.label != descriptor.FieldDescriptorProto.Label.LABEL_REQUIRED || fieldDescriptor.proto3_optional
+  }
+  return fieldDescriptor.label == descriptor.FieldDescriptorProto.Label.LABEL_OPTIONAL;
 }
 
 /**
