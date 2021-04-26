@@ -6,7 +6,7 @@ bazel-*
 .devcontainer
 .editorconfig
 
-test/*.ts
+test/**/*.ts
 !test/*.spec.ts
 
 src/compiler/*

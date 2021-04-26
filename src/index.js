@@ -981,16 +981,17 @@ function createDeserialize(
               ts.factory.createBinaryExpression(
                 ts.factory.createIdentifier("bytes"),
                 ts.SyntaxKind.InstanceOfKeyword,
-                ts.factory.createIdentifier("Uint8Array")
+                ts.factory.createPropertyAccessExpression(pbIdentifier, "BinaryReader")
               ),
               ts.factory.createToken(ts.SyntaxKind.QuestionToken),
+             
+              ts.factory.createIdentifier("bytes"),
+              ts.factory.createToken(ts.SyntaxKind.ColonToken),
               ts.factory.createNewExpression(
                 ts.factory.createPropertyAccessExpression(pbIdentifier, "BinaryReader"),
                 undefined,
                 [ts.factory.createIdentifier("bytes")]
               ),
-              ts.factory.createToken(ts.SyntaxKind.ColonToken),
-              ts.factory.createIdentifier("bytes")
             )
           ),
           ts.factory.createVariableDeclaration(
