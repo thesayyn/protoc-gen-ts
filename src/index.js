@@ -1402,10 +1402,17 @@ function createMessage(
  * @param {descriptor.MethodDescriptorProto} methodDescriptor 
  */
 function getRPCOutputType(rootDescriptor, methodDescriptor) {
-  return normalizeTypeName(
+  const name = normalizeTypeName(
     methodDescriptor.output_type,
     rootDescriptor.package
-  );
+  )
+
+  const path = symbolMap.get('.' + name);
+
+  if (!path || !dependencyMap.has(path)) {
+    return ts.factory.createIdentifier(name)
+  }
+  return ts.factory.createPropertyAccessExpression(dependencyMap.get(path), name);
 }
 
 /**
@@ -1413,10 +1420,17 @@ function getRPCOutputType(rootDescriptor, methodDescriptor) {
  * @param {descriptor.MethodDescriptorProto} methodDescriptor 
  */
 function getRPCInputType(rootDescriptor, methodDescriptor) {
-  return normalizeTypeName(
+  const name = normalizeTypeName(
     methodDescriptor.input_type,
     rootDescriptor.package
   );
+
+  const path = symbolMap.get('.' + name);
+
+  if (!path || !dependencyMap.has(path)) {
+    return ts.factory.createIdentifier(name)
+  }
+  return ts.factory.createPropertyAccessExpression(dependencyMap.get(path), name);
 }
 
 /**
@@ -1459,8 +1473,8 @@ function createServiceInterface(rootDescriptor, serviceDescriptor, grpcIdentifie
       ts.factory.createTypeReferenceNode(
         ts.factory.createQualifiedName(grpcIdentifier, ts.factory.createIdentifier("MethodDefinition")),
         [
-          ts.factory.createIdentifier(getRPCInputType(rootDescriptor, methodDescriptor)),
-          ts.factory.createIdentifier(getRPCOutputType(rootDescriptor, methodDescriptor))
+          getRPCInputType(rootDescriptor, methodDescriptor),
+          getRPCOutputType(rootDescriptor, methodDescriptor)
         ]
       )
     ))
@@ -1502,8 +1516,8 @@ function createServerInterface(rootDescriptor, serviceDescriptor, grpcIdentifier
         ts.factory.createTypeReferenceNode(
           ts.factory.createQualifiedName(grpcIdentifier, ts.factory.createIdentifier("handleUnaryCall")),
           [
-            ts.factory.createIdentifier(getRPCInputType(rootDescriptor, methodDescriptor)),
-            ts.factory.createIdentifier(getRPCOutputType(rootDescriptor, methodDescriptor))
+            getRPCInputType(rootDescriptor, methodDescriptor),
+            getRPCOutputType(rootDescriptor, methodDescriptor)
           ]
         )
       )
@@ -1579,9 +1593,7 @@ function createService(rootDescriptor, serviceDescriptor) {
                             "message",
                             undefined,
                             ts.factory.createTypeReferenceNode(
-                              ts.factory.createIdentifier(
-                                getRPCInputType(rootDescriptor, methodDescriptor)
-                              ),
+                              getRPCInputType(rootDescriptor, methodDescriptor),
                               undefined
                             )
                           ),
@@ -1629,9 +1641,7 @@ function createService(rootDescriptor, serviceDescriptor) {
                         ts.factory.createToken(ts.SyntaxKind.EqualsGreaterThanToken),
                         ts.factory.createCallExpression(
                           ts.factory.createPropertyAccessExpression(
-                            ts.factory.createIdentifier(
-                              getRPCInputType(rootDescriptor, methodDescriptor)
-                            ),
+                            getRPCInputType(rootDescriptor, methodDescriptor),
                             "deserialize"
                           ),
                           undefined,
@@ -1658,9 +1668,7 @@ function createService(rootDescriptor, serviceDescriptor) {
                             "message",
                             undefined,
                             ts.factory.createTypeReferenceNode(
-                              ts.factory.createIdentifier(
-                                getRPCOutputType(rootDescriptor, methodDescriptor)
-                              ),
+                              getRPCOutputType(rootDescriptor, methodDescriptor),
                               undefined
                             )
                           ),
@@ -1708,9 +1716,7 @@ function createService(rootDescriptor, serviceDescriptor) {
                         ts.factory.createToken(ts.SyntaxKind.EqualsGreaterThanToken),
                         ts.factory.createCallExpression(
                           ts.factory.createPropertyAccessExpression(
-                            ts.factory.createIdentifier(
-                              getRPCOutputType(rootDescriptor, methodDescriptor)
-                            ),
+                            getRPCOutputType(rootDescriptor, methodDescriptor),
                             "deserialize"
                           ),
                           undefined,

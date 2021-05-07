@@ -4,6 +4,10 @@ package importdirective.a;
 
 import "test/imported.proto";
 
+service ImportedService {
+    rpc ImportedServiceTest(b.Imported) returns (b.Imported.SubMessage);
+}
+
 message Message {
     b.Imported importedField = 1;
     b.Imported.SubMessage submessageField = 2;
