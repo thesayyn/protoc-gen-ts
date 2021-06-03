@@ -305,10 +305,8 @@ protobufjs@6.8.8:
     "@types/node" "^10.1.0"
     long "^4.0.0"
 
-protoc-gen-ts@^0.3.6-rc1:
-  version "0.3.6-rc1"
-  resolved "https://registry.npmjs.org/protoc-gen-ts/-/protoc-gen-ts-0.3.6-rc1.tgz#de461d5a0fff925ab15d12f930f7aaaf3b68778b"
-  integrity sha512-dLNtrojRrrF2XACANH1YezUR82Xn8gMxnGxRuDXrDW3B7Kk6lUrDnzU5r0PSKA1iW0GqKDVLLHGRGs/vs/Rf+Q==
+"protoc-gen-ts@file:../bazel-bin/package":
+  version "0.3.6-rc4"
 
 safe-buffer@^5.0.1:
   version "5.2.1"
