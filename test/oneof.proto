@@ -1,14 +1,14 @@
 syntax = "proto3";
 
 message OneOfWithoutAnyOtherFields {
-    oneof NickNameOrRealName {
+    oneof nickname_or_realname {
        string nickname = 1;
        string realname = 2;
     }
 
-    oneof AgeOrDateOfBirth {
-        string date_of_birth = 3;
+    oneof age_or_dateofbirth {
         string age = 4;
+        string date_of_birth = 3;
     }
 }
 
@@ -18,7 +18,7 @@ message OneOf{
 
     string nickname = 1;
 
-    oneof AgeOrDateOfBirth {
+    oneof age_or_dateofbirth {
         string date_of_birth = 3;
         string age = 4;
     }
