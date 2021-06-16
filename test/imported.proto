@@ -6,6 +6,8 @@ message Imported {
   message SubMessage {
     enum MyEnum {
       VALUE = 0;
+      VALUE2 = 1;
     }
+    MyEnum key = 1;
   }
 }

@@ -5,23 +5,44 @@ const ts = require("typescript");
 /**
  * @param {*} type 
  * @param {descriptor.FieldDescriptorProto} fieldDescriptor 
- * @returns 
  */
 function wrapRepeatedType(type, fieldDescriptor) {
-    if (isRepeated(fieldDescriptor)) {
+    if (isRepeated(fieldDescriptor) && !isMap(fieldDescriptor)) {
         type = ts.factory.createArrayTypeNode(type);
     }
 
     return type;
 }
 
+/**
+ * @param {descriptor.FileDescriptorProto} rootDescriptor
+ * @param {descriptor.FieldDescriptorProto} fieldDescriptor 
+ */
+ function getMapType(rootDescriptor, fieldDescriptor) {
+    const messageDescriptor = type.getMapDescriptor(fieldDescriptor.type_name);
+    const [keyDescriptor, valueDescriptor] = messageDescriptor.field;
+
+    return ts.factory.createTypeReferenceNode(
+        "Map",
+        [
+            getType(keyDescriptor, rootDescriptor),
+            getType(valueDescriptor, rootDescriptor)
+        ]
+    );
+
+}
+
 
 /**
  * @param {descriptor.FieldDescriptorProto} fieldDescriptor 
  * @param {descriptor.FileDescriptorProto} rootDescriptor
- * @returns {ts.TypeReferenceNode | }
+ * @returns {ts.TypeReferenceNode | ts.Identifier | ts.PropertyAccessExpression}
  */
 function getType(fieldDescriptor, rootDescriptor) {
+    if (isMap(fieldDescriptor)) {
+        return getMapType(rootDescriptor, fieldDescriptor);
+    }
+
     switch (fieldDescriptor.type) {
         case descriptor.FieldDescriptorProto.Type.TYPE_DOUBLE:
         case descriptor.FieldDescriptorProto.Type.TYPE_FLOAT:
@@ -78,12 +99,18 @@ function toBinaryMethodName(fieldDescriptor, rootDescriptor, isWriter = true) {
     }
 }
 
-
 /**
  * @param {descriptor.FieldDescriptorProto} fieldDescriptor 
  */
 function isOneOf(fieldDescriptor) {
     return typeof fieldDescriptor.oneof_index == "number";
+}
+
+/**
+ * @param {descriptor.FieldDescriptorProto} fieldDescriptor 
+ */
+function isMap(fieldDescriptor) {
+    return type.getMapDescriptor(fieldDescriptor.type_name) != undefined;
 }
 
 /**
@@ -179,4 +206,4 @@ function isPacked(fieldDescriptor, rootDescriptor) {
 }
 
 
-module.exports = { getType, wrapRepeatedType, toBinaryMethodName, isPackageable, isPacked, isOneOf, isBoolean, isString, isEnum, isMessage, isOptional, isRepeated }
+module.exports = { getType, wrapRepeatedType, toBinaryMethodName, isMap, isPackageable, isPacked, isOneOf, isBoolean, isString, isEnum, isMessage, isOptional, isRepeated }

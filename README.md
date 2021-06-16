@@ -125,7 +125,7 @@ export GRPC_PACKAGE_NAME="@grpc/grpc";
 - <s>Support for `Promise` in rpcs.</s>
 - <s>Make services strongly typed.</s>
 - <s>Support oneof fields</s>
-- Support `map<TYPE, TYPE>` types as ES `Map`.
+- <s>Support `map<TYPE, TYPE>` types as ES `Map`.</s>
 - Interopability with well knowns.
 
 

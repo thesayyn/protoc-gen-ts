@@ -40,12 +40,73 @@ function createToObject(rootDescriptor, messageDescriptor) {
     const dataIdentifier = ts.factory.createIdentifier("data");
 
     for (const fieldDescriptor of messageDescriptor.field) {
-        let propertyAccessExpression = ts.factory.createPropertyAccessExpression(
+        let valueExpr = ts.factory.createPropertyAccessExpression(
             ts.factory.createThis(),
             fieldDescriptor.name
         );
 
-        if (field.isMessage(fieldDescriptor)) {
+        if (field.isMap(fieldDescriptor)) {
+            const [, valueDescriptor] = type.getMapDescriptor(fieldDescriptor.type_name).field;
+
+            if (field.isMessage(valueDescriptor)) {
+                valueExpr = ts.factory.createCallExpression(
+                    ts.factory.createPropertyAccessExpression(
+                        ts.factory.createCallExpression(
+                            ts.factory.createPropertyAccessChain(
+                                ts.factory.createIdentifier("Array"),
+                                undefined,
+                                "from"
+                            ),
+                            undefined,
+                            [valueExpr]
+                        ),
+                        "map"
+                    ),
+                    undefined,
+                    [
+                        ts.factory.createArrowFunction(
+                            undefined,
+                            undefined,
+                            [
+                                ts.factory.createParameterDeclaration(
+                                    undefined,
+                                    undefined,
+                                    undefined,
+                                    ts.factory.createArrayBindingPattern([
+                                        ts.factory.createBindingElement(undefined, undefined, "key"),
+                                        ts.factory.createBindingElement(undefined, undefined, "value")
+                                    ])
+                                )
+                            ],
+                            undefined,
+                            ts.factory.createToken(ts.SyntaxKind.EqualsGreaterThanToken),
+                            ts.factory.createArrayLiteralExpression([
+                                ts.factory.createIdentifier("key"),
+                                ts.factory.createCallExpression(
+                                    ts.factory.createPropertyAccessExpression(
+                                        ts.factory.createIdentifier("value"),
+                                        "toObject"
+                                    ),
+                                    undefined,
+                                    []
+                                )
+                            ])
+                        )
+                    ]
+                )
+
+            }
+
+            valueExpr = ts.factory.createCallExpression(
+                ts.factory.createPropertyAccessChain(
+                    ts.factory.createIdentifier("Object"),
+                    undefined,
+                    "fromEntries"
+                ),
+                undefined,
+                [valueExpr]
+            )
+        } else if (field.isMessage(fieldDescriptor)) {
             if (field.isRepeated(fieldDescriptor)) {
                 const arrowFunc = ts.factory.createArrowFunction(
                     undefined,
@@ -74,35 +135,53 @@ function createToObject(rootDescriptor, messageDescriptor) {
                         undefined
                     )
                 );
-                propertyAccessExpression = ts.factory.createCallExpression(
-                    ts.factory.createPropertyAccessExpression(propertyAccessExpression, "map"),
+                valueExpr = ts.factory.createCallExpression(
+                    ts.factory.createPropertyAccessExpression(valueExpr, "map"),
                     undefined,
                     [arrowFunc]
                 );
             } else {
-                propertyAccessExpression = ts.factory.createCallExpression(
-                    ts.factory.createPropertyAccessExpression(propertyAccessExpression, "toObject")
+                valueExpr = ts.factory.createCallExpression(
+                    ts.factory.createPropertyAccessExpression(valueExpr, "toObject")
                 );
             }
         }
 
+
+
+
+
         if (field.isOptional(rootDescriptor, fieldDescriptor)) {
+            const propertyAccessor = ts.factory.createPropertyAccessExpression(
+                ts.factory.createThis(),
+                fieldDescriptor.name
+            );
+            let condition = ts.factory.createBinaryExpression(
+                propertyAccessor,
+                ts.factory.createToken(ts.SyntaxKind.ExclamationEqualsToken),
+                ts.factory.createNull()
+            );
+
+            if (field.isMap(fieldDescriptor)) {
+                condition = ts.factory.createBinaryExpression(
+                    ts.factory.createPropertyAccessExpression(
+                        propertyAccessor,
+                        "size"
+                    ),
+                    ts.factory.createToken(ts.SyntaxKind.GreaterThanToken),
+                    ts.factory.createNumericLiteral(0)
+                );
+            }
+
             statements.push(
                 ts.factory.createIfStatement(
-                    ts.factory.createBinaryExpression(
-                        ts.factory.createPropertyAccessExpression(
-                            ts.factory.createThis(),
-                            fieldDescriptor.name
-                        ),
-                        ts.factory.createToken(ts.SyntaxKind.ExclamationEqualsToken),
-                        ts.factory.createNull()
-                    ),
+                    condition,
                     ts.factory.createBlock([
                         ts.factory.createExpressionStatement(
                             ts.factory.createBinaryExpression(
                                 ts.factory.createPropertyAccessExpression(dataIdentifier, fieldDescriptor.name),
                                 ts.factory.createToken(ts.SyntaxKind.EqualsToken),
-                                propertyAccessExpression
+                                valueExpr
                             )
                         )
                     ], true)
@@ -112,7 +191,7 @@ function createToObject(rootDescriptor, messageDescriptor) {
             properties.push(
                 ts.factory.createPropertyAssignment(
                     fieldDescriptor.name,
-                    propertyAccessExpression
+                    valueExpr
                 )
             );
         }
@@ -126,7 +205,7 @@ function createToObject(rootDescriptor, messageDescriptor) {
                 ts.factory.createVariableDeclaration(
                     "data",
                     undefined,
-                    createFlatMessageSignature(rootDescriptor, messageDescriptor),
+                    createPrimitiveMessageSignature(rootDescriptor, messageDescriptor),
                     ts.factory.createObjectLiteralExpression(properties, true)
                 )
             ], ts.NodeFlags.Const)
@@ -259,22 +338,51 @@ function createMessageSignature(rootDescriptor, messageDescriptor) {
  * @param {descriptor.FileDescriptorProto} rootDescriptor 
  * @param {descriptor.DescriptorProto} messageDescriptor
  */
-function createFlatMessageSignature(rootDescriptor, messageDescriptor) {
-
+function createPrimitiveMessageSignature(rootDescriptor, messageDescriptor) {
     const fieldSignatures = [];
+
+    const wrapMessageType = (fieldType) => {
+        return ts.factory.createTypeReferenceNode(
+            "ReturnType",
+            [
+                ts.factory.createTypeOfExpression(
+                    ts.factory.createPropertyAccessExpression(ts.factory.createPropertyAccessExpression(fieldType, "prototype"), "toObject")
+                )
+            ]
+        )
+    }
 
     for (const fieldDescriptor of messageDescriptor.field) {
         let fieldType = field.getType(fieldDescriptor, rootDescriptor);
 
-        if (field.isMessage(fieldDescriptor)) {
-            fieldType = ts.factory.createTypeReferenceNode(
-                "ReturnType",
-                [
-                    ts.factory.createTypeOfExpression(
-                        ts.factory.createPropertyAccessExpression(ts.factory.createPropertyAccessExpression(fieldType, "prototype"), "toObject")
-                    )
-                ]
-            )
+        if (field.isMap(fieldDescriptor)) {
+            const [keyDescriptor, valueDescriptor] = type.getMapDescriptor(fieldDescriptor.type_name).field;
+
+            let valueType = field.getType(valueDescriptor, rootDescriptor);
+
+            if (field.isMessage(valueDescriptor)) {
+                valueType = wrapMessageType(valueType);
+            }
+
+            fieldType = ts.factory.createTypeLiteralNode([
+                ts.factory.createIndexSignature(
+                    undefined,
+                    undefined,
+                    [
+                        ts.factory.createParameterDeclaration(
+                            undefined,
+                            undefined,
+                            undefined,
+                            "key",
+                            undefined,
+                            field.getType(keyDescriptor)
+                        )
+                    ],
+                    valueType
+                )
+            ])
+        } else if (field.isMessage(fieldDescriptor)) {
+            fieldType = wrapMessageType(fieldType);
         }
 
         fieldType = field.wrapRepeatedType(fieldType, fieldDescriptor);
@@ -330,7 +438,7 @@ function createConstructor(
     // Get repeated fields numbers
     const repeatedFields = messageDescriptor.field
         .filter(
-            (fd) => field.isRepeated(fd)
+            (fd) => field.isRepeated(fd) && !field.isMap(fd)
         )
         .map((fd) => ts.factory.createNumericLiteral(fd.number))
 
@@ -427,6 +535,27 @@ function createConstructor(
         )
     );
 
+    for (const fieldDescriptor of messageDescriptor.field) {
+        if (!field.isMap(fieldDescriptor)) {
+            continue;
+        }
+        let propertyAccessor = ts.factory.createPropertyAccessExpression(ts.factory.createThis(), fieldDescriptor.name);
+        statements.push(
+            ts.factory.createIfStatement(
+                ts.factory.createPrefixUnaryExpression(
+                    ts.SyntaxKind.ExclamationToken,
+                    propertyAccessor
+
+                ),
+                ts.factory.createBinaryExpression(
+                    propertyAccessor,
+                    ts.factory.createToken(ts.SyntaxKind.EqualsToken),
+                    ts.factory.createNewExpression(ts.factory.createIdentifier("Map"), undefined, [])
+                )
+            )
+        )
+    }
+
     return ts.factory.createConstructorDeclaration(
         undefined,
         undefined,
@@ -456,30 +585,31 @@ function createGetter(
     fieldDescriptor,
     pbIdentifier
 ) {
-    const getterType = field.wrapRepeatedType(
-        field.getType(fieldDescriptor, rootDescriptor),
-        fieldDescriptor
+    const getterType = field.wrapRepeatedType(field.getType(fieldDescriptor, rootDescriptor), fieldDescriptor);
+    let getterExpr = createGetterCall(
+        rootDescriptor,
+        fieldDescriptor,
+        pbIdentifier
     );
-    const block = ts.factory.createBlock(
-        [
-            ts.factory.createReturnStatement(
-                createGetterCall(
-                    rootDescriptor,
-                    fieldDescriptor,
-                    pbIdentifier,
-                    getterType
-                )
-            ),
-        ],
-        true
-    );
+
+    if (field.isMap(fieldDescriptor)) {
+        getterExpr = ts.factory.createAsExpression(
+            getterExpr,
+            ts.factory.createToken(ts.SyntaxKind.AnyKeyword)
+        );
+    }
+
     return ts.factory.createGetAccessorDeclaration(
         undefined,
         undefined,
         fieldDescriptor.name,
         undefined,
         undefined,
-        block
+        ts.factory.createBlock([
+            ts.factory.createReturnStatement(
+                ts.factory.createAsExpression(getterExpr, getterType)
+            )
+        ], true)
     );
 }
 
@@ -492,15 +622,14 @@ function createGetter(
 function createGetterCall(
     rootDescriptor,
     fieldDescriptor,
-    pbIdentifier,
-    getterType
+    pbIdentifier
 ) {
 
     let args = [];
 
     let getterMethod = "getField";
 
-    if (field.isMessage(fieldDescriptor)) {
+    if (field.isMessage(fieldDescriptor) && !field.isMap(fieldDescriptor)) {
         getterMethod = field.isRepeated(fieldDescriptor) ? "getRepeatedWrapperField" : "getWrapperField";
         args = [
             ts.factory.createThis(),
@@ -532,16 +661,13 @@ function createGetterCall(
             args.push(defaultt);
         }
     }
-    return ts.factory.createAsExpression(
-        ts.factory.createCallExpression(
-            ts.factory.createPropertyAccessExpression(
-                ts.factory.createPropertyAccessExpression(pbIdentifier, "Message"),
-                ts.factory.createIdentifier(getterMethod)
-            ),
-            undefined,
-            args
+    return ts.factory.createCallExpression(
+        ts.factory.createPropertyAccessExpression(
+            ts.factory.createPropertyAccessExpression(pbIdentifier, "Message"),
+            ts.factory.createIdentifier(getterMethod)
         ),
-        getterType
+        undefined,
+        args
     );
 }
 
@@ -578,7 +704,6 @@ function createOneOfGetter(index, oneofDescriptor, messageDescriptor, pbIdentifi
             );
         }
     }
-    ts.SyntaxKind
 
     const statements = [
         ts.factory.createVariableStatement(
@@ -732,12 +857,16 @@ function createOneOfSetterBlock(descriptor, fieldDescriptor, valueParameter, pbI
 function createSetterBlock(fieldDescriptor, valueParameter, pbIdentifier) {
     let method = "setField"
 
-    if (field.isMessage(fieldDescriptor)) {
+    if (field.isMessage(fieldDescriptor) && !field.isMap(fieldDescriptor)) {
         if (field.isRepeated(fieldDescriptor)) {
             method = "setRepeatedWrapperField"
         } else {
             method = "setWrapperField"
         }
+    }
+
+    if (field.isMap(fieldDescriptor)) {
+        valueParameter = ts.factory.createAsExpression(valueParameter, ts.factory.createToken(ts.SyntaxKind.AnyKeyword));
     }
 
     return ts.factory.createBlock([
@@ -757,6 +886,7 @@ function createSetterBlock(fieldDescriptor, valueParameter, pbIdentifier) {
         ),
     ], true)
 }
+
 
 /**
  * Returns the serialize method for the message class
@@ -796,46 +926,17 @@ function createSerialize(rootDescriptor, messageDescriptor, pbIdentifier) {
             fieldDescriptor.name
         );
 
-        const propParameters = [
-            ts.factory.createNumericLiteral(fieldDescriptor.number),
-            propAccessor,
-        ];
+        if (field.isMap(fieldDescriptor)) {
+            const [keyDescriptor, valueDescriptor] = type.getMapDescriptor(fieldDescriptor.type_name).field;
 
-        if (field.isMessage(fieldDescriptor)) {
-            if (field.isRepeated(fieldDescriptor)) {
-                propParameters.push(
-                    ts.factory.createArrowFunction(
-                        undefined,
-                        undefined,
-                        [
-                            ts.factory.createParameterDeclaration(
-                                undefined,
-                                undefined,
-                                undefined,
-                                "item",
-                                undefined,
-                                ts.factory.createTypeReferenceNode(
-                                    type.getTypeReference(
-                                        rootDescriptor,
-                                        fieldDescriptor.type_name
-                                    )
-                                )
-                            ),
-                        ],
-                        undefined,
-                        ts.factory.createToken(ts.SyntaxKind.EqualsGreaterThanToken),
-                        ts.factory.createCallExpression(
-                            ts.factory.createPropertyAccessExpression(
-                                ts.factory.createIdentifier("item"),
-                                "serialize"
-                            ),
-                            undefined,
-                            [ts.factory.createIdentifier("writer")]
-                        )
-                    )
-                );
-            } else {
-                propParameters.push(
+            const valueExprArgs = [
+                ts.factory.createNumericLiteral(2),
+                ts.factory.createIdentifier("value"),
+            ];
+
+
+            if (field.isMessage(valueDescriptor)) {
+                valueExprArgs.push(
                     ts.factory.createArrowFunction(
                         undefined,
                         undefined,
@@ -844,61 +945,192 @@ function createSerialize(rootDescriptor, messageDescriptor, pbIdentifier) {
                         ts.factory.createToken(ts.SyntaxKind.EqualsGreaterThanToken),
                         ts.factory.createCallExpression(
                             ts.factory.createPropertyAccessExpression(
-                                ts.factory.createPropertyAccessExpression(
-                                    ts.factory.createThis(),
-                                    fieldDescriptor.name
-                                ),
+                                ts.factory.createIdentifier("value"),
                                 "serialize"
                             ),
                             undefined,
                             [ts.factory.createIdentifier("writer")]
                         )
                     )
-                );
+                )
             }
-        }
-
-        // this.prop !== undefined
-        let condition = ts.factory.createBinaryExpression(
-            propAccessor,
-            ts.factory.createToken(ts.SyntaxKind.ExclamationEqualsEqualsToken),
-            ts.factory.createIdentifier("undefined")
-        );
-
-        if (field.isString(fieldDescriptor) && !field.isRepeated(fieldDescriptor)) {
-            // typeof this.prop !== "string" && this.prop.length
-            condition = ts.factory.createBinaryExpression(
-                ts.factory.createBinaryExpression(
-                    ts.factory.createTypeOfExpression(propAccessor),
-                    ts.factory.createToken(ts.SyntaxKind.EqualsEqualsEqualsToken),
-                    ts.factory.createStringLiteral("string")
-                ),
-                ts.factory.createToken(ts.SyntaxKind.AmpersandAmpersandToken),
-                ts.factory.createPropertyAccessExpression(propAccessor, "length")
-            );
-        }
-
-        statements.push(
-            ts.factory.createIfStatement(
-                condition,
-                ts.factory.createExpressionStatement(
-                    ts.factory.createCallExpression(
-                        ts.factory.createPropertyAccessExpression(
-                            ts.factory.createIdentifier("writer"),
-                            ts.factory.createIdentifier(
-                                `write${field.toBinaryMethodName(
-                                    fieldDescriptor,
-                                    rootDescriptor
-                                )}`
-                            )
-                        ),
+            const writeCall = ts.factory.createCallExpression(
+                ts.factory.createPropertyAccessExpression(ts.factory.createIdentifier("writer"), "writeMessage"),
+                undefined,
+                [
+                    ts.factory.createNumericLiteral(fieldDescriptor.number),
+                    propAccessor,
+                    ts.factory.createArrowFunction(
                         undefined,
-                        propParameters
+                        undefined,
+                        [],
+                        undefined,
+                        ts.factory.createToken(ts.SyntaxKind.EqualsGreaterThanToken),
+                        ts.factory.createBlock([
+                            ts.factory.createExpressionStatement(
+                                ts.factory.createCallExpression(
+                                    ts.factory.createPropertyAccessExpression(
+                                        ts.factory.createIdentifier("writer"),
+                                        ts.factory.createIdentifier(
+                                            `write${field.toBinaryMethodName(
+                                                keyDescriptor,
+                                                rootDescriptor
+                                            )}`
+                                        )
+                                    ),
+                                    undefined,
+                                    [
+                                        ts.factory.createNumericLiteral(1),
+                                        ts.factory.createIdentifier("key")
+                                    ]
+                                )
+                            ),
+                            ts.factory.createExpressionStatement(
+                                ts.factory.createCallExpression(
+                                    ts.factory.createPropertyAccessExpression(
+                                        ts.factory.createIdentifier("writer"),
+                                        ts.factory.createIdentifier(
+                                            `write${field.toBinaryMethodName(
+                                                valueDescriptor,
+                                                rootDescriptor
+                                            )}`
+                                        )
+                                    ),
+                                    undefined,
+                                    valueExprArgs
+                                )
+                            )
+                        ], true)
                     )
+                ]
+            );
+
+            statements.push(
+                ts.factory.createForOfStatement(
+                    undefined,
+                    ts.factory.createVariableDeclarationList([
+                        ts.factory.createVariableDeclaration(
+                            ts.factory.createArrayBindingPattern([
+                                ts.factory.createBindingElement(undefined, undefined, "key"),
+                                ts.factory.createBindingElement(undefined, undefined, "value")
+                            ])
+                        ),
+                    ], ts.NodeFlags.Const),
+                    propAccessor,
+                    ts.factory.createBlock([writeCall])
                 )
             )
-        )
+        } else {
+            const propParameters = [
+                ts.factory.createNumericLiteral(fieldDescriptor.number),
+                propAccessor,
+            ];
+            if (field.isMessage(fieldDescriptor)) {
+                if (field.isRepeated(fieldDescriptor)) {
+                    propParameters.push(
+                        ts.factory.createArrowFunction(
+                            undefined,
+                            undefined,
+                            [
+                                ts.factory.createParameterDeclaration(
+                                    undefined,
+                                    undefined,
+                                    undefined,
+                                    "item",
+                                    undefined,
+                                    ts.factory.createTypeReferenceNode(
+                                        type.getTypeReference(
+                                            rootDescriptor,
+                                            fieldDescriptor.type_name
+                                        )
+                                    )
+                                ),
+                            ],
+                            undefined,
+                            ts.factory.createToken(ts.SyntaxKind.EqualsGreaterThanToken),
+                            ts.factory.createCallExpression(
+                                ts.factory.createPropertyAccessExpression(
+                                    ts.factory.createIdentifier("item"),
+                                    "serialize"
+                                ),
+                                undefined,
+                                [ts.factory.createIdentifier("writer")]
+                            )
+                        )
+                    );
+                } else {
+                    propParameters.push(
+                        ts.factory.createArrowFunction(
+                            undefined,
+                            undefined,
+                            [],
+                            undefined,
+                            ts.factory.createToken(ts.SyntaxKind.EqualsGreaterThanToken),
+                            ts.factory.createCallExpression(
+                                ts.factory.createPropertyAccessExpression(
+                                    ts.factory.createPropertyAccessExpression(
+                                        ts.factory.createThis(),
+                                        fieldDescriptor.name
+                                    ),
+                                    "serialize"
+                                ),
+                                undefined,
+                                [ts.factory.createIdentifier("writer")]
+                            )
+                        )
+                    );
+                }
+            }
+
+            // this.prop !== undefined
+            let condition = ts.factory.createBinaryExpression(
+                propAccessor,
+                ts.factory.createToken(ts.SyntaxKind.ExclamationEqualsEqualsToken),
+                ts.factory.createIdentifier("undefined")
+            );
+
+
+            let statement = ts.factory.createExpressionStatement(
+                ts.factory.createCallExpression(
+                    ts.factory.createPropertyAccessExpression(
+                        ts.factory.createIdentifier("writer"),
+                        ts.factory.createIdentifier(
+                            `write${field.toBinaryMethodName(
+                                fieldDescriptor,
+                                rootDescriptor
+                            )}`
+                        )
+                    ),
+                    undefined,
+                    propParameters
+                )
+            );
+
+            if (field.isString(fieldDescriptor) && !field.isRepeated(fieldDescriptor)) {
+                // typeof this.prop !== "string" && this.prop.length
+                condition = ts.factory.createBinaryExpression(
+                    ts.factory.createBinaryExpression(
+                        ts.factory.createTypeOfExpression(propAccessor),
+                        ts.factory.createToken(ts.SyntaxKind.EqualsEqualsEqualsToken),
+                        ts.factory.createStringLiteral("string")
+                    ),
+                    ts.factory.createToken(ts.SyntaxKind.AmpersandAmpersandToken),
+                    ts.factory.createPropertyAccessExpression(propAccessor, "length")
+                );
+            }
+
+
+            statements.push(
+                ts.factory.createIfStatement(
+                    condition,
+                    statement
+                )
+            );
+        }
     }
+
+
+
 
     statements.push(
         ts.factory.createIfStatement(
@@ -917,7 +1149,7 @@ function createSerialize(rootDescriptor, messageDescriptor, pbIdentifier) {
                 )
             )
         )
-    )
+    );
 
     return ts.factory.createMethodDeclaration(
         undefined,
@@ -1035,6 +1267,126 @@ function createDeserialize(
                                 ),
                                 undefined,
                                 []
+                            ),
+                        ]
+                    )
+                )
+            );
+        } else if (field.isMap(fieldDescriptor)) {
+            const [keyDescriptor, valueDescriptor] = type.getMapDescriptor(fieldDescriptor.type_name).field;
+
+
+            const keyCall = ts.factory.createPropertyAccessExpression(
+                ts.factory.createIdentifier("reader"),
+                ts.factory.createIdentifier(
+                    `read${field.toBinaryMethodName(
+                        keyDescriptor,
+                        rootDescriptor
+                    )}`
+                )
+            )
+
+            let valueCall;
+
+            if (field.isMessage(valueDescriptor)) {
+                valueCall = ts.factory.createArrowFunction(
+                    undefined,
+                    undefined,
+                    undefined,
+                    undefined,
+                    ts.factory.createToken(ts.SyntaxKind.EqualsGreaterThanToken),
+                    ts.factory.createBlock([
+                        ts.factory.createVariableStatement(
+                            undefined,
+                            ts.factory.createVariableDeclarationList([
+                                ts.factory.createVariableDeclaration("value")
+                            ], ts.NodeFlags.Let)
+                        ),
+                        ts.factory.createCallExpression(
+                            ts.factory.createPropertyAccessExpression(
+                                ts.factory.createIdentifier("reader"),
+                                "readMessage"
+                            ),
+                            undefined,
+                            [
+                                ts.factory.createIdentifier("message"),
+                                ts.factory.createArrowFunction(
+                                    undefined,
+                                    undefined,
+                                    undefined,
+                                    undefined,
+                                    ts.factory.createToken(ts.SyntaxKind.EqualsGreaterThanToken),
+                                    ts.factory.createBinaryExpression(
+                                        ts.factory.createIdentifier("value"),
+                                        ts.SyntaxKind.EqualsToken,
+                                        ts.factory.createCallExpression(
+                                            ts.factory.createPropertyAccessExpression(
+                                                type.getTypeReference(rootDescriptor, valueDescriptor.type_name),
+                                                "deserialize"
+                                            ),
+                                            undefined,
+                                            [ts.factory.createIdentifier("reader")]
+                                        )
+                                    )
+
+
+                                )
+                            ]
+                        ),
+                        ts.factory.createReturnStatement(ts.factory.createIdentifier("value"))
+                    ], true)
+                )
+
+            } else {
+                valueCall = ts.factory.createPropertyAccessExpression(
+                    ts.factory.createIdentifier("reader"),
+                    ts.factory.createIdentifier(
+                        `read${field.toBinaryMethodName(
+                            valueDescriptor,
+                            rootDescriptor
+                        )}`
+                    )
+                );
+            }
+            statements.push(
+                ts.factory.createExpressionStatement(
+                    ts.factory.createCallExpression(
+                        ts.factory.createPropertyAccessExpression(
+                            ts.factory.createIdentifier("reader"),
+                            "readMessage"
+                        ),
+                        undefined,
+                        [
+                            ts.factory.createIdentifier("message"),
+                            ts.factory.createArrowFunction(
+                                undefined,
+                                undefined,
+                                [],
+                                undefined,
+                                ts.factory.createToken(
+                                    ts.SyntaxKind.EqualsGreaterThanToken
+                                ),
+                                ts.factory.createCallExpression(
+                                    ts.factory.createPropertyAccessExpression(
+                                        ts.factory.createPropertyAccessExpression(
+                                            pbIdentifier,
+                                            "Map"
+                                        ),
+                                        "deserializeBinary"
+                                    ),
+
+                                    undefined,
+                                    [
+                                        ts.factory.createPropertyAccessExpression(
+                                            ts.factory.createIdentifier("message"),
+                                            fieldDescriptor.name
+                                        ),
+                                        ts.factory.createIdentifier("reader"),
+                                        keyCall,
+                                        valueCall
+                                    ]
+                                )
+
                             ),
                         ]
                     )
@@ -1376,7 +1728,6 @@ function createMessage(
     // Create deserializeBinary method
     members.push(createDeserializeBinary(messageDescriptor));
 
-
     // Create message class
     return ts.factory.createClassDeclaration(
         undefined,
@@ -1411,13 +1762,11 @@ function processDescriptorRecursively(
         createMessage(rootDescriptor, descriptor, pbIdentifier)
     ];
 
-
     const namespacedStatements = [];
 
     for (const eenum of descriptor.enum_type) {
         namespacedStatements.push(createEnum(eenum));
     }
-
 
     for (const message of descriptor.nested_type) {
         namespacedStatements.push(...processDescriptorRecursively(rootDescriptor, message, pbIdentifier));
