@@ -83,7 +83,6 @@ function preprocess(targetDescriptor, path, prefix) {
     if (isMapEntry(messageDescriptor)) {
       mapMap.set(name, messageDescriptor);
       messages.splice(index, 1);
-      calls.push(index);
       continue;
     } 
     
