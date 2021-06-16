@@ -18,7 +18,7 @@ function wrapRepeatedType(type, fieldDescriptor) {
  * @param {descriptor.FileDescriptorProto} rootDescriptor
  * @param {descriptor.FieldDescriptorProto} fieldDescriptor 
  */
- function getMapType(rootDescriptor, fieldDescriptor) {
+function getMapType(rootDescriptor, fieldDescriptor) {
     const messageDescriptor = type.getMapDescriptor(fieldDescriptor.type_name);
     const [keyDescriptor, valueDescriptor] = messageDescriptor.field;
 
@@ -91,7 +91,7 @@ function toBinaryMethodName(fieldDescriptor, rootDescriptor, isWriter = true) {
 
     const suffix = hasJsTypeString(fieldDescriptor) ? "String" : "";
 
-    if (isPacked(fieldDescriptor, rootDescriptor)) {
+    if (isPacked(rootDescriptor, fieldDescriptor)) {
         return `Packed${typeName}${suffix}`;
     } else {
         if (isRepeated(fieldDescriptor) && isWriter) {
@@ -105,7 +105,7 @@ function toBinaryMethodName(fieldDescriptor, rootDescriptor, isWriter = true) {
 /**
  * @param {descriptor.FieldDescriptorProto} fieldDescriptor 
  */
- function hasJsTypeString(fieldDescriptor) {
+function hasJsTypeString(fieldDescriptor) {
     return fieldDescriptor.options && fieldDescriptor.options.jstype == descriptor.FieldOptions.JSType.JS_STRING;
 }
 
@@ -187,7 +187,7 @@ function isBoolean(fieldDescriptor) {
 /**
  * @param {descriptor.FieldDescriptorProto} fieldDescriptor 
  */
-function isPackageable(fieldDescriptor) {
+function isPackable(fieldDescriptor) {
     const type = fieldDescriptor.type
     return (
         isRepeated(fieldDescriptor) &&
@@ -200,20 +200,23 @@ function isPackageable(fieldDescriptor) {
 
 
 /**
- * @param {descriptor.FieldDescriptorProto} fieldDescriptor 
  * @param {descriptor.FileDescriptorProto} rootDescriptor
+ * @param {descriptor.FieldDescriptorProto} fieldDescriptor 
  */
-function isPacked(fieldDescriptor, rootDescriptor) {
-    if (!isPackageable(fieldDescriptor)) {
+function isPacked(rootDescriptor, fieldDescriptor) {
+    if (!isPackable(fieldDescriptor)) {
         return false;
     }
     const options = fieldDescriptor.options;
-    if (rootDescriptor.syntax == "proto2") {
-        return options && options.packed
-    }
-
-    return options == null || options.packed;
+    // weirdly the compiler does not send the syntax information
+    // it only sends when the syntax is proto3 so we have to look for it. 
+    // when it is empty, it indicates that the syntax is proto2 for sure
+    if (rootDescriptor.syntax == "proto3") {
+        return !options || options.packed == null || options.packed;
+    } 
+        
+    return options != null && options.packed
 }
 
 
-module.exports = { getType, wrapRepeatedType, toBinaryMethodName, isMap, isPackageable, isPacked, isOneOf, isBoolean, isString, isEnum, isMessage, isOptional, isRepeated }
+module.exports = { getType, wrapRepeatedType, toBinaryMethodName, isMap, isPacked, isOneOf, isBoolean, isString, isEnum, isMessage, isOptional, isRepeated }

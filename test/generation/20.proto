@@ -1,5 +1,7 @@
 syntax = "proto3";
 
+// See issue #20
+
 message Example {
     oneof foo_or_bar {
         Foo foo = 1;

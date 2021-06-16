@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-message Message {
+message MessageFields {
     SubMessage sub_message = 1;
     repeated SubMessage array_prop = 2;
 }
