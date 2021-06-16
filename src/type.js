@@ -21,13 +21,11 @@ function isMapEntry(descriptor) {
   return descriptor.options && descriptor.options.map_entry;
 }
 
-let calls = []
 /**
  * @param {string} typeName 
  * @returns {descriptor.DescriptorProto}
  */
 function getMapDescriptor(typeName) {
-  calls.push(typeName);
   return mapMap.get(typeName);
 }
 
