@@ -1,6 +1,6 @@
-const descriptor = require("./compiler/descriptor");
-const type = require("./type");
-const ts = require("typescript");
+
+const type = require('./type');
+const ts = require('typescript');
 
 /**
  * Returns interface definition of the service description

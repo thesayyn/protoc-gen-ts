@@ -1,17 +1,37 @@
 const descriptor = require("./compiler/descriptor");
 const ts = require("typescript");
 
-
 const symbolMap = new Map();
 const dependencyMap = new Map();
+const mapMap = new Map();
 
 function resetDependencyMap() {
   dependencyMap.clear();
 }
 
 function setIdentifierForDependency(dependency, identifier) {
+
   dependencyMap.set(dependency, identifier);
 }
+
+/**
+ * @param {descriptor.DescriptorProto} descriptor 
+ */
+function isMapEntry(descriptor) {
+  return descriptor.options && descriptor.options.map_entry;
+}
+
+let calls = []
+/**
+ * @param {string} typeName 
+ * @returns {descriptor.DescriptorProto}
+ */
+function getMapDescriptor(typeName) {
+  calls.push(typeName);
+  return mapMap.get(typeName);
+}
+
+
 
 /**
  * @param {descriptor.FileDescriptorProto} rootDescriptor
@@ -29,8 +49,6 @@ function getTypeReference(rootDescriptor, typeName) {
   return ts.factory.createPropertyAccessExpression(dependencyMap.get(path), name);
 }
 
-
-
 function normalizeTypeName(name, packageName) {
   return (packageName ? name.replace(`${packageName}.`, "") : name).replace(
     /^\./,
@@ -38,36 +56,42 @@ function normalizeTypeName(name, packageName) {
   );
 }
 
-
-
-
 /**
- * @param {descriptor.FileDescriptorProto | descriptor.DescriptorProto} descriptor
+ * @param {descriptor.FileDescriptorProto | descriptor.DescriptorProto} targetDescriptor
  * @param {string} path
  * @param {string} prefix
  */
-function scan(descriptor, path, prefix) {
+function preprocess(targetDescriptor, path, prefix) {
 
   const replaceDoubleDots = (name) => name.replace(/\.\./g, ".");
 
-  for (const enumDescriptor of descriptor.enum_type) {
+  for (const enumDescriptor of targetDescriptor.enum_type) {
     symbolMap.set(replaceDoubleDots(`${prefix}.${enumDescriptor.name}`), path);
   }
 
-  if (descriptor.message_type) {
-    for (const messageDescriptor of descriptor.message_type) {
-      const name = replaceDoubleDots(`${prefix}.${messageDescriptor.name}`);
-      symbolMap.set(name, path);
-      scan(messageDescriptor, path, name)
-    }
+
+  /** @type {Array<descriptor.DescriptorProto>} */
+  let messages;
+
+  if ( targetDescriptor instanceof descriptor.FileDescriptorProto ) {
+    messages = targetDescriptor.message_type;
+  } else {
+    messages = targetDescriptor.nested_type;
   }
-  if (descriptor.nested_type) {
-    for (const nestedDescriptor of descriptor.nested_type) {
-      const name = replaceDoubleDots(`${prefix}.${nestedDescriptor.name}`);
-      symbolMap.set(name, path);
-      scan(nestedDescriptor, path, name);
-    }
+
+  for (let index = messages.length - 1; index >= 0; index--) {
+    const messageDescriptor = messages[index];
+    const name = replaceDoubleDots(`${prefix}.${messageDescriptor.name}`);
+    if (isMapEntry(messageDescriptor)) {
+      mapMap.set(name, messageDescriptor);
+      messages.splice(index, 1);
+      calls.push(index);
+      continue;
+    } 
+    
+    symbolMap.set(name, path);
+    preprocess(messageDescriptor, path, name);
   }
 }
 
-module.exports = { scan, getTypeReference, setIdentifierForDependency, resetDependencyMap }
+module.exports = { preprocess, getTypeReference, getMapDescriptor, setIdentifierForDependency, resetDependencyMap }
