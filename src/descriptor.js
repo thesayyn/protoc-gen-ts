@@ -1240,7 +1240,6 @@ function createDeserialize(
 
         if (
             field.isRepeated(fieldDescriptor) &&
-            !field.isPackageable(fieldDescriptor) &&
             !field.isMessage(fieldDescriptor)
         ) {
             statements.push(

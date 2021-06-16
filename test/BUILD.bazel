@@ -19,7 +19,7 @@ ts_proto_library(
 
 ts_project(
     name = "test_lib",
-    srcs = glob(["*.ts"]),
+    srcs = glob(["**/*.ts"]),
     tsconfig = {
         "compilerOptions": {
             "target": "ES2020",
@@ -36,6 +36,7 @@ ts_project(
 
 jasmine_node_test(
     name = "test",
+    data = glob(["**/*.bin"]),
     deps = [
         ":test_lib",
     ],

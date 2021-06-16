@@ -1,11 +1,8 @@
-console.log(require("fs").readdirSync("."));
-import { Message, SubMessage } from "./messagefields";
+import { MessageFields, SubMessage } from "./messagefields";
 
 describe("SubMessages", () => {
-
-
     it("should be serialized", () => {
-        const mymsg = new Message({
+        const mymsg = new MessageFields({
             sub_message: new SubMessage({
                 field_1: "field_1_value",
                 field_2: "field_2_value"
@@ -14,7 +11,7 @@ describe("SubMessages", () => {
 
         });
 
-        const deserializedMessage = Message.deserialize(mymsg.serialize());
+        const deserializedMessage = MessageFields.deserialize(mymsg.serialize());
 
         expect(deserializedMessage.sub_message instanceof SubMessage).toBe(true);
         expect(deserializedMessage.sub_message.field_1).toBe("field_1_value");
@@ -22,7 +19,7 @@ describe("SubMessages", () => {
     })
 
     it("should be converted to plain object", () => {
-        const mymsg = new Message({
+        const mymsg = new MessageFields({
             sub_message: new SubMessage({
                 field_1: "field_1_value",
                 field_2: "field_2_value"
@@ -41,7 +38,7 @@ describe("SubMessages", () => {
     })
 
     it("should be converted to plain object arrays", () => {
-        const mymsg = new Message({
+        const mymsg = new MessageFields({
             array_prop: [
                 new SubMessage({ field_1: "field_1_value0", field_2: "field_2_value0" }),
                 new SubMessage({ field_1: "field_1_value1", field_2: "field_2_value1" }),
@@ -58,7 +55,7 @@ describe("SubMessages", () => {
 
 
     it("should be converted to undefined", () => {
-        const mymsg = new Message();
+        const mymsg = new MessageFields();
 
         expect(mymsg.toObject()).toEqual({ array_prop: [] })
     })
