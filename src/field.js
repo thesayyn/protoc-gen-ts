@@ -41,8 +41,9 @@ function wrapRepeatedType(type, fieldDescriptor) {
 function getType(fieldDescriptor, rootDescriptor) {
     if (isMap(fieldDescriptor)) {
         return getMapType(rootDescriptor, fieldDescriptor);
+    } else if (hasJsTypeString(fieldDescriptor)) {
+        return ts.factory.createTypeReferenceNode("string");
     }
-
     switch (fieldDescriptor.type) {
         case descriptor.FieldDescriptorProto.Type.TYPE_DOUBLE:
         case descriptor.FieldDescriptorProto.Type.TYPE_FLOAT:
@@ -88,15 +89,24 @@ function toBinaryMethodName(fieldDescriptor, rootDescriptor, isWriter = true) {
     //lowercase first char
     typeName = typeName.charAt(0).toUpperCase() + typeName.slice(1);
 
+    const suffix = hasJsTypeString(fieldDescriptor) ? "String" : "";
+
     if (isPacked(fieldDescriptor, rootDescriptor)) {
-        return `Packed${typeName}`;
+        return `Packed${typeName}${suffix}`;
     } else {
         if (isRepeated(fieldDescriptor) && isWriter) {
-            return `Repeated${typeName}`;
+            return `Repeated${typeName}${suffix}`;
         } else {
-            return typeName;
+            return `${typeName}${suffix}`;
         }
     }
+}
+
+/**
+ * @param {descriptor.FieldDescriptorProto} fieldDescriptor 
+ */
+ function hasJsTypeString(fieldDescriptor) {
+    return fieldDescriptor.options && fieldDescriptor.options.jstype == descriptor.FieldOptions.JSType.JS_STRING;
 }
 
 /**
