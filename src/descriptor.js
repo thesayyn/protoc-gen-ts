@@ -1769,7 +1769,6 @@ function processDescriptorRecursively(
     }
 
     for (const message of descriptor.nested_type) {
-        // Export if not a map entry
         namespacedStatements.push(...processDescriptorRecursively(rootDescriptor, message, pbIdentifier));
     }
 
