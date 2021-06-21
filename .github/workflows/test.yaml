@@ -27,3 +27,4 @@ jobs:
       - run: yarn codegen
       - run: yarn test
       - run: cd examples/pure && yarn --frozen-lockfile && yarn test
+      - run: cd examples && yarn --frozen-lockfile && yarn test

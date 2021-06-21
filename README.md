@@ -1,7 +1,7 @@
 # Protoc Gen Typescript 
 
+[![test](https://github.com/thesayyn/protoc-gen-ts/actions/workflows/test.yaml/badge.svg?branch=master)](https://github.com/thesayyn/protoc-gen-ts/actions/workflows/test.yaml)
 ![npm](https://img.shields.io/npm/v/protoc-gen-ts)
-![npm bundle size](https://img.shields.io/bundlephobia/min/protoc-gen-ts)
 ![npm](https://img.shields.io/npm/dm/protoc-gen-ts)
 
 Generates appropriate Protocol Buffer sources from Proto files directly through _TypeScript Compiler API_.
@@ -65,17 +65,6 @@ You can also support me directly by buying me one or two coffee,
 </a>
 
 
-
-## Key Differences
-
-This protoc plugin does generate;
-
-- Fields as **getter** **setters**.
-- No such prefixes as "getField" or "getFieldList". If you have repeated field named `users`, then the generated message class will have a `getter` named `users` not `getUsersList` 
-- Enums as **enums**.
-- Messages within a **namespace** if the proto has a **package** directive.
-
-
 ## Usage
 
 ### Without Bazel
@@ -102,6 +91,16 @@ ts_proto_library(
 ```
 
 
+## Key Differences
+
+This protoc plugin does generate;
+
+- Fields as **getter** **setters**.
+- No such prefixes as "getField" or "getFieldList". If you have repeated field named `users`, then the generated message class will have a `getter` named `users` not `getUsersList` 
+- Enums as **enums**.
+- Messages within a **namespace** if the proto has a **package** directive.
+
+
 ## Environment variables
 
 ```sh
@@ -117,7 +116,6 @@ export GRPC_PACKAGE_NAME="@grpc/grpc";
 
 ```
 ## Roadmap
-
 - <s>Support for repeated non-integer fields</s>
 - <s>Generate appropriate service code that is usable with node **grpc** package.</s>
 - <s>Support for creating protocol buffer messages directly from their constructors with an object.</s>
@@ -127,7 +125,6 @@ export GRPC_PACKAGE_NAME="@grpc/grpc";
 - <s>Support oneof fields</s>
 - <s>Support `map<TYPE, TYPE>` types as ES `Map`.</s>
 - Interopability with well knowns.
-
 
 ## Alternatives
 

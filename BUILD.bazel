@@ -5,7 +5,6 @@ load("@build_bazel_rules_nodejs//:index.bzl", "pkg_npm")
 pkg_npm(
     name = "package",
     srcs = [
-        "//bin:protoc-gen-ts",
         "index.bzl",
         "package.json",
         "README.md",
