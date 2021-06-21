@@ -7,7 +7,7 @@ if [ -f ./node_modules/.bin/protoc ]; then
     exit 0
 fi
 
-ASSET_URL=$(curl -u -s https://api.github.com/repos/protocolbuffers/protobuf/releases/latest | node ./scripts/pick_asset.js)
+ASSET_URL=$(curl -s https://api.github.com/repos/protocolbuffers/protobuf/releases/latest | node ./scripts/pick_asset.js)
 ASSET_NAME="protoc-$(date +%s)"
 echo $ASSET_URL;
 

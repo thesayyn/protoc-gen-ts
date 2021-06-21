@@ -4,9 +4,10 @@ package(default_visibility = ["//visibility:public"])
 
 nodejs_binary(
     name = "bin",
-    entry_point = "//src:index.js",
+    entry_point = ":protoc-gen-ts",
     data = [
         "//src",
+        ":protoc-gen-ts.js"
     ],
     # See: https://github.com/bazelbuild/rules_nodejs/issues/2600
     templated_args = ["--bazel_patch_module_resolver"],
