@@ -7,7 +7,7 @@ nodejs_binary(
     entry_point = ":protoc-gen-ts",
     data = [
         "//src",
-        ":protoc-gen-ts.js"
+        ":protoc-gen-ts"
     ],
     # See: https://github.com/bazelbuild/rules_nodejs/issues/2600
     templated_args = ["--bazel_patch_module_resolver"],
