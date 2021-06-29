@@ -35,8 +35,9 @@ jobs:
         with:
           node-version: 12.x
       - name: Setup msys
-        runs-on: windows-latest
         uses: msys2/setup-msys2@v2
+        continue-on-error: true
+        
       - run: yarn --frozen-lockfile
       - run: yarn codegen
       - run: yarn test
