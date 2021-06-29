@@ -13,4 +13,4 @@ nodejs_binary(
     templated_args = ["--bazel_patch_module_resolver"],
 )
 
-exports_files(["protoc-gen-ts"])
+exports_files(["protoc-gen-ts", "protoc-gen-ts.cmd"])
