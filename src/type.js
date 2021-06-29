@@ -38,20 +38,22 @@ function getMapDescriptor(typeName) {
 function getTypeReference(rootDescriptor, typeName) {
   const path = symbolMap.get(typeName);
 
-  const name = normalizeTypeName(typeName, rootDescriptor.package);
-
   if (!path || !dependencyMap.has(path)) {
-    return ts.factory.createIdentifier(name)
+    return ts.factory.createIdentifier(removeRootPackageName(typeName, rootDescriptor.package))
   }
 
-  return ts.factory.createPropertyAccessExpression(dependencyMap.get(path), name);
+  return ts.factory.createPropertyAccessExpression(
+    dependencyMap.get(path), 
+    removeLeadingDot(typeName)
+  );
 }
 
-function normalizeTypeName(name, packageName) {
-  return (packageName ? name.replace(`${packageName}.`, "") : name).replace(
-    /^\./,
-    ""
-  );
+function removeLeadingDot(name) {
+  return name.replace(/^\./, "");
+}
+
+function removeRootPackageName(name, packageName) {
+  return removeLeadingDot(packageName ? name.replace(`${packageName}.`, "") : name);
 }
 
 /**

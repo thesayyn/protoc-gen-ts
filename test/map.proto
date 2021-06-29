@@ -10,6 +10,6 @@ message Tags {
     string key = 2;
     map<string, string> keys = 1;
     map<string, Topic> topics = 3;
-    map<int32, importdirective.b.Imported.SubMessage> imported = 4;
-    map<int64, importdirective.b.Imported.SubMessage.MyEnum> imported2 = 5;
+    map<int32, importdirective.Imported.SubMessage> imported = 4;
+    map<int64, importdirective.Imported.SubMessage.MyEnum> imported2 = 5;
 }

@@ -54,23 +54,23 @@ describe("maps", () => {
     it("should work with imported message values", () => {
         const tags = new Tags({
             imported: new Map([
-                [1, new importdirective.b.Imported.SubMessage({ key: importdirective.b.Imported.SubMessage.MyEnum.VALUE })],
-                [2, new importdirective.b.Imported.SubMessage({ key: importdirective.b.Imported.SubMessage.MyEnum.VALUE2 })]
+                [1, new importdirective.Imported.SubMessage({ key: importdirective.Imported.SubMessage.MyEnum.VALUE })],
+                [2, new importdirective.Imported.SubMessage({ key: importdirective.Imported.SubMessage.MyEnum.VALUE2 })]
             ]),
             imported2: new Map([
-                [1, importdirective.b.Imported.SubMessage.MyEnum.VALUE],
-                [3, importdirective.b.Imported.SubMessage.MyEnum.VALUE2]
+                [1, importdirective.Imported.SubMessage.MyEnum.VALUE],
+                [3, importdirective.Imported.SubMessage.MyEnum.VALUE2]
             ])
         });
         const transferredTags = Tags.deserialize(tags.serialize());
         expect(transferredTags.toObject()).toEqual({
             imported: {
-                1: { key: importdirective.b.Imported.SubMessage.MyEnum.VALUE },
-                2: { key: importdirective.b.Imported.SubMessage.MyEnum.VALUE2 }
+                1: { key: importdirective.Imported.SubMessage.MyEnum.VALUE },
+                2: { key: importdirective.Imported.SubMessage.MyEnum.VALUE2 }
             },
             imported2: {
-                1: importdirective.b.Imported.SubMessage.MyEnum.VALUE,
-                3: importdirective.b.Imported.SubMessage.MyEnum.VALUE2
+                1: importdirective.Imported.SubMessage.MyEnum.VALUE,
+                3: importdirective.Imported.SubMessage.MyEnum.VALUE2
             }
         })
     });
