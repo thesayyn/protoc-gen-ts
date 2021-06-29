@@ -28,6 +28,7 @@ jobs:
       run:
         shell: ${{ matrix.shell }}
     steps:
+
       - uses: actions/checkout@v2
         with:
           submodules: true
@@ -35,6 +36,8 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 12.x
+      - name: Setup msys
+        uses: msys2/setup-msys2@v2
       - run: yarn --frozen-lockfile
       - run: yarn codegen
       - run: yarn test
