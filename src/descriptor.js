@@ -1129,9 +1129,6 @@ function createSerialize(rootDescriptor, messageDescriptor, pbIdentifier) {
         }
     }
 
-
-
-
     statements.push(
         ts.factory.createIfStatement(
             ts.factory.createPrefixUnaryExpression(
@@ -1151,33 +1148,63 @@ function createSerialize(rootDescriptor, messageDescriptor, pbIdentifier) {
         )
     );
 
-    return ts.factory.createMethodDeclaration(
-        undefined,
-        undefined,
-        undefined,
-        ts.factory.createIdentifier("serialize"),
-        undefined,
-        undefined,
-        [
-            ts.factory.createParameterDeclaration(
-                undefined,
-                undefined,
-                undefined,
-                "w",
-                ts.factory.createToken(ts.SyntaxKind.QuestionToken),
-                ts.factory.createTypeReferenceNode(
+
+    return [
+        ts.factory.createMethodDeclaration(
+            undefined,
+            undefined,
+            undefined,
+            "serialize",
+            undefined,
+            undefined,
+            undefined,
+            ts.factory.createTypeReferenceNode("Uint8Array"),
+        ),
+        ts.factory.createMethodDeclaration(
+            undefined,
+            undefined,
+            undefined,
+            "serialize",
+            undefined,
+            undefined,
+            [
+                ts.factory.createParameterDeclaration(
+                    undefined,
+                    undefined,
+                    undefined,
+                    "w",
+                    undefined,
                     ts.factory.createQualifiedName(pbIdentifier, "BinaryWriter"),
                     undefined
                 ),
-                undefined
-            ),
-        ],
-        ts.factory.createUnionTypeNode([
-            ts.factory.createTypeReferenceNode(ts.factory.createIdentifier("Uint8Array"), undefined),
-            ts.factory.createTypeReferenceNode(ts.factory.createIdentifier("undefined"), undefined),
-        ]),
-        ts.factory.createBlock(statements, true)
-    );
+            ],
+            ts.factory.createTypeReferenceNode("void"),
+        ),
+        ts.factory.createMethodDeclaration(
+            undefined,
+            undefined,
+            undefined,
+            "serialize",
+            undefined,
+            undefined,
+            [
+                ts.factory.createParameterDeclaration(
+                    undefined,
+                    undefined,
+                    undefined,
+                    "w",
+                    ts.factory.createToken(ts.SyntaxKind.QuestionToken),
+                    ts.factory.createQualifiedName(pbIdentifier, "BinaryWriter"),
+                    undefined
+                ),
+            ],
+            ts.factory.createUnionTypeNode([
+                ts.factory.createTypeReferenceNode("Uint8Array"),
+                ts.factory.createTypeReferenceNode("void"),
+            ]),
+            ts.factory.createBlock(statements, true)
+        )
+    ];
 }
 
 /**
@@ -1705,6 +1732,7 @@ function createMessage(
 
     // Create serialize  method
     members.push(
+        ...
         createSerialize(
             rootDescriptor,
             messageDescriptor,
