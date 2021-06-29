@@ -24,7 +24,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     defaults:
       run:
-        shell: ${{ matrix.shell }}
+        shell: ${{ matrix.shell }} {0}
     steps:
 
       - uses: actions/checkout@v2
@@ -37,7 +37,7 @@ jobs:
       - name: Setup msys
         uses: msys2/setup-msys2@v2
         continue-on-error: true
-        
+
       - run: yarn --frozen-lockfile
       - run: yarn codegen
       - run: yarn test
