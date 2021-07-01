@@ -1,14 +1,41 @@
 syntax = "proto3";
 
-message Request {
-    string test = 1;
+message None {}
+
+message Object {
+    string id = 1;
+    string size = 3;
+    string mimeType = 4;
 }
 
-
-message Response {
-    string test = 1;
+message Chunk {
+    message Range {
+        int64 start = 1;
+        int64 end = 2;
+    }
+    message Query {
+        string id = 1;
+        Range range = 2;
+    }
+    bytes data = 1;
+    Range range = 2;
 }
 
-service Srv {
-    rpc List (Request) returns (Response);
+message Query {
+    string id = 1;
+    message Result {
+        repeated Object objects = 1;
+    }
+}
+
+message Put {
+    string id = 1;
+    Chunk chunk = 3;
+}
+
+service Storage {
+    rpc query(Query) returns(stream Query.Result);
+    rpc get(Query) returns (Object);
+    rpc put(stream Put) returns (Object);
+    rpc chunk(stream Chunk.Query) returns(stream Chunk);
 }

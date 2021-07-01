@@ -1,6 +1,200 @@
 
 const type = require('./type');
+const descriptor = require('./compiler/descriptor');
 const ts = require('typescript');
+
+/**
+ * Returns grpc-node compatible service description
+ * @param {descriptor.FieldDescriptorProto} rootDescriptor 
+ * @param {descriptor.ServiceDescriptorProto} serviceDescriptor 
+ */
+function createServiceDefinition(rootDescriptor, serviceDescriptor) {
+    return ts.factory.createObjectLiteralExpression(
+        serviceDescriptor.method.map((methodDescriptor) => {
+            return ts.factory.createPropertyAssignment(
+                methodDescriptor.name,
+                ts.factory.createObjectLiteralExpression(
+                    [
+                        ts.factory.createPropertyAssignment(
+                            "path",
+                            ts.factory.createStringLiteral(
+                                getRPCPath(
+                                    rootDescriptor,
+                                    serviceDescriptor,
+                                    methodDescriptor
+                                )
+                            )
+                        ),
+                        ts.factory.createPropertyAssignment(
+                            "requestStream",
+                            methodDescriptor.client_streaming
+                                ? ts.factory.createTrue()
+                                : ts.factory.createFalse()
+                        ),
+                        ts.factory.createPropertyAssignment(
+                            "responseStream",
+                            methodDescriptor.server_streaming
+                                ? ts.factory.createTrue()
+                                : ts.factory.createFalse()
+                        ),
+                        ts.factory.createPropertyAssignment(
+                            "requestSerialize",
+                            ts.factory.createArrowFunction(
+                                undefined,
+                                undefined,
+                                [
+                                    ts.factory.createParameterDeclaration(
+                                        undefined,
+                                        undefined,
+                                        undefined,
+                                        "message",
+                                        undefined,
+                                        ts.factory.createTypeReferenceNode(
+                                            getRPCInputType(rootDescriptor, methodDescriptor),
+                                            undefined
+                                        )
+                                    ),
+                                ],
+                                undefined,
+                                ts.factory.createToken(ts.SyntaxKind.EqualsGreaterThanToken),
+                                ts.factory.createCallExpression(
+                                    ts.factory.createPropertyAccessExpression(
+                                        ts.factory.createIdentifier("Buffer"),
+                                        "from"
+                                    ),
+                                    undefined,
+                                    [
+                                        ts.factory.createCallExpression(
+                                            ts.factory.createPropertyAccessExpression(
+                                                ts.factory.createIdentifier("message"),
+                                                "serialize"
+                                            ),
+                                            undefined,
+                                            undefined
+                                        ),
+                                    ]
+                                )
+                            )
+                        ),
+                        ts.factory.createPropertyAssignment(
+                            "requestDeserialize",
+                            ts.factory.createArrowFunction(
+                                undefined,
+                                undefined,
+                                [
+                                    ts.factory.createParameterDeclaration(
+                                        undefined,
+                                        undefined,
+                                        undefined,
+                                        "bytes",
+                                        undefined,
+                                        ts.factory.createTypeReferenceNode(
+                                            ts.factory.createIdentifier("Buffer"),
+                                            undefined
+                                        )
+                                    ),
+                                ],
+                                undefined,
+                                ts.factory.createToken(ts.SyntaxKind.EqualsGreaterThanToken),
+                                ts.factory.createCallExpression(
+                                    ts.factory.createPropertyAccessExpression(
+                                        getRPCInputType(rootDescriptor, methodDescriptor),
+                                        "deserialize"
+                                    ),
+                                    undefined,
+                                    [
+                                        ts.factory.createNewExpression(
+                                            ts.factory.createIdentifier("Uint8Array"),
+                                            undefined,
+                                            [ts.factory.createIdentifier("bytes")]
+                                        ),
+                                    ]
+                                )
+                            )
+                        ),
+                        ts.factory.createPropertyAssignment(
+                            "responseSerialize",
+                            ts.factory.createArrowFunction(
+                                undefined,
+                                undefined,
+                                [
+                                    ts.factory.createParameterDeclaration(
+                                        undefined,
+                                        undefined,
+                                        undefined,
+                                        "message",
+                                        undefined,
+                                        ts.factory.createTypeReferenceNode(
+                                            getRPCOutputType(rootDescriptor, methodDescriptor),
+                                            undefined
+                                        )
+                                    ),
+                                ],
+                                undefined,
+                                ts.factory.createToken(ts.SyntaxKind.EqualsGreaterThanToken),
+                                ts.factory.createCallExpression(
+                                    ts.factory.createPropertyAccessExpression(
+                                        ts.factory.createIdentifier("Buffer"),
+                                        "from"
+                                    ),
+                                    undefined,
+                                    [
+                                        ts.factory.createCallExpression(
+                                            ts.factory.createPropertyAccessExpression(
+                                                ts.factory.createIdentifier("message"),
+                                                "serialize"
+                                            ),
+                                            undefined,
+                                            []
+                                        ),
+                                    ]
+                                )
+                            )
+                        ),
+                        ts.factory.createPropertyAssignment(
+                            "responseDeserialize",
+                            ts.factory.createArrowFunction(
+                                undefined,
+                                undefined,
+                                [
+                                    ts.factory.createParameterDeclaration(
+                                        undefined,
+                                        undefined,
+                                        undefined,
+                                        "bytes",
+                                        undefined,
+                                        ts.factory.createTypeReferenceNode(
+                                            ts.factory.createIdentifier("Buffer"),
+                                            undefined
+                                        )
+                                    ),
+                                ],
+                                undefined,
+                                ts.factory.createToken(ts.SyntaxKind.EqualsGreaterThanToken),
+                                ts.factory.createCallExpression(
+                                    ts.factory.createPropertyAccessExpression(
+                                        getRPCOutputType(rootDescriptor, methodDescriptor),
+                                        "deserialize"
+                                    ),
+                                    undefined,
+                                    [
+                                        ts.factory.createNewExpression(
+                                            ts.factory.createIdentifier("Uint8Array"),
+                                            undefined,
+                                            [ts.factory.createIdentifier("bytes")]
+                                        ),
+                                    ]
+                                )
+                            )
+                        ),
+                    ],
+                    true
+                )
+            );
+        }),
+        true
+    )
+}
 
 /**
  * Returns interface definition of the service description
@@ -8,245 +202,124 @@ const ts = require('typescript');
  * @param {descriptor.ServiceDescriptorProto} serviceDescriptor 
  * @param {ts.Identifier} grpcIdentifier 
  */
-function createServerInterface(rootDescriptor, serviceDescriptor, grpcIdentifier) {
-    const methods = [];
+function createUnimplementedServer(rootDescriptor, serviceDescriptor, grpcIdentifier) {
+    const members = [
+        ts.factory.createPropertyDeclaration(
+            undefined,
+            [ts.factory.createModifier(ts.SyntaxKind.StaticKeyword)],
+            "definition",
+            undefined,
+            undefined,
+            createServiceDefinition(rootDescriptor, serviceDescriptor)
+        )
+    ];
 
     for (const methodDescriptor of serviceDescriptor.method) {
-        methods.push(
-            ts.factory.createPropertySignature(
+        const parameters = [];
+        let callType;
+
+        if (isUnary(methodDescriptor)) {
+            callType = "ServerUnaryCall";
+
+        } else if (isClientStreaming(methodDescriptor)) {
+            callType = "ServerReadableStream";
+        } else if (isServerStreaming(methodDescriptor)) {
+            callType = "ServerWritableStream";
+        } else if (isBidi(methodDescriptor)) {
+            callType = "ServerDuplexStream";
+        }
+
+        parameters.push(
+            ts.factory.createParameterDeclaration(
                 undefined,
-                methodDescriptor.name,
+                undefined,
+                undefined,
+                "call",
                 undefined,
                 ts.factory.createTypeReferenceNode(
-                    ts.factory.createQualifiedName(grpcIdentifier, ts.factory.createIdentifier("handleUnaryCall")),
+                    ts.factory.createQualifiedName(grpcIdentifier, ts.factory.createIdentifier(callType)),
                     [
                         getRPCInputType(rootDescriptor, methodDescriptor),
                         getRPCOutputType(rootDescriptor, methodDescriptor)
                     ]
                 )
             )
+        );
+
+        if (isUnary(methodDescriptor) || isClientStreaming(methodDescriptor)) {
+            parameters.push(
+                ts.factory.createParameterDeclaration(
+                    undefined,
+                    undefined,
+                    undefined,
+                    "callback",
+                    undefined,
+                    ts.factory.createTypeReferenceNode(
+                        ts.factory.createQualifiedName(grpcIdentifier, ts.factory.createIdentifier("handleUnaryCall")),
+                        [
+                            getRPCInputType(rootDescriptor, methodDescriptor),
+                            getRPCOutputType(rootDescriptor, methodDescriptor)
+                        ]
+                    )
+                )
+            );
+        }
+
+        members.push(
+            ts.factory.createMethodDeclaration(
+                undefined,
+                [ts.factory.createModifier(ts.SyntaxKind.AbstractKeyword)],
+                undefined,
+                methodDescriptor.name,
+                undefined,
+                undefined,
+                parameters,
+                ts.factory.createTypeReferenceNode("void")
+            )
         )
     }
 
-    return ts.factory.createInterfaceDeclaration(
-        undefined,
-        [ts.factory.createModifier(ts.SyntaxKind.ExportKeyword)],
-        ts.factory.createIdentifier(`I${serviceDescriptor.name}Server`),
+    return ts.factory.createClassDeclaration(
         undefined,
         [
-            ts.factory.createHeritageClause(ts.SyntaxKind.ExtendsKeyword, [
-                ts.factory.createQualifiedName(grpcIdentifier, ts.factory.createIdentifier("UntypedServiceImplementation")),
-            ]),
+            ts.factory.createModifier(ts.SyntaxKind.ExportKeyword),
+            ts.factory.createModifier(ts.SyntaxKind.AbstractKeyword)
         ],
-        methods
+        ts.factory.createIdentifier(`Unimplemented${serviceDescriptor.name}Server`),
+        undefined,
+        undefined,
+        members
     )
 }
 
 /**
- * Returns grpc-node compatible service description
- * @param {descriptor.FieldDescriptorProto} rootDescriptor 
+ * Returns a const declaration for the deprecated Service definiton const
  * @param {descriptor.ServiceDescriptorProto} serviceDescriptor 
  */
-function createService(rootDescriptor, serviceDescriptor) {
-    return ts.factory.createVariableStatement(
-        [ts.factory.createModifier(ts.SyntaxKind.ExportKeyword)],
-        ts.factory.createVariableDeclarationList(
-            [
+function createDeprecatedDefinitionConst(serviceDescriptor) {
+
+    return [
+        ts.factory.createJSDocComment(
+            `@deprecated This property has been deprected please use {@link Unimplemented${serviceDescriptor.name}Server.definition} instead.`,
+        ),
+
+        ts.factory.createVariableStatement(
+            [ts.factory.createModifier(ts.SyntaxKind.ExportKeyword)],
+            ts.factory.createVariableDeclarationList([
                 ts.factory.createVariableDeclaration(
-                    ts.factory.createIdentifier(serviceDescriptor.name),
+                    serviceDescriptor.name,
                     undefined,
                     undefined,
-                    ts.factory.createObjectLiteralExpression(
-                        serviceDescriptor.method.map((methodDescriptor) => {
-                            return ts.factory.createPropertyAssignment(
-                                methodDescriptor.name,
-                                ts.factory.createObjectLiteralExpression(
-                                    [
-                                        ts.factory.createPropertyAssignment(
-                                            "path",
-                                            ts.factory.createStringLiteral(
-                                                getRPCPath(
-                                                    rootDescriptor,
-                                                    serviceDescriptor,
-                                                    methodDescriptor
-                                                )
-                                            )
-                                        ),
-                                        ts.factory.createPropertyAssignment(
-                                            "requestStream",
-                                            methodDescriptor.client_streaming
-                                                ? ts.factory.createTrue()
-                                                : ts.factory.createFalse()
-                                        ),
-                                        ts.factory.createPropertyAssignment(
-                                            "responseStream",
-                                            methodDescriptor.server_streaming
-                                                ? ts.factory.createTrue()
-                                                : ts.factory.createFalse()
-                                        ),
-                                        ts.factory.createPropertyAssignment(
-                                            "requestSerialize",
-                                            ts.factory.createArrowFunction(
-                                                undefined,
-                                                undefined,
-                                                [
-                                                    ts.factory.createParameterDeclaration(
-                                                        undefined,
-                                                        undefined,
-                                                        undefined,
-                                                        "message",
-                                                        undefined,
-                                                        ts.factory.createTypeReferenceNode(
-                                                            getRPCInputType(rootDescriptor, methodDescriptor),
-                                                            undefined
-                                                        )
-                                                    ),
-                                                ],
-                                                undefined,
-                                                ts.factory.createToken(ts.SyntaxKind.EqualsGreaterThanToken),
-                                                ts.factory.createCallExpression(
-                                                    ts.factory.createPropertyAccessExpression(
-                                                        ts.factory.createIdentifier("Buffer"),
-                                                        "from"
-                                                    ),
-                                                    undefined,
-                                                    [
-                                                        ts.factory.createCallExpression(
-                                                            ts.factory.createPropertyAccessExpression(
-                                                                ts.factory.createIdentifier("message"),
-                                                                "serialize"
-                                                            ),
-                                                            undefined,
-                                                            undefined
-                                                        ),
-                                                    ]
-                                                )
-                                            )
-                                        ),
-                                        ts.factory.createPropertyAssignment(
-                                            "requestDeserialize",
-                                            ts.factory.createArrowFunction(
-                                                undefined,
-                                                undefined,
-                                                [
-                                                    ts.factory.createParameterDeclaration(
-                                                        undefined,
-                                                        undefined,
-                                                        undefined,
-                                                        "bytes",
-                                                        undefined,
-                                                        ts.factory.createTypeReferenceNode(
-                                                            ts.factory.createIdentifier("Buffer"),
-                                                            undefined
-                                                        )
-                                                    ),
-                                                ],
-                                                undefined,
-                                                ts.factory.createToken(ts.SyntaxKind.EqualsGreaterThanToken),
-                                                ts.factory.createCallExpression(
-                                                    ts.factory.createPropertyAccessExpression(
-                                                        getRPCInputType(rootDescriptor, methodDescriptor),
-                                                        "deserialize"
-                                                    ),
-                                                    undefined,
-                                                    [
-                                                        ts.factory.createNewExpression(
-                                                            ts.factory.createIdentifier("Uint8Array"),
-                                                            undefined,
-                                                            [ts.factory.createIdentifier("bytes")]
-                                                        ),
-                                                    ]
-                                                )
-                                            )
-                                        ),
-                                        ts.factory.createPropertyAssignment(
-                                            "responseSerialize",
-                                            ts.factory.createArrowFunction(
-                                                undefined,
-                                                undefined,
-                                                [
-                                                    ts.factory.createParameterDeclaration(
-                                                        undefined,
-                                                        undefined,
-                                                        undefined,
-                                                        "message",
-                                                        undefined,
-                                                        ts.factory.createTypeReferenceNode(
-                                                            getRPCOutputType(rootDescriptor, methodDescriptor),
-                                                            undefined
-                                                        )
-                                                    ),
-                                                ],
-                                                undefined,
-                                                ts.factory.createToken(ts.SyntaxKind.EqualsGreaterThanToken),
-                                                ts.factory.createCallExpression(
-                                                    ts.factory.createPropertyAccessExpression(
-                                                        ts.factory.createIdentifier("Buffer"),
-                                                        "from"
-                                                    ),
-                                                    undefined,
-                                                    [
-                                                        ts.factory.createCallExpression(
-                                                            ts.factory.createPropertyAccessExpression(
-                                                                ts.factory.createIdentifier("message"),
-                                                                "serialize"
-                                                            ),
-                                                            undefined,
-                                                            []
-                                                        ),
-                                                    ]
-                                                )
-                                            )
-                                        ),
-                                        ts.factory.createPropertyAssignment(
-                                            "responseDeserialize",
-                                            ts.factory.createArrowFunction(
-                                                undefined,
-                                                undefined,
-                                                [
-                                                    ts.factory.createParameterDeclaration(
-                                                        undefined,
-                                                        undefined,
-                                                        undefined,
-                                                        "bytes",
-                                                        undefined,
-                                                        ts.factory.createTypeReferenceNode(
-                                                            ts.factory.createIdentifier("Buffer"),
-                                                            undefined
-                                                        )
-                                                    ),
-                                                ],
-                                                undefined,
-                                                ts.factory.createToken(ts.SyntaxKind.EqualsGreaterThanToken),
-                                                ts.factory.createCallExpression(
-                                                    ts.factory.createPropertyAccessExpression(
-                                                        getRPCOutputType(rootDescriptor, methodDescriptor),
-                                                        "deserialize"
-                                                    ),
-                                                    undefined,
-                                                    [
-                                                        ts.factory.createNewExpression(
-                                                            ts.factory.createIdentifier("Uint8Array"),
-                                                            undefined,
-                                                            [ts.factory.createIdentifier("bytes")]
-                                                        ),
-                                                    ]
-                                                )
-                                            )
-                                        ),
-                                    ],
-                                    true
-                                )
-                            );
-                        }),
-                        true
+                    ts.factory.createPropertyAccessExpression(
+                        ts.factory.createIdentifier(`Unimplemented${serviceDescriptor.name}Server`),
+                        "definition"
                     )
-                ),
-            ],
-            ts.NodeFlags.Const
+                )
+            ], ts.NodeFlags.Const)
         )
-    );
+    ]
 }
+
 
 /**
  * Returns grpc-node compatible unary client method
@@ -265,20 +338,13 @@ function createUnaryServiceClientMethod(
         getRPCInputType(rootDescriptor, methodDescriptor)
     );
 
-    const metadataType = ts.factory.createQualifiedName(grpcIdentifier, "Metadata");
-
-    const errorType = ts.factory.createQualifiedName(grpcIdentifier, "ServiceError");
-
-    const returnType = ts.factory.createTypeReferenceNode("Promise", [responseType]);
-
-    const rpcName = methodDescriptor.name;
-
     const promiseBody = ts.factory.createCallExpression(
-        ts.factory.createElementAccessExpression(ts.factory.createSuper(), ts.factory.createStringLiteral(rpcName)),
+        ts.factory.createPropertyAccessExpression(ts.factory.createSuper(), methodDescriptor.name),
         undefined,
         [
             ts.factory.createIdentifier("request"),
             ts.factory.createIdentifier("metadata"),
+            ts.factory.createIdentifier("options"),
             ts.factory.createArrowFunction(
                 undefined,
                 undefined,
@@ -289,7 +355,7 @@ function createUnaryServiceClientMethod(
                         undefined,
                         "error",
                         undefined,
-                        errorType
+                        ts.factory.createQualifiedName(grpcIdentifier, "ServiceError")
                     ),
                     ts.factory.createParameterDeclaration(
                         undefined,
@@ -332,7 +398,7 @@ function createUnaryServiceClientMethod(
         undefined,
         undefined,
         undefined,
-        rpcName,
+        methodDescriptor.name,
         undefined,
         undefined,
         [
@@ -350,12 +416,48 @@ function createUnaryServiceClientMethod(
                 undefined,
                 "metadata",
                 ts.factory.createToken(ts.SyntaxKind.QuestionToken),
-                metadataType
+                ts.factory.createQualifiedName(grpcIdentifier, "Metadata")
+            ),
+            ts.factory.createParameterDeclaration(
+                undefined,
+                undefined,
+                undefined,
+                "options",
+                ts.factory.createToken(ts.SyntaxKind.QuestionToken),
+                ts.factory.createQualifiedName(grpcIdentifier, "CallOptions")
             ),
         ],
-        returnType,
+        ts.factory.createTypeReferenceNode("Promise", [responseType]),
         ts.factory.createBlock(
             [
+                ts.factory.createIfStatement(
+                    ts.factory.createPrefixUnaryExpression(
+                        ts.SyntaxKind.ExclamationToken,
+                        ts.factory.createIdentifier("metadata")
+                    ),
+                    ts.factory.createExpressionStatement(
+                        ts.factory.createBinaryExpression(
+                            ts.factory.createIdentifier("metadata"),
+                            ts.factory.createToken(ts.SyntaxKind.EqualsToken),
+                            ts.factory.createNewExpression(
+                                ts.factory.createPropertyAccessExpression(grpcIdentifier, "Metadata")
+                            )
+                        )
+                    )
+                ),
+                ts.factory.createIfStatement(
+                    ts.factory.createPrefixUnaryExpression(
+                        ts.SyntaxKind.ExclamationToken,
+                        ts.factory.createIdentifier("options")
+                    ),
+                    ts.factory.createExpressionStatement(
+                        ts.factory.createBinaryExpression(
+                            ts.factory.createIdentifier("options"),
+                            ts.factory.createToken(ts.SyntaxKind.EqualsToken),
+                            ts.factory.createObjectLiteralExpression([])
+                        )
+                    )
+                ),
                 ts.factory.createReturnStatement(
                     ts.factory.createNewExpression(ts.factory.createIdentifier("Promise"), undefined, [
                         ts.factory.createArrowFunction(
@@ -441,7 +543,7 @@ function createServiceClient(
     ];
 
     for (const methodDescriptor of serviceDescriptor.method) {
-        if (!isUnaryRPC(methodDescriptor) || !process.env.EXPERIMENTAL_FEATURES) {
+        if (!isUnary(methodDescriptor) || !process.env.EXPERIMENTAL_FEATURES) {
             continue;
         }
         members.push(
@@ -468,7 +570,10 @@ function createServiceClient(
                         ),
                         undefined,
                         [
-                            ts.factory.createIdentifier(serviceDescriptor.name),
+                            ts.factory.createPropertyAccessExpression(
+                                ts.factory.createIdentifier(`Unimplemented${serviceDescriptor.name}Server`),
+                                "definition"
+                            ),
                             ts.factory.createStringLiteral(serviceDescriptor.name),
                             ts.factory.createObjectLiteralExpression(),
                         ]
@@ -555,13 +660,47 @@ function getRPCPath(rootDescriptor, serviceDescriptor, methodDescriptor) {
 
 /**
  * @param {descriptor.MethodDescriptorProto} methodDescriptor 
- * @returns {true | false}
+ * @returns {boolean}
  */
-function isUnaryRPC(methodDescriptor) {
+function isUnary(methodDescriptor) {
     return (
         methodDescriptor.client_streaming == false &&
         methodDescriptor.server_streaming == false
     );
 }
 
-module.exports = { createServiceInterface, createServerInterface, createService, createServiceClient };
+/**
+ * @param {descriptor.MethodDescriptorProto} methodDescriptor 
+ * @returns {boolean}
+ */
+function isClientStreaming(methodDescriptor) {
+    return (
+        methodDescriptor.client_streaming == true &&
+        methodDescriptor.server_streaming == false
+    );
+}
+
+/**
+ * @param {descriptor.MethodDescriptorProto} methodDescriptor 
+ * @returns {boolean}
+ */
+function isServerStreaming(methodDescriptor) {
+    return (
+        methodDescriptor.client_streaming == false &&
+        methodDescriptor.server_streaming == true
+    );
+}
+/**
+ * @param {descriptor.MethodDescriptorProto} methodDescriptor 
+ * @returns {boolean}
+ */
+function isBidi(methodDescriptor) {
+    return (
+        methodDescriptor.client_streaming == true &&
+        methodDescriptor.server_streaming == true
+    );
+}
+
+
+
+module.exports = { createUnimplementedServer, createServiceClient, createDeprecatedDefinitionConst };
