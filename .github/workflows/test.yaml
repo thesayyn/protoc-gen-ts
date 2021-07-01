@@ -23,10 +23,14 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 12.x
-          
+
       - name: Setup msys
         uses: msys2/setup-msys2@v2
         if: matrix.os == 'windows-latest'
+
+      - run: fsutil 8dot3name set 0
+        if: matrix.os == 'windows-latest'
+        name: Setup msys
 
       - run: yarn --frozen-lockfile
       - run: yarn codegen
