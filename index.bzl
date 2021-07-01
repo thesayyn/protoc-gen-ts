@@ -46,7 +46,7 @@ def _ts_proto_library(ctx):
 
     protoc_args = ctx.actions.args()
 
-    protoc_args.add("--plugin=protoc-gen-ts=%s" % ( ctx.executable.protoc_gen_ts_bin.path ))
+    protoc_args.add("--plugin=protoc-gen-ts=%s" % ( ctx.expand_location(ctx.executable.protoc_gen_ts_bin.path) ))
 
     protoc_args.add("--ts_out=%s" % (ctx.bin_dir.path))
 
