@@ -4,13 +4,13 @@ import {importdirective as id2} from "./importdirective";
 describe("Imported Proto", () => {
 
     it("should be serialized", () => {
-        const mymsg = new id2.a.Message({
-            importedField: new id1.b.Imported({})
+        const mymsg = new id2.Message({
+            importedField: new id1.Imported({})
         });
 
-        const deserializedMessage = id2.a.Message.deserialize(mymsg.serialize());
+        const deserializedMessage = id2.Message.deserialize(mymsg.serialize());
 
-        expect(deserializedMessage.importedField instanceof id1.b.Imported).toBe(true);
+        expect(deserializedMessage.importedField instanceof id1.Imported).toBe(true);
     })
 
 })

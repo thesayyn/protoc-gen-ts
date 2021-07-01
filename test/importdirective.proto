@@ -1,15 +1,15 @@
 syntax = "proto3";
 
-package importdirective.a;
+package importdirective;
 
 import "test/imported.proto";
 
 service ImportedService {
-    rpc ImportedServiceTest(b.Imported) returns (b.Imported.SubMessage);
+    rpc ImportedServiceTest(importdirective.Imported) returns (importdirective.Imported.SubMessage);
 }
 
 message Message {
-    b.Imported importedField = 1;
-    b.Imported.SubMessage submessageField = 2;
-    b.Imported.SubMessage.MyEnum enumField = 3;
+    importdirective.Imported importedField = 1;
+    importdirective.Imported.SubMessage submessageField = 2;
+    importdirective.Imported.SubMessage.MyEnum enumField = 3;
 }
