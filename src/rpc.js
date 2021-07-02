@@ -211,6 +211,23 @@ function createUnimplementedServer(rootDescriptor, serviceDescriptor, grpcIdenti
             undefined,
             undefined,
             createServiceDefinition(rootDescriptor, serviceDescriptor)
+        ),
+        ts.factory.createIndexSignature(
+            undefined,
+            undefined,
+            [
+                ts.factory.createParameterDeclaration(
+                    undefined,
+                    undefined,
+                    undefined,
+                    "method",
+                    undefined,
+                    ts.factory.createIdentifier("string")
+                )
+            ],
+            ts.factory.createTypeReferenceNode(
+                ts.factory.createPropertyAccessExpression(grpcIdentifier, "UntypedHandleCall")
+            )
         )
     ];
 
@@ -220,7 +237,6 @@ function createUnimplementedServer(rootDescriptor, serviceDescriptor, grpcIdenti
 
         if (isUnary(methodDescriptor)) {
             callType = "ServerUnaryCall";
-
         } else if (isClientStreaming(methodDescriptor)) {
             callType = "ServerReadableStream";
         } else if (isServerStreaming(methodDescriptor)) {
@@ -255,11 +271,8 @@ function createUnimplementedServer(rootDescriptor, serviceDescriptor, grpcIdenti
                     "callback",
                     undefined,
                     ts.factory.createTypeReferenceNode(
-                        ts.factory.createQualifiedName(grpcIdentifier, ts.factory.createIdentifier("handleUnaryCall")),
-                        [
-                            getRPCInputType(rootDescriptor, methodDescriptor),
-                            getRPCOutputType(rootDescriptor, methodDescriptor)
-                        ]
+                        ts.factory.createQualifiedName(grpcIdentifier, ts.factory.createIdentifier("requestCallback")),
+                        [getRPCOutputType(rootDescriptor, methodDescriptor)]
                     )
                 )
             );
@@ -290,34 +303,6 @@ function createUnimplementedServer(rootDescriptor, serviceDescriptor, grpcIdenti
         undefined,
         members
     )
-}
-
-/**
- * Returns a const declaration for the deprecated Service definiton const
- * @param {descriptor.ServiceDescriptorProto} serviceDescriptor 
- */
-function createDeprecatedDefinitionConst(serviceDescriptor) {
-
-    return [
-        ts.factory.createJSDocComment(
-            `@deprecated This property has been deprected please use {@link Unimplemented${serviceDescriptor.name}Server.definition} instead.`,
-        ),
-
-        ts.factory.createVariableStatement(
-            [ts.factory.createModifier(ts.SyntaxKind.ExportKeyword)],
-            ts.factory.createVariableDeclarationList([
-                ts.factory.createVariableDeclaration(
-                    serviceDescriptor.name,
-                    undefined,
-                    undefined,
-                    ts.factory.createPropertyAccessExpression(
-                        ts.factory.createIdentifier(`Unimplemented${serviceDescriptor.name}Server`),
-                        "definition"
-                    )
-                )
-            ], ts.NodeFlags.Const)
-        )
-    ]
 }
 
 
@@ -703,4 +688,4 @@ function isBidi(methodDescriptor) {
 
 
 
-module.exports = { createUnimplementedServer, createServiceClient, createDeprecatedDefinitionConst };
+module.exports = { createUnimplementedServer, createServiceClient };

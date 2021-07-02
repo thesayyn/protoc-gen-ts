@@ -2,9 +2,9 @@ syntax = "proto3";
 
 message None {}
 
-message Object {
+message _Object {
     string id = 1;
-    string size = 3;
+    uint64 size = 3;
     string mimeType = 4;
 }
 
@@ -24,7 +24,7 @@ message Chunk {
 message Query {
     string id = 1;
     message Result {
-        repeated Object objects = 1;
+        repeated _Object objects = 1;
     }
 }
 
@@ -35,7 +35,7 @@ message Put {
 
 service Storage {
     rpc query(Query) returns(stream Query.Result);
-    rpc get(Query) returns (Object);
-    rpc put(stream Put) returns (Object);
+    rpc get(Query) returns (_Object);
+    rpc put(stream Put) returns (_Object);
     rpc chunk(stream Chunk.Query) returns(stream Chunk);
 }

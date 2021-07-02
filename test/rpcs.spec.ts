@@ -1,21 +1,6 @@
 import * as grpc from "@grpc/grpc-js";
-import { Chunk, Object, Put, Query, UnimplementedStorageServer, StorageClient } from "./rpcs";
+import { Chunk, _Object, Put, Query, UnimplementedStorageServer, StorageClient } from "./rpcs";
 import * as util from "util";
-
-class A extends UnimplementedStorageServer{
-  query(call: grpc.ServerWritableStream<Query, Query.Result>): void {
-    throw new Error("Method not implemented.");
-  }
-  get(call: grpc.ServerUnaryCall<Query, Object>, callback: grpc.handleUnaryCall<Query, Object>): void {
-    throw new Error("Method not implemented.");
-  }
-  put(call: grpc.ServerReadableStream<Put, Object>, callback: grpc.handleUnaryCall<Put, Object>): void {
-    throw new Error("Method not implemented.");
-  }
-  chunk(call: grpc.ServerDuplexStream<Chunk.Query, Chunk>): void {
-    throw new Error("Method not implemented.");
-  }
-}
 
 describe("RPCs", () => {
   let server: grpc.Server;
@@ -27,10 +12,9 @@ describe("RPCs", () => {
   beforeEach(async () => {
     server = new grpc.Server();
     storageServer = jasmine.createSpyObj<UnimplementedStorageServer>(["query", "get", "put", "chunk"]);
-    server.addService(UnimplementedStorageServer.definition, new A());
+    server.addService(UnimplementedStorageServer.definition, storageServer);
     await util.promisify(server.bindAsync).bind(server)("0.0.0.0:4884", grpc.ServerCredentials.createInsecure());
     server.start();
-
     client = new StorageClient("0.0.0.0:4884", grpc.credentials.createInsecure(), {
       'grpc.lb_policy_name': 'round_robin',
       'grpc.keepalive_time_ms': 1500,
@@ -57,40 +41,28 @@ describe("RPCs", () => {
   });
 
   it("should make unary call", async () => {
-    const requestMetadata = new grpc.Metadata();
-    requestMetadata.set("test", "value");
+    storageServer.get.and.callFake((call, callback) => {
+      callback(null, new _Object({id: "1", size: 1000}));
+    })
 
-    const response = await client.List(
-      new Request({
-        test: "2",
-      }),
-      requestMetadata
-    );
+    const metadata = new grpc.Metadata();
+    metadata.set("test", "value");
+    const response = await client.get(new Query(), metadata);
 
-    expect(response instanceof Response).toBe(true);
-    expect(response.test).toBe("1");
+    expect(response.toObject()).toEqual({id: "1", size: 1000});
 
-    expect(serviceImplSpy.List).toHaveBeenCalledTimes(1);
-    const [serviceCall] = serviceImplSpy.List.calls.argsFor(0);
-    expect(serviceCall.request.test).toBe("2");
+    expect(storageServer.get).toHaveBeenCalledTimes(1);
+    const [serviceCall] = storageServer.get.calls.argsFor(0);
     expect(serviceCall.metadata.get("test")).toEqual(["value"]);
   });
 
   it("should make unary call without metadata", async () => {
-    const requestMetadata = new grpc.Metadata();
-    requestMetadata.set("test", "value");
+    storageServer.get.and.callFake((call, callback) => {
+      callback(null, new _Object({id: "1", size: 1000}));
+    })
+    const response = await client.get(new Query());
+    expect(response.toObject()).toEqual({id: "1", size: 1000});
 
-    const response = await client.List(
-      new Request({
-        test: "3",
-      })
-    );
-
-    expect(response instanceof Response).toBe(true);
-    expect(response.test).toBe("1");
-
-    expect(serviceImplSpy.List).toHaveBeenCalledTimes(1);
-    const [serviceCall] = serviceImplSpy.List.calls.argsFor(0);
-    expect(serviceCall.request.test).toBe("2");
+    expect(storageServer.get).toHaveBeenCalledTimes(1);
   });
 });

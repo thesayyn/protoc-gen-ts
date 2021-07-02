@@ -69,7 +69,6 @@ for (const fileDescriptor of request.proto_file) {
   for (const serviceDescriptor of fileDescriptor.service) {
     statements.push(rpc.createUnimplementedServer(fileDescriptor, serviceDescriptor, grpcIdentifier));
     statements.push(rpc.createServiceClient(fileDescriptor, serviceDescriptor, grpcIdentifier));
-    statements.push(...rpc.createDeprecatedDefinitionConst(serviceDescriptor));
   }
 
   // Import grpc only if there is service statements
