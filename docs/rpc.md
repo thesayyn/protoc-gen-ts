@@ -59,14 +59,18 @@ class Storage extends UnimplementedStorageService {
 }
 
 const server = new grpc.Server();
-server.bind(
-    "0.0.0.0:4884",
-    grpc.ServerCredentials.createInsecure()
-);
 
 server.addService(UnimplementedStorageService.definition, new Storage());
 
-server.start();
+
+server.bindAsync(
+    "0.0.0.0:4884",
+    grpc.ServerCredentials.createInsecure(),
+    () => server.start()
+);
+
+
+
 ```
 
 to interact with this service you will need to use `StorageClient` as follows.
