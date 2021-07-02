@@ -298,7 +298,7 @@ function createUnimplementedServer(rootDescriptor, serviceDescriptor, grpcIdenti
             ts.factory.createModifier(ts.SyntaxKind.ExportKeyword),
             ts.factory.createModifier(ts.SyntaxKind.AbstractKeyword)
         ],
-        ts.factory.createIdentifier(`Unimplemented${serviceDescriptor.name}Server`),
+        ts.factory.createIdentifier(`Unimplemented${serviceDescriptor.name}Service`),
         undefined,
         undefined,
         members
@@ -556,7 +556,7 @@ function createServiceClient(
                         undefined,
                         [
                             ts.factory.createPropertyAccessExpression(
-                                ts.factory.createIdentifier(`Unimplemented${serviceDescriptor.name}Server`),
+                                ts.factory.createIdentifier(`Unimplemented${serviceDescriptor.name}Service`),
                                 "definition"
                             ),
                             ts.factory.createStringLiteral(serviceDescriptor.name),
@@ -569,49 +569,6 @@ function createServiceClient(
         members
     );
 }
-
-/**
- * Returns interface definition of the service description
- * @param {descriptor.FileDescriptorProto} rootDescriptor 
- * @param {descriptor.ServiceDescriptorProto} serviceDescriptor 
- * @param {ts.Identifier} grpcIdentifier 
- */
-function createServiceInterface(rootDescriptor, serviceDescriptor, grpcIdentifier) {
-    const methods = [];
-
-    for (const methodDescriptor of serviceDescriptor.method) {
-        methods.push(ts.factory.createPropertySignature(
-            undefined,
-            methodDescriptor.name,
-            undefined,
-            ts.factory.createTypeReferenceNode(
-                ts.factory.createQualifiedName(grpcIdentifier, ts.factory.createIdentifier("MethodDefinition")),
-                [
-                    getRPCInputType(rootDescriptor, methodDescriptor),
-                    getRPCOutputType(rootDescriptor, methodDescriptor)
-                ]
-            )
-        ))
-    }
-    return ts.factory.createInterfaceDeclaration(
-        undefined,
-        [ts.factory.createModifier(ts.SyntaxKind.ExportKeyword)],
-        ts.factory.createIdentifier(`I${serviceDescriptor.name}Service`),
-        undefined,
-        [
-            ts.factory.createHeritageClause(ts.SyntaxKind.ExtendsKeyword, [
-                ts.factory.createTypeReferenceNode(
-                    ts.factory.createQualifiedName(grpcIdentifier, ts.factory.createIdentifier("ServiceDefinition")),
-                    [
-                        ts.factory.createQualifiedName(grpcIdentifier, ts.factory.createIdentifier("UntypedServiceImplementation"))
-                    ]
-                ),
-            ]),
-        ],
-        methods
-    )
-}
-
 
 /**
  * @param {descriptor.FileDescriptorProto} rootDescriptor 
