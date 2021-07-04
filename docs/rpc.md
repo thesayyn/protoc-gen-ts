@@ -78,7 +78,7 @@ to interact with this service you will need to use `StorageClient` as follows.
 ```ts
 import {StorageClient, Query} from "./storage";
 
-const storage = new StorageClient();
+const storage = new StorageClient("0.0.0.0:4884", grpc.credentials.createInsecure());
 
 storage.get(new Query(), (object) => console.log(object));
 
