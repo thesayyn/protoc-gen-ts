@@ -311,7 +311,7 @@ function createUnimplementedServer(rootDescriptor, serviceDescriptor, grpcIdenti
  * @param {descriptor.FieldDescriptorProto} rootDescriptor
  * @param {descriptor.MethodDescriptorProto} methodDescriptor
  */
-function createUnaryServiceClientMethod(
+function createUnaryRpcPromiseMethod(
     rootDescriptor,
     methodDescriptor,
     grpcIdentifier
@@ -532,7 +532,7 @@ function createServiceClient(
             continue;
         }
         members.push(
-            createUnaryServiceClientMethod(
+            createUnaryRpcPromiseMethod(
                 rootDescriptor,
                 methodDescriptor,
                 grpcIdentifier
