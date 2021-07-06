@@ -1,5 +1,5 @@
 import * as grpc from "@grpc/grpc-js";
-import { Query, StorageClient, UnimplementedStorageService, _Object } from "./rpcs";
+import { Chunk, Put, Query, StorageClient, UnimplementedStorageService, _Object } from "./rpcs";
 import * as util from "util";
 
 describe("RPCs", () => {
@@ -65,4 +65,54 @@ describe("RPCs", () => {
 
     expect(storageServer.get).toHaveBeenCalledTimes(1);
   });
+
+  it("should make client streaming call", (done) => {
+    let callDataSpy = jasmine.createSpy("on data");
+    storageServer.put.and.callFake((call, callback) => {
+      callDataSpy.and.callFake(() => {
+        if (callDataSpy.calls.count() > 1) {
+          callback(null, new _Object({
+            id: "1",
+            mimeType: "application/json",
+            size: 2
+          }))
+        }
+      })
+      call.on("data", callDataSpy);
+    });
+
+
+    const stream = client.put((err, object) => {
+      if (err) {
+        return done.fail(err);
+      }
+      expect(object?.toObject()).toEqual({
+        id: "1",
+        mimeType: "application/json",
+        size: 2
+      })
+      done();
+    });
+    stream.write(new Put({
+      id: "1",
+      chunk: new Chunk({
+        data: new Uint8Array([1, 1]),
+        range: new Chunk.Range({
+          start: 1, 
+          end: 2
+        })
+      })
+    }));
+    stream.write(new Put({
+      id: "1",
+      chunk: new Chunk({
+        data: new Uint8Array([1, 1]),
+        range: new Chunk.Range({
+          start: 3, 
+          end: 4
+        })
+      })
+    }));
+    stream.end();
+  })
 });

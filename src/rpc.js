@@ -465,6 +465,134 @@ function createUnaryRpcPromiseMethod(
 }
 
 /**
+ * Returns grpc-node compatible unary client method
+ * @param {descriptor.FieldDescriptorProto} rootDescriptor
+ * @param {descriptor.MethodDescriptorProto} methodDescriptor
+ */
+function createClientStreamingRpcMethod(
+    rootDescriptor,
+    methodDescriptor,
+    grpcIdentifier
+) {
+    const responseType = getRPCOutputType(rootDescriptor, methodDescriptor);
+    const requestType = getRPCInputType(rootDescriptor, methodDescriptor);
+    const metadataParameter = ts.factory.createParameterDeclaration(
+        undefined, undefined, undefined,
+        "metadata",
+        undefined,
+        ts.factory.createQualifiedName(grpcIdentifier, "Metadata")
+    );
+    const callOptionsParameter = ts.factory.createParameterDeclaration(
+        undefined, undefined, undefined,
+        "options",
+        undefined,
+        ts.factory.createQualifiedName(grpcIdentifier, "CallOptions")
+    );
+    const callbackParameter = ts.factory.createParameterDeclaration(
+        undefined, undefined, undefined,
+        "callback",
+        undefined,
+        ts.factory.createTypeReferenceNode(
+            ts.factory.createQualifiedName(grpcIdentifier, "requestCallback"),
+            [responseType]
+        )
+    );
+    const returnType = ts.factory.createTypeReferenceNode(
+        ts.factory.createQualifiedName(grpcIdentifier, "ClientWritableStream"),
+        [requestType]
+    )
+    return [
+        ts.factory.createMethodDeclaration(
+            undefined, undefined, undefined,
+            methodDescriptor.name,
+            undefined, undefined,
+            [metadataParameter, callOptionsParameter, callbackParameter],
+            returnType
+        ),
+        ts.factory.createMethodDeclaration(
+            undefined, undefined, undefined,
+            methodDescriptor.name,
+            undefined, undefined,
+            [metadataParameter, callbackParameter],
+            returnType
+        ),
+        ts.factory.createMethodDeclaration(
+            undefined, undefined, undefined,
+            methodDescriptor.name,
+            undefined, undefined,
+            [callOptionsParameter, callbackParameter],
+            returnType
+        ),
+        ts.factory.createMethodDeclaration(
+            undefined, undefined, undefined,
+            methodDescriptor.name,
+            undefined, undefined,
+            [callbackParameter],
+            returnType
+        ),
+        ts.factory.createMethodDeclaration(
+            undefined,
+            undefined,
+            undefined,
+            methodDescriptor.name,
+            undefined,
+            undefined,
+            [
+                ts.factory.createParameterDeclaration(
+                    undefined, undefined, undefined,
+                    "metadata",
+                    undefined,
+                    ts.factory.createUnionTypeNode([
+                        metadataParameter.type,
+                        callOptionsParameter.type,
+                        callbackParameter.type
+                    ])
+                ),
+                ts.factory.createParameterDeclaration(
+                    undefined, undefined, undefined,
+                    "options",
+                    ts.factory.createToken(ts.SyntaxKind.QuestionToken),
+                    ts.factory.createUnionTypeNode([
+                        callOptionsParameter.type,
+                        callbackParameter.type
+                    ])
+                ),
+                ts.factory.createParameterDeclaration(
+                    undefined, undefined, undefined,
+                    "callback",
+                    ts.factory.createToken(ts.SyntaxKind.QuestionToken),
+                    ts.factory.createTypeReferenceNode(
+                        ts.factory.createQualifiedName(grpcIdentifier, "requestCallback"),
+                        [responseType]
+                    )
+                )
+            ],
+            returnType,
+            ts.factory.createBlock(
+                [
+                   
+                    ts.factory.createReturnStatement(
+                        ts.factory.createCallExpression(
+                            ts.factory.createPropertyAccessExpression(
+                                ts.factory.createSuper(),
+                                methodDescriptor.name
+                            ),
+                            undefined,
+                            [
+                                ts.factory.createIdentifier("metadata"),
+                                ts.factory.createIdentifier("options"),
+                                ts.factory.createIdentifier("callback"),
+                            ]
+                        )
+                    ),
+                ],
+                true
+            )
+        )
+    ];
+}
+
+/**
  * Returns grpc-node compatible service client.
  * @param {descriptor.FieldDescriptorProto} rootDescriptor
  * @param {descriptor.MethodDescriptorProto} methodDescriptor
@@ -528,16 +656,28 @@ function createServiceClient(
     ];
 
     for (const methodDescriptor of serviceDescriptor.method) {
-        if (!isUnary(methodDescriptor) || !process.env.EXPERIMENTAL_FEATURES) {
-            continue;
-        }
-        members.push(
-            createUnaryRpcPromiseMethod(
-                rootDescriptor,
-                methodDescriptor,
-                grpcIdentifier
+        if (isUnary(methodDescriptor)) {
+            if (!process.env.EXPERIMENTAL_FEATURES) {
+  
+            } else {
+                members.push(
+                    createUnaryRpcPromiseMethod(
+                        rootDescriptor,
+                        methodDescriptor,
+                        grpcIdentifier
+                    )
+                );
+            }
+        } else if (isClientStreaming(methodDescriptor)) {
+            members.push(
+                ...createClientStreamingRpcMethod(
+                    rootDescriptor,
+                    methodDescriptor,
+                    grpcIdentifier
+                )
             )
-        );
+        }           
+
     }
 
     return ts.factory.createClassDeclaration(
