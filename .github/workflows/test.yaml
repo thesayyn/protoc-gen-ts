@@ -13,7 +13,7 @@ jobs:
   test:
     strategy:
       matrix:
-        os: [windows-latest, ubuntu-latest, macos-latest]
+        os: [windows-latest , ubuntu-latest, macos-latest]
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v2
@@ -23,17 +23,25 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 12.x
-
-      - name: Setup msys
-        uses: msys2/setup-msys2@v2
-        if: matrix.os == 'windows-latest'
-
-      - run: fsutil 8dot3name set 0
-        if: matrix.os == 'windows-latest'
-        name: Setup msys
-
       - run: yarn --frozen-lockfile
       - run: yarn codegen
       - run: yarn test
       - run: (cd examples/pure && yarn install --force && yarn test)
       - run: (cd examples && yarn install && yarn test)
+
+  # test_windows:
+  #   runs-on: windows-latest      
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #       with:
+  #         submodules: true
+  #     - name: Setup node 12
+  #       uses: actions/setup-node@v2
+  #       with:
+  #         node-version: 12.x
+  #     - run: yarn --frozen-lockfile
+  #     - run: yarn codegen
+  #     - run: yarn test
+  #     - run: (cd examples/pure && yarn install --force && yarn test)
+  #     - run: (cd examples && yarn install && yarn test)
+        
