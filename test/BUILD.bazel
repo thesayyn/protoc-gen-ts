@@ -6,14 +6,29 @@ load("//:index.bzl", "ts_proto_library")
 
 proto_library(
     name = "protos",
-    srcs = glob(["**/*.proto"])
+    srcs = glob(
+        include = ["**/*.proto"],
+        exclude = ["**/*experimental*.proto"]
+    )
 )
 
 ts_proto_library(
     name = "codegen",
-    experimental_features = True,
     deps = [
         ":protos",
+    ],
+)
+
+proto_library(
+    name = "protos_experimental",
+    srcs = glob(["**/*experimental*.proto"])
+)
+
+ts_proto_library(
+    name = "codegen_experimental",
+    experimental_features = True,
+    deps = [
+        ":protos_experimental",
     ],
 )
 

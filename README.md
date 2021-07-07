@@ -54,6 +54,12 @@ console.log(receivedChange.name) // "patch for typescript 4.5"
 console.log(receivedChange.name_or_id) // "name"
 ```
 
+## Usage with `@grpc/grpc-js` or `grpc`
+
+There is a seperate documentation for the usage of protoc-gen-ts along with either `@grpc/grpc-js` or `grpc`.
+
+Checkout [rpcs](docs/rpc.md).
+
 ## Support
 
 If you find this plugin useful please consider giving us a star to get into open collective.
@@ -63,6 +69,15 @@ You can also support me directly by buying me one or two coffee,
 <a href="https://www.buymeacoffee.com/thesayyn">
 <img height="40px" src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=🙌&slug=thesayyn&button_colour=FFDD00&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=ffffff">
 </a>
+
+## Key Differences
+
+This protoc plugin does generate;
+
+- Fields as **getter** **setters**.
+- No such prefixes as "getField" or "getFieldList". If you have repeated field named `users`, then the generated message class will have a `getter` named `users` not `getUsersList` 
+- Enums as **enums**.
+- Messages within a **namespace** if the proto has a **package** directive.
 
 
 ## Usage
@@ -89,17 +104,6 @@ ts_proto_library(
 
 # Checkout the examples/bazel directory for an example.
 ```
-
-
-## Key Differences
-
-This protoc plugin does generate;
-
-- Fields as **getter** **setters**.
-- No such prefixes as "getField" or "getFieldList". If you have repeated field named `users`, then the generated message class will have a `getter` named `users` not `getUsersList` 
-- Enums as **enums**.
-- Messages within a **namespace** if the proto has a **package** directive.
-
 
 ## Environment variables
 
