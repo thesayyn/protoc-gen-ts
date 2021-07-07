@@ -54,6 +54,12 @@ console.log(receivedChange.name) // "patch for typescript 4.5"
 console.log(receivedChange.name_or_id) // "name"
 ```
 
+## Usage with `@grpc/grpc-js` or `grpc`
+
+There is a seperate documentation for the usage of protoc-gen-ts along with either `@grpc/grpc-js` or `grpc`.
+
+Checkout [rpcs](docs/rpc).
+
 ## Support
 
 If you find this plugin useful please consider giving us a star to get into open collective.
@@ -98,11 +104,6 @@ ts_proto_library(
 
 # Checkout the examples/bazel directory for an example.
 ```
-
-
-## Usage with @grpc/grpc-js or grpc
-
-There is a seperate documentation for the usage of protoc-gen-ts along with either `@grpc/grpc-js` or `grpc`
 
 ## Environment variables
 
