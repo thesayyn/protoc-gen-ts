@@ -64,7 +64,7 @@ def _ts_proto_library(ctx):
     ctx.actions.run_shell(
         inputs = direct_sources + transitive_descriptors,
         tools = depset(ctx.files._protoc + ctx.files.protoc_gen_ts_bin),
-        command = "%s $@" % (ctx.executable._protoc.path),
+        command = "./%s $@" % (ctx.executable._protoc.path),
         outputs = outputs,
         arguments = arguments,
         env = env,
