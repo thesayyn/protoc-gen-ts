@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+message Chunk {
+    bytes data = 1;
+}
+
+message Result {
+    int32 id = 1;
+}
+
+service Storage {
+    rpc put(Chunk) returns(Result);
+}

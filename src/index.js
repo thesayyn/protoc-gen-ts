@@ -67,9 +67,7 @@ for (const fileDescriptor of request.proto_file) {
 
   // Create all services and clients
   for (const serviceDescriptor of fileDescriptor.service) {
-    statements.push(rpc.createServiceInterface(fileDescriptor, serviceDescriptor, grpcIdentifier));
-    statements.push(rpc.createServerInterface(fileDescriptor, serviceDescriptor, grpcIdentifier));
-    statements.push(rpc.createService(fileDescriptor, serviceDescriptor));
+    statements.push(rpc.createUnimplementedServer(fileDescriptor, serviceDescriptor, grpcIdentifier));
     statements.push(rpc.createServiceClient(fileDescriptor, serviceDescriptor, grpcIdentifier));
   }
 

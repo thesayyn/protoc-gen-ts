@@ -1,7 +1,7 @@
 # Protoc Gen Typescript 
 
+[![test](https://github.com/thesayyn/protoc-gen-ts/actions/workflows/test.yaml/badge.svg?branch=master)](https://github.com/thesayyn/protoc-gen-ts/actions/workflows/test.yaml)
 ![npm](https://img.shields.io/npm/v/protoc-gen-ts)
-![npm bundle size](https://img.shields.io/bundlephobia/min/protoc-gen-ts)
 ![npm](https://img.shields.io/npm/dm/protoc-gen-ts)
 
 Generates appropriate Protocol Buffer sources from Proto files directly through _TypeScript Compiler API_.
@@ -64,8 +64,6 @@ You can also support me directly by buying me one or two coffee,
 <img height="40px" src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=🙌&slug=thesayyn&button_colour=FFDD00&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=ffffff">
 </a>
 
-
-
 ## Key Differences
 
 This protoc plugin does generate;
@@ -101,6 +99,10 @@ ts_proto_library(
 # Checkout the examples/bazel directory for an example.
 ```
 
+
+## Usage with @grpc/grpc-js or grpc
+
+There is a seperate documentation for the usage of protoc-gen-ts along with either `@grpc/grpc-js` or `grpc`
 
 ## Environment variables
 
