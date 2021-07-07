@@ -40,30 +40,37 @@ describe("RPCs", () => {
     });
   });
 
-  it("should make unary call", async () => {
-    storageServer.get.and.callFake((call, callback) => {
+  it("should make unary call", (done) => {
+    storageServer.get.and.callFake((_, callback) => {
       callback(null, new _Object({ id: "1", size: 1000 }));
     })
 
     const metadata = new grpc.Metadata();
     metadata.set("test", "value");
-    const response = await client.get(new Query(), metadata);
 
-    expect(response.toObject()).toEqual({ id: "1", size: 1000 });
+    client.get(new Query(), metadata, (err, value) => {
+      expect(err).toBeNull();
+      expect(value?.toObject()).toEqual({ id: "1", size: 1000 });
 
-    expect(storageServer.get).toHaveBeenCalledTimes(1);
-    const [serviceCall] = storageServer.get.calls.argsFor(0);
-    expect(serviceCall.metadata.get("test")).toEqual(["value"]);
+
+      expect(storageServer.get).toHaveBeenCalledTimes(1);
+      const [serviceCall] = storageServer.get.calls.argsFor(0);
+      expect(serviceCall.metadata.get("test")).toEqual(["value"]);
+
+      done();
+    });
   });
 
-  it("should make unary call without metadata", async () => {
+  it("should make unary call without metadata", (done) => {
     storageServer.get.and.callFake((call, callback) => {
       callback(null, new _Object({ id: "1", size: 1000 }));
     })
-    const response = await client.get(new Query());
-    expect(response.toObject()).toEqual({ id: "1", size: 1000 });
-
-    expect(storageServer.get).toHaveBeenCalledTimes(1);
+    client.get(new Query(), (err, response) => {
+      expect(err).toBeNull();
+      expect(response?.toObject()).toEqual({ id: "1", size: 1000 });
+      expect(storageServer.get).toHaveBeenCalledTimes(1);
+      done();
+    });    
   });
 
   it("should make client streaming call", (done) => {
@@ -98,7 +105,7 @@ describe("RPCs", () => {
       chunk: new Chunk({
         data: new Uint8Array([1, 1]),
         range: new Chunk.Range({
-          start: 1, 
+          start: 1,
           end: 2
         })
       })
@@ -108,7 +115,7 @@ describe("RPCs", () => {
       chunk: new Chunk({
         data: new Uint8Array([1, 1]),
         range: new Chunk.Range({
-          start: 3, 
+          start: 3,
           end: 4
         })
       })
