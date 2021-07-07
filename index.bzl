@@ -102,7 +102,7 @@ ts_proto_library = rule(
         ),
         "_protoc": attr.label(
             executable = True,
-            cfg = "exec",
+            cfg = "host",
             default = (
                 "@com_google_protobuf//:protoc"
             ),
