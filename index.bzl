@@ -101,6 +101,7 @@ ts_proto_library = rule(
             default = _get_bin(),
         ),
         "_protoc": attr.label(
+            allow_single_file = True,
             executable = True,
             cfg = "host",
             default = (
