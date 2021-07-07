@@ -58,7 +58,7 @@ console.log(receivedChange.name_or_id) // "name"
 
 There is a seperate documentation for the usage of protoc-gen-ts along with either `@grpc/grpc-js` or `grpc`.
 
-Checkout [rpcs](docs/rpc).
+Checkout [rpcs](docs/rpc.md).
 
 ## Support
 
