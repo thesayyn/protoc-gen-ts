@@ -1,5 +1,4 @@
 name: Test
-
 on:
   pull_request:
     paths-ignore:
@@ -28,20 +27,3 @@ jobs:
       - run: yarn test
       - run: (cd examples/pure && yarn install --force && yarn test)
       - run: (cd examples && yarn install && yarn test)
-
-  # test_windows:
-  #   runs-on: windows-latest      
-  #   steps:
-  #     - uses: actions/checkout@v2
-  #       with:
-  #         submodules: true
-  #     - name: Setup node 12
-  #       uses: actions/setup-node@v2
-  #       with:
-  #         node-version: 12.x
-  #     - run: yarn --frozen-lockfile
-  #     - run: yarn codegen
-  #     - run: yarn test
-  #     - run: (cd examples/pure && yarn install --force && yarn test)
-  #     - run: (cd examples && yarn install && yarn test)
-        

@@ -37,46 +37,43 @@ def _ts_proto_library(ctx):
             transitive_descriptors.extend(info.transitive_descriptor_sets.to_list())
             direct_sources.extend(info.direct_sources)
 
-    ts_outputs = []
-
+    outputs = []
 
     for proto in direct_sources:
         normalizedProtoName = proto.path.replace(ctx.label.package, "").lstrip("/")[:-len(proto.extension) - 1]
-        ts_outputs.append(ctx.actions.declare_file("%s.ts" % (normalizedProtoName)))
+        outputs.append(ctx.actions.declare_file("%s.ts" % (normalizedProtoName)))
 
-    protoc_args = ctx.actions.args()
+    arguments = list()
 
-    protoc_args.add("--plugin=protoc-gen-ts=%s" % ( ctx.expand_location(ctx.executable.protoc_gen_ts_bin.path) ))
+    arguments.append("--plugin=protoc-gen-ts=%s" % ( ctx.expand_location(ctx.executable.protoc_gen_ts_bin.path) ))
 
-    protoc_args.add("--ts_out=%s" % (ctx.bin_dir.path))
+    arguments.append("--ts_out=%s" % (ctx.bin_dir.path))
 
-    protoc_args.add("--descriptor_set_in=%s" % (":".join([desc.path for desc in transitive_descriptors])))
+    arguments.append("--descriptor_set_in=%s" % (":".join([desc.path for desc in transitive_descriptors])))
 
-    protoc_args.add_all(direct_sources)
+    arguments.extend([source.path for source in direct_sources])
+
 
     env = dict()
 
-    env["GRPC_PACKAGE_NAME"] = ctx.attr.grpc_package_name
-    
+    env['GRPC_PACKAGE_NAME'] = ctx.attr.grpc_package_name
+
     if ctx.attr.experimental_features:
         env['EXPERIMENTAL_FEATURES'] = "true"
 
-    ctx.actions.run(
+    ctx.actions.run_shell(
         inputs = direct_sources + transitive_descriptors,
-        tools = ctx.files.protoc_gen_ts_bin,
-        executable = ctx.executable._protoc,
-        outputs = ts_outputs,
-        arguments = [protoc_args],
+        tools = depset(ctx.files._protoc + ctx.files.protoc_gen_ts_bin),
+        command = "%s $@" % (ctx.executable._protoc.path),
+        outputs = outputs,
+        arguments = arguments,
         env = env,
         progress_message = "Generating Protocol Buffers for Typescript %s" % ctx.label,
     )
 
     return [
-        DefaultInfo(files = depset(ts_outputs))
+        DefaultInfo(files = depset(outputs))
     ]
-
-
-
 
 
 ts_proto_library = rule(
@@ -101,9 +98,8 @@ ts_proto_library = rule(
             default = _get_bin(),
         ),
         "_protoc": attr.label(
-            allow_single_file = True,
             executable = True,
-            cfg = "host",
+            cfg = "exec",
             default = (
                 "@com_google_protobuf//:protoc"
             ),
