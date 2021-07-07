@@ -23,7 +23,9 @@ the appropriate endpoints for your rpc methods.
 `StorageClient` will be your client to interact with this service. It consists of methods which accepts the right type of messages
 to interact with the server.
 
-Enough talking; lets implement a server that would work with any hussle.
+Enough talking; lets implement a server that would work without any hussle. 
+
+For the sake of keeping things simple, we will create a storage service that has only one unary rpc method.
 
 given the proto `storage.proto`
 
