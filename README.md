@@ -120,7 +120,6 @@ export GRPC_PACKAGE_NAME="@grpc/grpc";
 
 ```
 ## Roadmap
-
 - <s>Support for repeated non-integer fields</s>
 - <s>Generate appropriate service code that is usable with node **grpc** package.</s>
 - <s>Support for creating protocol buffer messages directly from their constructors with an object.</s>
@@ -130,7 +129,6 @@ export GRPC_PACKAGE_NAME="@grpc/grpc";
 - <s>Support oneof fields</s>
 - <s>Support `map<TYPE, TYPE>` types as ES `Map`.</s>
 - Interopability with well knowns.
-
 
 ## Alternatives
 

@@ -7,7 +7,6 @@ pkg_npm(
     package_name = "protoc-gen-ts",
     srcs = [
         "//bin:protoc-gen-ts",
-        "//bin:protoc-gen-ts.cmd",
         "index.bzl",
         "package.json",
         "README.md",

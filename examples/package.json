@@ -5,7 +5,7 @@
     "grpc:server": "bazel run //grpc:server",
     "pretest": "bazel build //grpc:type //bazel:message && node ../scripts/sync_generated_protos.js grpc && node ../scripts/sync_generated_protos.js bazel",
     "test": "bazel run //bazel:bin",
-    "preinstall": "cd ../ && bazel build :package"
+    "preinstall": "cd .. && yarn bazel build :package"
   },
   "dependencies": {
     "@grpc/grpc-js": "^1.2.12",

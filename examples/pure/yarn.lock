@@ -194,7 +194,7 @@ node-forge@^0.10.0:
   integrity sha512-PPmu8eEeG9saEUvI97fm4OYxXVB6bFvyNTyiUOBichBpFG8A1Ljw3bY62+5oOjDEMHRnd0Y7HQ+x7uzxOzC6JA==
 
 "protoc-gen-ts@file:../../bazel-bin/package":
-  version "0.3.6-rc2"
+  version "0.3.6-rc5"
 
 safe-buffer@^5.0.1:
   version "5.2.1"

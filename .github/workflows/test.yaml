@@ -1,5 +1,4 @@
 name: Test
-
 on:
   pull_request:
     paths-ignore:
@@ -11,10 +10,10 @@ on:
       - '**.md'
 jobs:
   test:
-    runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest, macos-latest]
+        os: [windows-latest , ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v2
         with:
@@ -26,4 +25,5 @@ jobs:
       - run: yarn --frozen-lockfile
       - run: yarn codegen
       - run: yarn test
-      - run: cd examples/pure && yarn --frozen-lockfile && yarn test
+      - run: (cd examples/pure && yarn install --force && yarn test)
+      - run: (cd examples && yarn install && yarn test)
