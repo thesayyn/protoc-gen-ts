@@ -1,7 +1,7 @@
 {
   "name": "protoc-gen-ts",
   "description": "Compile protocol buffers descriptors to Typescript.",
-  "version": "0.3.8",
+  "version": "0.3.9",
   "license": "MIT",
   "author": {
     "email": "thesayyn@gmail.com",
