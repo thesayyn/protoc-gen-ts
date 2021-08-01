@@ -1394,9 +1394,14 @@ function createDeserialize(
                                 ),
                                 ts.factory.createCallExpression(
                                     ts.factory.createPropertyAccessExpression(
-                                        ts.factory.createPropertyAccessExpression(
-                                            pbIdentifier,
-                                            "Map"
+                                        ts.factory.createParenthesizedExpression(
+                                            ts.factory.createAsExpression(
+                                                ts.factory.createPropertyAccessExpression(
+                                                    pbIdentifier,
+                                                    "Map"
+                                                ),
+                                                ts.factory.createToken(ts.SyntaxKind.AnyKeyword)
+                                            ),
                                         ),
                                         "deserializeBinary"
                                     ),
