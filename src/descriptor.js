@@ -1403,14 +1403,12 @@ function createDeserialize(
 
                                     undefined,
                                     [
-                                        ts.factory.createParenthesizedExpression(
-                                            ts.factory.createAsExpression(
-                                                ts.factory.createPropertyAccessExpression(
-                                                    ts.factory.createIdentifier("message"),
-                                                    fieldDescriptor.name
-                                                ),
-                                                ts.factory.createToken(ts.SyntaxKind.AnyKeyword)
+                                        ts.factory.createAsExpression(
+                                            ts.factory.createPropertyAccessExpression(
+                                                ts.factory.createIdentifier("message"),
+                                                fieldDescriptor.name
                                             ),
+                                            ts.factory.createToken(ts.SyntaxKind.AnyKeyword)
                                         ),
                                         ts.factory.createIdentifier("reader"),
                                         keyCall,
