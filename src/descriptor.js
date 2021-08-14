@@ -1394,30 +1394,27 @@ function createDeserialize(
                                 ),
                                 ts.factory.createCallExpression(
                                     ts.factory.createPropertyAccessExpression(
-                                        ts.factory.createParenthesizedExpression(
-                                            ts.factory.createAsExpression(
-                                                ts.factory.createPropertyAccessExpression(
-                                                    pbIdentifier,
-                                                    "Map"
-                                                ),
-                                                ts.factory.createToken(ts.SyntaxKind.AnyKeyword)
-                                            ),
+                                        ts.factory.createPropertyAccessExpression(
+                                            pbIdentifier,
+                                            "Map"
                                         ),
                                         "deserializeBinary"
                                     ),
 
                                     undefined,
                                     [
-                                        ts.factory.createPropertyAccessExpression(
-                                            ts.factory.createIdentifier("message"),
-                                            fieldDescriptor.name
+                                        ts.factory.createAsExpression(
+                                            ts.factory.createPropertyAccessExpression(
+                                                ts.factory.createIdentifier("message"),
+                                                fieldDescriptor.name
+                                            ),
+                                            ts.factory.createToken(ts.SyntaxKind.AnyKeyword)
                                         ),
                                         ts.factory.createIdentifier("reader"),
                                         keyCall,
                                         valueCall
                                     ]
                                 )
-
                             ),
                         ]
                     )
