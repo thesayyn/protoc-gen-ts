@@ -1,6 +1,6 @@
 
 import { Tags, Topic } from "./map";
-import { importdirective } from "./imported";
+import { importdirective } from "./import/imported";
 
 describe("maps", () => {
     it("should serialize as map", () => {

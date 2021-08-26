@@ -7,7 +7,7 @@ load("//:index.bzl", "ts_proto_library")
 proto_library(
     name = "protos",
     srcs = glob(
-        include = ["**/*.proto"],
+        include = ["import/*.proto"],
         exclude = ["**/*experimental*.proto"]
     )
 )
@@ -34,7 +34,7 @@ ts_proto_library(
 
 ts_project(
     name = "test_lib",
-    srcs = glob(["**/*.ts"]),
+    srcs = glob(["import/*.ts"]),
     tsconfig = {
         "compilerOptions": {
             "target": "ES2020",

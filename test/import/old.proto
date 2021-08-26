@@ -1,0 +1,4 @@
+syntax = "proto3";
+
+import public "test/import/public.proto";
+import public "test/import/public2.proto";

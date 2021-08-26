@@ -36,15 +36,30 @@ for (const fileDescriptor of request.proto_file) {
   // Will keep track of import statements
   const importStatements = [];
 
+  // Will keep track of export statements for transitive dependencies
+  const exportStatements = [];
 
-  // Create all named imports from dependencies
-  for (const dependency of fileDescriptor.dependency) {
+  // Create all named imports and exports from dependencies
+  for (const [index, dependency] of fileDescriptor.dependency.entries()) {
     const identifier = ts.factory.createUniqueName("dependency");
     const moduleSpecifier = replaceExtension(dependency, "");
     type.setIdentifierForDependency(dependency, identifier);
     const importedFrom = `./${path.relative(path.dirname(fileDescriptor.name), moduleSpecifier)}`;
     importStatements.push(createImport(identifier, importedFrom));
+
+    if (fileDescriptor.public_dependency.indexOf(index) != -1) {
+      exportStatements.push(
+        ts.factory.createExportDeclaration(
+          undefined,
+          undefined,
+          false,
+          undefined,
+          ts.factory.createStringLiteral(importedFrom)
+        )
+      )
+    }
   }
+
 
   // Create all messages recursively
   let statements = [];
@@ -76,7 +91,6 @@ for (const fileDescriptor of request.proto_file) {
     importStatements.push(createImport(grpcIdentifier, process.env.GRPC_PACKAGE_NAME || "@grpc/grpc-js"));
   }
 
-
   const {major, minor, patch} = request.compiler_version || {major: 0, minor: 0, patch: 0};
 
   const doNotEditComment = ts.factory.createJSDocComment(
@@ -89,17 +103,18 @@ for (const fileDescriptor of request.proto_file) {
 
   // Wrap statements within the namespace
   if (fileDescriptor.package) {
-
     statements = [
       doNotEditComment,
       ...importStatements,
       descriptor.createNamespace(fileDescriptor.package, statements),
+      ...exportStatements
     ]
   } else {
     statements = [
       doNotEditComment,
       ...importStatements,
-      ...statements
+      ...statements,
+      ...exportStatements
     ];
   }
 
