@@ -1,5 +1,7 @@
 syntax = "proto3";
 
+package importdirective;
+
 import public "test/import/public.proto";
 import public "test/import/public2.proto";
 
