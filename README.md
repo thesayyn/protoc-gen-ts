@@ -70,7 +70,7 @@ console.log(receivedChange.author.name) // "mary poppins"
 When mapping raw json data to message classes, dealing with nested structures can be rather annoying.
 To overcome this problem, every generated message class has a static method called `fromObject` and `toObject` 
 which can handle the mapping bidirectionally for you, even with the deeply structured messages. since it is 
-aware of the field graph, it does not rely on any runtime type information thus we get the change to keep it fast.
+aware of the field graph, it does not rely on any runtime type information thus we get the chance to keep it fast.
 
 given the change example above, one can write code as follows
 
