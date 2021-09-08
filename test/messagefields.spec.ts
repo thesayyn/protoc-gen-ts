@@ -60,4 +60,59 @@ describe("SubMessages", () => {
         expect(mymsg.toObject()).toEqual({ array_prop: [] })
     })
 
+    it("fromObject should handle construction deeply", () => {
+        const message = MessageFields.fromObject({
+            array_prop: [
+                {
+                    field_1: "test",
+                    field_2: "test"
+                },
+                {
+                    field_2: "test"
+                }
+            ],
+            sub_message: {}
+        });
+
+        expect(message.toObject()).toEqual({
+            array_prop: [
+                {
+                    field_1: "test",
+                    field_2: "test"
+                },
+                {
+                    field_2: "test"
+                }
+            ],
+            sub_message: {}
+        });
+    })
+
+    it("fromObject should handle construction deeply", () => {
+        const message = MessageFields.fromObject({
+            array_prop: [
+                {
+                    field_1: "test",
+                    field_2: "test"
+                },
+                {
+                    field_2: "test"
+                }
+            ],
+            sub_message: {}
+        });
+
+        expect(message.array_prop[0] instanceof SubMessage).toBeTrue();
+        expect(message.array_prop[0].field_1).toBe("test");
+        expect(message.array_prop[0].field_2).toBe("test");
+        
+        expect(message.array_prop[1] instanceof SubMessage).toBeTrue();
+        expect(message.array_prop[1].field_1).not.toBeTruthy();
+        expect(message.array_prop[1].field_2).toBe("test");
+
+        expect(message.sub_message instanceof SubMessage).toBeTrue();
+        expect(message.sub_message.field_2).not.toBeTruthy();
+        expect(message.sub_message.field_1).not.toBeTruthy();
+    })
+
 })

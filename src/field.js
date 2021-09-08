@@ -143,6 +143,32 @@ function isMessage(fieldDescriptor) {
     );
 }
 
+
+/**
+ * @param {descriptor.FieldDescriptorProto} fieldDescriptor 
+ * @returns {boolean}
+ */
+ function isNumber(fieldDescriptor) {
+    switch (fieldDescriptor.type) {
+        case descriptor.FieldDescriptorProto.Type.TYPE_DOUBLE:
+        case descriptor.FieldDescriptorProto.Type.TYPE_FLOAT:
+        case descriptor.FieldDescriptorProto.Type.TYPE_INT32:
+        case descriptor.FieldDescriptorProto.Type.TYPE_INT64:
+        case descriptor.FieldDescriptorProto.Type.TYPE_UINT32:
+        case descriptor.FieldDescriptorProto.Type.TYPE_UINT64:
+        case descriptor.FieldDescriptorProto.Type.TYPE_SINT32:
+        case descriptor.FieldDescriptorProto.Type.TYPE_SINT64:
+        case descriptor.FieldDescriptorProto.Type.TYPE_FIXED32:
+        case descriptor.FieldDescriptorProto.Type.TYPE_FIXED64:
+        case descriptor.FieldDescriptorProto.Type.TYPE_SFIXED32:
+        case descriptor.FieldDescriptorProto.Type.TYPE_SFIXED64:
+        case descriptor.FieldDescriptorProto.Type.TYPE_SFIXED64:
+            return true;
+        default:
+            return false;
+    }
+}
+
 /**
  * @param {descriptor.FieldDescriptorProto} fieldDescriptor 
  */
@@ -219,4 +245,4 @@ function isPacked(rootDescriptor, fieldDescriptor) {
 }
 
 
-module.exports = { getType, wrapRepeatedType, toBinaryMethodName, isMap, isPacked, isOneOf, isBoolean, isString, isEnum, isMessage, isOptional, isRepeated }
+module.exports = { getType, wrapRepeatedType, toBinaryMethodName, isMap, isPacked, isOneOf, isNumber, isBoolean, isString, isEnum, isMessage, isOptional, isRepeated }

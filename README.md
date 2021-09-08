@@ -15,6 +15,11 @@ Aim of this protoc plugin is to make usage of protocol buffers easy in Javascrip
 ```proto
 syntax = "proto3";
 
+message Author {
+    string name = 1;
+    string role = 2;
+}
+
 message Change {
     Kind kind = 1;
     string patch = 2;
@@ -23,6 +28,7 @@ message Change {
         string name = 4;
         string id = 5;
     }
+    Author author = 6;
 }
 
 enum Kind {
@@ -38,7 +44,11 @@ const change = new Change({
     kind: Kind.UPDATED,
     patch: "@@ -7,11 +7,15 @@",
     tags: ["no prefix", "as is"],
-    name: "patch for typescript 4.5"
+    name: "patch for typescript 4.5",
+    author: new Author({
+        name: "mary poppins",
+        role: "maintainer"
+    })
 });
 
 // Sent over the wire
@@ -52,7 +62,32 @@ console.log(receivedChange.tags) // ["no prefix", "as is"]
 console.log(receivedChange.name) // "patch for typescript 4.5"
 // see which one of the fields were filled
 console.log(receivedChange.name_or_id) // "name"
+console.log(receivedChange.author.name) // "mary poppins"
 ```
+
+## Support for Message.fromObject and Message.
+
+When mapping raw json data to message classes, dealing with nested structures can be rather annoying.
+To overcome this problem, every generated message class has a static method called `fromObject` and `toObject` 
+which can handle the mapping bidirectionally for you, even with the deeply structured messages. since it is 
+aware of the field graph, it does not rely on any runtime type information thus we get the chance to keep it fast.
+
+given the change example above, one can write code as;
+
+```typescript
+const change = Change.fromObject({
+    kind: Kind.UPDATED,
+    patch: "@@ -7,11 +7,15 @@",
+    tags: ["no prefix", "as is"],
+    name: "patch for typescript 4.5",
+    author: {
+        name: "mary poppins",
+        role: "maintainer"
+    }
+});
+console.log(change.author instanceof Author) // true
+```
+
 
 ## Usage with `@grpc/grpc-js` or `grpc`
 

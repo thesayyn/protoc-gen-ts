@@ -26,6 +26,250 @@ function createEnum(enumDescriptor) {
     );
 }
 
+
+/**
+ *
+ * @param {descriptor.FileDescriptorProto} rootDescriptor
+ * @param {descriptor.DescriptorProto} messageDescriptor
+ */
+function createFromObject(rootDescriptor, messageDescriptor) {
+    const dataIdentifier = ts.factory.createIdentifier("data");
+    const messageIdentifier = ts.factory.createIdentifier("message");
+
+    const statements = [];
+
+    const properties = [];
+
+    for (const fieldDescriptor of messageDescriptor.field) {
+        let assignmentExpr = ts.factory.createPropertyAccessExpression(
+            dataIdentifier,
+            fieldDescriptor.name
+        );
+
+        if (field.isMap(fieldDescriptor)) {
+            const [keyDescriptor, valueDescriptor] = type.getMapDescriptor(
+                fieldDescriptor.type_name
+            ).field;
+
+            assignmentExpr = ts.factory.createCallExpression(
+                ts.factory.createPropertyAccessExpression(
+                    ts.factory.createIdentifier("Object"),
+                    "entries"
+                ),
+                undefined,
+                [assignmentExpr]
+            );
+
+            let coercer;
+
+            if (field.isNumber(keyDescriptor)) {
+                coercer = "Number";
+            } else if (field.isBoolean(keyDescriptor)) {
+                coercer = "Boolean";
+            }
+
+            if (field.isMessage(valueDescriptor) || !field.isString(keyDescriptor)) {
+                let keyExpr = ts.factory.createIdentifier("key");
+                let valueExpr = ts.factory.createIdentifier("value");
+  
+
+                if (coercer) {
+                    keyExpr = ts.factory.createCallExpression(
+                        ts.factory.createIdentifier(coercer),
+                        undefined,
+                        [keyExpr]
+                    );
+                }
+
+                if (field.isMessage(valueDescriptor)) {
+                    valueExpr = ts.factory.createCallExpression(
+                        ts.factory.createPropertyAccessExpression(
+                            type.getTypeReference(rootDescriptor, valueDescriptor.type_name),
+                            "fromObject"
+                        ),
+                        undefined,
+                        [ts.factory.createIdentifier("value")]
+                    );
+                }
+
+                assignmentExpr = ts.factory.createCallExpression(
+                    ts.factory.createPropertyAccessExpression(assignmentExpr, "map"),
+                    undefined,
+                    [
+                        ts.factory.createArrowFunction(
+                            undefined,
+                            undefined,
+                            [
+                                ts.factory.createParameterDeclaration(
+                                    undefined,
+                                    undefined,
+                                    undefined,
+                                    ts.factory.createArrayBindingPattern([
+                                        ts.factory.createBindingElement(
+                                            undefined,
+                                            undefined,
+                                            "key"
+                                        ),
+                                        ts.factory.createBindingElement(
+                                            undefined,
+                                            undefined,
+                                            "value"
+                                        ),
+                                    ])
+                                ),
+                            ],
+                            undefined,
+                            ts.factory.createToken(ts.SyntaxKind.EqualsGreaterThanToken),
+                            ts.factory.createArrayLiteralExpression([keyExpr, valueExpr])
+                        ),
+                    ]
+                );
+            }
+            assignmentExpr = ts.factory.createNewExpression(
+                ts.factory.createIdentifier("Map"),
+                undefined,
+                [assignmentExpr]
+            );
+        } else if (field.isMessage(fieldDescriptor)) {
+            if (field.isRepeated(fieldDescriptor)) {
+                const arrowFunc = ts.factory.createArrowFunction(
+                    undefined,
+                    undefined,
+                    [
+                        ts.factory.createParameterDeclaration(
+                            undefined,
+                            undefined,
+                            undefined,
+                            "item"
+                        ),
+                    ],
+                    undefined,
+                    ts.factory.createToken(ts.SyntaxKind.EqualsGreaterThanToken),
+                    ts.factory.createCallExpression(
+                        ts.factory.createPropertyAccessExpression(
+                            type.getTypeReference(rootDescriptor, fieldDescriptor.type_name),
+                            "fromObject"
+                        ),
+                        undefined,
+                        [ts.factory.createIdentifier("item")]
+                    )
+                );
+                assignmentExpr = ts.factory.createCallExpression(
+                    ts.factory.createPropertyAccessExpression(assignmentExpr, "map"),
+                    undefined,
+                    [arrowFunc]
+                );
+            } else {
+                assignmentExpr = ts.factory.createCallExpression(
+                    ts.factory.createPropertyAccessExpression(
+                        type.getTypeReference(rootDescriptor, fieldDescriptor.type_name),
+                        "fromObject"
+                    ),
+                    undefined,
+                    [
+                        ts.factory.createPropertyAccessExpression(
+                            dataIdentifier,
+                            fieldDescriptor.name
+                        ),
+                    ]
+                );
+            }
+        } 
+
+        if (field.isOptional(rootDescriptor, fieldDescriptor)) {
+            const propertyAccessor = ts.factory.createPropertyAccessExpression(
+                dataIdentifier,
+                fieldDescriptor.name
+            );
+            let condition = ts.factory.createBinaryExpression(
+                propertyAccessor,
+                ts.factory.createToken(ts.SyntaxKind.ExclamationEqualsToken),
+                ts.factory.createNull()
+            );
+
+            if (field.isMap(fieldDescriptor)) {
+                condition = ts.factory.createBinaryExpression(
+                    ts.factory.createTypeOfExpression(propertyAccessor),
+                    ts.factory.createToken(ts.SyntaxKind.EqualsEqualsToken),
+                    ts.factory.createStringLiteral("object")
+                );
+            }
+
+            statements.push(
+                ts.factory.createIfStatement(
+                    condition,
+                    ts.factory.createBlock(
+                        [
+                            ts.factory.createExpressionStatement(
+                                ts.factory.createBinaryExpression(
+                                    ts.factory.createPropertyAccessExpression(
+                                        messageIdentifier,
+                                        fieldDescriptor.name
+                                    ),
+                                    ts.factory.createToken(ts.SyntaxKind.EqualsToken),
+                                    assignmentExpr
+                                )
+                            ),
+                        ],
+                        true
+                    )
+                )
+            );
+        } else {
+            properties.push(
+                ts.factory.createPropertyAssignment(
+                    fieldDescriptor.name,
+                    assignmentExpr
+                )
+            );
+        }
+    }
+
+    statements.unshift(
+        ts.factory.createVariableStatement(
+            undefined,
+            ts.factory.createVariableDeclarationList(
+                [
+                    ts.factory.createVariableDeclaration(
+                        "message",
+                        undefined,
+                        undefined,
+                        ts.factory.createNewExpression(
+                            ts.factory.createIdentifier(messageDescriptor.name),
+                            undefined,
+                            [ts.factory.createObjectLiteralExpression(properties, true)]
+                        )
+                    ),
+                ],
+                ts.NodeFlags.Const
+            )
+        )
+    );
+
+    statements.push(ts.factory.createReturnStatement(messageIdentifier));
+
+    return ts.factory.createMethodDeclaration(
+        undefined,
+        [ts.factory.createModifier(ts.SyntaxKind.StaticKeyword)],
+        undefined,
+        ts.factory.createIdentifier("fromObject"),
+        undefined,
+        undefined,
+        [
+            ts.factory.createParameterDeclaration(
+                undefined,
+                undefined,
+                undefined,
+                dataIdentifier,
+                undefined,
+                createPrimitiveMessageSignature(rootDescriptor, messageDescriptor)
+            ),
+        ],
+        undefined,
+        ts.factory.createBlock(statements, true)
+    );
+}
+
 /**
  * 
  * @param {descriptor.FileDescriptorProto} rootDescriptor 
@@ -1726,6 +1970,9 @@ function createMessage(
             createOneOfGetter(index, oneofDescriptor, messageDescriptor, pbIdentifier)
         );
     }
+
+    // Create fromObject method
+    members.push(createFromObject(rootDescriptor, messageDescriptor));
 
     // Create toObject method
     members.push(
