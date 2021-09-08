@@ -76,4 +76,28 @@ describe("maps", () => {
     });
 
 
+    it("should work with fromObject", () => {
+        const tags = Tags.fromObject({
+            imported: {
+                1: { key: importdirective.Imported.SubMessage.MyEnum.VALUE },
+                2: { key: importdirective.Imported.SubMessage.MyEnum.VALUE2 }
+            },
+            imported2: {
+                1: importdirective.Imported.SubMessage.MyEnum.VALUE,
+                3: importdirective.Imported.SubMessage.MyEnum.VALUE2
+            }
+        });
+        const transferredTags = Tags.deserialize(tags.serialize());
+        expect(transferredTags.toObject()).toEqual({
+            imported: {
+                1: { key: importdirective.Imported.SubMessage.MyEnum.VALUE },
+                2: { key: importdirective.Imported.SubMessage.MyEnum.VALUE2 }
+            },
+            imported2: {
+                1: importdirective.Imported.SubMessage.MyEnum.VALUE,
+                3: importdirective.Imported.SubMessage.MyEnum.VALUE2
+            }
+        })
+    });
+
 });
