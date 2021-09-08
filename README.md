@@ -65,7 +65,7 @@ console.log(receivedChange.name_or_id) // "name"
 console.log(receivedChange.author.name) // "mary poppins"
 ```
 
-## Support for Message.fromObject and Message.
+## Support for Message.fromObject and Message.toObject
 
 When mapping raw json data to message classes, dealing with nested structures can be rather annoying.
 To overcome this problem, every generated message class has a static method called `fromObject` and `toObject` 
