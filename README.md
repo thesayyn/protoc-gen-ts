@@ -72,7 +72,7 @@ To overcome this problem, every generated message class has a static method call
 which can handle the mapping bidirectionally for you, even with the deeply structured messages. since it is 
 aware of the field graph, it does not rely on any runtime type information thus we get the chance to keep it fast.
 
-given the change example above, one can write code as follows
+given the change example above, one can write code as;
 
 ```typescript
 const change = Change.fromObject({
