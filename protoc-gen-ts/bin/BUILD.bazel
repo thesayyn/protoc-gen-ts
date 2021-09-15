@@ -1,0 +1,5 @@
+alias(
+    name = "protoc-gen-ts",
+    actual = "//bin",
+    visibility = ["//visibility:public"]
+)

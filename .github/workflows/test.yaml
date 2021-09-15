@@ -10,6 +10,20 @@ on:
     paths-ignore:
       - '**.md'
 jobs:
+  test-windows: 
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: true
+      - name: Setup node 12
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14.x
+      - shell: bash 
+        run: yarn test
+      - shell: bash
+        run: cd examples/pure && yarn --frozen-lockfile && yarn test
   test:
     runs-on: ${{ matrix.os }}
     strategy:
@@ -22,7 +36,7 @@ jobs:
       - name: Setup node 12
         uses: actions/setup-node@v2
         with:
-          node-version: 12.x
+          node-version: 14.x
       - run: yarn --frozen-lockfile
       - run: yarn codegen
       - run: yarn test

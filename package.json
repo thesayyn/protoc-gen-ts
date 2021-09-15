@@ -18,7 +18,7 @@
     "codegen": "node ./scripts/sync_compiler_protos.js && bazel build //src:codegen && node ./scripts/sync_generated_protos.js src/compiler && bazel build //src:compiler && node ./scripts/sync_generated_protos.js src/compiler js"
   },
   "bin": {
-    "protoc-gen-ts": "./bin/protoc-gen-ts"
+    "protoc-gen-ts": "./bin/protoc-gen-ts.js"
   },
   "peerDependencies": {
     "google-protobuf": "^3.13.0",

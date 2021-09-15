@@ -1,11 +1,5 @@
 load("@rules_proto//proto:defs.bzl", "ProtoInfo")
 
-def _get_bin(): 
-    # BEGIN-INTERNAL
-    return "//bin"
-    # END-INTERNAL
-    return "//protoc-gen-ts/bin:protoc-gen-ts"
-
 def _proto_path(proto):
     """
     The proto path is not really a file path
@@ -46,7 +40,7 @@ def _ts_proto_library(ctx):
 
     protoc_args = ctx.actions.args()
 
-    protoc_args.add("--plugin=protoc-gen-ts=%s" % ( ctx.executable.protoc_gen_ts_bin.path ))
+    protoc_args.add("--plugin=protoc-gen-ts=%s" % (ctx.executable.protoc_gen_ts_bin.path))
 
     protoc_args.add("--ts_out=%s" % (ctx.bin_dir.path))
 
@@ -97,12 +91,15 @@ ts_proto_library = rule(
         ),
         "protoc_gen_ts_bin": attr.label(
             executable = True,
-            cfg = "exec",
-            default = _get_bin(),
+            cfg = "host",
+            default = (
+                "//protoc-gen-ts/bin:protoc-gen-ts"
+            ),
         ),
         "_protoc": attr.label(
+            cfg = "host",
             executable = True,
-            cfg = "exec",
+            allow_single_file = True,
             default = (
                 "@com_google_protobuf//:protoc"
             ),
