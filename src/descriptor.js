@@ -1933,6 +1933,15 @@ function createMessage(
     pbIdentifier
 ) {
     const members = [];
+    messageDescriptor.field = messageDescriptor.field.map(f => {
+        f.name = f.name.split('_')
+            .map((word, index) => {
+            if (index === 0) return word
+            return word.slice(0, 1).toUpperCase() + word.slice(1).toLowerCase()
+            })
+            .join('');
+        return f;
+    });
 
     // Create constructor
     members.push(
