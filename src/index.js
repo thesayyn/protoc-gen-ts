@@ -65,17 +65,35 @@ for (const fileDescriptor of request.proto_file) {
     importStatements.push(createImport(pbIdentifier, "google-protobuf"));
   }
 
-  // Create all services and clients
-  for (const serviceDescriptor of fileDescriptor.service) {
-    statements.push(rpc.createUnimplementedServer(fileDescriptor, serviceDescriptor, grpcIdentifier));
-    statements.push(rpc.createServiceClient(fileDescriptor, serviceDescriptor, grpcIdentifier));
-  }
-
-  // Import grpc only if there is service statements
   if (fileDescriptor.service.length) {
-    importStatements.push(createImport(grpcIdentifier, process.env.GRPC_PACKAGE_NAME || "@grpc/grpc-js"));
+    // Import grpc only if there is service statements
+    importStatements.push(
+      createImport(
+        grpcIdentifier,
+        process.env.GRPC_PACKAGE_NAME || "@grpc/grpc-js"
+      )
+    );
+    statements.push(
+      rpc.createGrpcInterfaceType(fileDescriptor, grpcIdentifier)
+    );
+    // Create all services and clients
+    for (const serviceDescriptor of fileDescriptor.service) {
+      statements.push(
+        rpc.createUnimplementedServer(
+          fileDescriptor,
+          serviceDescriptor,
+          grpcIdentifier
+        )
+      );
+      statements.push(
+        rpc.createServiceClient(
+          fileDescriptor,
+          serviceDescriptor,
+          grpcIdentifier
+        )
+      );
+    }
   }
-
 
   const {major, minor, patch} = request.compiler_version || {major: 0, minor: 0, patch: 0};
 
