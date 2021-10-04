@@ -44,7 +44,7 @@ function parseParameters(parameters) {
   const inputParams = {};
 
   // comma separated
-  (parameters ?? "").split(',').forEach(param => {
+  (parameters || "").split(',').forEach(param => {
     const [key, value = "true"] = param.split('=', 2)
 
     if (key in parsers) {
