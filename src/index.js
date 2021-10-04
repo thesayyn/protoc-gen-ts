@@ -19,10 +19,54 @@ function replaceExtension(filename, extension = ".ts") {
   return filename.replace(/\.[^/.]+$/, extension)
 }
 
+/**
+ * @typedef {{ unary_rpc_promise: boolean, grpc_package: string }} ConfigParameters
+ */
+
+/**
+ * @param {string | undefined | null} parameters 
+ * @return{ConfigParameters}
+ */
+function parseParameters(parameters) {
+  /** @type{ConfigParameters} */
+  const defaultValues = {
+    unary_rpc_promise: false,
+    grpc_package: "@grpc/grpc-js",
+  };
+
+  /** @type{{ [K keyof ConfigParameters]: (value: string) => ConfigParameters[K] }} */
+  const parsers = {
+    unary_rpc_promise: (value) => value === "true",
+    grpc_package: (value) => value,
+  };
+
+  /** @type{Partial<ConfigParameters>} */
+  const inputParams = {};
+
+  // comma separated
+  (parameters ?? "").split(',').forEach(param => {
+    const [key, value = "true"] = param.split('=', 2)
+
+    if (key in parsers) {
+      inputParams[key] = parsers[key](value);
+    }
+  })
+
+  // Legacy Environment variables
+  const legacy = {
+    ...(process.env.EXPERIMENTAL_FEATURES ? { unary_rpc_promise: true } : {}),
+    ...(process.env.GRPC_PACKAGE_NAME ? { grpc_package: process.env.GRPC_PACKAGE_NAME } : {}),
+  }
+
+  return { ...defaultValues, ...legacy, ...inputParams }
+}
+
 const request = plugin.CodeGeneratorRequest.deserialize(new Uint8Array(fs.readFileSync(0)));
 const response = new plugin.CodeGeneratorResponse({
   supported_features: plugin.CodeGeneratorResponse.Feature.FEATURE_PROTO3_OPTIONAL
 });
+
+const configParams = parseParameters(request.parameter)
 
 for (const descriptor of request.proto_file) {
   type.preprocess(descriptor, descriptor.name, `.${descriptor.package || ""}`);
@@ -35,7 +79,6 @@ for (const fileDescriptor of request.proto_file) {
 
   // Will keep track of import statements
   const importStatements = [];
-
 
   // Create all named imports from dependencies
   for (const dependency of fileDescriptor.dependency) {
@@ -70,11 +113,11 @@ for (const fileDescriptor of request.proto_file) {
     importStatements.push(
       createImport(
         grpcIdentifier,
-        process.env.GRPC_PACKAGE_NAME || "@grpc/grpc-js"
+        configParams.grpc_package,
       )
     );
     statements.push(
-      ...rpc.createGrpcInterfaceType(fileDescriptor, grpcIdentifier)
+      ...rpc.createGrpcInterfaceType(fileDescriptor, grpcIdentifier, configParams)
     );
     // Create all services and clients
     for (const serviceDescriptor of fileDescriptor.service) {
@@ -89,7 +132,8 @@ for (const fileDescriptor of request.proto_file) {
         rpc.createServiceClient(
           fileDescriptor,
           serviceDescriptor,
-          grpcIdentifier
+          grpcIdentifier,
+          configParams,
         )
       );
     }
@@ -107,7 +151,6 @@ for (const fileDescriptor of request.proto_file) {
 
   // Wrap statements within the namespace
   if (fileDescriptor.package) {
-
     statements = [
       doNotEditComment,
       ...importStatements,
