@@ -4,11 +4,8 @@
 ![npm](https://img.shields.io/npm/v/protoc-gen-ts)
 ![npm](https://img.shields.io/npm/dm/protoc-gen-ts)
 
-Generates appropriate Protocol Buffer sources from Proto files directly through _TypeScript Compiler API_.
+Aim of this protoc plugin is to make usage of protocol buffers easy in Javascript/Typescript by taking modern approaches.  This plugin generates plain **Typescript** files that can be used AMD, UMD, CommonJS module systems.
 
-This plugin generates plain **Typescript** files that can be used AMD, UMD, CommonJS module systems.
-
-Aim of this protoc plugin is to make usage of protocol buffers easy in Javascript/Typescript by taking modern approaches.
 
 ## Example
 
@@ -72,7 +69,7 @@ To overcome this problem, every generated message class has a static method call
 which can handle the mapping bidirectionally for you, even with the deeply structured messages. since it is 
 aware of the field graph, it does not rely on any runtime type information thus we get the chance to keep it fast.
 
-given the change example above, one can write code as;
+One can write code as;
 
 ```typescript
 const change = Change.fromObject({
@@ -85,13 +82,15 @@ const change = Change.fromObject({
         role: "maintainer"
     }
 });
+
 console.log(change.author instanceof Author) // true
 ```
 
 
 ## Usage with `@grpc/grpc-js` or `grpc`
 
-There is a seperate documentation for the usage of protoc-gen-ts along with either `@grpc/grpc-js` or `grpc`.
+There is a seperate documentation for the usage of protoc-gen-ts along with either `@grpc/grpc-js` or `grpc`.  By default
+this generated gRPC interfaces will use `@grpc/grpc-js`.
 
 Checkout [rpcs](docs/rpc.md).
 
@@ -140,20 +139,12 @@ ts_proto_library(
 # Checkout the examples/bazel directory for an example.
 ```
 
-## Environment variables
+## Supported Options
 
-```sh
-# This controls experimental features such as 'Promise' based rpcs.
-export EXPERIMENTAL_FEATURES=true;
+* With `--ts_opt=unary_rpc_promise=true`, the service definition will contain a promise based rpc with a calling pattern of `const result = await client.METHOD(message)`.  Note: all othe `metadata` and `options` parameters are still available to you.
 
+* With `--ts_opt=grpc_package=xxxx`, you can specify a different package to import rather than `@grpc/grpc-js`.
 
-# This controls the "import statement" for the outputs.
-# this is here for legacy purposes.
-export GRPC_PACKAGE_NAME="@grpc/grpc-js";
-# or 
-export GRPC_PACKAGE_NAME="@grpc/grpc";
-
-```
 ## Roadmap
 
 - <s>Support for repeated non-integer fields</s>
@@ -178,6 +169,8 @@ export GRPC_PACKAGE_NAME="@grpc/grpc";
 
 ## Development
 
+Generates appropriate Protocol Buffer sources from Proto files directly through _TypeScript Compiler API_.
+
 ```sh
 # to run test invoke
 yarn test
@@ -185,3 +178,7 @@ yarn test
 yarn test --test_output=errors
 
 ```
+
+## Contributors
+
+![GitHub Contributors Image](https://contrib.rocks/image?repo=thesayyn/protoc-gen-ts)

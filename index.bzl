@@ -52,14 +52,14 @@ def _ts_proto_library(ctx):
 
     protoc_args.add("--descriptor_set_in=%s" % (":".join([desc.path for desc in transitive_descriptors])))
 
-    protoc_args.add_all(direct_sources)
-
     env = dict()
 
-    env["GRPC_PACKAGE_NAME"] = ctx.attr.grpc_package_name
+    protoc_args.add("--ts_opt=grpc_package=%s" % ctx.attr.grpc_package_name)
     
     if ctx.attr.experimental_features:
-        env['EXPERIMENTAL_FEATURES'] = "true"
+        protoc_args.add("--ts_opt=unary_rpc_promise")
+
+    protoc_args.add_all(direct_sources)
 
     ctx.actions.run(
         inputs = direct_sources + transitive_descriptors,
