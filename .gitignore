@@ -1,3 +1,4 @@
+tmp
 node_modules
 compiled
 ast*.json
@@ -16,3 +17,4 @@ src/compiler/*
 src/compiler/index.js
 
 .DS_Store
+dist
