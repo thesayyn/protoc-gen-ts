@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-use-before-define */
+/* eslint-disable arrow-body-style */
 /* eslint-disable no-restricted-syntax */
 import ts from "typescript";
 import * as types from "./types";
@@ -501,7 +503,7 @@ export function createNamespace(
   // TODO: FIXME!
   let wrappedStatements: any = ts.factory.createModuleBlock(statements);
 
-  for (let i = identifiers.length - 1; i >= 0; i--) {
+  for (let i = identifiers.length - 1; i >= 0; i -= 1) {
     wrappedStatements = ts.factory.createModuleDeclaration(
       undefined,
       [ts.factory.createModifier(ts.SyntaxKind.ExportKeyword)],
@@ -528,19 +530,21 @@ function createMessageSignature(
     const childSignatures = [];
 
     for (const currentFieldDescriptor of messageDescriptor.field) {
-      if (currentFieldDescriptor.oneof_index != index) {
+      if (currentFieldDescriptor.oneof_index !== index) {
+        // eslint-disable-next-line no-continue
         continue;
       }
 
       const members = [];
 
       for (const fieldDescriptor of messageDescriptor.field) {
-        if (fieldDescriptor.oneof_index != index) {
+        if (fieldDescriptor.oneof_index !== index) {
+          // eslint-disable-next-line no-continue
           continue;
         }
         let fieldType: ts.TypeNode =
           ts.factory.createTypeReferenceNode("never");
-        if (fieldDescriptor == currentFieldDescriptor) {
+        if (fieldDescriptor === currentFieldDescriptor) {
           fieldType = field.wrapRepeatedType(
             field.getType(fieldDescriptor, rootDescriptor),
             fieldDescriptor,
@@ -565,7 +569,8 @@ function createMessageSignature(
   const fieldSignatures = [];
 
   for (const fieldDescriptor of messageDescriptor.field) {
-    if (typeof fieldDescriptor.oneof_index == "number") {
+    if (typeof fieldDescriptor.oneof_index === "number") {
+      // eslint-disable-next-line no-continue
       continue;
     }
 
@@ -607,12 +612,12 @@ function createPrimitiveMessageSignature(
 ): ts.TypeLiteralNode | ts.TypeReferenceNode {
   const fieldSignatures = [];
 
-  const wrapMessageType = (fieldType: ts.TypeNode | ts.TypeReferenceNode) => {
+  const wrapMessageType = (fieldType: descriptor.FieldDescriptorProto) => {
     return ts.factory.createTypeReferenceNode("ReturnType", [
       ts.factory.createTypeQueryNode(
         ts.factory.createQualifiedName(
           ts.factory.createQualifiedName(
-            ts.factory.createIdentifier(fieldType.getText()),
+            types.getTypeIdentifier(rootDescriptor, fieldType.type_name),
             ts.factory.createIdentifier("prototype"),
           ),
           "toObject",
@@ -632,7 +637,7 @@ function createPrimitiveMessageSignature(
       let valueType = field.getType(valueDescriptor, rootDescriptor);
 
       if (field.isMessage(valueDescriptor)) {
-        valueType = wrapMessageType(valueType);
+        valueType = wrapMessageType(valueDescriptor);
       }
 
       fieldType = ts.factory.createTypeLiteralNode([
@@ -653,7 +658,7 @@ function createPrimitiveMessageSignature(
         ),
       ]);
     } else if (field.isMessage(fieldDescriptor)) {
-      fieldType = wrapMessageType(fieldType);
+      fieldType = wrapMessageType(fieldDescriptor);
     }
 
     fieldType = field.wrapRepeatedType(fieldType, fieldDescriptor);
@@ -706,7 +711,7 @@ function createConstructor(
   const oneOfFields = messageDescriptor.oneof_decl.map((_, index) => {
     return ts.factory.createArrayLiteralExpression(
       messageDescriptor.field
-        .filter((fd) => index == fd.oneof_index)
+        .filter((fd) => index === fd.oneof_index)
         .map((fd) => ts.factory.createNumericLiteral(fd.number)),
     );
   });
@@ -816,9 +821,10 @@ function createConstructor(
 
   for (const fieldDescriptor of messageDescriptor.field) {
     if (!field.isMap(fieldDescriptor)) {
+      // eslint-disable-next-line no-continue
       continue;
     }
-    let propertyAccessor = ts.factory.createPropertyAccessExpression(
+    const propertyAccessor = ts.factory.createPropertyAccessExpression(
       ts.factory.createThis(),
       fieldDescriptor.name,
     );
@@ -972,7 +978,7 @@ function createOneOfGetter(
 ): ts.AccessorDeclaration {
   const numbers = [];
 
-  const types: ts.StringLiteral[] = [ts.factory.createStringLiteral("none")];
+  const strTypes: ts.StringLiteral[] = [ts.factory.createStringLiteral("none")];
 
   const cases = [
     ts.factory.createPropertyAssignment(
@@ -981,14 +987,14 @@ function createOneOfGetter(
     ),
   ];
 
-  for (const field of messageDescriptor.field) {
-    if (field.oneof_index == index) {
-      types.push(ts.factory.createStringLiteral(field.name));
-      numbers.push(ts.factory.createNumericLiteral(field.number));
+  for (const value of messageDescriptor.field) {
+    if (value.oneof_index === index) {
+      strTypes.push(ts.factory.createStringLiteral(value.name));
+      numbers.push(ts.factory.createNumericLiteral(value.number));
       cases.push(
         ts.factory.createPropertyAssignment(
-          ts.factory.createNumericLiteral(field.number),
-          ts.factory.createStringLiteral(field.name),
+          ts.factory.createNumericLiteral(value.number),
+          ts.factory.createStringLiteral(value.name),
         ),
       );
     }
@@ -1019,7 +1025,7 @@ function createOneOfGetter(
                   ),
                 ],
                 ts.factory.createUnionTypeNode(
-                  types.map((t) => ts.factory.createLiteralTypeNode(t)),
+                  strTypes.map((t) => ts.factory.createLiteralTypeNode(t)),
                 ),
               ),
             ]),
@@ -1108,13 +1114,13 @@ function createSetter(
 }
 
 /**
- * @param {descriptor.DescriptorProto} descriptor
+ * @param {descriptor.DescriptorProto} oneOfDescriptor
  * @param {descriptor.FieldDescriptorProto} fieldDescriptor
  * @param {ts.Identifier} valueParameter
  * @param {ts.Identifier} pbIdentifier
  */
 function createOneOfSetterBlock(
-  descriptor: descriptor.DescriptorProto,
+  oneOfDescriptor: descriptor.DescriptorProto,
   fieldDescriptor: descriptor.FieldDescriptorProto,
   valueParameter: ts.Identifier,
   pbIdentifier: ts.Identifier,
@@ -1125,13 +1131,9 @@ function createOneOfSetterBlock(
     method = "setOneofWrapperField";
   }
 
-  const numbers = [];
-
-  for (const field of descriptor.field) {
-    if (field.oneof_index == fieldDescriptor.oneof_index) {
-      numbers.push(ts.factory.createNumericLiteral(field.number));
-    }
-  }
+  const numbers = oneOfDescriptor.field
+    .filter((value) => value.oneof_index === fieldDescriptor.oneof_index)
+    .map((value) => ts.factory.createNumericLiteral(value.number));
 
   return ts.factory.createBlock(
     [
@@ -1419,7 +1421,7 @@ function createSerialize(
         ts.factory.createIdentifier("undefined"),
       );
 
-      let statement = ts.factory.createExpressionStatement(
+      const statement = ts.factory.createExpressionStatement(
         ts.factory.createCallExpression(
           ts.factory.createPropertyAccessExpression(
             ts.factory.createIdentifier("writer"),
@@ -1597,13 +1599,13 @@ function createDeserialize(
   const cases = [];
 
   for (const fieldDescriptor of messageDescriptor.field) {
-    let statements = [];
+    const stmts = [];
 
     if (
       field.isRepeated(fieldDescriptor) &&
       !field.isMessage(fieldDescriptor)
     ) {
-      statements.push(
+      stmts.push(
         ts.factory.createExpressionStatement(
           ts.factory.createCallExpression(
             ts.factory.createPropertyAccessExpression(
@@ -1714,7 +1716,7 @@ function createDeserialize(
           ),
         );
       }
-      statements.push(
+      stmts.push(
         ts.factory.createExpressionStatement(
           ts.factory.createCallExpression(
             ts.factory.createPropertyAccessExpression(
@@ -1768,7 +1770,7 @@ function createDeserialize(
         [ts.factory.createIdentifier("reader")],
       );
 
-      statements.push(
+      stmts.push(
         ts.factory.createExpressionStatement(
           ts.factory.createCallExpression(
             ts.factory.createPropertyAccessExpression(
@@ -1821,7 +1823,7 @@ function createDeserialize(
         ),
       );
     } else {
-      statements.push(
+      stmts.push(
         ts.factory.createExpressionStatement(
           ts.factory.createBinaryExpression(
             ts.factory.createPropertyAccessExpression(
@@ -1845,12 +1847,12 @@ function createDeserialize(
         ),
       );
     }
-    statements.push(ts.factory.createBreakStatement());
+    stmts.push(ts.factory.createBreakStatement());
 
     cases.push(
       ts.factory.createCaseClause(
         ts.factory.createNumericLiteral(fieldDescriptor.number),
-        statements,
+        stmts,
       ),
     );
   }
@@ -2115,27 +2117,29 @@ function createMessage(
 
 export function processDescriptorRecursively(
   rootDescriptor: descriptor.FileDescriptorProto,
-  descriptor: descriptor.DescriptorProto,
+  descriptorCurrent: descriptor.DescriptorProto,
   pbIdentifier: ts.Identifier,
 ): ts.Statement[] {
   const statements: ts.Statement[] = [
-    createMessage(rootDescriptor, descriptor, pbIdentifier),
+    createMessage(rootDescriptor, descriptorCurrent, pbIdentifier),
   ];
 
   const namespacedStatements = [];
 
-  for (const eenum of descriptor.enum_type) {
+  for (const eenum of descriptorCurrent.enum_type) {
     namespacedStatements.push(createEnum(eenum));
   }
 
-  for (const message of descriptor.nested_type) {
+  for (const message of descriptorCurrent.nested_type) {
     namespacedStatements.push(
       ...processDescriptorRecursively(rootDescriptor, message, pbIdentifier),
     );
   }
 
   if (namespacedStatements.length) {
-    statements.push(createNamespace(descriptor.name, namespacedStatements));
+    statements.push(
+      createNamespace(descriptorCurrent.name, namespacedStatements),
+    );
   }
 
   return statements;

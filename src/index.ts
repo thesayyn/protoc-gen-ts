@@ -25,6 +25,22 @@ function createImport(
   );
 }
 
+function createNamedImport(
+  identifier: ts.Identifier,
+  moduleSpecifier: string,
+): ts.ImportDeclaration {
+  return ts.factory.createImportDeclaration(
+    undefined,
+    undefined,
+    ts.factory.createImportClause(
+      false,
+      undefined,
+      ts.factory.createNamespaceImport(identifier),
+    ),
+    ts.factory.createStringLiteral(moduleSpecifier),
+  );
+}
+
 function replaceExtension(filename: string, extension = ".ts") {
   return filename.replace(/\.[^/.]+$/, extension);
 }
@@ -83,13 +99,13 @@ function main() {
     });
 
     if (statements.length) {
-      importStatements.push(createImport(pbIdentifier, "google-protobuf"));
+      importStatements.push(createNamedImport(pbIdentifier, "google-protobuf"));
     }
 
     if (fileDescriptor.service.length) {
       // Import grpc only if there is service statements
       importStatements.push(
-        createImport(grpcIdentifier, configParams.grpc_package),
+        createNamedImport(grpcIdentifier, configParams.grpc_package),
       );
       statements.push(
         ...rpc.createGrpcInterfaceType(

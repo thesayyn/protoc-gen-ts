@@ -87,11 +87,14 @@ export function getTypeReference(
 export function getTypeExpression(
   rootDescriptor: descriptor.FileDescriptorProto,
   typeName: string,
-): ts.PropertyAccessExpression {
+): ts.Expression {
   const path = symbolMap.get(typeName);
 
   if (!path || !dependencyMap.has(path)) {
-    throw new Error("Expted an expression");
+    return ts.factory.createIdentifier(
+      removeRootPackageName(typeName, rootDescriptor.package),
+    );
+    // throw new Error("Expected an expression");
   }
 
   const dep = dependencyMap.get(path);

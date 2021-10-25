@@ -15,3 +15,5 @@ pkg_npm(
         ":src"
     ]
 )
+
+exports_files(["tsconfig.json"], visibility = ["//visibility:public"])

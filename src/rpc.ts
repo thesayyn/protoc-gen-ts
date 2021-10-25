@@ -1,3 +1,7 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable no-restricted-syntax */
+/* eslint-disable @typescript-eslint/no-use-before-define */
+/* eslint-disable arrow-body-style */
 import ts from "typescript";
 import * as types from "./types";
 import { google_protobuf as descriptor } from "./compiler/descriptor";
@@ -730,7 +734,7 @@ function createUnaryRpcMethod(
     ts.factory.createQualifiedName(grpcIdentifier, "Metadata"),
   );
   const calloptionsReference = ts.factory.createTypeReferenceNode(
-    ts.factory.createQualifiedName(grpcIdentifier, "Calloptions"),
+    ts.factory.createQualifiedName(grpcIdentifier, "CallOptions"),
   );
   const callbackReference = ts.factory.createTypeReferenceNode(
     ts.factory.createQualifiedName(grpcIdentifier, "requestCallback"),
@@ -1214,7 +1218,7 @@ function getRPCOutputType(
 function getRPCOutputExpression(
   rootDescriptor: descriptor.FileDescriptorProto,
   methodDescriptor: descriptor.MethodDescriptorProto,
-): ts.PropertyAccessExpression {
+): ts.Expression {
   return types.getTypeExpression(rootDescriptor, methodDescriptor.output_type);
 }
 
@@ -1232,7 +1236,7 @@ function getRPCInputType(
 function getRPCInputExpression(
   rootDescriptor: descriptor.FileDescriptorProto,
   methodDescriptor: descriptor.MethodDescriptorProto,
-): ts.PropertyAccessExpression {
+): ts.Expression {
   return types.getTypeExpression(rootDescriptor, methodDescriptor.input_type);
 }
 
@@ -1246,7 +1250,7 @@ function getRPCPath(
   serviceDescriptor: descriptor.ServiceDescriptorProto,
   methodDescriptor: descriptor.MethodDescriptorProto,
 ): string {
-  let name = serviceDescriptor.name;
+  let { name } = serviceDescriptor;
   if (rootDescriptor.package) {
     name = `${rootDescriptor.package}.${name}`;
   }
@@ -1255,8 +1259,8 @@ function getRPCPath(
 
 function isUnary(methodDescriptor: descriptor.MethodDescriptorProto): boolean {
   return (
-    methodDescriptor.client_streaming == false &&
-    methodDescriptor.server_streaming == false
+    methodDescriptor.client_streaming === false &&
+    methodDescriptor.server_streaming === false
   );
 }
 
@@ -1264,8 +1268,8 @@ function isClientStreaming(
   methodDescriptor: descriptor.MethodDescriptorProto,
 ): boolean {
   return (
-    methodDescriptor.client_streaming == true &&
-    methodDescriptor.server_streaming == false
+    methodDescriptor.client_streaming === true &&
+    methodDescriptor.server_streaming === false
   );
 }
 
@@ -1273,14 +1277,14 @@ function isServerStreaming(
   methodDescriptor: descriptor.MethodDescriptorProto,
 ): boolean {
   return (
-    methodDescriptor.client_streaming == false &&
-    methodDescriptor.server_streaming == true
+    methodDescriptor.client_streaming === false &&
+    methodDescriptor.server_streaming === true
   );
 }
 
 function isBidi(methodDescriptor: descriptor.MethodDescriptorProto): boolean {
   return (
-    methodDescriptor.client_streaming == true &&
-    methodDescriptor.server_streaming == true
+    methodDescriptor.client_streaming === true &&
+    methodDescriptor.server_streaming === true
   );
 }

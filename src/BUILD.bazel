@@ -17,28 +17,27 @@ ts_proto_library(
     ],
 )
 
+load("@build_bazel_rules_nodejs//:index.bzl", "js_library")
+
 ts_project(
-    name = "compiler",
-    srcs = glob(["compiler/*.ts"]),
-    tsconfig = {
-        "compilerOptions": {
-            "target": "ES2020",
-            "module": "CommonJS",
-            "declaration": True,
-        },
-    },
+    name = "compile_ts",
+    tsconfig = "//:tsconfig.json",
+    srcs = glob(["**/*.ts"]),
+    source_map = True,
     deps = [
         "@npm//google-protobuf",
         "@npm//@grpc/grpc-js",
+        "@npm//typescript",
+        "@npm//@types/node",
+        "@npm//@types/google-protobuf"
     ],
 )
 
-load("@build_bazel_rules_nodejs//:index.bzl", "js_library")
-
 js_library(
     name = "src",
-    srcs = glob(["**/*.js"]),
+    srcs = glob(["**/*.js", "**/*.js.map"]),
     deps = [
+        ":compile_ts",
         "@npm//google-protobuf",
         "@npm//@grpc/grpc-js",
         "@npm//typescript",
@@ -46,4 +45,4 @@ js_library(
     ]
 )
 
-exports_files(["index.js"])
+#exports_files(["index.js"])

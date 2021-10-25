@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-use-before-define */
 import ts from "typescript";
 import * as types from "./types";
 import { google_protobuf as descriptor } from "./compiler/descriptor";
@@ -9,7 +10,7 @@ import { google_protobuf as descriptor } from "./compiler/descriptor";
 export function wrapRepeatedType(
   type: ts.TypeNode,
   fieldDescriptor: descriptor.FieldDescriptorProto,
-) {
+): ts.TypeNode | ts.ArrayTypeNode {
   if (isRepeated(fieldDescriptor) && !isMap(fieldDescriptor)) {
     return ts.factory.createArrayTypeNode(type);
   }
@@ -48,9 +49,11 @@ export function getType(
 ): ts.TypeNode | ts.TypeReferenceNode {
   if (isMap(fieldDescriptor)) {
     return getMapType(rootDescriptor, fieldDescriptor);
-  } else if (hasJsTypeString(fieldDescriptor)) {
+  }
+  if (hasJsTypeString(fieldDescriptor)) {
     return ts.factory.createTypeReferenceNode("string");
   }
+
   switch (fieldDescriptor.type) {
     case descriptor.FieldDescriptorProto.Type.TYPE_DOUBLE:
     case descriptor.FieldDescriptorProto.Type.TYPE_FLOAT:
@@ -64,7 +67,6 @@ export function getType(
     case descriptor.FieldDescriptorProto.Type.TYPE_FIXED64:
     case descriptor.FieldDescriptorProto.Type.TYPE_SFIXED32:
     case descriptor.FieldDescriptorProto.Type.TYPE_SFIXED64:
-    case descriptor.FieldDescriptorProto.Type.TYPE_SFIXED64:
       return ts.factory.createTypeReferenceNode("number");
     case descriptor.FieldDescriptorProto.Type.TYPE_STRING:
       return ts.factory.createTypeReferenceNode("string");
@@ -76,7 +78,7 @@ export function getType(
     case descriptor.FieldDescriptorProto.Type.TYPE_ENUM:
       return types.getTypeReference(rootDescriptor, fieldDescriptor.type_name);
     default:
-      throw new Error("Unhandled type " + fieldDescriptor.type);
+      throw new Error(`Unhandled type ${fieldDescriptor.type}`);
   }
 }
 
@@ -90,24 +92,22 @@ export function toBinaryMethodName(
       (key: string | number) =>
         descriptor.FieldDescriptorProto.Type[key as any],
     )
-    .filter((n) => typeof n == "string")
+    .filter((n) => typeof n === "string")
     .map((n) => n.replace("TYPE_", ""));
 
   let typeName = typeNames[fieldDescriptor.type - 1].toLowerCase();
-  //lowercase first char
+  // lowercase first char
   typeName = typeName.charAt(0).toUpperCase() + typeName.slice(1);
 
   const suffix = hasJsTypeString(fieldDescriptor) ? "String" : "";
 
   if (isPacked(rootDescriptor, fieldDescriptor)) {
     return `Packed${typeName}${suffix}`;
-  } else {
-    if (isRepeated(fieldDescriptor) && isWriter) {
-      return `Repeated${typeName}${suffix}`;
-    } else {
-      return `${typeName}${suffix}`;
-    }
   }
+  if (isRepeated(fieldDescriptor) && isWriter) {
+    return `Repeated${typeName}${suffix}`;
+  }
+  return `${typeName}${suffix}`;
 }
 
 function hasJsTypeString(
@@ -115,7 +115,7 @@ function hasJsTypeString(
 ): boolean {
   return (
     fieldDescriptor.options &&
-    fieldDescriptor.options.jstype == descriptor.FieldOptions.JSType.JS_STRING
+    fieldDescriptor.options.jstype === descriptor.FieldOptions.JSType.JS_STRING
   );
 }
 
@@ -174,7 +174,6 @@ export function isNumber(
     case descriptor.FieldDescriptorProto.Type.TYPE_FIXED64:
     case descriptor.FieldDescriptorProto.Type.TYPE_SFIXED32:
     case descriptor.FieldDescriptorProto.Type.TYPE_SFIXED64:
-    case descriptor.FieldDescriptorProto.Type.TYPE_SFIXED64:
       return true;
     default:
       return false;
@@ -202,13 +201,13 @@ export function isOptional(
 ): boolean {
   if (rootDescriptor.syntax === "proto3") {
     return (
-      fieldDescriptor.label !=
+      fieldDescriptor.label !==
         descriptor.FieldDescriptorProto.Label.LABEL_REQUIRED ||
       fieldDescriptor.proto3_optional
     );
   }
   return (
-    fieldDescriptor.label ==
+    fieldDescriptor.label ===
     descriptor.FieldDescriptorProto.Label.LABEL_OPTIONAL
   );
 }
@@ -239,13 +238,14 @@ export function isBoolean(
  * @param {descriptor.FieldDescriptorProto} fieldDescriptor
  */
 function isPackable(fieldDescriptor: descriptor.FieldDescriptorProto): boolean {
-  const type = fieldDescriptor.type;
+  const { type } = fieldDescriptor;
+
   return (
     isRepeated(fieldDescriptor) &&
-    type != descriptor.FieldDescriptorProto.Type.TYPE_STRING &&
-    type != descriptor.FieldDescriptorProto.Type.TYPE_GROUP &&
-    type != descriptor.FieldDescriptorProto.Type.TYPE_MESSAGE &&
-    type != descriptor.FieldDescriptorProto.Type.TYPE_BYTES
+    type !== descriptor.FieldDescriptorProto.Type.TYPE_STRING &&
+    type !== descriptor.FieldDescriptorProto.Type.TYPE_GROUP &&
+    type !== descriptor.FieldDescriptorProto.Type.TYPE_MESSAGE &&
+    type !== descriptor.FieldDescriptorProto.Type.TYPE_BYTES
   );
 }
 
@@ -260,11 +260,11 @@ export function isPacked(
   if (!isPackable(fieldDescriptor)) {
     return false;
   }
-  const options = fieldDescriptor.options;
+  const { options } = fieldDescriptor;
   // weirdly the compiler does not send the syntax information
   // it only sends when the syntax is proto3 so we have to look for it.
   // when it is empty, it indicates that the syntax is proto2 for sure
-  if (rootDescriptor.syntax == "proto3") {
+  if (rootDescriptor.syntax === "proto3") {
     return !options || options.packed == null || options.packed;
   }
 
