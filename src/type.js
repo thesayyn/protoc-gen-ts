@@ -1,5 +1,7 @@
+const path = require("path");
 const descriptor = require("./compiler/descriptor");
 const ts = require("typescript");
+const { optionsFromRequestParameters } = require("./options");
 
 const symbolMap = new Map();
 const dependencyMap = new Map();
@@ -15,14 +17,14 @@ function setIdentifierForDependency(dependency, identifier) {
 }
 
 /**
- * @param {descriptor.DescriptorProto} descriptor 
+ * @param {descriptor.DescriptorProto} descriptor
  */
 function isMapEntry(descriptor) {
   return descriptor.options && descriptor.options.map_entry;
 }
 
 /**
- * @param {string} typeName 
+ * @param {string} typeName
  * @returns {descriptor.DescriptorProto}
  */
 function getMapDescriptor(typeName) {
@@ -33,19 +35,27 @@ function getMapDescriptor(typeName) {
 
 /**
  * @param {descriptor.FileDescriptorProto} rootDescriptor
- * @param {string} typeName 
+ * @param {string} typeName
  */
 function getTypeReference(rootDescriptor, typeName) {
-  const path = symbolMap.get(typeName);
+  const typePath = symbolMap.get(typeName);
 
-  if (!path || !dependencyMap.has(path)) {
+  if (!typePath || !dependencyMap.has(typePath)) {
     return ts.factory.createIdentifier(removeRootPackageName(typeName, rootDescriptor.package))
   }
 
-  return ts.factory.createPropertyAccessExpression(
-    dependencyMap.get(path), 
-    removeLeadingDot(typeName)
-  );
+  const options = optionsFromRequestParameters()
+  if (options.createNamespaces) {
+    return ts.factory.createPropertyAccessExpression(
+      dependencyMap.get(typePath),
+      removeLeadingDot(typeName)
+    );
+  } else {
+    return ts.factory.createPropertyAccessExpression(
+      dependencyMap.get(typePath),
+      removeLeadingDot(path.extname(typeName))
+    );
+  }
 }
 
 function removeLeadingDot(name) {
@@ -86,8 +96,8 @@ function preprocess(targetDescriptor, path, prefix) {
       mapMap.set(name, messageDescriptor);
       messages.splice(index, 1);
       continue;
-    } 
-    
+    }
+
     symbolMap.set(name, path);
     preprocess(messageDescriptor, path, name);
   }

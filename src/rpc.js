@@ -7,11 +7,11 @@ const ts = require("typescript");
  * @param {descriptor.FieldDescriptorProto} rootDescriptor
  * @param {descriptor.ServiceDescriptorProto} serviceDescriptor
  */
-function createServiceDefinition(rootDescriptor, serviceDescriptor) {
+function createServiceDefinition(rootDescriptor, serviceDescriptor, options) {
   return ts.factory.createObjectLiteralExpression(
     serviceDescriptor.method.map((methodDescriptor) => {
       return ts.factory.createPropertyAssignment(
-        methodDescriptor.name,
+        options.camelCaseMethodNames ? methodDescriptor.name.charAt(0).toLowerCase() + methodDescriptor.name.slice(1) : methodDescriptor.name,
         ts.factory.createObjectLiteralExpression(
           [
             ts.factory.createPropertyAssignment(
@@ -185,6 +185,7 @@ function createUnimplementedService(
   rootDescriptor,
   serviceDescriptor,
   grpcIdentifier,
+  options
 ) {
   const members = [
     ts.factory.createPropertyDeclaration(
@@ -193,7 +194,7 @@ function createUnimplementedService(
       "definition",
       undefined,
       undefined,
-      createServiceDefinition(rootDescriptor, serviceDescriptor),
+      createServiceDefinition(rootDescriptor, serviceDescriptor, options),
     ),
     ts.factory.createIndexSignature(
       undefined,
