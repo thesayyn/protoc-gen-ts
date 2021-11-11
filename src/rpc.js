@@ -259,7 +259,7 @@ function createUnimplementedService(
         undefined,
         [ts.factory.createModifier(ts.SyntaxKind.AbstractKeyword)],
         undefined,
-        methodDescriptor.name,
+        options.camelCaseMethodNames ? methodDescriptor.name.charAt(0).toLowerCase() + methodDescriptor.name.slice(1) : methodDescriptor.name,
         undefined,
         undefined,
         parameters,
