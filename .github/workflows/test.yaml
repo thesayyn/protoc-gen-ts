@@ -10,34 +10,26 @@ on:
     paths-ignore:
       - '**.md'
 jobs:
-  test-windows: 
-    runs-on: windows-latest
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          submodules: true
-      - name: Setup node 12
-        uses: actions/setup-node@v2
-        with:
-          node-version: 14.x
-      - shell: bash 
-        run: yarn test
-      - shell: bash
-        run: cd examples/pure && yarn --frozen-lockfile && yarn test
   test:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest, macos-latest]
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        node_version: [14.x, 16.x]
+        protoc_version: [3.x]
     steps:
       - uses: actions/checkout@v2
         with:
           submodules: true
-      - name: Setup node 12
-        uses: actions/setup-node@v2
+      - uses: actions/setup-node@v2
         with:
-          node-version: 14.x
+          node-version: ${{matrix.node_version}}
+      - uses: arduino/setup-protoc@v1
+        with: 
+          version: ${{matrix.protoc_version}}
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+        
       - run: yarn --frozen-lockfile
       - run: yarn codegen
-      - run: yarn test
+      - run: yarn test --test_tag_filters=-no-${{ matrix.os }}
       - run: cd examples/pure && yarn --frozen-lockfile && yarn test
