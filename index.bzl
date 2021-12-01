@@ -139,19 +139,10 @@ ts_proto_library_aspect = aspect(
     },
 )
 
-
-
-
-
 def _ts_proto_library(ctx):
     outputs = []
 
     for target in ctx.attr.deps:
-        # if ProtoInfo not in target:
-        #     fail("All targets in the deps attribute should be proto_library target.")
-        # else:
-        #     info = target[ProtoInfo]
-        #     transitive_descriptors.extend(info.transitive_descriptor_sets.to_list())
         outputs.extend(target[TSProtoOutputInfo].outputs)
 
     return [
