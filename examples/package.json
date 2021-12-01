@@ -4,13 +4,12 @@
     "grpc:client": "bazel run //grpc:client",
     "grpc:server": "bazel run //grpc:server",
     "pretest": "bazel build //grpc:type //bazel:message && node ../scripts/sync_generated_protos.js grpc && node ../scripts/sync_generated_protos.js bazel",
-    "test": "bazel run //bazel:bin",
-    "preinstall": "cd ../ && bazel build :package"
+    "test": "bazel run //bazel:bin"
   },
   "dependencies": {
     "@grpc/grpc-js": "^1.2.12",
     "google-protobuf": "^3.15.8",
-    "protoc-gen-ts": "file:../bazel-bin/package"
+    "protoc-gen-ts": "file:../"
   },
   "devDependencies": {
     "@bazel/bazelisk": "^1.7.5",

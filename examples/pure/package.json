@@ -2,7 +2,6 @@
     "name": "example",
     "scripts": {
         "preinstall": "cd ../.. && yarn bazel build :package",
-        "postinstall": "./scripts/download_protoc.sh",
         "test": "protoc -I=src --ts_out=src test.proto && tsc && node ./dist/index"
     },
     "dependencies": {

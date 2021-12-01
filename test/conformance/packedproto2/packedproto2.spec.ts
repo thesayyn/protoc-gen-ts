@@ -1,8 +1,9 @@
 import * as fs from "fs";
-import {WebMessageInfo} from "./packedproto2";
+import * as path from "path";
+import { WebMessageInfo } from "./packedproto2";
 
-describe("packed proto 2", ()=> {
-    const bin = fs.readFileSync(__dirname + "/packedproto2.bin");
+describe("packed proto 2", () => {
+    const bin = fs.readFileSync(path.join(__dirname, "packedproto2.bin"));
     it("should not pack scanLengths", () => {
         const info = WebMessageInfo.deserialize(bin);
         expect(info.message.imageMessage.scanLengths).toEqual([5453]);
