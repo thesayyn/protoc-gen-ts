@@ -245,7 +245,7 @@ function createUnimplementedService(
           ts.factory.createTypeReferenceNode(
             ts.factory.createQualifiedName(
               grpcIdentifier,
-              ts.factory.createIdentifier("requestCallback"),
+              ts.factory.createIdentifier("sendUnaryData"),
             ),
             [getRPCOutputType(rootDescriptor, methodDescriptor)],
           ),
