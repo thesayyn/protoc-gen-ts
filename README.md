@@ -94,16 +94,6 @@ this generated gRPC interfaces will use `@grpc/grpc-js`.
 
 Checkout [rpcs](docs/rpc.md).
 
-## Support
-
-If you find this plugin useful please consider giving us a star to get into open collective.
-
-You can also support me directly by buying me one or two coffee, 
-
-<a href="https://www.buymeacoffee.com/thesayyn">
-<img height="40px" src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=🙌&slug=thesayyn&button_colour=FFDD00&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=ffffff">
-</a>
-
 ## Key Differences
 
 This protoc plugin does generate;
@@ -127,7 +117,7 @@ protoc -I=sourcedir --ts_out=dist myproto.proto
 # Add protoc-gen-ts to dependencies section of your package.json file.
 # Then use it like you would use the other bazel compatible npm packages.
 
-load("@npm_protoc_gen_ts//:index.bzl", "ts_proto_library")
+load("@npm//protoc-gen-ts//:index.bzl", "ts_proto_library")
 
 ts_proto_library(
     name = "protos",
@@ -155,6 +145,7 @@ ts_proto_library(
 - <s>Make services strongly typed.</s>
 - <s>Support oneof fields</s>
 - <s>Support `map<TYPE, TYPE>` types as ES `Map`.</s>
+- Support grpc-web without any manual intervention.
 - Interopability with well knowns.
 
 
@@ -182,3 +173,14 @@ yarn test --test_output=errors
 ## Contributors
 
 ![GitHub Contributors Image](https://contrib.rocks/image?repo=thesayyn/protoc-gen-ts)
+
+
+## Support
+
+If you find this plugin useful please consider giving us a star to get into open collective.
+
+You can also support me directly by buying us some coffees.
+
+<a href="https://www.buymeacoffee.com/thesayyn">
+<img height="40px" src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=🙌&slug=thesayyn&button_colour=FFDD00&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=ffffff">
+</a>
