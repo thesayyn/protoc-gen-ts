@@ -148,7 +148,7 @@ function isMessage(fieldDescriptor) {
  * @param {descriptor.FieldDescriptorProto} fieldDescriptor 
  * @returns {boolean}
  */
- function isNumber(fieldDescriptor) {
+function isNumber(fieldDescriptor) {
     switch (fieldDescriptor.type) {
         case descriptor.FieldDescriptorProto.Type.TYPE_DOUBLE:
         case descriptor.FieldDescriptorProto.Type.TYPE_FLOAT:
@@ -211,16 +211,27 @@ function isBoolean(fieldDescriptor) {
 }
 
 /**
- * @param {descriptor.FieldDescriptorProto} fieldDescriptor 
+ * 
+ * @param {descriptor.FieldDescriptorProto.Type} type 
+ * @see https://github.com/protocolbuffers/protobuf/blob/ef8d418fad8366f9854127eb4338b0757eda9aa3/src/google/protobuf/descriptor.h#L2392
  */
-function isPackable(fieldDescriptor) {
-    const type = fieldDescriptor.type
+function isTypePackable(type) {
     return (
-        isRepeated(fieldDescriptor) &&
         type != descriptor.FieldDescriptorProto.Type.TYPE_STRING &&
         type != descriptor.FieldDescriptorProto.Type.TYPE_GROUP &&
         type != descriptor.FieldDescriptorProto.Type.TYPE_MESSAGE &&
         type != descriptor.FieldDescriptorProto.Type.TYPE_BYTES
+    );
+}
+
+/**
+ * @param {descriptor.FieldDescriptorProto} fieldDescriptor 
+ * @see https://github.com/protocolbuffers/protobuf/blob/ef8d418fad8366f9854127eb4338b0757eda9aa3/src/google/protobuf/descriptor.h#L2283
+ */
+function isPackable(fieldDescriptor) {
+    return (
+        isRepeated(fieldDescriptor) &&
+        isTypePackable(fieldDescriptor.type)
     );
 }
 
@@ -230,18 +241,16 @@ function isPackable(fieldDescriptor) {
  * @param {descriptor.FieldDescriptorProto} fieldDescriptor 
  */
 function isPacked(rootDescriptor, fieldDescriptor) {
-    if (!isPackable(fieldDescriptor)) {
-        return false;
-    }
+    if (!isPackable(fieldDescriptor)) return false;
     const options = fieldDescriptor.options;
     // weirdly the compiler does not send the syntax information
     // it only sends when the syntax is proto3 so we have to look for it. 
     // when it is empty, it indicates that the syntax is proto2 for sure
     if (rootDescriptor.syntax == "proto3") {
         return !options || options.packed == null || options.packed;
-    } 
-        
-    return options != null && options.packed
+    }
+
+    return (options != null) && options.packed
 }
 
 

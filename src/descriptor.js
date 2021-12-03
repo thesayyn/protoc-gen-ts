@@ -1511,7 +1511,8 @@ function createDeserialize(
 
         if (
             field.isRepeated(fieldDescriptor) &&
-            !field.isMessage(fieldDescriptor)
+            !field.isMessage(fieldDescriptor) &&
+            !field.isPacked(rootDescriptor, fieldDescriptor)
         ) {
             statements.push(
                 ts.factory.createExpressionStatement(
