@@ -1,7 +1,7 @@
 {
   "name": "protoc-gen-ts",
   "description": "Compile protocol buffers descriptors to Typescript.",
-  "version": "0.8.0",
+  "version": "0.8.1",
   "license": "MIT",
   "author": {
     "email": "thesayyn@gmail.com",
@@ -14,7 +14,7 @@
   },
   "scripts": {
     "test": "bazel build //test:codegen //test:codegen_experimental //test/conformance:codegen && node ./scripts/sync_generated_protos.js test && bazel test //test/... --test_output=errors",
-    "release": "bazel run //:package.publish -- --access public --tag latest --registry https://registry.npmjs.org",
+    "release": "npm publish --access public --tag latest --registry https://registry.npmjs.org",
     "codegen": "node ./scripts/sync_compiler_protos.js && bazel build //src:codegen && node ./scripts/sync_generated_protos.js src/compiler && bazel build //src:compiler && node ./scripts/sync_generated_protos.js src/compiler js"
   },
   "bin": {

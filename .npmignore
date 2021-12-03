@@ -1,15 +1,4 @@
-third-party
-test
-docs
-examples
-scripts
-.*
-.tgz
-# ignore everything that is typescript or proto file
-src/**/*.ts
-src/**/*.proto
-# bazel stuff
-BUILD.bazel
-WORKSPACE
-bazel-*
-
+**/*
+!bin/**/*.js
+!src/**/*.js
+!index.bzl
