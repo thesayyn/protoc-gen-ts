@@ -1,6 +1,4 @@
 # These are supported funding model platforms
-
-github: 
-  - thesayyn
-custom:
-  - "https://www.buymeacoffee.com/thesayyn"
+github: [thesayyn]
+open_collective: protoc-gen-ts
+custom: ["https://www.buymeacoffee.com/thesayyn"]
