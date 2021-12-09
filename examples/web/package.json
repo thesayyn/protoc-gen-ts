@@ -1,7 +1,7 @@
 {
     "name": "example",
     "scripts": {
-        "test": "protoc -I=src --ts_opt=target=web --ts_out=src type.proto && tsc && node ./dist/index"
+        "test": "protoc -I=src --ts_opt=target=web --ts_out=src weather.proto && tsc && node ./dist/index"
     },
     "dependencies": {
         "@grpc/grpc-js": "^1.2.12",
