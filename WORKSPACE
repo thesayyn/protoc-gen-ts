@@ -10,8 +10,13 @@ load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 # Setup NodeJS toolchain
 http_archive(
     name = "build_bazel_rules_nodejs",
-    sha256 = "b32a4713b45095e9e1921a7fcb1adf584bc05959f3336e7351bcf77f015a2d7c",
-    urls = ["https://github.com/bazelbuild/rules_nodejs/releases/download/4.1.0/rules_nodejs-4.1.0.tar.gz"],
+    sha256 = "cfc289523cf1594598215901154a6c2515e8bf3671fd708264a6f6aefe02bf39",
+    urls = ["https://github.com/bazelbuild/rules_nodejs/releases/download/4.4.6/rules_nodejs-4.4.6.tar.gz"],
+    patch_args = ["-p1"],
+    # See: https://github.com/bazelbuild/rules_nodejs/pull/3088
+    patches = [
+        "//:3088.patch"
+    ]
 )
 
 load("@build_bazel_rules_nodejs//:index.bzl", "node_repositories", "yarn_install")
@@ -42,3 +47,12 @@ load("@rules_proto//proto:repositories.bzl", "rules_proto_dependencies", "rules_
 rules_proto_dependencies()
 
 rules_proto_toolchains()
+
+# Setup cypress
+
+load("@build_bazel_rules_nodejs//toolchains/cypress:cypress_repositories.bzl", "cypress_repositories")
+
+cypress_repositories(
+    name = "cypress",
+    version = "7.3.0",
+)

@@ -1,7 +1,7 @@
 {
     "name": "example",
     "scripts": {
-        "test": "protoc -I=src --plugin=protoc-gen-grpc-web=./protoc-gen-grpc-web-1.3.0-darwin-x86_64 --ts_out=src --grpc-web_out=import_style=commonjs,mode=grpcwebtext:src type.proto && tsc && node ./dist/index"
+        "test": "protoc -I=src --ts_opt=target=web --ts_out=src type.proto && tsc && node ./dist/index"
     },
     "dependencies": {
         "@grpc/grpc-js": "^1.2.12",

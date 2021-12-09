@@ -1,0 +1,50 @@
+
+load("@npm//@bazel/jasmine:index.bzl", "jasmine_node_test")
+load("@npm//@bazel/typescript:index.bzl", "ts_project")
+load("@npm//@bazel/cypress:index.bzl", "cypress_web_test")
+load("@rules_proto//proto:defs.bzl", "proto_library")
+load("//:index.bzl", "ts_proto_library")
+
+proto_library(
+    name = "protos",
+    srcs = glob(["**/*.proto"])
+)
+
+ts_proto_library(
+    name = "codegen",
+    deps = [
+        ":protos",
+    ],
+    target = "web"
+)
+
+ts_project(
+    name = "test_lib",
+    srcs = glob(["**/*.ts"]),
+    tsconfig = {
+        "compilerOptions": {
+            "target": "ES2020",
+            "module": "CommonJS"
+        },
+    },
+    deps = [
+        "@npm//@types/jasmine",
+        "@npm//@types/node",
+        "@npm//google-protobuf",
+        "@npm//@grpc/grpc-js",
+        "@npm//grpc-web",
+    ],
+)
+
+cypress_web_test(
+    name = "test",
+    srcs = [
+        "weather.spec.js",
+    ],
+    config_file = "cypress.json",
+    data = [
+        "@npm//@grpc/grpc-js",
+        "@npm//express"
+    ],
+    plugin_file = "plugin.js",
+)

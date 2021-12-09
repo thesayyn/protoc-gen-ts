@@ -73,6 +73,8 @@ def _ts_proto_library_aspect(target, ctx):
 
     # Options
     args.add(ctx.attr.grpc_package_name, format = "--ts_opt=grpc_package=%s")
+
+    args.add(ctx.attr.target, format = "--ts_opt=target=%s")
     
     if ctx.attr.experimental_features == "true":
         args.add("--ts_opt=unary_rpc_promise")
@@ -114,6 +116,11 @@ ts_proto_library_aspect = aspect(
             doc = "Configures name of the grpc package to use. '@grpc/grpc-js' or 'grpc'",
             default = "@grpc/grpc-js",
             values = ["@grpc/grpc-js", "grpc"]
+        ),
+        "target": attr.string(
+            doc = "Configures the generation target",
+            default = "node",
+            values = ["node", "web"]
         ),
         "_protoc": attr.label(
             cfg = "host",
@@ -166,6 +173,10 @@ ts_proto_library_ = rule(
         "grpc_package_name": attr.string(
             doc = "Configures name of the grpc package to use. '@grpc/grpc-js' or 'grpc'",
             default = "@grpc/grpc-js"
+        ),
+        "target": attr.string(
+            doc = "Configures the generation target",
+            default = "node"
         ),
         "_protoc_gen_ts_bin": attr.label(
             executable = True,
