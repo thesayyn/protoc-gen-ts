@@ -18,23 +18,23 @@ ts_proto_library(
     target = "web"
 )
 
-ts_project(
-    name = "test_lib",
-    srcs = glob(["**/*.ts"]),
-    tsconfig = {
-        "compilerOptions": {
-            "target": "ES2020",
-            "module": "CommonJS"
-        },
-    },
-    deps = [
-        "@npm//@types/jasmine",
-        "@npm//@types/node",
-        "@npm//google-protobuf",
-        "@npm//@grpc/grpc-js",
-        "@npm//grpc-web",
-    ],
-)
+# ts_project(
+#     name = "test_lib",
+#     srcs = glob(["**/*.ts"]),
+#     tsconfig = {
+#         "compilerOptions": {
+#             "target": "ES2020",
+#             "module": "CommonJS"
+#         },
+#     },
+#     deps = [
+#         "@npm//@types/jasmine",
+#         "@npm//@types/node",
+#         "@npm//google-protobuf",
+#         "@npm//@grpc/grpc-js",
+#         "@npm//grpc-web",
+#     ],
+# )
 
 cypress_web_test(
     name = "test",
