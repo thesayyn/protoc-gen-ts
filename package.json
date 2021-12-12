@@ -12,6 +12,10 @@
     "type": "individual",
     "url": "https://www.buymeacoffee.com/thesayyn"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/thesayyn/protoc-gen-ts"
+  },
   "scripts": {
     "test": "bazel build //test:codegen //test:codegen_experimental //test/conformance:codegen && node ./scripts/sync_generated_protos.js test && bazel test //test/... --test_output=errors",
     "release": "npm publish --access public --tag latest --registry https://registry.npmjs.org",
