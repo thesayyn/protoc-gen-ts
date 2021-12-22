@@ -16,3 +16,7 @@ src/compiler/*
 src/compiler/index.js
 
 .DS_Store
+
+# Added by cargo
+
+/target

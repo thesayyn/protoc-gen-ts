@@ -26,6 +26,15 @@
             "outFiles": [
                 "${workspaceFolder}/**/*.js"
             ]
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug",
+            "program": "${workspaceRoot}/target/debug/protoc-gen-ts",
+            "args": ["${workspaceRoot}/test.ts"],
+            "cwd": "${workspaceRoot}/target/debug/",
+            "sourceLanguages": ["rust"]
         }
     ]
 }
