@@ -1,0 +1,3 @@
+export module pkg.mycompany {
+    
+}

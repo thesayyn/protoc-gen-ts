@@ -15,6 +15,7 @@ swc_ecma_codegen_macros = "0.6.0"
 swc_ecma_parser = "0.82.0"
 swc_ecma_utils = "0.56.1"
 serde_json = "1.0"
+protobuf = "2.25.2"
 
 [dev-dependencies]
 swc_common = {version = "0.15.0", features = ["sourcemap"]}

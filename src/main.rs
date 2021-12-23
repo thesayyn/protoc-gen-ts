@@ -1,60 +1,61 @@
-use std::{env, fs, path::Path, time::Instant};
-use swc_atoms::JsWord;
+mod gen;
+
 use swc_common::FilePathMapping;
-use swc_common::{input::SourceFileInput, source_map::SourceMap, sync::Lrc, SourceFile, DUMMY_SP};
+use swc_common::{source_map::SourceMap, sync::Lrc, DUMMY_SP};
 use swc_ecma_ast::*;
 use swc_ecma_codegen::{text_writer::JsWriter, Emitter};
-use swc_ecma_parser::{lexer::Lexer, Parser, Syntax};
-use swc_ecma_utils::{
-    ident::IdentLike, member_expr, private_ident, quote_ident, quote_str, undefined,
-    DestructuringFinder, ExprFactory, Id,
-};
+
+use gen::*;
+use protobuf::plugin::{CodeGeneratorRequest, CodeGeneratorResponse, CodeGeneratorResponse_File};
+use protobuf::Message;
+use std::io::prelude::*;
+use std::io::*;
+use std::string::*;
 
 fn main() {
-    let main_file = env::args().nth(1).unwrap();
+    let mut buffer: Vec<u8> = Vec::new();
+
+    stdin().read_to_end(&mut buffer).unwrap();
+    let request = CodeGeneratorRequest::parse_from_bytes(&buffer).unwrap();
+    let mut response = CodeGeneratorResponse::new();
 
     let cm = Lrc::new(SourceMap::new(FilePathMapping::empty()));
 
-    let t = TsNamespaceExportDecl {
-        span: DUMMY_SP,
-        id: quote_ident!("test"),
-    };
+    for descriptor in request.proto_file.into_vec() {
 
-    let body: Vec<ModuleItem> = vec![ModuleItem::ModuleDecl(ModuleDecl::ExportDecl(ExportDecl {
-        span: DUMMY_SP,
-        decl: Decl::TsModule(TsModuleDecl {
-            id: TsModuleName::Ident(quote_ident!("test")),
-            body: Some(TsNamespaceBody::TsModuleBlock(TsModuleBlock {
-                span: DUMMY_SP,
-                body: vec![],
-            })),
-            global: false,
-            declare: false,
-            span: DUMMY_SP,
-        }),
-    }))];
+        let mut body: Vec<ModuleItem> = Vec::new();
 
-    let m = Module {
-        span: DUMMY_SP,
-        body: body,
-        shebang: None,
-    };
-
-    let mut buf = vec![];
-
-    {
+        let mut buf = vec![];
+        
         let mut emitter = Emitter {
-            cfg: swc_ecma_codegen::Config {
-                ..Default::default()
-            },
+            cfg: swc_ecma_codegen::Config { minify: false },
             cm: cm.clone(),
             comments: None,
             wr: JsWriter::new(cm.clone(), "\n", &mut buf, None),
         };
 
-        emitter.emit_module(&m).unwrap();
+        if descriptor.has_package() {
+            body.push(namespace::namespaced(descriptor.get_package(), vec![]))
+        }
+
+        emitter
+            .emit_module(&Module {
+                span: DUMMY_SP,
+                body: body,
+                shebang: None,
+            })
+            .unwrap();
+        
+        let mut file = CodeGeneratorResponse_File::new();
+        let name = String::from(descriptor.get_name());
+        file.set_name(format!("{}.ts", name.replace(".proto", "")));
+        let generated = String::from_utf8_lossy(&buf).to_string();
+        file.set_content(generated);
+
+        response.mut_file().push(file);
     }
 
-    let code = String::from_utf8_lossy(&buf).to_string();
-    fs::write("output.js", &code).unwrap();
+    let bytes = &response.write_to_bytes().expect("");
+
+    stdout().write(bytes).unwrap();
 }
