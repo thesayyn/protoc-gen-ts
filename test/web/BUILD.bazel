@@ -3,6 +3,10 @@ load("@npm//@bazel/jasmine:index.bzl", "jasmine_node_test")
 load("@npm//@bazel/typescript:index.bzl", "ts_project")
 load("@npm//@bazel/cypress:index.bzl", "cypress_web_test")
 load("@rules_proto//proto:defs.bzl", "proto_library")
+load("@rules_container//container:container.bzl", "container")
+load("@rules_container//language:runfiles.bzl", "expand_runfiles")
+load("@build_bazel_rules_nodejs//:index.bzl", "nodejs_binary")
+load("@rules_pkg//:pkg.bzl", "pkg_tar")
 load("//:index.bzl", "ts_proto_library")
 
 proto_library(
@@ -18,23 +22,60 @@ ts_proto_library(
     target = "web"
 )
 
-# ts_project(
-#     name = "test_lib",
-#     srcs = glob(["**/*.ts"]),
-#     tsconfig = {
-#         "compilerOptions": {
-#             "target": "ES2020",
-#             "module": "CommonJS"
-#         },
-#     },
-#     deps = [
-#         "@npm//@types/jasmine",
-#         "@npm//@types/node",
-#         "@npm//google-protobuf",
-#         "@npm//@grpc/grpc-js",
-#         "@npm//grpc-web",
-#     ],
-# )
+
+# Server 
+
+ts_project(
+    name = "server",
+    srcs = [
+        "weather.ts",
+        "server.ts"
+    ],
+    tsconfig = {
+        "compilerOptions": {
+            "target": "ES2020",
+            "module": "CommonJS"
+        },
+    },
+    deps = [
+        "@npm//@types/jasmine",
+        "@npm//@types/node",
+        "@npm//google-protobuf",
+        "@npm//@grpc/grpc-js",
+        "@npm//grpc-web",
+    ],
+)
+
+nodejs_binary(
+    name = "bin",
+    entry_point = ":server.js",
+    data = [
+        ":server",
+    ]
+)
+
+expand_runfiles(
+    name = "runfiles",
+    binary = ":bin"
+)
+
+pkg_tar(
+    name = "entrypoint",
+    strip_prefix = ".",
+    srcs = [
+        ":runfiles",
+    ],
+)
+
+container(
+    name = "server",
+    base = "envoyproxy/envoy:latest",
+    cmd = ["/test/web/bin.sh"],
+    layers = [
+        ":entrypoint"
+    ]
+)
+
 
 cypress_web_test(
     name = "test",
