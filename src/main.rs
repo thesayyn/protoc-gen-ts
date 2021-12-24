@@ -1,4 +1,5 @@
 mod gen;
+mod option;
 
 use swc_common::FilePathMapping;
 use swc_common::{source_map::SourceMap, sync::Lrc, DUMMY_SP};
@@ -11,13 +12,15 @@ use protobuf::Message;
 use std::io::prelude::*;
 use std::io::*;
 use std::string::*;
+use option::{Options};
 
 fn main() {
     let mut buffer: Vec<u8> = Vec::new();
-
     stdin().read_to_end(&mut buffer).unwrap();
+
     let request = CodeGeneratorRequest::parse_from_bytes(&buffer).unwrap();
     let mut response = CodeGeneratorResponse::new();
+    let options: Options = Options::parse(request.get_parameter());
 
     let cm = Lrc::new(SourceMap::new(FilePathMapping::empty()));
 
@@ -36,6 +39,14 @@ fn main() {
 
         if descriptor.has_package() {
             body.push(namespace::namespaced(descriptor.get_package(), vec![]))
+        }
+
+        for enumtype in descriptor.get_enum_type() {
+            body.push(gen::enumtype::ast(enumtype))
+        }
+
+        for messagetype in descriptor.get_message_type() {
+            body.push(gen::message::create(messagetype))
         }
 
         emitter
