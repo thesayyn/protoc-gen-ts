@@ -3,15 +3,24 @@ enum Language {
     C = 1,
     CPP = 2
 }
+
 class Code {
-    get language() {
-        return false;
+    languge?: string;
+    code?: string;
+
+ 
+    toObject(): {[K in keyof Omit<Code, "toObject" | "serialize">]: Code[K]} {
+        return this
     }
-    set language(value) {
+    serialize(): Uint8Array {
+        return new Uint8Array();
     }
-    get lines() {
-        return false;
+    static fromObject(o: {[K in keyof Code]: Code[K]}) { 
+
     }
-    set lines(value) {
+    static deserialize(buffer: Uint8Array): Code {
+        return new Code();
     }
 }
+
+let t = new Code().toObject()
