@@ -1,0 +1,32 @@
+load("@crates//:defs.bzl", "crate")
+load("@rules_rust//rust:defs.bzl", "rust_binary")
+load("@rules_rust//cargo:cargo_build_script.bzl", "cargo_build_script")
+
+cargo_build_script(
+    name = "build",
+    srcs = ["build.rs"],
+    build_script_env = {
+        "PROTOC": "$(execpath @com_google_protobuf//:protoc)"
+    },
+    data = [
+        "src/weather.proto",
+        "@com_google_protobuf//:protoc"
+    ],
+    deps = [
+        crate("tonic-build")
+    ],
+)
+
+rust_binary(
+    name = "server",
+    srcs = ["src/main.rs"],
+    edition = "2018",
+    deps = [
+        crate("tonic-web"), 
+        crate("tonic"), 
+        crate("futures"), 
+        crate("tokio"),
+        crate("prost"), 
+        ":build"
+    ]
+)

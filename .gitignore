@@ -16,3 +16,4 @@ src/compiler/*
 src/compiler/index.js
 
 .DS_Store
+target

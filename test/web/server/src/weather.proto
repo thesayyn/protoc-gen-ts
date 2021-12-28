@@ -1,5 +1,7 @@
 syntax = "proto3";
 
+package weather;
+
 message City {
   // See: https://en.wikipedia.org/wiki/ISO_3166-2
   string code = 1;
