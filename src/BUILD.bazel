@@ -44,5 +44,3 @@ js_library(
         "@npm//@types/node"
     ]
 )
-
-#exports_files(["index.js"])

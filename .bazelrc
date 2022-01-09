@@ -1,5 +1,3 @@
-build --symlink_prefix=dist/
-
 build --nolegacy_external_runfiles
 run --nolegacy_external_runfiles
 test --nolegacy_external_runfiles
