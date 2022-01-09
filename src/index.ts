@@ -8,23 +8,6 @@ import * as descriptor from "./descriptor";
 import { google_protobuf_compiler as plugin } from "./compiler/plugin";
 import { parseParameters } from "./config";
 
-function createImport(
-  identifier: ts.Identifier,
-  moduleSpecifier: string,
-): ts.ImportDeclaration {
-  return ts.factory.createImportDeclaration(
-    undefined,
-    undefined,
-    ts.factory.createImportClause(
-      false,
-      // ts.factory.createNamespaceImport(identifier),
-      identifier,
-      undefined,
-    ),
-    ts.factory.createStringLiteral(moduleSpecifier),
-  );
-}
-
 function createNamedImport(
   identifier: ts.Identifier,
   moduleSpecifier: string,
@@ -64,20 +47,20 @@ function main() {
     const pbIdentifier = ts.factory.createUniqueName("pb");
     const grpcIdentifier = ts.factory.createUniqueName("grpc");
 
-    // Will keep track of import statements
-    const importStatements = [];
-
     // Create all named imports from dependencies
-    fileDescriptor.dependency.forEach((dependency) => {
-      const identifier = ts.factory.createUniqueName("dependency");
-      const moduleSpecifier = replaceExtension(dependency, "");
-      types.setIdentifierForDependency(dependency, identifier);
-      const importedFrom = `./${path.relative(
-        path.dirname(fileDescriptor.name),
-        moduleSpecifier,
-      )}`;
-      importStatements.push(createImport(identifier, importedFrom));
-    });
+    const importStatements: ts.ImportDeclaration[] =
+      fileDescriptor.dependency.map((dependency) => {
+        const identifier = ts.factory.createUniqueName("dependency");
+
+        const moduleSpecifier = replaceExtension(dependency, "");
+        types.setIdentifierForDependency(dependency, identifier);
+        const importedFrom = `./${path.relative(
+          path.dirname(fileDescriptor.name),
+          moduleSpecifier,
+        )}`;
+
+        return createNamedImport(identifier, importedFrom);
+      });
 
     // Create all messages recursively
     let statements: ts.Statement[] = [];
