@@ -6,6 +6,11 @@ const [, , source, dtsAndJs, dest] = process.argv;
 const sourceDir = path.join(".", "bazel-bin", source);
 const destDir = path.join(".", dest || source);
 
+let check = (object) =>
+  object.endsWith(".ts") &&
+  !object.endsWith(".spec.ts") &&
+  !object.endsWith(".d.ts");
+
 if (dtsAndJs) {
   check = (object) => object.endsWith(".js");
 }
