@@ -2,6 +2,7 @@ const type = require("./type");
 const descriptor = require("./compiler/descriptor");
 const ts = require("typescript");
 
+
 /**
  * Returns grpc-node compatible service description
  * @param {descriptor.FieldDescriptorProto} rootDescriptor
