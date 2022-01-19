@@ -13,6 +13,7 @@ src/compiler/*
 !src/compiler/BUILD.bazel
 !src/compiler/index.ts
 !src/compiler/*.js
+!src/compiler/*.d.ts
 src/compiler/index.js
 
 .DS_Store
