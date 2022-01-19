@@ -24,13 +24,11 @@ function replaceExtension(filename: string, extension: string = ".ts"): string
 export type ConfigParameters = {
     unary_rpc_promise: boolean,
     grpc_package: string,
-    async: boolean,
 };
 
 const parsers: { [key: string]: (value: string) => any } = {
     unary_rpc_promise: (value: string) => value === 'true',
     grpc_package: (value: string) => value,
-    async: (value: string) => value === 'true',
 };
 
 function parseParameters(parameters: string): ConfigParameters
@@ -38,7 +36,6 @@ function parseParameters(parameters: string): ConfigParameters
     const defaultValues: ConfigParameters = {
         unary_rpc_promise: false,
         grpc_package: '@grpc/grpc-js',
-        async: false,
     };
 
     const inputParams: Partial<ConfigParameters> = Object.fromEntries(parameters
@@ -54,7 +51,6 @@ function parseParameters(parameters: string): ConfigParameters
     const legacy = {
         ...(process.env.EXPERIMENTAL_FEATURES ? { unary_rpc_promise: true } : {}),
         ...(process.env.GRPC_PACKAGE_NAME ? { grpc_package: process.env.GRPC_PACKAGE_NAME } : {}),
-        ...(process.env.ASYNC ? { grpc_package: process.env.ASYNC } : {}),
     }
 
     return { ...defaultValues, ...legacy, ...inputParams }
