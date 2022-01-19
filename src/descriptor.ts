@@ -523,7 +523,7 @@ function createMessageSignature(
 
                 if (fieldDescriptor == currentFieldDescriptor) {
                     fieldType = field.wrapRepeatedType(
-                        field.getType(fieldDescriptor, rootDescriptor),
+                        field.getType(fieldDescriptor, rootDescriptor) as ts.TypeNode,
                         fieldDescriptor
                     );
                 }
@@ -550,10 +550,7 @@ function createMessageSignature(
             undefined,
             f.name,
             field.isOptional(rootDescriptor, f) ? ts.factory.createToken(ts.SyntaxKind.QuestionToken) : undefined,
-            field.wrapRepeatedType(
-                field.getType(f, rootDescriptor),
-                f
-            )
+            field.wrapRepeatedType(field.getType(f, rootDescriptor) as ts.TypeNode, f)
         ));
 
     if (oneOfSignatures.length)
@@ -580,7 +577,7 @@ function createPrimitiveMessageSignature(
                 ts.factory.createTypeOfExpression(
                     ts.factory.createPropertyAccessExpression(
                         ts.factory.createPropertyAccessExpression(
-                            fieldType.typeName,
+                            fieldType.typeName as ts.Expression,
                             'prototype',
                         ),
                         'toObject',
@@ -601,7 +598,7 @@ function createPrimitiveMessageSignature(
 
             if (field.isMessage(valueDescriptor))
             {
-                valueType = wrapMessageType(valueType);
+                valueType = wrapMessageType(valueType as ts.TypeReferenceNode);
             }
 
             finalFieldType = ts.factory.createTypeLiteralNode([
@@ -615,16 +612,16 @@ function createPrimitiveMessageSignature(
                             undefined,
                             "key",
                             undefined,
-                            field.getType(keyDescriptor, rootDescriptor),
+                            field.getType(keyDescriptor, rootDescriptor) as ts.TypeNode,
                         )
                     ],
-                    valueType
+                    valueType as ts.TypeNode
                 )
             ])
         }
         else if (field.isMessage(fieldDescriptor))
         {
-            fieldType = wrapMessageType(fieldType);
+            fieldType = wrapMessageType(fieldType as ts.TypeReferenceNode);
         }
 
         fieldSignatures.push(
@@ -632,7 +629,7 @@ function createPrimitiveMessageSignature(
                 undefined,
                 fieldDescriptor.name,
                 field.isOptional(rootDescriptor, fieldDescriptor) ? ts.factory.createToken(ts.SyntaxKind.QuestionToken) : undefined,
-                field.wrapRepeatedType(fieldType, fieldDescriptor)
+                field.wrapRepeatedType(fieldType as ts.TypeNode, fieldDescriptor)
             )
         );
     }
@@ -816,7 +813,7 @@ function createGetter(
     pbIdentifier: ts.Identifier,
 ): ts.GetAccessorDeclaration
 {
-    const getterType = field.wrapRepeatedType(field.getType(fieldDescriptor, rootDescriptor), fieldDescriptor);
+    const getterType = field.wrapRepeatedType(field.getType(fieldDescriptor, rootDescriptor) as ts.TypeNode, fieldDescriptor);
     let getterExpr: ts.Expression = createGetterCall(rootDescriptor, fieldDescriptor, pbIdentifier);
 
     if (field.isMap(fieldDescriptor))
@@ -1008,7 +1005,7 @@ function createSetter(
     pbIdentifier: ts.Identifier,
 ) {
     const type = field.wrapRepeatedType(
-        field.getType(fieldDescriptor, rootDescriptor),
+        field.getType(fieldDescriptor, rootDescriptor) as ts.TypeNode,
         fieldDescriptor
     );
     const valueParameter = ts.factory.createIdentifier("value");

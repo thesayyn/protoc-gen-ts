@@ -18,14 +18,14 @@ function getMapType(rootDescriptor: descriptor.FileDescriptorProto, fieldDescrip
     return ts.factory.createTypeReferenceNode(
         "Map",
         [
-            getType(keyDescriptor, rootDescriptor),
-            getType(valueDescriptor, rootDescriptor)
+            getType(keyDescriptor, rootDescriptor) as ts.TypeNode,
+            getType(valueDescriptor, rootDescriptor) as ts.TypeNode,
         ]
     );
 
 }
 
-export function getType(fieldDescriptor: descriptor.FieldDescriptorProto, rootDescriptor: descriptor.FileDescriptorProto): ts.TypeReferenceNode
+export function getType(fieldDescriptor: descriptor.FieldDescriptorProto, rootDescriptor: descriptor.FileDescriptorProto): ts.TypeReferenceNode|ts.Identifier|ts.PropertyAccessExpression
 {
     if (isMap(fieldDescriptor))
     {
@@ -73,7 +73,7 @@ export function getType(fieldDescriptor: descriptor.FieldDescriptorProto, rootDe
         case descriptor.FieldDescriptorProto.Type.TYPE_ENUM:
         {
             return ts.factory.createTypeReferenceNode(
-                type.getTypeReference(rootDescriptor, fieldDescriptor.type_name)
+                type.getTypeReference(rootDescriptor, fieldDescriptor.type_name) as ts.Identifier
             );
         }
 
