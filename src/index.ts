@@ -33,7 +33,7 @@ const parsers: { [key: string]: (value: string) => any } = {
     async: (value: string) => value === 'true',
 };
 
-function parseParameters(parameters?: string): ConfigParameters
+function parseParameters(parameters: string): ConfigParameters
 {
     const defaultValues: ConfigParameters = {
         unary_rpc_promise: false,
@@ -41,10 +41,13 @@ function parseParameters(parameters?: string): ConfigParameters
         async: false,
     };
 
-    const inputParams: Partial<ConfigParameters> = Object.fromEntries(
-        (parameters ?? '')
-            .split(',')
-            .map(i => i.split('=', 2).map(([ k, v ]) => [ k, parsers[k]?.(v) ]))
+    const inputParams: Partial<ConfigParameters> = Object.fromEntries(parameters
+        .split(',')
+        .map(i => {
+            const [ k, v ] = i.split('=', 2);
+
+            return [ k, parsers[k]?.(v) ];
+        })
     );
 
     // Legacy Environment variables
@@ -62,7 +65,7 @@ const response = new plugin.CodeGeneratorResponse({
     supported_features: plugin.CodeGeneratorResponse.Feature.FEATURE_PROTO3_OPTIONAL
 });
 
-const configParams = parseParameters(request.parameter)
+const configParams = parseParameters(request.parameter);
 
 for (const descriptor of request.proto_file)
 {
