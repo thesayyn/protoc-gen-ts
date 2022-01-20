@@ -16,7 +16,7 @@ function getMapType(rootDescriptor: descriptor.FileDescriptorProto, fieldDescrip
     const [keyDescriptor, valueDescriptor] = messageDescriptor.field;
 
     return ts.factory.createTypeReferenceNode(
-        "Map",
+        'Map',
         [
             getType(keyDescriptor, rootDescriptor) as ts.TypeNode,
             getType(valueDescriptor, rootDescriptor) as ts.TypeNode,
@@ -33,7 +33,7 @@ export function getType(fieldDescriptor: descriptor.FieldDescriptorProto, rootDe
     }
     else if (hasJsTypeString(fieldDescriptor))
     {
-        return ts.factory.createTypeReferenceNode("string");
+        return ts.factory.createTypeReferenceNode('string');
     }
 
     switch (fieldDescriptor.type)
@@ -51,22 +51,22 @@ export function getType(fieldDescriptor: descriptor.FieldDescriptorProto, rootDe
         case descriptor.FieldDescriptorProto.Type.TYPE_SFIXED32:
         case descriptor.FieldDescriptorProto.Type.TYPE_SFIXED64:
         {
-            return ts.factory.createTypeReferenceNode("number");
+            return ts.factory.createTypeReferenceNode('number');
         }
 
         case descriptor.FieldDescriptorProto.Type.TYPE_STRING:
         {
-            return ts.factory.createTypeReferenceNode("string");
+            return ts.factory.createTypeReferenceNode('string');
         }
 
         case descriptor.FieldDescriptorProto.Type.TYPE_BOOL:
         {
-            return ts.factory.createTypeReferenceNode("boolean");
+            return ts.factory.createTypeReferenceNode('boolean');
         }
 
         case descriptor.FieldDescriptorProto.Type.TYPE_BYTES:
         {
-            return ts.factory.createTypeReferenceNode("Uint8Array");
+            return ts.factory.createTypeReferenceNode('Uint8Array');
         }
 
         case descriptor.FieldDescriptorProto.Type.TYPE_MESSAGE:

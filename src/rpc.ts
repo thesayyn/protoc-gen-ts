@@ -271,8 +271,6 @@ export function createUnimplementedService(
     );
 }
 
-export { createUnimplementedService as createUnimplementedServer };
-
 /**
  * Returns grpc-node compatible client unary promise method
  */
@@ -1035,13 +1033,8 @@ export function createServiceClient(
     rootDescriptor: descriptor.FileDescriptorProto,
     serviceDescriptor: descriptor.ServiceDescriptorProto,
     grpcIdentifier: ts.Identifier,
-    params: { unary_rpc_promise?: boolean, async?: boolean },
+    params: ConfigParameters,
 ): ts.ClassDeclaration {
-    if(params.async)
-    {
-        return ts.factory.createClassDeclaration([], [], '', [], [], []);
-    }
-
     const members: ts.ClassElement[] = [
         // Add constructor
         ts.factory.createConstructorDeclaration(

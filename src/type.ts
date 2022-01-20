@@ -1,40 +1,61 @@
-import * as descriptor from './compiler/descriptor.js';
-import ts from 'typescript';
+import { DescriptorProto, FileDescriptorProto } from './compiler/descriptor.js';
+import { factory, Identifier, PropertyAccessExpression } from 'typescript';
+import { ConfigParameters } from './index.js';
 
 const symbolMap: Map<string, string> = new Map();
-const dependencyMap: Map<string, ts.Identifier> = new Map();
-const mapMap: Map<string, descriptor.DescriptorProto> = new Map();
+const dependencyMap: Map<string, Identifier> = new Map();
+const mapMap: Map<string, DescriptorProto> = new Map();
+const packages: string[] = [];
+let config: ConfigParameters;
+
+export function initialize(configParameters: ConfigParameters): void
+{
+    config = configParameters;
+}
 
 export function resetDependencyMap()
 {
     dependencyMap.clear();
 }
 
-export function setIdentifierForDependency(dependency: string, identifier: ts.Identifier)
+export function setIdentifierForDependency(dependency: string, identifier: Identifier)
 {
     dependencyMap.set(dependency, identifier);
 }
 
-function isMapEntry(descriptor: descriptor.DescriptorProto): boolean {
+function isMapEntry(descriptor: DescriptorProto): boolean {
     return descriptor?.options?.map_entry ?? false;
 }
 
-export function getMapDescriptor(typeName: string): descriptor.DescriptorProto|undefined {
+export function getMapDescriptor(typeName: string): DescriptorProto|undefined {
     return mapMap.get(typeName);
 }
 
-export function getTypeReference(rootDescriptor: descriptor.FileDescriptorProto, typeName: string): ts.Identifier|ts.PropertyAccessExpression
+export function getTypeReference(rootDescriptor: FileDescriptorProto, typeName: string): Identifier|PropertyAccessExpression
 {
     const path = symbolMap.get(typeName);
 
     if (!path || !dependencyMap.has(path))
     {
-        return ts.factory.createIdentifier(removeRootPackageName(typeName, rootDescriptor.package))
+        return factory.createIdentifier(removeRootPackageName(typeName, rootDescriptor.package));
     }
 
-    return ts.factory.createPropertyAccessExpression(
+    let name = removeLeadingDot(typeName);
+
+    if(config.no_namespace)
+    {
+        const prefix = packages.find(p => name.startsWith(p));
+
+        if(prefix)
+        {
+            name = name.replace(`${prefix}.`, '');
+        }
+    }
+
+
+    return factory.createPropertyAccessExpression(
         dependencyMap.get(path)!,
-        removeLeadingDot(typeName)
+        name,
     );
 }
 
@@ -53,20 +74,24 @@ function removeRootPackageName(name: string, packageName: string): string
     return removeLeadingDot(packageName ? name.replace(`${packageName}.`, '') : name);
 }
 
-export function preprocess(targetDescriptor: descriptor.FileDescriptorProto|descriptor.DescriptorProto, path: string, prefix: string)
+export function preprocess(targetDescriptor: FileDescriptorProto|DescriptorProto, path: string, prefix: string)
 {
+    if(targetDescriptor instanceof FileDescriptorProto)
+    {
+        packages.push(targetDescriptor.package);
+    }
+
     for (const enumDescriptor of targetDescriptor.enum_type)
     {
         symbolMap.set(replaceDoubleDots(`${prefix}.${enumDescriptor.name}`), path);
     }
 
-    const messages: descriptor.DescriptorProto[] = targetDescriptor instanceof descriptor.FileDescriptorProto
+    const messages: DescriptorProto[] = targetDescriptor instanceof FileDescriptorProto
         ? targetDescriptor.message_type
         : targetDescriptor.nested_type;
 
-    for (let index = messages.length - 1; index >= 0; index--)
+    for(const [ index, messageDescriptor ] of messages.entries())
     {
-        const messageDescriptor = messages[index];
         const name = replaceDoubleDots(`${prefix}.${messageDescriptor.name}`);
 
         if (isMapEntry(messageDescriptor))

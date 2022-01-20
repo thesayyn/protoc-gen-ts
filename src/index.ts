@@ -5,6 +5,7 @@ import * as ts from 'typescript';
 import * as type from './type.js';
 import * as descriptor from './descriptor.js';
 import * as rpc from './rpc.js';
+import * as rpcAsync from './async/rpc.js';
 
 function createImport(identifier: ts.Identifier, moduleSpecifier: string): ts.ImportDeclaration
 {
@@ -25,12 +26,14 @@ export type ConfigParameters = {
     unary_rpc_promise: boolean,
     grpc_package: string,
     async: boolean,
+    no_namespace: boolean,
 };
 
 const parsers: { [key: string]: (value: string) => any } = {
     unary_rpc_promise: (value: string) => value === 'true',
     grpc_package: (value: string) => value,
     async: (value: string) => value === 'true',
+    no_namespace: (value: string) => value === 'true',
 };
 
 function parseParameters(parameters: string): ConfigParameters
@@ -39,6 +42,7 @@ function parseParameters(parameters: string): ConfigParameters
         unary_rpc_promise: false,
         grpc_package: '@grpc/grpc-js',
         async: false,
+        no_namespace: false,
     };
 
     const inputParams: Partial<ConfigParameters> = Object.fromEntries(parameters
@@ -54,10 +58,16 @@ function parseParameters(parameters: string): ConfigParameters
     const legacy = {
         ...(process.env.EXPERIMENTAL_FEATURES ? { unary_rpc_promise: true } : {}),
         ...(process.env.GRPC_PACKAGE_NAME ? { grpc_package: process.env.GRPC_PACKAGE_NAME } : {}),
-        ...(process.env.ASYNC ? { grpc_package: process.env.ASYNC } : {}),
     }
 
-    return { ...defaultValues, ...legacy, ...inputParams }
+    const config = { ...defaultValues, ...legacy, ...inputParams };
+
+    if(config.async === true && config.grpc_package === defaultValues.grpc_package)
+    {
+        throw new Error('Invalid configuration: `@grpc/grpc-js` is not compatible with async code generation. suggestion: use `@fyn-software/grpc` instead')
+    }
+
+    return config;
 }
 
 const request = plugin.CodeGeneratorRequest.deserialize(new Uint8Array(fs.readFileSync(0)));
@@ -66,6 +76,8 @@ const response = new plugin.CodeGeneratorResponse({
 });
 
 const configParams = parseParameters(request.parameter);
+
+type.initialize(configParams);
 
 for (const descriptor of request.proto_file)
 {
@@ -91,50 +103,52 @@ for (const fileDescriptor of request.proto_file)
                 `./${path.relative(path.dirname(fileDescriptor.name), moduleSpecifier)}`
             );
         }),
+
+        createImport(pbIdentifier, 'google-protobuf'),
     ];
 
     // Create all messages recursively
-    let statements: ts.Statement[] = [
+    const statements: ts.Statement[] = [
         // Process enums
         ...fileDescriptor.enum_type.map(enumDescriptor => descriptor.createEnum(enumDescriptor)),
 
         // Process root messages
         ...fileDescriptor.message_type.flatMap(messageDescriptor =>
-            descriptor.processDescriptorRecursively(fileDescriptor, messageDescriptor, pbIdentifier)
+            descriptor.processDescriptorRecursively(fileDescriptor, messageDescriptor, pbIdentifier, configParams)
         ),
     ];
-
-    if (statements.length)
-    {
-        importStatements.push(createImport(pbIdentifier, 'google-protobuf'));
-    }
 
     if (fileDescriptor.service.length)
     {
         // Import grpc only if there is service statements
-        importStatements.push(
-            createImport(
-                grpcIdentifier,
-                configParams.grpc_package,
-            )
-        );
-        statements.push(
-            ...rpc.createGrpcInterfaceType(fileDescriptor, grpcIdentifier, configParams)
-        );
+        importStatements.push(createImport(grpcIdentifier, configParams.grpc_package));
+
+        if(configParams.async === false)
+        {
+            statements.push(
+                ...rpc.createGrpcInterfaceType(fileDescriptor, grpcIdentifier, configParams)
+            );
+        }
 
         // Create all services and clients
         for (const serviceDescriptor of fileDescriptor.service)
         {
             statements.push(
-                rpc.createUnimplementedServer(
-                    fileDescriptor,
-                    serviceDescriptor,
-                    grpcIdentifier
-                )
+                configParams.async
+                    ? rpcAsync.createDefinition(
+                        fileDescriptor,
+                        serviceDescriptor,
+                        grpcIdentifier,
+                    )
+                    : rpc.createUnimplementedService(
+                        fileDescriptor,
+                        serviceDescriptor,
+                        grpcIdentifier,
+                    )
             );
 
             statements.push(
-                rpc.createServiceClient(
+                (configParams.async ? rpcAsync : rpc).createServiceClient(
                     fileDescriptor,
                     serviceDescriptor,
                     grpcIdentifier,
@@ -145,7 +159,6 @@ for (const fileDescriptor of request.proto_file)
     }
 
     const { major = 0, minor = 0, patch = 0 } = request.compiler_version;
-
     const doNotEditComment = ts.factory.createJSDocComment(
         `Generated by the protoc-gen-ts. DO NOT EDIT!\n` +
         `compiler version: ${major}.${minor}.${patch}\n` +
@@ -153,43 +166,30 @@ for (const fileDescriptor of request.proto_file)
         `git: https://github.com/thesayyn/protoc-gen-ts\n`
     ) as ts.Statement;
 
-    // Wrap statements within the namespace
-    if (fileDescriptor.package)
-    {
-        statements = [
+    // Configure file
+    const sourceFile: ts.SourceFile = ts.factory.createSourceFile(
+        [
             doNotEditComment,
             ...importStatements,
-            descriptor.createNamespace(fileDescriptor.package, statements),
-        ]
-    }
-    else
-    {
-        statements = [
-            doNotEditComment,
-            ...importStatements,
-            ...statements
-        ];
-    }
-
-    const sourcefile: ts.SourceFile = ts.factory.createSourceFile(
-        statements,
+            ...(fileDescriptor.package && !configParams.no_namespace
+                ? [ descriptor.createNamespace(fileDescriptor.package, statements) ]
+                : statements
+            ),
+        ],
         ts.factory.createToken(ts.SyntaxKind.EndOfFileToken),
         ts.NodeFlags.None
     );
     // @ts-ignore
-    sourcefile.identifiers = new Set();
+    sourceFile.identifiers = new Set();
 
     const content = ts
         .createPrinter({
             newLine: ts.NewLineKind.LineFeed,
             omitTrailingSemicolon: true,
         })
-        .printFile(sourcefile);
+        .printFile(sourceFile);
 
-    response.file.push(new plugin.CodeGeneratorResponse.File({
-        name,
-        content
-    }));
+    response.file.push(new plugin.CodeGeneratorResponse.File({ name, content }));
 
     // after each iteration we need to clear the dependency map to prevent accidental
     // misuse of identifiers
