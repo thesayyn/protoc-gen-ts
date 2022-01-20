@@ -353,7 +353,7 @@ function createRpcMethod(
         ],
     )
 
-    // public async {{serverStreaming? * }}{{ method }}<RequestType, ResponseType>(request: {{clientStreaming ? AsyncIterable<RequestType> : RequestType }}, metadata?: Metadata, options?: CallOptions): {{serverStreaming? AsyncGenerator<ResponseType, void, never> : Promise<ResponseType> }}
+    // public async {{serverStreaming? * }}{{ method }}<RequestType, ResponseType>(request: {{clientStreaming ? AsyncIterable<RequestType> : RequestType }}, metadata?: Metadata, options?: CallOptions): {{serverStreaming? AsyncGenerator<ResponseType, void, undefined> : Promise<ResponseType> }}
     // {
     //      {{serverStreaming? yield* : return }} super.make{{ type }}Request<RequestType, ResponseType>({{ path }}, request, metadata, options);
     // }
