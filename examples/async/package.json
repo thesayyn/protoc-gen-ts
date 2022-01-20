@@ -1,0 +1,9 @@
+{
+    "dependencies": {
+        "@fyn-software/grpc": "file:D:/Github/fyn-software/grpc",
+        "google-protobuf": "^3.19.3"
+    },
+    "devDependencies": {
+        "@types/google-protobuf": "^3.15.5"
+    }
+}

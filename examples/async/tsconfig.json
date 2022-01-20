@@ -1,0 +1,17 @@
+{
+    "include": [
+        "**/*.ts"
+    ],
+    "compilerOptions": {
+        "lib": [ "esnext", "dom" ],
+        "moduleResolution": "node",
+        "module": "esnext",
+        "target": "esnext",
+        "strict": true,
+        "esModuleInterop": true,
+        "sourceMap": true,
+        "declaration": true,
+        "declarationMap": true,
+        "experimentalDecorators": true
+    }
+}

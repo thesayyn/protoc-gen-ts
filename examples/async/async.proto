@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package example.v1;
+
+service Async {
+	rpc Unary(AsyncRequest) returns (AsyncResponse) {}
+	rpc ClientStream(stream AsyncRequest) returns (AsyncResponse) {}
+  rpc ServerStream(AsyncRequest) returns (stream AsyncResponse) {}
+	rpc BidiStream(stream AsyncRequest) returns (stream AsyncResponse) {}
+}
+
+message AsyncRequest {
+}
+
+message AsyncResponse {
+}

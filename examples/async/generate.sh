@@ -1,0 +1,2 @@
+#!/bin/bash
+docker run -v `pwd`:/defs -v /mnt/e/temp/protoc-gen-ts:/usr/lib/node_modules/protoc-gen-ts chriskruining/protoc-all:dev -o . -d . -l typescript --ts-out grpc_package=@fyn-software/grpc,async=true,no_namespace=true
