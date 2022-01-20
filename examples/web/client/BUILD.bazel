@@ -1,0 +1,73 @@
+load("@rules_proto//proto:defs.bzl", "proto_library")
+load("@npm//protoc-gen-ts:index.bzl", "ts_proto_library")
+load("@npm//@bazel/typescript:index.bzl", "ts_project")
+load("@npm//@bazel/rollup:index.bzl", "rollup_bundle")
+load("@build_bazel_rules_nodejs//:index.bzl", "generated_file_test")
+load("@npm//http-server:index.bzl", "http_server")
+
+proto_library(
+    name = "protos",
+    srcs = ["weather.proto"],
+)
+
+ts_proto_library(
+    name = "codegen",
+    target = "web",
+    deps = [
+        ":protos",
+    ],
+)
+
+generated_file_test(
+    name = "weather_checked_in",
+    src = ":codegen",
+    generated = "weather.ts",
+)
+
+ts_project(
+    name = "app",
+    srcs = glob(["**/*.ts"]),
+    tsconfig = {
+        "compilerOptions": {
+            "target": "es6",
+            "module": "esnext",
+            "moduleResolution": "node",
+        },
+    },
+    deps = [
+        "@npm//@grpc/grpc-js",
+        "@npm//@types/node",
+        "@npm//google-protobuf",
+        "@npm//grpc-web",
+    ],
+)
+
+rollup_bundle(
+    name = "bundle",
+    config_file = "rollup.config.js",
+    entry_point = ":src/index.ts",
+    format = "esm",
+    deps = [
+        ":app",
+        "@npm//@rollup/plugin-commonjs",
+        "@npm//@rollup/plugin-node-resolve",
+    ],
+)
+
+http_server(
+    name = "serve",
+    data = [
+        "//web/cert",
+        "index.html",
+        ":bundle",
+    ],
+    templated_args = [
+        package_name(),
+        "--cors",
+        "--key",
+        "$(rlocation //web/cert/client.key)",
+        "--cert",
+        "$(rlocation //web/cert/client.crt)",
+        "--tls",
+    ],
+)

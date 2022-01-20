@@ -1,0 +1,6 @@
+
+nodejs_binary(
+    name = "serve",
+    data = [":lib", "key.pem", "cert.pem"],
+    entry_point = ":server.ts",
+)
