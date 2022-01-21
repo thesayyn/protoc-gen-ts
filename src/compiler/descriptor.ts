@@ -450,7 +450,7 @@ import * as pb_1 from "google-protobuf";
             options?: ReturnType<typeof MessageOptions.prototype.toObject>;
             reserved_range: ReturnType<typeof DescriptorProto.ReservedRange.prototype.toObject>[];
             reserved_name: string[];
-        }) {
+        }): DescriptorProto {
             const message = new DescriptorProto({
                 field: data.field.map(item => FieldDescriptorProto.fromObject(item)),
                 extension: data.extension.map(item => FieldDescriptorProto.fromObject(item)),
