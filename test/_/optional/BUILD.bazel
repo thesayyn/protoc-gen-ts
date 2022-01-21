@@ -1,0 +1,20 @@
+load("@rules_proto//proto:defs.bzl", "proto_library")
+load("//:index.bzl", "ts_proto_library")
+
+
+SRCS = glob(["**/*.proto"])
+
+proto_library(
+    name = "protos",
+    srcs = SRCS,
+)
+
+ts_proto_library(
+    name = "optional",
+    outs = [
+        src.replace(".proto", ".ts")
+        for src in SRCS
+    ],
+    deps = [":protos"],
+    visibility = ["//test/optional:__pkg__"]
+)

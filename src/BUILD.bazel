@@ -4,7 +4,6 @@ load("@build_bazel_rules_nodejs//:index.bzl", "js_library")
 
 package(default_visibility = ["//visibility:public"])
 
-
 diff_and_update(
     name = "diff_compiler",
     srcs = [
@@ -14,41 +13,21 @@ diff_and_update(
     checked = ["compiler/plugin.ts", "compiler/descriptor.ts"]
 )
 
-
-ts_project(
-    name = "compiler",
-    srcs = glob(["compiler/*.ts"]),
-    tsconfig = {
-        "compilerOptions": {
-            "target": "ES2020",
-            "module": "CommonJS",
-            "declaration": True
-        },
-    },
-    deps = [
-        "@npm//@grpc/grpc-js",
-        "@npm//@types/node",
-        "@npm//google-protobuf",
-    ],
-)
-
 ts_project(
     name = "src_",
-    srcs = glob(["**/*.js"]),
+    srcs = glob(["compiler/*.ts", "*.js"]),
     allow_js = True,
     tsconfig = {
         "compilerOptions": {
             "target": "ES2020",
-            "module": "CommonJS",
-            "declaration": True
+            "module": "CommonJS"
         },
     },
     deps = [
         "@npm//@grpc/grpc-js",
         "@npm//@types/node",
         "@npm//google-protobuf",
-        "@npm//typescript",
-        ":compiler"
+        "@npm//typescript"
     ],
 )
 

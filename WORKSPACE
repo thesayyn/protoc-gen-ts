@@ -64,35 +64,7 @@ new_git_repository(
     name = "third_party_protobuf",
     remote = "https://github.com/protocolbuffers/protobuf.git",
     commit = "41e22cde8d8a44c35127a26c19e08b180e0b30a4",
-    strip_prefix = "src/google/protobuf",
+    strip_prefix = "src/google",
     shallow_since = "1642118709 -0800",
-    build_file_content = """
-load("@protoc_gen_ts//:index.bzl", "ts_proto_library")
-load("@rules_proto//proto:defs.bzl", "proto_library")
-
-genrule(
-    name = "plugin_proto",
-    srcs = ["compiler/plugin.proto"],
-    outs = ["plugin.proto"],
-    cmd = 'sed "s/google\\\\/protobuf\\\\/descriptor.proto/descriptor.proto/" "$<" > "$@"',
-)
-
-proto_library(
-    name = "protos",
-    srcs = [
-        "descriptor.proto",
-        "plugin.proto",
-    ]
-)
-
-ts_proto_library(
-    name = "codegen",
-    experimental_features = True,
-    visibility = ["//visibility:public"],
-    outs = ["plugin.ts", "descriptor.ts"],
-    deps = [
-        ":protos",
-    ],
-)
-    """
+    build_file = "//tools:BUILD.protobuf"
 )

@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-import "test/imported.proto";
+import "test/_/imported.proto";
 
 message Topic {
     string link = 2;

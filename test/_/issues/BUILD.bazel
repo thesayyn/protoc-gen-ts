@@ -1,0 +1,19 @@
+load("@bazel_skylib//rules:build_test.bzl", "build_test")
+load("//:index.bzl", "ts_proto_library")
+
+proto_library(
+    name = "protos",
+    srcs = glob(["**/*.proto"]),
+)
+
+ts_proto_library(
+    name = "issues",
+    deps = [":protos"],
+)
+
+build_test(
+    name = "test",
+    targets = [
+        ":issues",
+    ],
+)

@@ -17,7 +17,7 @@
     "url": "https://github.com/thesayyn/protoc-gen-ts"
   },
   "scripts": {
-    "test": "bazel test //test",
+    "test": "bazel test //...",
     "release": "npm publish --access public --tag latest --registry https://registry.npmjs.org"
   },
   "bin": {

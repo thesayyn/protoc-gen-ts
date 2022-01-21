@@ -1,30 +1,30 @@
 load("@rules_proto//proto:defs.bzl", "ProtoInfo")
-load("@build_bazel_rules_nodejs//third_party/github.com/bazelbuild/bazel-skylib:lib/paths.bzl", "paths")
+load("@bazel_skylib//lib:paths.bzl", "paths")
 
 def _get_outputs(target, ctx):
     outputs = []
+    root = target[ProtoInfo].proto_source_root
     for source in target[ProtoInfo].direct_sources:
-        # test.proto -> test
-        if source.is_source:
-            name = source.path.replace(ctx.label.workspace_root, "").lstrip("/")[:-len(source.extension) - 1]
-        else:  
-            name = source.path.replace(target[ProtoInfo].proto_source_root, "").lstrip("/")[:-len(source.extension) - 1]
-        output = ctx.actions.declare_file("%s.ts" % (name))
+        # test.proto -> {designated output dir}/test.ts
+        name = source.basename.replace(source.extension, "ts") 
+        dest = root
+        # if the dest is pwd then make sure that we do not strip subdirectories.
+        if dest == ".":
+            dest = source.dirname[len(ctx.label.package) + 1:]
+            if not dest:
+                dest = "."
+        output = ctx.actions.declare_file("/".join([dest, name]))
         outputs.append(output)
     return outputs
 
-def _proto_path_infos(proto_info, provided_sources = []):
+def _imported_protos(target, provided_sources = []):
+    proto_info = target[ProtoInfo]
     source_root = proto_info.proto_source_root
-    if "." == source_root:
-        return [struct(file = src, import_path = src.path) for src in proto_info.direct_sources]
+    if source_root == ".":
+        return [src.path for src in proto_info.direct_sources]
 
     offset = len(source_root) + 1  # + '/'.
-
-    infos = []
-    for src in proto_info.direct_sources:
-        infos.append(struct(file = src, import_path = src.path[offset:]))
-
-    return infos
+    return [src.path[offset:] for src in proto_info.direct_sources]
 
 def _as_path(path, is_windows_host):
     if is_windows_host:
@@ -53,23 +53,19 @@ def _ts_proto_library(ctx):
 
         args.add_joined("--descriptor_set_in", descriptor_sets_paths, join_with = ctx.configuration.host_path_separator)
 
-        # Options
-        args.add(ctx.attr.grpc_package_name, format = "--ts_opt=grpc_package=%s")
-        
-        if ctx.attr.experimental_features == "true":
-            args.add("--ts_opt=unary_rpc_promise")
+        # Features as options
+        for feature in ctx.features:
+            args.add("--ts_opt=%s" % feature)
 
         # Direct sources
-        for f in _proto_path_infos(target[ProtoInfo]):
-            args.add(f.import_path)
+        args.add_all(_imported_protos(target))
 
         if not len(ctx.outputs.outs):
             outputs = _get_outputs(target, ctx)
             all_outputs.extend(outputs)
         else:   
             outputs = ctx.outputs.outs
-            all_outputs = ctx.outputs.outs
-
+            all_outputs = ctx.outputs.outs        
 
         ctx.actions.run(
             inputs = depset(target[ProtoInfo].direct_sources, transitive = [target[ProtoInfo].transitive_descriptor_sets, depset(ctx.files._well_known_protos)]),
@@ -94,14 +90,6 @@ ts_proto_library_ = rule(
             mandatory = True
         ),
         "outs": attr.output_list(),
-        "experimental_features": attr.string(
-            doc = "Enable experimental features.",
-            default = "false"
-        ),
-        "grpc_package_name": attr.string(
-            doc = "Configures name of the grpc package to use. '@grpc/grpc-js' or 'grpc'",
-            default = "@grpc/grpc-js"
-        ),
         "_protoc_gen_ts_bin": attr.label(
             executable = True,
             cfg = "host",
@@ -127,11 +115,19 @@ ts_proto_library_ = rule(
 )
 
 
-def ts_proto_library(name, **kwargs):
-    experimental_features = kwargs.pop("experimental_features", False)
+def ts_proto_library(name, grpc_package_name = None, experimental_features = None,  **kwargs):
+    features = kwargs.pop("features", [])
+
+    if experimental_features != None:
+        print("""experimental_features attribute is deprecated. use features = ["unary_rpc_promise"]""")
+        features.append("unary_rpc_promise")
+
+    if grpc_package_name != None:
+        print("""grpc_package_name attribute is deprecated. use features = ["grpc_package=@grpc/grpc-js"]""")
+        features.append("grpc_package=%s" % grpc_package_name)
     
     ts_proto_library_(
         name = name,
-        experimental_features = "true" if experimental_features else "false",
+        features = features,
         **kwargs
     )

@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-// See issue #20
+// See issue: #20
 
 message Example {
     oneof foo_or_bar {

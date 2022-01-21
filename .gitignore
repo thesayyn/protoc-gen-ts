@@ -7,3 +7,4 @@ bazel-*
 .editorconfig
 
 .DS_Store
+user.bazelrc

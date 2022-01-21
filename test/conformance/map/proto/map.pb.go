@@ -4,7 +4,7 @@
 // 	protoc        v3.17.0
 // source: test.proto
 
-package maps
+package proto
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"

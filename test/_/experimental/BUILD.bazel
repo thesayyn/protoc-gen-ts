@@ -1,0 +1,19 @@
+load("//:index.bzl", "ts_proto_library")
+
+SRCS = glob(["*.proto"])
+
+proto_library(
+    name = "protos",
+    srcs = SRCS,
+)
+
+ts_proto_library(
+    name = "experimental",
+    outs = [
+        src.replace(".proto", ".ts")
+        for src in SRCS
+    ],
+    features = ["unary_rpc_promise"],
+    deps = [":protos"],
+    visibility = ["//test/experimental:__pkg__"]
+)

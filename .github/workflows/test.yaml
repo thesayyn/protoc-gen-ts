@@ -19,8 +19,6 @@ jobs:
         protoc_version: [3.x]
     steps:
       - uses: actions/checkout@v2
-        with:
-          submodules: true
       - uses: actions/setup-node@v2
         with:
           node-version: ${{matrix.node_version}}
@@ -28,8 +26,8 @@ jobs:
         with: 
           version: ${{matrix.protoc_version}}
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-        
+      - run: copy .github/workflows/ci.windows.bazelrc user.bazelrc
+        if: ${{ matrix.os == 'windows-latest' }}
       - run: yarn --frozen-lockfile
-      - run: yarn codegen
       - run: yarn test --test_tag_filters=-no-${{ matrix.os }}
-      - run: cd examples/pure && yarn --frozen-lockfile && yarn test
+      #- run: cd examples/pure && yarn --frozen-lockfile && yarn test

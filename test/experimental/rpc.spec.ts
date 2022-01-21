@@ -1,5 +1,5 @@
 import * as grpc from "@grpc/grpc-js";
-import { StorageClient, UnimplementedStorageService, Chunk, Result } from "./rpc_experimental";
+import { StorageClient, UnimplementedStorageService, Chunk, Result } from "./rpc";
 import * as util from "util";
 
 describe("Experimental RPCs", () => {
@@ -13,9 +13,9 @@ describe("Experimental RPCs", () => {
     server = new grpc.Server();
     storageServer = jasmine.createSpyObj<UnimplementedStorageService>(["query", "get", "put", "chunk"]);
     server.addService(UnimplementedStorageService.definition, storageServer);
-    await util.promisify(server.bindAsync).bind(server)("0.0.0.0:4884", grpc.ServerCredentials.createInsecure());
+    await util.promisify(server.bindAsync).bind(server)("0.0.0.0:4824", grpc.ServerCredentials.createInsecure());
     server.start();
-    client = new StorageClient("0.0.0.0:4884", grpc.credentials.createInsecure());
+    client = new StorageClient("0.0.0.0:4824", grpc.credentials.createInsecure());
   });
 
   afterEach(() => {
