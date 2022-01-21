@@ -1,0 +1,21 @@
+{
+    "include": [
+        "src/**/*.ts",
+        "type/**/*.ts"
+    ],
+    "exclude": [
+        "lib/**/*.ts",
+        "node_modules/**/*"
+    ],
+    "compilerOptions": {
+        "lib": [ "esnext", "dom" ],
+        "moduleResolution": "node",
+        "module": "esnext",
+        "target": "esnext",
+        "strict": true,
+        "esModuleInterop": true,
+        "sourceMap": true,
+        "declaration": true,
+        "declarationMap": true,
+    },
+}
