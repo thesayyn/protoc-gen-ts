@@ -26,7 +26,6 @@ export type ConfigParameters = {
     unary_rpc_promise: boolean,
     grpc_package: string,
     async: boolean,
-    no_namespace: boolean,
 };
 
 const parsers: { [key: string]: (value: string) => any } = {
@@ -42,7 +41,6 @@ function parseParameters(parameters: string): ConfigParameters
         unary_rpc_promise: false,
         grpc_package: '@grpc/grpc-js',
         async: false,
-        no_namespace: false,
     };
 
     const inputParams: Partial<ConfigParameters> = Object.fromEntries(parameters
@@ -77,8 +75,6 @@ const response = new plugin.CodeGeneratorResponse({
 });
 
 const configParams = parseParameters(request.parameter);
-
-type.initialize(configParams);
 
 for (const descriptor of request.proto_file)
 {
@@ -169,7 +165,7 @@ for (const fileDescriptor of request.proto_file)
         [
             doNotEditComment,
             ...importStatements,
-            ...(fileDescriptor.package && !configParams.no_namespace
+            ...(fileDescriptor.package
                 ? [ descriptor.createNamespace(fileDescriptor.package, statements) ]
                 : statements
             ),

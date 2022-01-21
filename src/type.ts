@@ -6,12 +6,6 @@ const symbolMap: Map<string, string> = new Map();
 const dependencyMap: Map<string, Identifier> = new Map();
 const mapMap: Map<string, DescriptorProto> = new Map();
 const packages: string[] = [];
-let config: ConfigParameters;
-
-export function initialize(configParameters: ConfigParameters): void
-{
-    config = configParameters;
-}
 
 export function resetDependencyMap()
 {
@@ -40,22 +34,9 @@ export function getTypeReference(rootDescriptor: FileDescriptorProto, typeName: 
         return factory.createIdentifier(removeRootPackageName(typeName, rootDescriptor.package));
     }
 
-    let name = removeLeadingDot(typeName);
-
-    if(config.no_namespace)
-    {
-        const prefix = packages.find(p => name.startsWith(p));
-
-        if(prefix)
-        {
-            name = name.replace(`${prefix}.`, '');
-        }
-    }
-
-
     return factory.createPropertyAccessExpression(
         dependencyMap.get(path)!,
-        name,
+        removeLeadingDot(typeName),
     );
 }
 
@@ -76,11 +57,6 @@ function removeRootPackageName(name: string, packageName: string): string
 
 export function preprocess(targetDescriptor: FileDescriptorProto|DescriptorProto, path: string, prefix: string)
 {
-    if(targetDescriptor instanceof FileDescriptorProto)
-    {
-        packages.push(targetDescriptor.package);
-    }
-
     for (const enumDescriptor of targetDescriptor.enum_type)
     {
         symbolMap.set(replaceDoubleDots(`${prefix}.${enumDescriptor.name}`), path);
