@@ -1,6 +1,6 @@
 load("@npm//@bazel/typescript:index.bzl", "ts_project")
-load("//tools:diff_and_update.bzl", "diff_and_update")
 load("@build_bazel_rules_nodejs//:index.bzl", "js_library")
+load("//tools:diff_and_update.bzl", "diff_and_update")
 
 package(default_visibility = ["//visibility:public"])
 
@@ -14,9 +14,8 @@ diff_and_update(
 )
 
 ts_project(
-    name = "src_",
-    srcs = glob(["compiler/*.ts", "*.js"]),
-    allow_js = True,
+    name = "src",
+    srcs = glob(["**/*.ts"]),
     tsconfig = {
         "compilerOptions": {
             "target": "ES2020",
@@ -32,9 +31,8 @@ ts_project(
 )
 
 js_library(
-    name = "src",
-    srcs = glob(["*.js"]),
+    name = "pkg",
     deps = [
-        ":src_",
+        ":src"
     ]
 )

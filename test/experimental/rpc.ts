@@ -179,7 +179,7 @@ export abstract class UnimplementedStorageService {
 }
 export class StorageClient extends grpc_1.makeGenericClientConstructor(UnimplementedStorageService.definition, "Storage", {}) {
     constructor(address: string, credentials: grpc_1.ChannelCredentials, options?: Partial<grpc_1.ChannelOptions>) {
-        super(address, credentials, options)
+        super(address, credentials, options);
     }
     put: GrpcPromiseServiceInterface<Chunk, Result> = (message: Chunk, metadata?: grpc_1.Metadata | grpc_1.CallOptions, options?: grpc_1.CallOptions): Promise<Result> => { if (!metadata) {
         metadata = new grpc_1.Metadata;

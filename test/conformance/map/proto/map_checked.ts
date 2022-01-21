@@ -96,11 +96,11 @@ export namespace maps {
                 }
             }
             if (!this.keys)
-                this.keys = new Map()
+                this.keys = new Map();
             if (!this.topics)
-                this.topics = new Map()
+                this.topics = new Map();
             if (!this.topics_with_intkeys)
-                this.topics_with_intkeys = new Map()
+                this.topics_with_intkeys = new Map();
         }
         get key() {
             return pb_1.Message.getField(this, 2) as string;
@@ -190,19 +190,19 @@ export namespace maps {
                 writer.writeMessage(1, this.keys, () => {
                     writer.writeString(1, key);
                     writer.writeString(2, value);
-                })
+                });
             }
             for (const [key, value] of this.topics) {
                 writer.writeMessage(3, this.topics, () => {
                     writer.writeString(1, key);
                     writer.writeMessage(2, value, () => value.serialize(writer));
-                })
+                });
             }
             for (const [key, value] of this.topics_with_intkeys) {
                 writer.writeMessage(4, this.topics_with_intkeys, () => {
                     writer.writeInt64(1, key);
                     writer.writeMessage(2, value, () => value.serialize(writer));
-                })
+                });
             }
             if (!w)
                 return writer.getResultBuffer();
@@ -222,14 +222,14 @@ export namespace maps {
                     case 3:
                         reader.readMessage(message, () => pb_1.Map.deserializeBinary(message.topics as any, reader, reader.readString, () => {
                             let value;
-                            reader.readMessage(message, () => value = Topic.deserialize(reader))
+                            reader.readMessage(message, () => value = Topic.deserialize(reader));
                             return value;
                         }));
                         break;
                     case 4:
                         reader.readMessage(message, () => pb_1.Map.deserializeBinary(message.topics_with_intkeys as any, reader, reader.readInt64, () => {
                             let value;
-                            reader.readMessage(message, () => value = Topic.deserialize(reader))
+                            reader.readMessage(message, () => value = Topic.deserialize(reader));
                             return value;
                         }));
                         break;

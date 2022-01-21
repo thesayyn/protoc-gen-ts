@@ -163,7 +163,9 @@ ts_proto_library(
 Generates appropriate Protocol Buffer sources from Proto files directly through _TypeScript Compiler API_.
 
 ```sh
-# to run test invoke
+# when you make changes to the plugin, you will have to run the command below
+yarn update_checked_in
+# then invoke the tests
 yarn test
 # additionally if you want to see error details
 yarn test --test_output=errors

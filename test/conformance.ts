@@ -126,7 +126,7 @@ export namespace main {
     }
     export class ConformanceClient extends grpc_1.makeGenericClientConstructor(UnimplementedConformanceService.definition, "Conformance", {}) {
         constructor(address: string, credentials: grpc_1.ChannelCredentials, options?: Partial<grpc_1.ChannelOptions>) {
-            super(address, credentials, options)
+            super(address, credentials, options);
         }
         Method: GrpcUnaryServiceInterface<Message, MessageResult> = (message: Message, metadata: grpc_1.Metadata | grpc_1.CallOptions | grpc_1.requestCallback<MessageResult>, options?: grpc_1.CallOptions | grpc_1.requestCallback<MessageResult>, callback?: grpc_1.requestCallback<MessageResult>): grpc_1.ClientUnaryCall => {
             return super.Method(message, metadata, options, callback);

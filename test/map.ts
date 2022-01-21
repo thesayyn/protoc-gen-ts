@@ -100,13 +100,13 @@ export class Tags extends pb_1.Message {
             }
         }
         if (!this.keys)
-            this.keys = new Map()
+            this.keys = new Map();
         if (!this.topics)
-            this.topics = new Map()
+            this.topics = new Map();
         if (!this.imported)
-            this.imported = new Map()
+            this.imported = new Map();
         if (!this.imported2)
-            this.imported2 = new Map()
+            this.imported2 = new Map();
     }
     get key() {
         return pb_1.Message.getField(this, 2) as string;
@@ -214,25 +214,25 @@ export class Tags extends pb_1.Message {
             writer.writeMessage(1, this.keys, () => {
                 writer.writeString(1, key);
                 writer.writeString(2, value);
-            })
+            });
         }
         for (const [key, value] of this.topics) {
             writer.writeMessage(3, this.topics, () => {
                 writer.writeString(1, key);
                 writer.writeMessage(2, value, () => value.serialize(writer));
-            })
+            });
         }
         for (const [key, value] of this.imported) {
             writer.writeMessage(4, this.imported, () => {
                 writer.writeInt32(1, key);
                 writer.writeMessage(2, value, () => value.serialize(writer));
-            })
+            });
         }
         for (const [key, value] of this.imported2) {
             writer.writeMessage(5, this.imported2, () => {
                 writer.writeInt64(1, key);
                 writer.writeEnum(2, value);
-            })
+            });
         }
         if (!w)
             return writer.getResultBuffer();
@@ -252,14 +252,14 @@ export class Tags extends pb_1.Message {
                 case 3:
                     reader.readMessage(message, () => pb_1.Map.deserializeBinary(message.topics as any, reader, reader.readString, () => {
                         let value;
-                        reader.readMessage(message, () => value = Topic.deserialize(reader))
+                        reader.readMessage(message, () => value = Topic.deserialize(reader));
                         return value;
                     }));
                     break;
                 case 4:
                     reader.readMessage(message, () => pb_1.Map.deserializeBinary(message.imported as any, reader, reader.readInt32, () => {
                         let value;
-                        reader.readMessage(message, () => value = dependency_1.importdirective.Imported.SubMessage.deserialize(reader))
+                        reader.readMessage(message, () => value = dependency_1.importdirective.Imported.SubMessage.deserialize(reader));
                         return value;
                     }));
                     break;

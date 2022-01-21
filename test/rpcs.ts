@@ -720,7 +720,7 @@ export abstract class UnimplementedStorageService {
 }
 export class StorageClient extends grpc_1.makeGenericClientConstructor(UnimplementedStorageService.definition, "Storage", {}) {
     constructor(address: string, credentials: grpc_1.ChannelCredentials, options?: Partial<grpc_1.ChannelOptions>) {
-        super(address, credentials, options)
+        super(address, credentials, options);
     }
     query: GrpcStreamServiceInterface<Query, Query> = (message: Query, metadata?: grpc_1.Metadata | grpc_1.CallOptions, options?: grpc_1.CallOptions): grpc_1.ClientReadableStream<Query> => {
         return super.query(message, metadata, options);

@@ -11,7 +11,7 @@ def _make_absolute(label):
 def _normalize_name(name):
     return name.replace("/", "_").replace(".", "_")
 
-def diff_and_update(name, srcs, checked):
+def diff_and_update(name, srcs, checked, **kwargs):
 
     for i, src in enumerate(srcs):
         diff_test(
@@ -19,6 +19,7 @@ def diff_and_update(name, srcs, checked):
             failure_message = "Please run:  bazel run //%s:%s_update" % (native.package_name(), name),
             file1 = src,
             file2 = checked[i],
+            **kwargs
         )
 
     write_file(
@@ -42,5 +43,6 @@ def diff_and_update(name, srcs, checked):
     native.sh_binary(
         name = "%s_update" % name,
         srcs = ["update.sh"],
+        tags = ["checked_in_update"],
         data = srcs,
     )

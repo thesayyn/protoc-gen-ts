@@ -1,1 +1,17 @@
+load("@build_bazel_rules_nodejs//:index.bzl", "pkg_npm")
+
 package(default_visibility = ["//visibility:public"])
+
+pkg_npm(
+    name = "package",
+    package_name = "protoc-gen-ts",
+    srcs = [
+        "//bin:protoc-gen-ts.js",
+        "index.bzl",
+        "package.json",
+        "README.md",
+    ],
+    deps = [
+        "//src:pkg"
+    ]
+) 

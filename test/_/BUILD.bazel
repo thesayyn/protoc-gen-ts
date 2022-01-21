@@ -50,4 +50,5 @@ diff_and_update(
     checked = [
         "sources.bzl",
     ],
+    tags = ["no-windows-latest"],
 )
