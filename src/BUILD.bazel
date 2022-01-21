@@ -1,21 +1,19 @@
+load("@npm//@bazel/typescript:index.bzl", "ts_project")
+load("//tools:diff_and_update.bzl", "diff_and_update")
+load("@build_bazel_rules_nodejs//:index.bzl", "js_library")
+
 package(default_visibility = ["//visibility:public"])
 
-load("@npm//@bazel/typescript:index.bzl", "ts_project")
-load("@rules_proto//proto:defs.bzl", "proto_library")
-load("//:index.bzl", "ts_proto_library")
 
-proto_library(
-    name = "protos",
-    srcs = glob(["compiler/*.proto"])
-)
-
-ts_proto_library(
-    name = "codegen",
-    experimental_features = True,
-    deps = [
-        ":protos",
+diff_and_update(
+    name = "diff_compiler",
+    srcs = [
+        "@third_party_protobuf//:plugin.ts",
+        "@third_party_protobuf//:descriptor.ts"
     ],
+    checked = ["compiler/plugin.ts", "compiler/descriptor.ts"]
 )
+
 
 ts_project(
     name = "compiler",
@@ -24,26 +22,40 @@ ts_project(
         "compilerOptions": {
             "target": "ES2020",
             "module": "CommonJS",
-            "declaration": True,
+            "declaration": True
         },
     },
     deps = [
-        "@npm//google-protobuf",
         "@npm//@grpc/grpc-js",
+        "@npm//@types/node",
+        "@npm//google-protobuf",
     ],
 )
 
-load("@build_bazel_rules_nodejs//:index.bzl", "js_library")
+ts_project(
+    name = "src_",
+    srcs = glob(["**/*.js"]),
+    allow_js = True,
+    tsconfig = {
+        "compilerOptions": {
+            "target": "ES2020",
+            "module": "CommonJS",
+            "declaration": True
+        },
+    },
+    deps = [
+        "@npm//@grpc/grpc-js",
+        "@npm//@types/node",
+        "@npm//google-protobuf",
+        "@npm//typescript",
+        ":compiler"
+    ],
+)
 
 js_library(
     name = "src",
-    srcs = glob(["**/*.js"]),
+    srcs = glob(["*.js"]),
     deps = [
-        "@npm//google-protobuf",
-        "@npm//@grpc/grpc-js",
-        "@npm//typescript",
-        "@npm//@types/node"
+        ":src_",
     ]
 )
-
-exports_files(["index.js"])

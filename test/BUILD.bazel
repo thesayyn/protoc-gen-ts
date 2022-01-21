@@ -3,6 +3,7 @@ load("@npm//@bazel/jasmine:index.bzl", "jasmine_node_test")
 load("@npm//@bazel/typescript:index.bzl", "ts_project")
 load("@rules_proto//proto:defs.bzl", "proto_library")
 load("//:index.bzl", "ts_proto_library")
+load("//tools:diff_and_update.bzl", "diff_and_update")
 
 proto_library(
     name = "protos",
@@ -14,9 +15,7 @@ proto_library(
 
 ts_proto_library(
     name = "codegen",
-    deps = [
-        ":protos",
-    ],
+    deps = [":protos"]
 )
 
 proto_library(
@@ -27,14 +26,12 @@ proto_library(
 ts_proto_library(
     name = "codegen_experimental",
     experimental_features = True,
-    deps = [
-        ":protos_experimental",
-    ],
+    deps = [":protos_experimental"],
 )
 
 ts_project(
-    name = "test_lib",
-    srcs = glob(["**/*.ts"]),
+    name = "tests",
+    srcs = glob(["*.ts"]),
     tsconfig = {
         "compilerOptions": {
             "target": "ES2020",
@@ -53,6 +50,6 @@ jasmine_node_test(
     name = "test",
     data = glob(["**/*.bin"]),
     deps = [
-        ":test_lib",
+        ":tests",
     ],
 )

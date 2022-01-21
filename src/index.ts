@@ -72,7 +72,8 @@ function parseParameters(parameters: string): ConfigParameters
 
 const request = plugin.CodeGeneratorRequest.deserialize(new Uint8Array(fs.readFileSync(0)));
 const response = new plugin.CodeGeneratorResponse({
-    supported_features: plugin.CodeGeneratorResponse.Feature.FEATURE_PROTO3_OPTIONAL
+    supported_features: plugin.CodeGeneratorResponse.Feature.FEATURE_PROTO3_OPTIONAL,
+    file: [],
 });
 
 const configParams = parseParameters(request.parameter);

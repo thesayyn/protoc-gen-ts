@@ -3,7 +3,6 @@ compiled
 ast*.json
 *.txt
 bazel-*
-lib
 .idea
 .devcontainer
 .editorconfig
