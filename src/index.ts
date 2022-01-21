@@ -5,7 +5,6 @@ import * as ts from 'typescript';
 import * as type from './type.js';
 import * as descriptor from './descriptor.js';
 import * as rpc from './rpc.js';
-import * as rpcAsync from './async/rpc.js';
 
 function createImport(identifier: ts.Identifier, moduleSpecifier: string): ts.ImportDeclaration
 {
@@ -25,14 +24,12 @@ function replaceExtension(filename: string, extension: string = ".ts"): string
 export type ConfigParameters = {
     unary_rpc_promise: boolean,
     grpc_package: string,
-    async: boolean,
     no_namespace: boolean,
 };
 
 const parsers: { [key: string]: (value: string) => any } = {
     unary_rpc_promise: (value: string) => value === 'true',
     grpc_package: (value: string) => value,
-    async: (value: string) => value === 'true',
     no_namespace: (value: string) => value === 'true',
 };
 
@@ -41,7 +38,6 @@ function parseParameters(parameters: string): ConfigParameters
     const defaultValues: ConfigParameters = {
         unary_rpc_promise: false,
         grpc_package: '@grpc/grpc-js',
-        async: false,
         no_namespace: false,
     };
 
@@ -60,14 +56,7 @@ function parseParameters(parameters: string): ConfigParameters
         ...(process.env.GRPC_PACKAGE_NAME ? { grpc_package: process.env.GRPC_PACKAGE_NAME } : {}),
     }
 
-    const config = { ...defaultValues, ...legacy, ...inputParams };
-
-    if(config.async === true && config.grpc_package === defaultValues.grpc_package)
-    {
-        throw new Error('Invalid configuration: `@grpc/grpc-js` is not compatible with async code generation. suggestion: use `@fyn-software/grpc` instead')
-    }
-
-    return config;
+    return { ...defaultValues, ...legacy, ...inputParams };
 }
 
 const request = plugin.CodeGeneratorRequest.deserialize(new Uint8Array(fs.readFileSync(0)));
@@ -124,32 +113,23 @@ for (const fileDescriptor of request.proto_file)
         // Import grpc only if there is service statements
         importStatements.push(createImport(grpcIdentifier, configParams.grpc_package));
 
-        if(configParams.async === false)
-        {
-            statements.push(
-                ...rpc.createGrpcInterfaceType(fileDescriptor, grpcIdentifier, configParams)
-            );
-        }
+        statements.push(
+            ...rpc.createGrpcInterfaceType(fileDescriptor, grpcIdentifier, configParams)
+        );
 
         // Create all services and clients
         for (const serviceDescriptor of fileDescriptor.service)
         {
             statements.push(
-                configParams.async
-                    ? rpcAsync.createDefinition(
-                        fileDescriptor,
-                        serviceDescriptor,
-                        grpcIdentifier,
-                    )
-                    : rpc.createUnimplementedService(
-                        fileDescriptor,
-                        serviceDescriptor,
-                        grpcIdentifier,
-                    )
+                rpc.createUnimplementedService(
+                    fileDescriptor,
+                    serviceDescriptor,
+                    grpcIdentifier,
+                )
             );
 
             statements.push(
-                (configParams.async ? rpcAsync : rpc).createServiceClient(
+                rpc.createServiceClient(
                     fileDescriptor,
                     serviceDescriptor,
                     grpcIdentifier,
