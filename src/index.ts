@@ -134,19 +134,16 @@ for (const fileDescriptor of request.proto_file)
         // Create all services and clients
         for (const serviceDescriptor of fileDescriptor.service)
         {
-            statements.push(
-                configParams.async
-                    ? rpcAsync.createDefinition(
+            if(configParams.async === false)
+            {
+                statements.push(
+                    rpc.createUnimplementedService(
                         fileDescriptor,
                         serviceDescriptor,
                         grpcIdentifier,
                     )
-                    : rpc.createUnimplementedService(
-                        fileDescriptor,
-                        serviceDescriptor,
-                        grpcIdentifier,
-                    )
-            );
+                );
+            }
 
             statements.push(
                 (configParams.async ? rpcAsync : rpc).createServiceClient(
