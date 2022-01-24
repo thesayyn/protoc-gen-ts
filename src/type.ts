@@ -1,9 +1,17 @@
 import * as descriptor from "./compiler/descriptor.js";
 import * as ts from "typescript";
+import * as op from "./option.js";
 
 const symbolMap: Map<string, string> = new Map();
 const dependencyMap: Map<string, ts.Identifier> = new Map();
 const mapMap: Map<string, descriptor.DescriptorProto> = new Map();
+const packages: string[] = [];
+let config: op.Options;
+
+export function initialize(configParameters: op.Options): void
+{
+    config = configParameters;
+}
 
 export function resetDependencyMap() {
   dependencyMap.clear();
@@ -55,10 +63,22 @@ export function getTypeReference(
     );
   }
 
+  let name = removeLeadingDot(typeName);
+
+  if(config.no_namespace)
+  {
+    const prefix = packages.find(p => name.startsWith(p));
+
+    if(prefix)
+    {
+      name = name.replace(`${prefix}.`, '');
+    }
+  }
+
   return ts.factory.createTypeReferenceNode(
     ts.factory.createQualifiedName(
         dependencyMap.get(path)!,
-        removeLeadingDot(typeName),
+        name,
     )
   );
 }
@@ -82,6 +102,11 @@ export function preprocess(
   path: string,
   prefix: string,
 ) {
+  if(targetDescriptor instanceof descriptor.FileDescriptorProto)
+  {
+    packages.push(targetDescriptor.package);
+  }
+
   for (const enumDescriptor of targetDescriptor.enum_type) {
     symbolMap.set(replaceDoubleDots(`${prefix}.${enumDescriptor.name}`), path);
   }
