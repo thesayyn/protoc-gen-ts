@@ -39,6 +39,8 @@ const response = new plugin.CodeGeneratorResponse({
 
 const options = op.parse(request.parameter);
 
+type.initialize(options);
+
 for (const descriptor of request.proto_file) {
   type.preprocess(descriptor, descriptor.name, `.${descriptor.package ?? ""}`);
 }
