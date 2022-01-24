@@ -7,23 +7,31 @@
   resolved "https://registry.yarnpkg.com/@bazel/bazelisk/-/bazelisk-1.9.0.tgz#e55cc5394b838d85651bceb06abdc95a28c44e2f"
   integrity sha512-IHCKlMBHd7VMt3Za7rpTJA8O1WI8TUes5nDjdYv1MM/4OZQQFbM85Zb8ugQaKvy3CzxLpXgxYZUiq7b2TdhQnw==
 
-"@bazel/jasmine@next":
-  version "4.0.0-beta.0"
-  resolved "https://registry.yarnpkg.com/@bazel/jasmine/-/jasmine-4.0.0-beta.0.tgz#575e9cd88932b19c54447fba43cbd62e14ff3022"
-  integrity sha512-VYEAaHCi8ot0aSMKbIio6usJZqvINd7LzrrGoChGAGwMgGEpTfMGdprwdlrQPKD6/GbLkVtkCcsViG92ynXhdQ==
+"@bazel/jasmine@^5.0.0":
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/@bazel/jasmine/-/jasmine-5.0.0.tgz#c51f9bc8ca5b83a363c45db4856ceacc48ac345f"
+  integrity sha512-Lb6Vq+S+fFhXG3YPIP+VJcMvBiCExjZy6p6JlaMD0MAxiskQtB2NH3pD8RR52pPM/dR91xluZz7Le+vbPQWV6g==
   dependencies:
     c8 "~7.5.0"
-    jasmine-reporters "~2.4.0"
+    jasmine-reporters "~2.5.0"
 
-"@bazel/typescript@next":
-  version "4.0.0-beta.0"
-  resolved "https://registry.yarnpkg.com/@bazel/typescript/-/typescript-4.0.0-beta.0.tgz#daf2fb0d0bdcd3df331d4320463b1a4beca6031c"
-  integrity sha512-dfI3QLQ5bLyK3BIrrwxuH9cLbMHuku0UZH7nwjHjXwQX70O0MSGN6yXx2Vrqatj2iw/UfHX/akPuhGlNqrDFRw==
+"@bazel/typescript@^5.0.0":
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/@bazel/typescript/-/typescript-5.0.0.tgz#dfc3c53cf4b4f4ad90517d72a3e6ca449d8221c4"
+  integrity sha512-X7Hs0BpYA/Olg3Ee3SCpjzYkAufip2rn7AeXVJFdCADXU1qMIh8ZqmvgFgOlhnhcVElrutPQTnhW79mftUwNkw==
   dependencies:
+    "@bazel/worker" "5.0.0"
     protobufjs "6.8.8"
     semver "5.6.0"
     source-map-support "0.5.9"
-    tsutils "2.27.2"
+    tsutils "3.21.0"
+
+"@bazel/worker@5.0.0":
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/@bazel/worker/-/worker-5.0.0.tgz#7d50647186cdb8b577812fff64e74f7f81ebca41"
+  integrity sha512-5i9TQYZETkKnCrsQEJ+AHGitBAhg4zoWcmR7H8aJa1o3optImjVrLkVZgbMWqoCkloTJZzTOp4dVOxaBM2H80w==
+  dependencies:
+    google-protobuf "^3.6.1"
 
 "@bcoe/v8-coverage@^0.2.3":
   version "0.2.3"
@@ -134,6 +142,11 @@
   version "15.12.5"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-15.12.5.tgz#9a78318a45d75c9523d2396131bd3cca54b2d185"
   integrity sha512-se3yX7UHv5Bscf8f1ERKvQOD6sTyycH3hdaoozvaLxgUiY5lIGEeH37AD0G0Qi9kPqihPn0HOfd2yaIEN9VwEg==
+
+"@xmldom/xmldom@^0.7.3":
+  version "0.7.5"
+  resolved "https://registry.yarnpkg.com/@xmldom/xmldom/-/xmldom-0.7.5.tgz#09fa51e356d07d0be200642b0e4f91d8e6dd408d"
+  integrity sha512-V3BIhmY36fXZ1OtVcI9W+FxQqxVLsPKcNjWigIaa81dLC9IolJl5Mt4Cvhmr0flUnjSpTdrbMTSbXqYqV5dT6A==
 
 ansi-regex@^5.0.0:
   version "5.0.1"
@@ -287,6 +300,11 @@ google-protobuf@^3.17.3:
   resolved "https://registry.npmjs.org/google-protobuf/-/google-protobuf-3.17.3.tgz"
   integrity sha512-OVPzcSWIAJ+d5yiHyeaLrdufQtrvaBrF4JQg+z8ynTkbO3uFcujqXszTumqg1cGsAsjkWnI+M5B1xZ19yR4Wyg==
 
+google-protobuf@^3.6.1:
+  version "3.19.3"
+  resolved "https://registry.yarnpkg.com/google-protobuf/-/google-protobuf-3.19.3.tgz#2d5fb0c77584d675fca509a1fbc80c64fff471c9"
+  integrity sha512-3GRDj8o9XjcALYjgxNKeD7Wm6w/V8r1Jo4sLYMic9+VaIMLBx8TQeHP9yaoRoDymNONhnkmmveDPyjw/Fpw8+A==
+
 has-flag@^4.0.0:
   version "4.0.0"
   resolved "https://registry.npmjs.org/has-flag/-/has-flag-4.0.0.tgz"
@@ -347,26 +365,26 @@ istanbul-reports@^3.0.2:
     html-escaper "^2.0.0"
     istanbul-lib-report "^3.0.0"
 
-jasmine-core@^3.7.1, jasmine-core@~3.7.0:
-  version "3.7.1"
-  resolved "https://registry.npmjs.org/jasmine-core/-/jasmine-core-3.7.1.tgz"
-  integrity sha512-DH3oYDS/AUvvr22+xUBW62m1Xoy7tUlY1tsxKEJvl5JeJ7q8zd1K5bUwiOxdH+erj6l2vAMM3hV25Xs9/WrmuQ==
+jasmine-core@^3.7.1, jasmine-core@~3.99.0:
+  version "3.99.0"
+  resolved "https://registry.yarnpkg.com/jasmine-core/-/jasmine-core-3.99.0.tgz#99a3da0d38ba2de82614d9198b7b1bc1c32a5960"
+  integrity sha512-+ZDaJlEfRopINQqgE+hvzRyDIQDeKfqqTvF8RzXsvU1yE3pBDRud2+Qfh9WvGgRpuzqxyQJVI6Amy5XQ11r/3w==
 
-jasmine-reporters@~2.4.0:
-  version "2.4.0"
-  resolved "https://registry.npmjs.org/jasmine-reporters/-/jasmine-reporters-2.4.0.tgz"
-  integrity sha512-jxONSrBLN1vz/8zCx5YNWQSS8iyDAlXQ5yk1LuqITe4C6iXCDx5u6Q0jfNtkKhL4qLZPe69fL+AWvXFt9/x38w==
+jasmine-reporters@~2.5.0:
+  version "2.5.0"
+  resolved "https://registry.yarnpkg.com/jasmine-reporters/-/jasmine-reporters-2.5.0.tgz#f9e2e0f82aaa2e07e8d553be56457efe0fd8b39e"
+  integrity sha512-J69peyTR8j6SzvIPP6aO1Y00wwCqXuIvhwTYvE/di14roCf6X3wDZ4/cKGZ2fGgufjhP2FKjpgrUIKjwau4e/Q==
   dependencies:
-    mkdirp "^0.5.1"
-    xmldom "^0.5.0"
+    "@xmldom/xmldom" "^0.7.3"
+    mkdirp "^1.0.4"
 
 jasmine@^3.7.0:
-  version "3.7.0"
-  resolved "https://registry.npmjs.org/jasmine/-/jasmine-3.7.0.tgz"
-  integrity sha512-wlzGQ+cIFzMEsI+wDqmOwvnjTvolLFwlcpYLCqSPPH0prOQaW3P+IzMhHYn934l1imNvw07oCyX+vGUv3wmtSQ==
+  version "3.99.0"
+  resolved "https://registry.yarnpkg.com/jasmine/-/jasmine-3.99.0.tgz#7cc7aeda7ade2d57694fc818a374f778cbb4ea62"
+  integrity sha512-YIThBuHzaIIcjxeuLmPD40SjxkEcc8i//sGMDKCgkRMVgIwRJf5qyExtlJpQeh7pkeoBSOe6lQEdg+/9uKg9mw==
   dependencies:
     glob "^7.1.6"
-    jasmine-core "~3.7.0"
+    jasmine-core "~3.99.0"
 
 locate-path@^6.0.0:
   version "6.0.0"
@@ -394,17 +412,10 @@ minimatch@^3.0.4:
   dependencies:
     brace-expansion "^1.1.7"
 
-minimist@^1.2.5:
-  version "1.2.5"
-  resolved "https://registry.npmjs.org/minimist/-/minimist-1.2.5.tgz"
-  integrity sha512-FM9nNUYrRBAELZQT3xeZQ7fmMOBg6nWNmJKTcgsJeaLstP/UODVpGsr5OhXhhXg6f+qtJ8uiZ+PUxkDWcgIXLw==
-
-mkdirp@^0.5.1:
-  version "0.5.5"
-  resolved "https://registry.npmjs.org/mkdirp/-/mkdirp-0.5.5.tgz"
-  integrity sha512-NKmAlESf6jMGym1++R0Ra7wvhV+wFW63FaSOFPwRahvea0gMUcGUhVeAg/0BC0wiv9ih5NYPB1Wn1UEI1/L+xQ==
-  dependencies:
-    minimist "^1.2.5"
+mkdirp@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/mkdirp/-/mkdirp-1.0.4.tgz#3eb5ed62622756d79a5f0e2a221dfebad75c2f7e"
+  integrity sha512-vVqVZQyf3WLx2Shd0qJ9xuvqgAyKPLAiqITEtqW0oIUjzo3PePDd6fW9iFz30ef7Ysp/oiWqbhszeGWW2T6Gzw==
 
 once@^1.3.0:
   version "1.4.0"
@@ -560,10 +571,10 @@ tslib@^1.8.1:
   resolved "https://registry.npmjs.org/tslib/-/tslib-1.14.1.tgz"
   integrity sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==
 
-tsutils@2.27.2:
-  version "2.27.2"
-  resolved "https://registry.npmjs.org/tsutils/-/tsutils-2.27.2.tgz"
-  integrity sha512-qf6rmT84TFMuxAKez2pIfR8UCai49iQsfB7YWVjV1bKpy/d0PWT5rEOSM6La9PiHZ0k1RRZQiwVdVJfQ3BPHgg==
+tsutils@3.21.0:
+  version "3.21.0"
+  resolved "https://registry.yarnpkg.com/tsutils/-/tsutils-3.21.0.tgz#b48717d394cea6c1e096983eed58e9d61715b623"
+  integrity sha512-mHKK3iUXL+3UF6xL5k0PEhKRUBKPBCv/+RkEOpjRWxxx27KKRBmmA60A9pgOUvMi8GKhRMPEmjBRPzs2W7O1OA==
   dependencies:
     tslib "^1.8.1"
 
@@ -601,11 +612,6 @@ wrappy@1:
   version "1.0.2"
   resolved "https://registry.npmjs.org/wrappy/-/wrappy-1.0.2.tgz"
   integrity sha1-tSQ9jz7BqjXxNkYFvA0QNuMKtp8=
-
-xmldom@^0.5.0:
-  version "0.5.0"
-  resolved "https://registry.npmjs.org/xmldom/-/xmldom-0.5.0.tgz"
-  integrity sha512-Foaj5FXVzgn7xFzsKeNIde9g6aFBxTPi37iwsno8QvApmtg7KYrr+OPyRHcJF7dud2a5nGRBXK3n0dL62Gf7PA==
 
 y18n@^5.0.5:
   version "5.0.8"

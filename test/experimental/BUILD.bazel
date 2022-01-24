@@ -1,0 +1,39 @@
+load("//tools:diff_and_update.bzl", "diff_and_update")
+load("@npm//@bazel/jasmine:index.bzl", "jasmine_node_test")
+load("@npm//@bazel/typescript:index.bzl", "ts_project")
+
+diff_and_update(
+    name = "diff_optional",
+    srcs = [
+        "//test/_/experimental:rpc.ts",
+    ],
+    checked = [
+        "rpc.ts",
+    ],
+)
+
+
+ts_project(
+    name = "experimental",
+    srcs = glob(["*.ts"]),
+    tsconfig = {
+        "compilerOptions": {
+            "target": "ES2020",
+            "module": "CommonJS"
+        },
+    },
+    deps = [
+        "@npm//@types/jasmine",
+        "@npm//@types/node",
+        "@npm//@types/google-protobuf",
+        "@npm//google-protobuf",
+        "@npm//@grpc/grpc-js",
+    ],
+)
+
+jasmine_node_test(
+    name = "test",
+    deps = [
+        ":experimental",
+    ],
+)

@@ -1,6 +1,6 @@
-package(default_visibility = ["//visibility:public"])
-
 load("@build_bazel_rules_nodejs//:index.bzl", "pkg_npm")
+
+package(default_visibility = ["//visibility:public"])
 
 pkg_npm(
     name = "package",
@@ -12,6 +12,6 @@ pkg_npm(
         "README.md",
     ],
     deps = [
-        ":src"
+        "//src:pkg"
     ]
-)
+) 

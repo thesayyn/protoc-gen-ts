@@ -1,5 +1,5 @@
 import * as grpc from "@grpc/grpc-js";
-import { Request, Response, Example } from "./type";
+import { Request, Response, Example } from "./type_checked";
 
 const server = new grpc.Server();
 const port = 9090;

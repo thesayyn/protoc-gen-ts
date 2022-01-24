@@ -1,0 +1,36 @@
+load("@protoc_gen_ts//:index.bzl", "ts_proto_library")
+load("@rules_proto//proto:defs.bzl", "proto_library")
+
+genrule(
+    name = "plugin_proto",
+    srcs = ["protobuf/compiler/plugin.proto"],
+    outs = ["plugin.proto"],
+    cmd_bash = 'sed "s/google\\/protobuf\\/descriptor.proto/descriptor.proto/; s/^package/\\/\\//" "$<" > "$@"',
+    cmd_ps = '(((Get-content -path $<) -replace "google\\/protobuf\\/descriptor.proto", "descriptor.proto") -replace "^package", "//") | Set-Content -path $@'
+)
+
+genrule(
+    name = "descriptor_proto",
+    srcs = ["protobuf/descriptor.proto"],
+    outs = ["descriptor.proto"],
+    cmd_bash = 'sed "s/^package/\\/\\//" "$<" > "$@"',
+    cmd_ps = '((Get-content -path $<) -replace "^package", "//") | Set-Content -path $@'
+)
+
+
+proto_library(
+    name = "protos",
+    srcs = [
+        "descriptor.proto",
+        "plugin.proto",
+    ]
+)
+
+ts_proto_library(
+    name = "codegen",
+    visibility = ["//visibility:public"],
+    outs = ["plugin.ts", "descriptor.ts"],
+    deps = [
+        ":protos",
+    ],
+)

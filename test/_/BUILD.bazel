@@ -1,0 +1,54 @@
+load("@rules_proto//proto:defs.bzl", "proto_library")
+load("//:index.bzl", "ts_proto_library")
+load("@bazel_skylib//rules:build_test.bzl", "build_test")
+load("@bazel_skylib//rules:write_file.bzl", "write_file")
+load("//tools:diff_and_update.bzl", "diff_and_update")
+
+SRCS = glob(["**/*.proto"])
+
+proto_library(
+    name = "protos",
+    srcs = SRCS,
+)
+
+ts_proto_library(
+    name = "_",
+    outs = [
+        src.replace(".proto", ".ts")
+        for src in SRCS
+    ],
+    visibility = ["//test:__pkg__"],
+    deps = [":protos"],
+)
+
+build_test(
+    name = "test",
+    targets = [
+        ":_",
+    ],
+)
+
+write_file(
+    name = "gen_sources",
+    out = "gen_sources.bzl",
+    content = [
+        '"""',
+        "A list of proto files maintained by a write_file",
+        '"""',
+        "PROT_SOURCES = [",
+    ] + [
+        '   "%s",' % src.replace(".proto", ".ts")
+        for src in SRCS
+    ] + [
+        "]",
+    ],
+)
+
+diff_and_update(
+    name = "diff",
+    srcs = ["//test/_:gen_sources.bzl"],
+    checked = [
+        "sources.bzl",
+    ],
+    tags = ["no-windows-latest"],
+)

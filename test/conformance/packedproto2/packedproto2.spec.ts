@@ -1,6 +1,6 @@
 import * as fs from "fs";
 import * as path from "path";
-import { WebMessageInfo } from "./packedproto2";
+import { WebMessageInfo } from "./packed_proto2";
 
 describe("packed proto 2", () => {
     const bin = fs.readFileSync(path.join(__dirname, "packedproto2.bin"));

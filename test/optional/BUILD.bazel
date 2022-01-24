@@ -1,0 +1,11 @@
+load("//tools:diff_and_update.bzl", "diff_and_update")
+
+
+diff_and_update(
+    name = "diff_optional",
+    srcs = [
+        "//test/_/optional:optional_proto2.ts",
+        "//test/_/optional:optional_proto3.ts",
+    ],
+    checked = ["optional_proto2.ts", "optional_proto3.ts"]
+)

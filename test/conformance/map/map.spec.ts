@@ -1,6 +1,6 @@
 import * as fs from "fs";
 import * as path from "path";
-import { maps } from "./maps/map";
+import { maps } from "./proto/map_checked";
 
 describe("maps", () => {
     const bin = fs.readFileSync(path.join(__dirname, "map.bin"));
