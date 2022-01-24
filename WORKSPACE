@@ -6,7 +6,7 @@ workspace(
 )
 
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
-load("@bazel_tools//tools/build_defs/repo:git.bzl", "new_git_repository")
+load("@bazel_tools//tools/build_defs/repo:git.bzl", "new_git_repository", "git_repository")
 
 
 # Setup NodeJS toolchain
@@ -36,14 +36,11 @@ yarn_install(
 )
 
 # Setup Protocol Buffers toolchain
-http_archive(
+git_repository(
     name = "rules_proto",
-    sha256 = "66bfdf8782796239d3875d37e7de19b1d94301e8972b3cbd2446b332429b4df1",
-    strip_prefix = "rules_proto-4.0.0",
-    urls = [
-        "https://mirror.bazel.build/github.com/bazelbuild/rules_proto/archive/refs/tags/4.0.0.tar.gz",
-        "https://github.com/bazelbuild/rules_proto/archive/refs/tags/4.0.0.tar.gz",
-    ],
+    remote = "https://github.com/bazelbuild/rules_proto.git",
+    commit = "11bf7c25e666dd7ddacbcd4d4c4a9de7a25175f8",
+    shallow_since = "1637060833 +0100"
 )
 
 load("@rules_proto//proto:repositories.bzl", "rules_proto_dependencies", "rules_proto_toolchains")
@@ -53,7 +50,7 @@ rules_proto_dependencies()
 rules_proto_toolchains()
 
 
-# Lib
+# skylib
 http_archive(
     name = "bazel_skylib",
     urls = [
