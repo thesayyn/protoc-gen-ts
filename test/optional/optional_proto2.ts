@@ -8,11 +8,15 @@ import * as pb_1 from "google-protobuf";
 export class NotOptional extends pb_1.Message {
     constructor(data?: any[] | {
         should_be_required: string[];
+        should_be_optional?: string;
     }) {
         super();
         pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
         if (!Array.isArray(data) && typeof data == "object") {
             this.should_be_required = data.should_be_required;
+            if ("should_be_optional" in data && data.should_be_optional != undefined) {
+                this.should_be_optional = data.should_be_optional;
+            }
         }
     }
     get should_be_required() {
@@ -21,20 +25,34 @@ export class NotOptional extends pb_1.Message {
     set should_be_required(value: string[]) {
         pb_1.Message.setField(this, 1, value);
     }
+    get should_be_optional() {
+        return pb_1.Message.getField(this, 2) as string;
+    }
+    set should_be_optional(value: string) {
+        pb_1.Message.setField(this, 2, value);
+    }
     static fromObject(data: {
         should_be_required: string[];
+        should_be_optional?: string;
     }) {
         const message = new NotOptional({
             should_be_required: data.should_be_required
         });
+        if (data.should_be_optional != null) {
+            message.should_be_optional = data.should_be_optional;
+        }
         return message;
     }
     toObject() {
         const data: {
             should_be_required: string[];
+            should_be_optional?: string;
         } = {
             should_be_required: this.should_be_required
         };
+        if (this.should_be_optional != null) {
+            data.should_be_optional = this.should_be_optional;
+        }
         return data;
     }
     serialize(): Uint8Array;
@@ -43,6 +61,8 @@ export class NotOptional extends pb_1.Message {
         const writer = w || new pb_1.BinaryWriter();
         if (this.should_be_required !== undefined)
             writer.writeRepeatedString(1, this.should_be_required);
+        if (typeof this.should_be_optional === "string" && this.should_be_optional.length)
+            writer.writeString(2, this.should_be_optional);
         if (!w)
             return writer.getResultBuffer();
     }
@@ -54,6 +74,9 @@ export class NotOptional extends pb_1.Message {
             switch (reader.getFieldNumber()) {
                 case 1:
                     pb_1.Message.addToRepeatedField(message, 1, reader.readString());
+                    break;
+                case 2:
+                    message.should_be_optional = reader.readString();
                     break;
                 default: reader.skipField();
             }
