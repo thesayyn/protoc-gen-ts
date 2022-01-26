@@ -16,5 +16,5 @@ ts_proto_library(
         for src in SRCS
     ],
     deps = [":protos"],
-    visibility = ["//test/noNamespace:__pkg__"]
+    visibility = ["//test/no_namespace:__pkg__"]
 )
