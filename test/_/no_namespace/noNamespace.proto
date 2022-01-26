@@ -1,0 +1,7 @@
+syntax = "proto3";
+
+package path.to.package;
+
+message NoNamespace {
+    string label = 1;
+}
