@@ -10,7 +10,7 @@ proto_library(
 )
 
 ts_proto_library(
-    name = "noNamespace",
+    name = "no_namespace",
     outs = [
         src.replace(".proto", ".ts")
         for src in SRCS

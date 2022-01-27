@@ -4,7 +4,7 @@ load("//tools:diff_and_update.bzl", "diff_and_update")
 diff_and_update(
     name = "diff_no_namespace",
     srcs = [
-        "//test/_/no_namespace:noNamespace.ts",
+        "//test/_/no_namespace:no_namespace.ts",
     ],
-    checked = [ "noNamespace.ts" ]
+    checked = [ "no_namespace.ts" ]
 )
