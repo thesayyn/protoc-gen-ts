@@ -1,6 +1,7 @@
 import * as descriptor from "./compiler/descriptor.js";
 import * as type from "./type.js";
 import * as ts from "typescript";
+import {FieldDescriptorProto} from "./compiler/descriptor.js";
 
 /**
  * @param {*} type
@@ -18,28 +19,30 @@ export function wrapRepeatedType(type: any, fieldDescriptor: descriptor.FieldDes
  * @param {descriptor.FileDescriptorProto} rootDescriptor
  * @param {descriptor.FieldDescriptorProto} fieldDescriptor
  */
-export function getMapType(rootDescriptor: descriptor.FileDescriptorProto, fieldDescriptor: descriptor.FieldDescriptorProto) {
+export function getMapType(rootDescriptor: descriptor.FileDescriptorProto, fieldDescriptor: descriptor.FieldDescriptorProto, useInt64String: boolean) {
   const messageDescriptor = type.getMapDescriptor(fieldDescriptor.type_name);
   const [keyDescriptor, valueDescriptor] = messageDescriptor.field;
 
   return ts.factory.createTypeReferenceNode("Map", [
-    getType(keyDescriptor, rootDescriptor),
-    getType(valueDescriptor, rootDescriptor),
+    getType(keyDescriptor, rootDescriptor, useInt64String),
+    getType(valueDescriptor, rootDescriptor, useInt64String),
   ]);
 }
 
 /**
  * @param {descriptor.FieldDescriptorProto} fieldDescriptor
  * @param {descriptor.FileDescriptorProto} rootDescriptor
+ * @param {boolean} useInt64String
  * @returns {ts.TypeReferenceNode | ts.Identifier | ts.PropertyAccessExpression}
  */
 export function getType(
   fieldDescriptor: descriptor.FieldDescriptorProto,
   rootDescriptor: descriptor.FileDescriptorProto,
+  useInt64String: boolean,
 ): ts.TypeReferenceNode {
   if (isMap(fieldDescriptor)) {
-    return getMapType(rootDescriptor, fieldDescriptor);
-  } else if (hasJsTypeString(fieldDescriptor)) {
+    return getMapType(rootDescriptor, fieldDescriptor, useInt64String);
+  } else if (hasJsTypeString(fieldDescriptor, useInt64String)) {
     return ts.factory.createTypeReferenceNode("string");
   }
   switch (fieldDescriptor.type) {
@@ -74,10 +77,13 @@ export function getType(
 /**
  * @param {descriptor.FileDescriptorProto} rootDescriptor
  * @param {descriptor.FieldDescriptorProto} fieldDescriptor
+ * @param {boolean} useInt64String
+ * @param {boolean} isWriter
  */
 export function toBinaryMethodName(
   fieldDescriptor: descriptor.FieldDescriptorProto,
   rootDescriptor: descriptor.FileDescriptorProto,
+  useInt64String: boolean,
   isWriter = true,
 ) {
   const typeNames = Object.keys(descriptor.FieldDescriptorProto.Type)
@@ -89,7 +95,7 @@ export function toBinaryMethodName(
   //lowercase first char
   typeName = typeName.charAt(0).toUpperCase() + typeName.slice(1);
 
-  const suffix = hasJsTypeString(fieldDescriptor) ? "String" : "";
+  const suffix = hasJsTypeString(fieldDescriptor, useInt64String) ? "String" : "";
 
   if (isPacked(rootDescriptor, fieldDescriptor)) {
     return `Packed${typeName}${suffix}`;
@@ -104,10 +110,23 @@ export function toBinaryMethodName(
 
 /**
  * @param {descriptor.FieldDescriptorProto} fieldDescriptor
+ * @param {boolean} useInt64String
  */
 export function hasJsTypeString(
   fieldDescriptor: descriptor.FieldDescriptorProto,
+  useInt64String: boolean,
 ) {
+  if (useInt64String){
+    switch (fieldDescriptor.type) {
+      case FieldDescriptorProto.Type.TYPE_INT64:
+      case FieldDescriptorProto.Type.TYPE_UINT64:
+      case FieldDescriptorProto.Type.TYPE_FIXED64:
+      case FieldDescriptorProto.Type.TYPE_SFIXED64:
+      case FieldDescriptorProto.Type.TYPE_SINT64:
+        return true;
+    }
+  }
+
   return (
     fieldDescriptor.options &&
     fieldDescriptor.options.jstype == descriptor.FieldOptions.JSType.JS_STRING

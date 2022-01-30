@@ -79,6 +79,7 @@ for (const fileDescriptor of request.proto_file) {
         fileDescriptor,
         messageDescriptor,
         pbIdentifier,
+        options.int64_to_string
       ),
     ),
   ];

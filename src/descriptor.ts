@@ -30,6 +30,7 @@ export function createEnum(
 function createFromObject(
   rootDescriptor: descriptor.FileDescriptorProto,
   messageDescriptor: descriptor.DescriptorProto,
+  useInt64String: boolean,
 ): ts.MethodDeclaration {
   const dataIdentifier = ts.factory.createIdentifier("data");
   const messageIdentifier = ts.factory.createIdentifier("message");
@@ -268,7 +269,7 @@ function createFromObject(
         undefined,
         dataIdentifier,
         undefined,
-        createPrimitiveMessageSignature(rootDescriptor, messageDescriptor),
+        createPrimitiveMessageSignature(rootDescriptor, messageDescriptor, useInt64String),
       ),
     ],
     undefined,
@@ -279,6 +280,7 @@ function createFromObject(
 function createToObject(
   rootDescriptor: descriptor.FileDescriptorProto,
   messageDescriptor: descriptor.DescriptorProto,
+  useInt64String: boolean,
 ): ts.MethodDeclaration {
   const statements = [];
   const properties = [];
@@ -455,7 +457,7 @@ function createToObject(
           ts.factory.createVariableDeclaration(
             "data",
             undefined,
-            createPrimitiveMessageSignature(rootDescriptor, messageDescriptor),
+            createPrimitiveMessageSignature(rootDescriptor, messageDescriptor, useInt64String),
             ts.factory.createObjectLiteralExpression(properties, true),
           ),
         ],
@@ -504,6 +506,7 @@ export function createNamespace(
 function createMessageSignature(
   rootDescriptor: descriptor.FileDescriptorProto,
   messageDescriptor: descriptor.DescriptorProto,
+  useInt64String: boolean,
 ): ts.TypeNode {
   const oneOfSignatures = [];
 
@@ -527,7 +530,7 @@ function createMessageSignature(
 
         if (fieldDescriptor == currentFieldDescriptor) {
           fieldType = field.wrapRepeatedType(
-            field.getType(fieldDescriptor, rootDescriptor) as ts.TypeNode,
+            field.getType(fieldDescriptor, rootDescriptor, useInt64String) as ts.TypeNode,
             fieldDescriptor,
           );
         }
@@ -557,7 +560,7 @@ function createMessageSignature(
         field.isOptional(rootDescriptor, f)
           ? ts.factory.createToken(ts.SyntaxKind.QuestionToken)
           : undefined,
-        field.wrapRepeatedType(field.getType(f, rootDescriptor), f),
+        field.wrapRepeatedType(field.getType(f, rootDescriptor, useInt64String), f),
       ),
     );
 
@@ -574,6 +577,7 @@ function createMessageSignature(
 function createPrimitiveMessageSignature(
   rootDescriptor: descriptor.FileDescriptorProto,
   messageDescriptor: descriptor.DescriptorProto,
+  useInt64String: boolean,
 ) {
   const fieldSignatures = [];
 
@@ -590,14 +594,14 @@ function createPrimitiveMessageSignature(
   };
 
   for (const fieldDescriptor of messageDescriptor.field) {
-    let fieldType: ts.TypeNode = field.getType(fieldDescriptor, rootDescriptor);
+    let fieldType: ts.TypeNode = field.getType(fieldDescriptor, rootDescriptor, useInt64String);
 
     if (field.isMap(fieldDescriptor)) {
       const [keyDescriptor, valueDescriptor] = type.getMapDescriptor(
         fieldDescriptor.type_name,
       ).field;
 
-      let valueType = field.getType(valueDescriptor, rootDescriptor);
+      let valueType = field.getType(valueDescriptor, rootDescriptor, useInt64String);
 
       if (field.isMessage(valueDescriptor)) {
         valueType = wrapMessageType(valueType);
@@ -614,7 +618,7 @@ function createPrimitiveMessageSignature(
               undefined,
               "key",
               undefined,
-              field.getType(keyDescriptor, rootDescriptor),
+              field.getType(keyDescriptor, rootDescriptor, useInt64String),
             ),
           ],
           valueType as ts.TypeNode,
@@ -649,6 +653,7 @@ function createConstructor(
   rootDescriptor: descriptor.FileDescriptorProto,
   messageDescriptor: descriptor.DescriptorProto,
   pbIdentifier: ts.Identifier,
+  useInt64String: boolean,
 ): ts.ConstructorDeclaration {
   const dataIdentifier = ts.factory.createIdentifier("data");
   const typeNode = ts.factory.createUnionTypeNode([
@@ -658,7 +663,7 @@ function createConstructor(
         undefined,
       ),
     ),
-    createMessageSignature(rootDescriptor, messageDescriptor),
+    createMessageSignature(rootDescriptor, messageDescriptor, useInt64String),
   ]);
 
   // Get oneOfFields
@@ -833,9 +838,10 @@ function createGetter(
   rootDescriptor: descriptor.FileDescriptorProto,
   fieldDescriptor: descriptor.FieldDescriptorProto,
   pbIdentifier: ts.Identifier,
+  useInt64String: boolean,
 ): ts.GetAccessorDeclaration {
   const getterType = field.wrapRepeatedType(
-    field.getType(fieldDescriptor, rootDescriptor) as ts.TypeNode,
+    field.getType(fieldDescriptor, rootDescriptor, useInt64String) as ts.TypeNode,
     fieldDescriptor,
   );
   let getterExpr: ts.Expression = createGetterCall(
@@ -1028,9 +1034,10 @@ function createSetter(
   messageDescriptor: descriptor.DescriptorProto,
   fieldDescriptor: descriptor.FieldDescriptorProto,
   pbIdentifier: ts.Identifier,
+  useInt64String: boolean,
 ) {
   const type = field.wrapRepeatedType(
-    field.getType(fieldDescriptor, rootDescriptor),
+    field.getType(fieldDescriptor, rootDescriptor, useInt64String),
     fieldDescriptor,
   );
   const valueParameter = ts.factory.createIdentifier("value");
@@ -1148,6 +1155,7 @@ function createSerialize(
   rootDescriptor: descriptor.FileDescriptorProto,
   messageDescriptor: descriptor.DescriptorProto,
   pbIdentifier: ts.Identifier,
+  useInt64String: boolean,
 ): ts.ClassElement[] {
   const statements: ts.Statement[] = [
     ts.factory.createVariableStatement(
@@ -1239,6 +1247,7 @@ function createSerialize(
                           `write${field.toBinaryMethodName(
                             keyDescriptor,
                             rootDescriptor,
+                            useInt64String,
                           )}`,
                         ),
                       ),
@@ -1257,6 +1266,7 @@ function createSerialize(
                           `write${field.toBinaryMethodName(
                             valueDescriptor,
                             rootDescriptor,
+                            useInt64String,
                           )}`,
                         ),
                       ),
@@ -1370,6 +1380,7 @@ function createSerialize(
               `write${field.toBinaryMethodName(
                 fieldDescriptor,
                 rootDescriptor,
+                useInt64String,
               )}`,
             ),
           ),
@@ -1488,6 +1499,7 @@ function createDeserialize(
   rootDescriptor: descriptor.FileDescriptorProto,
   messageDescriptor: descriptor.DescriptorProto,
   pbIdentifier: ts.Identifier,
+  useInt64String: boolean,
 ): ts.ClassElement {
   const statements: ts.Statement[] = [
     ts.factory.createVariableStatement(
@@ -1567,6 +1579,7 @@ function createDeserialize(
                   `read${field.toBinaryMethodName(
                     fieldDescriptor,
                     rootDescriptor,
+                    useInt64String,
                     false,
                   )}`,
                 ),
@@ -1585,7 +1598,7 @@ function createDeserialize(
       const keyCall = ts.factory.createPropertyAccessExpression(
         ts.factory.createIdentifier("reader"),
         ts.factory.createIdentifier(
-          `read${field.toBinaryMethodName(keyDescriptor, rootDescriptor)}`,
+          `read${field.toBinaryMethodName(keyDescriptor, rootDescriptor, useInt64String)}`,
         ),
       );
 
@@ -1654,7 +1667,7 @@ function createDeserialize(
         valueCall = ts.factory.createPropertyAccessExpression(
           ts.factory.createIdentifier("reader"),
           ts.factory.createIdentifier(
-            `read${field.toBinaryMethodName(valueDescriptor, rootDescriptor)}`,
+            `read${field.toBinaryMethodName(valueDescriptor, rootDescriptor, useInt64String)}`,
           ),
         );
       }
@@ -1978,6 +1991,7 @@ function createMessage(
   rootDescriptor: descriptor.FileDescriptorProto,
   messageDescriptor: descriptor.DescriptorProto,
   pbIdentifier: ts.Identifier,
+  useInt64String: boolean,
 ): ts.ClassDeclaration {
   // Create message class
   return ts.factory.createClassDeclaration(
@@ -1998,16 +2012,17 @@ function createMessage(
     ],
     [
       // Create constructor
-      createConstructor(rootDescriptor, messageDescriptor, pbIdentifier),
+      createConstructor(rootDescriptor, messageDescriptor, pbIdentifier, useInt64String),
 
       // Create getter and setters
       ...messageDescriptor.field.flatMap((fieldDescriptor) => [
-        createGetter(rootDescriptor, fieldDescriptor, pbIdentifier),
+        createGetter(rootDescriptor, fieldDescriptor, pbIdentifier, useInt64String),
         createSetter(
           rootDescriptor,
           messageDescriptor,
           fieldDescriptor,
           pbIdentifier,
+          useInt64String,
         ),
       ]),
 
@@ -2023,16 +2038,16 @@ function createMessage(
       ),
 
       // Create fromObject method
-      createFromObject(rootDescriptor, messageDescriptor),
+      createFromObject(rootDescriptor, messageDescriptor, useInt64String),
 
       // Create toObject method
-      createToObject(rootDescriptor, messageDescriptor),
+      createToObject(rootDescriptor, messageDescriptor, useInt64String),
 
       // Create serialize  method
-      ...createSerialize(rootDescriptor, messageDescriptor, pbIdentifier),
+      ...createSerialize(rootDescriptor, messageDescriptor, pbIdentifier, useInt64String),
 
       // Create deserialize method
-      createDeserialize(rootDescriptor, messageDescriptor, pbIdentifier),
+      createDeserialize(rootDescriptor, messageDescriptor, pbIdentifier, useInt64String),
 
       // Create serializeBinary method
       createSerializeBinary(),
@@ -2047,9 +2062,10 @@ export function processDescriptorRecursively(
   rootDescriptor: descriptor.FileDescriptorProto,
   descriptor: descriptor.DescriptorProto,
   pbIdentifier: ts.Identifier,
+  useInt64String: boolean,
 ): ts.Statement[] {
   const statements: ts.Statement[] = [
-    createMessage(rootDescriptor, descriptor, pbIdentifier),
+    createMessage(rootDescriptor, descriptor, pbIdentifier, useInt64String),
   ];
 
   const namespacedStatements: ts.Statement[] = [];
@@ -2060,7 +2076,7 @@ export function processDescriptorRecursively(
 
   for (const message of descriptor.nested_type) {
     namespacedStatements.push(
-      ...processDescriptorRecursively(rootDescriptor, message, pbIdentifier),
+      ...processDescriptorRecursively(rootDescriptor, message, pbIdentifier, useInt64String),
     );
   }
 
