@@ -1793,6 +1793,7 @@ function createDeserialize(
                 `read${field.toBinaryMethodName(
                   fieldDescriptor,
                   rootDescriptor,
+                  useInt64String,
                   false,
                 )}`,
               ),
