@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+option deprecated = true;
+
+enum EnumName {
+    FIRST = 0;
+    THIRD = 3 [deprecated=true];
+}
+
+enum EnumName2 {
+    option deprecated = true;
+    SECOND = 0;
+}
+
+message MessageName {
+    string deprecated_field = 1 [deprecated=true];
+    oneof test {
+        string me = 2;
+        string me_deprecated = 3 [deprecated=true];
+    }
+}
+
+message MessageName2 {
+    option deprecated = true;
+}
+
+service ServiceName {
+    rpc MethodName (MessageName) returns (MessageName2) {
+        option deprecated = true;
+    };
+}
+
+service ServiceName2 {
+    option deprecated = true;
+    rpc MethodName (MessageName) returns (MessageName2);
+}

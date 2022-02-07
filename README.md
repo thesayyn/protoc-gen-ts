@@ -145,6 +145,7 @@ ts_proto_library(
 - <s>Make services strongly typed.</s>
 - <s>Support oneof fields</s>
 - <s>Support `map<TYPE, TYPE>` types as ES `Map`.</s>
+- <s>Support for `@deprecated` annotations via deprecated option.</s>
 - Support grpc-web without any manual intervention.
 - Interopability with well knowns.
 
