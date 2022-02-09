@@ -597,6 +597,7 @@ checksum = "47c327e191621a2158159df97cdbc2e7074bb4e940275e35abf38eb3d2595754"
 name = "protoc-gen-ts"
 version = "0.1.0"
 dependencies = [
+ "lazy_static",
  "protobuf",
  "serde_json",
  "swc_atoms",

@@ -1,13 +1,11 @@
-mod gen;
-mod option;
-
 use swc_common::FilePathMapping;
 use swc_common::{source_map::SourceMap, sync::Lrc, DUMMY_SP};
 use swc_ecma_ast::*;
 use swc_ecma_codegen::{text_writer::JsWriter, Emitter};
 
-use gen::*;
-use protobuf::plugin::{CodeGeneratorRequest, CodeGeneratorResponse, CodeGeneratorResponse_File};
+mod descriptor;
+
+use descriptor::plugin::{CodeGeneratorRequest, CodeGeneratorResponse, code_generator_response::File};
 use protobuf::Message;
 use std::io::prelude::*;
 use std::io::*;
@@ -42,11 +40,11 @@ fn main() {
         }
 
         for enumtype in descriptor.get_enum_type() {
-            body.push(gen::enumtype::ast(enumtype))
+            body.push(enumtype::ast(enumtype))
         }
 
         for messagetype in descriptor.get_message_type() {
-            body.push(gen::message::create(messagetype))
+            body.push(message::create(messagetype))
         }
 
         emitter
@@ -57,7 +55,7 @@ fn main() {
             })
             .unwrap();
         
-        let mut file = CodeGeneratorResponse_File::new();
+        let mut file = File::new();
         let name = String::from(descriptor.get_name());
         file.set_name(format!("{}.ts", name.replace(".proto", "")));
         let generated = String::from_utf8_lossy(&buf).to_string();
