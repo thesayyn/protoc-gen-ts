@@ -1,7 +1,8 @@
-import * as descriptor from "./compiler/descriptor.js";
-import * as field from "./field.js";
-import * as type from "./type.js";
+import * as descriptor from "./compiler/descriptor";
+import * as field from "./field";
+import * as type from "./type";
 import * as ts from "typescript";
+import * as comment from "./comment";
 
 /**
  * Returns a enum for the enum descriptor
@@ -13,17 +14,23 @@ export function createEnum(
 
   for (const valueDescriptor of enumDescriptor.value) {
     values.push(
-      ts.factory.createEnumMember(
-        valueDescriptor.name,
-        ts.factory.createNumericLiteral(valueDescriptor.number),
+      comment.addDeprecatedJsDoc(
+        ts.factory.createEnumMember(
+          valueDescriptor.name,
+          ts.factory.createNumericLiteral(valueDescriptor.number),
+        ),
+        valueDescriptor.options?.deprecated,
       ),
     );
   }
-  return ts.factory.createEnumDeclaration(
-    undefined,
-    [ts.factory.createModifier(ts.SyntaxKind.ExportKeyword)],
-    ts.factory.createIdentifier(enumDescriptor.name),
-    values,
+  return comment.addDeprecatedJsDoc(
+    ts.factory.createEnumDeclaration(
+      undefined,
+      [ts.factory.createModifier(ts.SyntaxKind.ExportKeyword)],
+      ts.factory.createIdentifier(enumDescriptor.name),
+      values,
+    ),
+    enumDescriptor.options?.deprecated,
   );
 }
 
@@ -536,11 +543,15 @@ function createMessageSignature(
         }
 
         members.push(
-          ts.factory.createPropertySignature(
-            undefined,
-            fieldDescriptor.name,
-            ts.factory.createToken(ts.SyntaxKind.QuestionToken),
-            fieldType,
+          comment.addDeprecatedJsDoc(
+            ts.factory.createPropertySignature(
+              undefined,
+              fieldDescriptor.name,
+              ts.factory.createToken(ts.SyntaxKind.QuestionToken),
+              fieldType,
+            ),
+            fieldDescriptor.options?.deprecated &&
+              fieldDescriptor == currentFieldDescriptor,
           ),
         );
       }
@@ -551,18 +562,28 @@ function createMessageSignature(
     oneOfSignatures.push(ts.factory.createUnionTypeNode(childSignatures));
   }
 
-  const fieldSignatures = messageDescriptor.field
-    .filter((f) => typeof f.oneof_index !== "number")
-    .map((f) =>
-      ts.factory.createPropertySignature(
-        undefined,
-        f.name,
-        field.isOptional(rootDescriptor, f)
-          ? ts.factory.createToken(ts.SyntaxKind.QuestionToken)
-          : undefined,
-        field.wrapRepeatedType(field.getType(f, rootDescriptor, useInt64String), f),
-      ),
-    );
+  const fieldSignatures = [];
+
+  for (const fieldDescriptor of messageDescriptor.field) {
+    if (typeof fieldDescriptor.oneof_index !== "number") {
+      fieldSignatures.push(
+        comment.addDeprecatedJsDoc(
+          ts.factory.createPropertySignature(
+            undefined,
+            fieldDescriptor.name,
+            field.isOptional(rootDescriptor, fieldDescriptor)
+              ? ts.factory.createToken(ts.SyntaxKind.QuestionToken)
+              : undefined,
+            field.wrapRepeatedType(
+              field.getType(fieldDescriptor, rootDescriptor, useInt64String),
+              fieldDescriptor,
+            ),
+          ),
+          fieldDescriptor.options?.deprecated,
+        ),
+      );
+    }
+  }
 
   if (oneOfSignatures.length) {
     return ts.factory.createIntersectionTypeNode([
@@ -857,20 +878,23 @@ function createGetter(
     );
   }
 
-  return ts.factory.createGetAccessorDeclaration(
-    undefined,
-    undefined,
-    fieldDescriptor.name,
-    [],
-    undefined,
-    ts.factory.createBlock(
-      [
-        ts.factory.createReturnStatement(
-          ts.factory.createAsExpression(getterExpr, getterType),
-        ),
-      ],
-      true,
+  return comment.addDeprecatedJsDoc(
+    ts.factory.createGetAccessorDeclaration(
+      undefined,
+      undefined,
+      fieldDescriptor.name,
+      [],
+      undefined,
+      ts.factory.createBlock(
+        [
+          ts.factory.createReturnStatement(
+            ts.factory.createAsExpression(getterExpr, getterType),
+          ),
+        ],
+        true,
+      ),
     ),
+    fieldDescriptor.options?.deprecated,
   );
 }
 
@@ -940,7 +964,9 @@ function createOneOfGetter(
   pbIdentifier: ts.Identifier,
 ): ts.GetAccessorDeclaration {
   const numbers = [];
-  const types: ts.TypeNode[] = [ts.factory.createLiteralTypeNode(ts.factory.createStringLiteral("none"))];
+  const types: ts.TypeNode[] = [
+    ts.factory.createLiteralTypeNode(ts.factory.createStringLiteral("none")),
+  ];
   const cases = [
     ts.factory.createPropertyAssignment(
       ts.factory.createNumericLiteral(0),
@@ -1055,21 +1081,24 @@ function createSetter(
     block = createSetterBlock(fieldDescriptor, valueParameter, pbIdentifier);
   }
 
-  return ts.factory.createSetAccessorDeclaration(
-    undefined,
-    undefined,
-    fieldDescriptor.name,
-    [
-      ts.factory.createParameterDeclaration(
-        undefined,
-        undefined,
-        undefined,
-        valueParameter,
-        undefined,
-        type,
-      ),
-    ],
-    block,
+  return comment.addDeprecatedJsDoc(
+    ts.factory.createSetAccessorDeclaration(
+      undefined,
+      undefined,
+      fieldDescriptor.name,
+      [
+        ts.factory.createParameterDeclaration(
+          undefined,
+          undefined,
+          undefined,
+          valueParameter,
+          undefined,
+          type,
+        ),
+      ],
+      block,
+    ),
+    fieldDescriptor.options?.deprecated,
   );
 }
 
@@ -1995,67 +2024,70 @@ function createMessage(
   useInt64String: boolean,
 ): ts.ClassDeclaration {
   // Create message class
-  return ts.factory.createClassDeclaration(
-    undefined,
-    [ts.factory.createModifier(ts.SyntaxKind.ExportKeyword)],
-    messageDescriptor.name,
-    undefined,
-    [
-      ts.factory.createHeritageClause(ts.SyntaxKind.ExtendsKeyword, [
-        ts.factory.createExpressionWithTypeArguments(
-          ts.factory.createPropertyAccessExpression(
-            pbIdentifier,
-            ts.factory.createIdentifier("Message"),
+  return comment.addDeprecatedJsDoc(
+    ts.factory.createClassDeclaration(
+      undefined,
+      [ts.factory.createModifier(ts.SyntaxKind.ExportKeyword)],
+      messageDescriptor.name,
+      undefined,
+      [
+        ts.factory.createHeritageClause(ts.SyntaxKind.ExtendsKeyword, [
+          ts.factory.createExpressionWithTypeArguments(
+            ts.factory.createPropertyAccessExpression(
+              pbIdentifier,
+              ts.factory.createIdentifier("Message"),
+            ),
+            [],
           ),
-          [],
-        ),
-      ]),
-    ],
-    [
-      // Create constructor
+        ]),
+      ],
+      [
+        // Create constructor
       createConstructor(rootDescriptor, messageDescriptor, pbIdentifier, useInt64String),
 
-      // Create getter and setters
-      ...messageDescriptor.field.flatMap((fieldDescriptor) => [
+        // Create getter and setters
+        ...messageDescriptor.field.flatMap((fieldDescriptor) => [
         createGetter(rootDescriptor, fieldDescriptor, pbIdentifier, useInt64String),
-        createSetter(
-          rootDescriptor,
-          messageDescriptor,
-          fieldDescriptor,
-          pbIdentifier,
-          useInt64String,
-        ),
-      ]),
-
-      // Create one of getters
-      ...Array.from(messageDescriptor.oneof_decl.entries()).map(
-        ([index, oneofDescriptor]) =>
-          createOneOfGetter(
-            index,
-            oneofDescriptor,
+          createSetter(
+            rootDescriptor,
             messageDescriptor,
+            fieldDescriptor,
             pbIdentifier,
+          useInt64String,
           ),
-      ),
+        ]),
 
-      // Create fromObject method
+        // Create one of getters
+        ...Array.from(messageDescriptor.oneof_decl.entries()).map(
+          ([index, oneofDescriptor]) =>
+            createOneOfGetter(
+              index,
+              oneofDescriptor,
+              messageDescriptor,
+              pbIdentifier,
+            ),
+        ),
+
+        // Create fromObject method
       createFromObject(rootDescriptor, messageDescriptor, useInt64String),
 
-      // Create toObject method
+        // Create toObject method
       createToObject(rootDescriptor, messageDescriptor, useInt64String),
 
-      // Create serialize  method
+        // Create serialize  method
       ...createSerialize(rootDescriptor, messageDescriptor, pbIdentifier, useInt64String),
 
-      // Create deserialize method
+        // Create deserialize method
       createDeserialize(rootDescriptor, messageDescriptor, pbIdentifier, useInt64String),
 
-      // Create serializeBinary method
-      createSerializeBinary(),
+        // Create serializeBinary method
+        createSerializeBinary(),
 
-      // Create deserializeBinary method
-      createDeserializeBinary(messageDescriptor),
-    ],
+        // Create deserializeBinary method
+        createDeserializeBinary(messageDescriptor),
+      ],
+    ),
+    messageDescriptor.options?.deprecated,
   );
 }
 
