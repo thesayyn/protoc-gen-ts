@@ -9,14 +9,15 @@ This plugin generates plain **TypeScript** files that can be used with ESM, AMD,
 
 ## Key Differences
 
-This protoc plugin does generate;
 - No `d.ts` files. Just plain typescript sources with actual code.
 - Fields as **getter** **setters**.
-- You get what you define in proto files. No such prefixes as "getField" or "getFieldList".
-- If you have repeated field named `users`, then you will get a `getter` named `users` not `getUsersList`
 - Enums as **enums**.
 - Messages within a **namespace** if the proto has a **package** directive.
 - **fromObject** and **toObject** methods to work with json data.
+- Support gRPC Node and gRPC Web [#102](https://github.com/thesayyn/protoc-gen-ts/pull/102)
+- You get what you define in proto files. No such prefixes as "getField" or "getFieldList".
+
+*If you have repeated field named `users`, then you will get a `getter` named `users` not `getUsersList`
 
 ## Example
 
