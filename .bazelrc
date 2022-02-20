@@ -1,14 +1,7 @@
-build --nolegacy_external_runfiles
-run --nolegacy_external_runfiles
-test --nolegacy_external_runfiles
+common --nolegacy_external_runfiles
 
-build --incompatible_strict_action_env
-run --incompatible_strict_action_env
-test --incompatible_strict_action_env
+common --incompatible_strict_action_env
 
-build --deleted_packages=examples/bazel
-query --deleted_packages=examples/bazel
-
-test --nocache_test_results
+common --experimental_proto_descriptor_sets_include_source_info
 
 try-import  %workspace%/user.bazelrc
