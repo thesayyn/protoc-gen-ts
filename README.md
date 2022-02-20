@@ -166,12 +166,13 @@ Generates appropriate Protocol Buffer sources from Proto files directly through 
 
 ```sh
 # when you make changes to the plugin, you will have to run the command below
-yarn update_checked_in
+yarn update_checked_in_test
+# this command will run the plugin with your changes and update generated test source accordingly.
+
 # then invoke the tests
 yarn test
 # additionally if you want to see error details
 yarn test --test_output=errors
-
 ```
 
 ## Contributors
