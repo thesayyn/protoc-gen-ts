@@ -5,6 +5,7 @@ import * as op from "./option.js";
 const symbolMap: Map<string, string> = new Map();
 const dependencyMap: Map<string, ts.Identifier> = new Map();
 const mapMap: Map<string, descriptor.DescriptorProto> = new Map();
+const enumLeadingMemberMap: Map<string, string> = new Map();
 const packages: string[] = [];
 let config: op.Options;
 
@@ -32,6 +33,12 @@ export function getMapDescriptor(
   typeName: string,
 ): descriptor.DescriptorProto | undefined {
   return mapMap.get(typeName);
+}
+
+export function getLeadingEnumMember(
+  type_name: string,
+): string | undefined {
+  return enumLeadingMemberMap.get(type_name);
 }
 
 export function getTypeReferenceExpr(
@@ -118,7 +125,9 @@ export function preprocess(
   }
 
   for (const enumDescriptor of targetDescriptor.enum_type) {
-    symbolMap.set(replaceDoubleDots(`${prefix}.${enumDescriptor.name}`), path);
+    const name = replaceDoubleDots(`${prefix}.${enumDescriptor.name}`)
+    symbolMap.set(name, path);
+    enumLeadingMemberMap.set(name, enumDescriptor.value[0].name);
   }
 
   const messages: descriptor.DescriptorProto[] =
