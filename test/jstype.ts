@@ -26,19 +26,19 @@ export class JSType extends pb_1.Message {
         }
     }
     get int_but_string() {
-        return pb_1.Message.getField(this, 1) as string;
+        return pb_1.Message.getFieldWithDefault(this, 1, "") as string;
     }
     set int_but_string(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
     get int_and_normal() {
-        return pb_1.Message.getField(this, 2) as number;
+        return pb_1.Message.getFieldWithDefault(this, 2, 0) as number;
     }
     set int_and_normal(value: number) {
         pb_1.Message.setField(this, 2, value);
     }
     get int_and_number() {
-        return pb_1.Message.getField(this, 3) as number;
+        return pb_1.Message.getFieldWithDefault(this, 3, 0) as number;
     }
     set int_and_number(value: number) {
         pb_1.Message.setField(this, 3, value);
@@ -65,16 +65,11 @@ export class JSType extends pb_1.Message {
             int_but_string?: string;
             int_and_normal?: number;
             int_and_number?: number;
-        } = {};
-        if (this.int_but_string != null) {
-            data.int_but_string = this.int_but_string;
-        }
-        if (this.int_and_normal != null) {
-            data.int_and_normal = this.int_and_normal;
-        }
-        if (this.int_and_number != null) {
-            data.int_and_number = this.int_and_number;
-        }
+        } = {
+            int_but_string: this.int_but_string,
+            int_and_normal: this.int_and_normal,
+            int_and_number: this.int_and_number
+        };
         return data;
     }
     serialize(): Uint8Array;

@@ -60,7 +60,7 @@ export namespace importdirective {
                 }
             }
             get key() {
-                return pb_1.Message.getField(this, 1) as Imported.SubMessage.MyEnum;
+                return pb_1.Message.getFieldWithDefault(this, 1, Imported.SubMessage.MyEnum.VALUE) as Imported.SubMessage.MyEnum;
             }
             set key(value: Imported.SubMessage.MyEnum) {
                 pb_1.Message.setField(this, 1, value);
@@ -77,10 +77,9 @@ export namespace importdirective {
             toObject() {
                 const data: {
                     key?: Imported.SubMessage.MyEnum;
-                } = {};
-                if (this.key != null) {
-                    data.key = this.key;
-                }
+                } = {
+                    key: this.key
+                };
                 return data;
             }
             serialize(): Uint8Array;

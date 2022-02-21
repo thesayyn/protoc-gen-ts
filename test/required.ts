@@ -18,13 +18,13 @@ export class NoOptionalValues extends pb_1.Message {
         }
     }
     get test() {
-        return pb_1.Message.getField(this, 1) as string;
+        return pb_1.Message.getFieldWithDefault(this, 1, "") as string;
     }
     set test(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
     get test2() {
-        return pb_1.Message.getField(this, 2) as string;
+        return pb_1.Message.getFieldWithDefault(this, 2, "") as string;
     }
     set test2(value: string) {
         pb_1.Message.setField(this, 2, value);
@@ -44,8 +44,8 @@ export class NoOptionalValues extends pb_1.Message {
             test: string;
             test2: string;
         } = {
-            test: this.test,
-            test2: this.test2
+            test: pb_1.Message.getField(this, 1) != null ? this.test : undefined,
+            test2: pb_1.Message.getField(this, 2) != null ? this.test2 : undefined
         };
         return data;
     }

@@ -19,7 +19,7 @@ export class Topic extends pb_1.Message {
         }
     }
     get link() {
-        return pb_1.Message.getField(this, 2) as string;
+        return pb_1.Message.getFieldWithDefault(this, 2, "") as string;
     }
     set link(value: string) {
         pb_1.Message.setField(this, 2, value);
@@ -36,10 +36,9 @@ export class Topic extends pb_1.Message {
     toObject() {
         const data: {
             link?: string;
-        } = {};
-        if (this.link != null) {
-            data.link = this.link;
-        }
+        } = {
+            link: this.link
+        };
         return data;
     }
     serialize(): Uint8Array;
@@ -110,7 +109,7 @@ export class Tags extends pb_1.Message {
             this.imported2 = new Map();
     }
     get key() {
-        return pb_1.Message.getField(this, 2) as string;
+        return pb_1.Message.getFieldWithDefault(this, 2, "") as string;
     }
     set key(value: string) {
         pb_1.Message.setField(this, 2, value);
@@ -187,22 +186,13 @@ export class Tags extends pb_1.Message {
             imported2?: {
                 [key: number]: dependency_1.importdirective.Imported.SubMessage.MyEnum;
             };
-        } = {};
-        if (this.key != null) {
-            data.key = this.key;
-        }
-        if (this.keys.size > 0) {
-            data.keys = Object.fromEntries(this.keys);
-        }
-        if (this.topics.size > 0) {
-            data.topics = Object.fromEntries(Array.from(this.topics).map(([key, value]) => [key, value.toObject()]));
-        }
-        if (this.imported.size > 0) {
-            data.imported = Object.fromEntries(Array.from(this.imported).map(([key, value]) => [key, value.toObject()]));
-        }
-        if (this.imported2.size > 0) {
-            data.imported2 = Object.fromEntries(this.imported2);
-        }
+        } = {
+            key: this.key,
+            keys: Object.fromEntries(this.keys),
+            topics: Object.fromEntries(Array.from(this.topics).map(([key, value]) => [key, value.toObject()])),
+            imported: Object.fromEntries(Array.from(this.imported).map(([key, value]) => [key, value.toObject()])),
+            imported2: Object.fromEntries(this.imported2)
+        };
         return data;
     }
     serialize(): Uint8Array;

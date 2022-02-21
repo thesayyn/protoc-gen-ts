@@ -19,7 +19,7 @@ export namespace dot {
             }
         }
         get name() {
-            return pb_1.Message.getField(this, 1) as string[];
+            return pb_1.Message.getFieldWithDefault(this, 1, []) as string[];
         }
         set name(value: string[]) {
             pb_1.Message.setField(this, 1, value);
@@ -36,10 +36,9 @@ export namespace dot {
         toObject() {
             const data: {
                 name?: string[];
-            } = {};
-            if (this.name != null) {
-                data.name = this.name;
-            }
+            } = {
+                name: this.name
+            };
             return data;
         }
         serialize(): Uint8Array;

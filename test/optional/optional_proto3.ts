@@ -23,13 +23,13 @@ export class Optional extends pb_1.Message {
         }
     }
     get should_not_be_required() {
-        return pb_1.Message.getField(this, 1) as string[];
+        return pb_1.Message.getFieldWithDefault(this, 1, []) as string[];
     }
     set should_not_be_required(value: string[]) {
         pb_1.Message.setField(this, 1, value);
     }
     get proto3_optional() {
-        return pb_1.Message.getField(this, 2) as string;
+        return pb_1.Message.getFieldWithDefault(this, 2, "") as string;
     }
     set proto3_optional(value: string) {
         pb_1.Message.setOneofField(this, 2, this.#one_of_decls[0], value);
@@ -60,13 +60,10 @@ export class Optional extends pb_1.Message {
         const data: {
             should_not_be_required?: string[];
             proto3_optional?: string;
-        } = {};
-        if (this.should_not_be_required != null) {
-            data.should_not_be_required = this.should_not_be_required;
-        }
-        if (this.proto3_optional != null) {
-            data.proto3_optional = this.proto3_optional;
-        }
+        } = {
+            should_not_be_required: this.should_not_be_required,
+            proto3_optional: this.proto3_optional
+        };
         return data;
     }
     serialize(): Uint8Array;

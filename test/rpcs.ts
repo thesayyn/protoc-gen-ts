@@ -67,19 +67,19 @@ export class _Object extends pb_1.Message {
         }
     }
     get id() {
-        return pb_1.Message.getField(this, 1) as string;
+        return pb_1.Message.getFieldWithDefault(this, 1, "") as string;
     }
     set id(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
     get size() {
-        return pb_1.Message.getField(this, 3) as number;
+        return pb_1.Message.getFieldWithDefault(this, 3, 0) as number;
     }
     set size(value: number) {
         pb_1.Message.setField(this, 3, value);
     }
     get mimeType() {
-        return pb_1.Message.getField(this, 4) as string;
+        return pb_1.Message.getFieldWithDefault(this, 4, "") as string;
     }
     set mimeType(value: string) {
         pb_1.Message.setField(this, 4, value);
@@ -106,16 +106,11 @@ export class _Object extends pb_1.Message {
             id?: string;
             size?: number;
             mimeType?: string;
-        } = {};
-        if (this.id != null) {
-            data.id = this.id;
-        }
-        if (this.size != null) {
-            data.size = this.size;
-        }
-        if (this.mimeType != null) {
-            data.mimeType = this.mimeType;
-        }
+        } = {
+            id: this.id,
+            size: this.size,
+            mimeType: this.mimeType
+        };
         return data;
     }
     serialize(): Uint8Array;
@@ -176,7 +171,7 @@ export class Chunk extends pb_1.Message {
         }
     }
     get data() {
-        return pb_1.Message.getField(this, 1) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 1, new Uint8Array()) as Uint8Array;
     }
     set data(value: Uint8Array) {
         pb_1.Message.setField(this, 1, value);
@@ -204,13 +199,10 @@ export class Chunk extends pb_1.Message {
         const data: {
             data?: Uint8Array;
             range?: ReturnType<typeof Chunk.Range.prototype.toObject>;
-        } = {};
-        if (this.data != null) {
-            data.data = this.data;
-        }
-        if (this.range != null) {
-            data.range = this.range.toObject();
-        }
+        } = {
+            data: this.data,
+            range: this.range != null ? this.range.toObject() : undefined
+        };
         return data;
     }
     serialize(): Uint8Array;
@@ -267,13 +259,13 @@ export namespace Chunk {
             }
         }
         get start() {
-            return pb_1.Message.getField(this, 1) as number;
+            return pb_1.Message.getFieldWithDefault(this, 1, 0) as number;
         }
         set start(value: number) {
             pb_1.Message.setField(this, 1, value);
         }
         get end() {
-            return pb_1.Message.getField(this, 2) as number;
+            return pb_1.Message.getFieldWithDefault(this, 2, 0) as number;
         }
         set end(value: number) {
             pb_1.Message.setField(this, 2, value);
@@ -295,13 +287,10 @@ export namespace Chunk {
             const data: {
                 start?: number;
                 end?: number;
-            } = {};
-            if (this.start != null) {
-                data.start = this.start;
-            }
-            if (this.end != null) {
-                data.end = this.end;
-            }
+            } = {
+                start: this.start,
+                end: this.end
+            };
             return data;
         }
         serialize(): Uint8Array;
@@ -357,7 +346,7 @@ export namespace Chunk {
             }
         }
         get id() {
-            return pb_1.Message.getField(this, 1) as string;
+            return pb_1.Message.getFieldWithDefault(this, 1, "") as string;
         }
         set id(value: string) {
             pb_1.Message.setField(this, 1, value);
@@ -385,13 +374,10 @@ export namespace Chunk {
             const data: {
                 id?: string;
                 range?: ReturnType<typeof Chunk.Range.prototype.toObject>;
-            } = {};
-            if (this.id != null) {
-                data.id = this.id;
-            }
-            if (this.range != null) {
-                data.range = this.range.toObject();
-            }
+            } = {
+                id: this.id,
+                range: this.range != null ? this.range.toObject() : undefined
+            };
             return data;
         }
         serialize(): Uint8Array;
@@ -444,7 +430,7 @@ export class Query extends pb_1.Message {
         }
     }
     get id() {
-        return pb_1.Message.getField(this, 1) as string;
+        return pb_1.Message.getFieldWithDefault(this, 1, "") as string;
     }
     set id(value: string) {
         pb_1.Message.setField(this, 1, value);
@@ -461,10 +447,9 @@ export class Query extends pb_1.Message {
     toObject() {
         const data: {
             id?: string;
-        } = {};
-        if (this.id != null) {
-            data.id = this.id;
-        }
+        } = {
+            id: this.id
+        };
         return data;
     }
     serialize(): Uint8Array;
@@ -529,10 +514,9 @@ export namespace Query {
         toObject() {
             const data: {
                 objects?: ReturnType<typeof _Object.prototype.toObject>[];
-            } = {};
-            if (this.objects != null) {
-                data.objects = this.objects.map((item: _Object) => item.toObject());
-            }
+            } = {
+                objects: this.objects.map((item: _Object) => item.toObject())
+            };
             return data;
         }
         serialize(): Uint8Array;
@@ -584,7 +568,7 @@ export class Put extends pb_1.Message {
         }
     }
     get id() {
-        return pb_1.Message.getField(this, 1) as string;
+        return pb_1.Message.getFieldWithDefault(this, 1, "") as string;
     }
     set id(value: string) {
         pb_1.Message.setField(this, 1, value);
@@ -612,13 +596,10 @@ export class Put extends pb_1.Message {
         const data: {
             id?: string;
             chunk?: ReturnType<typeof Chunk.prototype.toObject>;
-        } = {};
-        if (this.id != null) {
-            data.id = this.id;
-        }
-        if (this.chunk != null) {
-            data.chunk = this.chunk.toObject();
-        }
+        } = {
+            id: this.id,
+            chunk: this.chunk != null ? this.chunk.toObject() : undefined
+        };
         return data;
     }
     serialize(): Uint8Array;

@@ -19,7 +19,7 @@ export namespace maps {
             }
         }
         get link() {
-            return pb_1.Message.getField(this, 2) as string;
+            return pb_1.Message.getFieldWithDefault(this, 2, "") as string;
         }
         set link(value: string) {
             pb_1.Message.setField(this, 2, value);
@@ -36,10 +36,9 @@ export namespace maps {
         toObject() {
             const data: {
                 link?: string;
-            } = {};
-            if (this.link != null) {
-                data.link = this.link;
-            }
+            } = {
+                link: this.link
+            };
             return data;
         }
         serialize(): Uint8Array;
@@ -104,7 +103,7 @@ export namespace maps {
                 this.topics_with_intkeys = new Map();
         }
         get key() {
-            return pb_1.Message.getField(this, 2) as string;
+            return pb_1.Message.getFieldWithDefault(this, 2, "") as string;
         }
         set key(value: string) {
             pb_1.Message.setField(this, 2, value);
@@ -166,19 +165,12 @@ export namespace maps {
                 topics_with_intkeys?: {
                     [key: number]: ReturnType<typeof Topic.prototype.toObject>;
                 };
-            } = {};
-            if (this.key != null) {
-                data.key = this.key;
-            }
-            if (this.keys.size > 0) {
-                data.keys = Object.fromEntries(this.keys);
-            }
-            if (this.topics.size > 0) {
-                data.topics = Object.fromEntries(Array.from(this.topics).map(([key, value]) => [key, value.toObject()]));
-            }
-            if (this.topics_with_intkeys.size > 0) {
-                data.topics_with_intkeys = Object.fromEntries(Array.from(this.topics_with_intkeys).map(([key, value]) => [key, value.toObject()]));
-            }
+            } = {
+                key: this.key,
+                keys: Object.fromEntries(this.keys),
+                topics: Object.fromEntries(Array.from(this.topics).map(([key, value]) => [key, value.toObject()])),
+                topics_with_intkeys: Object.fromEntries(Array.from(this.topics_with_intkeys).map(([key, value]) => [key, value.toObject()]))
+            };
             return data;
         }
         serialize(): Uint8Array;

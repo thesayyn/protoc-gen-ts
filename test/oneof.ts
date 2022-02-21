@@ -37,25 +37,25 @@ export class OneOfWithoutAnyOtherFields extends pb_1.Message {
         }
     }
     get nickname() {
-        return pb_1.Message.getField(this, 1) as string;
+        return pb_1.Message.getFieldWithDefault(this, 1, "") as string;
     }
     set nickname(value: string) {
         pb_1.Message.setOneofField(this, 1, this.#one_of_decls[0], value);
     }
     get realname() {
-        return pb_1.Message.getField(this, 2) as string;
+        return pb_1.Message.getFieldWithDefault(this, 2, "") as string;
     }
     set realname(value: string) {
         pb_1.Message.setOneofField(this, 2, this.#one_of_decls[0], value);
     }
     get age() {
-        return pb_1.Message.getField(this, 4) as string;
+        return pb_1.Message.getFieldWithDefault(this, 4, "") as string;
     }
     set age(value: string) {
         pb_1.Message.setOneofField(this, 4, this.#one_of_decls[1], value);
     }
     get date_of_birth() {
-        return pb_1.Message.getField(this, 3) as string;
+        return pb_1.Message.getFieldWithDefault(this, 3, "") as string;
     }
     set date_of_birth(value: string) {
         pb_1.Message.setOneofField(this, 3, this.#one_of_decls[1], value);
@@ -107,19 +107,12 @@ export class OneOfWithoutAnyOtherFields extends pb_1.Message {
             realname?: string;
             age?: string;
             date_of_birth?: string;
-        } = {};
-        if (this.nickname != null) {
-            data.nickname = this.nickname;
-        }
-        if (this.realname != null) {
-            data.realname = this.realname;
-        }
-        if (this.age != null) {
-            data.age = this.age;
-        }
-        if (this.date_of_birth != null) {
-            data.date_of_birth = this.date_of_birth;
-        }
+        } = {
+            nickname: this.nickname,
+            realname: this.realname,
+            age: this.age,
+            date_of_birth: this.date_of_birth
+        };
         return data;
     }
     serialize(): Uint8Array;
@@ -193,19 +186,19 @@ export class OneOf extends pb_1.Message {
         }
     }
     get nickname() {
-        return pb_1.Message.getField(this, 1) as string;
+        return pb_1.Message.getFieldWithDefault(this, 1, "") as string;
     }
     set nickname(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
     get date_of_birth() {
-        return pb_1.Message.getField(this, 3) as string;
+        return pb_1.Message.getFieldWithDefault(this, 3, "") as string;
     }
     set date_of_birth(value: string) {
         pb_1.Message.setOneofField(this, 3, this.#one_of_decls[0], value);
     }
     get age() {
-        return pb_1.Message.getField(this, 4) as string;
+        return pb_1.Message.getFieldWithDefault(this, 4, "") as string;
     }
     set age(value: string) {
         pb_1.Message.setOneofField(this, 4, this.#one_of_decls[0], value);
@@ -242,16 +235,11 @@ export class OneOf extends pb_1.Message {
             nickname?: string;
             date_of_birth?: string;
             age?: string;
-        } = {};
-        if (this.nickname != null) {
-            data.nickname = this.nickname;
-        }
-        if (this.date_of_birth != null) {
-            data.date_of_birth = this.date_of_birth;
-        }
-        if (this.age != null) {
-            data.age = this.age;
-        }
+        } = {
+            nickname: this.nickname,
+            date_of_birth: this.date_of_birth,
+            age: this.age
+        };
         return data;
     }
     serialize(): Uint8Array;
