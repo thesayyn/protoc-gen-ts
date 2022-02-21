@@ -12,7 +12,13 @@ describe("maps", () => {
         const gotTags = Tags.deserialize(bytes);
 
         expect(tags.keys).toBeInstanceOf(Map);
-        expect(gotTags.toObject()).toEqual({ keys: { see: 'working' } })
+        expect(gotTags.toObject()).toEqual({
+            keys: { see: 'working' },
+            key: "",
+            topics: {},
+            imported: {},
+            imported2: {}
+        })
     });
 
     it("should take the last seen", () => {
@@ -20,7 +26,13 @@ describe("maps", () => {
         tags.keys.set("see", "not_working");
         tags.keys.set("see", "working");
 
-        expect(Tags.deserialize(tags.serialize()).toObject()).toEqual({ keys: { see: 'working' } })
+        expect(Tags.deserialize(tags.serialize()).toObject()).toEqual({
+            keys: { see: 'working' },
+            key: "",
+            topics: {},
+            imported: {},
+            imported2: {}
+        })
     });
 
 
@@ -31,7 +43,13 @@ describe("maps", () => {
                 ["see", "working"],
             ])
         });
-        expect(Tags.deserialize(tags.serialize()).toObject()).toEqual({ keys: { see: 'working' } })
+        expect(Tags.deserialize(tags.serialize()).toObject()).toEqual({
+            keys: { see: 'working' },
+            key: "",
+            topics: {},
+            imported: {},
+            imported2: {}
+        })
     });
 
 
@@ -47,7 +65,11 @@ describe("maps", () => {
             topics: {
                 first: { link: "example1" },
                 second: { link: "example2" }
-            }
+            },
+            key: "",
+            keys: {},
+            imported: {},
+            imported2: {}
         })
     });
 
@@ -71,7 +93,10 @@ describe("maps", () => {
             imported2: {
                 1: importdirective.Imported.SubMessage.MyEnum.VALUE,
                 3: importdirective.Imported.SubMessage.MyEnum.VALUE2
-            }
+            },
+            key: "",
+            keys: {},
+            topics: {}
         })
     });
 
@@ -96,7 +121,10 @@ describe("maps", () => {
             imported2: {
                 1: importdirective.Imported.SubMessage.MyEnum.VALUE,
                 3: importdirective.Imported.SubMessage.MyEnum.VALUE2
-            }
+            },
+            key: "",
+            keys: {},
+            topics: {}
         })
     });
 
