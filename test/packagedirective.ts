@@ -18,7 +18,7 @@ export namespace pkg.mycompany {
             }
         }
         get field() {
-            return pb_1.Message.getField(this, 1) as string[];
+            return pb_1.Message.getFieldWithDefault(this, 1, []) as string[];
         }
         set field(value: string[]) {
             pb_1.Message.setField(this, 1, value);
@@ -35,10 +35,9 @@ export namespace pkg.mycompany {
         toObject() {
             const data: {
                 field?: string[];
-            } = {};
-            if (this.field != null) {
-                data.field = this.field;
-            }
+            } = {
+                field: this.field
+            };
             return data;
         }
         serialize(): Uint8Array;

@@ -17,7 +17,7 @@ export class Serialization extends pb_1.Message {
         }
     }
     get test() {
-        return pb_1.Message.getField(this, 1) as string;
+        return pb_1.Message.getFieldWithDefault(this, 1, "") as string;
     }
     set test(value: string) {
         pb_1.Message.setField(this, 1, value);
@@ -34,10 +34,9 @@ export class Serialization extends pb_1.Message {
     toObject() {
         const data: {
             test?: string;
-        } = {};
-        if (this.test != null) {
-            data.test = this.test;
-        }
+        } = {
+            test: this.test
+        };
         return data;
     }
     serialize(): Uint8Array;

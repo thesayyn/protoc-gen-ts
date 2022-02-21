@@ -21,13 +21,13 @@ export class HydratedQuickReplyButton extends pb_1.Message {
         }
     }
     get displayText() {
-        return pb_1.Message.getField(this, 1) as string;
+        return pb_1.Message.getFieldWithDefault(this, 1, "") as string;
     }
     set displayText(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
     get id() {
-        return pb_1.Message.getField(this, 2) as string;
+        return pb_1.Message.getFieldWithDefault(this, 2, "") as string;
     }
     set id(value: string) {
         pb_1.Message.setField(this, 2, value);
@@ -49,13 +49,10 @@ export class HydratedQuickReplyButton extends pb_1.Message {
         const data: {
             displayText?: string;
             id?: string;
-        } = {};
-        if (this.displayText != null) {
-            data.displayText = this.displayText;
-        }
-        if (this.id != null) {
-            data.id = this.id;
-        }
+        } = {
+            displayText: pb_1.Message.getField(this, 1) != null ? this.displayText : undefined,
+            id: pb_1.Message.getField(this, 2) != null ? this.id : undefined
+        };
         return data;
     }
     serialize(): Uint8Array;
@@ -110,13 +107,13 @@ export class HydratedURLButton extends pb_1.Message {
         }
     }
     get displayText() {
-        return pb_1.Message.getField(this, 1) as string;
+        return pb_1.Message.getFieldWithDefault(this, 1, "") as string;
     }
     set displayText(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
     get url() {
-        return pb_1.Message.getField(this, 2) as string;
+        return pb_1.Message.getFieldWithDefault(this, 2, "") as string;
     }
     set url(value: string) {
         pb_1.Message.setField(this, 2, value);
@@ -138,13 +135,10 @@ export class HydratedURLButton extends pb_1.Message {
         const data: {
             displayText?: string;
             url?: string;
-        } = {};
-        if (this.displayText != null) {
-            data.displayText = this.displayText;
-        }
-        if (this.url != null) {
-            data.url = this.url;
-        }
+        } = {
+            displayText: pb_1.Message.getField(this, 1) != null ? this.displayText : undefined,
+            url: pb_1.Message.getField(this, 2) != null ? this.url : undefined
+        };
         return data;
     }
     serialize(): Uint8Array;
@@ -199,13 +193,13 @@ export class HydratedCallButton extends pb_1.Message {
         }
     }
     get displayText() {
-        return pb_1.Message.getField(this, 1) as string;
+        return pb_1.Message.getFieldWithDefault(this, 1, "") as string;
     }
     set displayText(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
     get phoneNumber() {
-        return pb_1.Message.getField(this, 2) as string;
+        return pb_1.Message.getFieldWithDefault(this, 2, "") as string;
     }
     set phoneNumber(value: string) {
         pb_1.Message.setField(this, 2, value);
@@ -227,13 +221,10 @@ export class HydratedCallButton extends pb_1.Message {
         const data: {
             displayText?: string;
             phoneNumber?: string;
-        } = {};
-        if (this.displayText != null) {
-            data.displayText = this.displayText;
-        }
-        if (this.phoneNumber != null) {
-            data.phoneNumber = this.phoneNumber;
-        }
+        } = {
+            displayText: pb_1.Message.getField(this, 1) != null ? this.displayText : undefined,
+            phoneNumber: pb_1.Message.getField(this, 2) != null ? this.phoneNumber : undefined
+        };
         return data;
     }
     serialize(): Uint8Array;
@@ -305,7 +296,7 @@ export class HydratedTemplateButton extends pb_1.Message {
         }
     }
     get index() {
-        return pb_1.Message.getField(this, 4) as number;
+        return pb_1.Message.getFieldWithDefault(this, 4, 0) as number;
     }
     set index(value: number) {
         pb_1.Message.setField(this, 4, value);
@@ -366,19 +357,12 @@ export class HydratedTemplateButton extends pb_1.Message {
             quickReplyButton?: ReturnType<typeof HydratedQuickReplyButton.prototype.toObject>;
             urlButton?: ReturnType<typeof HydratedURLButton.prototype.toObject>;
             callButton?: ReturnType<typeof HydratedCallButton.prototype.toObject>;
-        } = {};
-        if (this.index != null) {
-            data.index = this.index;
-        }
-        if (this.quickReplyButton != null) {
-            data.quickReplyButton = this.quickReplyButton.toObject();
-        }
-        if (this.urlButton != null) {
-            data.urlButton = this.urlButton.toObject();
-        }
-        if (this.callButton != null) {
-            data.callButton = this.callButton.toObject();
-        }
+        } = {
+            index: pb_1.Message.getField(this, 4) != null ? this.index : undefined,
+            quickReplyButton: pb_1.Message.getField(this, 1) != null ? this.quickReplyButton != null ? this.quickReplyButton.toObject() : undefined : undefined,
+            urlButton: pb_1.Message.getField(this, 2) != null ? this.urlButton != null ? this.urlButton.toObject() : undefined : undefined,
+            callButton: pb_1.Message.getField(this, 3) != null ? this.callButton != null ? this.callButton.toObject() : undefined : undefined
+        };
         return data;
     }
     serialize(): Uint8Array;
@@ -449,7 +433,7 @@ export class QuickReplyButton extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 1, value);
     }
     get id() {
-        return pb_1.Message.getField(this, 2) as string;
+        return pb_1.Message.getFieldWithDefault(this, 2, "") as string;
     }
     set id(value: string) {
         pb_1.Message.setField(this, 2, value);
@@ -471,13 +455,10 @@ export class QuickReplyButton extends pb_1.Message {
         const data: {
             displayText?: ReturnType<typeof HighlyStructuredMessage.prototype.toObject>;
             id?: string;
-        } = {};
-        if (this.displayText != null) {
-            data.displayText = this.displayText.toObject();
-        }
-        if (this.id != null) {
-            data.id = this.id;
-        }
+        } = {
+            displayText: pb_1.Message.getField(this, 1) != null ? this.displayText != null ? this.displayText.toObject() : undefined : undefined,
+            id: pb_1.Message.getField(this, 2) != null ? this.id : undefined
+        };
         return data;
     }
     serialize(): Uint8Array;
@@ -560,13 +541,10 @@ export class URLButton extends pb_1.Message {
         const data: {
             displayText?: ReturnType<typeof HighlyStructuredMessage.prototype.toObject>;
             url?: ReturnType<typeof HighlyStructuredMessage.prototype.toObject>;
-        } = {};
-        if (this.displayText != null) {
-            data.displayText = this.displayText.toObject();
-        }
-        if (this.url != null) {
-            data.url = this.url.toObject();
-        }
+        } = {
+            displayText: pb_1.Message.getField(this, 1) != null ? this.displayText != null ? this.displayText.toObject() : undefined : undefined,
+            url: pb_1.Message.getField(this, 2) != null ? this.url != null ? this.url.toObject() : undefined : undefined
+        };
         return data;
     }
     serialize(): Uint8Array;
@@ -649,13 +627,10 @@ export class CallButton extends pb_1.Message {
         const data: {
             displayText?: ReturnType<typeof HighlyStructuredMessage.prototype.toObject>;
             phoneNumber?: ReturnType<typeof HighlyStructuredMessage.prototype.toObject>;
-        } = {};
-        if (this.displayText != null) {
-            data.displayText = this.displayText.toObject();
-        }
-        if (this.phoneNumber != null) {
-            data.phoneNumber = this.phoneNumber.toObject();
-        }
+        } = {
+            displayText: pb_1.Message.getField(this, 1) != null ? this.displayText != null ? this.displayText.toObject() : undefined : undefined,
+            phoneNumber: pb_1.Message.getField(this, 2) != null ? this.phoneNumber != null ? this.phoneNumber.toObject() : undefined : undefined
+        };
         return data;
     }
     serialize(): Uint8Array;
@@ -727,7 +702,7 @@ export class TemplateButton extends pb_1.Message {
         }
     }
     get index() {
-        return pb_1.Message.getField(this, 4) as number;
+        return pb_1.Message.getFieldWithDefault(this, 4, 0) as number;
     }
     set index(value: number) {
         pb_1.Message.setField(this, 4, value);
@@ -788,19 +763,12 @@ export class TemplateButton extends pb_1.Message {
             quickReplyButton?: ReturnType<typeof QuickReplyButton.prototype.toObject>;
             urlButton?: ReturnType<typeof URLButton.prototype.toObject>;
             callButton?: ReturnType<typeof CallButton.prototype.toObject>;
-        } = {};
-        if (this.index != null) {
-            data.index = this.index;
-        }
-        if (this.quickReplyButton != null) {
-            data.quickReplyButton = this.quickReplyButton.toObject();
-        }
-        if (this.urlButton != null) {
-            data.urlButton = this.urlButton.toObject();
-        }
-        if (this.callButton != null) {
-            data.callButton = this.callButton.toObject();
-        }
+        } = {
+            index: pb_1.Message.getField(this, 4) != null ? this.index : undefined,
+            quickReplyButton: pb_1.Message.getField(this, 1) != null ? this.quickReplyButton != null ? this.quickReplyButton.toObject() : undefined : undefined,
+            urlButton: pb_1.Message.getField(this, 2) != null ? this.urlButton != null ? this.urlButton.toObject() : undefined : undefined,
+            callButton: pb_1.Message.getField(this, 3) != null ? this.callButton != null ? this.callButton.toObject() : undefined : undefined
+        };
         return data;
     }
     serialize(): Uint8Array;
@@ -869,19 +837,19 @@ export class Location extends pb_1.Message {
         }
     }
     get degreesLatitude() {
-        return pb_1.Message.getField(this, 1) as number;
+        return pb_1.Message.getFieldWithDefault(this, 1, 0) as number;
     }
     set degreesLatitude(value: number) {
         pb_1.Message.setField(this, 1, value);
     }
     get degreesLongitude() {
-        return pb_1.Message.getField(this, 2) as number;
+        return pb_1.Message.getFieldWithDefault(this, 2, 0) as number;
     }
     set degreesLongitude(value: number) {
         pb_1.Message.setField(this, 2, value);
     }
     get name() {
-        return pb_1.Message.getField(this, 3) as string;
+        return pb_1.Message.getFieldWithDefault(this, 3, "") as string;
     }
     set name(value: string) {
         pb_1.Message.setField(this, 3, value);
@@ -908,16 +876,11 @@ export class Location extends pb_1.Message {
             degreesLatitude?: number;
             degreesLongitude?: number;
             name?: string;
-        } = {};
-        if (this.degreesLatitude != null) {
-            data.degreesLatitude = this.degreesLatitude;
-        }
-        if (this.degreesLongitude != null) {
-            data.degreesLongitude = this.degreesLongitude;
-        }
-        if (this.name != null) {
-            data.name = this.name;
-        }
+        } = {
+            degreesLatitude: pb_1.Message.getField(this, 1) != null ? this.degreesLatitude : undefined,
+            degreesLongitude: pb_1.Message.getField(this, 2) != null ? this.degreesLongitude : undefined,
+            name: pb_1.Message.getField(this, 3) != null ? this.name : undefined
+        };
         return data;
     }
     serialize(): Uint8Array;
@@ -985,25 +948,25 @@ export class Point extends pb_1.Message {
         }
     }
     get xDeprecated() {
-        return pb_1.Message.getField(this, 1) as number;
+        return pb_1.Message.getFieldWithDefault(this, 1, 0) as number;
     }
     set xDeprecated(value: number) {
         pb_1.Message.setField(this, 1, value);
     }
     get yDeprecated() {
-        return pb_1.Message.getField(this, 2) as number;
+        return pb_1.Message.getFieldWithDefault(this, 2, 0) as number;
     }
     set yDeprecated(value: number) {
         pb_1.Message.setField(this, 2, value);
     }
     get x() {
-        return pb_1.Message.getField(this, 3) as number;
+        return pb_1.Message.getFieldWithDefault(this, 3, 0) as number;
     }
     set x(value: number) {
         pb_1.Message.setField(this, 3, value);
     }
     get y() {
-        return pb_1.Message.getField(this, 4) as number;
+        return pb_1.Message.getFieldWithDefault(this, 4, 0) as number;
     }
     set y(value: number) {
         pb_1.Message.setField(this, 4, value);
@@ -1035,19 +998,12 @@ export class Point extends pb_1.Message {
             yDeprecated?: number;
             x?: number;
             y?: number;
-        } = {};
-        if (this.xDeprecated != null) {
-            data.xDeprecated = this.xDeprecated;
-        }
-        if (this.yDeprecated != null) {
-            data.yDeprecated = this.yDeprecated;
-        }
-        if (this.x != null) {
-            data.x = this.x;
-        }
-        if (this.y != null) {
-            data.y = this.y;
-        }
+        } = {
+            xDeprecated: pb_1.Message.getField(this, 1) != null ? this.xDeprecated : undefined,
+            yDeprecated: pb_1.Message.getField(this, 2) != null ? this.yDeprecated : undefined,
+            x: pb_1.Message.getField(this, 3) != null ? this.x : undefined,
+            y: pb_1.Message.getField(this, 4) != null ? this.y : undefined
+        };
         return data;
     }
     serialize(): Uint8Array;
@@ -1148,11 +1104,9 @@ export class InteractiveAnnotation extends pb_1.Message {
             polygonVertices: ReturnType<typeof Point.prototype.toObject>[];
             location?: ReturnType<typeof Location.prototype.toObject>;
         } = {
-            polygonVertices: this.polygonVertices.map((item: Point) => item.toObject())
+            polygonVertices: pb_1.Message.getField(this, 1) != null ? this.polygonVertices.map((item: Point) => item.toObject()) : undefined,
+            location: pb_1.Message.getField(this, 2) != null ? this.location != null ? this.location.toObject() : undefined : undefined
         };
-        if (this.location != null) {
-            data.location = this.location.toObject();
-        }
         return data;
     }
     serialize(): Uint8Array;
@@ -1215,25 +1169,25 @@ export class AdReplyInfo extends pb_1.Message {
         }
     }
     get advertiserName() {
-        return pb_1.Message.getField(this, 1) as string;
+        return pb_1.Message.getFieldWithDefault(this, 1, "") as string;
     }
     set advertiserName(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
     get mediaType() {
-        return pb_1.Message.getField(this, 2) as AdReplyInfo.AD_REPLY_INFO_MEDIATYPE;
+        return pb_1.Message.getFieldWithDefault(this, 2, AdReplyInfo.AD_REPLY_INFO_MEDIATYPE.NONE) as AdReplyInfo.AD_REPLY_INFO_MEDIATYPE;
     }
     set mediaType(value: AdReplyInfo.AD_REPLY_INFO_MEDIATYPE) {
         pb_1.Message.setField(this, 2, value);
     }
     get jpegThumbnail() {
-        return pb_1.Message.getField(this, 16) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 16, new Uint8Array()) as Uint8Array;
     }
     set jpegThumbnail(value: Uint8Array) {
         pb_1.Message.setField(this, 16, value);
     }
     get caption() {
-        return pb_1.Message.getField(this, 17) as string;
+        return pb_1.Message.getFieldWithDefault(this, 17, "") as string;
     }
     set caption(value: string) {
         pb_1.Message.setField(this, 17, value);
@@ -1265,19 +1219,12 @@ export class AdReplyInfo extends pb_1.Message {
             mediaType?: AdReplyInfo.AD_REPLY_INFO_MEDIATYPE;
             jpegThumbnail?: Uint8Array;
             caption?: string;
-        } = {};
-        if (this.advertiserName != null) {
-            data.advertiserName = this.advertiserName;
-        }
-        if (this.mediaType != null) {
-            data.mediaType = this.mediaType;
-        }
-        if (this.jpegThumbnail != null) {
-            data.jpegThumbnail = this.jpegThumbnail;
-        }
-        if (this.caption != null) {
-            data.caption = this.caption;
-        }
+        } = {
+            advertiserName: pb_1.Message.getField(this, 1) != null ? this.advertiserName : undefined,
+            mediaType: pb_1.Message.getField(this, 2) != null ? this.mediaType : undefined,
+            jpegThumbnail: pb_1.Message.getField(this, 16) != null ? this.jpegThumbnail : undefined,
+            caption: pb_1.Message.getField(this, 17) != null ? this.caption : undefined
+        };
         return data;
     }
     serialize(): Uint8Array;
@@ -1399,13 +1346,13 @@ export class ContextInfo extends pb_1.Message {
         }
     }
     get stanzaId() {
-        return pb_1.Message.getField(this, 1) as string;
+        return pb_1.Message.getFieldWithDefault(this, 1, "") as string;
     }
     set stanzaId(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
     get participant() {
-        return pb_1.Message.getField(this, 2) as string;
+        return pb_1.Message.getFieldWithDefault(this, 2, "") as string;
     }
     set participant(value: string) {
         pb_1.Message.setField(this, 2, value);
@@ -1417,43 +1364,43 @@ export class ContextInfo extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 3, value);
     }
     get remoteJid() {
-        return pb_1.Message.getField(this, 4) as string;
+        return pb_1.Message.getFieldWithDefault(this, 4, "") as string;
     }
     set remoteJid(value: string) {
         pb_1.Message.setField(this, 4, value);
     }
     get mentionedJid() {
-        return pb_1.Message.getField(this, 15) as string[];
+        return pb_1.Message.getFieldWithDefault(this, 15, []) as string[];
     }
     set mentionedJid(value: string[]) {
         pb_1.Message.setField(this, 15, value);
     }
     get conversionSource() {
-        return pb_1.Message.getField(this, 18) as string;
+        return pb_1.Message.getFieldWithDefault(this, 18, "") as string;
     }
     set conversionSource(value: string) {
         pb_1.Message.setField(this, 18, value);
     }
     get conversionData() {
-        return pb_1.Message.getField(this, 19) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 19, new Uint8Array()) as Uint8Array;
     }
     set conversionData(value: Uint8Array) {
         pb_1.Message.setField(this, 19, value);
     }
     get conversionDelaySeconds() {
-        return pb_1.Message.getField(this, 20) as number;
+        return pb_1.Message.getFieldWithDefault(this, 20, 0) as number;
     }
     set conversionDelaySeconds(value: number) {
         pb_1.Message.setField(this, 20, value);
     }
     get forwardingScore() {
-        return pb_1.Message.getField(this, 21) as number;
+        return pb_1.Message.getFieldWithDefault(this, 21, 0) as number;
     }
     set forwardingScore(value: number) {
         pb_1.Message.setField(this, 21, value);
     }
     get isForwarded() {
-        return pb_1.Message.getField(this, 22) as boolean;
+        return pb_1.Message.getFieldWithDefault(this, 22, false) as boolean;
     }
     set isForwarded(value: boolean) {
         pb_1.Message.setField(this, 22, value);
@@ -1471,19 +1418,19 @@ export class ContextInfo extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 24, value);
     }
     get expiration() {
-        return pb_1.Message.getField(this, 25) as number;
+        return pb_1.Message.getFieldWithDefault(this, 25, 0) as number;
     }
     set expiration(value: number) {
         pb_1.Message.setField(this, 25, value);
     }
     get ephemeralSettingTimestamp() {
-        return pb_1.Message.getField(this, 26) as number;
+        return pb_1.Message.getFieldWithDefault(this, 26, 0) as number;
     }
     set ephemeralSettingTimestamp(value: number) {
         pb_1.Message.setField(this, 26, value);
     }
     get ephemeralSharedSecret() {
-        return pb_1.Message.getField(this, 27) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 27, new Uint8Array()) as Uint8Array;
     }
     set ephemeralSharedSecret(value: Uint8Array) {
         pb_1.Message.setField(this, 27, value);
@@ -1570,50 +1517,22 @@ export class ContextInfo extends pb_1.Message {
             ephemeralSettingTimestamp?: number;
             ephemeralSharedSecret?: Uint8Array;
         } = {
-            mentionedJid: this.mentionedJid
+            stanzaId: pb_1.Message.getField(this, 1) != null ? this.stanzaId : undefined,
+            participant: pb_1.Message.getField(this, 2) != null ? this.participant : undefined,
+            quotedMessage: pb_1.Message.getField(this, 3) != null ? this.quotedMessage != null ? this.quotedMessage.toObject() : undefined : undefined,
+            remoteJid: pb_1.Message.getField(this, 4) != null ? this.remoteJid : undefined,
+            mentionedJid: pb_1.Message.getField(this, 15) != null ? this.mentionedJid : undefined,
+            conversionSource: pb_1.Message.getField(this, 18) != null ? this.conversionSource : undefined,
+            conversionData: pb_1.Message.getField(this, 19) != null ? this.conversionData : undefined,
+            conversionDelaySeconds: pb_1.Message.getField(this, 20) != null ? this.conversionDelaySeconds : undefined,
+            forwardingScore: pb_1.Message.getField(this, 21) != null ? this.forwardingScore : undefined,
+            isForwarded: pb_1.Message.getField(this, 22) != null ? this.isForwarded : undefined,
+            quotedAd: pb_1.Message.getField(this, 23) != null ? this.quotedAd != null ? this.quotedAd.toObject() : undefined : undefined,
+            placeholderKey: pb_1.Message.getField(this, 24) != null ? this.placeholderKey != null ? this.placeholderKey.toObject() : undefined : undefined,
+            expiration: pb_1.Message.getField(this, 25) != null ? this.expiration : undefined,
+            ephemeralSettingTimestamp: pb_1.Message.getField(this, 26) != null ? this.ephemeralSettingTimestamp : undefined,
+            ephemeralSharedSecret: pb_1.Message.getField(this, 27) != null ? this.ephemeralSharedSecret : undefined
         };
-        if (this.stanzaId != null) {
-            data.stanzaId = this.stanzaId;
-        }
-        if (this.participant != null) {
-            data.participant = this.participant;
-        }
-        if (this.quotedMessage != null) {
-            data.quotedMessage = this.quotedMessage.toObject();
-        }
-        if (this.remoteJid != null) {
-            data.remoteJid = this.remoteJid;
-        }
-        if (this.conversionSource != null) {
-            data.conversionSource = this.conversionSource;
-        }
-        if (this.conversionData != null) {
-            data.conversionData = this.conversionData;
-        }
-        if (this.conversionDelaySeconds != null) {
-            data.conversionDelaySeconds = this.conversionDelaySeconds;
-        }
-        if (this.forwardingScore != null) {
-            data.forwardingScore = this.forwardingScore;
-        }
-        if (this.isForwarded != null) {
-            data.isForwarded = this.isForwarded;
-        }
-        if (this.quotedAd != null) {
-            data.quotedAd = this.quotedAd.toObject();
-        }
-        if (this.placeholderKey != null) {
-            data.placeholderKey = this.placeholderKey.toObject();
-        }
-        if (this.expiration != null) {
-            data.expiration = this.expiration;
-        }
-        if (this.ephemeralSettingTimestamp != null) {
-            data.ephemeralSettingTimestamp = this.ephemeralSettingTimestamp;
-        }
-        if (this.ephemeralSharedSecret != null) {
-            data.ephemeralSharedSecret = this.ephemeralSharedSecret;
-        }
         return data;
     }
     serialize(): Uint8Array;
@@ -1733,13 +1652,13 @@ export class SenderKeyDistributionMessage extends pb_1.Message {
         }
     }
     get groupId() {
-        return pb_1.Message.getField(this, 1) as string;
+        return pb_1.Message.getFieldWithDefault(this, 1, "") as string;
     }
     set groupId(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
     get axolotlSenderKeyDistributionMessage() {
-        return pb_1.Message.getField(this, 2) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 2, new Uint8Array()) as Uint8Array;
     }
     set axolotlSenderKeyDistributionMessage(value: Uint8Array) {
         pb_1.Message.setField(this, 2, value);
@@ -1761,13 +1680,10 @@ export class SenderKeyDistributionMessage extends pb_1.Message {
         const data: {
             groupId?: string;
             axolotlSenderKeyDistributionMessage?: Uint8Array;
-        } = {};
-        if (this.groupId != null) {
-            data.groupId = this.groupId;
-        }
-        if (this.axolotlSenderKeyDistributionMessage != null) {
-            data.axolotlSenderKeyDistributionMessage = this.axolotlSenderKeyDistributionMessage;
-        }
+        } = {
+            groupId: pb_1.Message.getField(this, 1) != null ? this.groupId : undefined,
+            axolotlSenderKeyDistributionMessage: pb_1.Message.getField(this, 2) != null ? this.axolotlSenderKeyDistributionMessage : undefined
+        };
         return data;
     }
     serialize(): Uint8Array;
@@ -1894,55 +1810,55 @@ export class ImageMessage extends pb_1.Message {
         }
     }
     get url() {
-        return pb_1.Message.getField(this, 1) as string;
+        return pb_1.Message.getFieldWithDefault(this, 1, "") as string;
     }
     set url(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
     get mimetype() {
-        return pb_1.Message.getField(this, 2) as string;
+        return pb_1.Message.getFieldWithDefault(this, 2, "") as string;
     }
     set mimetype(value: string) {
         pb_1.Message.setField(this, 2, value);
     }
     get caption() {
-        return pb_1.Message.getField(this, 3) as string;
+        return pb_1.Message.getFieldWithDefault(this, 3, "") as string;
     }
     set caption(value: string) {
         pb_1.Message.setField(this, 3, value);
     }
     get fileSha256() {
-        return pb_1.Message.getField(this, 4) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 4, new Uint8Array()) as Uint8Array;
     }
     set fileSha256(value: Uint8Array) {
         pb_1.Message.setField(this, 4, value);
     }
     get fileLength() {
-        return pb_1.Message.getField(this, 5) as number;
+        return pb_1.Message.getFieldWithDefault(this, 5, 0) as number;
     }
     set fileLength(value: number) {
         pb_1.Message.setField(this, 5, value);
     }
     get height() {
-        return pb_1.Message.getField(this, 6) as number;
+        return pb_1.Message.getFieldWithDefault(this, 6, 0) as number;
     }
     set height(value: number) {
         pb_1.Message.setField(this, 6, value);
     }
     get width() {
-        return pb_1.Message.getField(this, 7) as number;
+        return pb_1.Message.getFieldWithDefault(this, 7, 0) as number;
     }
     set width(value: number) {
         pb_1.Message.setField(this, 7, value);
     }
     get mediaKey() {
-        return pb_1.Message.getField(this, 8) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 8, new Uint8Array()) as Uint8Array;
     }
     set mediaKey(value: Uint8Array) {
         pb_1.Message.setField(this, 8, value);
     }
     get fileEncSha256() {
-        return pb_1.Message.getField(this, 9) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 9, new Uint8Array()) as Uint8Array;
     }
     set fileEncSha256(value: Uint8Array) {
         pb_1.Message.setField(this, 9, value);
@@ -1954,19 +1870,19 @@ export class ImageMessage extends pb_1.Message {
         pb_1.Message.setRepeatedWrapperField(this, 10, value);
     }
     get directPath() {
-        return pb_1.Message.getField(this, 11) as string;
+        return pb_1.Message.getFieldWithDefault(this, 11, "") as string;
     }
     set directPath(value: string) {
         pb_1.Message.setField(this, 11, value);
     }
     get mediaKeyTimestamp() {
-        return pb_1.Message.getField(this, 12) as number;
+        return pb_1.Message.getFieldWithDefault(this, 12, 0) as number;
     }
     set mediaKeyTimestamp(value: number) {
         pb_1.Message.setField(this, 12, value);
     }
     get jpegThumbnail() {
-        return pb_1.Message.getField(this, 16) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 16, new Uint8Array()) as Uint8Array;
     }
     set jpegThumbnail(value: Uint8Array) {
         pb_1.Message.setField(this, 16, value);
@@ -1978,43 +1894,43 @@ export class ImageMessage extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 17, value);
     }
     get firstScanSidecar() {
-        return pb_1.Message.getField(this, 18) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 18, new Uint8Array()) as Uint8Array;
     }
     set firstScanSidecar(value: Uint8Array) {
         pb_1.Message.setField(this, 18, value);
     }
     get firstScanLength() {
-        return pb_1.Message.getField(this, 19) as number;
+        return pb_1.Message.getFieldWithDefault(this, 19, 0) as number;
     }
     set firstScanLength(value: number) {
         pb_1.Message.setField(this, 19, value);
     }
     get experimentGroupId() {
-        return pb_1.Message.getField(this, 20) as number;
+        return pb_1.Message.getFieldWithDefault(this, 20, 0) as number;
     }
     set experimentGroupId(value: number) {
         pb_1.Message.setField(this, 20, value);
     }
     get scansSidecar() {
-        return pb_1.Message.getField(this, 21) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 21, new Uint8Array()) as Uint8Array;
     }
     set scansSidecar(value: Uint8Array) {
         pb_1.Message.setField(this, 21, value);
     }
     get scanLengths() {
-        return pb_1.Message.getField(this, 22) as number[];
+        return pb_1.Message.getFieldWithDefault(this, 22, []) as number[];
     }
     set scanLengths(value: number[]) {
         pb_1.Message.setField(this, 22, value);
     }
     get midQualityFileSha256() {
-        return pb_1.Message.getField(this, 23) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 23, new Uint8Array()) as Uint8Array;
     }
     set midQualityFileSha256(value: Uint8Array) {
         pb_1.Message.setField(this, 23, value);
     }
     get midQualityFileEncSha256() {
-        return pb_1.Message.getField(this, 24) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 24, new Uint8Array()) as Uint8Array;
     }
     set midQualityFileEncSha256(value: Uint8Array) {
         pb_1.Message.setField(this, 24, value);
@@ -2129,66 +2045,28 @@ export class ImageMessage extends pb_1.Message {
             midQualityFileSha256?: Uint8Array;
             midQualityFileEncSha256?: Uint8Array;
         } = {
-            interactiveAnnotations: this.interactiveAnnotations.map((item: InteractiveAnnotation) => item.toObject()),
-            scanLengths: this.scanLengths
+            url: pb_1.Message.getField(this, 1) != null ? this.url : undefined,
+            mimetype: pb_1.Message.getField(this, 2) != null ? this.mimetype : undefined,
+            caption: pb_1.Message.getField(this, 3) != null ? this.caption : undefined,
+            fileSha256: pb_1.Message.getField(this, 4) != null ? this.fileSha256 : undefined,
+            fileLength: pb_1.Message.getField(this, 5) != null ? this.fileLength : undefined,
+            height: pb_1.Message.getField(this, 6) != null ? this.height : undefined,
+            width: pb_1.Message.getField(this, 7) != null ? this.width : undefined,
+            mediaKey: pb_1.Message.getField(this, 8) != null ? this.mediaKey : undefined,
+            fileEncSha256: pb_1.Message.getField(this, 9) != null ? this.fileEncSha256 : undefined,
+            interactiveAnnotations: pb_1.Message.getField(this, 10) != null ? this.interactiveAnnotations.map((item: InteractiveAnnotation) => item.toObject()) : undefined,
+            directPath: pb_1.Message.getField(this, 11) != null ? this.directPath : undefined,
+            mediaKeyTimestamp: pb_1.Message.getField(this, 12) != null ? this.mediaKeyTimestamp : undefined,
+            jpegThumbnail: pb_1.Message.getField(this, 16) != null ? this.jpegThumbnail : undefined,
+            contextInfo: pb_1.Message.getField(this, 17) != null ? this.contextInfo != null ? this.contextInfo.toObject() : undefined : undefined,
+            firstScanSidecar: pb_1.Message.getField(this, 18) != null ? this.firstScanSidecar : undefined,
+            firstScanLength: pb_1.Message.getField(this, 19) != null ? this.firstScanLength : undefined,
+            experimentGroupId: pb_1.Message.getField(this, 20) != null ? this.experimentGroupId : undefined,
+            scansSidecar: pb_1.Message.getField(this, 21) != null ? this.scansSidecar : undefined,
+            scanLengths: pb_1.Message.getField(this, 22) != null ? this.scanLengths : undefined,
+            midQualityFileSha256: pb_1.Message.getField(this, 23) != null ? this.midQualityFileSha256 : undefined,
+            midQualityFileEncSha256: pb_1.Message.getField(this, 24) != null ? this.midQualityFileEncSha256 : undefined
         };
-        if (this.url != null) {
-            data.url = this.url;
-        }
-        if (this.mimetype != null) {
-            data.mimetype = this.mimetype;
-        }
-        if (this.caption != null) {
-            data.caption = this.caption;
-        }
-        if (this.fileSha256 != null) {
-            data.fileSha256 = this.fileSha256;
-        }
-        if (this.fileLength != null) {
-            data.fileLength = this.fileLength;
-        }
-        if (this.height != null) {
-            data.height = this.height;
-        }
-        if (this.width != null) {
-            data.width = this.width;
-        }
-        if (this.mediaKey != null) {
-            data.mediaKey = this.mediaKey;
-        }
-        if (this.fileEncSha256 != null) {
-            data.fileEncSha256 = this.fileEncSha256;
-        }
-        if (this.directPath != null) {
-            data.directPath = this.directPath;
-        }
-        if (this.mediaKeyTimestamp != null) {
-            data.mediaKeyTimestamp = this.mediaKeyTimestamp;
-        }
-        if (this.jpegThumbnail != null) {
-            data.jpegThumbnail = this.jpegThumbnail;
-        }
-        if (this.contextInfo != null) {
-            data.contextInfo = this.contextInfo.toObject();
-        }
-        if (this.firstScanSidecar != null) {
-            data.firstScanSidecar = this.firstScanSidecar;
-        }
-        if (this.firstScanLength != null) {
-            data.firstScanLength = this.firstScanLength;
-        }
-        if (this.experimentGroupId != null) {
-            data.experimentGroupId = this.experimentGroupId;
-        }
-        if (this.scansSidecar != null) {
-            data.scansSidecar = this.scansSidecar;
-        }
-        if (this.midQualityFileSha256 != null) {
-            data.midQualityFileSha256 = this.midQualityFileSha256;
-        }
-        if (this.midQualityFileEncSha256 != null) {
-            data.midQualityFileEncSha256 = this.midQualityFileEncSha256;
-        }
         return data;
     }
     serialize(): Uint8Array;
@@ -2342,13 +2220,13 @@ export class ContactMessage extends pb_1.Message {
         }
     }
     get displayName() {
-        return pb_1.Message.getField(this, 1) as string;
+        return pb_1.Message.getFieldWithDefault(this, 1, "") as string;
     }
     set displayName(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
     get vcard() {
-        return pb_1.Message.getField(this, 16) as string;
+        return pb_1.Message.getFieldWithDefault(this, 16, "") as string;
     }
     set vcard(value: string) {
         pb_1.Message.setField(this, 16, value);
@@ -2381,16 +2259,11 @@ export class ContactMessage extends pb_1.Message {
             displayName?: string;
             vcard?: string;
             contextInfo?: ReturnType<typeof ContextInfo.prototype.toObject>;
-        } = {};
-        if (this.displayName != null) {
-            data.displayName = this.displayName;
-        }
-        if (this.vcard != null) {
-            data.vcard = this.vcard;
-        }
-        if (this.contextInfo != null) {
-            data.contextInfo = this.contextInfo.toObject();
-        }
+        } = {
+            displayName: pb_1.Message.getField(this, 1) != null ? this.displayName : undefined,
+            vcard: pb_1.Message.getField(this, 16) != null ? this.vcard : undefined,
+            contextInfo: pb_1.Message.getField(this, 17) != null ? this.contextInfo != null ? this.contextInfo.toObject() : undefined : undefined
+        };
         return data;
     }
     serialize(): Uint8Array;
@@ -2490,67 +2363,67 @@ export class LocationMessage extends pb_1.Message {
         }
     }
     get degreesLatitude() {
-        return pb_1.Message.getField(this, 1) as number;
+        return pb_1.Message.getFieldWithDefault(this, 1, 0) as number;
     }
     set degreesLatitude(value: number) {
         pb_1.Message.setField(this, 1, value);
     }
     get degreesLongitude() {
-        return pb_1.Message.getField(this, 2) as number;
+        return pb_1.Message.getFieldWithDefault(this, 2, 0) as number;
     }
     set degreesLongitude(value: number) {
         pb_1.Message.setField(this, 2, value);
     }
     get name() {
-        return pb_1.Message.getField(this, 3) as string;
+        return pb_1.Message.getFieldWithDefault(this, 3, "") as string;
     }
     set name(value: string) {
         pb_1.Message.setField(this, 3, value);
     }
     get address() {
-        return pb_1.Message.getField(this, 4) as string;
+        return pb_1.Message.getFieldWithDefault(this, 4, "") as string;
     }
     set address(value: string) {
         pb_1.Message.setField(this, 4, value);
     }
     get url() {
-        return pb_1.Message.getField(this, 5) as string;
+        return pb_1.Message.getFieldWithDefault(this, 5, "") as string;
     }
     set url(value: string) {
         pb_1.Message.setField(this, 5, value);
     }
     get isLive() {
-        return pb_1.Message.getField(this, 6) as boolean;
+        return pb_1.Message.getFieldWithDefault(this, 6, false) as boolean;
     }
     set isLive(value: boolean) {
         pb_1.Message.setField(this, 6, value);
     }
     get accuracyInMeters() {
-        return pb_1.Message.getField(this, 7) as number;
+        return pb_1.Message.getFieldWithDefault(this, 7, 0) as number;
     }
     set accuracyInMeters(value: number) {
         pb_1.Message.setField(this, 7, value);
     }
     get speedInMps() {
-        return pb_1.Message.getField(this, 8) as number;
+        return pb_1.Message.getFieldWithDefault(this, 8, 0) as number;
     }
     set speedInMps(value: number) {
         pb_1.Message.setField(this, 8, value);
     }
     get degreesClockwiseFromMagneticNorth() {
-        return pb_1.Message.getField(this, 9) as number;
+        return pb_1.Message.getFieldWithDefault(this, 9, 0) as number;
     }
     set degreesClockwiseFromMagneticNorth(value: number) {
         pb_1.Message.setField(this, 9, value);
     }
     get comment() {
-        return pb_1.Message.getField(this, 11) as string;
+        return pb_1.Message.getFieldWithDefault(this, 11, "") as string;
     }
     set comment(value: string) {
         pb_1.Message.setField(this, 11, value);
     }
     get jpegThumbnail() {
-        return pb_1.Message.getField(this, 16) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 16, new Uint8Array()) as Uint8Array;
     }
     set jpegThumbnail(value: Uint8Array) {
         pb_1.Message.setField(this, 16, value);
@@ -2628,43 +2501,20 @@ export class LocationMessage extends pb_1.Message {
             comment?: string;
             jpegThumbnail?: Uint8Array;
             contextInfo?: ReturnType<typeof ContextInfo.prototype.toObject>;
-        } = {};
-        if (this.degreesLatitude != null) {
-            data.degreesLatitude = this.degreesLatitude;
-        }
-        if (this.degreesLongitude != null) {
-            data.degreesLongitude = this.degreesLongitude;
-        }
-        if (this.name != null) {
-            data.name = this.name;
-        }
-        if (this.address != null) {
-            data.address = this.address;
-        }
-        if (this.url != null) {
-            data.url = this.url;
-        }
-        if (this.isLive != null) {
-            data.isLive = this.isLive;
-        }
-        if (this.accuracyInMeters != null) {
-            data.accuracyInMeters = this.accuracyInMeters;
-        }
-        if (this.speedInMps != null) {
-            data.speedInMps = this.speedInMps;
-        }
-        if (this.degreesClockwiseFromMagneticNorth != null) {
-            data.degreesClockwiseFromMagneticNorth = this.degreesClockwiseFromMagneticNorth;
-        }
-        if (this.comment != null) {
-            data.comment = this.comment;
-        }
-        if (this.jpegThumbnail != null) {
-            data.jpegThumbnail = this.jpegThumbnail;
-        }
-        if (this.contextInfo != null) {
-            data.contextInfo = this.contextInfo.toObject();
-        }
+        } = {
+            degreesLatitude: pb_1.Message.getField(this, 1) != null ? this.degreesLatitude : undefined,
+            degreesLongitude: pb_1.Message.getField(this, 2) != null ? this.degreesLongitude : undefined,
+            name: pb_1.Message.getField(this, 3) != null ? this.name : undefined,
+            address: pb_1.Message.getField(this, 4) != null ? this.address : undefined,
+            url: pb_1.Message.getField(this, 5) != null ? this.url : undefined,
+            isLive: pb_1.Message.getField(this, 6) != null ? this.isLive : undefined,
+            accuracyInMeters: pb_1.Message.getField(this, 7) != null ? this.accuracyInMeters : undefined,
+            speedInMps: pb_1.Message.getField(this, 8) != null ? this.speedInMps : undefined,
+            degreesClockwiseFromMagneticNorth: pb_1.Message.getField(this, 9) != null ? this.degreesClockwiseFromMagneticNorth : undefined,
+            comment: pb_1.Message.getField(this, 11) != null ? this.comment : undefined,
+            jpegThumbnail: pb_1.Message.getField(this, 16) != null ? this.jpegThumbnail : undefined,
+            contextInfo: pb_1.Message.getField(this, 17) != null ? this.contextInfo != null ? this.contextInfo.toObject() : undefined : undefined
+        };
         return data;
     }
     serialize(): Uint8Array;
@@ -2809,61 +2659,61 @@ export class ExtendedTextMessage extends pb_1.Message {
         }
     }
     get text() {
-        return pb_1.Message.getField(this, 1) as string;
+        return pb_1.Message.getFieldWithDefault(this, 1, "") as string;
     }
     set text(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
     get matchedText() {
-        return pb_1.Message.getField(this, 2) as string;
+        return pb_1.Message.getFieldWithDefault(this, 2, "") as string;
     }
     set matchedText(value: string) {
         pb_1.Message.setField(this, 2, value);
     }
     get canonicalUrl() {
-        return pb_1.Message.getField(this, 4) as string;
+        return pb_1.Message.getFieldWithDefault(this, 4, "") as string;
     }
     set canonicalUrl(value: string) {
         pb_1.Message.setField(this, 4, value);
     }
     get description() {
-        return pb_1.Message.getField(this, 5) as string;
+        return pb_1.Message.getFieldWithDefault(this, 5, "") as string;
     }
     set description(value: string) {
         pb_1.Message.setField(this, 5, value);
     }
     get title() {
-        return pb_1.Message.getField(this, 6) as string;
+        return pb_1.Message.getFieldWithDefault(this, 6, "") as string;
     }
     set title(value: string) {
         pb_1.Message.setField(this, 6, value);
     }
     get textArgb() {
-        return pb_1.Message.getField(this, 7) as number;
+        return pb_1.Message.getFieldWithDefault(this, 7, 0) as number;
     }
     set textArgb(value: number) {
         pb_1.Message.setField(this, 7, value);
     }
     get backgroundArgb() {
-        return pb_1.Message.getField(this, 8) as number;
+        return pb_1.Message.getFieldWithDefault(this, 8, 0) as number;
     }
     set backgroundArgb(value: number) {
         pb_1.Message.setField(this, 8, value);
     }
     get font() {
-        return pb_1.Message.getField(this, 9) as ExtendedTextMessage.EXTENDED_TEXT_MESSAGE_FONTTYPE;
+        return pb_1.Message.getFieldWithDefault(this, 9, ExtendedTextMessage.EXTENDED_TEXT_MESSAGE_FONTTYPE.SANS_SERIF) as ExtendedTextMessage.EXTENDED_TEXT_MESSAGE_FONTTYPE;
     }
     set font(value: ExtendedTextMessage.EXTENDED_TEXT_MESSAGE_FONTTYPE) {
         pb_1.Message.setField(this, 9, value);
     }
     get previewType() {
-        return pb_1.Message.getField(this, 10) as ExtendedTextMessage.EXTENDED_TEXT_MESSAGE_PREVIEWTYPE;
+        return pb_1.Message.getFieldWithDefault(this, 10, ExtendedTextMessage.EXTENDED_TEXT_MESSAGE_PREVIEWTYPE.NONE) as ExtendedTextMessage.EXTENDED_TEXT_MESSAGE_PREVIEWTYPE;
     }
     set previewType(value: ExtendedTextMessage.EXTENDED_TEXT_MESSAGE_PREVIEWTYPE) {
         pb_1.Message.setField(this, 10, value);
     }
     get jpegThumbnail() {
-        return pb_1.Message.getField(this, 16) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 16, new Uint8Array()) as Uint8Array;
     }
     set jpegThumbnail(value: Uint8Array) {
         pb_1.Message.setField(this, 16, value);
@@ -2875,7 +2725,7 @@ export class ExtendedTextMessage extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 17, value);
     }
     get doNotPlayInline() {
-        return pb_1.Message.getField(this, 18) as boolean;
+        return pb_1.Message.getFieldWithDefault(this, 18, false) as boolean;
     }
     set doNotPlayInline(value: boolean) {
         pb_1.Message.setField(this, 18, value);
@@ -2947,43 +2797,20 @@ export class ExtendedTextMessage extends pb_1.Message {
             jpegThumbnail?: Uint8Array;
             contextInfo?: ReturnType<typeof ContextInfo.prototype.toObject>;
             doNotPlayInline?: boolean;
-        } = {};
-        if (this.text != null) {
-            data.text = this.text;
-        }
-        if (this.matchedText != null) {
-            data.matchedText = this.matchedText;
-        }
-        if (this.canonicalUrl != null) {
-            data.canonicalUrl = this.canonicalUrl;
-        }
-        if (this.description != null) {
-            data.description = this.description;
-        }
-        if (this.title != null) {
-            data.title = this.title;
-        }
-        if (this.textArgb != null) {
-            data.textArgb = this.textArgb;
-        }
-        if (this.backgroundArgb != null) {
-            data.backgroundArgb = this.backgroundArgb;
-        }
-        if (this.font != null) {
-            data.font = this.font;
-        }
-        if (this.previewType != null) {
-            data.previewType = this.previewType;
-        }
-        if (this.jpegThumbnail != null) {
-            data.jpegThumbnail = this.jpegThumbnail;
-        }
-        if (this.contextInfo != null) {
-            data.contextInfo = this.contextInfo.toObject();
-        }
-        if (this.doNotPlayInline != null) {
-            data.doNotPlayInline = this.doNotPlayInline;
-        }
+        } = {
+            text: pb_1.Message.getField(this, 1) != null ? this.text : undefined,
+            matchedText: pb_1.Message.getField(this, 2) != null ? this.matchedText : undefined,
+            canonicalUrl: pb_1.Message.getField(this, 4) != null ? this.canonicalUrl : undefined,
+            description: pb_1.Message.getField(this, 5) != null ? this.description : undefined,
+            title: pb_1.Message.getField(this, 6) != null ? this.title : undefined,
+            textArgb: pb_1.Message.getField(this, 7) != null ? this.textArgb : undefined,
+            backgroundArgb: pb_1.Message.getField(this, 8) != null ? this.backgroundArgb : undefined,
+            font: pb_1.Message.getField(this, 9) != null ? this.font : undefined,
+            previewType: pb_1.Message.getField(this, 10) != null ? this.previewType : undefined,
+            jpegThumbnail: pb_1.Message.getField(this, 16) != null ? this.jpegThumbnail : undefined,
+            contextInfo: pb_1.Message.getField(this, 17) != null ? this.contextInfo != null ? this.contextInfo.toObject() : undefined : undefined,
+            doNotPlayInline: pb_1.Message.getField(this, 18) != null ? this.doNotPlayInline : undefined
+        };
         return data;
     }
     serialize(): Uint8Array;
@@ -3146,73 +2973,73 @@ export class DocumentMessage extends pb_1.Message {
         }
     }
     get url() {
-        return pb_1.Message.getField(this, 1) as string;
+        return pb_1.Message.getFieldWithDefault(this, 1, "") as string;
     }
     set url(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
     get mimetype() {
-        return pb_1.Message.getField(this, 2) as string;
+        return pb_1.Message.getFieldWithDefault(this, 2, "") as string;
     }
     set mimetype(value: string) {
         pb_1.Message.setField(this, 2, value);
     }
     get title() {
-        return pb_1.Message.getField(this, 3) as string;
+        return pb_1.Message.getFieldWithDefault(this, 3, "") as string;
     }
     set title(value: string) {
         pb_1.Message.setField(this, 3, value);
     }
     get fileSha256() {
-        return pb_1.Message.getField(this, 4) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 4, new Uint8Array()) as Uint8Array;
     }
     set fileSha256(value: Uint8Array) {
         pb_1.Message.setField(this, 4, value);
     }
     get fileLength() {
-        return pb_1.Message.getField(this, 5) as number;
+        return pb_1.Message.getFieldWithDefault(this, 5, 0) as number;
     }
     set fileLength(value: number) {
         pb_1.Message.setField(this, 5, value);
     }
     get pageCount() {
-        return pb_1.Message.getField(this, 6) as number;
+        return pb_1.Message.getFieldWithDefault(this, 6, 0) as number;
     }
     set pageCount(value: number) {
         pb_1.Message.setField(this, 6, value);
     }
     get mediaKey() {
-        return pb_1.Message.getField(this, 7) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 7, new Uint8Array()) as Uint8Array;
     }
     set mediaKey(value: Uint8Array) {
         pb_1.Message.setField(this, 7, value);
     }
     get fileName() {
-        return pb_1.Message.getField(this, 8) as string;
+        return pb_1.Message.getFieldWithDefault(this, 8, "") as string;
     }
     set fileName(value: string) {
         pb_1.Message.setField(this, 8, value);
     }
     get fileEncSha256() {
-        return pb_1.Message.getField(this, 9) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 9, new Uint8Array()) as Uint8Array;
     }
     set fileEncSha256(value: Uint8Array) {
         pb_1.Message.setField(this, 9, value);
     }
     get directPath() {
-        return pb_1.Message.getField(this, 10) as string;
+        return pb_1.Message.getFieldWithDefault(this, 10, "") as string;
     }
     set directPath(value: string) {
         pb_1.Message.setField(this, 10, value);
     }
     get mediaKeyTimestamp() {
-        return pb_1.Message.getField(this, 11) as number;
+        return pb_1.Message.getFieldWithDefault(this, 11, 0) as number;
     }
     set mediaKeyTimestamp(value: number) {
         pb_1.Message.setField(this, 11, value);
     }
     get jpegThumbnail() {
-        return pb_1.Message.getField(this, 16) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 16, new Uint8Array()) as Uint8Array;
     }
     set jpegThumbnail(value: Uint8Array) {
         pb_1.Message.setField(this, 16, value);
@@ -3295,46 +3122,21 @@ export class DocumentMessage extends pb_1.Message {
             mediaKeyTimestamp?: number;
             jpegThumbnail?: Uint8Array;
             contextInfo?: ReturnType<typeof ContextInfo.prototype.toObject>;
-        } = {};
-        if (this.url != null) {
-            data.url = this.url;
-        }
-        if (this.mimetype != null) {
-            data.mimetype = this.mimetype;
-        }
-        if (this.title != null) {
-            data.title = this.title;
-        }
-        if (this.fileSha256 != null) {
-            data.fileSha256 = this.fileSha256;
-        }
-        if (this.fileLength != null) {
-            data.fileLength = this.fileLength;
-        }
-        if (this.pageCount != null) {
-            data.pageCount = this.pageCount;
-        }
-        if (this.mediaKey != null) {
-            data.mediaKey = this.mediaKey;
-        }
-        if (this.fileName != null) {
-            data.fileName = this.fileName;
-        }
-        if (this.fileEncSha256 != null) {
-            data.fileEncSha256 = this.fileEncSha256;
-        }
-        if (this.directPath != null) {
-            data.directPath = this.directPath;
-        }
-        if (this.mediaKeyTimestamp != null) {
-            data.mediaKeyTimestamp = this.mediaKeyTimestamp;
-        }
-        if (this.jpegThumbnail != null) {
-            data.jpegThumbnail = this.jpegThumbnail;
-        }
-        if (this.contextInfo != null) {
-            data.contextInfo = this.contextInfo.toObject();
-        }
+        } = {
+            url: pb_1.Message.getField(this, 1) != null ? this.url : undefined,
+            mimetype: pb_1.Message.getField(this, 2) != null ? this.mimetype : undefined,
+            title: pb_1.Message.getField(this, 3) != null ? this.title : undefined,
+            fileSha256: pb_1.Message.getField(this, 4) != null ? this.fileSha256 : undefined,
+            fileLength: pb_1.Message.getField(this, 5) != null ? this.fileLength : undefined,
+            pageCount: pb_1.Message.getField(this, 6) != null ? this.pageCount : undefined,
+            mediaKey: pb_1.Message.getField(this, 7) != null ? this.mediaKey : undefined,
+            fileName: pb_1.Message.getField(this, 8) != null ? this.fileName : undefined,
+            fileEncSha256: pb_1.Message.getField(this, 9) != null ? this.fileEncSha256 : undefined,
+            directPath: pb_1.Message.getField(this, 10) != null ? this.directPath : undefined,
+            mediaKeyTimestamp: pb_1.Message.getField(this, 11) != null ? this.mediaKeyTimestamp : undefined,
+            jpegThumbnail: pb_1.Message.getField(this, 16) != null ? this.jpegThumbnail : undefined,
+            contextInfo: pb_1.Message.getField(this, 17) != null ? this.contextInfo != null ? this.contextInfo.toObject() : undefined : undefined
+        };
         return data;
     }
     serialize(): Uint8Array;
@@ -3484,61 +3286,61 @@ export class AudioMessage extends pb_1.Message {
         }
     }
     get url() {
-        return pb_1.Message.getField(this, 1) as string;
+        return pb_1.Message.getFieldWithDefault(this, 1, "") as string;
     }
     set url(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
     get mimetype() {
-        return pb_1.Message.getField(this, 2) as string;
+        return pb_1.Message.getFieldWithDefault(this, 2, "") as string;
     }
     set mimetype(value: string) {
         pb_1.Message.setField(this, 2, value);
     }
     get fileSha256() {
-        return pb_1.Message.getField(this, 3) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 3, new Uint8Array()) as Uint8Array;
     }
     set fileSha256(value: Uint8Array) {
         pb_1.Message.setField(this, 3, value);
     }
     get fileLength() {
-        return pb_1.Message.getField(this, 4) as number;
+        return pb_1.Message.getFieldWithDefault(this, 4, 0) as number;
     }
     set fileLength(value: number) {
         pb_1.Message.setField(this, 4, value);
     }
     get seconds() {
-        return pb_1.Message.getField(this, 5) as number;
+        return pb_1.Message.getFieldWithDefault(this, 5, 0) as number;
     }
     set seconds(value: number) {
         pb_1.Message.setField(this, 5, value);
     }
     get ptt() {
-        return pb_1.Message.getField(this, 6) as boolean;
+        return pb_1.Message.getFieldWithDefault(this, 6, false) as boolean;
     }
     set ptt(value: boolean) {
         pb_1.Message.setField(this, 6, value);
     }
     get mediaKey() {
-        return pb_1.Message.getField(this, 7) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 7, new Uint8Array()) as Uint8Array;
     }
     set mediaKey(value: Uint8Array) {
         pb_1.Message.setField(this, 7, value);
     }
     get fileEncSha256() {
-        return pb_1.Message.getField(this, 8) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 8, new Uint8Array()) as Uint8Array;
     }
     set fileEncSha256(value: Uint8Array) {
         pb_1.Message.setField(this, 8, value);
     }
     get directPath() {
-        return pb_1.Message.getField(this, 9) as string;
+        return pb_1.Message.getFieldWithDefault(this, 9, "") as string;
     }
     set directPath(value: string) {
         pb_1.Message.setField(this, 9, value);
     }
     get mediaKeyTimestamp() {
-        return pb_1.Message.getField(this, 10) as number;
+        return pb_1.Message.getFieldWithDefault(this, 10, 0) as number;
     }
     set mediaKeyTimestamp(value: number) {
         pb_1.Message.setField(this, 10, value);
@@ -3550,7 +3352,7 @@ export class AudioMessage extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 17, value);
     }
     get streamingSidecar() {
-        return pb_1.Message.getField(this, 18) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 18, new Uint8Array()) as Uint8Array;
     }
     set streamingSidecar(value: Uint8Array) {
         pb_1.Message.setField(this, 18, value);
@@ -3622,43 +3424,20 @@ export class AudioMessage extends pb_1.Message {
             mediaKeyTimestamp?: number;
             contextInfo?: ReturnType<typeof ContextInfo.prototype.toObject>;
             streamingSidecar?: Uint8Array;
-        } = {};
-        if (this.url != null) {
-            data.url = this.url;
-        }
-        if (this.mimetype != null) {
-            data.mimetype = this.mimetype;
-        }
-        if (this.fileSha256 != null) {
-            data.fileSha256 = this.fileSha256;
-        }
-        if (this.fileLength != null) {
-            data.fileLength = this.fileLength;
-        }
-        if (this.seconds != null) {
-            data.seconds = this.seconds;
-        }
-        if (this.ptt != null) {
-            data.ptt = this.ptt;
-        }
-        if (this.mediaKey != null) {
-            data.mediaKey = this.mediaKey;
-        }
-        if (this.fileEncSha256 != null) {
-            data.fileEncSha256 = this.fileEncSha256;
-        }
-        if (this.directPath != null) {
-            data.directPath = this.directPath;
-        }
-        if (this.mediaKeyTimestamp != null) {
-            data.mediaKeyTimestamp = this.mediaKeyTimestamp;
-        }
-        if (this.contextInfo != null) {
-            data.contextInfo = this.contextInfo.toObject();
-        }
-        if (this.streamingSidecar != null) {
-            data.streamingSidecar = this.streamingSidecar;
-        }
+        } = {
+            url: pb_1.Message.getField(this, 1) != null ? this.url : undefined,
+            mimetype: pb_1.Message.getField(this, 2) != null ? this.mimetype : undefined,
+            fileSha256: pb_1.Message.getField(this, 3) != null ? this.fileSha256 : undefined,
+            fileLength: pb_1.Message.getField(this, 4) != null ? this.fileLength : undefined,
+            seconds: pb_1.Message.getField(this, 5) != null ? this.seconds : undefined,
+            ptt: pb_1.Message.getField(this, 6) != null ? this.ptt : undefined,
+            mediaKey: pb_1.Message.getField(this, 7) != null ? this.mediaKey : undefined,
+            fileEncSha256: pb_1.Message.getField(this, 8) != null ? this.fileEncSha256 : undefined,
+            directPath: pb_1.Message.getField(this, 9) != null ? this.directPath : undefined,
+            mediaKeyTimestamp: pb_1.Message.getField(this, 10) != null ? this.mediaKeyTimestamp : undefined,
+            contextInfo: pb_1.Message.getField(this, 17) != null ? this.contextInfo != null ? this.contextInfo.toObject() : undefined : undefined,
+            streamingSidecar: pb_1.Message.getField(this, 18) != null ? this.streamingSidecar : undefined
+        };
         return data;
     }
     serialize(): Uint8Array;
@@ -3825,67 +3604,67 @@ export class VideoMessage extends pb_1.Message {
         }
     }
     get url() {
-        return pb_1.Message.getField(this, 1) as string;
+        return pb_1.Message.getFieldWithDefault(this, 1, "") as string;
     }
     set url(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
     get mimetype() {
-        return pb_1.Message.getField(this, 2) as string;
+        return pb_1.Message.getFieldWithDefault(this, 2, "") as string;
     }
     set mimetype(value: string) {
         pb_1.Message.setField(this, 2, value);
     }
     get fileSha256() {
-        return pb_1.Message.getField(this, 3) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 3, new Uint8Array()) as Uint8Array;
     }
     set fileSha256(value: Uint8Array) {
         pb_1.Message.setField(this, 3, value);
     }
     get fileLength() {
-        return pb_1.Message.getField(this, 4) as number;
+        return pb_1.Message.getFieldWithDefault(this, 4, 0) as number;
     }
     set fileLength(value: number) {
         pb_1.Message.setField(this, 4, value);
     }
     get seconds() {
-        return pb_1.Message.getField(this, 5) as number;
+        return pb_1.Message.getFieldWithDefault(this, 5, 0) as number;
     }
     set seconds(value: number) {
         pb_1.Message.setField(this, 5, value);
     }
     get mediaKey() {
-        return pb_1.Message.getField(this, 6) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 6, new Uint8Array()) as Uint8Array;
     }
     set mediaKey(value: Uint8Array) {
         pb_1.Message.setField(this, 6, value);
     }
     get caption() {
-        return pb_1.Message.getField(this, 7) as string;
+        return pb_1.Message.getFieldWithDefault(this, 7, "") as string;
     }
     set caption(value: string) {
         pb_1.Message.setField(this, 7, value);
     }
     get gifPlayback() {
-        return pb_1.Message.getField(this, 8) as boolean;
+        return pb_1.Message.getFieldWithDefault(this, 8, false) as boolean;
     }
     set gifPlayback(value: boolean) {
         pb_1.Message.setField(this, 8, value);
     }
     get height() {
-        return pb_1.Message.getField(this, 9) as number;
+        return pb_1.Message.getFieldWithDefault(this, 9, 0) as number;
     }
     set height(value: number) {
         pb_1.Message.setField(this, 9, value);
     }
     get width() {
-        return pb_1.Message.getField(this, 10) as number;
+        return pb_1.Message.getFieldWithDefault(this, 10, 0) as number;
     }
     set width(value: number) {
         pb_1.Message.setField(this, 10, value);
     }
     get fileEncSha256() {
-        return pb_1.Message.getField(this, 11) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 11, new Uint8Array()) as Uint8Array;
     }
     set fileEncSha256(value: Uint8Array) {
         pb_1.Message.setField(this, 11, value);
@@ -3897,19 +3676,19 @@ export class VideoMessage extends pb_1.Message {
         pb_1.Message.setRepeatedWrapperField(this, 12, value);
     }
     get directPath() {
-        return pb_1.Message.getField(this, 13) as string;
+        return pb_1.Message.getFieldWithDefault(this, 13, "") as string;
     }
     set directPath(value: string) {
         pb_1.Message.setField(this, 13, value);
     }
     get mediaKeyTimestamp() {
-        return pb_1.Message.getField(this, 14) as number;
+        return pb_1.Message.getFieldWithDefault(this, 14, 0) as number;
     }
     set mediaKeyTimestamp(value: number) {
         pb_1.Message.setField(this, 14, value);
     }
     get jpegThumbnail() {
-        return pb_1.Message.getField(this, 16) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 16, new Uint8Array()) as Uint8Array;
     }
     set jpegThumbnail(value: Uint8Array) {
         pb_1.Message.setField(this, 16, value);
@@ -3921,13 +3700,13 @@ export class VideoMessage extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 17, value);
     }
     get streamingSidecar() {
-        return pb_1.Message.getField(this, 18) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 18, new Uint8Array()) as Uint8Array;
     }
     set streamingSidecar(value: Uint8Array) {
         pb_1.Message.setField(this, 18, value);
     }
     get gifAttribution() {
-        return pb_1.Message.getField(this, 19) as VideoMessage.VIDEO_MESSAGE_ATTRIBUTION;
+        return pb_1.Message.getFieldWithDefault(this, 19, VideoMessage.VIDEO_MESSAGE_ATTRIBUTION.NONE) as VideoMessage.VIDEO_MESSAGE_ATTRIBUTION;
     }
     set gifAttribution(value: VideoMessage.VIDEO_MESSAGE_ATTRIBUTION) {
         pb_1.Message.setField(this, 19, value);
@@ -4029,59 +3808,25 @@ export class VideoMessage extends pb_1.Message {
             streamingSidecar?: Uint8Array;
             gifAttribution?: VideoMessage.VIDEO_MESSAGE_ATTRIBUTION;
         } = {
-            interactiveAnnotations: this.interactiveAnnotations.map((item: InteractiveAnnotation) => item.toObject())
+            url: pb_1.Message.getField(this, 1) != null ? this.url : undefined,
+            mimetype: pb_1.Message.getField(this, 2) != null ? this.mimetype : undefined,
+            fileSha256: pb_1.Message.getField(this, 3) != null ? this.fileSha256 : undefined,
+            fileLength: pb_1.Message.getField(this, 4) != null ? this.fileLength : undefined,
+            seconds: pb_1.Message.getField(this, 5) != null ? this.seconds : undefined,
+            mediaKey: pb_1.Message.getField(this, 6) != null ? this.mediaKey : undefined,
+            caption: pb_1.Message.getField(this, 7) != null ? this.caption : undefined,
+            gifPlayback: pb_1.Message.getField(this, 8) != null ? this.gifPlayback : undefined,
+            height: pb_1.Message.getField(this, 9) != null ? this.height : undefined,
+            width: pb_1.Message.getField(this, 10) != null ? this.width : undefined,
+            fileEncSha256: pb_1.Message.getField(this, 11) != null ? this.fileEncSha256 : undefined,
+            interactiveAnnotations: pb_1.Message.getField(this, 12) != null ? this.interactiveAnnotations.map((item: InteractiveAnnotation) => item.toObject()) : undefined,
+            directPath: pb_1.Message.getField(this, 13) != null ? this.directPath : undefined,
+            mediaKeyTimestamp: pb_1.Message.getField(this, 14) != null ? this.mediaKeyTimestamp : undefined,
+            jpegThumbnail: pb_1.Message.getField(this, 16) != null ? this.jpegThumbnail : undefined,
+            contextInfo: pb_1.Message.getField(this, 17) != null ? this.contextInfo != null ? this.contextInfo.toObject() : undefined : undefined,
+            streamingSidecar: pb_1.Message.getField(this, 18) != null ? this.streamingSidecar : undefined,
+            gifAttribution: pb_1.Message.getField(this, 19) != null ? this.gifAttribution : undefined
         };
-        if (this.url != null) {
-            data.url = this.url;
-        }
-        if (this.mimetype != null) {
-            data.mimetype = this.mimetype;
-        }
-        if (this.fileSha256 != null) {
-            data.fileSha256 = this.fileSha256;
-        }
-        if (this.fileLength != null) {
-            data.fileLength = this.fileLength;
-        }
-        if (this.seconds != null) {
-            data.seconds = this.seconds;
-        }
-        if (this.mediaKey != null) {
-            data.mediaKey = this.mediaKey;
-        }
-        if (this.caption != null) {
-            data.caption = this.caption;
-        }
-        if (this.gifPlayback != null) {
-            data.gifPlayback = this.gifPlayback;
-        }
-        if (this.height != null) {
-            data.height = this.height;
-        }
-        if (this.width != null) {
-            data.width = this.width;
-        }
-        if (this.fileEncSha256 != null) {
-            data.fileEncSha256 = this.fileEncSha256;
-        }
-        if (this.directPath != null) {
-            data.directPath = this.directPath;
-        }
-        if (this.mediaKeyTimestamp != null) {
-            data.mediaKeyTimestamp = this.mediaKeyTimestamp;
-        }
-        if (this.jpegThumbnail != null) {
-            data.jpegThumbnail = this.jpegThumbnail;
-        }
-        if (this.contextInfo != null) {
-            data.contextInfo = this.contextInfo.toObject();
-        }
-        if (this.streamingSidecar != null) {
-            data.streamingSidecar = this.streamingSidecar;
-        }
-        if (this.gifAttribution != null) {
-            data.gifAttribution = this.gifAttribution;
-        }
         return data;
     }
     serialize(): Uint8Array;
@@ -4219,7 +3964,7 @@ export class Call extends pb_1.Message {
         }
     }
     get callKey() {
-        return pb_1.Message.getField(this, 1) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 1, new Uint8Array()) as Uint8Array;
     }
     set callKey(value: Uint8Array) {
         pb_1.Message.setField(this, 1, value);
@@ -4236,10 +3981,9 @@ export class Call extends pb_1.Message {
     toObject() {
         const data: {
             callKey?: Uint8Array;
-        } = {};
-        if (this.callKey != null) {
-            data.callKey = this.callKey;
-        }
+        } = {
+            callKey: pb_1.Message.getField(this, 1) != null ? this.callKey : undefined
+        };
         return data;
     }
     serialize(): Uint8Array;
@@ -4289,13 +4033,13 @@ export class Chat extends pb_1.Message {
         }
     }
     get displayName() {
-        return pb_1.Message.getField(this, 1) as string;
+        return pb_1.Message.getFieldWithDefault(this, 1, "") as string;
     }
     set displayName(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
     get id() {
-        return pb_1.Message.getField(this, 2) as string;
+        return pb_1.Message.getFieldWithDefault(this, 2, "") as string;
     }
     set id(value: string) {
         pb_1.Message.setField(this, 2, value);
@@ -4317,13 +4061,10 @@ export class Chat extends pb_1.Message {
         const data: {
             displayName?: string;
             id?: string;
-        } = {};
-        if (this.displayName != null) {
-            data.displayName = this.displayName;
-        }
-        if (this.id != null) {
-            data.id = this.id;
-        }
+        } = {
+            displayName: pb_1.Message.getField(this, 1) != null ? this.displayName : undefined,
+            id: pb_1.Message.getField(this, 2) != null ? this.id : undefined
+        };
         return data;
     }
     serialize(): Uint8Array;
@@ -4396,19 +4137,19 @@ export class ProtocolMessage extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 1, value);
     }
     get type() {
-        return pb_1.Message.getField(this, 2) as ProtocolMessage.PROTOCOL_MESSAGE_TYPE;
+        return pb_1.Message.getFieldWithDefault(this, 2, ProtocolMessage.PROTOCOL_MESSAGE_TYPE.REVOKE) as ProtocolMessage.PROTOCOL_MESSAGE_TYPE;
     }
     set type(value: ProtocolMessage.PROTOCOL_MESSAGE_TYPE) {
         pb_1.Message.setField(this, 2, value);
     }
     get ephemeralExpiration() {
-        return pb_1.Message.getField(this, 4) as number;
+        return pb_1.Message.getFieldWithDefault(this, 4, 0) as number;
     }
     set ephemeralExpiration(value: number) {
         pb_1.Message.setField(this, 4, value);
     }
     get ephemeralSettingTimestamp() {
-        return pb_1.Message.getField(this, 5) as number;
+        return pb_1.Message.getFieldWithDefault(this, 5, 0) as number;
     }
     set ephemeralSettingTimestamp(value: number) {
         pb_1.Message.setField(this, 5, value);
@@ -4451,22 +4192,13 @@ export class ProtocolMessage extends pb_1.Message {
             ephemeralExpiration?: number;
             ephemeralSettingTimestamp?: number;
             historySyncNotification?: ReturnType<typeof HistorySyncNotification.prototype.toObject>;
-        } = {};
-        if (this.key != null) {
-            data.key = this.key.toObject();
-        }
-        if (this.type != null) {
-            data.type = this.type;
-        }
-        if (this.ephemeralExpiration != null) {
-            data.ephemeralExpiration = this.ephemeralExpiration;
-        }
-        if (this.ephemeralSettingTimestamp != null) {
-            data.ephemeralSettingTimestamp = this.ephemeralSettingTimestamp;
-        }
-        if (this.historySyncNotification != null) {
-            data.historySyncNotification = this.historySyncNotification.toObject();
-        }
+        } = {
+            key: pb_1.Message.getField(this, 1) != null ? this.key != null ? this.key.toObject() : undefined : undefined,
+            type: pb_1.Message.getField(this, 2) != null ? this.type : undefined,
+            ephemeralExpiration: pb_1.Message.getField(this, 4) != null ? this.ephemeralExpiration : undefined,
+            ephemeralSettingTimestamp: pb_1.Message.getField(this, 5) != null ? this.ephemeralSettingTimestamp : undefined,
+            historySyncNotification: pb_1.Message.getField(this, 6) != null ? this.historySyncNotification != null ? this.historySyncNotification.toObject() : undefined : undefined
+        };
         return data;
     }
     serialize(): Uint8Array;
@@ -4568,49 +4300,49 @@ export class HistorySyncNotification extends pb_1.Message {
         }
     }
     get fileSha256() {
-        return pb_1.Message.getField(this, 1) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 1, new Uint8Array()) as Uint8Array;
     }
     set fileSha256(value: Uint8Array) {
         pb_1.Message.setField(this, 1, value);
     }
     get fileLength() {
-        return pb_1.Message.getField(this, 2) as number;
+        return pb_1.Message.getFieldWithDefault(this, 2, 0) as number;
     }
     set fileLength(value: number) {
         pb_1.Message.setField(this, 2, value);
     }
     get mediaKey() {
-        return pb_1.Message.getField(this, 3) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 3, new Uint8Array()) as Uint8Array;
     }
     set mediaKey(value: Uint8Array) {
         pb_1.Message.setField(this, 3, value);
     }
     get fileEncSha256() {
-        return pb_1.Message.getField(this, 4) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 4, new Uint8Array()) as Uint8Array;
     }
     set fileEncSha256(value: Uint8Array) {
         pb_1.Message.setField(this, 4, value);
     }
     get directPath() {
-        return pb_1.Message.getField(this, 5) as string;
+        return pb_1.Message.getFieldWithDefault(this, 5, "") as string;
     }
     set directPath(value: string) {
         pb_1.Message.setField(this, 5, value);
     }
     get syncType() {
-        return pb_1.Message.getField(this, 6) as HistorySyncNotification.HISTORY_SYNC_NOTIFICATION_HISTORYSYNCTYPE;
+        return pb_1.Message.getFieldWithDefault(this, 6, HistorySyncNotification.HISTORY_SYNC_NOTIFICATION_HISTORYSYNCTYPE.INITIAL_BOOTSTRAP) as HistorySyncNotification.HISTORY_SYNC_NOTIFICATION_HISTORYSYNCTYPE;
     }
     set syncType(value: HistorySyncNotification.HISTORY_SYNC_NOTIFICATION_HISTORYSYNCTYPE) {
         pb_1.Message.setField(this, 6, value);
     }
     get chunkOrder() {
-        return pb_1.Message.getField(this, 7) as number;
+        return pb_1.Message.getFieldWithDefault(this, 7, 0) as number;
     }
     set chunkOrder(value: number) {
         pb_1.Message.setField(this, 7, value);
     }
     get originalMessageId() {
-        return pb_1.Message.getField(this, 8) as string;
+        return pb_1.Message.getFieldWithDefault(this, 8, "") as string;
     }
     set originalMessageId(value: string) {
         pb_1.Message.setField(this, 8, value);
@@ -4662,31 +4394,16 @@ export class HistorySyncNotification extends pb_1.Message {
             syncType?: HistorySyncNotification.HISTORY_SYNC_NOTIFICATION_HISTORYSYNCTYPE;
             chunkOrder?: number;
             originalMessageId?: string;
-        } = {};
-        if (this.fileSha256 != null) {
-            data.fileSha256 = this.fileSha256;
-        }
-        if (this.fileLength != null) {
-            data.fileLength = this.fileLength;
-        }
-        if (this.mediaKey != null) {
-            data.mediaKey = this.mediaKey;
-        }
-        if (this.fileEncSha256 != null) {
-            data.fileEncSha256 = this.fileEncSha256;
-        }
-        if (this.directPath != null) {
-            data.directPath = this.directPath;
-        }
-        if (this.syncType != null) {
-            data.syncType = this.syncType;
-        }
-        if (this.chunkOrder != null) {
-            data.chunkOrder = this.chunkOrder;
-        }
-        if (this.originalMessageId != null) {
-            data.originalMessageId = this.originalMessageId;
-        }
+        } = {
+            fileSha256: pb_1.Message.getField(this, 1) != null ? this.fileSha256 : undefined,
+            fileLength: pb_1.Message.getField(this, 2) != null ? this.fileLength : undefined,
+            mediaKey: pb_1.Message.getField(this, 3) != null ? this.mediaKey : undefined,
+            fileEncSha256: pb_1.Message.getField(this, 4) != null ? this.fileEncSha256 : undefined,
+            directPath: pb_1.Message.getField(this, 5) != null ? this.directPath : undefined,
+            syncType: pb_1.Message.getField(this, 6) != null ? this.syncType : undefined,
+            chunkOrder: pb_1.Message.getField(this, 7) != null ? this.chunkOrder : undefined,
+            originalMessageId: pb_1.Message.getField(this, 8) != null ? this.originalMessageId : undefined
+        };
         return data;
     }
     serialize(): Uint8Array;
@@ -4782,7 +4499,7 @@ export class ContactsArrayMessage extends pb_1.Message {
         }
     }
     get displayName() {
-        return pb_1.Message.getField(this, 1) as string;
+        return pb_1.Message.getFieldWithDefault(this, 1, "") as string;
     }
     set displayName(value: string) {
         pb_1.Message.setField(this, 1, value);
@@ -4821,14 +4538,10 @@ export class ContactsArrayMessage extends pb_1.Message {
             contacts: ReturnType<typeof ContactMessage.prototype.toObject>[];
             contextInfo?: ReturnType<typeof ContextInfo.prototype.toObject>;
         } = {
-            contacts: this.contacts.map((item: ContactMessage) => item.toObject())
+            displayName: pb_1.Message.getField(this, 1) != null ? this.displayName : undefined,
+            contacts: pb_1.Message.getField(this, 2) != null ? this.contacts.map((item: ContactMessage) => item.toObject()) : undefined,
+            contextInfo: pb_1.Message.getField(this, 17) != null ? this.contextInfo != null ? this.contextInfo.toObject() : undefined : undefined
         };
-        if (this.displayName != null) {
-            data.displayName = this.displayName;
-        }
-        if (this.contextInfo != null) {
-            data.contextInfo = this.contextInfo.toObject();
-        }
         return data;
     }
     serialize(): Uint8Array;
@@ -4888,13 +4601,13 @@ export class HSMCurrency extends pb_1.Message {
         }
     }
     get currencyCode() {
-        return pb_1.Message.getField(this, 1) as string;
+        return pb_1.Message.getFieldWithDefault(this, 1, "") as string;
     }
     set currencyCode(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
     get amount1000() {
-        return pb_1.Message.getField(this, 2) as number;
+        return pb_1.Message.getFieldWithDefault(this, 2, 0) as number;
     }
     set amount1000(value: number) {
         pb_1.Message.setField(this, 2, value);
@@ -4916,13 +4629,10 @@ export class HSMCurrency extends pb_1.Message {
         const data: {
             currencyCode?: string;
             amount1000?: number;
-        } = {};
-        if (this.currencyCode != null) {
-            data.currencyCode = this.currencyCode;
-        }
-        if (this.amount1000 != null) {
-            data.amount1000 = this.amount1000;
-        }
+        } = {
+            currencyCode: pb_1.Message.getField(this, 1) != null ? this.currencyCode : undefined,
+            amount1000: pb_1.Message.getField(this, 2) != null ? this.amount1000 : undefined
+        };
         return data;
     }
     serialize(): Uint8Array;
@@ -4997,43 +4707,43 @@ export class HSMDateTimeComponent extends pb_1.Message {
         }
     }
     get dayOfWeek() {
-        return pb_1.Message.getField(this, 1) as HSMDateTimeComponent.HSM_DATE_TIME_COMPONENT_DAYOFWEEKTYPE;
+        return pb_1.Message.getFieldWithDefault(this, 1, HSMDateTimeComponent.HSM_DATE_TIME_COMPONENT_DAYOFWEEKTYPE.MONDAY) as HSMDateTimeComponent.HSM_DATE_TIME_COMPONENT_DAYOFWEEKTYPE;
     }
     set dayOfWeek(value: HSMDateTimeComponent.HSM_DATE_TIME_COMPONENT_DAYOFWEEKTYPE) {
         pb_1.Message.setField(this, 1, value);
     }
     get year() {
-        return pb_1.Message.getField(this, 2) as number;
+        return pb_1.Message.getFieldWithDefault(this, 2, 0) as number;
     }
     set year(value: number) {
         pb_1.Message.setField(this, 2, value);
     }
     get month() {
-        return pb_1.Message.getField(this, 3) as number;
+        return pb_1.Message.getFieldWithDefault(this, 3, 0) as number;
     }
     set month(value: number) {
         pb_1.Message.setField(this, 3, value);
     }
     get dayOfMonth() {
-        return pb_1.Message.getField(this, 4) as number;
+        return pb_1.Message.getFieldWithDefault(this, 4, 0) as number;
     }
     set dayOfMonth(value: number) {
         pb_1.Message.setField(this, 4, value);
     }
     get hour() {
-        return pb_1.Message.getField(this, 5) as number;
+        return pb_1.Message.getFieldWithDefault(this, 5, 0) as number;
     }
     set hour(value: number) {
         pb_1.Message.setField(this, 5, value);
     }
     get minute() {
-        return pb_1.Message.getField(this, 6) as number;
+        return pb_1.Message.getFieldWithDefault(this, 6, 0) as number;
     }
     set minute(value: number) {
         pb_1.Message.setField(this, 6, value);
     }
     get calendar() {
-        return pb_1.Message.getField(this, 7) as HSMDateTimeComponent.HSM_DATE_TIME_COMPONENT_CALENDARTYPE;
+        return pb_1.Message.getFieldWithDefault(this, 7, HSMDateTimeComponent.HSM_DATE_TIME_COMPONENT_CALENDARTYPE.GREGORIAN) as HSMDateTimeComponent.HSM_DATE_TIME_COMPONENT_CALENDARTYPE;
     }
     set calendar(value: HSMDateTimeComponent.HSM_DATE_TIME_COMPONENT_CALENDARTYPE) {
         pb_1.Message.setField(this, 7, value);
@@ -5080,28 +4790,15 @@ export class HSMDateTimeComponent extends pb_1.Message {
             hour?: number;
             minute?: number;
             calendar?: HSMDateTimeComponent.HSM_DATE_TIME_COMPONENT_CALENDARTYPE;
-        } = {};
-        if (this.dayOfWeek != null) {
-            data.dayOfWeek = this.dayOfWeek;
-        }
-        if (this.year != null) {
-            data.year = this.year;
-        }
-        if (this.month != null) {
-            data.month = this.month;
-        }
-        if (this.dayOfMonth != null) {
-            data.dayOfMonth = this.dayOfMonth;
-        }
-        if (this.hour != null) {
-            data.hour = this.hour;
-        }
-        if (this.minute != null) {
-            data.minute = this.minute;
-        }
-        if (this.calendar != null) {
-            data.calendar = this.calendar;
-        }
+        } = {
+            dayOfWeek: pb_1.Message.getField(this, 1) != null ? this.dayOfWeek : undefined,
+            year: pb_1.Message.getField(this, 2) != null ? this.year : undefined,
+            month: pb_1.Message.getField(this, 3) != null ? this.month : undefined,
+            dayOfMonth: pb_1.Message.getField(this, 4) != null ? this.dayOfMonth : undefined,
+            hour: pb_1.Message.getField(this, 5) != null ? this.hour : undefined,
+            minute: pb_1.Message.getField(this, 6) != null ? this.minute : undefined,
+            calendar: pb_1.Message.getField(this, 7) != null ? this.calendar : undefined
+        };
         return data;
     }
     serialize(): Uint8Array;
@@ -5192,7 +4889,7 @@ export class HSMDateTimeUnixEpoch extends pb_1.Message {
         }
     }
     get timestamp() {
-        return pb_1.Message.getField(this, 1) as number;
+        return pb_1.Message.getFieldWithDefault(this, 1, 0) as number;
     }
     set timestamp(value: number) {
         pb_1.Message.setField(this, 1, value);
@@ -5209,10 +4906,9 @@ export class HSMDateTimeUnixEpoch extends pb_1.Message {
     toObject() {
         const data: {
             timestamp?: number;
-        } = {};
-        if (this.timestamp != null) {
-            data.timestamp = this.timestamp;
-        }
+        } = {
+            timestamp: pb_1.Message.getField(this, 1) != null ? this.timestamp : undefined
+        };
         return data;
     }
     serialize(): Uint8Array;
@@ -5303,13 +4999,10 @@ export class HSMDateTime extends pb_1.Message {
         const data: {
             component?: ReturnType<typeof HSMDateTimeComponent.prototype.toObject>;
             unixEpoch?: ReturnType<typeof HSMDateTimeUnixEpoch.prototype.toObject>;
-        } = {};
-        if (this.component != null) {
-            data.component = this.component.toObject();
-        }
-        if (this.unixEpoch != null) {
-            data.unixEpoch = this.unixEpoch.toObject();
-        }
+        } = {
+            component: pb_1.Message.getField(this, 1) != null ? this.component != null ? this.component.toObject() : undefined : undefined,
+            unixEpoch: pb_1.Message.getField(this, 2) != null ? this.unixEpoch != null ? this.unixEpoch.toObject() : undefined : undefined
+        };
         return data;
     }
     serialize(): Uint8Array;
@@ -5372,7 +5065,7 @@ export class HSMLocalizableParameter extends pb_1.Message {
         }
     }
     get default() {
-        return pb_1.Message.getField(this, 1) as string;
+        return pb_1.Message.getFieldWithDefault(this, 1, "") as string;
     }
     set default(value: string) {
         pb_1.Message.setField(this, 1, value);
@@ -5421,16 +5114,11 @@ export class HSMLocalizableParameter extends pb_1.Message {
             default?: string;
             currency?: ReturnType<typeof HSMCurrency.prototype.toObject>;
             dateTime?: ReturnType<typeof HSMDateTime.prototype.toObject>;
-        } = {};
-        if (this.default != null) {
-            data.default = this.default;
-        }
-        if (this.currency != null) {
-            data.currency = this.currency.toObject();
-        }
-        if (this.dateTime != null) {
-            data.dateTime = this.dateTime.toObject();
-        }
+        } = {
+            default: pb_1.Message.getField(this, 1) != null ? this.default : undefined,
+            currency: pb_1.Message.getField(this, 2) != null ? this.currency != null ? this.currency.toObject() : undefined : undefined,
+            dateTime: pb_1.Message.getField(this, 3) != null ? this.dateTime != null ? this.dateTime.toObject() : undefined : undefined
+        };
         return data;
     }
     serialize(): Uint8Array;
@@ -5514,31 +5202,31 @@ export class HighlyStructuredMessage extends pb_1.Message {
         }
     }
     get namespace() {
-        return pb_1.Message.getField(this, 1) as string;
+        return pb_1.Message.getFieldWithDefault(this, 1, "") as string;
     }
     set namespace(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
     get elementName() {
-        return pb_1.Message.getField(this, 2) as string;
+        return pb_1.Message.getFieldWithDefault(this, 2, "") as string;
     }
     set elementName(value: string) {
         pb_1.Message.setField(this, 2, value);
     }
     get params() {
-        return pb_1.Message.getField(this, 3) as string[];
+        return pb_1.Message.getFieldWithDefault(this, 3, []) as string[];
     }
     set params(value: string[]) {
         pb_1.Message.setField(this, 3, value);
     }
     get fallbackLg() {
-        return pb_1.Message.getField(this, 4) as string;
+        return pb_1.Message.getFieldWithDefault(this, 4, "") as string;
     }
     set fallbackLg(value: string) {
         pb_1.Message.setField(this, 4, value);
     }
     get fallbackLc() {
-        return pb_1.Message.getField(this, 5) as string;
+        return pb_1.Message.getFieldWithDefault(this, 5, "") as string;
     }
     set fallbackLc(value: string) {
         pb_1.Message.setField(this, 5, value);
@@ -5550,13 +5238,13 @@ export class HighlyStructuredMessage extends pb_1.Message {
         pb_1.Message.setRepeatedWrapperField(this, 6, value);
     }
     get deterministicLg() {
-        return pb_1.Message.getField(this, 7) as string;
+        return pb_1.Message.getFieldWithDefault(this, 7, "") as string;
     }
     set deterministicLg(value: string) {
         pb_1.Message.setField(this, 7, value);
     }
     get deterministicLc() {
-        return pb_1.Message.getField(this, 8) as string;
+        return pb_1.Message.getFieldWithDefault(this, 8, "") as string;
     }
     set deterministicLc(value: string) {
         pb_1.Message.setField(this, 8, value);
@@ -5617,30 +5305,16 @@ export class HighlyStructuredMessage extends pb_1.Message {
             deterministicLc?: string;
             hydratedHsm?: ReturnType<typeof TemplateMessage.prototype.toObject>;
         } = {
-            params: this.params,
-            localizableParams: this.localizableParams.map((item: HSMLocalizableParameter) => item.toObject())
+            namespace: pb_1.Message.getField(this, 1) != null ? this.namespace : undefined,
+            elementName: pb_1.Message.getField(this, 2) != null ? this.elementName : undefined,
+            params: pb_1.Message.getField(this, 3) != null ? this.params : undefined,
+            fallbackLg: pb_1.Message.getField(this, 4) != null ? this.fallbackLg : undefined,
+            fallbackLc: pb_1.Message.getField(this, 5) != null ? this.fallbackLc : undefined,
+            localizableParams: pb_1.Message.getField(this, 6) != null ? this.localizableParams.map((item: HSMLocalizableParameter) => item.toObject()) : undefined,
+            deterministicLg: pb_1.Message.getField(this, 7) != null ? this.deterministicLg : undefined,
+            deterministicLc: pb_1.Message.getField(this, 8) != null ? this.deterministicLc : undefined,
+            hydratedHsm: pb_1.Message.getField(this, 9) != null ? this.hydratedHsm != null ? this.hydratedHsm.toObject() : undefined : undefined
         };
-        if (this.namespace != null) {
-            data.namespace = this.namespace;
-        }
-        if (this.elementName != null) {
-            data.elementName = this.elementName;
-        }
-        if (this.fallbackLg != null) {
-            data.fallbackLg = this.fallbackLg;
-        }
-        if (this.fallbackLc != null) {
-            data.fallbackLc = this.fallbackLc;
-        }
-        if (this.deterministicLg != null) {
-            data.deterministicLg = this.deterministicLg;
-        }
-        if (this.deterministicLc != null) {
-            data.deterministicLc = this.deterministicLc;
-        }
-        if (this.hydratedHsm != null) {
-            data.hydratedHsm = this.hydratedHsm.toObject();
-        }
         return data;
     }
     serialize(): Uint8Array;
@@ -5758,13 +5432,10 @@ export class SendPaymentMessage extends pb_1.Message {
         const data: {
             noteMessage?: ReturnType<typeof Message.prototype.toObject>;
             requestMessageKey?: ReturnType<typeof MessageKey.prototype.toObject>;
-        } = {};
-        if (this.noteMessage != null) {
-            data.noteMessage = this.noteMessage.toObject();
-        }
-        if (this.requestMessageKey != null) {
-            data.requestMessageKey = this.requestMessageKey.toObject();
-        }
+        } = {
+            noteMessage: pb_1.Message.getField(this, 2) != null ? this.noteMessage != null ? this.noteMessage.toObject() : undefined : undefined,
+            requestMessageKey: pb_1.Message.getField(this, 3) != null ? this.requestMessageKey != null ? this.requestMessageKey.toObject() : undefined : undefined
+        };
         return data;
     }
     serialize(): Uint8Array;
@@ -5837,25 +5508,25 @@ export class RequestPaymentMessage extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 4, value);
     }
     get currencyCodeIso4217() {
-        return pb_1.Message.getField(this, 1) as string;
+        return pb_1.Message.getFieldWithDefault(this, 1, "") as string;
     }
     set currencyCodeIso4217(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
     get amount1000() {
-        return pb_1.Message.getField(this, 2) as number;
+        return pb_1.Message.getFieldWithDefault(this, 2, 0) as number;
     }
     set amount1000(value: number) {
         pb_1.Message.setField(this, 2, value);
     }
     get requestFrom() {
-        return pb_1.Message.getField(this, 3) as string;
+        return pb_1.Message.getFieldWithDefault(this, 3, "") as string;
     }
     set requestFrom(value: string) {
         pb_1.Message.setField(this, 3, value);
     }
     get expiryTimestamp() {
-        return pb_1.Message.getField(this, 5) as number;
+        return pb_1.Message.getFieldWithDefault(this, 5, 0) as number;
     }
     set expiryTimestamp(value: number) {
         pb_1.Message.setField(this, 5, value);
@@ -5892,22 +5563,13 @@ export class RequestPaymentMessage extends pb_1.Message {
             amount1000?: number;
             requestFrom?: string;
             expiryTimestamp?: number;
-        } = {};
-        if (this.noteMessage != null) {
-            data.noteMessage = this.noteMessage.toObject();
-        }
-        if (this.currencyCodeIso4217 != null) {
-            data.currencyCodeIso4217 = this.currencyCodeIso4217;
-        }
-        if (this.amount1000 != null) {
-            data.amount1000 = this.amount1000;
-        }
-        if (this.requestFrom != null) {
-            data.requestFrom = this.requestFrom;
-        }
-        if (this.expiryTimestamp != null) {
-            data.expiryTimestamp = this.expiryTimestamp;
-        }
+        } = {
+            noteMessage: pb_1.Message.getField(this, 4) != null ? this.noteMessage != null ? this.noteMessage.toObject() : undefined : undefined,
+            currencyCodeIso4217: pb_1.Message.getField(this, 1) != null ? this.currencyCodeIso4217 : undefined,
+            amount1000: pb_1.Message.getField(this, 2) != null ? this.amount1000 : undefined,
+            requestFrom: pb_1.Message.getField(this, 3) != null ? this.requestFrom : undefined,
+            expiryTimestamp: pb_1.Message.getField(this, 5) != null ? this.expiryTimestamp : undefined
+        };
         return data;
     }
     serialize(): Uint8Array;
@@ -5990,10 +5652,9 @@ export class DeclinePaymentRequestMessage extends pb_1.Message {
     toObject() {
         const data: {
             key?: ReturnType<typeof MessageKey.prototype.toObject>;
-        } = {};
-        if (this.key != null) {
-            data.key = this.key.toObject();
-        }
+        } = {
+            key: pb_1.Message.getField(this, 1) != null ? this.key != null ? this.key.toObject() : undefined : undefined
+        };
         return data;
     }
     serialize(): Uint8Array;
@@ -6056,10 +5717,9 @@ export class CancelPaymentRequestMessage extends pb_1.Message {
     toObject() {
         const data: {
             key?: ReturnType<typeof MessageKey.prototype.toObject>;
-        } = {};
-        if (this.key != null) {
-            data.key = this.key.toObject();
-        }
+        } = {
+            key: pb_1.Message.getField(this, 1) != null ? this.key != null ? this.key.toObject() : undefined : undefined
+        };
         return data;
     }
     serialize(): Uint8Array;
@@ -6141,55 +5801,55 @@ export class LiveLocationMessage extends pb_1.Message {
         }
     }
     get degreesLatitude() {
-        return pb_1.Message.getField(this, 1) as number;
+        return pb_1.Message.getFieldWithDefault(this, 1, 0) as number;
     }
     set degreesLatitude(value: number) {
         pb_1.Message.setField(this, 1, value);
     }
     get degreesLongitude() {
-        return pb_1.Message.getField(this, 2) as number;
+        return pb_1.Message.getFieldWithDefault(this, 2, 0) as number;
     }
     set degreesLongitude(value: number) {
         pb_1.Message.setField(this, 2, value);
     }
     get accuracyInMeters() {
-        return pb_1.Message.getField(this, 3) as number;
+        return pb_1.Message.getFieldWithDefault(this, 3, 0) as number;
     }
     set accuracyInMeters(value: number) {
         pb_1.Message.setField(this, 3, value);
     }
     get speedInMps() {
-        return pb_1.Message.getField(this, 4) as number;
+        return pb_1.Message.getFieldWithDefault(this, 4, 0) as number;
     }
     set speedInMps(value: number) {
         pb_1.Message.setField(this, 4, value);
     }
     get degreesClockwiseFromMagneticNorth() {
-        return pb_1.Message.getField(this, 5) as number;
+        return pb_1.Message.getFieldWithDefault(this, 5, 0) as number;
     }
     set degreesClockwiseFromMagneticNorth(value: number) {
         pb_1.Message.setField(this, 5, value);
     }
     get caption() {
-        return pb_1.Message.getField(this, 6) as string;
+        return pb_1.Message.getFieldWithDefault(this, 6, "") as string;
     }
     set caption(value: string) {
         pb_1.Message.setField(this, 6, value);
     }
     get sequenceNumber() {
-        return pb_1.Message.getField(this, 7) as number;
+        return pb_1.Message.getFieldWithDefault(this, 7, 0) as number;
     }
     set sequenceNumber(value: number) {
         pb_1.Message.setField(this, 7, value);
     }
     get timeOffset() {
-        return pb_1.Message.getField(this, 8) as number;
+        return pb_1.Message.getFieldWithDefault(this, 8, 0) as number;
     }
     set timeOffset(value: number) {
         pb_1.Message.setField(this, 8, value);
     }
     get jpegThumbnail() {
-        return pb_1.Message.getField(this, 16) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 16, new Uint8Array()) as Uint8Array;
     }
     set jpegThumbnail(value: Uint8Array) {
         pb_1.Message.setField(this, 16, value);
@@ -6257,37 +5917,18 @@ export class LiveLocationMessage extends pb_1.Message {
             timeOffset?: number;
             jpegThumbnail?: Uint8Array;
             contextInfo?: ReturnType<typeof ContextInfo.prototype.toObject>;
-        } = {};
-        if (this.degreesLatitude != null) {
-            data.degreesLatitude = this.degreesLatitude;
-        }
-        if (this.degreesLongitude != null) {
-            data.degreesLongitude = this.degreesLongitude;
-        }
-        if (this.accuracyInMeters != null) {
-            data.accuracyInMeters = this.accuracyInMeters;
-        }
-        if (this.speedInMps != null) {
-            data.speedInMps = this.speedInMps;
-        }
-        if (this.degreesClockwiseFromMagneticNorth != null) {
-            data.degreesClockwiseFromMagneticNorth = this.degreesClockwiseFromMagneticNorth;
-        }
-        if (this.caption != null) {
-            data.caption = this.caption;
-        }
-        if (this.sequenceNumber != null) {
-            data.sequenceNumber = this.sequenceNumber;
-        }
-        if (this.timeOffset != null) {
-            data.timeOffset = this.timeOffset;
-        }
-        if (this.jpegThumbnail != null) {
-            data.jpegThumbnail = this.jpegThumbnail;
-        }
-        if (this.contextInfo != null) {
-            data.contextInfo = this.contextInfo.toObject();
-        }
+        } = {
+            degreesLatitude: pb_1.Message.getField(this, 1) != null ? this.degreesLatitude : undefined,
+            degreesLongitude: pb_1.Message.getField(this, 2) != null ? this.degreesLongitude : undefined,
+            accuracyInMeters: pb_1.Message.getField(this, 3) != null ? this.accuracyInMeters : undefined,
+            speedInMps: pb_1.Message.getField(this, 4) != null ? this.speedInMps : undefined,
+            degreesClockwiseFromMagneticNorth: pb_1.Message.getField(this, 5) != null ? this.degreesClockwiseFromMagneticNorth : undefined,
+            caption: pb_1.Message.getField(this, 6) != null ? this.caption : undefined,
+            sequenceNumber: pb_1.Message.getField(this, 7) != null ? this.sequenceNumber : undefined,
+            timeOffset: pb_1.Message.getField(this, 8) != null ? this.timeOffset : undefined,
+            jpegThumbnail: pb_1.Message.getField(this, 16) != null ? this.jpegThumbnail : undefined,
+            contextInfo: pb_1.Message.getField(this, 17) != null ? this.contextInfo != null ? this.contextInfo.toObject() : undefined : undefined
+        };
         return data;
     }
     serialize(): Uint8Array;
@@ -6434,85 +6075,85 @@ export class StickerMessage extends pb_1.Message {
         }
     }
     get url() {
-        return pb_1.Message.getField(this, 1) as string;
+        return pb_1.Message.getFieldWithDefault(this, 1, "") as string;
     }
     set url(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
     get fileSha256() {
-        return pb_1.Message.getField(this, 2) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 2, new Uint8Array()) as Uint8Array;
     }
     set fileSha256(value: Uint8Array) {
         pb_1.Message.setField(this, 2, value);
     }
     get fileEncSha256() {
-        return pb_1.Message.getField(this, 3) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 3, new Uint8Array()) as Uint8Array;
     }
     set fileEncSha256(value: Uint8Array) {
         pb_1.Message.setField(this, 3, value);
     }
     get mediaKey() {
-        return pb_1.Message.getField(this, 4) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 4, new Uint8Array()) as Uint8Array;
     }
     set mediaKey(value: Uint8Array) {
         pb_1.Message.setField(this, 4, value);
     }
     get mimetype() {
-        return pb_1.Message.getField(this, 5) as string;
+        return pb_1.Message.getFieldWithDefault(this, 5, "") as string;
     }
     set mimetype(value: string) {
         pb_1.Message.setField(this, 5, value);
     }
     get height() {
-        return pb_1.Message.getField(this, 6) as number;
+        return pb_1.Message.getFieldWithDefault(this, 6, 0) as number;
     }
     set height(value: number) {
         pb_1.Message.setField(this, 6, value);
     }
     get width() {
-        return pb_1.Message.getField(this, 7) as number;
+        return pb_1.Message.getFieldWithDefault(this, 7, 0) as number;
     }
     set width(value: number) {
         pb_1.Message.setField(this, 7, value);
     }
     get directPath() {
-        return pb_1.Message.getField(this, 8) as string;
+        return pb_1.Message.getFieldWithDefault(this, 8, "") as string;
     }
     set directPath(value: string) {
         pb_1.Message.setField(this, 8, value);
     }
     get fileLength() {
-        return pb_1.Message.getField(this, 9) as number;
+        return pb_1.Message.getFieldWithDefault(this, 9, 0) as number;
     }
     set fileLength(value: number) {
         pb_1.Message.setField(this, 9, value);
     }
     get mediaKeyTimestamp() {
-        return pb_1.Message.getField(this, 10) as number;
+        return pb_1.Message.getFieldWithDefault(this, 10, 0) as number;
     }
     set mediaKeyTimestamp(value: number) {
         pb_1.Message.setField(this, 10, value);
     }
     get firstFrameLength() {
-        return pb_1.Message.getField(this, 11) as number;
+        return pb_1.Message.getFieldWithDefault(this, 11, 0) as number;
     }
     set firstFrameLength(value: number) {
         pb_1.Message.setField(this, 11, value);
     }
     get firstFrameSidecar() {
-        return pb_1.Message.getField(this, 12) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 12, new Uint8Array()) as Uint8Array;
     }
     set firstFrameSidecar(value: Uint8Array) {
         pb_1.Message.setField(this, 12, value);
     }
     get isAnimated() {
-        return pb_1.Message.getField(this, 13) as boolean;
+        return pb_1.Message.getFieldWithDefault(this, 13, false) as boolean;
     }
     set isAnimated(value: boolean) {
         pb_1.Message.setField(this, 13, value);
     }
     get pngThumbnail() {
-        return pb_1.Message.getField(this, 16) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 16, new Uint8Array()) as Uint8Array;
     }
     set pngThumbnail(value: Uint8Array) {
         pb_1.Message.setField(this, 16, value);
@@ -6605,52 +6246,23 @@ export class StickerMessage extends pb_1.Message {
             isAnimated?: boolean;
             pngThumbnail?: Uint8Array;
             contextInfo?: ReturnType<typeof ContextInfo.prototype.toObject>;
-        } = {};
-        if (this.url != null) {
-            data.url = this.url;
-        }
-        if (this.fileSha256 != null) {
-            data.fileSha256 = this.fileSha256;
-        }
-        if (this.fileEncSha256 != null) {
-            data.fileEncSha256 = this.fileEncSha256;
-        }
-        if (this.mediaKey != null) {
-            data.mediaKey = this.mediaKey;
-        }
-        if (this.mimetype != null) {
-            data.mimetype = this.mimetype;
-        }
-        if (this.height != null) {
-            data.height = this.height;
-        }
-        if (this.width != null) {
-            data.width = this.width;
-        }
-        if (this.directPath != null) {
-            data.directPath = this.directPath;
-        }
-        if (this.fileLength != null) {
-            data.fileLength = this.fileLength;
-        }
-        if (this.mediaKeyTimestamp != null) {
-            data.mediaKeyTimestamp = this.mediaKeyTimestamp;
-        }
-        if (this.firstFrameLength != null) {
-            data.firstFrameLength = this.firstFrameLength;
-        }
-        if (this.firstFrameSidecar != null) {
-            data.firstFrameSidecar = this.firstFrameSidecar;
-        }
-        if (this.isAnimated != null) {
-            data.isAnimated = this.isAnimated;
-        }
-        if (this.pngThumbnail != null) {
-            data.pngThumbnail = this.pngThumbnail;
-        }
-        if (this.contextInfo != null) {
-            data.contextInfo = this.contextInfo.toObject();
-        }
+        } = {
+            url: pb_1.Message.getField(this, 1) != null ? this.url : undefined,
+            fileSha256: pb_1.Message.getField(this, 2) != null ? this.fileSha256 : undefined,
+            fileEncSha256: pb_1.Message.getField(this, 3) != null ? this.fileEncSha256 : undefined,
+            mediaKey: pb_1.Message.getField(this, 4) != null ? this.mediaKey : undefined,
+            mimetype: pb_1.Message.getField(this, 5) != null ? this.mimetype : undefined,
+            height: pb_1.Message.getField(this, 6) != null ? this.height : undefined,
+            width: pb_1.Message.getField(this, 7) != null ? this.width : undefined,
+            directPath: pb_1.Message.getField(this, 8) != null ? this.directPath : undefined,
+            fileLength: pb_1.Message.getField(this, 9) != null ? this.fileLength : undefined,
+            mediaKeyTimestamp: pb_1.Message.getField(this, 10) != null ? this.mediaKeyTimestamp : undefined,
+            firstFrameLength: pb_1.Message.getField(this, 11) != null ? this.firstFrameLength : undefined,
+            firstFrameSidecar: pb_1.Message.getField(this, 12) != null ? this.firstFrameSidecar : undefined,
+            isAnimated: pb_1.Message.getField(this, 13) != null ? this.isAnimated : undefined,
+            pngThumbnail: pb_1.Message.getField(this, 16) != null ? this.pngThumbnail : undefined,
+            contextInfo: pb_1.Message.getField(this, 17) != null ? this.contextInfo != null ? this.contextInfo.toObject() : undefined : undefined
+        };
         return data;
     }
     serialize(): Uint8Array;
@@ -6924,29 +6536,15 @@ export class FourRowTemplate extends pb_1.Message {
             videoMessage?: ReturnType<typeof VideoMessage.prototype.toObject>;
             locationMessage?: ReturnType<typeof LocationMessage.prototype.toObject>;
         } = {
-            buttons: this.buttons.map((item: TemplateButton) => item.toObject())
+            content: pb_1.Message.getField(this, 6) != null ? this.content != null ? this.content.toObject() : undefined : undefined,
+            footer: pb_1.Message.getField(this, 7) != null ? this.footer != null ? this.footer.toObject() : undefined : undefined,
+            buttons: pb_1.Message.getField(this, 8) != null ? this.buttons.map((item: TemplateButton) => item.toObject()) : undefined,
+            documentMessage: pb_1.Message.getField(this, 1) != null ? this.documentMessage != null ? this.documentMessage.toObject() : undefined : undefined,
+            highlyStructuredMessage: pb_1.Message.getField(this, 2) != null ? this.highlyStructuredMessage != null ? this.highlyStructuredMessage.toObject() : undefined : undefined,
+            imageMessage: pb_1.Message.getField(this, 3) != null ? this.imageMessage != null ? this.imageMessage.toObject() : undefined : undefined,
+            videoMessage: pb_1.Message.getField(this, 4) != null ? this.videoMessage != null ? this.videoMessage.toObject() : undefined : undefined,
+            locationMessage: pb_1.Message.getField(this, 5) != null ? this.locationMessage != null ? this.locationMessage.toObject() : undefined : undefined
         };
-        if (this.content != null) {
-            data.content = this.content.toObject();
-        }
-        if (this.footer != null) {
-            data.footer = this.footer.toObject();
-        }
-        if (this.documentMessage != null) {
-            data.documentMessage = this.documentMessage.toObject();
-        }
-        if (this.highlyStructuredMessage != null) {
-            data.highlyStructuredMessage = this.highlyStructuredMessage.toObject();
-        }
-        if (this.imageMessage != null) {
-            data.imageMessage = this.imageMessage.toObject();
-        }
-        if (this.videoMessage != null) {
-            data.videoMessage = this.videoMessage.toObject();
-        }
-        if (this.locationMessage != null) {
-            data.locationMessage = this.locationMessage.toObject();
-        }
         return data;
     }
     serialize(): Uint8Array;
@@ -7082,13 +6680,13 @@ export class HydratedFourRowTemplate extends pb_1.Message {
         }
     }
     get hydratedContentText() {
-        return pb_1.Message.getField(this, 6) as string;
+        return pb_1.Message.getFieldWithDefault(this, 6, "") as string;
     }
     set hydratedContentText(value: string) {
         pb_1.Message.setField(this, 6, value);
     }
     get hydratedFooterText() {
-        return pb_1.Message.getField(this, 7) as string;
+        return pb_1.Message.getFieldWithDefault(this, 7, "") as string;
     }
     set hydratedFooterText(value: string) {
         pb_1.Message.setField(this, 7, value);
@@ -7100,7 +6698,7 @@ export class HydratedFourRowTemplate extends pb_1.Message {
         pb_1.Message.setRepeatedWrapperField(this, 8, value);
     }
     get templateId() {
-        return pb_1.Message.getField(this, 9) as string;
+        return pb_1.Message.getFieldWithDefault(this, 9, "") as string;
     }
     set templateId(value: string) {
         pb_1.Message.setField(this, 9, value);
@@ -7112,7 +6710,7 @@ export class HydratedFourRowTemplate extends pb_1.Message {
         pb_1.Message.setOneofWrapperField(this, 1, [1, 2, 3, 4, 5], value);
     }
     get hydratedTitleText() {
-        return pb_1.Message.getField(this, 2) as string;
+        return pb_1.Message.getFieldWithDefault(this, 2, "") as string;
     }
     set hydratedTitleText(value: string) {
         pb_1.Message.setOneofField(this, 2, [1, 2, 3, 4, 5], value);
@@ -7200,32 +6798,16 @@ export class HydratedFourRowTemplate extends pb_1.Message {
             videoMessage?: ReturnType<typeof VideoMessage.prototype.toObject>;
             locationMessage?: ReturnType<typeof LocationMessage.prototype.toObject>;
         } = {
-            hydratedButtons: this.hydratedButtons.map((item: HydratedTemplateButton) => item.toObject())
+            hydratedContentText: pb_1.Message.getField(this, 6) != null ? this.hydratedContentText : undefined,
+            hydratedFooterText: pb_1.Message.getField(this, 7) != null ? this.hydratedFooterText : undefined,
+            hydratedButtons: pb_1.Message.getField(this, 8) != null ? this.hydratedButtons.map((item: HydratedTemplateButton) => item.toObject()) : undefined,
+            templateId: pb_1.Message.getField(this, 9) != null ? this.templateId : undefined,
+            documentMessage: pb_1.Message.getField(this, 1) != null ? this.documentMessage != null ? this.documentMessage.toObject() : undefined : undefined,
+            hydratedTitleText: pb_1.Message.getField(this, 2) != null ? this.hydratedTitleText : undefined,
+            imageMessage: pb_1.Message.getField(this, 3) != null ? this.imageMessage != null ? this.imageMessage.toObject() : undefined : undefined,
+            videoMessage: pb_1.Message.getField(this, 4) != null ? this.videoMessage != null ? this.videoMessage.toObject() : undefined : undefined,
+            locationMessage: pb_1.Message.getField(this, 5) != null ? this.locationMessage != null ? this.locationMessage.toObject() : undefined : undefined
         };
-        if (this.hydratedContentText != null) {
-            data.hydratedContentText = this.hydratedContentText;
-        }
-        if (this.hydratedFooterText != null) {
-            data.hydratedFooterText = this.hydratedFooterText;
-        }
-        if (this.templateId != null) {
-            data.templateId = this.templateId;
-        }
-        if (this.documentMessage != null) {
-            data.documentMessage = this.documentMessage.toObject();
-        }
-        if (this.hydratedTitleText != null) {
-            data.hydratedTitleText = this.hydratedTitleText;
-        }
-        if (this.imageMessage != null) {
-            data.imageMessage = this.imageMessage.toObject();
-        }
-        if (this.videoMessage != null) {
-            data.videoMessage = this.videoMessage.toObject();
-        }
-        if (this.locationMessage != null) {
-            data.locationMessage = this.locationMessage.toObject();
-        }
         return data;
     }
     serialize(): Uint8Array;
@@ -7387,19 +6969,12 @@ export class TemplateMessage extends pb_1.Message {
             hydratedTemplate?: ReturnType<typeof HydratedFourRowTemplate.prototype.toObject>;
             fourRowTemplate?: ReturnType<typeof FourRowTemplate.prototype.toObject>;
             hydratedFourRowTemplate?: ReturnType<typeof HydratedFourRowTemplate.prototype.toObject>;
-        } = {};
-        if (this.contextInfo != null) {
-            data.contextInfo = this.contextInfo.toObject();
-        }
-        if (this.hydratedTemplate != null) {
-            data.hydratedTemplate = this.hydratedTemplate.toObject();
-        }
-        if (this.fourRowTemplate != null) {
-            data.fourRowTemplate = this.fourRowTemplate.toObject();
-        }
-        if (this.hydratedFourRowTemplate != null) {
-            data.hydratedFourRowTemplate = this.hydratedFourRowTemplate.toObject();
-        }
+        } = {
+            contextInfo: pb_1.Message.getField(this, 3) != null ? this.contextInfo != null ? this.contextInfo.toObject() : undefined : undefined,
+            hydratedTemplate: pb_1.Message.getField(this, 4) != null ? this.hydratedTemplate != null ? this.hydratedTemplate.toObject() : undefined : undefined,
+            fourRowTemplate: pb_1.Message.getField(this, 1) != null ? this.fourRowTemplate != null ? this.fourRowTemplate.toObject() : undefined : undefined,
+            hydratedFourRowTemplate: pb_1.Message.getField(this, 2) != null ? this.hydratedFourRowTemplate != null ? this.hydratedFourRowTemplate.toObject() : undefined : undefined
+        };
         return data;
     }
     serialize(): Uint8Array;
@@ -7472,13 +7047,13 @@ export class TemplateButtonReplyMessage extends pb_1.Message {
         }
     }
     get selectedId() {
-        return pb_1.Message.getField(this, 1) as string;
+        return pb_1.Message.getFieldWithDefault(this, 1, "") as string;
     }
     set selectedId(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
     get selectedDisplayText() {
-        return pb_1.Message.getField(this, 2) as string;
+        return pb_1.Message.getFieldWithDefault(this, 2, "") as string;
     }
     set selectedDisplayText(value: string) {
         pb_1.Message.setField(this, 2, value);
@@ -7490,7 +7065,7 @@ export class TemplateButtonReplyMessage extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 3, value);
     }
     get selectedIndex() {
-        return pb_1.Message.getField(this, 4) as number;
+        return pb_1.Message.getFieldWithDefault(this, 4, 0) as number;
     }
     set selectedIndex(value: number) {
         pb_1.Message.setField(this, 4, value);
@@ -7522,19 +7097,12 @@ export class TemplateButtonReplyMessage extends pb_1.Message {
             selectedDisplayText?: string;
             contextInfo?: ReturnType<typeof ContextInfo.prototype.toObject>;
             selectedIndex?: number;
-        } = {};
-        if (this.selectedId != null) {
-            data.selectedId = this.selectedId;
-        }
-        if (this.selectedDisplayText != null) {
-            data.selectedDisplayText = this.selectedDisplayText;
-        }
-        if (this.contextInfo != null) {
-            data.contextInfo = this.contextInfo.toObject();
-        }
-        if (this.selectedIndex != null) {
-            data.selectedIndex = this.selectedIndex;
-        }
+        } = {
+            selectedId: pb_1.Message.getField(this, 1) != null ? this.selectedId : undefined,
+            selectedDisplayText: pb_1.Message.getField(this, 2) != null ? this.selectedDisplayText : undefined,
+            contextInfo: pb_1.Message.getField(this, 3) != null ? this.contextInfo != null ? this.contextInfo.toObject() : undefined : undefined,
+            selectedIndex: pb_1.Message.getField(this, 4) != null ? this.selectedIndex : undefined
+        };
         return data;
     }
     serialize(): Uint8Array;
@@ -7609,13 +7177,13 @@ export class CatalogSnapshot extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 1, value);
     }
     get title() {
-        return pb_1.Message.getField(this, 2) as string;
+        return pb_1.Message.getFieldWithDefault(this, 2, "") as string;
     }
     set title(value: string) {
         pb_1.Message.setField(this, 2, value);
     }
     get description() {
-        return pb_1.Message.getField(this, 3) as string;
+        return pb_1.Message.getFieldWithDefault(this, 3, "") as string;
     }
     set description(value: string) {
         pb_1.Message.setField(this, 3, value);
@@ -7642,16 +7210,11 @@ export class CatalogSnapshot extends pb_1.Message {
             catalogImage?: ReturnType<typeof ImageMessage.prototype.toObject>;
             title?: string;
             description?: string;
-        } = {};
-        if (this.catalogImage != null) {
-            data.catalogImage = this.catalogImage.toObject();
-        }
-        if (this.title != null) {
-            data.title = this.title;
-        }
-        if (this.description != null) {
-            data.description = this.description;
-        }
+        } = {
+            catalogImage: pb_1.Message.getField(this, 1) != null ? this.catalogImage != null ? this.catalogImage.toObject() : undefined : undefined,
+            title: pb_1.Message.getField(this, 2) != null ? this.title : undefined,
+            description: pb_1.Message.getField(this, 3) != null ? this.description : undefined
+        };
         return data;
     }
     serialize(): Uint8Array;
@@ -7749,55 +7312,55 @@ export class ProductSnapshot extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 1, value);
     }
     get productId() {
-        return pb_1.Message.getField(this, 2) as string;
+        return pb_1.Message.getFieldWithDefault(this, 2, "") as string;
     }
     set productId(value: string) {
         pb_1.Message.setField(this, 2, value);
     }
     get title() {
-        return pb_1.Message.getField(this, 3) as string;
+        return pb_1.Message.getFieldWithDefault(this, 3, "") as string;
     }
     set title(value: string) {
         pb_1.Message.setField(this, 3, value);
     }
     get description() {
-        return pb_1.Message.getField(this, 4) as string;
+        return pb_1.Message.getFieldWithDefault(this, 4, "") as string;
     }
     set description(value: string) {
         pb_1.Message.setField(this, 4, value);
     }
     get currencyCode() {
-        return pb_1.Message.getField(this, 5) as string;
+        return pb_1.Message.getFieldWithDefault(this, 5, "") as string;
     }
     set currencyCode(value: string) {
         pb_1.Message.setField(this, 5, value);
     }
     get priceAmount1000() {
-        return pb_1.Message.getField(this, 6) as number;
+        return pb_1.Message.getFieldWithDefault(this, 6, 0) as number;
     }
     set priceAmount1000(value: number) {
         pb_1.Message.setField(this, 6, value);
     }
     get retailerId() {
-        return pb_1.Message.getField(this, 7) as string;
+        return pb_1.Message.getFieldWithDefault(this, 7, "") as string;
     }
     set retailerId(value: string) {
         pb_1.Message.setField(this, 7, value);
     }
     get url() {
-        return pb_1.Message.getField(this, 8) as string;
+        return pb_1.Message.getFieldWithDefault(this, 8, "") as string;
     }
     set url(value: string) {
         pb_1.Message.setField(this, 8, value);
     }
     get productImageCount() {
-        return pb_1.Message.getField(this, 9) as number;
+        return pb_1.Message.getFieldWithDefault(this, 9, 0) as number;
     }
     set productImageCount(value: number) {
         pb_1.Message.setField(this, 9, value);
     }
     get firstImageId() {
-        return pb_1.Message.getField(this, 11) as string;
+        return pb_1.Message.getFieldWithDefault(this, 11, "") as string;
     }
     set firstImageId(value: string) {
         pb_1.Message.setField(this, 11, value);
@@ -7859,37 +7422,18 @@ export class ProductSnapshot extends pb_1.Message {
             url?: string;
             productImageCount?: number;
             firstImageId?: string;
-        } = {};
-        if (this.productImage != null) {
-            data.productImage = this.productImage.toObject();
-        }
-        if (this.productId != null) {
-            data.productId = this.productId;
-        }
-        if (this.title != null) {
-            data.title = this.title;
-        }
-        if (this.description != null) {
-            data.description = this.description;
-        }
-        if (this.currencyCode != null) {
-            data.currencyCode = this.currencyCode;
-        }
-        if (this.priceAmount1000 != null) {
-            data.priceAmount1000 = this.priceAmount1000;
-        }
-        if (this.retailerId != null) {
-            data.retailerId = this.retailerId;
-        }
-        if (this.url != null) {
-            data.url = this.url;
-        }
-        if (this.productImageCount != null) {
-            data.productImageCount = this.productImageCount;
-        }
-        if (this.firstImageId != null) {
-            data.firstImageId = this.firstImageId;
-        }
+        } = {
+            productImage: pb_1.Message.getField(this, 1) != null ? this.productImage != null ? this.productImage.toObject() : undefined : undefined,
+            productId: pb_1.Message.getField(this, 2) != null ? this.productId : undefined,
+            title: pb_1.Message.getField(this, 3) != null ? this.title : undefined,
+            description: pb_1.Message.getField(this, 4) != null ? this.description : undefined,
+            currencyCode: pb_1.Message.getField(this, 5) != null ? this.currencyCode : undefined,
+            priceAmount1000: pb_1.Message.getField(this, 6) != null ? this.priceAmount1000 : undefined,
+            retailerId: pb_1.Message.getField(this, 7) != null ? this.retailerId : undefined,
+            url: pb_1.Message.getField(this, 8) != null ? this.url : undefined,
+            productImageCount: pb_1.Message.getField(this, 9) != null ? this.productImageCount : undefined,
+            firstImageId: pb_1.Message.getField(this, 11) != null ? this.firstImageId : undefined
+        };
         return data;
     }
     serialize(): Uint8Array;
@@ -7998,7 +7542,7 @@ export class ProductMessage extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 1, value);
     }
     get businessOwnerJid() {
-        return pb_1.Message.getField(this, 2) as string;
+        return pb_1.Message.getFieldWithDefault(this, 2, "") as string;
     }
     set businessOwnerJid(value: string) {
         pb_1.Message.setField(this, 2, value);
@@ -8042,19 +7586,12 @@ export class ProductMessage extends pb_1.Message {
             businessOwnerJid?: string;
             catalog?: ReturnType<typeof CatalogSnapshot.prototype.toObject>;
             contextInfo?: ReturnType<typeof ContextInfo.prototype.toObject>;
-        } = {};
-        if (this.product != null) {
-            data.product = this.product.toObject();
-        }
-        if (this.businessOwnerJid != null) {
-            data.businessOwnerJid = this.businessOwnerJid;
-        }
-        if (this.catalog != null) {
-            data.catalog = this.catalog.toObject();
-        }
-        if (this.contextInfo != null) {
-            data.contextInfo = this.contextInfo.toObject();
-        }
+        } = {
+            product: pb_1.Message.getField(this, 1) != null ? this.product != null ? this.product.toObject() : undefined : undefined,
+            businessOwnerJid: pb_1.Message.getField(this, 2) != null ? this.businessOwnerJid : undefined,
+            catalog: pb_1.Message.getField(this, 4) != null ? this.catalog != null ? this.catalog.toObject() : undefined : undefined,
+            contextInfo: pb_1.Message.getField(this, 17) != null ? this.contextInfo != null ? this.contextInfo.toObject() : undefined : undefined
+        };
         return data;
     }
     serialize(): Uint8Array;
@@ -8139,37 +7676,37 @@ export class GroupInviteMessage extends pb_1.Message {
         }
     }
     get groupJid() {
-        return pb_1.Message.getField(this, 1) as string;
+        return pb_1.Message.getFieldWithDefault(this, 1, "") as string;
     }
     set groupJid(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
     get inviteCode() {
-        return pb_1.Message.getField(this, 2) as string;
+        return pb_1.Message.getFieldWithDefault(this, 2, "") as string;
     }
     set inviteCode(value: string) {
         pb_1.Message.setField(this, 2, value);
     }
     get inviteExpiration() {
-        return pb_1.Message.getField(this, 3) as number;
+        return pb_1.Message.getFieldWithDefault(this, 3, 0) as number;
     }
     set inviteExpiration(value: number) {
         pb_1.Message.setField(this, 3, value);
     }
     get groupName() {
-        return pb_1.Message.getField(this, 4) as string;
+        return pb_1.Message.getFieldWithDefault(this, 4, "") as string;
     }
     set groupName(value: string) {
         pb_1.Message.setField(this, 4, value);
     }
     get jpegThumbnail() {
-        return pb_1.Message.getField(this, 5) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 5, new Uint8Array()) as Uint8Array;
     }
     set jpegThumbnail(value: Uint8Array) {
         pb_1.Message.setField(this, 5, value);
     }
     get caption() {
-        return pb_1.Message.getField(this, 6) as string;
+        return pb_1.Message.getFieldWithDefault(this, 6, "") as string;
     }
     set caption(value: string) {
         pb_1.Message.setField(this, 6, value);
@@ -8222,28 +7759,15 @@ export class GroupInviteMessage extends pb_1.Message {
             jpegThumbnail?: Uint8Array;
             caption?: string;
             contextInfo?: ReturnType<typeof ContextInfo.prototype.toObject>;
-        } = {};
-        if (this.groupJid != null) {
-            data.groupJid = this.groupJid;
-        }
-        if (this.inviteCode != null) {
-            data.inviteCode = this.inviteCode;
-        }
-        if (this.inviteExpiration != null) {
-            data.inviteExpiration = this.inviteExpiration;
-        }
-        if (this.groupName != null) {
-            data.groupName = this.groupName;
-        }
-        if (this.jpegThumbnail != null) {
-            data.jpegThumbnail = this.jpegThumbnail;
-        }
-        if (this.caption != null) {
-            data.caption = this.caption;
-        }
-        if (this.contextInfo != null) {
-            data.contextInfo = this.contextInfo.toObject();
-        }
+        } = {
+            groupJid: pb_1.Message.getField(this, 1) != null ? this.groupJid : undefined,
+            inviteCode: pb_1.Message.getField(this, 2) != null ? this.inviteCode : undefined,
+            inviteExpiration: pb_1.Message.getField(this, 3) != null ? this.inviteExpiration : undefined,
+            groupName: pb_1.Message.getField(this, 4) != null ? this.groupName : undefined,
+            jpegThumbnail: pb_1.Message.getField(this, 5) != null ? this.jpegThumbnail : undefined,
+            caption: pb_1.Message.getField(this, 6) != null ? this.caption : undefined,
+            contextInfo: pb_1.Message.getField(this, 7) != null ? this.contextInfo != null ? this.contextInfo.toObject() : undefined : undefined
+        };
         return data;
     }
     serialize(): Uint8Array;
@@ -8327,7 +7851,7 @@ export class DeviceSentMessage extends pb_1.Message {
         }
     }
     get destinationJid() {
-        return pb_1.Message.getField(this, 1) as string;
+        return pb_1.Message.getFieldWithDefault(this, 1, "") as string;
     }
     set destinationJid(value: string) {
         pb_1.Message.setField(this, 1, value);
@@ -8339,7 +7863,7 @@ export class DeviceSentMessage extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 2, value);
     }
     get phash() {
-        return pb_1.Message.getField(this, 3) as string;
+        return pb_1.Message.getFieldWithDefault(this, 3, "") as string;
     }
     set phash(value: string) {
         pb_1.Message.setField(this, 3, value);
@@ -8366,16 +7890,11 @@ export class DeviceSentMessage extends pb_1.Message {
             destinationJid?: string;
             message?: ReturnType<typeof Message.prototype.toObject>;
             phash?: string;
-        } = {};
-        if (this.destinationJid != null) {
-            data.destinationJid = this.destinationJid;
-        }
-        if (this.message != null) {
-            data.message = this.message.toObject();
-        }
-        if (this.phash != null) {
-            data.phash = this.phash;
-        }
+        } = {
+            destinationJid: pb_1.Message.getField(this, 1) != null ? this.destinationJid : undefined,
+            message: pb_1.Message.getField(this, 2) != null ? this.message != null ? this.message.toObject() : undefined : undefined,
+            phash: pb_1.Message.getField(this, 3) != null ? this.phash : undefined
+        };
         return data;
     }
     serialize(): Uint8Array;
@@ -8531,7 +8050,7 @@ export class Message extends pb_1.Message {
         }
     }
     get conversation() {
-        return pb_1.Message.getField(this, 1) as string;
+        return pb_1.Message.getFieldWithDefault(this, 1, "") as string;
     }
     set conversation(value: string) {
         pb_1.Message.setField(this, 1, value);
@@ -8823,85 +8342,34 @@ export class Message extends pb_1.Message {
             templateButtonReplyMessage?: ReturnType<typeof TemplateButtonReplyMessage.prototype.toObject>;
             productMessage?: ReturnType<typeof ProductMessage.prototype.toObject>;
             deviceSentMessage?: ReturnType<typeof DeviceSentMessage.prototype.toObject>;
-        } = {};
-        if (this.conversation != null) {
-            data.conversation = this.conversation;
-        }
-        if (this.senderKeyDistributionMessage != null) {
-            data.senderKeyDistributionMessage = this.senderKeyDistributionMessage.toObject();
-        }
-        if (this.imageMessage != null) {
-            data.imageMessage = this.imageMessage.toObject();
-        }
-        if (this.contactMessage != null) {
-            data.contactMessage = this.contactMessage.toObject();
-        }
-        if (this.locationMessage != null) {
-            data.locationMessage = this.locationMessage.toObject();
-        }
-        if (this.extendedTextMessage != null) {
-            data.extendedTextMessage = this.extendedTextMessage.toObject();
-        }
-        if (this.documentMessage != null) {
-            data.documentMessage = this.documentMessage.toObject();
-        }
-        if (this.audioMessage != null) {
-            data.audioMessage = this.audioMessage.toObject();
-        }
-        if (this.videoMessage != null) {
-            data.videoMessage = this.videoMessage.toObject();
-        }
-        if (this.call != null) {
-            data.call = this.call.toObject();
-        }
-        if (this.chat != null) {
-            data.chat = this.chat.toObject();
-        }
-        if (this.protocolMessage != null) {
-            data.protocolMessage = this.protocolMessage.toObject();
-        }
-        if (this.contactsArrayMessage != null) {
-            data.contactsArrayMessage = this.contactsArrayMessage.toObject();
-        }
-        if (this.highlyStructuredMessage != null) {
-            data.highlyStructuredMessage = this.highlyStructuredMessage.toObject();
-        }
-        if (this.fastRatchetKeySenderKeyDistributionMessage != null) {
-            data.fastRatchetKeySenderKeyDistributionMessage = this.fastRatchetKeySenderKeyDistributionMessage.toObject();
-        }
-        if (this.sendPaymentMessage != null) {
-            data.sendPaymentMessage = this.sendPaymentMessage.toObject();
-        }
-        if (this.liveLocationMessage != null) {
-            data.liveLocationMessage = this.liveLocationMessage.toObject();
-        }
-        if (this.requestPaymentMessage != null) {
-            data.requestPaymentMessage = this.requestPaymentMessage.toObject();
-        }
-        if (this.declinePaymentRequestMessage != null) {
-            data.declinePaymentRequestMessage = this.declinePaymentRequestMessage.toObject();
-        }
-        if (this.cancelPaymentRequestMessage != null) {
-            data.cancelPaymentRequestMessage = this.cancelPaymentRequestMessage.toObject();
-        }
-        if (this.templateMessage != null) {
-            data.templateMessage = this.templateMessage.toObject();
-        }
-        if (this.stickerMessage != null) {
-            data.stickerMessage = this.stickerMessage.toObject();
-        }
-        if (this.groupInviteMessage != null) {
-            data.groupInviteMessage = this.groupInviteMessage.toObject();
-        }
-        if (this.templateButtonReplyMessage != null) {
-            data.templateButtonReplyMessage = this.templateButtonReplyMessage.toObject();
-        }
-        if (this.productMessage != null) {
-            data.productMessage = this.productMessage.toObject();
-        }
-        if (this.deviceSentMessage != null) {
-            data.deviceSentMessage = this.deviceSentMessage.toObject();
-        }
+        } = {
+            conversation: pb_1.Message.getField(this, 1) != null ? this.conversation : undefined,
+            senderKeyDistributionMessage: pb_1.Message.getField(this, 2) != null ? this.senderKeyDistributionMessage != null ? this.senderKeyDistributionMessage.toObject() : undefined : undefined,
+            imageMessage: pb_1.Message.getField(this, 3) != null ? this.imageMessage != null ? this.imageMessage.toObject() : undefined : undefined,
+            contactMessage: pb_1.Message.getField(this, 4) != null ? this.contactMessage != null ? this.contactMessage.toObject() : undefined : undefined,
+            locationMessage: pb_1.Message.getField(this, 5) != null ? this.locationMessage != null ? this.locationMessage.toObject() : undefined : undefined,
+            extendedTextMessage: pb_1.Message.getField(this, 6) != null ? this.extendedTextMessage != null ? this.extendedTextMessage.toObject() : undefined : undefined,
+            documentMessage: pb_1.Message.getField(this, 7) != null ? this.documentMessage != null ? this.documentMessage.toObject() : undefined : undefined,
+            audioMessage: pb_1.Message.getField(this, 8) != null ? this.audioMessage != null ? this.audioMessage.toObject() : undefined : undefined,
+            videoMessage: pb_1.Message.getField(this, 9) != null ? this.videoMessage != null ? this.videoMessage.toObject() : undefined : undefined,
+            call: pb_1.Message.getField(this, 10) != null ? this.call != null ? this.call.toObject() : undefined : undefined,
+            chat: pb_1.Message.getField(this, 11) != null ? this.chat != null ? this.chat.toObject() : undefined : undefined,
+            protocolMessage: pb_1.Message.getField(this, 12) != null ? this.protocolMessage != null ? this.protocolMessage.toObject() : undefined : undefined,
+            contactsArrayMessage: pb_1.Message.getField(this, 13) != null ? this.contactsArrayMessage != null ? this.contactsArrayMessage.toObject() : undefined : undefined,
+            highlyStructuredMessage: pb_1.Message.getField(this, 14) != null ? this.highlyStructuredMessage != null ? this.highlyStructuredMessage.toObject() : undefined : undefined,
+            fastRatchetKeySenderKeyDistributionMessage: pb_1.Message.getField(this, 15) != null ? this.fastRatchetKeySenderKeyDistributionMessage != null ? this.fastRatchetKeySenderKeyDistributionMessage.toObject() : undefined : undefined,
+            sendPaymentMessage: pb_1.Message.getField(this, 16) != null ? this.sendPaymentMessage != null ? this.sendPaymentMessage.toObject() : undefined : undefined,
+            liveLocationMessage: pb_1.Message.getField(this, 18) != null ? this.liveLocationMessage != null ? this.liveLocationMessage.toObject() : undefined : undefined,
+            requestPaymentMessage: pb_1.Message.getField(this, 22) != null ? this.requestPaymentMessage != null ? this.requestPaymentMessage.toObject() : undefined : undefined,
+            declinePaymentRequestMessage: pb_1.Message.getField(this, 23) != null ? this.declinePaymentRequestMessage != null ? this.declinePaymentRequestMessage.toObject() : undefined : undefined,
+            cancelPaymentRequestMessage: pb_1.Message.getField(this, 24) != null ? this.cancelPaymentRequestMessage != null ? this.cancelPaymentRequestMessage.toObject() : undefined : undefined,
+            templateMessage: pb_1.Message.getField(this, 25) != null ? this.templateMessage != null ? this.templateMessage.toObject() : undefined : undefined,
+            stickerMessage: pb_1.Message.getField(this, 26) != null ? this.stickerMessage != null ? this.stickerMessage.toObject() : undefined : undefined,
+            groupInviteMessage: pb_1.Message.getField(this, 28) != null ? this.groupInviteMessage != null ? this.groupInviteMessage.toObject() : undefined : undefined,
+            templateButtonReplyMessage: pb_1.Message.getField(this, 29) != null ? this.templateButtonReplyMessage != null ? this.templateButtonReplyMessage.toObject() : undefined : undefined,
+            productMessage: pb_1.Message.getField(this, 30) != null ? this.productMessage != null ? this.productMessage.toObject() : undefined : undefined,
+            deviceSentMessage: pb_1.Message.getField(this, 31) != null ? this.deviceSentMessage != null ? this.deviceSentMessage.toObject() : undefined : undefined
+        };
         return data;
     }
     serialize(): Uint8Array;
@@ -9084,25 +8552,25 @@ export class MessageKey extends pb_1.Message {
         }
     }
     get remoteJid() {
-        return pb_1.Message.getField(this, 1) as string;
+        return pb_1.Message.getFieldWithDefault(this, 1, "") as string;
     }
     set remoteJid(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
     get fromMe() {
-        return pb_1.Message.getField(this, 2) as boolean;
+        return pb_1.Message.getFieldWithDefault(this, 2, false) as boolean;
     }
     set fromMe(value: boolean) {
         pb_1.Message.setField(this, 2, value);
     }
     get id() {
-        return pb_1.Message.getField(this, 3) as string;
+        return pb_1.Message.getFieldWithDefault(this, 3, "") as string;
     }
     set id(value: string) {
         pb_1.Message.setField(this, 3, value);
     }
     get participant() {
-        return pb_1.Message.getField(this, 4) as string;
+        return pb_1.Message.getFieldWithDefault(this, 4, "") as string;
     }
     set participant(value: string) {
         pb_1.Message.setField(this, 4, value);
@@ -9134,19 +8602,12 @@ export class MessageKey extends pb_1.Message {
             fromMe?: boolean;
             id?: string;
             participant?: string;
-        } = {};
-        if (this.remoteJid != null) {
-            data.remoteJid = this.remoteJid;
-        }
-        if (this.fromMe != null) {
-            data.fromMe = this.fromMe;
-        }
-        if (this.id != null) {
-            data.id = this.id;
-        }
-        if (this.participant != null) {
-            data.participant = this.participant;
-        }
+        } = {
+            remoteJid: pb_1.Message.getField(this, 1) != null ? this.remoteJid : undefined,
+            fromMe: pb_1.Message.getField(this, 2) != null ? this.fromMe : undefined,
+            id: pb_1.Message.getField(this, 3) != null ? this.id : undefined,
+            participant: pb_1.Message.getField(this, 4) != null ? this.participant : undefined
+        };
         return data;
     }
     serialize(): Uint8Array;
@@ -9335,199 +8796,199 @@ export class WebFeatures extends pb_1.Message {
         }
     }
     get labelsDisplay() {
-        return pb_1.Message.getField(this, 1) as WebFeatures.WEB_FEATURES_FLAG;
+        return pb_1.Message.getFieldWithDefault(this, 1, WebFeatures.WEB_FEATURES_FLAG.NOT_STARTED) as WebFeatures.WEB_FEATURES_FLAG;
     }
     set labelsDisplay(value: WebFeatures.WEB_FEATURES_FLAG) {
         pb_1.Message.setField(this, 1, value);
     }
     get voipIndividualOutgoing() {
-        return pb_1.Message.getField(this, 2) as WebFeatures.WEB_FEATURES_FLAG;
+        return pb_1.Message.getFieldWithDefault(this, 2, WebFeatures.WEB_FEATURES_FLAG.NOT_STARTED) as WebFeatures.WEB_FEATURES_FLAG;
     }
     set voipIndividualOutgoing(value: WebFeatures.WEB_FEATURES_FLAG) {
         pb_1.Message.setField(this, 2, value);
     }
     get groupsV3() {
-        return pb_1.Message.getField(this, 3) as WebFeatures.WEB_FEATURES_FLAG;
+        return pb_1.Message.getFieldWithDefault(this, 3, WebFeatures.WEB_FEATURES_FLAG.NOT_STARTED) as WebFeatures.WEB_FEATURES_FLAG;
     }
     set groupsV3(value: WebFeatures.WEB_FEATURES_FLAG) {
         pb_1.Message.setField(this, 3, value);
     }
     get groupsV3Create() {
-        return pb_1.Message.getField(this, 4) as WebFeatures.WEB_FEATURES_FLAG;
+        return pb_1.Message.getFieldWithDefault(this, 4, WebFeatures.WEB_FEATURES_FLAG.NOT_STARTED) as WebFeatures.WEB_FEATURES_FLAG;
     }
     set groupsV3Create(value: WebFeatures.WEB_FEATURES_FLAG) {
         pb_1.Message.setField(this, 4, value);
     }
     get changeNumberV2() {
-        return pb_1.Message.getField(this, 5) as WebFeatures.WEB_FEATURES_FLAG;
+        return pb_1.Message.getFieldWithDefault(this, 5, WebFeatures.WEB_FEATURES_FLAG.NOT_STARTED) as WebFeatures.WEB_FEATURES_FLAG;
     }
     set changeNumberV2(value: WebFeatures.WEB_FEATURES_FLAG) {
         pb_1.Message.setField(this, 5, value);
     }
     get queryStatusV3Thumbnail() {
-        return pb_1.Message.getField(this, 6) as WebFeatures.WEB_FEATURES_FLAG;
+        return pb_1.Message.getFieldWithDefault(this, 6, WebFeatures.WEB_FEATURES_FLAG.NOT_STARTED) as WebFeatures.WEB_FEATURES_FLAG;
     }
     set queryStatusV3Thumbnail(value: WebFeatures.WEB_FEATURES_FLAG) {
         pb_1.Message.setField(this, 6, value);
     }
     get liveLocations() {
-        return pb_1.Message.getField(this, 7) as WebFeatures.WEB_FEATURES_FLAG;
+        return pb_1.Message.getFieldWithDefault(this, 7, WebFeatures.WEB_FEATURES_FLAG.NOT_STARTED) as WebFeatures.WEB_FEATURES_FLAG;
     }
     set liveLocations(value: WebFeatures.WEB_FEATURES_FLAG) {
         pb_1.Message.setField(this, 7, value);
     }
     get queryVname() {
-        return pb_1.Message.getField(this, 8) as WebFeatures.WEB_FEATURES_FLAG;
+        return pb_1.Message.getFieldWithDefault(this, 8, WebFeatures.WEB_FEATURES_FLAG.NOT_STARTED) as WebFeatures.WEB_FEATURES_FLAG;
     }
     set queryVname(value: WebFeatures.WEB_FEATURES_FLAG) {
         pb_1.Message.setField(this, 8, value);
     }
     get voipIndividualIncoming() {
-        return pb_1.Message.getField(this, 9) as WebFeatures.WEB_FEATURES_FLAG;
+        return pb_1.Message.getFieldWithDefault(this, 9, WebFeatures.WEB_FEATURES_FLAG.NOT_STARTED) as WebFeatures.WEB_FEATURES_FLAG;
     }
     set voipIndividualIncoming(value: WebFeatures.WEB_FEATURES_FLAG) {
         pb_1.Message.setField(this, 9, value);
     }
     get quickRepliesQuery() {
-        return pb_1.Message.getField(this, 10) as WebFeatures.WEB_FEATURES_FLAG;
+        return pb_1.Message.getFieldWithDefault(this, 10, WebFeatures.WEB_FEATURES_FLAG.NOT_STARTED) as WebFeatures.WEB_FEATURES_FLAG;
     }
     set quickRepliesQuery(value: WebFeatures.WEB_FEATURES_FLAG) {
         pb_1.Message.setField(this, 10, value);
     }
     get payments() {
-        return pb_1.Message.getField(this, 11) as WebFeatures.WEB_FEATURES_FLAG;
+        return pb_1.Message.getFieldWithDefault(this, 11, WebFeatures.WEB_FEATURES_FLAG.NOT_STARTED) as WebFeatures.WEB_FEATURES_FLAG;
     }
     set payments(value: WebFeatures.WEB_FEATURES_FLAG) {
         pb_1.Message.setField(this, 11, value);
     }
     get stickerPackQuery() {
-        return pb_1.Message.getField(this, 12) as WebFeatures.WEB_FEATURES_FLAG;
+        return pb_1.Message.getFieldWithDefault(this, 12, WebFeatures.WEB_FEATURES_FLAG.NOT_STARTED) as WebFeatures.WEB_FEATURES_FLAG;
     }
     set stickerPackQuery(value: WebFeatures.WEB_FEATURES_FLAG) {
         pb_1.Message.setField(this, 12, value);
     }
     get liveLocationsFinal() {
-        return pb_1.Message.getField(this, 13) as WebFeatures.WEB_FEATURES_FLAG;
+        return pb_1.Message.getFieldWithDefault(this, 13, WebFeatures.WEB_FEATURES_FLAG.NOT_STARTED) as WebFeatures.WEB_FEATURES_FLAG;
     }
     set liveLocationsFinal(value: WebFeatures.WEB_FEATURES_FLAG) {
         pb_1.Message.setField(this, 13, value);
     }
     get labelsEdit() {
-        return pb_1.Message.getField(this, 14) as WebFeatures.WEB_FEATURES_FLAG;
+        return pb_1.Message.getFieldWithDefault(this, 14, WebFeatures.WEB_FEATURES_FLAG.NOT_STARTED) as WebFeatures.WEB_FEATURES_FLAG;
     }
     set labelsEdit(value: WebFeatures.WEB_FEATURES_FLAG) {
         pb_1.Message.setField(this, 14, value);
     }
     get mediaUpload() {
-        return pb_1.Message.getField(this, 15) as WebFeatures.WEB_FEATURES_FLAG;
+        return pb_1.Message.getFieldWithDefault(this, 15, WebFeatures.WEB_FEATURES_FLAG.NOT_STARTED) as WebFeatures.WEB_FEATURES_FLAG;
     }
     set mediaUpload(value: WebFeatures.WEB_FEATURES_FLAG) {
         pb_1.Message.setField(this, 15, value);
     }
     get mediaUploadRichQuickReplies() {
-        return pb_1.Message.getField(this, 18) as WebFeatures.WEB_FEATURES_FLAG;
+        return pb_1.Message.getFieldWithDefault(this, 18, WebFeatures.WEB_FEATURES_FLAG.NOT_STARTED) as WebFeatures.WEB_FEATURES_FLAG;
     }
     set mediaUploadRichQuickReplies(value: WebFeatures.WEB_FEATURES_FLAG) {
         pb_1.Message.setField(this, 18, value);
     }
     get vnameV2() {
-        return pb_1.Message.getField(this, 19) as WebFeatures.WEB_FEATURES_FLAG;
+        return pb_1.Message.getFieldWithDefault(this, 19, WebFeatures.WEB_FEATURES_FLAG.NOT_STARTED) as WebFeatures.WEB_FEATURES_FLAG;
     }
     set vnameV2(value: WebFeatures.WEB_FEATURES_FLAG) {
         pb_1.Message.setField(this, 19, value);
     }
     get videoPlaybackUrl() {
-        return pb_1.Message.getField(this, 20) as WebFeatures.WEB_FEATURES_FLAG;
+        return pb_1.Message.getFieldWithDefault(this, 20, WebFeatures.WEB_FEATURES_FLAG.NOT_STARTED) as WebFeatures.WEB_FEATURES_FLAG;
     }
     set videoPlaybackUrl(value: WebFeatures.WEB_FEATURES_FLAG) {
         pb_1.Message.setField(this, 20, value);
     }
     get statusRanking() {
-        return pb_1.Message.getField(this, 21) as WebFeatures.WEB_FEATURES_FLAG;
+        return pb_1.Message.getFieldWithDefault(this, 21, WebFeatures.WEB_FEATURES_FLAG.NOT_STARTED) as WebFeatures.WEB_FEATURES_FLAG;
     }
     set statusRanking(value: WebFeatures.WEB_FEATURES_FLAG) {
         pb_1.Message.setField(this, 21, value);
     }
     get voipIndividualVideo() {
-        return pb_1.Message.getField(this, 22) as WebFeatures.WEB_FEATURES_FLAG;
+        return pb_1.Message.getFieldWithDefault(this, 22, WebFeatures.WEB_FEATURES_FLAG.NOT_STARTED) as WebFeatures.WEB_FEATURES_FLAG;
     }
     set voipIndividualVideo(value: WebFeatures.WEB_FEATURES_FLAG) {
         pb_1.Message.setField(this, 22, value);
     }
     get thirdPartyStickers() {
-        return pb_1.Message.getField(this, 23) as WebFeatures.WEB_FEATURES_FLAG;
+        return pb_1.Message.getFieldWithDefault(this, 23, WebFeatures.WEB_FEATURES_FLAG.NOT_STARTED) as WebFeatures.WEB_FEATURES_FLAG;
     }
     set thirdPartyStickers(value: WebFeatures.WEB_FEATURES_FLAG) {
         pb_1.Message.setField(this, 23, value);
     }
     get frequentlyForwardedSetting() {
-        return pb_1.Message.getField(this, 24) as WebFeatures.WEB_FEATURES_FLAG;
+        return pb_1.Message.getFieldWithDefault(this, 24, WebFeatures.WEB_FEATURES_FLAG.NOT_STARTED) as WebFeatures.WEB_FEATURES_FLAG;
     }
     set frequentlyForwardedSetting(value: WebFeatures.WEB_FEATURES_FLAG) {
         pb_1.Message.setField(this, 24, value);
     }
     get groupsV4JoinPermission() {
-        return pb_1.Message.getField(this, 25) as WebFeatures.WEB_FEATURES_FLAG;
+        return pb_1.Message.getFieldWithDefault(this, 25, WebFeatures.WEB_FEATURES_FLAG.NOT_STARTED) as WebFeatures.WEB_FEATURES_FLAG;
     }
     set groupsV4JoinPermission(value: WebFeatures.WEB_FEATURES_FLAG) {
         pb_1.Message.setField(this, 25, value);
     }
     get recentStickers() {
-        return pb_1.Message.getField(this, 26) as WebFeatures.WEB_FEATURES_FLAG;
+        return pb_1.Message.getFieldWithDefault(this, 26, WebFeatures.WEB_FEATURES_FLAG.NOT_STARTED) as WebFeatures.WEB_FEATURES_FLAG;
     }
     set recentStickers(value: WebFeatures.WEB_FEATURES_FLAG) {
         pb_1.Message.setField(this, 26, value);
     }
     get catalog() {
-        return pb_1.Message.getField(this, 27) as WebFeatures.WEB_FEATURES_FLAG;
+        return pb_1.Message.getFieldWithDefault(this, 27, WebFeatures.WEB_FEATURES_FLAG.NOT_STARTED) as WebFeatures.WEB_FEATURES_FLAG;
     }
     set catalog(value: WebFeatures.WEB_FEATURES_FLAG) {
         pb_1.Message.setField(this, 27, value);
     }
     get starredStickers() {
-        return pb_1.Message.getField(this, 28) as WebFeatures.WEB_FEATURES_FLAG;
+        return pb_1.Message.getFieldWithDefault(this, 28, WebFeatures.WEB_FEATURES_FLAG.NOT_STARTED) as WebFeatures.WEB_FEATURES_FLAG;
     }
     set starredStickers(value: WebFeatures.WEB_FEATURES_FLAG) {
         pb_1.Message.setField(this, 28, value);
     }
     get voipGroupCall() {
-        return pb_1.Message.getField(this, 29) as WebFeatures.WEB_FEATURES_FLAG;
+        return pb_1.Message.getFieldWithDefault(this, 29, WebFeatures.WEB_FEATURES_FLAG.NOT_STARTED) as WebFeatures.WEB_FEATURES_FLAG;
     }
     set voipGroupCall(value: WebFeatures.WEB_FEATURES_FLAG) {
         pb_1.Message.setField(this, 29, value);
     }
     get templateMessage() {
-        return pb_1.Message.getField(this, 30) as WebFeatures.WEB_FEATURES_FLAG;
+        return pb_1.Message.getFieldWithDefault(this, 30, WebFeatures.WEB_FEATURES_FLAG.NOT_STARTED) as WebFeatures.WEB_FEATURES_FLAG;
     }
     set templateMessage(value: WebFeatures.WEB_FEATURES_FLAG) {
         pb_1.Message.setField(this, 30, value);
     }
     get templateMessageInteractivity() {
-        return pb_1.Message.getField(this, 31) as WebFeatures.WEB_FEATURES_FLAG;
+        return pb_1.Message.getFieldWithDefault(this, 31, WebFeatures.WEB_FEATURES_FLAG.NOT_STARTED) as WebFeatures.WEB_FEATURES_FLAG;
     }
     set templateMessageInteractivity(value: WebFeatures.WEB_FEATURES_FLAG) {
         pb_1.Message.setField(this, 31, value);
     }
     get ephemeralMessages() {
-        return pb_1.Message.getField(this, 32) as WebFeatures.WEB_FEATURES_FLAG;
+        return pb_1.Message.getFieldWithDefault(this, 32, WebFeatures.WEB_FEATURES_FLAG.NOT_STARTED) as WebFeatures.WEB_FEATURES_FLAG;
     }
     set ephemeralMessages(value: WebFeatures.WEB_FEATURES_FLAG) {
         pb_1.Message.setField(this, 32, value);
     }
     get e2ENotificationSync() {
-        return pb_1.Message.getField(this, 33) as WebFeatures.WEB_FEATURES_FLAG;
+        return pb_1.Message.getFieldWithDefault(this, 33, WebFeatures.WEB_FEATURES_FLAG.NOT_STARTED) as WebFeatures.WEB_FEATURES_FLAG;
     }
     set e2ENotificationSync(value: WebFeatures.WEB_FEATURES_FLAG) {
         pb_1.Message.setField(this, 33, value);
     }
     get recentStickersV2() {
-        return pb_1.Message.getField(this, 34) as WebFeatures.WEB_FEATURES_FLAG;
+        return pb_1.Message.getFieldWithDefault(this, 34, WebFeatures.WEB_FEATURES_FLAG.NOT_STARTED) as WebFeatures.WEB_FEATURES_FLAG;
     }
     set recentStickersV2(value: WebFeatures.WEB_FEATURES_FLAG) {
         pb_1.Message.setField(this, 34, value);
     }
     get syncdRelease1() {
-        return pb_1.Message.getField(this, 35) as WebFeatures.WEB_FEATURES_FLAG;
+        return pb_1.Message.getFieldWithDefault(this, 35, WebFeatures.WEB_FEATURES_FLAG.NOT_STARTED) as WebFeatures.WEB_FEATURES_FLAG;
     }
     set syncdRelease1(value: WebFeatures.WEB_FEATURES_FLAG) {
         pb_1.Message.setField(this, 35, value);
@@ -9704,106 +9165,41 @@ export class WebFeatures extends pb_1.Message {
             e2ENotificationSync?: WebFeatures.WEB_FEATURES_FLAG;
             recentStickersV2?: WebFeatures.WEB_FEATURES_FLAG;
             syncdRelease1?: WebFeatures.WEB_FEATURES_FLAG;
-        } = {};
-        if (this.labelsDisplay != null) {
-            data.labelsDisplay = this.labelsDisplay;
-        }
-        if (this.voipIndividualOutgoing != null) {
-            data.voipIndividualOutgoing = this.voipIndividualOutgoing;
-        }
-        if (this.groupsV3 != null) {
-            data.groupsV3 = this.groupsV3;
-        }
-        if (this.groupsV3Create != null) {
-            data.groupsV3Create = this.groupsV3Create;
-        }
-        if (this.changeNumberV2 != null) {
-            data.changeNumberV2 = this.changeNumberV2;
-        }
-        if (this.queryStatusV3Thumbnail != null) {
-            data.queryStatusV3Thumbnail = this.queryStatusV3Thumbnail;
-        }
-        if (this.liveLocations != null) {
-            data.liveLocations = this.liveLocations;
-        }
-        if (this.queryVname != null) {
-            data.queryVname = this.queryVname;
-        }
-        if (this.voipIndividualIncoming != null) {
-            data.voipIndividualIncoming = this.voipIndividualIncoming;
-        }
-        if (this.quickRepliesQuery != null) {
-            data.quickRepliesQuery = this.quickRepliesQuery;
-        }
-        if (this.payments != null) {
-            data.payments = this.payments;
-        }
-        if (this.stickerPackQuery != null) {
-            data.stickerPackQuery = this.stickerPackQuery;
-        }
-        if (this.liveLocationsFinal != null) {
-            data.liveLocationsFinal = this.liveLocationsFinal;
-        }
-        if (this.labelsEdit != null) {
-            data.labelsEdit = this.labelsEdit;
-        }
-        if (this.mediaUpload != null) {
-            data.mediaUpload = this.mediaUpload;
-        }
-        if (this.mediaUploadRichQuickReplies != null) {
-            data.mediaUploadRichQuickReplies = this.mediaUploadRichQuickReplies;
-        }
-        if (this.vnameV2 != null) {
-            data.vnameV2 = this.vnameV2;
-        }
-        if (this.videoPlaybackUrl != null) {
-            data.videoPlaybackUrl = this.videoPlaybackUrl;
-        }
-        if (this.statusRanking != null) {
-            data.statusRanking = this.statusRanking;
-        }
-        if (this.voipIndividualVideo != null) {
-            data.voipIndividualVideo = this.voipIndividualVideo;
-        }
-        if (this.thirdPartyStickers != null) {
-            data.thirdPartyStickers = this.thirdPartyStickers;
-        }
-        if (this.frequentlyForwardedSetting != null) {
-            data.frequentlyForwardedSetting = this.frequentlyForwardedSetting;
-        }
-        if (this.groupsV4JoinPermission != null) {
-            data.groupsV4JoinPermission = this.groupsV4JoinPermission;
-        }
-        if (this.recentStickers != null) {
-            data.recentStickers = this.recentStickers;
-        }
-        if (this.catalog != null) {
-            data.catalog = this.catalog;
-        }
-        if (this.starredStickers != null) {
-            data.starredStickers = this.starredStickers;
-        }
-        if (this.voipGroupCall != null) {
-            data.voipGroupCall = this.voipGroupCall;
-        }
-        if (this.templateMessage != null) {
-            data.templateMessage = this.templateMessage;
-        }
-        if (this.templateMessageInteractivity != null) {
-            data.templateMessageInteractivity = this.templateMessageInteractivity;
-        }
-        if (this.ephemeralMessages != null) {
-            data.ephemeralMessages = this.ephemeralMessages;
-        }
-        if (this.e2ENotificationSync != null) {
-            data.e2ENotificationSync = this.e2ENotificationSync;
-        }
-        if (this.recentStickersV2 != null) {
-            data.recentStickersV2 = this.recentStickersV2;
-        }
-        if (this.syncdRelease1 != null) {
-            data.syncdRelease1 = this.syncdRelease1;
-        }
+        } = {
+            labelsDisplay: pb_1.Message.getField(this, 1) != null ? this.labelsDisplay : undefined,
+            voipIndividualOutgoing: pb_1.Message.getField(this, 2) != null ? this.voipIndividualOutgoing : undefined,
+            groupsV3: pb_1.Message.getField(this, 3) != null ? this.groupsV3 : undefined,
+            groupsV3Create: pb_1.Message.getField(this, 4) != null ? this.groupsV3Create : undefined,
+            changeNumberV2: pb_1.Message.getField(this, 5) != null ? this.changeNumberV2 : undefined,
+            queryStatusV3Thumbnail: pb_1.Message.getField(this, 6) != null ? this.queryStatusV3Thumbnail : undefined,
+            liveLocations: pb_1.Message.getField(this, 7) != null ? this.liveLocations : undefined,
+            queryVname: pb_1.Message.getField(this, 8) != null ? this.queryVname : undefined,
+            voipIndividualIncoming: pb_1.Message.getField(this, 9) != null ? this.voipIndividualIncoming : undefined,
+            quickRepliesQuery: pb_1.Message.getField(this, 10) != null ? this.quickRepliesQuery : undefined,
+            payments: pb_1.Message.getField(this, 11) != null ? this.payments : undefined,
+            stickerPackQuery: pb_1.Message.getField(this, 12) != null ? this.stickerPackQuery : undefined,
+            liveLocationsFinal: pb_1.Message.getField(this, 13) != null ? this.liveLocationsFinal : undefined,
+            labelsEdit: pb_1.Message.getField(this, 14) != null ? this.labelsEdit : undefined,
+            mediaUpload: pb_1.Message.getField(this, 15) != null ? this.mediaUpload : undefined,
+            mediaUploadRichQuickReplies: pb_1.Message.getField(this, 18) != null ? this.mediaUploadRichQuickReplies : undefined,
+            vnameV2: pb_1.Message.getField(this, 19) != null ? this.vnameV2 : undefined,
+            videoPlaybackUrl: pb_1.Message.getField(this, 20) != null ? this.videoPlaybackUrl : undefined,
+            statusRanking: pb_1.Message.getField(this, 21) != null ? this.statusRanking : undefined,
+            voipIndividualVideo: pb_1.Message.getField(this, 22) != null ? this.voipIndividualVideo : undefined,
+            thirdPartyStickers: pb_1.Message.getField(this, 23) != null ? this.thirdPartyStickers : undefined,
+            frequentlyForwardedSetting: pb_1.Message.getField(this, 24) != null ? this.frequentlyForwardedSetting : undefined,
+            groupsV4JoinPermission: pb_1.Message.getField(this, 25) != null ? this.groupsV4JoinPermission : undefined,
+            recentStickers: pb_1.Message.getField(this, 26) != null ? this.recentStickers : undefined,
+            catalog: pb_1.Message.getField(this, 27) != null ? this.catalog : undefined,
+            starredStickers: pb_1.Message.getField(this, 28) != null ? this.starredStickers : undefined,
+            voipGroupCall: pb_1.Message.getField(this, 29) != null ? this.voipGroupCall : undefined,
+            templateMessage: pb_1.Message.getField(this, 30) != null ? this.templateMessage : undefined,
+            templateMessageInteractivity: pb_1.Message.getField(this, 31) != null ? this.templateMessageInteractivity : undefined,
+            ephemeralMessages: pb_1.Message.getField(this, 32) != null ? this.ephemeralMessages : undefined,
+            e2ENotificationSync: pb_1.Message.getField(this, 33) != null ? this.e2ENotificationSync : undefined,
+            recentStickersV2: pb_1.Message.getField(this, 34) != null ? this.recentStickersV2 : undefined,
+            syncdRelease1: pb_1.Message.getField(this, 35) != null ? this.syncdRelease1 : undefined
+        };
         return data;
     }
     serialize(): Uint8Array;
@@ -10027,19 +9423,19 @@ export class TabletNotificationsInfo extends pb_1.Message {
         }
     }
     get timestamp() {
-        return pb_1.Message.getField(this, 2) as number;
+        return pb_1.Message.getFieldWithDefault(this, 2, 0) as number;
     }
     set timestamp(value: number) {
         pb_1.Message.setField(this, 2, value);
     }
     get unreadChats() {
-        return pb_1.Message.getField(this, 3) as number;
+        return pb_1.Message.getFieldWithDefault(this, 3, 0) as number;
     }
     set unreadChats(value: number) {
         pb_1.Message.setField(this, 3, value);
     }
     get notifyMessageCount() {
-        return pb_1.Message.getField(this, 4) as number;
+        return pb_1.Message.getFieldWithDefault(this, 4, 0) as number;
     }
     set notifyMessageCount(value: number) {
         pb_1.Message.setField(this, 4, value);
@@ -10077,17 +9473,11 @@ export class TabletNotificationsInfo extends pb_1.Message {
             notifyMessageCount?: number;
             notifyMessage: ReturnType<typeof NotificationMessageInfo.prototype.toObject>[];
         } = {
-            notifyMessage: this.notifyMessage.map((item: NotificationMessageInfo) => item.toObject())
+            timestamp: pb_1.Message.getField(this, 2) != null ? this.timestamp : undefined,
+            unreadChats: pb_1.Message.getField(this, 3) != null ? this.unreadChats : undefined,
+            notifyMessageCount: pb_1.Message.getField(this, 4) != null ? this.notifyMessageCount : undefined,
+            notifyMessage: pb_1.Message.getField(this, 5) != null ? this.notifyMessage.map((item: NotificationMessageInfo) => item.toObject()) : undefined
         };
-        if (this.timestamp != null) {
-            data.timestamp = this.timestamp;
-        }
-        if (this.unreadChats != null) {
-            data.unreadChats = this.unreadChats;
-        }
-        if (this.notifyMessageCount != null) {
-            data.notifyMessageCount = this.notifyMessageCount;
-        }
         return data;
     }
     serialize(): Uint8Array;
@@ -10172,13 +9562,13 @@ export class NotificationMessageInfo extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 2, value);
     }
     get messageTimestamp() {
-        return pb_1.Message.getField(this, 3) as number;
+        return pb_1.Message.getFieldWithDefault(this, 3, 0) as number;
     }
     set messageTimestamp(value: number) {
         pb_1.Message.setField(this, 3, value);
     }
     get participant() {
-        return pb_1.Message.getField(this, 4) as string;
+        return pb_1.Message.getFieldWithDefault(this, 4, "") as string;
     }
     set participant(value: string) {
         pb_1.Message.setField(this, 4, value);
@@ -10210,19 +9600,12 @@ export class NotificationMessageInfo extends pb_1.Message {
             message?: ReturnType<typeof Message.prototype.toObject>;
             messageTimestamp?: number;
             participant?: string;
-        } = {};
-        if (this.key != null) {
-            data.key = this.key.toObject();
-        }
-        if (this.message != null) {
-            data.message = this.message.toObject();
-        }
-        if (this.messageTimestamp != null) {
-            data.messageTimestamp = this.messageTimestamp;
-        }
-        if (this.participant != null) {
-            data.participant = this.participant;
-        }
+        } = {
+            key: pb_1.Message.getField(this, 1) != null ? this.key != null ? this.key.toObject() : undefined : undefined,
+            message: pb_1.Message.getField(this, 2) != null ? this.message != null ? this.message.toObject() : undefined : undefined,
+            messageTimestamp: pb_1.Message.getField(this, 3) != null ? this.messageTimestamp : undefined,
+            participant: pb_1.Message.getField(this, 4) != null ? this.participant : undefined
+        };
         return data;
     }
     serialize(): Uint8Array;
@@ -10293,19 +9676,19 @@ export class WebNotificationsInfo extends pb_1.Message {
         }
     }
     get timestamp() {
-        return pb_1.Message.getField(this, 2) as number;
+        return pb_1.Message.getFieldWithDefault(this, 2, 0) as number;
     }
     set timestamp(value: number) {
         pb_1.Message.setField(this, 2, value);
     }
     get unreadChats() {
-        return pb_1.Message.getField(this, 3) as number;
+        return pb_1.Message.getFieldWithDefault(this, 3, 0) as number;
     }
     set unreadChats(value: number) {
         pb_1.Message.setField(this, 3, value);
     }
     get notifyMessageCount() {
-        return pb_1.Message.getField(this, 4) as number;
+        return pb_1.Message.getFieldWithDefault(this, 4, 0) as number;
     }
     set notifyMessageCount(value: number) {
         pb_1.Message.setField(this, 4, value);
@@ -10343,17 +9726,11 @@ export class WebNotificationsInfo extends pb_1.Message {
             notifyMessageCount?: number;
             notifyMessages: ReturnType<typeof WebMessageInfo.prototype.toObject>[];
         } = {
-            notifyMessages: this.notifyMessages.map((item: WebMessageInfo) => item.toObject())
+            timestamp: pb_1.Message.getField(this, 2) != null ? this.timestamp : undefined,
+            unreadChats: pb_1.Message.getField(this, 3) != null ? this.unreadChats : undefined,
+            notifyMessageCount: pb_1.Message.getField(this, 4) != null ? this.notifyMessageCount : undefined,
+            notifyMessages: pb_1.Message.getField(this, 5) != null ? this.notifyMessages.map((item: WebMessageInfo) => item.toObject()) : undefined
         };
-        if (this.timestamp != null) {
-            data.timestamp = this.timestamp;
-        }
-        if (this.unreadChats != null) {
-            data.unreadChats = this.unreadChats;
-        }
-        if (this.notifyMessageCount != null) {
-            data.notifyMessageCount = this.notifyMessageCount;
-        }
         return data;
     }
     serialize(): Uint8Array;
@@ -10450,31 +9827,31 @@ export class PaymentInfo extends pb_1.Message {
         }
     }
     get currencyDeprecated() {
-        return pb_1.Message.getField(this, 1) as PaymentInfo.PAYMENT_INFO_CURRENCY;
+        return pb_1.Message.getFieldWithDefault(this, 1, PaymentInfo.PAYMENT_INFO_CURRENCY.UNKNOWN_CURRENCY) as PaymentInfo.PAYMENT_INFO_CURRENCY;
     }
     set currencyDeprecated(value: PaymentInfo.PAYMENT_INFO_CURRENCY) {
         pb_1.Message.setField(this, 1, value);
     }
     get amount1000() {
-        return pb_1.Message.getField(this, 2) as number;
+        return pb_1.Message.getFieldWithDefault(this, 2, 0) as number;
     }
     set amount1000(value: number) {
         pb_1.Message.setField(this, 2, value);
     }
     get receiverJid() {
-        return pb_1.Message.getField(this, 3) as string;
+        return pb_1.Message.getFieldWithDefault(this, 3, "") as string;
     }
     set receiverJid(value: string) {
         pb_1.Message.setField(this, 3, value);
     }
     get status() {
-        return pb_1.Message.getField(this, 4) as PaymentInfo.PAYMENT_INFO_STATUS;
+        return pb_1.Message.getFieldWithDefault(this, 4, PaymentInfo.PAYMENT_INFO_STATUS.UNKNOWN_STATUS) as PaymentInfo.PAYMENT_INFO_STATUS;
     }
     set status(value: PaymentInfo.PAYMENT_INFO_STATUS) {
         pb_1.Message.setField(this, 4, value);
     }
     get transactionTimestamp() {
-        return pb_1.Message.getField(this, 5) as number;
+        return pb_1.Message.getFieldWithDefault(this, 5, 0) as number;
     }
     set transactionTimestamp(value: number) {
         pb_1.Message.setField(this, 5, value);
@@ -10486,25 +9863,25 @@ export class PaymentInfo extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 6, value);
     }
     get expiryTimestamp() {
-        return pb_1.Message.getField(this, 7) as number;
+        return pb_1.Message.getFieldWithDefault(this, 7, 0) as number;
     }
     set expiryTimestamp(value: number) {
         pb_1.Message.setField(this, 7, value);
     }
     get futureproofed() {
-        return pb_1.Message.getField(this, 8) as boolean;
+        return pb_1.Message.getFieldWithDefault(this, 8, false) as boolean;
     }
     set futureproofed(value: boolean) {
         pb_1.Message.setField(this, 8, value);
     }
     get currency() {
-        return pb_1.Message.getField(this, 9) as string;
+        return pb_1.Message.getFieldWithDefault(this, 9, "") as string;
     }
     set currency(value: string) {
         pb_1.Message.setField(this, 9, value);
     }
     get txnStatus() {
-        return pb_1.Message.getField(this, 10) as PaymentInfo.PAYMENT_INFO_TXNSTATUS;
+        return pb_1.Message.getFieldWithDefault(this, 10, PaymentInfo.PAYMENT_INFO_TXNSTATUS.UNKNOWN) as PaymentInfo.PAYMENT_INFO_TXNSTATUS;
     }
     set txnStatus(value: PaymentInfo.PAYMENT_INFO_TXNSTATUS) {
         pb_1.Message.setField(this, 10, value);
@@ -10566,37 +9943,18 @@ export class PaymentInfo extends pb_1.Message {
             futureproofed?: boolean;
             currency?: string;
             txnStatus?: PaymentInfo.PAYMENT_INFO_TXNSTATUS;
-        } = {};
-        if (this.currencyDeprecated != null) {
-            data.currencyDeprecated = this.currencyDeprecated;
-        }
-        if (this.amount1000 != null) {
-            data.amount1000 = this.amount1000;
-        }
-        if (this.receiverJid != null) {
-            data.receiverJid = this.receiverJid;
-        }
-        if (this.status != null) {
-            data.status = this.status;
-        }
-        if (this.transactionTimestamp != null) {
-            data.transactionTimestamp = this.transactionTimestamp;
-        }
-        if (this.requestMessageKey != null) {
-            data.requestMessageKey = this.requestMessageKey.toObject();
-        }
-        if (this.expiryTimestamp != null) {
-            data.expiryTimestamp = this.expiryTimestamp;
-        }
-        if (this.futureproofed != null) {
-            data.futureproofed = this.futureproofed;
-        }
-        if (this.currency != null) {
-            data.currency = this.currency;
-        }
-        if (this.txnStatus != null) {
-            data.txnStatus = this.txnStatus;
-        }
+        } = {
+            currencyDeprecated: pb_1.Message.getField(this, 1) != null ? this.currencyDeprecated : undefined,
+            amount1000: pb_1.Message.getField(this, 2) != null ? this.amount1000 : undefined,
+            receiverJid: pb_1.Message.getField(this, 3) != null ? this.receiverJid : undefined,
+            status: pb_1.Message.getField(this, 4) != null ? this.status : undefined,
+            transactionTimestamp: pb_1.Message.getField(this, 5) != null ? this.transactionTimestamp : undefined,
+            requestMessageKey: pb_1.Message.getField(this, 6) != null ? this.requestMessageKey != null ? this.requestMessageKey.toObject() : undefined : undefined,
+            expiryTimestamp: pb_1.Message.getField(this, 7) != null ? this.expiryTimestamp : undefined,
+            futureproofed: pb_1.Message.getField(this, 8) != null ? this.futureproofed : undefined,
+            currency: pb_1.Message.getField(this, 9) != null ? this.currency : undefined,
+            txnStatus: pb_1.Message.getField(this, 10) != null ? this.txnStatus : undefined
+        };
         return data;
     }
     serialize(): Uint8Array;
@@ -10835,97 +10193,97 @@ export class WebMessageInfo extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 2, value);
     }
     get messageTimestamp() {
-        return pb_1.Message.getField(this, 3) as number;
+        return pb_1.Message.getFieldWithDefault(this, 3, 0) as number;
     }
     set messageTimestamp(value: number) {
         pb_1.Message.setField(this, 3, value);
     }
     get status() {
-        return pb_1.Message.getField(this, 4) as WebMessageInfo.WEB_MESSAGE_INFO_STATUS;
+        return pb_1.Message.getFieldWithDefault(this, 4, WebMessageInfo.WEB_MESSAGE_INFO_STATUS.ERROR) as WebMessageInfo.WEB_MESSAGE_INFO_STATUS;
     }
     set status(value: WebMessageInfo.WEB_MESSAGE_INFO_STATUS) {
         pb_1.Message.setField(this, 4, value);
     }
     get participant() {
-        return pb_1.Message.getField(this, 5) as string;
+        return pb_1.Message.getFieldWithDefault(this, 5, "") as string;
     }
     set participant(value: string) {
         pb_1.Message.setField(this, 5, value);
     }
     get ignore() {
-        return pb_1.Message.getField(this, 16) as boolean;
+        return pb_1.Message.getFieldWithDefault(this, 16, false) as boolean;
     }
     set ignore(value: boolean) {
         pb_1.Message.setField(this, 16, value);
     }
     get starred() {
-        return pb_1.Message.getField(this, 17) as boolean;
+        return pb_1.Message.getFieldWithDefault(this, 17, false) as boolean;
     }
     set starred(value: boolean) {
         pb_1.Message.setField(this, 17, value);
     }
     get broadcast() {
-        return pb_1.Message.getField(this, 18) as boolean;
+        return pb_1.Message.getFieldWithDefault(this, 18, false) as boolean;
     }
     set broadcast(value: boolean) {
         pb_1.Message.setField(this, 18, value);
     }
     get pushName() {
-        return pb_1.Message.getField(this, 19) as string;
+        return pb_1.Message.getFieldWithDefault(this, 19, "") as string;
     }
     set pushName(value: string) {
         pb_1.Message.setField(this, 19, value);
     }
     get mediaCiphertextSha256() {
-        return pb_1.Message.getField(this, 20) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 20, new Uint8Array()) as Uint8Array;
     }
     set mediaCiphertextSha256(value: Uint8Array) {
         pb_1.Message.setField(this, 20, value);
     }
     get multicast() {
-        return pb_1.Message.getField(this, 21) as boolean;
+        return pb_1.Message.getFieldWithDefault(this, 21, false) as boolean;
     }
     set multicast(value: boolean) {
         pb_1.Message.setField(this, 21, value);
     }
     get urlText() {
-        return pb_1.Message.getField(this, 22) as boolean;
+        return pb_1.Message.getFieldWithDefault(this, 22, false) as boolean;
     }
     set urlText(value: boolean) {
         pb_1.Message.setField(this, 22, value);
     }
     get urlNumber() {
-        return pb_1.Message.getField(this, 23) as boolean;
+        return pb_1.Message.getFieldWithDefault(this, 23, false) as boolean;
     }
     set urlNumber(value: boolean) {
         pb_1.Message.setField(this, 23, value);
     }
     get messageStubType() {
-        return pb_1.Message.getField(this, 24) as WebMessageInfo.WEB_MESSAGE_INFO_STUBTYPE;
+        return pb_1.Message.getFieldWithDefault(this, 24, WebMessageInfo.WEB_MESSAGE_INFO_STUBTYPE.UNKNOWN) as WebMessageInfo.WEB_MESSAGE_INFO_STUBTYPE;
     }
     set messageStubType(value: WebMessageInfo.WEB_MESSAGE_INFO_STUBTYPE) {
         pb_1.Message.setField(this, 24, value);
     }
     get clearMedia() {
-        return pb_1.Message.getField(this, 25) as boolean;
+        return pb_1.Message.getFieldWithDefault(this, 25, false) as boolean;
     }
     set clearMedia(value: boolean) {
         pb_1.Message.setField(this, 25, value);
     }
     get messageStubParameters() {
-        return pb_1.Message.getField(this, 26) as string[];
+        return pb_1.Message.getFieldWithDefault(this, 26, []) as string[];
     }
     set messageStubParameters(value: string[]) {
         pb_1.Message.setField(this, 26, value);
     }
     get duration() {
-        return pb_1.Message.getField(this, 27) as number;
+        return pb_1.Message.getFieldWithDefault(this, 27, 0) as number;
     }
     set duration(value: number) {
         pb_1.Message.setField(this, 27, value);
     }
     get labels() {
-        return pb_1.Message.getField(this, 28) as string[];
+        return pb_1.Message.getFieldWithDefault(this, 28, []) as string[];
     }
     set labels(value: string[]) {
         pb_1.Message.setField(this, 28, value);
@@ -10949,19 +10307,19 @@ export class WebMessageInfo extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 31, value);
     }
     get ephemeralStartTimestamp() {
-        return pb_1.Message.getField(this, 32) as number;
+        return pb_1.Message.getFieldWithDefault(this, 32, 0) as number;
     }
     set ephemeralStartTimestamp(value: number) {
         pb_1.Message.setField(this, 32, value);
     }
     get ephemeralDuration() {
-        return pb_1.Message.getField(this, 33) as number;
+        return pb_1.Message.getFieldWithDefault(this, 33, 0) as number;
     }
     set ephemeralDuration(value: number) {
         pb_1.Message.setField(this, 33, value);
     }
     get ephemeralOffToOn() {
-        return pb_1.Message.getField(this, 34) as boolean;
+        return pb_1.Message.getFieldWithDefault(this, 34, false) as boolean;
     }
     set ephemeralOffToOn(value: boolean) {
         pb_1.Message.setField(this, 34, value);
@@ -11089,73 +10447,31 @@ export class WebMessageInfo extends pb_1.Message {
             ephemeralDuration?: number;
             ephemeralOffToOn?: boolean;
         } = {
-            key: this.key.toObject(),
-            messageStubParameters: this.messageStubParameters,
-            labels: this.labels
+            key: pb_1.Message.getField(this, 1) != null ? this.key != null ? this.key.toObject() : undefined : undefined,
+            message: pb_1.Message.getField(this, 2) != null ? this.message != null ? this.message.toObject() : undefined : undefined,
+            messageTimestamp: pb_1.Message.getField(this, 3) != null ? this.messageTimestamp : undefined,
+            status: pb_1.Message.getField(this, 4) != null ? this.status : undefined,
+            participant: pb_1.Message.getField(this, 5) != null ? this.participant : undefined,
+            ignore: pb_1.Message.getField(this, 16) != null ? this.ignore : undefined,
+            starred: pb_1.Message.getField(this, 17) != null ? this.starred : undefined,
+            broadcast: pb_1.Message.getField(this, 18) != null ? this.broadcast : undefined,
+            pushName: pb_1.Message.getField(this, 19) != null ? this.pushName : undefined,
+            mediaCiphertextSha256: pb_1.Message.getField(this, 20) != null ? this.mediaCiphertextSha256 : undefined,
+            multicast: pb_1.Message.getField(this, 21) != null ? this.multicast : undefined,
+            urlText: pb_1.Message.getField(this, 22) != null ? this.urlText : undefined,
+            urlNumber: pb_1.Message.getField(this, 23) != null ? this.urlNumber : undefined,
+            messageStubType: pb_1.Message.getField(this, 24) != null ? this.messageStubType : undefined,
+            clearMedia: pb_1.Message.getField(this, 25) != null ? this.clearMedia : undefined,
+            messageStubParameters: pb_1.Message.getField(this, 26) != null ? this.messageStubParameters : undefined,
+            duration: pb_1.Message.getField(this, 27) != null ? this.duration : undefined,
+            labels: pb_1.Message.getField(this, 28) != null ? this.labels : undefined,
+            paymentInfo: pb_1.Message.getField(this, 29) != null ? this.paymentInfo != null ? this.paymentInfo.toObject() : undefined : undefined,
+            finalLiveLocation: pb_1.Message.getField(this, 30) != null ? this.finalLiveLocation != null ? this.finalLiveLocation.toObject() : undefined : undefined,
+            quotedPaymentInfo: pb_1.Message.getField(this, 31) != null ? this.quotedPaymentInfo != null ? this.quotedPaymentInfo.toObject() : undefined : undefined,
+            ephemeralStartTimestamp: pb_1.Message.getField(this, 32) != null ? this.ephemeralStartTimestamp : undefined,
+            ephemeralDuration: pb_1.Message.getField(this, 33) != null ? this.ephemeralDuration : undefined,
+            ephemeralOffToOn: pb_1.Message.getField(this, 34) != null ? this.ephemeralOffToOn : undefined
         };
-        if (this.message != null) {
-            data.message = this.message.toObject();
-        }
-        if (this.messageTimestamp != null) {
-            data.messageTimestamp = this.messageTimestamp;
-        }
-        if (this.status != null) {
-            data.status = this.status;
-        }
-        if (this.participant != null) {
-            data.participant = this.participant;
-        }
-        if (this.ignore != null) {
-            data.ignore = this.ignore;
-        }
-        if (this.starred != null) {
-            data.starred = this.starred;
-        }
-        if (this.broadcast != null) {
-            data.broadcast = this.broadcast;
-        }
-        if (this.pushName != null) {
-            data.pushName = this.pushName;
-        }
-        if (this.mediaCiphertextSha256 != null) {
-            data.mediaCiphertextSha256 = this.mediaCiphertextSha256;
-        }
-        if (this.multicast != null) {
-            data.multicast = this.multicast;
-        }
-        if (this.urlText != null) {
-            data.urlText = this.urlText;
-        }
-        if (this.urlNumber != null) {
-            data.urlNumber = this.urlNumber;
-        }
-        if (this.messageStubType != null) {
-            data.messageStubType = this.messageStubType;
-        }
-        if (this.clearMedia != null) {
-            data.clearMedia = this.clearMedia;
-        }
-        if (this.duration != null) {
-            data.duration = this.duration;
-        }
-        if (this.paymentInfo != null) {
-            data.paymentInfo = this.paymentInfo.toObject();
-        }
-        if (this.finalLiveLocation != null) {
-            data.finalLiveLocation = this.finalLiveLocation.toObject();
-        }
-        if (this.quotedPaymentInfo != null) {
-            data.quotedPaymentInfo = this.quotedPaymentInfo.toObject();
-        }
-        if (this.ephemeralStartTimestamp != null) {
-            data.ephemeralStartTimestamp = this.ephemeralStartTimestamp;
-        }
-        if (this.ephemeralDuration != null) {
-            data.ephemeralDuration = this.ephemeralDuration;
-        }
-        if (this.ephemeralOffToOn != null) {
-            data.ephemeralOffToOn = this.ephemeralOffToOn;
-        }
         return data;
     }
     serialize(): Uint8Array;

@@ -22,13 +22,13 @@ export namespace main {
             }
         }
         get language() {
-            return pb_1.Message.getField(this, 1) as Code.Language;
+            return pb_1.Message.getFieldWithDefault(this, 1, Code.Language.UNKNOWN) as Code.Language;
         }
         set language(value: Code.Language) {
             pb_1.Message.setField(this, 1, value);
         }
         get lines() {
-            return pb_1.Message.getField(this, 2) as number;
+            return pb_1.Message.getFieldWithDefault(this, 2, 0) as number;
         }
         set lines(value: number) {
             pb_1.Message.setField(this, 2, value);
@@ -50,13 +50,10 @@ export namespace main {
             const data: {
                 language?: Code.Language;
                 lines?: number;
-            } = {};
-            if (this.language != null) {
-                data.language = this.language;
-            }
-            if (this.lines != null) {
-                data.lines = this.lines;
-            }
+            } = {
+                language: this.language,
+                lines: this.lines
+            };
             return data;
         }
         serialize(): Uint8Array;

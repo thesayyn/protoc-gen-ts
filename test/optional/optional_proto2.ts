@@ -19,13 +19,13 @@ export class NotOptional extends pb_1.Message {
         }
     }
     get should_be_required() {
-        return pb_1.Message.getField(this, 1) as string[];
+        return pb_1.Message.getFieldWithDefault(this, 1, []) as string[];
     }
     set should_be_required(value: string[]) {
         pb_1.Message.setField(this, 1, value);
     }
     get should_be_optional() {
-        return pb_1.Message.getField(this, 2) as string;
+        return pb_1.Message.getFieldWithDefault(this, 2, "") as string;
     }
     set should_be_optional(value: string) {
         pb_1.Message.setField(this, 2, value);
@@ -47,11 +47,9 @@ export class NotOptional extends pb_1.Message {
             should_be_required: string[];
             should_be_optional?: string;
         } = {
-            should_be_required: this.should_be_required
+            should_be_required: pb_1.Message.getField(this, 1) != null ? this.should_be_required : undefined,
+            should_be_optional: pb_1.Message.getField(this, 2) != null ? this.should_be_optional : undefined
         };
-        if (this.should_be_optional != null) {
-            data.should_be_optional = this.should_be_optional;
-        }
         return data;
     }
     serialize(): Uint8Array;

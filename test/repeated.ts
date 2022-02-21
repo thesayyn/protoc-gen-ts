@@ -17,7 +17,7 @@ export class Repeated extends pb_1.Message {
         }
     }
     get indx() {
-        return pb_1.Message.getField(this, 4) as number[];
+        return pb_1.Message.getFieldWithDefault(this, 4, []) as number[];
     }
     set indx(value: number[]) {
         pb_1.Message.setField(this, 4, value);
@@ -34,10 +34,9 @@ export class Repeated extends pb_1.Message {
     toObject() {
         const data: {
             indx?: number[];
-        } = {};
-        if (this.indx != null) {
-            data.indx = this.indx;
-        }
+        } = {
+            indx: this.indx
+        };
         return data;
     }
     serialize(): Uint8Array;

@@ -43,21 +43,21 @@ export class MessageName extends pb_1.Message {
     }
     /** @deprecated*/
     get deprecated_field() {
-        return pb_1.Message.getField(this, 1) as string;
+        return pb_1.Message.getFieldWithDefault(this, 1, "") as string;
     }
     /** @deprecated*/
     set deprecated_field(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
     get me() {
-        return pb_1.Message.getField(this, 2) as string;
+        return pb_1.Message.getFieldWithDefault(this, 2, "") as string;
     }
     set me(value: string) {
         pb_1.Message.setOneofField(this, 2, [2, 3], value);
     }
     /** @deprecated*/
     get me_deprecated() {
-        return pb_1.Message.getField(this, 3) as string;
+        return pb_1.Message.getFieldWithDefault(this, 3, "") as string;
     }
     /** @deprecated*/
     set me_deprecated(value: string) {
@@ -95,16 +95,11 @@ export class MessageName extends pb_1.Message {
             deprecated_field?: string;
             me?: string;
             me_deprecated?: string;
-        } = {};
-        if (this.deprecated_field != null) {
-            data.deprecated_field = this.deprecated_field;
-        }
-        if (this.me != null) {
-            data.me = this.me;
-        }
-        if (this.me_deprecated != null) {
-            data.me_deprecated = this.me_deprecated;
-        }
+        } = {
+            deprecated_field: this.deprecated_field,
+            me: this.me,
+            me_deprecated: this.me_deprecated
+        };
         return data;
     }
     serialize(): Uint8Array;

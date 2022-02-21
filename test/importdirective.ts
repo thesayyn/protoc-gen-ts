@@ -40,7 +40,7 @@ export namespace importdirective {
             pb_1.Message.setWrapperField(this, 2, value);
         }
         get enumField() {
-            return pb_1.Message.getField(this, 3) as dependency_1.importdirective.Imported.SubMessage.MyEnum;
+            return pb_1.Message.getFieldWithDefault(this, 3, dependency_1.importdirective.Imported.SubMessage.MyEnum.VALUE) as dependency_1.importdirective.Imported.SubMessage.MyEnum;
         }
         set enumField(value: dependency_1.importdirective.Imported.SubMessage.MyEnum) {
             pb_1.Message.setField(this, 3, value);
@@ -67,16 +67,11 @@ export namespace importdirective {
                 importedField?: ReturnType<typeof dependency_1.importdirective.Imported.prototype.toObject>;
                 submessageField?: ReturnType<typeof dependency_1.importdirective.Imported.SubMessage.prototype.toObject>;
                 enumField?: dependency_1.importdirective.Imported.SubMessage.MyEnum;
-            } = {};
-            if (this.importedField != null) {
-                data.importedField = this.importedField.toObject();
-            }
-            if (this.submessageField != null) {
-                data.submessageField = this.submessageField.toObject();
-            }
-            if (this.enumField != null) {
-                data.enumField = this.enumField;
-            }
+            } = {
+                importedField: this.importedField != null ? this.importedField.toObject() : undefined,
+                submessageField: this.submessageField != null ? this.submessageField.toObject() : undefined,
+                enumField: this.enumField
+            };
             return data;
         }
         serialize(): Uint8Array;
