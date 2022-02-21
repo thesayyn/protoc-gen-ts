@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+message DefaultCommonMessage {
+    string message = 1;  
+}
+
+message DefaultCommonMessageOneOf {
+    oneof oneof {
+        int32 int32 = 1;
+        DefaultCommonMessage message = 2;
+    }
+}
+
+enum DefaultCommonEnum {
+    ZERO = 0;
+    ONE = 1;
+    TWO = 2;    
+}
