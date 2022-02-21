@@ -946,33 +946,59 @@ function createGetterCall(
       type.getTypeReferenceExpr(rootDescriptor, fieldDescriptor.type_name),
       ts.factory.createNumericLiteral(fieldDescriptor.number),
     ];
+  } else if (field.isMap(fieldDescriptor)) {
+    getterMethod = "getField";
+
+    args = [
+      ts.factory.createThis(),
+      ts.factory.createNumericLiteral(fieldDescriptor.number),
+    ]
   } else {
     args = [
       ts.factory.createThis(),
       ts.factory.createNumericLiteral(fieldDescriptor.number),
     ];
 
-    if (fieldDescriptor.default_value) {
-      getterMethod = "getFieldWithDefault";
-      let _default: ts.Expression;
+    let default_value = fieldDescriptor.default_value;
 
-      if (field.isEnum(fieldDescriptor)) {
-        _default = ts.factory.createPropertyAccessExpression(
-          type.getTypeReferenceExpr(rootDescriptor, fieldDescriptor.type_name),
-          fieldDescriptor.default_value,
-        );
-      } else if (field.isString(fieldDescriptor)) {
-        _default = ts.factory.createStringLiteral(
-          fieldDescriptor.default_value,
-        );
-      } else if (field.isBoolean(fieldDescriptor)) {
-        _default = ts.factory.createIdentifier(fieldDescriptor.default_value);
-      } else {
-        _default = ts.factory.createIdentifier(fieldDescriptor.default_value);
-      }
+    getterMethod = "getFieldWithDefault";
+    let _default: ts.Expression;
 
-      args.push(_default);
+    if (field.isEnum(fieldDescriptor)) {
+      _default = ts.factory.createPropertyAccessExpression(
+        type.getTypeReferenceExpr(rootDescriptor, fieldDescriptor.type_name),
+        default_value != null ? default_value : type.getLeadingEnumMember(fieldDescriptor.type_name),
+      );
+    } else if (field.isRepeated(fieldDescriptor)) {
+      _default = default_value != null
+        ? ts.factory.createIdentifier(default_value)
+        : ts.factory.createArrayLiteralExpression(
+          [],
+          false
+        )
+    } else if (fieldDescriptor.type == descriptor.FieldDescriptorProto.Type.TYPE_BYTES) {
+      _default = default_value != null
+        ? ts.factory.createIdentifier(default_value)
+        : ts.factory.createNewExpression(
+          ts.factory.createIdentifier("Uint8Array"),
+          undefined,
+          []
+        )
+    } else if (field.isString(fieldDescriptor) || field.hasJsTypeString(fieldDescriptor)) {
+      _default = default_value != null
+        ? ts.factory.createStringLiteral(default_value)
+        : ts.factory.createStringLiteral("")
+    } else if (field.isBoolean(fieldDescriptor)) {
+      _default = default_value != null
+        ? ts.factory.createIdentifier(default_value)
+        : ts.factory.createFalse()
+    } else {
+      _default = default_value != null
+        ? ts.factory.createIdentifier(default_value)
+        : ts.factory.createNumericLiteral(0)
     }
+
+    args.push(_default);
   }
   return ts.factory.createCallExpression(
     ts.factory.createPropertyAccessExpression(
