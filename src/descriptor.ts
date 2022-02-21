@@ -306,6 +306,7 @@ function createFromObject(
 function createToObject(
   rootDescriptor: descriptor.FileDescriptorProto,
   messageDescriptor: descriptor.DescriptorProto,
+  pbIdentifier: ts.Identifier,
 ): ts.MethodDeclaration {
   const statements = [];
   const properties = [];
@@ -420,51 +421,60 @@ function createToObject(
           [arrowFunc],
         );
       } else {
-        valueExpr = ts.factory.createCallExpression(
-          ts.factory.createPropertyAccessExpression(valueExpr, "toObject"),
-          undefined,
-          undefined,
-        );
+        valueExpr = ts.factory.createConditionalExpression(
+          ts.factory.createBinaryExpression(
+            ts.factory.createPropertyAccessExpression(
+              ts.factory.createThis(),
+              ts.factory.createIdentifier(fieldDescriptor.name)
+            ),
+            ts.factory.createToken(ts.SyntaxKind.ExclamationEqualsToken),
+            ts.factory.createNull()
+          ),
+          ts.factory.createToken(ts.SyntaxKind.QuestionToken),
+          ts.factory.createCallExpression(
+            ts.factory.createPropertyAccessExpression(
+              ts.factory.createPropertyAccessExpression(
+                ts.factory.createThis(),
+                ts.factory.createIdentifier(fieldDescriptor.name)
+              ),
+              ts.factory.createIdentifier("toObject")
+            ),
+            undefined,
+            []
+          ),
+          ts.factory.createToken(ts.SyntaxKind.ColonToken),
+          ts.factory.createIdentifier("undefined")
+        )
       }
     }
 
-    if (field.isOptional(rootDescriptor, fieldDescriptor)) {
-      const propertyAccessor = ts.factory.createPropertyAccessExpression(
-        ts.factory.createThis(),
-        getFieldName(fieldDescriptor),
-      );
-      let condition = ts.factory.createBinaryExpression(
-        propertyAccessor,
-        ts.factory.createToken(ts.SyntaxKind.ExclamationEqualsToken),
-        ts.factory.createNull(),
-      );
-
-      if (field.isMap(fieldDescriptor)) {
-        condition = ts.factory.createBinaryExpression(
-          ts.factory.createPropertyAccessExpression(propertyAccessor, "size"),
-          ts.factory.createToken(ts.SyntaxKind.GreaterThanToken),
-          ts.factory.createNumericLiteral(0),
-        );
-      }
-
-      statements.push(
-        ts.factory.createIfStatement(
-          condition,
-          ts.factory.createBlock(
-            [
-              ts.factory.createExpressionStatement(
-                ts.factory.createBinaryExpression(
+    if (fieldDescriptor.default_value == null && rootDescriptor.syntax != "proto3") {
+      properties.push(
+        ts.factory.createPropertyAssignment(getFieldName(fieldDescriptor),
+          ts.factory.createConditionalExpression(
+            ts.factory.createBinaryExpression(
+              ts.factory.createCallExpression(
+                ts.factory.createPropertyAccessExpression(
                   ts.factory.createPropertyAccessExpression(
-                    dataIdentifier,
-                    getFieldName(fieldDescriptor),
+                    pbIdentifier,
+                    ts.factory.createIdentifier("Message")
                   ),
-                  ts.factory.createToken(ts.SyntaxKind.EqualsToken),
-                  valueExpr,
+                  ts.factory.createIdentifier("getField")
                 ),
+                undefined,
+                [
+                  ts.factory.createThis(),
+                  ts.factory.createNumericLiteral(fieldDescriptor.number)
+                ]
               ),
-            ],
-            true,
-          ),
+              ts.factory.createToken(ts.SyntaxKind.ExclamationEqualsToken),
+              ts.factory.createNull()
+            ),
+            ts.factory.createToken(ts.SyntaxKind.QuestionToken),
+            valueExpr,
+            ts.factory.createToken(ts.SyntaxKind.ColonToken),
+            ts.factory.createIdentifier("undefined")
+          )
         ),
       );
     } else {
@@ -2139,7 +2149,7 @@ function createMessage(
     // Create fromObject method
     createFromObject(rootDescriptor, messageDescriptor, parentName),
     // Create toObject method
-    createToObject(rootDescriptor, messageDescriptor),
+    createToObject(rootDescriptor, messageDescriptor, pbIdentifier),
   );
 
   statements.push(
