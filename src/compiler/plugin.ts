@@ -6,6 +6,7 @@
 import * as dependency_1 from "./descriptor";
 import * as pb_1 from "google-protobuf";
 export class Version extends pb_1.Message {
+    static #one_of_decls = [];
     constructor(data?: any[] | {
         major?: number;
         minor?: number;
@@ -13,7 +14,7 @@ export class Version extends pb_1.Message {
         suffix?: string;
     }) {
         super();
-        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], Version.#one_of_decls);
         if (!Array.isArray(data) && typeof data == "object") {
             if ("major" in data && data.major != undefined) {
                 this.major = data.major;
@@ -141,6 +142,7 @@ export class Version extends pb_1.Message {
     }
 }
 export class CodeGeneratorRequest extends pb_1.Message {
+    static #one_of_decls = [];
     constructor(data?: any[] | {
         file_to_generate: string[];
         parameter?: string;
@@ -148,7 +150,7 @@ export class CodeGeneratorRequest extends pb_1.Message {
         compiler_version?: Version;
     }) {
         super();
-        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1, 15], []);
+        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1, 15], CodeGeneratorRequest.#one_of_decls);
         if (!Array.isArray(data) && typeof data == "object") {
             this.file_to_generate = data.file_to_generate;
             if ("parameter" in data && data.parameter != undefined) {
@@ -266,13 +268,14 @@ export class CodeGeneratorRequest extends pb_1.Message {
     }
 }
 export class CodeGeneratorResponse extends pb_1.Message {
+    static #one_of_decls = [];
     constructor(data?: any[] | {
         error?: string;
         supported_features?: number;
         file: CodeGeneratorResponse.File[];
     }) {
         super();
-        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [15], []);
+        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [15], CodeGeneratorResponse.#one_of_decls);
         if (!Array.isArray(data) && typeof data == "object") {
             if ("error" in data && data.error != undefined) {
                 this.error = data.error;
@@ -379,6 +382,7 @@ export namespace CodeGeneratorResponse {
         FEATURE_PROTO3_OPTIONAL = 1
     }
     export class File extends pb_1.Message {
+        static #one_of_decls = [];
         constructor(data?: any[] | {
             name?: string;
             insertion_point?: string;
@@ -386,7 +390,7 @@ export namespace CodeGeneratorResponse {
             generated_code_info?: dependency_1.GeneratedCodeInfo;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], File.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("name" in data && data.name != undefined) {
                     this.name = data.name;

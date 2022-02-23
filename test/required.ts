@@ -5,12 +5,13 @@
  * git: https://github.com/thesayyn/protoc-gen-ts */
 import * as pb_1 from "google-protobuf";
 export class NoOptionalValues extends pb_1.Message {
+    static #one_of_decls = [];
     constructor(data?: any[] | {
         test: string;
         test2: string;
     }) {
         super();
-        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], NoOptionalValues.#one_of_decls);
         if (!Array.isArray(data) && typeof data == "object") {
             this.test = data.test;
             this.test2 = data.test2;

@@ -6,11 +6,12 @@
 import * as pb_1 from "google-protobuf";
 export namespace pkg.mycompany {
     export class Message extends pb_1.Message {
+        static #one_of_decls = [];
         constructor(data?: any[] | {
             field?: string[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], Message.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("field" in data && data.field != undefined) {
                     this.field = data.field;

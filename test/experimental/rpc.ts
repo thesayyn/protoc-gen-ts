@@ -6,11 +6,12 @@
 import * as pb_1 from "google-protobuf";
 import * as grpc_1 from "@grpc/grpc-js";
 export class Chunk extends pb_1.Message {
+    static #one_of_decls = [];
     constructor(data?: any[] | {
         data?: Uint8Array;
     }) {
         super();
-        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], Chunk.#one_of_decls);
         if (!Array.isArray(data) && typeof data == "object") {
             if ("data" in data && data.data != undefined) {
                 this.data = data.data;
@@ -72,11 +73,12 @@ export class Chunk extends pb_1.Message {
     }
 }
 export class Result extends pb_1.Message {
+    static #one_of_decls = [];
     constructor(data?: any[] | {
         id?: number;
     }) {
         super();
-        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], Result.#one_of_decls);
         if (!Array.isArray(data) && typeof data == "object") {
             if ("id" in data && data.id != undefined) {
                 this.id = data.id;

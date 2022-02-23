@@ -16,6 +16,7 @@ export enum EnumName2 {
     SECOND = 0
 }
 export class MessageName extends pb_1.Message {
+    static #one_of_decls = [[2, 3]];
     constructor(data?: any[] | ({
         /** @deprecated*/
         deprecated_field?: string;
@@ -28,7 +29,7 @@ export class MessageName extends pb_1.Message {
         me_deprecated?: string;
     })))) {
         super();
-        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], [[2, 3]]);
+        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], MessageName.#one_of_decls);
         if (!Array.isArray(data) && typeof data == "object") {
             if ("deprecated_field" in data && data.deprecated_field != undefined) {
                 this.deprecated_field = data.deprecated_field;
@@ -53,7 +54,7 @@ export class MessageName extends pb_1.Message {
         return pb_1.Message.getField(this, 2) as string;
     }
     set me(value: string) {
-        pb_1.Message.setOneofField(this, 2, [2, 3], value);
+        pb_1.Message.setOneofField(this, 2, MessageName.#one_of_decls[0], value);
     }
     /** @deprecated*/
     get me_deprecated() {
@@ -61,7 +62,7 @@ export class MessageName extends pb_1.Message {
     }
     /** @deprecated*/
     set me_deprecated(value: string) {
-        pb_1.Message.setOneofField(this, 3, [2, 3], value);
+        pb_1.Message.setOneofField(this, 3, MessageName.#one_of_decls[0], value);
     }
     get test() {
         const cases: {
@@ -149,9 +150,10 @@ export class MessageName extends pb_1.Message {
 }
 /** @deprecated*/
 export class MessageName2 extends pb_1.Message {
+    static #one_of_decls = [];
     constructor(data?: any[] | {}) {
         super();
-        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], MessageName2.#one_of_decls);
         if (!Array.isArray(data) && typeof data == "object") { }
     }
     static fromObject(data: {}) {

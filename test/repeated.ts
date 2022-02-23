@@ -5,11 +5,12 @@
  * git: https://github.com/thesayyn/protoc-gen-ts */
 import * as pb_1 from "google-protobuf";
 export class Repeated extends pb_1.Message {
+    static #one_of_decls = [];
     constructor(data?: any[] | {
         indx?: number[];
     }) {
         super();
-        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [4], []);
+        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [4], Repeated.#one_of_decls);
         if (!Array.isArray(data) && typeof data == "object") {
             if ("indx" in data && data.indx != undefined) {
                 this.indx = data.indx;

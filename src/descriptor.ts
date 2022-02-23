@@ -660,6 +660,25 @@ function createPrimitiveMessageSignature(
   return ts.factory.createTypeLiteralNode(fieldSignatures);
 }
 
+function getPivot(descriptor: descriptor.DescriptorProto) {
+  const kDefaultPivot = 500;
+  let max_field_number = 0;
+  for (const field of descriptor.field) {
+    if (field.extendee && field.number > max_field_number) {
+      max_field_number = 0;
+    }
+  }
+
+  let pivot = -1;
+  if (descriptor.extension_range.length && max_field_number >= kDefaultPivot) {
+    pivot =
+      max_field_number + 1 < kDefaultPivot
+        ? max_field_number + 1
+        : kDefaultPivot;
+  }
+  return pivot;
+}
+
 /**
  *
  * @param {descriptor.FileDescriptorProto} rootDescriptor
@@ -681,17 +700,6 @@ function createConstructor(
     ),
     createMessageSignature(rootDescriptor, messageDescriptor),
   ]);
-
-  // Get oneOfFields
-  const oneOfFields = messageDescriptor.oneof_decl.map(
-    (_: descriptor.OneofDescriptorProto, index: number) => {
-      return ts.factory.createArrayLiteralExpression(
-        messageDescriptor.field
-          .filter((fd) => index == fd.oneof_index)
-          .map((fd) => ts.factory.createNumericLiteral(fd.number)),
-      );
-    },
-  );
 
   // Get repeated fields numbers
   const repeatedFields = messageDescriptor.field
@@ -732,10 +740,13 @@ function createConstructor(
             ts.factory.createToken(ts.SyntaxKind.ColonToken),
             ts.factory.createArrayLiteralExpression(),
           ),
-          ts.factory.createNumericLiteral("0"),
-          ts.factory.createNumericLiteral("-1") /* TODO: Handle extensions */,
+          ts.factory.createNumericLiteral(0),
+          ts.factory.createNumericLiteral(getPivot(messageDescriptor)),
           ts.factory.createArrayLiteralExpression(repeatedFields),
-          ts.factory.createArrayLiteralExpression(oneOfFields),
+          ts.factory.createPropertyAccessExpression(
+            ts.factory.createIdentifier(messageDescriptor.name),
+            ts.factory.createPrivateIdentifier("#one_of_decls"),
+          ),
         ],
       ),
     ),
@@ -1061,7 +1072,7 @@ function createSetter(
   );
   const valueParameter = ts.factory.createIdentifier("value");
 
-  let block;
+  let block: ts.Block;
 
   if (field.isOneOf(fieldDescriptor)) {
     block = createOneOfSetterBlock(
@@ -1104,9 +1115,6 @@ function createOneOfSetterBlock(
   const method = field.isMessage(fieldDescriptor)
     ? "setOneofWrapperField"
     : "setOneofField";
-  const numbers = messageDescriptor.field
-    .filter((field) => field.oneof_index == fieldDescriptor.oneof_index)
-    .map((field) => ts.factory.createNumericLiteral(field.number));
 
   return ts.factory.createBlock(
     [
@@ -1120,7 +1128,13 @@ function createOneOfSetterBlock(
           [
             ts.factory.createThis(),
             ts.factory.createNumericLiteral(fieldDescriptor.number),
-            ts.factory.createArrayLiteralExpression(numbers),
+            ts.factory.createElementAccessExpression(
+              ts.factory.createPropertyAccessExpression(
+                ts.factory.createIdentifier(messageDescriptor.name),
+                ts.factory.createPrivateIdentifier("#one_of_decls"),
+              ),
+              fieldDescriptor.oneof_index,
+            ),
             valueParameter,
           ],
         ),
@@ -2000,6 +2014,35 @@ function createSerializeBinary(): ts.ClassElement {
   );
 }
 
+function createOneOfDecls(
+  messageDescriptor: descriptor.DescriptorProto,
+): ts.ClassElement {
+  const declMap = new Array<ts.NumericLiteral[]>(
+    messageDescriptor.oneof_decl.length,
+  );
+
+  for (const field of messageDescriptor.field) {
+    if (field.oneof_index != null) {
+      declMap[field.oneof_index] ??= [];
+      declMap[field.oneof_index].push(
+        ts.factory.createNumericLiteral(field.number),
+      );
+    }
+  }
+  const decls: ts.Expression[] = [];
+  for (const map of declMap) {
+    decls.push(ts.factory.createArrayLiteralExpression(map));
+  }
+  return ts.factory.createPropertyDeclaration(
+    undefined,
+    [ts.factory.createModifier(ts.SyntaxKind.StaticKeyword)],
+    ts.factory.createPrivateIdentifier("#one_of_decls"),
+    undefined,
+    undefined,
+    ts.factory.createArrayLiteralExpression(decls),
+  );
+}
+
 /**
  * Returns a class for the message descriptor
  */
@@ -2008,6 +2051,47 @@ function createMessage(
   messageDescriptor: descriptor.DescriptorProto,
   pbIdentifier: ts.Identifier,
 ): ts.ClassDeclaration {
+  const statements: ts.ClassElement[] = [
+    createOneOfDecls(messageDescriptor),
+    // Create constructor
+    createConstructor(rootDescriptor, messageDescriptor, pbIdentifier),
+  ];
+
+  for (const field of messageDescriptor.field) {
+    statements.push(createGetter(rootDescriptor, field, pbIdentifier));
+    statements.push(
+      createSetter(rootDescriptor, messageDescriptor, field, pbIdentifier),
+    );
+  }
+
+  for (const [index, oneof] of messageDescriptor.oneof_decl.entries()) {
+    // Create one of getters
+    statements.push(
+      createOneOfGetter(index, oneof, messageDescriptor, pbIdentifier),
+    );
+  }
+
+  statements.push(
+    // Create fromObject method
+    createFromObject(rootDescriptor, messageDescriptor),
+    // Create toObject method
+    createToObject(rootDescriptor, messageDescriptor),
+  );
+
+  statements.push(
+    // Create serialize  method
+    ...createSerialize(rootDescriptor, messageDescriptor, pbIdentifier),
+
+    // Create deserialize method
+    createDeserialize(rootDescriptor, messageDescriptor, pbIdentifier),
+
+    // Create serializeBinary method
+    createSerializeBinary(),
+
+    // Create deserializeBinary method
+    createDeserializeBinary(messageDescriptor),
+  );
+
   // Create message class
   return comment.addDeprecatedJsDoc(
     ts.factory.createClassDeclaration(
@@ -2026,50 +2110,7 @@ function createMessage(
           ),
         ]),
       ],
-      [
-        // Create constructor
-        createConstructor(rootDescriptor, messageDescriptor, pbIdentifier),
-
-        // Create getter and setters
-        ...messageDescriptor.field.flatMap((fieldDescriptor) => [
-          createGetter(rootDescriptor, fieldDescriptor, pbIdentifier),
-          createSetter(
-            rootDescriptor,
-            messageDescriptor,
-            fieldDescriptor,
-            pbIdentifier,
-          ),
-        ]),
-
-        // Create one of getters
-        ...Array.from(messageDescriptor.oneof_decl.entries()).map(
-          ([index, oneofDescriptor]) =>
-            createOneOfGetter(
-              index,
-              oneofDescriptor,
-              messageDescriptor,
-              pbIdentifier,
-            ),
-        ),
-
-        // Create fromObject method
-        createFromObject(rootDescriptor, messageDescriptor),
-
-        // Create toObject method
-        createToObject(rootDescriptor, messageDescriptor),
-
-        // Create serialize  method
-        ...createSerialize(rootDescriptor, messageDescriptor, pbIdentifier),
-
-        // Create deserialize method
-        createDeserialize(rootDescriptor, messageDescriptor, pbIdentifier),
-
-        // Create serializeBinary method
-        createSerializeBinary(),
-
-        // Create deserializeBinary method
-        createDeserializeBinary(messageDescriptor),
-      ],
+      statements,
     ),
     messageDescriptor.options?.deprecated,
   );

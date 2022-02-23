@@ -5,12 +5,13 @@
  * git: https://github.com/thesayyn/protoc-gen-ts */
 import * as pb_1 from "google-protobuf";
 export class HydratedQuickReplyButton extends pb_1.Message {
+    static #one_of_decls = [];
     constructor(data?: any[] | {
         displayText?: string;
         id?: string;
     }) {
         super();
-        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], HydratedQuickReplyButton.#one_of_decls);
         if (!Array.isArray(data) && typeof data == "object") {
             if ("displayText" in data && data.displayText != undefined) {
                 this.displayText = data.displayText;
@@ -94,12 +95,13 @@ export class HydratedQuickReplyButton extends pb_1.Message {
     }
 }
 export class HydratedURLButton extends pb_1.Message {
+    static #one_of_decls = [];
     constructor(data?: any[] | {
         displayText?: string;
         url?: string;
     }) {
         super();
-        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], HydratedURLButton.#one_of_decls);
         if (!Array.isArray(data) && typeof data == "object") {
             if ("displayText" in data && data.displayText != undefined) {
                 this.displayText = data.displayText;
@@ -183,12 +185,13 @@ export class HydratedURLButton extends pb_1.Message {
     }
 }
 export class HydratedCallButton extends pb_1.Message {
+    static #one_of_decls = [];
     constructor(data?: any[] | {
         displayText?: string;
         phoneNumber?: string;
     }) {
         super();
-        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], HydratedCallButton.#one_of_decls);
         if (!Array.isArray(data) && typeof data == "object") {
             if ("displayText" in data && data.displayText != undefined) {
                 this.displayText = data.displayText;
@@ -272,6 +275,7 @@ export class HydratedCallButton extends pb_1.Message {
     }
 }
 export class HydratedTemplateButton extends pb_1.Message {
+    static #one_of_decls = [[1, 2, 3]];
     constructor(data?: any[] | ({
         index?: number;
     } & (({
@@ -288,7 +292,7 @@ export class HydratedTemplateButton extends pb_1.Message {
         callButton?: HydratedCallButton;
     })))) {
         super();
-        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], [[1, 2, 3]]);
+        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], HydratedTemplateButton.#one_of_decls);
         if (!Array.isArray(data) && typeof data == "object") {
             if ("index" in data && data.index != undefined) {
                 this.index = data.index;
@@ -314,19 +318,19 @@ export class HydratedTemplateButton extends pb_1.Message {
         return pb_1.Message.getWrapperField(this, HydratedQuickReplyButton, 1) as HydratedQuickReplyButton;
     }
     set quickReplyButton(value: HydratedQuickReplyButton) {
-        pb_1.Message.setOneofWrapperField(this, 1, [1, 2, 3], value);
+        pb_1.Message.setOneofWrapperField(this, 1, HydratedTemplateButton.#one_of_decls[0], value);
     }
     get urlButton() {
         return pb_1.Message.getWrapperField(this, HydratedURLButton, 2) as HydratedURLButton;
     }
     set urlButton(value: HydratedURLButton) {
-        pb_1.Message.setOneofWrapperField(this, 2, [1, 2, 3], value);
+        pb_1.Message.setOneofWrapperField(this, 2, HydratedTemplateButton.#one_of_decls[0], value);
     }
     get callButton() {
         return pb_1.Message.getWrapperField(this, HydratedCallButton, 3) as HydratedCallButton;
     }
     set callButton(value: HydratedCallButton) {
-        pb_1.Message.setOneofWrapperField(this, 3, [1, 2, 3], value);
+        pb_1.Message.setOneofWrapperField(this, 3, HydratedTemplateButton.#one_of_decls[0], value);
     }
     get hydratedButton() {
         const cases: {
@@ -427,12 +431,13 @@ export class HydratedTemplateButton extends pb_1.Message {
     }
 }
 export class QuickReplyButton extends pb_1.Message {
+    static #one_of_decls = [];
     constructor(data?: any[] | {
         displayText?: HighlyStructuredMessage;
         id?: string;
     }) {
         super();
-        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], QuickReplyButton.#one_of_decls);
         if (!Array.isArray(data) && typeof data == "object") {
             if ("displayText" in data && data.displayText != undefined) {
                 this.displayText = data.displayText;
@@ -516,12 +521,13 @@ export class QuickReplyButton extends pb_1.Message {
     }
 }
 export class URLButton extends pb_1.Message {
+    static #one_of_decls = [];
     constructor(data?: any[] | {
         displayText?: HighlyStructuredMessage;
         url?: HighlyStructuredMessage;
     }) {
         super();
-        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], URLButton.#one_of_decls);
         if (!Array.isArray(data) && typeof data == "object") {
             if ("displayText" in data && data.displayText != undefined) {
                 this.displayText = data.displayText;
@@ -605,12 +611,13 @@ export class URLButton extends pb_1.Message {
     }
 }
 export class CallButton extends pb_1.Message {
+    static #one_of_decls = [];
     constructor(data?: any[] | {
         displayText?: HighlyStructuredMessage;
         phoneNumber?: HighlyStructuredMessage;
     }) {
         super();
-        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], CallButton.#one_of_decls);
         if (!Array.isArray(data) && typeof data == "object") {
             if ("displayText" in data && data.displayText != undefined) {
                 this.displayText = data.displayText;
@@ -694,6 +701,7 @@ export class CallButton extends pb_1.Message {
     }
 }
 export class TemplateButton extends pb_1.Message {
+    static #one_of_decls = [[1, 2, 3]];
     constructor(data?: any[] | ({
         index?: number;
     } & (({
@@ -710,7 +718,7 @@ export class TemplateButton extends pb_1.Message {
         callButton?: CallButton;
     })))) {
         super();
-        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], [[1, 2, 3]]);
+        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], TemplateButton.#one_of_decls);
         if (!Array.isArray(data) && typeof data == "object") {
             if ("index" in data && data.index != undefined) {
                 this.index = data.index;
@@ -736,19 +744,19 @@ export class TemplateButton extends pb_1.Message {
         return pb_1.Message.getWrapperField(this, QuickReplyButton, 1) as QuickReplyButton;
     }
     set quickReplyButton(value: QuickReplyButton) {
-        pb_1.Message.setOneofWrapperField(this, 1, [1, 2, 3], value);
+        pb_1.Message.setOneofWrapperField(this, 1, TemplateButton.#one_of_decls[0], value);
     }
     get urlButton() {
         return pb_1.Message.getWrapperField(this, URLButton, 2) as URLButton;
     }
     set urlButton(value: URLButton) {
-        pb_1.Message.setOneofWrapperField(this, 2, [1, 2, 3], value);
+        pb_1.Message.setOneofWrapperField(this, 2, TemplateButton.#one_of_decls[0], value);
     }
     get callButton() {
         return pb_1.Message.getWrapperField(this, CallButton, 3) as CallButton;
     }
     set callButton(value: CallButton) {
-        pb_1.Message.setOneofWrapperField(this, 3, [1, 2, 3], value);
+        pb_1.Message.setOneofWrapperField(this, 3, TemplateButton.#one_of_decls[0], value);
     }
     get button() {
         const cases: {
@@ -849,13 +857,14 @@ export class TemplateButton extends pb_1.Message {
     }
 }
 export class Location extends pb_1.Message {
+    static #one_of_decls = [];
     constructor(data?: any[] | {
         degreesLatitude?: number;
         degreesLongitude?: number;
         name?: string;
     }) {
         super();
-        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], Location.#one_of_decls);
         if (!Array.isArray(data) && typeof data == "object") {
             if ("degreesLatitude" in data && data.degreesLatitude != undefined) {
                 this.degreesLatitude = data.degreesLatitude;
@@ -961,6 +970,7 @@ export class Location extends pb_1.Message {
     }
 }
 export class Point extends pb_1.Message {
+    static #one_of_decls = [];
     constructor(data?: any[] | {
         xDeprecated?: number;
         yDeprecated?: number;
@@ -968,7 +978,7 @@ export class Point extends pb_1.Message {
         y?: number;
     }) {
         super();
-        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], Point.#one_of_decls);
         if (!Array.isArray(data) && typeof data == "object") {
             if ("xDeprecated" in data && data.xDeprecated != undefined) {
                 this.xDeprecated = data.xDeprecated;
@@ -1096,13 +1106,14 @@ export class Point extends pb_1.Message {
     }
 }
 export class InteractiveAnnotation extends pb_1.Message {
+    static #one_of_decls = [[2]];
     constructor(data?: any[] | ({
         polygonVertices: Point[];
     } & (({
         location?: Location;
     })))) {
         super();
-        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], [[2]]);
+        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], InteractiveAnnotation.#one_of_decls);
         if (!Array.isArray(data) && typeof data == "object") {
             this.polygonVertices = data.polygonVertices;
             if ("location" in data && data.location != undefined) {
@@ -1120,7 +1131,7 @@ export class InteractiveAnnotation extends pb_1.Message {
         return pb_1.Message.getWrapperField(this, Location, 2) as Location;
     }
     set location(value: Location) {
-        pb_1.Message.setOneofWrapperField(this, 2, [2], value);
+        pb_1.Message.setOneofWrapperField(this, 2, InteractiveAnnotation.#one_of_decls[0], value);
     }
     get action() {
         const cases: {
@@ -1191,6 +1202,7 @@ export class InteractiveAnnotation extends pb_1.Message {
     }
 }
 export class AdReplyInfo extends pb_1.Message {
+    static #one_of_decls = [];
     constructor(data?: any[] | {
         advertiserName?: string;
         mediaType?: AdReplyInfo.AD_REPLY_INFO_MEDIATYPE;
@@ -1198,7 +1210,7 @@ export class AdReplyInfo extends pb_1.Message {
         caption?: string;
     }) {
         super();
-        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], AdReplyInfo.#one_of_decls);
         if (!Array.isArray(data) && typeof data == "object") {
             if ("advertiserName" in data && data.advertiserName != undefined) {
                 this.advertiserName = data.advertiserName;
@@ -1333,6 +1345,7 @@ export namespace AdReplyInfo {
     }
 }
 export class ContextInfo extends pb_1.Message {
+    static #one_of_decls = [];
     constructor(data?: any[] | {
         stanzaId?: string;
         participant?: string;
@@ -1351,7 +1364,7 @@ export class ContextInfo extends pb_1.Message {
         ephemeralSharedSecret?: Uint8Array;
     }) {
         super();
-        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [15], []);
+        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [15], ContextInfo.#one_of_decls);
         if (!Array.isArray(data) && typeof data == "object") {
             if ("stanzaId" in data && data.stanzaId != undefined) {
                 this.stanzaId = data.stanzaId;
@@ -1717,12 +1730,13 @@ export class ContextInfo extends pb_1.Message {
     }
 }
 export class SenderKeyDistributionMessage extends pb_1.Message {
+    static #one_of_decls = [];
     constructor(data?: any[] | {
         groupId?: string;
         axolotlSenderKeyDistributionMessage?: Uint8Array;
     }) {
         super();
-        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], SenderKeyDistributionMessage.#one_of_decls);
         if (!Array.isArray(data) && typeof data == "object") {
             if ("groupId" in data && data.groupId != undefined) {
                 this.groupId = data.groupId;
@@ -1806,6 +1820,7 @@ export class SenderKeyDistributionMessage extends pb_1.Message {
     }
 }
 export class ImageMessage extends pb_1.Message {
+    static #one_of_decls = [];
     constructor(data?: any[] | {
         url?: string;
         mimetype?: string;
@@ -1830,7 +1845,7 @@ export class ImageMessage extends pb_1.Message {
         midQualityFileEncSha256?: Uint8Array;
     }) {
         super();
-        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [10, 22], []);
+        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [10, 22], ImageMessage.#one_of_decls);
         if (!Array.isArray(data) && typeof data == "object") {
             if ("url" in data && data.url != undefined) {
                 this.url = data.url;
@@ -2322,13 +2337,14 @@ export class ImageMessage extends pb_1.Message {
     }
 }
 export class ContactMessage extends pb_1.Message {
+    static #one_of_decls = [];
     constructor(data?: any[] | {
         displayName?: string;
         vcard?: string;
         contextInfo?: ContextInfo;
     }) {
         super();
-        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], ContactMessage.#one_of_decls);
         if (!Array.isArray(data) && typeof data == "object") {
             if ("displayName" in data && data.displayName != undefined) {
                 this.displayName = data.displayName;
@@ -2434,6 +2450,7 @@ export class ContactMessage extends pb_1.Message {
     }
 }
 export class LocationMessage extends pb_1.Message {
+    static #one_of_decls = [];
     constructor(data?: any[] | {
         degreesLatitude?: number;
         degreesLongitude?: number;
@@ -2449,7 +2466,7 @@ export class LocationMessage extends pb_1.Message {
         contextInfo?: ContextInfo;
     }) {
         super();
-        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], LocationMessage.#one_of_decls);
         if (!Array.isArray(data) && typeof data == "object") {
             if ("degreesLatitude" in data && data.degreesLatitude != undefined) {
                 this.degreesLatitude = data.degreesLatitude;
@@ -2753,6 +2770,7 @@ export class LocationMessage extends pb_1.Message {
     }
 }
 export class ExtendedTextMessage extends pb_1.Message {
+    static #one_of_decls = [];
     constructor(data?: any[] | {
         text?: string;
         matchedText?: string;
@@ -2768,7 +2786,7 @@ export class ExtendedTextMessage extends pb_1.Message {
         doNotPlayInline?: boolean;
     }) {
         super();
-        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], ExtendedTextMessage.#one_of_decls);
         if (!Array.isArray(data) && typeof data == "object") {
             if ("text" in data && data.text != undefined) {
                 this.text = data.text;
@@ -3086,6 +3104,7 @@ export namespace ExtendedTextMessage {
     }
 }
 export class DocumentMessage extends pb_1.Message {
+    static #one_of_decls = [];
     constructor(data?: any[] | {
         url?: string;
         mimetype?: string;
@@ -3102,7 +3121,7 @@ export class DocumentMessage extends pb_1.Message {
         contextInfo?: ContextInfo;
     }) {
         super();
-        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], DocumentMessage.#one_of_decls);
         if (!Array.isArray(data) && typeof data == "object") {
             if ("url" in data && data.url != undefined) {
                 this.url = data.url;
@@ -3428,6 +3447,7 @@ export class DocumentMessage extends pb_1.Message {
     }
 }
 export class AudioMessage extends pb_1.Message {
+    static #one_of_decls = [];
     constructor(data?: any[] | {
         url?: string;
         mimetype?: string;
@@ -3443,7 +3463,7 @@ export class AudioMessage extends pb_1.Message {
         streamingSidecar?: Uint8Array;
     }) {
         super();
-        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], AudioMessage.#one_of_decls);
         if (!Array.isArray(data) && typeof data == "object") {
             if ("url" in data && data.url != undefined) {
                 this.url = data.url;
@@ -3747,6 +3767,7 @@ export class AudioMessage extends pb_1.Message {
     }
 }
 export class VideoMessage extends pb_1.Message {
+    static #one_of_decls = [];
     constructor(data?: any[] | {
         url?: string;
         mimetype?: string;
@@ -3768,7 +3789,7 @@ export class VideoMessage extends pb_1.Message {
         gifAttribution?: VideoMessage.VIDEO_MESSAGE_ATTRIBUTION;
     }) {
         super();
-        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [12], []);
+        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [12], VideoMessage.#one_of_decls);
         if (!Array.isArray(data) && typeof data == "object") {
             if ("url" in data && data.url != undefined) {
                 this.url = data.url;
@@ -4207,11 +4228,12 @@ export namespace VideoMessage {
     }
 }
 export class Call extends pb_1.Message {
+    static #one_of_decls = [];
     constructor(data?: any[] | {
         callKey?: Uint8Array;
     }) {
         super();
-        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], Call.#one_of_decls);
         if (!Array.isArray(data) && typeof data == "object") {
             if ("callKey" in data && data.callKey != undefined) {
                 this.callKey = data.callKey;
@@ -4273,12 +4295,13 @@ export class Call extends pb_1.Message {
     }
 }
 export class Chat extends pb_1.Message {
+    static #one_of_decls = [];
     constructor(data?: any[] | {
         displayName?: string;
         id?: string;
     }) {
         super();
-        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], Chat.#one_of_decls);
         if (!Array.isArray(data) && typeof data == "object") {
             if ("displayName" in data && data.displayName != undefined) {
                 this.displayName = data.displayName;
@@ -4362,6 +4385,7 @@ export class Chat extends pb_1.Message {
     }
 }
 export class ProtocolMessage extends pb_1.Message {
+    static #one_of_decls = [];
     constructor(data?: any[] | {
         key?: MessageKey;
         type?: ProtocolMessage.PROTOCOL_MESSAGE_TYPE;
@@ -4370,7 +4394,7 @@ export class ProtocolMessage extends pb_1.Message {
         historySyncNotification?: HistorySyncNotification;
     }) {
         super();
-        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], ProtocolMessage.#one_of_decls);
         if (!Array.isArray(data) && typeof data == "object") {
             if ("key" in data && data.key != undefined) {
                 this.key = data.key;
@@ -4528,6 +4552,7 @@ export namespace ProtocolMessage {
     }
 }
 export class HistorySyncNotification extends pb_1.Message {
+    static #one_of_decls = [];
     constructor(data?: any[] | {
         fileSha256?: Uint8Array;
         fileLength?: number;
@@ -4539,7 +4564,7 @@ export class HistorySyncNotification extends pb_1.Message {
         originalMessageId?: string;
     }) {
         super();
-        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], HistorySyncNotification.#one_of_decls);
         if (!Array.isArray(data) && typeof data == "object") {
             if ("fileSha256" in data && data.fileSha256 != undefined) {
                 this.fileSha256 = data.fileSha256;
@@ -4764,13 +4789,14 @@ export namespace HistorySyncNotification {
     }
 }
 export class ContactsArrayMessage extends pb_1.Message {
+    static #one_of_decls = [];
     constructor(data?: any[] | {
         displayName?: string;
         contacts: ContactMessage[];
         contextInfo?: ContextInfo;
     }) {
         super();
-        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2], []);
+        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2], ContactsArrayMessage.#one_of_decls);
         if (!Array.isArray(data) && typeof data == "object") {
             if ("displayName" in data && data.displayName != undefined) {
                 this.displayName = data.displayName;
@@ -4872,12 +4898,13 @@ export class ContactsArrayMessage extends pb_1.Message {
     }
 }
 export class HSMCurrency extends pb_1.Message {
+    static #one_of_decls = [];
     constructor(data?: any[] | {
         currencyCode?: string;
         amount1000?: number;
     }) {
         super();
-        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], HSMCurrency.#one_of_decls);
         if (!Array.isArray(data) && typeof data == "object") {
             if ("currencyCode" in data && data.currencyCode != undefined) {
                 this.currencyCode = data.currencyCode;
@@ -4961,6 +4988,7 @@ export class HSMCurrency extends pb_1.Message {
     }
 }
 export class HSMDateTimeComponent extends pb_1.Message {
+    static #one_of_decls = [];
     constructor(data?: any[] | {
         dayOfWeek?: HSMDateTimeComponent.HSM_DATE_TIME_COMPONENT_DAYOFWEEKTYPE;
         year?: number;
@@ -4971,7 +4999,7 @@ export class HSMDateTimeComponent extends pb_1.Message {
         calendar?: HSMDateTimeComponent.HSM_DATE_TIME_COMPONENT_CALENDARTYPE;
     }) {
         super();
-        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], HSMDateTimeComponent.#one_of_decls);
         if (!Array.isArray(data) && typeof data == "object") {
             if ("dayOfWeek" in data && data.dayOfWeek != undefined) {
                 this.dayOfWeek = data.dayOfWeek;
@@ -5180,11 +5208,12 @@ export namespace HSMDateTimeComponent {
     }
 }
 export class HSMDateTimeUnixEpoch extends pb_1.Message {
+    static #one_of_decls = [];
     constructor(data?: any[] | {
         timestamp?: number;
     }) {
         super();
-        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], HSMDateTimeUnixEpoch.#one_of_decls);
         if (!Array.isArray(data) && typeof data == "object") {
             if ("timestamp" in data && data.timestamp != undefined) {
                 this.timestamp = data.timestamp;
@@ -5246,6 +5275,7 @@ export class HSMDateTimeUnixEpoch extends pb_1.Message {
     }
 }
 export class HSMDateTime extends pb_1.Message {
+    static #one_of_decls = [[1, 2]];
     constructor(data?: any[] | ({} & (({
         component?: HSMDateTimeComponent;
         unixEpoch?: never;
@@ -5254,7 +5284,7 @@ export class HSMDateTime extends pb_1.Message {
         unixEpoch?: HSMDateTimeUnixEpoch;
     })))) {
         super();
-        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], [[1, 2]]);
+        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], HSMDateTime.#one_of_decls);
         if (!Array.isArray(data) && typeof data == "object") {
             if ("component" in data && data.component != undefined) {
                 this.component = data.component;
@@ -5268,13 +5298,13 @@ export class HSMDateTime extends pb_1.Message {
         return pb_1.Message.getWrapperField(this, HSMDateTimeComponent, 1) as HSMDateTimeComponent;
     }
     set component(value: HSMDateTimeComponent) {
-        pb_1.Message.setOneofWrapperField(this, 1, [1, 2], value);
+        pb_1.Message.setOneofWrapperField(this, 1, HSMDateTime.#one_of_decls[0], value);
     }
     get unixEpoch() {
         return pb_1.Message.getWrapperField(this, HSMDateTimeUnixEpoch, 2) as HSMDateTimeUnixEpoch;
     }
     set unixEpoch(value: HSMDateTimeUnixEpoch) {
-        pb_1.Message.setOneofWrapperField(this, 2, [1, 2], value);
+        pb_1.Message.setOneofWrapperField(this, 2, HSMDateTime.#one_of_decls[0], value);
     }
     get datetimeOneof() {
         const cases: {
@@ -5348,6 +5378,7 @@ export class HSMDateTime extends pb_1.Message {
     }
 }
 export class HSMLocalizableParameter extends pb_1.Message {
+    static #one_of_decls = [[2, 3]];
     constructor(data?: any[] | ({
         default?: string;
     } & (({
@@ -5358,7 +5389,7 @@ export class HSMLocalizableParameter extends pb_1.Message {
         dateTime?: HSMDateTime;
     })))) {
         super();
-        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], [[2, 3]]);
+        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], HSMLocalizableParameter.#one_of_decls);
         if (!Array.isArray(data) && typeof data == "object") {
             if ("default" in data && data.default != undefined) {
                 this.default = data.default;
@@ -5381,13 +5412,13 @@ export class HSMLocalizableParameter extends pb_1.Message {
         return pb_1.Message.getWrapperField(this, HSMCurrency, 2) as HSMCurrency;
     }
     set currency(value: HSMCurrency) {
-        pb_1.Message.setOneofWrapperField(this, 2, [2, 3], value);
+        pb_1.Message.setOneofWrapperField(this, 2, HSMLocalizableParameter.#one_of_decls[0], value);
     }
     get dateTime() {
         return pb_1.Message.getWrapperField(this, HSMDateTime, 3) as HSMDateTime;
     }
     set dateTime(value: HSMDateTime) {
-        pb_1.Message.setOneofWrapperField(this, 3, [2, 3], value);
+        pb_1.Message.setOneofWrapperField(this, 3, HSMLocalizableParameter.#one_of_decls[0], value);
     }
     get paramOneof() {
         const cases: {
@@ -5474,6 +5505,7 @@ export class HSMLocalizableParameter extends pb_1.Message {
     }
 }
 export class HighlyStructuredMessage extends pb_1.Message {
+    static #one_of_decls = [];
     constructor(data?: any[] | {
         namespace?: string;
         elementName?: string;
@@ -5486,7 +5518,7 @@ export class HighlyStructuredMessage extends pb_1.Message {
         hydratedHsm?: TemplateMessage;
     }) {
         super();
-        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [3, 6], []);
+        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [3, 6], HighlyStructuredMessage.#one_of_decls);
         if (!Array.isArray(data) && typeof data == "object") {
             if ("namespace" in data && data.namespace != undefined) {
                 this.namespace = data.namespace;
@@ -5714,12 +5746,13 @@ export class HighlyStructuredMessage extends pb_1.Message {
     }
 }
 export class SendPaymentMessage extends pb_1.Message {
+    static #one_of_decls = [];
     constructor(data?: any[] | {
         noteMessage?: Message;
         requestMessageKey?: MessageKey;
     }) {
         super();
-        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], SendPaymentMessage.#one_of_decls);
         if (!Array.isArray(data) && typeof data == "object") {
             if ("noteMessage" in data && data.noteMessage != undefined) {
                 this.noteMessage = data.noteMessage;
@@ -5803,6 +5836,7 @@ export class SendPaymentMessage extends pb_1.Message {
     }
 }
 export class RequestPaymentMessage extends pb_1.Message {
+    static #one_of_decls = [];
     constructor(data?: any[] | {
         noteMessage?: Message;
         currencyCodeIso4217?: string;
@@ -5811,7 +5845,7 @@ export class RequestPaymentMessage extends pb_1.Message {
         expiryTimestamp?: number;
     }) {
         super();
-        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], RequestPaymentMessage.#one_of_decls);
         if (!Array.isArray(data) && typeof data == "object") {
             if ("noteMessage" in data && data.noteMessage != undefined) {
                 this.noteMessage = data.noteMessage;
@@ -5961,11 +5995,12 @@ export class RequestPaymentMessage extends pb_1.Message {
     }
 }
 export class DeclinePaymentRequestMessage extends pb_1.Message {
+    static #one_of_decls = [];
     constructor(data?: any[] | {
         key?: MessageKey;
     }) {
         super();
-        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], DeclinePaymentRequestMessage.#one_of_decls);
         if (!Array.isArray(data) && typeof data == "object") {
             if ("key" in data && data.key != undefined) {
                 this.key = data.key;
@@ -6027,11 +6062,12 @@ export class DeclinePaymentRequestMessage extends pb_1.Message {
     }
 }
 export class CancelPaymentRequestMessage extends pb_1.Message {
+    static #one_of_decls = [];
     constructor(data?: any[] | {
         key?: MessageKey;
     }) {
         super();
-        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], CancelPaymentRequestMessage.#one_of_decls);
         if (!Array.isArray(data) && typeof data == "object") {
             if ("key" in data && data.key != undefined) {
                 this.key = data.key;
@@ -6093,6 +6129,7 @@ export class CancelPaymentRequestMessage extends pb_1.Message {
     }
 }
 export class LiveLocationMessage extends pb_1.Message {
+    static #one_of_decls = [];
     constructor(data?: any[] | {
         degreesLatitude?: number;
         degreesLongitude?: number;
@@ -6106,7 +6143,7 @@ export class LiveLocationMessage extends pb_1.Message {
         contextInfo?: ContextInfo;
     }) {
         super();
-        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], LiveLocationMessage.#one_of_decls);
         if (!Array.isArray(data) && typeof data == "object") {
             if ("degreesLatitude" in data && data.degreesLatitude != undefined) {
                 this.degreesLatitude = data.degreesLatitude;
@@ -6366,6 +6403,7 @@ export class LiveLocationMessage extends pb_1.Message {
     }
 }
 export class StickerMessage extends pb_1.Message {
+    static #one_of_decls = [];
     constructor(data?: any[] | {
         url?: string;
         fileSha256?: Uint8Array;
@@ -6384,7 +6422,7 @@ export class StickerMessage extends pb_1.Message {
         contextInfo?: ContextInfo;
     }) {
         super();
-        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], StickerMessage.#one_of_decls);
         if (!Array.isArray(data) && typeof data == "object") {
             if ("url" in data && data.url != undefined) {
                 this.url = data.url;
@@ -6754,6 +6792,7 @@ export class StickerMessage extends pb_1.Message {
     }
 }
 export class FourRowTemplate extends pb_1.Message {
+    static #one_of_decls = [[1, 2, 3, 4, 5]];
     constructor(data?: any[] | ({
         content?: HighlyStructuredMessage;
         footer?: HighlyStructuredMessage;
@@ -6790,7 +6829,7 @@ export class FourRowTemplate extends pb_1.Message {
         locationMessage?: LocationMessage;
     })))) {
         super();
-        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [8], [[1, 2, 3, 4, 5]]);
+        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [8], FourRowTemplate.#one_of_decls);
         if (!Array.isArray(data) && typeof data == "object") {
             if ("content" in data && data.content != undefined) {
                 this.content = data.content;
@@ -6838,31 +6877,31 @@ export class FourRowTemplate extends pb_1.Message {
         return pb_1.Message.getWrapperField(this, DocumentMessage, 1) as DocumentMessage;
     }
     set documentMessage(value: DocumentMessage) {
-        pb_1.Message.setOneofWrapperField(this, 1, [1, 2, 3, 4, 5], value);
+        pb_1.Message.setOneofWrapperField(this, 1, FourRowTemplate.#one_of_decls[0], value);
     }
     get highlyStructuredMessage() {
         return pb_1.Message.getWrapperField(this, HighlyStructuredMessage, 2) as HighlyStructuredMessage;
     }
     set highlyStructuredMessage(value: HighlyStructuredMessage) {
-        pb_1.Message.setOneofWrapperField(this, 2, [1, 2, 3, 4, 5], value);
+        pb_1.Message.setOneofWrapperField(this, 2, FourRowTemplate.#one_of_decls[0], value);
     }
     get imageMessage() {
         return pb_1.Message.getWrapperField(this, ImageMessage, 3) as ImageMessage;
     }
     set imageMessage(value: ImageMessage) {
-        pb_1.Message.setOneofWrapperField(this, 3, [1, 2, 3, 4, 5], value);
+        pb_1.Message.setOneofWrapperField(this, 3, FourRowTemplate.#one_of_decls[0], value);
     }
     get videoMessage() {
         return pb_1.Message.getWrapperField(this, VideoMessage, 4) as VideoMessage;
     }
     set videoMessage(value: VideoMessage) {
-        pb_1.Message.setOneofWrapperField(this, 4, [1, 2, 3, 4, 5], value);
+        pb_1.Message.setOneofWrapperField(this, 4, FourRowTemplate.#one_of_decls[0], value);
     }
     get locationMessage() {
         return pb_1.Message.getWrapperField(this, LocationMessage, 5) as LocationMessage;
     }
     set locationMessage(value: LocationMessage) {
-        pb_1.Message.setOneofWrapperField(this, 5, [1, 2, 3, 4, 5], value);
+        pb_1.Message.setOneofWrapperField(this, 5, FourRowTemplate.#one_of_decls[0], value);
     }
     get title() {
         const cases: {
@@ -7015,6 +7054,7 @@ export class FourRowTemplate extends pb_1.Message {
     }
 }
 export class HydratedFourRowTemplate extends pb_1.Message {
+    static #one_of_decls = [[1, 2, 3, 4, 5]];
     constructor(data?: any[] | ({
         hydratedContentText?: string;
         hydratedFooterText?: string;
@@ -7052,7 +7092,7 @@ export class HydratedFourRowTemplate extends pb_1.Message {
         locationMessage?: LocationMessage;
     })))) {
         super();
-        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [8], [[1, 2, 3, 4, 5]]);
+        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [8], HydratedFourRowTemplate.#one_of_decls);
         if (!Array.isArray(data) && typeof data == "object") {
             if ("hydratedContentText" in data && data.hydratedContentText != undefined) {
                 this.hydratedContentText = data.hydratedContentText;
@@ -7109,31 +7149,31 @@ export class HydratedFourRowTemplate extends pb_1.Message {
         return pb_1.Message.getWrapperField(this, DocumentMessage, 1) as DocumentMessage;
     }
     set documentMessage(value: DocumentMessage) {
-        pb_1.Message.setOneofWrapperField(this, 1, [1, 2, 3, 4, 5], value);
+        pb_1.Message.setOneofWrapperField(this, 1, HydratedFourRowTemplate.#one_of_decls[0], value);
     }
     get hydratedTitleText() {
         return pb_1.Message.getField(this, 2) as string;
     }
     set hydratedTitleText(value: string) {
-        pb_1.Message.setOneofField(this, 2, [1, 2, 3, 4, 5], value);
+        pb_1.Message.setOneofField(this, 2, HydratedFourRowTemplate.#one_of_decls[0], value);
     }
     get imageMessage() {
         return pb_1.Message.getWrapperField(this, ImageMessage, 3) as ImageMessage;
     }
     set imageMessage(value: ImageMessage) {
-        pb_1.Message.setOneofWrapperField(this, 3, [1, 2, 3, 4, 5], value);
+        pb_1.Message.setOneofWrapperField(this, 3, HydratedFourRowTemplate.#one_of_decls[0], value);
     }
     get videoMessage() {
         return pb_1.Message.getWrapperField(this, VideoMessage, 4) as VideoMessage;
     }
     set videoMessage(value: VideoMessage) {
-        pb_1.Message.setOneofWrapperField(this, 4, [1, 2, 3, 4, 5], value);
+        pb_1.Message.setOneofWrapperField(this, 4, HydratedFourRowTemplate.#one_of_decls[0], value);
     }
     get locationMessage() {
         return pb_1.Message.getWrapperField(this, LocationMessage, 5) as LocationMessage;
     }
     set locationMessage(value: LocationMessage) {
-        pb_1.Message.setOneofWrapperField(this, 5, [1, 2, 3, 4, 5], value);
+        pb_1.Message.setOneofWrapperField(this, 5, HydratedFourRowTemplate.#one_of_decls[0], value);
     }
     get title() {
         const cases: {
@@ -7299,6 +7339,7 @@ export class HydratedFourRowTemplate extends pb_1.Message {
     }
 }
 export class TemplateMessage extends pb_1.Message {
+    static #one_of_decls = [[1, 2]];
     constructor(data?: any[] | ({
         contextInfo?: ContextInfo;
         hydratedTemplate?: HydratedFourRowTemplate;
@@ -7310,7 +7351,7 @@ export class TemplateMessage extends pb_1.Message {
         hydratedFourRowTemplate?: HydratedFourRowTemplate;
     })))) {
         super();
-        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], [[1, 2]]);
+        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], TemplateMessage.#one_of_decls);
         if (!Array.isArray(data) && typeof data == "object") {
             if ("contextInfo" in data && data.contextInfo != undefined) {
                 this.contextInfo = data.contextInfo;
@@ -7342,13 +7383,13 @@ export class TemplateMessage extends pb_1.Message {
         return pb_1.Message.getWrapperField(this, FourRowTemplate, 1) as FourRowTemplate;
     }
     set fourRowTemplate(value: FourRowTemplate) {
-        pb_1.Message.setOneofWrapperField(this, 1, [1, 2], value);
+        pb_1.Message.setOneofWrapperField(this, 1, TemplateMessage.#one_of_decls[0], value);
     }
     get hydratedFourRowTemplate() {
         return pb_1.Message.getWrapperField(this, HydratedFourRowTemplate, 2) as HydratedFourRowTemplate;
     }
     set hydratedFourRowTemplate(value: HydratedFourRowTemplate) {
-        pb_1.Message.setOneofWrapperField(this, 2, [1, 2], value);
+        pb_1.Message.setOneofWrapperField(this, 2, TemplateMessage.#one_of_decls[0], value);
     }
     get format() {
         const cases: {
@@ -7448,6 +7489,7 @@ export class TemplateMessage extends pb_1.Message {
     }
 }
 export class TemplateButtonReplyMessage extends pb_1.Message {
+    static #one_of_decls = [];
     constructor(data?: any[] | {
         selectedId?: string;
         selectedDisplayText?: string;
@@ -7455,7 +7497,7 @@ export class TemplateButtonReplyMessage extends pb_1.Message {
         selectedIndex?: number;
     }) {
         super();
-        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], TemplateButtonReplyMessage.#one_of_decls);
         if (!Array.isArray(data) && typeof data == "object") {
             if ("selectedId" in data && data.selectedId != undefined) {
                 this.selectedId = data.selectedId;
@@ -7583,13 +7625,14 @@ export class TemplateButtonReplyMessage extends pb_1.Message {
     }
 }
 export class CatalogSnapshot extends pb_1.Message {
+    static #one_of_decls = [];
     constructor(data?: any[] | {
         catalogImage?: ImageMessage;
         title?: string;
         description?: string;
     }) {
         super();
-        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], CatalogSnapshot.#one_of_decls);
         if (!Array.isArray(data) && typeof data == "object") {
             if ("catalogImage" in data && data.catalogImage != undefined) {
                 this.catalogImage = data.catalogImage;
@@ -7695,6 +7738,7 @@ export class CatalogSnapshot extends pb_1.Message {
     }
 }
 export class ProductSnapshot extends pb_1.Message {
+    static #one_of_decls = [];
     constructor(data?: any[] | {
         productImage?: ImageMessage;
         productId?: string;
@@ -7708,7 +7752,7 @@ export class ProductSnapshot extends pb_1.Message {
         firstImageId?: string;
     }) {
         super();
-        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], ProductSnapshot.#one_of_decls);
         if (!Array.isArray(data) && typeof data == "object") {
             if ("productImage" in data && data.productImage != undefined) {
                 this.productImage = data.productImage;
@@ -7968,6 +8012,7 @@ export class ProductSnapshot extends pb_1.Message {
     }
 }
 export class ProductMessage extends pb_1.Message {
+    static #one_of_decls = [];
     constructor(data?: any[] | {
         product?: ProductSnapshot;
         businessOwnerJid?: string;
@@ -7975,7 +8020,7 @@ export class ProductMessage extends pb_1.Message {
         contextInfo?: ContextInfo;
     }) {
         super();
-        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], ProductMessage.#one_of_decls);
         if (!Array.isArray(data) && typeof data == "object") {
             if ("product" in data && data.product != undefined) {
                 this.product = data.product;
@@ -8103,6 +8148,7 @@ export class ProductMessage extends pb_1.Message {
     }
 }
 export class GroupInviteMessage extends pb_1.Message {
+    static #one_of_decls = [];
     constructor(data?: any[] | {
         groupJid?: string;
         inviteCode?: string;
@@ -8113,7 +8159,7 @@ export class GroupInviteMessage extends pb_1.Message {
         contextInfo?: ContextInfo;
     }) {
         super();
-        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], GroupInviteMessage.#one_of_decls);
         if (!Array.isArray(data) && typeof data == "object") {
             if ("groupJid" in data && data.groupJid != undefined) {
                 this.groupJid = data.groupJid;
@@ -8307,13 +8353,14 @@ export class GroupInviteMessage extends pb_1.Message {
     }
 }
 export class DeviceSentMessage extends pb_1.Message {
+    static #one_of_decls = [];
     constructor(data?: any[] | {
         destinationJid?: string;
         message?: Message;
         phash?: string;
     }) {
         super();
-        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], DeviceSentMessage.#one_of_decls);
         if (!Array.isArray(data) && typeof data == "object") {
             if ("destinationJid" in data && data.destinationJid != undefined) {
                 this.destinationJid = data.destinationJid;
@@ -8419,6 +8466,7 @@ export class DeviceSentMessage extends pb_1.Message {
     }
 }
 export class Message extends pb_1.Message {
+    static #one_of_decls = [];
     constructor(data?: any[] | {
         conversation?: string;
         senderKeyDistributionMessage?: SenderKeyDistributionMessage;
@@ -8448,7 +8496,7 @@ export class Message extends pb_1.Message {
         deviceSentMessage?: DeviceSentMessage;
     }) {
         super();
-        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], Message.#one_of_decls);
         if (!Array.isArray(data) && typeof data == "object") {
             if ("conversation" in data && data.conversation != undefined) {
                 this.conversation = data.conversation;
@@ -9060,6 +9108,7 @@ export class Message extends pb_1.Message {
     }
 }
 export class MessageKey extends pb_1.Message {
+    static #one_of_decls = [];
     constructor(data?: any[] | {
         remoteJid?: string;
         fromMe?: boolean;
@@ -9067,7 +9116,7 @@ export class MessageKey extends pb_1.Message {
         participant?: string;
     }) {
         super();
-        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], MessageKey.#one_of_decls);
         if (!Array.isArray(data) && typeof data == "object") {
             if ("remoteJid" in data && data.remoteJid != undefined) {
                 this.remoteJid = data.remoteJid;
@@ -9195,6 +9244,7 @@ export class MessageKey extends pb_1.Message {
     }
 }
 export class WebFeatures extends pb_1.Message {
+    static #one_of_decls = [];
     constructor(data?: any[] | {
         labelsDisplay?: WebFeatures.WEB_FEATURES_FLAG;
         voipIndividualOutgoing?: WebFeatures.WEB_FEATURES_FLAG;
@@ -9231,7 +9281,7 @@ export class WebFeatures extends pb_1.Message {
         syncdRelease1?: WebFeatures.WEB_FEATURES_FLAG;
     }) {
         super();
-        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], WebFeatures.#one_of_decls);
         if (!Array.isArray(data) && typeof data == "object") {
             if ("labelsDisplay" in data && data.labelsDisplay != undefined) {
                 this.labelsDisplay = data.labelsDisplay;
@@ -10005,6 +10055,7 @@ export namespace WebFeatures {
     }
 }
 export class TabletNotificationsInfo extends pb_1.Message {
+    static #one_of_decls = [];
     constructor(data?: any[] | {
         timestamp?: number;
         unreadChats?: number;
@@ -10012,7 +10063,7 @@ export class TabletNotificationsInfo extends pb_1.Message {
         notifyMessage: NotificationMessageInfo[];
     }) {
         super();
-        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [5], []);
+        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [5], TabletNotificationsInfo.#one_of_decls);
         if (!Array.isArray(data) && typeof data == "object") {
             if ("timestamp" in data && data.timestamp != undefined) {
                 this.timestamp = data.timestamp;
@@ -10136,6 +10187,7 @@ export class TabletNotificationsInfo extends pb_1.Message {
     }
 }
 export class NotificationMessageInfo extends pb_1.Message {
+    static #one_of_decls = [];
     constructor(data?: any[] | {
         key?: MessageKey;
         message?: Message;
@@ -10143,7 +10195,7 @@ export class NotificationMessageInfo extends pb_1.Message {
         participant?: string;
     }) {
         super();
-        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], NotificationMessageInfo.#one_of_decls);
         if (!Array.isArray(data) && typeof data == "object") {
             if ("key" in data && data.key != undefined) {
                 this.key = data.key;
@@ -10271,6 +10323,7 @@ export class NotificationMessageInfo extends pb_1.Message {
     }
 }
 export class WebNotificationsInfo extends pb_1.Message {
+    static #one_of_decls = [];
     constructor(data?: any[] | {
         timestamp?: number;
         unreadChats?: number;
@@ -10278,7 +10331,7 @@ export class WebNotificationsInfo extends pb_1.Message {
         notifyMessages: WebMessageInfo[];
     }) {
         super();
-        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [5], []);
+        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [5], WebNotificationsInfo.#one_of_decls);
         if (!Array.isArray(data) && typeof data == "object") {
             if ("timestamp" in data && data.timestamp != undefined) {
                 this.timestamp = data.timestamp;
@@ -10402,6 +10455,7 @@ export class WebNotificationsInfo extends pb_1.Message {
     }
 }
 export class PaymentInfo extends pb_1.Message {
+    static #one_of_decls = [];
     constructor(data?: any[] | {
         currencyDeprecated?: PaymentInfo.PAYMENT_INFO_CURRENCY;
         amount1000?: number;
@@ -10415,7 +10469,7 @@ export class PaymentInfo extends pb_1.Message {
         txnStatus?: PaymentInfo.PAYMENT_INFO_TXNSTATUS;
     }) {
         super();
-        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], PaymentInfo.#one_of_decls);
         if (!Array.isArray(data) && typeof data == "object") {
             if ("currencyDeprecated" in data && data.currencyDeprecated != undefined) {
                 this.currencyDeprecated = data.currencyDeprecated;
@@ -10725,6 +10779,7 @@ export namespace PaymentInfo {
     }
 }
 export class WebMessageInfo extends pb_1.Message {
+    static #one_of_decls = [];
     constructor(data?: any[] | {
         key: MessageKey;
         message?: Message;
@@ -10752,7 +10807,7 @@ export class WebMessageInfo extends pb_1.Message {
         ephemeralOffToOn?: boolean;
     }) {
         super();
-        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [26, 28], []);
+        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [26, 28], WebMessageInfo.#one_of_decls);
         if (!Array.isArray(data) && typeof data == "object") {
             this.key = data.key;
             if ("message" in data && data.message != undefined) {

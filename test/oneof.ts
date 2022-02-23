@@ -5,6 +5,7 @@
  * git: https://github.com/thesayyn/protoc-gen-ts */
 import * as pb_1 from "google-protobuf";
 export class OneOfWithoutAnyOtherFields extends pb_1.Message {
+    static #one_of_decls = [[1, 2], [4, 3]];
     constructor(data?: any[] | ({} & (({
         nickname?: string;
         realname?: never;
@@ -19,7 +20,7 @@ export class OneOfWithoutAnyOtherFields extends pb_1.Message {
         date_of_birth?: string;
     })))) {
         super();
-        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], [[1, 2], [4, 3]]);
+        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], OneOfWithoutAnyOtherFields.#one_of_decls);
         if (!Array.isArray(data) && typeof data == "object") {
             if ("nickname" in data && data.nickname != undefined) {
                 this.nickname = data.nickname;
@@ -39,25 +40,25 @@ export class OneOfWithoutAnyOtherFields extends pb_1.Message {
         return pb_1.Message.getField(this, 1) as string;
     }
     set nickname(value: string) {
-        pb_1.Message.setOneofField(this, 1, [1, 2], value);
+        pb_1.Message.setOneofField(this, 1, OneOfWithoutAnyOtherFields.#one_of_decls[0], value);
     }
     get realname() {
         return pb_1.Message.getField(this, 2) as string;
     }
     set realname(value: string) {
-        pb_1.Message.setOneofField(this, 2, [1, 2], value);
+        pb_1.Message.setOneofField(this, 2, OneOfWithoutAnyOtherFields.#one_of_decls[0], value);
     }
     get age() {
         return pb_1.Message.getField(this, 4) as string;
     }
     set age(value: string) {
-        pb_1.Message.setOneofField(this, 4, [4, 3], value);
+        pb_1.Message.setOneofField(this, 4, OneOfWithoutAnyOtherFields.#one_of_decls[1], value);
     }
     get date_of_birth() {
         return pb_1.Message.getField(this, 3) as string;
     }
     set date_of_birth(value: string) {
-        pb_1.Message.setOneofField(this, 3, [4, 3], value);
+        pb_1.Message.setOneofField(this, 3, OneOfWithoutAnyOtherFields.#one_of_decls[1], value);
     }
     get nickname_or_realname() {
         const cases: {
@@ -167,6 +168,7 @@ export class OneOfWithoutAnyOtherFields extends pb_1.Message {
     }
 }
 export class OneOf extends pb_1.Message {
+    static #one_of_decls = [[3, 4]];
     constructor(data?: any[] | ({
         nickname?: string;
     } & (({
@@ -177,7 +179,7 @@ export class OneOf extends pb_1.Message {
         age?: string;
     })))) {
         super();
-        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], [[3, 4]]);
+        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], OneOf.#one_of_decls);
         if (!Array.isArray(data) && typeof data == "object") {
             if ("nickname" in data && data.nickname != undefined) {
                 this.nickname = data.nickname;
@@ -200,13 +202,13 @@ export class OneOf extends pb_1.Message {
         return pb_1.Message.getField(this, 3) as string;
     }
     set date_of_birth(value: string) {
-        pb_1.Message.setOneofField(this, 3, [3, 4], value);
+        pb_1.Message.setOneofField(this, 3, OneOf.#one_of_decls[0], value);
     }
     get age() {
         return pb_1.Message.getField(this, 4) as string;
     }
     set age(value: string) {
-        pb_1.Message.setOneofField(this, 4, [3, 4], value);
+        pb_1.Message.setOneofField(this, 4, OneOf.#one_of_decls[0], value);
     }
     get age_or_dateofbirth() {
         const cases: {

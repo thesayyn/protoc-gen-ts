@@ -5,12 +5,13 @@
  * git: https://github.com/thesayyn/protoc-gen-ts */
 import * as pb_1 from "google-protobuf";
 export class MessageFields extends pb_1.Message {
+    static #one_of_decls = [];
     constructor(data?: any[] | {
         sub_message?: SubMessage;
         array_prop?: SubMessage[];
     }) {
         super();
-        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2], []);
+        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2], MessageFields.#one_of_decls);
         if (!Array.isArray(data) && typeof data == "object") {
             if ("sub_message" in data && data.sub_message != undefined) {
                 this.sub_message = data.sub_message;
@@ -94,12 +95,13 @@ export class MessageFields extends pb_1.Message {
     }
 }
 export class SubMessage extends pb_1.Message {
+    static #one_of_decls = [];
     constructor(data?: any[] | {
         field_1?: string;
         field_2?: string;
     }) {
         super();
-        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], SubMessage.#one_of_decls);
         if (!Array.isArray(data) && typeof data == "object") {
             if ("field_1" in data && data.field_1 != undefined) {
                 this.field_1 = data.field_1;
