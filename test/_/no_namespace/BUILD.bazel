@@ -15,6 +15,7 @@ ts_proto_library(
         src.replace(".proto", ".ts")
         for src in SRCS
     ],
+    features = ["no_namespace"],
     deps = [":protos"],
     visibility = ["//test/no_namespace:__pkg__"]
 )

@@ -46,9 +46,11 @@ export function getTypeReferenceExpr(
     );
   }
 
+  const name = removeNamespace(removeLeadingDot(typeName));
+
   return ts.factory.createPropertyAccessExpression(
     dependencyMap.get(path)!,
-    removeLeadingDot(typeName),
+    name,
   )
 }
 export function getTypeReference(
@@ -63,17 +65,7 @@ export function getTypeReference(
     );
   }
 
-  let name = removeLeadingDot(typeName);
-
-  if(config.no_namespace)
-  {
-    const prefix = packages.find(p => name.startsWith(p));
-
-    if(prefix)
-    {
-      name = name.replace(`${prefix}.`, '');
-    }
-  }
+  const name = removeNamespace(removeLeadingDot(typeName));
 
   return ts.factory.createTypeReferenceNode(
     ts.factory.createQualifiedName(
@@ -95,6 +87,14 @@ function removeRootPackageName(name: string, packageName: string): string {
   return removeLeadingDot(
     packageName ? name.replace(`${packageName}.`, "") : name,
   );
+}
+
+function removeNamespace(name: string): string {
+  if(config.no_namespace)
+  {
+    return removeRootPackageName(name, packages.find(p => name.startsWith(p)))
+  }
+  return name;
 }
 
 export function preprocess(
