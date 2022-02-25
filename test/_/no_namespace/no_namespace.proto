@@ -6,6 +6,6 @@ import "test/_/no_namespace/nested.proto";
 import "test/_/no_namespace/double_nested.proto";
 
 message NoNamespace {
-    pkg.mycompany.Message label = 1;
+    event.Target label = 1;
     MessageFields other_fields = 2;
 }

@@ -37,10 +37,16 @@ export function getMapDescriptor(
 export function getTypeReferenceExpr(
   rootDescriptor: descriptor.FileDescriptorProto,
   typeName: string,
+  packageName: string = '',
 ): ts.Identifier | ts.PropertyAccessExpression {
   const path = symbolMap.get(typeName);
 
   if (!path || !dependencyMap.has(path)) {
+    if (config.no_namespace) {
+      return ts.factory.createIdentifier(
+        removeRootPackageName(typeName, rootDescriptor.package).replace(`${packageName}.`, packageName),
+      );
+    }
     return ts.factory.createIdentifier(
       removeRootPackageName(typeName, rootDescriptor.package),
     );
@@ -56,10 +62,16 @@ export function getTypeReferenceExpr(
 export function getTypeReference(
   rootDescriptor: descriptor.FileDescriptorProto,
   typeName: string,
+  packageName: string = '',
 ): ts.TypeReferenceNode {
   const path = symbolMap.get(typeName);
 
   if (!path || !dependencyMap.has(path)) {
+    if (config.no_namespace) {
+      return ts.factory.createTypeReferenceNode(
+        removeRootPackageName(typeName, rootDescriptor.package).replace(`${packageName}.`, packageName),
+      );
+    }
     return ts.factory.createTypeReferenceNode(
       removeRootPackageName(typeName, rootDescriptor.package),
     );

@@ -9,7 +9,7 @@ import * as pb_1 from "google-protobuf";
 export class NoNamespace extends pb_1.Message {
     #one_of_decls = [];
     constructor(data?: any[] | {
-        label?: dependency_1.Message;
+        label?: dependency_1.Target;
         other_fields?: dependency_2.MessageFields;
     }) {
         super();
@@ -24,9 +24,9 @@ export class NoNamespace extends pb_1.Message {
         }
     }
     get label() {
-        return pb_1.Message.getWrapperField(this, dependency_1.Message, 1) as dependency_1.Message;
+        return pb_1.Message.getWrapperField(this, dependency_1.Target, 1) as dependency_1.Target;
     }
-    set label(value: dependency_1.Message) {
+    set label(value: dependency_1.Target) {
         pb_1.Message.setWrapperField(this, 1, value);
     }
     get other_fields() {
@@ -36,12 +36,12 @@ export class NoNamespace extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 2, value);
     }
     static fromObject(data: {
-        label?: ReturnType<typeof dependency_1.Message.prototype.toObject>;
+        label?: ReturnType<typeof dependency_1.Target.prototype.toObject>;
         other_fields?: ReturnType<typeof dependency_2.MessageFields.prototype.toObject>;
     }) {
         const message = new NoNamespace({});
         if (data.label != null) {
-            message.label = dependency_1.Message.fromObject(data.label);
+            message.label = dependency_1.Target.fromObject(data.label);
         }
         if (data.other_fields != null) {
             message.other_fields = dependency_2.MessageFields.fromObject(data.other_fields);
@@ -50,7 +50,7 @@ export class NoNamespace extends pb_1.Message {
     }
     toObject() {
         const data: {
-            label?: ReturnType<typeof dependency_1.Message.prototype.toObject>;
+            label?: ReturnType<typeof dependency_1.Target.prototype.toObject>;
             other_fields?: ReturnType<typeof dependency_2.MessageFields.prototype.toObject>;
         } = {};
         if (this.label != null) {
@@ -79,7 +79,7 @@ export class NoNamespace extends pb_1.Message {
                 break;
             switch (reader.getFieldNumber()) {
                 case 1:
-                    reader.readMessage(message.label, () => message.label = dependency_1.Message.deserialize(reader));
+                    reader.readMessage(message.label, () => message.label = dependency_1.Target.deserialize(reader));
                     break;
                 case 2:
                     reader.readMessage(message.other_fields, () => message.other_fields = dependency_2.MessageFields.deserialize(reader));

@@ -29,5 +29,7 @@ export function parse(raw?: string): Options {
     }
     options[k] = value
   }
+  // @ts-ignore
+  global.no_namespace = options.no_namespace;
   return options;
 }
