@@ -744,7 +744,7 @@ function createConstructor(
           ts.factory.createNumericLiteral(getPivot(messageDescriptor)),
           ts.factory.createArrayLiteralExpression(repeatedFields),
           ts.factory.createPropertyAccessExpression(
-            ts.factory.createIdentifier(messageDescriptor.name),
+            ts.factory.createThis(),
             ts.factory.createPrivateIdentifier("#one_of_decls"),
           ),
         ],
@@ -1076,7 +1076,6 @@ function createSetter(
 
   if (field.isOneOf(fieldDescriptor)) {
     block = createOneOfSetterBlock(
-      messageDescriptor,
       fieldDescriptor,
       valueParameter,
       pbIdentifier,
@@ -1107,7 +1106,6 @@ function createSetter(
 }
 
 function createOneOfSetterBlock(
-  messageDescriptor: descriptor.DescriptorProto,
   fieldDescriptor: descriptor.FieldDescriptorProto,
   valueParameter: ts.Identifier,
   pbIdentifier: ts.Identifier,
@@ -1130,7 +1128,7 @@ function createOneOfSetterBlock(
             ts.factory.createNumericLiteral(fieldDescriptor.number),
             ts.factory.createElementAccessExpression(
               ts.factory.createPropertyAccessExpression(
-                ts.factory.createIdentifier(messageDescriptor.name),
+                ts.factory.createThis(),
                 ts.factory.createPrivateIdentifier("#one_of_decls"),
               ),
               fieldDescriptor.oneof_index,
@@ -2035,7 +2033,7 @@ function createOneOfDecls(
   }
   return ts.factory.createPropertyDeclaration(
     undefined,
-    [ts.factory.createModifier(ts.SyntaxKind.StaticKeyword)],
+    [],
     ts.factory.createPrivateIdentifier("#one_of_decls"),
     undefined,
     undefined,
