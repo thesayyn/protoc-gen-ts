@@ -3,11 +3,14 @@
  * compiler version: 3.19.1
  * source: test/_/no_namespace/no_namespace.proto
  * git: https://github.com/thesayyn/protoc-gen-ts */
+import * as dependency_1 from "./nested";
+import * as dependency_2 from "./double_nested";
 import * as pb_1 from "google-protobuf";
 export class NoNamespace extends pb_1.Message {
     #one_of_decls = [];
     constructor(data?: any[] | {
-        label?: string;
+        label?: dependency_1.Message;
+        other_fields?: dependency_2.MessageFields;
     }) {
         super();
         pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
@@ -15,29 +18,46 @@ export class NoNamespace extends pb_1.Message {
             if ("label" in data && data.label != undefined) {
                 this.label = data.label;
             }
+            if ("other_fields" in data && data.other_fields != undefined) {
+                this.other_fields = data.other_fields;
+            }
         }
     }
     get label() {
-        return pb_1.Message.getField(this, 1) as string;
+        return pb_1.Message.getWrapperField(this, dependency_1.Message, 1) as dependency_1.Message;
     }
-    set label(value: string) {
-        pb_1.Message.setField(this, 1, value);
+    set label(value: dependency_1.Message) {
+        pb_1.Message.setWrapperField(this, 1, value);
+    }
+    get other_fields() {
+        return pb_1.Message.getWrapperField(this, dependency_2.MessageFields, 2) as dependency_2.MessageFields;
+    }
+    set other_fields(value: dependency_2.MessageFields) {
+        pb_1.Message.setWrapperField(this, 2, value);
     }
     static fromObject(data: {
-        label?: string;
+        label?: ReturnType<typeof dependency_1.Message.prototype.toObject>;
+        other_fields?: ReturnType<typeof dependency_2.MessageFields.prototype.toObject>;
     }) {
         const message = new NoNamespace({});
         if (data.label != null) {
-            message.label = data.label;
+            message.label = dependency_1.Message.fromObject(data.label);
+        }
+        if (data.other_fields != null) {
+            message.other_fields = dependency_2.MessageFields.fromObject(data.other_fields);
         }
         return message;
     }
     toObject() {
         const data: {
-            label?: string;
+            label?: ReturnType<typeof dependency_1.Message.prototype.toObject>;
+            other_fields?: ReturnType<typeof dependency_2.MessageFields.prototype.toObject>;
         } = {};
         if (this.label != null) {
-            data.label = this.label;
+            data.label = this.label.toObject();
+        }
+        if (this.other_fields != null) {
+            data.other_fields = this.other_fields.toObject();
         }
         return data;
     }
@@ -45,8 +65,10 @@ export class NoNamespace extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (typeof this.label === "string" && this.label.length)
-            writer.writeString(1, this.label);
+        if (this.label !== undefined)
+            writer.writeMessage(1, this.label, () => this.label.serialize(writer));
+        if (this.other_fields !== undefined)
+            writer.writeMessage(2, this.other_fields, () => this.other_fields.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
     }
@@ -57,7 +79,10 @@ export class NoNamespace extends pb_1.Message {
                 break;
             switch (reader.getFieldNumber()) {
                 case 1:
-                    message.label = reader.readString();
+                    reader.readMessage(message.label, () => message.label = dependency_1.Message.deserialize(reader));
+                    break;
+                case 2:
+                    reader.readMessage(message.other_fields, () => message.other_fields = dependency_2.MessageFields.deserialize(reader));
                     break;
                 default: reader.skipField();
             }

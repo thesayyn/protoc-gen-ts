@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+package pkg.mycompany;
+
+import "test/_/no_namespace/double_nested.proto";
+
+message Message {
+    MessageFields fields = 1;
+}

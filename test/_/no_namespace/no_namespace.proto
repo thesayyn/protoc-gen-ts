@@ -2,6 +2,10 @@ syntax = "proto3";
 
 package path.to.package;
 
+import "test/_/no_namespace/nested.proto";
+import "test/_/no_namespace/double_nested.proto";
+
 message NoNamespace {
-    string label = 1;
+    pkg.mycompany.Message label = 1;
+    MessageFields other_fields = 2;
 }
