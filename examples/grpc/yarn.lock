@@ -225,10 +225,8 @@ protobufjs@^6.10.0:
     "@types/node" ">=13.7.0"
     long "^4.0.0"
 
-protoc-gen-ts@^0.8.1:
-  version "0.8.2"
-  resolved "https://registry.yarnpkg.com/protoc-gen-ts/-/protoc-gen-ts-0.8.2.tgz#d762eef409cc3721684078b2b9a2bf5a0c2e761a"
-  integrity sha512-KRHMRLQqhDnaGq31qLDxhW4vcGmPqS2NS1XflDJyUBt2G6Egy9exBKFA2leyDgRab0BBRshoSXpJMkqmRtoQ6w==
+"protoc-gen-ts@file:../../bazel-bin/package":
+  version "0.8.1"
 
 require-directory@^2.1.1:
   version "2.1.1"
@@ -281,7 +279,7 @@ tsutils@2.27.2:
   dependencies:
     tslib "^1.8.1"
 
-typescript@^4.3.5:
+typescript@^4.2.4:
   version "4.5.5"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.5.5.tgz#d8c953832d28924a9e3d37c73d729c846c5896f3"
   integrity sha512-TCTIul70LyWe6IJWT8QSYeA54WQe8EjQFU4wY52Fasj5UKx88LNYKCgBEHcOMOrFF1rKGbD8v/xcNWVUq9SymA==
