@@ -11,6 +11,6 @@
     },
     "devDependencies": {
         "protoc-gen-ts": "file:../../bazel-bin/package",
-        "typescript": "^4.2.4"
+        "typescript": "^4.3.5"
     }
 }

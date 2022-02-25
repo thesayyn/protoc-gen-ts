@@ -28,7 +28,7 @@
   },
   "peerDependencies": {
     "google-protobuf": "^3.13.0",
-    "typescript": ">=4"
+    "typescript": ">=4.3.5"
   },
   "devDependencies": {
     "@bazel/bazelisk": "^1.9.0",
@@ -41,6 +41,6 @@
     "google-protobuf": "^3.17.3",
     "jasmine": "^3.7.0",
     "jasmine-core": "^3.7.1",
-    "typescript": "^4.3.4"
+    "typescript": "^4.3.5"
   }
 }
