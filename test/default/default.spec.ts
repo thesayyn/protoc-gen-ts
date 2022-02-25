@@ -42,7 +42,9 @@ describe("defaults", () => {
             array_message: [],
 
             one_of_int32: undefined,
-            one_of_message: undefined
+            one_of_message: undefined,
+
+            bytes: undefined
         })
     });
 
@@ -103,7 +105,9 @@ describe("defaults", () => {
             array_message: [],
 
             one_of_int32: 0,
-            one_of_message: undefined
+            one_of_message: undefined,
+
+            bytes: new Uint8Array()
         })
     });
 })

@@ -28,6 +28,7 @@ export class DefaultMessageV3 extends pb_1.Message {
         map_string_message?: Map<string, dependency_1.DefaultCommonMessage>;
         array_int32?: number[];
         array_message?: dependency_1.DefaultCommonMessage[];
+        bytes?: Uint8Array;
     } & (({
         one_of_int32?: number;
         one_of_message?: never;
@@ -106,6 +107,9 @@ export class DefaultMessageV3 extends pb_1.Message {
             }
             if ("one_of_message" in data && data.one_of_message != undefined) {
                 this.one_of_message = data.one_of_message;
+            }
+            if ("bytes" in data && data.bytes != undefined) {
+                this.bytes = data.bytes;
             }
         }
         if (!this.map_string_string)
@@ -251,6 +255,12 @@ export class DefaultMessageV3 extends pb_1.Message {
     set one_of_message(value: dependency_1.DefaultCommonMessage) {
         pb_1.Message.setOneofWrapperField(this, 23, [22, 23], value);
     }
+    get bytes() {
+        return pb_1.Message.getFieldWithDefault(this, 24, new Uint8Array()) as Uint8Array;
+    }
+    set bytes(value: Uint8Array) {
+        pb_1.Message.setField(this, 24, value);
+    }
     get one_of() {
         const cases: {
             [index: number]: "none" | "one_of_int32" | "one_of_message";
@@ -289,6 +299,7 @@ export class DefaultMessageV3 extends pb_1.Message {
         array_message?: ReturnType<typeof dependency_1.DefaultCommonMessage.prototype.toObject>[];
         one_of_int32?: number;
         one_of_message?: ReturnType<typeof dependency_1.DefaultCommonMessage.prototype.toObject>;
+        bytes?: Uint8Array;
     }) {
         const message = new DefaultMessageV3({});
         if (data.message != null) {
@@ -360,6 +371,9 @@ export class DefaultMessageV3 extends pb_1.Message {
         if (data.one_of_message != null) {
             message.one_of_message = dependency_1.DefaultCommonMessage.fromObject(data.one_of_message);
         }
+        if (data.bytes != null) {
+            message.bytes = data.bytes;
+        }
         return message;
     }
     toObject() {
@@ -391,6 +405,7 @@ export class DefaultMessageV3 extends pb_1.Message {
             array_message?: ReturnType<typeof dependency_1.DefaultCommonMessage.prototype.toObject>[];
             one_of_int32?: number;
             one_of_message?: ReturnType<typeof dependency_1.DefaultCommonMessage.prototype.toObject>;
+            bytes?: Uint8Array;
         } = {
             message: this.message != null ? this.message.toObject() : undefined,
             enum: this.enum,
@@ -414,7 +429,8 @@ export class DefaultMessageV3 extends pb_1.Message {
             array_int32: this.array_int32,
             array_message: this.array_message.map((item: dependency_1.DefaultCommonMessage) => item.toObject()),
             one_of_int32: this.one_of_int32,
-            one_of_message: this.one_of_message != null ? this.one_of_message.toObject() : undefined
+            one_of_message: this.one_of_message != null ? this.one_of_message.toObject() : undefined,
+            bytes: this.bytes
         };
         return data;
     }
@@ -476,6 +492,8 @@ export class DefaultMessageV3 extends pb_1.Message {
             writer.writeInt32(22, this.one_of_int32);
         if (this.one_of_message !== undefined)
             writer.writeMessage(23, this.one_of_message, () => this.one_of_message.serialize(writer));
+        if (this.bytes !== undefined)
+            writer.writeBytes(24, this.bytes);
         if (!w)
             return writer.getResultBuffer();
     }
@@ -557,6 +575,9 @@ export class DefaultMessageV3 extends pb_1.Message {
                     break;
                 case 23:
                     reader.readMessage(message.one_of_message, () => message.one_of_message = dependency_1.DefaultCommonMessage.deserialize(reader));
+                    break;
+                case 24:
+                    message.bytes = reader.readBytes();
                     break;
                 default: reader.skipField();
             }

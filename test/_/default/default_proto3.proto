@@ -34,4 +34,6 @@ message DefaultMessageV3 {
         int32 one_of_int32 = 22;
         DefaultCommonMessage one_of_message = 23;
     }
+
+    bytes bytes = 24; 
 }
