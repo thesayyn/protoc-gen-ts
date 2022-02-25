@@ -5,12 +5,12 @@
  * git: https://github.com/thesayyn/protoc-gen-ts */
 import * as pb_1 from "google-protobuf";
 export class NoNamespace extends pb_1.Message {
-    static #one_of_decls = [];
+    #one_of_decls = [];
     constructor(data?: any[] | {
         label?: string;
     }) {
         super();
-        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], NoNamespace.#one_of_decls);
+        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
         if (!Array.isArray(data) && typeof data == "object") {
             if ("label" in data && data.label != undefined) {
                 this.label = data.label;
