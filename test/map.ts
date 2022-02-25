@@ -6,12 +6,12 @@
 import * as dependency_1 from "./imported";
 import * as pb_1 from "google-protobuf";
 export class Topic extends pb_1.Message {
-    static #one_of_decls = [];
+    #one_of_decls = [];
     constructor(data?: any[] | {
         link?: string;
     }) {
         super();
-        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], Topic.#one_of_decls);
+        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
         if (!Array.isArray(data) && typeof data == "object") {
             if ("link" in data && data.link != undefined) {
                 this.link = data.link;
@@ -73,7 +73,7 @@ export class Topic extends pb_1.Message {
     }
 }
 export class Tags extends pb_1.Message {
-    static #one_of_decls = [];
+    #one_of_decls = [];
     constructor(data?: any[] | {
         key?: string;
         keys?: Map<string, string>;
@@ -82,7 +82,7 @@ export class Tags extends pb_1.Message {
         imported2?: Map<number, dependency_1.importdirective.Imported.SubMessage.MyEnum>;
     }) {
         super();
-        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], Tags.#one_of_decls);
+        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
         if (!Array.isArray(data) && typeof data == "object") {
             if ("key" in data && data.key != undefined) {
                 this.key = data.key;

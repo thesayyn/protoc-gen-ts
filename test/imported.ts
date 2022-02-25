@@ -6,10 +6,10 @@
 import * as pb_1 from "google-protobuf";
 export namespace importdirective {
     export class Imported extends pb_1.Message {
-        static #one_of_decls = [];
+        #one_of_decls = [];
         constructor(data?: any[] | {}) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], Imported.#one_of_decls);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") { }
         }
         static fromObject(data: {}) {
@@ -47,12 +47,12 @@ export namespace importdirective {
     }
     export namespace Imported {
         export class SubMessage extends pb_1.Message {
-            static #one_of_decls = [];
+            #one_of_decls = [];
             constructor(data?: any[] | {
                 key?: Imported.SubMessage.MyEnum;
             }) {
                 super();
-                pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], SubMessage.#one_of_decls);
+                pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
                 if (!Array.isArray(data) && typeof data == "object") {
                     if ("key" in data && data.key != undefined) {
                         this.key = data.key;
