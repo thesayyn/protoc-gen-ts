@@ -34,6 +34,8 @@ message DefaultMessageV2WithoutDefault {
         int32 one_of_int32 = 22;
         DefaultCommonMessage one_of_message = 23;
     }
+
+    required bytes bytes = 24; 
 }
 
 message DefaultMessageV2WithDefault {
@@ -61,5 +63,5 @@ message DefaultMessageV2WithDefault {
     oneof one_of {
         int32 one_of_int32 = 18 [default = 18];
         DefaultCommonMessage one_of_message = 19;
-    }
+    };
 }
