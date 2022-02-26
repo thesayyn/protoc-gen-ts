@@ -6,6 +6,7 @@
 import * as dependency_1 from "./default_common";
 import * as pb_1 from "google-protobuf";
 export class DefaultMessageV3 extends pb_1.Message {
+    #one_of_decls = [[22, 23]];
     constructor(data?: any[] | ({
         message?: dependency_1.DefaultCommonMessage;
         enum?: dependency_1.DefaultCommonEnum;
@@ -37,7 +38,7 @@ export class DefaultMessageV3 extends pb_1.Message {
         one_of_message?: dependency_1.DefaultCommonMessage;
     })))) {
         super();
-        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [20, 21], [[22, 23]]);
+        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [20, 21], this.#one_of_decls);
         if (!Array.isArray(data) && typeof data == "object") {
             if ("message" in data && data.message != undefined) {
                 this.message = data.message;
@@ -247,13 +248,13 @@ export class DefaultMessageV3 extends pb_1.Message {
         return pb_1.Message.getFieldWithDefault(this, 22, 0) as number;
     }
     set one_of_int32(value: number) {
-        pb_1.Message.setOneofField(this, 22, [22, 23], value);
+        pb_1.Message.setOneofField(this, 22, this.#one_of_decls[0], value);
     }
     get one_of_message() {
         return pb_1.Message.getWrapperField(this, dependency_1.DefaultCommonMessage, 23) as dependency_1.DefaultCommonMessage;
     }
     set one_of_message(value: dependency_1.DefaultCommonMessage) {
-        pb_1.Message.setOneofWrapperField(this, 23, [22, 23], value);
+        pb_1.Message.setOneofWrapperField(this, 23, this.#one_of_decls[0], value);
     }
     get bytes() {
         return pb_1.Message.getFieldWithDefault(this, 24, new Uint8Array()) as Uint8Array;
