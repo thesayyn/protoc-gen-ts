@@ -5,13 +5,14 @@
  * git: https://github.com/thesayyn/protoc-gen-ts */
 import * as pb_1 from "google-protobuf";
 export class JSType extends pb_1.Message {
+    #one_of_decls = [];
     constructor(data?: any[] | {
         int_but_string?: string;
         int_and_normal?: number;
         int_and_number?: number;
     }) {
         super();
-        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
         if (!Array.isArray(data) && typeof data == "object") {
             if ("int_but_string" in data && data.int_but_string != undefined) {
                 this.int_but_string = data.int_but_string;

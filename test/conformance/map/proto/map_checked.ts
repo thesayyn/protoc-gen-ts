@@ -6,11 +6,12 @@
 import * as pb_1 from "google-protobuf";
 export namespace maps {
     export class Topic extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             link?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("link" in data && data.link != undefined) {
                     this.link = data.link;
@@ -71,6 +72,7 @@ export namespace maps {
         }
     }
     export class Tags extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             key?: string;
             keys?: Map<string, string>;
@@ -78,7 +80,7 @@ export namespace maps {
             topics_with_intkeys?: Map<number, Topic>;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("key" in data && data.key != undefined) {
                     this.key = data.key;

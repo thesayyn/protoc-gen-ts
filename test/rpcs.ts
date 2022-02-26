@@ -6,9 +6,10 @@
 import * as pb_1 from "google-protobuf";
 import * as grpc_1 from "@grpc/grpc-js";
 export class None extends pb_1.Message {
+    #one_of_decls = [];
     constructor(data?: any[] | {}) {
         super();
-        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
         if (!Array.isArray(data) && typeof data == "object") { }
     }
     static fromObject(data: {}) {
@@ -45,13 +46,14 @@ export class None extends pb_1.Message {
     }
 }
 export class _Object extends pb_1.Message {
+    #one_of_decls = [];
     constructor(data?: any[] | {
         id?: string;
         size?: number;
         mimeType?: string;
     }) {
         super();
-        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
         if (!Array.isArray(data) && typeof data == "object") {
             if ("id" in data && data.id != undefined) {
                 this.id = data.id;
@@ -152,12 +154,13 @@ export class _Object extends pb_1.Message {
     }
 }
 export class Chunk extends pb_1.Message {
+    #one_of_decls = [];
     constructor(data?: any[] | {
         data?: Uint8Array;
         range?: Chunk.Range;
     }) {
         super();
-        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
         if (!Array.isArray(data) && typeof data == "object") {
             if ("data" in data && data.data != undefined) {
                 this.data = data.data;
@@ -239,12 +242,13 @@ export class Chunk extends pb_1.Message {
 }
 export namespace Chunk {
     export class Range extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             start?: number;
             end?: number;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("start" in data && data.start != undefined) {
                     this.start = data.start;
@@ -325,12 +329,13 @@ export namespace Chunk {
         }
     }
     export class Query extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             id?: string;
             range?: Chunk.Range;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("id" in data && data.id != undefined) {
                     this.id = data.id;
@@ -412,11 +417,12 @@ export namespace Chunk {
     }
 }
 export class Query extends pb_1.Message {
+    #one_of_decls = [];
     constructor(data?: any[] | {
         id?: string;
     }) {
         super();
-        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
         if (!Array.isArray(data) && typeof data == "object") {
             if ("id" in data && data.id != undefined) {
                 this.id = data.id;
@@ -478,11 +484,12 @@ export class Query extends pb_1.Message {
 }
 export namespace Query {
     export class Result extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             objects?: _Object[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("objects" in data && data.objects != undefined) {
                     this.objects = data.objects;
@@ -544,12 +551,13 @@ export namespace Query {
     }
 }
 export class Put extends pb_1.Message {
+    #one_of_decls = [];
     constructor(data?: any[] | {
         id?: string;
         chunk?: Chunk;
     }) {
         super();
-        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
         if (!Array.isArray(data) && typeof data == "object") {
             if ("id" in data && data.id != undefined) {
                 this.id = data.id;

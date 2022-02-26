@@ -8,13 +8,14 @@ import * as pb_1 from "google-protobuf";
 import * as grpc_1 from "@grpc/grpc-js";
 export namespace importdirective {
     export class Message extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             importedField?: dependency_1.importdirective.Imported;
             submessageField?: dependency_1.importdirective.Imported.SubMessage;
             enumField?: dependency_1.importdirective.Imported.SubMessage.MyEnum;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("importedField" in data && data.importedField != undefined) {
                     this.importedField = data.importedField;

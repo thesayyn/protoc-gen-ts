@@ -5,12 +5,13 @@
  * git: https://github.com/thesayyn/protoc-gen-ts */
 import * as pb_1 from "google-protobuf";
 export class NotOptional extends pb_1.Message {
+    #one_of_decls = [];
     constructor(data?: any[] | {
         should_be_required: string[];
         should_be_optional?: string;
     }) {
         super();
-        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
+        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
         if (!Array.isArray(data) && typeof data == "object") {
             this.should_be_required = data.should_be_required;
             if ("should_be_optional" in data && data.should_be_optional != undefined) {

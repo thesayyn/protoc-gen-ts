@@ -6,12 +6,13 @@
 import * as pb_1 from "google-protobuf";
 export namespace main {
     export class Code extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             language?: Code.Language;
             lines?: number;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("language" in data && data.language != undefined) {
                     this.language = data.language;
