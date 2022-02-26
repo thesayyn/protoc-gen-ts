@@ -33,6 +33,7 @@ describe("defaults", () => {
             sint64: undefined,
             float: undefined,
             double: undefined,
+
             int_but_string: undefined,
 
             map_string_string: {},
@@ -76,6 +77,72 @@ describe("defaults", () => {
         })
     });
 
+    it("should be serialized defaults (v2)", () => {
+        const defaults = new DefaultMessageV2WithoutDefault();
+        const transferredDefaults = DefaultMessageV2WithoutDefault.deserialize(defaults.serialize());
+
+        expect(transferredDefaults.message).toBe(undefined);
+        expect(transferredDefaults.enum).toBe(DefaultCommonEnum.ZERO);
+
+        expect(transferredDefaults.bool).toBe(false);
+        expect(transferredDefaults.string).toBe("");
+
+        expect(transferredDefaults.int32).toBe(0);
+        expect(transferredDefaults.fixed32).toBe(0);
+        expect(transferredDefaults.sfixed32).toBe(0);
+        expect(transferredDefaults.uint32).toBe(0);
+        expect(transferredDefaults.sint32).toBe(0);
+        expect(transferredDefaults.int64).toBe(0);
+        expect(transferredDefaults.fixed64).toBe(0);
+        expect(transferredDefaults.sfixed64).toBe(0);
+        expect(transferredDefaults.uint64).toBe(0);
+        expect(transferredDefaults.sint64).toBe(0);
+        expect(transferredDefaults.float).toBe(0);
+        expect(transferredDefaults.double).toBe(0);
+
+        expect(transferredDefaults.int_but_string).toBe("");
+
+        expect(transferredDefaults.map_string_string.values.length).toBe(0);
+        expect(transferredDefaults.map_string_message.values.length).toBe(0);
+
+        expect(transferredDefaults.array_int32).toEqual([]);
+        expect(transferredDefaults.array_message).toEqual([]);
+
+        expect(transferredDefaults.one_of_int32).toBe(0);
+        expect(transferredDefaults.one_of_message).toBe(undefined);
+
+        expect(transferredDefaults.bytes).toEqual(new Uint8Array());
+    });
+
+    it("should be serialized proto defaults (v2)", () => {
+        const defaults = new DefaultMessageV2WithDefault();
+        const transferredDefaults = DefaultMessageV2WithDefault.deserialize(defaults.serialize());
+
+        expect(transferredDefaults.message).toBe(undefined);
+        expect(transferredDefaults.enum).toBe(DefaultCommonEnum.TWO);
+
+        expect(transferredDefaults.bool).toBe(true);
+        expect(transferredDefaults.string).toBe("default string");
+
+        expect(transferredDefaults.int32).toBe(5);
+        expect(transferredDefaults.fixed32).toBe(6);
+        expect(transferredDefaults.sfixed32).toBe(7);
+        expect(transferredDefaults.uint32).toBe(8);
+        expect(transferredDefaults.sint32).toBe(9);
+        expect(transferredDefaults.int64).toBe(10);
+        expect(transferredDefaults.fixed64).toBe(11);
+        expect(transferredDefaults.sfixed64).toBe(12);
+        expect(transferredDefaults.uint64).toBe(13);
+        expect(transferredDefaults.sint64).toBe(14);
+        expect(transferredDefaults.float).toBe(15);
+        expect(transferredDefaults.double).toBe(16);
+
+        expect(transferredDefaults.int_but_string).toBe("17");
+
+        expect(transferredDefaults.one_of_int32).toBe(18);
+        expect(transferredDefaults.one_of_message).toBe(undefined);
+    });
+
     it("should return defaults (v3)", () => {
         expect(new DefaultMessageV3().toObject()).toEqual({
             message: undefined,
@@ -96,6 +163,7 @@ describe("defaults", () => {
             sint64: 0,
             float: 0,
             double: 0,
+
             int_but_string: "",
 
             map_string_string: {},
@@ -109,5 +177,42 @@ describe("defaults", () => {
 
             bytes: new Uint8Array()
         })
+    });
+
+    it("should be serialized defaults (v3)", () => {
+        const defaults = new DefaultMessageV3();
+        const transferredDefaults = DefaultMessageV3.deserialize(defaults.serialize());
+
+        expect(transferredDefaults.message).toBe(undefined);
+        expect(transferredDefaults.enum).toBe(DefaultCommonEnum.ZERO);
+
+        expect(transferredDefaults.bool).toBe(false);
+        expect(transferredDefaults.string).toBe("");
+
+        expect(transferredDefaults.int32).toBe(0);
+        expect(transferredDefaults.fixed32).toBe(0);
+        expect(transferredDefaults.sfixed32).toBe(0);
+        expect(transferredDefaults.uint32).toBe(0);
+        expect(transferredDefaults.sint32).toBe(0);
+        expect(transferredDefaults.int64).toBe(0);
+        expect(transferredDefaults.fixed64).toBe(0);
+        expect(transferredDefaults.sfixed64).toBe(0);
+        expect(transferredDefaults.uint64).toBe(0);
+        expect(transferredDefaults.sint64).toBe(0);
+        expect(transferredDefaults.float).toBe(0);
+        expect(transferredDefaults.double).toBe(0);
+
+        expect(transferredDefaults.int_but_string).toBe("");
+
+        expect(transferredDefaults.map_string_string.values.length).toBe(0);
+        expect(transferredDefaults.map_string_message.values.length).toBe(0);
+
+        expect(transferredDefaults.array_int32).toEqual([]);
+        expect(transferredDefaults.array_message).toEqual([]);
+
+        expect(transferredDefaults.one_of_int32).toBe(0);
+        expect(transferredDefaults.one_of_message).toBe(undefined);
+
+        expect(transferredDefaults.bytes).toEqual(new Uint8Array());
     });
 })
