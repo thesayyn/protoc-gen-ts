@@ -1285,6 +1285,21 @@ function createSerialize(
       getFieldName(fieldDescriptor),
     );
 
+    const fieldAccesor = ts.factory.createCallExpression(
+      ts.factory.createPropertyAccessExpression(
+        ts.factory.createPropertyAccessExpression(
+          pbIdentifier,
+          ts.factory.createIdentifier("Message")
+        ),
+        ts.factory.createIdentifier("getField")
+      ),
+      undefined,
+      [
+        ts.factory.createThis(),
+        ts.factory.createNumericLiteral(fieldDescriptor.number)
+      ]
+    )
+
     if (field.isMap(fieldDescriptor)) {
       const [keyDescriptor, valueDescriptor] = type.getMapDescriptor(
         fieldDescriptor.type_name,
@@ -1457,11 +1472,10 @@ function createSerialize(
         }
       }
 
-      // this.prop !== undefined
-      let condition = ts.factory.createBinaryExpression(
-        propAccessor,
-        ts.factory.createToken(ts.SyntaxKind.ExclamationEqualsEqualsToken),
-        ts.factory.createIdentifier("undefined"),
+      let condition: ts.Expression = ts.factory.createBinaryExpression(
+        fieldAccesor,
+        ts.factory.createToken(ts.SyntaxKind.ExclamationEqualsToken),
+        ts.factory.createNull(),
       );
 
       const statement = ts.factory.createExpressionStatement(
@@ -1494,6 +1508,8 @@ function createSerialize(
           ts.factory.createToken(ts.SyntaxKind.AmpersandAmpersandToken),
           ts.factory.createPropertyAccessExpression(propAccessor, "length"),
         );
+      } else if (field.isRepeated(fieldDescriptor)) {
+        condition = ts.factory.createPropertyAccessExpression(propAccessor, "length");
       }
 
       statements.push(ts.factory.createIfStatement(condition, statement));
