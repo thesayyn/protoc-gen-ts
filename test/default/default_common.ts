@@ -10,11 +10,12 @@ export enum DefaultCommonEnum {
     TWO = 2
 }
 export class DefaultCommonMessage extends pb_1.Message {
+    #one_of_decls = [];
     constructor(data?: any[] | {
         message?: string;
     }) {
         super();
-        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
         if (!Array.isArray(data) && typeof data == "object") {
             if ("message" in data && data.message != undefined) {
                 this.message = data.message;
@@ -75,6 +76,7 @@ export class DefaultCommonMessage extends pb_1.Message {
     }
 }
 export class DefaultCommonMessageOneOf extends pb_1.Message {
+    #one_of_decls = [[1, 2]];
     constructor(data?: any[] | ({} & (({
         int32?: number;
         message?: never;
@@ -83,7 +85,7 @@ export class DefaultCommonMessageOneOf extends pb_1.Message {
         message?: DefaultCommonMessage;
     })))) {
         super();
-        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], [[1, 2]]);
+        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
         if (!Array.isArray(data) && typeof data == "object") {
             if ("int32" in data && data.int32 != undefined) {
                 this.int32 = data.int32;
@@ -97,13 +99,13 @@ export class DefaultCommonMessageOneOf extends pb_1.Message {
         return pb_1.Message.getFieldWithDefault(this, 1, 0) as number;
     }
     set int32(value: number) {
-        pb_1.Message.setOneofField(this, 1, [1, 2], value);
+        pb_1.Message.setOneofField(this, 1, this.#one_of_decls[0], value);
     }
     get message() {
         return pb_1.Message.getWrapperField(this, DefaultCommonMessage, 2) as DefaultCommonMessage;
     }
     set message(value: DefaultCommonMessage) {
-        pb_1.Message.setOneofWrapperField(this, 2, [1, 2], value);
+        pb_1.Message.setOneofWrapperField(this, 2, this.#one_of_decls[0], value);
     }
     get oneof() {
         const cases: {
