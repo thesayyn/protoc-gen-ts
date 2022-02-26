@@ -56,7 +56,7 @@ export class NotOptional extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.should_be_required !== undefined)
+        if (this.should_be_required.length)
             writer.writeRepeatedString(1, this.should_be_required);
         if (typeof this.should_be_optional === "string" && this.should_be_optional.length)
             writer.writeString(2, this.should_be_optional);

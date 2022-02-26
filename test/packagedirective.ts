@@ -44,7 +44,7 @@ export namespace pkg.mycompany {
         serialize(w: pb_1.BinaryWriter): void;
         serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
             const writer = w || new pb_1.BinaryWriter();
-            if (this.field !== undefined)
+            if (this.field.length)
                 writer.writeRepeatedString(1, this.field);
             if (!w)
                 return writer.getResultBuffer();
