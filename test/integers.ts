@@ -156,21 +156,21 @@ export class Integers extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.int32 !== undefined)
+        if (pb_1.Message.getField(this, 2) != null)
             writer.writeInt32(2, this.int32);
-        if (this.int64 !== undefined)
+        if (pb_1.Message.getField(this, 3) != null)
             writer.writeInt64(3, this.int64);
-        if (this.sint32 !== undefined)
+        if (pb_1.Message.getField(this, 4) != null)
             writer.writeSint32(4, this.sint32);
-        if (this.sint64 !== undefined)
+        if (pb_1.Message.getField(this, 5) != null)
             writer.writeSint64(5, this.sint64);
-        if (this.sfixed32 !== undefined)
+        if (pb_1.Message.getField(this, 6) != null)
             writer.writeSfixed32(6, this.sfixed32);
-        if (this.sfixed64 !== undefined)
+        if (pb_1.Message.getField(this, 7) != null)
             writer.writeSfixed64(7, this.sfixed64);
-        if (this.fixed32 !== undefined)
+        if (pb_1.Message.getField(this, 8) != null)
             writer.writeFixed32(8, this.fixed32);
-        if (this.fixed64 !== undefined)
+        if (pb_1.Message.getField(this, 9) != null)
             writer.writeFixed64(9, this.fixed64);
         if (!w)
             return writer.getResultBuffer();

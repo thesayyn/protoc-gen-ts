@@ -44,7 +44,7 @@ export class Repeated extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.indx !== undefined)
+        if (this.indx.length)
             writer.writePackedInt32(4, this.indx);
         if (!w)
             return writer.getResultBuffer();

@@ -70,7 +70,7 @@ export class Optional extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.should_not_be_required !== undefined)
+        if (this.should_not_be_required.length)
             writer.writeRepeatedString(1, this.should_not_be_required);
         if (typeof this.proto3_optional === "string" && this.proto3_optional.length)
             writer.writeString(2, this.proto3_optional);

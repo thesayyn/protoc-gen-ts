@@ -351,39 +351,39 @@ export class DefaultMessageV2WithoutDefault extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.message !== undefined)
+        if (pb_1.Message.getField(this, 1) != null)
             writer.writeMessage(1, this.message, () => this.message.serialize(writer));
-        if (this.enum !== undefined)
+        if (pb_1.Message.getField(this, 2) != null)
             writer.writeEnum(2, this.enum);
-        if (this.bool !== undefined)
+        if (pb_1.Message.getField(this, 3) != null)
             writer.writeBool(3, this.bool);
         if (typeof this.string === "string" && this.string.length)
             writer.writeString(4, this.string);
-        if (this.int32 !== undefined)
+        if (pb_1.Message.getField(this, 5) != null)
             writer.writeInt32(5, this.int32);
-        if (this.fixed32 !== undefined)
+        if (pb_1.Message.getField(this, 6) != null)
             writer.writeFixed32(6, this.fixed32);
-        if (this.sfixed32 !== undefined)
+        if (pb_1.Message.getField(this, 7) != null)
             writer.writeSfixed32(7, this.sfixed32);
-        if (this.uint32 !== undefined)
+        if (pb_1.Message.getField(this, 8) != null)
             writer.writeUint32(8, this.uint32);
-        if (this.sint32 !== undefined)
+        if (pb_1.Message.getField(this, 9) != null)
             writer.writeSint32(9, this.sint32);
-        if (this.int64 !== undefined)
+        if (pb_1.Message.getField(this, 10) != null)
             writer.writeInt64(10, this.int64);
-        if (this.fixed64 !== undefined)
+        if (pb_1.Message.getField(this, 11) != null)
             writer.writeFixed64(11, this.fixed64);
-        if (this.sfixed64 !== undefined)
+        if (pb_1.Message.getField(this, 12) != null)
             writer.writeSfixed64(12, this.sfixed64);
-        if (this.uint64 !== undefined)
+        if (pb_1.Message.getField(this, 13) != null)
             writer.writeUint64(13, this.uint64);
-        if (this.sint64 !== undefined)
+        if (pb_1.Message.getField(this, 14) != null)
             writer.writeSint64(14, this.sint64);
-        if (this.float !== undefined)
+        if (pb_1.Message.getField(this, 15) != null)
             writer.writeFloat(15, this.float);
-        if (this.double !== undefined)
+        if (pb_1.Message.getField(this, 16) != null)
             writer.writeDouble(16, this.double);
-        if (this.int_but_string !== undefined)
+        if (pb_1.Message.getField(this, 17) != null)
             writer.writeInt64String(17, this.int_but_string);
         for (const [key, value] of this.map_string_string) {
             writer.writeMessage(18, this.map_string_string, () => {
@@ -397,15 +397,15 @@ export class DefaultMessageV2WithoutDefault extends pb_1.Message {
                 writer.writeMessage(2, value, () => value.serialize(writer));
             });
         }
-        if (this.array_int32 !== undefined)
+        if (this.array_int32.length)
             writer.writeRepeatedInt32(20, this.array_int32);
-        if (this.array_message !== undefined)
+        if (this.array_message.length)
             writer.writeRepeatedMessage(21, this.array_message, (item: dependency_1.DefaultCommonMessage) => item.serialize(writer));
-        if (this.one_of_int32 !== undefined)
+        if (pb_1.Message.getField(this, 22) != null)
             writer.writeInt32(22, this.one_of_int32);
-        if (this.one_of_message !== undefined)
+        if (pb_1.Message.getField(this, 23) != null)
             writer.writeMessage(23, this.one_of_message, () => this.one_of_message.serialize(writer));
-        if (this.bytes !== undefined)
+        if (pb_1.Message.getField(this, 24) != null)
             writer.writeBytes(24, this.bytes);
         if (!w)
             return writer.getResultBuffer();
@@ -778,43 +778,43 @@ export class DefaultMessageV2WithDefault extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.message !== undefined)
+        if (pb_1.Message.getField(this, 1) != null)
             writer.writeMessage(1, this.message, () => this.message.serialize(writer));
-        if (this.enum !== undefined)
+        if (pb_1.Message.getField(this, 2) != null)
             writer.writeEnum(2, this.enum);
-        if (this.bool !== undefined)
+        if (pb_1.Message.getField(this, 3) != null)
             writer.writeBool(3, this.bool);
         if (typeof this.string === "string" && this.string.length)
             writer.writeString(4, this.string);
-        if (this.int32 !== undefined)
+        if (pb_1.Message.getField(this, 5) != null)
             writer.writeInt32(5, this.int32);
-        if (this.fixed32 !== undefined)
+        if (pb_1.Message.getField(this, 6) != null)
             writer.writeFixed32(6, this.fixed32);
-        if (this.sfixed32 !== undefined)
+        if (pb_1.Message.getField(this, 7) != null)
             writer.writeSfixed32(7, this.sfixed32);
-        if (this.uint32 !== undefined)
+        if (pb_1.Message.getField(this, 8) != null)
             writer.writeUint32(8, this.uint32);
-        if (this.sint32 !== undefined)
+        if (pb_1.Message.getField(this, 9) != null)
             writer.writeSint32(9, this.sint32);
-        if (this.int64 !== undefined)
+        if (pb_1.Message.getField(this, 10) != null)
             writer.writeInt64(10, this.int64);
-        if (this.fixed64 !== undefined)
+        if (pb_1.Message.getField(this, 11) != null)
             writer.writeFixed64(11, this.fixed64);
-        if (this.sfixed64 !== undefined)
+        if (pb_1.Message.getField(this, 12) != null)
             writer.writeSfixed64(12, this.sfixed64);
-        if (this.uint64 !== undefined)
+        if (pb_1.Message.getField(this, 13) != null)
             writer.writeUint64(13, this.uint64);
-        if (this.sint64 !== undefined)
+        if (pb_1.Message.getField(this, 14) != null)
             writer.writeSint64(14, this.sint64);
-        if (this.float !== undefined)
+        if (pb_1.Message.getField(this, 15) != null)
             writer.writeFloat(15, this.float);
-        if (this.double !== undefined)
+        if (pb_1.Message.getField(this, 16) != null)
             writer.writeDouble(16, this.double);
-        if (this.int_but_string !== undefined)
+        if (pb_1.Message.getField(this, 17) != null)
             writer.writeInt64String(17, this.int_but_string);
-        if (this.one_of_int32 !== undefined)
+        if (pb_1.Message.getField(this, 18) != null)
             writer.writeInt32(18, this.one_of_int32);
-        if (this.one_of_message !== undefined)
+        if (pb_1.Message.getField(this, 19) != null)
             writer.writeMessage(19, this.one_of_message, () => this.one_of_message.serialize(writer));
         if (!w)
             return writer.getResultBuffer();

@@ -45,7 +45,7 @@ export namespace dot {
         serialize(w: pb_1.BinaryWriter): void;
         serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
             const writer = w || new pb_1.BinaryWriter();
-            if (this.name !== undefined)
+            if (this.name.length)
                 writer.writeRepeatedString(1, this.name);
             if (!w)
                 return writer.getResultBuffer();
