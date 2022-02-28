@@ -10,13 +10,19 @@ import * as comment from "./comment";
 export function createEnum(
   enumDescriptor: descriptor.EnumDescriptorProto,
 ): ts.EnumDeclaration {
+  const enumName = enumDescriptor.name.toUpperCase();
   const values = [];
 
   for (const valueDescriptor of enumDescriptor.value) {
+    let fieldName = valueDescriptor.name;
+    if (fieldName.toUpperCase().startsWith(enumName)) {
+      fieldName = fieldName.substring(enumName.length);
+    }
+
     values.push(
       comment.addDeprecatedJsDoc(
         ts.factory.createEnumMember(
-          valueDescriptor.name,
+          fieldName,
           ts.factory.createNumericLiteral(valueDescriptor.number),
         ),
         valueDescriptor.options?.deprecated,
