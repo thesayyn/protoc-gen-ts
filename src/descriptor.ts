@@ -2136,7 +2136,7 @@ export function processDescriptorRecursively(
   ];
 
   const namespacedStatements: ts.Statement[] = [];
-  
+
 
   for (const _enum of descriptor.enum_type) {
     if (no_namespace) {
@@ -2147,7 +2147,7 @@ export function processDescriptorRecursively(
   }
 
   for (const message of descriptor.nested_type) {
-    if (no_namespace) {      
+    if (no_namespace) {
       statements.push(...processDescriptorRecursively(rootDescriptor, message, pbIdentifier, no_namespace, `${parentName}${descriptor.name}`))
     } else {
       namespacedStatements.push(
