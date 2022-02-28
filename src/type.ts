@@ -37,14 +37,13 @@ export function getMapDescriptor(
 export function getTypeReferenceExpr(
   rootDescriptor: descriptor.FileDescriptorProto,
   typeName: string,
-  packageName: string = '',
 ): ts.Identifier | ts.PropertyAccessExpression {
   const path = symbolMap.get(typeName);
 
   if (!path || !dependencyMap.has(path)) {
     if (config.no_namespace) {
       return ts.factory.createIdentifier(
-        removeRootPackageName(typeName, rootDescriptor.package).replace(`${packageName}.`, packageName),
+        removeRootPackageName(typeName, rootDescriptor.package).replace(/\./g, ''),
       );
     }
     return ts.factory.createIdentifier(
@@ -62,14 +61,13 @@ export function getTypeReferenceExpr(
 export function getTypeReference(
   rootDescriptor: descriptor.FileDescriptorProto,
   typeName: string,
-  packageName: string = '',
 ): ts.TypeReferenceNode {
   const path = symbolMap.get(typeName);
 
   if (!path || !dependencyMap.has(path)) {
     if (config.no_namespace) {
       return ts.factory.createTypeReferenceNode(
-        removeRootPackageName(typeName, rootDescriptor.package).replace(`${packageName}.`, packageName),
+        removeRootPackageName(typeName, rootDescriptor.package).replace(/\./g, ''),
       );
     }
     return ts.factory.createTypeReferenceNode(
@@ -104,7 +102,7 @@ function removeRootPackageName(name: string, packageName: string): string {
 function removeNamespace(name: string): string {
   if(config.no_namespace)
   {
-    return removeRootPackageName(name, packages.find(p => name.startsWith(p)))
+    return removeRootPackageName(name, packages.find(p => name.startsWith(p))).replace(/\./g, '')
   }
   return name;
 }

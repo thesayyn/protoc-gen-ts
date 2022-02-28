@@ -221,6 +221,7 @@ export class SchedulingContextBatch extends pb_1.Message {
     constructor(data?: any[] | {
         limit?: number;
         deadline?: number;
+        process?: SchedulingContextBatchProcess;
     }) {
         super();
         pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
@@ -230,6 +231,9 @@ export class SchedulingContextBatch extends pb_1.Message {
             }
             if ("deadline" in data && data.deadline != undefined) {
                 this.deadline = data.deadline;
+            }
+            if ("process" in data && data.process != undefined) {
+                this.process = data.process;
             }
         }
     }
@@ -245,9 +249,16 @@ export class SchedulingContextBatch extends pb_1.Message {
     set deadline(value: number) {
         pb_1.Message.setField(this, 2, value);
     }
+    get process() {
+        return pb_1.Message.getWrapperField(this, SchedulingContextBatchProcess, 3) as SchedulingContextBatchProcess;
+    }
+    set process(value: SchedulingContextBatchProcess) {
+        pb_1.Message.setWrapperField(this, 3, value);
+    }
     static fromObject(data: {
         limit?: number;
         deadline?: number;
+        process?: ReturnType<typeof SchedulingContextBatchProcess.prototype.toObject>;
     }) {
         const message = new SchedulingContextBatch({});
         if (data.limit != null) {
@@ -256,18 +267,25 @@ export class SchedulingContextBatch extends pb_1.Message {
         if (data.deadline != null) {
             message.deadline = data.deadline;
         }
+        if (data.process != null) {
+            message.process = SchedulingContextBatchProcess.fromObject(data.process);
+        }
         return message;
     }
     toObject() {
         const data: {
             limit?: number;
             deadline?: number;
+            process?: ReturnType<typeof SchedulingContextBatchProcess.prototype.toObject>;
         } = {};
         if (this.limit != null) {
             data.limit = this.limit;
         }
         if (this.deadline != null) {
             data.deadline = this.deadline;
+        }
+        if (this.process != null) {
+            data.process = this.process.toObject();
         }
         return data;
     }
@@ -279,6 +297,8 @@ export class SchedulingContextBatch extends pb_1.Message {
             writer.writeUint64(1, this.limit);
         if (this.deadline !== undefined)
             writer.writeUint64(2, this.deadline);
+        if (this.process !== undefined)
+            writer.writeMessage(3, this.process, () => this.process.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
     }
@@ -294,6 +314,9 @@ export class SchedulingContextBatch extends pb_1.Message {
                 case 2:
                     message.deadline = reader.readUint64();
                     break;
+                case 3:
+                    reader.readMessage(message.process, () => message.process = SchedulingContextBatchProcess.deserialize(reader));
+                    break;
                 default: reader.skipField();
             }
         }
@@ -304,6 +327,73 @@ export class SchedulingContextBatch extends pb_1.Message {
     }
     static deserializeBinary(bytes: Uint8Array): SchedulingContextBatch {
         return SchedulingContextBatch.deserialize(bytes);
+    }
+}
+export class SchedulingContextBatchProcess extends pb_1.Message {
+    #one_of_decls = [];
+    constructor(data?: any[] | {
+        id?: string;
+    }) {
+        super();
+        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
+        if (!Array.isArray(data) && typeof data == "object") {
+            if ("id" in data && data.id != undefined) {
+                this.id = data.id;
+            }
+        }
+    }
+    get id() {
+        return pb_1.Message.getField(this, 1) as string;
+    }
+    set id(value: string) {
+        pb_1.Message.setField(this, 1, value);
+    }
+    static fromObject(data: {
+        id?: string;
+    }) {
+        const message = new SchedulingContextBatchProcess({});
+        if (data.id != null) {
+            message.id = data.id;
+        }
+        return message;
+    }
+    toObject() {
+        const data: {
+            id?: string;
+        } = {};
+        if (this.id != null) {
+            data.id = this.id;
+        }
+        return data;
+    }
+    serialize(): Uint8Array;
+    serialize(w: pb_1.BinaryWriter): void;
+    serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
+        const writer = w || new pb_1.BinaryWriter();
+        if (typeof this.id === "string" && this.id.length)
+            writer.writeString(1, this.id);
+        if (!w)
+            return writer.getResultBuffer();
+    }
+    static deserialize(bytes: Uint8Array | pb_1.BinaryReader): SchedulingContextBatchProcess {
+        const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new SchedulingContextBatchProcess();
+        while (reader.nextField()) {
+            if (reader.isEndGroup())
+                break;
+            switch (reader.getFieldNumber()) {
+                case 1:
+                    message.id = reader.readString();
+                    break;
+                default: reader.skipField();
+            }
+        }
+        return message;
+    }
+    serializeBinary(): Uint8Array {
+        return this.serialize();
+    }
+    static deserializeBinary(bytes: Uint8Array): SchedulingContextBatchProcess {
+        return SchedulingContextBatchProcess.deserialize(bytes);
     }
 }
 export class Target extends pb_1.Message {

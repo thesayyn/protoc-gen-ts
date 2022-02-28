@@ -36,7 +36,6 @@ export function getMapType(rootDescriptor: descriptor.FileDescriptorProto, field
 export function getType(
   fieldDescriptor: descriptor.FieldDescriptorProto,
   rootDescriptor: descriptor.FileDescriptorProto,
-  packageName: string = '',
 ): ts.TypeReferenceNode {
   if (isMap(fieldDescriptor)) {
     return getMapType(rootDescriptor, fieldDescriptor);
@@ -66,7 +65,7 @@ export function getType(
       return ts.factory.createTypeReferenceNode("Uint8Array");
     case descriptor.FieldDescriptorProto.Type.TYPE_MESSAGE:
     case descriptor.FieldDescriptorProto.Type.TYPE_ENUM:
-      return type.getTypeReference(rootDescriptor, fieldDescriptor.type_name, packageName)
+      return type.getTypeReference(rootDescriptor, fieldDescriptor.type_name)
     default:
       throw new Error("Unhandled type " + fieldDescriptor.type);
   }

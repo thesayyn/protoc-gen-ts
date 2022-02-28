@@ -8,4 +8,5 @@ import "test/_/no_namespace/double_nested.proto";
 message NoNamespace {
     event.Target label = 1;
     MessageFields other_fields = 2;
+    event.SchedulingContext.Batch batch_fields = 3;
 }

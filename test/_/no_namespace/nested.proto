@@ -15,6 +15,11 @@ message SchedulingContext {
    message Batch {
       uint64 limit = 1;
       uint64 deadline = 2;
+      Process process = 3;
+
+      message Process {
+        string id = 1;
+      }
    }
 }
 

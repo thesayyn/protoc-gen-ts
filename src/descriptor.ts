@@ -537,7 +537,7 @@ function createMessageSignature(
 
         if (fieldDescriptor == currentFieldDescriptor) {
           fieldType = field.wrapRepeatedType(
-            field.getType(fieldDescriptor, rootDescriptor, packageName) as ts.TypeNode,
+            field.getType(fieldDescriptor, rootDescriptor) as ts.TypeNode,
             fieldDescriptor,
           );
         }
@@ -575,7 +575,7 @@ function createMessageSignature(
               ? ts.factory.createToken(ts.SyntaxKind.QuestionToken)
               : undefined,
             field.wrapRepeatedType(
-              field.getType(fieldDescriptor, rootDescriptor, packageName),
+              field.getType(fieldDescriptor, rootDescriptor),
               fieldDescriptor,
             ),
           ),
@@ -925,7 +925,7 @@ function createGetterCall(
 
     args = [
       ts.factory.createThis(),
-      type.getTypeReferenceExpr(rootDescriptor, fieldDescriptor.type_name, packageName),
+      type.getTypeReferenceExpr(rootDescriptor, fieldDescriptor.type_name),
       ts.factory.createNumericLiteral(fieldDescriptor.number),
     ];
   } else {
@@ -940,7 +940,7 @@ function createGetterCall(
 
       if (field.isEnum(fieldDescriptor)) {
         _default = ts.factory.createPropertyAccessExpression(
-          type.getTypeReferenceExpr(rootDescriptor, fieldDescriptor.type_name, packageName),
+          type.getTypeReferenceExpr(rootDescriptor, fieldDescriptor.type_name),
           fieldDescriptor.default_value,
         );
       } else if (field.isString(fieldDescriptor)) {
@@ -2136,8 +2136,8 @@ export function processDescriptorRecursively(
   ];
 
   const namespacedStatements: ts.Statement[] = [];
+  
 
-    
   for (const _enum of descriptor.enum_type) {
     if (no_namespace) {
       statements.push(createEnum(_enum, `${parentName}${descriptor.name}`))
@@ -2147,7 +2147,7 @@ export function processDescriptorRecursively(
   }
 
   for (const message of descriptor.nested_type) {
-    if (no_namespace) {
+    if (no_namespace) {      
       statements.push(...processDescriptorRecursively(rootDescriptor, message, pbIdentifier, no_namespace, `${parentName}${descriptor.name}`))
     } else {
       namespacedStatements.push(
