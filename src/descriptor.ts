@@ -1219,6 +1219,122 @@ function createSetterBlock(
 }
 
 /**
+ * Returns a presence clear method for the field
+ */
+function createPresenceClear(
+  fieldDescriptor: descriptor.FieldDescriptorProto,
+  pbIdentifier: ts.Identifier,
+) {
+  return ts.factory.createMethodDeclaration(
+    undefined,
+    undefined,
+    undefined,
+    "clear_" + fieldDescriptor.name,
+    undefined,
+    undefined,
+    [],
+    undefined,
+    createPresenceClearBlock(fieldDescriptor, pbIdentifier),
+  );
+}
+
+function createPresenceClearBlock(
+  fieldDescriptor: descriptor.FieldDescriptorProto,
+  pbIdentifier: ts.Identifier,
+) {
+  let expression;
+  let repeatedExpression = field.isRepeated(fieldDescriptor)
+    ? ts.factory.createIdentifier("[]")
+    : ts.factory.createIdentifier("undefined");
+
+  if (field.isMessage(fieldDescriptor) && !field.isMap(fieldDescriptor)) {
+
+    expression = ts.factory.createAssignment(
+      ts.factory.createPropertyAccessExpression(
+        ts.factory.createThis(),
+        fieldDescriptor.name,
+      ),
+      repeatedExpression,
+    )
+  }
+
+  else {
+    expression = (
+      ts.factory.createCallExpression(
+        ts.factory.createPropertyAccessExpression(
+          ts.factory.createPropertyAccessExpression(pbIdentifier, "Message"),
+          "setField"
+        ),
+        undefined,
+        [
+          ts.factory.createThis(),
+          ts.factory.createNumericLiteral(fieldDescriptor.number),
+          repeatedExpression,
+        ],
+      )
+    );
+  }
+
+  return ts.factory.createBlock(
+    [
+      ts.factory.createExpressionStatement(
+        expression
+      ),
+    ],
+    true,
+  );
+}
+
+/**
+ * Returns a presence has method for the field
+ */
+function createPresenceHas(
+  fieldDescriptor: descriptor.FieldDescriptorProto,
+  pbIdentifier: ts.Identifier,
+) {
+  return ts.factory.createMethodDeclaration(
+    undefined,
+    undefined,
+    undefined,
+    "has_" + fieldDescriptor.name,
+    undefined,
+    undefined,
+    [],
+    undefined,
+    createPresenceHasBlock(fieldDescriptor, pbIdentifier),
+  );
+}
+
+function createPresenceHasBlock(
+  fieldDescriptor: descriptor.FieldDescriptorProto,
+  pbIdentifier: ts.Identifier,
+) {
+  return ts.factory.createBlock(
+    [
+      ts.factory.createReturnStatement(ts.factory.createBinaryExpression(
+        ts.factory.createCallExpression(
+          ts.factory.createPropertyAccessExpression(
+            ts.factory.createPropertyAccessExpression(
+              pbIdentifier,
+              ts.factory.createIdentifier("Message"),
+            ),
+            ts.factory.createIdentifier("getField"),
+          ),
+          undefined,
+          [
+            ts.factory.createThis(),
+            ts.factory.createNumericLiteral(fieldDescriptor.number),
+          ]
+        ),
+        ts.factory.createToken(ts.SyntaxKind.ExclamationEqualsToken),
+        ts.factory.createNull(),
+      )),
+    ],
+    true,
+  )
+}
+
+/**
  * Returns the serialize method for the message class
  */
 function createSerialize(
@@ -2107,11 +2223,21 @@ function createMessage(
     createConstructor(rootDescriptor, messageDescriptor, pbIdentifier),
   ];
 
-  for (const field of messageDescriptor.field) {
-    statements.push(createGetter(rootDescriptor, field, pbIdentifier));
+  for (const fieldDescriptor of messageDescriptor.field) {
+    statements.push(createGetter(rootDescriptor, fieldDescriptor, pbIdentifier));
     statements.push(
-      createSetter(rootDescriptor, messageDescriptor, field, pbIdentifier),
+      createSetter(rootDescriptor, messageDescriptor, fieldDescriptor, pbIdentifier),
     );
+
+    if (!field.isRepeated(fieldDescriptor) &&
+      !field.isMap(fieldDescriptor) &&
+      !(rootDescriptor.syntax == "proto3" &&
+        !(fieldDescriptor.proto3_optional ||
+          field.isMessage(fieldDescriptor) ||
+          field.isOneOf(fieldDescriptor)))) {
+      statements.push(createPresenceClear(fieldDescriptor, pbIdentifier))
+      statements.push(createPresenceHas(fieldDescriptor, pbIdentifier))
+    }
   }
 
   for (const [index, oneof] of messageDescriptor.oneof_decl.entries()) {
