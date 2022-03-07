@@ -1563,11 +1563,42 @@ function createSerialize(
         }
       }
 
-      let condition: ts.Expression = ts.factory.createBinaryExpression(
-        fieldAccesor,
-        ts.factory.createToken(ts.SyntaxKind.ExclamationEqualsToken),
-        ts.factory.createNull(),
-      );
+      let condition: ts.Expression;
+      if (rootDescriptor.syntax == "proto3" &&
+        !fieldDescriptor.proto3_optional &&
+        !field.isMessage(fieldDescriptor) &&
+        !field.hasJsTypeString(fieldDescriptor) &&
+        fieldDescriptor.type != descriptor.FieldDescriptorProto.Type.TYPE_BYTES) {
+
+        if (field.isEnum(fieldDescriptor)) {
+          condition = ts.factory.createBinaryExpression(
+            propAccessor,
+            ts.factory.createToken(ts.SyntaxKind.ExclamationEqualsToken),
+            ts.factory.createPropertyAccessExpression(
+              type.getTypeReferenceExpr(rootDescriptor, fieldDescriptor.type_name),
+              type.getLeadingEnumMember(fieldDescriptor.type_name),
+            ));
+        } else if (field.isBoolean(fieldDescriptor)) {
+          condition = ts.factory.createBinaryExpression(
+            propAccessor,
+            ts.factory.createToken(ts.SyntaxKind.ExclamationEqualsToken),
+            ts.factory.createFalse(),
+          );
+        } else {
+          condition = ts.factory.createBinaryExpression(
+            propAccessor,
+            ts.factory.createToken(ts.SyntaxKind.ExclamationEqualsToken),
+            ts.factory.createNumericLiteral(0),
+          );
+        }
+      }
+      else {
+        condition = ts.factory.createBinaryExpression(
+          fieldAccesor,
+          ts.factory.createToken(ts.SyntaxKind.ExclamationEqualsToken),
+          ts.factory.createNull(),
+        );
+      }
 
       const statement = ts.factory.createExpressionStatement(
         ts.factory.createCallExpression(
