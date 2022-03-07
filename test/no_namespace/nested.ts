@@ -98,7 +98,7 @@ export class SchedulingContext extends pb_1.Message {
         const writer = w || new pb_1.BinaryWriter();
         if (this.env.length)
             writer.writeRepeatedMessage(2, this.env, (item: SchedulingContextEnv) => item.serialize(writer));
-        if (pb_1.Message.getField(this, 3) != null)
+        if (this.timeout != 0)
             writer.writeInt32(3, this.timeout);
         if (pb_1.Message.getField(this, 4) != null)
             writer.writeMessage(4, this.batch, () => this.batch.serialize(writer));
@@ -305,9 +305,9 @@ export class SchedulingContextBatch extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (pb_1.Message.getField(this, 1) != null)
+        if (this.limit != 0)
             writer.writeUint64(1, this.limit);
-        if (pb_1.Message.getField(this, 2) != null)
+        if (this.deadline != 0)
             writer.writeUint64(2, this.deadline);
         if (pb_1.Message.getField(this, 3) != null)
             writer.writeMessage(3, this.process, () => this.process.serialize(writer));
@@ -635,7 +635,7 @@ export class Event extends pb_1.Message {
         const writer = w || new pb_1.BinaryWriter();
         if (typeof pb_1.Message.getField(this, 1) === "string" && this.id.length)
             writer.writeString(1, this.id);
-        if (pb_1.Message.getField(this, 2) != null)
+        if (this.type != Type.HTTP)
             writer.writeEnum(2, this.type);
         if (pb_1.Message.getField(this, 3) != null)
             writer.writeMessage(3, this.target, () => this.target.serialize(writer));

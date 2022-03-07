@@ -83,9 +83,9 @@ export class JSType extends pb_1.Message {
         const writer = w || new pb_1.BinaryWriter();
         if (pb_1.Message.getField(this, 1) != null)
             writer.writeInt64String(1, this.int_but_string);
-        if (pb_1.Message.getField(this, 2) != null)
+        if (this.int_and_normal != 0)
             writer.writeInt64(2, this.int_and_normal);
-        if (pb_1.Message.getField(this, 3) != null)
+        if (this.int_and_number != 0)
             writer.writeInt64(3, this.int_and_number);
         if (!w)
             return writer.getResultBuffer();

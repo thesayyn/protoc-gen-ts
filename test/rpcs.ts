@@ -124,7 +124,7 @@ export class _Object extends pb_1.Message {
         const writer = w || new pb_1.BinaryWriter();
         if (typeof pb_1.Message.getField(this, 1) === "string" && this.id.length)
             writer.writeString(1, this.id);
-        if (pb_1.Message.getField(this, 3) != null)
+        if (this.size != 0)
             writer.writeUint64(3, this.size);
         if (typeof pb_1.Message.getField(this, 4) === "string" && this.mimeType.length)
             writer.writeString(4, this.mimeType);
@@ -314,9 +314,9 @@ export namespace Chunk {
         serialize(w: pb_1.BinaryWriter): void;
         serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
             const writer = w || new pb_1.BinaryWriter();
-            if (pb_1.Message.getField(this, 1) != null)
+            if (this.start != 0)
                 writer.writeInt64(1, this.start);
-            if (pb_1.Message.getField(this, 2) != null)
+            if (this.end != 0)
                 writer.writeInt64(2, this.end);
             if (!w)
                 return writer.getResultBuffer();

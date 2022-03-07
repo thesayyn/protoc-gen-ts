@@ -100,7 +100,7 @@ export namespace importdirective {
                 writer.writeMessage(1, this.importedField, () => this.importedField.serialize(writer));
             if (pb_1.Message.getField(this, 2) != null)
                 writer.writeMessage(2, this.submessageField, () => this.submessageField.serialize(writer));
-            if (pb_1.Message.getField(this, 3) != null)
+            if (this.enumField != dependency_1.importdirective.Imported.SubMessage.MyEnum.VALUE)
                 writer.writeEnum(3, this.enumField);
             if (!w)
                 return writer.getResultBuffer();
