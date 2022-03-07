@@ -156,7 +156,7 @@ export class DefaultCommonMessageOneOf extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (pb_1.Message.getField(this, 1) != null)
+        if (this.int32 != 0)
             writer.writeInt32(1, this.int32);
         if (pb_1.Message.getField(this, 2) != null)
             writer.writeMessage(2, this.message, () => this.message.serialize(writer));

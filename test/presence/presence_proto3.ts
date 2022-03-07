@@ -319,9 +319,9 @@ export class PresenceMessageV3 extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (pb_1.Message.getField(this, 1) != null)
+        if (this.int32 != 0)
             writer.writeInt32(1, this.int32);
-        if (pb_1.Message.getField(this, 2) != null)
+        if (this.enum != dependency_1.PresenceCommonEnum.ZERO)
             writer.writeEnum(2, this.enum);
         if (typeof this.string === "string" && this.string.length)
             writer.writeString(3, this.string);
