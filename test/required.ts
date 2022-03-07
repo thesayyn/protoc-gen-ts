@@ -23,11 +23,23 @@ export class NoOptionalValues extends pb_1.Message {
     set test(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
+    clear_test() {
+        pb_1.Message.setField(this, 1, undefined);
+    }
+    has_test() {
+        return pb_1.Message.getField(this, 1) != null;
+    }
     get test2() {
         return pb_1.Message.getFieldWithDefault(this, 2, "") as string;
     }
     set test2(value: string) {
         pb_1.Message.setField(this, 2, value);
+    }
+    clear_test2() {
+        pb_1.Message.setField(this, 2, undefined);
+    }
+    has_test2() {
+        return pb_1.Message.getField(this, 2) != null;
     }
     static fromObject(data: {
         test: string;

@@ -34,11 +34,23 @@ export namespace importdirective {
         set importedField(value: dependency_1.importdirective.Imported) {
             pb_1.Message.setWrapperField(this, 1, value);
         }
+        clear_importedField() {
+            this.importedField = undefined;
+        }
+        has_importedField() {
+            return pb_1.Message.getField(this, 1) != null;
+        }
         get submessageField() {
             return pb_1.Message.getWrapperField(this, dependency_1.importdirective.Imported.SubMessage, 2) as dependency_1.importdirective.Imported.SubMessage;
         }
         set submessageField(value: dependency_1.importdirective.Imported.SubMessage) {
             pb_1.Message.setWrapperField(this, 2, value);
+        }
+        clear_submessageField() {
+            this.submessageField = undefined;
+        }
+        has_submessageField() {
+            return pb_1.Message.getField(this, 2) != null;
         }
         get enumField() {
             return pb_1.Message.getFieldWithDefault(this, 3, dependency_1.importdirective.Imported.SubMessage.MyEnum.VALUE) as dependency_1.importdirective.Imported.SubMessage.MyEnum;

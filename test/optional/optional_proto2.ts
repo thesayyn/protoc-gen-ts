@@ -31,6 +31,12 @@ export class NotOptional extends pb_1.Message {
     set should_be_optional(value: string) {
         pb_1.Message.setField(this, 2, value);
     }
+    clear_should_be_optional() {
+        pb_1.Message.setField(this, 2, undefined);
+    }
+    has_should_be_optional() {
+        return pb_1.Message.getField(this, 2) != null;
+    }
     static fromObject(data: {
         should_be_required: string[];
         should_be_optional?: string;
