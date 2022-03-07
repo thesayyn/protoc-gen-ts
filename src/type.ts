@@ -43,11 +43,11 @@ export function getTypeReferenceExpr(
   if (!path || !dependencyMap.has(path)) {
     if (config.no_namespace) {
       return ts.factory.createIdentifier(
-        removeRootPackageName(typeName, rootDescriptor.package).replace(/\./g, ''),
+        removeRootParentName(typeName, rootDescriptor.package).replace(/\./g, ''),
       );
     }
     return ts.factory.createIdentifier(
-      removeRootPackageName(typeName, rootDescriptor.package),
+      removeRootParentName(typeName, rootDescriptor.package),
     );
   }
 
@@ -67,11 +67,11 @@ export function getTypeReference(
   if (!path || !dependencyMap.has(path)) {
     if (config.no_namespace) {
       return ts.factory.createTypeReferenceNode(
-        removeRootPackageName(typeName, rootDescriptor.package).replace(/\./g, ''),
+        removeRootParentName(typeName, rootDescriptor.package).replace(/\./g, ''),
       );
     }
     return ts.factory.createTypeReferenceNode(
-      removeRootPackageName(typeName, rootDescriptor.package),
+      removeRootParentName(typeName, rootDescriptor.package),
     );
   }
 
@@ -93,16 +93,16 @@ function replaceDoubleDots(name: string): string {
   return name.replace(/\.\./g, ".");
 }
 
-function removeRootPackageName(name: string, packageName: string): string {
+function removeRootParentName(name: string, parentName: string): string {
   return removeLeadingDot(
-    packageName ? name.replace(`${packageName}.`, "") : name,
+    parentName ? name.replace(`${parentName}.`, "") : name,
   );
 }
 
 function removeNamespace(name: string): string {
   if(config.no_namespace)
   {
-    return removeRootPackageName(name, packages.find(p => name.startsWith(p))).replace(/\./g, '')
+    return removeRootParentName(name, packages.find(p => name.startsWith(p))).replace(/\./g, '')
   }
   return name;
 }

@@ -9,7 +9,7 @@ import * as comment from "./comment";
  */
 export function createEnum(
   enumDescriptor: descriptor.EnumDescriptorProto,
-  packageName: string = ''
+  parentName: string = ''
 ): ts.EnumDeclaration {
   const values = [];
 
@@ -28,7 +28,7 @@ export function createEnum(
     ts.factory.createEnumDeclaration(
       undefined,
       [ts.factory.createModifier(ts.SyntaxKind.ExportKeyword)],
-      ts.factory.createIdentifier(`${packageName}${enumDescriptor.name}`),
+      ts.factory.createIdentifier(`${parentName}${enumDescriptor.name}`),
       values,
     ),
     enumDescriptor.options?.deprecated,
@@ -38,7 +38,7 @@ export function createEnum(
 function createFromObject(
   rootDescriptor: descriptor.FileDescriptorProto,
   messageDescriptor: descriptor.DescriptorProto,
-  packageName: string = ''
+  parentName: string = ''
 ): ts.MethodDeclaration {
   const dataIdentifier = ts.factory.createIdentifier("data");
   const messageIdentifier = ts.factory.createIdentifier("message");
@@ -250,7 +250,7 @@ function createFromObject(
             undefined,
             undefined,
             ts.factory.createNewExpression(
-              ts.factory.createIdentifier(`${packageName}${messageDescriptor.name}`),
+              ts.factory.createIdentifier(`${parentName}${messageDescriptor.name}`),
               undefined,
               [ts.factory.createObjectLiteralExpression(properties, true)],
             ),
@@ -489,10 +489,10 @@ function createToObject(
 }
 
 export function createNamespace(
-  packageName: string,
+  parentName: string,
   statements: ts.Statement[],
 ): ts.ModuleDeclaration {
-  const identifiers = String(packageName).split(".");
+  const identifiers = String(parentName).split(".");
 
   let decl: ts.ModuleDeclaration | ts.ModuleBlock =
     ts.factory.createModuleBlock(statements);
@@ -513,7 +513,7 @@ export function createNamespace(
 function createMessageSignature(
   rootDescriptor: descriptor.FileDescriptorProto,
   messageDescriptor: descriptor.DescriptorProto,
-  packageName: string = '',
+  parentName: string = '',
 ): ts.TypeNode {
   const oneOfSignatures = [];
 
@@ -692,7 +692,7 @@ function createConstructor(
   rootDescriptor: descriptor.FileDescriptorProto,
   messageDescriptor: descriptor.DescriptorProto,
   pbIdentifier: ts.Identifier,
-  packageName: string = '',
+  parentName: string = '',
 ): ts.ConstructorDeclaration {
   const dataIdentifier = ts.factory.createIdentifier("data");
   const typeNode = ts.factory.createUnionTypeNode([
@@ -702,7 +702,7 @@ function createConstructor(
         undefined,
       ),
     ),
-    createMessageSignature(rootDescriptor, messageDescriptor, packageName),
+    createMessageSignature(rootDescriptor, messageDescriptor, parentName),
   ]);
 
   // Get repeated fields numbers
@@ -869,7 +869,7 @@ function createGetter(
   rootDescriptor: descriptor.FileDescriptorProto,
   fieldDescriptor: descriptor.FieldDescriptorProto,
   pbIdentifier: ts.Identifier,
-  packageName: string = '',
+  parentName: string = '',
 ): ts.GetAccessorDeclaration {
   const getterType = field.wrapRepeatedType(
     field.getType(fieldDescriptor, rootDescriptor) as ts.TypeNode,
@@ -879,7 +879,7 @@ function createGetter(
     rootDescriptor,
     fieldDescriptor,
     pbIdentifier,
-    packageName
+    parentName
   );
 
   if (field.isMap(fieldDescriptor)) {
@@ -913,7 +913,7 @@ function createGetterCall(
   rootDescriptor: descriptor.FileDescriptorProto,
   fieldDescriptor: descriptor.FieldDescriptorProto,
   pbIdentifier: ts.Identifier,
-  packageName: string = '',
+  parentName: string = '',
 ): ts.CallExpression {
   let args: ts.Expression[];
   let getterMethod = "getField";
@@ -1536,7 +1536,7 @@ function createDeserialize(
   rootDescriptor: descriptor.FileDescriptorProto,
   messageDescriptor: descriptor.DescriptorProto,
   pbIdentifier: ts.Identifier,
-  packageName: string = '',
+  parentName: string = '',
 ): ts.ClassElement {
   const statements: ts.Statement[] = [
     ts.factory.createVariableStatement(
@@ -1575,7 +1575,7 @@ function createDeserialize(
             undefined,
             undefined,
             ts.factory.createNewExpression(
-              ts.factory.createIdentifier(`${packageName}${messageDescriptor.name}`),
+              ts.factory.createIdentifier(`${parentName}${messageDescriptor.name}`),
               undefined,
               [],
             ),
@@ -1935,7 +1935,7 @@ function createDeserialize(
         ]),
       ),
     ],
-    ts.factory.createTypeReferenceNode(`${packageName}${messageDescriptor.name}`, undefined),
+    ts.factory.createTypeReferenceNode(`${parentName}${messageDescriptor.name}`, undefined),
     ts.factory.createBlock(statements, true),
   );
 }
@@ -1945,7 +1945,7 @@ function createDeserialize(
  */
 function createDeserializeBinary(
   messageDescriptor: descriptor.DescriptorProto,
-  packageName: string = '',
+  parentName: string = '',
 ): ts.ClassElement {
   return ts.factory.createMethodDeclaration(
     undefined,
@@ -1966,13 +1966,13 @@ function createDeserializeBinary(
         ),
       ),
     ],
-    ts.factory.createTypeReferenceNode(`${packageName}${messageDescriptor.name}`),
+    ts.factory.createTypeReferenceNode(`${parentName}${messageDescriptor.name}`),
     ts.factory.createBlock(
       [
         ts.factory.createReturnStatement(
           ts.factory.createCallExpression(
             ts.factory.createPropertyAccessExpression(
-              ts.factory.createIdentifier(`${packageName}${messageDescriptor.name}`),
+              ts.factory.createIdentifier(`${parentName}${messageDescriptor.name}`),
               "deserialize",
             ),
             undefined,
@@ -2057,16 +2057,16 @@ function createMessage(
   rootDescriptor: descriptor.FileDescriptorProto,
   messageDescriptor: descriptor.DescriptorProto,
   pbIdentifier: ts.Identifier,
-  packageName: string,
+  parentName: string,
 ): ts.ClassDeclaration {
   const statements: ts.ClassElement[] = [
     createOneOfDecls(messageDescriptor),
     // Create constructor
-    createConstructor(rootDescriptor, messageDescriptor, pbIdentifier, packageName),
+    createConstructor(rootDescriptor, messageDescriptor, pbIdentifier, parentName),
   ];
 
   for (const field of messageDescriptor.field) {
-    statements.push(createGetter(rootDescriptor, field, pbIdentifier, packageName));
+    statements.push(createGetter(rootDescriptor, field, pbIdentifier, parentName));
     statements.push(
       createSetter(rootDescriptor, messageDescriptor, field, pbIdentifier),
     );
@@ -2081,7 +2081,7 @@ function createMessage(
 
   statements.push(
     // Create fromObject method
-    createFromObject(rootDescriptor, messageDescriptor, packageName),
+    createFromObject(rootDescriptor, messageDescriptor, parentName),
     // Create toObject method
     createToObject(rootDescriptor, messageDescriptor),
   );
@@ -2091,13 +2091,13 @@ function createMessage(
     ...createSerialize(rootDescriptor, messageDescriptor, pbIdentifier),
 
     // Create deserialize method
-    createDeserialize(rootDescriptor, messageDescriptor, pbIdentifier, packageName),
+    createDeserialize(rootDescriptor, messageDescriptor, pbIdentifier, parentName),
 
     // Create serializeBinary method
     createSerializeBinary(),
 
     // Create deserializeBinary method
-    createDeserializeBinary(messageDescriptor, packageName),
+    createDeserializeBinary(messageDescriptor, parentName),
   );
 
   // Create message class
@@ -2105,7 +2105,7 @@ function createMessage(
     ts.factory.createClassDeclaration(
       undefined,
       [ts.factory.createModifier(ts.SyntaxKind.ExportKeyword)],
-      `${packageName}${messageDescriptor.name}`,
+      `${parentName}${messageDescriptor.name}`,
       undefined,
       [
         ts.factory.createHeritageClause(ts.SyntaxKind.ExtendsKeyword, [
