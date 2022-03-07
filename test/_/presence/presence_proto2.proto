@@ -1,0 +1,20 @@
+syntax = "proto2";
+
+import "test/_/presence/presence_common.proto";
+
+message PresenceMessageV2 {
+    required int32 int32 = 1; //should have
+    required PresenceCommonEnum enum = 2; //should have
+    required string string = 3; //should have
+    required PresenceCommonMessage message = 4; //should have
+    required PresenceCommonMessageOneOf oneof = 5; //should have
+
+    optional int32 opt_int32 = 6; //should have
+    optional PresenceCommonEnum opt_enum = 7; //should have
+    optional string opt_string = 8; //should have
+    optional PresenceCommonMessage opt_message =  9; //should have
+    optional PresenceCommonMessageOneOf opt_oneof = 10; //should have
+
+    repeated int32 repeated = 11; //shouldn't have
+    map<string, string> map = 12; //shouldn't have
+}

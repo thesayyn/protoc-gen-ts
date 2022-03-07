@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+message PresenceCommonMessage {
+    string message = 1;  
+}
+
+message PresenceCommonMessageOneOf {
+    oneof oneof {
+        int32 int32 = 1;
+        PresenceCommonMessage message = 2;
+    }
+}
+
+enum PresenceCommonEnum {
+    ZERO = 0;
+    ONE = 1;
+    TWO = 2;    
+}
