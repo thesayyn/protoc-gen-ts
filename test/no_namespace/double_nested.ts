@@ -18,7 +18,7 @@ export class MessageFields extends pb_1.Message {
         }
     }
     get field() {
-        return pb_1.Message.getField(this, 1) as string[];
+        return pb_1.Message.getFieldWithDefault(this, 1, []) as string[];
     }
     set field(value: string[]) {
         pb_1.Message.setField(this, 1, value);
@@ -35,17 +35,16 @@ export class MessageFields extends pb_1.Message {
     toObject() {
         const data: {
             field?: string[];
-        } = {};
-        if (this.field != null) {
-            data.field = this.field;
-        }
+        } = {
+            field: this.field
+        };
         return data;
     }
     serialize(): Uint8Array;
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.field !== undefined)
+        if (this.field.length)
             writer.writeRepeatedString(1, this.field);
         if (!w)
             return writer.getResultBuffer();
