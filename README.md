@@ -12,7 +12,7 @@ This plugin generates plain **TypeScript** files that can be used with ESM, AMD,
 - No `d.ts` files. Just plain typescript sources with actual code.
 - Fields as **getter** **setters**.
 - Enums as **enums**.
-- Messages within a **namespace** if the proto has a **package** directive.
+- Messages within a **namespace** if the proto has a **package** directive. (can be controlled via --ts_opt=no_namespace)
 - **fromObject** and **toObject** methods to work with json data.
 - Supports gRPC Node and gRPC Web [#102](https://github.com/thesayyn/protoc-gen-ts/pull/102)
 - You get what you define in proto files. No such prefixes as "getField" or "getFieldList".
@@ -135,6 +135,8 @@ ts_proto_library(
 * With `--ts_opt=unary_rpc_promise=true`, the service definition will contain a promise based rpc with a calling pattern of `const result = await client.METHOD(message)`.  Note: all of the `metadata` and `options` parameters are still available to you.
 
 * With `--ts_opt=grpc_package=xxxx`, you can specify a different package to import rather than `@grpc/grpc-js`.
+
+* With `--ts_opt=no_namespace`, you can control whether you get nested messages inside namespaces or prefixed with their parent message or directive.
 
 ## Roadmap
 
