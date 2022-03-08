@@ -34,7 +34,7 @@ export class NoNamespace extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 1, value);
     }
     clear_label() {
-        this.label = undefined;
+        pb_1.Message.setField(this, 1, undefined);
     }
     has_label() {
         return pb_1.Message.getField(this, 1) != null;
@@ -46,7 +46,7 @@ export class NoNamespace extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 2, value);
     }
     clear_other_fields() {
-        this.other_fields = undefined;
+        pb_1.Message.setField(this, 2, undefined);
     }
     has_other_fields() {
         return pb_1.Message.getField(this, 2) != null;
@@ -58,7 +58,7 @@ export class NoNamespace extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 3, value);
     }
     clear_batch_fields() {
-        this.batch_fields = undefined;
+        pb_1.Message.setField(this, 3, undefined);
     }
     has_batch_fields() {
         return pb_1.Message.getField(this, 3) != null;

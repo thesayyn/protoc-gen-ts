@@ -184,7 +184,7 @@ export class FileDescriptorProto extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 8, value);
     }
     clear_options() {
-        this.options = undefined;
+        pb_1.Message.setField(this, 8, undefined);
     }
     has_options() {
         return pb_1.Message.getField(this, 8) != null;
@@ -196,7 +196,7 @@ export class FileDescriptorProto extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 9, value);
     }
     clear_source_code_info() {
-        this.source_code_info = undefined;
+        pb_1.Message.setField(this, 9, undefined);
     }
     has_source_code_info() {
         return pb_1.Message.getField(this, 9) != null;
@@ -474,7 +474,7 @@ export class DescriptorProto extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 7, value);
     }
     clear_options() {
-        this.options = undefined;
+        pb_1.Message.setField(this, 7, undefined);
     }
     has_options() {
         return pb_1.Message.getField(this, 7) != null;
@@ -693,7 +693,7 @@ export namespace DescriptorProto {
             pb_1.Message.setWrapperField(this, 3, value);
         }
         clear_options() {
-            this.options = undefined;
+            pb_1.Message.setField(this, 3, undefined);
         }
         has_options() {
             return pb_1.Message.getField(this, 3) != null;
@@ -1107,7 +1107,7 @@ export class FieldDescriptorProto extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 8, value);
     }
     clear_options() {
-        this.options = undefined;
+        pb_1.Message.setField(this, 8, undefined);
     }
     has_options() {
         return pb_1.Message.getField(this, 8) != null;
@@ -1365,7 +1365,7 @@ export class OneofDescriptorProto extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 2, value);
     }
     clear_options() {
-        this.options = undefined;
+        pb_1.Message.setField(this, 2, undefined);
     }
     has_options() {
         return pb_1.Message.getField(this, 2) != null;
@@ -1479,7 +1479,7 @@ export class EnumDescriptorProto extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 3, value);
     }
     clear_options() {
-        this.options = undefined;
+        pb_1.Message.setField(this, 3, undefined);
     }
     has_options() {
         return pb_1.Message.getField(this, 3) != null;
@@ -1746,7 +1746,7 @@ export class EnumValueDescriptorProto extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 3, value);
     }
     clear_options() {
-        this.options = undefined;
+        pb_1.Message.setField(this, 3, undefined);
     }
     has_options() {
         return pb_1.Message.getField(this, 3) != null;
@@ -1869,7 +1869,7 @@ export class ServiceDescriptorProto extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 3, value);
     }
     clear_options() {
-        this.options = undefined;
+        pb_1.Message.setField(this, 3, undefined);
     }
     has_options() {
         return pb_1.Message.getField(this, 3) != null;
@@ -2023,7 +2023,7 @@ export class MethodDescriptorProto extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 4, value);
     }
     clear_options() {
-        this.options = undefined;
+        pb_1.Message.setField(this, 4, undefined);
     }
     has_options() {
         return pb_1.Message.getField(this, 4) != null;

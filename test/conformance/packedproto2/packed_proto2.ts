@@ -363,7 +363,7 @@ export class HydratedTemplateButton extends pb_1.Message {
         pb_1.Message.setOneofWrapperField(this, 1, this.#one_of_decls[0], value);
     }
     clear_quickReplyButton() {
-        this.quickReplyButton = undefined;
+        pb_1.Message.setField(this, 1, undefined);
     }
     has_quickReplyButton() {
         return pb_1.Message.getField(this, 1) != null;
@@ -375,7 +375,7 @@ export class HydratedTemplateButton extends pb_1.Message {
         pb_1.Message.setOneofWrapperField(this, 2, this.#one_of_decls[0], value);
     }
     clear_urlButton() {
-        this.urlButton = undefined;
+        pb_1.Message.setField(this, 2, undefined);
     }
     has_urlButton() {
         return pb_1.Message.getField(this, 2) != null;
@@ -387,7 +387,7 @@ export class HydratedTemplateButton extends pb_1.Message {
         pb_1.Message.setOneofWrapperField(this, 3, this.#one_of_decls[0], value);
     }
     clear_callButton() {
-        this.callButton = undefined;
+        pb_1.Message.setField(this, 3, undefined);
     }
     has_callButton() {
         return pb_1.Message.getField(this, 3) != null;
@@ -514,7 +514,7 @@ export class QuickReplyButton extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 1, value);
     }
     clear_displayText() {
-        this.displayText = undefined;
+        pb_1.Message.setField(this, 1, undefined);
     }
     has_displayText() {
         return pb_1.Message.getField(this, 1) != null;
@@ -616,7 +616,7 @@ export class URLButton extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 1, value);
     }
     clear_displayText() {
-        this.displayText = undefined;
+        pb_1.Message.setField(this, 1, undefined);
     }
     has_displayText() {
         return pb_1.Message.getField(this, 1) != null;
@@ -628,7 +628,7 @@ export class URLButton extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 2, value);
     }
     clear_url() {
-        this.url = undefined;
+        pb_1.Message.setField(this, 2, undefined);
     }
     has_url() {
         return pb_1.Message.getField(this, 2) != null;
@@ -718,7 +718,7 @@ export class CallButton extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 1, value);
     }
     clear_displayText() {
-        this.displayText = undefined;
+        pb_1.Message.setField(this, 1, undefined);
     }
     has_displayText() {
         return pb_1.Message.getField(this, 1) != null;
@@ -730,7 +730,7 @@ export class CallButton extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 2, value);
     }
     clear_phoneNumber() {
-        this.phoneNumber = undefined;
+        pb_1.Message.setField(this, 2, undefined);
     }
     has_phoneNumber() {
         return pb_1.Message.getField(this, 2) != null;
@@ -849,7 +849,7 @@ export class TemplateButton extends pb_1.Message {
         pb_1.Message.setOneofWrapperField(this, 1, this.#one_of_decls[0], value);
     }
     clear_quickReplyButton() {
-        this.quickReplyButton = undefined;
+        pb_1.Message.setField(this, 1, undefined);
     }
     has_quickReplyButton() {
         return pb_1.Message.getField(this, 1) != null;
@@ -861,7 +861,7 @@ export class TemplateButton extends pb_1.Message {
         pb_1.Message.setOneofWrapperField(this, 2, this.#one_of_decls[0], value);
     }
     clear_urlButton() {
-        this.urlButton = undefined;
+        pb_1.Message.setField(this, 2, undefined);
     }
     has_urlButton() {
         return pb_1.Message.getField(this, 2) != null;
@@ -873,7 +873,7 @@ export class TemplateButton extends pb_1.Message {
         pb_1.Message.setOneofWrapperField(this, 3, this.#one_of_decls[0], value);
     }
     clear_callButton() {
-        this.callButton = undefined;
+        pb_1.Message.setField(this, 3, undefined);
     }
     has_callButton() {
         return pb_1.Message.getField(this, 3) != null;
@@ -1296,7 +1296,7 @@ export class InteractiveAnnotation extends pb_1.Message {
         pb_1.Message.setOneofWrapperField(this, 2, this.#one_of_decls[0], value);
     }
     clear_location() {
-        this.location = undefined;
+        pb_1.Message.setField(this, 2, undefined);
     }
     has_location() {
         return pb_1.Message.getField(this, 2) != null;
@@ -1635,7 +1635,7 @@ export class ContextInfo extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 3, value);
     }
     clear_quotedMessage() {
-        this.quotedMessage = undefined;
+        pb_1.Message.setField(this, 3, undefined);
     }
     has_quotedMessage() {
         return pb_1.Message.getField(this, 3) != null;
@@ -1725,7 +1725,7 @@ export class ContextInfo extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 23, value);
     }
     clear_quotedAd() {
-        this.quotedAd = undefined;
+        pb_1.Message.setField(this, 23, undefined);
     }
     has_quotedAd() {
         return pb_1.Message.getField(this, 23) != null;
@@ -1737,7 +1737,7 @@ export class ContextInfo extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 24, value);
     }
     clear_placeholderKey() {
-        this.placeholderKey = undefined;
+        pb_1.Message.setField(this, 24, undefined);
     }
     has_placeholderKey() {
         return pb_1.Message.getField(this, 24) != null;
@@ -2354,7 +2354,7 @@ export class ImageMessage extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 17, value);
     }
     clear_contextInfo() {
-        this.contextInfo = undefined;
+        pb_1.Message.setField(this, 17, undefined);
     }
     has_contextInfo() {
         return pb_1.Message.getField(this, 17) != null;
@@ -2793,7 +2793,7 @@ export class ContactMessage extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 17, value);
     }
     clear_contextInfo() {
-        this.contextInfo = undefined;
+        pb_1.Message.setField(this, 17, undefined);
     }
     has_contextInfo() {
         return pb_1.Message.getField(this, 17) != null;
@@ -3068,7 +3068,7 @@ export class LocationMessage extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 17, value);
     }
     clear_contextInfo() {
-        this.contextInfo = undefined;
+        pb_1.Message.setField(this, 17, undefined);
     }
     has_contextInfo() {
         return pb_1.Message.getField(this, 17) != null;
@@ -3448,7 +3448,7 @@ export class ExtendedTextMessage extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 17, value);
     }
     clear_contextInfo() {
-        this.contextInfo = undefined;
+        pb_1.Message.setField(this, 17, undefined);
     }
     has_contextInfo() {
         return pb_1.Message.getField(this, 17) != null;
@@ -3882,7 +3882,7 @@ export class DocumentMessage extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 17, value);
     }
     clear_contextInfo() {
-        this.contextInfo = undefined;
+        pb_1.Message.setField(this, 17, undefined);
     }
     has_contextInfo() {
         return pb_1.Message.getField(this, 17) != null;
@@ -4275,7 +4275,7 @@ export class AudioMessage extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 17, value);
     }
     clear_contextInfo() {
-        this.contextInfo = undefined;
+        pb_1.Message.setField(this, 17, undefined);
     }
     has_contextInfo() {
         return pb_1.Message.getField(this, 17) != null;
@@ -4743,7 +4743,7 @@ export class VideoMessage extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 17, value);
     }
     clear_contextInfo() {
-        this.contextInfo = undefined;
+        pb_1.Message.setField(this, 17, undefined);
     }
     has_contextInfo() {
         return pb_1.Message.getField(this, 17) != null;
@@ -5258,7 +5258,7 @@ export class ProtocolMessage extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 1, value);
     }
     clear_key() {
-        this.key = undefined;
+        pb_1.Message.setField(this, 1, undefined);
     }
     has_key() {
         return pb_1.Message.getField(this, 1) != null;
@@ -5306,7 +5306,7 @@ export class ProtocolMessage extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 6, value);
     }
     clear_historySyncNotification() {
-        this.historySyncNotification = undefined;
+        pb_1.Message.setField(this, 6, undefined);
     }
     has_historySyncNotification() {
         return pb_1.Message.getField(this, 6) != null;
@@ -5748,7 +5748,7 @@ export class ContactsArrayMessage extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 17, value);
     }
     clear_contextInfo() {
-        this.contextInfo = undefined;
+        pb_1.Message.setField(this, 17, undefined);
     }
     has_contextInfo() {
         return pb_1.Message.getField(this, 17) != null;
@@ -6290,7 +6290,7 @@ export class HSMDateTime extends pb_1.Message {
         pb_1.Message.setOneofWrapperField(this, 1, this.#one_of_decls[0], value);
     }
     clear_component() {
-        this.component = undefined;
+        pb_1.Message.setField(this, 1, undefined);
     }
     has_component() {
         return pb_1.Message.getField(this, 1) != null;
@@ -6302,7 +6302,7 @@ export class HSMDateTime extends pb_1.Message {
         pb_1.Message.setOneofWrapperField(this, 2, this.#one_of_decls[0], value);
     }
     clear_unixEpoch() {
-        this.unixEpoch = undefined;
+        pb_1.Message.setField(this, 2, undefined);
     }
     has_unixEpoch() {
         return pb_1.Message.getField(this, 2) != null;
@@ -6422,7 +6422,7 @@ export class HSMLocalizableParameter extends pb_1.Message {
         pb_1.Message.setOneofWrapperField(this, 2, this.#one_of_decls[0], value);
     }
     clear_currency() {
-        this.currency = undefined;
+        pb_1.Message.setField(this, 2, undefined);
     }
     has_currency() {
         return pb_1.Message.getField(this, 2) != null;
@@ -6434,7 +6434,7 @@ export class HSMLocalizableParameter extends pb_1.Message {
         pb_1.Message.setOneofWrapperField(this, 3, this.#one_of_decls[0], value);
     }
     clear_dateTime() {
-        this.dateTime = undefined;
+        pb_1.Message.setField(this, 3, undefined);
     }
     has_dateTime() {
         return pb_1.Message.getField(this, 3) != null;
@@ -6655,7 +6655,7 @@ export class HighlyStructuredMessage extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 9, value);
     }
     clear_hydratedHsm() {
-        this.hydratedHsm = undefined;
+        pb_1.Message.setField(this, 9, undefined);
     }
     has_hydratedHsm() {
         return pb_1.Message.getField(this, 9) != null;
@@ -6832,7 +6832,7 @@ export class SendPaymentMessage extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 2, value);
     }
     clear_noteMessage() {
-        this.noteMessage = undefined;
+        pb_1.Message.setField(this, 2, undefined);
     }
     has_noteMessage() {
         return pb_1.Message.getField(this, 2) != null;
@@ -6844,7 +6844,7 @@ export class SendPaymentMessage extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 3, value);
     }
     clear_requestMessageKey() {
-        this.requestMessageKey = undefined;
+        pb_1.Message.setField(this, 3, undefined);
     }
     has_requestMessageKey() {
         return pb_1.Message.getField(this, 3) != null;
@@ -6946,7 +6946,7 @@ export class RequestPaymentMessage extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 4, value);
     }
     clear_noteMessage() {
-        this.noteMessage = undefined;
+        pb_1.Message.setField(this, 4, undefined);
     }
     has_noteMessage() {
         return pb_1.Message.getField(this, 4) != null;
@@ -7119,7 +7119,7 @@ export class DeclinePaymentRequestMessage extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 1, value);
     }
     clear_key() {
-        this.key = undefined;
+        pb_1.Message.setField(this, 1, undefined);
     }
     has_key() {
         return pb_1.Message.getField(this, 1) != null;
@@ -7192,7 +7192,7 @@ export class CancelPaymentRequestMessage extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 1, value);
     }
     clear_key() {
-        this.key = undefined;
+        pb_1.Message.setField(this, 1, undefined);
     }
     has_key() {
         return pb_1.Message.getField(this, 1) != null;
@@ -7409,7 +7409,7 @@ export class LiveLocationMessage extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 17, value);
     }
     clear_contextInfo() {
-        this.contextInfo = undefined;
+        pb_1.Message.setField(this, 17, undefined);
     }
     has_contextInfo() {
         return pb_1.Message.getField(this, 17) != null;
@@ -7823,7 +7823,7 @@ export class StickerMessage extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 17, value);
     }
     clear_contextInfo() {
-        this.contextInfo = undefined;
+        pb_1.Message.setField(this, 17, undefined);
     }
     has_contextInfo() {
         return pb_1.Message.getField(this, 17) != null;
@@ -8129,7 +8129,7 @@ export class FourRowTemplate extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 6, value);
     }
     clear_content() {
-        this.content = undefined;
+        pb_1.Message.setField(this, 6, undefined);
     }
     has_content() {
         return pb_1.Message.getField(this, 6) != null;
@@ -8141,7 +8141,7 @@ export class FourRowTemplate extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 7, value);
     }
     clear_footer() {
-        this.footer = undefined;
+        pb_1.Message.setField(this, 7, undefined);
     }
     has_footer() {
         return pb_1.Message.getField(this, 7) != null;
@@ -8159,7 +8159,7 @@ export class FourRowTemplate extends pb_1.Message {
         pb_1.Message.setOneofWrapperField(this, 1, this.#one_of_decls[0], value);
     }
     clear_documentMessage() {
-        this.documentMessage = undefined;
+        pb_1.Message.setField(this, 1, undefined);
     }
     has_documentMessage() {
         return pb_1.Message.getField(this, 1) != null;
@@ -8171,7 +8171,7 @@ export class FourRowTemplate extends pb_1.Message {
         pb_1.Message.setOneofWrapperField(this, 2, this.#one_of_decls[0], value);
     }
     clear_highlyStructuredMessage() {
-        this.highlyStructuredMessage = undefined;
+        pb_1.Message.setField(this, 2, undefined);
     }
     has_highlyStructuredMessage() {
         return pb_1.Message.getField(this, 2) != null;
@@ -8183,7 +8183,7 @@ export class FourRowTemplate extends pb_1.Message {
         pb_1.Message.setOneofWrapperField(this, 3, this.#one_of_decls[0], value);
     }
     clear_imageMessage() {
-        this.imageMessage = undefined;
+        pb_1.Message.setField(this, 3, undefined);
     }
     has_imageMessage() {
         return pb_1.Message.getField(this, 3) != null;
@@ -8195,7 +8195,7 @@ export class FourRowTemplate extends pb_1.Message {
         pb_1.Message.setOneofWrapperField(this, 4, this.#one_of_decls[0], value);
     }
     clear_videoMessage() {
-        this.videoMessage = undefined;
+        pb_1.Message.setField(this, 4, undefined);
     }
     has_videoMessage() {
         return pb_1.Message.getField(this, 4) != null;
@@ -8207,7 +8207,7 @@ export class FourRowTemplate extends pb_1.Message {
         pb_1.Message.setOneofWrapperField(this, 5, this.#one_of_decls[0], value);
     }
     clear_locationMessage() {
-        this.locationMessage = undefined;
+        pb_1.Message.setField(this, 5, undefined);
     }
     has_locationMessage() {
         return pb_1.Message.getField(this, 5) != null;
@@ -8480,7 +8480,7 @@ export class HydratedFourRowTemplate extends pb_1.Message {
         pb_1.Message.setOneofWrapperField(this, 1, this.#one_of_decls[0], value);
     }
     clear_documentMessage() {
-        this.documentMessage = undefined;
+        pb_1.Message.setField(this, 1, undefined);
     }
     has_documentMessage() {
         return pb_1.Message.getField(this, 1) != null;
@@ -8504,7 +8504,7 @@ export class HydratedFourRowTemplate extends pb_1.Message {
         pb_1.Message.setOneofWrapperField(this, 3, this.#one_of_decls[0], value);
     }
     clear_imageMessage() {
-        this.imageMessage = undefined;
+        pb_1.Message.setField(this, 3, undefined);
     }
     has_imageMessage() {
         return pb_1.Message.getField(this, 3) != null;
@@ -8516,7 +8516,7 @@ export class HydratedFourRowTemplate extends pb_1.Message {
         pb_1.Message.setOneofWrapperField(this, 4, this.#one_of_decls[0], value);
     }
     clear_videoMessage() {
-        this.videoMessage = undefined;
+        pb_1.Message.setField(this, 4, undefined);
     }
     has_videoMessage() {
         return pb_1.Message.getField(this, 4) != null;
@@ -8528,7 +8528,7 @@ export class HydratedFourRowTemplate extends pb_1.Message {
         pb_1.Message.setOneofWrapperField(this, 5, this.#one_of_decls[0], value);
     }
     clear_locationMessage() {
-        this.locationMessage = undefined;
+        pb_1.Message.setField(this, 5, undefined);
     }
     has_locationMessage() {
         return pb_1.Message.getField(this, 5) != null;
@@ -8733,7 +8733,7 @@ export class TemplateMessage extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 3, value);
     }
     clear_contextInfo() {
-        this.contextInfo = undefined;
+        pb_1.Message.setField(this, 3, undefined);
     }
     has_contextInfo() {
         return pb_1.Message.getField(this, 3) != null;
@@ -8745,7 +8745,7 @@ export class TemplateMessage extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 4, value);
     }
     clear_hydratedTemplate() {
-        this.hydratedTemplate = undefined;
+        pb_1.Message.setField(this, 4, undefined);
     }
     has_hydratedTemplate() {
         return pb_1.Message.getField(this, 4) != null;
@@ -8757,7 +8757,7 @@ export class TemplateMessage extends pb_1.Message {
         pb_1.Message.setOneofWrapperField(this, 1, this.#one_of_decls[0], value);
     }
     clear_fourRowTemplate() {
-        this.fourRowTemplate = undefined;
+        pb_1.Message.setField(this, 1, undefined);
     }
     has_fourRowTemplate() {
         return pb_1.Message.getField(this, 1) != null;
@@ -8769,7 +8769,7 @@ export class TemplateMessage extends pb_1.Message {
         pb_1.Message.setOneofWrapperField(this, 2, this.#one_of_decls[0], value);
     }
     clear_hydratedFourRowTemplate() {
-        this.hydratedFourRowTemplate = undefined;
+        pb_1.Message.setField(this, 2, undefined);
     }
     has_hydratedFourRowTemplate() {
         return pb_1.Message.getField(this, 2) != null;
@@ -8927,7 +8927,7 @@ export class TemplateButtonReplyMessage extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 3, value);
     }
     clear_contextInfo() {
-        this.contextInfo = undefined;
+        pb_1.Message.setField(this, 3, undefined);
     }
     has_contextInfo() {
         return pb_1.Message.getField(this, 3) != null;
@@ -9059,7 +9059,7 @@ export class CatalogSnapshot extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 1, value);
     }
     clear_catalogImage() {
-        this.catalogImage = undefined;
+        pb_1.Message.setField(this, 1, undefined);
     }
     has_catalogImage() {
         return pb_1.Message.getField(this, 1) != null;
@@ -9218,7 +9218,7 @@ export class ProductSnapshot extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 1, value);
     }
     clear_productImage() {
-        this.productImage = undefined;
+        pb_1.Message.setField(this, 1, undefined);
     }
     has_productImage() {
         return pb_1.Message.getField(this, 1) != null;
@@ -9528,7 +9528,7 @@ export class ProductMessage extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 1, value);
     }
     clear_product() {
-        this.product = undefined;
+        pb_1.Message.setField(this, 1, undefined);
     }
     has_product() {
         return pb_1.Message.getField(this, 1) != null;
@@ -9552,7 +9552,7 @@ export class ProductMessage extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 4, value);
     }
     clear_catalog() {
-        this.catalog = undefined;
+        pb_1.Message.setField(this, 4, undefined);
     }
     has_catalog() {
         return pb_1.Message.getField(this, 4) != null;
@@ -9564,7 +9564,7 @@ export class ProductMessage extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 17, value);
     }
     clear_contextInfo() {
-        this.contextInfo = undefined;
+        pb_1.Message.setField(this, 17, undefined);
     }
     has_contextInfo() {
         return pb_1.Message.getField(this, 17) != null;
@@ -9772,7 +9772,7 @@ export class GroupInviteMessage extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 7, value);
     }
     clear_contextInfo() {
-        this.contextInfo = undefined;
+        pb_1.Message.setField(this, 7, undefined);
     }
     has_contextInfo() {
         return pb_1.Message.getField(this, 7) != null;
@@ -9943,7 +9943,7 @@ export class DeviceSentMessage extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 2, value);
     }
     clear_message() {
-        this.message = undefined;
+        pb_1.Message.setField(this, 2, undefined);
     }
     has_message() {
         return pb_1.Message.getField(this, 2) != null;
@@ -10166,7 +10166,7 @@ export class Message extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 2, value);
     }
     clear_senderKeyDistributionMessage() {
-        this.senderKeyDistributionMessage = undefined;
+        pb_1.Message.setField(this, 2, undefined);
     }
     has_senderKeyDistributionMessage() {
         return pb_1.Message.getField(this, 2) != null;
@@ -10178,7 +10178,7 @@ export class Message extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 3, value);
     }
     clear_imageMessage() {
-        this.imageMessage = undefined;
+        pb_1.Message.setField(this, 3, undefined);
     }
     has_imageMessage() {
         return pb_1.Message.getField(this, 3) != null;
@@ -10190,7 +10190,7 @@ export class Message extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 4, value);
     }
     clear_contactMessage() {
-        this.contactMessage = undefined;
+        pb_1.Message.setField(this, 4, undefined);
     }
     has_contactMessage() {
         return pb_1.Message.getField(this, 4) != null;
@@ -10202,7 +10202,7 @@ export class Message extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 5, value);
     }
     clear_locationMessage() {
-        this.locationMessage = undefined;
+        pb_1.Message.setField(this, 5, undefined);
     }
     has_locationMessage() {
         return pb_1.Message.getField(this, 5) != null;
@@ -10214,7 +10214,7 @@ export class Message extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 6, value);
     }
     clear_extendedTextMessage() {
-        this.extendedTextMessage = undefined;
+        pb_1.Message.setField(this, 6, undefined);
     }
     has_extendedTextMessage() {
         return pb_1.Message.getField(this, 6) != null;
@@ -10226,7 +10226,7 @@ export class Message extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 7, value);
     }
     clear_documentMessage() {
-        this.documentMessage = undefined;
+        pb_1.Message.setField(this, 7, undefined);
     }
     has_documentMessage() {
         return pb_1.Message.getField(this, 7) != null;
@@ -10238,7 +10238,7 @@ export class Message extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 8, value);
     }
     clear_audioMessage() {
-        this.audioMessage = undefined;
+        pb_1.Message.setField(this, 8, undefined);
     }
     has_audioMessage() {
         return pb_1.Message.getField(this, 8) != null;
@@ -10250,7 +10250,7 @@ export class Message extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 9, value);
     }
     clear_videoMessage() {
-        this.videoMessage = undefined;
+        pb_1.Message.setField(this, 9, undefined);
     }
     has_videoMessage() {
         return pb_1.Message.getField(this, 9) != null;
@@ -10262,7 +10262,7 @@ export class Message extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 10, value);
     }
     clear_call() {
-        this.call = undefined;
+        pb_1.Message.setField(this, 10, undefined);
     }
     has_call() {
         return pb_1.Message.getField(this, 10) != null;
@@ -10274,7 +10274,7 @@ export class Message extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 11, value);
     }
     clear_chat() {
-        this.chat = undefined;
+        pb_1.Message.setField(this, 11, undefined);
     }
     has_chat() {
         return pb_1.Message.getField(this, 11) != null;
@@ -10286,7 +10286,7 @@ export class Message extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 12, value);
     }
     clear_protocolMessage() {
-        this.protocolMessage = undefined;
+        pb_1.Message.setField(this, 12, undefined);
     }
     has_protocolMessage() {
         return pb_1.Message.getField(this, 12) != null;
@@ -10298,7 +10298,7 @@ export class Message extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 13, value);
     }
     clear_contactsArrayMessage() {
-        this.contactsArrayMessage = undefined;
+        pb_1.Message.setField(this, 13, undefined);
     }
     has_contactsArrayMessage() {
         return pb_1.Message.getField(this, 13) != null;
@@ -10310,7 +10310,7 @@ export class Message extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 14, value);
     }
     clear_highlyStructuredMessage() {
-        this.highlyStructuredMessage = undefined;
+        pb_1.Message.setField(this, 14, undefined);
     }
     has_highlyStructuredMessage() {
         return pb_1.Message.getField(this, 14) != null;
@@ -10322,7 +10322,7 @@ export class Message extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 15, value);
     }
     clear_fastRatchetKeySenderKeyDistributionMessage() {
-        this.fastRatchetKeySenderKeyDistributionMessage = undefined;
+        pb_1.Message.setField(this, 15, undefined);
     }
     has_fastRatchetKeySenderKeyDistributionMessage() {
         return pb_1.Message.getField(this, 15) != null;
@@ -10334,7 +10334,7 @@ export class Message extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 16, value);
     }
     clear_sendPaymentMessage() {
-        this.sendPaymentMessage = undefined;
+        pb_1.Message.setField(this, 16, undefined);
     }
     has_sendPaymentMessage() {
         return pb_1.Message.getField(this, 16) != null;
@@ -10346,7 +10346,7 @@ export class Message extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 18, value);
     }
     clear_liveLocationMessage() {
-        this.liveLocationMessage = undefined;
+        pb_1.Message.setField(this, 18, undefined);
     }
     has_liveLocationMessage() {
         return pb_1.Message.getField(this, 18) != null;
@@ -10358,7 +10358,7 @@ export class Message extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 22, value);
     }
     clear_requestPaymentMessage() {
-        this.requestPaymentMessage = undefined;
+        pb_1.Message.setField(this, 22, undefined);
     }
     has_requestPaymentMessage() {
         return pb_1.Message.getField(this, 22) != null;
@@ -10370,7 +10370,7 @@ export class Message extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 23, value);
     }
     clear_declinePaymentRequestMessage() {
-        this.declinePaymentRequestMessage = undefined;
+        pb_1.Message.setField(this, 23, undefined);
     }
     has_declinePaymentRequestMessage() {
         return pb_1.Message.getField(this, 23) != null;
@@ -10382,7 +10382,7 @@ export class Message extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 24, value);
     }
     clear_cancelPaymentRequestMessage() {
-        this.cancelPaymentRequestMessage = undefined;
+        pb_1.Message.setField(this, 24, undefined);
     }
     has_cancelPaymentRequestMessage() {
         return pb_1.Message.getField(this, 24) != null;
@@ -10394,7 +10394,7 @@ export class Message extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 25, value);
     }
     clear_templateMessage() {
-        this.templateMessage = undefined;
+        pb_1.Message.setField(this, 25, undefined);
     }
     has_templateMessage() {
         return pb_1.Message.getField(this, 25) != null;
@@ -10406,7 +10406,7 @@ export class Message extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 26, value);
     }
     clear_stickerMessage() {
-        this.stickerMessage = undefined;
+        pb_1.Message.setField(this, 26, undefined);
     }
     has_stickerMessage() {
         return pb_1.Message.getField(this, 26) != null;
@@ -10418,7 +10418,7 @@ export class Message extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 28, value);
     }
     clear_groupInviteMessage() {
-        this.groupInviteMessage = undefined;
+        pb_1.Message.setField(this, 28, undefined);
     }
     has_groupInviteMessage() {
         return pb_1.Message.getField(this, 28) != null;
@@ -10430,7 +10430,7 @@ export class Message extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 29, value);
     }
     clear_templateButtonReplyMessage() {
-        this.templateButtonReplyMessage = undefined;
+        pb_1.Message.setField(this, 29, undefined);
     }
     has_templateButtonReplyMessage() {
         return pb_1.Message.getField(this, 29) != null;
@@ -10442,7 +10442,7 @@ export class Message extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 30, value);
     }
     clear_productMessage() {
-        this.productMessage = undefined;
+        pb_1.Message.setField(this, 30, undefined);
     }
     has_productMessage() {
         return pb_1.Message.getField(this, 30) != null;
@@ -10454,7 +10454,7 @@ export class Message extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 31, value);
     }
     clear_deviceSentMessage() {
-        this.deviceSentMessage = undefined;
+        pb_1.Message.setField(this, 31, undefined);
     }
     has_deviceSentMessage() {
         return pb_1.Message.getField(this, 31) != null;
@@ -12184,7 +12184,7 @@ export class NotificationMessageInfo extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 1, value);
     }
     clear_key() {
-        this.key = undefined;
+        pb_1.Message.setField(this, 1, undefined);
     }
     has_key() {
         return pb_1.Message.getField(this, 1) != null;
@@ -12196,7 +12196,7 @@ export class NotificationMessageInfo extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 2, value);
     }
     clear_message() {
-        this.message = undefined;
+        pb_1.Message.setField(this, 2, undefined);
     }
     has_message() {
         return pb_1.Message.getField(this, 2) != null;
@@ -12579,7 +12579,7 @@ export class PaymentInfo extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 6, value);
     }
     clear_requestMessageKey() {
-        this.requestMessageKey = undefined;
+        pb_1.Message.setField(this, 6, undefined);
     }
     has_requestMessageKey() {
         return pb_1.Message.getField(this, 6) != null;
@@ -12953,7 +12953,7 @@ export class WebMessageInfo extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 1, value);
     }
     clear_key() {
-        this.key = undefined;
+        pb_1.Message.setField(this, 1, undefined);
     }
     has_key() {
         return pb_1.Message.getField(this, 1) != null;
@@ -12965,7 +12965,7 @@ export class WebMessageInfo extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 2, value);
     }
     clear_message() {
-        this.message = undefined;
+        pb_1.Message.setField(this, 2, undefined);
     }
     has_message() {
         return pb_1.Message.getField(this, 2) != null;
@@ -13157,7 +13157,7 @@ export class WebMessageInfo extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 29, value);
     }
     clear_paymentInfo() {
-        this.paymentInfo = undefined;
+        pb_1.Message.setField(this, 29, undefined);
     }
     has_paymentInfo() {
         return pb_1.Message.getField(this, 29) != null;
@@ -13169,7 +13169,7 @@ export class WebMessageInfo extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 30, value);
     }
     clear_finalLiveLocation() {
-        this.finalLiveLocation = undefined;
+        pb_1.Message.setField(this, 30, undefined);
     }
     has_finalLiveLocation() {
         return pb_1.Message.getField(this, 30) != null;
@@ -13181,7 +13181,7 @@ export class WebMessageInfo extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 31, value);
     }
     clear_quotedPaymentInfo() {
-        this.quotedPaymentInfo = undefined;
+        pb_1.Message.setField(this, 31, undefined);
     }
     has_quotedPaymentInfo() {
         return pb_1.Message.getField(this, 31) != null;

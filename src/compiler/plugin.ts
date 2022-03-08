@@ -217,7 +217,7 @@ export class CodeGeneratorRequest extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 3, value);
     }
     clear_compiler_version() {
-        this.compiler_version = undefined;
+        pb_1.Message.setField(this, 3, undefined);
     }
     has_compiler_version() {
         return pb_1.Message.getField(this, 3) != null;
@@ -500,7 +500,7 @@ export namespace CodeGeneratorResponse {
             pb_1.Message.setWrapperField(this, 16, value);
         }
         clear_generated_code_info() {
-            this.generated_code_info = undefined;
+            pb_1.Message.setField(this, 16, undefined);
         }
         has_generated_code_info() {
             return pb_1.Message.getField(this, 16) != null;

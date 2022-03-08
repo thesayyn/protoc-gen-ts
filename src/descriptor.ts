@@ -1278,38 +1278,24 @@ function createPresenceClearBlock(
   fieldDescriptor: descriptor.FieldDescriptorProto,
   pbIdentifier: ts.Identifier,
 ) {
-  let expression;
   let repeatedExpression = field.isRepeated(fieldDescriptor)
     ? ts.factory.createIdentifier("[]")
     : ts.factory.createIdentifier("undefined");
 
-  if (field.isMessage(fieldDescriptor) && !field.isMap(fieldDescriptor)) {
-
-    expression = ts.factory.createAssignment(
+  let expression = (
+    ts.factory.createCallExpression(
       ts.factory.createPropertyAccessExpression(
-        ts.factory.createThis(),
-        getFieldName(fieldDescriptor),
+        ts.factory.createPropertyAccessExpression(pbIdentifier, "Message"),
+        "setField",
       ),
-      repeatedExpression,
+      undefined,
+      [
+        ts.factory.createThis(),
+        ts.factory.createNumericLiteral(fieldDescriptor.number),
+        repeatedExpression,
+      ],
     )
-  }
-
-  else {
-    expression = (
-      ts.factory.createCallExpression(
-        ts.factory.createPropertyAccessExpression(
-          ts.factory.createPropertyAccessExpression(pbIdentifier, "Message"),
-          "setField"
-        ),
-        undefined,
-        [
-          ts.factory.createThis(),
-          ts.factory.createNumericLiteral(fieldDescriptor.number),
-          repeatedExpression,
-        ],
-      )
-    );
-  }
+  );
 
   return ts.factory.createBlock(
     [

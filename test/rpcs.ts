@@ -188,7 +188,7 @@ export class Chunk extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 2, value);
     }
     clear_range() {
-        this.range = undefined;
+        pb_1.Message.setField(this, 2, undefined);
     }
     has_range() {
         return pb_1.Message.getField(this, 2) != null;
@@ -375,7 +375,7 @@ export namespace Chunk {
             pb_1.Message.setWrapperField(this, 2, value);
         }
         clear_range() {
-            this.range = undefined;
+            pb_1.Message.setField(this, 2, undefined);
         }
         has_range() {
             return pb_1.Message.getField(this, 2) != null;
@@ -608,7 +608,7 @@ export class Put extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 3, value);
     }
     clear_chunk() {
-        this.chunk = undefined;
+        pb_1.Message.setField(this, 3, undefined);
     }
     has_chunk() {
         return pb_1.Message.getField(this, 3) != null;

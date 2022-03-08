@@ -69,7 +69,7 @@ export class JsonNamesMessage extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 3, value);
     }
     clearANestedMessage() {
-        this.aNestedMessage = undefined;
+        pb_1.Message.setField(this, 3, undefined);
     }
     hasANestedMessage() {
         return pb_1.Message.getField(this, 3) != null;

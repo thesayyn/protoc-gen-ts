@@ -53,7 +53,7 @@ export class SchedulingContext extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 4, value);
     }
     clear_batch() {
-        this.batch = undefined;
+        pb_1.Message.setField(this, 4, undefined);
     }
     has_batch() {
         return pb_1.Message.getField(this, 4) != null;
@@ -262,7 +262,7 @@ export class SchedulingContextBatch extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 3, value);
     }
     clear_process() {
-        this.process = undefined;
+        pb_1.Message.setField(this, 3, undefined);
     }
     has_process() {
         return pb_1.Message.getField(this, 3) != null;
@@ -458,7 +458,7 @@ export class Target extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 4, value);
     }
     clear_context() {
-        this.context = undefined;
+        pb_1.Message.setField(this, 4, undefined);
     }
     has_context() {
         return pb_1.Message.getField(this, 4) != null;
@@ -590,7 +590,7 @@ export class Event extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 3, value);
     }
     clear_target() {
-        this.target = undefined;
+        pb_1.Message.setField(this, 3, undefined);
     }
     has_target() {
         return pb_1.Message.getField(this, 3) != null;
