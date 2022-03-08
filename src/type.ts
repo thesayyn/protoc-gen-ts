@@ -1,9 +1,17 @@
 import * as descriptor from "./compiler/descriptor.js";
 import * as ts from "typescript";
+import * as op from "./option.js";
 
 const symbolMap: Map<string, string> = new Map();
 const dependencyMap: Map<string, ts.Identifier> = new Map();
 const mapMap: Map<string, descriptor.DescriptorProto> = new Map();
+const packages: string[] = [];
+let config: op.Options;
+
+export function initialize(configParameters: op.Options): void
+{
+    config = configParameters;
+}
 
 export function resetDependencyMap() {
   dependencyMap.clear();
@@ -33,14 +41,21 @@ export function getTypeReferenceExpr(
   const path = symbolMap.get(typeName);
 
   if (!path || !dependencyMap.has(path)) {
+    if (config.no_namespace) {
+      return ts.factory.createIdentifier(
+        removeRootParentName(typeName, rootDescriptor.package).replace(/\./g, ''),
+      );
+    }
     return ts.factory.createIdentifier(
-      removeRootPackageName(typeName, rootDescriptor.package),
+      removeRootParentName(typeName, rootDescriptor.package),
     );
   }
 
+  const name = removeNamespace(removeLeadingDot(typeName));
+
   return ts.factory.createPropertyAccessExpression(
     dependencyMap.get(path)!,
-    removeLeadingDot(typeName),
+    name,
   )
 }
 export function getTypeReference(
@@ -50,15 +65,22 @@ export function getTypeReference(
   const path = symbolMap.get(typeName);
 
   if (!path || !dependencyMap.has(path)) {
+    if (config.no_namespace) {
+      return ts.factory.createTypeReferenceNode(
+        removeRootParentName(typeName, rootDescriptor.package).replace(/\./g, ''),
+      );
+    }
     return ts.factory.createTypeReferenceNode(
-      removeRootPackageName(typeName, rootDescriptor.package),
+      removeRootParentName(typeName, rootDescriptor.package),
     );
   }
+
+  const name = removeNamespace(removeLeadingDot(typeName));
 
   return ts.factory.createTypeReferenceNode(
     ts.factory.createQualifiedName(
         dependencyMap.get(path)!,
-        removeLeadingDot(typeName),
+        name,
     )
   );
 }
@@ -71,10 +93,18 @@ function replaceDoubleDots(name: string): string {
   return name.replace(/\.\./g, ".");
 }
 
-function removeRootPackageName(name: string, packageName: string): string {
+function removeRootParentName(name: string, parentName: string): string {
   return removeLeadingDot(
-    packageName ? name.replace(`${packageName}.`, "") : name,
+    parentName ? name.replace(`${parentName}.`, "") : name,
   );
+}
+
+function removeNamespace(name: string): string {
+  if(config.no_namespace)
+  {
+    return removeRootParentName(name, packages.find(p => name.startsWith(p))).replace(/\./g, '')
+  }
+  return name;
 }
 
 export function preprocess(
@@ -82,6 +112,11 @@ export function preprocess(
   path: string,
   prefix: string,
 ) {
+  if(targetDescriptor instanceof descriptor.FileDescriptorProto)
+  {
+    packages.push(targetDescriptor.package);
+  }
+
   for (const enumDescriptor of targetDescriptor.enum_type) {
     symbolMap.set(replaceDoubleDots(`${prefix}.${enumDescriptor.name}`), path);
   }

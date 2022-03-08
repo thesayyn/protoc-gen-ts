@@ -1,0 +1,12 @@
+load("//tools:diff_and_update.bzl", "diff_and_update")
+
+
+diff_and_update(
+    name = "diff_no_namespace",
+    srcs = [
+      "//test/_/no_namespace:double_nested.ts",
+        "//test/_/no_namespace:no_namespace.ts",
+        "//test/_/no_namespace:nested.ts",
+    ],
+    checked = [ "double_nested.ts", "no_namespace.ts", "nested.ts" ]
+)
