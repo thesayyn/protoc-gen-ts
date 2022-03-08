@@ -5,6 +5,7 @@ ast*.json
 bazel-*
 .devcontainer
 .editorconfig
+.idea
 
 .DS_Store
 user.bazelrc

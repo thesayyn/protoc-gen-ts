@@ -39,6 +39,8 @@ const response = new plugin.CodeGeneratorResponse({
 
 const options = op.parse(request.parameter);
 
+type.initialize(options);
+
 for (const descriptor of request.proto_file) {
   type.preprocess(descriptor, descriptor.name, `.${descriptor.package ?? ""}`);
 }
@@ -79,6 +81,7 @@ for (const fileDescriptor of request.proto_file) {
         fileDescriptor,
         messageDescriptor,
         pbIdentifier,
+        options.no_namespace
       ),
     ),
   ];
@@ -129,7 +132,7 @@ for (const fileDescriptor of request.proto_file) {
   const doNotEditComment = ts.factory.createJSDocComment(comments.join("\n")) as ts.Statement;
 
   // Wrap statements within the namespace
-  if (fileDescriptor.package) {
+  if (fileDescriptor.package && !options.no_namespace) {
     statements = [
       doNotEditComment,
       ...importStatements,

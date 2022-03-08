@@ -1,6 +1,7 @@
 export interface Options {
   unary_rpc_promise: boolean;
   grpc_package: string;
+  no_namespace: boolean
 }
 
 export function parse(raw?: string): Options {
@@ -10,6 +11,7 @@ export function parse(raw?: string): Options {
   const options: Options = {
     unary_rpc_promise: false,
     grpc_package: "@grpc/grpc-js",
+    no_namespace: false,
   };
 
   for (const raw_option of raw.split(",")) {
