@@ -28,7 +28,7 @@ export class MessageFields extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 1, value);
     }
     clear_sub_message() {
-        this.sub_message = undefined;
+        pb_1.Message.setField(this, 1, undefined);
     }
     has_sub_message() {
         return pb_1.Message.getField(this, 1) != null;

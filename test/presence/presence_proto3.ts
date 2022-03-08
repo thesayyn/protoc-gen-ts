@@ -94,7 +94,7 @@ export class PresenceMessageV3 extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 4, value);
     }
     clear_message() {
-        this.message = undefined;
+        pb_1.Message.setField(this, 4, undefined);
     }
     has_message() {
         return pb_1.Message.getField(this, 4) != null;
@@ -106,7 +106,7 @@ export class PresenceMessageV3 extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 5, value);
     }
     clear_oneof() {
-        this.oneof = undefined;
+        pb_1.Message.setField(this, 5, undefined);
     }
     has_oneof() {
         return pb_1.Message.getField(this, 5) != null;
@@ -154,7 +154,7 @@ export class PresenceMessageV3 extends pb_1.Message {
         pb_1.Message.setOneofWrapperField(this, 9, this.#one_of_decls[3], value);
     }
     clear_opt_message() {
-        this.opt_message = undefined;
+        pb_1.Message.setField(this, 9, undefined);
     }
     has_opt_message() {
         return pb_1.Message.getField(this, 9) != null;
@@ -166,7 +166,7 @@ export class PresenceMessageV3 extends pb_1.Message {
         pb_1.Message.setOneofWrapperField(this, 10, this.#one_of_decls[4], value);
     }
     clear_opt_oneof() {
-        this.opt_oneof = undefined;
+        pb_1.Message.setField(this, 10, undefined);
     }
     has_opt_oneof() {
         return pb_1.Message.getField(this, 10) != null;

@@ -81,7 +81,7 @@ export class DefaultMessageV2WithoutDefault extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 1, value);
     }
     clear_message() {
-        this.message = undefined;
+        pb_1.Message.setField(this, 1, undefined);
     }
     has_message() {
         return pb_1.Message.getField(this, 1) != null;
@@ -321,7 +321,7 @@ export class DefaultMessageV2WithoutDefault extends pb_1.Message {
         pb_1.Message.setOneofWrapperField(this, 23, this.#one_of_decls[0], value);
     }
     clear_one_of_message() {
-        this.one_of_message = undefined;
+        pb_1.Message.setField(this, 23, undefined);
     }
     has_one_of_message() {
         return pb_1.Message.getField(this, 23) != null;
@@ -687,7 +687,7 @@ export class DefaultMessageV2WithDefault extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 1, value);
     }
     clear_message() {
-        this.message = undefined;
+        pb_1.Message.setField(this, 1, undefined);
     }
     has_message() {
         return pb_1.Message.getField(this, 1) != null;
@@ -903,7 +903,7 @@ export class DefaultMessageV2WithDefault extends pb_1.Message {
         pb_1.Message.setOneofWrapperField(this, 19, this.#one_of_decls[0], value);
     }
     clear_one_of_message() {
-        this.one_of_message = undefined;
+        pb_1.Message.setField(this, 19, undefined);
     }
     has_one_of_message() {
         return pb_1.Message.getField(this, 19) != null;

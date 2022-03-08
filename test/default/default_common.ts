@@ -114,7 +114,7 @@ export class DefaultCommonMessageOneOf extends pb_1.Message {
         pb_1.Message.setOneofWrapperField(this, 2, this.#one_of_decls[0], value);
     }
     clear_message() {
-        this.message = undefined;
+        pb_1.Message.setField(this, 2, undefined);
     }
     has_message() {
         return pb_1.Message.getField(this, 2) != null;
