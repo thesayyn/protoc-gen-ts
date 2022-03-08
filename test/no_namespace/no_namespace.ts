@@ -67,27 +67,22 @@ export class NoNamespace extends pb_1.Message {
             label?: ReturnType<typeof dependency_1.Target.prototype.toObject>;
             other_fields?: ReturnType<typeof dependency_2.MessageFields.prototype.toObject>;
             batch_fields?: ReturnType<typeof dependency_1.SchedulingContextBatch.prototype.toObject>;
-        } = {};
-        if (this.label != null) {
-            data.label = this.label.toObject();
-        }
-        if (this.other_fields != null) {
-            data.other_fields = this.other_fields.toObject();
-        }
-        if (this.batch_fields != null) {
-            data.batch_fields = this.batch_fields.toObject();
-        }
+        } = {
+            label: this.label != null ? this.label.toObject() : undefined,
+            other_fields: this.other_fields != null ? this.other_fields.toObject() : undefined,
+            batch_fields: this.batch_fields != null ? this.batch_fields.toObject() : undefined
+        };
         return data;
     }
     serialize(): Uint8Array;
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.label !== undefined)
+        if (pb_1.Message.getField(this, 1) != null)
             writer.writeMessage(1, this.label, () => this.label.serialize(writer));
-        if (this.other_fields !== undefined)
+        if (pb_1.Message.getField(this, 2) != null)
             writer.writeMessage(2, this.other_fields, () => this.other_fields.serialize(writer));
-        if (this.batch_fields !== undefined)
+        if (pb_1.Message.getField(this, 3) != null)
             writer.writeMessage(3, this.batch_fields, () => this.batch_fields.serialize(writer));
         if (!w)
             return writer.getResultBuffer();

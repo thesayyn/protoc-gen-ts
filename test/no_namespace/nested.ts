@@ -41,7 +41,7 @@ export class SchedulingContext extends pb_1.Message {
         pb_1.Message.setRepeatedWrapperField(this, 2, value);
     }
     get timeout() {
-        return pb_1.Message.getField(this, 3) as number;
+        return pb_1.Message.getFieldWithDefault(this, 3, 0) as number;
     }
     set timeout(value: number) {
         pb_1.Message.setField(this, 3, value);
@@ -74,27 +74,22 @@ export class SchedulingContext extends pb_1.Message {
             env?: ReturnType<typeof SchedulingContextEnv.prototype.toObject>[];
             timeout?: number;
             batch?: ReturnType<typeof SchedulingContextBatch.prototype.toObject>;
-        } = {};
-        if (this.env != null) {
-            data.env = this.env.map((item: SchedulingContextEnv) => item.toObject());
-        }
-        if (this.timeout != null) {
-            data.timeout = this.timeout;
-        }
-        if (this.batch != null) {
-            data.batch = this.batch.toObject();
-        }
+        } = {
+            env: this.env.map((item: SchedulingContextEnv) => item.toObject()),
+            timeout: this.timeout,
+            batch: this.batch != null ? this.batch.toObject() : undefined
+        };
         return data;
     }
     serialize(): Uint8Array;
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.env !== undefined)
+        if (this.env.length)
             writer.writeRepeatedMessage(2, this.env, (item: SchedulingContextEnv) => item.serialize(writer));
-        if (this.timeout !== undefined)
+        if (pb_1.Message.getField(this, 3) != null)
             writer.writeInt32(3, this.timeout);
-        if (this.batch !== undefined)
+        if (pb_1.Message.getField(this, 4) != null)
             writer.writeMessage(4, this.batch, () => this.batch.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
@@ -144,13 +139,13 @@ export class SchedulingContextEnv extends pb_1.Message {
         }
     }
     get key() {
-        return pb_1.Message.getField(this, 1) as string;
+        return pb_1.Message.getFieldWithDefault(this, 1, "") as string;
     }
     set key(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
     get value() {
-        return pb_1.Message.getField(this, 2) as string;
+        return pb_1.Message.getFieldWithDefault(this, 2, "") as string;
     }
     set value(value: string) {
         pb_1.Message.setField(this, 2, value);
@@ -172,13 +167,10 @@ export class SchedulingContextEnv extends pb_1.Message {
         const data: {
             key?: string;
             value?: string;
-        } = {};
-        if (this.key != null) {
-            data.key = this.key;
-        }
-        if (this.value != null) {
-            data.value = this.value;
-        }
+        } = {
+            key: this.key,
+            value: this.value
+        };
         return data;
     }
     serialize(): Uint8Array;
@@ -238,13 +230,13 @@ export class SchedulingContextBatch extends pb_1.Message {
         }
     }
     get limit() {
-        return pb_1.Message.getField(this, 1) as number;
+        return pb_1.Message.getFieldWithDefault(this, 1, 0) as number;
     }
     set limit(value: number) {
         pb_1.Message.setField(this, 1, value);
     }
     get deadline() {
-        return pb_1.Message.getField(this, 2) as number;
+        return pb_1.Message.getFieldWithDefault(this, 2, 0) as number;
     }
     set deadline(value: number) {
         pb_1.Message.setField(this, 2, value);
@@ -277,27 +269,22 @@ export class SchedulingContextBatch extends pb_1.Message {
             limit?: number;
             deadline?: number;
             process?: ReturnType<typeof SchedulingContextBatchProcess.prototype.toObject>;
-        } = {};
-        if (this.limit != null) {
-            data.limit = this.limit;
-        }
-        if (this.deadline != null) {
-            data.deadline = this.deadline;
-        }
-        if (this.process != null) {
-            data.process = this.process.toObject();
-        }
+        } = {
+            limit: this.limit,
+            deadline: this.deadline,
+            process: this.process != null ? this.process.toObject() : undefined
+        };
         return data;
     }
     serialize(): Uint8Array;
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.limit !== undefined)
+        if (pb_1.Message.getField(this, 1) != null)
             writer.writeUint64(1, this.limit);
-        if (this.deadline !== undefined)
+        if (pb_1.Message.getField(this, 2) != null)
             writer.writeUint64(2, this.deadline);
-        if (this.process !== undefined)
+        if (pb_1.Message.getField(this, 3) != null)
             writer.writeMessage(3, this.process, () => this.process.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
@@ -343,7 +330,7 @@ export class SchedulingContextBatchProcess extends pb_1.Message {
         }
     }
     get id() {
-        return pb_1.Message.getField(this, 1) as string;
+        return pb_1.Message.getFieldWithDefault(this, 1, "") as string;
     }
     set id(value: string) {
         pb_1.Message.setField(this, 1, value);
@@ -360,10 +347,9 @@ export class SchedulingContextBatchProcess extends pb_1.Message {
     toObject() {
         const data: {
             id?: string;
-        } = {};
-        if (this.id != null) {
-            data.id = this.id;
-        }
+        } = {
+            id: this.id
+        };
         return data;
     }
     serialize(): Uint8Array;
@@ -422,19 +408,19 @@ export class Target extends pb_1.Message {
         }
     }
     get id() {
-        return pb_1.Message.getField(this, 1) as string;
+        return pb_1.Message.getFieldWithDefault(this, 1, "") as string;
     }
     set id(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
     get cwd() {
-        return pb_1.Message.getField(this, 2) as string;
+        return pb_1.Message.getFieldWithDefault(this, 2, "") as string;
     }
     set cwd(value: string) {
         pb_1.Message.setField(this, 2, value);
     }
     get handler() {
-        return pb_1.Message.getField(this, 3) as string;
+        return pb_1.Message.getFieldWithDefault(this, 3, "") as string;
     }
     set handler(value: string) {
         pb_1.Message.setField(this, 3, value);
@@ -472,19 +458,12 @@ export class Target extends pb_1.Message {
             cwd?: string;
             handler?: string;
             context?: ReturnType<typeof SchedulingContext.prototype.toObject>;
-        } = {};
-        if (this.id != null) {
-            data.id = this.id;
-        }
-        if (this.cwd != null) {
-            data.cwd = this.cwd;
-        }
-        if (this.handler != null) {
-            data.handler = this.handler;
-        }
-        if (this.context != null) {
-            data.context = this.context.toObject();
-        }
+        } = {
+            id: this.id,
+            cwd: this.cwd,
+            handler: this.handler,
+            context: this.context != null ? this.context.toObject() : undefined
+        };
         return data;
     }
     serialize(): Uint8Array;
@@ -497,7 +476,7 @@ export class Target extends pb_1.Message {
             writer.writeString(2, this.cwd);
         if (typeof this.handler === "string" && this.handler.length)
             writer.writeString(3, this.handler);
-        if (this.context !== undefined)
+        if (pb_1.Message.getField(this, 4) != null)
             writer.writeMessage(4, this.context, () => this.context.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
@@ -554,13 +533,13 @@ export class Event extends pb_1.Message {
         }
     }
     get id() {
-        return pb_1.Message.getField(this, 1) as string;
+        return pb_1.Message.getFieldWithDefault(this, 1, "") as string;
     }
     set id(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
     get type() {
-        return pb_1.Message.getField(this, 2) as Type;
+        return pb_1.Message.getFieldWithDefault(this, 2, Type.HTTP) as Type;
     }
     set type(value: Type) {
         pb_1.Message.setField(this, 2, value);
@@ -593,16 +572,11 @@ export class Event extends pb_1.Message {
             id?: string;
             type?: Type;
             target?: ReturnType<typeof Target.prototype.toObject>;
-        } = {};
-        if (this.id != null) {
-            data.id = this.id;
-        }
-        if (this.type != null) {
-            data.type = this.type;
-        }
-        if (this.target != null) {
-            data.target = this.target.toObject();
-        }
+        } = {
+            id: this.id,
+            type: this.type,
+            target: this.target != null ? this.target.toObject() : undefined
+        };
         return data;
     }
     serialize(): Uint8Array;
@@ -611,9 +585,9 @@ export class Event extends pb_1.Message {
         const writer = w || new pb_1.BinaryWriter();
         if (typeof this.id === "string" && this.id.length)
             writer.writeString(1, this.id);
-        if (this.type !== undefined)
+        if (pb_1.Message.getField(this, 2) != null)
             writer.writeEnum(2, this.type);
-        if (this.target !== undefined)
+        if (pb_1.Message.getField(this, 3) != null)
             writer.writeMessage(3, this.target, () => this.target.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
@@ -659,7 +633,7 @@ export class Pop extends pb_1.Message {
         }
     }
     get id() {
-        return pb_1.Message.getField(this, 1) as string;
+        return pb_1.Message.getFieldWithDefault(this, 1, "") as string;
     }
     set id(value: string) {
         pb_1.Message.setField(this, 1, value);
@@ -676,10 +650,9 @@ export class Pop extends pb_1.Message {
     toObject() {
         const data: {
             id?: string;
-        } = {};
-        if (this.id != null) {
-            data.id = this.id;
-        }
+        } = {
+            id: this.id
+        };
         return data;
     }
     serialize(): Uint8Array;
@@ -726,7 +699,7 @@ export class Complete extends pb_1.Message {
         }
     }
     get id() {
-        return pb_1.Message.getField(this, 1) as string;
+        return pb_1.Message.getFieldWithDefault(this, 1, "") as string;
     }
     set id(value: string) {
         pb_1.Message.setField(this, 1, value);
@@ -743,10 +716,9 @@ export class Complete extends pb_1.Message {
     toObject() {
         const data: {
             id?: string;
-        } = {};
-        if (this.id != null) {
-            data.id = this.id;
-        }
+        } = {
+            id: this.id
+        };
         return data;
     }
     serialize(): Uint8Array;
