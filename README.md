@@ -3,6 +3,7 @@
 [![test](https://github.com/thesayyn/protoc-gen-ts/actions/workflows/test.yaml/badge.svg?branch=master)](https://github.com/thesayyn/protoc-gen-ts/actions/workflows/test.yaml)
 [![npm](https://img.shields.io/npm/v/protoc-gen-ts)](https://www.npmjs.com/package/protoc-gen-ts?activeTab=versions)
 [![npm](https://img.shields.io/npm/dm/protoc-gen-ts)](https://www.npmjs.com/package/protoc-gen-ts?activeTab=versions)
+[![npm](https://opencollective.com/protoc-gen-ts/tiers/backer/badge.svg?label=Backer&color=brightgreen)](https://opencollective.com/protoc-gen-ts)
 
 Aim of this protoc plugin is to make usage of protocol buffers easy in Javascript/Typescript by taking modern approaches. 
 This plugin generates plain **TypeScript** files that can be used with ESM, AMD, UMD, and CommonJS module systems.
@@ -138,6 +139,16 @@ ts_proto_library(
 
 * With `--ts_opt=no_namespace`, you can control whether you get nested messages inside namespaces or prefixed with their parent message or directive.
 
+## Support
+
+We need your constant support to keep protoc-gen-ts well maintained and new features.
+
+If your corporate has a OSS funding scheme, please consider supporting us monthly through open collective.
+
+<a href="https://opencollective.com/protoc-gen-ts">
+<img height="100px" src="https://opencollective.com/protoc-gen-ts/tiers/backer.svg?avatarHeight=36">
+</a>
+
 ## Roadmap
 
 - <s>Support for repeated non-integer fields</s>
@@ -180,14 +191,3 @@ yarn test --test_output=errors
 ## Contributors
 
 ![GitHub Contributors Image](https://contrib.rocks/image?repo=thesayyn/protoc-gen-ts)
-
-
-## Support
-
-If you find this plugin useful please consider giving us a star to get into open collective.
-
-You can also support me directly by buying us some coffees.
-
-<a href="https://www.buymeacoffee.com/thesayyn">
-<img height="40px" src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=🙌&slug=thesayyn&button_colour=FFDD00&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=ffffff">
-</a>
