@@ -141,7 +141,7 @@ ts_proto_library(
 
 ## Support
 
-We need your constant support to keep protoc-gen-ts well maintained and new features.
+We need your constant support to keep protoc-gen-ts well maintained and add new features.
 
 If your corporate has a OSS funding scheme, please consider supporting us monthly through open collective.
 
