@@ -1009,13 +1009,13 @@ function createOneOfGetter(
     numbers.push(ts.factory.createNumericLiteral(field.number));
     types.push(
       ts.factory.createLiteralTypeNode(
-        ts.factory.createStringLiteral(field.name),
+        ts.factory.createStringLiteral(getFieldName(field)),
       ),
     );
     cases.push(
       ts.factory.createPropertyAssignment(
         ts.factory.createNumericLiteral(field.number),
-        ts.factory.createStringLiteral(field.name),
+        ts.factory.createStringLiteral(getFieldName(field)),
       ),
     );
   }

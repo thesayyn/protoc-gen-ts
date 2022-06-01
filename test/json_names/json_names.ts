@@ -94,20 +94,20 @@ export class JsonNamesMessage extends pb_1.Message {
     }
     get mut_ex_field() {
         const cases: {
-            [index: number]: "none" | "a_single_string" | "a_single_number";
+            [index: number]: "none" | "aSingleString" | "aSingleNumber";
         } = {
             0: "none",
-            6: "a_single_string",
-            7: "a_single_number"
+            6: "aSingleString",
+            7: "aSingleNumber"
         };
         return cases[pb_1.Message.computeOneofCase(this, [6, 7])];
     }
     get _an_optional_string() {
         const cases: {
-            [index: number]: "none" | "an_optional_string";
+            [index: number]: "none" | "anOptionalString";
         } = {
             0: "none",
-            5: "an_optional_string"
+            5: "anOptionalString"
         };
         return cases[pb_1.Message.computeOneofCase(this, [5])];
     }
