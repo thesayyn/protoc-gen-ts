@@ -80,4 +80,13 @@ describe('JSON Names', () => {
       aSingleNumber: 456,
     });
   });
+
+  it('should expose oneof fields in camel case', () => {
+    const message = new JsonNamesMessage();
+    expect(message.mut_ex_field).toBe('none');
+    message.aSingleNumber = 123;
+    expect(message.mut_ex_field).toBe('aSingleNumber');
+    message.aSingleString = 'abcdef';
+    expect(message.mut_ex_field).toBe('aSingleString');
+  });
 });
