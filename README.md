@@ -17,6 +17,7 @@ This plugin generates plain **TypeScript** files that can be used with ESM, AMD,
 - **fromObject** and **toObject** methods to work with json data.
 - Supports gRPC Node and gRPC Web [#102](https://github.com/thesayyn/protoc-gen-ts/pull/102)
 - You get what you define in proto files. No such prefixes as "getField" or "getFieldList".
+- Generates bindings with either as-is names (`message.field_name`) or JSON-compatible names (`message.fieldName`).
 
 *If you have repeated field named `users`, then you will get a `getter` named `users` not `getUsersList`
 
@@ -138,6 +139,10 @@ ts_proto_library(
 * With `--ts_opt=grpc_package=xxxx`, you can specify a different package to import rather than `@grpc/grpc-js`.
 
 * With `--ts_opt=no_namespace`, you can control whether you get nested messages inside namespaces or prefixed with their parent message or directive.
+
+* With `--ts_opt=json_names`, fields will be converted to lowerCamelCase, for compatibility with the [JSON mapping][] done by the first-party protobuf libraries.
+
+[JSON mapping]: https://developers.google.com/protocol-buffers/docs/proto3#json
 
 ## Support
 
