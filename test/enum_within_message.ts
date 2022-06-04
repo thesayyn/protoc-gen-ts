@@ -37,7 +37,7 @@ export namespace main {
         static fromObject(data: {
             language?: Code.Language;
             lines?: number;
-        }) {
+        }): Code {
             const message = new Code({});
             if (data.language != null) {
                 message.language = data.language;

@@ -85,7 +85,7 @@ export class OneOfWithoutAnyOtherFields extends pb_1.Message {
         realname?: string;
         age?: string;
         date_of_birth?: string;
-    }) {
+    }): OneOfWithoutAnyOtherFields {
         const message = new OneOfWithoutAnyOtherFields({});
         if (data.nickname != null) {
             message.nickname = data.nickname;
@@ -224,7 +224,7 @@ export class OneOf extends pb_1.Message {
         nickname?: string;
         date_of_birth?: string;
         age?: string;
-    }) {
+    }): OneOf {
         const message = new OneOf({});
         if (data.nickname != null) {
             message.nickname = data.nickname;

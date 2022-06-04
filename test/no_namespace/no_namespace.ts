@@ -49,7 +49,7 @@ export class NoNamespace extends pb_1.Message {
         label?: ReturnType<typeof dependency_1.Target.prototype.toObject>;
         other_fields?: ReturnType<typeof dependency_2.MessageFields.prototype.toObject>;
         batch_fields?: ReturnType<typeof dependency_1.SchedulingContextBatch.prototype.toObject>;
-    }) {
+    }): NoNamespace {
         const message = new NoNamespace({});
         if (data.label != null) {
             message.label = dependency_1.Target.fromObject(data.label);

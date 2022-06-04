@@ -81,7 +81,7 @@ export function toBinaryMethodName(
   isWriter = true,
 ) {
   const typeNames = Object.keys(descriptor.FieldDescriptorProto.Type)
-    .map((key) => descriptor.FieldDescriptorProto.Type[key])
+    .map<string>((key) => descriptor.FieldDescriptorProto.Type[+key])
     .filter((n) => typeof n == "string")
     .map((n) => n.replace("TYPE_", ""));
 

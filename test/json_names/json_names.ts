@@ -9,7 +9,7 @@ export enum ColorSpace {
     CYAN_YELLOW_MAGENTA_BLACK = 1
 }
 export class JsonNamesMessage extends pb_1.Message {
-    #one_of_decls = [[6, 7], [5]];
+    #one_of_decls: number[][] = [[6, 7], [5]];
     constructor(data?: any[] | ({
         someStrings?: string[];
         anInteger?: number;
@@ -119,7 +119,7 @@ export class JsonNamesMessage extends pb_1.Message {
         anOptionalString?: string;
         aSingleString?: string;
         aSingleNumber?: number;
-    }) {
+    }): JsonNamesMessage {
         const message = new JsonNamesMessage({});
         if (data.someStrings != null) {
             message.someStrings = data.someStrings;
@@ -239,7 +239,7 @@ export class JsonNamesMessage extends pb_1.Message {
 }
 export namespace JsonNamesMessage {
     export class NestedMessage extends pb_1.Message {
-        #one_of_decls = [];
+        #one_of_decls: number[][] = [];
         constructor(data?: any[] | {
             aNestedInteger?: number;
         }) {
@@ -259,7 +259,7 @@ export namespace JsonNamesMessage {
         }
         static fromObject(data: {
             aNestedInteger?: number;
-        }) {
+        }): NestedMessage {
             const message = new NestedMessage({});
             if (data.aNestedInteger != null) {
                 message.aNestedInteger = data.aNestedInteger;

@@ -46,7 +46,7 @@ export class Optional extends pb_1.Message {
     static fromObject(data: {
         should_not_be_required?: string[];
         proto3_optional?: string;
-    }) {
+    }): Optional {
         const message = new Optional({});
         if (data.should_not_be_required != null) {
             message.should_not_be_required = data.should_not_be_required;

@@ -34,7 +34,7 @@ export class NotOptional extends pb_1.Message {
     static fromObject(data: {
         should_be_required: string[];
         should_be_optional?: string;
-    }) {
+    }): NotOptional {
         const message = new NotOptional({
             should_be_required: data.should_be_required
         });

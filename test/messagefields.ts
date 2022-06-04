@@ -36,7 +36,7 @@ export class MessageFields extends pb_1.Message {
     static fromObject(data: {
         sub_message?: ReturnType<typeof SubMessage.prototype.toObject>;
         array_prop?: ReturnType<typeof SubMessage.prototype.toObject>[];
-    }) {
+    }): MessageFields {
         const message = new MessageFields({});
         if (data.sub_message != null) {
             message.sub_message = SubMessage.fromObject(data.sub_message);
@@ -126,7 +126,7 @@ export class SubMessage extends pb_1.Message {
     static fromObject(data: {
         field_1?: string;
         field_2?: string;
-    }) {
+    }): SubMessage {
         const message = new SubMessage({});
         if (data.field_1 != null) {
             message.field_1 = data.field_1;

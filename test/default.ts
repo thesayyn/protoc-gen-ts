@@ -47,7 +47,7 @@ export class MessageWithDefault extends pb_1.Message {
         bool_field?: boolean;
         string_field?: string;
         int32_field?: number;
-    }) {
+    }): MessageWithDefault {
         const message = new MessageWithDefault({});
         if (data.bool_field != null) {
             message.bool_field = data.bool_field;

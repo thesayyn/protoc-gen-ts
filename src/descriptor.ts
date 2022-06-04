@@ -58,8 +58,8 @@ function createFromObject(
   const dataIdentifier = ts.factory.createIdentifier("data");
   const messageIdentifier = ts.factory.createIdentifier("message");
 
-  const statements = [];
-  const properties = [];
+  const statements: ts.Statement[] = [];
+  const properties: ts.PropertyAssignment[] = [];
 
   for (const fieldDescriptor of messageDescriptor.field) {
     let assignmentExpr: ts.Expression =
@@ -295,7 +295,10 @@ function createFromObject(
         createPrimitiveMessageSignature(rootDescriptor, messageDescriptor),
       ),
     ],
-    undefined,
+    ts.factory.createTypeReferenceNode(
+      ts.factory.createIdentifier(`${parentName}${messageDescriptor.name}`),
+      undefined
+    ),
     ts.factory.createBlock(statements, true),
   );
 }

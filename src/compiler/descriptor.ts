@@ -23,7 +23,7 @@ export class FileDescriptorSet extends pb_1.Message {
     }
     static fromObject(data: {
         file: ReturnType<typeof FileDescriptorProto.prototype.toObject>[];
-    }) {
+    }): FileDescriptorSet {
         const message = new FileDescriptorSet({
             file: data.file.map(item => FileDescriptorProto.fromObject(item))
         });
@@ -195,7 +195,7 @@ export class FileDescriptorProto extends pb_1.Message {
         options?: ReturnType<typeof FileOptions.prototype.toObject>;
         source_code_info?: ReturnType<typeof SourceCodeInfo.prototype.toObject>;
         syntax?: string;
-    }) {
+    }): FileDescriptorProto {
         const message = new FileDescriptorProto({
             dependency: data.dependency,
             public_dependency: data.public_dependency,
@@ -451,7 +451,7 @@ export class DescriptorProto extends pb_1.Message {
         options?: ReturnType<typeof MessageOptions.prototype.toObject>;
         reserved_range: ReturnType<typeof DescriptorProto.ReservedRange.prototype.toObject>[];
         reserved_name: string[];
-    }) {
+    }): DescriptorProto {
         const message = new DescriptorProto({
             field: data.field.map(item => FieldDescriptorProto.fromObject(item)),
             extension: data.extension.map(item => FieldDescriptorProto.fromObject(item)),
@@ -619,7 +619,7 @@ export namespace DescriptorProto {
             start?: number;
             end?: number;
             options?: ReturnType<typeof ExtensionRangeOptions.prototype.toObject>;
-        }) {
+        }): ExtensionRange {
             const message = new ExtensionRange({});
             if (data.start != null) {
                 message.start = data.start;
@@ -721,7 +721,7 @@ export namespace DescriptorProto {
         static fromObject(data: {
             start?: number;
             end?: number;
-        }) {
+        }): ReservedRange {
             const message = new ReservedRange({});
             if (data.start != null) {
                 message.start = data.start;
@@ -799,7 +799,7 @@ export class ExtensionRangeOptions extends pb_1.Message {
     }
     static fromObject(data: {
         uninterpreted_option: ReturnType<typeof UninterpretedOption.prototype.toObject>[];
-    }) {
+    }): ExtensionRangeOptions {
         const message = new ExtensionRangeOptions({
             uninterpreted_option: data.uninterpreted_option.map(item => UninterpretedOption.fromObject(item))
         });
@@ -974,7 +974,7 @@ export class FieldDescriptorProto extends pb_1.Message {
         json_name?: string;
         options?: ReturnType<typeof FieldOptions.prototype.toObject>;
         proto3_optional?: boolean;
-    }) {
+    }): FieldDescriptorProto {
         const message = new FieldDescriptorProto({});
         if (data.name != null) {
             message.name = data.name;
@@ -1199,7 +1199,7 @@ export class OneofDescriptorProto extends pb_1.Message {
     static fromObject(data: {
         name?: string;
         options?: ReturnType<typeof OneofOptions.prototype.toObject>;
-    }) {
+    }): OneofDescriptorProto {
         const message = new OneofDescriptorProto({});
         if (data.name != null) {
             message.name = data.name;
@@ -1316,7 +1316,7 @@ export class EnumDescriptorProto extends pb_1.Message {
         options?: ReturnType<typeof EnumOptions.prototype.toObject>;
         reserved_range: ReturnType<typeof EnumDescriptorProto.EnumReservedRange.prototype.toObject>[];
         reserved_name: string[];
-    }) {
+    }): EnumDescriptorProto {
         const message = new EnumDescriptorProto({
             value: data.value.map(item => EnumValueDescriptorProto.fromObject(item)),
             reserved_range: data.reserved_range.map(item => EnumDescriptorProto.EnumReservedRange.fromObject(item)),
@@ -1433,7 +1433,7 @@ export namespace EnumDescriptorProto {
         static fromObject(data: {
             start?: number;
             end?: number;
-        }) {
+        }): EnumReservedRange {
             const message = new EnumReservedRange({});
             if (data.start != null) {
                 message.start = data.start;
@@ -1535,7 +1535,7 @@ export class EnumValueDescriptorProto extends pb_1.Message {
         name?: string;
         number?: number;
         options?: ReturnType<typeof EnumValueOptions.prototype.toObject>;
-    }) {
+    }): EnumValueDescriptorProto {
         const message = new EnumValueDescriptorProto({});
         if (data.name != null) {
             message.name = data.name;
@@ -1646,7 +1646,7 @@ export class ServiceDescriptorProto extends pb_1.Message {
         name?: string;
         method: ReturnType<typeof MethodDescriptorProto.prototype.toObject>[];
         options?: ReturnType<typeof ServiceOptions.prototype.toObject>;
-    }) {
+    }): ServiceDescriptorProto {
         const message = new ServiceDescriptorProto({
             method: data.method.map(item => MethodDescriptorProto.fromObject(item))
         });
@@ -1790,7 +1790,7 @@ export class MethodDescriptorProto extends pb_1.Message {
         options?: ReturnType<typeof MethodOptions.prototype.toObject>;
         client_streaming?: boolean;
         server_streaming?: boolean;
-    }) {
+    }): MethodDescriptorProto {
         const message = new MethodDescriptorProto({});
         if (data.name != null) {
             message.name = data.name;
@@ -2138,7 +2138,7 @@ export class FileOptions extends pb_1.Message {
         php_metadata_namespace?: string;
         ruby_package?: string;
         uninterpreted_option: ReturnType<typeof UninterpretedOption.prototype.toObject>[];
-    }) {
+    }): FileOptions {
         const message = new FileOptions({
             uninterpreted_option: data.uninterpreted_option.map(item => UninterpretedOption.fromObject(item))
         });
@@ -2492,7 +2492,7 @@ export class MessageOptions extends pb_1.Message {
         deprecated?: boolean;
         map_entry?: boolean;
         uninterpreted_option: ReturnType<typeof UninterpretedOption.prototype.toObject>[];
-    }) {
+    }): MessageOptions {
         const message = new MessageOptions({
             uninterpreted_option: data.uninterpreted_option.map(item => UninterpretedOption.fromObject(item))
         });
@@ -2669,7 +2669,7 @@ export class FieldOptions extends pb_1.Message {
         deprecated?: boolean;
         weak?: boolean;
         uninterpreted_option: ReturnType<typeof UninterpretedOption.prototype.toObject>[];
-    }) {
+    }): FieldOptions {
         const message = new FieldOptions({
             uninterpreted_option: data.uninterpreted_option.map(item => UninterpretedOption.fromObject(item))
         });
@@ -2816,7 +2816,7 @@ export class OneofOptions extends pb_1.Message {
     }
     static fromObject(data: {
         uninterpreted_option: ReturnType<typeof UninterpretedOption.prototype.toObject>[];
-    }) {
+    }): OneofOptions {
         const message = new OneofOptions({
             uninterpreted_option: data.uninterpreted_option.map(item => UninterpretedOption.fromObject(item))
         });
@@ -2901,7 +2901,7 @@ export class EnumOptions extends pb_1.Message {
         allow_alias?: boolean;
         deprecated?: boolean;
         uninterpreted_option: ReturnType<typeof UninterpretedOption.prototype.toObject>[];
-    }) {
+    }): EnumOptions {
         const message = new EnumOptions({
             uninterpreted_option: data.uninterpreted_option.map(item => UninterpretedOption.fromObject(item))
         });
@@ -2999,7 +2999,7 @@ export class EnumValueOptions extends pb_1.Message {
     static fromObject(data: {
         deprecated?: boolean;
         uninterpreted_option: ReturnType<typeof UninterpretedOption.prototype.toObject>[];
-    }) {
+    }): EnumValueOptions {
         const message = new EnumValueOptions({
             uninterpreted_option: data.uninterpreted_option.map(item => UninterpretedOption.fromObject(item))
         });
@@ -3085,7 +3085,7 @@ export class ServiceOptions extends pb_1.Message {
     static fromObject(data: {
         deprecated?: boolean;
         uninterpreted_option: ReturnType<typeof UninterpretedOption.prototype.toObject>[];
-    }) {
+    }): ServiceOptions {
         const message = new ServiceOptions({
             uninterpreted_option: data.uninterpreted_option.map(item => UninterpretedOption.fromObject(item))
         });
@@ -3182,7 +3182,7 @@ export class MethodOptions extends pb_1.Message {
         deprecated?: boolean;
         idempotency_level?: MethodOptions.IdempotencyLevel;
         uninterpreted_option: ReturnType<typeof UninterpretedOption.prototype.toObject>[];
-    }) {
+    }): MethodOptions {
         const message = new MethodOptions({
             uninterpreted_option: data.uninterpreted_option.map(item => UninterpretedOption.fromObject(item))
         });
@@ -3342,7 +3342,7 @@ export class UninterpretedOption extends pb_1.Message {
         double_value?: number;
         string_value?: Uint8Array;
         aggregate_value?: string;
-    }) {
+    }): UninterpretedOption {
         const message = new UninterpretedOption({
             name: data.name.map(item => UninterpretedOption.NamePart.fromObject(item))
         });
@@ -3487,7 +3487,7 @@ export namespace UninterpretedOption {
         static fromObject(data: {
             name_part: string;
             is_extension: boolean;
-        }) {
+        }): NamePart {
             const message = new NamePart({
                 name_part: data.name_part,
                 is_extension: data.is_extension
@@ -3559,7 +3559,7 @@ export class SourceCodeInfo extends pb_1.Message {
     }
     static fromObject(data: {
         location: ReturnType<typeof SourceCodeInfo.Location.prototype.toObject>[];
-    }) {
+    }): SourceCodeInfo {
         const message = new SourceCodeInfo({
             location: data.location.map(item => SourceCodeInfo.Location.fromObject(item))
         });
@@ -3663,7 +3663,7 @@ export namespace SourceCodeInfo {
             leading_comments?: string;
             trailing_comments?: string;
             leading_detached_comments: string[];
-        }) {
+        }): Location {
             const message = new Location({
                 path: data.path,
                 span: data.span,
@@ -3767,7 +3767,7 @@ export class GeneratedCodeInfo extends pb_1.Message {
     }
     static fromObject(data: {
         annotation: ReturnType<typeof GeneratedCodeInfo.Annotation.prototype.toObject>[];
-    }) {
+    }): GeneratedCodeInfo {
         const message = new GeneratedCodeInfo({
             annotation: data.annotation.map(item => GeneratedCodeInfo.Annotation.fromObject(item))
         });
@@ -3864,7 +3864,7 @@ export namespace GeneratedCodeInfo {
             source_file?: string;
             begin?: number;
             end?: number;
-        }) {
+        }): Annotation {
             const message = new Annotation({
                 path: data.path
             });

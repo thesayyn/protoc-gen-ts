@@ -15,21 +15,14 @@ export function parse(raw?: string): Options {
     no_namespace: false,
     json_names: false,
   };
-
   for (const raw_option of raw.split(",")) {
     let [k, v] = raw_option.split("=", 2);
-    let value: string | boolean;
-    if (k in options) {
-      switch (typeof options[k]) {
-        case "boolean":
-          value = v != "false";
-          break;
-        default:
-          value = v;
-          break;
-      }
+    switch (k) {
+      case 'unary_rpc_promise': options[k] = v != "false"; break;
+      case 'grpc_package':      options[k] = v;            break;
+      case 'no_namespace':      options[k] = v != "false"; break;
+      case 'json_names':        options[k] = v != "false"; break;
     }
-    options[k] = value
   }
   return options;
 }

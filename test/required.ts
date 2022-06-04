@@ -32,7 +32,7 @@ export class NoOptionalValues extends pb_1.Message {
     static fromObject(data: {
         test: string;
         test2: string;
-    }) {
+    }): NoOptionalValues {
         const message = new NoOptionalValues({
             test: data.test,
             test2: data.test2

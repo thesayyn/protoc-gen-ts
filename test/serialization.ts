@@ -25,7 +25,7 @@ export class Serialization extends pb_1.Message {
     }
     static fromObject(data: {
         test?: string;
-    }) {
+    }): Serialization {
         const message = new Serialization({});
         if (data.test != null) {
             message.test = data.test;

@@ -26,7 +26,7 @@ export namespace pkg.mycompany {
         }
         static fromObject(data: {
             field?: string[];
-        }) {
+        }): Message {
             const message = new Message({});
             if (data.field != null) {
                 message.field = data.field;

@@ -13,7 +13,7 @@ export namespace main {
             pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") { }
         }
-        static fromObject(data: {}) {
+        static fromObject(data: {}): Message {
             const message = new Message({});
             return message;
         }
@@ -53,7 +53,7 @@ export namespace main {
             pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") { }
         }
-        static fromObject(data: {}) {
+        static fromObject(data: {}): MessageResult {
             const message = new MessageResult({});
             return message;
         }

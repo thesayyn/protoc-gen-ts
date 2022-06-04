@@ -26,7 +26,7 @@ export namespace maps {
         }
         static fromObject(data: {
             link?: string;
-        }) {
+        }): Topic {
             const message = new Topic({});
             if (data.link != null) {
                 message.link = data.link;
@@ -138,7 +138,7 @@ export namespace maps {
             topics_with_intkeys?: {
                 [key: number]: ReturnType<typeof Topic.prototype.toObject>;
             };
-        }) {
+        }): Tags {
             const message = new Tags({});
             if (data.key != null) {
                 message.key = data.key;

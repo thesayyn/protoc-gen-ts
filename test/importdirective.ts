@@ -50,7 +50,7 @@ export namespace importdirective {
             importedField?: ReturnType<typeof dependency_1.importdirective.Imported.prototype.toObject>;
             submessageField?: ReturnType<typeof dependency_1.importdirective.Imported.SubMessage.prototype.toObject>;
             enumField?: dependency_1.importdirective.Imported.SubMessage.MyEnum;
-        }) {
+        }): Message {
             const message = new Message({});
             if (data.importedField != null) {
                 message.importedField = dependency_1.importdirective.Imported.fromObject(data.importedField);

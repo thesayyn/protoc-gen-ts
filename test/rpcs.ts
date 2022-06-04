@@ -12,7 +12,7 @@ export class None extends pb_1.Message {
         pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
         if (!Array.isArray(data) && typeof data == "object") { }
     }
-    static fromObject(data: {}) {
+    static fromObject(data: {}): None {
         const message = new None({});
         return message;
     }
@@ -88,7 +88,7 @@ export class _Object extends pb_1.Message {
         id?: string;
         size?: number;
         mimeType?: string;
-    }) {
+    }): _Object {
         const message = new _Object({});
         if (data.id != null) {
             message.id = data.id;
@@ -190,7 +190,7 @@ export class Chunk extends pb_1.Message {
     static fromObject(data: {
         data?: Uint8Array;
         range?: ReturnType<typeof Chunk.Range.prototype.toObject>;
-    }) {
+    }): Chunk {
         const message = new Chunk({});
         if (data.data != null) {
             message.data = data.data;
@@ -281,7 +281,7 @@ export namespace Chunk {
         static fromObject(data: {
             start?: number;
             end?: number;
-        }) {
+        }): Range {
             const message = new Range({});
             if (data.start != null) {
                 message.start = data.start;
@@ -371,7 +371,7 @@ export namespace Chunk {
         static fromObject(data: {
             id?: string;
             range?: ReturnType<typeof Chunk.Range.prototype.toObject>;
-        }) {
+        }): Query {
             const message = new Query({});
             if (data.id != null) {
                 message.id = data.id;
@@ -451,7 +451,7 @@ export class Query extends pb_1.Message {
     }
     static fromObject(data: {
         id?: string;
-    }) {
+    }): Query {
         const message = new Query({});
         if (data.id != null) {
             message.id = data.id;
@@ -519,7 +519,7 @@ export namespace Query {
         }
         static fromObject(data: {
             objects?: ReturnType<typeof _Object.prototype.toObject>[];
-        }) {
+        }): Result {
             const message = new Result({});
             if (data.objects != null) {
                 message.objects = data.objects.map(item => _Object.fromObject(item));
@@ -598,7 +598,7 @@ export class Put extends pb_1.Message {
     static fromObject(data: {
         id?: string;
         chunk?: ReturnType<typeof Chunk.prototype.toObject>;
-    }) {
+    }): Put {
         const message = new Put({});
         if (data.id != null) {
             message.id = data.id;

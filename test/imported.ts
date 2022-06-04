@@ -12,7 +12,7 @@ export namespace importdirective {
             pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") { }
         }
-        static fromObject(data: {}) {
+        static fromObject(data: {}): Imported {
             const message = new Imported({});
             return message;
         }
@@ -67,7 +67,7 @@ export namespace importdirective {
             }
             static fromObject(data: {
                 key?: Imported.SubMessage.MyEnum;
-            }) {
+            }): SubMessage {
                 const message = new SubMessage({});
                 if (data.key != null) {
                     message.key = data.key;
