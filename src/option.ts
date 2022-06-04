@@ -3,6 +3,7 @@ export interface Options {
   grpc_package: string;
   no_namespace: boolean;
   json_names: boolean;
+  explicit_override: boolean;
 }
 
 export function parse(raw?: string): Options {
@@ -14,6 +15,7 @@ export function parse(raw?: string): Options {
     grpc_package: "@grpc/grpc-js",
     no_namespace: false,
     json_names: false,
+    explicit_override: false,
   };
   for (const raw_option of raw.split(",")) {
     let [k, v] = raw_option.split("=", 2);
@@ -22,6 +24,7 @@ export function parse(raw?: string): Options {
       case 'grpc_package':      options[k] = v;            break;
       case 'no_namespace':      options[k] = v != "false"; break;
       case 'json_names':        options[k] = v != "false"; break;
+      case 'explicit_override': options[k] = v != "false"; break;
     }
   }
   return options;

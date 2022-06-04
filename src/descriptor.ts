@@ -1965,9 +1965,17 @@ function createDeserializeBinary(
   messageDescriptor: descriptor.DescriptorProto,
   parentName: string = '',
 ): ts.ClassElement {
+  const modifiers: ts.Modifier[] = [
+    ts.factory.createModifier(ts.SyntaxKind.StaticKeyword)
+  ];
+  if (config.explicit_override) {
+    modifiers.push(
+      ts.factory.createModifier(ts.SyntaxKind.OverrideKeyword)
+    );
+  }
   return ts.factory.createMethodDeclaration(
     undefined,
-    [ts.factory.createModifier(ts.SyntaxKind.StaticKeyword)],
+    modifiers,
     undefined,
     ts.factory.createIdentifier("deserializeBinary"),
     undefined,

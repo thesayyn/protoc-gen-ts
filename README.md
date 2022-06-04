@@ -144,6 +144,8 @@ ts_proto_library(
 
 [JSON mapping]: https://developers.google.com/protocol-buffers/docs/proto3#json
 
+* With `--ts_opt=explicit_override`, inherited methods are generated with `override` modifier, this fixes transpilation error when `noImplicitOverride` is enabled.
+
 ## Support
 
 We need your constant support to keep protoc-gen-ts well maintained and add new features.
