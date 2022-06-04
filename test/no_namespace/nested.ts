@@ -14,7 +14,7 @@ export enum Type {
     BUCKET = 6
 }
 export class SchedulingContext extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         env?: SchedulingContextEnv[];
         timeout?: number;
@@ -56,7 +56,7 @@ export class SchedulingContext extends pb_1.Message {
         env?: ReturnType<typeof SchedulingContextEnv.prototype.toObject>[];
         timeout?: number;
         batch?: ReturnType<typeof SchedulingContextBatch.prototype.toObject>;
-    }) {
+    }): SchedulingContext {
         const message = new SchedulingContext({});
         if (data.env != null) {
             message.env = data.env.map(item => SchedulingContextEnv.fromObject(item));
@@ -127,7 +127,7 @@ export class SchedulingContext extends pb_1.Message {
     }
 }
 export class SchedulingContextEnv extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         key?: string;
         value?: string;
@@ -158,7 +158,7 @@ export class SchedulingContextEnv extends pb_1.Message {
     static fromObject(data: {
         key?: string;
         value?: string;
-    }) {
+    }): SchedulingContextEnv {
         const message = new SchedulingContextEnv({});
         if (data.key != null) {
             message.key = data.key;
@@ -217,7 +217,7 @@ export class SchedulingContextEnv extends pb_1.Message {
     }
 }
 export class SchedulingContextBatch extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         limit?: number;
         deadline?: number;
@@ -259,7 +259,7 @@ export class SchedulingContextBatch extends pb_1.Message {
         limit?: number;
         deadline?: number;
         process?: ReturnType<typeof SchedulingContextBatchProcess.prototype.toObject>;
-    }) {
+    }): SchedulingContextBatch {
         const message = new SchedulingContextBatch({});
         if (data.limit != null) {
             message.limit = data.limit;
@@ -330,7 +330,7 @@ export class SchedulingContextBatch extends pb_1.Message {
     }
 }
 export class SchedulingContextBatchProcess extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         id?: string;
     }) {
@@ -350,7 +350,7 @@ export class SchedulingContextBatchProcess extends pb_1.Message {
     }
     static fromObject(data: {
         id?: string;
-    }) {
+    }): SchedulingContextBatchProcess {
         const message = new SchedulingContextBatchProcess({});
         if (data.id != null) {
             message.id = data.id;
@@ -397,7 +397,7 @@ export class SchedulingContextBatchProcess extends pb_1.Message {
     }
 }
 export class Target extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         id?: string;
         cwd?: string;
@@ -450,7 +450,7 @@ export class Target extends pb_1.Message {
         cwd?: string;
         handler?: string;
         context?: ReturnType<typeof SchedulingContext.prototype.toObject>;
-    }) {
+    }): Target {
         const message = new Target({});
         if (data.id != null) {
             message.id = data.id;
@@ -533,7 +533,7 @@ export class Target extends pb_1.Message {
     }
 }
 export class Event extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         id?: string;
         type?: Type;
@@ -575,7 +575,7 @@ export class Event extends pb_1.Message {
         id?: string;
         type?: Type;
         target?: ReturnType<typeof Target.prototype.toObject>;
-    }) {
+    }): Event {
         const message = new Event({});
         if (data.id != null) {
             message.id = data.id;
@@ -646,7 +646,7 @@ export class Event extends pb_1.Message {
     }
 }
 export class Pop extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         id?: string;
     }) {
@@ -666,7 +666,7 @@ export class Pop extends pb_1.Message {
     }
     static fromObject(data: {
         id?: string;
-    }) {
+    }): Pop {
         const message = new Pop({});
         if (data.id != null) {
             message.id = data.id;
@@ -713,7 +713,7 @@ export class Pop extends pb_1.Message {
     }
 }
 export class Complete extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         id?: string;
     }) {
@@ -733,7 +733,7 @@ export class Complete extends pb_1.Message {
     }
     static fromObject(data: {
         id?: string;
-    }) {
+    }): Complete {
         const message = new Complete({});
         if (data.id != null) {
             message.id = data.id;
@@ -780,13 +780,13 @@ export class Complete extends pb_1.Message {
     }
 }
 export class CompleteResult extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {}) {
         super();
         pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
         if (!Array.isArray(data) && typeof data == "object") { }
     }
-    static fromObject(data: {}) {
+    static fromObject(data: {}): CompleteResult {
         const message = new CompleteResult({});
         return message;
     }

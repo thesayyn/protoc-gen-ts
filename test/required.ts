@@ -5,7 +5,7 @@
  * git: https://github.com/thesayyn/protoc-gen-ts */
 import * as pb_1 from "google-protobuf";
 export class NoOptionalValues extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         test: string;
         test2: string;
@@ -32,7 +32,7 @@ export class NoOptionalValues extends pb_1.Message {
     static fromObject(data: {
         test: string;
         test2: string;
-    }) {
+    }): NoOptionalValues {
         const message = new NoOptionalValues({
             test: data.test,
             test2: data.test2

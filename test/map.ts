@@ -6,7 +6,7 @@
 import * as dependency_1 from "./imported";
 import * as pb_1 from "google-protobuf";
 export class Topic extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         link?: string;
     }) {
@@ -26,7 +26,7 @@ export class Topic extends pb_1.Message {
     }
     static fromObject(data: {
         link?: string;
-    }) {
+    }): Topic {
         const message = new Topic({});
         if (data.link != null) {
             message.link = data.link;
@@ -73,7 +73,7 @@ export class Topic extends pb_1.Message {
     }
 }
 export class Tags extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         key?: string;
         keys?: Map<string, string>;
@@ -153,7 +153,7 @@ export class Tags extends pb_1.Message {
         imported2?: {
             [key: number]: dependency_1.importdirective.Imported.SubMessage.MyEnum;
         };
-    }) {
+    }): Tags {
         const message = new Tags({});
         if (data.key != null) {
             message.key = data.key;

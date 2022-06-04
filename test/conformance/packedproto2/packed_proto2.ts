@@ -5,7 +5,7 @@
  * git: https://github.com/thesayyn/protoc-gen-ts */
 import * as pb_1 from "google-protobuf";
 export class HydratedQuickReplyButton extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         displayText?: string;
         id?: string;
@@ -36,7 +36,7 @@ export class HydratedQuickReplyButton extends pb_1.Message {
     static fromObject(data: {
         displayText?: string;
         id?: string;
-    }) {
+    }): HydratedQuickReplyButton {
         const message = new HydratedQuickReplyButton({});
         if (data.displayText != null) {
             message.displayText = data.displayText;
@@ -95,7 +95,7 @@ export class HydratedQuickReplyButton extends pb_1.Message {
     }
 }
 export class HydratedURLButton extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         displayText?: string;
         url?: string;
@@ -126,7 +126,7 @@ export class HydratedURLButton extends pb_1.Message {
     static fromObject(data: {
         displayText?: string;
         url?: string;
-    }) {
+    }): HydratedURLButton {
         const message = new HydratedURLButton({});
         if (data.displayText != null) {
             message.displayText = data.displayText;
@@ -185,7 +185,7 @@ export class HydratedURLButton extends pb_1.Message {
     }
 }
 export class HydratedCallButton extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         displayText?: string;
         phoneNumber?: string;
@@ -216,7 +216,7 @@ export class HydratedCallButton extends pb_1.Message {
     static fromObject(data: {
         displayText?: string;
         phoneNumber?: string;
-    }) {
+    }): HydratedCallButton {
         const message = new HydratedCallButton({});
         if (data.displayText != null) {
             message.displayText = data.displayText;
@@ -275,7 +275,7 @@ export class HydratedCallButton extends pb_1.Message {
     }
 }
 export class HydratedTemplateButton extends pb_1.Message {
-    #one_of_decls = [[1, 2, 3]];
+    #one_of_decls: number[][] = [[1, 2, 3]];
     constructor(data?: any[] | ({
         index?: number;
     } & (({
@@ -348,7 +348,7 @@ export class HydratedTemplateButton extends pb_1.Message {
         quickReplyButton?: ReturnType<typeof HydratedQuickReplyButton.prototype.toObject>;
         urlButton?: ReturnType<typeof HydratedURLButton.prototype.toObject>;
         callButton?: ReturnType<typeof HydratedCallButton.prototype.toObject>;
-    }) {
+    }): HydratedTemplateButton {
         const message = new HydratedTemplateButton({});
         if (data.index != null) {
             message.index = data.index;
@@ -431,7 +431,7 @@ export class HydratedTemplateButton extends pb_1.Message {
     }
 }
 export class QuickReplyButton extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         displayText?: HighlyStructuredMessage;
         id?: string;
@@ -462,7 +462,7 @@ export class QuickReplyButton extends pb_1.Message {
     static fromObject(data: {
         displayText?: ReturnType<typeof HighlyStructuredMessage.prototype.toObject>;
         id?: string;
-    }) {
+    }): QuickReplyButton {
         const message = new QuickReplyButton({});
         if (data.displayText != null) {
             message.displayText = HighlyStructuredMessage.fromObject(data.displayText);
@@ -521,7 +521,7 @@ export class QuickReplyButton extends pb_1.Message {
     }
 }
 export class URLButton extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         displayText?: HighlyStructuredMessage;
         url?: HighlyStructuredMessage;
@@ -552,7 +552,7 @@ export class URLButton extends pb_1.Message {
     static fromObject(data: {
         displayText?: ReturnType<typeof HighlyStructuredMessage.prototype.toObject>;
         url?: ReturnType<typeof HighlyStructuredMessage.prototype.toObject>;
-    }) {
+    }): URLButton {
         const message = new URLButton({});
         if (data.displayText != null) {
             message.displayText = HighlyStructuredMessage.fromObject(data.displayText);
@@ -611,7 +611,7 @@ export class URLButton extends pb_1.Message {
     }
 }
 export class CallButton extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         displayText?: HighlyStructuredMessage;
         phoneNumber?: HighlyStructuredMessage;
@@ -642,7 +642,7 @@ export class CallButton extends pb_1.Message {
     static fromObject(data: {
         displayText?: ReturnType<typeof HighlyStructuredMessage.prototype.toObject>;
         phoneNumber?: ReturnType<typeof HighlyStructuredMessage.prototype.toObject>;
-    }) {
+    }): CallButton {
         const message = new CallButton({});
         if (data.displayText != null) {
             message.displayText = HighlyStructuredMessage.fromObject(data.displayText);
@@ -701,7 +701,7 @@ export class CallButton extends pb_1.Message {
     }
 }
 export class TemplateButton extends pb_1.Message {
-    #one_of_decls = [[1, 2, 3]];
+    #one_of_decls: number[][] = [[1, 2, 3]];
     constructor(data?: any[] | ({
         index?: number;
     } & (({
@@ -774,7 +774,7 @@ export class TemplateButton extends pb_1.Message {
         quickReplyButton?: ReturnType<typeof QuickReplyButton.prototype.toObject>;
         urlButton?: ReturnType<typeof URLButton.prototype.toObject>;
         callButton?: ReturnType<typeof CallButton.prototype.toObject>;
-    }) {
+    }): TemplateButton {
         const message = new TemplateButton({});
         if (data.index != null) {
             message.index = data.index;
@@ -857,7 +857,7 @@ export class TemplateButton extends pb_1.Message {
     }
 }
 export class Location extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         degreesLatitude?: number;
         degreesLongitude?: number;
@@ -899,7 +899,7 @@ export class Location extends pb_1.Message {
         degreesLatitude?: number;
         degreesLongitude?: number;
         name?: string;
-    }) {
+    }): Location {
         const message = new Location({});
         if (data.degreesLatitude != null) {
             message.degreesLatitude = data.degreesLatitude;
@@ -970,7 +970,7 @@ export class Location extends pb_1.Message {
     }
 }
 export class Point extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         xDeprecated?: number;
         yDeprecated?: number;
@@ -1023,7 +1023,7 @@ export class Point extends pb_1.Message {
         yDeprecated?: number;
         x?: number;
         y?: number;
-    }) {
+    }): Point {
         const message = new Point({});
         if (data.xDeprecated != null) {
             message.xDeprecated = data.xDeprecated;
@@ -1106,7 +1106,7 @@ export class Point extends pb_1.Message {
     }
 }
 export class InteractiveAnnotation extends pb_1.Message {
-    #one_of_decls = [[2]];
+    #one_of_decls: number[][] = [[2]];
     constructor(data?: any[] | ({
         polygonVertices: Point[];
     } & (({
@@ -1145,7 +1145,7 @@ export class InteractiveAnnotation extends pb_1.Message {
     static fromObject(data: {
         polygonVertices: ReturnType<typeof Point.prototype.toObject>[];
         location?: ReturnType<typeof Location.prototype.toObject>;
-    }) {
+    }): InteractiveAnnotation {
         const message = new InteractiveAnnotation({
             polygonVertices: data.polygonVertices.map(item => Point.fromObject(item))
         });
@@ -1202,7 +1202,7 @@ export class InteractiveAnnotation extends pb_1.Message {
     }
 }
 export class AdReplyInfo extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         advertiserName?: string;
         mediaType?: AdReplyInfo.AD_REPLY_INFO_MEDIATYPE;
@@ -1255,7 +1255,7 @@ export class AdReplyInfo extends pb_1.Message {
         mediaType?: AdReplyInfo.AD_REPLY_INFO_MEDIATYPE;
         jpegThumbnail?: Uint8Array;
         caption?: string;
-    }) {
+    }): AdReplyInfo {
         const message = new AdReplyInfo({});
         if (data.advertiserName != null) {
             message.advertiserName = data.advertiserName;
@@ -1345,7 +1345,7 @@ export namespace AdReplyInfo {
     }
 }
 export class ContextInfo extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         stanzaId?: string;
         participant?: string;
@@ -1517,7 +1517,7 @@ export class ContextInfo extends pb_1.Message {
         expiration?: number;
         ephemeralSettingTimestamp?: number;
         ephemeralSharedSecret?: Uint8Array;
-    }) {
+    }): ContextInfo {
         const message = new ContextInfo({
             mentionedJid: data.mentionedJid
         });
@@ -1730,7 +1730,7 @@ export class ContextInfo extends pb_1.Message {
     }
 }
 export class SenderKeyDistributionMessage extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         groupId?: string;
         axolotlSenderKeyDistributionMessage?: Uint8Array;
@@ -1761,7 +1761,7 @@ export class SenderKeyDistributionMessage extends pb_1.Message {
     static fromObject(data: {
         groupId?: string;
         axolotlSenderKeyDistributionMessage?: Uint8Array;
-    }) {
+    }): SenderKeyDistributionMessage {
         const message = new SenderKeyDistributionMessage({});
         if (data.groupId != null) {
             message.groupId = data.groupId;
@@ -1820,7 +1820,7 @@ export class SenderKeyDistributionMessage extends pb_1.Message {
     }
 }
 export class ImageMessage extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         url?: string;
         mimetype?: string;
@@ -2056,7 +2056,7 @@ export class ImageMessage extends pb_1.Message {
         scanLengths: number[];
         midQualityFileSha256?: Uint8Array;
         midQualityFileEncSha256?: Uint8Array;
-    }) {
+    }): ImageMessage {
         const message = new ImageMessage({
             interactiveAnnotations: data.interactiveAnnotations.map(item => InteractiveAnnotation.fromObject(item)),
             scanLengths: data.scanLengths
@@ -2337,7 +2337,7 @@ export class ImageMessage extends pb_1.Message {
     }
 }
 export class ContactMessage extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         displayName?: string;
         vcard?: string;
@@ -2379,7 +2379,7 @@ export class ContactMessage extends pb_1.Message {
         displayName?: string;
         vcard?: string;
         contextInfo?: ReturnType<typeof ContextInfo.prototype.toObject>;
-    }) {
+    }): ContactMessage {
         const message = new ContactMessage({});
         if (data.displayName != null) {
             message.displayName = data.displayName;
@@ -2450,7 +2450,7 @@ export class ContactMessage extends pb_1.Message {
     }
 }
 export class LocationMessage extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         degreesLatitude?: number;
         degreesLongitude?: number;
@@ -2591,7 +2591,7 @@ export class LocationMessage extends pb_1.Message {
         comment?: string;
         jpegThumbnail?: Uint8Array;
         contextInfo?: ReturnType<typeof ContextInfo.prototype.toObject>;
-    }) {
+    }): LocationMessage {
         const message = new LocationMessage({});
         if (data.degreesLatitude != null) {
             message.degreesLatitude = data.degreesLatitude;
@@ -2770,7 +2770,7 @@ export class LocationMessage extends pb_1.Message {
     }
 }
 export class ExtendedTextMessage extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         text?: string;
         matchedText?: string;
@@ -2911,7 +2911,7 @@ export class ExtendedTextMessage extends pb_1.Message {
         jpegThumbnail?: Uint8Array;
         contextInfo?: ReturnType<typeof ContextInfo.prototype.toObject>;
         doNotPlayInline?: boolean;
-    }) {
+    }): ExtendedTextMessage {
         const message = new ExtendedTextMessage({});
         if (data.text != null) {
             message.text = data.text;
@@ -3104,7 +3104,7 @@ export namespace ExtendedTextMessage {
     }
 }
 export class DocumentMessage extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         url?: string;
         mimetype?: string;
@@ -3256,7 +3256,7 @@ export class DocumentMessage extends pb_1.Message {
         mediaKeyTimestamp?: number;
         jpegThumbnail?: Uint8Array;
         contextInfo?: ReturnType<typeof ContextInfo.prototype.toObject>;
-    }) {
+    }): DocumentMessage {
         const message = new DocumentMessage({});
         if (data.url != null) {
             message.url = data.url;
@@ -3447,7 +3447,7 @@ export class DocumentMessage extends pb_1.Message {
     }
 }
 export class AudioMessage extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         url?: string;
         mimetype?: string;
@@ -3588,7 +3588,7 @@ export class AudioMessage extends pb_1.Message {
         mediaKeyTimestamp?: number;
         contextInfo?: ReturnType<typeof ContextInfo.prototype.toObject>;
         streamingSidecar?: Uint8Array;
-    }) {
+    }): AudioMessage {
         const message = new AudioMessage({});
         if (data.url != null) {
             message.url = data.url;
@@ -3767,7 +3767,7 @@ export class AudioMessage extends pb_1.Message {
     }
 }
 export class VideoMessage extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         url?: string;
         mimetype?: string;
@@ -3972,7 +3972,7 @@ export class VideoMessage extends pb_1.Message {
         contextInfo?: ReturnType<typeof ContextInfo.prototype.toObject>;
         streamingSidecar?: Uint8Array;
         gifAttribution?: VideoMessage.VIDEO_MESSAGE_ATTRIBUTION;
-    }) {
+    }): VideoMessage {
         const message = new VideoMessage({
             interactiveAnnotations: data.interactiveAnnotations.map(item => InteractiveAnnotation.fromObject(item))
         });
@@ -4228,7 +4228,7 @@ export namespace VideoMessage {
     }
 }
 export class Call extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         callKey?: Uint8Array;
     }) {
@@ -4248,7 +4248,7 @@ export class Call extends pb_1.Message {
     }
     static fromObject(data: {
         callKey?: Uint8Array;
-    }) {
+    }): Call {
         const message = new Call({});
         if (data.callKey != null) {
             message.callKey = data.callKey;
@@ -4295,7 +4295,7 @@ export class Call extends pb_1.Message {
     }
 }
 export class Chat extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         displayName?: string;
         id?: string;
@@ -4326,7 +4326,7 @@ export class Chat extends pb_1.Message {
     static fromObject(data: {
         displayName?: string;
         id?: string;
-    }) {
+    }): Chat {
         const message = new Chat({});
         if (data.displayName != null) {
             message.displayName = data.displayName;
@@ -4385,7 +4385,7 @@ export class Chat extends pb_1.Message {
     }
 }
 export class ProtocolMessage extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         key?: MessageKey;
         type?: ProtocolMessage.PROTOCOL_MESSAGE_TYPE;
@@ -4449,7 +4449,7 @@ export class ProtocolMessage extends pb_1.Message {
         ephemeralExpiration?: number;
         ephemeralSettingTimestamp?: number;
         historySyncNotification?: ReturnType<typeof HistorySyncNotification.prototype.toObject>;
-    }) {
+    }): ProtocolMessage {
         const message = new ProtocolMessage({});
         if (data.key != null) {
             message.key = MessageKey.fromObject(data.key);
@@ -4552,7 +4552,7 @@ export namespace ProtocolMessage {
     }
 }
 export class HistorySyncNotification extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         fileSha256?: Uint8Array;
         fileLength?: number;
@@ -4649,7 +4649,7 @@ export class HistorySyncNotification extends pb_1.Message {
         syncType?: HistorySyncNotification.HISTORY_SYNC_NOTIFICATION_HISTORYSYNCTYPE;
         chunkOrder?: number;
         originalMessageId?: string;
-    }) {
+    }): HistorySyncNotification {
         const message = new HistorySyncNotification({});
         if (data.fileSha256 != null) {
             message.fileSha256 = data.fileSha256;
@@ -4789,7 +4789,7 @@ export namespace HistorySyncNotification {
     }
 }
 export class ContactsArrayMessage extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         displayName?: string;
         contacts: ContactMessage[];
@@ -4829,7 +4829,7 @@ export class ContactsArrayMessage extends pb_1.Message {
         displayName?: string;
         contacts: ReturnType<typeof ContactMessage.prototype.toObject>[];
         contextInfo?: ReturnType<typeof ContextInfo.prototype.toObject>;
-    }) {
+    }): ContactsArrayMessage {
         const message = new ContactsArrayMessage({
             contacts: data.contacts.map(item => ContactMessage.fromObject(item))
         });
@@ -4898,7 +4898,7 @@ export class ContactsArrayMessage extends pb_1.Message {
     }
 }
 export class HSMCurrency extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         currencyCode?: string;
         amount1000?: number;
@@ -4929,7 +4929,7 @@ export class HSMCurrency extends pb_1.Message {
     static fromObject(data: {
         currencyCode?: string;
         amount1000?: number;
-    }) {
+    }): HSMCurrency {
         const message = new HSMCurrency({});
         if (data.currencyCode != null) {
             message.currencyCode = data.currencyCode;
@@ -4988,7 +4988,7 @@ export class HSMCurrency extends pb_1.Message {
     }
 }
 export class HSMDateTimeComponent extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         dayOfWeek?: HSMDateTimeComponent.HSM_DATE_TIME_COMPONENT_DAYOFWEEKTYPE;
         year?: number;
@@ -5074,7 +5074,7 @@ export class HSMDateTimeComponent extends pb_1.Message {
         hour?: number;
         minute?: number;
         calendar?: HSMDateTimeComponent.HSM_DATE_TIME_COMPONENT_CALENDARTYPE;
-    }) {
+    }): HSMDateTimeComponent {
         const message = new HSMDateTimeComponent({});
         if (data.dayOfWeek != null) {
             message.dayOfWeek = data.dayOfWeek;
@@ -5208,7 +5208,7 @@ export namespace HSMDateTimeComponent {
     }
 }
 export class HSMDateTimeUnixEpoch extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         timestamp?: number;
     }) {
@@ -5228,7 +5228,7 @@ export class HSMDateTimeUnixEpoch extends pb_1.Message {
     }
     static fromObject(data: {
         timestamp?: number;
-    }) {
+    }): HSMDateTimeUnixEpoch {
         const message = new HSMDateTimeUnixEpoch({});
         if (data.timestamp != null) {
             message.timestamp = data.timestamp;
@@ -5275,7 +5275,7 @@ export class HSMDateTimeUnixEpoch extends pb_1.Message {
     }
 }
 export class HSMDateTime extends pb_1.Message {
-    #one_of_decls = [[1, 2]];
+    #one_of_decls: number[][] = [[1, 2]];
     constructor(data?: any[] | ({} & (({
         component?: HSMDateTimeComponent;
         unixEpoch?: never;
@@ -5319,7 +5319,7 @@ export class HSMDateTime extends pb_1.Message {
     static fromObject(data: {
         component?: ReturnType<typeof HSMDateTimeComponent.prototype.toObject>;
         unixEpoch?: ReturnType<typeof HSMDateTimeUnixEpoch.prototype.toObject>;
-    }) {
+    }): HSMDateTime {
         const message = new HSMDateTime({});
         if (data.component != null) {
             message.component = HSMDateTimeComponent.fromObject(data.component);
@@ -5378,7 +5378,7 @@ export class HSMDateTime extends pb_1.Message {
     }
 }
 export class HSMLocalizableParameter extends pb_1.Message {
-    #one_of_decls = [[2, 3]];
+    #one_of_decls: number[][] = [[2, 3]];
     constructor(data?: any[] | ({
         default?: string;
     } & (({
@@ -5434,7 +5434,7 @@ export class HSMLocalizableParameter extends pb_1.Message {
         default?: string;
         currency?: ReturnType<typeof HSMCurrency.prototype.toObject>;
         dateTime?: ReturnType<typeof HSMDateTime.prototype.toObject>;
-    }) {
+    }): HSMLocalizableParameter {
         const message = new HSMLocalizableParameter({});
         if (data.default != null) {
             message.default = data.default;
@@ -5505,7 +5505,7 @@ export class HSMLocalizableParameter extends pb_1.Message {
     }
 }
 export class HighlyStructuredMessage extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         namespace?: string;
         elementName?: string;
@@ -5609,7 +5609,7 @@ export class HighlyStructuredMessage extends pb_1.Message {
         deterministicLg?: string;
         deterministicLc?: string;
         hydratedHsm?: ReturnType<typeof TemplateMessage.prototype.toObject>;
-    }) {
+    }): HighlyStructuredMessage {
         const message = new HighlyStructuredMessage({
             params: data.params,
             localizableParams: data.localizableParams.map(item => HSMLocalizableParameter.fromObject(item))
@@ -5746,7 +5746,7 @@ export class HighlyStructuredMessage extends pb_1.Message {
     }
 }
 export class SendPaymentMessage extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         noteMessage?: Message;
         requestMessageKey?: MessageKey;
@@ -5777,7 +5777,7 @@ export class SendPaymentMessage extends pb_1.Message {
     static fromObject(data: {
         noteMessage?: ReturnType<typeof Message.prototype.toObject>;
         requestMessageKey?: ReturnType<typeof MessageKey.prototype.toObject>;
-    }) {
+    }): SendPaymentMessage {
         const message = new SendPaymentMessage({});
         if (data.noteMessage != null) {
             message.noteMessage = Message.fromObject(data.noteMessage);
@@ -5836,7 +5836,7 @@ export class SendPaymentMessage extends pb_1.Message {
     }
 }
 export class RequestPaymentMessage extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         noteMessage?: Message;
         currencyCodeIso4217?: string;
@@ -5900,7 +5900,7 @@ export class RequestPaymentMessage extends pb_1.Message {
         amount1000?: number;
         requestFrom?: string;
         expiryTimestamp?: number;
-    }) {
+    }): RequestPaymentMessage {
         const message = new RequestPaymentMessage({});
         if (data.noteMessage != null) {
             message.noteMessage = Message.fromObject(data.noteMessage);
@@ -5995,7 +5995,7 @@ export class RequestPaymentMessage extends pb_1.Message {
     }
 }
 export class DeclinePaymentRequestMessage extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         key?: MessageKey;
     }) {
@@ -6015,7 +6015,7 @@ export class DeclinePaymentRequestMessage extends pb_1.Message {
     }
     static fromObject(data: {
         key?: ReturnType<typeof MessageKey.prototype.toObject>;
-    }) {
+    }): DeclinePaymentRequestMessage {
         const message = new DeclinePaymentRequestMessage({});
         if (data.key != null) {
             message.key = MessageKey.fromObject(data.key);
@@ -6062,7 +6062,7 @@ export class DeclinePaymentRequestMessage extends pb_1.Message {
     }
 }
 export class CancelPaymentRequestMessage extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         key?: MessageKey;
     }) {
@@ -6082,7 +6082,7 @@ export class CancelPaymentRequestMessage extends pb_1.Message {
     }
     static fromObject(data: {
         key?: ReturnType<typeof MessageKey.prototype.toObject>;
-    }) {
+    }): CancelPaymentRequestMessage {
         const message = new CancelPaymentRequestMessage({});
         if (data.key != null) {
             message.key = MessageKey.fromObject(data.key);
@@ -6129,7 +6129,7 @@ export class CancelPaymentRequestMessage extends pb_1.Message {
     }
 }
 export class LiveLocationMessage extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         degreesLatitude?: number;
         degreesLongitude?: number;
@@ -6248,7 +6248,7 @@ export class LiveLocationMessage extends pb_1.Message {
         timeOffset?: number;
         jpegThumbnail?: Uint8Array;
         contextInfo?: ReturnType<typeof ContextInfo.prototype.toObject>;
-    }) {
+    }): LiveLocationMessage {
         const message = new LiveLocationMessage({});
         if (data.degreesLatitude != null) {
             message.degreesLatitude = data.degreesLatitude;
@@ -6403,7 +6403,7 @@ export class LiveLocationMessage extends pb_1.Message {
     }
 }
 export class StickerMessage extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         url?: string;
         fileSha256?: Uint8Array;
@@ -6577,7 +6577,7 @@ export class StickerMessage extends pb_1.Message {
         isAnimated?: boolean;
         pngThumbnail?: Uint8Array;
         contextInfo?: ReturnType<typeof ContextInfo.prototype.toObject>;
-    }) {
+    }): StickerMessage {
         const message = new StickerMessage({});
         if (data.url != null) {
             message.url = data.url;
@@ -6792,7 +6792,7 @@ export class StickerMessage extends pb_1.Message {
     }
 }
 export class FourRowTemplate extends pb_1.Message {
-    #one_of_decls = [[1, 2, 3, 4, 5]];
+    #one_of_decls: number[][] = [[1, 2, 3, 4, 5]];
     constructor(data?: any[] | ({
         content?: HighlyStructuredMessage;
         footer?: HighlyStructuredMessage;
@@ -6925,7 +6925,7 @@ export class FourRowTemplate extends pb_1.Message {
         imageMessage?: ReturnType<typeof ImageMessage.prototype.toObject>;
         videoMessage?: ReturnType<typeof VideoMessage.prototype.toObject>;
         locationMessage?: ReturnType<typeof LocationMessage.prototype.toObject>;
-    }) {
+    }): FourRowTemplate {
         const message = new FourRowTemplate({
             buttons: data.buttons.map(item => TemplateButton.fromObject(item))
         });
@@ -7054,7 +7054,7 @@ export class FourRowTemplate extends pb_1.Message {
     }
 }
 export class HydratedFourRowTemplate extends pb_1.Message {
-    #one_of_decls = [[1, 2, 3, 4, 5]];
+    #one_of_decls: number[][] = [[1, 2, 3, 4, 5]];
     constructor(data?: any[] | ({
         hydratedContentText?: string;
         hydratedFooterText?: string;
@@ -7198,7 +7198,7 @@ export class HydratedFourRowTemplate extends pb_1.Message {
         imageMessage?: ReturnType<typeof ImageMessage.prototype.toObject>;
         videoMessage?: ReturnType<typeof VideoMessage.prototype.toObject>;
         locationMessage?: ReturnType<typeof LocationMessage.prototype.toObject>;
-    }) {
+    }): HydratedFourRowTemplate {
         const message = new HydratedFourRowTemplate({
             hydratedButtons: data.hydratedButtons.map(item => HydratedTemplateButton.fromObject(item))
         });
@@ -7339,7 +7339,7 @@ export class HydratedFourRowTemplate extends pb_1.Message {
     }
 }
 export class TemplateMessage extends pb_1.Message {
-    #one_of_decls = [[1, 2]];
+    #one_of_decls: number[][] = [[1, 2]];
     constructor(data?: any[] | ({
         contextInfo?: ContextInfo;
         hydratedTemplate?: HydratedFourRowTemplate;
@@ -7406,7 +7406,7 @@ export class TemplateMessage extends pb_1.Message {
         hydratedTemplate?: ReturnType<typeof HydratedFourRowTemplate.prototype.toObject>;
         fourRowTemplate?: ReturnType<typeof FourRowTemplate.prototype.toObject>;
         hydratedFourRowTemplate?: ReturnType<typeof HydratedFourRowTemplate.prototype.toObject>;
-    }) {
+    }): TemplateMessage {
         const message = new TemplateMessage({});
         if (data.contextInfo != null) {
             message.contextInfo = ContextInfo.fromObject(data.contextInfo);
@@ -7489,7 +7489,7 @@ export class TemplateMessage extends pb_1.Message {
     }
 }
 export class TemplateButtonReplyMessage extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         selectedId?: string;
         selectedDisplayText?: string;
@@ -7542,7 +7542,7 @@ export class TemplateButtonReplyMessage extends pb_1.Message {
         selectedDisplayText?: string;
         contextInfo?: ReturnType<typeof ContextInfo.prototype.toObject>;
         selectedIndex?: number;
-    }) {
+    }): TemplateButtonReplyMessage {
         const message = new TemplateButtonReplyMessage({});
         if (data.selectedId != null) {
             message.selectedId = data.selectedId;
@@ -7625,7 +7625,7 @@ export class TemplateButtonReplyMessage extends pb_1.Message {
     }
 }
 export class CatalogSnapshot extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         catalogImage?: ImageMessage;
         title?: string;
@@ -7667,7 +7667,7 @@ export class CatalogSnapshot extends pb_1.Message {
         catalogImage?: ReturnType<typeof ImageMessage.prototype.toObject>;
         title?: string;
         description?: string;
-    }) {
+    }): CatalogSnapshot {
         const message = new CatalogSnapshot({});
         if (data.catalogImage != null) {
             message.catalogImage = ImageMessage.fromObject(data.catalogImage);
@@ -7738,7 +7738,7 @@ export class CatalogSnapshot extends pb_1.Message {
     }
 }
 export class ProductSnapshot extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         productImage?: ImageMessage;
         productId?: string;
@@ -7857,7 +7857,7 @@ export class ProductSnapshot extends pb_1.Message {
         url?: string;
         productImageCount?: number;
         firstImageId?: string;
-    }) {
+    }): ProductSnapshot {
         const message = new ProductSnapshot({});
         if (data.productImage != null) {
             message.productImage = ImageMessage.fromObject(data.productImage);
@@ -8012,7 +8012,7 @@ export class ProductSnapshot extends pb_1.Message {
     }
 }
 export class ProductMessage extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         product?: ProductSnapshot;
         businessOwnerJid?: string;
@@ -8065,7 +8065,7 @@ export class ProductMessage extends pb_1.Message {
         businessOwnerJid?: string;
         catalog?: ReturnType<typeof CatalogSnapshot.prototype.toObject>;
         contextInfo?: ReturnType<typeof ContextInfo.prototype.toObject>;
-    }) {
+    }): ProductMessage {
         const message = new ProductMessage({});
         if (data.product != null) {
             message.product = ProductSnapshot.fromObject(data.product);
@@ -8148,7 +8148,7 @@ export class ProductMessage extends pb_1.Message {
     }
 }
 export class GroupInviteMessage extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         groupJid?: string;
         inviteCode?: string;
@@ -8234,7 +8234,7 @@ export class GroupInviteMessage extends pb_1.Message {
         jpegThumbnail?: Uint8Array;
         caption?: string;
         contextInfo?: ReturnType<typeof ContextInfo.prototype.toObject>;
-    }) {
+    }): GroupInviteMessage {
         const message = new GroupInviteMessage({});
         if (data.groupJid != null) {
             message.groupJid = data.groupJid;
@@ -8353,7 +8353,7 @@ export class GroupInviteMessage extends pb_1.Message {
     }
 }
 export class DeviceSentMessage extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         destinationJid?: string;
         message?: Message;
@@ -8395,7 +8395,7 @@ export class DeviceSentMessage extends pb_1.Message {
         destinationJid?: string;
         message?: ReturnType<typeof Message.prototype.toObject>;
         phash?: string;
-    }) {
+    }): DeviceSentMessage {
         const message = new DeviceSentMessage({});
         if (data.destinationJid != null) {
             message.destinationJid = data.destinationJid;
@@ -8466,7 +8466,7 @@ export class DeviceSentMessage extends pb_1.Message {
     }
 }
 export class Message extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         conversation?: string;
         senderKeyDistributionMessage?: SenderKeyDistributionMessage;
@@ -8761,7 +8761,7 @@ export class Message extends pb_1.Message {
         templateButtonReplyMessage?: ReturnType<typeof TemplateButtonReplyMessage.prototype.toObject>;
         productMessage?: ReturnType<typeof ProductMessage.prototype.toObject>;
         deviceSentMessage?: ReturnType<typeof DeviceSentMessage.prototype.toObject>;
-    }) {
+    }): Message {
         const message = new Message({});
         if (data.conversation != null) {
             message.conversation = data.conversation;
@@ -9108,7 +9108,7 @@ export class Message extends pb_1.Message {
     }
 }
 export class MessageKey extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         remoteJid?: string;
         fromMe?: boolean;
@@ -9161,7 +9161,7 @@ export class MessageKey extends pb_1.Message {
         fromMe?: boolean;
         id?: string;
         participant?: string;
-    }) {
+    }): MessageKey {
         const message = new MessageKey({});
         if (data.remoteJid != null) {
             message.remoteJid = data.remoteJid;
@@ -9244,7 +9244,7 @@ export class MessageKey extends pb_1.Message {
     }
 }
 export class WebFeatures extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         labelsDisplay?: WebFeatures.WEB_FEATURES_FLAG;
         voipIndividualOutgoing?: WebFeatures.WEB_FEATURES_FLAG;
@@ -9616,7 +9616,7 @@ export class WebFeatures extends pb_1.Message {
         e2ENotificationSync?: WebFeatures.WEB_FEATURES_FLAG;
         recentStickersV2?: WebFeatures.WEB_FEATURES_FLAG;
         syncdRelease1?: WebFeatures.WEB_FEATURES_FLAG;
-    }) {
+    }): WebFeatures {
         const message = new WebFeatures({});
         if (data.labelsDisplay != null) {
             message.labelsDisplay = data.labelsDisplay;
@@ -10055,7 +10055,7 @@ export namespace WebFeatures {
     }
 }
 export class TabletNotificationsInfo extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         timestamp?: number;
         unreadChats?: number;
@@ -10106,7 +10106,7 @@ export class TabletNotificationsInfo extends pb_1.Message {
         unreadChats?: number;
         notifyMessageCount?: number;
         notifyMessage: ReturnType<typeof NotificationMessageInfo.prototype.toObject>[];
-    }) {
+    }): TabletNotificationsInfo {
         const message = new TabletNotificationsInfo({
             notifyMessage: data.notifyMessage.map(item => NotificationMessageInfo.fromObject(item))
         });
@@ -10187,7 +10187,7 @@ export class TabletNotificationsInfo extends pb_1.Message {
     }
 }
 export class NotificationMessageInfo extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         key?: MessageKey;
         message?: Message;
@@ -10240,7 +10240,7 @@ export class NotificationMessageInfo extends pb_1.Message {
         message?: ReturnType<typeof Message.prototype.toObject>;
         messageTimestamp?: number;
         participant?: string;
-    }) {
+    }): NotificationMessageInfo {
         const message = new NotificationMessageInfo({});
         if (data.key != null) {
             message.key = MessageKey.fromObject(data.key);
@@ -10323,7 +10323,7 @@ export class NotificationMessageInfo extends pb_1.Message {
     }
 }
 export class WebNotificationsInfo extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         timestamp?: number;
         unreadChats?: number;
@@ -10374,7 +10374,7 @@ export class WebNotificationsInfo extends pb_1.Message {
         unreadChats?: number;
         notifyMessageCount?: number;
         notifyMessages: ReturnType<typeof WebMessageInfo.prototype.toObject>[];
-    }) {
+    }): WebNotificationsInfo {
         const message = new WebNotificationsInfo({
             notifyMessages: data.notifyMessages.map(item => WebMessageInfo.fromObject(item))
         });
@@ -10455,7 +10455,7 @@ export class WebNotificationsInfo extends pb_1.Message {
     }
 }
 export class PaymentInfo extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         currencyDeprecated?: PaymentInfo.PAYMENT_INFO_CURRENCY;
         amount1000?: number;
@@ -10574,7 +10574,7 @@ export class PaymentInfo extends pb_1.Message {
         futureproofed?: boolean;
         currency?: string;
         txnStatus?: PaymentInfo.PAYMENT_INFO_TXNSTATUS;
-    }) {
+    }): PaymentInfo {
         const message = new PaymentInfo({});
         if (data.currencyDeprecated != null) {
             message.currencyDeprecated = data.currencyDeprecated;
@@ -10779,7 +10779,7 @@ export namespace PaymentInfo {
     }
 }
 export class WebMessageInfo extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         key: MessageKey;
         message?: Message;
@@ -11046,7 +11046,7 @@ export class WebMessageInfo extends pb_1.Message {
         ephemeralStartTimestamp?: number;
         ephemeralDuration?: number;
         ephemeralOffToOn?: boolean;
-    }) {
+    }): WebMessageInfo {
         const message = new WebMessageInfo({
             key: MessageKey.fromObject(data.key),
             messageStubParameters: data.messageStubParameters,

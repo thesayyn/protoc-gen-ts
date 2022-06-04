@@ -5,7 +5,7 @@
  * git: https://github.com/thesayyn/protoc-gen-ts */
 import * as pb_1 from "google-protobuf";
 export class MessageWithDefault extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         bool_field?: boolean;
         string_field?: string;
@@ -47,7 +47,7 @@ export class MessageWithDefault extends pb_1.Message {
         bool_field?: boolean;
         string_field?: string;
         int32_field?: number;
-    }) {
+    }): MessageWithDefault {
         const message = new MessageWithDefault({});
         if (data.bool_field != null) {
             message.bool_field = data.bool_field;

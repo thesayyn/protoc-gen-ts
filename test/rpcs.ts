@@ -6,13 +6,13 @@
 import * as pb_1 from "google-protobuf";
 import * as grpc_1 from "@grpc/grpc-js";
 export class None extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {}) {
         super();
         pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
         if (!Array.isArray(data) && typeof data == "object") { }
     }
-    static fromObject(data: {}) {
+    static fromObject(data: {}): None {
         const message = new None({});
         return message;
     }
@@ -46,7 +46,7 @@ export class None extends pb_1.Message {
     }
 }
 export class _Object extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         id?: string;
         size?: number;
@@ -88,7 +88,7 @@ export class _Object extends pb_1.Message {
         id?: string;
         size?: number;
         mimeType?: string;
-    }) {
+    }): _Object {
         const message = new _Object({});
         if (data.id != null) {
             message.id = data.id;
@@ -159,7 +159,7 @@ export class _Object extends pb_1.Message {
     }
 }
 export class Chunk extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         data?: Uint8Array;
         range?: Chunk.Range;
@@ -190,7 +190,7 @@ export class Chunk extends pb_1.Message {
     static fromObject(data: {
         data?: Uint8Array;
         range?: ReturnType<typeof Chunk.Range.prototype.toObject>;
-    }) {
+    }): Chunk {
         const message = new Chunk({});
         if (data.data != null) {
             message.data = data.data;
@@ -250,7 +250,7 @@ export class Chunk extends pb_1.Message {
 }
 export namespace Chunk {
     export class Range extends pb_1.Message {
-        #one_of_decls = [];
+        #one_of_decls: number[][] = [];
         constructor(data?: any[] | {
             start?: number;
             end?: number;
@@ -281,7 +281,7 @@ export namespace Chunk {
         static fromObject(data: {
             start?: number;
             end?: number;
-        }) {
+        }): Range {
             const message = new Range({});
             if (data.start != null) {
                 message.start = data.start;
@@ -340,7 +340,7 @@ export namespace Chunk {
         }
     }
     export class Query extends pb_1.Message {
-        #one_of_decls = [];
+        #one_of_decls: number[][] = [];
         constructor(data?: any[] | {
             id?: string;
             range?: Chunk.Range;
@@ -371,7 +371,7 @@ export namespace Chunk {
         static fromObject(data: {
             id?: string;
             range?: ReturnType<typeof Chunk.Range.prototype.toObject>;
-        }) {
+        }): Query {
             const message = new Query({});
             if (data.id != null) {
                 message.id = data.id;
@@ -431,7 +431,7 @@ export namespace Chunk {
     }
 }
 export class Query extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         id?: string;
     }) {
@@ -451,7 +451,7 @@ export class Query extends pb_1.Message {
     }
     static fromObject(data: {
         id?: string;
-    }) {
+    }): Query {
         const message = new Query({});
         if (data.id != null) {
             message.id = data.id;
@@ -499,7 +499,7 @@ export class Query extends pb_1.Message {
 }
 export namespace Query {
     export class Result extends pb_1.Message {
-        #one_of_decls = [];
+        #one_of_decls: number[][] = [];
         constructor(data?: any[] | {
             objects?: _Object[];
         }) {
@@ -519,7 +519,7 @@ export namespace Query {
         }
         static fromObject(data: {
             objects?: ReturnType<typeof _Object.prototype.toObject>[];
-        }) {
+        }): Result {
             const message = new Result({});
             if (data.objects != null) {
                 message.objects = data.objects.map(item => _Object.fromObject(item));
@@ -567,7 +567,7 @@ export namespace Query {
     }
 }
 export class Put extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         id?: string;
         chunk?: Chunk;
@@ -598,7 +598,7 @@ export class Put extends pb_1.Message {
     static fromObject(data: {
         id?: string;
         chunk?: ReturnType<typeof Chunk.prototype.toObject>;
-    }) {
+    }): Put {
         const message = new Put({});
         if (data.id != null) {
             message.id = data.id;

@@ -5,7 +5,7 @@
  * git: https://github.com/thesayyn/protoc-gen-ts */
 import * as pb_1 from "google-protobuf";
 export class Optional extends pb_1.Message {
-    #one_of_decls = [[2]];
+    #one_of_decls: number[][] = [[2]];
     constructor(data?: any[] | ({
         should_not_be_required?: string[];
     } & (({
@@ -46,7 +46,7 @@ export class Optional extends pb_1.Message {
     static fromObject(data: {
         should_not_be_required?: string[];
         proto3_optional?: string;
-    }) {
+    }): Optional {
         const message = new Optional({});
         if (data.should_not_be_required != null) {
             message.should_not_be_required = data.should_not_be_required;

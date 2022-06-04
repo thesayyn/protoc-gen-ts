@@ -5,7 +5,7 @@
  * git: https://github.com/thesayyn/protoc-gen-ts */
 import * as pb_1 from "google-protobuf";
 export class Integers extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         int32?: number;
         int64?: number;
@@ -102,7 +102,7 @@ export class Integers extends pb_1.Message {
         sfixed64?: number;
         fixed32?: number;
         fixed64?: number;
-    }) {
+    }): Integers {
         const message = new Integers({});
         if (data.int32 != null) {
             message.int32 = data.int32;

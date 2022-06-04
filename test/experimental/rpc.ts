@@ -6,7 +6,7 @@
 import * as pb_1 from "google-protobuf";
 import * as grpc_1 from "@grpc/grpc-js";
 export class Chunk extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         data?: Uint8Array;
     }) {
@@ -26,7 +26,7 @@ export class Chunk extends pb_1.Message {
     }
     static fromObject(data: {
         data?: Uint8Array;
-    }) {
+    }): Chunk {
         const message = new Chunk({});
         if (data.data != null) {
             message.data = data.data;
@@ -73,7 +73,7 @@ export class Chunk extends pb_1.Message {
     }
 }
 export class Result extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         id?: number;
     }) {
@@ -93,7 +93,7 @@ export class Result extends pb_1.Message {
     }
     static fromObject(data: {
         id?: number;
-    }) {
+    }): Result {
         const message = new Result({});
         if (data.id != null) {
             message.id = data.id;

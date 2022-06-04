@@ -5,7 +5,7 @@
  * git: https://github.com/thesayyn/protoc-gen-ts */
 import * as pb_1 from "google-protobuf";
 export class Repeated extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         indx?: number[];
     }) {
@@ -25,7 +25,7 @@ export class Repeated extends pb_1.Message {
     }
     static fromObject(data: {
         indx?: number[];
-    }) {
+    }): Repeated {
         const message = new Repeated({});
         if (data.indx != null) {
             message.indx = data.indx;

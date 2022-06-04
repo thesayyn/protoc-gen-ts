@@ -6,7 +6,7 @@
 import * as pb_1 from "google-protobuf";
 export namespace pkg.mycompany {
     export class Message extends pb_1.Message {
-        #one_of_decls = [];
+        #one_of_decls: number[][] = [];
         constructor(data?: any[] | {
             field?: string[];
         }) {
@@ -26,7 +26,7 @@ export namespace pkg.mycompany {
         }
         static fromObject(data: {
             field?: string[];
-        }) {
+        }): Message {
             const message = new Message({});
             if (data.field != null) {
                 message.field = data.field;

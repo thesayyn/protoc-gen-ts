@@ -5,7 +5,7 @@
  * git: https://github.com/thesayyn/protoc-gen-ts */
 import * as pb_1 from "google-protobuf";
 export class Serialization extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         test?: string;
     }) {
@@ -25,7 +25,7 @@ export class Serialization extends pb_1.Message {
     }
     static fromObject(data: {
         test?: string;
-    }) {
+    }): Serialization {
         const message = new Serialization({});
         if (data.test != null) {
             message.test = data.test;

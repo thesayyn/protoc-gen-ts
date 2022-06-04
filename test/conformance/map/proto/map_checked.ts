@@ -6,7 +6,7 @@
 import * as pb_1 from "google-protobuf";
 export namespace maps {
     export class Topic extends pb_1.Message {
-        #one_of_decls = [];
+        #one_of_decls: number[][] = [];
         constructor(data?: any[] | {
             link?: string;
         }) {
@@ -26,7 +26,7 @@ export namespace maps {
         }
         static fromObject(data: {
             link?: string;
-        }) {
+        }): Topic {
             const message = new Topic({});
             if (data.link != null) {
                 message.link = data.link;
@@ -73,7 +73,7 @@ export namespace maps {
         }
     }
     export class Tags extends pb_1.Message {
-        #one_of_decls = [];
+        #one_of_decls: number[][] = [];
         constructor(data?: any[] | {
             key?: string;
             keys?: Map<string, string>;
@@ -138,7 +138,7 @@ export namespace maps {
             topics_with_intkeys?: {
                 [key: number]: ReturnType<typeof Topic.prototype.toObject>;
             };
-        }) {
+        }): Tags {
             const message = new Tags({});
             if (data.key != null) {
                 message.key = data.key;

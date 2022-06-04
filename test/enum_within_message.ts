@@ -6,7 +6,7 @@
 import * as pb_1 from "google-protobuf";
 export namespace main {
     export class Code extends pb_1.Message {
-        #one_of_decls = [];
+        #one_of_decls: number[][] = [];
         constructor(data?: any[] | {
             language?: Code.Language;
             lines?: number;
@@ -37,7 +37,7 @@ export namespace main {
         static fromObject(data: {
             language?: Code.Language;
             lines?: number;
-        }) {
+        }): Code {
             const message = new Code({});
             if (data.language != null) {
                 message.language = data.language;
