@@ -2045,7 +2045,11 @@ function createOneOfDecls(
     [],
     ts.factory.createPrivateIdentifier("#one_of_decls"),
     undefined,
-    undefined,
+    ts.factory.createArrayTypeNode(
+      ts.factory.createArrayTypeNode(
+        ts.factory.createKeywordTypeNode(ts.SyntaxKind.NumberKeyword)
+      )
+    ),
     ts.factory.createArrayLiteralExpression(decls),
   );
 }

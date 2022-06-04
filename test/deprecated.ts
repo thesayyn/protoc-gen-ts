@@ -16,7 +16,7 @@ export enum EnumName2 {
     SECOND = 0
 }
 export class MessageName extends pb_1.Message {
-    #one_of_decls = [[2, 3]];
+    #one_of_decls: number[][] = [[2, 3]];
     constructor(data?: any[] | ({
         /** @deprecated*/
         deprecated_field?: string;
@@ -150,7 +150,7 @@ export class MessageName extends pb_1.Message {
 }
 /** @deprecated*/
 export class MessageName2 extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {}) {
         super();
         pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);

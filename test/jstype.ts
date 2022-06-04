@@ -5,7 +5,7 @@
  * git: https://github.com/thesayyn/protoc-gen-ts */
 import * as pb_1 from "google-protobuf";
 export class JSType extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         int_but_string?: string;
         int_and_normal?: number;

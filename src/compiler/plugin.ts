@@ -6,7 +6,7 @@
 import * as dependency_1 from "./descriptor";
 import * as pb_1 from "google-protobuf";
 export class Version extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         major?: number;
         minor?: number;
@@ -142,7 +142,7 @@ export class Version extends pb_1.Message {
     }
 }
 export class CodeGeneratorRequest extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         file_to_generate: string[];
         parameter?: string;
@@ -268,7 +268,7 @@ export class CodeGeneratorRequest extends pb_1.Message {
     }
 }
 export class CodeGeneratorResponse extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         error?: string;
         supported_features?: number;
@@ -382,7 +382,7 @@ export namespace CodeGeneratorResponse {
         FEATURE_PROTO3_OPTIONAL = 1
     }
     export class File extends pb_1.Message {
-        #one_of_decls = [];
+        #one_of_decls: number[][] = [];
         constructor(data?: any[] | {
             name?: string;
             insertion_point?: string;

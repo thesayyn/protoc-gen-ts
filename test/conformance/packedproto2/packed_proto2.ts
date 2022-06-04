@@ -5,7 +5,7 @@
  * git: https://github.com/thesayyn/protoc-gen-ts */
 import * as pb_1 from "google-protobuf";
 export class HydratedQuickReplyButton extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         displayText?: string;
         id?: string;
@@ -95,7 +95,7 @@ export class HydratedQuickReplyButton extends pb_1.Message {
     }
 }
 export class HydratedURLButton extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         displayText?: string;
         url?: string;
@@ -185,7 +185,7 @@ export class HydratedURLButton extends pb_1.Message {
     }
 }
 export class HydratedCallButton extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         displayText?: string;
         phoneNumber?: string;
@@ -275,7 +275,7 @@ export class HydratedCallButton extends pb_1.Message {
     }
 }
 export class HydratedTemplateButton extends pb_1.Message {
-    #one_of_decls = [[1, 2, 3]];
+    #one_of_decls: number[][] = [[1, 2, 3]];
     constructor(data?: any[] | ({
         index?: number;
     } & (({
@@ -431,7 +431,7 @@ export class HydratedTemplateButton extends pb_1.Message {
     }
 }
 export class QuickReplyButton extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         displayText?: HighlyStructuredMessage;
         id?: string;
@@ -521,7 +521,7 @@ export class QuickReplyButton extends pb_1.Message {
     }
 }
 export class URLButton extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         displayText?: HighlyStructuredMessage;
         url?: HighlyStructuredMessage;
@@ -611,7 +611,7 @@ export class URLButton extends pb_1.Message {
     }
 }
 export class CallButton extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         displayText?: HighlyStructuredMessage;
         phoneNumber?: HighlyStructuredMessage;
@@ -701,7 +701,7 @@ export class CallButton extends pb_1.Message {
     }
 }
 export class TemplateButton extends pb_1.Message {
-    #one_of_decls = [[1, 2, 3]];
+    #one_of_decls: number[][] = [[1, 2, 3]];
     constructor(data?: any[] | ({
         index?: number;
     } & (({
@@ -857,7 +857,7 @@ export class TemplateButton extends pb_1.Message {
     }
 }
 export class Location extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         degreesLatitude?: number;
         degreesLongitude?: number;
@@ -970,7 +970,7 @@ export class Location extends pb_1.Message {
     }
 }
 export class Point extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         xDeprecated?: number;
         yDeprecated?: number;
@@ -1106,7 +1106,7 @@ export class Point extends pb_1.Message {
     }
 }
 export class InteractiveAnnotation extends pb_1.Message {
-    #one_of_decls = [[2]];
+    #one_of_decls: number[][] = [[2]];
     constructor(data?: any[] | ({
         polygonVertices: Point[];
     } & (({
@@ -1202,7 +1202,7 @@ export class InteractiveAnnotation extends pb_1.Message {
     }
 }
 export class AdReplyInfo extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         advertiserName?: string;
         mediaType?: AdReplyInfo.AD_REPLY_INFO_MEDIATYPE;
@@ -1345,7 +1345,7 @@ export namespace AdReplyInfo {
     }
 }
 export class ContextInfo extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         stanzaId?: string;
         participant?: string;
@@ -1730,7 +1730,7 @@ export class ContextInfo extends pb_1.Message {
     }
 }
 export class SenderKeyDistributionMessage extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         groupId?: string;
         axolotlSenderKeyDistributionMessage?: Uint8Array;
@@ -1820,7 +1820,7 @@ export class SenderKeyDistributionMessage extends pb_1.Message {
     }
 }
 export class ImageMessage extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         url?: string;
         mimetype?: string;
@@ -2337,7 +2337,7 @@ export class ImageMessage extends pb_1.Message {
     }
 }
 export class ContactMessage extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         displayName?: string;
         vcard?: string;
@@ -2450,7 +2450,7 @@ export class ContactMessage extends pb_1.Message {
     }
 }
 export class LocationMessage extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         degreesLatitude?: number;
         degreesLongitude?: number;
@@ -2770,7 +2770,7 @@ export class LocationMessage extends pb_1.Message {
     }
 }
 export class ExtendedTextMessage extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         text?: string;
         matchedText?: string;
@@ -3104,7 +3104,7 @@ export namespace ExtendedTextMessage {
     }
 }
 export class DocumentMessage extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         url?: string;
         mimetype?: string;
@@ -3447,7 +3447,7 @@ export class DocumentMessage extends pb_1.Message {
     }
 }
 export class AudioMessage extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         url?: string;
         mimetype?: string;
@@ -3767,7 +3767,7 @@ export class AudioMessage extends pb_1.Message {
     }
 }
 export class VideoMessage extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         url?: string;
         mimetype?: string;
@@ -4228,7 +4228,7 @@ export namespace VideoMessage {
     }
 }
 export class Call extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         callKey?: Uint8Array;
     }) {
@@ -4295,7 +4295,7 @@ export class Call extends pb_1.Message {
     }
 }
 export class Chat extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         displayName?: string;
         id?: string;
@@ -4385,7 +4385,7 @@ export class Chat extends pb_1.Message {
     }
 }
 export class ProtocolMessage extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         key?: MessageKey;
         type?: ProtocolMessage.PROTOCOL_MESSAGE_TYPE;
@@ -4552,7 +4552,7 @@ export namespace ProtocolMessage {
     }
 }
 export class HistorySyncNotification extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         fileSha256?: Uint8Array;
         fileLength?: number;
@@ -4789,7 +4789,7 @@ export namespace HistorySyncNotification {
     }
 }
 export class ContactsArrayMessage extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         displayName?: string;
         contacts: ContactMessage[];
@@ -4898,7 +4898,7 @@ export class ContactsArrayMessage extends pb_1.Message {
     }
 }
 export class HSMCurrency extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         currencyCode?: string;
         amount1000?: number;
@@ -4988,7 +4988,7 @@ export class HSMCurrency extends pb_1.Message {
     }
 }
 export class HSMDateTimeComponent extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         dayOfWeek?: HSMDateTimeComponent.HSM_DATE_TIME_COMPONENT_DAYOFWEEKTYPE;
         year?: number;
@@ -5208,7 +5208,7 @@ export namespace HSMDateTimeComponent {
     }
 }
 export class HSMDateTimeUnixEpoch extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         timestamp?: number;
     }) {
@@ -5275,7 +5275,7 @@ export class HSMDateTimeUnixEpoch extends pb_1.Message {
     }
 }
 export class HSMDateTime extends pb_1.Message {
-    #one_of_decls = [[1, 2]];
+    #one_of_decls: number[][] = [[1, 2]];
     constructor(data?: any[] | ({} & (({
         component?: HSMDateTimeComponent;
         unixEpoch?: never;
@@ -5378,7 +5378,7 @@ export class HSMDateTime extends pb_1.Message {
     }
 }
 export class HSMLocalizableParameter extends pb_1.Message {
-    #one_of_decls = [[2, 3]];
+    #one_of_decls: number[][] = [[2, 3]];
     constructor(data?: any[] | ({
         default?: string;
     } & (({
@@ -5505,7 +5505,7 @@ export class HSMLocalizableParameter extends pb_1.Message {
     }
 }
 export class HighlyStructuredMessage extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         namespace?: string;
         elementName?: string;
@@ -5746,7 +5746,7 @@ export class HighlyStructuredMessage extends pb_1.Message {
     }
 }
 export class SendPaymentMessage extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         noteMessage?: Message;
         requestMessageKey?: MessageKey;
@@ -5836,7 +5836,7 @@ export class SendPaymentMessage extends pb_1.Message {
     }
 }
 export class RequestPaymentMessage extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         noteMessage?: Message;
         currencyCodeIso4217?: string;
@@ -5995,7 +5995,7 @@ export class RequestPaymentMessage extends pb_1.Message {
     }
 }
 export class DeclinePaymentRequestMessage extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         key?: MessageKey;
     }) {
@@ -6062,7 +6062,7 @@ export class DeclinePaymentRequestMessage extends pb_1.Message {
     }
 }
 export class CancelPaymentRequestMessage extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         key?: MessageKey;
     }) {
@@ -6129,7 +6129,7 @@ export class CancelPaymentRequestMessage extends pb_1.Message {
     }
 }
 export class LiveLocationMessage extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         degreesLatitude?: number;
         degreesLongitude?: number;
@@ -6403,7 +6403,7 @@ export class LiveLocationMessage extends pb_1.Message {
     }
 }
 export class StickerMessage extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         url?: string;
         fileSha256?: Uint8Array;
@@ -6792,7 +6792,7 @@ export class StickerMessage extends pb_1.Message {
     }
 }
 export class FourRowTemplate extends pb_1.Message {
-    #one_of_decls = [[1, 2, 3, 4, 5]];
+    #one_of_decls: number[][] = [[1, 2, 3, 4, 5]];
     constructor(data?: any[] | ({
         content?: HighlyStructuredMessage;
         footer?: HighlyStructuredMessage;
@@ -7054,7 +7054,7 @@ export class FourRowTemplate extends pb_1.Message {
     }
 }
 export class HydratedFourRowTemplate extends pb_1.Message {
-    #one_of_decls = [[1, 2, 3, 4, 5]];
+    #one_of_decls: number[][] = [[1, 2, 3, 4, 5]];
     constructor(data?: any[] | ({
         hydratedContentText?: string;
         hydratedFooterText?: string;
@@ -7339,7 +7339,7 @@ export class HydratedFourRowTemplate extends pb_1.Message {
     }
 }
 export class TemplateMessage extends pb_1.Message {
-    #one_of_decls = [[1, 2]];
+    #one_of_decls: number[][] = [[1, 2]];
     constructor(data?: any[] | ({
         contextInfo?: ContextInfo;
         hydratedTemplate?: HydratedFourRowTemplate;
@@ -7489,7 +7489,7 @@ export class TemplateMessage extends pb_1.Message {
     }
 }
 export class TemplateButtonReplyMessage extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         selectedId?: string;
         selectedDisplayText?: string;
@@ -7625,7 +7625,7 @@ export class TemplateButtonReplyMessage extends pb_1.Message {
     }
 }
 export class CatalogSnapshot extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         catalogImage?: ImageMessage;
         title?: string;
@@ -7738,7 +7738,7 @@ export class CatalogSnapshot extends pb_1.Message {
     }
 }
 export class ProductSnapshot extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         productImage?: ImageMessage;
         productId?: string;
@@ -8012,7 +8012,7 @@ export class ProductSnapshot extends pb_1.Message {
     }
 }
 export class ProductMessage extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         product?: ProductSnapshot;
         businessOwnerJid?: string;
@@ -8148,7 +8148,7 @@ export class ProductMessage extends pb_1.Message {
     }
 }
 export class GroupInviteMessage extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         groupJid?: string;
         inviteCode?: string;
@@ -8353,7 +8353,7 @@ export class GroupInviteMessage extends pb_1.Message {
     }
 }
 export class DeviceSentMessage extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         destinationJid?: string;
         message?: Message;
@@ -8466,7 +8466,7 @@ export class DeviceSentMessage extends pb_1.Message {
     }
 }
 export class Message extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         conversation?: string;
         senderKeyDistributionMessage?: SenderKeyDistributionMessage;
@@ -9108,7 +9108,7 @@ export class Message extends pb_1.Message {
     }
 }
 export class MessageKey extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         remoteJid?: string;
         fromMe?: boolean;
@@ -9244,7 +9244,7 @@ export class MessageKey extends pb_1.Message {
     }
 }
 export class WebFeatures extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         labelsDisplay?: WebFeatures.WEB_FEATURES_FLAG;
         voipIndividualOutgoing?: WebFeatures.WEB_FEATURES_FLAG;
@@ -10055,7 +10055,7 @@ export namespace WebFeatures {
     }
 }
 export class TabletNotificationsInfo extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         timestamp?: number;
         unreadChats?: number;
@@ -10187,7 +10187,7 @@ export class TabletNotificationsInfo extends pb_1.Message {
     }
 }
 export class NotificationMessageInfo extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         key?: MessageKey;
         message?: Message;
@@ -10323,7 +10323,7 @@ export class NotificationMessageInfo extends pb_1.Message {
     }
 }
 export class WebNotificationsInfo extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         timestamp?: number;
         unreadChats?: number;
@@ -10455,7 +10455,7 @@ export class WebNotificationsInfo extends pb_1.Message {
     }
 }
 export class PaymentInfo extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         currencyDeprecated?: PaymentInfo.PAYMENT_INFO_CURRENCY;
         amount1000?: number;
@@ -10779,7 +10779,7 @@ export namespace PaymentInfo {
     }
 }
 export class WebMessageInfo extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         key: MessageKey;
         message?: Message;

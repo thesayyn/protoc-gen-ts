@@ -7,7 +7,7 @@ import * as dependency_1 from "./nested";
 import * as dependency_2 from "./double_nested";
 import * as pb_1 from "google-protobuf";
 export class NoNamespace extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         label?: dependency_1.Target;
         other_fields?: dependency_2.MessageFields;

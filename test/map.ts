@@ -6,7 +6,7 @@
 import * as dependency_1 from "./imported";
 import * as pb_1 from "google-protobuf";
 export class Topic extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         link?: string;
     }) {
@@ -73,7 +73,7 @@ export class Topic extends pb_1.Message {
     }
 }
 export class Tags extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         key?: string;
         keys?: Map<string, string>;

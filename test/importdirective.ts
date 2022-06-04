@@ -8,7 +8,7 @@ import * as pb_1 from "google-protobuf";
 import * as grpc_1 from "@grpc/grpc-js";
 export namespace importdirective {
     export class Message extends pb_1.Message {
-        #one_of_decls = [];
+        #one_of_decls: number[][] = [];
         constructor(data?: any[] | {
             importedField?: dependency_1.importdirective.Imported;
             submessageField?: dependency_1.importdirective.Imported.SubMessage;

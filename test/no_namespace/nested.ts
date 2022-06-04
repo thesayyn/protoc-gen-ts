@@ -14,7 +14,7 @@ export enum Type {
     BUCKET = 6
 }
 export class SchedulingContext extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         env?: SchedulingContextEnv[];
         timeout?: number;
@@ -127,7 +127,7 @@ export class SchedulingContext extends pb_1.Message {
     }
 }
 export class SchedulingContextEnv extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         key?: string;
         value?: string;
@@ -217,7 +217,7 @@ export class SchedulingContextEnv extends pb_1.Message {
     }
 }
 export class SchedulingContextBatch extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         limit?: number;
         deadline?: number;
@@ -330,7 +330,7 @@ export class SchedulingContextBatch extends pb_1.Message {
     }
 }
 export class SchedulingContextBatchProcess extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         id?: string;
     }) {
@@ -397,7 +397,7 @@ export class SchedulingContextBatchProcess extends pb_1.Message {
     }
 }
 export class Target extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         id?: string;
         cwd?: string;
@@ -533,7 +533,7 @@ export class Target extends pb_1.Message {
     }
 }
 export class Event extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         id?: string;
         type?: Type;
@@ -646,7 +646,7 @@ export class Event extends pb_1.Message {
     }
 }
 export class Pop extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         id?: string;
     }) {
@@ -713,7 +713,7 @@ export class Pop extends pb_1.Message {
     }
 }
 export class Complete extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         id?: string;
     }) {
@@ -780,7 +780,7 @@ export class Complete extends pb_1.Message {
     }
 }
 export class CompleteResult extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {}) {
         super();
         pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);

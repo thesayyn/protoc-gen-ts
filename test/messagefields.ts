@@ -5,7 +5,7 @@
  * git: https://github.com/thesayyn/protoc-gen-ts */
 import * as pb_1 from "google-protobuf";
 export class MessageFields extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         sub_message?: SubMessage;
         array_prop?: SubMessage[];
@@ -95,7 +95,7 @@ export class MessageFields extends pb_1.Message {
     }
 }
 export class SubMessage extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         field_1?: string;
         field_2?: string;

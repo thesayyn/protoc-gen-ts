@@ -6,7 +6,7 @@
 import * as pb_1 from "google-protobuf";
 import * as grpc_1 from "@grpc/grpc-js";
 export class None extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {}) {
         super();
         pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
@@ -46,7 +46,7 @@ export class None extends pb_1.Message {
     }
 }
 export class _Object extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         id?: string;
         size?: number;
@@ -159,7 +159,7 @@ export class _Object extends pb_1.Message {
     }
 }
 export class Chunk extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         data?: Uint8Array;
         range?: Chunk.Range;
@@ -250,7 +250,7 @@ export class Chunk extends pb_1.Message {
 }
 export namespace Chunk {
     export class Range extends pb_1.Message {
-        #one_of_decls = [];
+        #one_of_decls: number[][] = [];
         constructor(data?: any[] | {
             start?: number;
             end?: number;
@@ -340,7 +340,7 @@ export namespace Chunk {
         }
     }
     export class Query extends pb_1.Message {
-        #one_of_decls = [];
+        #one_of_decls: number[][] = [];
         constructor(data?: any[] | {
             id?: string;
             range?: Chunk.Range;
@@ -431,7 +431,7 @@ export namespace Chunk {
     }
 }
 export class Query extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         id?: string;
     }) {
@@ -499,7 +499,7 @@ export class Query extends pb_1.Message {
 }
 export namespace Query {
     export class Result extends pb_1.Message {
-        #one_of_decls = [];
+        #one_of_decls: number[][] = [];
         constructor(data?: any[] | {
             objects?: _Object[];
         }) {
@@ -567,7 +567,7 @@ export namespace Query {
     }
 }
 export class Put extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         id?: string;
         chunk?: Chunk;

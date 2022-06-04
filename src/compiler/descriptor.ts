@@ -5,7 +5,7 @@
  * git: https://github.com/thesayyn/protoc-gen-ts */
 import * as pb_1 from "google-protobuf";
 export class FileDescriptorSet extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         file: FileDescriptorProto[];
     }) {
@@ -68,7 +68,7 @@ export class FileDescriptorSet extends pb_1.Message {
     }
 }
 export class FileDescriptorProto extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         name?: string;
         package?: string;
@@ -348,7 +348,7 @@ export class FileDescriptorProto extends pb_1.Message {
     }
 }
 export class DescriptorProto extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         name?: string;
         field: FieldDescriptorProto[];
@@ -577,7 +577,7 @@ export class DescriptorProto extends pb_1.Message {
 }
 export namespace DescriptorProto {
     export class ExtensionRange extends pb_1.Message {
-        #one_of_decls = [];
+        #one_of_decls: number[][] = [];
         constructor(data?: any[] | {
             start?: number;
             end?: number;
@@ -690,7 +690,7 @@ export namespace DescriptorProto {
         }
     }
     export class ReservedRange extends pb_1.Message {
-        #one_of_decls = [];
+        #one_of_decls: number[][] = [];
         constructor(data?: any[] | {
             start?: number;
             end?: number;
@@ -781,7 +781,7 @@ export namespace DescriptorProto {
     }
 }
 export class ExtensionRangeOptions extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         uninterpreted_option: UninterpretedOption[];
     }) {
@@ -844,7 +844,7 @@ export class ExtensionRangeOptions extends pb_1.Message {
     }
 }
 export class FieldDescriptorProto extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         name?: string;
         number?: number;
@@ -1168,7 +1168,7 @@ export namespace FieldDescriptorProto {
     }
 }
 export class OneofDescriptorProto extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         name?: string;
         options?: OneofOptions;
@@ -1258,7 +1258,7 @@ export class OneofDescriptorProto extends pb_1.Message {
     }
 }
 export class EnumDescriptorProto extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         name?: string;
         value: EnumValueDescriptorProto[];
@@ -1402,7 +1402,7 @@ export class EnumDescriptorProto extends pb_1.Message {
 }
 export namespace EnumDescriptorProto {
     export class EnumReservedRange extends pb_1.Message {
-        #one_of_decls = [];
+        #one_of_decls: number[][] = [];
         constructor(data?: any[] | {
             start?: number;
             end?: number;
@@ -1493,7 +1493,7 @@ export namespace EnumDescriptorProto {
     }
 }
 export class EnumValueDescriptorProto extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         name?: string;
         number?: number;
@@ -1606,7 +1606,7 @@ export class EnumValueDescriptorProto extends pb_1.Message {
     }
 }
 export class ServiceDescriptorProto extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         name?: string;
         method: MethodDescriptorProto[];
@@ -1715,7 +1715,7 @@ export class ServiceDescriptorProto extends pb_1.Message {
     }
 }
 export class MethodDescriptorProto extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         name?: string;
         input_type?: string;
@@ -1897,7 +1897,7 @@ export class MethodDescriptorProto extends pb_1.Message {
     }
 }
 export class FileOptions extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         java_package?: string;
         java_outer_classname?: string;
@@ -2430,7 +2430,7 @@ export namespace FileOptions {
     }
 }
 export class MessageOptions extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         message_set_wire_format?: boolean;
         no_standard_descriptor_accessor?: boolean;
@@ -2585,7 +2585,7 @@ export class MessageOptions extends pb_1.Message {
     }
 }
 export class FieldOptions extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         ctype?: FieldOptions.CType;
         packed?: boolean;
@@ -2798,7 +2798,7 @@ export namespace FieldOptions {
     }
 }
 export class OneofOptions extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         uninterpreted_option: UninterpretedOption[];
     }) {
@@ -2861,7 +2861,7 @@ export class OneofOptions extends pb_1.Message {
     }
 }
 export class EnumOptions extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         allow_alias?: boolean;
         deprecated?: boolean;
@@ -2970,7 +2970,7 @@ export class EnumOptions extends pb_1.Message {
     }
 }
 export class EnumValueOptions extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         deprecated?: boolean;
         uninterpreted_option: UninterpretedOption[];
@@ -3056,7 +3056,7 @@ export class EnumValueOptions extends pb_1.Message {
     }
 }
 export class ServiceOptions extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         deprecated?: boolean;
         uninterpreted_option: UninterpretedOption[];
@@ -3142,7 +3142,7 @@ export class ServiceOptions extends pb_1.Message {
     }
 }
 export class MethodOptions extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         deprecated?: boolean;
         idempotency_level?: MethodOptions.IdempotencyLevel;
@@ -3258,7 +3258,7 @@ export namespace MethodOptions {
     }
 }
 export class UninterpretedOption extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         name: UninterpretedOption.NamePart[];
         identifier_value?: string;
@@ -3460,7 +3460,7 @@ export class UninterpretedOption extends pb_1.Message {
 }
 export namespace UninterpretedOption {
     export class NamePart extends pb_1.Message {
-        #one_of_decls = [];
+        #one_of_decls: number[][] = [];
         constructor(data?: any[] | {
             name_part: string;
             is_extension: boolean;
@@ -3541,7 +3541,7 @@ export namespace UninterpretedOption {
     }
 }
 export class SourceCodeInfo extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         location: SourceCodeInfo.Location[];
     }) {
@@ -3605,7 +3605,7 @@ export class SourceCodeInfo extends pb_1.Message {
 }
 export namespace SourceCodeInfo {
     export class Location extends pb_1.Message {
-        #one_of_decls = [];
+        #one_of_decls: number[][] = [];
         constructor(data?: any[] | {
             path: number[];
             span: number[];
@@ -3749,7 +3749,7 @@ export namespace SourceCodeInfo {
     }
 }
 export class GeneratedCodeInfo extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         annotation: GeneratedCodeInfo.Annotation[];
     }) {
@@ -3813,7 +3813,7 @@ export class GeneratedCodeInfo extends pb_1.Message {
 }
 export namespace GeneratedCodeInfo {
     export class Annotation extends pb_1.Message {
-        #one_of_decls = [];
+        #one_of_decls: number[][] = [];
         constructor(data?: any[] | {
             path: number[];
             source_file?: string;

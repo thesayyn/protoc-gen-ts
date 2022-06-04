@@ -5,7 +5,7 @@
  * git: https://github.com/thesayyn/protoc-gen-ts */
 import * as pb_1 from "google-protobuf";
 export class OneOfWithoutAnyOtherFields extends pb_1.Message {
-    #one_of_decls = [[1, 2], [4, 3]];
+    #one_of_decls: number[][] = [[1, 2], [4, 3]];
     constructor(data?: any[] | ({} & (({
         nickname?: string;
         realname?: never;
@@ -168,7 +168,7 @@ export class OneOfWithoutAnyOtherFields extends pb_1.Message {
     }
 }
 export class OneOf extends pb_1.Message {
-    #one_of_decls = [[3, 4]];
+    #one_of_decls: number[][] = [[3, 4]];
     constructor(data?: any[] | ({
         nickname?: string;
     } & (({
