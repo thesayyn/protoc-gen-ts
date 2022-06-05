@@ -1,0 +1,5 @@
+syntax = "proto3";
+
+message ExplicitOverrideMessage {
+    uint32 example = 1;
+}
