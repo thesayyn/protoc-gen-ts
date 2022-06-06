@@ -4,6 +4,7 @@ import * as type from "./type";
 import * as ts from "typescript";
 import * as comment from "./comment";
 import * as op from "./option.js";
+import * as pb from "google-protobuf";
 
 let config: op.Options;
 
@@ -593,7 +594,7 @@ function createMessageSignature(
   const fieldSignatures = [];
 
   for (const fieldDescriptor of messageDescriptor.field) {
-    if (typeof fieldDescriptor.oneof_index !== "number") {
+    if (typeof pb.Message.getField(fieldDescriptor, 9) !== "number") { // 9 means oneof_index
       fieldSignatures.push(
         comment.addDeprecatedJsDoc(
           ts.factory.createPropertySignature(
@@ -969,7 +970,7 @@ function createGetterCall(
       ts.factory.createNumericLiteral(fieldDescriptor.number),
     ];
 
-    let default_value = fieldDescriptor.default_value;
+    let default_value = pb.Message.getField(fieldDescriptor, 7) as string // 7 means default_value;
 
     getterMethod = "getFieldWithDefault";
     let _default: ts.Expression;
