@@ -426,7 +426,7 @@ function createToObject(
           ts.factory.createBinaryExpression(
             ts.factory.createPropertyAccessExpression(
               ts.factory.createThis(),
-              ts.factory.createIdentifier(fieldDescriptor.name)
+              ts.factory.createIdentifier(getFieldName(fieldDescriptor))
             ),
             ts.factory.createToken(ts.SyntaxKind.ExclamationEqualsToken),
             ts.factory.createNull()
@@ -436,7 +436,7 @@ function createToObject(
             ts.factory.createPropertyAccessExpression(
               ts.factory.createPropertyAccessExpression(
                 ts.factory.createThis(),
-                ts.factory.createIdentifier(fieldDescriptor.name)
+                ts.factory.createIdentifier(getFieldName(fieldDescriptor))
               ),
               ts.factory.createIdentifier("toObject")
             ),
