@@ -449,7 +449,7 @@ function createToObject(
       }
     }
 
-    if (fieldDescriptor.default_value == null && rootDescriptor.syntax != "proto3") {
+    if (pb.Message.getField(fieldDescriptor, 7) == null && rootDescriptor.syntax != "proto3") { // 7 means default_value
       properties.push(
         ts.factory.createPropertyAssignment(getFieldName(fieldDescriptor),
           ts.factory.createConditionalExpression(
@@ -550,14 +550,14 @@ function createMessageSignature(
     const childSignatures = [];
 
     for (const currentFieldDescriptor of messageDescriptor.field) {
-      if (currentFieldDescriptor.oneof_index !== index) {
+      if (pb.Message.getField(currentFieldDescriptor, 9) !== index) { // 9 means oneof_index
         continue;
       }
 
       const members = [];
 
       for (const fieldDescriptor of messageDescriptor.field) {
-        if (fieldDescriptor.oneof_index != index) {
+        if (pb.Message.getField(fieldDescriptor, 9) != index) { // 9 means oneof_index
           continue;
         }
 
@@ -1042,7 +1042,7 @@ function createOneOfGetter(
   ];
 
   for (const field of messageDescriptor.field) {
-    if (field.oneof_index !== index) {
+    if (pb.Message.getField(field, 9) !== index) { // 9 means oneof_index
       continue;
     }
 
@@ -1193,7 +1193,7 @@ function createOneOfSetterBlock(
                 ts.factory.createThis(),
                 ts.factory.createPrivateIdentifier("#one_of_decls"),
               ),
-              fieldDescriptor.oneof_index,
+              pb.Message.getField(fieldDescriptor, 9) as number, // 9 means oneof_index
             ),
             valueParameter,
           ],
@@ -2108,7 +2108,7 @@ function createOneOfDecls(
   );
 
   for (const field of messageDescriptor.field) {
-    if (field.oneof_index != null) {
+    if (pb.Message.getField(field, 9) != null) { // 9 means oneof_index
       declMap[field.oneof_index] ??= [];
       declMap[field.oneof_index].push(
         ts.factory.createNumericLiteral(field.number),
