@@ -51,14 +51,14 @@ export class MessageName extends pb_1.Message {
         pb_1.Message.setField(this, 1, value);
     }
     get me() {
-        return pb_1.Message.getFieldWithDefault(this, 2, "") as string;
+        return pb_1.Message.getField(this, 2) as string;
     }
     set me(value: string) {
         pb_1.Message.setOneofField(this, 2, this.#one_of_decls[0], value);
     }
     /** @deprecated*/
     get me_deprecated() {
-        return pb_1.Message.getFieldWithDefault(this, 3, "") as string;
+        return pb_1.Message.getField(this, 3) as string;
     }
     /** @deprecated*/
     set me_deprecated(value: string) {

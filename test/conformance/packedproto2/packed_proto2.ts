@@ -6750,7 +6750,7 @@ export class HydratedFourRowTemplate extends pb_1.Message {
         pb_1.Message.setOneofWrapperField(this, 1, this.#one_of_decls[0], value);
     }
     get hydratedTitleText() {
-        return pb_1.Message.getFieldWithDefault(this, 2, "") as string;
+        return pb_1.Message.getField(this, 2) as string;
     }
     set hydratedTitleText(value: string) {
         pb_1.Message.setOneofField(this, 2, this.#one_of_decls[0], value);

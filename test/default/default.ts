@@ -5,13 +5,14 @@
  * git: https://github.com/thesayyn/protoc-gen-ts */
 import * as pb_1 from "google-protobuf";
 export class MessageWithDefault extends pb_1.Message {
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         bool_field?: boolean;
         string_field?: string;
         int32_field?: number;
     }) {
         super();
-        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+        pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
         if (!Array.isArray(data) && typeof data == "object") {
             if ("bool_field" in data && data.bool_field != undefined) {
                 this.bool_field = data.bool_field;
@@ -46,7 +47,7 @@ export class MessageWithDefault extends pb_1.Message {
         bool_field?: boolean;
         string_field?: string;
         int32_field?: number;
-    }) {
+    }): MessageWithDefault {
         const message = new MessageWithDefault({});
         if (data.bool_field != null) {
             message.bool_field = data.bool_field;

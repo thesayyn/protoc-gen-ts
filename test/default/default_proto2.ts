@@ -6,7 +6,7 @@
 import * as dependency_1 from "./default_common";
 import * as pb_1 from "google-protobuf";
 export class DefaultMessageV2WithoutDefault extends pb_1.Message {
-    #one_of_decls = [[22, 23]];
+    #one_of_decls: number[][] = [[22, 23]];
     constructor(data?: any[] | ({
         message: dependency_1.DefaultCommonMessage;
         enum: dependency_1.DefaultCommonEnum;
@@ -201,7 +201,7 @@ export class DefaultMessageV2WithoutDefault extends pb_1.Message {
         pb_1.Message.setRepeatedWrapperField(this, 21, value);
     }
     get one_of_int32() {
-        return pb_1.Message.getFieldWithDefault(this, 22, 0) as number;
+        return pb_1.Message.getField(this, 22) as number;
     }
     set one_of_int32(value: number) {
         pb_1.Message.setOneofField(this, 22, this.#one_of_decls[0], value);
@@ -257,7 +257,7 @@ export class DefaultMessageV2WithoutDefault extends pb_1.Message {
         one_of_int32?: number;
         one_of_message?: ReturnType<typeof dependency_1.DefaultCommonMessage.prototype.toObject>;
         bytes: Uint8Array;
-    }) {
+    }): DefaultMessageV2WithoutDefault {
         const message = new DefaultMessageV2WithoutDefault({
             message: dependency_1.DefaultCommonMessage.fromObject(data.message),
             enum: data.enum,
@@ -506,7 +506,7 @@ export class DefaultMessageV2WithoutDefault extends pb_1.Message {
     }
 }
 export class DefaultMessageV2WithDefault extends pb_1.Message {
-    #one_of_decls = [[18, 19]];
+    #one_of_decls: number[][] = [[18, 19]];
     constructor(data?: any[] | ({
         message: dependency_1.DefaultCommonMessage;
         enum: dependency_1.DefaultCommonEnum;
@@ -704,7 +704,7 @@ export class DefaultMessageV2WithDefault extends pb_1.Message {
         int_but_string: string;
         one_of_int32?: number;
         one_of_message?: ReturnType<typeof dependency_1.DefaultCommonMessage.prototype.toObject>;
-    }) {
+    }): DefaultMessageV2WithDefault {
         const message = new DefaultMessageV2WithDefault({
             message: dependency_1.DefaultCommonMessage.fromObject(data.message),
             enum: data.enum,

@@ -10,7 +10,7 @@ export enum DefaultCommonEnum {
     TWO = 2
 }
 export class DefaultCommonMessage extends pb_1.Message {
-    #one_of_decls = [];
+    #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         message?: string;
     }) {
@@ -30,7 +30,7 @@ export class DefaultCommonMessage extends pb_1.Message {
     }
     static fromObject(data: {
         message?: string;
-    }) {
+    }): DefaultCommonMessage {
         const message = new DefaultCommonMessage({});
         if (data.message != null) {
             message.message = data.message;
@@ -76,7 +76,7 @@ export class DefaultCommonMessage extends pb_1.Message {
     }
 }
 export class DefaultCommonMessageOneOf extends pb_1.Message {
-    #one_of_decls = [[1, 2]];
+    #one_of_decls: number[][] = [[1, 2]];
     constructor(data?: any[] | ({} & (({
         int32?: number;
         message?: never;
@@ -96,7 +96,7 @@ export class DefaultCommonMessageOneOf extends pb_1.Message {
         }
     }
     get int32() {
-        return pb_1.Message.getFieldWithDefault(this, 1, 0) as number;
+        return pb_1.Message.getField(this, 1) as number;
     }
     set int32(value: number) {
         pb_1.Message.setOneofField(this, 1, this.#one_of_decls[0], value);
@@ -120,7 +120,7 @@ export class DefaultCommonMessageOneOf extends pb_1.Message {
     static fromObject(data: {
         int32?: number;
         message?: ReturnType<typeof DefaultCommonMessage.prototype.toObject>;
-    }) {
+    }): DefaultCommonMessageOneOf {
         const message = new DefaultCommonMessageOneOf({});
         if (data.int32 != null) {
             message.int32 = data.int32;
