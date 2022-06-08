@@ -957,7 +957,8 @@ function createGetterCall(
       type.getTypeReferenceExpr(rootDescriptor, fieldDescriptor.type_name),
       ts.factory.createNumericLiteral(fieldDescriptor.number),
     ];
-  } else if (field.isMap(fieldDescriptor)) {
+  } else if (field.isMap(fieldDescriptor) || field.isExplicitlyOptionalProto3(rootDescriptor, fieldDescriptor)
+      || (field.isOneOf(fieldDescriptor) && pb.Message.getField(fieldDescriptor, 7) == null)) { // 7 means default_value
     getterMethod = "getField";
 
     args = [

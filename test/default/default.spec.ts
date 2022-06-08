@@ -108,7 +108,7 @@ describe("defaults", () => {
         expect(transferredDefaults.array_int32).toEqual([]);
         expect(transferredDefaults.array_message).toEqual([]);
 
-        expect(transferredDefaults.one_of_int32).toBe(0);
+        expect(transferredDefaults.one_of_int32).toBe(undefined);
         expect(transferredDefaults.one_of_message).toBe(undefined);
 
         expect(transferredDefaults.bytes).toEqual(new Uint8Array());
@@ -172,7 +172,7 @@ describe("defaults", () => {
             array_int32: [],
             array_message: [],
 
-            one_of_int32: 0,
+            one_of_int32: undefined,
             one_of_message: undefined,
 
             bytes: new Uint8Array()
@@ -210,7 +210,7 @@ describe("defaults", () => {
         expect(transferredDefaults.array_int32).toEqual([]);
         expect(transferredDefaults.array_message).toEqual([]);
 
-        expect(transferredDefaults.one_of_int32).toBe(0);
+        expect(transferredDefaults.one_of_int32).toBe(undefined);
         expect(transferredDefaults.one_of_message).toBe(undefined);
 
         expect(transferredDefaults.bytes).toEqual(new Uint8Array());

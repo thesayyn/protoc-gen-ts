@@ -201,6 +201,17 @@ export function isOptional(
 }
 
 /**
+ * @param {descriptor.FileDescriptorProto} rootDescriptor
+ * @param {descriptor.FieldDescriptorProto} fieldDescriptor
+ */
+ export function isExplicitlyOptionalProto3(
+  rootDescriptor: descriptor.FileDescriptorProto,
+  fieldDescriptor: descriptor.FieldDescriptorProto,
+) {
+  return rootDescriptor.syntax == "proto3" && fieldDescriptor.proto3_optional;
+}
+
+/**
  * @param {descriptor.FieldDescriptorProto} fieldDescriptor
  */
 export function isString(fieldDescriptor: descriptor.FieldDescriptorProto) {
