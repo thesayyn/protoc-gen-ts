@@ -3255,7 +3255,7 @@ export class UninterpretedOption extends pb_1.Message {
             writer.writeInt64(5, this.negative_int_value);
         if (this.double_value != 0)
             writer.writeDouble(6, this.double_value);
-        if (this.string_value != null)
+        if (this.string_value && this.string_value.length)
             writer.writeBytes(7, this.string_value);
         if (typeof this.aggregate_value === "string" && this.aggregate_value.length)
             writer.writeString(8, this.aggregate_value);

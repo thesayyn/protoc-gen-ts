@@ -6,7 +6,7 @@
 import * as dependency_1 from "./default_common";
 import * as pb_1 from "google-protobuf";
 export class DefaultMessageV3 extends pb_1.Message {
-    #one_of_decls: number[][] = [[22, 23]];
+    #one_of_decls: number[][] = [[22, 23], [25]];
     constructor(data?: any[] | ({
         message?: dependency_1.DefaultCommonMessage;
         enum?: dependency_1.DefaultCommonEnum;
@@ -36,6 +36,8 @@ export class DefaultMessageV3 extends pb_1.Message {
     } | {
         one_of_int32?: never;
         one_of_message?: dependency_1.DefaultCommonMessage;
+    }) | ({
+        optional_int32?: number;
     })))) {
         super();
         pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [20, 21], this.#one_of_decls);
@@ -111,6 +113,9 @@ export class DefaultMessageV3 extends pb_1.Message {
             }
             if ("bytes" in data && data.bytes != undefined) {
                 this.bytes = data.bytes;
+            }
+            if ("optional_int32" in data && data.optional_int32 != undefined) {
+                this.optional_int32 = data.optional_int32;
             }
         }
         if (!this.map_string_string)
@@ -262,6 +267,12 @@ export class DefaultMessageV3 extends pb_1.Message {
     set bytes(value: Uint8Array) {
         pb_1.Message.setField(this, 24, value);
     }
+    get optional_int32() {
+        return pb_1.Message.getField(this, 25) as number;
+    }
+    set optional_int32(value: number) {
+        pb_1.Message.setOneofField(this, 25, this.#one_of_decls[1], value);
+    }
     get one_of() {
         const cases: {
             [index: number]: "none" | "one_of_int32" | "one_of_message";
@@ -271,6 +282,15 @@ export class DefaultMessageV3 extends pb_1.Message {
             23: "one_of_message"
         };
         return cases[pb_1.Message.computeOneofCase(this, [22, 23])];
+    }
+    get _optional_int32() {
+        const cases: {
+            [index: number]: "none" | "optional_int32";
+        } = {
+            0: "none",
+            25: "optional_int32"
+        };
+        return cases[pb_1.Message.computeOneofCase(this, [25])];
     }
     static fromObject(data: {
         message?: ReturnType<typeof dependency_1.DefaultCommonMessage.prototype.toObject>;
@@ -301,6 +321,7 @@ export class DefaultMessageV3 extends pb_1.Message {
         one_of_int32?: number;
         one_of_message?: ReturnType<typeof dependency_1.DefaultCommonMessage.prototype.toObject>;
         bytes?: Uint8Array;
+        optional_int32?: number;
     }): DefaultMessageV3 {
         const message = new DefaultMessageV3({});
         if (data.message != null) {
@@ -375,6 +396,9 @@ export class DefaultMessageV3 extends pb_1.Message {
         if (data.bytes != null) {
             message.bytes = data.bytes;
         }
+        if (data.optional_int32 != null) {
+            message.optional_int32 = data.optional_int32;
+        }
         return message;
     }
     toObject() {
@@ -407,6 +431,7 @@ export class DefaultMessageV3 extends pb_1.Message {
             one_of_int32?: number;
             one_of_message?: ReturnType<typeof dependency_1.DefaultCommonMessage.prototype.toObject>;
             bytes?: Uint8Array;
+            optional_int32?: number;
         } = {
             message: this.message != null ? this.message.toObject() : undefined,
             enum: this.enum,
@@ -431,7 +456,8 @@ export class DefaultMessageV3 extends pb_1.Message {
             array_message: this.array_message.map((item: dependency_1.DefaultCommonMessage) => item.toObject()),
             one_of_int32: this.one_of_int32,
             one_of_message: this.one_of_message != null ? this.one_of_message.toObject() : undefined,
-            bytes: this.bytes
+            bytes: this.bytes,
+            optional_int32: this.optional_int32
         };
         return data;
     }
@@ -493,8 +519,10 @@ export class DefaultMessageV3 extends pb_1.Message {
             writer.writeInt32(22, this.one_of_int32);
         if (this.one_of_message != null)
             writer.writeMessage(23, this.one_of_message, () => this.one_of_message.serialize(writer));
-        if (this.bytes != null)
+        if (this.bytes && this.bytes.length)
             writer.writeBytes(24, this.bytes);
+        if (this.optional_int32 != null)
+            writer.writeInt32(25, this.optional_int32);
         if (!w)
             return writer.getResultBuffer();
     }
@@ -579,6 +607,9 @@ export class DefaultMessageV3 extends pb_1.Message {
                     break;
                 case 24:
                     message.bytes = reader.readBytes();
+                    break;
+                case 25:
+                    message.optional_int32 = reader.readInt32();
                     break;
                 default: reader.skipField();
             }

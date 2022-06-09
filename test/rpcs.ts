@@ -209,7 +209,7 @@ export class Chunk extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.data != null)
+        if (this.data && this.data.length)
             writer.writeBytes(1, this.data);
         if (this.range != null)
             writer.writeMessage(2, this.range, () => this.range.serialize(writer));

@@ -988,7 +988,7 @@ function createGetterCall(
           [],
           false
         )
-    } else if (fieldDescriptor.type == descriptor.FieldDescriptorProto.Type.TYPE_BYTES) {
+    } else if (field.isBytes(fieldDescriptor)) {
       _default = default_value != null
         ? ts.factory.createIdentifier(default_value)
         : ts.factory.createNewExpression(
@@ -1487,13 +1487,25 @@ function createSerialize(
         !field.isExplicitlyOptionalProto3(rootDescriptor, fieldDescriptor) &&
         !field.isOneOf(fieldDescriptor)
       ) {
-        // typeof this.prop !== "string" && this.prop.length
+        // typeof this.prop === "string" && this.prop.length
         condition = ts.factory.createBinaryExpression(
           ts.factory.createBinaryExpression(
             ts.factory.createTypeOfExpression(propAccessor),
             ts.factory.createToken(ts.SyntaxKind.EqualsEqualsEqualsToken),
             ts.factory.createStringLiteral("string"),
           ),
+          ts.factory.createToken(ts.SyntaxKind.AmpersandAmpersandToken),
+          ts.factory.createPropertyAccessExpression(propAccessor, "length"),
+        );
+      } else if (
+        field.isBytes(fieldDescriptor) &&
+        !field.isRepeated(fieldDescriptor) &&
+        !field.isExplicitlyOptionalProto3(rootDescriptor, fieldDescriptor) &&
+        !field.isOneOf(fieldDescriptor)
+      ) {
+        // this.prop && this.prop.length
+        condition = ts.factory.createBinaryExpression(
+          propAccessor,
           ts.factory.createToken(ts.SyntaxKind.AmpersandAmpersandToken),
           ts.factory.createPropertyAccessExpression(propAccessor, "length"),
         );

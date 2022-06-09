@@ -1247,7 +1247,7 @@ export class AdReplyInfo extends pb_1.Message {
             writer.writeString(1, this.advertiserName);
         if (this.mediaType != AdReplyInfo.AD_REPLY_INFO_MEDIATYPE.NONE)
             writer.writeEnum(2, this.mediaType);
-        if (this.jpegThumbnail != null)
+        if (this.jpegThumbnail && this.jpegThumbnail.length)
             writer.writeBytes(16, this.jpegThumbnail);
         if (typeof this.caption === "string" && this.caption.length)
             writer.writeString(17, this.caption);
@@ -1564,7 +1564,7 @@ export class ContextInfo extends pb_1.Message {
             writer.writeRepeatedString(15, this.mentionedJid);
         if (typeof this.conversionSource === "string" && this.conversionSource.length)
             writer.writeString(18, this.conversionSource);
-        if (this.conversionData != null)
+        if (this.conversionData && this.conversionData.length)
             writer.writeBytes(19, this.conversionData);
         if (this.conversionDelaySeconds != 0)
             writer.writeUint32(20, this.conversionDelaySeconds);
@@ -1580,7 +1580,7 @@ export class ContextInfo extends pb_1.Message {
             writer.writeUint32(25, this.expiration);
         if (this.ephemeralSettingTimestamp != 0)
             writer.writeInt64(26, this.ephemeralSettingTimestamp);
-        if (this.ephemeralSharedSecret != null)
+        if (this.ephemeralSharedSecret && this.ephemeralSharedSecret.length)
             writer.writeBytes(27, this.ephemeralSharedSecret);
         if (!w)
             return writer.getResultBuffer();
@@ -1706,7 +1706,7 @@ export class SenderKeyDistributionMessage extends pb_1.Message {
         const writer = w || new pb_1.BinaryWriter();
         if (typeof this.groupId === "string" && this.groupId.length)
             writer.writeString(1, this.groupId);
-        if (this.axolotlSenderKeyDistributionMessage != null)
+        if (this.axolotlSenderKeyDistributionMessage && this.axolotlSenderKeyDistributionMessage.length)
             writer.writeBytes(2, this.axolotlSenderKeyDistributionMessage);
         if (!w)
             return writer.getResultBuffer();
@@ -2094,7 +2094,7 @@ export class ImageMessage extends pb_1.Message {
             writer.writeString(2, this.mimetype);
         if (typeof this.caption === "string" && this.caption.length)
             writer.writeString(3, this.caption);
-        if (this.fileSha256 != null)
+        if (this.fileSha256 && this.fileSha256.length)
             writer.writeBytes(4, this.fileSha256);
         if (this.fileLength != 0)
             writer.writeUint64(5, this.fileLength);
@@ -2102,9 +2102,9 @@ export class ImageMessage extends pb_1.Message {
             writer.writeUint32(6, this.height);
         if (this.width != 0)
             writer.writeUint32(7, this.width);
-        if (this.mediaKey != null)
+        if (this.mediaKey && this.mediaKey.length)
             writer.writeBytes(8, this.mediaKey);
-        if (this.fileEncSha256 != null)
+        if (this.fileEncSha256 && this.fileEncSha256.length)
             writer.writeBytes(9, this.fileEncSha256);
         if (this.interactiveAnnotations.length)
             writer.writeRepeatedMessage(10, this.interactiveAnnotations, (item: InteractiveAnnotation) => item.serialize(writer));
@@ -2112,23 +2112,23 @@ export class ImageMessage extends pb_1.Message {
             writer.writeString(11, this.directPath);
         if (this.mediaKeyTimestamp != 0)
             writer.writeInt64(12, this.mediaKeyTimestamp);
-        if (this.jpegThumbnail != null)
+        if (this.jpegThumbnail && this.jpegThumbnail.length)
             writer.writeBytes(16, this.jpegThumbnail);
         if (this.contextInfo != null)
             writer.writeMessage(17, this.contextInfo, () => this.contextInfo.serialize(writer));
-        if (this.firstScanSidecar != null)
+        if (this.firstScanSidecar && this.firstScanSidecar.length)
             writer.writeBytes(18, this.firstScanSidecar);
         if (this.firstScanLength != 0)
             writer.writeUint32(19, this.firstScanLength);
         if (this.experimentGroupId != 0)
             writer.writeUint32(20, this.experimentGroupId);
-        if (this.scansSidecar != null)
+        if (this.scansSidecar && this.scansSidecar.length)
             writer.writeBytes(21, this.scansSidecar);
         if (this.scanLengths.length)
             writer.writeRepeatedUint32(22, this.scanLengths);
-        if (this.midQualityFileSha256 != null)
+        if (this.midQualityFileSha256 && this.midQualityFileSha256.length)
             writer.writeBytes(23, this.midQualityFileSha256);
-        if (this.midQualityFileEncSha256 != null)
+        if (this.midQualityFileEncSha256 && this.midQualityFileEncSha256.length)
             writer.writeBytes(24, this.midQualityFileEncSha256);
         if (!w)
             return writer.getResultBuffer();
@@ -2558,7 +2558,7 @@ export class LocationMessage extends pb_1.Message {
             writer.writeUint32(9, this.degreesClockwiseFromMagneticNorth);
         if (typeof this.comment === "string" && this.comment.length)
             writer.writeString(11, this.comment);
-        if (this.jpegThumbnail != null)
+        if (this.jpegThumbnail && this.jpegThumbnail.length)
             writer.writeBytes(16, this.jpegThumbnail);
         if (this.contextInfo != null)
             writer.writeMessage(17, this.contextInfo, () => this.contextInfo.serialize(writer));
@@ -2853,7 +2853,7 @@ export class ExtendedTextMessage extends pb_1.Message {
             writer.writeEnum(9, this.font);
         if (this.previewType != ExtendedTextMessage.EXTENDED_TEXT_MESSAGE_PREVIEWTYPE.NONE)
             writer.writeEnum(10, this.previewType);
-        if (this.jpegThumbnail != null)
+        if (this.jpegThumbnail && this.jpegThumbnail.length)
             writer.writeBytes(16, this.jpegThumbnail);
         if (this.contextInfo != null)
             writer.writeMessage(17, this.contextInfo, () => this.contextInfo.serialize(writer));
@@ -3168,23 +3168,23 @@ export class DocumentMessage extends pb_1.Message {
             writer.writeString(2, this.mimetype);
         if (typeof this.title === "string" && this.title.length)
             writer.writeString(3, this.title);
-        if (this.fileSha256 != null)
+        if (this.fileSha256 && this.fileSha256.length)
             writer.writeBytes(4, this.fileSha256);
         if (this.fileLength != 0)
             writer.writeUint64(5, this.fileLength);
         if (this.pageCount != 0)
             writer.writeUint32(6, this.pageCount);
-        if (this.mediaKey != null)
+        if (this.mediaKey && this.mediaKey.length)
             writer.writeBytes(7, this.mediaKey);
         if (typeof this.fileName === "string" && this.fileName.length)
             writer.writeString(8, this.fileName);
-        if (this.fileEncSha256 != null)
+        if (this.fileEncSha256 && this.fileEncSha256.length)
             writer.writeBytes(9, this.fileEncSha256);
         if (typeof this.directPath === "string" && this.directPath.length)
             writer.writeString(10, this.directPath);
         if (this.mediaKeyTimestamp != 0)
             writer.writeInt64(11, this.mediaKeyTimestamp);
-        if (this.jpegThumbnail != null)
+        if (this.jpegThumbnail && this.jpegThumbnail.length)
             writer.writeBytes(16, this.jpegThumbnail);
         if (this.contextInfo != null)
             writer.writeMessage(17, this.contextInfo, () => this.contextInfo.serialize(writer));
@@ -3468,7 +3468,7 @@ export class AudioMessage extends pb_1.Message {
             writer.writeString(1, this.url);
         if (typeof this.mimetype === "string" && this.mimetype.length)
             writer.writeString(2, this.mimetype);
-        if (this.fileSha256 != null)
+        if (this.fileSha256 && this.fileSha256.length)
             writer.writeBytes(3, this.fileSha256);
         if (this.fileLength != 0)
             writer.writeUint64(4, this.fileLength);
@@ -3476,9 +3476,9 @@ export class AudioMessage extends pb_1.Message {
             writer.writeUint32(5, this.seconds);
         if (this.ptt)
             writer.writeBool(6, this.ptt);
-        if (this.mediaKey != null)
+        if (this.mediaKey && this.mediaKey.length)
             writer.writeBytes(7, this.mediaKey);
-        if (this.fileEncSha256 != null)
+        if (this.fileEncSha256 && this.fileEncSha256.length)
             writer.writeBytes(8, this.fileEncSha256);
         if (typeof this.directPath === "string" && this.directPath.length)
             writer.writeString(9, this.directPath);
@@ -3486,7 +3486,7 @@ export class AudioMessage extends pb_1.Message {
             writer.writeInt64(10, this.mediaKeyTimestamp);
         if (this.contextInfo != null)
             writer.writeMessage(17, this.contextInfo, () => this.contextInfo.serialize(writer));
-        if (this.streamingSidecar != null)
+        if (this.streamingSidecar && this.streamingSidecar.length)
             writer.writeBytes(18, this.streamingSidecar);
         if (!w)
             return writer.getResultBuffer();
@@ -3858,13 +3858,13 @@ export class VideoMessage extends pb_1.Message {
             writer.writeString(1, this.url);
         if (typeof this.mimetype === "string" && this.mimetype.length)
             writer.writeString(2, this.mimetype);
-        if (this.fileSha256 != null)
+        if (this.fileSha256 && this.fileSha256.length)
             writer.writeBytes(3, this.fileSha256);
         if (this.fileLength != 0)
             writer.writeUint64(4, this.fileLength);
         if (this.seconds != 0)
             writer.writeUint32(5, this.seconds);
-        if (this.mediaKey != null)
+        if (this.mediaKey && this.mediaKey.length)
             writer.writeBytes(6, this.mediaKey);
         if (typeof this.caption === "string" && this.caption.length)
             writer.writeString(7, this.caption);
@@ -3874,7 +3874,7 @@ export class VideoMessage extends pb_1.Message {
             writer.writeUint32(9, this.height);
         if (this.width != 0)
             writer.writeUint32(10, this.width);
-        if (this.fileEncSha256 != null)
+        if (this.fileEncSha256 && this.fileEncSha256.length)
             writer.writeBytes(11, this.fileEncSha256);
         if (this.interactiveAnnotations.length)
             writer.writeRepeatedMessage(12, this.interactiveAnnotations, (item: InteractiveAnnotation) => item.serialize(writer));
@@ -3882,11 +3882,11 @@ export class VideoMessage extends pb_1.Message {
             writer.writeString(13, this.directPath);
         if (this.mediaKeyTimestamp != 0)
             writer.writeInt64(14, this.mediaKeyTimestamp);
-        if (this.jpegThumbnail != null)
+        if (this.jpegThumbnail && this.jpegThumbnail.length)
             writer.writeBytes(16, this.jpegThumbnail);
         if (this.contextInfo != null)
             writer.writeMessage(17, this.contextInfo, () => this.contextInfo.serialize(writer));
-        if (this.streamingSidecar != null)
+        if (this.streamingSidecar && this.streamingSidecar.length)
             writer.writeBytes(18, this.streamingSidecar);
         if (this.gifAttribution != VideoMessage.VIDEO_MESSAGE_ATTRIBUTION.NONE)
             writer.writeEnum(19, this.gifAttribution);
@@ -4012,7 +4012,7 @@ export class Call extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.callKey != null)
+        if (this.callKey && this.callKey.length)
             writer.writeBytes(1, this.callKey);
         if (!w)
             return writer.getResultBuffer();
@@ -4435,13 +4435,13 @@ export class HistorySyncNotification extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.fileSha256 != null)
+        if (this.fileSha256 && this.fileSha256.length)
             writer.writeBytes(1, this.fileSha256);
         if (this.fileLength != 0)
             writer.writeUint64(2, this.fileLength);
-        if (this.mediaKey != null)
+        if (this.mediaKey && this.mediaKey.length)
             writer.writeBytes(3, this.mediaKey);
-        if (this.fileEncSha256 != null)
+        if (this.fileEncSha256 && this.fileEncSha256.length)
             writer.writeBytes(4, this.fileEncSha256);
         if (typeof this.directPath === "string" && this.directPath.length)
             writer.writeString(5, this.directPath);
@@ -5988,7 +5988,7 @@ export class LiveLocationMessage extends pb_1.Message {
             writer.writeInt64(7, this.sequenceNumber);
         if (this.timeOffset != 0)
             writer.writeUint32(8, this.timeOffset);
-        if (this.jpegThumbnail != null)
+        if (this.jpegThumbnail && this.jpegThumbnail.length)
             writer.writeBytes(16, this.jpegThumbnail);
         if (this.contextInfo != null)
             writer.writeMessage(17, this.contextInfo, () => this.contextInfo.serialize(writer));
@@ -6309,11 +6309,11 @@ export class StickerMessage extends pb_1.Message {
         const writer = w || new pb_1.BinaryWriter();
         if (typeof this.url === "string" && this.url.length)
             writer.writeString(1, this.url);
-        if (this.fileSha256 != null)
+        if (this.fileSha256 && this.fileSha256.length)
             writer.writeBytes(2, this.fileSha256);
-        if (this.fileEncSha256 != null)
+        if (this.fileEncSha256 && this.fileEncSha256.length)
             writer.writeBytes(3, this.fileEncSha256);
-        if (this.mediaKey != null)
+        if (this.mediaKey && this.mediaKey.length)
             writer.writeBytes(4, this.mediaKey);
         if (typeof this.mimetype === "string" && this.mimetype.length)
             writer.writeString(5, this.mimetype);
@@ -6329,11 +6329,11 @@ export class StickerMessage extends pb_1.Message {
             writer.writeInt64(10, this.mediaKeyTimestamp);
         if (this.firstFrameLength != 0)
             writer.writeUint32(11, this.firstFrameLength);
-        if (this.firstFrameSidecar != null)
+        if (this.firstFrameSidecar && this.firstFrameSidecar.length)
             writer.writeBytes(12, this.firstFrameSidecar);
         if (this.isAnimated)
             writer.writeBool(13, this.isAnimated);
-        if (this.pngThumbnail != null)
+        if (this.pngThumbnail && this.pngThumbnail.length)
             writer.writeBytes(16, this.pngThumbnail);
         if (this.contextInfo != null)
             writer.writeMessage(17, this.contextInfo, () => this.contextInfo.serialize(writer));
@@ -7828,7 +7828,7 @@ export class GroupInviteMessage extends pb_1.Message {
             writer.writeInt64(3, this.inviteExpiration);
         if (typeof this.groupName === "string" && this.groupName.length)
             writer.writeString(4, this.groupName);
-        if (this.jpegThumbnail != null)
+        if (this.jpegThumbnail && this.jpegThumbnail.length)
             writer.writeBytes(5, this.jpegThumbnail);
         if (typeof this.caption === "string" && this.caption.length)
             writer.writeString(6, this.caption);
@@ -10551,7 +10551,7 @@ export class WebMessageInfo extends pb_1.Message {
             writer.writeBool(18, this.broadcast);
         if (typeof this.pushName === "string" && this.pushName.length)
             writer.writeString(19, this.pushName);
-        if (this.mediaCiphertextSha256 != null)
+        if (this.mediaCiphertextSha256 && this.mediaCiphertextSha256.length)
             writer.writeBytes(20, this.mediaCiphertextSha256);
         if (this.multicast)
             writer.writeBool(21, this.multicast);

@@ -406,7 +406,7 @@ export class DefaultMessageV2WithoutDefault extends pb_1.Message {
             writer.writeInt32(22, this.one_of_int32);
         if (this.one_of_message != null)
             writer.writeMessage(23, this.one_of_message, () => this.one_of_message.serialize(writer));
-        if (this.bytes != null)
+        if (this.bytes && this.bytes.length)
             writer.writeBytes(24, this.bytes);
         if (!w)
             return writer.getResultBuffer();
