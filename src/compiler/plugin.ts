@@ -93,11 +93,11 @@ export class Version extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (pb_1.Message.getField(this, 1) != null)
+        if (this.major != 0)
             writer.writeInt32(1, this.major);
-        if (pb_1.Message.getField(this, 2) != null)
+        if (this.minor != 0)
             writer.writeInt32(2, this.minor);
-        if (pb_1.Message.getField(this, 3) != null)
+        if (this.patch != 0)
             writer.writeInt32(3, this.patch);
         if (typeof this.suffix === "string" && this.suffix.length)
             writer.writeString(4, this.suffix);
@@ -327,7 +327,7 @@ export class CodeGeneratorResponse extends pb_1.Message {
         const writer = w || new pb_1.BinaryWriter();
         if (typeof this.error === "string" && this.error.length)
             writer.writeString(1, this.error);
-        if (pb_1.Message.getField(this, 2) != null)
+        if (this.supported_features != 0)
             writer.writeUint64(2, this.supported_features);
         if (this.file.length)
             writer.writeRepeatedMessage(15, this.file, (item: CodeGeneratorResponse.File) => item.serialize(writer));

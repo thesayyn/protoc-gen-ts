@@ -72,7 +72,7 @@ export class Optional extends pb_1.Message {
         const writer = w || new pb_1.BinaryWriter();
         if (this.should_not_be_required.length)
             writer.writeRepeatedString(1, this.should_not_be_required);
-        if (typeof this.proto3_optional === "string" && this.proto3_optional.length)
+        if (pb_1.Message.getField(this, 2) != null)
             writer.writeString(2, this.proto3_optional);
         if (!w)
             return writer.getResultBuffer();

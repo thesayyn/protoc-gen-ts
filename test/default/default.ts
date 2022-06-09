@@ -76,11 +76,11 @@ export class MessageWithDefault extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (pb_1.Message.getField(this, 1) != null)
+        if (!this.bool_field)
             writer.writeBool(1, this.bool_field);
         if (typeof this.string_field === "string" && this.string_field.length)
             writer.writeString(2, this.string_field);
-        if (pb_1.Message.getField(this, 3) != null)
+        if (this.int32_field != 12)
             writer.writeInt32(3, this.int32_field);
         if (!w)
             return writer.getResultBuffer();

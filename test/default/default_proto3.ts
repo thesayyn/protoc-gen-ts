@@ -441,37 +441,37 @@ export class DefaultMessageV3 extends pb_1.Message {
         const writer = w || new pb_1.BinaryWriter();
         if (pb_1.Message.getField(this, 1) != null)
             writer.writeMessage(1, this.message, () => this.message.serialize(writer));
-        if (pb_1.Message.getField(this, 2) != null)
+        if (this.enum != dependency_1.DefaultCommonEnum.ZERO)
             writer.writeEnum(2, this.enum);
-        if (pb_1.Message.getField(this, 3) != null)
+        if (this.bool)
             writer.writeBool(3, this.bool);
         if (typeof this.string === "string" && this.string.length)
             writer.writeString(4, this.string);
-        if (pb_1.Message.getField(this, 5) != null)
+        if (this.int32 != 0)
             writer.writeInt32(5, this.int32);
-        if (pb_1.Message.getField(this, 6) != null)
+        if (this.fixed32 != 0)
             writer.writeFixed32(6, this.fixed32);
-        if (pb_1.Message.getField(this, 7) != null)
+        if (this.sfixed32 != 0)
             writer.writeSfixed32(7, this.sfixed32);
-        if (pb_1.Message.getField(this, 8) != null)
+        if (this.uint32 != 0)
             writer.writeUint32(8, this.uint32);
-        if (pb_1.Message.getField(this, 9) != null)
+        if (this.sint32 != 0)
             writer.writeSint32(9, this.sint32);
-        if (pb_1.Message.getField(this, 10) != null)
+        if (this.int64 != 0)
             writer.writeInt64(10, this.int64);
-        if (pb_1.Message.getField(this, 11) != null)
+        if (this.fixed64 != 0)
             writer.writeFixed64(11, this.fixed64);
-        if (pb_1.Message.getField(this, 12) != null)
+        if (this.sfixed64 != 0)
             writer.writeSfixed64(12, this.sfixed64);
-        if (pb_1.Message.getField(this, 13) != null)
+        if (this.uint64 != 0)
             writer.writeUint64(13, this.uint64);
-        if (pb_1.Message.getField(this, 14) != null)
+        if (this.sint64 != 0)
             writer.writeSint64(14, this.sint64);
-        if (pb_1.Message.getField(this, 15) != null)
+        if (this.float != 0)
             writer.writeFloat(15, this.float);
-        if (pb_1.Message.getField(this, 16) != null)
+        if (this.double != 0)
             writer.writeDouble(16, this.double);
-        if (pb_1.Message.getField(this, 17) != null)
+        if (this.int_but_string != "")
             writer.writeInt64String(17, this.int_but_string);
         for (const [key, value] of this.map_string_string) {
             writer.writeMessage(18, this.map_string_string, () => {

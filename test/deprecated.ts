@@ -109,9 +109,9 @@ export class MessageName extends pb_1.Message {
         const writer = w || new pb_1.BinaryWriter();
         if (typeof this.deprecated_field === "string" && this.deprecated_field.length)
             writer.writeString(1, this.deprecated_field);
-        if (typeof this.me === "string" && this.me.length)
+        if (pb_1.Message.getField(this, 2) != null)
             writer.writeString(2, this.me);
-        if (typeof this.me_deprecated === "string" && this.me_deprecated.length)
+        if (pb_1.Message.getField(this, 3) != null)
             writer.writeString(3, this.me_deprecated);
         if (!w)
             return writer.getResultBuffer();
