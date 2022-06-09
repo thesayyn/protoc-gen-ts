@@ -1,7 +1,7 @@
 import { MessageWithDefault } from "./default";
 import { DefaultMessageV2WithoutDefault, DefaultMessageV2WithDefault } from "./default_proto2";
 import { DefaultMessageV3 } from "./default_proto3";
-import { DefaultCommonEnum, DefaultCommonMessage, DefaultCommonMessageOneOf } from "./default_common";
+import { DefaultCommonEnum } from "./default_common";
 
 describe("defaults", () => {
 
