@@ -78,11 +78,11 @@ export class NoNamespace extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (pb_1.Message.getField(this, 1) != null)
+        if (this.label != null)
             writer.writeMessage(1, this.label, () => this.label.serialize(writer));
-        if (pb_1.Message.getField(this, 2) != null)
+        if (this.other_fields != null)
             writer.writeMessage(2, this.other_fields, () => this.other_fields.serialize(writer));
-        if (pb_1.Message.getField(this, 3) != null)
+        if (this.batch_fields != null)
             writer.writeMessage(3, this.batch_fields, () => this.batch_fields.serialize(writer));
         if (!w)
             return writer.getResultBuffer();

@@ -119,13 +119,13 @@ export class OneOfWithoutAnyOtherFields extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (pb_1.Message.getField(this, 1) != null)
+        if (this.nickname != null)
             writer.writeString(1, this.nickname);
-        if (pb_1.Message.getField(this, 2) != null)
+        if (this.realname != null)
             writer.writeString(2, this.realname);
-        if (pb_1.Message.getField(this, 4) != null)
+        if (this.age != null)
             writer.writeString(4, this.age);
-        if (pb_1.Message.getField(this, 3) != null)
+        if (this.date_of_birth != null)
             writer.writeString(3, this.date_of_birth);
         if (!w)
             return writer.getResultBuffer();
@@ -248,9 +248,9 @@ export class OneOf extends pb_1.Message {
         const writer = w || new pb_1.BinaryWriter();
         if (typeof this.nickname === "string" && this.nickname.length)
             writer.writeString(1, this.nickname);
-        if (pb_1.Message.getField(this, 3) != null)
+        if (this.date_of_birth != null)
             writer.writeString(3, this.date_of_birth);
-        if (pb_1.Message.getField(this, 4) != null)
+        if (this.age != null)
             writer.writeString(4, this.age);
         if (!w)
             return writer.getResultBuffer();

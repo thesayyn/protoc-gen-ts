@@ -79,9 +79,9 @@ export namespace importdirective {
         serialize(w: pb_1.BinaryWriter): void;
         serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
             const writer = w || new pb_1.BinaryWriter();
-            if (pb_1.Message.getField(this, 1) != null)
+            if (this.importedField != null)
                 writer.writeMessage(1, this.importedField, () => this.importedField.serialize(writer));
-            if (pb_1.Message.getField(this, 2) != null)
+            if (this.submessageField != null)
                 writer.writeMessage(2, this.submessageField, () => this.submessageField.serialize(writer));
             if (this.enumField != dependency_1.importdirective.Imported.SubMessage.MyEnum.VALUE)
                 writer.writeEnum(3, this.enumField);

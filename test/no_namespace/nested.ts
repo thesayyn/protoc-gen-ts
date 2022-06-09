@@ -89,7 +89,7 @@ export class SchedulingContext extends pb_1.Message {
             writer.writeRepeatedMessage(2, this.env, (item: SchedulingContextEnv) => item.serialize(writer));
         if (this.timeout != 0)
             writer.writeInt32(3, this.timeout);
-        if (pb_1.Message.getField(this, 4) != null)
+        if (this.batch != null)
             writer.writeMessage(4, this.batch, () => this.batch.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
@@ -284,7 +284,7 @@ export class SchedulingContextBatch extends pb_1.Message {
             writer.writeUint64(1, this.limit);
         if (this.deadline != 0)
             writer.writeUint64(2, this.deadline);
-        if (pb_1.Message.getField(this, 3) != null)
+        if (this.process != null)
             writer.writeMessage(3, this.process, () => this.process.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
@@ -476,7 +476,7 @@ export class Target extends pb_1.Message {
             writer.writeString(2, this.cwd);
         if (typeof this.handler === "string" && this.handler.length)
             writer.writeString(3, this.handler);
-        if (pb_1.Message.getField(this, 4) != null)
+        if (this.context != null)
             writer.writeMessage(4, this.context, () => this.context.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
@@ -587,7 +587,7 @@ export class Event extends pb_1.Message {
             writer.writeString(1, this.id);
         if (this.type != Type.HTTP)
             writer.writeEnum(2, this.type);
-        if (pb_1.Message.getField(this, 3) != null)
+        if (this.target != null)
             writer.writeMessage(3, this.target, () => this.target.serialize(writer));
         if (!w)
             return writer.getResultBuffer();

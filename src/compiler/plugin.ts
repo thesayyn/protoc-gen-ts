@@ -221,7 +221,7 @@ export class CodeGeneratorRequest extends pb_1.Message {
             writer.writeString(2, this.parameter);
         if (this.proto_file.length)
             writer.writeRepeatedMessage(15, this.proto_file, (item: dependency_1.FileDescriptorProto) => item.serialize(writer));
-        if (pb_1.Message.getField(this, 3) != null)
+        if (this.compiler_version != null)
             writer.writeMessage(3, this.compiler_version, () => this.compiler_version.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
@@ -460,7 +460,7 @@ export namespace CodeGeneratorResponse {
                 writer.writeString(2, this.insertion_point);
             if (typeof this.content === "string" && this.content.length)
                 writer.writeString(15, this.content);
-            if (pb_1.Message.getField(this, 16) != null)
+            if (this.generated_code_info != null)
                 writer.writeMessage(16, this.generated_code_info, () => this.generated_code_info.serialize(writer));
             if (!w)
                 return writer.getResultBuffer();

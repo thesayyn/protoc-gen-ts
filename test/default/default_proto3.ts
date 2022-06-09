@@ -439,7 +439,7 @@ export class DefaultMessageV3 extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (pb_1.Message.getField(this, 1) != null)
+        if (this.message != null)
             writer.writeMessage(1, this.message, () => this.message.serialize(writer));
         if (this.enum != dependency_1.DefaultCommonEnum.ZERO)
             writer.writeEnum(2, this.enum);
@@ -489,11 +489,11 @@ export class DefaultMessageV3 extends pb_1.Message {
             writer.writePackedInt32(20, this.array_int32);
         if (this.array_message.length)
             writer.writeRepeatedMessage(21, this.array_message, (item: dependency_1.DefaultCommonMessage) => item.serialize(writer));
-        if (pb_1.Message.getField(this, 22) != null)
+        if (this.one_of_int32 != null)
             writer.writeInt32(22, this.one_of_int32);
-        if (pb_1.Message.getField(this, 23) != null)
+        if (this.one_of_message != null)
             writer.writeMessage(23, this.one_of_message, () => this.one_of_message.serialize(writer));
-        if (pb_1.Message.getField(this, 24) != null)
+        if (this.bytes != null)
             writer.writeBytes(24, this.bytes);
         if (!w)
             return writer.getResultBuffer();

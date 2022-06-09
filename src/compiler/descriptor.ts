@@ -274,9 +274,9 @@ export class FileDescriptorProto extends pb_1.Message {
             writer.writeRepeatedMessage(6, this.service, (item: ServiceDescriptorProto) => item.serialize(writer));
         if (this.extension.length)
             writer.writeRepeatedMessage(7, this.extension, (item: FieldDescriptorProto) => item.serialize(writer));
-        if (pb_1.Message.getField(this, 8) != null)
+        if (this.options != null)
             writer.writeMessage(8, this.options, () => this.options.serialize(writer));
-        if (pb_1.Message.getField(this, 9) != null)
+        if (this.source_code_info != null)
             writer.writeMessage(9, this.source_code_info, () => this.source_code_info.serialize(writer));
         if (typeof this.syntax === "string" && this.syntax.length)
             writer.writeString(12, this.syntax);
@@ -504,7 +504,7 @@ export class DescriptorProto extends pb_1.Message {
             writer.writeRepeatedMessage(5, this.extension_range, (item: DescriptorProto.ExtensionRange) => item.serialize(writer));
         if (this.oneof_decl.length)
             writer.writeRepeatedMessage(8, this.oneof_decl, (item: OneofDescriptorProto) => item.serialize(writer));
-        if (pb_1.Message.getField(this, 7) != null)
+        if (this.options != null)
             writer.writeMessage(7, this.options, () => this.options.serialize(writer));
         if (this.reserved_range.length)
             writer.writeRepeatedMessage(9, this.reserved_range, (item: DescriptorProto.ReservedRange) => item.serialize(writer));
@@ -638,7 +638,7 @@ export namespace DescriptorProto {
                 writer.writeInt32(1, this.start);
             if (this.end != 0)
                 writer.writeInt32(2, this.end);
-            if (pb_1.Message.getField(this, 3) != null)
+            if (this.options != null)
                 writer.writeMessage(3, this.options, () => this.options.serialize(writer));
             if (!w)
                 return writer.getResultBuffer();
@@ -1039,7 +1039,7 @@ export class FieldDescriptorProto extends pb_1.Message {
             writer.writeInt32(9, this.oneof_index);
         if (typeof this.json_name === "string" && this.json_name.length)
             writer.writeString(10, this.json_name);
-        if (pb_1.Message.getField(this, 8) != null)
+        if (this.options != null)
             writer.writeMessage(8, this.options, () => this.options.serialize(writer));
         if (this.proto3_optional)
             writer.writeBool(17, this.proto3_optional);
@@ -1182,7 +1182,7 @@ export class OneofDescriptorProto extends pb_1.Message {
         const writer = w || new pb_1.BinaryWriter();
         if (typeof this.name === "string" && this.name.length)
             writer.writeString(1, this.name);
-        if (pb_1.Message.getField(this, 2) != null)
+        if (this.options != null)
             writer.writeMessage(2, this.options, () => this.options.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
@@ -1308,7 +1308,7 @@ export class EnumDescriptorProto extends pb_1.Message {
             writer.writeString(1, this.name);
         if (this.value.length)
             writer.writeRepeatedMessage(2, this.value, (item: EnumValueDescriptorProto) => item.serialize(writer));
-        if (pb_1.Message.getField(this, 3) != null)
+        if (this.options != null)
             writer.writeMessage(3, this.options, () => this.options.serialize(writer));
         if (this.reserved_range.length)
             writer.writeRepeatedMessage(4, this.reserved_range, (item: EnumDescriptorProto.EnumReservedRange) => item.serialize(writer));
@@ -1515,7 +1515,7 @@ export class EnumValueDescriptorProto extends pb_1.Message {
             writer.writeString(1, this.name);
         if (this.number != 0)
             writer.writeInt32(2, this.number);
-        if (pb_1.Message.getField(this, 3) != null)
+        if (this.options != null)
             writer.writeMessage(3, this.options, () => this.options.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
@@ -1620,7 +1620,7 @@ export class ServiceDescriptorProto extends pb_1.Message {
             writer.writeString(1, this.name);
         if (this.method.length)
             writer.writeRepeatedMessage(2, this.method, (item: MethodDescriptorProto) => item.serialize(writer));
-        if (pb_1.Message.getField(this, 3) != null)
+        if (this.options != null)
             writer.writeMessage(3, this.options, () => this.options.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
@@ -1778,7 +1778,7 @@ export class MethodDescriptorProto extends pb_1.Message {
             writer.writeString(2, this.input_type);
         if (typeof this.output_type === "string" && this.output_type.length)
             writer.writeString(3, this.output_type);
-        if (pb_1.Message.getField(this, 4) != null)
+        if (this.options != null)
             writer.writeMessage(4, this.options, () => this.options.serialize(writer));
         if (!this.client_streaming)
             writer.writeBool(5, this.client_streaming);
@@ -3255,7 +3255,7 @@ export class UninterpretedOption extends pb_1.Message {
             writer.writeInt64(5, this.negative_int_value);
         if (this.double_value != 0)
             writer.writeDouble(6, this.double_value);
-        if (pb_1.Message.getField(this, 7) != null)
+        if (this.string_value != null)
             writer.writeBytes(7, this.string_value);
         if (typeof this.aggregate_value === "string" && this.aggregate_value.length)
             writer.writeString(8, this.aggregate_value);

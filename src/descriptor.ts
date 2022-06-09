@@ -1287,21 +1287,6 @@ function createSerialize(
       getFieldName(fieldDescriptor),
     );
 
-    const fieldAccesor = ts.factory.createCallExpression(
-      ts.factory.createPropertyAccessExpression(
-        ts.factory.createPropertyAccessExpression(
-          pbIdentifier,
-          ts.factory.createIdentifier("Message")
-        ),
-        ts.factory.createIdentifier("getField")
-      ),
-      undefined,
-      [
-        ts.factory.createThis(),
-        ts.factory.createNumericLiteral(fieldDescriptor.number)
-      ]
-    )
-
     if (field.isMap(fieldDescriptor)) {
       const [keyDescriptor, valueDescriptor] = type.getMapDescriptor(
         fieldDescriptor.type_name,
@@ -1475,7 +1460,7 @@ function createSerialize(
       }
 
       let condition: ts.Expression = ts.factory.createBinaryExpression(
-        fieldAccesor,
+        propAccessor,
         ts.factory.createToken(ts.SyntaxKind.ExclamationEqualsToken),
         ts.factory.createNull(),
       );
@@ -1513,7 +1498,7 @@ function createSerialize(
           ts.factory.createPropertyAccessExpression(propAccessor, "length"),
         );
       } else if (
-        (field.isNumber(fieldDescriptor)) &&
+        field.isNumber(fieldDescriptor) &&
         !field.isRepeated(fieldDescriptor) &&
         !field.isExplicitlyOptionalProto3(rootDescriptor, fieldDescriptor) &&
         !field.isOneOf(fieldDescriptor)
@@ -1528,7 +1513,7 @@ function createSerialize(
             : ts.factory.createNumericLiteral(default_value ?? "0"),
         );
       } else if (
-        (field.isEnum(fieldDescriptor)) &&
+        field.isEnum(fieldDescriptor) &&
         !field.isRepeated(fieldDescriptor) &&
         !field.isExplicitlyOptionalProto3(rootDescriptor, fieldDescriptor) &&
         !field.isOneOf(fieldDescriptor)
@@ -1543,7 +1528,7 @@ function createSerialize(
           ),
         );
       } else if (
-        (field.isBoolean(fieldDescriptor)) &&
+        field.isBoolean(fieldDescriptor) &&
         !field.isRepeated(fieldDescriptor) &&
         !field.isExplicitlyOptionalProto3(rootDescriptor, fieldDescriptor) &&
         !field.isOneOf(fieldDescriptor)

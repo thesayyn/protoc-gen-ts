@@ -60,7 +60,7 @@ export class MessageFields extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (pb_1.Message.getField(this, 1) != null)
+        if (this.sub_message != null)
             writer.writeMessage(1, this.sub_message, () => this.sub_message.serialize(writer));
         if (this.array_prop.length)
             writer.writeRepeatedMessage(2, this.array_prop, (item: SubMessage) => item.serialize(writer));
