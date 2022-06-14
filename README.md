@@ -5,8 +5,8 @@
 [![npm](https://img.shields.io/npm/dm/protoc-gen-ts)](https://www.npmjs.com/package/protoc-gen-ts?activeTab=versions)
 [![npm](https://opencollective.com/protoc-gen-ts/tiers/backer/badge.svg?label=Backer&color=brightgreen)](https://opencollective.com/protoc-gen-ts)
 
-Aim of this protoc plugin is to make usage of protocol buffers easy in Javascript/Typescript by taking modern approaches. 
-This plugin generates plain **TypeScript** files that can be used with ESM, AMD, UMD, and CommonJS module systems.
+Aim of this protoc plugin is to make usage of protocol buffers easy in Javascript/Typescript by taking a modern approach. 
+This plugin generates plain **TypeScript** sources that can be used in ESM, AMD, UMD, and CommonJS module system.
 
 ## Key Differences
 
@@ -15,11 +15,9 @@ This plugin generates plain **TypeScript** files that can be used with ESM, AMD,
 - Enums as **enums**.
 - Messages within a **namespace** if the proto has a **package** directive. (can be controlled via --ts_opt=no_namespace)
 - **fromObject** and **toObject** methods to work with json data.
-- Supports gRPC Node and gRPC Web [#102](https://github.com/thesayyn/protoc-gen-ts/pull/102)
+- Support for gRPC Node and gRPC Web (Work-in-progress) [#102](https://github.com/thesayyn/protoc-gen-ts/pull/102)
 - You get what you define in proto files. No such prefixes as "getField" or "getFieldList".
 - Generates bindings with either as-is names (`message.field_name`) or JSON-compatible names (`message.fieldName`).
-
-*If you have repeated field named `users`, then you will get a `getter` named `users` not `getUsersList`
 
 ## Example
 
