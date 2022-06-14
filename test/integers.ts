@@ -140,16 +140,31 @@ export class Integers extends pb_1.Message {
             sfixed64?: number;
             fixed32?: number;
             fixed64?: number;
-        } = {
-            int32: this.int32,
-            int64: this.int64,
-            sint32: this.sint32,
-            sint64: this.sint64,
-            sfixed32: this.sfixed32,
-            sfixed64: this.sfixed64,
-            fixed32: this.fixed32,
-            fixed64: this.fixed64
-        };
+        } = {};
+        if (pb_1.Message.getField(this, 2) != null) {
+            data.int32 = this.int32;
+        }
+        if (pb_1.Message.getField(this, 3) != null) {
+            data.int64 = this.int64;
+        }
+        if (pb_1.Message.getField(this, 4) != null) {
+            data.sint32 = this.sint32;
+        }
+        if (pb_1.Message.getField(this, 5) != null) {
+            data.sint64 = this.sint64;
+        }
+        if (pb_1.Message.getField(this, 6) != null) {
+            data.sfixed32 = this.sfixed32;
+        }
+        if (pb_1.Message.getField(this, 7) != null) {
+            data.sfixed64 = this.sfixed64;
+        }
+        if (pb_1.Message.getField(this, 8) != null) {
+            data.fixed32 = this.fixed32;
+        }
+        if (pb_1.Message.getField(this, 9) != null) {
+            data.fixed64 = this.fixed64;
+        }
         return data;
     }
     serialize(): Uint8Array;

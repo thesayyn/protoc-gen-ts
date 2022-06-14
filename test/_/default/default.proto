@@ -5,3 +5,9 @@ message MessageWithDefault {
     optional string string_field = 2 [default = "default value"];
     optional int32 int32_field = 3 [default = 12];
 }
+
+message MessageWithImplicitDefault {
+    optional bool bool_field = 1;
+    optional string string_field = 2;
+    optional int32 int32_field = 3;
+}

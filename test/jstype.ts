@@ -65,11 +65,16 @@ export class JSType extends pb_1.Message {
             int_but_string?: string;
             int_and_normal?: number;
             int_and_number?: number;
-        } = {
-            int_but_string: this.int_but_string,
-            int_and_normal: this.int_and_normal,
-            int_and_number: this.int_and_number
-        };
+        } = {};
+        if (pb_1.Message.getField(this, 1) != null) {
+            data.int_but_string = this.int_but_string;
+        }
+        if (pb_1.Message.getField(this, 2) != null) {
+            data.int_and_normal = this.int_and_normal;
+        }
+        if (pb_1.Message.getField(this, 3) != null) {
+            data.int_and_number = this.int_and_number;
+        }
         return data;
     }
     serialize(): Uint8Array;

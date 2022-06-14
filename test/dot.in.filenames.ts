@@ -36,9 +36,10 @@ export namespace dot {
         toObject() {
             const data: {
                 name?: string[];
-            } = {
-                name: this.name
-            };
+            } = {};
+            if (pb_1.Message.getField(this, 1) != null) {
+                data.name = this.name;
+            }
             return data;
         }
         serialize(): Uint8Array;

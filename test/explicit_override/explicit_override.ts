@@ -35,9 +35,10 @@ export class ExplicitOverrideMessage extends pb_1.Message {
     toObject() {
         const data: {
             example?: number;
-        } = {
-            example: this.example
-        };
+        } = {};
+        if (pb_1.Message.getField(this, 1) != null) {
+            data.example = this.example;
+        }
         return data;
     }
     serialize(): Uint8Array;

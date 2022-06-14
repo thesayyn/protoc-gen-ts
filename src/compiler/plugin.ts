@@ -81,12 +81,19 @@ export class Version extends pb_1.Message {
             minor?: number;
             patch?: number;
             suffix?: string;
-        } = {
-            major: pb_1.Message.getField(this, 1) != null ? this.major : undefined,
-            minor: pb_1.Message.getField(this, 2) != null ? this.minor : undefined,
-            patch: pb_1.Message.getField(this, 3) != null ? this.patch : undefined,
-            suffix: pb_1.Message.getField(this, 4) != null ? this.suffix : undefined
-        };
+        } = {};
+        if (pb_1.Message.getField(this, 1) != null) {
+            data.major = this.major;
+        }
+        if (pb_1.Message.getField(this, 2) != null) {
+            data.minor = this.minor;
+        }
+        if (pb_1.Message.getField(this, 3) != null) {
+            data.patch = this.patch;
+        }
+        if (pb_1.Message.getField(this, 4) != null) {
+            data.suffix = this.suffix;
+        }
         return data;
     }
     serialize(): Uint8Array;
@@ -99,7 +106,7 @@ export class Version extends pb_1.Message {
             writer.writeInt32(2, this.minor);
         if (pb_1.Message.getField(this, 3) != null)
             writer.writeInt32(3, this.patch);
-        if (typeof this.suffix === "string" && this.suffix.length)
+        if (typeof pb_1.Message.getField(this, 4) === "string" && this.suffix.length)
             writer.writeString(4, this.suffix);
         if (!w)
             return writer.getResultBuffer();
@@ -156,7 +163,7 @@ export class CodeGeneratorRequest extends pb_1.Message {
         }
     }
     get file_to_generate() {
-        return pb_1.Message.getFieldWithDefault(this, 1, []) as string[];
+        return pb_1.Message.getField(this, 1) as string[];
     }
     set file_to_generate(value: string[]) {
         pb_1.Message.setField(this, 1, value);
@@ -204,11 +211,15 @@ export class CodeGeneratorRequest extends pb_1.Message {
             proto_file: ReturnType<typeof dependency_1.FileDescriptorProto.prototype.toObject>[];
             compiler_version?: ReturnType<typeof Version.prototype.toObject>;
         } = {
-            file_to_generate: pb_1.Message.getField(this, 1) != null ? this.file_to_generate : undefined,
-            parameter: pb_1.Message.getField(this, 2) != null ? this.parameter : undefined,
-            proto_file: pb_1.Message.getField(this, 15) != null ? this.proto_file.map((item: dependency_1.FileDescriptorProto) => item.toObject()) : undefined,
-            compiler_version: pb_1.Message.getField(this, 3) != null ? this.compiler_version != null ? this.compiler_version.toObject() : undefined : undefined
+            file_to_generate: this.file_to_generate,
+            proto_file: this.proto_file.map((item: dependency_1.FileDescriptorProto) => item.toObject())
         };
+        if (pb_1.Message.getField(this, 2) != null) {
+            data.parameter = this.parameter;
+        }
+        if (pb_1.Message.getField(this, 3) != null) {
+            data.compiler_version = this.compiler_version.toObject();
+        }
         return data;
     }
     serialize(): Uint8Array;
@@ -217,7 +228,7 @@ export class CodeGeneratorRequest extends pb_1.Message {
         const writer = w || new pb_1.BinaryWriter();
         if (this.file_to_generate.length)
             writer.writeRepeatedString(1, this.file_to_generate);
-        if (typeof this.parameter === "string" && this.parameter.length)
+        if (typeof pb_1.Message.getField(this, 2) === "string" && this.parameter.length)
             writer.writeString(2, this.parameter);
         if (this.proto_file.length)
             writer.writeRepeatedMessage(15, this.proto_file, (item: dependency_1.FileDescriptorProto) => item.serialize(writer));
@@ -315,17 +326,21 @@ export class CodeGeneratorResponse extends pb_1.Message {
             supported_features?: number;
             file: ReturnType<typeof CodeGeneratorResponse.File.prototype.toObject>[];
         } = {
-            error: pb_1.Message.getField(this, 1) != null ? this.error : undefined,
-            supported_features: pb_1.Message.getField(this, 2) != null ? this.supported_features : undefined,
-            file: pb_1.Message.getField(this, 15) != null ? this.file.map((item: CodeGeneratorResponse.File) => item.toObject()) : undefined
+            file: this.file.map((item: CodeGeneratorResponse.File) => item.toObject())
         };
+        if (pb_1.Message.getField(this, 1) != null) {
+            data.error = this.error;
+        }
+        if (pb_1.Message.getField(this, 2) != null) {
+            data.supported_features = this.supported_features;
+        }
         return data;
     }
     serialize(): Uint8Array;
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (typeof this.error === "string" && this.error.length)
+        if (typeof pb_1.Message.getField(this, 1) === "string" && this.error.length)
             writer.writeString(1, this.error);
         if (pb_1.Message.getField(this, 2) != null)
             writer.writeUint64(2, this.supported_features);
@@ -442,23 +457,30 @@ export namespace CodeGeneratorResponse {
                 insertion_point?: string;
                 content?: string;
                 generated_code_info?: ReturnType<typeof dependency_1.GeneratedCodeInfo.prototype.toObject>;
-            } = {
-                name: pb_1.Message.getField(this, 1) != null ? this.name : undefined,
-                insertion_point: pb_1.Message.getField(this, 2) != null ? this.insertion_point : undefined,
-                content: pb_1.Message.getField(this, 15) != null ? this.content : undefined,
-                generated_code_info: pb_1.Message.getField(this, 16) != null ? this.generated_code_info != null ? this.generated_code_info.toObject() : undefined : undefined
-            };
+            } = {};
+            if (pb_1.Message.getField(this, 1) != null) {
+                data.name = this.name;
+            }
+            if (pb_1.Message.getField(this, 2) != null) {
+                data.insertion_point = this.insertion_point;
+            }
+            if (pb_1.Message.getField(this, 15) != null) {
+                data.content = this.content;
+            }
+            if (pb_1.Message.getField(this, 16) != null) {
+                data.generated_code_info = this.generated_code_info.toObject();
+            }
             return data;
         }
         serialize(): Uint8Array;
         serialize(w: pb_1.BinaryWriter): void;
         serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
             const writer = w || new pb_1.BinaryWriter();
-            if (typeof this.name === "string" && this.name.length)
+            if (typeof pb_1.Message.getField(this, 1) === "string" && this.name.length)
                 writer.writeString(1, this.name);
-            if (typeof this.insertion_point === "string" && this.insertion_point.length)
+            if (typeof pb_1.Message.getField(this, 2) === "string" && this.insertion_point.length)
                 writer.writeString(2, this.insertion_point);
-            if (typeof this.content === "string" && this.content.length)
+            if (typeof pb_1.Message.getField(this, 15) === "string" && this.content.length)
                 writer.writeString(15, this.content);
             if (pb_1.Message.getField(this, 16) != null)
                 writer.writeMessage(16, this.generated_code_info, () => this.generated_code_info.serialize(writer));

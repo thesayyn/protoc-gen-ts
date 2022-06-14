@@ -35,9 +35,10 @@ export class Repeated extends pb_1.Message {
     toObject() {
         const data: {
             indx?: number[];
-        } = {
-            indx: this.indx
-        };
+        } = {};
+        if (pb_1.Message.getField(this, 4) != null) {
+            data.indx = this.indx;
+        }
         return data;
     }
     serialize(): Uint8Array;

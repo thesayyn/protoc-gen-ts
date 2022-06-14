@@ -1,20 +1,51 @@
-import { MessageWithDefault } from "./default";
+import { MessageWithDefault, MessageWithImplicitDefault } from "./default";
 import { DefaultMessageV2WithoutDefault, DefaultMessageV2WithDefault } from "./default_proto2";
 import { DefaultMessageV3 } from "./default_proto3";
-import { DefaultCommonEnum, DefaultCommonMessage, DefaultCommonMessageOneOf } from "./default_common";
+import { DefaultCommonEnum } from "./default_common";
+
+function toObjectWithDefaults(message: Object): Object {
+    // unfortunately, it is not as simple as: Object.keys(message).filter(k => typeof message[k] != "function")
+    function correctFieldValue(fieldValue: unknown): unknown {
+        return fieldValue instanceof Map ? { ...fieldValue } : fieldValue;
+    }
+    const classPropertyDescriptors = Object.getOwnPropertyDescriptors(message.constructor.prototype);
+    const getters = Object.keys(classPropertyDescriptors)
+        .filter((k) => classPropertyDescriptors[k].get != null && classPropertyDescriptors[k].set != null);
+    return Object.fromEntries(getters.map((g) => [g, correctFieldValue(message[g])]));
+}
 
 describe("defaults", () => {
 
     it("should return defaults", () => {
-        expect(new MessageWithDefault().toObject()).toEqual({
-            bool_field: true,
-            int32_field: 12,
-            string_field: "default value"
-        })
+        const message = new MessageWithDefault();
+
+        expect(message.bool_field).toBe(true);
+        expect(message.int32_field).toBe(12);
+        expect(message.string_field).toBe("default value");
     });
 
-    it("should return defaults (v2)", () => {
-        expect(new DefaultMessageV2WithoutDefault().toObject()).toEqual({
+    it("should not return defaults in the output of toObject()", () => {
+        const message = new MessageWithDefault();
+
+        expect(message.toObject()).toEqual({});
+    });
+
+    it("should return implicit defaults for optional fields (v2)", () => {
+        const message = new MessageWithImplicitDefault();
+
+        expect(message.bool_field).toBe(false);
+        expect(message.int32_field).toBe(0);
+        expect(message.string_field).toBe("");
+    });
+
+    it("should not return implicit defaults in the output of toObject() (v2)", () => {
+        const message = new MessageWithImplicitDefault();
+
+        expect(message.toObject()).toEqual({});
+    });
+
+    it("should not return defaults for required fields without [default=] (v2)", () => {
+        expect(toObjectWithDefaults(new DefaultMessageV2WithoutDefault)).toEqual({
             message: undefined,
             enum: undefined,
 
@@ -42,15 +73,15 @@ describe("defaults", () => {
             array_int32: [],
             array_message: [],
 
-            one_of_int32: undefined,
+            one_of_int32: 0, // scalar oneof fields have implicit defaults
             one_of_message: undefined,
 
             bytes: undefined
         })
     });
 
-    it("should return proto defaults (v2)", () => {
-        expect(new DefaultMessageV2WithDefault().toObject()).toEqual({
+    it("should return explicitly specified defaults (v2)", () => {
+        expect(toObjectWithDefaults(new DefaultMessageV2WithDefault)).toEqual({
             message: undefined,
             enum: DefaultCommonEnum.TWO,
 
@@ -77,30 +108,33 @@ describe("defaults", () => {
         })
     });
 
-    it("should be serialized defaults (v2)", () => {
+    it("should not serialize fields that have not been set (v2)", () => {
         const defaults = new DefaultMessageV2WithoutDefault();
-        const transferredDefaults = DefaultMessageV2WithoutDefault.deserialize(defaults.serialize());
+        const serializedDefaults = defaults.serialize();
+        const transferredDefaults = DefaultMessageV2WithoutDefault.deserialize(serializedDefaults);
+
+        expect(serializedDefaults.length).toBe(0);
 
         expect(transferredDefaults.message).toBe(undefined);
-        expect(transferredDefaults.enum).toBe(DefaultCommonEnum.ZERO);
+        expect(transferredDefaults.enum).toBe(undefined);
 
-        expect(transferredDefaults.bool).toBe(false);
-        expect(transferredDefaults.string).toBe("");
+        expect(transferredDefaults.bool).toBe(undefined);
+        expect(transferredDefaults.string).toBe(undefined);
 
-        expect(transferredDefaults.int32).toBe(0);
-        expect(transferredDefaults.fixed32).toBe(0);
-        expect(transferredDefaults.sfixed32).toBe(0);
-        expect(transferredDefaults.uint32).toBe(0);
-        expect(transferredDefaults.sint32).toBe(0);
-        expect(transferredDefaults.int64).toBe(0);
-        expect(transferredDefaults.fixed64).toBe(0);
-        expect(transferredDefaults.sfixed64).toBe(0);
-        expect(transferredDefaults.uint64).toBe(0);
-        expect(transferredDefaults.sint64).toBe(0);
-        expect(transferredDefaults.float).toBe(0);
-        expect(transferredDefaults.double).toBe(0);
+        expect(transferredDefaults.int32).toBe(undefined);
+        expect(transferredDefaults.fixed32).toBe(undefined);
+        expect(transferredDefaults.sfixed32).toBe(undefined);
+        expect(transferredDefaults.uint32).toBe(undefined);
+        expect(transferredDefaults.sint32).toBe(undefined);
+        expect(transferredDefaults.int64).toBe(undefined);
+        expect(transferredDefaults.fixed64).toBe(undefined);
+        expect(transferredDefaults.sfixed64).toBe(undefined);
+        expect(transferredDefaults.uint64).toBe(undefined);
+        expect(transferredDefaults.sint64).toBe(undefined);
+        expect(transferredDefaults.float).toBe(undefined);
+        expect(transferredDefaults.double).toBe(undefined);
 
-        expect(transferredDefaults.int_but_string).toBe("");
+        expect(transferredDefaults.int_but_string).toBe(undefined);
 
         expect(transferredDefaults.map_string_string.values.length).toBe(0);
         expect(transferredDefaults.map_string_message.values.length).toBe(0);
@@ -108,16 +142,20 @@ describe("defaults", () => {
         expect(transferredDefaults.array_int32).toEqual([]);
         expect(transferredDefaults.array_message).toEqual([]);
 
-        expect(transferredDefaults.one_of_int32).toBe(0);
+        expect(transferredDefaults.one_of_int32).toBe(0); // scalar oneof fields have implicit defaults
         expect(transferredDefaults.one_of_message).toBe(undefined);
 
-        expect(transferredDefaults.bytes).toEqual(new Uint8Array());
+        expect(transferredDefaults.bytes).toEqual(undefined);
     });
 
-    it("should be serialized proto defaults (v2)", () => {
+    it("should not serialize fields that have not been set, even when they have explicit default values (v2)", () => {
         const defaults = new DefaultMessageV2WithDefault();
-        const transferredDefaults = DefaultMessageV2WithDefault.deserialize(defaults.serialize());
+        const serializedDefaults = defaults.serialize();
+        const transferredDefaults = DefaultMessageV2WithDefault.deserialize(serializedDefaults);
 
+        expect(serializedDefaults.length).toBe(0);
+
+        // below values are just defaults of DefaultMessageV2WithDefault message, not something that arrived over the wire
         expect(transferredDefaults.message).toBe(undefined);
         expect(transferredDefaults.enum).toBe(DefaultCommonEnum.TWO);
 
@@ -144,7 +182,7 @@ describe("defaults", () => {
     });
 
     it("should return defaults (v3)", () => {
-        expect(new DefaultMessageV3().toObject()).toEqual({
+        expect(toObjectWithDefaults(new DefaultMessageV3())).toEqual({
             message: undefined,
             enum: DefaultCommonEnum.ZERO,
 

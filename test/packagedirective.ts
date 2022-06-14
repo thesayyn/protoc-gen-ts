@@ -36,9 +36,10 @@ export namespace pkg.mycompany {
         toObject() {
             const data: {
                 field?: string[];
-            } = {
-                field: this.field
-            };
+            } = {};
+            if (pb_1.Message.getField(this, 1) != null) {
+                data.field = this.field;
+            }
             return data;
         }
         serialize(): Uint8Array;

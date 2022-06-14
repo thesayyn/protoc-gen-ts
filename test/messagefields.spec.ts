@@ -33,10 +33,7 @@ describe("SubMessages", () => {
                 field_1: "field_1_value",
                 field_2: "field_2_value"
             },
-            array_prop: [{
-                field_1: "",
-                field_2: ""
-            }]
+            array_prop: [{}]
         })
     })
 
@@ -52,8 +49,7 @@ describe("SubMessages", () => {
             array_prop: [
                 { field_1: "field_1_value0", field_2: "field_2_value0" },
                 { field_1: "field_1_value1", field_2: "field_2_value1" },
-            ],
-            sub_message: undefined
+            ]
         })
     })
 
@@ -61,10 +57,7 @@ describe("SubMessages", () => {
     it("should be converted to undefined", () => {
         const mymsg = new MessageFields();
 
-        expect(mymsg.toObject()).toEqual({
-            array_prop: [],
-            sub_message: undefined
-        })
+        expect(mymsg.toObject()).toEqual({ array_prop: [] })
     })
 
     it("fromObject should handle construction deeply", () => {
@@ -88,14 +81,10 @@ describe("SubMessages", () => {
                     field_2: "test"
                 },
                 {
-                    field_1: "",
                     field_2: "test"
                 }
             ],
-            sub_message: {
-                field_1: "",
-                field_2: ""
-            }
+            sub_message: {}
         });
     })
 
@@ -116,7 +105,7 @@ describe("SubMessages", () => {
         expect(message.array_prop[0] instanceof SubMessage).toBeTrue();
         expect(message.array_prop[0].field_1).toBe("test");
         expect(message.array_prop[0].field_2).toBe("test");
-
+        
         expect(message.array_prop[1] instanceof SubMessage).toBeTrue();
         expect(message.array_prop[1].field_1).not.toBeTruthy();
         expect(message.array_prop[1].field_2).toBe("test");

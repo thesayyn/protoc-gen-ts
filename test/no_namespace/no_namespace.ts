@@ -67,11 +67,16 @@ export class NoNamespace extends pb_1.Message {
             label?: ReturnType<typeof dependency_1.eventTarget.prototype.toObject>;
             other_fields?: ReturnType<typeof dependency_2.MessageFields.prototype.toObject>;
             batch_fields?: ReturnType<typeof dependency_1.eventSchedulingContextBatch.prototype.toObject>;
-        } = {
-            label: this.label != null ? this.label.toObject() : undefined,
-            other_fields: this.other_fields != null ? this.other_fields.toObject() : undefined,
-            batch_fields: this.batch_fields != null ? this.batch_fields.toObject() : undefined
-        };
+        } = {};
+        if (pb_1.Message.getField(this, 1) != null) {
+            data.label = this.label.toObject();
+        }
+        if (pb_1.Message.getField(this, 2) != null) {
+            data.other_fields = this.other_fields.toObject();
+        }
+        if (pb_1.Message.getField(this, 3) != null) {
+            data.batch_fields = this.batch_fields.toObject();
+        }
         return data;
     }
     serialize(): Uint8Array;

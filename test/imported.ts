@@ -77,9 +77,10 @@ export namespace importdirective {
             toObject() {
                 const data: {
                     key?: Imported.SubMessage.MyEnum;
-                } = {
-                    key: this.key
-                };
+                } = {};
+                if (pb_1.Message.getField(this, 1) != null) {
+                    data.key = this.key;
+                }
                 return data;
             }
             serialize(): Uint8Array;

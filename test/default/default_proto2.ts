@@ -81,97 +81,97 @@ export class DefaultMessageV2WithoutDefault extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 1, value);
     }
     get enum() {
-        return pb_1.Message.getFieldWithDefault(this, 2, dependency_1.DefaultCommonEnum.ZERO) as dependency_1.DefaultCommonEnum;
+        return pb_1.Message.getField(this, 2) as dependency_1.DefaultCommonEnum;
     }
     set enum(value: dependency_1.DefaultCommonEnum) {
         pb_1.Message.setField(this, 2, value);
     }
     get bool() {
-        return pb_1.Message.getFieldWithDefault(this, 3, false) as boolean;
+        return pb_1.Message.getField(this, 3) as boolean;
     }
     set bool(value: boolean) {
         pb_1.Message.setField(this, 3, value);
     }
     get string() {
-        return pb_1.Message.getFieldWithDefault(this, 4, "") as string;
+        return pb_1.Message.getField(this, 4) as string;
     }
     set string(value: string) {
         pb_1.Message.setField(this, 4, value);
     }
     get int32() {
-        return pb_1.Message.getFieldWithDefault(this, 5, 0) as number;
+        return pb_1.Message.getField(this, 5) as number;
     }
     set int32(value: number) {
         pb_1.Message.setField(this, 5, value);
     }
     get fixed32() {
-        return pb_1.Message.getFieldWithDefault(this, 6, 0) as number;
+        return pb_1.Message.getField(this, 6) as number;
     }
     set fixed32(value: number) {
         pb_1.Message.setField(this, 6, value);
     }
     get sfixed32() {
-        return pb_1.Message.getFieldWithDefault(this, 7, 0) as number;
+        return pb_1.Message.getField(this, 7) as number;
     }
     set sfixed32(value: number) {
         pb_1.Message.setField(this, 7, value);
     }
     get uint32() {
-        return pb_1.Message.getFieldWithDefault(this, 8, 0) as number;
+        return pb_1.Message.getField(this, 8) as number;
     }
     set uint32(value: number) {
         pb_1.Message.setField(this, 8, value);
     }
     get sint32() {
-        return pb_1.Message.getFieldWithDefault(this, 9, 0) as number;
+        return pb_1.Message.getField(this, 9) as number;
     }
     set sint32(value: number) {
         pb_1.Message.setField(this, 9, value);
     }
     get int64() {
-        return pb_1.Message.getFieldWithDefault(this, 10, 0) as number;
+        return pb_1.Message.getField(this, 10) as number;
     }
     set int64(value: number) {
         pb_1.Message.setField(this, 10, value);
     }
     get fixed64() {
-        return pb_1.Message.getFieldWithDefault(this, 11, 0) as number;
+        return pb_1.Message.getField(this, 11) as number;
     }
     set fixed64(value: number) {
         pb_1.Message.setField(this, 11, value);
     }
     get sfixed64() {
-        return pb_1.Message.getFieldWithDefault(this, 12, 0) as number;
+        return pb_1.Message.getField(this, 12) as number;
     }
     set sfixed64(value: number) {
         pb_1.Message.setField(this, 12, value);
     }
     get uint64() {
-        return pb_1.Message.getFieldWithDefault(this, 13, 0) as number;
+        return pb_1.Message.getField(this, 13) as number;
     }
     set uint64(value: number) {
         pb_1.Message.setField(this, 13, value);
     }
     get sint64() {
-        return pb_1.Message.getFieldWithDefault(this, 14, 0) as number;
+        return pb_1.Message.getField(this, 14) as number;
     }
     set sint64(value: number) {
         pb_1.Message.setField(this, 14, value);
     }
     get float() {
-        return pb_1.Message.getFieldWithDefault(this, 15, 0) as number;
+        return pb_1.Message.getField(this, 15) as number;
     }
     set float(value: number) {
         pb_1.Message.setField(this, 15, value);
     }
     get double() {
-        return pb_1.Message.getFieldWithDefault(this, 16, 0) as number;
+        return pb_1.Message.getField(this, 16) as number;
     }
     set double(value: number) {
         pb_1.Message.setField(this, 16, value);
     }
     get int_but_string() {
-        return pb_1.Message.getFieldWithDefault(this, 17, "") as string;
+        return pb_1.Message.getField(this, 17) as string;
     }
     set int_but_string(value: string) {
         pb_1.Message.setField(this, 17, value);
@@ -189,7 +189,7 @@ export class DefaultMessageV2WithoutDefault extends pb_1.Message {
         pb_1.Message.setField(this, 19, value as any);
     }
     get array_int32() {
-        return pb_1.Message.getFieldWithDefault(this, 20, []) as number[];
+        return pb_1.Message.getField(this, 20) as number[];
     }
     set array_int32(value: number[]) {
         pb_1.Message.setField(this, 20, value);
@@ -213,7 +213,7 @@ export class DefaultMessageV2WithoutDefault extends pb_1.Message {
         pb_1.Message.setOneofWrapperField(this, 23, this.#one_of_decls[0], value);
     }
     get bytes() {
-        return pb_1.Message.getFieldWithDefault(this, 24, new Uint8Array()) as Uint8Array;
+        return pb_1.Message.getField(this, 24) as Uint8Array;
     }
     set bytes(value: Uint8Array) {
         pb_1.Message.setField(this, 24, value);
@@ -321,31 +321,35 @@ export class DefaultMessageV2WithoutDefault extends pb_1.Message {
             one_of_message?: ReturnType<typeof dependency_1.DefaultCommonMessage.prototype.toObject>;
             bytes: Uint8Array;
         } = {
-            message: pb_1.Message.getField(this, 1) != null ? this.message != null ? this.message.toObject() : undefined : undefined,
-            enum: pb_1.Message.getField(this, 2) != null ? this.enum : undefined,
-            bool: pb_1.Message.getField(this, 3) != null ? this.bool : undefined,
-            string: pb_1.Message.getField(this, 4) != null ? this.string : undefined,
-            int32: pb_1.Message.getField(this, 5) != null ? this.int32 : undefined,
-            fixed32: pb_1.Message.getField(this, 6) != null ? this.fixed32 : undefined,
-            sfixed32: pb_1.Message.getField(this, 7) != null ? this.sfixed32 : undefined,
-            uint32: pb_1.Message.getField(this, 8) != null ? this.uint32 : undefined,
-            sint32: pb_1.Message.getField(this, 9) != null ? this.sint32 : undefined,
-            int64: pb_1.Message.getField(this, 10) != null ? this.int64 : undefined,
-            fixed64: pb_1.Message.getField(this, 11) != null ? this.fixed64 : undefined,
-            sfixed64: pb_1.Message.getField(this, 12) != null ? this.sfixed64 : undefined,
-            uint64: pb_1.Message.getField(this, 13) != null ? this.uint64 : undefined,
-            sint64: pb_1.Message.getField(this, 14) != null ? this.sint64 : undefined,
-            float: pb_1.Message.getField(this, 15) != null ? this.float : undefined,
-            double: pb_1.Message.getField(this, 16) != null ? this.double : undefined,
-            int_but_string: pb_1.Message.getField(this, 17) != null ? this.int_but_string : undefined,
-            map_string_string: pb_1.Message.getField(this, 18) != null ? Object.fromEntries(this.map_string_string) : undefined,
-            map_string_message: pb_1.Message.getField(this, 19) != null ? Object.fromEntries(Array.from(this.map_string_message).map(([key, value]) => [key, value.toObject()])) : undefined,
-            array_int32: pb_1.Message.getField(this, 20) != null ? this.array_int32 : undefined,
-            array_message: pb_1.Message.getField(this, 21) != null ? this.array_message.map((item: dependency_1.DefaultCommonMessage) => item.toObject()) : undefined,
-            one_of_int32: pb_1.Message.getField(this, 22) != null ? this.one_of_int32 : undefined,
-            one_of_message: pb_1.Message.getField(this, 23) != null ? this.one_of_message != null ? this.one_of_message.toObject() : undefined : undefined,
-            bytes: pb_1.Message.getField(this, 24) != null ? this.bytes : undefined
+            message: this.message.toObject(),
+            enum: this.enum,
+            bool: this.bool,
+            string: this.string,
+            int32: this.int32,
+            fixed32: this.fixed32,
+            sfixed32: this.sfixed32,
+            uint32: this.uint32,
+            sint32: this.sint32,
+            int64: this.int64,
+            fixed64: this.fixed64,
+            sfixed64: this.sfixed64,
+            uint64: this.uint64,
+            sint64: this.sint64,
+            float: this.float,
+            double: this.double,
+            int_but_string: this.int_but_string,
+            map_string_string: Object.fromEntries(this.map_string_string),
+            map_string_message: Object.fromEntries(Array.from(this.map_string_message).map(([key, value]) => [key, value.toObject()])),
+            array_int32: this.array_int32,
+            array_message: this.array_message.map((item: dependency_1.DefaultCommonMessage) => item.toObject()),
+            bytes: this.bytes
         };
+        if (pb_1.Message.getField(this, 22) != null) {
+            data.one_of_int32 = this.one_of_int32;
+        }
+        if (pb_1.Message.getField(this, 23) != null) {
+            data.one_of_message = this.one_of_message.toObject();
+        }
         return data;
     }
     serialize(): Uint8Array;
@@ -358,7 +362,7 @@ export class DefaultMessageV2WithoutDefault extends pb_1.Message {
             writer.writeEnum(2, this.enum);
         if (pb_1.Message.getField(this, 3) != null)
             writer.writeBool(3, this.bool);
-        if (typeof this.string === "string" && this.string.length)
+        if (typeof pb_1.Message.getField(this, 4) === "string" && this.string.length)
             writer.writeString(4, this.string);
         if (pb_1.Message.getField(this, 5) != null)
             writer.writeInt32(5, this.int32);
@@ -754,7 +758,7 @@ export class DefaultMessageV2WithDefault extends pb_1.Message {
             one_of_int32?: number;
             one_of_message?: ReturnType<typeof dependency_1.DefaultCommonMessage.prototype.toObject>;
         } = {
-            message: pb_1.Message.getField(this, 1) != null ? this.message != null ? this.message.toObject() : undefined : undefined,
+            message: this.message.toObject(),
             enum: this.enum,
             bool: this.bool,
             string: this.string,
@@ -770,10 +774,14 @@ export class DefaultMessageV2WithDefault extends pb_1.Message {
             sint64: this.sint64,
             float: this.float,
             double: this.double,
-            int_but_string: this.int_but_string,
-            one_of_int32: this.one_of_int32,
-            one_of_message: pb_1.Message.getField(this, 19) != null ? this.one_of_message != null ? this.one_of_message.toObject() : undefined : undefined
+            int_but_string: this.int_but_string
         };
+        if (pb_1.Message.getField(this, 18) != null) {
+            data.one_of_int32 = this.one_of_int32;
+        }
+        if (pb_1.Message.getField(this, 19) != null) {
+            data.one_of_message = this.one_of_message.toObject();
+        }
         return data;
     }
     serialize(): Uint8Array;
@@ -786,7 +794,7 @@ export class DefaultMessageV2WithDefault extends pb_1.Message {
             writer.writeEnum(2, this.enum);
         if (pb_1.Message.getField(this, 3) != null)
             writer.writeBool(3, this.bool);
-        if (typeof this.string === "string" && this.string.length)
+        if (typeof pb_1.Message.getField(this, 4) === "string" && this.string.length)
             writer.writeString(4, this.string);
         if (pb_1.Message.getField(this, 5) != null)
             writer.writeInt32(5, this.int32);

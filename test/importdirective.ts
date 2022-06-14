@@ -68,11 +68,16 @@ export namespace importdirective {
                 importedField?: ReturnType<typeof dependency_1.importdirective.Imported.prototype.toObject>;
                 submessageField?: ReturnType<typeof dependency_1.importdirective.Imported.SubMessage.prototype.toObject>;
                 enumField?: dependency_1.importdirective.Imported.SubMessage.MyEnum;
-            } = {
-                importedField: this.importedField != null ? this.importedField.toObject() : undefined,
-                submessageField: this.submessageField != null ? this.submessageField.toObject() : undefined,
-                enumField: this.enumField
-            };
+            } = {};
+            if (pb_1.Message.getField(this, 1) != null) {
+                data.importedField = this.importedField.toObject();
+            }
+            if (pb_1.Message.getField(this, 2) != null) {
+                data.submessageField = this.submessageField.toObject();
+            }
+            if (pb_1.Message.getField(this, 3) != null) {
+                data.enumField = this.enumField;
+            }
             return data;
         }
         serialize(): Uint8Array;

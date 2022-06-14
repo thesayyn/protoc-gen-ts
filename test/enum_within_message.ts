@@ -51,10 +51,13 @@ export namespace main {
             const data: {
                 language?: Code.Language;
                 lines?: number;
-            } = {
-                language: this.language,
-                lines: this.lines
-            };
+            } = {};
+            if (pb_1.Message.getField(this, 1) != null) {
+                data.language = this.language;
+            }
+            if (pb_1.Message.getField(this, 2) != null) {
+                data.lines = this.lines;
+            }
             return data;
         }
         serialize(): Uint8Array;

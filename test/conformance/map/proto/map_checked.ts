@@ -36,16 +36,17 @@ export namespace maps {
         toObject() {
             const data: {
                 link?: string;
-            } = {
-                link: this.link
-            };
+            } = {};
+            if (pb_1.Message.getField(this, 2) != null) {
+                data.link = this.link;
+            }
             return data;
         }
         serialize(): Uint8Array;
         serialize(w: pb_1.BinaryWriter): void;
         serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
             const writer = w || new pb_1.BinaryWriter();
-            if (typeof this.link === "string" && this.link.length)
+            if (typeof pb_1.Message.getField(this, 2) === "string" && this.link.length)
                 writer.writeString(2, this.link);
             if (!w)
                 return writer.getResultBuffer();
@@ -165,19 +166,26 @@ export namespace maps {
                 topics_with_intkeys?: {
                     [key: number]: ReturnType<typeof Topic.prototype.toObject>;
                 };
-            } = {
-                key: this.key,
-                keys: Object.fromEntries(this.keys),
-                topics: Object.fromEntries(Array.from(this.topics).map(([key, value]) => [key, value.toObject()])),
-                topics_with_intkeys: Object.fromEntries(Array.from(this.topics_with_intkeys).map(([key, value]) => [key, value.toObject()]))
-            };
+            } = {};
+            if (pb_1.Message.getField(this, 2) != null) {
+                data.key = this.key;
+            }
+            if (this.keys.size > 0) {
+                data.keys = Object.fromEntries(this.keys);
+            }
+            if (this.topics.size > 0) {
+                data.topics = Object.fromEntries(Array.from(this.topics).map(([key, value]) => [key, value.toObject()]));
+            }
+            if (this.topics_with_intkeys.size > 0) {
+                data.topics_with_intkeys = Object.fromEntries(Array.from(this.topics_with_intkeys).map(([key, value]) => [key, value.toObject()]));
+            }
             return data;
         }
         serialize(): Uint8Array;
         serialize(w: pb_1.BinaryWriter): void;
         serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
             const writer = w || new pb_1.BinaryWriter();
-            if (typeof this.key === "string" && this.key.length)
+            if (typeof pb_1.Message.getField(this, 2) === "string" && this.key.length)
                 writer.writeString(2, this.key);
             for (const [key, value] of this.keys) {
                 writer.writeMessage(1, this.keys, () => {

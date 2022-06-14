@@ -35,9 +35,10 @@ export class MessageFields extends pb_1.Message {
     toObject() {
         const data: {
             field?: string[];
-        } = {
-            field: this.field
-        };
+        } = {};
+        if (pb_1.Message.getField(this, 1) != null) {
+            data.field = this.field;
+        }
         return data;
     }
     serialize(): Uint8Array;

@@ -18,13 +18,13 @@ export class NoOptionalValues extends pb_1.Message {
         }
     }
     get test() {
-        return pb_1.Message.getFieldWithDefault(this, 1, "") as string;
+        return pb_1.Message.getField(this, 1) as string;
     }
     set test(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
     get test2() {
-        return pb_1.Message.getFieldWithDefault(this, 2, "") as string;
+        return pb_1.Message.getField(this, 2) as string;
     }
     set test2(value: string) {
         pb_1.Message.setField(this, 2, value);
@@ -44,8 +44,8 @@ export class NoOptionalValues extends pb_1.Message {
             test: string;
             test2: string;
         } = {
-            test: pb_1.Message.getField(this, 1) != null ? this.test : undefined,
-            test2: pb_1.Message.getField(this, 2) != null ? this.test2 : undefined
+            test: this.test,
+            test2: this.test2
         };
         return data;
     }
@@ -53,9 +53,9 @@ export class NoOptionalValues extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (typeof this.test === "string" && this.test.length)
+        if (typeof pb_1.Message.getField(this, 1) === "string" && this.test.length)
             writer.writeString(1, this.test);
-        if (typeof this.test2 === "string" && this.test2.length)
+        if (typeof pb_1.Message.getField(this, 2) === "string" && this.test2.length)
             writer.writeString(2, this.test2);
         if (!w)
             return writer.getResultBuffer();

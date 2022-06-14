@@ -106,22 +106,27 @@ export class _Object extends pb_1.Message {
             id?: string;
             size?: number;
             mimeType?: string;
-        } = {
-            id: this.id,
-            size: this.size,
-            mimeType: this.mimeType
-        };
+        } = {};
+        if (pb_1.Message.getField(this, 1) != null) {
+            data.id = this.id;
+        }
+        if (pb_1.Message.getField(this, 3) != null) {
+            data.size = this.size;
+        }
+        if (pb_1.Message.getField(this, 4) != null) {
+            data.mimeType = this.mimeType;
+        }
         return data;
     }
     serialize(): Uint8Array;
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (typeof this.id === "string" && this.id.length)
+        if (typeof pb_1.Message.getField(this, 1) === "string" && this.id.length)
             writer.writeString(1, this.id);
         if (pb_1.Message.getField(this, 3) != null)
             writer.writeUint64(3, this.size);
-        if (typeof this.mimeType === "string" && this.mimeType.length)
+        if (typeof pb_1.Message.getField(this, 4) === "string" && this.mimeType.length)
             writer.writeString(4, this.mimeType);
         if (!w)
             return writer.getResultBuffer();
@@ -199,10 +204,13 @@ export class Chunk extends pb_1.Message {
         const data: {
             data?: Uint8Array;
             range?: ReturnType<typeof Chunk.Range.prototype.toObject>;
-        } = {
-            data: this.data,
-            range: this.range != null ? this.range.toObject() : undefined
-        };
+        } = {};
+        if (pb_1.Message.getField(this, 1) != null) {
+            data.data = this.data;
+        }
+        if (pb_1.Message.getField(this, 2) != null) {
+            data.range = this.range.toObject();
+        }
         return data;
     }
     serialize(): Uint8Array;
@@ -287,10 +295,13 @@ export namespace Chunk {
             const data: {
                 start?: number;
                 end?: number;
-            } = {
-                start: this.start,
-                end: this.end
-            };
+            } = {};
+            if (pb_1.Message.getField(this, 1) != null) {
+                data.start = this.start;
+            }
+            if (pb_1.Message.getField(this, 2) != null) {
+                data.end = this.end;
+            }
             return data;
         }
         serialize(): Uint8Array;
@@ -374,17 +385,20 @@ export namespace Chunk {
             const data: {
                 id?: string;
                 range?: ReturnType<typeof Chunk.Range.prototype.toObject>;
-            } = {
-                id: this.id,
-                range: this.range != null ? this.range.toObject() : undefined
-            };
+            } = {};
+            if (pb_1.Message.getField(this, 1) != null) {
+                data.id = this.id;
+            }
+            if (pb_1.Message.getField(this, 2) != null) {
+                data.range = this.range.toObject();
+            }
             return data;
         }
         serialize(): Uint8Array;
         serialize(w: pb_1.BinaryWriter): void;
         serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
             const writer = w || new pb_1.BinaryWriter();
-            if (typeof this.id === "string" && this.id.length)
+            if (typeof pb_1.Message.getField(this, 1) === "string" && this.id.length)
                 writer.writeString(1, this.id);
             if (pb_1.Message.getField(this, 2) != null)
                 writer.writeMessage(2, this.range, () => this.range.serialize(writer));
@@ -447,16 +461,17 @@ export class Query extends pb_1.Message {
     toObject() {
         const data: {
             id?: string;
-        } = {
-            id: this.id
-        };
+        } = {};
+        if (pb_1.Message.getField(this, 1) != null) {
+            data.id = this.id;
+        }
         return data;
     }
     serialize(): Uint8Array;
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (typeof this.id === "string" && this.id.length)
+        if (typeof pb_1.Message.getField(this, 1) === "string" && this.id.length)
             writer.writeString(1, this.id);
         if (!w)
             return writer.getResultBuffer();
@@ -514,9 +529,10 @@ export namespace Query {
         toObject() {
             const data: {
                 objects?: ReturnType<typeof _Object.prototype.toObject>[];
-            } = {
-                objects: this.objects.map((item: _Object) => item.toObject())
-            };
+            } = {};
+            if (pb_1.Message.getField(this, 1) != null) {
+                data.objects = this.objects.map((item: _Object) => item.toObject());
+            }
             return data;
         }
         serialize(): Uint8Array;
@@ -596,17 +612,20 @@ export class Put extends pb_1.Message {
         const data: {
             id?: string;
             chunk?: ReturnType<typeof Chunk.prototype.toObject>;
-        } = {
-            id: this.id,
-            chunk: this.chunk != null ? this.chunk.toObject() : undefined
-        };
+        } = {};
+        if (pb_1.Message.getField(this, 1) != null) {
+            data.id = this.id;
+        }
+        if (pb_1.Message.getField(this, 3) != null) {
+            data.chunk = this.chunk.toObject();
+        }
         return data;
     }
     serialize(): Uint8Array;
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (typeof this.id === "string" && this.id.length)
+        if (typeof pb_1.Message.getField(this, 1) === "string" && this.id.length)
             writer.writeString(1, this.id);
         if (pb_1.Message.getField(this, 3) != null)
             writer.writeMessage(3, this.chunk, () => this.chunk.serialize(writer));

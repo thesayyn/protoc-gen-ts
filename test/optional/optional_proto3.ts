@@ -60,10 +60,13 @@ export class Optional extends pb_1.Message {
         const data: {
             should_not_be_required?: string[];
             proto3_optional?: string;
-        } = {
-            should_not_be_required: this.should_not_be_required,
-            proto3_optional: this.proto3_optional
-        };
+        } = {};
+        if (pb_1.Message.getField(this, 1) != null) {
+            data.should_not_be_required = this.should_not_be_required;
+        }
+        if (pb_1.Message.getField(this, 2) != null) {
+            data.proto3_optional = this.proto3_optional;
+        }
         return data;
     }
     serialize(): Uint8Array;
@@ -72,7 +75,7 @@ export class Optional extends pb_1.Message {
         const writer = w || new pb_1.BinaryWriter();
         if (this.should_not_be_required.length)
             writer.writeRepeatedString(1, this.should_not_be_required);
-        if (typeof this.proto3_optional === "string" && this.proto3_optional.length)
+        if (typeof pb_1.Message.getField(this, 2) === "string" && this.proto3_optional.length)
             writer.writeString(2, this.proto3_optional);
         if (!w)
             return writer.getResultBuffer();

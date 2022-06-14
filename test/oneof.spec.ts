@@ -10,22 +10,19 @@ describe("oneof", () => {
 
         expect(oneOf.toObject()).toEqual({
             date_of_birth: "21.01.1999",
-            realname: "Walter White",
-            age: "",
-            nickname: ""
+            realname: "Walter White"
         });
         expect(oneOf.age_or_dateofbirth).toBe("date_of_birth");
         expect(oneOf.nickname_or_realname).toBe("realname");
     });
 
     it("should take last seen if two properties are present at the same time", () => {
-        const oneOf = new OneOf({ nickname: "thesayyn" });
+        const oneOf = new OneOf({nickname: "thesayyn"});
         oneOf.date_of_birth = "18.11.1998";
         oneOf.age = "22";
         expect(oneOf.toObject()).toEqual({
             age: "22",
-            nickname: "thesayyn",
-            date_of_birth: ""
+            nickname: "thesayyn"
         });
         expect(oneOf.age_or_dateofbirth).toBe("age");
     })

@@ -422,60 +422,65 @@ function createToObject(
           [arrowFunc],
         );
       } else {
-        valueExpr = ts.factory.createConditionalExpression(
-          ts.factory.createBinaryExpression(
-            ts.factory.createPropertyAccessExpression(
-              ts.factory.createThis(),
-              ts.factory.createIdentifier(getFieldName(fieldDescriptor))
-            ),
-            ts.factory.createToken(ts.SyntaxKind.ExclamationEqualsToken),
-            ts.factory.createNull()
-          ),
-          ts.factory.createToken(ts.SyntaxKind.QuestionToken),
-          ts.factory.createCallExpression(
-            ts.factory.createPropertyAccessExpression(
-              ts.factory.createPropertyAccessExpression(
-                ts.factory.createThis(),
-                ts.factory.createIdentifier(getFieldName(fieldDescriptor))
-              ),
-              ts.factory.createIdentifier("toObject")
-            ),
-            undefined,
-            []
-          ),
-          ts.factory.createToken(ts.SyntaxKind.ColonToken),
-          ts.factory.createIdentifier("undefined")
-        )
+        valueExpr = ts.factory.createCallExpression(
+          ts.factory.createPropertyAccessExpression(valueExpr, "toObject"),
+          undefined,
+          undefined,
+        );
       }
     }
 
-    if (pb.Message.getField(fieldDescriptor, 7) == null && rootDescriptor.syntax != "proto3") { // 7 means default_value
-      properties.push(
-        ts.factory.createPropertyAssignment(getFieldName(fieldDescriptor),
-          ts.factory.createConditionalExpression(
-            ts.factory.createBinaryExpression(
-              ts.factory.createCallExpression(
-                ts.factory.createPropertyAccessExpression(
+    if (field.isOptional(rootDescriptor, fieldDescriptor)) {
+      const fieldAccesor = ts.factory.createCallExpression( // temporary use of getField() until we have absence fields
+        ts.factory.createPropertyAccessExpression(
+          ts.factory.createPropertyAccessExpression(
+            pbIdentifier,
+            ts.factory.createIdentifier("Message")
+          ),
+          ts.factory.createIdentifier("getField")
+        ),
+        undefined,
+        [
+          ts.factory.createThis(),
+          ts.factory.createNumericLiteral(fieldDescriptor.number)
+        ]
+      );
+      let condition = ts.factory.createBinaryExpression(
+        fieldAccesor,
+        ts.factory.createToken(ts.SyntaxKind.ExclamationEqualsToken),
+        ts.factory.createNull(),
+      );
+
+      if (field.isMap(fieldDescriptor)) {
+        const propertyAccessor = ts.factory.createPropertyAccessExpression(
+          ts.factory.createThis(),
+          getFieldName(fieldDescriptor),
+        );
+        condition = ts.factory.createBinaryExpression(
+          ts.factory.createPropertyAccessExpression(propertyAccessor, "size"),
+          ts.factory.createToken(ts.SyntaxKind.GreaterThanToken),
+          ts.factory.createNumericLiteral(0),
+        );
+      }
+
+      statements.push(
+        ts.factory.createIfStatement(
+          condition,
+          ts.factory.createBlock(
+            [
+              ts.factory.createExpressionStatement(
+                ts.factory.createBinaryExpression(
                   ts.factory.createPropertyAccessExpression(
-                    pbIdentifier,
-                    ts.factory.createIdentifier("Message")
+                    dataIdentifier,
+                    getFieldName(fieldDescriptor),
                   ),
-                  ts.factory.createIdentifier("getField")
+                  ts.factory.createToken(ts.SyntaxKind.EqualsToken),
+                  valueExpr,
                 ),
-                undefined,
-                [
-                  ts.factory.createThis(),
-                  ts.factory.createNumericLiteral(fieldDescriptor.number)
-                ]
               ),
-              ts.factory.createToken(ts.SyntaxKind.ExclamationEqualsToken),
-              ts.factory.createNull()
-            ),
-            ts.factory.createToken(ts.SyntaxKind.QuestionToken),
-            valueExpr,
-            ts.factory.createToken(ts.SyntaxKind.ColonToken),
-            ts.factory.createIdentifier("undefined")
-          )
+            ],
+            true,
+          ),
         ),
       );
     } else {
@@ -946,6 +951,7 @@ function createGetterCall(
 ): ts.CallExpression {
   let args: ts.Expression[];
   let getterMethod = "getField";
+  const default_value = pb.Message.getField(fieldDescriptor, 7) as string // 7 means default_value;
 
   if (field.isMessage(fieldDescriptor) && !field.isMap(fieldDescriptor)) {
     getterMethod = field.isRepeated(fieldDescriptor)
@@ -957,7 +963,10 @@ function createGetterCall(
       type.getTypeReferenceExpr(rootDescriptor, fieldDescriptor.type_name),
       ts.factory.createNumericLiteral(fieldDescriptor.number),
     ];
-  } else if (field.isMap(fieldDescriptor)) {
+  } else if (
+    field.isMap(fieldDescriptor) ||
+    (rootDescriptor.syntax != "proto3" && !field.isOptional(rootDescriptor, fieldDescriptor) && default_value == null)
+  ) {
     getterMethod = "getField";
 
     args = [
@@ -969,8 +978,6 @@ function createGetterCall(
       ts.factory.createThis(),
       ts.factory.createNumericLiteral(fieldDescriptor.number),
     ];
-
-    let default_value = pb.Message.getField(fieldDescriptor, 7) as string // 7 means default_value;
 
     getterMethod = "getFieldWithDefault";
     let _default: ts.Expression;
@@ -1502,7 +1509,7 @@ function createSerialize(
         // typeof this.prop !== "string" && this.prop.length
         condition = ts.factory.createBinaryExpression(
           ts.factory.createBinaryExpression(
-            ts.factory.createTypeOfExpression(propAccessor),
+            ts.factory.createTypeOfExpression(fieldAccesor),
             ts.factory.createToken(ts.SyntaxKind.EqualsEqualsEqualsToken),
             ts.factory.createStringLiteral("string"),
           ),

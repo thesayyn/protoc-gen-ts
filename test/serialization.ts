@@ -35,16 +35,17 @@ export class Serialization extends pb_1.Message {
     toObject() {
         const data: {
             test?: string;
-        } = {
-            test: this.test
-        };
+        } = {};
+        if (pb_1.Message.getField(this, 1) != null) {
+            data.test = this.test;
+        }
         return data;
     }
     serialize(): Uint8Array;
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (typeof this.test === "string" && this.test.length)
+        if (typeof pb_1.Message.getField(this, 1) === "string" && this.test.length)
             writer.writeString(1, this.test);
         if (!w)
             return writer.getResultBuffer();

@@ -50,10 +50,13 @@ export class MessageFields extends pb_1.Message {
         const data: {
             sub_message?: ReturnType<typeof SubMessage.prototype.toObject>;
             array_prop?: ReturnType<typeof SubMessage.prototype.toObject>[];
-        } = {
-            sub_message: this.sub_message != null ? this.sub_message.toObject() : undefined,
-            array_prop: this.array_prop.map((item: SubMessage) => item.toObject())
-        };
+        } = {};
+        if (pb_1.Message.getField(this, 1) != null) {
+            data.sub_message = this.sub_message.toObject();
+        }
+        if (pb_1.Message.getField(this, 2) != null) {
+            data.array_prop = this.array_prop.map((item: SubMessage) => item.toObject());
+        }
         return data;
     }
     serialize(): Uint8Array;
@@ -137,19 +140,22 @@ export class SubMessage extends pb_1.Message {
         const data: {
             field_1?: string;
             field_2?: string;
-        } = {
-            field_1: this.field_1,
-            field_2: this.field_2
-        };
+        } = {};
+        if (pb_1.Message.getField(this, 1) != null) {
+            data.field_1 = this.field_1;
+        }
+        if (pb_1.Message.getField(this, 2) != null) {
+            data.field_2 = this.field_2;
+        }
         return data;
     }
     serialize(): Uint8Array;
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (typeof this.field_1 === "string" && this.field_1.length)
+        if (typeof pb_1.Message.getField(this, 1) === "string" && this.field_1.length)
             writer.writeString(1, this.field_1);
-        if (typeof this.field_2 === "string" && this.field_2.length)
+        if (typeof pb_1.Message.getField(this, 2) === "string" && this.field_2.length)
             writer.writeString(2, this.field_2);
         if (!w)
             return writer.getResultBuffer();

@@ -40,16 +40,17 @@ export class DefaultCommonMessage extends pb_1.Message {
     toObject() {
         const data: {
             message?: string;
-        } = {
-            message: this.message
-        };
+        } = {};
+        if (pb_1.Message.getField(this, 1) != null) {
+            data.message = this.message;
+        }
         return data;
     }
     serialize(): Uint8Array;
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (typeof this.message === "string" && this.message.length)
+        if (typeof pb_1.Message.getField(this, 1) === "string" && this.message.length)
             writer.writeString(1, this.message);
         if (!w)
             return writer.getResultBuffer();
@@ -134,10 +135,13 @@ export class DefaultCommonMessageOneOf extends pb_1.Message {
         const data: {
             int32?: number;
             message?: ReturnType<typeof DefaultCommonMessage.prototype.toObject>;
-        } = {
-            int32: this.int32,
-            message: this.message != null ? this.message.toObject() : undefined
-        };
+        } = {};
+        if (pb_1.Message.getField(this, 1) != null) {
+            data.int32 = this.int32;
+        }
+        if (pb_1.Message.getField(this, 2) != null) {
+            data.message = this.message.toObject();
+        }
         return data;
     }
     serialize(): Uint8Array;
