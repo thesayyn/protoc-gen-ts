@@ -61,9 +61,9 @@ export namespace main {
         serialize(w: pb_1.BinaryWriter): void;
         serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
             const writer = w || new pb_1.BinaryWriter();
-            if (this.language != Code.Language.UNKNOWN)
+            if (pb_1.Message.getField(this, 1) != null)
                 writer.writeEnum(1, this.language);
-            if (this.lines != 0)
+            if (pb_1.Message.getField(this, 2) != null)
                 writer.writeInt32(2, this.lines);
             if (!w)
                 return writer.getResultBuffer();

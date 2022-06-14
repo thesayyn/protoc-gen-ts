@@ -201,31 +201,11 @@ export function isOptional(
 }
 
 /**
- * @param {descriptor.FileDescriptorProto} rootDescriptor
- * @param {descriptor.FieldDescriptorProto} fieldDescriptor
- */
- export function isExplicitlyOptionalProto3(
-  rootDescriptor: descriptor.FileDescriptorProto,
-  fieldDescriptor: descriptor.FieldDescriptorProto,
-) {
-  return rootDescriptor.syntax == "proto3" && fieldDescriptor.proto3_optional;
-}
-
-/**
  * @param {descriptor.FieldDescriptorProto} fieldDescriptor
  */
 export function isString(fieldDescriptor: descriptor.FieldDescriptorProto) {
   return (
     fieldDescriptor.type == descriptor.FieldDescriptorProto.Type.TYPE_STRING
-  );
-}
-
-/**
- * @param {descriptor.FieldDescriptorProto} fieldDescriptor
- */
- export function isBytes(fieldDescriptor: descriptor.FieldDescriptorProto) {
-  return (
-    fieldDescriptor.type == descriptor.FieldDescriptorProto.Type.TYPE_BYTES
   );
 }
 

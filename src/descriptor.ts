@@ -957,8 +957,7 @@ function createGetterCall(
       type.getTypeReferenceExpr(rootDescriptor, fieldDescriptor.type_name),
       ts.factory.createNumericLiteral(fieldDescriptor.number),
     ];
-  } else if (field.isMap(fieldDescriptor) || field.isExplicitlyOptionalProto3(rootDescriptor, fieldDescriptor)
-      || (field.isOneOf(fieldDescriptor) && pb.Message.getField(fieldDescriptor, 7) == null)) { // 7 means default_value
+  } else if (field.isMap(fieldDescriptor)) {
     getterMethod = "getField";
 
     args = [
@@ -988,7 +987,7 @@ function createGetterCall(
           [],
           false
         )
-    } else if (field.isBytes(fieldDescriptor)) {
+    } else if (fieldDescriptor.type == descriptor.FieldDescriptorProto.Type.TYPE_BYTES) {
       _default = default_value != null
         ? ts.factory.createIdentifier(default_value)
         : ts.factory.createNewExpression(
@@ -1287,6 +1286,21 @@ function createSerialize(
       getFieldName(fieldDescriptor),
     );
 
+    const fieldAccesor = ts.factory.createCallExpression(
+      ts.factory.createPropertyAccessExpression(
+        ts.factory.createPropertyAccessExpression(
+          pbIdentifier,
+          ts.factory.createIdentifier("Message")
+        ),
+        ts.factory.createIdentifier("getField")
+      ),
+      undefined,
+      [
+        ts.factory.createThis(),
+        ts.factory.createNumericLiteral(fieldDescriptor.number)
+      ]
+    )
+
     if (field.isMap(fieldDescriptor)) {
       const [keyDescriptor, valueDescriptor] = type.getMapDescriptor(
         fieldDescriptor.type_name,
@@ -1460,7 +1474,7 @@ function createSerialize(
       }
 
       let condition: ts.Expression = ts.factory.createBinaryExpression(
-        propAccessor,
+        fieldAccesor,
         ts.factory.createToken(ts.SyntaxKind.ExclamationEqualsToken),
         ts.factory.createNull(),
       );
@@ -1481,54 +1495,22 @@ function createSerialize(
         ),
       );
 
-      if (field.isRepeated(fieldDescriptor)) {
-        condition = ts.factory.createPropertyAccessExpression(propAccessor, "length");
-      } else if (
-        !field.isExplicitlyOptionalProto3(rootDescriptor, fieldDescriptor) &&
-        !field.isOneOf(fieldDescriptor)
+      if (
+        field.isString(fieldDescriptor) &&
+        !field.isRepeated(fieldDescriptor)
       ) {
-        if (field.isString(fieldDescriptor)) {
-          // typeof this.prop === "string" && this.prop.length
-          condition = ts.factory.createBinaryExpression(
-            ts.factory.createBinaryExpression(
-              ts.factory.createTypeOfExpression(propAccessor),
-              ts.factory.createToken(ts.SyntaxKind.EqualsEqualsEqualsToken),
-              ts.factory.createStringLiteral("string"),
-            ),
-            ts.factory.createToken(ts.SyntaxKind.AmpersandAmpersandToken),
-            ts.factory.createPropertyAccessExpression(propAccessor, "length"),
-          );
-        } else if (field.isBytes(fieldDescriptor)) {
-          // this.prop && this.prop.length
-          condition = ts.factory.createBinaryExpression(
-            propAccessor,
-            ts.factory.createToken(ts.SyntaxKind.AmpersandAmpersandToken),
-            ts.factory.createPropertyAccessExpression(propAccessor, "length"),
-          );
-        } else if (field.isNumber(fieldDescriptor)) {
-          const default_value = pb.Message.getField(fieldDescriptor, 7) as string // 7 means default_value;
-          ts.factory.createStringLiteral(default_value)
-          condition = ts.factory.createBinaryExpression(
-            propAccessor,
-            ts.factory.createToken(ts.SyntaxKind.ExclamationEqualsToken),
-            field.hasJsTypeString(fieldDescriptor)
-              ? ts.factory.createStringLiteral(default_value ?? "")
-              : ts.factory.createNumericLiteral(default_value ?? "0"),
-          );
-        } else if (field.isEnum(fieldDescriptor)) {
-          const default_value = pb.Message.getField(fieldDescriptor, 7) as string // 7 means default_value;
-          condition = ts.factory.createBinaryExpression(
-            propAccessor,
-            ts.factory.createToken(ts.SyntaxKind.ExclamationEqualsToken),
-            ts.factory.createPropertyAccessExpression(
-              type.getTypeReferenceExpr(rootDescriptor, fieldDescriptor.type_name),
-              default_value != null ? default_value : type.getLeadingEnumMember(fieldDescriptor.type_name),
-            ),
-          );
-        } else if (field.isBoolean(fieldDescriptor)) {
-          const default_value = pb.Message.getField(fieldDescriptor, 7) as boolean // 7 means default_value;
-          condition = default_value ? ts.factory.createLogicalNot(propAccessor) : propAccessor;
-        }
+        // typeof this.prop !== "string" && this.prop.length
+        condition = ts.factory.createBinaryExpression(
+          ts.factory.createBinaryExpression(
+            ts.factory.createTypeOfExpression(propAccessor),
+            ts.factory.createToken(ts.SyntaxKind.EqualsEqualsEqualsToken),
+            ts.factory.createStringLiteral("string"),
+          ),
+          ts.factory.createToken(ts.SyntaxKind.AmpersandAmpersandToken),
+          ts.factory.createPropertyAccessExpression(propAccessor, "length"),
+        );
+      } else if (field.isRepeated(fieldDescriptor)) {
+        condition = ts.factory.createPropertyAccessExpression(propAccessor, "length");
       }
 
       statements.push(ts.factory.createIfStatement(condition, statement));

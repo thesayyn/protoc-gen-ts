@@ -58,8 +58,6 @@ describe('JSON Names', () => {
       },
       colorSpace: ColorSpace.RED_GREEN_BLUE,
       aSingleString: 'spam',
-      aSingleNumber: undefined,
-      anOptionalString: undefined,
     });
   });
 
@@ -80,8 +78,6 @@ describe('JSON Names', () => {
       },
       colorSpace: ColorSpace.CYAN_YELLOW_MAGENTA_BLACK,
       aSingleNumber: 456,
-      aSingleString: undefined,
-      anOptionalString: undefined,
     });
   });
 

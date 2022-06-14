@@ -93,11 +93,11 @@ export class Version extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.major != 0)
+        if (pb_1.Message.getField(this, 1) != null)
             writer.writeInt32(1, this.major);
-        if (this.minor != 0)
+        if (pb_1.Message.getField(this, 2) != null)
             writer.writeInt32(2, this.minor);
-        if (this.patch != 0)
+        if (pb_1.Message.getField(this, 3) != null)
             writer.writeInt32(3, this.patch);
         if (typeof this.suffix === "string" && this.suffix.length)
             writer.writeString(4, this.suffix);
@@ -221,7 +221,7 @@ export class CodeGeneratorRequest extends pb_1.Message {
             writer.writeString(2, this.parameter);
         if (this.proto_file.length)
             writer.writeRepeatedMessage(15, this.proto_file, (item: dependency_1.FileDescriptorProto) => item.serialize(writer));
-        if (this.compiler_version != null)
+        if (pb_1.Message.getField(this, 3) != null)
             writer.writeMessage(3, this.compiler_version, () => this.compiler_version.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
@@ -327,7 +327,7 @@ export class CodeGeneratorResponse extends pb_1.Message {
         const writer = w || new pb_1.BinaryWriter();
         if (typeof this.error === "string" && this.error.length)
             writer.writeString(1, this.error);
-        if (this.supported_features != 0)
+        if (pb_1.Message.getField(this, 2) != null)
             writer.writeUint64(2, this.supported_features);
         if (this.file.length)
             writer.writeRepeatedMessage(15, this.file, (item: CodeGeneratorResponse.File) => item.serialize(writer));
@@ -460,7 +460,7 @@ export namespace CodeGeneratorResponse {
                 writer.writeString(2, this.insertion_point);
             if (typeof this.content === "string" && this.content.length)
                 writer.writeString(15, this.content);
-            if (this.generated_code_info != null)
+            if (pb_1.Message.getField(this, 16) != null)
                 writer.writeMessage(16, this.generated_code_info, () => this.generated_code_info.serialize(writer));
             if (!w)
                 return writer.getResultBuffer();

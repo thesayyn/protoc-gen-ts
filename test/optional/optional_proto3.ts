@@ -29,7 +29,7 @@ export class Optional extends pb_1.Message {
         pb_1.Message.setField(this, 1, value);
     }
     get proto3_optional() {
-        return pb_1.Message.getField(this, 2) as string;
+        return pb_1.Message.getFieldWithDefault(this, 2, "") as string;
     }
     set proto3_optional(value: string) {
         pb_1.Message.setOneofField(this, 2, this.#one_of_decls[0], value);
@@ -72,7 +72,7 @@ export class Optional extends pb_1.Message {
         const writer = w || new pb_1.BinaryWriter();
         if (this.should_not_be_required.length)
             writer.writeRepeatedString(1, this.should_not_be_required);
-        if (this.proto3_optional != null)
+        if (typeof this.proto3_optional === "string" && this.proto3_optional.length)
             writer.writeString(2, this.proto3_optional);
         if (!w)
             return writer.getResultBuffer();

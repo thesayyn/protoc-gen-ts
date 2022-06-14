@@ -79,11 +79,11 @@ export namespace importdirective {
         serialize(w: pb_1.BinaryWriter): void;
         serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
             const writer = w || new pb_1.BinaryWriter();
-            if (this.importedField != null)
+            if (pb_1.Message.getField(this, 1) != null)
                 writer.writeMessage(1, this.importedField, () => this.importedField.serialize(writer));
-            if (this.submessageField != null)
+            if (pb_1.Message.getField(this, 2) != null)
                 writer.writeMessage(2, this.submessageField, () => this.submessageField.serialize(writer));
-            if (this.enumField != dependency_1.importdirective.Imported.SubMessage.MyEnum.VALUE)
+            if (pb_1.Message.getField(this, 3) != null)
                 writer.writeEnum(3, this.enumField);
             if (!w)
                 return writer.getResultBuffer();

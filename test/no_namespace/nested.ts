@@ -87,9 +87,9 @@ export class SchedulingContext extends pb_1.Message {
         const writer = w || new pb_1.BinaryWriter();
         if (this.env.length)
             writer.writeRepeatedMessage(2, this.env, (item: SchedulingContextEnv) => item.serialize(writer));
-        if (this.timeout != 0)
+        if (pb_1.Message.getField(this, 3) != null)
             writer.writeInt32(3, this.timeout);
-        if (this.batch != null)
+        if (pb_1.Message.getField(this, 4) != null)
             writer.writeMessage(4, this.batch, () => this.batch.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
@@ -280,11 +280,11 @@ export class SchedulingContextBatch extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.limit != 0)
+        if (pb_1.Message.getField(this, 1) != null)
             writer.writeUint64(1, this.limit);
-        if (this.deadline != 0)
+        if (pb_1.Message.getField(this, 2) != null)
             writer.writeUint64(2, this.deadline);
-        if (this.process != null)
+        if (pb_1.Message.getField(this, 3) != null)
             writer.writeMessage(3, this.process, () => this.process.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
@@ -476,7 +476,7 @@ export class Target extends pb_1.Message {
             writer.writeString(2, this.cwd);
         if (typeof this.handler === "string" && this.handler.length)
             writer.writeString(3, this.handler);
-        if (this.context != null)
+        if (pb_1.Message.getField(this, 4) != null)
             writer.writeMessage(4, this.context, () => this.context.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
@@ -585,9 +585,9 @@ export class Event extends pb_1.Message {
         const writer = w || new pb_1.BinaryWriter();
         if (typeof this.id === "string" && this.id.length)
             writer.writeString(1, this.id);
-        if (this.type != Type.HTTP)
+        if (pb_1.Message.getField(this, 2) != null)
             writer.writeEnum(2, this.type);
-        if (this.target != null)
+        if (pb_1.Message.getField(this, 3) != null)
             writer.writeMessage(3, this.target, () => this.target.serialize(writer));
         if (!w)
             return writer.getResultBuffer();

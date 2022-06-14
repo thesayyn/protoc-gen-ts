@@ -96,7 +96,7 @@ export class DefaultCommonMessageOneOf extends pb_1.Message {
         }
     }
     get int32() {
-        return pb_1.Message.getField(this, 1) as number;
+        return pb_1.Message.getFieldWithDefault(this, 1, 0) as number;
     }
     set int32(value: number) {
         pb_1.Message.setOneofField(this, 1, this.#one_of_decls[0], value);
@@ -144,9 +144,9 @@ export class DefaultCommonMessageOneOf extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.int32 != null)
+        if (pb_1.Message.getField(this, 1) != null)
             writer.writeInt32(1, this.int32);
-        if (this.message != null)
+        if (pb_1.Message.getField(this, 2) != null)
             writer.writeMessage(2, this.message, () => this.message.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
