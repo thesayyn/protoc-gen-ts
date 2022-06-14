@@ -44,21 +44,21 @@ export class MessageName extends pb_1.Message {
     }
     /** @deprecated*/
     get deprecated_field() {
-        return pb_1.Message.getField(this, 1) as string;
+        return pb_1.Message.getFieldWithDefault(this, 1, "") as string;
     }
     /** @deprecated*/
     set deprecated_field(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
     get me() {
-        return pb_1.Message.getField(this, 2) as string;
+        return pb_1.Message.getFieldWithDefault(this, 2, "") as string;
     }
     set me(value: string) {
         pb_1.Message.setOneofField(this, 2, this.#one_of_decls[0], value);
     }
     /** @deprecated*/
     get me_deprecated() {
-        return pb_1.Message.getField(this, 3) as string;
+        return pb_1.Message.getFieldWithDefault(this, 3, "") as string;
     }
     /** @deprecated*/
     set me_deprecated(value: string) {
@@ -97,13 +97,13 @@ export class MessageName extends pb_1.Message {
             me?: string;
             me_deprecated?: string;
         } = {};
-        if (this.deprecated_field != null) {
+        if (pb_1.Message.getField(this, 1) != null) {
             data.deprecated_field = this.deprecated_field;
         }
-        if (this.me != null) {
+        if (pb_1.Message.getField(this, 2) != null) {
             data.me = this.me;
         }
-        if (this.me_deprecated != null) {
+        if (pb_1.Message.getField(this, 3) != null) {
             data.me_deprecated = this.me_deprecated;
         }
         return data;
@@ -112,11 +112,11 @@ export class MessageName extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (typeof this.deprecated_field === "string" && this.deprecated_field.length)
+        if (typeof pb_1.Message.getField(this, 1) === "string" && this.deprecated_field.length)
             writer.writeString(1, this.deprecated_field);
-        if (typeof this.me === "string" && this.me.length)
+        if (typeof pb_1.Message.getField(this, 2) === "string" && this.me.length)
             writer.writeString(2, this.me);
-        if (typeof this.me_deprecated === "string" && this.me_deprecated.length)
+        if (typeof pb_1.Message.getField(this, 3) === "string" && this.me_deprecated.length)
             writer.writeString(3, this.me_deprecated);
         if (!w)
             return writer.getResultBuffer();

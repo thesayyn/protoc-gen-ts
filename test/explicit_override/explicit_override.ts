@@ -18,7 +18,7 @@ export class ExplicitOverrideMessage extends pb_1.Message {
         }
     }
     get example() {
-        return pb_1.Message.getField(this, 1) as number;
+        return pb_1.Message.getFieldWithDefault(this, 1, 0) as number;
     }
     set example(value: number) {
         pb_1.Message.setField(this, 1, value);
@@ -36,7 +36,7 @@ export class ExplicitOverrideMessage extends pb_1.Message {
         const data: {
             example?: number;
         } = {};
-        if (this.example != null) {
+        if (pb_1.Message.getField(this, 1) != null) {
             data.example = this.example;
         }
         return data;
@@ -45,7 +45,7 @@ export class ExplicitOverrideMessage extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.example !== undefined)
+        if (pb_1.Message.getField(this, 1) != null)
             writer.writeUint32(1, this.example);
         if (!w)
             return writer.getResultBuffer();

@@ -1,6 +1,7 @@
 import * as descriptor from "./compiler/descriptor.js";
 import * as type from "./type.js";
 import * as ts from "typescript";
+import * as pb from "google-protobuf";
 
 /**
  * @param {*} type
@@ -125,7 +126,7 @@ export function isMap(fieldDescriptor: descriptor.FieldDescriptorProto) {
  * @param {descriptor.FieldDescriptorProto} fieldDescriptor 
  */
 export function isOneOf(fieldDescriptor: descriptor.FieldDescriptorProto) {
-    return typeof fieldDescriptor.oneof_index == "number";
+    return typeof pb.Message.getField(fieldDescriptor, 9) == "number"; // 9 means oneof_index
 }
 
 /**

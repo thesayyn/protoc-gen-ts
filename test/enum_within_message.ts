@@ -23,13 +23,13 @@ export namespace main {
             }
         }
         get language() {
-            return pb_1.Message.getField(this, 1) as Code.Language;
+            return pb_1.Message.getFieldWithDefault(this, 1, Code.Language.UNKNOWN) as Code.Language;
         }
         set language(value: Code.Language) {
             pb_1.Message.setField(this, 1, value);
         }
         get lines() {
-            return pb_1.Message.getField(this, 2) as number;
+            return pb_1.Message.getFieldWithDefault(this, 2, 0) as number;
         }
         set lines(value: number) {
             pb_1.Message.setField(this, 2, value);
@@ -52,10 +52,10 @@ export namespace main {
                 language?: Code.Language;
                 lines?: number;
             } = {};
-            if (this.language != null) {
+            if (pb_1.Message.getField(this, 1) != null) {
                 data.language = this.language;
             }
-            if (this.lines != null) {
+            if (pb_1.Message.getField(this, 2) != null) {
                 data.lines = this.lines;
             }
             return data;
@@ -64,9 +64,9 @@ export namespace main {
         serialize(w: pb_1.BinaryWriter): void;
         serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
             const writer = w || new pb_1.BinaryWriter();
-            if (this.language !== undefined)
+            if (pb_1.Message.getField(this, 1) != null)
                 writer.writeEnum(1, this.language);
-            if (this.lines !== undefined)
+            if (pb_1.Message.getField(this, 2) != null)
                 writer.writeInt32(2, this.lines);
             if (!w)
                 return writer.getResultBuffer();

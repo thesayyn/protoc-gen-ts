@@ -51,10 +51,10 @@ export class MessageFields extends pb_1.Message {
             sub_message?: ReturnType<typeof SubMessage.prototype.toObject>;
             array_prop?: ReturnType<typeof SubMessage.prototype.toObject>[];
         } = {};
-        if (this.sub_message != null) {
+        if (pb_1.Message.getField(this, 1) != null) {
             data.sub_message = this.sub_message.toObject();
         }
-        if (this.array_prop != null) {
+        if (pb_1.Message.getField(this, 2) != null) {
             data.array_prop = this.array_prop.map((item: SubMessage) => item.toObject());
         }
         return data;
@@ -63,9 +63,9 @@ export class MessageFields extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.sub_message !== undefined)
+        if (pb_1.Message.getField(this, 1) != null)
             writer.writeMessage(1, this.sub_message, () => this.sub_message.serialize(writer));
-        if (this.array_prop !== undefined)
+        if (this.array_prop.length)
             writer.writeRepeatedMessage(2, this.array_prop, (item: SubMessage) => item.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
@@ -112,13 +112,13 @@ export class SubMessage extends pb_1.Message {
         }
     }
     get field_1() {
-        return pb_1.Message.getField(this, 1) as string;
+        return pb_1.Message.getFieldWithDefault(this, 1, "") as string;
     }
     set field_1(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
     get field_2() {
-        return pb_1.Message.getField(this, 2) as string;
+        return pb_1.Message.getFieldWithDefault(this, 2, "") as string;
     }
     set field_2(value: string) {
         pb_1.Message.setField(this, 2, value);
@@ -141,10 +141,10 @@ export class SubMessage extends pb_1.Message {
             field_1?: string;
             field_2?: string;
         } = {};
-        if (this.field_1 != null) {
+        if (pb_1.Message.getField(this, 1) != null) {
             data.field_1 = this.field_1;
         }
-        if (this.field_2 != null) {
+        if (pb_1.Message.getField(this, 2) != null) {
             data.field_2 = this.field_2;
         }
         return data;
@@ -153,9 +153,9 @@ export class SubMessage extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (typeof this.field_1 === "string" && this.field_1.length)
+        if (typeof pb_1.Message.getField(this, 1) === "string" && this.field_1.length)
             writer.writeString(1, this.field_1);
-        if (typeof this.field_2 === "string" && this.field_2.length)
+        if (typeof pb_1.Message.getField(this, 2) === "string" && this.field_2.length)
             writer.writeString(2, this.field_2);
         if (!w)
             return writer.getResultBuffer();

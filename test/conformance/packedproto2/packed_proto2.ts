@@ -22,13 +22,13 @@ export class HydratedQuickReplyButton extends pb_1.Message {
         }
     }
     get displayText() {
-        return pb_1.Message.getField(this, 1) as string;
+        return pb_1.Message.getFieldWithDefault(this, 1, "") as string;
     }
     set displayText(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
     get id() {
-        return pb_1.Message.getField(this, 2) as string;
+        return pb_1.Message.getFieldWithDefault(this, 2, "") as string;
     }
     set id(value: string) {
         pb_1.Message.setField(this, 2, value);
@@ -51,10 +51,10 @@ export class HydratedQuickReplyButton extends pb_1.Message {
             displayText?: string;
             id?: string;
         } = {};
-        if (this.displayText != null) {
+        if (pb_1.Message.getField(this, 1) != null) {
             data.displayText = this.displayText;
         }
-        if (this.id != null) {
+        if (pb_1.Message.getField(this, 2) != null) {
             data.id = this.id;
         }
         return data;
@@ -63,9 +63,9 @@ export class HydratedQuickReplyButton extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (typeof this.displayText === "string" && this.displayText.length)
+        if (typeof pb_1.Message.getField(this, 1) === "string" && this.displayText.length)
             writer.writeString(1, this.displayText);
-        if (typeof this.id === "string" && this.id.length)
+        if (typeof pb_1.Message.getField(this, 2) === "string" && this.id.length)
             writer.writeString(2, this.id);
         if (!w)
             return writer.getResultBuffer();
@@ -112,13 +112,13 @@ export class HydratedURLButton extends pb_1.Message {
         }
     }
     get displayText() {
-        return pb_1.Message.getField(this, 1) as string;
+        return pb_1.Message.getFieldWithDefault(this, 1, "") as string;
     }
     set displayText(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
     get url() {
-        return pb_1.Message.getField(this, 2) as string;
+        return pb_1.Message.getFieldWithDefault(this, 2, "") as string;
     }
     set url(value: string) {
         pb_1.Message.setField(this, 2, value);
@@ -141,10 +141,10 @@ export class HydratedURLButton extends pb_1.Message {
             displayText?: string;
             url?: string;
         } = {};
-        if (this.displayText != null) {
+        if (pb_1.Message.getField(this, 1) != null) {
             data.displayText = this.displayText;
         }
-        if (this.url != null) {
+        if (pb_1.Message.getField(this, 2) != null) {
             data.url = this.url;
         }
         return data;
@@ -153,9 +153,9 @@ export class HydratedURLButton extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (typeof this.displayText === "string" && this.displayText.length)
+        if (typeof pb_1.Message.getField(this, 1) === "string" && this.displayText.length)
             writer.writeString(1, this.displayText);
-        if (typeof this.url === "string" && this.url.length)
+        if (typeof pb_1.Message.getField(this, 2) === "string" && this.url.length)
             writer.writeString(2, this.url);
         if (!w)
             return writer.getResultBuffer();
@@ -202,13 +202,13 @@ export class HydratedCallButton extends pb_1.Message {
         }
     }
     get displayText() {
-        return pb_1.Message.getField(this, 1) as string;
+        return pb_1.Message.getFieldWithDefault(this, 1, "") as string;
     }
     set displayText(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
     get phoneNumber() {
-        return pb_1.Message.getField(this, 2) as string;
+        return pb_1.Message.getFieldWithDefault(this, 2, "") as string;
     }
     set phoneNumber(value: string) {
         pb_1.Message.setField(this, 2, value);
@@ -231,10 +231,10 @@ export class HydratedCallButton extends pb_1.Message {
             displayText?: string;
             phoneNumber?: string;
         } = {};
-        if (this.displayText != null) {
+        if (pb_1.Message.getField(this, 1) != null) {
             data.displayText = this.displayText;
         }
-        if (this.phoneNumber != null) {
+        if (pb_1.Message.getField(this, 2) != null) {
             data.phoneNumber = this.phoneNumber;
         }
         return data;
@@ -243,9 +243,9 @@ export class HydratedCallButton extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (typeof this.displayText === "string" && this.displayText.length)
+        if (typeof pb_1.Message.getField(this, 1) === "string" && this.displayText.length)
             writer.writeString(1, this.displayText);
-        if (typeof this.phoneNumber === "string" && this.phoneNumber.length)
+        if (typeof pb_1.Message.getField(this, 2) === "string" && this.phoneNumber.length)
             writer.writeString(2, this.phoneNumber);
         if (!w)
             return writer.getResultBuffer();
@@ -309,7 +309,7 @@ export class HydratedTemplateButton extends pb_1.Message {
         }
     }
     get index() {
-        return pb_1.Message.getField(this, 4) as number;
+        return pb_1.Message.getFieldWithDefault(this, 4, 0) as number;
     }
     set index(value: number) {
         pb_1.Message.setField(this, 4, value);
@@ -371,16 +371,16 @@ export class HydratedTemplateButton extends pb_1.Message {
             urlButton?: ReturnType<typeof HydratedURLButton.prototype.toObject>;
             callButton?: ReturnType<typeof HydratedCallButton.prototype.toObject>;
         } = {};
-        if (this.index != null) {
+        if (pb_1.Message.getField(this, 4) != null) {
             data.index = this.index;
         }
-        if (this.quickReplyButton != null) {
+        if (pb_1.Message.getField(this, 1) != null) {
             data.quickReplyButton = this.quickReplyButton.toObject();
         }
-        if (this.urlButton != null) {
+        if (pb_1.Message.getField(this, 2) != null) {
             data.urlButton = this.urlButton.toObject();
         }
-        if (this.callButton != null) {
+        if (pb_1.Message.getField(this, 3) != null) {
             data.callButton = this.callButton.toObject();
         }
         return data;
@@ -389,13 +389,13 @@ export class HydratedTemplateButton extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.index !== undefined)
+        if (pb_1.Message.getField(this, 4) != null)
             writer.writeUint32(4, this.index);
-        if (this.quickReplyButton !== undefined)
+        if (pb_1.Message.getField(this, 1) != null)
             writer.writeMessage(1, this.quickReplyButton, () => this.quickReplyButton.serialize(writer));
-        if (this.urlButton !== undefined)
+        if (pb_1.Message.getField(this, 2) != null)
             writer.writeMessage(2, this.urlButton, () => this.urlButton.serialize(writer));
-        if (this.callButton !== undefined)
+        if (pb_1.Message.getField(this, 3) != null)
             writer.writeMessage(3, this.callButton, () => this.callButton.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
@@ -454,7 +454,7 @@ export class QuickReplyButton extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 1, value);
     }
     get id() {
-        return pb_1.Message.getField(this, 2) as string;
+        return pb_1.Message.getFieldWithDefault(this, 2, "") as string;
     }
     set id(value: string) {
         pb_1.Message.setField(this, 2, value);
@@ -477,10 +477,10 @@ export class QuickReplyButton extends pb_1.Message {
             displayText?: ReturnType<typeof HighlyStructuredMessage.prototype.toObject>;
             id?: string;
         } = {};
-        if (this.displayText != null) {
+        if (pb_1.Message.getField(this, 1) != null) {
             data.displayText = this.displayText.toObject();
         }
-        if (this.id != null) {
+        if (pb_1.Message.getField(this, 2) != null) {
             data.id = this.id;
         }
         return data;
@@ -489,9 +489,9 @@ export class QuickReplyButton extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.displayText !== undefined)
+        if (pb_1.Message.getField(this, 1) != null)
             writer.writeMessage(1, this.displayText, () => this.displayText.serialize(writer));
-        if (typeof this.id === "string" && this.id.length)
+        if (typeof pb_1.Message.getField(this, 2) === "string" && this.id.length)
             writer.writeString(2, this.id);
         if (!w)
             return writer.getResultBuffer();
@@ -567,10 +567,10 @@ export class URLButton extends pb_1.Message {
             displayText?: ReturnType<typeof HighlyStructuredMessage.prototype.toObject>;
             url?: ReturnType<typeof HighlyStructuredMessage.prototype.toObject>;
         } = {};
-        if (this.displayText != null) {
+        if (pb_1.Message.getField(this, 1) != null) {
             data.displayText = this.displayText.toObject();
         }
-        if (this.url != null) {
+        if (pb_1.Message.getField(this, 2) != null) {
             data.url = this.url.toObject();
         }
         return data;
@@ -579,9 +579,9 @@ export class URLButton extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.displayText !== undefined)
+        if (pb_1.Message.getField(this, 1) != null)
             writer.writeMessage(1, this.displayText, () => this.displayText.serialize(writer));
-        if (this.url !== undefined)
+        if (pb_1.Message.getField(this, 2) != null)
             writer.writeMessage(2, this.url, () => this.url.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
@@ -657,10 +657,10 @@ export class CallButton extends pb_1.Message {
             displayText?: ReturnType<typeof HighlyStructuredMessage.prototype.toObject>;
             phoneNumber?: ReturnType<typeof HighlyStructuredMessage.prototype.toObject>;
         } = {};
-        if (this.displayText != null) {
+        if (pb_1.Message.getField(this, 1) != null) {
             data.displayText = this.displayText.toObject();
         }
-        if (this.phoneNumber != null) {
+        if (pb_1.Message.getField(this, 2) != null) {
             data.phoneNumber = this.phoneNumber.toObject();
         }
         return data;
@@ -669,9 +669,9 @@ export class CallButton extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.displayText !== undefined)
+        if (pb_1.Message.getField(this, 1) != null)
             writer.writeMessage(1, this.displayText, () => this.displayText.serialize(writer));
-        if (this.phoneNumber !== undefined)
+        if (pb_1.Message.getField(this, 2) != null)
             writer.writeMessage(2, this.phoneNumber, () => this.phoneNumber.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
@@ -735,7 +735,7 @@ export class TemplateButton extends pb_1.Message {
         }
     }
     get index() {
-        return pb_1.Message.getField(this, 4) as number;
+        return pb_1.Message.getFieldWithDefault(this, 4, 0) as number;
     }
     set index(value: number) {
         pb_1.Message.setField(this, 4, value);
@@ -797,16 +797,16 @@ export class TemplateButton extends pb_1.Message {
             urlButton?: ReturnType<typeof URLButton.prototype.toObject>;
             callButton?: ReturnType<typeof CallButton.prototype.toObject>;
         } = {};
-        if (this.index != null) {
+        if (pb_1.Message.getField(this, 4) != null) {
             data.index = this.index;
         }
-        if (this.quickReplyButton != null) {
+        if (pb_1.Message.getField(this, 1) != null) {
             data.quickReplyButton = this.quickReplyButton.toObject();
         }
-        if (this.urlButton != null) {
+        if (pb_1.Message.getField(this, 2) != null) {
             data.urlButton = this.urlButton.toObject();
         }
-        if (this.callButton != null) {
+        if (pb_1.Message.getField(this, 3) != null) {
             data.callButton = this.callButton.toObject();
         }
         return data;
@@ -815,13 +815,13 @@ export class TemplateButton extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.index !== undefined)
+        if (pb_1.Message.getField(this, 4) != null)
             writer.writeUint32(4, this.index);
-        if (this.quickReplyButton !== undefined)
+        if (pb_1.Message.getField(this, 1) != null)
             writer.writeMessage(1, this.quickReplyButton, () => this.quickReplyButton.serialize(writer));
-        if (this.urlButton !== undefined)
+        if (pb_1.Message.getField(this, 2) != null)
             writer.writeMessage(2, this.urlButton, () => this.urlButton.serialize(writer));
-        if (this.callButton !== undefined)
+        if (pb_1.Message.getField(this, 3) != null)
             writer.writeMessage(3, this.callButton, () => this.callButton.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
@@ -878,19 +878,19 @@ export class Location extends pb_1.Message {
         }
     }
     get degreesLatitude() {
-        return pb_1.Message.getField(this, 1) as number;
+        return pb_1.Message.getFieldWithDefault(this, 1, 0) as number;
     }
     set degreesLatitude(value: number) {
         pb_1.Message.setField(this, 1, value);
     }
     get degreesLongitude() {
-        return pb_1.Message.getField(this, 2) as number;
+        return pb_1.Message.getFieldWithDefault(this, 2, 0) as number;
     }
     set degreesLongitude(value: number) {
         pb_1.Message.setField(this, 2, value);
     }
     get name() {
-        return pb_1.Message.getField(this, 3) as string;
+        return pb_1.Message.getFieldWithDefault(this, 3, "") as string;
     }
     set name(value: string) {
         pb_1.Message.setField(this, 3, value);
@@ -918,13 +918,13 @@ export class Location extends pb_1.Message {
             degreesLongitude?: number;
             name?: string;
         } = {};
-        if (this.degreesLatitude != null) {
+        if (pb_1.Message.getField(this, 1) != null) {
             data.degreesLatitude = this.degreesLatitude;
         }
-        if (this.degreesLongitude != null) {
+        if (pb_1.Message.getField(this, 2) != null) {
             data.degreesLongitude = this.degreesLongitude;
         }
-        if (this.name != null) {
+        if (pb_1.Message.getField(this, 3) != null) {
             data.name = this.name;
         }
         return data;
@@ -933,11 +933,11 @@ export class Location extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.degreesLatitude !== undefined)
+        if (pb_1.Message.getField(this, 1) != null)
             writer.writeDouble(1, this.degreesLatitude);
-        if (this.degreesLongitude !== undefined)
+        if (pb_1.Message.getField(this, 2) != null)
             writer.writeDouble(2, this.degreesLongitude);
-        if (typeof this.name === "string" && this.name.length)
+        if (typeof pb_1.Message.getField(this, 3) === "string" && this.name.length)
             writer.writeString(3, this.name);
         if (!w)
             return writer.getResultBuffer();
@@ -995,25 +995,25 @@ export class Point extends pb_1.Message {
         }
     }
     get xDeprecated() {
-        return pb_1.Message.getField(this, 1) as number;
+        return pb_1.Message.getFieldWithDefault(this, 1, 0) as number;
     }
     set xDeprecated(value: number) {
         pb_1.Message.setField(this, 1, value);
     }
     get yDeprecated() {
-        return pb_1.Message.getField(this, 2) as number;
+        return pb_1.Message.getFieldWithDefault(this, 2, 0) as number;
     }
     set yDeprecated(value: number) {
         pb_1.Message.setField(this, 2, value);
     }
     get x() {
-        return pb_1.Message.getField(this, 3) as number;
+        return pb_1.Message.getFieldWithDefault(this, 3, 0) as number;
     }
     set x(value: number) {
         pb_1.Message.setField(this, 3, value);
     }
     get y() {
-        return pb_1.Message.getField(this, 4) as number;
+        return pb_1.Message.getFieldWithDefault(this, 4, 0) as number;
     }
     set y(value: number) {
         pb_1.Message.setField(this, 4, value);
@@ -1046,16 +1046,16 @@ export class Point extends pb_1.Message {
             x?: number;
             y?: number;
         } = {};
-        if (this.xDeprecated != null) {
+        if (pb_1.Message.getField(this, 1) != null) {
             data.xDeprecated = this.xDeprecated;
         }
-        if (this.yDeprecated != null) {
+        if (pb_1.Message.getField(this, 2) != null) {
             data.yDeprecated = this.yDeprecated;
         }
-        if (this.x != null) {
+        if (pb_1.Message.getField(this, 3) != null) {
             data.x = this.x;
         }
-        if (this.y != null) {
+        if (pb_1.Message.getField(this, 4) != null) {
             data.y = this.y;
         }
         return data;
@@ -1064,13 +1064,13 @@ export class Point extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.xDeprecated !== undefined)
+        if (pb_1.Message.getField(this, 1) != null)
             writer.writeInt32(1, this.xDeprecated);
-        if (this.yDeprecated !== undefined)
+        if (pb_1.Message.getField(this, 2) != null)
             writer.writeInt32(2, this.yDeprecated);
-        if (this.x !== undefined)
+        if (pb_1.Message.getField(this, 3) != null)
             writer.writeDouble(3, this.x);
-        if (this.y !== undefined)
+        if (pb_1.Message.getField(this, 4) != null)
             writer.writeDouble(4, this.y);
         if (!w)
             return writer.getResultBuffer();
@@ -1161,7 +1161,7 @@ export class InteractiveAnnotation extends pb_1.Message {
         } = {
             polygonVertices: this.polygonVertices.map((item: Point) => item.toObject())
         };
-        if (this.location != null) {
+        if (pb_1.Message.getField(this, 2) != null) {
             data.location = this.location.toObject();
         }
         return data;
@@ -1170,9 +1170,9 @@ export class InteractiveAnnotation extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.polygonVertices !== undefined)
+        if (this.polygonVertices.length)
             writer.writeRepeatedMessage(1, this.polygonVertices, (item: Point) => item.serialize(writer));
-        if (this.location !== undefined)
+        if (pb_1.Message.getField(this, 2) != null)
             writer.writeMessage(2, this.location, () => this.location.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
@@ -1227,25 +1227,25 @@ export class AdReplyInfo extends pb_1.Message {
         }
     }
     get advertiserName() {
-        return pb_1.Message.getField(this, 1) as string;
+        return pb_1.Message.getFieldWithDefault(this, 1, "") as string;
     }
     set advertiserName(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
     get mediaType() {
-        return pb_1.Message.getField(this, 2) as AdReplyInfo.AD_REPLY_INFO_MEDIATYPE;
+        return pb_1.Message.getFieldWithDefault(this, 2, AdReplyInfo.AD_REPLY_INFO_MEDIATYPE.NONE) as AdReplyInfo.AD_REPLY_INFO_MEDIATYPE;
     }
     set mediaType(value: AdReplyInfo.AD_REPLY_INFO_MEDIATYPE) {
         pb_1.Message.setField(this, 2, value);
     }
     get jpegThumbnail() {
-        return pb_1.Message.getField(this, 16) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 16, new Uint8Array()) as Uint8Array;
     }
     set jpegThumbnail(value: Uint8Array) {
         pb_1.Message.setField(this, 16, value);
     }
     get caption() {
-        return pb_1.Message.getField(this, 17) as string;
+        return pb_1.Message.getFieldWithDefault(this, 17, "") as string;
     }
     set caption(value: string) {
         pb_1.Message.setField(this, 17, value);
@@ -1278,16 +1278,16 @@ export class AdReplyInfo extends pb_1.Message {
             jpegThumbnail?: Uint8Array;
             caption?: string;
         } = {};
-        if (this.advertiserName != null) {
+        if (pb_1.Message.getField(this, 1) != null) {
             data.advertiserName = this.advertiserName;
         }
-        if (this.mediaType != null) {
+        if (pb_1.Message.getField(this, 2) != null) {
             data.mediaType = this.mediaType;
         }
-        if (this.jpegThumbnail != null) {
+        if (pb_1.Message.getField(this, 16) != null) {
             data.jpegThumbnail = this.jpegThumbnail;
         }
-        if (this.caption != null) {
+        if (pb_1.Message.getField(this, 17) != null) {
             data.caption = this.caption;
         }
         return data;
@@ -1296,13 +1296,13 @@ export class AdReplyInfo extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (typeof this.advertiserName === "string" && this.advertiserName.length)
+        if (typeof pb_1.Message.getField(this, 1) === "string" && this.advertiserName.length)
             writer.writeString(1, this.advertiserName);
-        if (this.mediaType !== undefined)
+        if (pb_1.Message.getField(this, 2) != null)
             writer.writeEnum(2, this.mediaType);
-        if (this.jpegThumbnail !== undefined)
+        if (pb_1.Message.getField(this, 16) != null)
             writer.writeBytes(16, this.jpegThumbnail);
-        if (typeof this.caption === "string" && this.caption.length)
+        if (typeof pb_1.Message.getField(this, 17) === "string" && this.caption.length)
             writer.writeString(17, this.caption);
         if (!w)
             return writer.getResultBuffer();
@@ -1412,13 +1412,13 @@ export class ContextInfo extends pb_1.Message {
         }
     }
     get stanzaId() {
-        return pb_1.Message.getField(this, 1) as string;
+        return pb_1.Message.getFieldWithDefault(this, 1, "") as string;
     }
     set stanzaId(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
     get participant() {
-        return pb_1.Message.getField(this, 2) as string;
+        return pb_1.Message.getFieldWithDefault(this, 2, "") as string;
     }
     set participant(value: string) {
         pb_1.Message.setField(this, 2, value);
@@ -1430,7 +1430,7 @@ export class ContextInfo extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 3, value);
     }
     get remoteJid() {
-        return pb_1.Message.getField(this, 4) as string;
+        return pb_1.Message.getFieldWithDefault(this, 4, "") as string;
     }
     set remoteJid(value: string) {
         pb_1.Message.setField(this, 4, value);
@@ -1442,31 +1442,31 @@ export class ContextInfo extends pb_1.Message {
         pb_1.Message.setField(this, 15, value);
     }
     get conversionSource() {
-        return pb_1.Message.getField(this, 18) as string;
+        return pb_1.Message.getFieldWithDefault(this, 18, "") as string;
     }
     set conversionSource(value: string) {
         pb_1.Message.setField(this, 18, value);
     }
     get conversionData() {
-        return pb_1.Message.getField(this, 19) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 19, new Uint8Array()) as Uint8Array;
     }
     set conversionData(value: Uint8Array) {
         pb_1.Message.setField(this, 19, value);
     }
     get conversionDelaySeconds() {
-        return pb_1.Message.getField(this, 20) as number;
+        return pb_1.Message.getFieldWithDefault(this, 20, 0) as number;
     }
     set conversionDelaySeconds(value: number) {
         pb_1.Message.setField(this, 20, value);
     }
     get forwardingScore() {
-        return pb_1.Message.getField(this, 21) as number;
+        return pb_1.Message.getFieldWithDefault(this, 21, 0) as number;
     }
     set forwardingScore(value: number) {
         pb_1.Message.setField(this, 21, value);
     }
     get isForwarded() {
-        return pb_1.Message.getField(this, 22) as boolean;
+        return pb_1.Message.getFieldWithDefault(this, 22, false) as boolean;
     }
     set isForwarded(value: boolean) {
         pb_1.Message.setField(this, 22, value);
@@ -1484,19 +1484,19 @@ export class ContextInfo extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 24, value);
     }
     get expiration() {
-        return pb_1.Message.getField(this, 25) as number;
+        return pb_1.Message.getFieldWithDefault(this, 25, 0) as number;
     }
     set expiration(value: number) {
         pb_1.Message.setField(this, 25, value);
     }
     get ephemeralSettingTimestamp() {
-        return pb_1.Message.getField(this, 26) as number;
+        return pb_1.Message.getFieldWithDefault(this, 26, 0) as number;
     }
     set ephemeralSettingTimestamp(value: number) {
         pb_1.Message.setField(this, 26, value);
     }
     get ephemeralSharedSecret() {
-        return pb_1.Message.getField(this, 27) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 27, new Uint8Array()) as Uint8Array;
     }
     set ephemeralSharedSecret(value: Uint8Array) {
         pb_1.Message.setField(this, 27, value);
@@ -1585,46 +1585,46 @@ export class ContextInfo extends pb_1.Message {
         } = {
             mentionedJid: this.mentionedJid
         };
-        if (this.stanzaId != null) {
+        if (pb_1.Message.getField(this, 1) != null) {
             data.stanzaId = this.stanzaId;
         }
-        if (this.participant != null) {
+        if (pb_1.Message.getField(this, 2) != null) {
             data.participant = this.participant;
         }
-        if (this.quotedMessage != null) {
+        if (pb_1.Message.getField(this, 3) != null) {
             data.quotedMessage = this.quotedMessage.toObject();
         }
-        if (this.remoteJid != null) {
+        if (pb_1.Message.getField(this, 4) != null) {
             data.remoteJid = this.remoteJid;
         }
-        if (this.conversionSource != null) {
+        if (pb_1.Message.getField(this, 18) != null) {
             data.conversionSource = this.conversionSource;
         }
-        if (this.conversionData != null) {
+        if (pb_1.Message.getField(this, 19) != null) {
             data.conversionData = this.conversionData;
         }
-        if (this.conversionDelaySeconds != null) {
+        if (pb_1.Message.getField(this, 20) != null) {
             data.conversionDelaySeconds = this.conversionDelaySeconds;
         }
-        if (this.forwardingScore != null) {
+        if (pb_1.Message.getField(this, 21) != null) {
             data.forwardingScore = this.forwardingScore;
         }
-        if (this.isForwarded != null) {
+        if (pb_1.Message.getField(this, 22) != null) {
             data.isForwarded = this.isForwarded;
         }
-        if (this.quotedAd != null) {
+        if (pb_1.Message.getField(this, 23) != null) {
             data.quotedAd = this.quotedAd.toObject();
         }
-        if (this.placeholderKey != null) {
+        if (pb_1.Message.getField(this, 24) != null) {
             data.placeholderKey = this.placeholderKey.toObject();
         }
-        if (this.expiration != null) {
+        if (pb_1.Message.getField(this, 25) != null) {
             data.expiration = this.expiration;
         }
-        if (this.ephemeralSettingTimestamp != null) {
+        if (pb_1.Message.getField(this, 26) != null) {
             data.ephemeralSettingTimestamp = this.ephemeralSettingTimestamp;
         }
-        if (this.ephemeralSharedSecret != null) {
+        if (pb_1.Message.getField(this, 27) != null) {
             data.ephemeralSharedSecret = this.ephemeralSharedSecret;
         }
         return data;
@@ -1633,35 +1633,35 @@ export class ContextInfo extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (typeof this.stanzaId === "string" && this.stanzaId.length)
+        if (typeof pb_1.Message.getField(this, 1) === "string" && this.stanzaId.length)
             writer.writeString(1, this.stanzaId);
-        if (typeof this.participant === "string" && this.participant.length)
+        if (typeof pb_1.Message.getField(this, 2) === "string" && this.participant.length)
             writer.writeString(2, this.participant);
-        if (this.quotedMessage !== undefined)
+        if (pb_1.Message.getField(this, 3) != null)
             writer.writeMessage(3, this.quotedMessage, () => this.quotedMessage.serialize(writer));
-        if (typeof this.remoteJid === "string" && this.remoteJid.length)
+        if (typeof pb_1.Message.getField(this, 4) === "string" && this.remoteJid.length)
             writer.writeString(4, this.remoteJid);
-        if (this.mentionedJid !== undefined)
+        if (this.mentionedJid.length)
             writer.writeRepeatedString(15, this.mentionedJid);
-        if (typeof this.conversionSource === "string" && this.conversionSource.length)
+        if (typeof pb_1.Message.getField(this, 18) === "string" && this.conversionSource.length)
             writer.writeString(18, this.conversionSource);
-        if (this.conversionData !== undefined)
+        if (pb_1.Message.getField(this, 19) != null)
             writer.writeBytes(19, this.conversionData);
-        if (this.conversionDelaySeconds !== undefined)
+        if (pb_1.Message.getField(this, 20) != null)
             writer.writeUint32(20, this.conversionDelaySeconds);
-        if (this.forwardingScore !== undefined)
+        if (pb_1.Message.getField(this, 21) != null)
             writer.writeUint32(21, this.forwardingScore);
-        if (this.isForwarded !== undefined)
+        if (pb_1.Message.getField(this, 22) != null)
             writer.writeBool(22, this.isForwarded);
-        if (this.quotedAd !== undefined)
+        if (pb_1.Message.getField(this, 23) != null)
             writer.writeMessage(23, this.quotedAd, () => this.quotedAd.serialize(writer));
-        if (this.placeholderKey !== undefined)
+        if (pb_1.Message.getField(this, 24) != null)
             writer.writeMessage(24, this.placeholderKey, () => this.placeholderKey.serialize(writer));
-        if (this.expiration !== undefined)
+        if (pb_1.Message.getField(this, 25) != null)
             writer.writeUint32(25, this.expiration);
-        if (this.ephemeralSettingTimestamp !== undefined)
+        if (pb_1.Message.getField(this, 26) != null)
             writer.writeInt64(26, this.ephemeralSettingTimestamp);
-        if (this.ephemeralSharedSecret !== undefined)
+        if (pb_1.Message.getField(this, 27) != null)
             writer.writeBytes(27, this.ephemeralSharedSecret);
         if (!w)
             return writer.getResultBuffer();
@@ -1747,13 +1747,13 @@ export class SenderKeyDistributionMessage extends pb_1.Message {
         }
     }
     get groupId() {
-        return pb_1.Message.getField(this, 1) as string;
+        return pb_1.Message.getFieldWithDefault(this, 1, "") as string;
     }
     set groupId(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
     get axolotlSenderKeyDistributionMessage() {
-        return pb_1.Message.getField(this, 2) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 2, new Uint8Array()) as Uint8Array;
     }
     set axolotlSenderKeyDistributionMessage(value: Uint8Array) {
         pb_1.Message.setField(this, 2, value);
@@ -1776,10 +1776,10 @@ export class SenderKeyDistributionMessage extends pb_1.Message {
             groupId?: string;
             axolotlSenderKeyDistributionMessage?: Uint8Array;
         } = {};
-        if (this.groupId != null) {
+        if (pb_1.Message.getField(this, 1) != null) {
             data.groupId = this.groupId;
         }
-        if (this.axolotlSenderKeyDistributionMessage != null) {
+        if (pb_1.Message.getField(this, 2) != null) {
             data.axolotlSenderKeyDistributionMessage = this.axolotlSenderKeyDistributionMessage;
         }
         return data;
@@ -1788,9 +1788,9 @@ export class SenderKeyDistributionMessage extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (typeof this.groupId === "string" && this.groupId.length)
+        if (typeof pb_1.Message.getField(this, 1) === "string" && this.groupId.length)
             writer.writeString(1, this.groupId);
-        if (this.axolotlSenderKeyDistributionMessage !== undefined)
+        if (pb_1.Message.getField(this, 2) != null)
             writer.writeBytes(2, this.axolotlSenderKeyDistributionMessage);
         if (!w)
             return writer.getResultBuffer();
@@ -1909,55 +1909,55 @@ export class ImageMessage extends pb_1.Message {
         }
     }
     get url() {
-        return pb_1.Message.getField(this, 1) as string;
+        return pb_1.Message.getFieldWithDefault(this, 1, "") as string;
     }
     set url(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
     get mimetype() {
-        return pb_1.Message.getField(this, 2) as string;
+        return pb_1.Message.getFieldWithDefault(this, 2, "") as string;
     }
     set mimetype(value: string) {
         pb_1.Message.setField(this, 2, value);
     }
     get caption() {
-        return pb_1.Message.getField(this, 3) as string;
+        return pb_1.Message.getFieldWithDefault(this, 3, "") as string;
     }
     set caption(value: string) {
         pb_1.Message.setField(this, 3, value);
     }
     get fileSha256() {
-        return pb_1.Message.getField(this, 4) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 4, new Uint8Array()) as Uint8Array;
     }
     set fileSha256(value: Uint8Array) {
         pb_1.Message.setField(this, 4, value);
     }
     get fileLength() {
-        return pb_1.Message.getField(this, 5) as number;
+        return pb_1.Message.getFieldWithDefault(this, 5, 0) as number;
     }
     set fileLength(value: number) {
         pb_1.Message.setField(this, 5, value);
     }
     get height() {
-        return pb_1.Message.getField(this, 6) as number;
+        return pb_1.Message.getFieldWithDefault(this, 6, 0) as number;
     }
     set height(value: number) {
         pb_1.Message.setField(this, 6, value);
     }
     get width() {
-        return pb_1.Message.getField(this, 7) as number;
+        return pb_1.Message.getFieldWithDefault(this, 7, 0) as number;
     }
     set width(value: number) {
         pb_1.Message.setField(this, 7, value);
     }
     get mediaKey() {
-        return pb_1.Message.getField(this, 8) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 8, new Uint8Array()) as Uint8Array;
     }
     set mediaKey(value: Uint8Array) {
         pb_1.Message.setField(this, 8, value);
     }
     get fileEncSha256() {
-        return pb_1.Message.getField(this, 9) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 9, new Uint8Array()) as Uint8Array;
     }
     set fileEncSha256(value: Uint8Array) {
         pb_1.Message.setField(this, 9, value);
@@ -1969,19 +1969,19 @@ export class ImageMessage extends pb_1.Message {
         pb_1.Message.setRepeatedWrapperField(this, 10, value);
     }
     get directPath() {
-        return pb_1.Message.getField(this, 11) as string;
+        return pb_1.Message.getFieldWithDefault(this, 11, "") as string;
     }
     set directPath(value: string) {
         pb_1.Message.setField(this, 11, value);
     }
     get mediaKeyTimestamp() {
-        return pb_1.Message.getField(this, 12) as number;
+        return pb_1.Message.getFieldWithDefault(this, 12, 0) as number;
     }
     set mediaKeyTimestamp(value: number) {
         pb_1.Message.setField(this, 12, value);
     }
     get jpegThumbnail() {
-        return pb_1.Message.getField(this, 16) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 16, new Uint8Array()) as Uint8Array;
     }
     set jpegThumbnail(value: Uint8Array) {
         pb_1.Message.setField(this, 16, value);
@@ -1993,25 +1993,25 @@ export class ImageMessage extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 17, value);
     }
     get firstScanSidecar() {
-        return pb_1.Message.getField(this, 18) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 18, new Uint8Array()) as Uint8Array;
     }
     set firstScanSidecar(value: Uint8Array) {
         pb_1.Message.setField(this, 18, value);
     }
     get firstScanLength() {
-        return pb_1.Message.getField(this, 19) as number;
+        return pb_1.Message.getFieldWithDefault(this, 19, 0) as number;
     }
     set firstScanLength(value: number) {
         pb_1.Message.setField(this, 19, value);
     }
     get experimentGroupId() {
-        return pb_1.Message.getField(this, 20) as number;
+        return pb_1.Message.getFieldWithDefault(this, 20, 0) as number;
     }
     set experimentGroupId(value: number) {
         pb_1.Message.setField(this, 20, value);
     }
     get scansSidecar() {
-        return pb_1.Message.getField(this, 21) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 21, new Uint8Array()) as Uint8Array;
     }
     set scansSidecar(value: Uint8Array) {
         pb_1.Message.setField(this, 21, value);
@@ -2023,13 +2023,13 @@ export class ImageMessage extends pb_1.Message {
         pb_1.Message.setField(this, 22, value);
     }
     get midQualityFileSha256() {
-        return pb_1.Message.getField(this, 23) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 23, new Uint8Array()) as Uint8Array;
     }
     set midQualityFileSha256(value: Uint8Array) {
         pb_1.Message.setField(this, 23, value);
     }
     get midQualityFileEncSha256() {
-        return pb_1.Message.getField(this, 24) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 24, new Uint8Array()) as Uint8Array;
     }
     set midQualityFileEncSha256(value: Uint8Array) {
         pb_1.Message.setField(this, 24, value);
@@ -2147,61 +2147,61 @@ export class ImageMessage extends pb_1.Message {
             interactiveAnnotations: this.interactiveAnnotations.map((item: InteractiveAnnotation) => item.toObject()),
             scanLengths: this.scanLengths
         };
-        if (this.url != null) {
+        if (pb_1.Message.getField(this, 1) != null) {
             data.url = this.url;
         }
-        if (this.mimetype != null) {
+        if (pb_1.Message.getField(this, 2) != null) {
             data.mimetype = this.mimetype;
         }
-        if (this.caption != null) {
+        if (pb_1.Message.getField(this, 3) != null) {
             data.caption = this.caption;
         }
-        if (this.fileSha256 != null) {
+        if (pb_1.Message.getField(this, 4) != null) {
             data.fileSha256 = this.fileSha256;
         }
-        if (this.fileLength != null) {
+        if (pb_1.Message.getField(this, 5) != null) {
             data.fileLength = this.fileLength;
         }
-        if (this.height != null) {
+        if (pb_1.Message.getField(this, 6) != null) {
             data.height = this.height;
         }
-        if (this.width != null) {
+        if (pb_1.Message.getField(this, 7) != null) {
             data.width = this.width;
         }
-        if (this.mediaKey != null) {
+        if (pb_1.Message.getField(this, 8) != null) {
             data.mediaKey = this.mediaKey;
         }
-        if (this.fileEncSha256 != null) {
+        if (pb_1.Message.getField(this, 9) != null) {
             data.fileEncSha256 = this.fileEncSha256;
         }
-        if (this.directPath != null) {
+        if (pb_1.Message.getField(this, 11) != null) {
             data.directPath = this.directPath;
         }
-        if (this.mediaKeyTimestamp != null) {
+        if (pb_1.Message.getField(this, 12) != null) {
             data.mediaKeyTimestamp = this.mediaKeyTimestamp;
         }
-        if (this.jpegThumbnail != null) {
+        if (pb_1.Message.getField(this, 16) != null) {
             data.jpegThumbnail = this.jpegThumbnail;
         }
-        if (this.contextInfo != null) {
+        if (pb_1.Message.getField(this, 17) != null) {
             data.contextInfo = this.contextInfo.toObject();
         }
-        if (this.firstScanSidecar != null) {
+        if (pb_1.Message.getField(this, 18) != null) {
             data.firstScanSidecar = this.firstScanSidecar;
         }
-        if (this.firstScanLength != null) {
+        if (pb_1.Message.getField(this, 19) != null) {
             data.firstScanLength = this.firstScanLength;
         }
-        if (this.experimentGroupId != null) {
+        if (pb_1.Message.getField(this, 20) != null) {
             data.experimentGroupId = this.experimentGroupId;
         }
-        if (this.scansSidecar != null) {
+        if (pb_1.Message.getField(this, 21) != null) {
             data.scansSidecar = this.scansSidecar;
         }
-        if (this.midQualityFileSha256 != null) {
+        if (pb_1.Message.getField(this, 23) != null) {
             data.midQualityFileSha256 = this.midQualityFileSha256;
         }
-        if (this.midQualityFileEncSha256 != null) {
+        if (pb_1.Message.getField(this, 24) != null) {
             data.midQualityFileEncSha256 = this.midQualityFileEncSha256;
         }
         return data;
@@ -2210,47 +2210,47 @@ export class ImageMessage extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (typeof this.url === "string" && this.url.length)
+        if (typeof pb_1.Message.getField(this, 1) === "string" && this.url.length)
             writer.writeString(1, this.url);
-        if (typeof this.mimetype === "string" && this.mimetype.length)
+        if (typeof pb_1.Message.getField(this, 2) === "string" && this.mimetype.length)
             writer.writeString(2, this.mimetype);
-        if (typeof this.caption === "string" && this.caption.length)
+        if (typeof pb_1.Message.getField(this, 3) === "string" && this.caption.length)
             writer.writeString(3, this.caption);
-        if (this.fileSha256 !== undefined)
+        if (pb_1.Message.getField(this, 4) != null)
             writer.writeBytes(4, this.fileSha256);
-        if (this.fileLength !== undefined)
+        if (pb_1.Message.getField(this, 5) != null)
             writer.writeUint64(5, this.fileLength);
-        if (this.height !== undefined)
+        if (pb_1.Message.getField(this, 6) != null)
             writer.writeUint32(6, this.height);
-        if (this.width !== undefined)
+        if (pb_1.Message.getField(this, 7) != null)
             writer.writeUint32(7, this.width);
-        if (this.mediaKey !== undefined)
+        if (pb_1.Message.getField(this, 8) != null)
             writer.writeBytes(8, this.mediaKey);
-        if (this.fileEncSha256 !== undefined)
+        if (pb_1.Message.getField(this, 9) != null)
             writer.writeBytes(9, this.fileEncSha256);
-        if (this.interactiveAnnotations !== undefined)
+        if (this.interactiveAnnotations.length)
             writer.writeRepeatedMessage(10, this.interactiveAnnotations, (item: InteractiveAnnotation) => item.serialize(writer));
-        if (typeof this.directPath === "string" && this.directPath.length)
+        if (typeof pb_1.Message.getField(this, 11) === "string" && this.directPath.length)
             writer.writeString(11, this.directPath);
-        if (this.mediaKeyTimestamp !== undefined)
+        if (pb_1.Message.getField(this, 12) != null)
             writer.writeInt64(12, this.mediaKeyTimestamp);
-        if (this.jpegThumbnail !== undefined)
+        if (pb_1.Message.getField(this, 16) != null)
             writer.writeBytes(16, this.jpegThumbnail);
-        if (this.contextInfo !== undefined)
+        if (pb_1.Message.getField(this, 17) != null)
             writer.writeMessage(17, this.contextInfo, () => this.contextInfo.serialize(writer));
-        if (this.firstScanSidecar !== undefined)
+        if (pb_1.Message.getField(this, 18) != null)
             writer.writeBytes(18, this.firstScanSidecar);
-        if (this.firstScanLength !== undefined)
+        if (pb_1.Message.getField(this, 19) != null)
             writer.writeUint32(19, this.firstScanLength);
-        if (this.experimentGroupId !== undefined)
+        if (pb_1.Message.getField(this, 20) != null)
             writer.writeUint32(20, this.experimentGroupId);
-        if (this.scansSidecar !== undefined)
+        if (pb_1.Message.getField(this, 21) != null)
             writer.writeBytes(21, this.scansSidecar);
-        if (this.scanLengths !== undefined)
+        if (this.scanLengths.length)
             writer.writeRepeatedUint32(22, this.scanLengths);
-        if (this.midQualityFileSha256 !== undefined)
+        if (pb_1.Message.getField(this, 23) != null)
             writer.writeBytes(23, this.midQualityFileSha256);
-        if (this.midQualityFileEncSha256 !== undefined)
+        if (pb_1.Message.getField(this, 24) != null)
             writer.writeBytes(24, this.midQualityFileEncSha256);
         if (!w)
             return writer.getResultBuffer();
@@ -2358,13 +2358,13 @@ export class ContactMessage extends pb_1.Message {
         }
     }
     get displayName() {
-        return pb_1.Message.getField(this, 1) as string;
+        return pb_1.Message.getFieldWithDefault(this, 1, "") as string;
     }
     set displayName(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
     get vcard() {
-        return pb_1.Message.getField(this, 16) as string;
+        return pb_1.Message.getFieldWithDefault(this, 16, "") as string;
     }
     set vcard(value: string) {
         pb_1.Message.setField(this, 16, value);
@@ -2398,13 +2398,13 @@ export class ContactMessage extends pb_1.Message {
             vcard?: string;
             contextInfo?: ReturnType<typeof ContextInfo.prototype.toObject>;
         } = {};
-        if (this.displayName != null) {
+        if (pb_1.Message.getField(this, 1) != null) {
             data.displayName = this.displayName;
         }
-        if (this.vcard != null) {
+        if (pb_1.Message.getField(this, 16) != null) {
             data.vcard = this.vcard;
         }
-        if (this.contextInfo != null) {
+        if (pb_1.Message.getField(this, 17) != null) {
             data.contextInfo = this.contextInfo.toObject();
         }
         return data;
@@ -2413,11 +2413,11 @@ export class ContactMessage extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (typeof this.displayName === "string" && this.displayName.length)
+        if (typeof pb_1.Message.getField(this, 1) === "string" && this.displayName.length)
             writer.writeString(1, this.displayName);
-        if (typeof this.vcard === "string" && this.vcard.length)
+        if (typeof pb_1.Message.getField(this, 16) === "string" && this.vcard.length)
             writer.writeString(16, this.vcard);
-        if (this.contextInfo !== undefined)
+        if (pb_1.Message.getField(this, 17) != null)
             writer.writeMessage(17, this.contextInfo, () => this.contextInfo.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
@@ -2507,67 +2507,67 @@ export class LocationMessage extends pb_1.Message {
         }
     }
     get degreesLatitude() {
-        return pb_1.Message.getField(this, 1) as number;
+        return pb_1.Message.getFieldWithDefault(this, 1, 0) as number;
     }
     set degreesLatitude(value: number) {
         pb_1.Message.setField(this, 1, value);
     }
     get degreesLongitude() {
-        return pb_1.Message.getField(this, 2) as number;
+        return pb_1.Message.getFieldWithDefault(this, 2, 0) as number;
     }
     set degreesLongitude(value: number) {
         pb_1.Message.setField(this, 2, value);
     }
     get name() {
-        return pb_1.Message.getField(this, 3) as string;
+        return pb_1.Message.getFieldWithDefault(this, 3, "") as string;
     }
     set name(value: string) {
         pb_1.Message.setField(this, 3, value);
     }
     get address() {
-        return pb_1.Message.getField(this, 4) as string;
+        return pb_1.Message.getFieldWithDefault(this, 4, "") as string;
     }
     set address(value: string) {
         pb_1.Message.setField(this, 4, value);
     }
     get url() {
-        return pb_1.Message.getField(this, 5) as string;
+        return pb_1.Message.getFieldWithDefault(this, 5, "") as string;
     }
     set url(value: string) {
         pb_1.Message.setField(this, 5, value);
     }
     get isLive() {
-        return pb_1.Message.getField(this, 6) as boolean;
+        return pb_1.Message.getFieldWithDefault(this, 6, false) as boolean;
     }
     set isLive(value: boolean) {
         pb_1.Message.setField(this, 6, value);
     }
     get accuracyInMeters() {
-        return pb_1.Message.getField(this, 7) as number;
+        return pb_1.Message.getFieldWithDefault(this, 7, 0) as number;
     }
     set accuracyInMeters(value: number) {
         pb_1.Message.setField(this, 7, value);
     }
     get speedInMps() {
-        return pb_1.Message.getField(this, 8) as number;
+        return pb_1.Message.getFieldWithDefault(this, 8, 0) as number;
     }
     set speedInMps(value: number) {
         pb_1.Message.setField(this, 8, value);
     }
     get degreesClockwiseFromMagneticNorth() {
-        return pb_1.Message.getField(this, 9) as number;
+        return pb_1.Message.getFieldWithDefault(this, 9, 0) as number;
     }
     set degreesClockwiseFromMagneticNorth(value: number) {
         pb_1.Message.setField(this, 9, value);
     }
     get comment() {
-        return pb_1.Message.getField(this, 11) as string;
+        return pb_1.Message.getFieldWithDefault(this, 11, "") as string;
     }
     set comment(value: string) {
         pb_1.Message.setField(this, 11, value);
     }
     get jpegThumbnail() {
-        return pb_1.Message.getField(this, 16) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 16, new Uint8Array()) as Uint8Array;
     }
     set jpegThumbnail(value: Uint8Array) {
         pb_1.Message.setField(this, 16, value);
@@ -2646,40 +2646,40 @@ export class LocationMessage extends pb_1.Message {
             jpegThumbnail?: Uint8Array;
             contextInfo?: ReturnType<typeof ContextInfo.prototype.toObject>;
         } = {};
-        if (this.degreesLatitude != null) {
+        if (pb_1.Message.getField(this, 1) != null) {
             data.degreesLatitude = this.degreesLatitude;
         }
-        if (this.degreesLongitude != null) {
+        if (pb_1.Message.getField(this, 2) != null) {
             data.degreesLongitude = this.degreesLongitude;
         }
-        if (this.name != null) {
+        if (pb_1.Message.getField(this, 3) != null) {
             data.name = this.name;
         }
-        if (this.address != null) {
+        if (pb_1.Message.getField(this, 4) != null) {
             data.address = this.address;
         }
-        if (this.url != null) {
+        if (pb_1.Message.getField(this, 5) != null) {
             data.url = this.url;
         }
-        if (this.isLive != null) {
+        if (pb_1.Message.getField(this, 6) != null) {
             data.isLive = this.isLive;
         }
-        if (this.accuracyInMeters != null) {
+        if (pb_1.Message.getField(this, 7) != null) {
             data.accuracyInMeters = this.accuracyInMeters;
         }
-        if (this.speedInMps != null) {
+        if (pb_1.Message.getField(this, 8) != null) {
             data.speedInMps = this.speedInMps;
         }
-        if (this.degreesClockwiseFromMagneticNorth != null) {
+        if (pb_1.Message.getField(this, 9) != null) {
             data.degreesClockwiseFromMagneticNorth = this.degreesClockwiseFromMagneticNorth;
         }
-        if (this.comment != null) {
+        if (pb_1.Message.getField(this, 11) != null) {
             data.comment = this.comment;
         }
-        if (this.jpegThumbnail != null) {
+        if (pb_1.Message.getField(this, 16) != null) {
             data.jpegThumbnail = this.jpegThumbnail;
         }
-        if (this.contextInfo != null) {
+        if (pb_1.Message.getField(this, 17) != null) {
             data.contextInfo = this.contextInfo.toObject();
         }
         return data;
@@ -2688,29 +2688,29 @@ export class LocationMessage extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.degreesLatitude !== undefined)
+        if (pb_1.Message.getField(this, 1) != null)
             writer.writeDouble(1, this.degreesLatitude);
-        if (this.degreesLongitude !== undefined)
+        if (pb_1.Message.getField(this, 2) != null)
             writer.writeDouble(2, this.degreesLongitude);
-        if (typeof this.name === "string" && this.name.length)
+        if (typeof pb_1.Message.getField(this, 3) === "string" && this.name.length)
             writer.writeString(3, this.name);
-        if (typeof this.address === "string" && this.address.length)
+        if (typeof pb_1.Message.getField(this, 4) === "string" && this.address.length)
             writer.writeString(4, this.address);
-        if (typeof this.url === "string" && this.url.length)
+        if (typeof pb_1.Message.getField(this, 5) === "string" && this.url.length)
             writer.writeString(5, this.url);
-        if (this.isLive !== undefined)
+        if (pb_1.Message.getField(this, 6) != null)
             writer.writeBool(6, this.isLive);
-        if (this.accuracyInMeters !== undefined)
+        if (pb_1.Message.getField(this, 7) != null)
             writer.writeUint32(7, this.accuracyInMeters);
-        if (this.speedInMps !== undefined)
+        if (pb_1.Message.getField(this, 8) != null)
             writer.writeFloat(8, this.speedInMps);
-        if (this.degreesClockwiseFromMagneticNorth !== undefined)
+        if (pb_1.Message.getField(this, 9) != null)
             writer.writeUint32(9, this.degreesClockwiseFromMagneticNorth);
-        if (typeof this.comment === "string" && this.comment.length)
+        if (typeof pb_1.Message.getField(this, 11) === "string" && this.comment.length)
             writer.writeString(11, this.comment);
-        if (this.jpegThumbnail !== undefined)
+        if (pb_1.Message.getField(this, 16) != null)
             writer.writeBytes(16, this.jpegThumbnail);
-        if (this.contextInfo !== undefined)
+        if (pb_1.Message.getField(this, 17) != null)
             writer.writeMessage(17, this.contextInfo, () => this.contextInfo.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
@@ -2827,61 +2827,61 @@ export class ExtendedTextMessage extends pb_1.Message {
         }
     }
     get text() {
-        return pb_1.Message.getField(this, 1) as string;
+        return pb_1.Message.getFieldWithDefault(this, 1, "") as string;
     }
     set text(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
     get matchedText() {
-        return pb_1.Message.getField(this, 2) as string;
+        return pb_1.Message.getFieldWithDefault(this, 2, "") as string;
     }
     set matchedText(value: string) {
         pb_1.Message.setField(this, 2, value);
     }
     get canonicalUrl() {
-        return pb_1.Message.getField(this, 4) as string;
+        return pb_1.Message.getFieldWithDefault(this, 4, "") as string;
     }
     set canonicalUrl(value: string) {
         pb_1.Message.setField(this, 4, value);
     }
     get description() {
-        return pb_1.Message.getField(this, 5) as string;
+        return pb_1.Message.getFieldWithDefault(this, 5, "") as string;
     }
     set description(value: string) {
         pb_1.Message.setField(this, 5, value);
     }
     get title() {
-        return pb_1.Message.getField(this, 6) as string;
+        return pb_1.Message.getFieldWithDefault(this, 6, "") as string;
     }
     set title(value: string) {
         pb_1.Message.setField(this, 6, value);
     }
     get textArgb() {
-        return pb_1.Message.getField(this, 7) as number;
+        return pb_1.Message.getFieldWithDefault(this, 7, 0) as number;
     }
     set textArgb(value: number) {
         pb_1.Message.setField(this, 7, value);
     }
     get backgroundArgb() {
-        return pb_1.Message.getField(this, 8) as number;
+        return pb_1.Message.getFieldWithDefault(this, 8, 0) as number;
     }
     set backgroundArgb(value: number) {
         pb_1.Message.setField(this, 8, value);
     }
     get font() {
-        return pb_1.Message.getField(this, 9) as ExtendedTextMessage.EXTENDED_TEXT_MESSAGE_FONTTYPE;
+        return pb_1.Message.getFieldWithDefault(this, 9, ExtendedTextMessage.EXTENDED_TEXT_MESSAGE_FONTTYPE.SANS_SERIF) as ExtendedTextMessage.EXTENDED_TEXT_MESSAGE_FONTTYPE;
     }
     set font(value: ExtendedTextMessage.EXTENDED_TEXT_MESSAGE_FONTTYPE) {
         pb_1.Message.setField(this, 9, value);
     }
     get previewType() {
-        return pb_1.Message.getField(this, 10) as ExtendedTextMessage.EXTENDED_TEXT_MESSAGE_PREVIEWTYPE;
+        return pb_1.Message.getFieldWithDefault(this, 10, ExtendedTextMessage.EXTENDED_TEXT_MESSAGE_PREVIEWTYPE.NONE) as ExtendedTextMessage.EXTENDED_TEXT_MESSAGE_PREVIEWTYPE;
     }
     set previewType(value: ExtendedTextMessage.EXTENDED_TEXT_MESSAGE_PREVIEWTYPE) {
         pb_1.Message.setField(this, 10, value);
     }
     get jpegThumbnail() {
-        return pb_1.Message.getField(this, 16) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 16, new Uint8Array()) as Uint8Array;
     }
     set jpegThumbnail(value: Uint8Array) {
         pb_1.Message.setField(this, 16, value);
@@ -2893,7 +2893,7 @@ export class ExtendedTextMessage extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 17, value);
     }
     get doNotPlayInline() {
-        return pb_1.Message.getField(this, 18) as boolean;
+        return pb_1.Message.getFieldWithDefault(this, 18, false) as boolean;
     }
     set doNotPlayInline(value: boolean) {
         pb_1.Message.setField(this, 18, value);
@@ -2966,40 +2966,40 @@ export class ExtendedTextMessage extends pb_1.Message {
             contextInfo?: ReturnType<typeof ContextInfo.prototype.toObject>;
             doNotPlayInline?: boolean;
         } = {};
-        if (this.text != null) {
+        if (pb_1.Message.getField(this, 1) != null) {
             data.text = this.text;
         }
-        if (this.matchedText != null) {
+        if (pb_1.Message.getField(this, 2) != null) {
             data.matchedText = this.matchedText;
         }
-        if (this.canonicalUrl != null) {
+        if (pb_1.Message.getField(this, 4) != null) {
             data.canonicalUrl = this.canonicalUrl;
         }
-        if (this.description != null) {
+        if (pb_1.Message.getField(this, 5) != null) {
             data.description = this.description;
         }
-        if (this.title != null) {
+        if (pb_1.Message.getField(this, 6) != null) {
             data.title = this.title;
         }
-        if (this.textArgb != null) {
+        if (pb_1.Message.getField(this, 7) != null) {
             data.textArgb = this.textArgb;
         }
-        if (this.backgroundArgb != null) {
+        if (pb_1.Message.getField(this, 8) != null) {
             data.backgroundArgb = this.backgroundArgb;
         }
-        if (this.font != null) {
+        if (pb_1.Message.getField(this, 9) != null) {
             data.font = this.font;
         }
-        if (this.previewType != null) {
+        if (pb_1.Message.getField(this, 10) != null) {
             data.previewType = this.previewType;
         }
-        if (this.jpegThumbnail != null) {
+        if (pb_1.Message.getField(this, 16) != null) {
             data.jpegThumbnail = this.jpegThumbnail;
         }
-        if (this.contextInfo != null) {
+        if (pb_1.Message.getField(this, 17) != null) {
             data.contextInfo = this.contextInfo.toObject();
         }
-        if (this.doNotPlayInline != null) {
+        if (pb_1.Message.getField(this, 18) != null) {
             data.doNotPlayInline = this.doNotPlayInline;
         }
         return data;
@@ -3008,29 +3008,29 @@ export class ExtendedTextMessage extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (typeof this.text === "string" && this.text.length)
+        if (typeof pb_1.Message.getField(this, 1) === "string" && this.text.length)
             writer.writeString(1, this.text);
-        if (typeof this.matchedText === "string" && this.matchedText.length)
+        if (typeof pb_1.Message.getField(this, 2) === "string" && this.matchedText.length)
             writer.writeString(2, this.matchedText);
-        if (typeof this.canonicalUrl === "string" && this.canonicalUrl.length)
+        if (typeof pb_1.Message.getField(this, 4) === "string" && this.canonicalUrl.length)
             writer.writeString(4, this.canonicalUrl);
-        if (typeof this.description === "string" && this.description.length)
+        if (typeof pb_1.Message.getField(this, 5) === "string" && this.description.length)
             writer.writeString(5, this.description);
-        if (typeof this.title === "string" && this.title.length)
+        if (typeof pb_1.Message.getField(this, 6) === "string" && this.title.length)
             writer.writeString(6, this.title);
-        if (this.textArgb !== undefined)
+        if (pb_1.Message.getField(this, 7) != null)
             writer.writeFixed32(7, this.textArgb);
-        if (this.backgroundArgb !== undefined)
+        if (pb_1.Message.getField(this, 8) != null)
             writer.writeFixed32(8, this.backgroundArgb);
-        if (this.font !== undefined)
+        if (pb_1.Message.getField(this, 9) != null)
             writer.writeEnum(9, this.font);
-        if (this.previewType !== undefined)
+        if (pb_1.Message.getField(this, 10) != null)
             writer.writeEnum(10, this.previewType);
-        if (this.jpegThumbnail !== undefined)
+        if (pb_1.Message.getField(this, 16) != null)
             writer.writeBytes(16, this.jpegThumbnail);
-        if (this.contextInfo !== undefined)
+        if (pb_1.Message.getField(this, 17) != null)
             writer.writeMessage(17, this.contextInfo, () => this.contextInfo.serialize(writer));
-        if (this.doNotPlayInline !== undefined)
+        if (pb_1.Message.getField(this, 18) != null)
             writer.writeBool(18, this.doNotPlayInline);
         if (!w)
             return writer.getResultBuffer();
@@ -3165,73 +3165,73 @@ export class DocumentMessage extends pb_1.Message {
         }
     }
     get url() {
-        return pb_1.Message.getField(this, 1) as string;
+        return pb_1.Message.getFieldWithDefault(this, 1, "") as string;
     }
     set url(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
     get mimetype() {
-        return pb_1.Message.getField(this, 2) as string;
+        return pb_1.Message.getFieldWithDefault(this, 2, "") as string;
     }
     set mimetype(value: string) {
         pb_1.Message.setField(this, 2, value);
     }
     get title() {
-        return pb_1.Message.getField(this, 3) as string;
+        return pb_1.Message.getFieldWithDefault(this, 3, "") as string;
     }
     set title(value: string) {
         pb_1.Message.setField(this, 3, value);
     }
     get fileSha256() {
-        return pb_1.Message.getField(this, 4) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 4, new Uint8Array()) as Uint8Array;
     }
     set fileSha256(value: Uint8Array) {
         pb_1.Message.setField(this, 4, value);
     }
     get fileLength() {
-        return pb_1.Message.getField(this, 5) as number;
+        return pb_1.Message.getFieldWithDefault(this, 5, 0) as number;
     }
     set fileLength(value: number) {
         pb_1.Message.setField(this, 5, value);
     }
     get pageCount() {
-        return pb_1.Message.getField(this, 6) as number;
+        return pb_1.Message.getFieldWithDefault(this, 6, 0) as number;
     }
     set pageCount(value: number) {
         pb_1.Message.setField(this, 6, value);
     }
     get mediaKey() {
-        return pb_1.Message.getField(this, 7) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 7, new Uint8Array()) as Uint8Array;
     }
     set mediaKey(value: Uint8Array) {
         pb_1.Message.setField(this, 7, value);
     }
     get fileName() {
-        return pb_1.Message.getField(this, 8) as string;
+        return pb_1.Message.getFieldWithDefault(this, 8, "") as string;
     }
     set fileName(value: string) {
         pb_1.Message.setField(this, 8, value);
     }
     get fileEncSha256() {
-        return pb_1.Message.getField(this, 9) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 9, new Uint8Array()) as Uint8Array;
     }
     set fileEncSha256(value: Uint8Array) {
         pb_1.Message.setField(this, 9, value);
     }
     get directPath() {
-        return pb_1.Message.getField(this, 10) as string;
+        return pb_1.Message.getFieldWithDefault(this, 10, "") as string;
     }
     set directPath(value: string) {
         pb_1.Message.setField(this, 10, value);
     }
     get mediaKeyTimestamp() {
-        return pb_1.Message.getField(this, 11) as number;
+        return pb_1.Message.getFieldWithDefault(this, 11, 0) as number;
     }
     set mediaKeyTimestamp(value: number) {
         pb_1.Message.setField(this, 11, value);
     }
     get jpegThumbnail() {
-        return pb_1.Message.getField(this, 16) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 16, new Uint8Array()) as Uint8Array;
     }
     set jpegThumbnail(value: Uint8Array) {
         pb_1.Message.setField(this, 16, value);
@@ -3315,43 +3315,43 @@ export class DocumentMessage extends pb_1.Message {
             jpegThumbnail?: Uint8Array;
             contextInfo?: ReturnType<typeof ContextInfo.prototype.toObject>;
         } = {};
-        if (this.url != null) {
+        if (pb_1.Message.getField(this, 1) != null) {
             data.url = this.url;
         }
-        if (this.mimetype != null) {
+        if (pb_1.Message.getField(this, 2) != null) {
             data.mimetype = this.mimetype;
         }
-        if (this.title != null) {
+        if (pb_1.Message.getField(this, 3) != null) {
             data.title = this.title;
         }
-        if (this.fileSha256 != null) {
+        if (pb_1.Message.getField(this, 4) != null) {
             data.fileSha256 = this.fileSha256;
         }
-        if (this.fileLength != null) {
+        if (pb_1.Message.getField(this, 5) != null) {
             data.fileLength = this.fileLength;
         }
-        if (this.pageCount != null) {
+        if (pb_1.Message.getField(this, 6) != null) {
             data.pageCount = this.pageCount;
         }
-        if (this.mediaKey != null) {
+        if (pb_1.Message.getField(this, 7) != null) {
             data.mediaKey = this.mediaKey;
         }
-        if (this.fileName != null) {
+        if (pb_1.Message.getField(this, 8) != null) {
             data.fileName = this.fileName;
         }
-        if (this.fileEncSha256 != null) {
+        if (pb_1.Message.getField(this, 9) != null) {
             data.fileEncSha256 = this.fileEncSha256;
         }
-        if (this.directPath != null) {
+        if (pb_1.Message.getField(this, 10) != null) {
             data.directPath = this.directPath;
         }
-        if (this.mediaKeyTimestamp != null) {
+        if (pb_1.Message.getField(this, 11) != null) {
             data.mediaKeyTimestamp = this.mediaKeyTimestamp;
         }
-        if (this.jpegThumbnail != null) {
+        if (pb_1.Message.getField(this, 16) != null) {
             data.jpegThumbnail = this.jpegThumbnail;
         }
-        if (this.contextInfo != null) {
+        if (pb_1.Message.getField(this, 17) != null) {
             data.contextInfo = this.contextInfo.toObject();
         }
         return data;
@@ -3360,31 +3360,31 @@ export class DocumentMessage extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (typeof this.url === "string" && this.url.length)
+        if (typeof pb_1.Message.getField(this, 1) === "string" && this.url.length)
             writer.writeString(1, this.url);
-        if (typeof this.mimetype === "string" && this.mimetype.length)
+        if (typeof pb_1.Message.getField(this, 2) === "string" && this.mimetype.length)
             writer.writeString(2, this.mimetype);
-        if (typeof this.title === "string" && this.title.length)
+        if (typeof pb_1.Message.getField(this, 3) === "string" && this.title.length)
             writer.writeString(3, this.title);
-        if (this.fileSha256 !== undefined)
+        if (pb_1.Message.getField(this, 4) != null)
             writer.writeBytes(4, this.fileSha256);
-        if (this.fileLength !== undefined)
+        if (pb_1.Message.getField(this, 5) != null)
             writer.writeUint64(5, this.fileLength);
-        if (this.pageCount !== undefined)
+        if (pb_1.Message.getField(this, 6) != null)
             writer.writeUint32(6, this.pageCount);
-        if (this.mediaKey !== undefined)
+        if (pb_1.Message.getField(this, 7) != null)
             writer.writeBytes(7, this.mediaKey);
-        if (typeof this.fileName === "string" && this.fileName.length)
+        if (typeof pb_1.Message.getField(this, 8) === "string" && this.fileName.length)
             writer.writeString(8, this.fileName);
-        if (this.fileEncSha256 !== undefined)
+        if (pb_1.Message.getField(this, 9) != null)
             writer.writeBytes(9, this.fileEncSha256);
-        if (typeof this.directPath === "string" && this.directPath.length)
+        if (typeof pb_1.Message.getField(this, 10) === "string" && this.directPath.length)
             writer.writeString(10, this.directPath);
-        if (this.mediaKeyTimestamp !== undefined)
+        if (pb_1.Message.getField(this, 11) != null)
             writer.writeInt64(11, this.mediaKeyTimestamp);
-        if (this.jpegThumbnail !== undefined)
+        if (pb_1.Message.getField(this, 16) != null)
             writer.writeBytes(16, this.jpegThumbnail);
-        if (this.contextInfo !== undefined)
+        if (pb_1.Message.getField(this, 17) != null)
             writer.writeMessage(17, this.contextInfo, () => this.contextInfo.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
@@ -3504,61 +3504,61 @@ export class AudioMessage extends pb_1.Message {
         }
     }
     get url() {
-        return pb_1.Message.getField(this, 1) as string;
+        return pb_1.Message.getFieldWithDefault(this, 1, "") as string;
     }
     set url(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
     get mimetype() {
-        return pb_1.Message.getField(this, 2) as string;
+        return pb_1.Message.getFieldWithDefault(this, 2, "") as string;
     }
     set mimetype(value: string) {
         pb_1.Message.setField(this, 2, value);
     }
     get fileSha256() {
-        return pb_1.Message.getField(this, 3) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 3, new Uint8Array()) as Uint8Array;
     }
     set fileSha256(value: Uint8Array) {
         pb_1.Message.setField(this, 3, value);
     }
     get fileLength() {
-        return pb_1.Message.getField(this, 4) as number;
+        return pb_1.Message.getFieldWithDefault(this, 4, 0) as number;
     }
     set fileLength(value: number) {
         pb_1.Message.setField(this, 4, value);
     }
     get seconds() {
-        return pb_1.Message.getField(this, 5) as number;
+        return pb_1.Message.getFieldWithDefault(this, 5, 0) as number;
     }
     set seconds(value: number) {
         pb_1.Message.setField(this, 5, value);
     }
     get ptt() {
-        return pb_1.Message.getField(this, 6) as boolean;
+        return pb_1.Message.getFieldWithDefault(this, 6, false) as boolean;
     }
     set ptt(value: boolean) {
         pb_1.Message.setField(this, 6, value);
     }
     get mediaKey() {
-        return pb_1.Message.getField(this, 7) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 7, new Uint8Array()) as Uint8Array;
     }
     set mediaKey(value: Uint8Array) {
         pb_1.Message.setField(this, 7, value);
     }
     get fileEncSha256() {
-        return pb_1.Message.getField(this, 8) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 8, new Uint8Array()) as Uint8Array;
     }
     set fileEncSha256(value: Uint8Array) {
         pb_1.Message.setField(this, 8, value);
     }
     get directPath() {
-        return pb_1.Message.getField(this, 9) as string;
+        return pb_1.Message.getFieldWithDefault(this, 9, "") as string;
     }
     set directPath(value: string) {
         pb_1.Message.setField(this, 9, value);
     }
     get mediaKeyTimestamp() {
-        return pb_1.Message.getField(this, 10) as number;
+        return pb_1.Message.getFieldWithDefault(this, 10, 0) as number;
     }
     set mediaKeyTimestamp(value: number) {
         pb_1.Message.setField(this, 10, value);
@@ -3570,7 +3570,7 @@ export class AudioMessage extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 17, value);
     }
     get streamingSidecar() {
-        return pb_1.Message.getField(this, 18) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 18, new Uint8Array()) as Uint8Array;
     }
     set streamingSidecar(value: Uint8Array) {
         pb_1.Message.setField(this, 18, value);
@@ -3643,40 +3643,40 @@ export class AudioMessage extends pb_1.Message {
             contextInfo?: ReturnType<typeof ContextInfo.prototype.toObject>;
             streamingSidecar?: Uint8Array;
         } = {};
-        if (this.url != null) {
+        if (pb_1.Message.getField(this, 1) != null) {
             data.url = this.url;
         }
-        if (this.mimetype != null) {
+        if (pb_1.Message.getField(this, 2) != null) {
             data.mimetype = this.mimetype;
         }
-        if (this.fileSha256 != null) {
+        if (pb_1.Message.getField(this, 3) != null) {
             data.fileSha256 = this.fileSha256;
         }
-        if (this.fileLength != null) {
+        if (pb_1.Message.getField(this, 4) != null) {
             data.fileLength = this.fileLength;
         }
-        if (this.seconds != null) {
+        if (pb_1.Message.getField(this, 5) != null) {
             data.seconds = this.seconds;
         }
-        if (this.ptt != null) {
+        if (pb_1.Message.getField(this, 6) != null) {
             data.ptt = this.ptt;
         }
-        if (this.mediaKey != null) {
+        if (pb_1.Message.getField(this, 7) != null) {
             data.mediaKey = this.mediaKey;
         }
-        if (this.fileEncSha256 != null) {
+        if (pb_1.Message.getField(this, 8) != null) {
             data.fileEncSha256 = this.fileEncSha256;
         }
-        if (this.directPath != null) {
+        if (pb_1.Message.getField(this, 9) != null) {
             data.directPath = this.directPath;
         }
-        if (this.mediaKeyTimestamp != null) {
+        if (pb_1.Message.getField(this, 10) != null) {
             data.mediaKeyTimestamp = this.mediaKeyTimestamp;
         }
-        if (this.contextInfo != null) {
+        if (pb_1.Message.getField(this, 17) != null) {
             data.contextInfo = this.contextInfo.toObject();
         }
-        if (this.streamingSidecar != null) {
+        if (pb_1.Message.getField(this, 18) != null) {
             data.streamingSidecar = this.streamingSidecar;
         }
         return data;
@@ -3685,29 +3685,29 @@ export class AudioMessage extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (typeof this.url === "string" && this.url.length)
+        if (typeof pb_1.Message.getField(this, 1) === "string" && this.url.length)
             writer.writeString(1, this.url);
-        if (typeof this.mimetype === "string" && this.mimetype.length)
+        if (typeof pb_1.Message.getField(this, 2) === "string" && this.mimetype.length)
             writer.writeString(2, this.mimetype);
-        if (this.fileSha256 !== undefined)
+        if (pb_1.Message.getField(this, 3) != null)
             writer.writeBytes(3, this.fileSha256);
-        if (this.fileLength !== undefined)
+        if (pb_1.Message.getField(this, 4) != null)
             writer.writeUint64(4, this.fileLength);
-        if (this.seconds !== undefined)
+        if (pb_1.Message.getField(this, 5) != null)
             writer.writeUint32(5, this.seconds);
-        if (this.ptt !== undefined)
+        if (pb_1.Message.getField(this, 6) != null)
             writer.writeBool(6, this.ptt);
-        if (this.mediaKey !== undefined)
+        if (pb_1.Message.getField(this, 7) != null)
             writer.writeBytes(7, this.mediaKey);
-        if (this.fileEncSha256 !== undefined)
+        if (pb_1.Message.getField(this, 8) != null)
             writer.writeBytes(8, this.fileEncSha256);
-        if (typeof this.directPath === "string" && this.directPath.length)
+        if (typeof pb_1.Message.getField(this, 9) === "string" && this.directPath.length)
             writer.writeString(9, this.directPath);
-        if (this.mediaKeyTimestamp !== undefined)
+        if (pb_1.Message.getField(this, 10) != null)
             writer.writeInt64(10, this.mediaKeyTimestamp);
-        if (this.contextInfo !== undefined)
+        if (pb_1.Message.getField(this, 17) != null)
             writer.writeMessage(17, this.contextInfo, () => this.contextInfo.serialize(writer));
-        if (this.streamingSidecar !== undefined)
+        if (pb_1.Message.getField(this, 18) != null)
             writer.writeBytes(18, this.streamingSidecar);
         if (!w)
             return writer.getResultBuffer();
@@ -3846,67 +3846,67 @@ export class VideoMessage extends pb_1.Message {
         }
     }
     get url() {
-        return pb_1.Message.getField(this, 1) as string;
+        return pb_1.Message.getFieldWithDefault(this, 1, "") as string;
     }
     set url(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
     get mimetype() {
-        return pb_1.Message.getField(this, 2) as string;
+        return pb_1.Message.getFieldWithDefault(this, 2, "") as string;
     }
     set mimetype(value: string) {
         pb_1.Message.setField(this, 2, value);
     }
     get fileSha256() {
-        return pb_1.Message.getField(this, 3) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 3, new Uint8Array()) as Uint8Array;
     }
     set fileSha256(value: Uint8Array) {
         pb_1.Message.setField(this, 3, value);
     }
     get fileLength() {
-        return pb_1.Message.getField(this, 4) as number;
+        return pb_1.Message.getFieldWithDefault(this, 4, 0) as number;
     }
     set fileLength(value: number) {
         pb_1.Message.setField(this, 4, value);
     }
     get seconds() {
-        return pb_1.Message.getField(this, 5) as number;
+        return pb_1.Message.getFieldWithDefault(this, 5, 0) as number;
     }
     set seconds(value: number) {
         pb_1.Message.setField(this, 5, value);
     }
     get mediaKey() {
-        return pb_1.Message.getField(this, 6) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 6, new Uint8Array()) as Uint8Array;
     }
     set mediaKey(value: Uint8Array) {
         pb_1.Message.setField(this, 6, value);
     }
     get caption() {
-        return pb_1.Message.getField(this, 7) as string;
+        return pb_1.Message.getFieldWithDefault(this, 7, "") as string;
     }
     set caption(value: string) {
         pb_1.Message.setField(this, 7, value);
     }
     get gifPlayback() {
-        return pb_1.Message.getField(this, 8) as boolean;
+        return pb_1.Message.getFieldWithDefault(this, 8, false) as boolean;
     }
     set gifPlayback(value: boolean) {
         pb_1.Message.setField(this, 8, value);
     }
     get height() {
-        return pb_1.Message.getField(this, 9) as number;
+        return pb_1.Message.getFieldWithDefault(this, 9, 0) as number;
     }
     set height(value: number) {
         pb_1.Message.setField(this, 9, value);
     }
     get width() {
-        return pb_1.Message.getField(this, 10) as number;
+        return pb_1.Message.getFieldWithDefault(this, 10, 0) as number;
     }
     set width(value: number) {
         pb_1.Message.setField(this, 10, value);
     }
     get fileEncSha256() {
-        return pb_1.Message.getField(this, 11) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 11, new Uint8Array()) as Uint8Array;
     }
     set fileEncSha256(value: Uint8Array) {
         pb_1.Message.setField(this, 11, value);
@@ -3918,19 +3918,19 @@ export class VideoMessage extends pb_1.Message {
         pb_1.Message.setRepeatedWrapperField(this, 12, value);
     }
     get directPath() {
-        return pb_1.Message.getField(this, 13) as string;
+        return pb_1.Message.getFieldWithDefault(this, 13, "") as string;
     }
     set directPath(value: string) {
         pb_1.Message.setField(this, 13, value);
     }
     get mediaKeyTimestamp() {
-        return pb_1.Message.getField(this, 14) as number;
+        return pb_1.Message.getFieldWithDefault(this, 14, 0) as number;
     }
     set mediaKeyTimestamp(value: number) {
         pb_1.Message.setField(this, 14, value);
     }
     get jpegThumbnail() {
-        return pb_1.Message.getField(this, 16) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 16, new Uint8Array()) as Uint8Array;
     }
     set jpegThumbnail(value: Uint8Array) {
         pb_1.Message.setField(this, 16, value);
@@ -3942,13 +3942,13 @@ export class VideoMessage extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 17, value);
     }
     get streamingSidecar() {
-        return pb_1.Message.getField(this, 18) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 18, new Uint8Array()) as Uint8Array;
     }
     set streamingSidecar(value: Uint8Array) {
         pb_1.Message.setField(this, 18, value);
     }
     get gifAttribution() {
-        return pb_1.Message.getField(this, 19) as VideoMessage.VIDEO_MESSAGE_ATTRIBUTION;
+        return pb_1.Message.getFieldWithDefault(this, 19, VideoMessage.VIDEO_MESSAGE_ATTRIBUTION.NONE) as VideoMessage.VIDEO_MESSAGE_ATTRIBUTION;
     }
     set gifAttribution(value: VideoMessage.VIDEO_MESSAGE_ATTRIBUTION) {
         pb_1.Message.setField(this, 19, value);
@@ -4052,55 +4052,55 @@ export class VideoMessage extends pb_1.Message {
         } = {
             interactiveAnnotations: this.interactiveAnnotations.map((item: InteractiveAnnotation) => item.toObject())
         };
-        if (this.url != null) {
+        if (pb_1.Message.getField(this, 1) != null) {
             data.url = this.url;
         }
-        if (this.mimetype != null) {
+        if (pb_1.Message.getField(this, 2) != null) {
             data.mimetype = this.mimetype;
         }
-        if (this.fileSha256 != null) {
+        if (pb_1.Message.getField(this, 3) != null) {
             data.fileSha256 = this.fileSha256;
         }
-        if (this.fileLength != null) {
+        if (pb_1.Message.getField(this, 4) != null) {
             data.fileLength = this.fileLength;
         }
-        if (this.seconds != null) {
+        if (pb_1.Message.getField(this, 5) != null) {
             data.seconds = this.seconds;
         }
-        if (this.mediaKey != null) {
+        if (pb_1.Message.getField(this, 6) != null) {
             data.mediaKey = this.mediaKey;
         }
-        if (this.caption != null) {
+        if (pb_1.Message.getField(this, 7) != null) {
             data.caption = this.caption;
         }
-        if (this.gifPlayback != null) {
+        if (pb_1.Message.getField(this, 8) != null) {
             data.gifPlayback = this.gifPlayback;
         }
-        if (this.height != null) {
+        if (pb_1.Message.getField(this, 9) != null) {
             data.height = this.height;
         }
-        if (this.width != null) {
+        if (pb_1.Message.getField(this, 10) != null) {
             data.width = this.width;
         }
-        if (this.fileEncSha256 != null) {
+        if (pb_1.Message.getField(this, 11) != null) {
             data.fileEncSha256 = this.fileEncSha256;
         }
-        if (this.directPath != null) {
+        if (pb_1.Message.getField(this, 13) != null) {
             data.directPath = this.directPath;
         }
-        if (this.mediaKeyTimestamp != null) {
+        if (pb_1.Message.getField(this, 14) != null) {
             data.mediaKeyTimestamp = this.mediaKeyTimestamp;
         }
-        if (this.jpegThumbnail != null) {
+        if (pb_1.Message.getField(this, 16) != null) {
             data.jpegThumbnail = this.jpegThumbnail;
         }
-        if (this.contextInfo != null) {
+        if (pb_1.Message.getField(this, 17) != null) {
             data.contextInfo = this.contextInfo.toObject();
         }
-        if (this.streamingSidecar != null) {
+        if (pb_1.Message.getField(this, 18) != null) {
             data.streamingSidecar = this.streamingSidecar;
         }
-        if (this.gifAttribution != null) {
+        if (pb_1.Message.getField(this, 19) != null) {
             data.gifAttribution = this.gifAttribution;
         }
         return data;
@@ -4109,41 +4109,41 @@ export class VideoMessage extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (typeof this.url === "string" && this.url.length)
+        if (typeof pb_1.Message.getField(this, 1) === "string" && this.url.length)
             writer.writeString(1, this.url);
-        if (typeof this.mimetype === "string" && this.mimetype.length)
+        if (typeof pb_1.Message.getField(this, 2) === "string" && this.mimetype.length)
             writer.writeString(2, this.mimetype);
-        if (this.fileSha256 !== undefined)
+        if (pb_1.Message.getField(this, 3) != null)
             writer.writeBytes(3, this.fileSha256);
-        if (this.fileLength !== undefined)
+        if (pb_1.Message.getField(this, 4) != null)
             writer.writeUint64(4, this.fileLength);
-        if (this.seconds !== undefined)
+        if (pb_1.Message.getField(this, 5) != null)
             writer.writeUint32(5, this.seconds);
-        if (this.mediaKey !== undefined)
+        if (pb_1.Message.getField(this, 6) != null)
             writer.writeBytes(6, this.mediaKey);
-        if (typeof this.caption === "string" && this.caption.length)
+        if (typeof pb_1.Message.getField(this, 7) === "string" && this.caption.length)
             writer.writeString(7, this.caption);
-        if (this.gifPlayback !== undefined)
+        if (pb_1.Message.getField(this, 8) != null)
             writer.writeBool(8, this.gifPlayback);
-        if (this.height !== undefined)
+        if (pb_1.Message.getField(this, 9) != null)
             writer.writeUint32(9, this.height);
-        if (this.width !== undefined)
+        if (pb_1.Message.getField(this, 10) != null)
             writer.writeUint32(10, this.width);
-        if (this.fileEncSha256 !== undefined)
+        if (pb_1.Message.getField(this, 11) != null)
             writer.writeBytes(11, this.fileEncSha256);
-        if (this.interactiveAnnotations !== undefined)
+        if (this.interactiveAnnotations.length)
             writer.writeRepeatedMessage(12, this.interactiveAnnotations, (item: InteractiveAnnotation) => item.serialize(writer));
-        if (typeof this.directPath === "string" && this.directPath.length)
+        if (typeof pb_1.Message.getField(this, 13) === "string" && this.directPath.length)
             writer.writeString(13, this.directPath);
-        if (this.mediaKeyTimestamp !== undefined)
+        if (pb_1.Message.getField(this, 14) != null)
             writer.writeInt64(14, this.mediaKeyTimestamp);
-        if (this.jpegThumbnail !== undefined)
+        if (pb_1.Message.getField(this, 16) != null)
             writer.writeBytes(16, this.jpegThumbnail);
-        if (this.contextInfo !== undefined)
+        if (pb_1.Message.getField(this, 17) != null)
             writer.writeMessage(17, this.contextInfo, () => this.contextInfo.serialize(writer));
-        if (this.streamingSidecar !== undefined)
+        if (pb_1.Message.getField(this, 18) != null)
             writer.writeBytes(18, this.streamingSidecar);
-        if (this.gifAttribution !== undefined)
+        if (pb_1.Message.getField(this, 19) != null)
             writer.writeEnum(19, this.gifAttribution);
         if (!w)
             return writer.getResultBuffer();
@@ -4241,7 +4241,7 @@ export class Call extends pb_1.Message {
         }
     }
     get callKey() {
-        return pb_1.Message.getField(this, 1) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 1, new Uint8Array()) as Uint8Array;
     }
     set callKey(value: Uint8Array) {
         pb_1.Message.setField(this, 1, value);
@@ -4259,7 +4259,7 @@ export class Call extends pb_1.Message {
         const data: {
             callKey?: Uint8Array;
         } = {};
-        if (this.callKey != null) {
+        if (pb_1.Message.getField(this, 1) != null) {
             data.callKey = this.callKey;
         }
         return data;
@@ -4268,7 +4268,7 @@ export class Call extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.callKey !== undefined)
+        if (pb_1.Message.getField(this, 1) != null)
             writer.writeBytes(1, this.callKey);
         if (!w)
             return writer.getResultBuffer();
@@ -4312,13 +4312,13 @@ export class Chat extends pb_1.Message {
         }
     }
     get displayName() {
-        return pb_1.Message.getField(this, 1) as string;
+        return pb_1.Message.getFieldWithDefault(this, 1, "") as string;
     }
     set displayName(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
     get id() {
-        return pb_1.Message.getField(this, 2) as string;
+        return pb_1.Message.getFieldWithDefault(this, 2, "") as string;
     }
     set id(value: string) {
         pb_1.Message.setField(this, 2, value);
@@ -4341,10 +4341,10 @@ export class Chat extends pb_1.Message {
             displayName?: string;
             id?: string;
         } = {};
-        if (this.displayName != null) {
+        if (pb_1.Message.getField(this, 1) != null) {
             data.displayName = this.displayName;
         }
-        if (this.id != null) {
+        if (pb_1.Message.getField(this, 2) != null) {
             data.id = this.id;
         }
         return data;
@@ -4353,9 +4353,9 @@ export class Chat extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (typeof this.displayName === "string" && this.displayName.length)
+        if (typeof pb_1.Message.getField(this, 1) === "string" && this.displayName.length)
             writer.writeString(1, this.displayName);
-        if (typeof this.id === "string" && this.id.length)
+        if (typeof pb_1.Message.getField(this, 2) === "string" && this.id.length)
             writer.writeString(2, this.id);
         if (!w)
             return writer.getResultBuffer();
@@ -4420,19 +4420,19 @@ export class ProtocolMessage extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 1, value);
     }
     get type() {
-        return pb_1.Message.getField(this, 2) as ProtocolMessage.PROTOCOL_MESSAGE_TYPE;
+        return pb_1.Message.getFieldWithDefault(this, 2, ProtocolMessage.PROTOCOL_MESSAGE_TYPE.REVOKE) as ProtocolMessage.PROTOCOL_MESSAGE_TYPE;
     }
     set type(value: ProtocolMessage.PROTOCOL_MESSAGE_TYPE) {
         pb_1.Message.setField(this, 2, value);
     }
     get ephemeralExpiration() {
-        return pb_1.Message.getField(this, 4) as number;
+        return pb_1.Message.getFieldWithDefault(this, 4, 0) as number;
     }
     set ephemeralExpiration(value: number) {
         pb_1.Message.setField(this, 4, value);
     }
     get ephemeralSettingTimestamp() {
-        return pb_1.Message.getField(this, 5) as number;
+        return pb_1.Message.getFieldWithDefault(this, 5, 0) as number;
     }
     set ephemeralSettingTimestamp(value: number) {
         pb_1.Message.setField(this, 5, value);
@@ -4476,19 +4476,19 @@ export class ProtocolMessage extends pb_1.Message {
             ephemeralSettingTimestamp?: number;
             historySyncNotification?: ReturnType<typeof HistorySyncNotification.prototype.toObject>;
         } = {};
-        if (this.key != null) {
+        if (pb_1.Message.getField(this, 1) != null) {
             data.key = this.key.toObject();
         }
-        if (this.type != null) {
+        if (pb_1.Message.getField(this, 2) != null) {
             data.type = this.type;
         }
-        if (this.ephemeralExpiration != null) {
+        if (pb_1.Message.getField(this, 4) != null) {
             data.ephemeralExpiration = this.ephemeralExpiration;
         }
-        if (this.ephemeralSettingTimestamp != null) {
+        if (pb_1.Message.getField(this, 5) != null) {
             data.ephemeralSettingTimestamp = this.ephemeralSettingTimestamp;
         }
-        if (this.historySyncNotification != null) {
+        if (pb_1.Message.getField(this, 6) != null) {
             data.historySyncNotification = this.historySyncNotification.toObject();
         }
         return data;
@@ -4497,15 +4497,15 @@ export class ProtocolMessage extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.key !== undefined)
+        if (pb_1.Message.getField(this, 1) != null)
             writer.writeMessage(1, this.key, () => this.key.serialize(writer));
-        if (this.type !== undefined)
+        if (pb_1.Message.getField(this, 2) != null)
             writer.writeEnum(2, this.type);
-        if (this.ephemeralExpiration !== undefined)
+        if (pb_1.Message.getField(this, 4) != null)
             writer.writeUint32(4, this.ephemeralExpiration);
-        if (this.ephemeralSettingTimestamp !== undefined)
+        if (pb_1.Message.getField(this, 5) != null)
             writer.writeInt64(5, this.ephemeralSettingTimestamp);
-        if (this.historySyncNotification !== undefined)
+        if (pb_1.Message.getField(this, 6) != null)
             writer.writeMessage(6, this.historySyncNotification, () => this.historySyncNotification.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
@@ -4593,49 +4593,49 @@ export class HistorySyncNotification extends pb_1.Message {
         }
     }
     get fileSha256() {
-        return pb_1.Message.getField(this, 1) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 1, new Uint8Array()) as Uint8Array;
     }
     set fileSha256(value: Uint8Array) {
         pb_1.Message.setField(this, 1, value);
     }
     get fileLength() {
-        return pb_1.Message.getField(this, 2) as number;
+        return pb_1.Message.getFieldWithDefault(this, 2, 0) as number;
     }
     set fileLength(value: number) {
         pb_1.Message.setField(this, 2, value);
     }
     get mediaKey() {
-        return pb_1.Message.getField(this, 3) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 3, new Uint8Array()) as Uint8Array;
     }
     set mediaKey(value: Uint8Array) {
         pb_1.Message.setField(this, 3, value);
     }
     get fileEncSha256() {
-        return pb_1.Message.getField(this, 4) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 4, new Uint8Array()) as Uint8Array;
     }
     set fileEncSha256(value: Uint8Array) {
         pb_1.Message.setField(this, 4, value);
     }
     get directPath() {
-        return pb_1.Message.getField(this, 5) as string;
+        return pb_1.Message.getFieldWithDefault(this, 5, "") as string;
     }
     set directPath(value: string) {
         pb_1.Message.setField(this, 5, value);
     }
     get syncType() {
-        return pb_1.Message.getField(this, 6) as HistorySyncNotification.HISTORY_SYNC_NOTIFICATION_HISTORYSYNCTYPE;
+        return pb_1.Message.getFieldWithDefault(this, 6, HistorySyncNotification.HISTORY_SYNC_NOTIFICATION_HISTORYSYNCTYPE.INITIAL_BOOTSTRAP) as HistorySyncNotification.HISTORY_SYNC_NOTIFICATION_HISTORYSYNCTYPE;
     }
     set syncType(value: HistorySyncNotification.HISTORY_SYNC_NOTIFICATION_HISTORYSYNCTYPE) {
         pb_1.Message.setField(this, 6, value);
     }
     get chunkOrder() {
-        return pb_1.Message.getField(this, 7) as number;
+        return pb_1.Message.getFieldWithDefault(this, 7, 0) as number;
     }
     set chunkOrder(value: number) {
         pb_1.Message.setField(this, 7, value);
     }
     get originalMessageId() {
-        return pb_1.Message.getField(this, 8) as string;
+        return pb_1.Message.getFieldWithDefault(this, 8, "") as string;
     }
     set originalMessageId(value: string) {
         pb_1.Message.setField(this, 8, value);
@@ -4688,28 +4688,28 @@ export class HistorySyncNotification extends pb_1.Message {
             chunkOrder?: number;
             originalMessageId?: string;
         } = {};
-        if (this.fileSha256 != null) {
+        if (pb_1.Message.getField(this, 1) != null) {
             data.fileSha256 = this.fileSha256;
         }
-        if (this.fileLength != null) {
+        if (pb_1.Message.getField(this, 2) != null) {
             data.fileLength = this.fileLength;
         }
-        if (this.mediaKey != null) {
+        if (pb_1.Message.getField(this, 3) != null) {
             data.mediaKey = this.mediaKey;
         }
-        if (this.fileEncSha256 != null) {
+        if (pb_1.Message.getField(this, 4) != null) {
             data.fileEncSha256 = this.fileEncSha256;
         }
-        if (this.directPath != null) {
+        if (pb_1.Message.getField(this, 5) != null) {
             data.directPath = this.directPath;
         }
-        if (this.syncType != null) {
+        if (pb_1.Message.getField(this, 6) != null) {
             data.syncType = this.syncType;
         }
-        if (this.chunkOrder != null) {
+        if (pb_1.Message.getField(this, 7) != null) {
             data.chunkOrder = this.chunkOrder;
         }
-        if (this.originalMessageId != null) {
+        if (pb_1.Message.getField(this, 8) != null) {
             data.originalMessageId = this.originalMessageId;
         }
         return data;
@@ -4718,21 +4718,21 @@ export class HistorySyncNotification extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.fileSha256 !== undefined)
+        if (pb_1.Message.getField(this, 1) != null)
             writer.writeBytes(1, this.fileSha256);
-        if (this.fileLength !== undefined)
+        if (pb_1.Message.getField(this, 2) != null)
             writer.writeUint64(2, this.fileLength);
-        if (this.mediaKey !== undefined)
+        if (pb_1.Message.getField(this, 3) != null)
             writer.writeBytes(3, this.mediaKey);
-        if (this.fileEncSha256 !== undefined)
+        if (pb_1.Message.getField(this, 4) != null)
             writer.writeBytes(4, this.fileEncSha256);
-        if (typeof this.directPath === "string" && this.directPath.length)
+        if (typeof pb_1.Message.getField(this, 5) === "string" && this.directPath.length)
             writer.writeString(5, this.directPath);
-        if (this.syncType !== undefined)
+        if (pb_1.Message.getField(this, 6) != null)
             writer.writeEnum(6, this.syncType);
-        if (this.chunkOrder !== undefined)
+        if (pb_1.Message.getField(this, 7) != null)
             writer.writeUint32(7, this.chunkOrder);
-        if (typeof this.originalMessageId === "string" && this.originalMessageId.length)
+        if (typeof pb_1.Message.getField(this, 8) === "string" && this.originalMessageId.length)
             writer.writeString(8, this.originalMessageId);
         if (!w)
             return writer.getResultBuffer();
@@ -4808,7 +4808,7 @@ export class ContactsArrayMessage extends pb_1.Message {
         }
     }
     get displayName() {
-        return pb_1.Message.getField(this, 1) as string;
+        return pb_1.Message.getFieldWithDefault(this, 1, "") as string;
     }
     set displayName(value: string) {
         pb_1.Message.setField(this, 1, value);
@@ -4849,10 +4849,10 @@ export class ContactsArrayMessage extends pb_1.Message {
         } = {
             contacts: this.contacts.map((item: ContactMessage) => item.toObject())
         };
-        if (this.displayName != null) {
+        if (pb_1.Message.getField(this, 1) != null) {
             data.displayName = this.displayName;
         }
-        if (this.contextInfo != null) {
+        if (pb_1.Message.getField(this, 17) != null) {
             data.contextInfo = this.contextInfo.toObject();
         }
         return data;
@@ -4861,11 +4861,11 @@ export class ContactsArrayMessage extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (typeof this.displayName === "string" && this.displayName.length)
+        if (typeof pb_1.Message.getField(this, 1) === "string" && this.displayName.length)
             writer.writeString(1, this.displayName);
-        if (this.contacts !== undefined)
+        if (this.contacts.length)
             writer.writeRepeatedMessage(2, this.contacts, (item: ContactMessage) => item.serialize(writer));
-        if (this.contextInfo !== undefined)
+        if (pb_1.Message.getField(this, 17) != null)
             writer.writeMessage(17, this.contextInfo, () => this.contextInfo.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
@@ -4915,13 +4915,13 @@ export class HSMCurrency extends pb_1.Message {
         }
     }
     get currencyCode() {
-        return pb_1.Message.getField(this, 1) as string;
+        return pb_1.Message.getFieldWithDefault(this, 1, "") as string;
     }
     set currencyCode(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
     get amount1000() {
-        return pb_1.Message.getField(this, 2) as number;
+        return pb_1.Message.getFieldWithDefault(this, 2, 0) as number;
     }
     set amount1000(value: number) {
         pb_1.Message.setField(this, 2, value);
@@ -4944,10 +4944,10 @@ export class HSMCurrency extends pb_1.Message {
             currencyCode?: string;
             amount1000?: number;
         } = {};
-        if (this.currencyCode != null) {
+        if (pb_1.Message.getField(this, 1) != null) {
             data.currencyCode = this.currencyCode;
         }
-        if (this.amount1000 != null) {
+        if (pb_1.Message.getField(this, 2) != null) {
             data.amount1000 = this.amount1000;
         }
         return data;
@@ -4956,9 +4956,9 @@ export class HSMCurrency extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (typeof this.currencyCode === "string" && this.currencyCode.length)
+        if (typeof pb_1.Message.getField(this, 1) === "string" && this.currencyCode.length)
             writer.writeString(1, this.currencyCode);
-        if (this.amount1000 !== undefined)
+        if (pb_1.Message.getField(this, 2) != null)
             writer.writeInt64(2, this.amount1000);
         if (!w)
             return writer.getResultBuffer();
@@ -5025,43 +5025,43 @@ export class HSMDateTimeComponent extends pb_1.Message {
         }
     }
     get dayOfWeek() {
-        return pb_1.Message.getField(this, 1) as HSMDateTimeComponent.HSM_DATE_TIME_COMPONENT_DAYOFWEEKTYPE;
+        return pb_1.Message.getFieldWithDefault(this, 1, HSMDateTimeComponent.HSM_DATE_TIME_COMPONENT_DAYOFWEEKTYPE.MONDAY) as HSMDateTimeComponent.HSM_DATE_TIME_COMPONENT_DAYOFWEEKTYPE;
     }
     set dayOfWeek(value: HSMDateTimeComponent.HSM_DATE_TIME_COMPONENT_DAYOFWEEKTYPE) {
         pb_1.Message.setField(this, 1, value);
     }
     get year() {
-        return pb_1.Message.getField(this, 2) as number;
+        return pb_1.Message.getFieldWithDefault(this, 2, 0) as number;
     }
     set year(value: number) {
         pb_1.Message.setField(this, 2, value);
     }
     get month() {
-        return pb_1.Message.getField(this, 3) as number;
+        return pb_1.Message.getFieldWithDefault(this, 3, 0) as number;
     }
     set month(value: number) {
         pb_1.Message.setField(this, 3, value);
     }
     get dayOfMonth() {
-        return pb_1.Message.getField(this, 4) as number;
+        return pb_1.Message.getFieldWithDefault(this, 4, 0) as number;
     }
     set dayOfMonth(value: number) {
         pb_1.Message.setField(this, 4, value);
     }
     get hour() {
-        return pb_1.Message.getField(this, 5) as number;
+        return pb_1.Message.getFieldWithDefault(this, 5, 0) as number;
     }
     set hour(value: number) {
         pb_1.Message.setField(this, 5, value);
     }
     get minute() {
-        return pb_1.Message.getField(this, 6) as number;
+        return pb_1.Message.getFieldWithDefault(this, 6, 0) as number;
     }
     set minute(value: number) {
         pb_1.Message.setField(this, 6, value);
     }
     get calendar() {
-        return pb_1.Message.getField(this, 7) as HSMDateTimeComponent.HSM_DATE_TIME_COMPONENT_CALENDARTYPE;
+        return pb_1.Message.getFieldWithDefault(this, 7, HSMDateTimeComponent.HSM_DATE_TIME_COMPONENT_CALENDARTYPE.GREGORIAN) as HSMDateTimeComponent.HSM_DATE_TIME_COMPONENT_CALENDARTYPE;
     }
     set calendar(value: HSMDateTimeComponent.HSM_DATE_TIME_COMPONENT_CALENDARTYPE) {
         pb_1.Message.setField(this, 7, value);
@@ -5109,25 +5109,25 @@ export class HSMDateTimeComponent extends pb_1.Message {
             minute?: number;
             calendar?: HSMDateTimeComponent.HSM_DATE_TIME_COMPONENT_CALENDARTYPE;
         } = {};
-        if (this.dayOfWeek != null) {
+        if (pb_1.Message.getField(this, 1) != null) {
             data.dayOfWeek = this.dayOfWeek;
         }
-        if (this.year != null) {
+        if (pb_1.Message.getField(this, 2) != null) {
             data.year = this.year;
         }
-        if (this.month != null) {
+        if (pb_1.Message.getField(this, 3) != null) {
             data.month = this.month;
         }
-        if (this.dayOfMonth != null) {
+        if (pb_1.Message.getField(this, 4) != null) {
             data.dayOfMonth = this.dayOfMonth;
         }
-        if (this.hour != null) {
+        if (pb_1.Message.getField(this, 5) != null) {
             data.hour = this.hour;
         }
-        if (this.minute != null) {
+        if (pb_1.Message.getField(this, 6) != null) {
             data.minute = this.minute;
         }
-        if (this.calendar != null) {
+        if (pb_1.Message.getField(this, 7) != null) {
             data.calendar = this.calendar;
         }
         return data;
@@ -5136,19 +5136,19 @@ export class HSMDateTimeComponent extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.dayOfWeek !== undefined)
+        if (pb_1.Message.getField(this, 1) != null)
             writer.writeEnum(1, this.dayOfWeek);
-        if (this.year !== undefined)
+        if (pb_1.Message.getField(this, 2) != null)
             writer.writeUint32(2, this.year);
-        if (this.month !== undefined)
+        if (pb_1.Message.getField(this, 3) != null)
             writer.writeUint32(3, this.month);
-        if (this.dayOfMonth !== undefined)
+        if (pb_1.Message.getField(this, 4) != null)
             writer.writeUint32(4, this.dayOfMonth);
-        if (this.hour !== undefined)
+        if (pb_1.Message.getField(this, 5) != null)
             writer.writeUint32(5, this.hour);
-        if (this.minute !== undefined)
+        if (pb_1.Message.getField(this, 6) != null)
             writer.writeUint32(6, this.minute);
-        if (this.calendar !== undefined)
+        if (pb_1.Message.getField(this, 7) != null)
             writer.writeEnum(7, this.calendar);
         if (!w)
             return writer.getResultBuffer();
@@ -5221,7 +5221,7 @@ export class HSMDateTimeUnixEpoch extends pb_1.Message {
         }
     }
     get timestamp() {
-        return pb_1.Message.getField(this, 1) as number;
+        return pb_1.Message.getFieldWithDefault(this, 1, 0) as number;
     }
     set timestamp(value: number) {
         pb_1.Message.setField(this, 1, value);
@@ -5239,7 +5239,7 @@ export class HSMDateTimeUnixEpoch extends pb_1.Message {
         const data: {
             timestamp?: number;
         } = {};
-        if (this.timestamp != null) {
+        if (pb_1.Message.getField(this, 1) != null) {
             data.timestamp = this.timestamp;
         }
         return data;
@@ -5248,7 +5248,7 @@ export class HSMDateTimeUnixEpoch extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.timestamp !== undefined)
+        if (pb_1.Message.getField(this, 1) != null)
             writer.writeInt64(1, this.timestamp);
         if (!w)
             return writer.getResultBuffer();
@@ -5334,10 +5334,10 @@ export class HSMDateTime extends pb_1.Message {
             component?: ReturnType<typeof HSMDateTimeComponent.prototype.toObject>;
             unixEpoch?: ReturnType<typeof HSMDateTimeUnixEpoch.prototype.toObject>;
         } = {};
-        if (this.component != null) {
+        if (pb_1.Message.getField(this, 1) != null) {
             data.component = this.component.toObject();
         }
-        if (this.unixEpoch != null) {
+        if (pb_1.Message.getField(this, 2) != null) {
             data.unixEpoch = this.unixEpoch.toObject();
         }
         return data;
@@ -5346,9 +5346,9 @@ export class HSMDateTime extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.component !== undefined)
+        if (pb_1.Message.getField(this, 1) != null)
             writer.writeMessage(1, this.component, () => this.component.serialize(writer));
-        if (this.unixEpoch !== undefined)
+        if (pb_1.Message.getField(this, 2) != null)
             writer.writeMessage(2, this.unixEpoch, () => this.unixEpoch.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
@@ -5403,7 +5403,7 @@ export class HSMLocalizableParameter extends pb_1.Message {
         }
     }
     get default() {
-        return pb_1.Message.getField(this, 1) as string;
+        return pb_1.Message.getFieldWithDefault(this, 1, "") as string;
     }
     set default(value: string) {
         pb_1.Message.setField(this, 1, value);
@@ -5453,13 +5453,13 @@ export class HSMLocalizableParameter extends pb_1.Message {
             currency?: ReturnType<typeof HSMCurrency.prototype.toObject>;
             dateTime?: ReturnType<typeof HSMDateTime.prototype.toObject>;
         } = {};
-        if (this.default != null) {
+        if (pb_1.Message.getField(this, 1) != null) {
             data.default = this.default;
         }
-        if (this.currency != null) {
+        if (pb_1.Message.getField(this, 2) != null) {
             data.currency = this.currency.toObject();
         }
-        if (this.dateTime != null) {
+        if (pb_1.Message.getField(this, 3) != null) {
             data.dateTime = this.dateTime.toObject();
         }
         return data;
@@ -5468,11 +5468,11 @@ export class HSMLocalizableParameter extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (typeof this.default === "string" && this.default.length)
+        if (typeof pb_1.Message.getField(this, 1) === "string" && this.default.length)
             writer.writeString(1, this.default);
-        if (this.currency !== undefined)
+        if (pb_1.Message.getField(this, 2) != null)
             writer.writeMessage(2, this.currency, () => this.currency.serialize(writer));
-        if (this.dateTime !== undefined)
+        if (pb_1.Message.getField(this, 3) != null)
             writer.writeMessage(3, this.dateTime, () => this.dateTime.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
@@ -5546,13 +5546,13 @@ export class HighlyStructuredMessage extends pb_1.Message {
         }
     }
     get namespace() {
-        return pb_1.Message.getField(this, 1) as string;
+        return pb_1.Message.getFieldWithDefault(this, 1, "") as string;
     }
     set namespace(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
     get elementName() {
-        return pb_1.Message.getField(this, 2) as string;
+        return pb_1.Message.getFieldWithDefault(this, 2, "") as string;
     }
     set elementName(value: string) {
         pb_1.Message.setField(this, 2, value);
@@ -5564,13 +5564,13 @@ export class HighlyStructuredMessage extends pb_1.Message {
         pb_1.Message.setField(this, 3, value);
     }
     get fallbackLg() {
-        return pb_1.Message.getField(this, 4) as string;
+        return pb_1.Message.getFieldWithDefault(this, 4, "") as string;
     }
     set fallbackLg(value: string) {
         pb_1.Message.setField(this, 4, value);
     }
     get fallbackLc() {
-        return pb_1.Message.getField(this, 5) as string;
+        return pb_1.Message.getFieldWithDefault(this, 5, "") as string;
     }
     set fallbackLc(value: string) {
         pb_1.Message.setField(this, 5, value);
@@ -5582,13 +5582,13 @@ export class HighlyStructuredMessage extends pb_1.Message {
         pb_1.Message.setRepeatedWrapperField(this, 6, value);
     }
     get deterministicLg() {
-        return pb_1.Message.getField(this, 7) as string;
+        return pb_1.Message.getFieldWithDefault(this, 7, "") as string;
     }
     set deterministicLg(value: string) {
         pb_1.Message.setField(this, 7, value);
     }
     get deterministicLc() {
-        return pb_1.Message.getField(this, 8) as string;
+        return pb_1.Message.getFieldWithDefault(this, 8, "") as string;
     }
     set deterministicLc(value: string) {
         pb_1.Message.setField(this, 8, value);
@@ -5652,25 +5652,25 @@ export class HighlyStructuredMessage extends pb_1.Message {
             params: this.params,
             localizableParams: this.localizableParams.map((item: HSMLocalizableParameter) => item.toObject())
         };
-        if (this.namespace != null) {
+        if (pb_1.Message.getField(this, 1) != null) {
             data.namespace = this.namespace;
         }
-        if (this.elementName != null) {
+        if (pb_1.Message.getField(this, 2) != null) {
             data.elementName = this.elementName;
         }
-        if (this.fallbackLg != null) {
+        if (pb_1.Message.getField(this, 4) != null) {
             data.fallbackLg = this.fallbackLg;
         }
-        if (this.fallbackLc != null) {
+        if (pb_1.Message.getField(this, 5) != null) {
             data.fallbackLc = this.fallbackLc;
         }
-        if (this.deterministicLg != null) {
+        if (pb_1.Message.getField(this, 7) != null) {
             data.deterministicLg = this.deterministicLg;
         }
-        if (this.deterministicLc != null) {
+        if (pb_1.Message.getField(this, 8) != null) {
             data.deterministicLc = this.deterministicLc;
         }
-        if (this.hydratedHsm != null) {
+        if (pb_1.Message.getField(this, 9) != null) {
             data.hydratedHsm = this.hydratedHsm.toObject();
         }
         return data;
@@ -5679,23 +5679,23 @@ export class HighlyStructuredMessage extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (typeof this.namespace === "string" && this.namespace.length)
+        if (typeof pb_1.Message.getField(this, 1) === "string" && this.namespace.length)
             writer.writeString(1, this.namespace);
-        if (typeof this.elementName === "string" && this.elementName.length)
+        if (typeof pb_1.Message.getField(this, 2) === "string" && this.elementName.length)
             writer.writeString(2, this.elementName);
-        if (this.params !== undefined)
+        if (this.params.length)
             writer.writeRepeatedString(3, this.params);
-        if (typeof this.fallbackLg === "string" && this.fallbackLg.length)
+        if (typeof pb_1.Message.getField(this, 4) === "string" && this.fallbackLg.length)
             writer.writeString(4, this.fallbackLg);
-        if (typeof this.fallbackLc === "string" && this.fallbackLc.length)
+        if (typeof pb_1.Message.getField(this, 5) === "string" && this.fallbackLc.length)
             writer.writeString(5, this.fallbackLc);
-        if (this.localizableParams !== undefined)
+        if (this.localizableParams.length)
             writer.writeRepeatedMessage(6, this.localizableParams, (item: HSMLocalizableParameter) => item.serialize(writer));
-        if (typeof this.deterministicLg === "string" && this.deterministicLg.length)
+        if (typeof pb_1.Message.getField(this, 7) === "string" && this.deterministicLg.length)
             writer.writeString(7, this.deterministicLg);
-        if (typeof this.deterministicLc === "string" && this.deterministicLc.length)
+        if (typeof pb_1.Message.getField(this, 8) === "string" && this.deterministicLc.length)
             writer.writeString(8, this.deterministicLc);
-        if (this.hydratedHsm !== undefined)
+        if (pb_1.Message.getField(this, 9) != null)
             writer.writeMessage(9, this.hydratedHsm, () => this.hydratedHsm.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
@@ -5792,10 +5792,10 @@ export class SendPaymentMessage extends pb_1.Message {
             noteMessage?: ReturnType<typeof Message.prototype.toObject>;
             requestMessageKey?: ReturnType<typeof MessageKey.prototype.toObject>;
         } = {};
-        if (this.noteMessage != null) {
+        if (pb_1.Message.getField(this, 2) != null) {
             data.noteMessage = this.noteMessage.toObject();
         }
-        if (this.requestMessageKey != null) {
+        if (pb_1.Message.getField(this, 3) != null) {
             data.requestMessageKey = this.requestMessageKey.toObject();
         }
         return data;
@@ -5804,9 +5804,9 @@ export class SendPaymentMessage extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.noteMessage !== undefined)
+        if (pb_1.Message.getField(this, 2) != null)
             writer.writeMessage(2, this.noteMessage, () => this.noteMessage.serialize(writer));
-        if (this.requestMessageKey !== undefined)
+        if (pb_1.Message.getField(this, 3) != null)
             writer.writeMessage(3, this.requestMessageKey, () => this.requestMessageKey.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
@@ -5871,25 +5871,25 @@ export class RequestPaymentMessage extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 4, value);
     }
     get currencyCodeIso4217() {
-        return pb_1.Message.getField(this, 1) as string;
+        return pb_1.Message.getFieldWithDefault(this, 1, "") as string;
     }
     set currencyCodeIso4217(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
     get amount1000() {
-        return pb_1.Message.getField(this, 2) as number;
+        return pb_1.Message.getFieldWithDefault(this, 2, 0) as number;
     }
     set amount1000(value: number) {
         pb_1.Message.setField(this, 2, value);
     }
     get requestFrom() {
-        return pb_1.Message.getField(this, 3) as string;
+        return pb_1.Message.getFieldWithDefault(this, 3, "") as string;
     }
     set requestFrom(value: string) {
         pb_1.Message.setField(this, 3, value);
     }
     get expiryTimestamp() {
-        return pb_1.Message.getField(this, 5) as number;
+        return pb_1.Message.getFieldWithDefault(this, 5, 0) as number;
     }
     set expiryTimestamp(value: number) {
         pb_1.Message.setField(this, 5, value);
@@ -5927,19 +5927,19 @@ export class RequestPaymentMessage extends pb_1.Message {
             requestFrom?: string;
             expiryTimestamp?: number;
         } = {};
-        if (this.noteMessage != null) {
+        if (pb_1.Message.getField(this, 4) != null) {
             data.noteMessage = this.noteMessage.toObject();
         }
-        if (this.currencyCodeIso4217 != null) {
+        if (pb_1.Message.getField(this, 1) != null) {
             data.currencyCodeIso4217 = this.currencyCodeIso4217;
         }
-        if (this.amount1000 != null) {
+        if (pb_1.Message.getField(this, 2) != null) {
             data.amount1000 = this.amount1000;
         }
-        if (this.requestFrom != null) {
+        if (pb_1.Message.getField(this, 3) != null) {
             data.requestFrom = this.requestFrom;
         }
-        if (this.expiryTimestamp != null) {
+        if (pb_1.Message.getField(this, 5) != null) {
             data.expiryTimestamp = this.expiryTimestamp;
         }
         return data;
@@ -5948,15 +5948,15 @@ export class RequestPaymentMessage extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.noteMessage !== undefined)
+        if (pb_1.Message.getField(this, 4) != null)
             writer.writeMessage(4, this.noteMessage, () => this.noteMessage.serialize(writer));
-        if (typeof this.currencyCodeIso4217 === "string" && this.currencyCodeIso4217.length)
+        if (typeof pb_1.Message.getField(this, 1) === "string" && this.currencyCodeIso4217.length)
             writer.writeString(1, this.currencyCodeIso4217);
-        if (this.amount1000 !== undefined)
+        if (pb_1.Message.getField(this, 2) != null)
             writer.writeUint64(2, this.amount1000);
-        if (typeof this.requestFrom === "string" && this.requestFrom.length)
+        if (typeof pb_1.Message.getField(this, 3) === "string" && this.requestFrom.length)
             writer.writeString(3, this.requestFrom);
-        if (this.expiryTimestamp !== undefined)
+        if (pb_1.Message.getField(this, 5) != null)
             writer.writeInt64(5, this.expiryTimestamp);
         if (!w)
             return writer.getResultBuffer();
@@ -6026,7 +6026,7 @@ export class DeclinePaymentRequestMessage extends pb_1.Message {
         const data: {
             key?: ReturnType<typeof MessageKey.prototype.toObject>;
         } = {};
-        if (this.key != null) {
+        if (pb_1.Message.getField(this, 1) != null) {
             data.key = this.key.toObject();
         }
         return data;
@@ -6035,7 +6035,7 @@ export class DeclinePaymentRequestMessage extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.key !== undefined)
+        if (pb_1.Message.getField(this, 1) != null)
             writer.writeMessage(1, this.key, () => this.key.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
@@ -6093,7 +6093,7 @@ export class CancelPaymentRequestMessage extends pb_1.Message {
         const data: {
             key?: ReturnType<typeof MessageKey.prototype.toObject>;
         } = {};
-        if (this.key != null) {
+        if (pb_1.Message.getField(this, 1) != null) {
             data.key = this.key.toObject();
         }
         return data;
@@ -6102,7 +6102,7 @@ export class CancelPaymentRequestMessage extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.key !== undefined)
+        if (pb_1.Message.getField(this, 1) != null)
             writer.writeMessage(1, this.key, () => this.key.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
@@ -6178,55 +6178,55 @@ export class LiveLocationMessage extends pb_1.Message {
         }
     }
     get degreesLatitude() {
-        return pb_1.Message.getField(this, 1) as number;
+        return pb_1.Message.getFieldWithDefault(this, 1, 0) as number;
     }
     set degreesLatitude(value: number) {
         pb_1.Message.setField(this, 1, value);
     }
     get degreesLongitude() {
-        return pb_1.Message.getField(this, 2) as number;
+        return pb_1.Message.getFieldWithDefault(this, 2, 0) as number;
     }
     set degreesLongitude(value: number) {
         pb_1.Message.setField(this, 2, value);
     }
     get accuracyInMeters() {
-        return pb_1.Message.getField(this, 3) as number;
+        return pb_1.Message.getFieldWithDefault(this, 3, 0) as number;
     }
     set accuracyInMeters(value: number) {
         pb_1.Message.setField(this, 3, value);
     }
     get speedInMps() {
-        return pb_1.Message.getField(this, 4) as number;
+        return pb_1.Message.getFieldWithDefault(this, 4, 0) as number;
     }
     set speedInMps(value: number) {
         pb_1.Message.setField(this, 4, value);
     }
     get degreesClockwiseFromMagneticNorth() {
-        return pb_1.Message.getField(this, 5) as number;
+        return pb_1.Message.getFieldWithDefault(this, 5, 0) as number;
     }
     set degreesClockwiseFromMagneticNorth(value: number) {
         pb_1.Message.setField(this, 5, value);
     }
     get caption() {
-        return pb_1.Message.getField(this, 6) as string;
+        return pb_1.Message.getFieldWithDefault(this, 6, "") as string;
     }
     set caption(value: string) {
         pb_1.Message.setField(this, 6, value);
     }
     get sequenceNumber() {
-        return pb_1.Message.getField(this, 7) as number;
+        return pb_1.Message.getFieldWithDefault(this, 7, 0) as number;
     }
     set sequenceNumber(value: number) {
         pb_1.Message.setField(this, 7, value);
     }
     get timeOffset() {
-        return pb_1.Message.getField(this, 8) as number;
+        return pb_1.Message.getFieldWithDefault(this, 8, 0) as number;
     }
     set timeOffset(value: number) {
         pb_1.Message.setField(this, 8, value);
     }
     get jpegThumbnail() {
-        return pb_1.Message.getField(this, 16) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 16, new Uint8Array()) as Uint8Array;
     }
     set jpegThumbnail(value: Uint8Array) {
         pb_1.Message.setField(this, 16, value);
@@ -6295,34 +6295,34 @@ export class LiveLocationMessage extends pb_1.Message {
             jpegThumbnail?: Uint8Array;
             contextInfo?: ReturnType<typeof ContextInfo.prototype.toObject>;
         } = {};
-        if (this.degreesLatitude != null) {
+        if (pb_1.Message.getField(this, 1) != null) {
             data.degreesLatitude = this.degreesLatitude;
         }
-        if (this.degreesLongitude != null) {
+        if (pb_1.Message.getField(this, 2) != null) {
             data.degreesLongitude = this.degreesLongitude;
         }
-        if (this.accuracyInMeters != null) {
+        if (pb_1.Message.getField(this, 3) != null) {
             data.accuracyInMeters = this.accuracyInMeters;
         }
-        if (this.speedInMps != null) {
+        if (pb_1.Message.getField(this, 4) != null) {
             data.speedInMps = this.speedInMps;
         }
-        if (this.degreesClockwiseFromMagneticNorth != null) {
+        if (pb_1.Message.getField(this, 5) != null) {
             data.degreesClockwiseFromMagneticNorth = this.degreesClockwiseFromMagneticNorth;
         }
-        if (this.caption != null) {
+        if (pb_1.Message.getField(this, 6) != null) {
             data.caption = this.caption;
         }
-        if (this.sequenceNumber != null) {
+        if (pb_1.Message.getField(this, 7) != null) {
             data.sequenceNumber = this.sequenceNumber;
         }
-        if (this.timeOffset != null) {
+        if (pb_1.Message.getField(this, 8) != null) {
             data.timeOffset = this.timeOffset;
         }
-        if (this.jpegThumbnail != null) {
+        if (pb_1.Message.getField(this, 16) != null) {
             data.jpegThumbnail = this.jpegThumbnail;
         }
-        if (this.contextInfo != null) {
+        if (pb_1.Message.getField(this, 17) != null) {
             data.contextInfo = this.contextInfo.toObject();
         }
         return data;
@@ -6331,25 +6331,25 @@ export class LiveLocationMessage extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.degreesLatitude !== undefined)
+        if (pb_1.Message.getField(this, 1) != null)
             writer.writeDouble(1, this.degreesLatitude);
-        if (this.degreesLongitude !== undefined)
+        if (pb_1.Message.getField(this, 2) != null)
             writer.writeDouble(2, this.degreesLongitude);
-        if (this.accuracyInMeters !== undefined)
+        if (pb_1.Message.getField(this, 3) != null)
             writer.writeUint32(3, this.accuracyInMeters);
-        if (this.speedInMps !== undefined)
+        if (pb_1.Message.getField(this, 4) != null)
             writer.writeFloat(4, this.speedInMps);
-        if (this.degreesClockwiseFromMagneticNorth !== undefined)
+        if (pb_1.Message.getField(this, 5) != null)
             writer.writeUint32(5, this.degreesClockwiseFromMagneticNorth);
-        if (typeof this.caption === "string" && this.caption.length)
+        if (typeof pb_1.Message.getField(this, 6) === "string" && this.caption.length)
             writer.writeString(6, this.caption);
-        if (this.sequenceNumber !== undefined)
+        if (pb_1.Message.getField(this, 7) != null)
             writer.writeInt64(7, this.sequenceNumber);
-        if (this.timeOffset !== undefined)
+        if (pb_1.Message.getField(this, 8) != null)
             writer.writeUint32(8, this.timeOffset);
-        if (this.jpegThumbnail !== undefined)
+        if (pb_1.Message.getField(this, 16) != null)
             writer.writeBytes(16, this.jpegThumbnail);
-        if (this.contextInfo !== undefined)
+        if (pb_1.Message.getField(this, 17) != null)
             writer.writeMessage(17, this.contextInfo, () => this.contextInfo.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
@@ -6472,85 +6472,85 @@ export class StickerMessage extends pb_1.Message {
         }
     }
     get url() {
-        return pb_1.Message.getField(this, 1) as string;
+        return pb_1.Message.getFieldWithDefault(this, 1, "") as string;
     }
     set url(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
     get fileSha256() {
-        return pb_1.Message.getField(this, 2) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 2, new Uint8Array()) as Uint8Array;
     }
     set fileSha256(value: Uint8Array) {
         pb_1.Message.setField(this, 2, value);
     }
     get fileEncSha256() {
-        return pb_1.Message.getField(this, 3) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 3, new Uint8Array()) as Uint8Array;
     }
     set fileEncSha256(value: Uint8Array) {
         pb_1.Message.setField(this, 3, value);
     }
     get mediaKey() {
-        return pb_1.Message.getField(this, 4) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 4, new Uint8Array()) as Uint8Array;
     }
     set mediaKey(value: Uint8Array) {
         pb_1.Message.setField(this, 4, value);
     }
     get mimetype() {
-        return pb_1.Message.getField(this, 5) as string;
+        return pb_1.Message.getFieldWithDefault(this, 5, "") as string;
     }
     set mimetype(value: string) {
         pb_1.Message.setField(this, 5, value);
     }
     get height() {
-        return pb_1.Message.getField(this, 6) as number;
+        return pb_1.Message.getFieldWithDefault(this, 6, 0) as number;
     }
     set height(value: number) {
         pb_1.Message.setField(this, 6, value);
     }
     get width() {
-        return pb_1.Message.getField(this, 7) as number;
+        return pb_1.Message.getFieldWithDefault(this, 7, 0) as number;
     }
     set width(value: number) {
         pb_1.Message.setField(this, 7, value);
     }
     get directPath() {
-        return pb_1.Message.getField(this, 8) as string;
+        return pb_1.Message.getFieldWithDefault(this, 8, "") as string;
     }
     set directPath(value: string) {
         pb_1.Message.setField(this, 8, value);
     }
     get fileLength() {
-        return pb_1.Message.getField(this, 9) as number;
+        return pb_1.Message.getFieldWithDefault(this, 9, 0) as number;
     }
     set fileLength(value: number) {
         pb_1.Message.setField(this, 9, value);
     }
     get mediaKeyTimestamp() {
-        return pb_1.Message.getField(this, 10) as number;
+        return pb_1.Message.getFieldWithDefault(this, 10, 0) as number;
     }
     set mediaKeyTimestamp(value: number) {
         pb_1.Message.setField(this, 10, value);
     }
     get firstFrameLength() {
-        return pb_1.Message.getField(this, 11) as number;
+        return pb_1.Message.getFieldWithDefault(this, 11, 0) as number;
     }
     set firstFrameLength(value: number) {
         pb_1.Message.setField(this, 11, value);
     }
     get firstFrameSidecar() {
-        return pb_1.Message.getField(this, 12) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 12, new Uint8Array()) as Uint8Array;
     }
     set firstFrameSidecar(value: Uint8Array) {
         pb_1.Message.setField(this, 12, value);
     }
     get isAnimated() {
-        return pb_1.Message.getField(this, 13) as boolean;
+        return pb_1.Message.getFieldWithDefault(this, 13, false) as boolean;
     }
     set isAnimated(value: boolean) {
         pb_1.Message.setField(this, 13, value);
     }
     get pngThumbnail() {
-        return pb_1.Message.getField(this, 16) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 16, new Uint8Array()) as Uint8Array;
     }
     set pngThumbnail(value: Uint8Array) {
         pb_1.Message.setField(this, 16, value);
@@ -6644,49 +6644,49 @@ export class StickerMessage extends pb_1.Message {
             pngThumbnail?: Uint8Array;
             contextInfo?: ReturnType<typeof ContextInfo.prototype.toObject>;
         } = {};
-        if (this.url != null) {
+        if (pb_1.Message.getField(this, 1) != null) {
             data.url = this.url;
         }
-        if (this.fileSha256 != null) {
+        if (pb_1.Message.getField(this, 2) != null) {
             data.fileSha256 = this.fileSha256;
         }
-        if (this.fileEncSha256 != null) {
+        if (pb_1.Message.getField(this, 3) != null) {
             data.fileEncSha256 = this.fileEncSha256;
         }
-        if (this.mediaKey != null) {
+        if (pb_1.Message.getField(this, 4) != null) {
             data.mediaKey = this.mediaKey;
         }
-        if (this.mimetype != null) {
+        if (pb_1.Message.getField(this, 5) != null) {
             data.mimetype = this.mimetype;
         }
-        if (this.height != null) {
+        if (pb_1.Message.getField(this, 6) != null) {
             data.height = this.height;
         }
-        if (this.width != null) {
+        if (pb_1.Message.getField(this, 7) != null) {
             data.width = this.width;
         }
-        if (this.directPath != null) {
+        if (pb_1.Message.getField(this, 8) != null) {
             data.directPath = this.directPath;
         }
-        if (this.fileLength != null) {
+        if (pb_1.Message.getField(this, 9) != null) {
             data.fileLength = this.fileLength;
         }
-        if (this.mediaKeyTimestamp != null) {
+        if (pb_1.Message.getField(this, 10) != null) {
             data.mediaKeyTimestamp = this.mediaKeyTimestamp;
         }
-        if (this.firstFrameLength != null) {
+        if (pb_1.Message.getField(this, 11) != null) {
             data.firstFrameLength = this.firstFrameLength;
         }
-        if (this.firstFrameSidecar != null) {
+        if (pb_1.Message.getField(this, 12) != null) {
             data.firstFrameSidecar = this.firstFrameSidecar;
         }
-        if (this.isAnimated != null) {
+        if (pb_1.Message.getField(this, 13) != null) {
             data.isAnimated = this.isAnimated;
         }
-        if (this.pngThumbnail != null) {
+        if (pb_1.Message.getField(this, 16) != null) {
             data.pngThumbnail = this.pngThumbnail;
         }
-        if (this.contextInfo != null) {
+        if (pb_1.Message.getField(this, 17) != null) {
             data.contextInfo = this.contextInfo.toObject();
         }
         return data;
@@ -6695,35 +6695,35 @@ export class StickerMessage extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (typeof this.url === "string" && this.url.length)
+        if (typeof pb_1.Message.getField(this, 1) === "string" && this.url.length)
             writer.writeString(1, this.url);
-        if (this.fileSha256 !== undefined)
+        if (pb_1.Message.getField(this, 2) != null)
             writer.writeBytes(2, this.fileSha256);
-        if (this.fileEncSha256 !== undefined)
+        if (pb_1.Message.getField(this, 3) != null)
             writer.writeBytes(3, this.fileEncSha256);
-        if (this.mediaKey !== undefined)
+        if (pb_1.Message.getField(this, 4) != null)
             writer.writeBytes(4, this.mediaKey);
-        if (typeof this.mimetype === "string" && this.mimetype.length)
+        if (typeof pb_1.Message.getField(this, 5) === "string" && this.mimetype.length)
             writer.writeString(5, this.mimetype);
-        if (this.height !== undefined)
+        if (pb_1.Message.getField(this, 6) != null)
             writer.writeUint32(6, this.height);
-        if (this.width !== undefined)
+        if (pb_1.Message.getField(this, 7) != null)
             writer.writeUint32(7, this.width);
-        if (typeof this.directPath === "string" && this.directPath.length)
+        if (typeof pb_1.Message.getField(this, 8) === "string" && this.directPath.length)
             writer.writeString(8, this.directPath);
-        if (this.fileLength !== undefined)
+        if (pb_1.Message.getField(this, 9) != null)
             writer.writeUint64(9, this.fileLength);
-        if (this.mediaKeyTimestamp !== undefined)
+        if (pb_1.Message.getField(this, 10) != null)
             writer.writeInt64(10, this.mediaKeyTimestamp);
-        if (this.firstFrameLength !== undefined)
+        if (pb_1.Message.getField(this, 11) != null)
             writer.writeUint32(11, this.firstFrameLength);
-        if (this.firstFrameSidecar !== undefined)
+        if (pb_1.Message.getField(this, 12) != null)
             writer.writeBytes(12, this.firstFrameSidecar);
-        if (this.isAnimated !== undefined)
+        if (pb_1.Message.getField(this, 13) != null)
             writer.writeBool(13, this.isAnimated);
-        if (this.pngThumbnail !== undefined)
+        if (pb_1.Message.getField(this, 16) != null)
             writer.writeBytes(16, this.pngThumbnail);
-        if (this.contextInfo !== undefined)
+        if (pb_1.Message.getField(this, 17) != null)
             writer.writeMessage(17, this.contextInfo, () => this.contextInfo.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
@@ -6965,25 +6965,25 @@ export class FourRowTemplate extends pb_1.Message {
         } = {
             buttons: this.buttons.map((item: TemplateButton) => item.toObject())
         };
-        if (this.content != null) {
+        if (pb_1.Message.getField(this, 6) != null) {
             data.content = this.content.toObject();
         }
-        if (this.footer != null) {
+        if (pb_1.Message.getField(this, 7) != null) {
             data.footer = this.footer.toObject();
         }
-        if (this.documentMessage != null) {
+        if (pb_1.Message.getField(this, 1) != null) {
             data.documentMessage = this.documentMessage.toObject();
         }
-        if (this.highlyStructuredMessage != null) {
+        if (pb_1.Message.getField(this, 2) != null) {
             data.highlyStructuredMessage = this.highlyStructuredMessage.toObject();
         }
-        if (this.imageMessage != null) {
+        if (pb_1.Message.getField(this, 3) != null) {
             data.imageMessage = this.imageMessage.toObject();
         }
-        if (this.videoMessage != null) {
+        if (pb_1.Message.getField(this, 4) != null) {
             data.videoMessage = this.videoMessage.toObject();
         }
-        if (this.locationMessage != null) {
+        if (pb_1.Message.getField(this, 5) != null) {
             data.locationMessage = this.locationMessage.toObject();
         }
         return data;
@@ -6992,21 +6992,21 @@ export class FourRowTemplate extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.content !== undefined)
+        if (pb_1.Message.getField(this, 6) != null)
             writer.writeMessage(6, this.content, () => this.content.serialize(writer));
-        if (this.footer !== undefined)
+        if (pb_1.Message.getField(this, 7) != null)
             writer.writeMessage(7, this.footer, () => this.footer.serialize(writer));
-        if (this.buttons !== undefined)
+        if (this.buttons.length)
             writer.writeRepeatedMessage(8, this.buttons, (item: TemplateButton) => item.serialize(writer));
-        if (this.documentMessage !== undefined)
+        if (pb_1.Message.getField(this, 1) != null)
             writer.writeMessage(1, this.documentMessage, () => this.documentMessage.serialize(writer));
-        if (this.highlyStructuredMessage !== undefined)
+        if (pb_1.Message.getField(this, 2) != null)
             writer.writeMessage(2, this.highlyStructuredMessage, () => this.highlyStructuredMessage.serialize(writer));
-        if (this.imageMessage !== undefined)
+        if (pb_1.Message.getField(this, 3) != null)
             writer.writeMessage(3, this.imageMessage, () => this.imageMessage.serialize(writer));
-        if (this.videoMessage !== undefined)
+        if (pb_1.Message.getField(this, 4) != null)
             writer.writeMessage(4, this.videoMessage, () => this.videoMessage.serialize(writer));
-        if (this.locationMessage !== undefined)
+        if (pb_1.Message.getField(this, 5) != null)
             writer.writeMessage(5, this.locationMessage, () => this.locationMessage.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
@@ -7122,13 +7122,13 @@ export class HydratedFourRowTemplate extends pb_1.Message {
         }
     }
     get hydratedContentText() {
-        return pb_1.Message.getField(this, 6) as string;
+        return pb_1.Message.getFieldWithDefault(this, 6, "") as string;
     }
     set hydratedContentText(value: string) {
         pb_1.Message.setField(this, 6, value);
     }
     get hydratedFooterText() {
-        return pb_1.Message.getField(this, 7) as string;
+        return pb_1.Message.getFieldWithDefault(this, 7, "") as string;
     }
     set hydratedFooterText(value: string) {
         pb_1.Message.setField(this, 7, value);
@@ -7140,7 +7140,7 @@ export class HydratedFourRowTemplate extends pb_1.Message {
         pb_1.Message.setRepeatedWrapperField(this, 8, value);
     }
     get templateId() {
-        return pb_1.Message.getField(this, 9) as string;
+        return pb_1.Message.getFieldWithDefault(this, 9, "") as string;
     }
     set templateId(value: string) {
         pb_1.Message.setField(this, 9, value);
@@ -7152,7 +7152,7 @@ export class HydratedFourRowTemplate extends pb_1.Message {
         pb_1.Message.setOneofWrapperField(this, 1, this.#one_of_decls[0], value);
     }
     get hydratedTitleText() {
-        return pb_1.Message.getField(this, 2) as string;
+        return pb_1.Message.getFieldWithDefault(this, 2, "") as string;
     }
     set hydratedTitleText(value: string) {
         pb_1.Message.setOneofField(this, 2, this.#one_of_decls[0], value);
@@ -7242,28 +7242,28 @@ export class HydratedFourRowTemplate extends pb_1.Message {
         } = {
             hydratedButtons: this.hydratedButtons.map((item: HydratedTemplateButton) => item.toObject())
         };
-        if (this.hydratedContentText != null) {
+        if (pb_1.Message.getField(this, 6) != null) {
             data.hydratedContentText = this.hydratedContentText;
         }
-        if (this.hydratedFooterText != null) {
+        if (pb_1.Message.getField(this, 7) != null) {
             data.hydratedFooterText = this.hydratedFooterText;
         }
-        if (this.templateId != null) {
+        if (pb_1.Message.getField(this, 9) != null) {
             data.templateId = this.templateId;
         }
-        if (this.documentMessage != null) {
+        if (pb_1.Message.getField(this, 1) != null) {
             data.documentMessage = this.documentMessage.toObject();
         }
-        if (this.hydratedTitleText != null) {
+        if (pb_1.Message.getField(this, 2) != null) {
             data.hydratedTitleText = this.hydratedTitleText;
         }
-        if (this.imageMessage != null) {
+        if (pb_1.Message.getField(this, 3) != null) {
             data.imageMessage = this.imageMessage.toObject();
         }
-        if (this.videoMessage != null) {
+        if (pb_1.Message.getField(this, 4) != null) {
             data.videoMessage = this.videoMessage.toObject();
         }
-        if (this.locationMessage != null) {
+        if (pb_1.Message.getField(this, 5) != null) {
             data.locationMessage = this.locationMessage.toObject();
         }
         return data;
@@ -7272,23 +7272,23 @@ export class HydratedFourRowTemplate extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (typeof this.hydratedContentText === "string" && this.hydratedContentText.length)
+        if (typeof pb_1.Message.getField(this, 6) === "string" && this.hydratedContentText.length)
             writer.writeString(6, this.hydratedContentText);
-        if (typeof this.hydratedFooterText === "string" && this.hydratedFooterText.length)
+        if (typeof pb_1.Message.getField(this, 7) === "string" && this.hydratedFooterText.length)
             writer.writeString(7, this.hydratedFooterText);
-        if (this.hydratedButtons !== undefined)
+        if (this.hydratedButtons.length)
             writer.writeRepeatedMessage(8, this.hydratedButtons, (item: HydratedTemplateButton) => item.serialize(writer));
-        if (typeof this.templateId === "string" && this.templateId.length)
+        if (typeof pb_1.Message.getField(this, 9) === "string" && this.templateId.length)
             writer.writeString(9, this.templateId);
-        if (this.documentMessage !== undefined)
+        if (pb_1.Message.getField(this, 1) != null)
             writer.writeMessage(1, this.documentMessage, () => this.documentMessage.serialize(writer));
-        if (typeof this.hydratedTitleText === "string" && this.hydratedTitleText.length)
+        if (typeof pb_1.Message.getField(this, 2) === "string" && this.hydratedTitleText.length)
             writer.writeString(2, this.hydratedTitleText);
-        if (this.imageMessage !== undefined)
+        if (pb_1.Message.getField(this, 3) != null)
             writer.writeMessage(3, this.imageMessage, () => this.imageMessage.serialize(writer));
-        if (this.videoMessage !== undefined)
+        if (pb_1.Message.getField(this, 4) != null)
             writer.writeMessage(4, this.videoMessage, () => this.videoMessage.serialize(writer));
-        if (this.locationMessage !== undefined)
+        if (pb_1.Message.getField(this, 5) != null)
             writer.writeMessage(5, this.locationMessage, () => this.locationMessage.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
@@ -7429,16 +7429,16 @@ export class TemplateMessage extends pb_1.Message {
             fourRowTemplate?: ReturnType<typeof FourRowTemplate.prototype.toObject>;
             hydratedFourRowTemplate?: ReturnType<typeof HydratedFourRowTemplate.prototype.toObject>;
         } = {};
-        if (this.contextInfo != null) {
+        if (pb_1.Message.getField(this, 3) != null) {
             data.contextInfo = this.contextInfo.toObject();
         }
-        if (this.hydratedTemplate != null) {
+        if (pb_1.Message.getField(this, 4) != null) {
             data.hydratedTemplate = this.hydratedTemplate.toObject();
         }
-        if (this.fourRowTemplate != null) {
+        if (pb_1.Message.getField(this, 1) != null) {
             data.fourRowTemplate = this.fourRowTemplate.toObject();
         }
-        if (this.hydratedFourRowTemplate != null) {
+        if (pb_1.Message.getField(this, 2) != null) {
             data.hydratedFourRowTemplate = this.hydratedFourRowTemplate.toObject();
         }
         return data;
@@ -7447,13 +7447,13 @@ export class TemplateMessage extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.contextInfo !== undefined)
+        if (pb_1.Message.getField(this, 3) != null)
             writer.writeMessage(3, this.contextInfo, () => this.contextInfo.serialize(writer));
-        if (this.hydratedTemplate !== undefined)
+        if (pb_1.Message.getField(this, 4) != null)
             writer.writeMessage(4, this.hydratedTemplate, () => this.hydratedTemplate.serialize(writer));
-        if (this.fourRowTemplate !== undefined)
+        if (pb_1.Message.getField(this, 1) != null)
             writer.writeMessage(1, this.fourRowTemplate, () => this.fourRowTemplate.serialize(writer));
-        if (this.hydratedFourRowTemplate !== undefined)
+        if (pb_1.Message.getField(this, 2) != null)
             writer.writeMessage(2, this.hydratedFourRowTemplate, () => this.hydratedFourRowTemplate.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
@@ -7514,13 +7514,13 @@ export class TemplateButtonReplyMessage extends pb_1.Message {
         }
     }
     get selectedId() {
-        return pb_1.Message.getField(this, 1) as string;
+        return pb_1.Message.getFieldWithDefault(this, 1, "") as string;
     }
     set selectedId(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
     get selectedDisplayText() {
-        return pb_1.Message.getField(this, 2) as string;
+        return pb_1.Message.getFieldWithDefault(this, 2, "") as string;
     }
     set selectedDisplayText(value: string) {
         pb_1.Message.setField(this, 2, value);
@@ -7532,7 +7532,7 @@ export class TemplateButtonReplyMessage extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 3, value);
     }
     get selectedIndex() {
-        return pb_1.Message.getField(this, 4) as number;
+        return pb_1.Message.getFieldWithDefault(this, 4, 0) as number;
     }
     set selectedIndex(value: number) {
         pb_1.Message.setField(this, 4, value);
@@ -7565,16 +7565,16 @@ export class TemplateButtonReplyMessage extends pb_1.Message {
             contextInfo?: ReturnType<typeof ContextInfo.prototype.toObject>;
             selectedIndex?: number;
         } = {};
-        if (this.selectedId != null) {
+        if (pb_1.Message.getField(this, 1) != null) {
             data.selectedId = this.selectedId;
         }
-        if (this.selectedDisplayText != null) {
+        if (pb_1.Message.getField(this, 2) != null) {
             data.selectedDisplayText = this.selectedDisplayText;
         }
-        if (this.contextInfo != null) {
+        if (pb_1.Message.getField(this, 3) != null) {
             data.contextInfo = this.contextInfo.toObject();
         }
-        if (this.selectedIndex != null) {
+        if (pb_1.Message.getField(this, 4) != null) {
             data.selectedIndex = this.selectedIndex;
         }
         return data;
@@ -7583,13 +7583,13 @@ export class TemplateButtonReplyMessage extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (typeof this.selectedId === "string" && this.selectedId.length)
+        if (typeof pb_1.Message.getField(this, 1) === "string" && this.selectedId.length)
             writer.writeString(1, this.selectedId);
-        if (typeof this.selectedDisplayText === "string" && this.selectedDisplayText.length)
+        if (typeof pb_1.Message.getField(this, 2) === "string" && this.selectedDisplayText.length)
             writer.writeString(2, this.selectedDisplayText);
-        if (this.contextInfo !== undefined)
+        if (pb_1.Message.getField(this, 3) != null)
             writer.writeMessage(3, this.contextInfo, () => this.contextInfo.serialize(writer));
-        if (this.selectedIndex !== undefined)
+        if (pb_1.Message.getField(this, 4) != null)
             writer.writeUint32(4, this.selectedIndex);
         if (!w)
             return writer.getResultBuffer();
@@ -7652,13 +7652,13 @@ export class CatalogSnapshot extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 1, value);
     }
     get title() {
-        return pb_1.Message.getField(this, 2) as string;
+        return pb_1.Message.getFieldWithDefault(this, 2, "") as string;
     }
     set title(value: string) {
         pb_1.Message.setField(this, 2, value);
     }
     get description() {
-        return pb_1.Message.getField(this, 3) as string;
+        return pb_1.Message.getFieldWithDefault(this, 3, "") as string;
     }
     set description(value: string) {
         pb_1.Message.setField(this, 3, value);
@@ -7686,13 +7686,13 @@ export class CatalogSnapshot extends pb_1.Message {
             title?: string;
             description?: string;
         } = {};
-        if (this.catalogImage != null) {
+        if (pb_1.Message.getField(this, 1) != null) {
             data.catalogImage = this.catalogImage.toObject();
         }
-        if (this.title != null) {
+        if (pb_1.Message.getField(this, 2) != null) {
             data.title = this.title;
         }
-        if (this.description != null) {
+        if (pb_1.Message.getField(this, 3) != null) {
             data.description = this.description;
         }
         return data;
@@ -7701,11 +7701,11 @@ export class CatalogSnapshot extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.catalogImage !== undefined)
+        if (pb_1.Message.getField(this, 1) != null)
             writer.writeMessage(1, this.catalogImage, () => this.catalogImage.serialize(writer));
-        if (typeof this.title === "string" && this.title.length)
+        if (typeof pb_1.Message.getField(this, 2) === "string" && this.title.length)
             writer.writeString(2, this.title);
-        if (typeof this.description === "string" && this.description.length)
+        if (typeof pb_1.Message.getField(this, 3) === "string" && this.description.length)
             writer.writeString(3, this.description);
         if (!w)
             return writer.getResultBuffer();
@@ -7793,55 +7793,55 @@ export class ProductSnapshot extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 1, value);
     }
     get productId() {
-        return pb_1.Message.getField(this, 2) as string;
+        return pb_1.Message.getFieldWithDefault(this, 2, "") as string;
     }
     set productId(value: string) {
         pb_1.Message.setField(this, 2, value);
     }
     get title() {
-        return pb_1.Message.getField(this, 3) as string;
+        return pb_1.Message.getFieldWithDefault(this, 3, "") as string;
     }
     set title(value: string) {
         pb_1.Message.setField(this, 3, value);
     }
     get description() {
-        return pb_1.Message.getField(this, 4) as string;
+        return pb_1.Message.getFieldWithDefault(this, 4, "") as string;
     }
     set description(value: string) {
         pb_1.Message.setField(this, 4, value);
     }
     get currencyCode() {
-        return pb_1.Message.getField(this, 5) as string;
+        return pb_1.Message.getFieldWithDefault(this, 5, "") as string;
     }
     set currencyCode(value: string) {
         pb_1.Message.setField(this, 5, value);
     }
     get priceAmount1000() {
-        return pb_1.Message.getField(this, 6) as number;
+        return pb_1.Message.getFieldWithDefault(this, 6, 0) as number;
     }
     set priceAmount1000(value: number) {
         pb_1.Message.setField(this, 6, value);
     }
     get retailerId() {
-        return pb_1.Message.getField(this, 7) as string;
+        return pb_1.Message.getFieldWithDefault(this, 7, "") as string;
     }
     set retailerId(value: string) {
         pb_1.Message.setField(this, 7, value);
     }
     get url() {
-        return pb_1.Message.getField(this, 8) as string;
+        return pb_1.Message.getFieldWithDefault(this, 8, "") as string;
     }
     set url(value: string) {
         pb_1.Message.setField(this, 8, value);
     }
     get productImageCount() {
-        return pb_1.Message.getField(this, 9) as number;
+        return pb_1.Message.getFieldWithDefault(this, 9, 0) as number;
     }
     set productImageCount(value: number) {
         pb_1.Message.setField(this, 9, value);
     }
     get firstImageId() {
-        return pb_1.Message.getField(this, 11) as string;
+        return pb_1.Message.getFieldWithDefault(this, 11, "") as string;
     }
     set firstImageId(value: string) {
         pb_1.Message.setField(this, 11, value);
@@ -7904,34 +7904,34 @@ export class ProductSnapshot extends pb_1.Message {
             productImageCount?: number;
             firstImageId?: string;
         } = {};
-        if (this.productImage != null) {
+        if (pb_1.Message.getField(this, 1) != null) {
             data.productImage = this.productImage.toObject();
         }
-        if (this.productId != null) {
+        if (pb_1.Message.getField(this, 2) != null) {
             data.productId = this.productId;
         }
-        if (this.title != null) {
+        if (pb_1.Message.getField(this, 3) != null) {
             data.title = this.title;
         }
-        if (this.description != null) {
+        if (pb_1.Message.getField(this, 4) != null) {
             data.description = this.description;
         }
-        if (this.currencyCode != null) {
+        if (pb_1.Message.getField(this, 5) != null) {
             data.currencyCode = this.currencyCode;
         }
-        if (this.priceAmount1000 != null) {
+        if (pb_1.Message.getField(this, 6) != null) {
             data.priceAmount1000 = this.priceAmount1000;
         }
-        if (this.retailerId != null) {
+        if (pb_1.Message.getField(this, 7) != null) {
             data.retailerId = this.retailerId;
         }
-        if (this.url != null) {
+        if (pb_1.Message.getField(this, 8) != null) {
             data.url = this.url;
         }
-        if (this.productImageCount != null) {
+        if (pb_1.Message.getField(this, 9) != null) {
             data.productImageCount = this.productImageCount;
         }
-        if (this.firstImageId != null) {
+        if (pb_1.Message.getField(this, 11) != null) {
             data.firstImageId = this.firstImageId;
         }
         return data;
@@ -7940,25 +7940,25 @@ export class ProductSnapshot extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.productImage !== undefined)
+        if (pb_1.Message.getField(this, 1) != null)
             writer.writeMessage(1, this.productImage, () => this.productImage.serialize(writer));
-        if (typeof this.productId === "string" && this.productId.length)
+        if (typeof pb_1.Message.getField(this, 2) === "string" && this.productId.length)
             writer.writeString(2, this.productId);
-        if (typeof this.title === "string" && this.title.length)
+        if (typeof pb_1.Message.getField(this, 3) === "string" && this.title.length)
             writer.writeString(3, this.title);
-        if (typeof this.description === "string" && this.description.length)
+        if (typeof pb_1.Message.getField(this, 4) === "string" && this.description.length)
             writer.writeString(4, this.description);
-        if (typeof this.currencyCode === "string" && this.currencyCode.length)
+        if (typeof pb_1.Message.getField(this, 5) === "string" && this.currencyCode.length)
             writer.writeString(5, this.currencyCode);
-        if (this.priceAmount1000 !== undefined)
+        if (pb_1.Message.getField(this, 6) != null)
             writer.writeInt64(6, this.priceAmount1000);
-        if (typeof this.retailerId === "string" && this.retailerId.length)
+        if (typeof pb_1.Message.getField(this, 7) === "string" && this.retailerId.length)
             writer.writeString(7, this.retailerId);
-        if (typeof this.url === "string" && this.url.length)
+        if (typeof pb_1.Message.getField(this, 8) === "string" && this.url.length)
             writer.writeString(8, this.url);
-        if (this.productImageCount !== undefined)
+        if (pb_1.Message.getField(this, 9) != null)
             writer.writeUint32(9, this.productImageCount);
-        if (typeof this.firstImageId === "string" && this.firstImageId.length)
+        if (typeof pb_1.Message.getField(this, 11) === "string" && this.firstImageId.length)
             writer.writeString(11, this.firstImageId);
         if (!w)
             return writer.getResultBuffer();
@@ -8043,7 +8043,7 @@ export class ProductMessage extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 1, value);
     }
     get businessOwnerJid() {
-        return pb_1.Message.getField(this, 2) as string;
+        return pb_1.Message.getFieldWithDefault(this, 2, "") as string;
     }
     set businessOwnerJid(value: string) {
         pb_1.Message.setField(this, 2, value);
@@ -8088,16 +8088,16 @@ export class ProductMessage extends pb_1.Message {
             catalog?: ReturnType<typeof CatalogSnapshot.prototype.toObject>;
             contextInfo?: ReturnType<typeof ContextInfo.prototype.toObject>;
         } = {};
-        if (this.product != null) {
+        if (pb_1.Message.getField(this, 1) != null) {
             data.product = this.product.toObject();
         }
-        if (this.businessOwnerJid != null) {
+        if (pb_1.Message.getField(this, 2) != null) {
             data.businessOwnerJid = this.businessOwnerJid;
         }
-        if (this.catalog != null) {
+        if (pb_1.Message.getField(this, 4) != null) {
             data.catalog = this.catalog.toObject();
         }
-        if (this.contextInfo != null) {
+        if (pb_1.Message.getField(this, 17) != null) {
             data.contextInfo = this.contextInfo.toObject();
         }
         return data;
@@ -8106,13 +8106,13 @@ export class ProductMessage extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.product !== undefined)
+        if (pb_1.Message.getField(this, 1) != null)
             writer.writeMessage(1, this.product, () => this.product.serialize(writer));
-        if (typeof this.businessOwnerJid === "string" && this.businessOwnerJid.length)
+        if (typeof pb_1.Message.getField(this, 2) === "string" && this.businessOwnerJid.length)
             writer.writeString(2, this.businessOwnerJid);
-        if (this.catalog !== undefined)
+        if (pb_1.Message.getField(this, 4) != null)
             writer.writeMessage(4, this.catalog, () => this.catalog.serialize(writer));
-        if (this.contextInfo !== undefined)
+        if (pb_1.Message.getField(this, 17) != null)
             writer.writeMessage(17, this.contextInfo, () => this.contextInfo.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
@@ -8185,37 +8185,37 @@ export class GroupInviteMessage extends pb_1.Message {
         }
     }
     get groupJid() {
-        return pb_1.Message.getField(this, 1) as string;
+        return pb_1.Message.getFieldWithDefault(this, 1, "") as string;
     }
     set groupJid(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
     get inviteCode() {
-        return pb_1.Message.getField(this, 2) as string;
+        return pb_1.Message.getFieldWithDefault(this, 2, "") as string;
     }
     set inviteCode(value: string) {
         pb_1.Message.setField(this, 2, value);
     }
     get inviteExpiration() {
-        return pb_1.Message.getField(this, 3) as number;
+        return pb_1.Message.getFieldWithDefault(this, 3, 0) as number;
     }
     set inviteExpiration(value: number) {
         pb_1.Message.setField(this, 3, value);
     }
     get groupName() {
-        return pb_1.Message.getField(this, 4) as string;
+        return pb_1.Message.getFieldWithDefault(this, 4, "") as string;
     }
     set groupName(value: string) {
         pb_1.Message.setField(this, 4, value);
     }
     get jpegThumbnail() {
-        return pb_1.Message.getField(this, 5) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 5, new Uint8Array()) as Uint8Array;
     }
     set jpegThumbnail(value: Uint8Array) {
         pb_1.Message.setField(this, 5, value);
     }
     get caption() {
-        return pb_1.Message.getField(this, 6) as string;
+        return pb_1.Message.getFieldWithDefault(this, 6, "") as string;
     }
     set caption(value: string) {
         pb_1.Message.setField(this, 6, value);
@@ -8269,25 +8269,25 @@ export class GroupInviteMessage extends pb_1.Message {
             caption?: string;
             contextInfo?: ReturnType<typeof ContextInfo.prototype.toObject>;
         } = {};
-        if (this.groupJid != null) {
+        if (pb_1.Message.getField(this, 1) != null) {
             data.groupJid = this.groupJid;
         }
-        if (this.inviteCode != null) {
+        if (pb_1.Message.getField(this, 2) != null) {
             data.inviteCode = this.inviteCode;
         }
-        if (this.inviteExpiration != null) {
+        if (pb_1.Message.getField(this, 3) != null) {
             data.inviteExpiration = this.inviteExpiration;
         }
-        if (this.groupName != null) {
+        if (pb_1.Message.getField(this, 4) != null) {
             data.groupName = this.groupName;
         }
-        if (this.jpegThumbnail != null) {
+        if (pb_1.Message.getField(this, 5) != null) {
             data.jpegThumbnail = this.jpegThumbnail;
         }
-        if (this.caption != null) {
+        if (pb_1.Message.getField(this, 6) != null) {
             data.caption = this.caption;
         }
-        if (this.contextInfo != null) {
+        if (pb_1.Message.getField(this, 7) != null) {
             data.contextInfo = this.contextInfo.toObject();
         }
         return data;
@@ -8296,19 +8296,19 @@ export class GroupInviteMessage extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (typeof this.groupJid === "string" && this.groupJid.length)
+        if (typeof pb_1.Message.getField(this, 1) === "string" && this.groupJid.length)
             writer.writeString(1, this.groupJid);
-        if (typeof this.inviteCode === "string" && this.inviteCode.length)
+        if (typeof pb_1.Message.getField(this, 2) === "string" && this.inviteCode.length)
             writer.writeString(2, this.inviteCode);
-        if (this.inviteExpiration !== undefined)
+        if (pb_1.Message.getField(this, 3) != null)
             writer.writeInt64(3, this.inviteExpiration);
-        if (typeof this.groupName === "string" && this.groupName.length)
+        if (typeof pb_1.Message.getField(this, 4) === "string" && this.groupName.length)
             writer.writeString(4, this.groupName);
-        if (this.jpegThumbnail !== undefined)
+        if (pb_1.Message.getField(this, 5) != null)
             writer.writeBytes(5, this.jpegThumbnail);
-        if (typeof this.caption === "string" && this.caption.length)
+        if (typeof pb_1.Message.getField(this, 6) === "string" && this.caption.length)
             writer.writeString(6, this.caption);
-        if (this.contextInfo !== undefined)
+        if (pb_1.Message.getField(this, 7) != null)
             writer.writeMessage(7, this.contextInfo, () => this.contextInfo.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
@@ -8374,7 +8374,7 @@ export class DeviceSentMessage extends pb_1.Message {
         }
     }
     get destinationJid() {
-        return pb_1.Message.getField(this, 1) as string;
+        return pb_1.Message.getFieldWithDefault(this, 1, "") as string;
     }
     set destinationJid(value: string) {
         pb_1.Message.setField(this, 1, value);
@@ -8386,7 +8386,7 @@ export class DeviceSentMessage extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 2, value);
     }
     get phash() {
-        return pb_1.Message.getField(this, 3) as string;
+        return pb_1.Message.getFieldWithDefault(this, 3, "") as string;
     }
     set phash(value: string) {
         pb_1.Message.setField(this, 3, value);
@@ -8414,13 +8414,13 @@ export class DeviceSentMessage extends pb_1.Message {
             message?: ReturnType<typeof Message.prototype.toObject>;
             phash?: string;
         } = {};
-        if (this.destinationJid != null) {
+        if (pb_1.Message.getField(this, 1) != null) {
             data.destinationJid = this.destinationJid;
         }
-        if (this.message != null) {
+        if (pb_1.Message.getField(this, 2) != null) {
             data.message = this.message.toObject();
         }
-        if (this.phash != null) {
+        if (pb_1.Message.getField(this, 3) != null) {
             data.phash = this.phash;
         }
         return data;
@@ -8429,11 +8429,11 @@ export class DeviceSentMessage extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (typeof this.destinationJid === "string" && this.destinationJid.length)
+        if (typeof pb_1.Message.getField(this, 1) === "string" && this.destinationJid.length)
             writer.writeString(1, this.destinationJid);
-        if (this.message !== undefined)
+        if (pb_1.Message.getField(this, 2) != null)
             writer.writeMessage(2, this.message, () => this.message.serialize(writer));
-        if (typeof this.phash === "string" && this.phash.length)
+        if (typeof pb_1.Message.getField(this, 3) === "string" && this.phash.length)
             writer.writeString(3, this.phash);
         if (!w)
             return writer.getResultBuffer();
@@ -8579,7 +8579,7 @@ export class Message extends pb_1.Message {
         }
     }
     get conversation() {
-        return pb_1.Message.getField(this, 1) as string;
+        return pb_1.Message.getFieldWithDefault(this, 1, "") as string;
     }
     set conversation(value: string) {
         pb_1.Message.setField(this, 1, value);
@@ -8872,82 +8872,82 @@ export class Message extends pb_1.Message {
             productMessage?: ReturnType<typeof ProductMessage.prototype.toObject>;
             deviceSentMessage?: ReturnType<typeof DeviceSentMessage.prototype.toObject>;
         } = {};
-        if (this.conversation != null) {
+        if (pb_1.Message.getField(this, 1) != null) {
             data.conversation = this.conversation;
         }
-        if (this.senderKeyDistributionMessage != null) {
+        if (pb_1.Message.getField(this, 2) != null) {
             data.senderKeyDistributionMessage = this.senderKeyDistributionMessage.toObject();
         }
-        if (this.imageMessage != null) {
+        if (pb_1.Message.getField(this, 3) != null) {
             data.imageMessage = this.imageMessage.toObject();
         }
-        if (this.contactMessage != null) {
+        if (pb_1.Message.getField(this, 4) != null) {
             data.contactMessage = this.contactMessage.toObject();
         }
-        if (this.locationMessage != null) {
+        if (pb_1.Message.getField(this, 5) != null) {
             data.locationMessage = this.locationMessage.toObject();
         }
-        if (this.extendedTextMessage != null) {
+        if (pb_1.Message.getField(this, 6) != null) {
             data.extendedTextMessage = this.extendedTextMessage.toObject();
         }
-        if (this.documentMessage != null) {
+        if (pb_1.Message.getField(this, 7) != null) {
             data.documentMessage = this.documentMessage.toObject();
         }
-        if (this.audioMessage != null) {
+        if (pb_1.Message.getField(this, 8) != null) {
             data.audioMessage = this.audioMessage.toObject();
         }
-        if (this.videoMessage != null) {
+        if (pb_1.Message.getField(this, 9) != null) {
             data.videoMessage = this.videoMessage.toObject();
         }
-        if (this.call != null) {
+        if (pb_1.Message.getField(this, 10) != null) {
             data.call = this.call.toObject();
         }
-        if (this.chat != null) {
+        if (pb_1.Message.getField(this, 11) != null) {
             data.chat = this.chat.toObject();
         }
-        if (this.protocolMessage != null) {
+        if (pb_1.Message.getField(this, 12) != null) {
             data.protocolMessage = this.protocolMessage.toObject();
         }
-        if (this.contactsArrayMessage != null) {
+        if (pb_1.Message.getField(this, 13) != null) {
             data.contactsArrayMessage = this.contactsArrayMessage.toObject();
         }
-        if (this.highlyStructuredMessage != null) {
+        if (pb_1.Message.getField(this, 14) != null) {
             data.highlyStructuredMessage = this.highlyStructuredMessage.toObject();
         }
-        if (this.fastRatchetKeySenderKeyDistributionMessage != null) {
+        if (pb_1.Message.getField(this, 15) != null) {
             data.fastRatchetKeySenderKeyDistributionMessage = this.fastRatchetKeySenderKeyDistributionMessage.toObject();
         }
-        if (this.sendPaymentMessage != null) {
+        if (pb_1.Message.getField(this, 16) != null) {
             data.sendPaymentMessage = this.sendPaymentMessage.toObject();
         }
-        if (this.liveLocationMessage != null) {
+        if (pb_1.Message.getField(this, 18) != null) {
             data.liveLocationMessage = this.liveLocationMessage.toObject();
         }
-        if (this.requestPaymentMessage != null) {
+        if (pb_1.Message.getField(this, 22) != null) {
             data.requestPaymentMessage = this.requestPaymentMessage.toObject();
         }
-        if (this.declinePaymentRequestMessage != null) {
+        if (pb_1.Message.getField(this, 23) != null) {
             data.declinePaymentRequestMessage = this.declinePaymentRequestMessage.toObject();
         }
-        if (this.cancelPaymentRequestMessage != null) {
+        if (pb_1.Message.getField(this, 24) != null) {
             data.cancelPaymentRequestMessage = this.cancelPaymentRequestMessage.toObject();
         }
-        if (this.templateMessage != null) {
+        if (pb_1.Message.getField(this, 25) != null) {
             data.templateMessage = this.templateMessage.toObject();
         }
-        if (this.stickerMessage != null) {
+        if (pb_1.Message.getField(this, 26) != null) {
             data.stickerMessage = this.stickerMessage.toObject();
         }
-        if (this.groupInviteMessage != null) {
+        if (pb_1.Message.getField(this, 28) != null) {
             data.groupInviteMessage = this.groupInviteMessage.toObject();
         }
-        if (this.templateButtonReplyMessage != null) {
+        if (pb_1.Message.getField(this, 29) != null) {
             data.templateButtonReplyMessage = this.templateButtonReplyMessage.toObject();
         }
-        if (this.productMessage != null) {
+        if (pb_1.Message.getField(this, 30) != null) {
             data.productMessage = this.productMessage.toObject();
         }
-        if (this.deviceSentMessage != null) {
+        if (pb_1.Message.getField(this, 31) != null) {
             data.deviceSentMessage = this.deviceSentMessage.toObject();
         }
         return data;
@@ -8956,57 +8956,57 @@ export class Message extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (typeof this.conversation === "string" && this.conversation.length)
+        if (typeof pb_1.Message.getField(this, 1) === "string" && this.conversation.length)
             writer.writeString(1, this.conversation);
-        if (this.senderKeyDistributionMessage !== undefined)
+        if (pb_1.Message.getField(this, 2) != null)
             writer.writeMessage(2, this.senderKeyDistributionMessage, () => this.senderKeyDistributionMessage.serialize(writer));
-        if (this.imageMessage !== undefined)
+        if (pb_1.Message.getField(this, 3) != null)
             writer.writeMessage(3, this.imageMessage, () => this.imageMessage.serialize(writer));
-        if (this.contactMessage !== undefined)
+        if (pb_1.Message.getField(this, 4) != null)
             writer.writeMessage(4, this.contactMessage, () => this.contactMessage.serialize(writer));
-        if (this.locationMessage !== undefined)
+        if (pb_1.Message.getField(this, 5) != null)
             writer.writeMessage(5, this.locationMessage, () => this.locationMessage.serialize(writer));
-        if (this.extendedTextMessage !== undefined)
+        if (pb_1.Message.getField(this, 6) != null)
             writer.writeMessage(6, this.extendedTextMessage, () => this.extendedTextMessage.serialize(writer));
-        if (this.documentMessage !== undefined)
+        if (pb_1.Message.getField(this, 7) != null)
             writer.writeMessage(7, this.documentMessage, () => this.documentMessage.serialize(writer));
-        if (this.audioMessage !== undefined)
+        if (pb_1.Message.getField(this, 8) != null)
             writer.writeMessage(8, this.audioMessage, () => this.audioMessage.serialize(writer));
-        if (this.videoMessage !== undefined)
+        if (pb_1.Message.getField(this, 9) != null)
             writer.writeMessage(9, this.videoMessage, () => this.videoMessage.serialize(writer));
-        if (this.call !== undefined)
+        if (pb_1.Message.getField(this, 10) != null)
             writer.writeMessage(10, this.call, () => this.call.serialize(writer));
-        if (this.chat !== undefined)
+        if (pb_1.Message.getField(this, 11) != null)
             writer.writeMessage(11, this.chat, () => this.chat.serialize(writer));
-        if (this.protocolMessage !== undefined)
+        if (pb_1.Message.getField(this, 12) != null)
             writer.writeMessage(12, this.protocolMessage, () => this.protocolMessage.serialize(writer));
-        if (this.contactsArrayMessage !== undefined)
+        if (pb_1.Message.getField(this, 13) != null)
             writer.writeMessage(13, this.contactsArrayMessage, () => this.contactsArrayMessage.serialize(writer));
-        if (this.highlyStructuredMessage !== undefined)
+        if (pb_1.Message.getField(this, 14) != null)
             writer.writeMessage(14, this.highlyStructuredMessage, () => this.highlyStructuredMessage.serialize(writer));
-        if (this.fastRatchetKeySenderKeyDistributionMessage !== undefined)
+        if (pb_1.Message.getField(this, 15) != null)
             writer.writeMessage(15, this.fastRatchetKeySenderKeyDistributionMessage, () => this.fastRatchetKeySenderKeyDistributionMessage.serialize(writer));
-        if (this.sendPaymentMessage !== undefined)
+        if (pb_1.Message.getField(this, 16) != null)
             writer.writeMessage(16, this.sendPaymentMessage, () => this.sendPaymentMessage.serialize(writer));
-        if (this.liveLocationMessage !== undefined)
+        if (pb_1.Message.getField(this, 18) != null)
             writer.writeMessage(18, this.liveLocationMessage, () => this.liveLocationMessage.serialize(writer));
-        if (this.requestPaymentMessage !== undefined)
+        if (pb_1.Message.getField(this, 22) != null)
             writer.writeMessage(22, this.requestPaymentMessage, () => this.requestPaymentMessage.serialize(writer));
-        if (this.declinePaymentRequestMessage !== undefined)
+        if (pb_1.Message.getField(this, 23) != null)
             writer.writeMessage(23, this.declinePaymentRequestMessage, () => this.declinePaymentRequestMessage.serialize(writer));
-        if (this.cancelPaymentRequestMessage !== undefined)
+        if (pb_1.Message.getField(this, 24) != null)
             writer.writeMessage(24, this.cancelPaymentRequestMessage, () => this.cancelPaymentRequestMessage.serialize(writer));
-        if (this.templateMessage !== undefined)
+        if (pb_1.Message.getField(this, 25) != null)
             writer.writeMessage(25, this.templateMessage, () => this.templateMessage.serialize(writer));
-        if (this.stickerMessage !== undefined)
+        if (pb_1.Message.getField(this, 26) != null)
             writer.writeMessage(26, this.stickerMessage, () => this.stickerMessage.serialize(writer));
-        if (this.groupInviteMessage !== undefined)
+        if (pb_1.Message.getField(this, 28) != null)
             writer.writeMessage(28, this.groupInviteMessage, () => this.groupInviteMessage.serialize(writer));
-        if (this.templateButtonReplyMessage !== undefined)
+        if (pb_1.Message.getField(this, 29) != null)
             writer.writeMessage(29, this.templateButtonReplyMessage, () => this.templateButtonReplyMessage.serialize(writer));
-        if (this.productMessage !== undefined)
+        if (pb_1.Message.getField(this, 30) != null)
             writer.writeMessage(30, this.productMessage, () => this.productMessage.serialize(writer));
-        if (this.deviceSentMessage !== undefined)
+        if (pb_1.Message.getField(this, 31) != null)
             writer.writeMessage(31, this.deviceSentMessage, () => this.deviceSentMessage.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
@@ -9133,25 +9133,25 @@ export class MessageKey extends pb_1.Message {
         }
     }
     get remoteJid() {
-        return pb_1.Message.getField(this, 1) as string;
+        return pb_1.Message.getFieldWithDefault(this, 1, "") as string;
     }
     set remoteJid(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
     get fromMe() {
-        return pb_1.Message.getField(this, 2) as boolean;
+        return pb_1.Message.getFieldWithDefault(this, 2, false) as boolean;
     }
     set fromMe(value: boolean) {
         pb_1.Message.setField(this, 2, value);
     }
     get id() {
-        return pb_1.Message.getField(this, 3) as string;
+        return pb_1.Message.getFieldWithDefault(this, 3, "") as string;
     }
     set id(value: string) {
         pb_1.Message.setField(this, 3, value);
     }
     get participant() {
-        return pb_1.Message.getField(this, 4) as string;
+        return pb_1.Message.getFieldWithDefault(this, 4, "") as string;
     }
     set participant(value: string) {
         pb_1.Message.setField(this, 4, value);
@@ -9184,16 +9184,16 @@ export class MessageKey extends pb_1.Message {
             id?: string;
             participant?: string;
         } = {};
-        if (this.remoteJid != null) {
+        if (pb_1.Message.getField(this, 1) != null) {
             data.remoteJid = this.remoteJid;
         }
-        if (this.fromMe != null) {
+        if (pb_1.Message.getField(this, 2) != null) {
             data.fromMe = this.fromMe;
         }
-        if (this.id != null) {
+        if (pb_1.Message.getField(this, 3) != null) {
             data.id = this.id;
         }
-        if (this.participant != null) {
+        if (pb_1.Message.getField(this, 4) != null) {
             data.participant = this.participant;
         }
         return data;
@@ -9202,13 +9202,13 @@ export class MessageKey extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (typeof this.remoteJid === "string" && this.remoteJid.length)
+        if (typeof pb_1.Message.getField(this, 1) === "string" && this.remoteJid.length)
             writer.writeString(1, this.remoteJid);
-        if (this.fromMe !== undefined)
+        if (pb_1.Message.getField(this, 2) != null)
             writer.writeBool(2, this.fromMe);
-        if (typeof this.id === "string" && this.id.length)
+        if (typeof pb_1.Message.getField(this, 3) === "string" && this.id.length)
             writer.writeString(3, this.id);
-        if (typeof this.participant === "string" && this.participant.length)
+        if (typeof pb_1.Message.getField(this, 4) === "string" && this.participant.length)
             writer.writeString(4, this.participant);
         if (!w)
             return writer.getResultBuffer();
@@ -9385,199 +9385,199 @@ export class WebFeatures extends pb_1.Message {
         }
     }
     get labelsDisplay() {
-        return pb_1.Message.getField(this, 1) as WebFeatures.WEB_FEATURES_FLAG;
+        return pb_1.Message.getFieldWithDefault(this, 1, WebFeatures.WEB_FEATURES_FLAG.NOT_STARTED) as WebFeatures.WEB_FEATURES_FLAG;
     }
     set labelsDisplay(value: WebFeatures.WEB_FEATURES_FLAG) {
         pb_1.Message.setField(this, 1, value);
     }
     get voipIndividualOutgoing() {
-        return pb_1.Message.getField(this, 2) as WebFeatures.WEB_FEATURES_FLAG;
+        return pb_1.Message.getFieldWithDefault(this, 2, WebFeatures.WEB_FEATURES_FLAG.NOT_STARTED) as WebFeatures.WEB_FEATURES_FLAG;
     }
     set voipIndividualOutgoing(value: WebFeatures.WEB_FEATURES_FLAG) {
         pb_1.Message.setField(this, 2, value);
     }
     get groupsV3() {
-        return pb_1.Message.getField(this, 3) as WebFeatures.WEB_FEATURES_FLAG;
+        return pb_1.Message.getFieldWithDefault(this, 3, WebFeatures.WEB_FEATURES_FLAG.NOT_STARTED) as WebFeatures.WEB_FEATURES_FLAG;
     }
     set groupsV3(value: WebFeatures.WEB_FEATURES_FLAG) {
         pb_1.Message.setField(this, 3, value);
     }
     get groupsV3Create() {
-        return pb_1.Message.getField(this, 4) as WebFeatures.WEB_FEATURES_FLAG;
+        return pb_1.Message.getFieldWithDefault(this, 4, WebFeatures.WEB_FEATURES_FLAG.NOT_STARTED) as WebFeatures.WEB_FEATURES_FLAG;
     }
     set groupsV3Create(value: WebFeatures.WEB_FEATURES_FLAG) {
         pb_1.Message.setField(this, 4, value);
     }
     get changeNumberV2() {
-        return pb_1.Message.getField(this, 5) as WebFeatures.WEB_FEATURES_FLAG;
+        return pb_1.Message.getFieldWithDefault(this, 5, WebFeatures.WEB_FEATURES_FLAG.NOT_STARTED) as WebFeatures.WEB_FEATURES_FLAG;
     }
     set changeNumberV2(value: WebFeatures.WEB_FEATURES_FLAG) {
         pb_1.Message.setField(this, 5, value);
     }
     get queryStatusV3Thumbnail() {
-        return pb_1.Message.getField(this, 6) as WebFeatures.WEB_FEATURES_FLAG;
+        return pb_1.Message.getFieldWithDefault(this, 6, WebFeatures.WEB_FEATURES_FLAG.NOT_STARTED) as WebFeatures.WEB_FEATURES_FLAG;
     }
     set queryStatusV3Thumbnail(value: WebFeatures.WEB_FEATURES_FLAG) {
         pb_1.Message.setField(this, 6, value);
     }
     get liveLocations() {
-        return pb_1.Message.getField(this, 7) as WebFeatures.WEB_FEATURES_FLAG;
+        return pb_1.Message.getFieldWithDefault(this, 7, WebFeatures.WEB_FEATURES_FLAG.NOT_STARTED) as WebFeatures.WEB_FEATURES_FLAG;
     }
     set liveLocations(value: WebFeatures.WEB_FEATURES_FLAG) {
         pb_1.Message.setField(this, 7, value);
     }
     get queryVname() {
-        return pb_1.Message.getField(this, 8) as WebFeatures.WEB_FEATURES_FLAG;
+        return pb_1.Message.getFieldWithDefault(this, 8, WebFeatures.WEB_FEATURES_FLAG.NOT_STARTED) as WebFeatures.WEB_FEATURES_FLAG;
     }
     set queryVname(value: WebFeatures.WEB_FEATURES_FLAG) {
         pb_1.Message.setField(this, 8, value);
     }
     get voipIndividualIncoming() {
-        return pb_1.Message.getField(this, 9) as WebFeatures.WEB_FEATURES_FLAG;
+        return pb_1.Message.getFieldWithDefault(this, 9, WebFeatures.WEB_FEATURES_FLAG.NOT_STARTED) as WebFeatures.WEB_FEATURES_FLAG;
     }
     set voipIndividualIncoming(value: WebFeatures.WEB_FEATURES_FLAG) {
         pb_1.Message.setField(this, 9, value);
     }
     get quickRepliesQuery() {
-        return pb_1.Message.getField(this, 10) as WebFeatures.WEB_FEATURES_FLAG;
+        return pb_1.Message.getFieldWithDefault(this, 10, WebFeatures.WEB_FEATURES_FLAG.NOT_STARTED) as WebFeatures.WEB_FEATURES_FLAG;
     }
     set quickRepliesQuery(value: WebFeatures.WEB_FEATURES_FLAG) {
         pb_1.Message.setField(this, 10, value);
     }
     get payments() {
-        return pb_1.Message.getField(this, 11) as WebFeatures.WEB_FEATURES_FLAG;
+        return pb_1.Message.getFieldWithDefault(this, 11, WebFeatures.WEB_FEATURES_FLAG.NOT_STARTED) as WebFeatures.WEB_FEATURES_FLAG;
     }
     set payments(value: WebFeatures.WEB_FEATURES_FLAG) {
         pb_1.Message.setField(this, 11, value);
     }
     get stickerPackQuery() {
-        return pb_1.Message.getField(this, 12) as WebFeatures.WEB_FEATURES_FLAG;
+        return pb_1.Message.getFieldWithDefault(this, 12, WebFeatures.WEB_FEATURES_FLAG.NOT_STARTED) as WebFeatures.WEB_FEATURES_FLAG;
     }
     set stickerPackQuery(value: WebFeatures.WEB_FEATURES_FLAG) {
         pb_1.Message.setField(this, 12, value);
     }
     get liveLocationsFinal() {
-        return pb_1.Message.getField(this, 13) as WebFeatures.WEB_FEATURES_FLAG;
+        return pb_1.Message.getFieldWithDefault(this, 13, WebFeatures.WEB_FEATURES_FLAG.NOT_STARTED) as WebFeatures.WEB_FEATURES_FLAG;
     }
     set liveLocationsFinal(value: WebFeatures.WEB_FEATURES_FLAG) {
         pb_1.Message.setField(this, 13, value);
     }
     get labelsEdit() {
-        return pb_1.Message.getField(this, 14) as WebFeatures.WEB_FEATURES_FLAG;
+        return pb_1.Message.getFieldWithDefault(this, 14, WebFeatures.WEB_FEATURES_FLAG.NOT_STARTED) as WebFeatures.WEB_FEATURES_FLAG;
     }
     set labelsEdit(value: WebFeatures.WEB_FEATURES_FLAG) {
         pb_1.Message.setField(this, 14, value);
     }
     get mediaUpload() {
-        return pb_1.Message.getField(this, 15) as WebFeatures.WEB_FEATURES_FLAG;
+        return pb_1.Message.getFieldWithDefault(this, 15, WebFeatures.WEB_FEATURES_FLAG.NOT_STARTED) as WebFeatures.WEB_FEATURES_FLAG;
     }
     set mediaUpload(value: WebFeatures.WEB_FEATURES_FLAG) {
         pb_1.Message.setField(this, 15, value);
     }
     get mediaUploadRichQuickReplies() {
-        return pb_1.Message.getField(this, 18) as WebFeatures.WEB_FEATURES_FLAG;
+        return pb_1.Message.getFieldWithDefault(this, 18, WebFeatures.WEB_FEATURES_FLAG.NOT_STARTED) as WebFeatures.WEB_FEATURES_FLAG;
     }
     set mediaUploadRichQuickReplies(value: WebFeatures.WEB_FEATURES_FLAG) {
         pb_1.Message.setField(this, 18, value);
     }
     get vnameV2() {
-        return pb_1.Message.getField(this, 19) as WebFeatures.WEB_FEATURES_FLAG;
+        return pb_1.Message.getFieldWithDefault(this, 19, WebFeatures.WEB_FEATURES_FLAG.NOT_STARTED) as WebFeatures.WEB_FEATURES_FLAG;
     }
     set vnameV2(value: WebFeatures.WEB_FEATURES_FLAG) {
         pb_1.Message.setField(this, 19, value);
     }
     get videoPlaybackUrl() {
-        return pb_1.Message.getField(this, 20) as WebFeatures.WEB_FEATURES_FLAG;
+        return pb_1.Message.getFieldWithDefault(this, 20, WebFeatures.WEB_FEATURES_FLAG.NOT_STARTED) as WebFeatures.WEB_FEATURES_FLAG;
     }
     set videoPlaybackUrl(value: WebFeatures.WEB_FEATURES_FLAG) {
         pb_1.Message.setField(this, 20, value);
     }
     get statusRanking() {
-        return pb_1.Message.getField(this, 21) as WebFeatures.WEB_FEATURES_FLAG;
+        return pb_1.Message.getFieldWithDefault(this, 21, WebFeatures.WEB_FEATURES_FLAG.NOT_STARTED) as WebFeatures.WEB_FEATURES_FLAG;
     }
     set statusRanking(value: WebFeatures.WEB_FEATURES_FLAG) {
         pb_1.Message.setField(this, 21, value);
     }
     get voipIndividualVideo() {
-        return pb_1.Message.getField(this, 22) as WebFeatures.WEB_FEATURES_FLAG;
+        return pb_1.Message.getFieldWithDefault(this, 22, WebFeatures.WEB_FEATURES_FLAG.NOT_STARTED) as WebFeatures.WEB_FEATURES_FLAG;
     }
     set voipIndividualVideo(value: WebFeatures.WEB_FEATURES_FLAG) {
         pb_1.Message.setField(this, 22, value);
     }
     get thirdPartyStickers() {
-        return pb_1.Message.getField(this, 23) as WebFeatures.WEB_FEATURES_FLAG;
+        return pb_1.Message.getFieldWithDefault(this, 23, WebFeatures.WEB_FEATURES_FLAG.NOT_STARTED) as WebFeatures.WEB_FEATURES_FLAG;
     }
     set thirdPartyStickers(value: WebFeatures.WEB_FEATURES_FLAG) {
         pb_1.Message.setField(this, 23, value);
     }
     get frequentlyForwardedSetting() {
-        return pb_1.Message.getField(this, 24) as WebFeatures.WEB_FEATURES_FLAG;
+        return pb_1.Message.getFieldWithDefault(this, 24, WebFeatures.WEB_FEATURES_FLAG.NOT_STARTED) as WebFeatures.WEB_FEATURES_FLAG;
     }
     set frequentlyForwardedSetting(value: WebFeatures.WEB_FEATURES_FLAG) {
         pb_1.Message.setField(this, 24, value);
     }
     get groupsV4JoinPermission() {
-        return pb_1.Message.getField(this, 25) as WebFeatures.WEB_FEATURES_FLAG;
+        return pb_1.Message.getFieldWithDefault(this, 25, WebFeatures.WEB_FEATURES_FLAG.NOT_STARTED) as WebFeatures.WEB_FEATURES_FLAG;
     }
     set groupsV4JoinPermission(value: WebFeatures.WEB_FEATURES_FLAG) {
         pb_1.Message.setField(this, 25, value);
     }
     get recentStickers() {
-        return pb_1.Message.getField(this, 26) as WebFeatures.WEB_FEATURES_FLAG;
+        return pb_1.Message.getFieldWithDefault(this, 26, WebFeatures.WEB_FEATURES_FLAG.NOT_STARTED) as WebFeatures.WEB_FEATURES_FLAG;
     }
     set recentStickers(value: WebFeatures.WEB_FEATURES_FLAG) {
         pb_1.Message.setField(this, 26, value);
     }
     get catalog() {
-        return pb_1.Message.getField(this, 27) as WebFeatures.WEB_FEATURES_FLAG;
+        return pb_1.Message.getFieldWithDefault(this, 27, WebFeatures.WEB_FEATURES_FLAG.NOT_STARTED) as WebFeatures.WEB_FEATURES_FLAG;
     }
     set catalog(value: WebFeatures.WEB_FEATURES_FLAG) {
         pb_1.Message.setField(this, 27, value);
     }
     get starredStickers() {
-        return pb_1.Message.getField(this, 28) as WebFeatures.WEB_FEATURES_FLAG;
+        return pb_1.Message.getFieldWithDefault(this, 28, WebFeatures.WEB_FEATURES_FLAG.NOT_STARTED) as WebFeatures.WEB_FEATURES_FLAG;
     }
     set starredStickers(value: WebFeatures.WEB_FEATURES_FLAG) {
         pb_1.Message.setField(this, 28, value);
     }
     get voipGroupCall() {
-        return pb_1.Message.getField(this, 29) as WebFeatures.WEB_FEATURES_FLAG;
+        return pb_1.Message.getFieldWithDefault(this, 29, WebFeatures.WEB_FEATURES_FLAG.NOT_STARTED) as WebFeatures.WEB_FEATURES_FLAG;
     }
     set voipGroupCall(value: WebFeatures.WEB_FEATURES_FLAG) {
         pb_1.Message.setField(this, 29, value);
     }
     get templateMessage() {
-        return pb_1.Message.getField(this, 30) as WebFeatures.WEB_FEATURES_FLAG;
+        return pb_1.Message.getFieldWithDefault(this, 30, WebFeatures.WEB_FEATURES_FLAG.NOT_STARTED) as WebFeatures.WEB_FEATURES_FLAG;
     }
     set templateMessage(value: WebFeatures.WEB_FEATURES_FLAG) {
         pb_1.Message.setField(this, 30, value);
     }
     get templateMessageInteractivity() {
-        return pb_1.Message.getField(this, 31) as WebFeatures.WEB_FEATURES_FLAG;
+        return pb_1.Message.getFieldWithDefault(this, 31, WebFeatures.WEB_FEATURES_FLAG.NOT_STARTED) as WebFeatures.WEB_FEATURES_FLAG;
     }
     set templateMessageInteractivity(value: WebFeatures.WEB_FEATURES_FLAG) {
         pb_1.Message.setField(this, 31, value);
     }
     get ephemeralMessages() {
-        return pb_1.Message.getField(this, 32) as WebFeatures.WEB_FEATURES_FLAG;
+        return pb_1.Message.getFieldWithDefault(this, 32, WebFeatures.WEB_FEATURES_FLAG.NOT_STARTED) as WebFeatures.WEB_FEATURES_FLAG;
     }
     set ephemeralMessages(value: WebFeatures.WEB_FEATURES_FLAG) {
         pb_1.Message.setField(this, 32, value);
     }
     get e2ENotificationSync() {
-        return pb_1.Message.getField(this, 33) as WebFeatures.WEB_FEATURES_FLAG;
+        return pb_1.Message.getFieldWithDefault(this, 33, WebFeatures.WEB_FEATURES_FLAG.NOT_STARTED) as WebFeatures.WEB_FEATURES_FLAG;
     }
     set e2ENotificationSync(value: WebFeatures.WEB_FEATURES_FLAG) {
         pb_1.Message.setField(this, 33, value);
     }
     get recentStickersV2() {
-        return pb_1.Message.getField(this, 34) as WebFeatures.WEB_FEATURES_FLAG;
+        return pb_1.Message.getFieldWithDefault(this, 34, WebFeatures.WEB_FEATURES_FLAG.NOT_STARTED) as WebFeatures.WEB_FEATURES_FLAG;
     }
     set recentStickersV2(value: WebFeatures.WEB_FEATURES_FLAG) {
         pb_1.Message.setField(this, 34, value);
     }
     get syncdRelease1() {
-        return pb_1.Message.getField(this, 35) as WebFeatures.WEB_FEATURES_FLAG;
+        return pb_1.Message.getFieldWithDefault(this, 35, WebFeatures.WEB_FEATURES_FLAG.NOT_STARTED) as WebFeatures.WEB_FEATURES_FLAG;
     }
     set syncdRelease1(value: WebFeatures.WEB_FEATURES_FLAG) {
         pb_1.Message.setField(this, 35, value);
@@ -9755,103 +9755,103 @@ export class WebFeatures extends pb_1.Message {
             recentStickersV2?: WebFeatures.WEB_FEATURES_FLAG;
             syncdRelease1?: WebFeatures.WEB_FEATURES_FLAG;
         } = {};
-        if (this.labelsDisplay != null) {
+        if (pb_1.Message.getField(this, 1) != null) {
             data.labelsDisplay = this.labelsDisplay;
         }
-        if (this.voipIndividualOutgoing != null) {
+        if (pb_1.Message.getField(this, 2) != null) {
             data.voipIndividualOutgoing = this.voipIndividualOutgoing;
         }
-        if (this.groupsV3 != null) {
+        if (pb_1.Message.getField(this, 3) != null) {
             data.groupsV3 = this.groupsV3;
         }
-        if (this.groupsV3Create != null) {
+        if (pb_1.Message.getField(this, 4) != null) {
             data.groupsV3Create = this.groupsV3Create;
         }
-        if (this.changeNumberV2 != null) {
+        if (pb_1.Message.getField(this, 5) != null) {
             data.changeNumberV2 = this.changeNumberV2;
         }
-        if (this.queryStatusV3Thumbnail != null) {
+        if (pb_1.Message.getField(this, 6) != null) {
             data.queryStatusV3Thumbnail = this.queryStatusV3Thumbnail;
         }
-        if (this.liveLocations != null) {
+        if (pb_1.Message.getField(this, 7) != null) {
             data.liveLocations = this.liveLocations;
         }
-        if (this.queryVname != null) {
+        if (pb_1.Message.getField(this, 8) != null) {
             data.queryVname = this.queryVname;
         }
-        if (this.voipIndividualIncoming != null) {
+        if (pb_1.Message.getField(this, 9) != null) {
             data.voipIndividualIncoming = this.voipIndividualIncoming;
         }
-        if (this.quickRepliesQuery != null) {
+        if (pb_1.Message.getField(this, 10) != null) {
             data.quickRepliesQuery = this.quickRepliesQuery;
         }
-        if (this.payments != null) {
+        if (pb_1.Message.getField(this, 11) != null) {
             data.payments = this.payments;
         }
-        if (this.stickerPackQuery != null) {
+        if (pb_1.Message.getField(this, 12) != null) {
             data.stickerPackQuery = this.stickerPackQuery;
         }
-        if (this.liveLocationsFinal != null) {
+        if (pb_1.Message.getField(this, 13) != null) {
             data.liveLocationsFinal = this.liveLocationsFinal;
         }
-        if (this.labelsEdit != null) {
+        if (pb_1.Message.getField(this, 14) != null) {
             data.labelsEdit = this.labelsEdit;
         }
-        if (this.mediaUpload != null) {
+        if (pb_1.Message.getField(this, 15) != null) {
             data.mediaUpload = this.mediaUpload;
         }
-        if (this.mediaUploadRichQuickReplies != null) {
+        if (pb_1.Message.getField(this, 18) != null) {
             data.mediaUploadRichQuickReplies = this.mediaUploadRichQuickReplies;
         }
-        if (this.vnameV2 != null) {
+        if (pb_1.Message.getField(this, 19) != null) {
             data.vnameV2 = this.vnameV2;
         }
-        if (this.videoPlaybackUrl != null) {
+        if (pb_1.Message.getField(this, 20) != null) {
             data.videoPlaybackUrl = this.videoPlaybackUrl;
         }
-        if (this.statusRanking != null) {
+        if (pb_1.Message.getField(this, 21) != null) {
             data.statusRanking = this.statusRanking;
         }
-        if (this.voipIndividualVideo != null) {
+        if (pb_1.Message.getField(this, 22) != null) {
             data.voipIndividualVideo = this.voipIndividualVideo;
         }
-        if (this.thirdPartyStickers != null) {
+        if (pb_1.Message.getField(this, 23) != null) {
             data.thirdPartyStickers = this.thirdPartyStickers;
         }
-        if (this.frequentlyForwardedSetting != null) {
+        if (pb_1.Message.getField(this, 24) != null) {
             data.frequentlyForwardedSetting = this.frequentlyForwardedSetting;
         }
-        if (this.groupsV4JoinPermission != null) {
+        if (pb_1.Message.getField(this, 25) != null) {
             data.groupsV4JoinPermission = this.groupsV4JoinPermission;
         }
-        if (this.recentStickers != null) {
+        if (pb_1.Message.getField(this, 26) != null) {
             data.recentStickers = this.recentStickers;
         }
-        if (this.catalog != null) {
+        if (pb_1.Message.getField(this, 27) != null) {
             data.catalog = this.catalog;
         }
-        if (this.starredStickers != null) {
+        if (pb_1.Message.getField(this, 28) != null) {
             data.starredStickers = this.starredStickers;
         }
-        if (this.voipGroupCall != null) {
+        if (pb_1.Message.getField(this, 29) != null) {
             data.voipGroupCall = this.voipGroupCall;
         }
-        if (this.templateMessage != null) {
+        if (pb_1.Message.getField(this, 30) != null) {
             data.templateMessage = this.templateMessage;
         }
-        if (this.templateMessageInteractivity != null) {
+        if (pb_1.Message.getField(this, 31) != null) {
             data.templateMessageInteractivity = this.templateMessageInteractivity;
         }
-        if (this.ephemeralMessages != null) {
+        if (pb_1.Message.getField(this, 32) != null) {
             data.ephemeralMessages = this.ephemeralMessages;
         }
-        if (this.e2ENotificationSync != null) {
+        if (pb_1.Message.getField(this, 33) != null) {
             data.e2ENotificationSync = this.e2ENotificationSync;
         }
-        if (this.recentStickersV2 != null) {
+        if (pb_1.Message.getField(this, 34) != null) {
             data.recentStickersV2 = this.recentStickersV2;
         }
-        if (this.syncdRelease1 != null) {
+        if (pb_1.Message.getField(this, 35) != null) {
             data.syncdRelease1 = this.syncdRelease1;
         }
         return data;
@@ -9860,71 +9860,71 @@ export class WebFeatures extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.labelsDisplay !== undefined)
+        if (pb_1.Message.getField(this, 1) != null)
             writer.writeEnum(1, this.labelsDisplay);
-        if (this.voipIndividualOutgoing !== undefined)
+        if (pb_1.Message.getField(this, 2) != null)
             writer.writeEnum(2, this.voipIndividualOutgoing);
-        if (this.groupsV3 !== undefined)
+        if (pb_1.Message.getField(this, 3) != null)
             writer.writeEnum(3, this.groupsV3);
-        if (this.groupsV3Create !== undefined)
+        if (pb_1.Message.getField(this, 4) != null)
             writer.writeEnum(4, this.groupsV3Create);
-        if (this.changeNumberV2 !== undefined)
+        if (pb_1.Message.getField(this, 5) != null)
             writer.writeEnum(5, this.changeNumberV2);
-        if (this.queryStatusV3Thumbnail !== undefined)
+        if (pb_1.Message.getField(this, 6) != null)
             writer.writeEnum(6, this.queryStatusV3Thumbnail);
-        if (this.liveLocations !== undefined)
+        if (pb_1.Message.getField(this, 7) != null)
             writer.writeEnum(7, this.liveLocations);
-        if (this.queryVname !== undefined)
+        if (pb_1.Message.getField(this, 8) != null)
             writer.writeEnum(8, this.queryVname);
-        if (this.voipIndividualIncoming !== undefined)
+        if (pb_1.Message.getField(this, 9) != null)
             writer.writeEnum(9, this.voipIndividualIncoming);
-        if (this.quickRepliesQuery !== undefined)
+        if (pb_1.Message.getField(this, 10) != null)
             writer.writeEnum(10, this.quickRepliesQuery);
-        if (this.payments !== undefined)
+        if (pb_1.Message.getField(this, 11) != null)
             writer.writeEnum(11, this.payments);
-        if (this.stickerPackQuery !== undefined)
+        if (pb_1.Message.getField(this, 12) != null)
             writer.writeEnum(12, this.stickerPackQuery);
-        if (this.liveLocationsFinal !== undefined)
+        if (pb_1.Message.getField(this, 13) != null)
             writer.writeEnum(13, this.liveLocationsFinal);
-        if (this.labelsEdit !== undefined)
+        if (pb_1.Message.getField(this, 14) != null)
             writer.writeEnum(14, this.labelsEdit);
-        if (this.mediaUpload !== undefined)
+        if (pb_1.Message.getField(this, 15) != null)
             writer.writeEnum(15, this.mediaUpload);
-        if (this.mediaUploadRichQuickReplies !== undefined)
+        if (pb_1.Message.getField(this, 18) != null)
             writer.writeEnum(18, this.mediaUploadRichQuickReplies);
-        if (this.vnameV2 !== undefined)
+        if (pb_1.Message.getField(this, 19) != null)
             writer.writeEnum(19, this.vnameV2);
-        if (this.videoPlaybackUrl !== undefined)
+        if (pb_1.Message.getField(this, 20) != null)
             writer.writeEnum(20, this.videoPlaybackUrl);
-        if (this.statusRanking !== undefined)
+        if (pb_1.Message.getField(this, 21) != null)
             writer.writeEnum(21, this.statusRanking);
-        if (this.voipIndividualVideo !== undefined)
+        if (pb_1.Message.getField(this, 22) != null)
             writer.writeEnum(22, this.voipIndividualVideo);
-        if (this.thirdPartyStickers !== undefined)
+        if (pb_1.Message.getField(this, 23) != null)
             writer.writeEnum(23, this.thirdPartyStickers);
-        if (this.frequentlyForwardedSetting !== undefined)
+        if (pb_1.Message.getField(this, 24) != null)
             writer.writeEnum(24, this.frequentlyForwardedSetting);
-        if (this.groupsV4JoinPermission !== undefined)
+        if (pb_1.Message.getField(this, 25) != null)
             writer.writeEnum(25, this.groupsV4JoinPermission);
-        if (this.recentStickers !== undefined)
+        if (pb_1.Message.getField(this, 26) != null)
             writer.writeEnum(26, this.recentStickers);
-        if (this.catalog !== undefined)
+        if (pb_1.Message.getField(this, 27) != null)
             writer.writeEnum(27, this.catalog);
-        if (this.starredStickers !== undefined)
+        if (pb_1.Message.getField(this, 28) != null)
             writer.writeEnum(28, this.starredStickers);
-        if (this.voipGroupCall !== undefined)
+        if (pb_1.Message.getField(this, 29) != null)
             writer.writeEnum(29, this.voipGroupCall);
-        if (this.templateMessage !== undefined)
+        if (pb_1.Message.getField(this, 30) != null)
             writer.writeEnum(30, this.templateMessage);
-        if (this.templateMessageInteractivity !== undefined)
+        if (pb_1.Message.getField(this, 31) != null)
             writer.writeEnum(31, this.templateMessageInteractivity);
-        if (this.ephemeralMessages !== undefined)
+        if (pb_1.Message.getField(this, 32) != null)
             writer.writeEnum(32, this.ephemeralMessages);
-        if (this.e2ENotificationSync !== undefined)
+        if (pb_1.Message.getField(this, 33) != null)
             writer.writeEnum(33, this.e2ENotificationSync);
-        if (this.recentStickersV2 !== undefined)
+        if (pb_1.Message.getField(this, 34) != null)
             writer.writeEnum(34, this.recentStickersV2);
-        if (this.syncdRelease1 !== undefined)
+        if (pb_1.Message.getField(this, 35) != null)
             writer.writeEnum(35, this.syncdRelease1);
         if (!w)
             return writer.getResultBuffer();
@@ -10078,19 +10078,19 @@ export class TabletNotificationsInfo extends pb_1.Message {
         }
     }
     get timestamp() {
-        return pb_1.Message.getField(this, 2) as number;
+        return pb_1.Message.getFieldWithDefault(this, 2, 0) as number;
     }
     set timestamp(value: number) {
         pb_1.Message.setField(this, 2, value);
     }
     get unreadChats() {
-        return pb_1.Message.getField(this, 3) as number;
+        return pb_1.Message.getFieldWithDefault(this, 3, 0) as number;
     }
     set unreadChats(value: number) {
         pb_1.Message.setField(this, 3, value);
     }
     get notifyMessageCount() {
-        return pb_1.Message.getField(this, 4) as number;
+        return pb_1.Message.getFieldWithDefault(this, 4, 0) as number;
     }
     set notifyMessageCount(value: number) {
         pb_1.Message.setField(this, 4, value);
@@ -10130,13 +10130,13 @@ export class TabletNotificationsInfo extends pb_1.Message {
         } = {
             notifyMessage: this.notifyMessage.map((item: NotificationMessageInfo) => item.toObject())
         };
-        if (this.timestamp != null) {
+        if (pb_1.Message.getField(this, 2) != null) {
             data.timestamp = this.timestamp;
         }
-        if (this.unreadChats != null) {
+        if (pb_1.Message.getField(this, 3) != null) {
             data.unreadChats = this.unreadChats;
         }
-        if (this.notifyMessageCount != null) {
+        if (pb_1.Message.getField(this, 4) != null) {
             data.notifyMessageCount = this.notifyMessageCount;
         }
         return data;
@@ -10145,13 +10145,13 @@ export class TabletNotificationsInfo extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.timestamp !== undefined)
+        if (pb_1.Message.getField(this, 2) != null)
             writer.writeUint64(2, this.timestamp);
-        if (this.unreadChats !== undefined)
+        if (pb_1.Message.getField(this, 3) != null)
             writer.writeUint32(3, this.unreadChats);
-        if (this.notifyMessageCount !== undefined)
+        if (pb_1.Message.getField(this, 4) != null)
             writer.writeUint32(4, this.notifyMessageCount);
-        if (this.notifyMessage !== undefined)
+        if (this.notifyMessage.length)
             writer.writeRepeatedMessage(5, this.notifyMessage, (item: NotificationMessageInfo) => item.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
@@ -10224,13 +10224,13 @@ export class NotificationMessageInfo extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 2, value);
     }
     get messageTimestamp() {
-        return pb_1.Message.getField(this, 3) as number;
+        return pb_1.Message.getFieldWithDefault(this, 3, 0) as number;
     }
     set messageTimestamp(value: number) {
         pb_1.Message.setField(this, 3, value);
     }
     get participant() {
-        return pb_1.Message.getField(this, 4) as string;
+        return pb_1.Message.getFieldWithDefault(this, 4, "") as string;
     }
     set participant(value: string) {
         pb_1.Message.setField(this, 4, value);
@@ -10263,16 +10263,16 @@ export class NotificationMessageInfo extends pb_1.Message {
             messageTimestamp?: number;
             participant?: string;
         } = {};
-        if (this.key != null) {
+        if (pb_1.Message.getField(this, 1) != null) {
             data.key = this.key.toObject();
         }
-        if (this.message != null) {
+        if (pb_1.Message.getField(this, 2) != null) {
             data.message = this.message.toObject();
         }
-        if (this.messageTimestamp != null) {
+        if (pb_1.Message.getField(this, 3) != null) {
             data.messageTimestamp = this.messageTimestamp;
         }
-        if (this.participant != null) {
+        if (pb_1.Message.getField(this, 4) != null) {
             data.participant = this.participant;
         }
         return data;
@@ -10281,13 +10281,13 @@ export class NotificationMessageInfo extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.key !== undefined)
+        if (pb_1.Message.getField(this, 1) != null)
             writer.writeMessage(1, this.key, () => this.key.serialize(writer));
-        if (this.message !== undefined)
+        if (pb_1.Message.getField(this, 2) != null)
             writer.writeMessage(2, this.message, () => this.message.serialize(writer));
-        if (this.messageTimestamp !== undefined)
+        if (pb_1.Message.getField(this, 3) != null)
             writer.writeUint64(3, this.messageTimestamp);
-        if (typeof this.participant === "string" && this.participant.length)
+        if (typeof pb_1.Message.getField(this, 4) === "string" && this.participant.length)
             writer.writeString(4, this.participant);
         if (!w)
             return writer.getResultBuffer();
@@ -10346,19 +10346,19 @@ export class WebNotificationsInfo extends pb_1.Message {
         }
     }
     get timestamp() {
-        return pb_1.Message.getField(this, 2) as number;
+        return pb_1.Message.getFieldWithDefault(this, 2, 0) as number;
     }
     set timestamp(value: number) {
         pb_1.Message.setField(this, 2, value);
     }
     get unreadChats() {
-        return pb_1.Message.getField(this, 3) as number;
+        return pb_1.Message.getFieldWithDefault(this, 3, 0) as number;
     }
     set unreadChats(value: number) {
         pb_1.Message.setField(this, 3, value);
     }
     get notifyMessageCount() {
-        return pb_1.Message.getField(this, 4) as number;
+        return pb_1.Message.getFieldWithDefault(this, 4, 0) as number;
     }
     set notifyMessageCount(value: number) {
         pb_1.Message.setField(this, 4, value);
@@ -10398,13 +10398,13 @@ export class WebNotificationsInfo extends pb_1.Message {
         } = {
             notifyMessages: this.notifyMessages.map((item: WebMessageInfo) => item.toObject())
         };
-        if (this.timestamp != null) {
+        if (pb_1.Message.getField(this, 2) != null) {
             data.timestamp = this.timestamp;
         }
-        if (this.unreadChats != null) {
+        if (pb_1.Message.getField(this, 3) != null) {
             data.unreadChats = this.unreadChats;
         }
-        if (this.notifyMessageCount != null) {
+        if (pb_1.Message.getField(this, 4) != null) {
             data.notifyMessageCount = this.notifyMessageCount;
         }
         return data;
@@ -10413,13 +10413,13 @@ export class WebNotificationsInfo extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.timestamp !== undefined)
+        if (pb_1.Message.getField(this, 2) != null)
             writer.writeUint64(2, this.timestamp);
-        if (this.unreadChats !== undefined)
+        if (pb_1.Message.getField(this, 3) != null)
             writer.writeUint32(3, this.unreadChats);
-        if (this.notifyMessageCount !== undefined)
+        if (pb_1.Message.getField(this, 4) != null)
             writer.writeUint32(4, this.notifyMessageCount);
-        if (this.notifyMessages !== undefined)
+        if (this.notifyMessages.length)
             writer.writeRepeatedMessage(5, this.notifyMessages, (item: WebMessageInfo) => item.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
@@ -10504,31 +10504,31 @@ export class PaymentInfo extends pb_1.Message {
         }
     }
     get currencyDeprecated() {
-        return pb_1.Message.getField(this, 1) as PaymentInfo.PAYMENT_INFO_CURRENCY;
+        return pb_1.Message.getFieldWithDefault(this, 1, PaymentInfo.PAYMENT_INFO_CURRENCY.UNKNOWN_CURRENCY) as PaymentInfo.PAYMENT_INFO_CURRENCY;
     }
     set currencyDeprecated(value: PaymentInfo.PAYMENT_INFO_CURRENCY) {
         pb_1.Message.setField(this, 1, value);
     }
     get amount1000() {
-        return pb_1.Message.getField(this, 2) as number;
+        return pb_1.Message.getFieldWithDefault(this, 2, 0) as number;
     }
     set amount1000(value: number) {
         pb_1.Message.setField(this, 2, value);
     }
     get receiverJid() {
-        return pb_1.Message.getField(this, 3) as string;
+        return pb_1.Message.getFieldWithDefault(this, 3, "") as string;
     }
     set receiverJid(value: string) {
         pb_1.Message.setField(this, 3, value);
     }
     get status() {
-        return pb_1.Message.getField(this, 4) as PaymentInfo.PAYMENT_INFO_STATUS;
+        return pb_1.Message.getFieldWithDefault(this, 4, PaymentInfo.PAYMENT_INFO_STATUS.UNKNOWN_STATUS) as PaymentInfo.PAYMENT_INFO_STATUS;
     }
     set status(value: PaymentInfo.PAYMENT_INFO_STATUS) {
         pb_1.Message.setField(this, 4, value);
     }
     get transactionTimestamp() {
-        return pb_1.Message.getField(this, 5) as number;
+        return pb_1.Message.getFieldWithDefault(this, 5, 0) as number;
     }
     set transactionTimestamp(value: number) {
         pb_1.Message.setField(this, 5, value);
@@ -10540,25 +10540,25 @@ export class PaymentInfo extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 6, value);
     }
     get expiryTimestamp() {
-        return pb_1.Message.getField(this, 7) as number;
+        return pb_1.Message.getFieldWithDefault(this, 7, 0) as number;
     }
     set expiryTimestamp(value: number) {
         pb_1.Message.setField(this, 7, value);
     }
     get futureproofed() {
-        return pb_1.Message.getField(this, 8) as boolean;
+        return pb_1.Message.getFieldWithDefault(this, 8, false) as boolean;
     }
     set futureproofed(value: boolean) {
         pb_1.Message.setField(this, 8, value);
     }
     get currency() {
-        return pb_1.Message.getField(this, 9) as string;
+        return pb_1.Message.getFieldWithDefault(this, 9, "") as string;
     }
     set currency(value: string) {
         pb_1.Message.setField(this, 9, value);
     }
     get txnStatus() {
-        return pb_1.Message.getField(this, 10) as PaymentInfo.PAYMENT_INFO_TXNSTATUS;
+        return pb_1.Message.getFieldWithDefault(this, 10, PaymentInfo.PAYMENT_INFO_TXNSTATUS.UNKNOWN) as PaymentInfo.PAYMENT_INFO_TXNSTATUS;
     }
     set txnStatus(value: PaymentInfo.PAYMENT_INFO_TXNSTATUS) {
         pb_1.Message.setField(this, 10, value);
@@ -10621,34 +10621,34 @@ export class PaymentInfo extends pb_1.Message {
             currency?: string;
             txnStatus?: PaymentInfo.PAYMENT_INFO_TXNSTATUS;
         } = {};
-        if (this.currencyDeprecated != null) {
+        if (pb_1.Message.getField(this, 1) != null) {
             data.currencyDeprecated = this.currencyDeprecated;
         }
-        if (this.amount1000 != null) {
+        if (pb_1.Message.getField(this, 2) != null) {
             data.amount1000 = this.amount1000;
         }
-        if (this.receiverJid != null) {
+        if (pb_1.Message.getField(this, 3) != null) {
             data.receiverJid = this.receiverJid;
         }
-        if (this.status != null) {
+        if (pb_1.Message.getField(this, 4) != null) {
             data.status = this.status;
         }
-        if (this.transactionTimestamp != null) {
+        if (pb_1.Message.getField(this, 5) != null) {
             data.transactionTimestamp = this.transactionTimestamp;
         }
-        if (this.requestMessageKey != null) {
+        if (pb_1.Message.getField(this, 6) != null) {
             data.requestMessageKey = this.requestMessageKey.toObject();
         }
-        if (this.expiryTimestamp != null) {
+        if (pb_1.Message.getField(this, 7) != null) {
             data.expiryTimestamp = this.expiryTimestamp;
         }
-        if (this.futureproofed != null) {
+        if (pb_1.Message.getField(this, 8) != null) {
             data.futureproofed = this.futureproofed;
         }
-        if (this.currency != null) {
+        if (pb_1.Message.getField(this, 9) != null) {
             data.currency = this.currency;
         }
-        if (this.txnStatus != null) {
+        if (pb_1.Message.getField(this, 10) != null) {
             data.txnStatus = this.txnStatus;
         }
         return data;
@@ -10657,25 +10657,25 @@ export class PaymentInfo extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.currencyDeprecated !== undefined)
+        if (pb_1.Message.getField(this, 1) != null)
             writer.writeEnum(1, this.currencyDeprecated);
-        if (this.amount1000 !== undefined)
+        if (pb_1.Message.getField(this, 2) != null)
             writer.writeUint64(2, this.amount1000);
-        if (typeof this.receiverJid === "string" && this.receiverJid.length)
+        if (typeof pb_1.Message.getField(this, 3) === "string" && this.receiverJid.length)
             writer.writeString(3, this.receiverJid);
-        if (this.status !== undefined)
+        if (pb_1.Message.getField(this, 4) != null)
             writer.writeEnum(4, this.status);
-        if (this.transactionTimestamp !== undefined)
+        if (pb_1.Message.getField(this, 5) != null)
             writer.writeUint64(5, this.transactionTimestamp);
-        if (this.requestMessageKey !== undefined)
+        if (pb_1.Message.getField(this, 6) != null)
             writer.writeMessage(6, this.requestMessageKey, () => this.requestMessageKey.serialize(writer));
-        if (this.expiryTimestamp !== undefined)
+        if (pb_1.Message.getField(this, 7) != null)
             writer.writeUint64(7, this.expiryTimestamp);
-        if (this.futureproofed !== undefined)
+        if (pb_1.Message.getField(this, 8) != null)
             writer.writeBool(8, this.futureproofed);
-        if (typeof this.currency === "string" && this.currency.length)
+        if (typeof pb_1.Message.getField(this, 9) === "string" && this.currency.length)
             writer.writeString(9, this.currency);
-        if (this.txnStatus !== undefined)
+        if (pb_1.Message.getField(this, 10) != null)
             writer.writeEnum(10, this.txnStatus);
         if (!w)
             return writer.getResultBuffer();
@@ -10890,79 +10890,79 @@ export class WebMessageInfo extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 2, value);
     }
     get messageTimestamp() {
-        return pb_1.Message.getField(this, 3) as number;
+        return pb_1.Message.getFieldWithDefault(this, 3, 0) as number;
     }
     set messageTimestamp(value: number) {
         pb_1.Message.setField(this, 3, value);
     }
     get status() {
-        return pb_1.Message.getField(this, 4) as WebMessageInfo.WEB_MESSAGE_INFO_STATUS;
+        return pb_1.Message.getFieldWithDefault(this, 4, WebMessageInfo.WEB_MESSAGE_INFO_STATUS.ERROR) as WebMessageInfo.WEB_MESSAGE_INFO_STATUS;
     }
     set status(value: WebMessageInfo.WEB_MESSAGE_INFO_STATUS) {
         pb_1.Message.setField(this, 4, value);
     }
     get participant() {
-        return pb_1.Message.getField(this, 5) as string;
+        return pb_1.Message.getFieldWithDefault(this, 5, "") as string;
     }
     set participant(value: string) {
         pb_1.Message.setField(this, 5, value);
     }
     get ignore() {
-        return pb_1.Message.getField(this, 16) as boolean;
+        return pb_1.Message.getFieldWithDefault(this, 16, false) as boolean;
     }
     set ignore(value: boolean) {
         pb_1.Message.setField(this, 16, value);
     }
     get starred() {
-        return pb_1.Message.getField(this, 17) as boolean;
+        return pb_1.Message.getFieldWithDefault(this, 17, false) as boolean;
     }
     set starred(value: boolean) {
         pb_1.Message.setField(this, 17, value);
     }
     get broadcast() {
-        return pb_1.Message.getField(this, 18) as boolean;
+        return pb_1.Message.getFieldWithDefault(this, 18, false) as boolean;
     }
     set broadcast(value: boolean) {
         pb_1.Message.setField(this, 18, value);
     }
     get pushName() {
-        return pb_1.Message.getField(this, 19) as string;
+        return pb_1.Message.getFieldWithDefault(this, 19, "") as string;
     }
     set pushName(value: string) {
         pb_1.Message.setField(this, 19, value);
     }
     get mediaCiphertextSha256() {
-        return pb_1.Message.getField(this, 20) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 20, new Uint8Array()) as Uint8Array;
     }
     set mediaCiphertextSha256(value: Uint8Array) {
         pb_1.Message.setField(this, 20, value);
     }
     get multicast() {
-        return pb_1.Message.getField(this, 21) as boolean;
+        return pb_1.Message.getFieldWithDefault(this, 21, false) as boolean;
     }
     set multicast(value: boolean) {
         pb_1.Message.setField(this, 21, value);
     }
     get urlText() {
-        return pb_1.Message.getField(this, 22) as boolean;
+        return pb_1.Message.getFieldWithDefault(this, 22, false) as boolean;
     }
     set urlText(value: boolean) {
         pb_1.Message.setField(this, 22, value);
     }
     get urlNumber() {
-        return pb_1.Message.getField(this, 23) as boolean;
+        return pb_1.Message.getFieldWithDefault(this, 23, false) as boolean;
     }
     set urlNumber(value: boolean) {
         pb_1.Message.setField(this, 23, value);
     }
     get messageStubType() {
-        return pb_1.Message.getField(this, 24) as WebMessageInfo.WEB_MESSAGE_INFO_STUBTYPE;
+        return pb_1.Message.getFieldWithDefault(this, 24, WebMessageInfo.WEB_MESSAGE_INFO_STUBTYPE.UNKNOWN) as WebMessageInfo.WEB_MESSAGE_INFO_STUBTYPE;
     }
     set messageStubType(value: WebMessageInfo.WEB_MESSAGE_INFO_STUBTYPE) {
         pb_1.Message.setField(this, 24, value);
     }
     get clearMedia() {
-        return pb_1.Message.getField(this, 25) as boolean;
+        return pb_1.Message.getFieldWithDefault(this, 25, false) as boolean;
     }
     set clearMedia(value: boolean) {
         pb_1.Message.setField(this, 25, value);
@@ -10974,7 +10974,7 @@ export class WebMessageInfo extends pb_1.Message {
         pb_1.Message.setField(this, 26, value);
     }
     get duration() {
-        return pb_1.Message.getField(this, 27) as number;
+        return pb_1.Message.getFieldWithDefault(this, 27, 0) as number;
     }
     set duration(value: number) {
         pb_1.Message.setField(this, 27, value);
@@ -11004,19 +11004,19 @@ export class WebMessageInfo extends pb_1.Message {
         pb_1.Message.setWrapperField(this, 31, value);
     }
     get ephemeralStartTimestamp() {
-        return pb_1.Message.getField(this, 32) as number;
+        return pb_1.Message.getFieldWithDefault(this, 32, 0) as number;
     }
     set ephemeralStartTimestamp(value: number) {
         pb_1.Message.setField(this, 32, value);
     }
     get ephemeralDuration() {
-        return pb_1.Message.getField(this, 33) as number;
+        return pb_1.Message.getFieldWithDefault(this, 33, 0) as number;
     }
     set ephemeralDuration(value: number) {
         pb_1.Message.setField(this, 33, value);
     }
     get ephemeralOffToOn() {
-        return pb_1.Message.getField(this, 34) as boolean;
+        return pb_1.Message.getFieldWithDefault(this, 34, false) as boolean;
     }
     set ephemeralOffToOn(value: boolean) {
         pb_1.Message.setField(this, 34, value);
@@ -11148,67 +11148,67 @@ export class WebMessageInfo extends pb_1.Message {
             messageStubParameters: this.messageStubParameters,
             labels: this.labels
         };
-        if (this.message != null) {
+        if (pb_1.Message.getField(this, 2) != null) {
             data.message = this.message.toObject();
         }
-        if (this.messageTimestamp != null) {
+        if (pb_1.Message.getField(this, 3) != null) {
             data.messageTimestamp = this.messageTimestamp;
         }
-        if (this.status != null) {
+        if (pb_1.Message.getField(this, 4) != null) {
             data.status = this.status;
         }
-        if (this.participant != null) {
+        if (pb_1.Message.getField(this, 5) != null) {
             data.participant = this.participant;
         }
-        if (this.ignore != null) {
+        if (pb_1.Message.getField(this, 16) != null) {
             data.ignore = this.ignore;
         }
-        if (this.starred != null) {
+        if (pb_1.Message.getField(this, 17) != null) {
             data.starred = this.starred;
         }
-        if (this.broadcast != null) {
+        if (pb_1.Message.getField(this, 18) != null) {
             data.broadcast = this.broadcast;
         }
-        if (this.pushName != null) {
+        if (pb_1.Message.getField(this, 19) != null) {
             data.pushName = this.pushName;
         }
-        if (this.mediaCiphertextSha256 != null) {
+        if (pb_1.Message.getField(this, 20) != null) {
             data.mediaCiphertextSha256 = this.mediaCiphertextSha256;
         }
-        if (this.multicast != null) {
+        if (pb_1.Message.getField(this, 21) != null) {
             data.multicast = this.multicast;
         }
-        if (this.urlText != null) {
+        if (pb_1.Message.getField(this, 22) != null) {
             data.urlText = this.urlText;
         }
-        if (this.urlNumber != null) {
+        if (pb_1.Message.getField(this, 23) != null) {
             data.urlNumber = this.urlNumber;
         }
-        if (this.messageStubType != null) {
+        if (pb_1.Message.getField(this, 24) != null) {
             data.messageStubType = this.messageStubType;
         }
-        if (this.clearMedia != null) {
+        if (pb_1.Message.getField(this, 25) != null) {
             data.clearMedia = this.clearMedia;
         }
-        if (this.duration != null) {
+        if (pb_1.Message.getField(this, 27) != null) {
             data.duration = this.duration;
         }
-        if (this.paymentInfo != null) {
+        if (pb_1.Message.getField(this, 29) != null) {
             data.paymentInfo = this.paymentInfo.toObject();
         }
-        if (this.finalLiveLocation != null) {
+        if (pb_1.Message.getField(this, 30) != null) {
             data.finalLiveLocation = this.finalLiveLocation.toObject();
         }
-        if (this.quotedPaymentInfo != null) {
+        if (pb_1.Message.getField(this, 31) != null) {
             data.quotedPaymentInfo = this.quotedPaymentInfo.toObject();
         }
-        if (this.ephemeralStartTimestamp != null) {
+        if (pb_1.Message.getField(this, 32) != null) {
             data.ephemeralStartTimestamp = this.ephemeralStartTimestamp;
         }
-        if (this.ephemeralDuration != null) {
+        if (pb_1.Message.getField(this, 33) != null) {
             data.ephemeralDuration = this.ephemeralDuration;
         }
-        if (this.ephemeralOffToOn != null) {
+        if (pb_1.Message.getField(this, 34) != null) {
             data.ephemeralOffToOn = this.ephemeralOffToOn;
         }
         return data;
@@ -11217,53 +11217,53 @@ export class WebMessageInfo extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.key !== undefined)
+        if (pb_1.Message.getField(this, 1) != null)
             writer.writeMessage(1, this.key, () => this.key.serialize(writer));
-        if (this.message !== undefined)
+        if (pb_1.Message.getField(this, 2) != null)
             writer.writeMessage(2, this.message, () => this.message.serialize(writer));
-        if (this.messageTimestamp !== undefined)
+        if (pb_1.Message.getField(this, 3) != null)
             writer.writeUint64(3, this.messageTimestamp);
-        if (this.status !== undefined)
+        if (pb_1.Message.getField(this, 4) != null)
             writer.writeEnum(4, this.status);
-        if (typeof this.participant === "string" && this.participant.length)
+        if (typeof pb_1.Message.getField(this, 5) === "string" && this.participant.length)
             writer.writeString(5, this.participant);
-        if (this.ignore !== undefined)
+        if (pb_1.Message.getField(this, 16) != null)
             writer.writeBool(16, this.ignore);
-        if (this.starred !== undefined)
+        if (pb_1.Message.getField(this, 17) != null)
             writer.writeBool(17, this.starred);
-        if (this.broadcast !== undefined)
+        if (pb_1.Message.getField(this, 18) != null)
             writer.writeBool(18, this.broadcast);
-        if (typeof this.pushName === "string" && this.pushName.length)
+        if (typeof pb_1.Message.getField(this, 19) === "string" && this.pushName.length)
             writer.writeString(19, this.pushName);
-        if (this.mediaCiphertextSha256 !== undefined)
+        if (pb_1.Message.getField(this, 20) != null)
             writer.writeBytes(20, this.mediaCiphertextSha256);
-        if (this.multicast !== undefined)
+        if (pb_1.Message.getField(this, 21) != null)
             writer.writeBool(21, this.multicast);
-        if (this.urlText !== undefined)
+        if (pb_1.Message.getField(this, 22) != null)
             writer.writeBool(22, this.urlText);
-        if (this.urlNumber !== undefined)
+        if (pb_1.Message.getField(this, 23) != null)
             writer.writeBool(23, this.urlNumber);
-        if (this.messageStubType !== undefined)
+        if (pb_1.Message.getField(this, 24) != null)
             writer.writeEnum(24, this.messageStubType);
-        if (this.clearMedia !== undefined)
+        if (pb_1.Message.getField(this, 25) != null)
             writer.writeBool(25, this.clearMedia);
-        if (this.messageStubParameters !== undefined)
+        if (this.messageStubParameters.length)
             writer.writeRepeatedString(26, this.messageStubParameters);
-        if (this.duration !== undefined)
+        if (pb_1.Message.getField(this, 27) != null)
             writer.writeUint32(27, this.duration);
-        if (this.labels !== undefined)
+        if (this.labels.length)
             writer.writeRepeatedString(28, this.labels);
-        if (this.paymentInfo !== undefined)
+        if (pb_1.Message.getField(this, 29) != null)
             writer.writeMessage(29, this.paymentInfo, () => this.paymentInfo.serialize(writer));
-        if (this.finalLiveLocation !== undefined)
+        if (pb_1.Message.getField(this, 30) != null)
             writer.writeMessage(30, this.finalLiveLocation, () => this.finalLiveLocation.serialize(writer));
-        if (this.quotedPaymentInfo !== undefined)
+        if (pb_1.Message.getField(this, 31) != null)
             writer.writeMessage(31, this.quotedPaymentInfo, () => this.quotedPaymentInfo.serialize(writer));
-        if (this.ephemeralStartTimestamp !== undefined)
+        if (pb_1.Message.getField(this, 32) != null)
             writer.writeUint64(32, this.ephemeralStartTimestamp);
-        if (this.ephemeralDuration !== undefined)
+        if (pb_1.Message.getField(this, 33) != null)
             writer.writeUint32(33, this.ephemeralDuration);
-        if (this.ephemeralOffToOn !== undefined)
+        if (pb_1.Message.getField(this, 34) != null)
             writer.writeBool(34, this.ephemeralOffToOn);
         if (!w)
             return writer.getResultBuffer();

@@ -60,7 +60,7 @@ export namespace importdirective {
                 }
             }
             get key() {
-                return pb_1.Message.getField(this, 1) as Imported.SubMessage.MyEnum;
+                return pb_1.Message.getFieldWithDefault(this, 1, Imported.SubMessage.MyEnum.VALUE) as Imported.SubMessage.MyEnum;
             }
             set key(value: Imported.SubMessage.MyEnum) {
                 pb_1.Message.setField(this, 1, value);
@@ -78,7 +78,7 @@ export namespace importdirective {
                 const data: {
                     key?: Imported.SubMessage.MyEnum;
                 } = {};
-                if (this.key != null) {
+                if (pb_1.Message.getField(this, 1) != null) {
                     data.key = this.key;
                 }
                 return data;
@@ -87,7 +87,7 @@ export namespace importdirective {
             serialize(w: pb_1.BinaryWriter): void;
             serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
                 const writer = w || new pb_1.BinaryWriter();
-                if (this.key !== undefined)
+                if (pb_1.Message.getField(this, 1) != null)
                     writer.writeEnum(1, this.key);
                 if (!w)
                     return writer.getResultBuffer();

@@ -19,7 +19,7 @@ export namespace maps {
             }
         }
         get link() {
-            return pb_1.Message.getField(this, 2) as string;
+            return pb_1.Message.getFieldWithDefault(this, 2, "") as string;
         }
         set link(value: string) {
             pb_1.Message.setField(this, 2, value);
@@ -37,7 +37,7 @@ export namespace maps {
             const data: {
                 link?: string;
             } = {};
-            if (this.link != null) {
+            if (pb_1.Message.getField(this, 2) != null) {
                 data.link = this.link;
             }
             return data;
@@ -46,7 +46,7 @@ export namespace maps {
         serialize(w: pb_1.BinaryWriter): void;
         serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
             const writer = w || new pb_1.BinaryWriter();
-            if (typeof this.link === "string" && this.link.length)
+            if (typeof pb_1.Message.getField(this, 2) === "string" && this.link.length)
                 writer.writeString(2, this.link);
             if (!w)
                 return writer.getResultBuffer();
@@ -104,7 +104,7 @@ export namespace maps {
                 this.topics_with_intkeys = new Map();
         }
         get key() {
-            return pb_1.Message.getField(this, 2) as string;
+            return pb_1.Message.getFieldWithDefault(this, 2, "") as string;
         }
         set key(value: string) {
             pb_1.Message.setField(this, 2, value);
@@ -167,7 +167,7 @@ export namespace maps {
                     [key: number]: ReturnType<typeof Topic.prototype.toObject>;
                 };
             } = {};
-            if (this.key != null) {
+            if (pb_1.Message.getField(this, 2) != null) {
                 data.key = this.key;
             }
             if (this.keys.size > 0) {
@@ -185,7 +185,7 @@ export namespace maps {
         serialize(w: pb_1.BinaryWriter): void;
         serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
             const writer = w || new pb_1.BinaryWriter();
-            if (typeof this.key === "string" && this.key.length)
+            if (typeof pb_1.Message.getField(this, 2) === "string" && this.key.length)
                 writer.writeString(2, this.key);
             for (const [key, value] of this.keys) {
                 writer.writeMessage(1, this.keys, () => {

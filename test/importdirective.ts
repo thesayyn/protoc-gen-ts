@@ -41,7 +41,7 @@ export namespace importdirective {
             pb_1.Message.setWrapperField(this, 2, value);
         }
         get enumField() {
-            return pb_1.Message.getField(this, 3) as dependency_1.importdirective.Imported.SubMessage.MyEnum;
+            return pb_1.Message.getFieldWithDefault(this, 3, dependency_1.importdirective.Imported.SubMessage.MyEnum.VALUE) as dependency_1.importdirective.Imported.SubMessage.MyEnum;
         }
         set enumField(value: dependency_1.importdirective.Imported.SubMessage.MyEnum) {
             pb_1.Message.setField(this, 3, value);
@@ -69,13 +69,13 @@ export namespace importdirective {
                 submessageField?: ReturnType<typeof dependency_1.importdirective.Imported.SubMessage.prototype.toObject>;
                 enumField?: dependency_1.importdirective.Imported.SubMessage.MyEnum;
             } = {};
-            if (this.importedField != null) {
+            if (pb_1.Message.getField(this, 1) != null) {
                 data.importedField = this.importedField.toObject();
             }
-            if (this.submessageField != null) {
+            if (pb_1.Message.getField(this, 2) != null) {
                 data.submessageField = this.submessageField.toObject();
             }
-            if (this.enumField != null) {
+            if (pb_1.Message.getField(this, 3) != null) {
                 data.enumField = this.enumField;
             }
             return data;
@@ -84,11 +84,11 @@ export namespace importdirective {
         serialize(w: pb_1.BinaryWriter): void;
         serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
             const writer = w || new pb_1.BinaryWriter();
-            if (this.importedField !== undefined)
+            if (pb_1.Message.getField(this, 1) != null)
                 writer.writeMessage(1, this.importedField, () => this.importedField.serialize(writer));
-            if (this.submessageField !== undefined)
+            if (pb_1.Message.getField(this, 2) != null)
                 writer.writeMessage(2, this.submessageField, () => this.submessageField.serialize(writer));
-            if (this.enumField !== undefined)
+            if (pb_1.Message.getField(this, 3) != null)
                 writer.writeEnum(3, this.enumField);
             if (!w)
                 return writer.getResultBuffer();

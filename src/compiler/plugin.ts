@@ -31,25 +31,25 @@ export class Version extends pb_1.Message {
         }
     }
     get major() {
-        return pb_1.Message.getField(this, 1) as number;
+        return pb_1.Message.getFieldWithDefault(this, 1, 0) as number;
     }
     set major(value: number) {
         pb_1.Message.setField(this, 1, value);
     }
     get minor() {
-        return pb_1.Message.getField(this, 2) as number;
+        return pb_1.Message.getFieldWithDefault(this, 2, 0) as number;
     }
     set minor(value: number) {
         pb_1.Message.setField(this, 2, value);
     }
     get patch() {
-        return pb_1.Message.getField(this, 3) as number;
+        return pb_1.Message.getFieldWithDefault(this, 3, 0) as number;
     }
     set patch(value: number) {
         pb_1.Message.setField(this, 3, value);
     }
     get suffix() {
-        return pb_1.Message.getField(this, 4) as string;
+        return pb_1.Message.getFieldWithDefault(this, 4, "") as string;
     }
     set suffix(value: string) {
         pb_1.Message.setField(this, 4, value);
@@ -82,16 +82,16 @@ export class Version extends pb_1.Message {
             patch?: number;
             suffix?: string;
         } = {};
-        if (this.major != null) {
+        if (pb_1.Message.getField(this, 1) != null) {
             data.major = this.major;
         }
-        if (this.minor != null) {
+        if (pb_1.Message.getField(this, 2) != null) {
             data.minor = this.minor;
         }
-        if (this.patch != null) {
+        if (pb_1.Message.getField(this, 3) != null) {
             data.patch = this.patch;
         }
-        if (this.suffix != null) {
+        if (pb_1.Message.getField(this, 4) != null) {
             data.suffix = this.suffix;
         }
         return data;
@@ -100,13 +100,13 @@ export class Version extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.major !== undefined)
+        if (pb_1.Message.getField(this, 1) != null)
             writer.writeInt32(1, this.major);
-        if (this.minor !== undefined)
+        if (pb_1.Message.getField(this, 2) != null)
             writer.writeInt32(2, this.minor);
-        if (this.patch !== undefined)
+        if (pb_1.Message.getField(this, 3) != null)
             writer.writeInt32(3, this.patch);
-        if (typeof this.suffix === "string" && this.suffix.length)
+        if (typeof pb_1.Message.getField(this, 4) === "string" && this.suffix.length)
             writer.writeString(4, this.suffix);
         if (!w)
             return writer.getResultBuffer();
@@ -169,7 +169,7 @@ export class CodeGeneratorRequest extends pb_1.Message {
         pb_1.Message.setField(this, 1, value);
     }
     get parameter() {
-        return pb_1.Message.getField(this, 2) as string;
+        return pb_1.Message.getFieldWithDefault(this, 2, "") as string;
     }
     set parameter(value: string) {
         pb_1.Message.setField(this, 2, value);
@@ -214,10 +214,10 @@ export class CodeGeneratorRequest extends pb_1.Message {
             file_to_generate: this.file_to_generate,
             proto_file: this.proto_file.map((item: dependency_1.FileDescriptorProto) => item.toObject())
         };
-        if (this.parameter != null) {
+        if (pb_1.Message.getField(this, 2) != null) {
             data.parameter = this.parameter;
         }
-        if (this.compiler_version != null) {
+        if (pb_1.Message.getField(this, 3) != null) {
             data.compiler_version = this.compiler_version.toObject();
         }
         return data;
@@ -226,13 +226,13 @@ export class CodeGeneratorRequest extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.file_to_generate !== undefined)
+        if (this.file_to_generate.length)
             writer.writeRepeatedString(1, this.file_to_generate);
-        if (typeof this.parameter === "string" && this.parameter.length)
+        if (typeof pb_1.Message.getField(this, 2) === "string" && this.parameter.length)
             writer.writeString(2, this.parameter);
-        if (this.proto_file !== undefined)
+        if (this.proto_file.length)
             writer.writeRepeatedMessage(15, this.proto_file, (item: dependency_1.FileDescriptorProto) => item.serialize(writer));
-        if (this.compiler_version !== undefined)
+        if (pb_1.Message.getField(this, 3) != null)
             writer.writeMessage(3, this.compiler_version, () => this.compiler_version.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
@@ -287,13 +287,13 @@ export class CodeGeneratorResponse extends pb_1.Message {
         }
     }
     get error() {
-        return pb_1.Message.getField(this, 1) as string;
+        return pb_1.Message.getFieldWithDefault(this, 1, "") as string;
     }
     set error(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
     get supported_features() {
-        return pb_1.Message.getField(this, 2) as number;
+        return pb_1.Message.getFieldWithDefault(this, 2, 0) as number;
     }
     set supported_features(value: number) {
         pb_1.Message.setField(this, 2, value);
@@ -328,10 +328,10 @@ export class CodeGeneratorResponse extends pb_1.Message {
         } = {
             file: this.file.map((item: CodeGeneratorResponse.File) => item.toObject())
         };
-        if (this.error != null) {
+        if (pb_1.Message.getField(this, 1) != null) {
             data.error = this.error;
         }
-        if (this.supported_features != null) {
+        if (pb_1.Message.getField(this, 2) != null) {
             data.supported_features = this.supported_features;
         }
         return data;
@@ -340,11 +340,11 @@ export class CodeGeneratorResponse extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (typeof this.error === "string" && this.error.length)
+        if (typeof pb_1.Message.getField(this, 1) === "string" && this.error.length)
             writer.writeString(1, this.error);
-        if (this.supported_features !== undefined)
+        if (pb_1.Message.getField(this, 2) != null)
             writer.writeUint64(2, this.supported_features);
-        if (this.file !== undefined)
+        if (this.file.length)
             writer.writeRepeatedMessage(15, this.file, (item: CodeGeneratorResponse.File) => item.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
@@ -407,19 +407,19 @@ export namespace CodeGeneratorResponse {
             }
         }
         get name() {
-            return pb_1.Message.getField(this, 1) as string;
+            return pb_1.Message.getFieldWithDefault(this, 1, "") as string;
         }
         set name(value: string) {
             pb_1.Message.setField(this, 1, value);
         }
         get insertion_point() {
-            return pb_1.Message.getField(this, 2) as string;
+            return pb_1.Message.getFieldWithDefault(this, 2, "") as string;
         }
         set insertion_point(value: string) {
             pb_1.Message.setField(this, 2, value);
         }
         get content() {
-            return pb_1.Message.getField(this, 15) as string;
+            return pb_1.Message.getFieldWithDefault(this, 15, "") as string;
         }
         set content(value: string) {
             pb_1.Message.setField(this, 15, value);
@@ -458,16 +458,16 @@ export namespace CodeGeneratorResponse {
                 content?: string;
                 generated_code_info?: ReturnType<typeof dependency_1.GeneratedCodeInfo.prototype.toObject>;
             } = {};
-            if (this.name != null) {
+            if (pb_1.Message.getField(this, 1) != null) {
                 data.name = this.name;
             }
-            if (this.insertion_point != null) {
+            if (pb_1.Message.getField(this, 2) != null) {
                 data.insertion_point = this.insertion_point;
             }
-            if (this.content != null) {
+            if (pb_1.Message.getField(this, 15) != null) {
                 data.content = this.content;
             }
-            if (this.generated_code_info != null) {
+            if (pb_1.Message.getField(this, 16) != null) {
                 data.generated_code_info = this.generated_code_info.toObject();
             }
             return data;
@@ -476,13 +476,13 @@ export namespace CodeGeneratorResponse {
         serialize(w: pb_1.BinaryWriter): void;
         serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
             const writer = w || new pb_1.BinaryWriter();
-            if (typeof this.name === "string" && this.name.length)
+            if (typeof pb_1.Message.getField(this, 1) === "string" && this.name.length)
                 writer.writeString(1, this.name);
-            if (typeof this.insertion_point === "string" && this.insertion_point.length)
+            if (typeof pb_1.Message.getField(this, 2) === "string" && this.insertion_point.length)
                 writer.writeString(2, this.insertion_point);
-            if (typeof this.content === "string" && this.content.length)
+            if (typeof pb_1.Message.getField(this, 15) === "string" && this.content.length)
                 writer.writeString(15, this.content);
-            if (this.generated_code_info !== undefined)
+            if (pb_1.Message.getField(this, 16) != null)
                 writer.writeMessage(16, this.generated_code_info, () => this.generated_code_info.serialize(writer));
             if (!w)
                 return writer.getResultBuffer();

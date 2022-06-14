@@ -19,7 +19,7 @@ export namespace pkg.mycompany {
             }
         }
         get field() {
-            return pb_1.Message.getField(this, 1) as string[];
+            return pb_1.Message.getFieldWithDefault(this, 1, []) as string[];
         }
         set field(value: string[]) {
             pb_1.Message.setField(this, 1, value);
@@ -37,7 +37,7 @@ export namespace pkg.mycompany {
             const data: {
                 field?: string[];
             } = {};
-            if (this.field != null) {
+            if (pb_1.Message.getField(this, 1) != null) {
                 data.field = this.field;
             }
             return data;
@@ -46,7 +46,7 @@ export namespace pkg.mycompany {
         serialize(w: pb_1.BinaryWriter): void;
         serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
             const writer = w || new pb_1.BinaryWriter();
-            if (this.field !== undefined)
+            if (this.field.length)
                 writer.writeRepeatedString(1, this.field);
             if (!w)
                 return writer.getResultBuffer();

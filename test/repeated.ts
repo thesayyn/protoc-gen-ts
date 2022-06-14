@@ -18,7 +18,7 @@ export class Repeated extends pb_1.Message {
         }
     }
     get indx() {
-        return pb_1.Message.getField(this, 4) as number[];
+        return pb_1.Message.getFieldWithDefault(this, 4, []) as number[];
     }
     set indx(value: number[]) {
         pb_1.Message.setField(this, 4, value);
@@ -36,7 +36,7 @@ export class Repeated extends pb_1.Message {
         const data: {
             indx?: number[];
         } = {};
-        if (this.indx != null) {
+        if (pb_1.Message.getField(this, 4) != null) {
             data.indx = this.indx;
         }
         return data;
@@ -45,7 +45,7 @@ export class Repeated extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.indx !== undefined)
+        if (this.indx.length)
             writer.writePackedInt32(4, this.indx);
         if (!w)
             return writer.getResultBuffer();

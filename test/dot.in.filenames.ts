@@ -19,7 +19,7 @@ export namespace dot {
             }
         }
         get name() {
-            return pb_1.Message.getField(this, 1) as string[];
+            return pb_1.Message.getFieldWithDefault(this, 1, []) as string[];
         }
         set name(value: string[]) {
             pb_1.Message.setField(this, 1, value);
@@ -37,7 +37,7 @@ export namespace dot {
             const data: {
                 name?: string[];
             } = {};
-            if (this.name != null) {
+            if (pb_1.Message.getField(this, 1) != null) {
                 data.name = this.name;
             }
             return data;
@@ -46,7 +46,7 @@ export namespace dot {
         serialize(w: pb_1.BinaryWriter): void;
         serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
             const writer = w || new pb_1.BinaryWriter();
-            if (this.name !== undefined)
+            if (this.name.length)
                 writer.writeRepeatedString(1, this.name);
             if (!w)
                 return writer.getResultBuffer();

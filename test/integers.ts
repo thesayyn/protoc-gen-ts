@@ -46,49 +46,49 @@ export class Integers extends pb_1.Message {
         }
     }
     get int32() {
-        return pb_1.Message.getField(this, 2) as number;
+        return pb_1.Message.getFieldWithDefault(this, 2, 0) as number;
     }
     set int32(value: number) {
         pb_1.Message.setField(this, 2, value);
     }
     get int64() {
-        return pb_1.Message.getField(this, 3) as number;
+        return pb_1.Message.getFieldWithDefault(this, 3, 0) as number;
     }
     set int64(value: number) {
         pb_1.Message.setField(this, 3, value);
     }
     get sint32() {
-        return pb_1.Message.getField(this, 4) as number;
+        return pb_1.Message.getFieldWithDefault(this, 4, 0) as number;
     }
     set sint32(value: number) {
         pb_1.Message.setField(this, 4, value);
     }
     get sint64() {
-        return pb_1.Message.getField(this, 5) as number;
+        return pb_1.Message.getFieldWithDefault(this, 5, 0) as number;
     }
     set sint64(value: number) {
         pb_1.Message.setField(this, 5, value);
     }
     get sfixed32() {
-        return pb_1.Message.getField(this, 6) as number;
+        return pb_1.Message.getFieldWithDefault(this, 6, 0) as number;
     }
     set sfixed32(value: number) {
         pb_1.Message.setField(this, 6, value);
     }
     get sfixed64() {
-        return pb_1.Message.getField(this, 7) as number;
+        return pb_1.Message.getFieldWithDefault(this, 7, 0) as number;
     }
     set sfixed64(value: number) {
         pb_1.Message.setField(this, 7, value);
     }
     get fixed32() {
-        return pb_1.Message.getField(this, 8) as number;
+        return pb_1.Message.getFieldWithDefault(this, 8, 0) as number;
     }
     set fixed32(value: number) {
         pb_1.Message.setField(this, 8, value);
     }
     get fixed64() {
-        return pb_1.Message.getField(this, 9) as number;
+        return pb_1.Message.getFieldWithDefault(this, 9, 0) as number;
     }
     set fixed64(value: number) {
         pb_1.Message.setField(this, 9, value);
@@ -141,28 +141,28 @@ export class Integers extends pb_1.Message {
             fixed32?: number;
             fixed64?: number;
         } = {};
-        if (this.int32 != null) {
+        if (pb_1.Message.getField(this, 2) != null) {
             data.int32 = this.int32;
         }
-        if (this.int64 != null) {
+        if (pb_1.Message.getField(this, 3) != null) {
             data.int64 = this.int64;
         }
-        if (this.sint32 != null) {
+        if (pb_1.Message.getField(this, 4) != null) {
             data.sint32 = this.sint32;
         }
-        if (this.sint64 != null) {
+        if (pb_1.Message.getField(this, 5) != null) {
             data.sint64 = this.sint64;
         }
-        if (this.sfixed32 != null) {
+        if (pb_1.Message.getField(this, 6) != null) {
             data.sfixed32 = this.sfixed32;
         }
-        if (this.sfixed64 != null) {
+        if (pb_1.Message.getField(this, 7) != null) {
             data.sfixed64 = this.sfixed64;
         }
-        if (this.fixed32 != null) {
+        if (pb_1.Message.getField(this, 8) != null) {
             data.fixed32 = this.fixed32;
         }
-        if (this.fixed64 != null) {
+        if (pb_1.Message.getField(this, 9) != null) {
             data.fixed64 = this.fixed64;
         }
         return data;
@@ -171,21 +171,21 @@ export class Integers extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.int32 !== undefined)
+        if (pb_1.Message.getField(this, 2) != null)
             writer.writeInt32(2, this.int32);
-        if (this.int64 !== undefined)
+        if (pb_1.Message.getField(this, 3) != null)
             writer.writeInt64(3, this.int64);
-        if (this.sint32 !== undefined)
+        if (pb_1.Message.getField(this, 4) != null)
             writer.writeSint32(4, this.sint32);
-        if (this.sint64 !== undefined)
+        if (pb_1.Message.getField(this, 5) != null)
             writer.writeSint64(5, this.sint64);
-        if (this.sfixed32 !== undefined)
+        if (pb_1.Message.getField(this, 6) != null)
             writer.writeSfixed32(6, this.sfixed32);
-        if (this.sfixed64 !== undefined)
+        if (pb_1.Message.getField(this, 7) != null)
             writer.writeSfixed64(7, this.sfixed64);
-        if (this.fixed32 !== undefined)
+        if (pb_1.Message.getField(this, 8) != null)
             writer.writeFixed32(8, this.fixed32);
-        if (this.fixed64 !== undefined)
+        if (pb_1.Message.getField(this, 9) != null)
             writer.writeFixed64(9, this.fixed64);
         if (!w)
             return writer.getResultBuffer();

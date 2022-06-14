@@ -26,7 +26,7 @@ export class NotOptional extends pb_1.Message {
         pb_1.Message.setField(this, 1, value);
     }
     get should_be_optional() {
-        return pb_1.Message.getField(this, 2) as string;
+        return pb_1.Message.getFieldWithDefault(this, 2, "") as string;
     }
     set should_be_optional(value: string) {
         pb_1.Message.setField(this, 2, value);
@@ -50,7 +50,7 @@ export class NotOptional extends pb_1.Message {
         } = {
             should_be_required: this.should_be_required
         };
-        if (this.should_be_optional != null) {
+        if (pb_1.Message.getField(this, 2) != null) {
             data.should_be_optional = this.should_be_optional;
         }
         return data;
@@ -59,9 +59,9 @@ export class NotOptional extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.should_be_required !== undefined)
+        if (this.should_be_required.length)
             writer.writeRepeatedString(1, this.should_be_required);
-        if (typeof this.should_be_optional === "string" && this.should_be_optional.length)
+        if (typeof pb_1.Message.getField(this, 2) === "string" && this.should_be_optional.length)
             writer.writeString(2, this.should_be_optional);
         if (!w)
             return writer.getResultBuffer();

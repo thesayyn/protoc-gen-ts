@@ -1,0 +1,67 @@
+syntax = "proto2";
+
+import "test/_/default/default_common.proto";
+
+message DefaultMessageV2WithoutDefault {
+    required DefaultCommonMessage message = 1;
+    required DefaultCommonEnum enum = 2;
+
+    required bool bool = 3;
+    required string string = 4;
+
+    required int32 int32 = 5;
+    required fixed32 fixed32 = 6;
+    required sfixed32 sfixed32 = 7;
+    required uint32 uint32 = 8;
+    required sint32 sint32 = 9;
+    required int64 int64 = 10;
+    required fixed64 fixed64 = 11;
+    required sfixed64 sfixed64 = 12;
+    required uint64 uint64 = 13;
+    required sint64 sint64 = 14;
+    required float float = 15;
+    required double double = 16;
+
+    required int64 int_but_string = 17 [jstype = JS_STRING];
+
+    map<string, string> map_string_string = 18;
+    map<string, DefaultCommonMessage> map_string_message = 19;
+
+    repeated int32 array_int32 = 20;
+    repeated DefaultCommonMessage array_message = 21;
+
+    oneof one_of {
+        int32 one_of_int32 = 22;
+        DefaultCommonMessage one_of_message = 23;
+    }
+
+    required bytes bytes = 24; 
+}
+
+message DefaultMessageV2WithDefault {
+    required DefaultCommonMessage message = 1;
+    required DefaultCommonEnum enum = 2[default = TWO];
+
+    required bool bool = 3[default = true];
+    required string string = 4[default = "default string"];
+
+    required int32 int32 = 5[default = 5];
+    required fixed32 fixed32 = 6[default = 6];
+    required sfixed32 sfixed32 = 7[default = 7];
+    required uint32 uint32 = 8[default = 8];
+    required sint32 sint32 = 9[default = 9];
+    required int64 int64 = 10[default = 10];
+    required fixed64 fixed64 = 11[default = 11];
+    required sfixed64 sfixed64 = 12[default = 12];
+    required uint64 uint64 = 13[default = 13];
+    required sint64 sint64 = 14[default = 14];
+    required float float = 15[default = 15.0];
+    required double double = 16[default = 16.0];
+
+    required int64 int_but_string = 17 [jstype = JS_STRING, default = 17];
+    
+    oneof one_of {
+        int32 one_of_int32 = 18 [default = 18];
+        DefaultCommonMessage one_of_message = 19;
+    };
+}

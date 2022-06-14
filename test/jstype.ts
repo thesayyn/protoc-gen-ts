@@ -26,19 +26,19 @@ export class JSType extends pb_1.Message {
         }
     }
     get int_but_string() {
-        return pb_1.Message.getField(this, 1) as string;
+        return pb_1.Message.getFieldWithDefault(this, 1, "") as string;
     }
     set int_but_string(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
     get int_and_normal() {
-        return pb_1.Message.getField(this, 2) as number;
+        return pb_1.Message.getFieldWithDefault(this, 2, 0) as number;
     }
     set int_and_normal(value: number) {
         pb_1.Message.setField(this, 2, value);
     }
     get int_and_number() {
-        return pb_1.Message.getField(this, 3) as number;
+        return pb_1.Message.getFieldWithDefault(this, 3, 0) as number;
     }
     set int_and_number(value: number) {
         pb_1.Message.setField(this, 3, value);
@@ -66,13 +66,13 @@ export class JSType extends pb_1.Message {
             int_and_normal?: number;
             int_and_number?: number;
         } = {};
-        if (this.int_but_string != null) {
+        if (pb_1.Message.getField(this, 1) != null) {
             data.int_but_string = this.int_but_string;
         }
-        if (this.int_and_normal != null) {
+        if (pb_1.Message.getField(this, 2) != null) {
             data.int_and_normal = this.int_and_normal;
         }
-        if (this.int_and_number != null) {
+        if (pb_1.Message.getField(this, 3) != null) {
             data.int_and_number = this.int_and_number;
         }
         return data;
@@ -81,11 +81,11 @@ export class JSType extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.int_but_string !== undefined)
+        if (pb_1.Message.getField(this, 1) != null)
             writer.writeInt64String(1, this.int_but_string);
-        if (this.int_and_normal !== undefined)
+        if (pb_1.Message.getField(this, 2) != null)
             writer.writeInt64(2, this.int_and_normal);
-        if (this.int_and_number !== undefined)
+        if (pb_1.Message.getField(this, 3) != null)
             writer.writeInt64(3, this.int_and_number);
         if (!w)
             return writer.getResultBuffer();

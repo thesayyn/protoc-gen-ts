@@ -19,7 +19,7 @@ export class Chunk extends pb_1.Message {
         }
     }
     get data() {
-        return pb_1.Message.getField(this, 1) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 1, new Uint8Array()) as Uint8Array;
     }
     set data(value: Uint8Array) {
         pb_1.Message.setField(this, 1, value);
@@ -37,7 +37,7 @@ export class Chunk extends pb_1.Message {
         const data: {
             data?: Uint8Array;
         } = {};
-        if (this.data != null) {
+        if (pb_1.Message.getField(this, 1) != null) {
             data.data = this.data;
         }
         return data;
@@ -46,7 +46,7 @@ export class Chunk extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.data !== undefined)
+        if (pb_1.Message.getField(this, 1) != null)
             writer.writeBytes(1, this.data);
         if (!w)
             return writer.getResultBuffer();
@@ -86,7 +86,7 @@ export class Result extends pb_1.Message {
         }
     }
     get id() {
-        return pb_1.Message.getField(this, 1) as number;
+        return pb_1.Message.getFieldWithDefault(this, 1, 0) as number;
     }
     set id(value: number) {
         pb_1.Message.setField(this, 1, value);
@@ -104,7 +104,7 @@ export class Result extends pb_1.Message {
         const data: {
             id?: number;
         } = {};
-        if (this.id != null) {
+        if (pb_1.Message.getField(this, 1) != null) {
             data.id = this.id;
         }
         return data;
@@ -113,7 +113,7 @@ export class Result extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.id !== undefined)
+        if (pb_1.Message.getField(this, 1) != null)
             writer.writeInt32(1, this.id);
         if (!w)
             return writer.getResultBuffer();
