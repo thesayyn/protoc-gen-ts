@@ -42,11 +42,23 @@ export class OneOfWithoutAnyOtherFields extends pb_1.Message {
     set nickname(value: string) {
         pb_1.Message.setOneofField(this, 1, this.#one_of_decls[0], value);
     }
+    clear_nickname() {
+        pb_1.Message.setField(this, 1, undefined);
+    }
+    has_nickname() {
+        return pb_1.Message.getField(this, 1) != null;
+    }
     get realname() {
         return pb_1.Message.getFieldWithDefault(this, 2, "") as string;
     }
     set realname(value: string) {
         pb_1.Message.setOneofField(this, 2, this.#one_of_decls[0], value);
+    }
+    clear_realname() {
+        pb_1.Message.setField(this, 2, undefined);
+    }
+    has_realname() {
+        return pb_1.Message.getField(this, 2) != null;
     }
     get age() {
         return pb_1.Message.getFieldWithDefault(this, 4, "") as string;
@@ -54,11 +66,23 @@ export class OneOfWithoutAnyOtherFields extends pb_1.Message {
     set age(value: string) {
         pb_1.Message.setOneofField(this, 4, this.#one_of_decls[1], value);
     }
+    clear_age() {
+        pb_1.Message.setField(this, 4, undefined);
+    }
+    has_age() {
+        return pb_1.Message.getField(this, 4) != null;
+    }
     get date_of_birth() {
         return pb_1.Message.getFieldWithDefault(this, 3, "") as string;
     }
     set date_of_birth(value: string) {
         pb_1.Message.setOneofField(this, 3, this.#one_of_decls[1], value);
+    }
+    clear_date_of_birth() {
+        pb_1.Message.setField(this, 3, undefined);
+    }
+    has_date_of_birth() {
+        return pb_1.Message.getField(this, 3) != null;
     }
     get nickname_or_realname() {
         const cases: {
@@ -204,11 +228,23 @@ export class OneOf extends pb_1.Message {
     set date_of_birth(value: string) {
         pb_1.Message.setOneofField(this, 3, this.#one_of_decls[0], value);
     }
+    clear_date_of_birth() {
+        pb_1.Message.setField(this, 3, undefined);
+    }
+    has_date_of_birth() {
+        return pb_1.Message.getField(this, 3) != null;
+    }
     get age() {
         return pb_1.Message.getFieldWithDefault(this, 4, "") as string;
     }
     set age(value: string) {
         pb_1.Message.setOneofField(this, 4, this.#one_of_decls[0], value);
+    }
+    clear_age() {
+        pb_1.Message.setField(this, 4, undefined);
+    }
+    has_age() {
+        return pb_1.Message.getField(this, 4) != null;
     }
     get age_or_dateofbirth() {
         const cases: {

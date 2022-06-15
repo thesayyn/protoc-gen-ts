@@ -20,6 +20,16 @@ function getFieldName(fieldDescriptor: descriptor.FieldDescriptorProto): string 
   return fieldDescriptor.name;
 }
 
+function getPrefixedFieldName(prefix: string, fieldDescriptor: descriptor.FieldDescriptorProto): string {
+  const fieldName = getFieldName(fieldDescriptor);
+  if (prefix.length == 0 || fieldName.length == 0) {
+    return fieldName;
+  }
+  return config.json_names
+    ? `${prefix}${fieldName.charAt(0).toUpperCase()}${fieldName.slice(1)}`
+    : `${prefix}_${fieldName}`;
+}
+
 /**
  * Returns a enum for the enum descriptor
  */
@@ -1255,7 +1265,7 @@ function createPresenceClear(
     undefined,
     undefined,
     undefined,
-    "clear_" + fieldDescriptor.name,
+    getPrefixedFieldName("clear", fieldDescriptor),
     undefined,
     undefined,
     [],
@@ -1278,7 +1288,7 @@ function createPresenceClearBlock(
     expression = ts.factory.createAssignment(
       ts.factory.createPropertyAccessExpression(
         ts.factory.createThis(),
-        fieldDescriptor.name,
+        getFieldName(fieldDescriptor),
       ),
       repeatedExpression,
     )
@@ -1322,7 +1332,7 @@ function createPresenceHas(
     undefined,
     undefined,
     undefined,
-    "has_" + fieldDescriptor.name,
+    getPrefixedFieldName("has", fieldDescriptor),
     undefined,
     undefined,
     [],

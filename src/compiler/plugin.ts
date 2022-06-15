@@ -36,11 +36,23 @@ export class Version extends pb_1.Message {
     set major(value: number) {
         pb_1.Message.setField(this, 1, value);
     }
+    clear_major() {
+        pb_1.Message.setField(this, 1, undefined);
+    }
+    has_major() {
+        return pb_1.Message.getField(this, 1) != null;
+    }
     get minor() {
         return pb_1.Message.getFieldWithDefault(this, 2, 0) as number;
     }
     set minor(value: number) {
         pb_1.Message.setField(this, 2, value);
+    }
+    clear_minor() {
+        pb_1.Message.setField(this, 2, undefined);
+    }
+    has_minor() {
+        return pb_1.Message.getField(this, 2) != null;
     }
     get patch() {
         return pb_1.Message.getFieldWithDefault(this, 3, 0) as number;
@@ -48,11 +60,23 @@ export class Version extends pb_1.Message {
     set patch(value: number) {
         pb_1.Message.setField(this, 3, value);
     }
+    clear_patch() {
+        pb_1.Message.setField(this, 3, undefined);
+    }
+    has_patch() {
+        return pb_1.Message.getField(this, 3) != null;
+    }
     get suffix() {
         return pb_1.Message.getFieldWithDefault(this, 4, "") as string;
     }
     set suffix(value: string) {
         pb_1.Message.setField(this, 4, value);
+    }
+    clear_suffix() {
+        pb_1.Message.setField(this, 4, undefined);
+    }
+    has_suffix() {
+        return pb_1.Message.getField(this, 4) != null;
     }
     static fromObject(data: {
         major?: number;
@@ -174,6 +198,12 @@ export class CodeGeneratorRequest extends pb_1.Message {
     set parameter(value: string) {
         pb_1.Message.setField(this, 2, value);
     }
+    clear_parameter() {
+        pb_1.Message.setField(this, 2, undefined);
+    }
+    has_parameter() {
+        return pb_1.Message.getField(this, 2) != null;
+    }
     get proto_file() {
         return pb_1.Message.getRepeatedWrapperField(this, dependency_1.FileDescriptorProto, 15) as dependency_1.FileDescriptorProto[];
     }
@@ -185,6 +215,12 @@ export class CodeGeneratorRequest extends pb_1.Message {
     }
     set compiler_version(value: Version) {
         pb_1.Message.setWrapperField(this, 3, value);
+    }
+    clear_compiler_version() {
+        this.compiler_version = undefined;
+    }
+    has_compiler_version() {
+        return pb_1.Message.getField(this, 3) != null;
     }
     static fromObject(data: {
         file_to_generate: string[];
@@ -294,11 +330,23 @@ export class CodeGeneratorResponse extends pb_1.Message {
     set error(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
+    clear_error() {
+        pb_1.Message.setField(this, 1, undefined);
+    }
+    has_error() {
+        return pb_1.Message.getField(this, 1) != null;
+    }
     get supported_features() {
         return pb_1.Message.getFieldWithDefault(this, 2, 0) as number;
     }
     set supported_features(value: number) {
         pb_1.Message.setField(this, 2, value);
+    }
+    clear_supported_features() {
+        pb_1.Message.setField(this, 2, undefined);
+    }
+    has_supported_features() {
+        return pb_1.Message.getField(this, 2) != null;
     }
     get file() {
         return pb_1.Message.getRepeatedWrapperField(this, CodeGeneratorResponse.File, 15) as CodeGeneratorResponse.File[];
@@ -415,11 +463,23 @@ export namespace CodeGeneratorResponse {
         set name(value: string) {
             pb_1.Message.setField(this, 1, value);
         }
+        clear_name() {
+            pb_1.Message.setField(this, 1, undefined);
+        }
+        has_name() {
+            return pb_1.Message.getField(this, 1) != null;
+        }
         get insertion_point() {
             return pb_1.Message.getFieldWithDefault(this, 2, "") as string;
         }
         set insertion_point(value: string) {
             pb_1.Message.setField(this, 2, value);
+        }
+        clear_insertion_point() {
+            pb_1.Message.setField(this, 2, undefined);
+        }
+        has_insertion_point() {
+            return pb_1.Message.getField(this, 2) != null;
         }
         get content() {
             return pb_1.Message.getFieldWithDefault(this, 15, "") as string;
@@ -427,11 +487,23 @@ export namespace CodeGeneratorResponse {
         set content(value: string) {
             pb_1.Message.setField(this, 15, value);
         }
+        clear_content() {
+            pb_1.Message.setField(this, 15, undefined);
+        }
+        has_content() {
+            return pb_1.Message.getField(this, 15) != null;
+        }
         get generated_code_info() {
             return pb_1.Message.getWrapperField(this, dependency_1.GeneratedCodeInfo, 16) as dependency_1.GeneratedCodeInfo;
         }
         set generated_code_info(value: dependency_1.GeneratedCodeInfo) {
             pb_1.Message.setWrapperField(this, 16, value);
+        }
+        clear_generated_code_info() {
+            this.generated_code_info = undefined;
+        }
+        has_generated_code_info() {
+            return pb_1.Message.getField(this, 16) != null;
         }
         static fromObject(data: {
             name?: string;

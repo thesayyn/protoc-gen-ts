@@ -52,6 +52,12 @@ export class SchedulingContext extends pb_1.Message {
     set batch(value: SchedulingContextBatch) {
         pb_1.Message.setWrapperField(this, 4, value);
     }
+    clear_batch() {
+        this.batch = undefined;
+    }
+    has_batch() {
+        return pb_1.Message.getField(this, 4) != null;
+    }
     static fromObject(data: {
         env?: ReturnType<typeof SchedulingContextEnv.prototype.toObject>[];
         timeout?: number;
@@ -255,6 +261,12 @@ export class SchedulingContextBatch extends pb_1.Message {
     set process(value: SchedulingContextBatchProcess) {
         pb_1.Message.setWrapperField(this, 3, value);
     }
+    clear_process() {
+        this.process = undefined;
+    }
+    has_process() {
+        return pb_1.Message.getField(this, 3) != null;
+    }
     static fromObject(data: {
         limit?: number;
         deadline?: number;
@@ -445,6 +457,12 @@ export class Target extends pb_1.Message {
     set context(value: SchedulingContext) {
         pb_1.Message.setWrapperField(this, 4, value);
     }
+    clear_context() {
+        this.context = undefined;
+    }
+    has_context() {
+        return pb_1.Message.getField(this, 4) != null;
+    }
     static fromObject(data: {
         id?: string;
         cwd?: string;
@@ -570,6 +588,12 @@ export class Event extends pb_1.Message {
     }
     set target(value: Target) {
         pb_1.Message.setWrapperField(this, 3, value);
+    }
+    clear_target() {
+        this.target = undefined;
+    }
+    has_target() {
+        return pb_1.Message.getField(this, 3) != null;
     }
     static fromObject(data: {
         id?: string;

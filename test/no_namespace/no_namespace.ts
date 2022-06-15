@@ -33,17 +33,35 @@ export class NoNamespace extends pb_1.Message {
     set label(value: dependency_1.eventTarget) {
         pb_1.Message.setWrapperField(this, 1, value);
     }
+    clear_label() {
+        this.label = undefined;
+    }
+    has_label() {
+        return pb_1.Message.getField(this, 1) != null;
+    }
     get other_fields() {
         return pb_1.Message.getWrapperField(this, dependency_2.MessageFields, 2) as dependency_2.MessageFields;
     }
     set other_fields(value: dependency_2.MessageFields) {
         pb_1.Message.setWrapperField(this, 2, value);
     }
+    clear_other_fields() {
+        this.other_fields = undefined;
+    }
+    has_other_fields() {
+        return pb_1.Message.getField(this, 2) != null;
+    }
     get batch_fields() {
         return pb_1.Message.getWrapperField(this, dependency_1.eventSchedulingContextBatch, 3) as dependency_1.eventSchedulingContextBatch;
     }
     set batch_fields(value: dependency_1.eventSchedulingContextBatch) {
         pb_1.Message.setWrapperField(this, 3, value);
+    }
+    clear_batch_fields() {
+        this.batch_fields = undefined;
+    }
+    has_batch_fields() {
+        return pb_1.Message.getField(this, 3) != null;
     }
     static fromObject(data: {
         label?: ReturnType<typeof dependency_1.eventTarget.prototype.toObject>;

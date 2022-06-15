@@ -31,17 +31,35 @@ export class MessageWithDefault extends pb_1.Message {
     set bool_field(value: boolean) {
         pb_1.Message.setField(this, 1, value);
     }
+    clear_bool_field() {
+        pb_1.Message.setField(this, 1, undefined);
+    }
+    has_bool_field() {
+        return pb_1.Message.getField(this, 1) != null;
+    }
     get string_field() {
         return pb_1.Message.getFieldWithDefault(this, 2, "default value") as string;
     }
     set string_field(value: string) {
         pb_1.Message.setField(this, 2, value);
     }
+    clear_string_field() {
+        pb_1.Message.setField(this, 2, undefined);
+    }
+    has_string_field() {
+        return pb_1.Message.getField(this, 2) != null;
+    }
     get int32_field() {
         return pb_1.Message.getFieldWithDefault(this, 3, 12) as number;
     }
     set int32_field(value: number) {
         pb_1.Message.setField(this, 3, value);
+    }
+    clear_int32_field() {
+        pb_1.Message.setField(this, 3, undefined);
+    }
+    has_int32_field() {
+        return pb_1.Message.getField(this, 3) != null;
     }
     static fromObject(data: {
         bool_field?: boolean;
@@ -144,17 +162,35 @@ export class MessageWithImplicitDefault extends pb_1.Message {
     set bool_field(value: boolean) {
         pb_1.Message.setField(this, 1, value);
     }
+    clear_bool_field() {
+        pb_1.Message.setField(this, 1, undefined);
+    }
+    has_bool_field() {
+        return pb_1.Message.getField(this, 1) != null;
+    }
     get string_field() {
         return pb_1.Message.getFieldWithDefault(this, 2, "") as string;
     }
     set string_field(value: string) {
         pb_1.Message.setField(this, 2, value);
     }
+    clear_string_field() {
+        pb_1.Message.setField(this, 2, undefined);
+    }
+    has_string_field() {
+        return pb_1.Message.getField(this, 2) != null;
+    }
     get int32_field() {
         return pb_1.Message.getFieldWithDefault(this, 3, 0) as number;
     }
     set int32_field(value: number) {
         pb_1.Message.setField(this, 3, value);
+    }
+    clear_int32_field() {
+        pb_1.Message.setField(this, 3, undefined);
+    }
+    has_int32_field() {
+        return pb_1.Message.getField(this, 3) != null;
     }
     static fromObject(data: {
         bool_field?: boolean;

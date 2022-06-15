@@ -124,6 +124,12 @@ export class DefaultMessageV3 extends pb_1.Message {
     set message(value: dependency_1.DefaultCommonMessage) {
         pb_1.Message.setWrapperField(this, 1, value);
     }
+    clear_message() {
+        this.message = undefined;
+    }
+    has_message() {
+        return pb_1.Message.getField(this, 1) != null;
+    }
     get enum() {
         return pb_1.Message.getFieldWithDefault(this, 2, dependency_1.DefaultCommonEnum.ZERO) as dependency_1.DefaultCommonEnum;
     }
@@ -250,11 +256,23 @@ export class DefaultMessageV3 extends pb_1.Message {
     set one_of_int32(value: number) {
         pb_1.Message.setOneofField(this, 22, this.#one_of_decls[0], value);
     }
+    clear_one_of_int32() {
+        pb_1.Message.setField(this, 22, undefined);
+    }
+    has_one_of_int32() {
+        return pb_1.Message.getField(this, 22) != null;
+    }
     get one_of_message() {
         return pb_1.Message.getWrapperField(this, dependency_1.DefaultCommonMessage, 23) as dependency_1.DefaultCommonMessage;
     }
     set one_of_message(value: dependency_1.DefaultCommonMessage) {
         pb_1.Message.setOneofWrapperField(this, 23, this.#one_of_decls[0], value);
+    }
+    clear_one_of_message() {
+        this.one_of_message = undefined;
+    }
+    has_one_of_message() {
+        return pb_1.Message.getField(this, 23) != null;
     }
     get bytes() {
         return pb_1.Message.getFieldWithDefault(this, 24, new Uint8Array()) as Uint8Array;

@@ -102,11 +102,23 @@ export class DefaultCommonMessageOneOf extends pb_1.Message {
     set int32(value: number) {
         pb_1.Message.setOneofField(this, 1, this.#one_of_decls[0], value);
     }
+    clear_int32() {
+        pb_1.Message.setField(this, 1, undefined);
+    }
+    has_int32() {
+        return pb_1.Message.getField(this, 1) != null;
+    }
     get message() {
         return pb_1.Message.getWrapperField(this, DefaultCommonMessage, 2) as DefaultCommonMessage;
     }
     set message(value: DefaultCommonMessage) {
         pb_1.Message.setOneofWrapperField(this, 2, this.#one_of_decls[0], value);
+    }
+    clear_message() {
+        this.message = undefined;
+    }
+    has_message() {
+        return pb_1.Message.getField(this, 2) != null;
     }
     get oneof() {
         const cases: {

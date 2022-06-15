@@ -68,6 +68,12 @@ export class JsonNamesMessage extends pb_1.Message {
     set aNestedMessage(value: JsonNamesMessage.NestedMessage) {
         pb_1.Message.setWrapperField(this, 3, value);
     }
+    clearANestedMessage() {
+        this.aNestedMessage = undefined;
+    }
+    hasANestedMessage() {
+        return pb_1.Message.getField(this, 3) != null;
+    }
     get colorSpace() {
         return pb_1.Message.getFieldWithDefault(this, 4, ColorSpace.RED_GREEN_BLUE) as ColorSpace;
     }
@@ -80,17 +86,35 @@ export class JsonNamesMessage extends pb_1.Message {
     set anOptionalString(value: string) {
         pb_1.Message.setOneofField(this, 5, this.#one_of_decls[1], value);
     }
+    clearAnOptionalString() {
+        pb_1.Message.setField(this, 5, undefined);
+    }
+    hasAnOptionalString() {
+        return pb_1.Message.getField(this, 5) != null;
+    }
     get aSingleString() {
         return pb_1.Message.getFieldWithDefault(this, 6, "") as string;
     }
     set aSingleString(value: string) {
         pb_1.Message.setOneofField(this, 6, this.#one_of_decls[0], value);
     }
+    clearASingleString() {
+        pb_1.Message.setField(this, 6, undefined);
+    }
+    hasASingleString() {
+        return pb_1.Message.getField(this, 6) != null;
+    }
     get aSingleNumber() {
         return pb_1.Message.getFieldWithDefault(this, 7, 0) as number;
     }
     set aSingleNumber(value: number) {
         pb_1.Message.setOneofField(this, 7, this.#one_of_decls[0], value);
+    }
+    clearASingleNumber() {
+        pb_1.Message.setField(this, 7, undefined);
+    }
+    hasASingleNumber() {
+        return pb_1.Message.getField(this, 7) != null;
     }
     get mut_ex_field() {
         const cases: {

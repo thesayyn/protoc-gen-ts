@@ -117,11 +117,23 @@ export class FileDescriptorProto extends pb_1.Message {
     set name(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
+    clear_name() {
+        pb_1.Message.setField(this, 1, undefined);
+    }
+    has_name() {
+        return pb_1.Message.getField(this, 1) != null;
+    }
     get package() {
         return pb_1.Message.getFieldWithDefault(this, 2, "") as string;
     }
     set package(value: string) {
         pb_1.Message.setField(this, 2, value);
+    }
+    clear_package() {
+        pb_1.Message.setField(this, 2, undefined);
+    }
+    has_package() {
+        return pb_1.Message.getField(this, 2) != null;
     }
     get dependency() {
         return pb_1.Message.getField(this, 3) as string[];
@@ -171,17 +183,35 @@ export class FileDescriptorProto extends pb_1.Message {
     set options(value: FileOptions) {
         pb_1.Message.setWrapperField(this, 8, value);
     }
+    clear_options() {
+        this.options = undefined;
+    }
+    has_options() {
+        return pb_1.Message.getField(this, 8) != null;
+    }
     get source_code_info() {
         return pb_1.Message.getWrapperField(this, SourceCodeInfo, 9) as SourceCodeInfo;
     }
     set source_code_info(value: SourceCodeInfo) {
         pb_1.Message.setWrapperField(this, 9, value);
     }
+    clear_source_code_info() {
+        this.source_code_info = undefined;
+    }
+    has_source_code_info() {
+        return pb_1.Message.getField(this, 9) != null;
+    }
     get syntax() {
         return pb_1.Message.getFieldWithDefault(this, 12, "") as string;
     }
     set syntax(value: string) {
         pb_1.Message.setField(this, 12, value);
+    }
+    clear_syntax() {
+        pb_1.Message.setField(this, 12, undefined);
+    }
+    has_syntax() {
+        return pb_1.Message.getField(this, 12) != null;
     }
     static fromObject(data: {
         name?: string;
@@ -395,6 +425,12 @@ export class DescriptorProto extends pb_1.Message {
     set name(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
+    clear_name() {
+        pb_1.Message.setField(this, 1, undefined);
+    }
+    has_name() {
+        return pb_1.Message.getField(this, 1) != null;
+    }
     get field() {
         return pb_1.Message.getRepeatedWrapperField(this, FieldDescriptorProto, 2) as FieldDescriptorProto[];
     }
@@ -436,6 +472,12 @@ export class DescriptorProto extends pb_1.Message {
     }
     set options(value: MessageOptions) {
         pb_1.Message.setWrapperField(this, 7, value);
+    }
+    clear_options() {
+        this.options = undefined;
+    }
+    has_options() {
+        return pb_1.Message.getField(this, 7) != null;
     }
     get reserved_range() {
         return pb_1.Message.getRepeatedWrapperField(this, DescriptorProto.ReservedRange, 9) as DescriptorProto.ReservedRange[];
@@ -626,17 +668,35 @@ export namespace DescriptorProto {
         set start(value: number) {
             pb_1.Message.setField(this, 1, value);
         }
+        clear_start() {
+            pb_1.Message.setField(this, 1, undefined);
+        }
+        has_start() {
+            return pb_1.Message.getField(this, 1) != null;
+        }
         get end() {
             return pb_1.Message.getFieldWithDefault(this, 2, 0) as number;
         }
         set end(value: number) {
             pb_1.Message.setField(this, 2, value);
         }
+        clear_end() {
+            pb_1.Message.setField(this, 2, undefined);
+        }
+        has_end() {
+            return pb_1.Message.getField(this, 2) != null;
+        }
         get options() {
             return pb_1.Message.getWrapperField(this, ExtensionRangeOptions, 3) as ExtensionRangeOptions;
         }
         set options(value: ExtensionRangeOptions) {
             pb_1.Message.setWrapperField(this, 3, value);
+        }
+        clear_options() {
+            this.options = undefined;
+        }
+        has_options() {
+            return pb_1.Message.getField(this, 3) != null;
         }
         static fromObject(data: {
             start?: number;
@@ -735,11 +795,23 @@ export namespace DescriptorProto {
         set start(value: number) {
             pb_1.Message.setField(this, 1, value);
         }
+        clear_start() {
+            pb_1.Message.setField(this, 1, undefined);
+        }
+        has_start() {
+            return pb_1.Message.getField(this, 1) != null;
+        }
         get end() {
             return pb_1.Message.getFieldWithDefault(this, 2, 0) as number;
         }
         set end(value: number) {
             pb_1.Message.setField(this, 2, value);
+        }
+        clear_end() {
+            pb_1.Message.setField(this, 2, undefined);
+        }
+        has_end() {
+            return pb_1.Message.getField(this, 2) != null;
         }
         static fromObject(data: {
             start?: number;
@@ -926,11 +998,23 @@ export class FieldDescriptorProto extends pb_1.Message {
     set name(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
+    clear_name() {
+        pb_1.Message.setField(this, 1, undefined);
+    }
+    has_name() {
+        return pb_1.Message.getField(this, 1) != null;
+    }
     get number() {
         return pb_1.Message.getFieldWithDefault(this, 3, 0) as number;
     }
     set number(value: number) {
         pb_1.Message.setField(this, 3, value);
+    }
+    clear_number() {
+        pb_1.Message.setField(this, 3, undefined);
+    }
+    has_number() {
+        return pb_1.Message.getField(this, 3) != null;
     }
     get label() {
         return pb_1.Message.getFieldWithDefault(this, 4, FieldDescriptorProto.Label.LABEL_OPTIONAL) as FieldDescriptorProto.Label;
@@ -938,11 +1022,23 @@ export class FieldDescriptorProto extends pb_1.Message {
     set label(value: FieldDescriptorProto.Label) {
         pb_1.Message.setField(this, 4, value);
     }
+    clear_label() {
+        pb_1.Message.setField(this, 4, undefined);
+    }
+    has_label() {
+        return pb_1.Message.getField(this, 4) != null;
+    }
     get type() {
         return pb_1.Message.getFieldWithDefault(this, 5, FieldDescriptorProto.Type.TYPE_DOUBLE) as FieldDescriptorProto.Type;
     }
     set type(value: FieldDescriptorProto.Type) {
         pb_1.Message.setField(this, 5, value);
+    }
+    clear_type() {
+        pb_1.Message.setField(this, 5, undefined);
+    }
+    has_type() {
+        return pb_1.Message.getField(this, 5) != null;
     }
     get type_name() {
         return pb_1.Message.getFieldWithDefault(this, 6, "") as string;
@@ -950,11 +1046,23 @@ export class FieldDescriptorProto extends pb_1.Message {
     set type_name(value: string) {
         pb_1.Message.setField(this, 6, value);
     }
+    clear_type_name() {
+        pb_1.Message.setField(this, 6, undefined);
+    }
+    has_type_name() {
+        return pb_1.Message.getField(this, 6) != null;
+    }
     get extendee() {
         return pb_1.Message.getFieldWithDefault(this, 2, "") as string;
     }
     set extendee(value: string) {
         pb_1.Message.setField(this, 2, value);
+    }
+    clear_extendee() {
+        pb_1.Message.setField(this, 2, undefined);
+    }
+    has_extendee() {
+        return pb_1.Message.getField(this, 2) != null;
     }
     get default_value() {
         return pb_1.Message.getFieldWithDefault(this, 7, "") as string;
@@ -962,11 +1070,23 @@ export class FieldDescriptorProto extends pb_1.Message {
     set default_value(value: string) {
         pb_1.Message.setField(this, 7, value);
     }
+    clear_default_value() {
+        pb_1.Message.setField(this, 7, undefined);
+    }
+    has_default_value() {
+        return pb_1.Message.getField(this, 7) != null;
+    }
     get oneof_index() {
         return pb_1.Message.getFieldWithDefault(this, 9, 0) as number;
     }
     set oneof_index(value: number) {
         pb_1.Message.setField(this, 9, value);
+    }
+    clear_oneof_index() {
+        pb_1.Message.setField(this, 9, undefined);
+    }
+    has_oneof_index() {
+        return pb_1.Message.getField(this, 9) != null;
     }
     get json_name() {
         return pb_1.Message.getFieldWithDefault(this, 10, "") as string;
@@ -974,17 +1094,35 @@ export class FieldDescriptorProto extends pb_1.Message {
     set json_name(value: string) {
         pb_1.Message.setField(this, 10, value);
     }
+    clear_json_name() {
+        pb_1.Message.setField(this, 10, undefined);
+    }
+    has_json_name() {
+        return pb_1.Message.getField(this, 10) != null;
+    }
     get options() {
         return pb_1.Message.getWrapperField(this, FieldOptions, 8) as FieldOptions;
     }
     set options(value: FieldOptions) {
         pb_1.Message.setWrapperField(this, 8, value);
     }
+    clear_options() {
+        this.options = undefined;
+    }
+    has_options() {
+        return pb_1.Message.getField(this, 8) != null;
+    }
     get proto3_optional() {
         return pb_1.Message.getFieldWithDefault(this, 17, false) as boolean;
     }
     set proto3_optional(value: boolean) {
         pb_1.Message.setField(this, 17, value);
+    }
+    clear_proto3_optional() {
+        pb_1.Message.setField(this, 17, undefined);
+    }
+    has_proto3_optional() {
+        return pb_1.Message.getField(this, 17) != null;
     }
     static fromObject(data: {
         name?: string;
@@ -1214,11 +1352,23 @@ export class OneofDescriptorProto extends pb_1.Message {
     set name(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
+    clear_name() {
+        pb_1.Message.setField(this, 1, undefined);
+    }
+    has_name() {
+        return pb_1.Message.getField(this, 1) != null;
+    }
     get options() {
         return pb_1.Message.getWrapperField(this, OneofOptions, 2) as OneofOptions;
     }
     set options(value: OneofOptions) {
         pb_1.Message.setWrapperField(this, 2, value);
+    }
+    clear_options() {
+        this.options = undefined;
+    }
+    has_options() {
+        return pb_1.Message.getField(this, 2) != null;
     }
     static fromObject(data: {
         name?: string;
@@ -1310,6 +1460,12 @@ export class EnumDescriptorProto extends pb_1.Message {
     set name(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
+    clear_name() {
+        pb_1.Message.setField(this, 1, undefined);
+    }
+    has_name() {
+        return pb_1.Message.getField(this, 1) != null;
+    }
     get value() {
         return pb_1.Message.getRepeatedWrapperField(this, EnumValueDescriptorProto, 2) as EnumValueDescriptorProto[];
     }
@@ -1321,6 +1477,12 @@ export class EnumDescriptorProto extends pb_1.Message {
     }
     set options(value: EnumOptions) {
         pb_1.Message.setWrapperField(this, 3, value);
+    }
+    clear_options() {
+        this.options = undefined;
+    }
+    has_options() {
+        return pb_1.Message.getField(this, 3) != null;
     }
     get reserved_range() {
         return pb_1.Message.getRepeatedWrapperField(this, EnumDescriptorProto.EnumReservedRange, 4) as EnumDescriptorProto.EnumReservedRange[];
@@ -1452,11 +1614,23 @@ export namespace EnumDescriptorProto {
         set start(value: number) {
             pb_1.Message.setField(this, 1, value);
         }
+        clear_start() {
+            pb_1.Message.setField(this, 1, undefined);
+        }
+        has_start() {
+            return pb_1.Message.getField(this, 1) != null;
+        }
         get end() {
             return pb_1.Message.getFieldWithDefault(this, 2, 0) as number;
         }
         set end(value: number) {
             pb_1.Message.setField(this, 2, value);
+        }
+        clear_end() {
+            pb_1.Message.setField(this, 2, undefined);
+        }
+        has_end() {
+            return pb_1.Message.getField(this, 2) != null;
         }
         static fromObject(data: {
             start?: number;
@@ -1547,17 +1721,35 @@ export class EnumValueDescriptorProto extends pb_1.Message {
     set name(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
+    clear_name() {
+        pb_1.Message.setField(this, 1, undefined);
+    }
+    has_name() {
+        return pb_1.Message.getField(this, 1) != null;
+    }
     get number() {
         return pb_1.Message.getFieldWithDefault(this, 2, 0) as number;
     }
     set number(value: number) {
         pb_1.Message.setField(this, 2, value);
     }
+    clear_number() {
+        pb_1.Message.setField(this, 2, undefined);
+    }
+    has_number() {
+        return pb_1.Message.getField(this, 2) != null;
+    }
     get options() {
         return pb_1.Message.getWrapperField(this, EnumValueOptions, 3) as EnumValueOptions;
     }
     set options(value: EnumValueOptions) {
         pb_1.Message.setWrapperField(this, 3, value);
+    }
+    clear_options() {
+        this.options = undefined;
+    }
+    has_options() {
+        return pb_1.Message.getField(this, 3) != null;
     }
     static fromObject(data: {
         name?: string;
@@ -1658,6 +1850,12 @@ export class ServiceDescriptorProto extends pb_1.Message {
     set name(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
+    clear_name() {
+        pb_1.Message.setField(this, 1, undefined);
+    }
+    has_name() {
+        return pb_1.Message.getField(this, 1) != null;
+    }
     get method() {
         return pb_1.Message.getRepeatedWrapperField(this, MethodDescriptorProto, 2) as MethodDescriptorProto[];
     }
@@ -1669,6 +1867,12 @@ export class ServiceDescriptorProto extends pb_1.Message {
     }
     set options(value: ServiceOptions) {
         pb_1.Message.setWrapperField(this, 3, value);
+    }
+    clear_options() {
+        this.options = undefined;
+    }
+    has_options() {
+        return pb_1.Message.getField(this, 3) != null;
     }
     static fromObject(data: {
         name?: string;
@@ -1782,11 +1986,23 @@ export class MethodDescriptorProto extends pb_1.Message {
     set name(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
+    clear_name() {
+        pb_1.Message.setField(this, 1, undefined);
+    }
+    has_name() {
+        return pb_1.Message.getField(this, 1) != null;
+    }
     get input_type() {
         return pb_1.Message.getFieldWithDefault(this, 2, "") as string;
     }
     set input_type(value: string) {
         pb_1.Message.setField(this, 2, value);
+    }
+    clear_input_type() {
+        pb_1.Message.setField(this, 2, undefined);
+    }
+    has_input_type() {
+        return pb_1.Message.getField(this, 2) != null;
     }
     get output_type() {
         return pb_1.Message.getFieldWithDefault(this, 3, "") as string;
@@ -1794,11 +2010,23 @@ export class MethodDescriptorProto extends pb_1.Message {
     set output_type(value: string) {
         pb_1.Message.setField(this, 3, value);
     }
+    clear_output_type() {
+        pb_1.Message.setField(this, 3, undefined);
+    }
+    has_output_type() {
+        return pb_1.Message.getField(this, 3) != null;
+    }
     get options() {
         return pb_1.Message.getWrapperField(this, MethodOptions, 4) as MethodOptions;
     }
     set options(value: MethodOptions) {
         pb_1.Message.setWrapperField(this, 4, value);
+    }
+    clear_options() {
+        this.options = undefined;
+    }
+    has_options() {
+        return pb_1.Message.getField(this, 4) != null;
     }
     get client_streaming() {
         return pb_1.Message.getFieldWithDefault(this, 5, false) as boolean;
@@ -1806,11 +2034,23 @@ export class MethodDescriptorProto extends pb_1.Message {
     set client_streaming(value: boolean) {
         pb_1.Message.setField(this, 5, value);
     }
+    clear_client_streaming() {
+        pb_1.Message.setField(this, 5, undefined);
+    }
+    has_client_streaming() {
+        return pb_1.Message.getField(this, 5) != null;
+    }
     get server_streaming() {
         return pb_1.Message.getFieldWithDefault(this, 6, false) as boolean;
     }
     set server_streaming(value: boolean) {
         pb_1.Message.setField(this, 6, value);
+    }
+    clear_server_streaming() {
+        pb_1.Message.setField(this, 6, undefined);
+    }
+    has_server_streaming() {
+        return pb_1.Message.getField(this, 6) != null;
     }
     static fromObject(data: {
         name?: string;
@@ -2023,17 +2263,35 @@ export class FileOptions extends pb_1.Message {
     set java_package(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
+    clear_java_package() {
+        pb_1.Message.setField(this, 1, undefined);
+    }
+    has_java_package() {
+        return pb_1.Message.getField(this, 1) != null;
+    }
     get java_outer_classname() {
         return pb_1.Message.getFieldWithDefault(this, 8, "") as string;
     }
     set java_outer_classname(value: string) {
         pb_1.Message.setField(this, 8, value);
     }
+    clear_java_outer_classname() {
+        pb_1.Message.setField(this, 8, undefined);
+    }
+    has_java_outer_classname() {
+        return pb_1.Message.getField(this, 8) != null;
+    }
     get java_multiple_files() {
         return pb_1.Message.getFieldWithDefault(this, 10, false) as boolean;
     }
     set java_multiple_files(value: boolean) {
         pb_1.Message.setField(this, 10, value);
+    }
+    clear_java_multiple_files() {
+        pb_1.Message.setField(this, 10, undefined);
+    }
+    has_java_multiple_files() {
+        return pb_1.Message.getField(this, 10) != null;
     }
     /** @deprecated*/
     get java_generate_equals_and_hash() {
@@ -2043,11 +2301,23 @@ export class FileOptions extends pb_1.Message {
     set java_generate_equals_and_hash(value: boolean) {
         pb_1.Message.setField(this, 20, value);
     }
+    clear_java_generate_equals_and_hash() {
+        pb_1.Message.setField(this, 20, undefined);
+    }
+    has_java_generate_equals_and_hash() {
+        return pb_1.Message.getField(this, 20) != null;
+    }
     get java_string_check_utf8() {
         return pb_1.Message.getFieldWithDefault(this, 27, false) as boolean;
     }
     set java_string_check_utf8(value: boolean) {
         pb_1.Message.setField(this, 27, value);
+    }
+    clear_java_string_check_utf8() {
+        pb_1.Message.setField(this, 27, undefined);
+    }
+    has_java_string_check_utf8() {
+        return pb_1.Message.getField(this, 27) != null;
     }
     get optimize_for() {
         return pb_1.Message.getFieldWithDefault(this, 9, FileOptions.OptimizeMode.SPEED) as FileOptions.OptimizeMode;
@@ -2055,11 +2325,23 @@ export class FileOptions extends pb_1.Message {
     set optimize_for(value: FileOptions.OptimizeMode) {
         pb_1.Message.setField(this, 9, value);
     }
+    clear_optimize_for() {
+        pb_1.Message.setField(this, 9, undefined);
+    }
+    has_optimize_for() {
+        return pb_1.Message.getField(this, 9) != null;
+    }
     get go_package() {
         return pb_1.Message.getFieldWithDefault(this, 11, "") as string;
     }
     set go_package(value: string) {
         pb_1.Message.setField(this, 11, value);
+    }
+    clear_go_package() {
+        pb_1.Message.setField(this, 11, undefined);
+    }
+    has_go_package() {
+        return pb_1.Message.getField(this, 11) != null;
     }
     get cc_generic_services() {
         return pb_1.Message.getFieldWithDefault(this, 16, false) as boolean;
@@ -2067,11 +2349,23 @@ export class FileOptions extends pb_1.Message {
     set cc_generic_services(value: boolean) {
         pb_1.Message.setField(this, 16, value);
     }
+    clear_cc_generic_services() {
+        pb_1.Message.setField(this, 16, undefined);
+    }
+    has_cc_generic_services() {
+        return pb_1.Message.getField(this, 16) != null;
+    }
     get java_generic_services() {
         return pb_1.Message.getFieldWithDefault(this, 17, false) as boolean;
     }
     set java_generic_services(value: boolean) {
         pb_1.Message.setField(this, 17, value);
+    }
+    clear_java_generic_services() {
+        pb_1.Message.setField(this, 17, undefined);
+    }
+    has_java_generic_services() {
+        return pb_1.Message.getField(this, 17) != null;
     }
     get py_generic_services() {
         return pb_1.Message.getFieldWithDefault(this, 18, false) as boolean;
@@ -2079,11 +2373,23 @@ export class FileOptions extends pb_1.Message {
     set py_generic_services(value: boolean) {
         pb_1.Message.setField(this, 18, value);
     }
+    clear_py_generic_services() {
+        pb_1.Message.setField(this, 18, undefined);
+    }
+    has_py_generic_services() {
+        return pb_1.Message.getField(this, 18) != null;
+    }
     get php_generic_services() {
         return pb_1.Message.getFieldWithDefault(this, 42, false) as boolean;
     }
     set php_generic_services(value: boolean) {
         pb_1.Message.setField(this, 42, value);
+    }
+    clear_php_generic_services() {
+        pb_1.Message.setField(this, 42, undefined);
+    }
+    has_php_generic_services() {
+        return pb_1.Message.getField(this, 42) != null;
     }
     get deprecated() {
         return pb_1.Message.getFieldWithDefault(this, 23, false) as boolean;
@@ -2091,11 +2397,23 @@ export class FileOptions extends pb_1.Message {
     set deprecated(value: boolean) {
         pb_1.Message.setField(this, 23, value);
     }
+    clear_deprecated() {
+        pb_1.Message.setField(this, 23, undefined);
+    }
+    has_deprecated() {
+        return pb_1.Message.getField(this, 23) != null;
+    }
     get cc_enable_arenas() {
         return pb_1.Message.getFieldWithDefault(this, 31, true) as boolean;
     }
     set cc_enable_arenas(value: boolean) {
         pb_1.Message.setField(this, 31, value);
+    }
+    clear_cc_enable_arenas() {
+        pb_1.Message.setField(this, 31, undefined);
+    }
+    has_cc_enable_arenas() {
+        return pb_1.Message.getField(this, 31) != null;
     }
     get objc_class_prefix() {
         return pb_1.Message.getFieldWithDefault(this, 36, "") as string;
@@ -2103,11 +2421,23 @@ export class FileOptions extends pb_1.Message {
     set objc_class_prefix(value: string) {
         pb_1.Message.setField(this, 36, value);
     }
+    clear_objc_class_prefix() {
+        pb_1.Message.setField(this, 36, undefined);
+    }
+    has_objc_class_prefix() {
+        return pb_1.Message.getField(this, 36) != null;
+    }
     get csharp_namespace() {
         return pb_1.Message.getFieldWithDefault(this, 37, "") as string;
     }
     set csharp_namespace(value: string) {
         pb_1.Message.setField(this, 37, value);
+    }
+    clear_csharp_namespace() {
+        pb_1.Message.setField(this, 37, undefined);
+    }
+    has_csharp_namespace() {
+        return pb_1.Message.getField(this, 37) != null;
     }
     get swift_prefix() {
         return pb_1.Message.getFieldWithDefault(this, 39, "") as string;
@@ -2115,11 +2445,23 @@ export class FileOptions extends pb_1.Message {
     set swift_prefix(value: string) {
         pb_1.Message.setField(this, 39, value);
     }
+    clear_swift_prefix() {
+        pb_1.Message.setField(this, 39, undefined);
+    }
+    has_swift_prefix() {
+        return pb_1.Message.getField(this, 39) != null;
+    }
     get php_class_prefix() {
         return pb_1.Message.getFieldWithDefault(this, 40, "") as string;
     }
     set php_class_prefix(value: string) {
         pb_1.Message.setField(this, 40, value);
+    }
+    clear_php_class_prefix() {
+        pb_1.Message.setField(this, 40, undefined);
+    }
+    has_php_class_prefix() {
+        return pb_1.Message.getField(this, 40) != null;
     }
     get php_namespace() {
         return pb_1.Message.getFieldWithDefault(this, 41, "") as string;
@@ -2127,17 +2469,35 @@ export class FileOptions extends pb_1.Message {
     set php_namespace(value: string) {
         pb_1.Message.setField(this, 41, value);
     }
+    clear_php_namespace() {
+        pb_1.Message.setField(this, 41, undefined);
+    }
+    has_php_namespace() {
+        return pb_1.Message.getField(this, 41) != null;
+    }
     get php_metadata_namespace() {
         return pb_1.Message.getFieldWithDefault(this, 44, "") as string;
     }
     set php_metadata_namespace(value: string) {
         pb_1.Message.setField(this, 44, value);
     }
+    clear_php_metadata_namespace() {
+        pb_1.Message.setField(this, 44, undefined);
+    }
+    has_php_metadata_namespace() {
+        return pb_1.Message.getField(this, 44) != null;
+    }
     get ruby_package() {
         return pb_1.Message.getFieldWithDefault(this, 45, "") as string;
     }
     set ruby_package(value: string) {
         pb_1.Message.setField(this, 45, value);
+    }
+    clear_ruby_package() {
+        pb_1.Message.setField(this, 45, undefined);
+    }
+    has_ruby_package() {
+        return pb_1.Message.getField(this, 45) != null;
     }
     get uninterpreted_option() {
         return pb_1.Message.getRepeatedWrapperField(this, UninterpretedOption, 999) as UninterpretedOption[];
@@ -2492,11 +2852,23 @@ export class MessageOptions extends pb_1.Message {
     set message_set_wire_format(value: boolean) {
         pb_1.Message.setField(this, 1, value);
     }
+    clear_message_set_wire_format() {
+        pb_1.Message.setField(this, 1, undefined);
+    }
+    has_message_set_wire_format() {
+        return pb_1.Message.getField(this, 1) != null;
+    }
     get no_standard_descriptor_accessor() {
         return pb_1.Message.getFieldWithDefault(this, 2, false) as boolean;
     }
     set no_standard_descriptor_accessor(value: boolean) {
         pb_1.Message.setField(this, 2, value);
+    }
+    clear_no_standard_descriptor_accessor() {
+        pb_1.Message.setField(this, 2, undefined);
+    }
+    has_no_standard_descriptor_accessor() {
+        return pb_1.Message.getField(this, 2) != null;
     }
     get deprecated() {
         return pb_1.Message.getFieldWithDefault(this, 3, false) as boolean;
@@ -2504,11 +2876,23 @@ export class MessageOptions extends pb_1.Message {
     set deprecated(value: boolean) {
         pb_1.Message.setField(this, 3, value);
     }
+    clear_deprecated() {
+        pb_1.Message.setField(this, 3, undefined);
+    }
+    has_deprecated() {
+        return pb_1.Message.getField(this, 3) != null;
+    }
     get map_entry() {
         return pb_1.Message.getFieldWithDefault(this, 7, false) as boolean;
     }
     set map_entry(value: boolean) {
         pb_1.Message.setField(this, 7, value);
+    }
+    clear_map_entry() {
+        pb_1.Message.setField(this, 7, undefined);
+    }
+    has_map_entry() {
+        return pb_1.Message.getField(this, 7) != null;
     }
     get uninterpreted_option() {
         return pb_1.Message.getRepeatedWrapperField(this, UninterpretedOption, 999) as UninterpretedOption[];
@@ -2656,11 +3040,23 @@ export class FieldOptions extends pb_1.Message {
     set ctype(value: FieldOptions.CType) {
         pb_1.Message.setField(this, 1, value);
     }
+    clear_ctype() {
+        pb_1.Message.setField(this, 1, undefined);
+    }
+    has_ctype() {
+        return pb_1.Message.getField(this, 1) != null;
+    }
     get packed() {
         return pb_1.Message.getFieldWithDefault(this, 2, false) as boolean;
     }
     set packed(value: boolean) {
         pb_1.Message.setField(this, 2, value);
+    }
+    clear_packed() {
+        pb_1.Message.setField(this, 2, undefined);
+    }
+    has_packed() {
+        return pb_1.Message.getField(this, 2) != null;
     }
     get jstype() {
         return pb_1.Message.getFieldWithDefault(this, 6, FieldOptions.JSType.JS_NORMAL) as FieldOptions.JSType;
@@ -2668,11 +3064,23 @@ export class FieldOptions extends pb_1.Message {
     set jstype(value: FieldOptions.JSType) {
         pb_1.Message.setField(this, 6, value);
     }
+    clear_jstype() {
+        pb_1.Message.setField(this, 6, undefined);
+    }
+    has_jstype() {
+        return pb_1.Message.getField(this, 6) != null;
+    }
     get lazy() {
         return pb_1.Message.getFieldWithDefault(this, 5, false) as boolean;
     }
     set lazy(value: boolean) {
         pb_1.Message.setField(this, 5, value);
+    }
+    clear_lazy() {
+        pb_1.Message.setField(this, 5, undefined);
+    }
+    has_lazy() {
+        return pb_1.Message.getField(this, 5) != null;
     }
     get deprecated() {
         return pb_1.Message.getFieldWithDefault(this, 3, false) as boolean;
@@ -2680,11 +3088,23 @@ export class FieldOptions extends pb_1.Message {
     set deprecated(value: boolean) {
         pb_1.Message.setField(this, 3, value);
     }
+    clear_deprecated() {
+        pb_1.Message.setField(this, 3, undefined);
+    }
+    has_deprecated() {
+        return pb_1.Message.getField(this, 3) != null;
+    }
     get weak() {
         return pb_1.Message.getFieldWithDefault(this, 10, false) as boolean;
     }
     set weak(value: boolean) {
         pb_1.Message.setField(this, 10, value);
+    }
+    clear_weak() {
+        pb_1.Message.setField(this, 10, undefined);
+    }
+    has_weak() {
+        return pb_1.Message.getField(this, 10) != null;
     }
     get uninterpreted_option() {
         return pb_1.Message.getRepeatedWrapperField(this, UninterpretedOption, 999) as UninterpretedOption[];
@@ -2918,11 +3338,23 @@ export class EnumOptions extends pb_1.Message {
     set allow_alias(value: boolean) {
         pb_1.Message.setField(this, 2, value);
     }
+    clear_allow_alias() {
+        pb_1.Message.setField(this, 2, undefined);
+    }
+    has_allow_alias() {
+        return pb_1.Message.getField(this, 2) != null;
+    }
     get deprecated() {
         return pb_1.Message.getFieldWithDefault(this, 3, false) as boolean;
     }
     set deprecated(value: boolean) {
         pb_1.Message.setField(this, 3, value);
+    }
+    clear_deprecated() {
+        pb_1.Message.setField(this, 3, undefined);
+    }
+    has_deprecated() {
+        return pb_1.Message.getField(this, 3) != null;
     }
     get uninterpreted_option() {
         return pb_1.Message.getRepeatedWrapperField(this, UninterpretedOption, 999) as UninterpretedOption[];
@@ -3024,6 +3456,12 @@ export class EnumValueOptions extends pb_1.Message {
     set deprecated(value: boolean) {
         pb_1.Message.setField(this, 1, value);
     }
+    clear_deprecated() {
+        pb_1.Message.setField(this, 1, undefined);
+    }
+    has_deprecated() {
+        return pb_1.Message.getField(this, 1) != null;
+    }
     get uninterpreted_option() {
         return pb_1.Message.getRepeatedWrapperField(this, UninterpretedOption, 999) as UninterpretedOption[];
     }
@@ -3110,6 +3548,12 @@ export class ServiceOptions extends pb_1.Message {
     }
     set deprecated(value: boolean) {
         pb_1.Message.setField(this, 33, value);
+    }
+    clear_deprecated() {
+        pb_1.Message.setField(this, 33, undefined);
+    }
+    has_deprecated() {
+        return pb_1.Message.getField(this, 33) != null;
     }
     get uninterpreted_option() {
         return pb_1.Message.getRepeatedWrapperField(this, UninterpretedOption, 999) as UninterpretedOption[];
@@ -3202,11 +3646,23 @@ export class MethodOptions extends pb_1.Message {
     set deprecated(value: boolean) {
         pb_1.Message.setField(this, 33, value);
     }
+    clear_deprecated() {
+        pb_1.Message.setField(this, 33, undefined);
+    }
+    has_deprecated() {
+        return pb_1.Message.getField(this, 33) != null;
+    }
     get idempotency_level() {
         return pb_1.Message.getFieldWithDefault(this, 34, MethodOptions.IdempotencyLevel.IDEMPOTENCY_UNKNOWN) as MethodOptions.IdempotencyLevel;
     }
     set idempotency_level(value: MethodOptions.IdempotencyLevel) {
         pb_1.Message.setField(this, 34, value);
+    }
+    clear_idempotency_level() {
+        pb_1.Message.setField(this, 34, undefined);
+    }
+    has_idempotency_level() {
+        return pb_1.Message.getField(this, 34) != null;
     }
     get uninterpreted_option() {
         return pb_1.Message.getRepeatedWrapperField(this, UninterpretedOption, 999) as UninterpretedOption[];
@@ -3341,11 +3797,23 @@ export class UninterpretedOption extends pb_1.Message {
     set identifier_value(value: string) {
         pb_1.Message.setField(this, 3, value);
     }
+    clear_identifier_value() {
+        pb_1.Message.setField(this, 3, undefined);
+    }
+    has_identifier_value() {
+        return pb_1.Message.getField(this, 3) != null;
+    }
     get positive_int_value() {
         return pb_1.Message.getFieldWithDefault(this, 4, 0) as number;
     }
     set positive_int_value(value: number) {
         pb_1.Message.setField(this, 4, value);
+    }
+    clear_positive_int_value() {
+        pb_1.Message.setField(this, 4, undefined);
+    }
+    has_positive_int_value() {
+        return pb_1.Message.getField(this, 4) != null;
     }
     get negative_int_value() {
         return pb_1.Message.getFieldWithDefault(this, 5, 0) as number;
@@ -3353,11 +3821,23 @@ export class UninterpretedOption extends pb_1.Message {
     set negative_int_value(value: number) {
         pb_1.Message.setField(this, 5, value);
     }
+    clear_negative_int_value() {
+        pb_1.Message.setField(this, 5, undefined);
+    }
+    has_negative_int_value() {
+        return pb_1.Message.getField(this, 5) != null;
+    }
     get double_value() {
         return pb_1.Message.getFieldWithDefault(this, 6, 0) as number;
     }
     set double_value(value: number) {
         pb_1.Message.setField(this, 6, value);
+    }
+    clear_double_value() {
+        pb_1.Message.setField(this, 6, undefined);
+    }
+    has_double_value() {
+        return pb_1.Message.getField(this, 6) != null;
     }
     get string_value() {
         return pb_1.Message.getFieldWithDefault(this, 7, new Uint8Array()) as Uint8Array;
@@ -3365,11 +3845,23 @@ export class UninterpretedOption extends pb_1.Message {
     set string_value(value: Uint8Array) {
         pb_1.Message.setField(this, 7, value);
     }
+    clear_string_value() {
+        pb_1.Message.setField(this, 7, undefined);
+    }
+    has_string_value() {
+        return pb_1.Message.getField(this, 7) != null;
+    }
     get aggregate_value() {
         return pb_1.Message.getFieldWithDefault(this, 8, "") as string;
     }
     set aggregate_value(value: string) {
         pb_1.Message.setField(this, 8, value);
+    }
+    clear_aggregate_value() {
+        pb_1.Message.setField(this, 8, undefined);
+    }
+    has_aggregate_value() {
+        return pb_1.Message.getField(this, 8) != null;
     }
     static fromObject(data: {
         name?: ReturnType<typeof UninterpretedOption.NamePart.prototype.toObject>[];
@@ -3516,11 +4008,23 @@ export namespace UninterpretedOption {
         set name_part(value: string) {
             pb_1.Message.setField(this, 1, value);
         }
+        clear_name_part() {
+            pb_1.Message.setField(this, 1, undefined);
+        }
+        has_name_part() {
+            return pb_1.Message.getField(this, 1) != null;
+        }
         get is_extension() {
             return pb_1.Message.getField(this, 2) as boolean;
         }
         set is_extension(value: boolean) {
             pb_1.Message.setField(this, 2, value);
+        }
+        clear_is_extension() {
+            pb_1.Message.setField(this, 2, undefined);
+        }
+        has_is_extension() {
+            return pb_1.Message.getField(this, 2) != null;
         }
         static fromObject(data: {
             name_part?: string;
@@ -3687,11 +4191,23 @@ export namespace SourceCodeInfo {
         set leading_comments(value: string) {
             pb_1.Message.setField(this, 3, value);
         }
+        clear_leading_comments() {
+            pb_1.Message.setField(this, 3, undefined);
+        }
+        has_leading_comments() {
+            return pb_1.Message.getField(this, 3) != null;
+        }
         get trailing_comments() {
             return pb_1.Message.getFieldWithDefault(this, 4, "") as string;
         }
         set trailing_comments(value: string) {
             pb_1.Message.setField(this, 4, value);
+        }
+        clear_trailing_comments() {
+            pb_1.Message.setField(this, 4, undefined);
+        }
+        has_trailing_comments() {
+            return pb_1.Message.getField(this, 4) != null;
         }
         get leading_detached_comments() {
             return pb_1.Message.getField(this, 6) as string[];
@@ -3890,17 +4406,35 @@ export namespace GeneratedCodeInfo {
         set source_file(value: string) {
             pb_1.Message.setField(this, 2, value);
         }
+        clear_source_file() {
+            pb_1.Message.setField(this, 2, undefined);
+        }
+        has_source_file() {
+            return pb_1.Message.getField(this, 2) != null;
+        }
         get begin() {
             return pb_1.Message.getFieldWithDefault(this, 3, 0) as number;
         }
         set begin(value: number) {
             pb_1.Message.setField(this, 3, value);
         }
+        clear_begin() {
+            pb_1.Message.setField(this, 3, undefined);
+        }
+        has_begin() {
+            return pb_1.Message.getField(this, 3) != null;
+        }
         get end() {
             return pb_1.Message.getFieldWithDefault(this, 4, 0) as number;
         }
         set end(value: number) {
             pb_1.Message.setField(this, 4, value);
+        }
+        clear_end() {
+            pb_1.Message.setField(this, 4, undefined);
+        }
+        has_end() {
+            return pb_1.Message.getField(this, 4) != null;
         }
         static fromObject(data: {
             path: number[];
