@@ -229,34 +229,34 @@ export class DefaultMessageV2WithoutDefault extends pb_1.Message {
         return cases[pb_1.Message.computeOneofCase(this, [22, 23])];
     }
     static fromObject(data: {
-        message: ReturnType<typeof dependency_1.DefaultCommonMessage.prototype.toObject>;
-        enum: dependency_1.DefaultCommonEnum;
-        bool: boolean;
-        string: string;
-        int32: number;
-        fixed32: number;
-        sfixed32: number;
-        uint32: number;
-        sint32: number;
-        int64: number;
-        fixed64: number;
-        sfixed64: number;
-        uint64: number;
-        sint64: number;
-        float: number;
-        double: number;
-        int_but_string: string;
-        map_string_string: {
+        message?: ReturnType<typeof dependency_1.DefaultCommonMessage.prototype.toObject>;
+        enum?: dependency_1.DefaultCommonEnum;
+        bool?: boolean;
+        string?: string;
+        int32?: number;
+        fixed32?: number;
+        sfixed32?: number;
+        uint32?: number;
+        sint32?: number;
+        int64?: number;
+        fixed64?: number;
+        sfixed64?: number;
+        uint64?: number;
+        sint64?: number;
+        float?: number;
+        double?: number;
+        int_but_string?: string;
+        map_string_string?: {
             [key: string]: string;
         };
-        map_string_message: {
+        map_string_message?: {
             [key: string]: ReturnType<typeof dependency_1.DefaultCommonMessage.prototype.toObject>;
         };
         array_int32: number[];
-        array_message: ReturnType<typeof dependency_1.DefaultCommonMessage.prototype.toObject>[];
+        array_message?: ReturnType<typeof dependency_1.DefaultCommonMessage.prototype.toObject>[];
         one_of_int32?: number;
         one_of_message?: ReturnType<typeof dependency_1.DefaultCommonMessage.prototype.toObject>;
-        bytes: Uint8Array;
+        bytes?: Uint8Array;
     }): DefaultMessageV2WithoutDefault {
         const message = new DefaultMessageV2WithoutDefault({
             message: dependency_1.DefaultCommonMessage.fromObject(data.message),
@@ -292,63 +292,105 @@ export class DefaultMessageV2WithoutDefault extends pb_1.Message {
     }
     toObject() {
         const data: {
-            message: ReturnType<typeof dependency_1.DefaultCommonMessage.prototype.toObject>;
-            enum: dependency_1.DefaultCommonEnum;
-            bool: boolean;
-            string: string;
-            int32: number;
-            fixed32: number;
-            sfixed32: number;
-            uint32: number;
-            sint32: number;
-            int64: number;
-            fixed64: number;
-            sfixed64: number;
-            uint64: number;
-            sint64: number;
-            float: number;
-            double: number;
-            int_but_string: string;
-            map_string_string: {
+            message?: ReturnType<typeof dependency_1.DefaultCommonMessage.prototype.toObject>;
+            enum?: dependency_1.DefaultCommonEnum;
+            bool?: boolean;
+            string?: string;
+            int32?: number;
+            fixed32?: number;
+            sfixed32?: number;
+            uint32?: number;
+            sint32?: number;
+            int64?: number;
+            fixed64?: number;
+            sfixed64?: number;
+            uint64?: number;
+            sint64?: number;
+            float?: number;
+            double?: number;
+            int_but_string?: string;
+            map_string_string?: {
                 [key: string]: string;
             };
-            map_string_message: {
+            map_string_message?: {
                 [key: string]: ReturnType<typeof dependency_1.DefaultCommonMessage.prototype.toObject>;
             };
             array_int32: number[];
-            array_message: ReturnType<typeof dependency_1.DefaultCommonMessage.prototype.toObject>[];
+            array_message?: ReturnType<typeof dependency_1.DefaultCommonMessage.prototype.toObject>[];
             one_of_int32?: number;
             one_of_message?: ReturnType<typeof dependency_1.DefaultCommonMessage.prototype.toObject>;
-            bytes: Uint8Array;
+            bytes?: Uint8Array;
         } = {
-            message: this.message.toObject(),
-            enum: this.enum,
-            bool: this.bool,
-            string: this.string,
-            int32: this.int32,
-            fixed32: this.fixed32,
-            sfixed32: this.sfixed32,
-            uint32: this.uint32,
-            sint32: this.sint32,
-            int64: this.int64,
-            fixed64: this.fixed64,
-            sfixed64: this.sfixed64,
-            uint64: this.uint64,
-            sint64: this.sint64,
-            float: this.float,
-            double: this.double,
-            int_but_string: this.int_but_string,
-            map_string_string: Object.fromEntries(this.map_string_string),
-            map_string_message: Object.fromEntries(Array.from(this.map_string_message).map(([key, value]) => [key, value.toObject()])),
-            array_int32: this.array_int32,
-            array_message: this.array_message.map((item: dependency_1.DefaultCommonMessage) => item.toObject()),
-            bytes: this.bytes
+            array_int32: this.array_int32
         };
-        if (pb_1.Message.getField(this, 22) != null) {
+        if (this.message != null) {
+            data.message = this.message.toObject();
+        }
+        if (this.enum != null) {
+            data.enum = this.enum;
+        }
+        if (this.bool != null) {
+            data.bool = this.bool;
+        }
+        if (this.string != null) {
+            data.string = this.string;
+        }
+        if (this.int32 != null) {
+            data.int32 = this.int32;
+        }
+        if (this.fixed32 != null) {
+            data.fixed32 = this.fixed32;
+        }
+        if (this.sfixed32 != null) {
+            data.sfixed32 = this.sfixed32;
+        }
+        if (this.uint32 != null) {
+            data.uint32 = this.uint32;
+        }
+        if (this.sint32 != null) {
+            data.sint32 = this.sint32;
+        }
+        if (this.int64 != null) {
+            data.int64 = this.int64;
+        }
+        if (this.fixed64 != null) {
+            data.fixed64 = this.fixed64;
+        }
+        if (this.sfixed64 != null) {
+            data.sfixed64 = this.sfixed64;
+        }
+        if (this.uint64 != null) {
+            data.uint64 = this.uint64;
+        }
+        if (this.sint64 != null) {
+            data.sint64 = this.sint64;
+        }
+        if (this.float != null) {
+            data.float = this.float;
+        }
+        if (this.double != null) {
+            data.double = this.double;
+        }
+        if (this.int_but_string != null) {
+            data.int_but_string = this.int_but_string;
+        }
+        if (this.map_string_string.size > 0) {
+            data.map_string_string = Object.fromEntries(this.map_string_string);
+        }
+        if (this.map_string_message.size > 0) {
+            data.map_string_message = Object.fromEntries(Array.from(this.map_string_message).map(([key, value]) => [key, value.toObject()]));
+        }
+        if (this.array_message != null) {
+            data.array_message = this.array_message.map((item: dependency_1.DefaultCommonMessage) => item.toObject());
+        }
+        if (this.one_of_int32 != null) {
             data.one_of_int32 = this.one_of_int32;
         }
-        if (pb_1.Message.getField(this, 23) != null) {
+        if (this.one_of_message != null) {
             data.one_of_message = this.one_of_message.toObject();
+        }
+        if (this.bytes != null) {
+            data.bytes = this.bytes;
         }
         return data;
     }
@@ -689,7 +731,7 @@ export class DefaultMessageV2WithDefault extends pb_1.Message {
         return cases[pb_1.Message.computeOneofCase(this, [18, 19])];
     }
     static fromObject(data: {
-        message: ReturnType<typeof dependency_1.DefaultCommonMessage.prototype.toObject>;
+        message?: ReturnType<typeof dependency_1.DefaultCommonMessage.prototype.toObject>;
         enum: dependency_1.DefaultCommonEnum;
         bool: boolean;
         string: string;
@@ -738,7 +780,7 @@ export class DefaultMessageV2WithDefault extends pb_1.Message {
     }
     toObject() {
         const data: {
-            message: ReturnType<typeof dependency_1.DefaultCommonMessage.prototype.toObject>;
+            message?: ReturnType<typeof dependency_1.DefaultCommonMessage.prototype.toObject>;
             enum: dependency_1.DefaultCommonEnum;
             bool: boolean;
             string: string;
@@ -758,7 +800,6 @@ export class DefaultMessageV2WithDefault extends pb_1.Message {
             one_of_int32?: number;
             one_of_message?: ReturnType<typeof dependency_1.DefaultCommonMessage.prototype.toObject>;
         } = {
-            message: this.message.toObject(),
             enum: this.enum,
             bool: this.bool,
             string: this.string,
@@ -776,10 +817,13 @@ export class DefaultMessageV2WithDefault extends pb_1.Message {
             double: this.double,
             int_but_string: this.int_but_string
         };
-        if (pb_1.Message.getField(this, 18) != null) {
+        if (this.message != null) {
+            data.message = this.message.toObject();
+        }
+        if (this.one_of_int32 != null) {
             data.one_of_int32 = this.one_of_int32;
         }
-        if (pb_1.Message.getField(this, 19) != null) {
+        if (this.one_of_message != null) {
             data.one_of_message = this.one_of_message.toObject();
         }
         return data;

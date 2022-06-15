@@ -68,13 +68,13 @@ export class NoNamespace extends pb_1.Message {
             other_fields?: ReturnType<typeof dependency_2.MessageFields.prototype.toObject>;
             batch_fields?: ReturnType<typeof dependency_1.eventSchedulingContextBatch.prototype.toObject>;
         } = {};
-        if (pb_1.Message.getField(this, 1) != null) {
+        if (this.label != null) {
             data.label = this.label.toObject();
         }
-        if (pb_1.Message.getField(this, 2) != null) {
+        if (this.other_fields != null) {
             data.other_fields = this.other_fields.toObject();
         }
-        if (pb_1.Message.getField(this, 3) != null) {
+        if (this.batch_fields != null) {
             data.batch_fields = this.batch_fields.toObject();
         }
         return data;

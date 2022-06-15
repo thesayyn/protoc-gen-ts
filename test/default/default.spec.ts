@@ -3,7 +3,7 @@ import { DefaultMessageV2WithoutDefault, DefaultMessageV2WithDefault } from "./d
 import { DefaultMessageV3 } from "./default_proto3";
 import { DefaultCommonEnum } from "./default_common";
 
-function toObjectWithDefaults(message: Object): Object {
+function toObjectPreservingUndefined(message: Object): Object {
     // unfortunately, it is not as simple as: Object.keys(message).filter(k => typeof message[k] != "function")
     function correctFieldValue(fieldValue: unknown): unknown {
         return fieldValue instanceof Map ? { ...fieldValue } : fieldValue;
@@ -24,10 +24,14 @@ describe("defaults", () => {
         expect(message.string_field).toBe("default value");
     });
 
-    it("should not return defaults in the output of toObject()", () => {
+    it("should return defaults in the output of toObject()", () => {
         const message = new MessageWithDefault();
 
-        expect(message.toObject()).toEqual({});
+        expect(message.toObject()).toEqual({
+            bool_field: true,
+            int32_field: 12,
+            string_field: "default value",
+        });
     });
 
     it("should return implicit defaults for optional fields (v2)", () => {
@@ -38,14 +42,18 @@ describe("defaults", () => {
         expect(message.string_field).toBe("");
     });
 
-    it("should not return implicit defaults in the output of toObject() (v2)", () => {
+    it("should return implicit defaults in the output of toObject() (v2)", () => {
         const message = new MessageWithImplicitDefault();
 
-        expect(message.toObject()).toEqual({});
+        expect(message.toObject()).toEqual({
+            bool_field: false,
+            int32_field: 0,
+            string_field: "",
+        });
     });
 
     it("should not return defaults for required fields without [default=] (v2)", () => {
-        expect(toObjectWithDefaults(new DefaultMessageV2WithoutDefault)).toEqual({
+        expect(toObjectPreservingUndefined(new DefaultMessageV2WithoutDefault())).toEqual({
             message: undefined,
             enum: undefined,
 
@@ -77,12 +85,17 @@ describe("defaults", () => {
             one_of_message: undefined,
 
             bytes: undefined
-        })
+        });
+
+        expect(new DefaultMessageV2WithoutDefault().toObject()).toEqual({
+            array_int32: [],
+            array_message: [],
+            one_of_int32: 0, // scalar oneof fields have implicit defaults
+        });
     });
 
     it("should return explicitly specified defaults (v2)", () => {
-        expect(toObjectWithDefaults(new DefaultMessageV2WithDefault)).toEqual({
-            message: undefined,
+        expect(new DefaultMessageV2WithDefault().toObject()).toEqual({
             enum: DefaultCommonEnum.TWO,
 
             bool: true,
@@ -103,9 +116,8 @@ describe("defaults", () => {
 
             int_but_string: "17",
 
-            one_of_int32: 18,
-            one_of_message: undefined
-        })
+            one_of_int32: 18
+        });
     });
 
     it("should not serialize fields that have not been set (v2)", () => {
@@ -182,7 +194,7 @@ describe("defaults", () => {
     });
 
     it("should return defaults (v3)", () => {
-        expect(toObjectWithDefaults(new DefaultMessageV3())).toEqual({
+        expect(toObjectPreservingUndefined(new DefaultMessageV3())).toEqual({
             message: undefined,
             enum: DefaultCommonEnum.ZERO,
 
@@ -215,6 +227,35 @@ describe("defaults", () => {
 
             bytes: new Uint8Array()
         })
+
+        expect(new DefaultMessageV3().toObject()).toEqual({
+            enum: DefaultCommonEnum.ZERO,
+
+            bool: false,
+            string: "",
+
+            int32: 0,
+            fixed32: 0,
+            sfixed32: 0,
+            uint32: 0,
+            sint32: 0,
+            int64: 0,
+            fixed64: 0,
+            sfixed64: 0,
+            uint64: 0,
+            sint64: 0,
+            float: 0,
+            double: 0,
+
+            int_but_string: "",
+
+            array_int32: [],
+            array_message: [],
+
+            one_of_int32: 0,
+
+            bytes: new Uint8Array()
+        });
     });
 
     it("should be serialized defaults (v3)", () => {
@@ -253,4 +294,4 @@ describe("defaults", () => {
 
         expect(transferredDefaults.bytes).toEqual(new Uint8Array());
     });
-})
+});

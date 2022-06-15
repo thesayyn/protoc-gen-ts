@@ -33,7 +33,12 @@ describe("SubMessages", () => {
                 field_1: "field_1_value",
                 field_2: "field_2_value"
             },
-            array_prop: [{}]
+            array_prop: [
+                {
+                    field_1: "",
+                    field_2: "",
+                },
+            ]
         })
     })
 
@@ -81,10 +86,14 @@ describe("SubMessages", () => {
                     field_2: "test"
                 },
                 {
+                    field_1: "",
                     field_2: "test"
                 }
             ],
-            sub_message: {}
+            sub_message: {
+                field_1: "",
+                field_2: "",
+            }
         });
     })
 

@@ -149,7 +149,7 @@ export function isMessage(fieldDescriptor: descriptor.FieldDescriptorProto) {
 }
 
 /**
- * @param {descriptor.FieldDescriptorProto} fieldDescriptor
+ * @param {descriptor.FieldDescriptorProto} fieldDescriptorń
  */
 export function isNumber(fieldDescriptor: descriptor.FieldDescriptorProto) {
   switch (fieldDescriptor.type) {
@@ -197,6 +197,20 @@ export function isOptional(
   return (
     fieldDescriptor.label ==
     descriptor.FieldDescriptorProto.Label.LABEL_OPTIONAL
+  );
+}
+/**
+ * @param {descriptor.FileDescriptorProto} rootDescriptor
+ * @param {descriptor.FieldDescriptorProto} fieldDescriptor
+ */
+export function isRequiredWithoutExplicitDefault(
+  rootDescriptor: descriptor.FileDescriptorProto,
+  fieldDescriptor: descriptor.FieldDescriptorProto,
+) {
+  return (
+    rootDescriptor.syntax != "proto3" &&
+    fieldDescriptor.label == descriptor.FieldDescriptorProto.Label.LABEL_REQUIRED &&
+    pb.Message.getField(fieldDescriptor, 7) == null // 7 means default value
   );
 }
 

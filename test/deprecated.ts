@@ -97,13 +97,13 @@ export class MessageName extends pb_1.Message {
             me?: string;
             me_deprecated?: string;
         } = {};
-        if (pb_1.Message.getField(this, 1) != null) {
+        if (this.deprecated_field != null) {
             data.deprecated_field = this.deprecated_field;
         }
-        if (pb_1.Message.getField(this, 2) != null) {
+        if (this.me != null) {
             data.me = this.me;
         }
-        if (pb_1.Message.getField(this, 3) != null) {
+        if (this.me_deprecated != null) {
             data.me_deprecated = this.me_deprecated;
         }
         return data;

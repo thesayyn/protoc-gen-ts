@@ -30,8 +30,8 @@ export class NoOptionalValues extends pb_1.Message {
         pb_1.Message.setField(this, 2, value);
     }
     static fromObject(data: {
-        test: string;
-        test2: string;
+        test?: string;
+        test2?: string;
     }): NoOptionalValues {
         const message = new NoOptionalValues({
             test: data.test,
@@ -41,12 +41,15 @@ export class NoOptionalValues extends pb_1.Message {
     }
     toObject() {
         const data: {
-            test: string;
-            test2: string;
-        } = {
-            test: this.test,
-            test2: this.test2
-        };
+            test?: string;
+            test2?: string;
+        } = {};
+        if (this.test != null) {
+            data.test = this.test;
+        }
+        if (this.test2 != null) {
+            data.test2 = this.test2;
+        }
         return data;
     }
     serialize(): Uint8Array;

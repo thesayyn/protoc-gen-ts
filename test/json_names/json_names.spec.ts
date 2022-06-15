@@ -57,7 +57,9 @@ describe('JSON Names', () => {
         aNestedInteger: 456,
       },
       colorSpace: ColorSpace.RED_GREEN_BLUE,
+      anOptionalString: '',
       aSingleString: 'spam',
+      aSingleNumber: 0,
     });
   });
 
@@ -77,6 +79,8 @@ describe('JSON Names', () => {
         aNestedInteger: 102,
       },
       colorSpace: ColorSpace.CYAN_YELLOW_MAGENTA_BLACK,
+      anOptionalString: '',
+      aSingleString: '',
       aSingleNumber: 456,
     });
   });

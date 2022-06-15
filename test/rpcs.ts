@@ -107,13 +107,13 @@ export class _Object extends pb_1.Message {
             size?: number;
             mimeType?: string;
         } = {};
-        if (pb_1.Message.getField(this, 1) != null) {
+        if (this.id != null) {
             data.id = this.id;
         }
-        if (pb_1.Message.getField(this, 3) != null) {
+        if (this.size != null) {
             data.size = this.size;
         }
-        if (pb_1.Message.getField(this, 4) != null) {
+        if (this.mimeType != null) {
             data.mimeType = this.mimeType;
         }
         return data;
@@ -205,10 +205,10 @@ export class Chunk extends pb_1.Message {
             data?: Uint8Array;
             range?: ReturnType<typeof Chunk.Range.prototype.toObject>;
         } = {};
-        if (pb_1.Message.getField(this, 1) != null) {
+        if (this.data != null) {
             data.data = this.data;
         }
-        if (pb_1.Message.getField(this, 2) != null) {
+        if (this.range != null) {
             data.range = this.range.toObject();
         }
         return data;
@@ -296,10 +296,10 @@ export namespace Chunk {
                 start?: number;
                 end?: number;
             } = {};
-            if (pb_1.Message.getField(this, 1) != null) {
+            if (this.start != null) {
                 data.start = this.start;
             }
-            if (pb_1.Message.getField(this, 2) != null) {
+            if (this.end != null) {
                 data.end = this.end;
             }
             return data;
@@ -386,10 +386,10 @@ export namespace Chunk {
                 id?: string;
                 range?: ReturnType<typeof Chunk.Range.prototype.toObject>;
             } = {};
-            if (pb_1.Message.getField(this, 1) != null) {
+            if (this.id != null) {
                 data.id = this.id;
             }
-            if (pb_1.Message.getField(this, 2) != null) {
+            if (this.range != null) {
                 data.range = this.range.toObject();
             }
             return data;
@@ -462,7 +462,7 @@ export class Query extends pb_1.Message {
         const data: {
             id?: string;
         } = {};
-        if (pb_1.Message.getField(this, 1) != null) {
+        if (this.id != null) {
             data.id = this.id;
         }
         return data;
@@ -530,7 +530,7 @@ export namespace Query {
             const data: {
                 objects?: ReturnType<typeof _Object.prototype.toObject>[];
             } = {};
-            if (pb_1.Message.getField(this, 1) != null) {
+            if (this.objects != null) {
                 data.objects = this.objects.map((item: _Object) => item.toObject());
             }
             return data;
@@ -613,10 +613,10 @@ export class Put extends pb_1.Message {
             id?: string;
             chunk?: ReturnType<typeof Chunk.prototype.toObject>;
         } = {};
-        if (pb_1.Message.getField(this, 1) != null) {
+        if (this.id != null) {
             data.id = this.id;
         }
-        if (pb_1.Message.getField(this, 3) != null) {
+        if (this.chunk != null) {
             data.chunk = this.chunk.toObject();
         }
         return data;

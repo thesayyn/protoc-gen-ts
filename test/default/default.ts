@@ -66,13 +66,13 @@ export class MessageWithDefault extends pb_1.Message {
             string_field?: string;
             int32_field?: number;
         } = {};
-        if (pb_1.Message.getField(this, 1) != null) {
+        if (this.bool_field != null) {
             data.bool_field = this.bool_field;
         }
-        if (pb_1.Message.getField(this, 2) != null) {
+        if (this.string_field != null) {
             data.string_field = this.string_field;
         }
-        if (pb_1.Message.getField(this, 3) != null) {
+        if (this.int32_field != null) {
             data.int32_field = this.int32_field;
         }
         return data;
@@ -179,13 +179,13 @@ export class MessageWithImplicitDefault extends pb_1.Message {
             string_field?: string;
             int32_field?: number;
         } = {};
-        if (pb_1.Message.getField(this, 1) != null) {
+        if (this.bool_field != null) {
             data.bool_field = this.bool_field;
         }
-        if (pb_1.Message.getField(this, 2) != null) {
+        if (this.string_field != null) {
             data.string_field = this.string_field;
         }
-        if (pb_1.Message.getField(this, 3) != null) {
+        if (this.int32_field != null) {
             data.int32_field = this.int32_field;
         }
         return data;

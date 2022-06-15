@@ -37,7 +37,7 @@ export class Topic extends pb_1.Message {
         const data: {
             link?: string;
         } = {};
-        if (pb_1.Message.getField(this, 2) != null) {
+        if (this.link != null) {
             data.link = this.link;
         }
         return data;
@@ -188,7 +188,7 @@ export class Tags extends pb_1.Message {
                 [key: number]: dependency_1.importdirective.Imported.SubMessage.MyEnum;
             };
         } = {};
-        if (pb_1.Message.getField(this, 2) != null) {
+        if (this.key != null) {
             data.key = this.key;
         }
         if (this.keys.size > 0) {

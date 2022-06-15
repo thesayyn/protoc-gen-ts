@@ -36,7 +36,7 @@ export class ExplicitOverrideMessage extends pb_1.Message {
         const data: {
             example?: number;
         } = {};
-        if (pb_1.Message.getField(this, 1) != null) {
+        if (this.example != null) {
             data.example = this.example;
         }
         return data;

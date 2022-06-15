@@ -41,7 +41,7 @@ export class DefaultCommonMessage extends pb_1.Message {
         const data: {
             message?: string;
         } = {};
-        if (pb_1.Message.getField(this, 1) != null) {
+        if (this.message != null) {
             data.message = this.message;
         }
         return data;
@@ -136,10 +136,10 @@ export class DefaultCommonMessageOneOf extends pb_1.Message {
             int32?: number;
             message?: ReturnType<typeof DefaultCommonMessage.prototype.toObject>;
         } = {};
-        if (pb_1.Message.getField(this, 1) != null) {
+        if (this.int32 != null) {
             data.int32 = this.int32;
         }
-        if (pb_1.Message.getField(this, 2) != null) {
+        if (this.message != null) {
             data.message = this.message.toObject();
         }
         return data;

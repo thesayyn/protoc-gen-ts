@@ -22,7 +22,7 @@ export class FileDescriptorSet extends pb_1.Message {
         pb_1.Message.setRepeatedWrapperField(this, 1, value);
     }
     static fromObject(data: {
-        file: ReturnType<typeof FileDescriptorProto.prototype.toObject>[];
+        file?: ReturnType<typeof FileDescriptorProto.prototype.toObject>[];
     }): FileDescriptorSet {
         const message = new FileDescriptorSet({
             file: data.file.map(item => FileDescriptorProto.fromObject(item))
@@ -31,10 +31,11 @@ export class FileDescriptorSet extends pb_1.Message {
     }
     toObject() {
         const data: {
-            file: ReturnType<typeof FileDescriptorProto.prototype.toObject>[];
-        } = {
-            file: this.file.map((item: FileDescriptorProto) => item.toObject())
-        };
+            file?: ReturnType<typeof FileDescriptorProto.prototype.toObject>[];
+        } = {};
+        if (this.file != null) {
+            data.file = this.file.map((item: FileDescriptorProto) => item.toObject());
+        }
         return data;
     }
     serialize(): Uint8Array;
@@ -188,10 +189,10 @@ export class FileDescriptorProto extends pb_1.Message {
         dependency: string[];
         public_dependency: number[];
         weak_dependency: number[];
-        message_type: ReturnType<typeof DescriptorProto.prototype.toObject>[];
-        enum_type: ReturnType<typeof EnumDescriptorProto.prototype.toObject>[];
-        service: ReturnType<typeof ServiceDescriptorProto.prototype.toObject>[];
-        extension: ReturnType<typeof FieldDescriptorProto.prototype.toObject>[];
+        message_type?: ReturnType<typeof DescriptorProto.prototype.toObject>[];
+        enum_type?: ReturnType<typeof EnumDescriptorProto.prototype.toObject>[];
+        service?: ReturnType<typeof ServiceDescriptorProto.prototype.toObject>[];
+        extension?: ReturnType<typeof FieldDescriptorProto.prototype.toObject>[];
         options?: ReturnType<typeof FileOptions.prototype.toObject>;
         source_code_info?: ReturnType<typeof SourceCodeInfo.prototype.toObject>;
         syntax?: string;
@@ -229,35 +230,43 @@ export class FileDescriptorProto extends pb_1.Message {
             dependency: string[];
             public_dependency: number[];
             weak_dependency: number[];
-            message_type: ReturnType<typeof DescriptorProto.prototype.toObject>[];
-            enum_type: ReturnType<typeof EnumDescriptorProto.prototype.toObject>[];
-            service: ReturnType<typeof ServiceDescriptorProto.prototype.toObject>[];
-            extension: ReturnType<typeof FieldDescriptorProto.prototype.toObject>[];
+            message_type?: ReturnType<typeof DescriptorProto.prototype.toObject>[];
+            enum_type?: ReturnType<typeof EnumDescriptorProto.prototype.toObject>[];
+            service?: ReturnType<typeof ServiceDescriptorProto.prototype.toObject>[];
+            extension?: ReturnType<typeof FieldDescriptorProto.prototype.toObject>[];
             options?: ReturnType<typeof FileOptions.prototype.toObject>;
             source_code_info?: ReturnType<typeof SourceCodeInfo.prototype.toObject>;
             syntax?: string;
         } = {
             dependency: this.dependency,
             public_dependency: this.public_dependency,
-            weak_dependency: this.weak_dependency,
-            message_type: this.message_type.map((item: DescriptorProto) => item.toObject()),
-            enum_type: this.enum_type.map((item: EnumDescriptorProto) => item.toObject()),
-            service: this.service.map((item: ServiceDescriptorProto) => item.toObject()),
-            extension: this.extension.map((item: FieldDescriptorProto) => item.toObject())
+            weak_dependency: this.weak_dependency
         };
-        if (pb_1.Message.getField(this, 1) != null) {
+        if (this.name != null) {
             data.name = this.name;
         }
-        if (pb_1.Message.getField(this, 2) != null) {
+        if (this.package != null) {
             data.package = this.package;
         }
-        if (pb_1.Message.getField(this, 8) != null) {
+        if (this.message_type != null) {
+            data.message_type = this.message_type.map((item: DescriptorProto) => item.toObject());
+        }
+        if (this.enum_type != null) {
+            data.enum_type = this.enum_type.map((item: EnumDescriptorProto) => item.toObject());
+        }
+        if (this.service != null) {
+            data.service = this.service.map((item: ServiceDescriptorProto) => item.toObject());
+        }
+        if (this.extension != null) {
+            data.extension = this.extension.map((item: FieldDescriptorProto) => item.toObject());
+        }
+        if (this.options != null) {
             data.options = this.options.toObject();
         }
-        if (pb_1.Message.getField(this, 9) != null) {
+        if (this.source_code_info != null) {
             data.source_code_info = this.source_code_info.toObject();
         }
-        if (pb_1.Message.getField(this, 12) != null) {
+        if (this.syntax != null) {
             data.syntax = this.syntax;
         }
         return data;
@@ -442,14 +451,14 @@ export class DescriptorProto extends pb_1.Message {
     }
     static fromObject(data: {
         name?: string;
-        field: ReturnType<typeof FieldDescriptorProto.prototype.toObject>[];
-        extension: ReturnType<typeof FieldDescriptorProto.prototype.toObject>[];
-        nested_type: ReturnType<typeof DescriptorProto.prototype.toObject>[];
-        enum_type: ReturnType<typeof EnumDescriptorProto.prototype.toObject>[];
-        extension_range: ReturnType<typeof DescriptorProto.ExtensionRange.prototype.toObject>[];
-        oneof_decl: ReturnType<typeof OneofDescriptorProto.prototype.toObject>[];
+        field?: ReturnType<typeof FieldDescriptorProto.prototype.toObject>[];
+        extension?: ReturnType<typeof FieldDescriptorProto.prototype.toObject>[];
+        nested_type?: ReturnType<typeof DescriptorProto.prototype.toObject>[];
+        enum_type?: ReturnType<typeof EnumDescriptorProto.prototype.toObject>[];
+        extension_range?: ReturnType<typeof DescriptorProto.ExtensionRange.prototype.toObject>[];
+        oneof_decl?: ReturnType<typeof OneofDescriptorProto.prototype.toObject>[];
         options?: ReturnType<typeof MessageOptions.prototype.toObject>;
-        reserved_range: ReturnType<typeof DescriptorProto.ReservedRange.prototype.toObject>[];
+        reserved_range?: ReturnType<typeof DescriptorProto.ReservedRange.prototype.toObject>[];
         reserved_name: string[];
     }): DescriptorProto {
         const message = new DescriptorProto({
@@ -473,30 +482,44 @@ export class DescriptorProto extends pb_1.Message {
     toObject() {
         const data: {
             name?: string;
-            field: ReturnType<typeof FieldDescriptorProto.prototype.toObject>[];
-            extension: ReturnType<typeof FieldDescriptorProto.prototype.toObject>[];
-            nested_type: ReturnType<typeof DescriptorProto.prototype.toObject>[];
-            enum_type: ReturnType<typeof EnumDescriptorProto.prototype.toObject>[];
-            extension_range: ReturnType<typeof DescriptorProto.ExtensionRange.prototype.toObject>[];
-            oneof_decl: ReturnType<typeof OneofDescriptorProto.prototype.toObject>[];
+            field?: ReturnType<typeof FieldDescriptorProto.prototype.toObject>[];
+            extension?: ReturnType<typeof FieldDescriptorProto.prototype.toObject>[];
+            nested_type?: ReturnType<typeof DescriptorProto.prototype.toObject>[];
+            enum_type?: ReturnType<typeof EnumDescriptorProto.prototype.toObject>[];
+            extension_range?: ReturnType<typeof DescriptorProto.ExtensionRange.prototype.toObject>[];
+            oneof_decl?: ReturnType<typeof OneofDescriptorProto.prototype.toObject>[];
             options?: ReturnType<typeof MessageOptions.prototype.toObject>;
-            reserved_range: ReturnType<typeof DescriptorProto.ReservedRange.prototype.toObject>[];
+            reserved_range?: ReturnType<typeof DescriptorProto.ReservedRange.prototype.toObject>[];
             reserved_name: string[];
         } = {
-            field: this.field.map((item: FieldDescriptorProto) => item.toObject()),
-            extension: this.extension.map((item: FieldDescriptorProto) => item.toObject()),
-            nested_type: this.nested_type.map((item: DescriptorProto) => item.toObject()),
-            enum_type: this.enum_type.map((item: EnumDescriptorProto) => item.toObject()),
-            extension_range: this.extension_range.map((item: DescriptorProto.ExtensionRange) => item.toObject()),
-            oneof_decl: this.oneof_decl.map((item: OneofDescriptorProto) => item.toObject()),
-            reserved_range: this.reserved_range.map((item: DescriptorProto.ReservedRange) => item.toObject()),
             reserved_name: this.reserved_name
         };
-        if (pb_1.Message.getField(this, 1) != null) {
+        if (this.name != null) {
             data.name = this.name;
         }
-        if (pb_1.Message.getField(this, 7) != null) {
+        if (this.field != null) {
+            data.field = this.field.map((item: FieldDescriptorProto) => item.toObject());
+        }
+        if (this.extension != null) {
+            data.extension = this.extension.map((item: FieldDescriptorProto) => item.toObject());
+        }
+        if (this.nested_type != null) {
+            data.nested_type = this.nested_type.map((item: DescriptorProto) => item.toObject());
+        }
+        if (this.enum_type != null) {
+            data.enum_type = this.enum_type.map((item: EnumDescriptorProto) => item.toObject());
+        }
+        if (this.extension_range != null) {
+            data.extension_range = this.extension_range.map((item: DescriptorProto.ExtensionRange) => item.toObject());
+        }
+        if (this.oneof_decl != null) {
+            data.oneof_decl = this.oneof_decl.map((item: OneofDescriptorProto) => item.toObject());
+        }
+        if (this.options != null) {
             data.options = this.options.toObject();
+        }
+        if (this.reserved_range != null) {
+            data.reserved_range = this.reserved_range.map((item: DescriptorProto.ReservedRange) => item.toObject());
         }
         return data;
     }
@@ -638,13 +661,13 @@ export namespace DescriptorProto {
                 end?: number;
                 options?: ReturnType<typeof ExtensionRangeOptions.prototype.toObject>;
             } = {};
-            if (pb_1.Message.getField(this, 1) != null) {
+            if (this.start != null) {
                 data.start = this.start;
             }
-            if (pb_1.Message.getField(this, 2) != null) {
+            if (this.end != null) {
                 data.end = this.end;
             }
-            if (pb_1.Message.getField(this, 3) != null) {
+            if (this.options != null) {
                 data.options = this.options.toObject();
             }
             return data;
@@ -736,10 +759,10 @@ export namespace DescriptorProto {
                 start?: number;
                 end?: number;
             } = {};
-            if (pb_1.Message.getField(this, 1) != null) {
+            if (this.start != null) {
                 data.start = this.start;
             }
-            if (pb_1.Message.getField(this, 2) != null) {
+            if (this.end != null) {
                 data.end = this.end;
             }
             return data;
@@ -798,7 +821,7 @@ export class ExtensionRangeOptions extends pb_1.Message {
         pb_1.Message.setRepeatedWrapperField(this, 999, value);
     }
     static fromObject(data: {
-        uninterpreted_option: ReturnType<typeof UninterpretedOption.prototype.toObject>[];
+        uninterpreted_option?: ReturnType<typeof UninterpretedOption.prototype.toObject>[];
     }): ExtensionRangeOptions {
         const message = new ExtensionRangeOptions({
             uninterpreted_option: data.uninterpreted_option.map(item => UninterpretedOption.fromObject(item))
@@ -807,10 +830,11 @@ export class ExtensionRangeOptions extends pb_1.Message {
     }
     toObject() {
         const data: {
-            uninterpreted_option: ReturnType<typeof UninterpretedOption.prototype.toObject>[];
-        } = {
-            uninterpreted_option: this.uninterpreted_option.map((item: UninterpretedOption) => item.toObject())
-        };
+            uninterpreted_option?: ReturnType<typeof UninterpretedOption.prototype.toObject>[];
+        } = {};
+        if (this.uninterpreted_option != null) {
+            data.uninterpreted_option = this.uninterpreted_option.map((item: UninterpretedOption) => item.toObject());
+        }
         return data;
     }
     serialize(): Uint8Array;
@@ -1025,37 +1049,37 @@ export class FieldDescriptorProto extends pb_1.Message {
             options?: ReturnType<typeof FieldOptions.prototype.toObject>;
             proto3_optional?: boolean;
         } = {};
-        if (pb_1.Message.getField(this, 1) != null) {
+        if (this.name != null) {
             data.name = this.name;
         }
-        if (pb_1.Message.getField(this, 3) != null) {
+        if (this.number != null) {
             data.number = this.number;
         }
-        if (pb_1.Message.getField(this, 4) != null) {
+        if (this.label != null) {
             data.label = this.label;
         }
-        if (pb_1.Message.getField(this, 5) != null) {
+        if (this.type != null) {
             data.type = this.type;
         }
-        if (pb_1.Message.getField(this, 6) != null) {
+        if (this.type_name != null) {
             data.type_name = this.type_name;
         }
-        if (pb_1.Message.getField(this, 2) != null) {
+        if (this.extendee != null) {
             data.extendee = this.extendee;
         }
-        if (pb_1.Message.getField(this, 7) != null) {
+        if (this.default_value != null) {
             data.default_value = this.default_value;
         }
-        if (pb_1.Message.getField(this, 9) != null) {
+        if (this.oneof_index != null) {
             data.oneof_index = this.oneof_index;
         }
-        if (pb_1.Message.getField(this, 10) != null) {
+        if (this.json_name != null) {
             data.json_name = this.json_name;
         }
-        if (pb_1.Message.getField(this, 8) != null) {
+        if (this.options != null) {
             data.options = this.options.toObject();
         }
-        if (pb_1.Message.getField(this, 17) != null) {
+        if (this.proto3_optional != null) {
             data.proto3_optional = this.proto3_optional;
         }
         return data;
@@ -1214,10 +1238,10 @@ export class OneofDescriptorProto extends pb_1.Message {
             name?: string;
             options?: ReturnType<typeof OneofOptions.prototype.toObject>;
         } = {};
-        if (pb_1.Message.getField(this, 1) != null) {
+        if (this.name != null) {
             data.name = this.name;
         }
-        if (pb_1.Message.getField(this, 2) != null) {
+        if (this.options != null) {
             data.options = this.options.toObject();
         }
         return data;
@@ -1312,9 +1336,9 @@ export class EnumDescriptorProto extends pb_1.Message {
     }
     static fromObject(data: {
         name?: string;
-        value: ReturnType<typeof EnumValueDescriptorProto.prototype.toObject>[];
+        value?: ReturnType<typeof EnumValueDescriptorProto.prototype.toObject>[];
         options?: ReturnType<typeof EnumOptions.prototype.toObject>;
-        reserved_range: ReturnType<typeof EnumDescriptorProto.EnumReservedRange.prototype.toObject>[];
+        reserved_range?: ReturnType<typeof EnumDescriptorProto.EnumReservedRange.prototype.toObject>[];
         reserved_name: string[];
     }): EnumDescriptorProto {
         const message = new EnumDescriptorProto({
@@ -1333,20 +1357,24 @@ export class EnumDescriptorProto extends pb_1.Message {
     toObject() {
         const data: {
             name?: string;
-            value: ReturnType<typeof EnumValueDescriptorProto.prototype.toObject>[];
+            value?: ReturnType<typeof EnumValueDescriptorProto.prototype.toObject>[];
             options?: ReturnType<typeof EnumOptions.prototype.toObject>;
-            reserved_range: ReturnType<typeof EnumDescriptorProto.EnumReservedRange.prototype.toObject>[];
+            reserved_range?: ReturnType<typeof EnumDescriptorProto.EnumReservedRange.prototype.toObject>[];
             reserved_name: string[];
         } = {
-            value: this.value.map((item: EnumValueDescriptorProto) => item.toObject()),
-            reserved_range: this.reserved_range.map((item: EnumDescriptorProto.EnumReservedRange) => item.toObject()),
             reserved_name: this.reserved_name
         };
-        if (pb_1.Message.getField(this, 1) != null) {
+        if (this.name != null) {
             data.name = this.name;
         }
-        if (pb_1.Message.getField(this, 3) != null) {
+        if (this.value != null) {
+            data.value = this.value.map((item: EnumValueDescriptorProto) => item.toObject());
+        }
+        if (this.options != null) {
             data.options = this.options.toObject();
+        }
+        if (this.reserved_range != null) {
+            data.reserved_range = this.reserved_range.map((item: EnumDescriptorProto.EnumReservedRange) => item.toObject());
         }
         return data;
     }
@@ -1448,10 +1476,10 @@ export namespace EnumDescriptorProto {
                 start?: number;
                 end?: number;
             } = {};
-            if (pb_1.Message.getField(this, 1) != null) {
+            if (this.start != null) {
                 data.start = this.start;
             }
-            if (pb_1.Message.getField(this, 2) != null) {
+            if (this.end != null) {
                 data.end = this.end;
             }
             return data;
@@ -1554,13 +1582,13 @@ export class EnumValueDescriptorProto extends pb_1.Message {
             number?: number;
             options?: ReturnType<typeof EnumValueOptions.prototype.toObject>;
         } = {};
-        if (pb_1.Message.getField(this, 1) != null) {
+        if (this.name != null) {
             data.name = this.name;
         }
-        if (pb_1.Message.getField(this, 2) != null) {
+        if (this.number != null) {
             data.number = this.number;
         }
-        if (pb_1.Message.getField(this, 3) != null) {
+        if (this.options != null) {
             data.options = this.options.toObject();
         }
         return data;
@@ -1644,7 +1672,7 @@ export class ServiceDescriptorProto extends pb_1.Message {
     }
     static fromObject(data: {
         name?: string;
-        method: ReturnType<typeof MethodDescriptorProto.prototype.toObject>[];
+        method?: ReturnType<typeof MethodDescriptorProto.prototype.toObject>[];
         options?: ReturnType<typeof ServiceOptions.prototype.toObject>;
     }): ServiceDescriptorProto {
         const message = new ServiceDescriptorProto({
@@ -1661,15 +1689,16 @@ export class ServiceDescriptorProto extends pb_1.Message {
     toObject() {
         const data: {
             name?: string;
-            method: ReturnType<typeof MethodDescriptorProto.prototype.toObject>[];
+            method?: ReturnType<typeof MethodDescriptorProto.prototype.toObject>[];
             options?: ReturnType<typeof ServiceOptions.prototype.toObject>;
-        } = {
-            method: this.method.map((item: MethodDescriptorProto) => item.toObject())
-        };
-        if (pb_1.Message.getField(this, 1) != null) {
+        } = {};
+        if (this.name != null) {
             data.name = this.name;
         }
-        if (pb_1.Message.getField(this, 3) != null) {
+        if (this.method != null) {
+            data.method = this.method.map((item: MethodDescriptorProto) => item.toObject());
+        }
+        if (this.options != null) {
             data.options = this.options.toObject();
         }
         return data;
@@ -1821,22 +1850,22 @@ export class MethodDescriptorProto extends pb_1.Message {
             client_streaming?: boolean;
             server_streaming?: boolean;
         } = {};
-        if (pb_1.Message.getField(this, 1) != null) {
+        if (this.name != null) {
             data.name = this.name;
         }
-        if (pb_1.Message.getField(this, 2) != null) {
+        if (this.input_type != null) {
             data.input_type = this.input_type;
         }
-        if (pb_1.Message.getField(this, 3) != null) {
+        if (this.output_type != null) {
             data.output_type = this.output_type;
         }
-        if (pb_1.Message.getField(this, 4) != null) {
+        if (this.options != null) {
             data.options = this.options.toObject();
         }
-        if (pb_1.Message.getField(this, 5) != null) {
+        if (this.client_streaming != null) {
             data.client_streaming = this.client_streaming;
         }
-        if (pb_1.Message.getField(this, 6) != null) {
+        if (this.server_streaming != null) {
             data.server_streaming = this.server_streaming;
         }
         return data;
@@ -2137,7 +2166,7 @@ export class FileOptions extends pb_1.Message {
         php_namespace?: string;
         php_metadata_namespace?: string;
         ruby_package?: string;
-        uninterpreted_option: ReturnType<typeof UninterpretedOption.prototype.toObject>[];
+        uninterpreted_option?: ReturnType<typeof UninterpretedOption.prototype.toObject>[];
     }): FileOptions {
         const message = new FileOptions({
             uninterpreted_option: data.uninterpreted_option.map(item => UninterpretedOption.fromObject(item))
@@ -2226,69 +2255,70 @@ export class FileOptions extends pb_1.Message {
             php_namespace?: string;
             php_metadata_namespace?: string;
             ruby_package?: string;
-            uninterpreted_option: ReturnType<typeof UninterpretedOption.prototype.toObject>[];
-        } = {
-            uninterpreted_option: this.uninterpreted_option.map((item: UninterpretedOption) => item.toObject())
-        };
-        if (pb_1.Message.getField(this, 1) != null) {
+            uninterpreted_option?: ReturnType<typeof UninterpretedOption.prototype.toObject>[];
+        } = {};
+        if (this.java_package != null) {
             data.java_package = this.java_package;
         }
-        if (pb_1.Message.getField(this, 8) != null) {
+        if (this.java_outer_classname != null) {
             data.java_outer_classname = this.java_outer_classname;
         }
-        if (pb_1.Message.getField(this, 10) != null) {
+        if (this.java_multiple_files != null) {
             data.java_multiple_files = this.java_multiple_files;
         }
-        if (pb_1.Message.getField(this, 20) != null) {
+        if (this.java_generate_equals_and_hash != null) {
             data.java_generate_equals_and_hash = this.java_generate_equals_and_hash;
         }
-        if (pb_1.Message.getField(this, 27) != null) {
+        if (this.java_string_check_utf8 != null) {
             data.java_string_check_utf8 = this.java_string_check_utf8;
         }
-        if (pb_1.Message.getField(this, 9) != null) {
+        if (this.optimize_for != null) {
             data.optimize_for = this.optimize_for;
         }
-        if (pb_1.Message.getField(this, 11) != null) {
+        if (this.go_package != null) {
             data.go_package = this.go_package;
         }
-        if (pb_1.Message.getField(this, 16) != null) {
+        if (this.cc_generic_services != null) {
             data.cc_generic_services = this.cc_generic_services;
         }
-        if (pb_1.Message.getField(this, 17) != null) {
+        if (this.java_generic_services != null) {
             data.java_generic_services = this.java_generic_services;
         }
-        if (pb_1.Message.getField(this, 18) != null) {
+        if (this.py_generic_services != null) {
             data.py_generic_services = this.py_generic_services;
         }
-        if (pb_1.Message.getField(this, 42) != null) {
+        if (this.php_generic_services != null) {
             data.php_generic_services = this.php_generic_services;
         }
-        if (pb_1.Message.getField(this, 23) != null) {
+        if (this.deprecated != null) {
             data.deprecated = this.deprecated;
         }
-        if (pb_1.Message.getField(this, 31) != null) {
+        if (this.cc_enable_arenas != null) {
             data.cc_enable_arenas = this.cc_enable_arenas;
         }
-        if (pb_1.Message.getField(this, 36) != null) {
+        if (this.objc_class_prefix != null) {
             data.objc_class_prefix = this.objc_class_prefix;
         }
-        if (pb_1.Message.getField(this, 37) != null) {
+        if (this.csharp_namespace != null) {
             data.csharp_namespace = this.csharp_namespace;
         }
-        if (pb_1.Message.getField(this, 39) != null) {
+        if (this.swift_prefix != null) {
             data.swift_prefix = this.swift_prefix;
         }
-        if (pb_1.Message.getField(this, 40) != null) {
+        if (this.php_class_prefix != null) {
             data.php_class_prefix = this.php_class_prefix;
         }
-        if (pb_1.Message.getField(this, 41) != null) {
+        if (this.php_namespace != null) {
             data.php_namespace = this.php_namespace;
         }
-        if (pb_1.Message.getField(this, 44) != null) {
+        if (this.php_metadata_namespace != null) {
             data.php_metadata_namespace = this.php_metadata_namespace;
         }
-        if (pb_1.Message.getField(this, 45) != null) {
+        if (this.ruby_package != null) {
             data.ruby_package = this.ruby_package;
+        }
+        if (this.uninterpreted_option != null) {
+            data.uninterpreted_option = this.uninterpreted_option.map((item: UninterpretedOption) => item.toObject());
         }
         return data;
     }
@@ -2491,7 +2521,7 @@ export class MessageOptions extends pb_1.Message {
         no_standard_descriptor_accessor?: boolean;
         deprecated?: boolean;
         map_entry?: boolean;
-        uninterpreted_option: ReturnType<typeof UninterpretedOption.prototype.toObject>[];
+        uninterpreted_option?: ReturnType<typeof UninterpretedOption.prototype.toObject>[];
     }): MessageOptions {
         const message = new MessageOptions({
             uninterpreted_option: data.uninterpreted_option.map(item => UninterpretedOption.fromObject(item))
@@ -2516,21 +2546,22 @@ export class MessageOptions extends pb_1.Message {
             no_standard_descriptor_accessor?: boolean;
             deprecated?: boolean;
             map_entry?: boolean;
-            uninterpreted_option: ReturnType<typeof UninterpretedOption.prototype.toObject>[];
-        } = {
-            uninterpreted_option: this.uninterpreted_option.map((item: UninterpretedOption) => item.toObject())
-        };
-        if (pb_1.Message.getField(this, 1) != null) {
+            uninterpreted_option?: ReturnType<typeof UninterpretedOption.prototype.toObject>[];
+        } = {};
+        if (this.message_set_wire_format != null) {
             data.message_set_wire_format = this.message_set_wire_format;
         }
-        if (pb_1.Message.getField(this, 2) != null) {
+        if (this.no_standard_descriptor_accessor != null) {
             data.no_standard_descriptor_accessor = this.no_standard_descriptor_accessor;
         }
-        if (pb_1.Message.getField(this, 3) != null) {
+        if (this.deprecated != null) {
             data.deprecated = this.deprecated;
         }
-        if (pb_1.Message.getField(this, 7) != null) {
+        if (this.map_entry != null) {
             data.map_entry = this.map_entry;
+        }
+        if (this.uninterpreted_option != null) {
+            data.uninterpreted_option = this.uninterpreted_option.map((item: UninterpretedOption) => item.toObject());
         }
         return data;
     }
@@ -2668,7 +2699,7 @@ export class FieldOptions extends pb_1.Message {
         lazy?: boolean;
         deprecated?: boolean;
         weak?: boolean;
-        uninterpreted_option: ReturnType<typeof UninterpretedOption.prototype.toObject>[];
+        uninterpreted_option?: ReturnType<typeof UninterpretedOption.prototype.toObject>[];
     }): FieldOptions {
         const message = new FieldOptions({
             uninterpreted_option: data.uninterpreted_option.map(item => UninterpretedOption.fromObject(item))
@@ -2701,27 +2732,28 @@ export class FieldOptions extends pb_1.Message {
             lazy?: boolean;
             deprecated?: boolean;
             weak?: boolean;
-            uninterpreted_option: ReturnType<typeof UninterpretedOption.prototype.toObject>[];
-        } = {
-            uninterpreted_option: this.uninterpreted_option.map((item: UninterpretedOption) => item.toObject())
-        };
-        if (pb_1.Message.getField(this, 1) != null) {
+            uninterpreted_option?: ReturnType<typeof UninterpretedOption.prototype.toObject>[];
+        } = {};
+        if (this.ctype != null) {
             data.ctype = this.ctype;
         }
-        if (pb_1.Message.getField(this, 2) != null) {
+        if (this.packed != null) {
             data.packed = this.packed;
         }
-        if (pb_1.Message.getField(this, 6) != null) {
+        if (this.jstype != null) {
             data.jstype = this.jstype;
         }
-        if (pb_1.Message.getField(this, 5) != null) {
+        if (this.lazy != null) {
             data.lazy = this.lazy;
         }
-        if (pb_1.Message.getField(this, 3) != null) {
+        if (this.deprecated != null) {
             data.deprecated = this.deprecated;
         }
-        if (pb_1.Message.getField(this, 10) != null) {
+        if (this.weak != null) {
             data.weak = this.weak;
+        }
+        if (this.uninterpreted_option != null) {
+            data.uninterpreted_option = this.uninterpreted_option.map((item: UninterpretedOption) => item.toObject());
         }
         return data;
     }
@@ -2815,7 +2847,7 @@ export class OneofOptions extends pb_1.Message {
         pb_1.Message.setRepeatedWrapperField(this, 999, value);
     }
     static fromObject(data: {
-        uninterpreted_option: ReturnType<typeof UninterpretedOption.prototype.toObject>[];
+        uninterpreted_option?: ReturnType<typeof UninterpretedOption.prototype.toObject>[];
     }): OneofOptions {
         const message = new OneofOptions({
             uninterpreted_option: data.uninterpreted_option.map(item => UninterpretedOption.fromObject(item))
@@ -2824,10 +2856,11 @@ export class OneofOptions extends pb_1.Message {
     }
     toObject() {
         const data: {
-            uninterpreted_option: ReturnType<typeof UninterpretedOption.prototype.toObject>[];
-        } = {
-            uninterpreted_option: this.uninterpreted_option.map((item: UninterpretedOption) => item.toObject())
-        };
+            uninterpreted_option?: ReturnType<typeof UninterpretedOption.prototype.toObject>[];
+        } = {};
+        if (this.uninterpreted_option != null) {
+            data.uninterpreted_option = this.uninterpreted_option.map((item: UninterpretedOption) => item.toObject());
+        }
         return data;
     }
     serialize(): Uint8Array;
@@ -2900,7 +2933,7 @@ export class EnumOptions extends pb_1.Message {
     static fromObject(data: {
         allow_alias?: boolean;
         deprecated?: boolean;
-        uninterpreted_option: ReturnType<typeof UninterpretedOption.prototype.toObject>[];
+        uninterpreted_option?: ReturnType<typeof UninterpretedOption.prototype.toObject>[];
     }): EnumOptions {
         const message = new EnumOptions({
             uninterpreted_option: data.uninterpreted_option.map(item => UninterpretedOption.fromObject(item))
@@ -2917,15 +2950,16 @@ export class EnumOptions extends pb_1.Message {
         const data: {
             allow_alias?: boolean;
             deprecated?: boolean;
-            uninterpreted_option: ReturnType<typeof UninterpretedOption.prototype.toObject>[];
-        } = {
-            uninterpreted_option: this.uninterpreted_option.map((item: UninterpretedOption) => item.toObject())
-        };
-        if (pb_1.Message.getField(this, 2) != null) {
+            uninterpreted_option?: ReturnType<typeof UninterpretedOption.prototype.toObject>[];
+        } = {};
+        if (this.allow_alias != null) {
             data.allow_alias = this.allow_alias;
         }
-        if (pb_1.Message.getField(this, 3) != null) {
+        if (this.deprecated != null) {
             data.deprecated = this.deprecated;
+        }
+        if (this.uninterpreted_option != null) {
+            data.uninterpreted_option = this.uninterpreted_option.map((item: UninterpretedOption) => item.toObject());
         }
         return data;
     }
@@ -2998,7 +3032,7 @@ export class EnumValueOptions extends pb_1.Message {
     }
     static fromObject(data: {
         deprecated?: boolean;
-        uninterpreted_option: ReturnType<typeof UninterpretedOption.prototype.toObject>[];
+        uninterpreted_option?: ReturnType<typeof UninterpretedOption.prototype.toObject>[];
     }): EnumValueOptions {
         const message = new EnumValueOptions({
             uninterpreted_option: data.uninterpreted_option.map(item => UninterpretedOption.fromObject(item))
@@ -3011,12 +3045,13 @@ export class EnumValueOptions extends pb_1.Message {
     toObject() {
         const data: {
             deprecated?: boolean;
-            uninterpreted_option: ReturnType<typeof UninterpretedOption.prototype.toObject>[];
-        } = {
-            uninterpreted_option: this.uninterpreted_option.map((item: UninterpretedOption) => item.toObject())
-        };
-        if (pb_1.Message.getField(this, 1) != null) {
+            uninterpreted_option?: ReturnType<typeof UninterpretedOption.prototype.toObject>[];
+        } = {};
+        if (this.deprecated != null) {
             data.deprecated = this.deprecated;
+        }
+        if (this.uninterpreted_option != null) {
+            data.uninterpreted_option = this.uninterpreted_option.map((item: UninterpretedOption) => item.toObject());
         }
         return data;
     }
@@ -3084,7 +3119,7 @@ export class ServiceOptions extends pb_1.Message {
     }
     static fromObject(data: {
         deprecated?: boolean;
-        uninterpreted_option: ReturnType<typeof UninterpretedOption.prototype.toObject>[];
+        uninterpreted_option?: ReturnType<typeof UninterpretedOption.prototype.toObject>[];
     }): ServiceOptions {
         const message = new ServiceOptions({
             uninterpreted_option: data.uninterpreted_option.map(item => UninterpretedOption.fromObject(item))
@@ -3097,12 +3132,13 @@ export class ServiceOptions extends pb_1.Message {
     toObject() {
         const data: {
             deprecated?: boolean;
-            uninterpreted_option: ReturnType<typeof UninterpretedOption.prototype.toObject>[];
-        } = {
-            uninterpreted_option: this.uninterpreted_option.map((item: UninterpretedOption) => item.toObject())
-        };
-        if (pb_1.Message.getField(this, 33) != null) {
+            uninterpreted_option?: ReturnType<typeof UninterpretedOption.prototype.toObject>[];
+        } = {};
+        if (this.deprecated != null) {
             data.deprecated = this.deprecated;
+        }
+        if (this.uninterpreted_option != null) {
+            data.uninterpreted_option = this.uninterpreted_option.map((item: UninterpretedOption) => item.toObject());
         }
         return data;
     }
@@ -3181,7 +3217,7 @@ export class MethodOptions extends pb_1.Message {
     static fromObject(data: {
         deprecated?: boolean;
         idempotency_level?: MethodOptions.IdempotencyLevel;
-        uninterpreted_option: ReturnType<typeof UninterpretedOption.prototype.toObject>[];
+        uninterpreted_option?: ReturnType<typeof UninterpretedOption.prototype.toObject>[];
     }): MethodOptions {
         const message = new MethodOptions({
             uninterpreted_option: data.uninterpreted_option.map(item => UninterpretedOption.fromObject(item))
@@ -3198,15 +3234,16 @@ export class MethodOptions extends pb_1.Message {
         const data: {
             deprecated?: boolean;
             idempotency_level?: MethodOptions.IdempotencyLevel;
-            uninterpreted_option: ReturnType<typeof UninterpretedOption.prototype.toObject>[];
-        } = {
-            uninterpreted_option: this.uninterpreted_option.map((item: UninterpretedOption) => item.toObject())
-        };
-        if (pb_1.Message.getField(this, 33) != null) {
+            uninterpreted_option?: ReturnType<typeof UninterpretedOption.prototype.toObject>[];
+        } = {};
+        if (this.deprecated != null) {
             data.deprecated = this.deprecated;
         }
-        if (pb_1.Message.getField(this, 34) != null) {
+        if (this.idempotency_level != null) {
             data.idempotency_level = this.idempotency_level;
+        }
+        if (this.uninterpreted_option != null) {
+            data.uninterpreted_option = this.uninterpreted_option.map((item: UninterpretedOption) => item.toObject());
         }
         return data;
     }
@@ -3335,7 +3372,7 @@ export class UninterpretedOption extends pb_1.Message {
         pb_1.Message.setField(this, 8, value);
     }
     static fromObject(data: {
-        name: ReturnType<typeof UninterpretedOption.NamePart.prototype.toObject>[];
+        name?: ReturnType<typeof UninterpretedOption.NamePart.prototype.toObject>[];
         identifier_value?: string;
         positive_int_value?: number;
         negative_int_value?: number;
@@ -3368,32 +3405,33 @@ export class UninterpretedOption extends pb_1.Message {
     }
     toObject() {
         const data: {
-            name: ReturnType<typeof UninterpretedOption.NamePart.prototype.toObject>[];
+            name?: ReturnType<typeof UninterpretedOption.NamePart.prototype.toObject>[];
             identifier_value?: string;
             positive_int_value?: number;
             negative_int_value?: number;
             double_value?: number;
             string_value?: Uint8Array;
             aggregate_value?: string;
-        } = {
-            name: this.name.map((item: UninterpretedOption.NamePart) => item.toObject())
-        };
-        if (pb_1.Message.getField(this, 3) != null) {
+        } = {};
+        if (this.name != null) {
+            data.name = this.name.map((item: UninterpretedOption.NamePart) => item.toObject());
+        }
+        if (this.identifier_value != null) {
             data.identifier_value = this.identifier_value;
         }
-        if (pb_1.Message.getField(this, 4) != null) {
+        if (this.positive_int_value != null) {
             data.positive_int_value = this.positive_int_value;
         }
-        if (pb_1.Message.getField(this, 5) != null) {
+        if (this.negative_int_value != null) {
             data.negative_int_value = this.negative_int_value;
         }
-        if (pb_1.Message.getField(this, 6) != null) {
+        if (this.double_value != null) {
             data.double_value = this.double_value;
         }
-        if (pb_1.Message.getField(this, 7) != null) {
+        if (this.string_value != null) {
             data.string_value = this.string_value;
         }
-        if (pb_1.Message.getField(this, 8) != null) {
+        if (this.aggregate_value != null) {
             data.aggregate_value = this.aggregate_value;
         }
         return data;
@@ -3485,8 +3523,8 @@ export namespace UninterpretedOption {
             pb_1.Message.setField(this, 2, value);
         }
         static fromObject(data: {
-            name_part: string;
-            is_extension: boolean;
+            name_part?: string;
+            is_extension?: boolean;
         }): NamePart {
             const message = new NamePart({
                 name_part: data.name_part,
@@ -3496,12 +3534,15 @@ export namespace UninterpretedOption {
         }
         toObject() {
             const data: {
-                name_part: string;
-                is_extension: boolean;
-            } = {
-                name_part: this.name_part,
-                is_extension: this.is_extension
-            };
+                name_part?: string;
+                is_extension?: boolean;
+            } = {};
+            if (this.name_part != null) {
+                data.name_part = this.name_part;
+            }
+            if (this.is_extension != null) {
+                data.is_extension = this.is_extension;
+            }
             return data;
         }
         serialize(): Uint8Array;
@@ -3558,7 +3599,7 @@ export class SourceCodeInfo extends pb_1.Message {
         pb_1.Message.setRepeatedWrapperField(this, 1, value);
     }
     static fromObject(data: {
-        location: ReturnType<typeof SourceCodeInfo.Location.prototype.toObject>[];
+        location?: ReturnType<typeof SourceCodeInfo.Location.prototype.toObject>[];
     }): SourceCodeInfo {
         const message = new SourceCodeInfo({
             location: data.location.map(item => SourceCodeInfo.Location.fromObject(item))
@@ -3567,10 +3608,11 @@ export class SourceCodeInfo extends pb_1.Message {
     }
     toObject() {
         const data: {
-            location: ReturnType<typeof SourceCodeInfo.Location.prototype.toObject>[];
-        } = {
-            location: this.location.map((item: SourceCodeInfo.Location) => item.toObject())
-        };
+            location?: ReturnType<typeof SourceCodeInfo.Location.prototype.toObject>[];
+        } = {};
+        if (this.location != null) {
+            data.location = this.location.map((item: SourceCodeInfo.Location) => item.toObject());
+        }
         return data;
     }
     serialize(): Uint8Array;
@@ -3689,10 +3731,10 @@ export namespace SourceCodeInfo {
                 span: this.span,
                 leading_detached_comments: this.leading_detached_comments
             };
-            if (pb_1.Message.getField(this, 3) != null) {
+            if (this.leading_comments != null) {
                 data.leading_comments = this.leading_comments;
             }
-            if (pb_1.Message.getField(this, 4) != null) {
+            if (this.trailing_comments != null) {
                 data.trailing_comments = this.trailing_comments;
             }
             return data;
@@ -3766,7 +3808,7 @@ export class GeneratedCodeInfo extends pb_1.Message {
         pb_1.Message.setRepeatedWrapperField(this, 1, value);
     }
     static fromObject(data: {
-        annotation: ReturnType<typeof GeneratedCodeInfo.Annotation.prototype.toObject>[];
+        annotation?: ReturnType<typeof GeneratedCodeInfo.Annotation.prototype.toObject>[];
     }): GeneratedCodeInfo {
         const message = new GeneratedCodeInfo({
             annotation: data.annotation.map(item => GeneratedCodeInfo.Annotation.fromObject(item))
@@ -3775,10 +3817,11 @@ export class GeneratedCodeInfo extends pb_1.Message {
     }
     toObject() {
         const data: {
-            annotation: ReturnType<typeof GeneratedCodeInfo.Annotation.prototype.toObject>[];
-        } = {
-            annotation: this.annotation.map((item: GeneratedCodeInfo.Annotation) => item.toObject())
-        };
+            annotation?: ReturnType<typeof GeneratedCodeInfo.Annotation.prototype.toObject>[];
+        } = {};
+        if (this.annotation != null) {
+            data.annotation = this.annotation.map((item: GeneratedCodeInfo.Annotation) => item.toObject());
+        }
         return data;
     }
     serialize(): Uint8Array;
@@ -3888,13 +3931,13 @@ export namespace GeneratedCodeInfo {
             } = {
                 path: this.path
             };
-            if (pb_1.Message.getField(this, 2) != null) {
+            if (this.source_file != null) {
                 data.source_file = this.source_file;
             }
-            if (pb_1.Message.getField(this, 3) != null) {
+            if (this.begin != null) {
                 data.begin = this.begin;
             }
-            if (pb_1.Message.getField(this, 4) != null) {
+            if (this.end != null) {
                 data.end = this.end;
             }
             return data;

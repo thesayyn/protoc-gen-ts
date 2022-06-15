@@ -37,7 +37,7 @@ export class Chunk extends pb_1.Message {
         const data: {
             data?: Uint8Array;
         } = {};
-        if (pb_1.Message.getField(this, 1) != null) {
+        if (this.data != null) {
             data.data = this.data;
         }
         return data;
@@ -104,7 +104,7 @@ export class Result extends pb_1.Message {
         const data: {
             id?: number;
         } = {};
-        if (pb_1.Message.getField(this, 1) != null) {
+        if (this.id != null) {
             data.id = this.id;
         }
         return data;

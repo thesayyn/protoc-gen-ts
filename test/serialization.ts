@@ -36,7 +36,7 @@ export class Serialization extends pb_1.Message {
         const data: {
             test?: string;
         } = {};
-        if (pb_1.Message.getField(this, 1) != null) {
+        if (this.test != null) {
             data.test = this.test;
         }
         return data;

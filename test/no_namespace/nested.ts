@@ -75,13 +75,13 @@ export class SchedulingContext extends pb_1.Message {
             timeout?: number;
             batch?: ReturnType<typeof SchedulingContextBatch.prototype.toObject>;
         } = {};
-        if (pb_1.Message.getField(this, 2) != null) {
+        if (this.env != null) {
             data.env = this.env.map((item: SchedulingContextEnv) => item.toObject());
         }
-        if (pb_1.Message.getField(this, 3) != null) {
+        if (this.timeout != null) {
             data.timeout = this.timeout;
         }
-        if (pb_1.Message.getField(this, 4) != null) {
+        if (this.batch != null) {
             data.batch = this.batch.toObject();
         }
         return data;
@@ -173,10 +173,10 @@ export class SchedulingContextEnv extends pb_1.Message {
             key?: string;
             value?: string;
         } = {};
-        if (pb_1.Message.getField(this, 1) != null) {
+        if (this.key != null) {
             data.key = this.key;
         }
-        if (pb_1.Message.getField(this, 2) != null) {
+        if (this.value != null) {
             data.value = this.value;
         }
         return data;
@@ -278,13 +278,13 @@ export class SchedulingContextBatch extends pb_1.Message {
             deadline?: number;
             process?: ReturnType<typeof SchedulingContextBatchProcess.prototype.toObject>;
         } = {};
-        if (pb_1.Message.getField(this, 1) != null) {
+        if (this.limit != null) {
             data.limit = this.limit;
         }
-        if (pb_1.Message.getField(this, 2) != null) {
+        if (this.deadline != null) {
             data.deadline = this.deadline;
         }
-        if (pb_1.Message.getField(this, 3) != null) {
+        if (this.process != null) {
             data.process = this.process.toObject();
         }
         return data;
@@ -361,7 +361,7 @@ export class SchedulingContextBatchProcess extends pb_1.Message {
         const data: {
             id?: string;
         } = {};
-        if (pb_1.Message.getField(this, 1) != null) {
+        if (this.id != null) {
             data.id = this.id;
         }
         return data;
@@ -473,16 +473,16 @@ export class Target extends pb_1.Message {
             handler?: string;
             context?: ReturnType<typeof SchedulingContext.prototype.toObject>;
         } = {};
-        if (pb_1.Message.getField(this, 1) != null) {
+        if (this.id != null) {
             data.id = this.id;
         }
-        if (pb_1.Message.getField(this, 2) != null) {
+        if (this.cwd != null) {
             data.cwd = this.cwd;
         }
-        if (pb_1.Message.getField(this, 3) != null) {
+        if (this.handler != null) {
             data.handler = this.handler;
         }
-        if (pb_1.Message.getField(this, 4) != null) {
+        if (this.context != null) {
             data.context = this.context.toObject();
         }
         return data;
@@ -594,13 +594,13 @@ export class Event extends pb_1.Message {
             type?: Type;
             target?: ReturnType<typeof Target.prototype.toObject>;
         } = {};
-        if (pb_1.Message.getField(this, 1) != null) {
+        if (this.id != null) {
             data.id = this.id;
         }
-        if (pb_1.Message.getField(this, 2) != null) {
+        if (this.type != null) {
             data.type = this.type;
         }
-        if (pb_1.Message.getField(this, 3) != null) {
+        if (this.target != null) {
             data.target = this.target.toObject();
         }
         return data;
@@ -677,7 +677,7 @@ export class Pop extends pb_1.Message {
         const data: {
             id?: string;
         } = {};
-        if (pb_1.Message.getField(this, 1) != null) {
+        if (this.id != null) {
             data.id = this.id;
         }
         return data;
@@ -744,7 +744,7 @@ export class Complete extends pb_1.Message {
         const data: {
             id?: string;
         } = {};
-        if (pb_1.Message.getField(this, 1) != null) {
+        if (this.id != null) {
             data.id = this.id;
         }
         return data;

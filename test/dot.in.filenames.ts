@@ -37,7 +37,7 @@ export namespace dot {
             const data: {
                 name?: string[];
             } = {};
-            if (pb_1.Message.getField(this, 1) != null) {
+            if (this.name != null) {
                 data.name = this.name;
             }
             return data;

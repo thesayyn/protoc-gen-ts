@@ -154,25 +154,25 @@ export class JsonNamesMessage extends pb_1.Message {
             aSingleString?: string;
             aSingleNumber?: number;
         } = {};
-        if (pb_1.Message.getField(this, 1) != null) {
+        if (this.someStrings != null) {
             data.someStrings = this.someStrings;
         }
-        if (pb_1.Message.getField(this, 2) != null) {
+        if (this.anInteger != null) {
             data.anInteger = this.anInteger;
         }
-        if (pb_1.Message.getField(this, 3) != null) {
+        if (this.aNestedMessage != null) {
             data.aNestedMessage = this.aNestedMessage.toObject();
         }
-        if (pb_1.Message.getField(this, 4) != null) {
+        if (this.colorSpace != null) {
             data.colorSpace = this.colorSpace;
         }
-        if (pb_1.Message.getField(this, 5) != null) {
+        if (this.anOptionalString != null) {
             data.anOptionalString = this.anOptionalString;
         }
-        if (pb_1.Message.getField(this, 6) != null) {
+        if (this.aSingleString != null) {
             data.aSingleString = this.aSingleString;
         }
-        if (pb_1.Message.getField(this, 7) != null) {
+        if (this.aSingleNumber != null) {
             data.aSingleNumber = this.aSingleNumber;
         }
         return data;
@@ -270,7 +270,7 @@ export namespace JsonNamesMessage {
             const data: {
                 aNestedInteger?: number;
             } = {};
-            if (pb_1.Message.getField(this, 1) != null) {
+            if (this.aNestedInteger != null) {
                 data.aNestedInteger = this.aNestedInteger;
             }
             return data;

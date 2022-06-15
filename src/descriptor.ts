@@ -307,7 +307,6 @@ function createFromObject(
 function createToObject(
   rootDescriptor: descriptor.FileDescriptorProto,
   messageDescriptor: descriptor.DescriptorProto,
-  pbIdentifier: ts.Identifier,
 ): ts.MethodDeclaration {
   const statements = [];
   const properties = [];
@@ -430,32 +429,22 @@ function createToObject(
       }
     }
 
-    if (field.isOptional(rootDescriptor, fieldDescriptor)) {
-      const fieldAccesor = ts.factory.createCallExpression( // temporary use of getField() until we have absence fields
-        ts.factory.createPropertyAccessExpression(
-          ts.factory.createPropertyAccessExpression(
-            pbIdentifier,
-            ts.factory.createIdentifier("Message")
-          ),
-          ts.factory.createIdentifier("getField")
-        ),
-        undefined,
-        [
-          ts.factory.createThis(),
-          ts.factory.createNumericLiteral(fieldDescriptor.number)
-        ]
+    if (
+      field.isOptional(rootDescriptor, fieldDescriptor) ||
+      field.isMessage(fieldDescriptor) ||
+      field.isRequiredWithoutExplicitDefault(rootDescriptor, fieldDescriptor)
+    ) {
+      const propertyAccessor = ts.factory.createPropertyAccessExpression(
+        ts.factory.createThis(),
+        getFieldName(fieldDescriptor),
       );
       let condition = ts.factory.createBinaryExpression(
-        fieldAccesor,
+        propertyAccessor,
         ts.factory.createToken(ts.SyntaxKind.ExclamationEqualsToken),
         ts.factory.createNull(),
       );
 
       if (field.isMap(fieldDescriptor)) {
-        const propertyAccessor = ts.factory.createPropertyAccessExpression(
-          ts.factory.createThis(),
-          getFieldName(fieldDescriptor),
-        );
         condition = ts.factory.createBinaryExpression(
           ts.factory.createPropertyAccessExpression(propertyAccessor, "size"),
           ts.factory.createToken(ts.SyntaxKind.GreaterThanToken),
@@ -686,7 +675,11 @@ function createPrimitiveMessageSignature(
       ts.factory.createPropertySignature(
         undefined,
         getFieldName(fieldDescriptor),
-        field.isOptional(rootDescriptor, fieldDescriptor)
+        (
+          field.isOptional(rootDescriptor, fieldDescriptor) ||
+          field.isMessage(fieldDescriptor) ||
+          field.isRequiredWithoutExplicitDefault(rootDescriptor, fieldDescriptor)
+        )
           ? ts.factory.createToken(ts.SyntaxKind.QuestionToken)
           : undefined,
         field.wrapRepeatedType(fieldType as ts.TypeNode, fieldDescriptor),
@@ -2173,7 +2166,7 @@ function createMessage(
     // Create fromObject method
     createFromObject(rootDescriptor, messageDescriptor, parentName),
     // Create toObject method
-    createToObject(rootDescriptor, messageDescriptor, pbIdentifier),
+    createToObject(rootDescriptor, messageDescriptor),
   );
 
   statements.push(

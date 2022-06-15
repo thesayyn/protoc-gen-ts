@@ -37,7 +37,7 @@ export namespace maps {
             const data: {
                 link?: string;
             } = {};
-            if (pb_1.Message.getField(this, 2) != null) {
+            if (this.link != null) {
                 data.link = this.link;
             }
             return data;
@@ -167,7 +167,7 @@ export namespace maps {
                     [key: number]: ReturnType<typeof Topic.prototype.toObject>;
                 };
             } = {};
-            if (pb_1.Message.getField(this, 2) != null) {
+            if (this.key != null) {
                 data.key = this.key;
             }
             if (this.keys.size > 0) {

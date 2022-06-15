@@ -51,10 +51,10 @@ export class MessageFields extends pb_1.Message {
             sub_message?: ReturnType<typeof SubMessage.prototype.toObject>;
             array_prop?: ReturnType<typeof SubMessage.prototype.toObject>[];
         } = {};
-        if (pb_1.Message.getField(this, 1) != null) {
+        if (this.sub_message != null) {
             data.sub_message = this.sub_message.toObject();
         }
-        if (pb_1.Message.getField(this, 2) != null) {
+        if (this.array_prop != null) {
             data.array_prop = this.array_prop.map((item: SubMessage) => item.toObject());
         }
         return data;
@@ -141,10 +141,10 @@ export class SubMessage extends pb_1.Message {
             field_1?: string;
             field_2?: string;
         } = {};
-        if (pb_1.Message.getField(this, 1) != null) {
+        if (this.field_1 != null) {
             data.field_1 = this.field_1;
         }
-        if (pb_1.Message.getField(this, 2) != null) {
+        if (this.field_2 != null) {
             data.field_2 = this.field_2;
         }
         return data;

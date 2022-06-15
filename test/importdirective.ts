@@ -69,13 +69,13 @@ export namespace importdirective {
                 submessageField?: ReturnType<typeof dependency_1.importdirective.Imported.SubMessage.prototype.toObject>;
                 enumField?: dependency_1.importdirective.Imported.SubMessage.MyEnum;
             } = {};
-            if (pb_1.Message.getField(this, 1) != null) {
+            if (this.importedField != null) {
                 data.importedField = this.importedField.toObject();
             }
-            if (pb_1.Message.getField(this, 2) != null) {
+            if (this.submessageField != null) {
                 data.submessageField = this.submessageField.toObject();
             }
-            if (pb_1.Message.getField(this, 3) != null) {
+            if (this.enumField != null) {
                 data.enumField = this.enumField;
             }
             return data;

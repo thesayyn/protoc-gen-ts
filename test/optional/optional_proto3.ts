@@ -61,10 +61,10 @@ export class Optional extends pb_1.Message {
             should_not_be_required?: string[];
             proto3_optional?: string;
         } = {};
-        if (pb_1.Message.getField(this, 1) != null) {
+        if (this.should_not_be_required != null) {
             data.should_not_be_required = this.should_not_be_required;
         }
-        if (pb_1.Message.getField(this, 2) != null) {
+        if (this.proto3_optional != null) {
             data.proto3_optional = this.proto3_optional;
         }
         return data;

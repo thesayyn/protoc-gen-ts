@@ -52,10 +52,10 @@ export namespace main {
                 language?: Code.Language;
                 lines?: number;
             } = {};
-            if (pb_1.Message.getField(this, 1) != null) {
+            if (this.language != null) {
                 data.language = this.language;
             }
-            if (pb_1.Message.getField(this, 2) != null) {
+            if (this.lines != null) {
                 data.lines = this.lines;
             }
             return data;

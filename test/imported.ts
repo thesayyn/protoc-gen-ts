@@ -78,7 +78,7 @@ export namespace importdirective {
                 const data: {
                     key?: Imported.SubMessage.MyEnum;
                 } = {};
-                if (pb_1.Message.getField(this, 1) != null) {
+                if (this.key != null) {
                     data.key = this.key;
                 }
                 return data;

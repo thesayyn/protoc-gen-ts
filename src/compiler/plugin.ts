@@ -82,16 +82,16 @@ export class Version extends pb_1.Message {
             patch?: number;
             suffix?: string;
         } = {};
-        if (pb_1.Message.getField(this, 1) != null) {
+        if (this.major != null) {
             data.major = this.major;
         }
-        if (pb_1.Message.getField(this, 2) != null) {
+        if (this.minor != null) {
             data.minor = this.minor;
         }
-        if (pb_1.Message.getField(this, 3) != null) {
+        if (this.patch != null) {
             data.patch = this.patch;
         }
-        if (pb_1.Message.getField(this, 4) != null) {
+        if (this.suffix != null) {
             data.suffix = this.suffix;
         }
         return data;
@@ -189,7 +189,7 @@ export class CodeGeneratorRequest extends pb_1.Message {
     static fromObject(data: {
         file_to_generate: string[];
         parameter?: string;
-        proto_file: ReturnType<typeof dependency_1.FileDescriptorProto.prototype.toObject>[];
+        proto_file?: ReturnType<typeof dependency_1.FileDescriptorProto.prototype.toObject>[];
         compiler_version?: ReturnType<typeof Version.prototype.toObject>;
     }): CodeGeneratorRequest {
         const message = new CodeGeneratorRequest({
@@ -208,16 +208,18 @@ export class CodeGeneratorRequest extends pb_1.Message {
         const data: {
             file_to_generate: string[];
             parameter?: string;
-            proto_file: ReturnType<typeof dependency_1.FileDescriptorProto.prototype.toObject>[];
+            proto_file?: ReturnType<typeof dependency_1.FileDescriptorProto.prototype.toObject>[];
             compiler_version?: ReturnType<typeof Version.prototype.toObject>;
         } = {
-            file_to_generate: this.file_to_generate,
-            proto_file: this.proto_file.map((item: dependency_1.FileDescriptorProto) => item.toObject())
+            file_to_generate: this.file_to_generate
         };
-        if (pb_1.Message.getField(this, 2) != null) {
+        if (this.parameter != null) {
             data.parameter = this.parameter;
         }
-        if (pb_1.Message.getField(this, 3) != null) {
+        if (this.proto_file != null) {
+            data.proto_file = this.proto_file.map((item: dependency_1.FileDescriptorProto) => item.toObject());
+        }
+        if (this.compiler_version != null) {
             data.compiler_version = this.compiler_version.toObject();
         }
         return data;
@@ -307,7 +309,7 @@ export class CodeGeneratorResponse extends pb_1.Message {
     static fromObject(data: {
         error?: string;
         supported_features?: number;
-        file: ReturnType<typeof CodeGeneratorResponse.File.prototype.toObject>[];
+        file?: ReturnType<typeof CodeGeneratorResponse.File.prototype.toObject>[];
     }): CodeGeneratorResponse {
         const message = new CodeGeneratorResponse({
             file: data.file.map(item => CodeGeneratorResponse.File.fromObject(item))
@@ -324,15 +326,16 @@ export class CodeGeneratorResponse extends pb_1.Message {
         const data: {
             error?: string;
             supported_features?: number;
-            file: ReturnType<typeof CodeGeneratorResponse.File.prototype.toObject>[];
-        } = {
-            file: this.file.map((item: CodeGeneratorResponse.File) => item.toObject())
-        };
-        if (pb_1.Message.getField(this, 1) != null) {
+            file?: ReturnType<typeof CodeGeneratorResponse.File.prototype.toObject>[];
+        } = {};
+        if (this.error != null) {
             data.error = this.error;
         }
-        if (pb_1.Message.getField(this, 2) != null) {
+        if (this.supported_features != null) {
             data.supported_features = this.supported_features;
+        }
+        if (this.file != null) {
+            data.file = this.file.map((item: CodeGeneratorResponse.File) => item.toObject());
         }
         return data;
     }
@@ -458,16 +461,16 @@ export namespace CodeGeneratorResponse {
                 content?: string;
                 generated_code_info?: ReturnType<typeof dependency_1.GeneratedCodeInfo.prototype.toObject>;
             } = {};
-            if (pb_1.Message.getField(this, 1) != null) {
+            if (this.name != null) {
                 data.name = this.name;
             }
-            if (pb_1.Message.getField(this, 2) != null) {
+            if (this.insertion_point != null) {
                 data.insertion_point = this.insertion_point;
             }
-            if (pb_1.Message.getField(this, 15) != null) {
+            if (this.content != null) {
                 data.content = this.content;
             }
-            if (pb_1.Message.getField(this, 16) != null) {
+            if (this.generated_code_info != null) {
                 data.generated_code_info = this.generated_code_info.toObject();
             }
             return data;

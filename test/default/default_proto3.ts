@@ -408,55 +408,55 @@ export class DefaultMessageV3 extends pb_1.Message {
             one_of_message?: ReturnType<typeof dependency_1.DefaultCommonMessage.prototype.toObject>;
             bytes?: Uint8Array;
         } = {};
-        if (pb_1.Message.getField(this, 1) != null) {
+        if (this.message != null) {
             data.message = this.message.toObject();
         }
-        if (pb_1.Message.getField(this, 2) != null) {
+        if (this.enum != null) {
             data.enum = this.enum;
         }
-        if (pb_1.Message.getField(this, 3) != null) {
+        if (this.bool != null) {
             data.bool = this.bool;
         }
-        if (pb_1.Message.getField(this, 4) != null) {
+        if (this.string != null) {
             data.string = this.string;
         }
-        if (pb_1.Message.getField(this, 5) != null) {
+        if (this.int32 != null) {
             data.int32 = this.int32;
         }
-        if (pb_1.Message.getField(this, 6) != null) {
+        if (this.fixed32 != null) {
             data.fixed32 = this.fixed32;
         }
-        if (pb_1.Message.getField(this, 7) != null) {
+        if (this.sfixed32 != null) {
             data.sfixed32 = this.sfixed32;
         }
-        if (pb_1.Message.getField(this, 8) != null) {
+        if (this.uint32 != null) {
             data.uint32 = this.uint32;
         }
-        if (pb_1.Message.getField(this, 9) != null) {
+        if (this.sint32 != null) {
             data.sint32 = this.sint32;
         }
-        if (pb_1.Message.getField(this, 10) != null) {
+        if (this.int64 != null) {
             data.int64 = this.int64;
         }
-        if (pb_1.Message.getField(this, 11) != null) {
+        if (this.fixed64 != null) {
             data.fixed64 = this.fixed64;
         }
-        if (pb_1.Message.getField(this, 12) != null) {
+        if (this.sfixed64 != null) {
             data.sfixed64 = this.sfixed64;
         }
-        if (pb_1.Message.getField(this, 13) != null) {
+        if (this.uint64 != null) {
             data.uint64 = this.uint64;
         }
-        if (pb_1.Message.getField(this, 14) != null) {
+        if (this.sint64 != null) {
             data.sint64 = this.sint64;
         }
-        if (pb_1.Message.getField(this, 15) != null) {
+        if (this.float != null) {
             data.float = this.float;
         }
-        if (pb_1.Message.getField(this, 16) != null) {
+        if (this.double != null) {
             data.double = this.double;
         }
-        if (pb_1.Message.getField(this, 17) != null) {
+        if (this.int_but_string != null) {
             data.int_but_string = this.int_but_string;
         }
         if (this.map_string_string.size > 0) {
@@ -465,19 +465,19 @@ export class DefaultMessageV3 extends pb_1.Message {
         if (this.map_string_message.size > 0) {
             data.map_string_message = Object.fromEntries(Array.from(this.map_string_message).map(([key, value]) => [key, value.toObject()]));
         }
-        if (pb_1.Message.getField(this, 20) != null) {
+        if (this.array_int32 != null) {
             data.array_int32 = this.array_int32;
         }
-        if (pb_1.Message.getField(this, 21) != null) {
+        if (this.array_message != null) {
             data.array_message = this.array_message.map((item: dependency_1.DefaultCommonMessage) => item.toObject());
         }
-        if (pb_1.Message.getField(this, 22) != null) {
+        if (this.one_of_int32 != null) {
             data.one_of_int32 = this.one_of_int32;
         }
-        if (pb_1.Message.getField(this, 23) != null) {
+        if (this.one_of_message != null) {
             data.one_of_message = this.one_of_message.toObject();
         }
-        if (pb_1.Message.getField(this, 24) != null) {
+        if (this.bytes != null) {
             data.bytes = this.bytes;
         }
         return data;

@@ -36,7 +36,7 @@ export class Repeated extends pb_1.Message {
         const data: {
             indx?: number[];
         } = {};
-        if (pb_1.Message.getField(this, 4) != null) {
+        if (this.indx != null) {
             data.indx = this.indx;
         }
         return data;

@@ -108,16 +108,16 @@ export class OneOfWithoutAnyOtherFields extends pb_1.Message {
             age?: string;
             date_of_birth?: string;
         } = {};
-        if (pb_1.Message.getField(this, 1) != null) {
+        if (this.nickname != null) {
             data.nickname = this.nickname;
         }
-        if (pb_1.Message.getField(this, 2) != null) {
+        if (this.realname != null) {
             data.realname = this.realname;
         }
-        if (pb_1.Message.getField(this, 4) != null) {
+        if (this.age != null) {
             data.age = this.age;
         }
-        if (pb_1.Message.getField(this, 3) != null) {
+        if (this.date_of_birth != null) {
             data.date_of_birth = this.date_of_birth;
         }
         return data;
@@ -243,13 +243,13 @@ export class OneOf extends pb_1.Message {
             date_of_birth?: string;
             age?: string;
         } = {};
-        if (pb_1.Message.getField(this, 1) != null) {
+        if (this.nickname != null) {
             data.nickname = this.nickname;
         }
-        if (pb_1.Message.getField(this, 3) != null) {
+        if (this.date_of_birth != null) {
             data.date_of_birth = this.date_of_birth;
         }
-        if (pb_1.Message.getField(this, 4) != null) {
+        if (this.age != null) {
             data.age = this.age;
         }
         return data;

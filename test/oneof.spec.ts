@@ -9,7 +9,9 @@ describe("oneof", () => {
         )
 
         expect(oneOf.toObject()).toEqual({
+            age: "",
             date_of_birth: "21.01.1999",
+            nickname: "",
             realname: "Walter White"
         });
         expect(oneOf.age_or_dateofbirth).toBe("date_of_birth");
@@ -22,6 +24,7 @@ describe("oneof", () => {
         oneOf.age = "22";
         expect(oneOf.toObject()).toEqual({
             age: "22",
+            date_of_birth: "",
             nickname: "thesayyn"
         });
         expect(oneOf.age_or_dateofbirth).toBe("age");

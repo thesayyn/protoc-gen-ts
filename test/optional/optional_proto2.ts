@@ -50,7 +50,7 @@ export class NotOptional extends pb_1.Message {
         } = {
             should_be_required: this.should_be_required
         };
-        if (pb_1.Message.getField(this, 2) != null) {
+        if (this.should_be_optional != null) {
             data.should_be_optional = this.should_be_optional;
         }
         return data;
