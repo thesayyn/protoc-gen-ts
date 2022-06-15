@@ -20,7 +20,7 @@ export class NotOptional extends pb_1.Message {
         }
     }
     get should_be_required() {
-        return pb_1.Message.getField(this, 1) as string[];
+        return pb_1.Message.getFieldWithDefault(this, 1, []) as string[];
     }
     set should_be_required(value: string[]) {
         pb_1.Message.setField(this, 1, value);

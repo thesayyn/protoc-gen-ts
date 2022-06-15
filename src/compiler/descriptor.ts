@@ -136,19 +136,19 @@ export class FileDescriptorProto extends pb_1.Message {
         return pb_1.Message.getField(this, 2) != null;
     }
     get dependency() {
-        return pb_1.Message.getField(this, 3) as string[];
+        return pb_1.Message.getFieldWithDefault(this, 3, []) as string[];
     }
     set dependency(value: string[]) {
         pb_1.Message.setField(this, 3, value);
     }
     get public_dependency() {
-        return pb_1.Message.getField(this, 10) as number[];
+        return pb_1.Message.getFieldWithDefault(this, 10, []) as number[];
     }
     set public_dependency(value: number[]) {
         pb_1.Message.setField(this, 10, value);
     }
     get weak_dependency() {
-        return pb_1.Message.getField(this, 11) as number[];
+        return pb_1.Message.getFieldWithDefault(this, 11, []) as number[];
     }
     set weak_dependency(value: number[]) {
         pb_1.Message.setField(this, 11, value);
@@ -486,7 +486,7 @@ export class DescriptorProto extends pb_1.Message {
         pb_1.Message.setRepeatedWrapperField(this, 9, value);
     }
     get reserved_name() {
-        return pb_1.Message.getField(this, 10) as string[];
+        return pb_1.Message.getFieldWithDefault(this, 10, []) as string[];
     }
     set reserved_name(value: string[]) {
         pb_1.Message.setField(this, 10, value);
@@ -1491,7 +1491,7 @@ export class EnumDescriptorProto extends pb_1.Message {
         pb_1.Message.setRepeatedWrapperField(this, 4, value);
     }
     get reserved_name() {
-        return pb_1.Message.getField(this, 5) as string[];
+        return pb_1.Message.getFieldWithDefault(this, 5, []) as string[];
     }
     set reserved_name(value: string[]) {
         pb_1.Message.setField(this, 5, value);
@@ -4174,13 +4174,13 @@ export namespace SourceCodeInfo {
             }
         }
         get path() {
-            return pb_1.Message.getField(this, 1) as number[];
+            return pb_1.Message.getFieldWithDefault(this, 1, []) as number[];
         }
         set path(value: number[]) {
             pb_1.Message.setField(this, 1, value);
         }
         get span() {
-            return pb_1.Message.getField(this, 2) as number[];
+            return pb_1.Message.getFieldWithDefault(this, 2, []) as number[];
         }
         set span(value: number[]) {
             pb_1.Message.setField(this, 2, value);
@@ -4210,7 +4210,7 @@ export namespace SourceCodeInfo {
             return pb_1.Message.getField(this, 4) != null;
         }
         get leading_detached_comments() {
-            return pb_1.Message.getField(this, 6) as string[];
+            return pb_1.Message.getFieldWithDefault(this, 6, []) as string[];
         }
         set leading_detached_comments(value: string[]) {
             pb_1.Message.setField(this, 6, value);
@@ -4395,7 +4395,7 @@ export namespace GeneratedCodeInfo {
             }
         }
         get path() {
-            return pb_1.Message.getField(this, 1) as number[];
+            return pb_1.Message.getFieldWithDefault(this, 1, []) as number[];
         }
         set path(value: number[]) {
             pb_1.Message.setField(this, 1, value);

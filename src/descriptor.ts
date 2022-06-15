@@ -554,14 +554,14 @@ function createMessageSignature(
     const childSignatures = [];
 
     for (const currentFieldDescriptor of messageDescriptor.field) {
-      if (pb.Message.getField(currentFieldDescriptor, 9) !== index) { // 9 means oneof_index
+      if (!currentFieldDescriptor.has_oneof_index() || currentFieldDescriptor.oneof_index !== index) {
         continue;
       }
 
       const members = [];
 
       for (const fieldDescriptor of messageDescriptor.field) {
-        if (pb.Message.getField(fieldDescriptor, 9) != index) { // 9 means oneof_index
+        if (!fieldDescriptor.has_oneof_index() || fieldDescriptor.oneof_index != index) {
           continue;
         }
 
@@ -598,7 +598,7 @@ function createMessageSignature(
   const fieldSignatures = [];
 
   for (const fieldDescriptor of messageDescriptor.field) {
-    if (typeof pb.Message.getField(fieldDescriptor, 9) !== "number") { // 9 means oneof_index
+    if (!fieldDescriptor.has_oneof_index()) {
       fieldSignatures.push(
         comment.addDeprecatedJsDoc(
           ts.factory.createPropertySignature(
@@ -954,7 +954,6 @@ function createGetterCall(
 ): ts.CallExpression {
   let args: ts.Expression[];
   let getterMethod = "getField";
-  const default_value = pb.Message.getField(fieldDescriptor, 7) as string // 7 means default_value;
 
   if (field.isMessage(fieldDescriptor) && !field.isMap(fieldDescriptor)) {
     getterMethod = field.isRepeated(fieldDescriptor)
@@ -968,7 +967,7 @@ function createGetterCall(
     ];
   } else if (
     field.isMap(fieldDescriptor) ||
-    (rootDescriptor.syntax != "proto3" && !field.isOptional(rootDescriptor, fieldDescriptor) && default_value == null)
+    field.isRequiredWithoutExplicitDefault(rootDescriptor, fieldDescriptor)
   ) {
     getterMethod = "getField";
 
@@ -988,34 +987,36 @@ function createGetterCall(
     if (field.isEnum(fieldDescriptor)) {
       _default = ts.factory.createPropertyAccessExpression(
         type.getTypeReferenceExpr(rootDescriptor, fieldDescriptor.type_name),
-        default_value != null ? default_value : type.getLeadingEnumMember(fieldDescriptor.type_name),
+        fieldDescriptor.has_default_value()
+          ? fieldDescriptor.default_value
+          : type.getLeadingEnumMember(fieldDescriptor.type_name),
       );
     } else if (field.isRepeated(fieldDescriptor)) {
-      _default = default_value != null
-        ? ts.factory.createIdentifier(default_value)
+      _default = fieldDescriptor.has_default_value()
+        ? ts.factory.createIdentifier(fieldDescriptor.default_value)
         : ts.factory.createArrayLiteralExpression(
           [],
           false
         )
     } else if (fieldDescriptor.type == descriptor.FieldDescriptorProto.Type.TYPE_BYTES) {
-      _default = default_value != null
-        ? ts.factory.createIdentifier(default_value)
+      _default = fieldDescriptor.has_default_value()
+        ? ts.factory.createIdentifier(fieldDescriptor.default_value)
         : ts.factory.createNewExpression(
           ts.factory.createIdentifier("Uint8Array"),
           undefined,
           []
         )
     } else if (field.isString(fieldDescriptor) || field.hasJsTypeString(fieldDescriptor)) {
-      _default = default_value != null
-        ? ts.factory.createStringLiteral(default_value)
+      _default = fieldDescriptor.has_default_value()
+        ? ts.factory.createStringLiteral(fieldDescriptor.default_value)
         : ts.factory.createStringLiteral("")
     } else if (field.isBoolean(fieldDescriptor)) {
-      _default = default_value != null
-        ? ts.factory.createIdentifier(default_value)
+      _default = fieldDescriptor.has_default_value()
+        ? ts.factory.createIdentifier(fieldDescriptor.default_value)
         : ts.factory.createFalse()
     } else {
-      _default = default_value != null
-        ? ts.factory.createIdentifier(default_value)
+      _default = fieldDescriptor.has_default_value()
+        ? ts.factory.createIdentifier(fieldDescriptor.default_value)
         : ts.factory.createNumericLiteral(0)
     }
 
@@ -1052,7 +1053,7 @@ function createOneOfGetter(
   ];
 
   for (const field of messageDescriptor.field) {
-    if (pb.Message.getField(field, 9) !== index) { // 9 means oneof_index
+    if (!field.has_oneof_index() || field.oneof_index !== index) {
       continue;
     }
 
@@ -1146,7 +1147,7 @@ function createSetter(
 
   let block: ts.Block;
 
-  if (field.isOneOf(fieldDescriptor)) {
+  if (fieldDescriptor.has_oneof_index()) {
     block = createOneOfSetterBlock(
       fieldDescriptor,
       valueParameter,
@@ -1203,7 +1204,7 @@ function createOneOfSetterBlock(
                 ts.factory.createThis(),
                 ts.factory.createPrivateIdentifier("#one_of_decls"),
               ),
-              pb.Message.getField(fieldDescriptor, 9) as number, // 9 means oneof_index
+              fieldDescriptor.has_oneof_index() ? fieldDescriptor.oneof_index : undefined
             ),
             valueParameter,
           ],
@@ -2251,7 +2252,7 @@ function createOneOfDecls(
   );
 
   for (const field of messageDescriptor.field) {
-    if (pb.Message.getField(field, 9) != null) { // 9 means oneof_index
+    if (field.has_oneof_index()) {
       declMap[field.oneof_index] ??= [];
       declMap[field.oneof_index].push(
         ts.factory.createNumericLiteral(field.number),
@@ -2302,7 +2303,7 @@ function createMessage(
       !(rootDescriptor.syntax == "proto3" &&
         !(fieldDescriptor.proto3_optional ||
           field.isMessage(fieldDescriptor) ||
-          field.isOneOf(fieldDescriptor)))) {
+          fieldDescriptor.has_oneof_index()))) {
       statements.push(createPresenceClear(fieldDescriptor, pbIdentifier))
       statements.push(createPresenceHas(fieldDescriptor, pbIdentifier))
     }

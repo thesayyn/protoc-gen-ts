@@ -291,7 +291,7 @@ export class DefaultMessageV2WithoutDefault extends pb_1.Message {
         pb_1.Message.setField(this, 19, value as any);
     }
     get array_int32() {
-        return pb_1.Message.getField(this, 20) as number[];
+        return pb_1.Message.getFieldWithDefault(this, 20, []) as number[];
     }
     set array_int32(value: number[]) {
         pb_1.Message.setField(this, 20, value);

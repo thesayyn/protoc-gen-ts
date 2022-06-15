@@ -171,7 +171,7 @@ export class PresenceMessageV2 extends pb_1.Message {
         return pb_1.Message.getField(this, 10) != null;
     }
     get repeated() {
-        return pb_1.Message.getField(this, 11) as number[];
+        return pb_1.Message.getFieldWithDefault(this, 11, []) as number[];
     }
     set repeated(value: number[]) {
         pb_1.Message.setField(this, 11, value);

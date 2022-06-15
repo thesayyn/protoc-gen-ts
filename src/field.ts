@@ -123,13 +123,6 @@ export function isMap(fieldDescriptor: descriptor.FieldDescriptorProto) {
 }
 
 /**
- * @param {descriptor.FieldDescriptorProto} fieldDescriptor 
- */
-export function isOneOf(fieldDescriptor: descriptor.FieldDescriptorProto) {
-    return typeof pb.Message.getField(fieldDescriptor, 9) == "number"; // 9 means oneof_index
-}
-
-/**
  * @param {descriptor.FieldDescriptorProto} fieldDescriptor
  */
 export function isRepeated(fieldDescriptor: descriptor.FieldDescriptorProto) {
@@ -210,7 +203,7 @@ export function isRequiredWithoutExplicitDefault(
   return (
     rootDescriptor.syntax != "proto3" &&
     fieldDescriptor.label == descriptor.FieldDescriptorProto.Label.LABEL_REQUIRED &&
-    pb.Message.getField(fieldDescriptor, 7) == null // 7 means default value
+    !fieldDescriptor.has_default_value()
   );
 }
 

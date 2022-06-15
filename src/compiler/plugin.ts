@@ -187,7 +187,7 @@ export class CodeGeneratorRequest extends pb_1.Message {
         }
     }
     get file_to_generate() {
-        return pb_1.Message.getField(this, 1) as string[];
+        return pb_1.Message.getFieldWithDefault(this, 1, []) as string[];
     }
     set file_to_generate(value: string[]) {
         pb_1.Message.setField(this, 1, value);

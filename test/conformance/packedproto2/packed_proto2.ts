@@ -1653,7 +1653,7 @@ export class ContextInfo extends pb_1.Message {
         return pb_1.Message.getField(this, 4) != null;
     }
     get mentionedJid() {
-        return pb_1.Message.getField(this, 15) as string[];
+        return pb_1.Message.getFieldWithDefault(this, 15, []) as string[];
     }
     set mentionedJid(value: string[]) {
         pb_1.Message.setField(this, 15, value);
@@ -2408,7 +2408,7 @@ export class ImageMessage extends pb_1.Message {
         return pb_1.Message.getField(this, 21) != null;
     }
     get scanLengths() {
-        return pb_1.Message.getField(this, 22) as number[];
+        return pb_1.Message.getFieldWithDefault(this, 22, []) as number[];
     }
     set scanLengths(value: number[]) {
         pb_1.Message.setField(this, 22, value);
@@ -6589,7 +6589,7 @@ export class HighlyStructuredMessage extends pb_1.Message {
         return pb_1.Message.getField(this, 2) != null;
     }
     get params() {
-        return pb_1.Message.getField(this, 3) as string[];
+        return pb_1.Message.getFieldWithDefault(this, 3, []) as string[];
     }
     set params(value: string[]) {
         pb_1.Message.setField(this, 3, value);
@@ -13127,7 +13127,7 @@ export class WebMessageInfo extends pb_1.Message {
         return pb_1.Message.getField(this, 25) != null;
     }
     get messageStubParameters() {
-        return pb_1.Message.getField(this, 26) as string[];
+        return pb_1.Message.getFieldWithDefault(this, 26, []) as string[];
     }
     set messageStubParameters(value: string[]) {
         pb_1.Message.setField(this, 26, value);
@@ -13145,7 +13145,7 @@ export class WebMessageInfo extends pb_1.Message {
         return pb_1.Message.getField(this, 27) != null;
     }
     get labels() {
-        return pb_1.Message.getField(this, 28) as string[];
+        return pb_1.Message.getFieldWithDefault(this, 28, []) as string[];
     }
     set labels(value: string[]) {
         pb_1.Message.setField(this, 28, value);
