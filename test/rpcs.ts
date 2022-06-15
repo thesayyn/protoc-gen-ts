@@ -122,11 +122,11 @@ export class _Object extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (typeof pb_1.Message.getField(this, 1) === "string" && this.id.length)
+        if (pb_1.Message.getField(this, 1) && this.id.length)
             writer.writeString(1, this.id);
         if (this.size != 0)
             writer.writeUint64(3, this.size);
-        if (typeof pb_1.Message.getField(this, 4) === "string" && this.mimeType.length)
+        if (pb_1.Message.getField(this, 4) && this.mimeType.length)
             writer.writeString(4, this.mimeType);
         if (!w)
             return writer.getResultBuffer();
@@ -223,7 +223,7 @@ export class Chunk extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (pb_1.Message.getField(this, 1) != null)
+        if (pb_1.Message.getField(this, 1) && this.data.length)
             writer.writeBytes(1, this.data);
         if (pb_1.Message.getField(this, 2) != null)
             writer.writeMessage(2, this.range, () => this.range.serialize(writer));
@@ -410,7 +410,7 @@ export namespace Chunk {
         serialize(w: pb_1.BinaryWriter): void;
         serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
             const writer = w || new pb_1.BinaryWriter();
-            if (typeof pb_1.Message.getField(this, 1) === "string" && this.id.length)
+            if (pb_1.Message.getField(this, 1) && this.id.length)
                 writer.writeString(1, this.id);
             if (pb_1.Message.getField(this, 2) != null)
                 writer.writeMessage(2, this.range, () => this.range.serialize(writer));
@@ -483,7 +483,7 @@ export class Query extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (typeof pb_1.Message.getField(this, 1) === "string" && this.id.length)
+        if (pb_1.Message.getField(this, 1) && this.id.length)
             writer.writeString(1, this.id);
         if (!w)
             return writer.getResultBuffer();
@@ -643,7 +643,7 @@ export class Put extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (typeof pb_1.Message.getField(this, 1) === "string" && this.id.length)
+        if (pb_1.Message.getField(this, 1) && this.id.length)
             writer.writeString(1, this.id);
         if (pb_1.Message.getField(this, 3) != null)
             writer.writeMessage(3, this.chunk, () => this.chunk.serialize(writer));

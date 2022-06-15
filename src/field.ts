@@ -219,6 +219,15 @@ export function isString(fieldDescriptor: descriptor.FieldDescriptorProto) {
 /**
  * @param {descriptor.FieldDescriptorProto} fieldDescriptor
  */
+ export function isBytes(fieldDescriptor: descriptor.FieldDescriptorProto) {
+  return (
+    fieldDescriptor.type == descriptor.FieldDescriptorProto.Type.TYPE_BYTES
+  );
+}
+
+/**
+ * @param {descriptor.FieldDescriptorProto} fieldDescriptor
+ */
 export function isBoolean(fieldDescriptor: descriptor.FieldDescriptorProto) {
   return fieldDescriptor.type == descriptor.FieldDescriptorProto.Type.TYPE_BOOL;
 }

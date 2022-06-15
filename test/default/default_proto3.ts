@@ -510,7 +510,7 @@ export class DefaultMessageV3 extends pb_1.Message {
             writer.writeEnum(2, this.enum);
         if (this.bool != false)
             writer.writeBool(3, this.bool);
-        if (typeof pb_1.Message.getField(this, 4) === "string" && this.string.length)
+        if (pb_1.Message.getField(this, 4) && this.string.length)
             writer.writeString(4, this.string);
         if (this.int32 != 0)
             writer.writeInt32(5, this.int32);
@@ -554,11 +554,11 @@ export class DefaultMessageV3 extends pb_1.Message {
             writer.writePackedInt32(20, this.array_int32);
         if (this.array_message.length)
             writer.writeRepeatedMessage(21, this.array_message, (item: dependency_1.DefaultCommonMessage) => item.serialize(writer));
-        if (this.one_of_int32 != 0)
+        if (pb_1.Message.getField(this, 22) != null)
             writer.writeInt32(22, this.one_of_int32);
         if (pb_1.Message.getField(this, 23) != null)
             writer.writeMessage(23, this.one_of_message, () => this.one_of_message.serialize(writer));
-        if (pb_1.Message.getField(this, 24) != null)
+        if (pb_1.Message.getField(this, 24) && this.bytes.length)
             writer.writeBytes(24, this.bytes);
         if (!w)
             return writer.getResultBuffer();

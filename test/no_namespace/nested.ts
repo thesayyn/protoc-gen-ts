@@ -191,9 +191,9 @@ export class SchedulingContextEnv extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (typeof pb_1.Message.getField(this, 1) === "string" && this.key.length)
+        if (pb_1.Message.getField(this, 1) && this.key.length)
             writer.writeString(1, this.key);
-        if (typeof pb_1.Message.getField(this, 2) === "string" && this.value.length)
+        if (pb_1.Message.getField(this, 2) && this.value.length)
             writer.writeString(2, this.value);
         if (!w)
             return writer.getResultBuffer();
@@ -382,7 +382,7 @@ export class SchedulingContextBatchProcess extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (typeof pb_1.Message.getField(this, 1) === "string" && this.id.length)
+        if (pb_1.Message.getField(this, 1) && this.id.length)
             writer.writeString(1, this.id);
         if (!w)
             return writer.getResultBuffer();
@@ -509,11 +509,11 @@ export class Target extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (typeof pb_1.Message.getField(this, 1) === "string" && this.id.length)
+        if (pb_1.Message.getField(this, 1) && this.id.length)
             writer.writeString(1, this.id);
-        if (typeof pb_1.Message.getField(this, 2) === "string" && this.cwd.length)
+        if (pb_1.Message.getField(this, 2) && this.cwd.length)
             writer.writeString(2, this.cwd);
-        if (typeof pb_1.Message.getField(this, 3) === "string" && this.handler.length)
+        if (pb_1.Message.getField(this, 3) && this.handler.length)
             writer.writeString(3, this.handler);
         if (pb_1.Message.getField(this, 4) != null)
             writer.writeMessage(4, this.context, () => this.context.serialize(writer));
@@ -633,7 +633,7 @@ export class Event extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (typeof pb_1.Message.getField(this, 1) === "string" && this.id.length)
+        if (pb_1.Message.getField(this, 1) && this.id.length)
             writer.writeString(1, this.id);
         if (this.type != Type.HTTP)
             writer.writeEnum(2, this.type);
@@ -710,7 +710,7 @@ export class Pop extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (typeof pb_1.Message.getField(this, 1) === "string" && this.id.length)
+        if (pb_1.Message.getField(this, 1) && this.id.length)
             writer.writeString(1, this.id);
         if (!w)
             return writer.getResultBuffer();
@@ -777,7 +777,7 @@ export class Complete extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (typeof pb_1.Message.getField(this, 1) === "string" && this.id.length)
+        if (pb_1.Message.getField(this, 1) && this.id.length)
             writer.writeString(1, this.id);
         if (!w)
             return writer.getResultBuffer();

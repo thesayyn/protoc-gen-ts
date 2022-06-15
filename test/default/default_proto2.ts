@@ -524,7 +524,7 @@ export class DefaultMessageV2WithoutDefault extends pb_1.Message {
             writer.writeEnum(2, this.enum);
         if (pb_1.Message.getField(this, 3) != null)
             writer.writeBool(3, this.bool);
-        if (typeof pb_1.Message.getField(this, 4) === "string" && this.string.length)
+        if (pb_1.Message.getField(this, 4) && this.string.length)
             writer.writeString(4, this.string);
         if (pb_1.Message.getField(this, 5) != null)
             writer.writeInt32(5, this.int32);
@@ -572,7 +572,7 @@ export class DefaultMessageV2WithoutDefault extends pb_1.Message {
             writer.writeInt32(22, this.one_of_int32);
         if (pb_1.Message.getField(this, 23) != null)
             writer.writeMessage(23, this.one_of_message, () => this.one_of_message.serialize(writer));
-        if (pb_1.Message.getField(this, 24) != null)
+        if (pb_1.Message.getField(this, 24) && this.bytes.length)
             writer.writeBytes(24, this.bytes);
         if (!w)
             return writer.getResultBuffer();
@@ -1072,7 +1072,7 @@ export class DefaultMessageV2WithDefault extends pb_1.Message {
             writer.writeEnum(2, this.enum);
         if (pb_1.Message.getField(this, 3) != null)
             writer.writeBool(3, this.bool);
-        if (typeof pb_1.Message.getField(this, 4) === "string" && this.string.length)
+        if (pb_1.Message.getField(this, 4) && this.string.length)
             writer.writeString(4, this.string);
         if (pb_1.Message.getField(this, 5) != null)
             writer.writeInt32(5, this.int32);

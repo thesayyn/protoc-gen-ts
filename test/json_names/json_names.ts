@@ -213,11 +213,11 @@ export class JsonNamesMessage extends pb_1.Message {
             writer.writeMessage(3, this.aNestedMessage, () => this.aNestedMessage.serialize(writer));
         if (this.colorSpace != ColorSpace.RED_GREEN_BLUE)
             writer.writeEnum(4, this.colorSpace);
-        if (typeof pb_1.Message.getField(this, 5) === "string" && this.anOptionalString.length)
+        if (pb_1.Message.getField(this, 5) && this.anOptionalString.length)
             writer.writeString(5, this.anOptionalString);
-        if (typeof pb_1.Message.getField(this, 6) === "string" && this.aSingleString.length)
+        if (pb_1.Message.getField(this, 6) && this.aSingleString.length)
             writer.writeString(6, this.aSingleString);
-        if (this.aSingleNumber != 0)
+        if (pb_1.Message.getField(this, 7) != null)
             writer.writeInt32(7, this.aSingleNumber);
         if (!w)
             return writer.getResultBuffer();

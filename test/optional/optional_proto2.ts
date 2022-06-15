@@ -67,7 +67,7 @@ export class NotOptional extends pb_1.Message {
         const writer = w || new pb_1.BinaryWriter();
         if (this.should_be_required.length)
             writer.writeRepeatedString(1, this.should_be_required);
-        if (typeof pb_1.Message.getField(this, 2) === "string" && this.should_be_optional.length)
+        if (pb_1.Message.getField(this, 2) && this.should_be_optional.length)
             writer.writeString(2, this.should_be_optional);
         if (!w)
             return writer.getResultBuffer();

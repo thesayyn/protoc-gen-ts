@@ -75,9 +75,9 @@ export class HydratedQuickReplyButton extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (typeof pb_1.Message.getField(this, 1) === "string" && this.displayText.length)
+        if (pb_1.Message.getField(this, 1) && this.displayText.length)
             writer.writeString(1, this.displayText);
-        if (typeof pb_1.Message.getField(this, 2) === "string" && this.id.length)
+        if (pb_1.Message.getField(this, 2) && this.id.length)
             writer.writeString(2, this.id);
         if (!w)
             return writer.getResultBuffer();
@@ -177,9 +177,9 @@ export class HydratedURLButton extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (typeof pb_1.Message.getField(this, 1) === "string" && this.displayText.length)
+        if (pb_1.Message.getField(this, 1) && this.displayText.length)
             writer.writeString(1, this.displayText);
-        if (typeof pb_1.Message.getField(this, 2) === "string" && this.url.length)
+        if (pb_1.Message.getField(this, 2) && this.url.length)
             writer.writeString(2, this.url);
         if (!w)
             return writer.getResultBuffer();
@@ -279,9 +279,9 @@ export class HydratedCallButton extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (typeof pb_1.Message.getField(this, 1) === "string" && this.displayText.length)
+        if (pb_1.Message.getField(this, 1) && this.displayText.length)
             writer.writeString(1, this.displayText);
-        if (typeof pb_1.Message.getField(this, 2) === "string" && this.phoneNumber.length)
+        if (pb_1.Message.getField(this, 2) && this.phoneNumber.length)
             writer.writeString(2, this.phoneNumber);
         if (!w)
             return writer.getResultBuffer();
@@ -563,7 +563,7 @@ export class QuickReplyButton extends pb_1.Message {
         const writer = w || new pb_1.BinaryWriter();
         if (pb_1.Message.getField(this, 1) != null)
             writer.writeMessage(1, this.displayText, () => this.displayText.serialize(writer));
-        if (typeof pb_1.Message.getField(this, 2) === "string" && this.id.length)
+        if (pb_1.Message.getField(this, 2) && this.id.length)
             writer.writeString(2, this.id);
         if (!w)
             return writer.getResultBuffer();
@@ -1075,7 +1075,7 @@ export class Location extends pb_1.Message {
             writer.writeDouble(1, this.degreesLatitude);
         if (pb_1.Message.getField(this, 2) != null)
             writer.writeDouble(2, this.degreesLongitude);
-        if (typeof pb_1.Message.getField(this, 3) === "string" && this.name.length)
+        if (pb_1.Message.getField(this, 3) && this.name.length)
             writer.writeString(3, this.name);
         if (!w)
             return writer.getResultBuffer();
@@ -1489,13 +1489,13 @@ export class AdReplyInfo extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (typeof pb_1.Message.getField(this, 1) === "string" && this.advertiserName.length)
+        if (pb_1.Message.getField(this, 1) && this.advertiserName.length)
             writer.writeString(1, this.advertiserName);
         if (pb_1.Message.getField(this, 2) != null)
             writer.writeEnum(2, this.mediaType);
-        if (pb_1.Message.getField(this, 16) != null)
+        if (pb_1.Message.getField(this, 16) && this.jpegThumbnail.length)
             writer.writeBytes(16, this.jpegThumbnail);
-        if (typeof pb_1.Message.getField(this, 17) === "string" && this.caption.length)
+        if (pb_1.Message.getField(this, 17) && this.caption.length)
             writer.writeString(17, this.caption);
         if (!w)
             return writer.getResultBuffer();
@@ -1910,19 +1910,19 @@ export class ContextInfo extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (typeof pb_1.Message.getField(this, 1) === "string" && this.stanzaId.length)
+        if (pb_1.Message.getField(this, 1) && this.stanzaId.length)
             writer.writeString(1, this.stanzaId);
-        if (typeof pb_1.Message.getField(this, 2) === "string" && this.participant.length)
+        if (pb_1.Message.getField(this, 2) && this.participant.length)
             writer.writeString(2, this.participant);
         if (pb_1.Message.getField(this, 3) != null)
             writer.writeMessage(3, this.quotedMessage, () => this.quotedMessage.serialize(writer));
-        if (typeof pb_1.Message.getField(this, 4) === "string" && this.remoteJid.length)
+        if (pb_1.Message.getField(this, 4) && this.remoteJid.length)
             writer.writeString(4, this.remoteJid);
         if (this.mentionedJid.length)
             writer.writeRepeatedString(15, this.mentionedJid);
-        if (typeof pb_1.Message.getField(this, 18) === "string" && this.conversionSource.length)
+        if (pb_1.Message.getField(this, 18) && this.conversionSource.length)
             writer.writeString(18, this.conversionSource);
-        if (pb_1.Message.getField(this, 19) != null)
+        if (pb_1.Message.getField(this, 19) && this.conversionData.length)
             writer.writeBytes(19, this.conversionData);
         if (pb_1.Message.getField(this, 20) != null)
             writer.writeUint32(20, this.conversionDelaySeconds);
@@ -1938,7 +1938,7 @@ export class ContextInfo extends pb_1.Message {
             writer.writeUint32(25, this.expiration);
         if (pb_1.Message.getField(this, 26) != null)
             writer.writeInt64(26, this.ephemeralSettingTimestamp);
-        if (pb_1.Message.getField(this, 27) != null)
+        if (pb_1.Message.getField(this, 27) && this.ephemeralSharedSecret.length)
             writer.writeBytes(27, this.ephemeralSharedSecret);
         if (!w)
             return writer.getResultBuffer();
@@ -2077,9 +2077,9 @@ export class SenderKeyDistributionMessage extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (typeof pb_1.Message.getField(this, 1) === "string" && this.groupId.length)
+        if (pb_1.Message.getField(this, 1) && this.groupId.length)
             writer.writeString(1, this.groupId);
-        if (pb_1.Message.getField(this, 2) != null)
+        if (pb_1.Message.getField(this, 2) && this.axolotlSenderKeyDistributionMessage.length)
             writer.writeBytes(2, this.axolotlSenderKeyDistributionMessage);
         if (!w)
             return writer.getResultBuffer();
@@ -2615,13 +2615,13 @@ export class ImageMessage extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (typeof pb_1.Message.getField(this, 1) === "string" && this.url.length)
+        if (pb_1.Message.getField(this, 1) && this.url.length)
             writer.writeString(1, this.url);
-        if (typeof pb_1.Message.getField(this, 2) === "string" && this.mimetype.length)
+        if (pb_1.Message.getField(this, 2) && this.mimetype.length)
             writer.writeString(2, this.mimetype);
-        if (typeof pb_1.Message.getField(this, 3) === "string" && this.caption.length)
+        if (pb_1.Message.getField(this, 3) && this.caption.length)
             writer.writeString(3, this.caption);
-        if (pb_1.Message.getField(this, 4) != null)
+        if (pb_1.Message.getField(this, 4) && this.fileSha256.length)
             writer.writeBytes(4, this.fileSha256);
         if (pb_1.Message.getField(this, 5) != null)
             writer.writeUint64(5, this.fileLength);
@@ -2629,33 +2629,33 @@ export class ImageMessage extends pb_1.Message {
             writer.writeUint32(6, this.height);
         if (pb_1.Message.getField(this, 7) != null)
             writer.writeUint32(7, this.width);
-        if (pb_1.Message.getField(this, 8) != null)
+        if (pb_1.Message.getField(this, 8) && this.mediaKey.length)
             writer.writeBytes(8, this.mediaKey);
-        if (pb_1.Message.getField(this, 9) != null)
+        if (pb_1.Message.getField(this, 9) && this.fileEncSha256.length)
             writer.writeBytes(9, this.fileEncSha256);
         if (this.interactiveAnnotations.length)
             writer.writeRepeatedMessage(10, this.interactiveAnnotations, (item: InteractiveAnnotation) => item.serialize(writer));
-        if (typeof pb_1.Message.getField(this, 11) === "string" && this.directPath.length)
+        if (pb_1.Message.getField(this, 11) && this.directPath.length)
             writer.writeString(11, this.directPath);
         if (pb_1.Message.getField(this, 12) != null)
             writer.writeInt64(12, this.mediaKeyTimestamp);
-        if (pb_1.Message.getField(this, 16) != null)
+        if (pb_1.Message.getField(this, 16) && this.jpegThumbnail.length)
             writer.writeBytes(16, this.jpegThumbnail);
         if (pb_1.Message.getField(this, 17) != null)
             writer.writeMessage(17, this.contextInfo, () => this.contextInfo.serialize(writer));
-        if (pb_1.Message.getField(this, 18) != null)
+        if (pb_1.Message.getField(this, 18) && this.firstScanSidecar.length)
             writer.writeBytes(18, this.firstScanSidecar);
         if (pb_1.Message.getField(this, 19) != null)
             writer.writeUint32(19, this.firstScanLength);
         if (pb_1.Message.getField(this, 20) != null)
             writer.writeUint32(20, this.experimentGroupId);
-        if (pb_1.Message.getField(this, 21) != null)
+        if (pb_1.Message.getField(this, 21) && this.scansSidecar.length)
             writer.writeBytes(21, this.scansSidecar);
         if (this.scanLengths.length)
             writer.writeRepeatedUint32(22, this.scanLengths);
-        if (pb_1.Message.getField(this, 23) != null)
+        if (pb_1.Message.getField(this, 23) && this.midQualityFileSha256.length)
             writer.writeBytes(23, this.midQualityFileSha256);
-        if (pb_1.Message.getField(this, 24) != null)
+        if (pb_1.Message.getField(this, 24) && this.midQualityFileEncSha256.length)
             writer.writeBytes(24, this.midQualityFileEncSha256);
         if (!w)
             return writer.getResultBuffer();
@@ -2836,9 +2836,9 @@ export class ContactMessage extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (typeof pb_1.Message.getField(this, 1) === "string" && this.displayName.length)
+        if (pb_1.Message.getField(this, 1) && this.displayName.length)
             writer.writeString(1, this.displayName);
-        if (typeof pb_1.Message.getField(this, 16) === "string" && this.vcard.length)
+        if (pb_1.Message.getField(this, 16) && this.vcard.length)
             writer.writeString(16, this.vcard);
         if (pb_1.Message.getField(this, 17) != null)
             writer.writeMessage(17, this.contextInfo, () => this.contextInfo.serialize(writer));
@@ -3187,11 +3187,11 @@ export class LocationMessage extends pb_1.Message {
             writer.writeDouble(1, this.degreesLatitude);
         if (pb_1.Message.getField(this, 2) != null)
             writer.writeDouble(2, this.degreesLongitude);
-        if (typeof pb_1.Message.getField(this, 3) === "string" && this.name.length)
+        if (pb_1.Message.getField(this, 3) && this.name.length)
             writer.writeString(3, this.name);
-        if (typeof pb_1.Message.getField(this, 4) === "string" && this.address.length)
+        if (pb_1.Message.getField(this, 4) && this.address.length)
             writer.writeString(4, this.address);
-        if (typeof pb_1.Message.getField(this, 5) === "string" && this.url.length)
+        if (pb_1.Message.getField(this, 5) && this.url.length)
             writer.writeString(5, this.url);
         if (pb_1.Message.getField(this, 6) != null)
             writer.writeBool(6, this.isLive);
@@ -3201,9 +3201,9 @@ export class LocationMessage extends pb_1.Message {
             writer.writeFloat(8, this.speedInMps);
         if (pb_1.Message.getField(this, 9) != null)
             writer.writeUint32(9, this.degreesClockwiseFromMagneticNorth);
-        if (typeof pb_1.Message.getField(this, 11) === "string" && this.comment.length)
+        if (pb_1.Message.getField(this, 11) && this.comment.length)
             writer.writeString(11, this.comment);
-        if (pb_1.Message.getField(this, 16) != null)
+        if (pb_1.Message.getField(this, 16) && this.jpegThumbnail.length)
             writer.writeBytes(16, this.jpegThumbnail);
         if (pb_1.Message.getField(this, 17) != null)
             writer.writeMessage(17, this.contextInfo, () => this.contextInfo.serialize(writer));
@@ -3575,15 +3575,15 @@ export class ExtendedTextMessage extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (typeof pb_1.Message.getField(this, 1) === "string" && this.text.length)
+        if (pb_1.Message.getField(this, 1) && this.text.length)
             writer.writeString(1, this.text);
-        if (typeof pb_1.Message.getField(this, 2) === "string" && this.matchedText.length)
+        if (pb_1.Message.getField(this, 2) && this.matchedText.length)
             writer.writeString(2, this.matchedText);
-        if (typeof pb_1.Message.getField(this, 4) === "string" && this.canonicalUrl.length)
+        if (pb_1.Message.getField(this, 4) && this.canonicalUrl.length)
             writer.writeString(4, this.canonicalUrl);
-        if (typeof pb_1.Message.getField(this, 5) === "string" && this.description.length)
+        if (pb_1.Message.getField(this, 5) && this.description.length)
             writer.writeString(5, this.description);
-        if (typeof pb_1.Message.getField(this, 6) === "string" && this.title.length)
+        if (pb_1.Message.getField(this, 6) && this.title.length)
             writer.writeString(6, this.title);
         if (pb_1.Message.getField(this, 7) != null)
             writer.writeFixed32(7, this.textArgb);
@@ -3593,7 +3593,7 @@ export class ExtendedTextMessage extends pb_1.Message {
             writer.writeEnum(9, this.font);
         if (pb_1.Message.getField(this, 10) != null)
             writer.writeEnum(10, this.previewType);
-        if (pb_1.Message.getField(this, 16) != null)
+        if (pb_1.Message.getField(this, 16) && this.jpegThumbnail.length)
             writer.writeBytes(16, this.jpegThumbnail);
         if (pb_1.Message.getField(this, 17) != null)
             writer.writeMessage(17, this.contextInfo, () => this.contextInfo.serialize(writer));
@@ -4005,29 +4005,29 @@ export class DocumentMessage extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (typeof pb_1.Message.getField(this, 1) === "string" && this.url.length)
+        if (pb_1.Message.getField(this, 1) && this.url.length)
             writer.writeString(1, this.url);
-        if (typeof pb_1.Message.getField(this, 2) === "string" && this.mimetype.length)
+        if (pb_1.Message.getField(this, 2) && this.mimetype.length)
             writer.writeString(2, this.mimetype);
-        if (typeof pb_1.Message.getField(this, 3) === "string" && this.title.length)
+        if (pb_1.Message.getField(this, 3) && this.title.length)
             writer.writeString(3, this.title);
-        if (pb_1.Message.getField(this, 4) != null)
+        if (pb_1.Message.getField(this, 4) && this.fileSha256.length)
             writer.writeBytes(4, this.fileSha256);
         if (pb_1.Message.getField(this, 5) != null)
             writer.writeUint64(5, this.fileLength);
         if (pb_1.Message.getField(this, 6) != null)
             writer.writeUint32(6, this.pageCount);
-        if (pb_1.Message.getField(this, 7) != null)
+        if (pb_1.Message.getField(this, 7) && this.mediaKey.length)
             writer.writeBytes(7, this.mediaKey);
-        if (typeof pb_1.Message.getField(this, 8) === "string" && this.fileName.length)
+        if (pb_1.Message.getField(this, 8) && this.fileName.length)
             writer.writeString(8, this.fileName);
-        if (pb_1.Message.getField(this, 9) != null)
+        if (pb_1.Message.getField(this, 9) && this.fileEncSha256.length)
             writer.writeBytes(9, this.fileEncSha256);
-        if (typeof pb_1.Message.getField(this, 10) === "string" && this.directPath.length)
+        if (pb_1.Message.getField(this, 10) && this.directPath.length)
             writer.writeString(10, this.directPath);
         if (pb_1.Message.getField(this, 11) != null)
             writer.writeInt64(11, this.mediaKeyTimestamp);
-        if (pb_1.Message.getField(this, 16) != null)
+        if (pb_1.Message.getField(this, 16) && this.jpegThumbnail.length)
             writer.writeBytes(16, this.jpegThumbnail);
         if (pb_1.Message.getField(this, 17) != null)
             writer.writeMessage(17, this.contextInfo, () => this.contextInfo.serialize(writer));
@@ -4402,11 +4402,11 @@ export class AudioMessage extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (typeof pb_1.Message.getField(this, 1) === "string" && this.url.length)
+        if (pb_1.Message.getField(this, 1) && this.url.length)
             writer.writeString(1, this.url);
-        if (typeof pb_1.Message.getField(this, 2) === "string" && this.mimetype.length)
+        if (pb_1.Message.getField(this, 2) && this.mimetype.length)
             writer.writeString(2, this.mimetype);
-        if (pb_1.Message.getField(this, 3) != null)
+        if (pb_1.Message.getField(this, 3) && this.fileSha256.length)
             writer.writeBytes(3, this.fileSha256);
         if (pb_1.Message.getField(this, 4) != null)
             writer.writeUint64(4, this.fileLength);
@@ -4414,17 +4414,17 @@ export class AudioMessage extends pb_1.Message {
             writer.writeUint32(5, this.seconds);
         if (pb_1.Message.getField(this, 6) != null)
             writer.writeBool(6, this.ptt);
-        if (pb_1.Message.getField(this, 7) != null)
+        if (pb_1.Message.getField(this, 7) && this.mediaKey.length)
             writer.writeBytes(7, this.mediaKey);
-        if (pb_1.Message.getField(this, 8) != null)
+        if (pb_1.Message.getField(this, 8) && this.fileEncSha256.length)
             writer.writeBytes(8, this.fileEncSha256);
-        if (typeof pb_1.Message.getField(this, 9) === "string" && this.directPath.length)
+        if (pb_1.Message.getField(this, 9) && this.directPath.length)
             writer.writeString(9, this.directPath);
         if (pb_1.Message.getField(this, 10) != null)
             writer.writeInt64(10, this.mediaKeyTimestamp);
         if (pb_1.Message.getField(this, 17) != null)
             writer.writeMessage(17, this.contextInfo, () => this.contextInfo.serialize(writer));
-        if (pb_1.Message.getField(this, 18) != null)
+        if (pb_1.Message.getField(this, 18) && this.streamingSidecar.length)
             writer.writeBytes(18, this.streamingSidecar);
         if (!w)
             return writer.getResultBuffer();
@@ -4929,19 +4929,19 @@ export class VideoMessage extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (typeof pb_1.Message.getField(this, 1) === "string" && this.url.length)
+        if (pb_1.Message.getField(this, 1) && this.url.length)
             writer.writeString(1, this.url);
-        if (typeof pb_1.Message.getField(this, 2) === "string" && this.mimetype.length)
+        if (pb_1.Message.getField(this, 2) && this.mimetype.length)
             writer.writeString(2, this.mimetype);
-        if (pb_1.Message.getField(this, 3) != null)
+        if (pb_1.Message.getField(this, 3) && this.fileSha256.length)
             writer.writeBytes(3, this.fileSha256);
         if (pb_1.Message.getField(this, 4) != null)
             writer.writeUint64(4, this.fileLength);
         if (pb_1.Message.getField(this, 5) != null)
             writer.writeUint32(5, this.seconds);
-        if (pb_1.Message.getField(this, 6) != null)
+        if (pb_1.Message.getField(this, 6) && this.mediaKey.length)
             writer.writeBytes(6, this.mediaKey);
-        if (typeof pb_1.Message.getField(this, 7) === "string" && this.caption.length)
+        if (pb_1.Message.getField(this, 7) && this.caption.length)
             writer.writeString(7, this.caption);
         if (pb_1.Message.getField(this, 8) != null)
             writer.writeBool(8, this.gifPlayback);
@@ -4949,19 +4949,19 @@ export class VideoMessage extends pb_1.Message {
             writer.writeUint32(9, this.height);
         if (pb_1.Message.getField(this, 10) != null)
             writer.writeUint32(10, this.width);
-        if (pb_1.Message.getField(this, 11) != null)
+        if (pb_1.Message.getField(this, 11) && this.fileEncSha256.length)
             writer.writeBytes(11, this.fileEncSha256);
         if (this.interactiveAnnotations.length)
             writer.writeRepeatedMessage(12, this.interactiveAnnotations, (item: InteractiveAnnotation) => item.serialize(writer));
-        if (typeof pb_1.Message.getField(this, 13) === "string" && this.directPath.length)
+        if (pb_1.Message.getField(this, 13) && this.directPath.length)
             writer.writeString(13, this.directPath);
         if (pb_1.Message.getField(this, 14) != null)
             writer.writeInt64(14, this.mediaKeyTimestamp);
-        if (pb_1.Message.getField(this, 16) != null)
+        if (pb_1.Message.getField(this, 16) && this.jpegThumbnail.length)
             writer.writeBytes(16, this.jpegThumbnail);
         if (pb_1.Message.getField(this, 17) != null)
             writer.writeMessage(17, this.contextInfo, () => this.contextInfo.serialize(writer));
-        if (pb_1.Message.getField(this, 18) != null)
+        if (pb_1.Message.getField(this, 18) && this.streamingSidecar.length)
             writer.writeBytes(18, this.streamingSidecar);
         if (pb_1.Message.getField(this, 19) != null)
             writer.writeEnum(19, this.gifAttribution);
@@ -5094,7 +5094,7 @@ export class Call extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (pb_1.Message.getField(this, 1) != null)
+        if (pb_1.Message.getField(this, 1) && this.callKey.length)
             writer.writeBytes(1, this.callKey);
         if (!w)
             return writer.getResultBuffer();
@@ -5191,9 +5191,9 @@ export class Chat extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (typeof pb_1.Message.getField(this, 1) === "string" && this.displayName.length)
+        if (pb_1.Message.getField(this, 1) && this.displayName.length)
             writer.writeString(1, this.displayName);
-        if (typeof pb_1.Message.getField(this, 2) === "string" && this.id.length)
+        if (pb_1.Message.getField(this, 2) && this.id.length)
             writer.writeString(2, this.id);
         if (!w)
             return writer.getResultBuffer();
@@ -5634,21 +5634,21 @@ export class HistorySyncNotification extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (pb_1.Message.getField(this, 1) != null)
+        if (pb_1.Message.getField(this, 1) && this.fileSha256.length)
             writer.writeBytes(1, this.fileSha256);
         if (pb_1.Message.getField(this, 2) != null)
             writer.writeUint64(2, this.fileLength);
-        if (pb_1.Message.getField(this, 3) != null)
+        if (pb_1.Message.getField(this, 3) && this.mediaKey.length)
             writer.writeBytes(3, this.mediaKey);
-        if (pb_1.Message.getField(this, 4) != null)
+        if (pb_1.Message.getField(this, 4) && this.fileEncSha256.length)
             writer.writeBytes(4, this.fileEncSha256);
-        if (typeof pb_1.Message.getField(this, 5) === "string" && this.directPath.length)
+        if (pb_1.Message.getField(this, 5) && this.directPath.length)
             writer.writeString(5, this.directPath);
         if (pb_1.Message.getField(this, 6) != null)
             writer.writeEnum(6, this.syncType);
         if (pb_1.Message.getField(this, 7) != null)
             writer.writeUint32(7, this.chunkOrder);
-        if (typeof pb_1.Message.getField(this, 8) === "string" && this.originalMessageId.length)
+        if (pb_1.Message.getField(this, 8) && this.originalMessageId.length)
             writer.writeString(8, this.originalMessageId);
         if (!w)
             return writer.getResultBuffer();
@@ -5790,7 +5790,7 @@ export class ContactsArrayMessage extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (typeof pb_1.Message.getField(this, 1) === "string" && this.displayName.length)
+        if (pb_1.Message.getField(this, 1) && this.displayName.length)
             writer.writeString(1, this.displayName);
         if (this.contacts.length)
             writer.writeRepeatedMessage(2, this.contacts, (item: ContactMessage) => item.serialize(writer));
@@ -5897,7 +5897,7 @@ export class HSMCurrency extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (typeof pb_1.Message.getField(this, 1) === "string" && this.currencyCode.length)
+        if (pb_1.Message.getField(this, 1) && this.currencyCode.length)
             writer.writeString(1, this.currencyCode);
         if (pb_1.Message.getField(this, 2) != null)
             writer.writeInt64(2, this.amount1000);
@@ -6487,7 +6487,7 @@ export class HSMLocalizableParameter extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (typeof pb_1.Message.getField(this, 1) === "string" && this.default.length)
+        if (pb_1.Message.getField(this, 1) && this.default.length)
             writer.writeString(1, this.default);
         if (pb_1.Message.getField(this, 2) != null)
             writer.writeMessage(2, this.currency, () => this.currency.serialize(writer));
@@ -6742,21 +6742,21 @@ export class HighlyStructuredMessage extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (typeof pb_1.Message.getField(this, 1) === "string" && this.namespace.length)
+        if (pb_1.Message.getField(this, 1) && this.namespace.length)
             writer.writeString(1, this.namespace);
-        if (typeof pb_1.Message.getField(this, 2) === "string" && this.elementName.length)
+        if (pb_1.Message.getField(this, 2) && this.elementName.length)
             writer.writeString(2, this.elementName);
         if (this.params.length)
             writer.writeRepeatedString(3, this.params);
-        if (typeof pb_1.Message.getField(this, 4) === "string" && this.fallbackLg.length)
+        if (pb_1.Message.getField(this, 4) && this.fallbackLg.length)
             writer.writeString(4, this.fallbackLg);
-        if (typeof pb_1.Message.getField(this, 5) === "string" && this.fallbackLc.length)
+        if (pb_1.Message.getField(this, 5) && this.fallbackLc.length)
             writer.writeString(5, this.fallbackLc);
         if (this.localizableParams.length)
             writer.writeRepeatedMessage(6, this.localizableParams, (item: HSMLocalizableParameter) => item.serialize(writer));
-        if (typeof pb_1.Message.getField(this, 7) === "string" && this.deterministicLg.length)
+        if (pb_1.Message.getField(this, 7) && this.deterministicLg.length)
             writer.writeString(7, this.deterministicLg);
-        if (typeof pb_1.Message.getField(this, 8) === "string" && this.deterministicLc.length)
+        if (pb_1.Message.getField(this, 8) && this.deterministicLc.length)
             writer.writeString(8, this.deterministicLc);
         if (pb_1.Message.getField(this, 9) != null)
             writer.writeMessage(9, this.hydratedHsm, () => this.hydratedHsm.serialize(writer));
@@ -7055,11 +7055,11 @@ export class RequestPaymentMessage extends pb_1.Message {
         const writer = w || new pb_1.BinaryWriter();
         if (pb_1.Message.getField(this, 4) != null)
             writer.writeMessage(4, this.noteMessage, () => this.noteMessage.serialize(writer));
-        if (typeof pb_1.Message.getField(this, 1) === "string" && this.currencyCodeIso4217.length)
+        if (pb_1.Message.getField(this, 1) && this.currencyCodeIso4217.length)
             writer.writeString(1, this.currencyCodeIso4217);
         if (pb_1.Message.getField(this, 2) != null)
             writer.writeUint64(2, this.amount1000);
-        if (typeof pb_1.Message.getField(this, 3) === "string" && this.requestFrom.length)
+        if (pb_1.Message.getField(this, 3) && this.requestFrom.length)
             writer.writeString(3, this.requestFrom);
         if (pb_1.Message.getField(this, 5) != null)
             writer.writeInt64(5, this.expiryTimestamp);
@@ -7518,13 +7518,13 @@ export class LiveLocationMessage extends pb_1.Message {
             writer.writeFloat(4, this.speedInMps);
         if (pb_1.Message.getField(this, 5) != null)
             writer.writeUint32(5, this.degreesClockwiseFromMagneticNorth);
-        if (typeof pb_1.Message.getField(this, 6) === "string" && this.caption.length)
+        if (pb_1.Message.getField(this, 6) && this.caption.length)
             writer.writeString(6, this.caption);
         if (pb_1.Message.getField(this, 7) != null)
             writer.writeInt64(7, this.sequenceNumber);
         if (pb_1.Message.getField(this, 8) != null)
             writer.writeUint32(8, this.timeOffset);
-        if (pb_1.Message.getField(this, 16) != null)
+        if (pb_1.Message.getField(this, 16) && this.jpegThumbnail.length)
             writer.writeBytes(16, this.jpegThumbnail);
         if (pb_1.Message.getField(this, 17) != null)
             writer.writeMessage(17, this.contextInfo, () => this.contextInfo.serialize(writer));
@@ -7962,21 +7962,21 @@ export class StickerMessage extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (typeof pb_1.Message.getField(this, 1) === "string" && this.url.length)
+        if (pb_1.Message.getField(this, 1) && this.url.length)
             writer.writeString(1, this.url);
-        if (pb_1.Message.getField(this, 2) != null)
+        if (pb_1.Message.getField(this, 2) && this.fileSha256.length)
             writer.writeBytes(2, this.fileSha256);
-        if (pb_1.Message.getField(this, 3) != null)
+        if (pb_1.Message.getField(this, 3) && this.fileEncSha256.length)
             writer.writeBytes(3, this.fileEncSha256);
-        if (pb_1.Message.getField(this, 4) != null)
+        if (pb_1.Message.getField(this, 4) && this.mediaKey.length)
             writer.writeBytes(4, this.mediaKey);
-        if (typeof pb_1.Message.getField(this, 5) === "string" && this.mimetype.length)
+        if (pb_1.Message.getField(this, 5) && this.mimetype.length)
             writer.writeString(5, this.mimetype);
         if (pb_1.Message.getField(this, 6) != null)
             writer.writeUint32(6, this.height);
         if (pb_1.Message.getField(this, 7) != null)
             writer.writeUint32(7, this.width);
-        if (typeof pb_1.Message.getField(this, 8) === "string" && this.directPath.length)
+        if (pb_1.Message.getField(this, 8) && this.directPath.length)
             writer.writeString(8, this.directPath);
         if (pb_1.Message.getField(this, 9) != null)
             writer.writeUint64(9, this.fileLength);
@@ -7984,11 +7984,11 @@ export class StickerMessage extends pb_1.Message {
             writer.writeInt64(10, this.mediaKeyTimestamp);
         if (pb_1.Message.getField(this, 11) != null)
             writer.writeUint32(11, this.firstFrameLength);
-        if (pb_1.Message.getField(this, 12) != null)
+        if (pb_1.Message.getField(this, 12) && this.firstFrameSidecar.length)
             writer.writeBytes(12, this.firstFrameSidecar);
         if (pb_1.Message.getField(this, 13) != null)
             writer.writeBool(13, this.isAnimated);
-        if (pb_1.Message.getField(this, 16) != null)
+        if (pb_1.Message.getField(this, 16) && this.pngThumbnail.length)
             writer.writeBytes(16, this.pngThumbnail);
         if (pb_1.Message.getField(this, 17) != null)
             writer.writeMessage(17, this.contextInfo, () => this.contextInfo.serialize(writer));
@@ -8631,17 +8631,17 @@ export class HydratedFourRowTemplate extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (typeof pb_1.Message.getField(this, 6) === "string" && this.hydratedContentText.length)
+        if (pb_1.Message.getField(this, 6) && this.hydratedContentText.length)
             writer.writeString(6, this.hydratedContentText);
-        if (typeof pb_1.Message.getField(this, 7) === "string" && this.hydratedFooterText.length)
+        if (pb_1.Message.getField(this, 7) && this.hydratedFooterText.length)
             writer.writeString(7, this.hydratedFooterText);
         if (this.hydratedButtons.length)
             writer.writeRepeatedMessage(8, this.hydratedButtons, (item: HydratedTemplateButton) => item.serialize(writer));
-        if (typeof pb_1.Message.getField(this, 9) === "string" && this.templateId.length)
+        if (pb_1.Message.getField(this, 9) && this.templateId.length)
             writer.writeString(9, this.templateId);
         if (pb_1.Message.getField(this, 1) != null)
             writer.writeMessage(1, this.documentMessage, () => this.documentMessage.serialize(writer));
-        if (typeof pb_1.Message.getField(this, 2) === "string" && this.hydratedTitleText.length)
+        if (pb_1.Message.getField(this, 2) && this.hydratedTitleText.length)
             writer.writeString(2, this.hydratedTitleText);
         if (pb_1.Message.getField(this, 3) != null)
             writer.writeMessage(3, this.imageMessage, () => this.imageMessage.serialize(writer));
@@ -8990,9 +8990,9 @@ export class TemplateButtonReplyMessage extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (typeof pb_1.Message.getField(this, 1) === "string" && this.selectedId.length)
+        if (pb_1.Message.getField(this, 1) && this.selectedId.length)
             writer.writeString(1, this.selectedId);
-        if (typeof pb_1.Message.getField(this, 2) === "string" && this.selectedDisplayText.length)
+        if (pb_1.Message.getField(this, 2) && this.selectedDisplayText.length)
             writer.writeString(2, this.selectedDisplayText);
         if (pb_1.Message.getField(this, 3) != null)
             writer.writeMessage(3, this.contextInfo, () => this.contextInfo.serialize(writer));
@@ -9128,9 +9128,9 @@ export class CatalogSnapshot extends pb_1.Message {
         const writer = w || new pb_1.BinaryWriter();
         if (pb_1.Message.getField(this, 1) != null)
             writer.writeMessage(1, this.catalogImage, () => this.catalogImage.serialize(writer));
-        if (typeof pb_1.Message.getField(this, 2) === "string" && this.title.length)
+        if (pb_1.Message.getField(this, 2) && this.title.length)
             writer.writeString(2, this.title);
-        if (typeof pb_1.Message.getField(this, 3) === "string" && this.description.length)
+        if (pb_1.Message.getField(this, 3) && this.description.length)
             writer.writeString(3, this.description);
         if (!w)
             return writer.getResultBuffer();
@@ -9427,23 +9427,23 @@ export class ProductSnapshot extends pb_1.Message {
         const writer = w || new pb_1.BinaryWriter();
         if (pb_1.Message.getField(this, 1) != null)
             writer.writeMessage(1, this.productImage, () => this.productImage.serialize(writer));
-        if (typeof pb_1.Message.getField(this, 2) === "string" && this.productId.length)
+        if (pb_1.Message.getField(this, 2) && this.productId.length)
             writer.writeString(2, this.productId);
-        if (typeof pb_1.Message.getField(this, 3) === "string" && this.title.length)
+        if (pb_1.Message.getField(this, 3) && this.title.length)
             writer.writeString(3, this.title);
-        if (typeof pb_1.Message.getField(this, 4) === "string" && this.description.length)
+        if (pb_1.Message.getField(this, 4) && this.description.length)
             writer.writeString(4, this.description);
-        if (typeof pb_1.Message.getField(this, 5) === "string" && this.currencyCode.length)
+        if (pb_1.Message.getField(this, 5) && this.currencyCode.length)
             writer.writeString(5, this.currencyCode);
         if (pb_1.Message.getField(this, 6) != null)
             writer.writeInt64(6, this.priceAmount1000);
-        if (typeof pb_1.Message.getField(this, 7) === "string" && this.retailerId.length)
+        if (pb_1.Message.getField(this, 7) && this.retailerId.length)
             writer.writeString(7, this.retailerId);
-        if (typeof pb_1.Message.getField(this, 8) === "string" && this.url.length)
+        if (pb_1.Message.getField(this, 8) && this.url.length)
             writer.writeString(8, this.url);
         if (pb_1.Message.getField(this, 9) != null)
             writer.writeUint32(9, this.productImageCount);
-        if (typeof pb_1.Message.getField(this, 11) === "string" && this.firstImageId.length)
+        if (pb_1.Message.getField(this, 11) && this.firstImageId.length)
             writer.writeString(11, this.firstImageId);
         if (!w)
             return writer.getResultBuffer();
@@ -9617,7 +9617,7 @@ export class ProductMessage extends pb_1.Message {
         const writer = w || new pb_1.BinaryWriter();
         if (pb_1.Message.getField(this, 1) != null)
             writer.writeMessage(1, this.product, () => this.product.serialize(writer));
-        if (typeof pb_1.Message.getField(this, 2) === "string" && this.businessOwnerJid.length)
+        if (pb_1.Message.getField(this, 2) && this.businessOwnerJid.length)
             writer.writeString(2, this.businessOwnerJid);
         if (pb_1.Message.getField(this, 4) != null)
             writer.writeMessage(4, this.catalog, () => this.catalog.serialize(writer));
@@ -9847,17 +9847,17 @@ export class GroupInviteMessage extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (typeof pb_1.Message.getField(this, 1) === "string" && this.groupJid.length)
+        if (pb_1.Message.getField(this, 1) && this.groupJid.length)
             writer.writeString(1, this.groupJid);
-        if (typeof pb_1.Message.getField(this, 2) === "string" && this.inviteCode.length)
+        if (pb_1.Message.getField(this, 2) && this.inviteCode.length)
             writer.writeString(2, this.inviteCode);
         if (pb_1.Message.getField(this, 3) != null)
             writer.writeInt64(3, this.inviteExpiration);
-        if (typeof pb_1.Message.getField(this, 4) === "string" && this.groupName.length)
+        if (pb_1.Message.getField(this, 4) && this.groupName.length)
             writer.writeString(4, this.groupName);
-        if (pb_1.Message.getField(this, 5) != null)
+        if (pb_1.Message.getField(this, 5) && this.jpegThumbnail.length)
             writer.writeBytes(5, this.jpegThumbnail);
-        if (typeof pb_1.Message.getField(this, 6) === "string" && this.caption.length)
+        if (pb_1.Message.getField(this, 6) && this.caption.length)
             writer.writeString(6, this.caption);
         if (pb_1.Message.getField(this, 7) != null)
             writer.writeMessage(7, this.contextInfo, () => this.contextInfo.serialize(writer));
@@ -9998,11 +9998,11 @@ export class DeviceSentMessage extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (typeof pb_1.Message.getField(this, 1) === "string" && this.destinationJid.length)
+        if (pb_1.Message.getField(this, 1) && this.destinationJid.length)
             writer.writeString(1, this.destinationJid);
         if (pb_1.Message.getField(this, 2) != null)
             writer.writeMessage(2, this.message, () => this.message.serialize(writer));
-        if (typeof pb_1.Message.getField(this, 3) === "string" && this.phash.length)
+        if (pb_1.Message.getField(this, 3) && this.phash.length)
             writer.writeString(3, this.phash);
         if (!w)
             return writer.getResultBuffer();
@@ -10681,7 +10681,7 @@ export class Message extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (typeof pb_1.Message.getField(this, 1) === "string" && this.conversation.length)
+        if (pb_1.Message.getField(this, 1) && this.conversation.length)
             writer.writeString(1, this.conversation);
         if (pb_1.Message.getField(this, 2) != null)
             writer.writeMessage(2, this.senderKeyDistributionMessage, () => this.senderKeyDistributionMessage.serialize(writer));
@@ -10951,13 +10951,13 @@ export class MessageKey extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (typeof pb_1.Message.getField(this, 1) === "string" && this.remoteJid.length)
+        if (pb_1.Message.getField(this, 1) && this.remoteJid.length)
             writer.writeString(1, this.remoteJid);
         if (pb_1.Message.getField(this, 2) != null)
             writer.writeBool(2, this.fromMe);
-        if (typeof pb_1.Message.getField(this, 3) === "string" && this.id.length)
+        if (pb_1.Message.getField(this, 3) && this.id.length)
             writer.writeString(3, this.id);
-        if (typeof pb_1.Message.getField(this, 4) === "string" && this.participant.length)
+        if (pb_1.Message.getField(this, 4) && this.participant.length)
             writer.writeString(4, this.participant);
         if (!w)
             return writer.getResultBuffer();
@@ -12277,7 +12277,7 @@ export class NotificationMessageInfo extends pb_1.Message {
             writer.writeMessage(2, this.message, () => this.message.serialize(writer));
         if (pb_1.Message.getField(this, 3) != null)
             writer.writeUint64(3, this.messageTimestamp);
-        if (typeof pb_1.Message.getField(this, 4) === "string" && this.participant.length)
+        if (pb_1.Message.getField(this, 4) && this.participant.length)
             writer.writeString(4, this.participant);
         if (!w)
             return writer.getResultBuffer();
@@ -12730,7 +12730,7 @@ export class PaymentInfo extends pb_1.Message {
             writer.writeEnum(1, this.currencyDeprecated);
         if (pb_1.Message.getField(this, 2) != null)
             writer.writeUint64(2, this.amount1000);
-        if (typeof pb_1.Message.getField(this, 3) === "string" && this.receiverJid.length)
+        if (pb_1.Message.getField(this, 3) && this.receiverJid.length)
             writer.writeString(3, this.receiverJid);
         if (pb_1.Message.getField(this, 4) != null)
             writer.writeEnum(4, this.status);
@@ -12742,7 +12742,7 @@ export class PaymentInfo extends pb_1.Message {
             writer.writeUint64(7, this.expiryTimestamp);
         if (pb_1.Message.getField(this, 8) != null)
             writer.writeBool(8, this.futureproofed);
-        if (typeof pb_1.Message.getField(this, 9) === "string" && this.currency.length)
+        if (pb_1.Message.getField(this, 9) && this.currency.length)
             writer.writeString(9, this.currency);
         if (pb_1.Message.getField(this, 10) != null)
             writer.writeEnum(10, this.txnStatus);
@@ -13428,7 +13428,7 @@ export class WebMessageInfo extends pb_1.Message {
             writer.writeUint64(3, this.messageTimestamp);
         if (pb_1.Message.getField(this, 4) != null)
             writer.writeEnum(4, this.status);
-        if (typeof pb_1.Message.getField(this, 5) === "string" && this.participant.length)
+        if (pb_1.Message.getField(this, 5) && this.participant.length)
             writer.writeString(5, this.participant);
         if (pb_1.Message.getField(this, 16) != null)
             writer.writeBool(16, this.ignore);
@@ -13436,9 +13436,9 @@ export class WebMessageInfo extends pb_1.Message {
             writer.writeBool(17, this.starred);
         if (pb_1.Message.getField(this, 18) != null)
             writer.writeBool(18, this.broadcast);
-        if (typeof pb_1.Message.getField(this, 19) === "string" && this.pushName.length)
+        if (pb_1.Message.getField(this, 19) && this.pushName.length)
             writer.writeString(19, this.pushName);
-        if (pb_1.Message.getField(this, 20) != null)
+        if (pb_1.Message.getField(this, 20) && this.mediaCiphertextSha256.length)
             writer.writeBytes(20, this.mediaCiphertextSha256);
         if (pb_1.Message.getField(this, 21) != null)
             writer.writeBool(21, this.multicast);

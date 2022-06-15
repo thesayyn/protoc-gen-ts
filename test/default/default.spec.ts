@@ -294,4 +294,57 @@ describe("defaults", () => {
 
         expect(transferredDefaults.bytes).toEqual(new Uint8Array());
     });
+
+    it("should omit default values during serialization (v3)", () => {
+        const defaults = new DefaultMessageV3();
+        const explicitlyProvidedDefaults = new DefaultMessageV3();
+        explicitlyProvidedDefaults.enum = DefaultCommonEnum.ZERO;
+        explicitlyProvidedDefaults.bool = false;
+        explicitlyProvidedDefaults.string = '';
+        explicitlyProvidedDefaults.int32 = 0;
+        explicitlyProvidedDefaults.fixed32 = 0;
+        explicitlyProvidedDefaults.sfixed32 = 0;
+        explicitlyProvidedDefaults.uint32 = 0;
+        explicitlyProvidedDefaults.sint32 = 0;
+        explicitlyProvidedDefaults.int64 = 0;
+        explicitlyProvidedDefaults.fixed64 = 0;
+        explicitlyProvidedDefaults.sfixed64 = 0;
+        explicitlyProvidedDefaults.uint64 = 0;
+        explicitlyProvidedDefaults.sint64 = 0;
+        explicitlyProvidedDefaults.float = 0;
+        explicitlyProvidedDefaults.double = 0;
+        explicitlyProvidedDefaults.bytes = new Uint8Array();
+
+        const serializedDefaults = defaults.serialize();
+        const serializedExplicitlyProvidedDefaults = explicitlyProvidedDefaults.serialize();
+
+        expect(serializedDefaults.length).toBe(0);
+        expect(serializedExplicitlyProvidedDefaults.length).toBe(0);
+    });
+
+    it("should serialize oneof properties if explicitly provided (v3)", () => {
+        const defaults = new DefaultMessageV3();
+        const defaultsHavingOneOfInt32 = new DefaultMessageV3();
+        defaultsHavingOneOfInt32.one_of_int32 = 0;
+
+        const transferredDefaults = DefaultMessageV3.deserialize(defaults.serialize());
+        const serializedDefaultsHavingOneOfInt32 = defaultsHavingOneOfInt32.serialize();
+        const transferredDefaultsHavingOneOfInt32 = DefaultMessageV3.deserialize(serializedDefaultsHavingOneOfInt32);
+
+        expect(transferredDefaults.has_one_of_int32()).toBe(false);
+        expect(serializedDefaultsHavingOneOfInt32.length).toBeGreaterThan(0);
+        expect(transferredDefaultsHavingOneOfInt32.has_one_of_int32()).toBe(true);
+    });
+
+    it ("should serialize repeated properties when they are not empty (v3)", () => {
+        const defaultsHavingRepeatedProp = new DefaultMessageV3();
+        defaultsHavingRepeatedProp.array_int32.push(0);
+
+        const serializedDefaultsHavingRepeatedProp = defaultsHavingRepeatedProp.serialize();
+        const transferredDefaultsHavingRepeatedProp = DefaultMessageV3.deserialize(serializedDefaultsHavingRepeatedProp);
+
+        expect(serializedDefaultsHavingRepeatedProp.length).toBeGreaterThan(0);
+        expect(transferredDefaultsHavingRepeatedProp.array_int32.length).toBe(1);
+        expect(transferredDefaultsHavingRepeatedProp.array_int32[0]).toBe(0);
+    });
 });

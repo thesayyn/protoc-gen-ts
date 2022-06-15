@@ -46,7 +46,7 @@ export namespace maps {
         serialize(w: pb_1.BinaryWriter): void;
         serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
             const writer = w || new pb_1.BinaryWriter();
-            if (typeof pb_1.Message.getField(this, 2) === "string" && this.link.length)
+            if (pb_1.Message.getField(this, 2) && this.link.length)
                 writer.writeString(2, this.link);
             if (!w)
                 return writer.getResultBuffer();
@@ -185,7 +185,7 @@ export namespace maps {
         serialize(w: pb_1.BinaryWriter): void;
         serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
             const writer = w || new pb_1.BinaryWriter();
-            if (typeof pb_1.Message.getField(this, 2) === "string" && this.key.length)
+            if (pb_1.Message.getField(this, 2) && this.key.length)
                 writer.writeString(2, this.key);
             for (const [key, value] of this.keys) {
                 writer.writeMessage(1, this.keys, () => {

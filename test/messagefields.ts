@@ -159,9 +159,9 @@ export class SubMessage extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (typeof pb_1.Message.getField(this, 1) === "string" && this.field_1.length)
+        if (pb_1.Message.getField(this, 1) && this.field_1.length)
             writer.writeString(1, this.field_1);
-        if (typeof pb_1.Message.getField(this, 2) === "string" && this.field_2.length)
+        if (pb_1.Message.getField(this, 2) && this.field_2.length)
             writer.writeString(2, this.field_2);
         if (!w)
             return writer.getResultBuffer();

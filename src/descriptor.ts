@@ -998,7 +998,7 @@ function createGetterCall(
           [],
           false
         )
-    } else if (fieldDescriptor.type == descriptor.FieldDescriptorProto.Type.TYPE_BYTES) {
+    } else if (field.isBytes(fieldDescriptor)) {
       _default = fieldDescriptor.has_default_value()
         ? ts.factory.createIdentifier(fieldDescriptor.default_value)
         : ts.factory.createNewExpression(
@@ -1587,11 +1587,14 @@ function createSerialize(
       }
 
       let condition: ts.Expression;
-      if (rootDescriptor.syntax == "proto3" &&
+      if (
+        rootDescriptor.syntax == "proto3" &&
         !fieldDescriptor.proto3_optional &&
         !field.isMessage(fieldDescriptor) &&
         !field.hasJsTypeString(fieldDescriptor) &&
-        fieldDescriptor.type != descriptor.FieldDescriptorProto.Type.TYPE_BYTES) {
+        !field.isBytes(fieldDescriptor) &&
+        !fieldDescriptor.has_oneof_index()
+      ) {
 
         if (field.isEnum(fieldDescriptor)) {
           condition = ts.factory.createBinaryExpression(
@@ -1639,22 +1642,15 @@ function createSerialize(
         ),
       );
 
-      if (
-        field.isString(fieldDescriptor) &&
-        !field.isRepeated(fieldDescriptor)
-      ) {
-        // typeof this.prop !== "string" && this.prop.length
+      if (field.isRepeated(fieldDescriptor)) {
+        condition = ts.factory.createPropertyAccessExpression(propAccessor, "length");
+      } else if (field.isString(fieldDescriptor) || field.isBytes(fieldDescriptor)) {
+        // this.prop && this.prop.length
         condition = ts.factory.createBinaryExpression(
-          ts.factory.createBinaryExpression(
-            ts.factory.createTypeOfExpression(fieldAccesor),
-            ts.factory.createToken(ts.SyntaxKind.EqualsEqualsEqualsToken),
-            ts.factory.createStringLiteral("string"),
-          ),
+          fieldAccesor,
           ts.factory.createToken(ts.SyntaxKind.AmpersandAmpersandToken),
           ts.factory.createPropertyAccessExpression(propAccessor, "length"),
         );
-      } else if (field.isRepeated(fieldDescriptor)) {
-        condition = ts.factory.createPropertyAccessExpression(propAccessor, "length");
       }
 
       statements.push(ts.factory.createIfStatement(condition, statement));

@@ -101,7 +101,7 @@ export class MessageWithDefault extends pb_1.Message {
         const writer = w || new pb_1.BinaryWriter();
         if (pb_1.Message.getField(this, 1) != null)
             writer.writeBool(1, this.bool_field);
-        if (typeof pb_1.Message.getField(this, 2) === "string" && this.string_field.length)
+        if (pb_1.Message.getField(this, 2) && this.string_field.length)
             writer.writeString(2, this.string_field);
         if (pb_1.Message.getField(this, 3) != null)
             writer.writeInt32(3, this.int32_field);
@@ -232,7 +232,7 @@ export class MessageWithImplicitDefault extends pb_1.Message {
         const writer = w || new pb_1.BinaryWriter();
         if (pb_1.Message.getField(this, 1) != null)
             writer.writeBool(1, this.bool_field);
-        if (typeof pb_1.Message.getField(this, 2) === "string" && this.string_field.length)
+        if (pb_1.Message.getField(this, 2) && this.string_field.length)
             writer.writeString(2, this.string_field);
         if (pb_1.Message.getField(this, 3) != null)
             writer.writeInt32(3, this.int32_field);
