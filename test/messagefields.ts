@@ -69,7 +69,7 @@ export class MessageFields extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (pb_1.Message.getField(this, 1) != null)
+        if (this.has_sub_message())
             writer.writeMessage(1, this.sub_message, () => this.sub_message.serialize(writer));
         if (this.array_prop.length)
             writer.writeRepeatedMessage(2, this.array_prop, (item: SubMessage) => item.serialize(writer));
@@ -159,9 +159,9 @@ export class SubMessage extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (pb_1.Message.getField(this, 1) && this.field_1.length)
+        if (this.field_1.length)
             writer.writeString(1, this.field_1);
-        if (pb_1.Message.getField(this, 2) && this.field_2.length)
+        if (this.field_2.length)
             writer.writeString(2, this.field_2);
         if (!w)
             return writer.getResultBuffer();

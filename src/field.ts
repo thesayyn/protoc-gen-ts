@@ -269,3 +269,23 @@ export function isPacked(
 
   return options != null && options.packed;
 }
+
+/**
+ * @param {descriptor.FileDescriptorProto} rootDescriptor
+ * @param {descriptor.FieldDescriptorProto} fieldDescriptor
+ */
+ export function hasPresenceFunctions(
+  rootDescriptor: descriptor.FileDescriptorProto,
+  fieldDescriptor: descriptor.FieldDescriptorProto,
+) {
+  return (
+    !isRepeated(fieldDescriptor) &&
+    !isMap(fieldDescriptor) &&
+    !(
+      rootDescriptor.syntax == "proto3" &&
+      !(
+        fieldDescriptor.proto3_optional || isMessage(fieldDescriptor) || fieldDescriptor.has_oneof_index()
+      )
+    )
+  );
+}

@@ -209,15 +209,15 @@ export class JsonNamesMessage extends pb_1.Message {
             writer.writeRepeatedString(1, this.someStrings);
         if (this.anInteger != 0)
             writer.writeInt32(2, this.anInteger);
-        if (pb_1.Message.getField(this, 3) != null)
+        if (this.hasANestedMessage())
             writer.writeMessage(3, this.aNestedMessage, () => this.aNestedMessage.serialize(writer));
         if (this.colorSpace != ColorSpace.RED_GREEN_BLUE)
             writer.writeEnum(4, this.colorSpace);
-        if (pb_1.Message.getField(this, 5) != null)
+        if (this.hasAnOptionalString())
             writer.writeString(5, this.anOptionalString);
-        if (pb_1.Message.getField(this, 6) != null)
+        if (this.hasASingleString())
             writer.writeString(6, this.aSingleString);
-        if (pb_1.Message.getField(this, 7) != null)
+        if (this.hasASingleNumber())
             writer.writeInt32(7, this.aSingleNumber);
         if (!w)
             return writer.getResultBuffer();

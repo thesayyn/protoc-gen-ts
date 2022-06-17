@@ -1398,20 +1398,16 @@ function createSerialize(
       getFieldName(fieldDescriptor),
     );
 
-    const fieldAccesor = ts.factory.createCallExpression(
-      ts.factory.createPropertyAccessExpression(
-        ts.factory.createPropertyAccessExpression(
-          pbIdentifier,
-          ts.factory.createIdentifier("Message")
-        ),
-        ts.factory.createIdentifier("getField")
-      ),
-      undefined,
-      [
-        ts.factory.createThis(),
-        ts.factory.createNumericLiteral(fieldDescriptor.number)
-      ]
-    );
+    const hasFieldCondition = field.hasPresenceFunctions(rootDescriptor, fieldDescriptor)
+      ? ts.factory.createCallExpression(
+          ts.factory.createPropertyAccessExpression(
+            ts.factory.createThis(),
+            getPrefixedFieldName("has", fieldDescriptor),
+          ),
+          undefined,
+          [],
+        )
+      : undefined;
 
     if (field.isMap(fieldDescriptor)) {
       const [keyDescriptor, valueDescriptor] = type.getMapDescriptor(
@@ -1585,7 +1581,7 @@ function createSerialize(
         }
       }
 
-      let condition: ts.Expression;
+      let condition: ts.Expression | undefined;
       if (
         rootDescriptor.syntax == "proto3" &&
         !fieldDescriptor.proto3_optional &&
@@ -1621,11 +1617,7 @@ function createSerialize(
           );
         }
       } else {
-        condition = ts.factory.createBinaryExpression(
-          fieldAccesor,
-          ts.factory.createToken(ts.SyntaxKind.ExclamationEqualsToken),
-          ts.factory.createNull(),
-        );
+        condition = hasFieldCondition;
       }
 
       const statement = ts.factory.createExpressionStatement(
@@ -1650,14 +1642,16 @@ function createSerialize(
         (field.isString(fieldDescriptor) || field.isBytes(fieldDescriptor)) &&
         !fieldDescriptor.has_oneof_index()
       ) {
-        condition = ts.factory.createBinaryExpression(
-          fieldAccesor,
-          ts.factory.createToken(ts.SyntaxKind.AmpersandAmpersandToken),
-          ts.factory.createPropertyAccessExpression(propAccessor, "length"),
-        );
+        condition = hasFieldCondition
+          ? ts.factory.createBinaryExpression(
+              hasFieldCondition,
+              ts.factory.createToken(ts.SyntaxKind.AmpersandAmpersandToken),
+              ts.factory.createPropertyAccessExpression(propAccessor, "length"),
+            )
+          : ts.factory.createPropertyAccessExpression(propAccessor, "length");
       }
 
-      statements.push(ts.factory.createIfStatement(condition, statement));
+      statements.push(condition ? ts.factory.createIfStatement(condition, statement) : statement);
     }
   }
 
@@ -2298,12 +2292,7 @@ function createMessage(
       createSetter(rootDescriptor, messageDescriptor, fieldDescriptor, pbIdentifier),
     );
 
-    if (!field.isRepeated(fieldDescriptor) &&
-      !field.isMap(fieldDescriptor) &&
-      !(rootDescriptor.syntax == "proto3" &&
-        !(fieldDescriptor.proto3_optional ||
-          field.isMessage(fieldDescriptor) ||
-          fieldDescriptor.has_oneof_index()))) {
+    if (field.hasPresenceFunctions(rootDescriptor, fieldDescriptor)) {
       statements.push(createPresenceClear(fieldDescriptor, pbIdentifier))
       statements.push(createPresenceHas(fieldDescriptor, pbIdentifier))
     }

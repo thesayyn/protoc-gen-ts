@@ -346,21 +346,21 @@ export class PresenceMessageV3 extends pb_1.Message {
             writer.writeInt32(1, this.int32);
         if (this.enum != dependency_1.PresenceCommonEnum.ZERO)
             writer.writeEnum(2, this.enum);
-        if (pb_1.Message.getField(this, 3) && this.string.length)
+        if (this.string.length)
             writer.writeString(3, this.string);
-        if (pb_1.Message.getField(this, 4) != null)
+        if (this.has_message())
             writer.writeMessage(4, this.message, () => this.message.serialize(writer));
-        if (pb_1.Message.getField(this, 5) != null)
+        if (this.has_oneof())
             writer.writeMessage(5, this.oneof, () => this.oneof.serialize(writer));
-        if (pb_1.Message.getField(this, 6) != null)
+        if (this.has_opt_int32())
             writer.writeInt32(6, this.opt_int32);
-        if (pb_1.Message.getField(this, 7) != null)
+        if (this.has_opt_enum())
             writer.writeEnum(7, this.opt_enum);
-        if (pb_1.Message.getField(this, 8) != null)
+        if (this.has_opt_string())
             writer.writeString(8, this.opt_string);
-        if (pb_1.Message.getField(this, 9) != null)
+        if (this.has_opt_message())
             writer.writeMessage(9, this.opt_message, () => this.opt_message.serialize(writer));
-        if (pb_1.Message.getField(this, 10) != null)
+        if (this.has_opt_oneof())
             writer.writeMessage(10, this.opt_oneof, () => this.opt_oneof.serialize(writer));
         if (this.repeated.length)
             writer.writePackedInt32(11, this.repeated);

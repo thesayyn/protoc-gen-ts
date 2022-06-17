@@ -305,9 +305,9 @@ export class FileDescriptorProto extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (pb_1.Message.getField(this, 1) && this.name.length)
+        if (this.has_name() && this.name.length)
             writer.writeString(1, this.name);
-        if (pb_1.Message.getField(this, 2) && this.package.length)
+        if (this.has_package() && this.package.length)
             writer.writeString(2, this.package);
         if (this.dependency.length)
             writer.writeRepeatedString(3, this.dependency);
@@ -323,11 +323,11 @@ export class FileDescriptorProto extends pb_1.Message {
             writer.writeRepeatedMessage(6, this.service, (item: ServiceDescriptorProto) => item.serialize(writer));
         if (this.extension.length)
             writer.writeRepeatedMessage(7, this.extension, (item: FieldDescriptorProto) => item.serialize(writer));
-        if (pb_1.Message.getField(this, 8) != null)
+        if (this.has_options())
             writer.writeMessage(8, this.options, () => this.options.serialize(writer));
-        if (pb_1.Message.getField(this, 9) != null)
+        if (this.has_source_code_info())
             writer.writeMessage(9, this.source_code_info, () => this.source_code_info.serialize(writer));
-        if (pb_1.Message.getField(this, 12) && this.syntax.length)
+        if (this.has_syntax() && this.syntax.length)
             writer.writeString(12, this.syntax);
         if (!w)
             return writer.getResultBuffer();
@@ -569,7 +569,7 @@ export class DescriptorProto extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (pb_1.Message.getField(this, 1) && this.name.length)
+        if (this.has_name() && this.name.length)
             writer.writeString(1, this.name);
         if (this.field.length)
             writer.writeRepeatedMessage(2, this.field, (item: FieldDescriptorProto) => item.serialize(writer));
@@ -583,7 +583,7 @@ export class DescriptorProto extends pb_1.Message {
             writer.writeRepeatedMessage(5, this.extension_range, (item: DescriptorProto.ExtensionRange) => item.serialize(writer));
         if (this.oneof_decl.length)
             writer.writeRepeatedMessage(8, this.oneof_decl, (item: OneofDescriptorProto) => item.serialize(writer));
-        if (pb_1.Message.getField(this, 7) != null)
+        if (this.has_options())
             writer.writeMessage(7, this.options, () => this.options.serialize(writer));
         if (this.reserved_range.length)
             writer.writeRepeatedMessage(9, this.reserved_range, (item: DescriptorProto.ReservedRange) => item.serialize(writer));
@@ -736,11 +736,11 @@ export namespace DescriptorProto {
         serialize(w: pb_1.BinaryWriter): void;
         serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
             const writer = w || new pb_1.BinaryWriter();
-            if (pb_1.Message.getField(this, 1) != null)
+            if (this.has_start())
                 writer.writeInt32(1, this.start);
-            if (pb_1.Message.getField(this, 2) != null)
+            if (this.has_end())
                 writer.writeInt32(2, this.end);
-            if (pb_1.Message.getField(this, 3) != null)
+            if (this.has_options())
                 writer.writeMessage(3, this.options, () => this.options.serialize(writer));
             if (!w)
                 return writer.getResultBuffer();
@@ -843,9 +843,9 @@ export namespace DescriptorProto {
         serialize(w: pb_1.BinaryWriter): void;
         serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
             const writer = w || new pb_1.BinaryWriter();
-            if (pb_1.Message.getField(this, 1) != null)
+            if (this.has_start())
                 writer.writeInt32(1, this.start);
-            if (pb_1.Message.getField(this, 2) != null)
+            if (this.has_end())
                 writer.writeInt32(2, this.end);
             if (!w)
                 return writer.getResultBuffer();
@@ -1226,27 +1226,27 @@ export class FieldDescriptorProto extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (pb_1.Message.getField(this, 1) && this.name.length)
+        if (this.has_name() && this.name.length)
             writer.writeString(1, this.name);
-        if (pb_1.Message.getField(this, 3) != null)
+        if (this.has_number())
             writer.writeInt32(3, this.number);
-        if (pb_1.Message.getField(this, 4) != null)
+        if (this.has_label())
             writer.writeEnum(4, this.label);
-        if (pb_1.Message.getField(this, 5) != null)
+        if (this.has_type())
             writer.writeEnum(5, this.type);
-        if (pb_1.Message.getField(this, 6) && this.type_name.length)
+        if (this.has_type_name() && this.type_name.length)
             writer.writeString(6, this.type_name);
-        if (pb_1.Message.getField(this, 2) && this.extendee.length)
+        if (this.has_extendee() && this.extendee.length)
             writer.writeString(2, this.extendee);
-        if (pb_1.Message.getField(this, 7) && this.default_value.length)
+        if (this.has_default_value() && this.default_value.length)
             writer.writeString(7, this.default_value);
-        if (pb_1.Message.getField(this, 9) != null)
+        if (this.has_oneof_index())
             writer.writeInt32(9, this.oneof_index);
-        if (pb_1.Message.getField(this, 10) && this.json_name.length)
+        if (this.has_json_name() && this.json_name.length)
             writer.writeString(10, this.json_name);
-        if (pb_1.Message.getField(this, 8) != null)
+        if (this.has_options())
             writer.writeMessage(8, this.options, () => this.options.serialize(writer));
-        if (pb_1.Message.getField(this, 17) != null)
+        if (this.has_proto3_optional())
             writer.writeBool(17, this.proto3_optional);
         if (!w)
             return writer.getResultBuffer();
@@ -1400,9 +1400,9 @@ export class OneofDescriptorProto extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (pb_1.Message.getField(this, 1) && this.name.length)
+        if (this.has_name() && this.name.length)
             writer.writeString(1, this.name);
-        if (pb_1.Message.getField(this, 2) != null)
+        if (this.has_options())
             writer.writeMessage(2, this.options, () => this.options.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
@@ -1544,11 +1544,11 @@ export class EnumDescriptorProto extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (pb_1.Message.getField(this, 1) && this.name.length)
+        if (this.has_name() && this.name.length)
             writer.writeString(1, this.name);
         if (this.value.length)
             writer.writeRepeatedMessage(2, this.value, (item: EnumValueDescriptorProto) => item.serialize(writer));
-        if (pb_1.Message.getField(this, 3) != null)
+        if (this.has_options())
             writer.writeMessage(3, this.options, () => this.options.serialize(writer));
         if (this.reserved_range.length)
             writer.writeRepeatedMessage(4, this.reserved_range, (item: EnumDescriptorProto.EnumReservedRange) => item.serialize(writer));
@@ -1662,9 +1662,9 @@ export namespace EnumDescriptorProto {
         serialize(w: pb_1.BinaryWriter): void;
         serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
             const writer = w || new pb_1.BinaryWriter();
-            if (pb_1.Message.getField(this, 1) != null)
+            if (this.has_start())
                 writer.writeInt32(1, this.start);
-            if (pb_1.Message.getField(this, 2) != null)
+            if (this.has_end())
                 writer.writeInt32(2, this.end);
             if (!w)
                 return writer.getResultBuffer();
@@ -1789,11 +1789,11 @@ export class EnumValueDescriptorProto extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (pb_1.Message.getField(this, 1) && this.name.length)
+        if (this.has_name() && this.name.length)
             writer.writeString(1, this.name);
-        if (pb_1.Message.getField(this, 2) != null)
+        if (this.has_number())
             writer.writeInt32(2, this.number);
-        if (pb_1.Message.getField(this, 3) != null)
+        if (this.has_options())
             writer.writeMessage(3, this.options, () => this.options.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
@@ -1911,11 +1911,11 @@ export class ServiceDescriptorProto extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (pb_1.Message.getField(this, 1) && this.name.length)
+        if (this.has_name() && this.name.length)
             writer.writeString(1, this.name);
         if (this.method.length)
             writer.writeRepeatedMessage(2, this.method, (item: MethodDescriptorProto) => item.serialize(writer));
-        if (pb_1.Message.getField(this, 3) != null)
+        if (this.has_options())
             writer.writeMessage(3, this.options, () => this.options.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
@@ -2114,17 +2114,17 @@ export class MethodDescriptorProto extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (pb_1.Message.getField(this, 1) && this.name.length)
+        if (this.has_name() && this.name.length)
             writer.writeString(1, this.name);
-        if (pb_1.Message.getField(this, 2) && this.input_type.length)
+        if (this.has_input_type() && this.input_type.length)
             writer.writeString(2, this.input_type);
-        if (pb_1.Message.getField(this, 3) && this.output_type.length)
+        if (this.has_output_type() && this.output_type.length)
             writer.writeString(3, this.output_type);
-        if (pb_1.Message.getField(this, 4) != null)
+        if (this.has_options())
             writer.writeMessage(4, this.options, () => this.options.serialize(writer));
-        if (pb_1.Message.getField(this, 5) != null)
+        if (this.has_client_streaming())
             writer.writeBool(5, this.client_streaming);
-        if (pb_1.Message.getField(this, 6) != null)
+        if (this.has_server_streaming())
             writer.writeBool(6, this.server_streaming);
         if (!w)
             return writer.getResultBuffer();
@@ -2686,45 +2686,45 @@ export class FileOptions extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (pb_1.Message.getField(this, 1) && this.java_package.length)
+        if (this.has_java_package() && this.java_package.length)
             writer.writeString(1, this.java_package);
-        if (pb_1.Message.getField(this, 8) && this.java_outer_classname.length)
+        if (this.has_java_outer_classname() && this.java_outer_classname.length)
             writer.writeString(8, this.java_outer_classname);
-        if (pb_1.Message.getField(this, 10) != null)
+        if (this.has_java_multiple_files())
             writer.writeBool(10, this.java_multiple_files);
-        if (pb_1.Message.getField(this, 20) != null)
+        if (this.has_java_generate_equals_and_hash())
             writer.writeBool(20, this.java_generate_equals_and_hash);
-        if (pb_1.Message.getField(this, 27) != null)
+        if (this.has_java_string_check_utf8())
             writer.writeBool(27, this.java_string_check_utf8);
-        if (pb_1.Message.getField(this, 9) != null)
+        if (this.has_optimize_for())
             writer.writeEnum(9, this.optimize_for);
-        if (pb_1.Message.getField(this, 11) && this.go_package.length)
+        if (this.has_go_package() && this.go_package.length)
             writer.writeString(11, this.go_package);
-        if (pb_1.Message.getField(this, 16) != null)
+        if (this.has_cc_generic_services())
             writer.writeBool(16, this.cc_generic_services);
-        if (pb_1.Message.getField(this, 17) != null)
+        if (this.has_java_generic_services())
             writer.writeBool(17, this.java_generic_services);
-        if (pb_1.Message.getField(this, 18) != null)
+        if (this.has_py_generic_services())
             writer.writeBool(18, this.py_generic_services);
-        if (pb_1.Message.getField(this, 42) != null)
+        if (this.has_php_generic_services())
             writer.writeBool(42, this.php_generic_services);
-        if (pb_1.Message.getField(this, 23) != null)
+        if (this.has_deprecated())
             writer.writeBool(23, this.deprecated);
-        if (pb_1.Message.getField(this, 31) != null)
+        if (this.has_cc_enable_arenas())
             writer.writeBool(31, this.cc_enable_arenas);
-        if (pb_1.Message.getField(this, 36) && this.objc_class_prefix.length)
+        if (this.has_objc_class_prefix() && this.objc_class_prefix.length)
             writer.writeString(36, this.objc_class_prefix);
-        if (pb_1.Message.getField(this, 37) && this.csharp_namespace.length)
+        if (this.has_csharp_namespace() && this.csharp_namespace.length)
             writer.writeString(37, this.csharp_namespace);
-        if (pb_1.Message.getField(this, 39) && this.swift_prefix.length)
+        if (this.has_swift_prefix() && this.swift_prefix.length)
             writer.writeString(39, this.swift_prefix);
-        if (pb_1.Message.getField(this, 40) && this.php_class_prefix.length)
+        if (this.has_php_class_prefix() && this.php_class_prefix.length)
             writer.writeString(40, this.php_class_prefix);
-        if (pb_1.Message.getField(this, 41) && this.php_namespace.length)
+        if (this.has_php_namespace() && this.php_namespace.length)
             writer.writeString(41, this.php_namespace);
-        if (pb_1.Message.getField(this, 44) && this.php_metadata_namespace.length)
+        if (this.has_php_metadata_namespace() && this.php_metadata_namespace.length)
             writer.writeString(44, this.php_metadata_namespace);
-        if (pb_1.Message.getField(this, 45) && this.ruby_package.length)
+        if (this.has_ruby_package() && this.ruby_package.length)
             writer.writeString(45, this.ruby_package);
         if (this.uninterpreted_option.length)
             writer.writeRepeatedMessage(999, this.uninterpreted_option, (item: UninterpretedOption) => item.serialize(writer));
@@ -2953,13 +2953,13 @@ export class MessageOptions extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (pb_1.Message.getField(this, 1) != null)
+        if (this.has_message_set_wire_format())
             writer.writeBool(1, this.message_set_wire_format);
-        if (pb_1.Message.getField(this, 2) != null)
+        if (this.has_no_standard_descriptor_accessor())
             writer.writeBool(2, this.no_standard_descriptor_accessor);
-        if (pb_1.Message.getField(this, 3) != null)
+        if (this.has_deprecated())
             writer.writeBool(3, this.deprecated);
-        if (pb_1.Message.getField(this, 7) != null)
+        if (this.has_map_entry())
             writer.writeBool(7, this.map_entry);
         if (this.uninterpreted_option.length)
             writer.writeRepeatedMessage(999, this.uninterpreted_option, (item: UninterpretedOption) => item.serialize(writer));
@@ -3181,17 +3181,17 @@ export class FieldOptions extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (pb_1.Message.getField(this, 1) != null)
+        if (this.has_ctype())
             writer.writeEnum(1, this.ctype);
-        if (pb_1.Message.getField(this, 2) != null)
+        if (this.has_packed())
             writer.writeBool(2, this.packed);
-        if (pb_1.Message.getField(this, 6) != null)
+        if (this.has_jstype())
             writer.writeEnum(6, this.jstype);
-        if (pb_1.Message.getField(this, 5) != null)
+        if (this.has_lazy())
             writer.writeBool(5, this.lazy);
-        if (pb_1.Message.getField(this, 3) != null)
+        if (this.has_deprecated())
             writer.writeBool(3, this.deprecated);
-        if (pb_1.Message.getField(this, 10) != null)
+        if (this.has_weak())
             writer.writeBool(10, this.weak);
         if (this.uninterpreted_option.length)
             writer.writeRepeatedMessage(999, this.uninterpreted_option, (item: UninterpretedOption) => item.serialize(writer));
@@ -3399,9 +3399,9 @@ export class EnumOptions extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (pb_1.Message.getField(this, 2) != null)
+        if (this.has_allow_alias())
             writer.writeBool(2, this.allow_alias);
-        if (pb_1.Message.getField(this, 3) != null)
+        if (this.has_deprecated())
             writer.writeBool(3, this.deprecated);
         if (this.uninterpreted_option.length)
             writer.writeRepeatedMessage(999, this.uninterpreted_option, (item: UninterpretedOption) => item.serialize(writer));
@@ -3497,7 +3497,7 @@ export class EnumValueOptions extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (pb_1.Message.getField(this, 1) != null)
+        if (this.has_deprecated())
             writer.writeBool(1, this.deprecated);
         if (this.uninterpreted_option.length)
             writer.writeRepeatedMessage(999, this.uninterpreted_option, (item: UninterpretedOption) => item.serialize(writer));
@@ -3590,7 +3590,7 @@ export class ServiceOptions extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (pb_1.Message.getField(this, 33) != null)
+        if (this.has_deprecated())
             writer.writeBool(33, this.deprecated);
         if (this.uninterpreted_option.length)
             writer.writeRepeatedMessage(999, this.uninterpreted_option, (item: UninterpretedOption) => item.serialize(writer));
@@ -3707,9 +3707,9 @@ export class MethodOptions extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (pb_1.Message.getField(this, 33) != null)
+        if (this.has_deprecated())
             writer.writeBool(33, this.deprecated);
-        if (pb_1.Message.getField(this, 34) != null)
+        if (this.has_idempotency_level())
             writer.writeEnum(34, this.idempotency_level);
         if (this.uninterpreted_option.length)
             writer.writeRepeatedMessage(999, this.uninterpreted_option, (item: UninterpretedOption) => item.serialize(writer));
@@ -3934,17 +3934,17 @@ export class UninterpretedOption extends pb_1.Message {
         const writer = w || new pb_1.BinaryWriter();
         if (this.name.length)
             writer.writeRepeatedMessage(2, this.name, (item: UninterpretedOption.NamePart) => item.serialize(writer));
-        if (pb_1.Message.getField(this, 3) && this.identifier_value.length)
+        if (this.has_identifier_value() && this.identifier_value.length)
             writer.writeString(3, this.identifier_value);
-        if (pb_1.Message.getField(this, 4) != null)
+        if (this.has_positive_int_value())
             writer.writeUint64(4, this.positive_int_value);
-        if (pb_1.Message.getField(this, 5) != null)
+        if (this.has_negative_int_value())
             writer.writeInt64(5, this.negative_int_value);
-        if (pb_1.Message.getField(this, 6) != null)
+        if (this.has_double_value())
             writer.writeDouble(6, this.double_value);
-        if (pb_1.Message.getField(this, 7) && this.string_value.length)
+        if (this.has_string_value() && this.string_value.length)
             writer.writeBytes(7, this.string_value);
-        if (pb_1.Message.getField(this, 8) && this.aggregate_value.length)
+        if (this.has_aggregate_value() && this.aggregate_value.length)
             writer.writeString(8, this.aggregate_value);
         if (!w)
             return writer.getResultBuffer();
@@ -4053,9 +4053,9 @@ export namespace UninterpretedOption {
         serialize(w: pb_1.BinaryWriter): void;
         serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
             const writer = w || new pb_1.BinaryWriter();
-            if (pb_1.Message.getField(this, 1) && this.name_part.length)
+            if (this.has_name_part() && this.name_part.length)
                 writer.writeString(1, this.name_part);
-            if (pb_1.Message.getField(this, 2) != null)
+            if (this.has_is_extension())
                 writer.writeBool(2, this.is_extension);
             if (!w)
                 return writer.getResultBuffer();
@@ -4263,9 +4263,9 @@ export namespace SourceCodeInfo {
                 writer.writePackedInt32(1, this.path);
             if (this.span.length)
                 writer.writePackedInt32(2, this.span);
-            if (pb_1.Message.getField(this, 3) && this.leading_comments.length)
+            if (this.has_leading_comments() && this.leading_comments.length)
                 writer.writeString(3, this.leading_comments);
-            if (pb_1.Message.getField(this, 4) && this.trailing_comments.length)
+            if (this.has_trailing_comments() && this.trailing_comments.length)
                 writer.writeString(4, this.trailing_comments);
             if (this.leading_detached_comments.length)
                 writer.writeRepeatedString(6, this.leading_detached_comments);
@@ -4482,11 +4482,11 @@ export namespace GeneratedCodeInfo {
             const writer = w || new pb_1.BinaryWriter();
             if (this.path.length)
                 writer.writePackedInt32(1, this.path);
-            if (pb_1.Message.getField(this, 2) && this.source_file.length)
+            if (this.has_source_file() && this.source_file.length)
                 writer.writeString(2, this.source_file);
-            if (pb_1.Message.getField(this, 3) != null)
+            if (this.has_begin())
                 writer.writeInt32(3, this.begin);
-            if (pb_1.Message.getField(this, 4) != null)
+            if (this.has_end())
                 writer.writeInt32(4, this.end);
             if (!w)
                 return writer.getResultBuffer();

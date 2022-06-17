@@ -50,7 +50,7 @@ export class PresenceCommonMessage extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (pb_1.Message.getField(this, 1) && this.message.length)
+        if (this.message.length)
             writer.writeString(1, this.message);
         if (!w)
             return writer.getResultBuffer();
@@ -160,9 +160,9 @@ export class PresenceCommonMessageOneOf extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (pb_1.Message.getField(this, 1) != null)
+        if (this.has_int32())
             writer.writeInt32(1, this.int32);
-        if (pb_1.Message.getField(this, 2) != null)
+        if (this.has_message())
             writer.writeMessage(2, this.message, () => this.message.serialize(writer));
         if (!w)
             return writer.getResultBuffer();

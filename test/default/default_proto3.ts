@@ -504,13 +504,13 @@ export class DefaultMessageV3 extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (pb_1.Message.getField(this, 1) != null)
+        if (this.has_message())
             writer.writeMessage(1, this.message, () => this.message.serialize(writer));
         if (this.enum != dependency_1.DefaultCommonEnum.ZERO)
             writer.writeEnum(2, this.enum);
         if (this.bool != false)
             writer.writeBool(3, this.bool);
-        if (pb_1.Message.getField(this, 4) && this.string.length)
+        if (this.string.length)
             writer.writeString(4, this.string);
         if (this.int32 != 0)
             writer.writeInt32(5, this.int32);
@@ -554,11 +554,11 @@ export class DefaultMessageV3 extends pb_1.Message {
             writer.writePackedInt32(20, this.array_int32);
         if (this.array_message.length)
             writer.writeRepeatedMessage(21, this.array_message, (item: dependency_1.DefaultCommonMessage) => item.serialize(writer));
-        if (pb_1.Message.getField(this, 22) != null)
+        if (this.has_one_of_int32())
             writer.writeInt32(22, this.one_of_int32);
-        if (pb_1.Message.getField(this, 23) != null)
+        if (this.has_one_of_message())
             writer.writeMessage(23, this.one_of_message, () => this.one_of_message.serialize(writer));
-        if (pb_1.Message.getField(this, 24) && this.bytes.length)
+        if (this.bytes.length)
             writer.writeBytes(24, this.bytes);
         if (!w)
             return writer.getResultBuffer();
@@ -1257,39 +1257,39 @@ export class DefaultMessageOptionalV3 extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (pb_1.Message.getField(this, 2) != null)
+        if (this.has_enum())
             writer.writeEnum(2, this.enum);
-        if (pb_1.Message.getField(this, 3) != null)
+        if (this.has_bool())
             writer.writeBool(3, this.bool);
-        if (pb_1.Message.getField(this, 4) != null)
+        if (this.has_string())
             writer.writeString(4, this.string);
-        if (pb_1.Message.getField(this, 5) != null)
+        if (this.has_int32())
             writer.writeInt32(5, this.int32);
-        if (pb_1.Message.getField(this, 6) != null)
+        if (this.has_fixed32())
             writer.writeFixed32(6, this.fixed32);
-        if (pb_1.Message.getField(this, 7) != null)
+        if (this.has_sfixed32())
             writer.writeSfixed32(7, this.sfixed32);
-        if (pb_1.Message.getField(this, 8) != null)
+        if (this.has_uint32())
             writer.writeUint32(8, this.uint32);
-        if (pb_1.Message.getField(this, 9) != null)
+        if (this.has_sint32())
             writer.writeSint32(9, this.sint32);
-        if (pb_1.Message.getField(this, 10) != null)
+        if (this.has_int64())
             writer.writeInt64(10, this.int64);
-        if (pb_1.Message.getField(this, 11) != null)
+        if (this.has_fixed64())
             writer.writeFixed64(11, this.fixed64);
-        if (pb_1.Message.getField(this, 12) != null)
+        if (this.has_sfixed64())
             writer.writeSfixed64(12, this.sfixed64);
-        if (pb_1.Message.getField(this, 13) != null)
+        if (this.has_uint64())
             writer.writeUint64(13, this.uint64);
-        if (pb_1.Message.getField(this, 14) != null)
+        if (this.has_sint64())
             writer.writeSint64(14, this.sint64);
-        if (pb_1.Message.getField(this, 15) != null)
+        if (this.has_float())
             writer.writeFloat(15, this.float);
-        if (pb_1.Message.getField(this, 16) != null)
+        if (this.has_double())
             writer.writeDouble(16, this.double);
-        if (pb_1.Message.getField(this, 17) != null)
+        if (this.has_int_but_string())
             writer.writeInt64String(17, this.int_but_string);
-        if (pb_1.Message.getField(this, 24) != null)
+        if (this.has_bytes())
             writer.writeBytes(24, this.bytes);
         if (!w)
             return writer.getResultBuffer();

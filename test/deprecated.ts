@@ -124,11 +124,11 @@ export class MessageName extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (pb_1.Message.getField(this, 1) && this.deprecated_field.length)
+        if (this.deprecated_field.length)
             writer.writeString(1, this.deprecated_field);
-        if (pb_1.Message.getField(this, 2) != null)
+        if (this.has_me())
             writer.writeString(2, this.me);
-        if (pb_1.Message.getField(this, 3) != null)
+        if (this.has_me_deprecated())
             writer.writeString(3, this.me_deprecated);
         if (!w)
             return writer.getResultBuffer();

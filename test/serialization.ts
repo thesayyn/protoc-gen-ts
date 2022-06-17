@@ -45,7 +45,7 @@ export class Serialization extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (pb_1.Message.getField(this, 1) && this.test.length)
+        if (this.test.length)
             writer.writeString(1, this.test);
         if (!w)
             return writer.getResultBuffer();
