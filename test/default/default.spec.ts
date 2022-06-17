@@ -1,6 +1,6 @@
 import { MessageWithDefault, MessageWithImplicitDefault } from "./default";
 import { DefaultMessageV2WithoutDefault, DefaultMessageV2WithDefault } from "./default_proto2";
-import { DefaultMessageV3 } from "./default_proto3";
+import { DefaultMessageOptionalV3, DefaultMessageV3 } from "./default_proto3";
 import { DefaultCommonEnum, DefaultCommonMessage, DefaultCommonMessageOneOf } from "./default_common";
 
 function toObjectPreservingUndefined(message: Object): Object {
@@ -323,7 +323,6 @@ describe("defaults", () => {
     });
 
     it("should omit fields that were explicitly assigned their default values during serialization (v3)", () => {
-        const defaults = new DefaultMessageV3();
         const explicitlyProvidedDefaults = new DefaultMessageV3();
         explicitlyProvidedDefaults.enum = DefaultCommonEnum.ZERO;
         explicitlyProvidedDefaults.bool = false;
@@ -342,10 +341,8 @@ describe("defaults", () => {
         explicitlyProvidedDefaults.double = 0;
         explicitlyProvidedDefaults.bytes = new Uint8Array();
 
-        const serializedDefaults = defaults.serialize();
         const serializedExplicitlyProvidedDefaults = explicitlyProvidedDefaults.serialize();
 
-        expect(serializedDefaults.length).toBe(0);
         expect(serializedExplicitlyProvidedDefaults.length).toBe(0);
     });
 
@@ -387,5 +384,43 @@ describe("defaults", () => {
         expect(serializedDefaultsHavingRepeatedProp.length).toBeGreaterThan(0);
         expect(transferredDefaultsHavingRepeatedProp.array_int32.length).toBe(1);
         expect(transferredDefaultsHavingRepeatedProp.array_int32[0]).toBe(0);
+    });
+
+    it("should serialize proto3 optional fields if explicitly assigned, even when they were assigned their default value (v3)", () => {
+        const implicitDefaults = new DefaultMessageOptionalV3();
+        const explicitlyProvidedDefaults1 = new DefaultMessageOptionalV3({ enum: DefaultCommonEnum.ZERO });
+        const explicitlyProvidedDefaults2 = new DefaultMessageOptionalV3({ bool: false });
+        const explicitlyProvidedDefaults3 = new DefaultMessageOptionalV3({ string: '' });
+        const explicitlyProvidedDefaults4 = new DefaultMessageOptionalV3({ int32: 0 });
+        const explicitlyProvidedDefaults5 = new DefaultMessageOptionalV3({ fixed32: 0 });
+        const explicitlyProvidedDefaults6 = new DefaultMessageOptionalV3({ sfixed32: 0 });
+        const explicitlyProvidedDefaults7 = new DefaultMessageOptionalV3({ uint32: 0 });
+        const explicitlyProvidedDefaults8 = new DefaultMessageOptionalV3({ sint32: 0 });
+        const explicitlyProvidedDefaults9 = new DefaultMessageOptionalV3({ int64: 0 });
+        const explicitlyProvidedDefaults10 = new DefaultMessageOptionalV3({ fixed64: 0 });
+        const explicitlyProvidedDefaults11 = new DefaultMessageOptionalV3({ sfixed64: 0 });
+        const explicitlyProvidedDefaults12 = new DefaultMessageOptionalV3({ uint64: 0 });
+        const explicitlyProvidedDefaults13 = new DefaultMessageOptionalV3({ sint64: 0 });
+        const explicitlyProvidedDefaults14 = new DefaultMessageOptionalV3({ float: 0 });
+        const explicitlyProvidedDefaults15 = new DefaultMessageOptionalV3({ double: 0 });
+        const explicitlyProvidedDefaults16 = new DefaultMessageOptionalV3({ bytes: new Uint8Array() });
+
+        expect(implicitDefaults.serialize().length).toBe(0);
+        expect(explicitlyProvidedDefaults1.serialize().length).toBeGreaterThan(0);
+        expect(explicitlyProvidedDefaults2.serialize().length).toBeGreaterThan(0);
+        expect(explicitlyProvidedDefaults3.serialize().length).toBeGreaterThan(0);
+        expect(explicitlyProvidedDefaults4.serialize().length).toBeGreaterThan(0);
+        expect(explicitlyProvidedDefaults5.serialize().length).toBeGreaterThan(0);
+        expect(explicitlyProvidedDefaults6.serialize().length).toBeGreaterThan(0);
+        expect(explicitlyProvidedDefaults7.serialize().length).toBeGreaterThan(0);
+        expect(explicitlyProvidedDefaults8.serialize().length).toBeGreaterThan(0);
+        expect(explicitlyProvidedDefaults9.serialize().length).toBeGreaterThan(0);
+        expect(explicitlyProvidedDefaults10.serialize().length).toBeGreaterThan(0);
+        expect(explicitlyProvidedDefaults11.serialize().length).toBeGreaterThan(0);
+        expect(explicitlyProvidedDefaults12.serialize().length).toBeGreaterThan(0);
+        expect(explicitlyProvidedDefaults13.serialize().length).toBeGreaterThan(0);
+        expect(explicitlyProvidedDefaults14.serialize().length).toBeGreaterThan(0);
+        expect(explicitlyProvidedDefaults15.serialize().length).toBeGreaterThan(0);
+        expect(explicitlyProvidedDefaults13.serialize().length).toBeGreaterThan(0);
     });
 });
