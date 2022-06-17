@@ -8641,7 +8641,7 @@ export class HydratedFourRowTemplate extends pb_1.Message {
             writer.writeString(9, this.templateId);
         if (pb_1.Message.getField(this, 1) != null)
             writer.writeMessage(1, this.documentMessage, () => this.documentMessage.serialize(writer));
-        if (pb_1.Message.getField(this, 2) && this.hydratedTitleText.length)
+        if (pb_1.Message.getField(this, 2) != null)
             writer.writeString(2, this.hydratedTitleText);
         if (pb_1.Message.getField(this, 3) != null)
             writer.writeMessage(3, this.imageMessage, () => this.imageMessage.serialize(writer));

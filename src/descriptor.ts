@@ -4,7 +4,6 @@ import * as type from "./type";
 import * as ts from "typescript";
 import * as comment from "./comment";
 import * as op from "./option.js";
-import * as pb from "google-protobuf";
 
 let config: op.Options;
 
@@ -1412,7 +1411,7 @@ function createSerialize(
         ts.factory.createThis(),
         ts.factory.createNumericLiteral(fieldDescriptor.number)
       ]
-    )
+    );
 
     if (field.isMap(fieldDescriptor)) {
       const [keyDescriptor, valueDescriptor] = type.getMapDescriptor(
@@ -1595,7 +1594,6 @@ function createSerialize(
         !field.isBytes(fieldDescriptor) &&
         !fieldDescriptor.has_oneof_index()
       ) {
-
         if (field.isEnum(fieldDescriptor)) {
           condition = ts.factory.createBinaryExpression(
             propAccessor,
@@ -1617,8 +1615,7 @@ function createSerialize(
             ts.factory.createNumericLiteral(0),
           );
         }
-      }
-      else {
+      } else {
         condition = ts.factory.createBinaryExpression(
           fieldAccesor,
           ts.factory.createToken(ts.SyntaxKind.ExclamationEqualsToken),
@@ -1644,8 +1641,10 @@ function createSerialize(
 
       if (field.isRepeated(fieldDescriptor)) {
         condition = ts.factory.createPropertyAccessExpression(propAccessor, "length");
-      } else if (field.isString(fieldDescriptor) || field.isBytes(fieldDescriptor)) {
-        // this.prop && this.prop.length
+      } else if (
+        (field.isString(fieldDescriptor) || field.isBytes(fieldDescriptor)) &&
+        !fieldDescriptor.has_oneof_index()
+      ) {
         condition = ts.factory.createBinaryExpression(
           fieldAccesor,
           ts.factory.createToken(ts.SyntaxKind.AmpersandAmpersandToken),

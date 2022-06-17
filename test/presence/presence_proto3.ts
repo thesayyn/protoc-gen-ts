@@ -356,7 +356,7 @@ export class PresenceMessageV3 extends pb_1.Message {
             writer.writeInt32(6, this.opt_int32);
         if (pb_1.Message.getField(this, 7) != null)
             writer.writeEnum(7, this.opt_enum);
-        if (pb_1.Message.getField(this, 8) && this.opt_string.length)
+        if (pb_1.Message.getField(this, 8) != null)
             writer.writeString(8, this.opt_string);
         if (pb_1.Message.getField(this, 9) != null)
             writer.writeMessage(9, this.opt_message, () => this.opt_message.serialize(writer));

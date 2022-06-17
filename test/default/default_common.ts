@@ -77,13 +77,19 @@ export class DefaultCommonMessage extends pb_1.Message {
     }
 }
 export class DefaultCommonMessageOneOf extends pb_1.Message {
-    #one_of_decls: number[][] = [[1, 2]];
+    #one_of_decls: number[][] = [[1, 2, 3]];
     constructor(data?: any[] | ({} & (({
         int32?: number;
         message?: never;
+        string?: never;
     } | {
         int32?: never;
         message?: DefaultCommonMessage;
+        string?: never;
+    } | {
+        int32?: never;
+        message?: never;
+        string?: string;
     })))) {
         super();
         pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
@@ -93,6 +99,9 @@ export class DefaultCommonMessageOneOf extends pb_1.Message {
             }
             if ("message" in data && data.message != undefined) {
                 this.message = data.message;
+            }
+            if ("string" in data && data.string != undefined) {
+                this.string = data.string;
             }
         }
     }
@@ -120,19 +129,33 @@ export class DefaultCommonMessageOneOf extends pb_1.Message {
     has_message() {
         return pb_1.Message.getField(this, 2) != null;
     }
+    get string() {
+        return pb_1.Message.getFieldWithDefault(this, 3, "") as string;
+    }
+    set string(value: string) {
+        pb_1.Message.setOneofField(this, 3, this.#one_of_decls[0], value);
+    }
+    clear_string() {
+        pb_1.Message.setField(this, 3, undefined);
+    }
+    has_string() {
+        return pb_1.Message.getField(this, 3) != null;
+    }
     get oneof() {
         const cases: {
-            [index: number]: "none" | "int32" | "message";
+            [index: number]: "none" | "int32" | "message" | "string";
         } = {
             0: "none",
             1: "int32",
-            2: "message"
+            2: "message",
+            3: "string"
         };
-        return cases[pb_1.Message.computeOneofCase(this, [1, 2])];
+        return cases[pb_1.Message.computeOneofCase(this, [1, 2, 3])];
     }
     static fromObject(data: {
         int32?: number;
         message?: ReturnType<typeof DefaultCommonMessage.prototype.toObject>;
+        string?: string;
     }): DefaultCommonMessageOneOf {
         const message = new DefaultCommonMessageOneOf({});
         if (data.int32 != null) {
@@ -141,18 +164,25 @@ export class DefaultCommonMessageOneOf extends pb_1.Message {
         if (data.message != null) {
             message.message = DefaultCommonMessage.fromObject(data.message);
         }
+        if (data.string != null) {
+            message.string = data.string;
+        }
         return message;
     }
     toObject() {
         const data: {
             int32?: number;
             message?: ReturnType<typeof DefaultCommonMessage.prototype.toObject>;
+            string?: string;
         } = {};
         if (this.int32 != null) {
             data.int32 = this.int32;
         }
         if (this.message != null) {
             data.message = this.message.toObject();
+        }
+        if (this.string != null) {
+            data.string = this.string;
         }
         return data;
     }
@@ -164,6 +194,8 @@ export class DefaultCommonMessageOneOf extends pb_1.Message {
             writer.writeInt32(1, this.int32);
         if (pb_1.Message.getField(this, 2) != null)
             writer.writeMessage(2, this.message, () => this.message.serialize(writer));
+        if (pb_1.Message.getField(this, 3) != null)
+            writer.writeString(3, this.string);
         if (!w)
             return writer.getResultBuffer();
     }
@@ -178,6 +210,9 @@ export class DefaultCommonMessageOneOf extends pb_1.Message {
                     break;
                 case 2:
                     reader.readMessage(message.message, () => message.message = DefaultCommonMessage.deserialize(reader));
+                    break;
+                case 3:
+                    message.string = reader.readString();
                     break;
                 default: reader.skipField();
             }
