@@ -237,7 +237,7 @@ describe("defaults", () => {
             float: 0,
             double: 0,
 
-            int_but_string: "",
+            int_but_string: "0",
 
             map_string_string: {},
             map_string_message: {},
@@ -270,7 +270,7 @@ describe("defaults", () => {
             float: 0,
             double: 0,
 
-            int_but_string: "",
+            int_but_string: "0",
 
             array_int32: [],
             array_message: [],
@@ -308,7 +308,7 @@ describe("defaults", () => {
         expect(transferredDefaults.float).toBe(0);
         expect(transferredDefaults.double).toBe(0);
 
-        expect(transferredDefaults.int_but_string).toBe("");
+        expect(transferredDefaults.int_but_string).toBe("0");
 
         expect(transferredDefaults.map_string_string.values.length).toBe(0);
         expect(transferredDefaults.map_string_message.values.length).toBe(0);
@@ -339,6 +339,7 @@ describe("defaults", () => {
         explicitlyProvidedDefaults.sint64 = 0;
         explicitlyProvidedDefaults.float = 0;
         explicitlyProvidedDefaults.double = 0;
+        explicitlyProvidedDefaults.int_but_string = "0";
         explicitlyProvidedDefaults.bytes = new Uint8Array();
 
         const serializedExplicitlyProvidedDefaults = explicitlyProvidedDefaults.serialize();
@@ -403,7 +404,8 @@ describe("defaults", () => {
         const explicitlyProvidedDefaults13 = new DefaultMessageOptionalV3({ sint64: 0 });
         const explicitlyProvidedDefaults14 = new DefaultMessageOptionalV3({ float: 0 });
         const explicitlyProvidedDefaults15 = new DefaultMessageOptionalV3({ double: 0 });
-        const explicitlyProvidedDefaults16 = new DefaultMessageOptionalV3({ bytes: new Uint8Array() });
+        const explicitlyProvidedDefaults16 = new DefaultMessageOptionalV3({ int_but_string: "0" });
+        const explicitlyProvidedDefaults17 = new DefaultMessageOptionalV3({ bytes: new Uint8Array() });
 
         expect(implicitDefaults.serialize().length).toBe(0);
         expect(explicitlyProvidedDefaults1.serialize().length).toBeGreaterThan(0);
@@ -421,6 +423,7 @@ describe("defaults", () => {
         expect(explicitlyProvidedDefaults13.serialize().length).toBeGreaterThan(0);
         expect(explicitlyProvidedDefaults14.serialize().length).toBeGreaterThan(0);
         expect(explicitlyProvidedDefaults15.serialize().length).toBeGreaterThan(0);
-        expect(explicitlyProvidedDefaults13.serialize().length).toBeGreaterThan(0);
+        expect(explicitlyProvidedDefaults16.serialize().length).toBeGreaterThan(0);
+        expect(explicitlyProvidedDefaults17.serialize().length).toBeGreaterThan(0);
     });
 });

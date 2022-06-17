@@ -221,7 +221,7 @@ export class DefaultMessageV3 extends pb_1.Message {
         pb_1.Message.setField(this, 16, value);
     }
     get int_but_string() {
-        return pb_1.Message.getFieldWithDefault(this, 17, "") as string;
+        return pb_1.Message.getFieldWithDefault(this, 17, "0") as string;
     }
     set int_but_string(value: string) {
         pb_1.Message.setField(this, 17, value);
@@ -536,7 +536,7 @@ export class DefaultMessageV3 extends pb_1.Message {
             writer.writeFloat(15, this.float);
         if (this.double != 0)
             writer.writeDouble(16, this.double);
-        if (pb_1.Message.getField(this, 17) != null)
+        if (this.int_but_string != "0")
             writer.writeInt64String(17, this.int_but_string);
         for (const [key, value] of this.map_string_string) {
             writer.writeMessage(18, this.map_string_string, () => {
@@ -931,7 +931,7 @@ export class DefaultMessageOptionalV3 extends pb_1.Message {
         return pb_1.Message.getField(this, 16) != null;
     }
     get int_but_string() {
-        return pb_1.Message.getFieldWithDefault(this, 17, "") as string;
+        return pb_1.Message.getFieldWithDefault(this, 17, "0") as string;
     }
     set int_but_string(value: string) {
         pb_1.Message.setOneofField(this, 17, this.#one_of_decls[15], value);

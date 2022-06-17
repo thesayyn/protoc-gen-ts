@@ -26,7 +26,7 @@ export class JSType extends pb_1.Message {
         }
     }
     get int_but_string() {
-        return pb_1.Message.getFieldWithDefault(this, 1, "") as string;
+        return pb_1.Message.getFieldWithDefault(this, 1, "0") as string;
     }
     set int_but_string(value: string) {
         pb_1.Message.setField(this, 1, value);
@@ -81,7 +81,7 @@ export class JSType extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (pb_1.Message.getField(this, 1) != null)
+        if (this.int_but_string != "0")
             writer.writeInt64String(1, this.int_but_string);
         if (this.int_and_normal != 0)
             writer.writeInt64(2, this.int_and_normal);

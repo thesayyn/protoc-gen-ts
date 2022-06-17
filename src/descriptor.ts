@@ -996,7 +996,7 @@ function createGetterCall(
         : ts.factory.createArrayLiteralExpression(
           [],
           false
-        )
+        );
     } else if (field.isBytes(fieldDescriptor)) {
       _default = fieldDescriptor.has_default_value()
         ? ts.factory.createIdentifier(fieldDescriptor.default_value)
@@ -1004,19 +1004,19 @@ function createGetterCall(
           ts.factory.createIdentifier("Uint8Array"),
           undefined,
           []
-        )
+        );
     } else if (field.isString(fieldDescriptor) || field.hasJsTypeString(fieldDescriptor)) {
       _default = fieldDescriptor.has_default_value()
         ? ts.factory.createStringLiteral(fieldDescriptor.default_value)
-        : ts.factory.createStringLiteral("")
+        : ts.factory.createStringLiteral(field.hasJsTypeString(fieldDescriptor) ? "0" : "");
     } else if (field.isBoolean(fieldDescriptor)) {
       _default = fieldDescriptor.has_default_value()
         ? ts.factory.createIdentifier(fieldDescriptor.default_value)
-        : ts.factory.createFalse()
+        : ts.factory.createFalse();
     } else {
       _default = fieldDescriptor.has_default_value()
         ? ts.factory.createIdentifier(fieldDescriptor.default_value)
-        : ts.factory.createNumericLiteral(0)
+        : ts.factory.createNumericLiteral(0);
     }
 
     args.push(_default);
@@ -1590,11 +1590,16 @@ function createSerialize(
         rootDescriptor.syntax == "proto3" &&
         !fieldDescriptor.proto3_optional &&
         !field.isMessage(fieldDescriptor) &&
-        !field.hasJsTypeString(fieldDescriptor) &&
         !field.isBytes(fieldDescriptor) &&
         !fieldDescriptor.has_oneof_index()
       ) {
-        if (field.isEnum(fieldDescriptor)) {
+        if (field.hasJsTypeString(fieldDescriptor)) {
+          condition = ts.factory.createBinaryExpression(
+            propAccessor,
+            ts.factory.createToken(ts.SyntaxKind.ExclamationEqualsToken),
+            ts.factory.createStringLiteral("0"),
+          );
+        } else if (field.isEnum(fieldDescriptor)) {
           condition = ts.factory.createBinaryExpression(
             propAccessor,
             ts.factory.createToken(ts.SyntaxKind.ExclamationEqualsToken),
