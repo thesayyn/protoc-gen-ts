@@ -96,7 +96,7 @@ export class PresenceMessageV3 extends pb_1.Message {
     clear_message() {
         pb_1.Message.setField(this, 4, undefined);
     }
-    has_message() {
+    get has_message() {
         return pb_1.Message.getField(this, 4) != null;
     }
     get oneof() {
@@ -108,7 +108,7 @@ export class PresenceMessageV3 extends pb_1.Message {
     clear_oneof() {
         pb_1.Message.setField(this, 5, undefined);
     }
-    has_oneof() {
+    get has_oneof() {
         return pb_1.Message.getField(this, 5) != null;
     }
     get opt_int32() {
@@ -120,7 +120,7 @@ export class PresenceMessageV3 extends pb_1.Message {
     clear_opt_int32() {
         pb_1.Message.setField(this, 6, undefined);
     }
-    has_opt_int32() {
+    get has_opt_int32() {
         return pb_1.Message.getField(this, 6) != null;
     }
     get opt_enum() {
@@ -132,7 +132,7 @@ export class PresenceMessageV3 extends pb_1.Message {
     clear_opt_enum() {
         pb_1.Message.setField(this, 7, undefined);
     }
-    has_opt_enum() {
+    get has_opt_enum() {
         return pb_1.Message.getField(this, 7) != null;
     }
     get opt_string() {
@@ -144,7 +144,7 @@ export class PresenceMessageV3 extends pb_1.Message {
     clear_opt_string() {
         pb_1.Message.setField(this, 8, undefined);
     }
-    has_opt_string() {
+    get has_opt_string() {
         return pb_1.Message.getField(this, 8) != null;
     }
     get opt_message() {
@@ -156,7 +156,7 @@ export class PresenceMessageV3 extends pb_1.Message {
     clear_opt_message() {
         pb_1.Message.setField(this, 9, undefined);
     }
-    has_opt_message() {
+    get has_opt_message() {
         return pb_1.Message.getField(this, 9) != null;
     }
     get opt_oneof() {
@@ -168,7 +168,7 @@ export class PresenceMessageV3 extends pb_1.Message {
     clear_opt_oneof() {
         pb_1.Message.setField(this, 10, undefined);
     }
-    has_opt_oneof() {
+    get has_opt_oneof() {
         return pb_1.Message.getField(this, 10) != null;
     }
     get repeated() {
@@ -348,19 +348,19 @@ export class PresenceMessageV3 extends pb_1.Message {
             writer.writeEnum(2, this.enum);
         if (this.string.length)
             writer.writeString(3, this.string);
-        if (this.has_message())
+        if (this.has_message)
             writer.writeMessage(4, this.message, () => this.message.serialize(writer));
-        if (this.has_oneof())
+        if (this.has_oneof)
             writer.writeMessage(5, this.oneof, () => this.oneof.serialize(writer));
-        if (this.has_opt_int32())
+        if (this.has_opt_int32)
             writer.writeInt32(6, this.opt_int32);
-        if (this.has_opt_enum())
+        if (this.has_opt_enum)
             writer.writeEnum(7, this.opt_enum);
-        if (this.has_opt_string())
+        if (this.has_opt_string)
             writer.writeString(8, this.opt_string);
-        if (this.has_opt_message())
+        if (this.has_opt_message)
             writer.writeMessage(9, this.opt_message, () => this.opt_message.serialize(writer));
-        if (this.has_opt_oneof())
+        if (this.has_opt_oneof)
             writer.writeMessage(10, this.opt_oneof, () => this.opt_oneof.serialize(writer));
         if (this.repeated.length)
             writer.writePackedInt32(11, this.repeated);

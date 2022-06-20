@@ -34,7 +34,7 @@ export class NotOptional extends pb_1.Message {
     clear_should_be_optional() {
         pb_1.Message.setField(this, 2, undefined);
     }
-    has_should_be_optional() {
+    get has_should_be_optional() {
         return pb_1.Message.getField(this, 2) != null;
     }
     static fromObject(data: {
@@ -67,7 +67,7 @@ export class NotOptional extends pb_1.Message {
         const writer = w || new pb_1.BinaryWriter();
         if (this.should_be_required.length)
             writer.writeRepeatedString(1, this.should_be_required);
-        if (this.has_should_be_optional() && this.should_be_optional.length)
+        if (this.has_should_be_optional && this.should_be_optional.length)
             writer.writeString(2, this.should_be_optional);
         if (!w)
             return writer.getResultBuffer();

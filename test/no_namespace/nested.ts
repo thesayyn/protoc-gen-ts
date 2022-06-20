@@ -55,7 +55,7 @@ export class SchedulingContext extends pb_1.Message {
     clear_batch() {
         pb_1.Message.setField(this, 4, undefined);
     }
-    has_batch() {
+    get has_batch() {
         return pb_1.Message.getField(this, 4) != null;
     }
     static fromObject(data: {
@@ -100,7 +100,7 @@ export class SchedulingContext extends pb_1.Message {
             writer.writeRepeatedMessage(2, this.env, (item: SchedulingContextEnv) => item.serialize(writer));
         if (this.timeout != 0)
             writer.writeInt32(3, this.timeout);
-        if (this.has_batch())
+        if (this.has_batch)
             writer.writeMessage(4, this.batch, () => this.batch.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
@@ -264,7 +264,7 @@ export class SchedulingContextBatch extends pb_1.Message {
     clear_process() {
         pb_1.Message.setField(this, 3, undefined);
     }
-    has_process() {
+    get has_process() {
         return pb_1.Message.getField(this, 3) != null;
     }
     static fromObject(data: {
@@ -309,7 +309,7 @@ export class SchedulingContextBatch extends pb_1.Message {
             writer.writeUint64(1, this.limit);
         if (this.deadline != 0)
             writer.writeUint64(2, this.deadline);
-        if (this.has_process())
+        if (this.has_process)
             writer.writeMessage(3, this.process, () => this.process.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
@@ -460,7 +460,7 @@ export class Target extends pb_1.Message {
     clear_context() {
         pb_1.Message.setField(this, 4, undefined);
     }
-    has_context() {
+    get has_context() {
         return pb_1.Message.getField(this, 4) != null;
     }
     static fromObject(data: {
@@ -515,7 +515,7 @@ export class Target extends pb_1.Message {
             writer.writeString(2, this.cwd);
         if (this.handler.length)
             writer.writeString(3, this.handler);
-        if (this.has_context())
+        if (this.has_context)
             writer.writeMessage(4, this.context, () => this.context.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
@@ -592,7 +592,7 @@ export class Event extends pb_1.Message {
     clear_target() {
         pb_1.Message.setField(this, 3, undefined);
     }
-    has_target() {
+    get has_target() {
         return pb_1.Message.getField(this, 3) != null;
     }
     static fromObject(data: {
@@ -637,7 +637,7 @@ export class Event extends pb_1.Message {
             writer.writeString(1, this.id);
         if (this.type != Type.HTTP)
             writer.writeEnum(2, this.type);
-        if (this.has_target())
+        if (this.has_target)
             writer.writeMessage(3, this.target, () => this.target.serialize(writer));
         if (!w)
             return writer.getResultBuffer();

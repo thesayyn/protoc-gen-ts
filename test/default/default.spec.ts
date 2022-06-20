@@ -363,15 +363,15 @@ describe("defaults", () => {
         const transferredMessageHavingSubmessage = DefaultCommonMessageOneOf.deserialize(serializedMessageHavingSubmessage);
 
         expect(serializedMessageHavingInt32.length).toBeGreaterThan(0);
-        expect(transferredMessageHavingInt32.has_int32()).toBe(true);
+        expect(transferredMessageHavingInt32.has_int32).toBe(true);
         expect(transferredMessageHavingInt32.oneof).toBe("int32");
 
         expect(serializedMessageHavingString.length).toBeGreaterThan(0);
-        expect(transferredMessageHavingString.has_string()).toBe(true);
+        expect(transferredMessageHavingString.has_string).toBe(true);
         expect(transferredMessageHavingString.oneof).toBe("string");
 
         expect(serializedMessageHavingSubmessage.length).toBeGreaterThan(0);
-        expect(transferredMessageHavingSubmessage.has_message()).toBe(true);
+        expect(transferredMessageHavingSubmessage.has_message).toBe(true);
         expect(transferredMessageHavingSubmessage.oneof).toBe("message");
     });
 

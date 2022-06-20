@@ -1,4 +1,3 @@
-import { PresenceCommonMessage, PresenceCommonEnum, PresenceCommonMessageOneOf } from "./presence_common";
 import { PresenceMessageV2 } from "./presence_proto2";
 import { PresenceMessageV3 } from "./presence_proto3";
 
@@ -7,17 +6,17 @@ describe("defaults", () => {
     it("should have has and clear methods (v2)", () => {
         const presence = new PresenceMessageV2();
 
-        expect(typeof presence["has_enum"]).toBe("function")
-        expect(typeof presence["has_int32"]).toBe("function")
-        expect(typeof presence["has_message"]).toBe("function")
-        expect(typeof presence["has_oneof"]).toBe("function")
-        expect(typeof presence["has_string"]).toBe("function")
+        expect(typeof presence["has_enum"]).toBe("boolean")
+        expect(typeof presence["has_int32"]).toBe("boolean")
+        expect(typeof presence["has_message"]).toBe("boolean")
+        expect(typeof presence["has_oneof"]).toBe("boolean")
+        expect(typeof presence["has_string"]).toBe("boolean")
 
-        expect(typeof presence["has_opt_enum"]).toBe("function")
-        expect(typeof presence["has_opt_int32"]).toBe("function")
-        expect(typeof presence["has_opt_message"]).toBe("function")
-        expect(typeof presence["has_opt_oneof"]).toBe("function")
-        expect(typeof presence["has_opt_string"]).toBe("function")
+        expect(typeof presence["has_opt_enum"]).toBe("boolean")
+        expect(typeof presence["has_opt_int32"]).toBe("boolean")
+        expect(typeof presence["has_opt_message"]).toBe("boolean")
+        expect(typeof presence["has_opt_oneof"]).toBe("boolean")
+        expect(typeof presence["has_opt_string"]).toBe("boolean")
 
         expect(typeof presence["has_repeated"]).toBe("undefined")
         expect(typeof presence["has_map"]).toBe("undefined")
@@ -28,15 +27,15 @@ describe("defaults", () => {
 
         expect(typeof presence["has_enum"]).toBe("undefined")
         expect(typeof presence["has_int32"]).toBe("undefined")
-        expect(typeof presence["has_message"]).toBe("function")
-        expect(typeof presence["has_oneof"]).toBe("function")
+        expect(typeof presence["has_message"]).toBe("boolean")
+        expect(typeof presence["has_oneof"]).toBe("boolean")
         expect(typeof presence["has_string"]).toBe("undefined")
 
-        expect(typeof presence["has_opt_enum"]).toBe("function")
-        expect(typeof presence["has_opt_int32"]).toBe("function")
-        expect(typeof presence["has_opt_message"]).toBe("function")
-        expect(typeof presence["has_opt_oneof"]).toBe("function")
-        expect(typeof presence["has_opt_string"]).toBe("function")
+        expect(typeof presence["has_opt_enum"]).toBe("boolean")
+        expect(typeof presence["has_opt_int32"]).toBe("boolean")
+        expect(typeof presence["has_opt_message"]).toBe("boolean")
+        expect(typeof presence["has_opt_oneof"]).toBe("boolean")
+        expect(typeof presence["has_opt_string"]).toBe("boolean")
 
         expect(typeof presence["has_repeated"]).toBe("undefined")
         expect(typeof presence["has_map"]).toBe("undefined")
@@ -47,8 +46,8 @@ describe("defaults", () => {
         presence.opt_int32 = 10;
 
         expect(presence.opt_int32).toBe(10);
-        expect(presence.has_opt_int32()).toBeTrue();
-        expect(presence.has_opt_message()).toBeFalse();
+        expect(presence.has_opt_int32).toBeTrue();
+        expect(presence.has_opt_message).toBeFalse();
     });
 
     it("should clear presence", () => {
@@ -57,8 +56,8 @@ describe("defaults", () => {
         presence.clear_opt_int32();
 
         expect(presence.opt_int32).toBe(0);
-        expect(presence.has_opt_int32()).toBeFalse();
-        expect(presence.has_opt_message()).toBeFalse();
+        expect(presence.has_opt_int32).toBeFalse();
+        expect(presence.has_opt_message).toBeFalse();
     });
 
     it("should serialize optional default without presence", () => {
@@ -66,7 +65,7 @@ describe("defaults", () => {
         const transferredPresence = PresenceMessageV3.deserialize(presence.serialize());
 
         expect(transferredPresence.opt_int32).toBe(0);
-        expect(transferredPresence.has_opt_int32()).toBeFalse();
+        expect(transferredPresence.has_opt_int32).toBeFalse();
     });
 
     it("should serialize optional default with presence", () => {
@@ -76,6 +75,6 @@ describe("defaults", () => {
         const transferredPresence = PresenceMessageV3.deserialize(presence.serialize());
 
         expect(transferredPresence.opt_int32).toBe(0);
-        expect(transferredPresence.has_opt_int32()).toBeTrue();
+        expect(transferredPresence.has_opt_int32).toBeTrue();
     });
 })

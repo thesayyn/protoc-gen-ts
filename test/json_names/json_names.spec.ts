@@ -96,10 +96,10 @@ describe('JSON Names', () => {
 
   it('should expose presence and clear fields in camel case', () => {
     const message = new JsonNamesMessage();
-    expect(message.hasASingleString()).toBe(false);
+    expect(message.hasASingleString).toBe(false);
     message.aSingleString = 'abcdef';
-    expect(message.hasASingleString()).toBe(true);
+    expect(message.hasASingleString).toBe(true);
     message.clearASingleString();
-    expect(message.hasASingleString()).toBe(false);
+    expect(message.hasASingleString).toBe(false);
   });
 });

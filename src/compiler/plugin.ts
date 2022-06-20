@@ -39,7 +39,7 @@ export class Version extends pb_1.Message {
     clear_major() {
         pb_1.Message.setField(this, 1, undefined);
     }
-    has_major() {
+    get has_major() {
         return pb_1.Message.getField(this, 1) != null;
     }
     get minor() {
@@ -51,7 +51,7 @@ export class Version extends pb_1.Message {
     clear_minor() {
         pb_1.Message.setField(this, 2, undefined);
     }
-    has_minor() {
+    get has_minor() {
         return pb_1.Message.getField(this, 2) != null;
     }
     get patch() {
@@ -63,7 +63,7 @@ export class Version extends pb_1.Message {
     clear_patch() {
         pb_1.Message.setField(this, 3, undefined);
     }
-    has_patch() {
+    get has_patch() {
         return pb_1.Message.getField(this, 3) != null;
     }
     get suffix() {
@@ -75,7 +75,7 @@ export class Version extends pb_1.Message {
     clear_suffix() {
         pb_1.Message.setField(this, 4, undefined);
     }
-    has_suffix() {
+    get has_suffix() {
         return pb_1.Message.getField(this, 4) != null;
     }
     static fromObject(data: {
@@ -124,13 +124,13 @@ export class Version extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.has_major())
+        if (this.has_major)
             writer.writeInt32(1, this.major);
-        if (this.has_minor())
+        if (this.has_minor)
             writer.writeInt32(2, this.minor);
-        if (this.has_patch())
+        if (this.has_patch)
             writer.writeInt32(3, this.patch);
-        if (this.has_suffix() && this.suffix.length)
+        if (this.has_suffix && this.suffix.length)
             writer.writeString(4, this.suffix);
         if (!w)
             return writer.getResultBuffer();
@@ -201,7 +201,7 @@ export class CodeGeneratorRequest extends pb_1.Message {
     clear_parameter() {
         pb_1.Message.setField(this, 2, undefined);
     }
-    has_parameter() {
+    get has_parameter() {
         return pb_1.Message.getField(this, 2) != null;
     }
     get proto_file() {
@@ -219,7 +219,7 @@ export class CodeGeneratorRequest extends pb_1.Message {
     clear_compiler_version() {
         pb_1.Message.setField(this, 3, undefined);
     }
-    has_compiler_version() {
+    get has_compiler_version() {
         return pb_1.Message.getField(this, 3) != null;
     }
     static fromObject(data: {
@@ -266,11 +266,11 @@ export class CodeGeneratorRequest extends pb_1.Message {
         const writer = w || new pb_1.BinaryWriter();
         if (this.file_to_generate.length)
             writer.writeRepeatedString(1, this.file_to_generate);
-        if (this.has_parameter() && this.parameter.length)
+        if (this.has_parameter && this.parameter.length)
             writer.writeString(2, this.parameter);
         if (this.proto_file.length)
             writer.writeRepeatedMessage(15, this.proto_file, (item: dependency_1.FileDescriptorProto) => item.serialize(writer));
-        if (this.has_compiler_version())
+        if (this.has_compiler_version)
             writer.writeMessage(3, this.compiler_version, () => this.compiler_version.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
@@ -333,7 +333,7 @@ export class CodeGeneratorResponse extends pb_1.Message {
     clear_error() {
         pb_1.Message.setField(this, 1, undefined);
     }
-    has_error() {
+    get has_error() {
         return pb_1.Message.getField(this, 1) != null;
     }
     get supported_features() {
@@ -345,7 +345,7 @@ export class CodeGeneratorResponse extends pb_1.Message {
     clear_supported_features() {
         pb_1.Message.setField(this, 2, undefined);
     }
-    has_supported_features() {
+    get has_supported_features() {
         return pb_1.Message.getField(this, 2) != null;
     }
     get file() {
@@ -391,9 +391,9 @@ export class CodeGeneratorResponse extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.has_error() && this.error.length)
+        if (this.has_error && this.error.length)
             writer.writeString(1, this.error);
-        if (this.has_supported_features())
+        if (this.has_supported_features)
             writer.writeUint64(2, this.supported_features);
         if (this.file.length)
             writer.writeRepeatedMessage(15, this.file, (item: CodeGeneratorResponse.File) => item.serialize(writer));
@@ -466,7 +466,7 @@ export namespace CodeGeneratorResponse {
         clear_name() {
             pb_1.Message.setField(this, 1, undefined);
         }
-        has_name() {
+        get has_name() {
             return pb_1.Message.getField(this, 1) != null;
         }
         get insertion_point() {
@@ -478,7 +478,7 @@ export namespace CodeGeneratorResponse {
         clear_insertion_point() {
             pb_1.Message.setField(this, 2, undefined);
         }
-        has_insertion_point() {
+        get has_insertion_point() {
             return pb_1.Message.getField(this, 2) != null;
         }
         get content() {
@@ -490,7 +490,7 @@ export namespace CodeGeneratorResponse {
         clear_content() {
             pb_1.Message.setField(this, 15, undefined);
         }
-        has_content() {
+        get has_content() {
             return pb_1.Message.getField(this, 15) != null;
         }
         get generated_code_info() {
@@ -502,7 +502,7 @@ export namespace CodeGeneratorResponse {
         clear_generated_code_info() {
             pb_1.Message.setField(this, 16, undefined);
         }
-        has_generated_code_info() {
+        get has_generated_code_info() {
             return pb_1.Message.getField(this, 16) != null;
         }
         static fromObject(data: {
@@ -551,13 +551,13 @@ export namespace CodeGeneratorResponse {
         serialize(w: pb_1.BinaryWriter): void;
         serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
             const writer = w || new pb_1.BinaryWriter();
-            if (this.has_name() && this.name.length)
+            if (this.has_name && this.name.length)
                 writer.writeString(1, this.name);
-            if (this.has_insertion_point() && this.insertion_point.length)
+            if (this.has_insertion_point && this.insertion_point.length)
                 writer.writeString(2, this.insertion_point);
-            if (this.has_content() && this.content.length)
+            if (this.has_content && this.content.length)
                 writer.writeString(15, this.content);
-            if (this.has_generated_code_info())
+            if (this.has_generated_code_info)
                 writer.writeMessage(16, this.generated_code_info, () => this.generated_code_info.serialize(writer));
             if (!w)
                 return writer.getResultBuffer();

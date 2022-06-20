@@ -37,7 +37,7 @@ export class Optional extends pb_1.Message {
     clear_proto3_optional() {
         pb_1.Message.setField(this, 2, undefined);
     }
-    has_proto3_optional() {
+    get has_proto3_optional() {
         return pb_1.Message.getField(this, 2) != null;
     }
     get _proto3_optional() {
@@ -81,7 +81,7 @@ export class Optional extends pb_1.Message {
         const writer = w || new pb_1.BinaryWriter();
         if (this.should_not_be_required.length)
             writer.writeRepeatedString(1, this.should_not_be_required);
-        if (this.has_proto3_optional())
+        if (this.has_proto3_optional)
             writer.writeString(2, this.proto3_optional);
         if (!w)
             return writer.getResultBuffer();

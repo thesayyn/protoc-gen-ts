@@ -190,7 +190,7 @@ export class Chunk extends pb_1.Message {
     clear_range() {
         pb_1.Message.setField(this, 2, undefined);
     }
-    has_range() {
+    get has_range() {
         return pb_1.Message.getField(this, 2) != null;
     }
     static fromObject(data: {
@@ -225,7 +225,7 @@ export class Chunk extends pb_1.Message {
         const writer = w || new pb_1.BinaryWriter();
         if (this.data.length)
             writer.writeBytes(1, this.data);
-        if (this.has_range())
+        if (this.has_range)
             writer.writeMessage(2, this.range, () => this.range.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
@@ -377,7 +377,7 @@ export namespace Chunk {
         clear_range() {
             pb_1.Message.setField(this, 2, undefined);
         }
-        has_range() {
+        get has_range() {
             return pb_1.Message.getField(this, 2) != null;
         }
         static fromObject(data: {
@@ -412,7 +412,7 @@ export namespace Chunk {
             const writer = w || new pb_1.BinaryWriter();
             if (this.id.length)
                 writer.writeString(1, this.id);
-            if (this.has_range())
+            if (this.has_range)
                 writer.writeMessage(2, this.range, () => this.range.serialize(writer));
             if (!w)
                 return writer.getResultBuffer();
@@ -610,7 +610,7 @@ export class Put extends pb_1.Message {
     clear_chunk() {
         pb_1.Message.setField(this, 3, undefined);
     }
-    has_chunk() {
+    get has_chunk() {
         return pb_1.Message.getField(this, 3) != null;
     }
     static fromObject(data: {
@@ -645,7 +645,7 @@ export class Put extends pb_1.Message {
         const writer = w || new pb_1.BinaryWriter();
         if (this.id.length)
             writer.writeString(1, this.id);
-        if (this.has_chunk())
+        if (this.has_chunk)
             writer.writeMessage(3, this.chunk, () => this.chunk.serialize(writer));
         if (!w)
             return writer.getResultBuffer();

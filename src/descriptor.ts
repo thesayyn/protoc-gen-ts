@@ -553,14 +553,14 @@ function createMessageSignature(
     const childSignatures = [];
 
     for (const currentFieldDescriptor of messageDescriptor.field) {
-      if (!currentFieldDescriptor.has_oneof_index() || currentFieldDescriptor.oneof_index !== index) {
+      if (!currentFieldDescriptor.has_oneof_index || currentFieldDescriptor.oneof_index !== index) {
         continue;
       }
 
       const members = [];
 
       for (const fieldDescriptor of messageDescriptor.field) {
-        if (!fieldDescriptor.has_oneof_index() || fieldDescriptor.oneof_index != index) {
+        if (!fieldDescriptor.has_oneof_index || fieldDescriptor.oneof_index != index) {
           continue;
         }
 
@@ -597,7 +597,7 @@ function createMessageSignature(
   const fieldSignatures = [];
 
   for (const fieldDescriptor of messageDescriptor.field) {
-    if (!fieldDescriptor.has_oneof_index()) {
+    if (!fieldDescriptor.has_oneof_index) {
       fieldSignatures.push(
         comment.addDeprecatedJsDoc(
           ts.factory.createPropertySignature(
@@ -986,19 +986,19 @@ function createGetterCall(
     if (field.isEnum(fieldDescriptor)) {
       _default = ts.factory.createPropertyAccessExpression(
         type.getTypeReferenceExpr(rootDescriptor, fieldDescriptor.type_name),
-        fieldDescriptor.has_default_value()
+        fieldDescriptor.has_default_value
           ? fieldDescriptor.default_value
           : type.getLeadingEnumMember(fieldDescriptor.type_name),
       );
     } else if (field.isRepeated(fieldDescriptor)) {
-      _default = fieldDescriptor.has_default_value()
+      _default = fieldDescriptor.has_default_value
         ? ts.factory.createIdentifier(fieldDescriptor.default_value)
         : ts.factory.createArrayLiteralExpression(
           [],
           false
         );
     } else if (field.isBytes(fieldDescriptor)) {
-      _default = fieldDescriptor.has_default_value()
+      _default = fieldDescriptor.has_default_value
         ? ts.factory.createIdentifier(fieldDescriptor.default_value)
         : ts.factory.createNewExpression(
           ts.factory.createIdentifier("Uint8Array"),
@@ -1006,15 +1006,15 @@ function createGetterCall(
           []
         );
     } else if (field.isString(fieldDescriptor) || field.hasJsTypeString(fieldDescriptor)) {
-      _default = fieldDescriptor.has_default_value()
+      _default = fieldDescriptor.has_default_value
         ? ts.factory.createStringLiteral(fieldDescriptor.default_value)
         : ts.factory.createStringLiteral(field.hasJsTypeString(fieldDescriptor) ? "0" : "");
     } else if (field.isBoolean(fieldDescriptor)) {
-      _default = fieldDescriptor.has_default_value()
+      _default = fieldDescriptor.has_default_value
         ? ts.factory.createIdentifier(fieldDescriptor.default_value)
         : ts.factory.createFalse();
     } else {
-      _default = fieldDescriptor.has_default_value()
+      _default = fieldDescriptor.has_default_value
         ? ts.factory.createIdentifier(fieldDescriptor.default_value)
         : ts.factory.createNumericLiteral(0);
     }
@@ -1052,7 +1052,7 @@ function createOneOfGetter(
   ];
 
   for (const field of messageDescriptor.field) {
-    if (!field.has_oneof_index() || field.oneof_index !== index) {
+    if (!field.has_oneof_index || field.oneof_index !== index) {
       continue;
     }
 
@@ -1146,7 +1146,7 @@ function createSetter(
 
   let block: ts.Block;
 
-  if (fieldDescriptor.has_oneof_index()) {
+  if (fieldDescriptor.has_oneof_index) {
     block = createOneOfSetterBlock(
       fieldDescriptor,
       valueParameter,
@@ -1203,7 +1203,7 @@ function createOneOfSetterBlock(
                 ts.factory.createThis(),
                 ts.factory.createPrivateIdentifier("#one_of_decls"),
               ),
-              fieldDescriptor.has_oneof_index() ? fieldDescriptor.oneof_index : undefined
+              fieldDescriptor.has_oneof_index ? fieldDescriptor.oneof_index : undefined
             ),
             valueParameter,
           ],
@@ -1314,13 +1314,10 @@ function createPresenceHas(
   fieldDescriptor: descriptor.FieldDescriptorProto,
   pbIdentifier: ts.Identifier,
 ) {
-  return ts.factory.createMethodDeclaration(
-    undefined,
+  return ts.factory.createGetAccessorDeclaration(
     undefined,
     undefined,
     getPrefixedFieldName("has", fieldDescriptor),
-    undefined,
-    undefined,
     [],
     undefined,
     createPresenceHasBlock(fieldDescriptor, pbIdentifier),
@@ -1399,13 +1396,9 @@ function createSerialize(
     );
 
     const hasFieldCondition = field.hasPresenceFunctions(rootDescriptor, fieldDescriptor)
-      ? ts.factory.createCallExpression(
-          ts.factory.createPropertyAccessExpression(
-            ts.factory.createThis(),
-            getPrefixedFieldName("has", fieldDescriptor),
-          ),
-          undefined,
-          [],
+      ? ts.factory.createPropertyAccessExpression(
+          ts.factory.createThis(),
+          getPrefixedFieldName("has", fieldDescriptor),
         )
       : undefined;
 
@@ -1587,7 +1580,7 @@ function createSerialize(
         !fieldDescriptor.proto3_optional &&
         !field.isMessage(fieldDescriptor) &&
         !field.isBytes(fieldDescriptor) &&
-        !fieldDescriptor.has_oneof_index()
+        !fieldDescriptor.has_oneof_index
       ) {
         if (field.hasJsTypeString(fieldDescriptor)) {
           condition = ts.factory.createBinaryExpression(
@@ -1640,7 +1633,7 @@ function createSerialize(
         condition = ts.factory.createPropertyAccessExpression(propAccessor, "length");
       } else if (
         (field.isString(fieldDescriptor) || field.isBytes(fieldDescriptor)) &&
-        !fieldDescriptor.has_oneof_index()
+        !fieldDescriptor.has_oneof_index
       ) {
         condition = hasFieldCondition
           ? ts.factory.createBinaryExpression(
@@ -2246,7 +2239,7 @@ function createOneOfDecls(
   );
 
   for (const field of messageDescriptor.field) {
-    if (field.has_oneof_index()) {
+    if (field.has_oneof_index) {
       declMap[field.oneof_index] ??= [];
       declMap[field.oneof_index].push(
         ts.factory.createNumericLiteral(field.number),

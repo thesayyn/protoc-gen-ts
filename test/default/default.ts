@@ -34,7 +34,7 @@ export class MessageWithDefault extends pb_1.Message {
     clear_bool_field() {
         pb_1.Message.setField(this, 1, undefined);
     }
-    has_bool_field() {
+    get has_bool_field() {
         return pb_1.Message.getField(this, 1) != null;
     }
     get string_field() {
@@ -46,7 +46,7 @@ export class MessageWithDefault extends pb_1.Message {
     clear_string_field() {
         pb_1.Message.setField(this, 2, undefined);
     }
-    has_string_field() {
+    get has_string_field() {
         return pb_1.Message.getField(this, 2) != null;
     }
     get int32_field() {
@@ -58,7 +58,7 @@ export class MessageWithDefault extends pb_1.Message {
     clear_int32_field() {
         pb_1.Message.setField(this, 3, undefined);
     }
-    has_int32_field() {
+    get has_int32_field() {
         return pb_1.Message.getField(this, 3) != null;
     }
     static fromObject(data: {
@@ -99,11 +99,11 @@ export class MessageWithDefault extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.has_bool_field())
+        if (this.has_bool_field)
             writer.writeBool(1, this.bool_field);
-        if (this.has_string_field() && this.string_field.length)
+        if (this.has_string_field && this.string_field.length)
             writer.writeString(2, this.string_field);
-        if (this.has_int32_field())
+        if (this.has_int32_field)
             writer.writeInt32(3, this.int32_field);
         if (!w)
             return writer.getResultBuffer();
@@ -165,7 +165,7 @@ export class MessageWithImplicitDefault extends pb_1.Message {
     clear_bool_field() {
         pb_1.Message.setField(this, 1, undefined);
     }
-    has_bool_field() {
+    get has_bool_field() {
         return pb_1.Message.getField(this, 1) != null;
     }
     get string_field() {
@@ -177,7 +177,7 @@ export class MessageWithImplicitDefault extends pb_1.Message {
     clear_string_field() {
         pb_1.Message.setField(this, 2, undefined);
     }
-    has_string_field() {
+    get has_string_field() {
         return pb_1.Message.getField(this, 2) != null;
     }
     get int32_field() {
@@ -189,7 +189,7 @@ export class MessageWithImplicitDefault extends pb_1.Message {
     clear_int32_field() {
         pb_1.Message.setField(this, 3, undefined);
     }
-    has_int32_field() {
+    get has_int32_field() {
         return pb_1.Message.getField(this, 3) != null;
     }
     static fromObject(data: {
@@ -230,11 +230,11 @@ export class MessageWithImplicitDefault extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.has_bool_field())
+        if (this.has_bool_field)
             writer.writeBool(1, this.bool_field);
-        if (this.has_string_field() && this.string_field.length)
+        if (this.has_string_field && this.string_field.length)
             writer.writeString(2, this.string_field);
-        if (this.has_int32_field())
+        if (this.has_int32_field)
             writer.writeInt32(3, this.int32_field);
         if (!w)
             return writer.getResultBuffer();

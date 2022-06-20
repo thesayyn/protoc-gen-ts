@@ -30,7 +30,7 @@ export class HydratedQuickReplyButton extends pb_1.Message {
     clear_displayText() {
         pb_1.Message.setField(this, 1, undefined);
     }
-    has_displayText() {
+    get has_displayText() {
         return pb_1.Message.getField(this, 1) != null;
     }
     get id() {
@@ -42,7 +42,7 @@ export class HydratedQuickReplyButton extends pb_1.Message {
     clear_id() {
         pb_1.Message.setField(this, 2, undefined);
     }
-    has_id() {
+    get has_id() {
         return pb_1.Message.getField(this, 2) != null;
     }
     static fromObject(data: {
@@ -75,9 +75,9 @@ export class HydratedQuickReplyButton extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.has_displayText() && this.displayText.length)
+        if (this.has_displayText && this.displayText.length)
             writer.writeString(1, this.displayText);
-        if (this.has_id() && this.id.length)
+        if (this.has_id && this.id.length)
             writer.writeString(2, this.id);
         if (!w)
             return writer.getResultBuffer();
@@ -132,7 +132,7 @@ export class HydratedURLButton extends pb_1.Message {
     clear_displayText() {
         pb_1.Message.setField(this, 1, undefined);
     }
-    has_displayText() {
+    get has_displayText() {
         return pb_1.Message.getField(this, 1) != null;
     }
     get url() {
@@ -144,7 +144,7 @@ export class HydratedURLButton extends pb_1.Message {
     clear_url() {
         pb_1.Message.setField(this, 2, undefined);
     }
-    has_url() {
+    get has_url() {
         return pb_1.Message.getField(this, 2) != null;
     }
     static fromObject(data: {
@@ -177,9 +177,9 @@ export class HydratedURLButton extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.has_displayText() && this.displayText.length)
+        if (this.has_displayText && this.displayText.length)
             writer.writeString(1, this.displayText);
-        if (this.has_url() && this.url.length)
+        if (this.has_url && this.url.length)
             writer.writeString(2, this.url);
         if (!w)
             return writer.getResultBuffer();
@@ -234,7 +234,7 @@ export class HydratedCallButton extends pb_1.Message {
     clear_displayText() {
         pb_1.Message.setField(this, 1, undefined);
     }
-    has_displayText() {
+    get has_displayText() {
         return pb_1.Message.getField(this, 1) != null;
     }
     get phoneNumber() {
@@ -246,7 +246,7 @@ export class HydratedCallButton extends pb_1.Message {
     clear_phoneNumber() {
         pb_1.Message.setField(this, 2, undefined);
     }
-    has_phoneNumber() {
+    get has_phoneNumber() {
         return pb_1.Message.getField(this, 2) != null;
     }
     static fromObject(data: {
@@ -279,9 +279,9 @@ export class HydratedCallButton extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.has_displayText() && this.displayText.length)
+        if (this.has_displayText && this.displayText.length)
             writer.writeString(1, this.displayText);
-        if (this.has_phoneNumber() && this.phoneNumber.length)
+        if (this.has_phoneNumber && this.phoneNumber.length)
             writer.writeString(2, this.phoneNumber);
         if (!w)
             return writer.getResultBuffer();
@@ -353,7 +353,7 @@ export class HydratedTemplateButton extends pb_1.Message {
     clear_index() {
         pb_1.Message.setField(this, 4, undefined);
     }
-    has_index() {
+    get has_index() {
         return pb_1.Message.getField(this, 4) != null;
     }
     get quickReplyButton() {
@@ -365,7 +365,7 @@ export class HydratedTemplateButton extends pb_1.Message {
     clear_quickReplyButton() {
         pb_1.Message.setField(this, 1, undefined);
     }
-    has_quickReplyButton() {
+    get has_quickReplyButton() {
         return pb_1.Message.getField(this, 1) != null;
     }
     get urlButton() {
@@ -377,7 +377,7 @@ export class HydratedTemplateButton extends pb_1.Message {
     clear_urlButton() {
         pb_1.Message.setField(this, 2, undefined);
     }
-    has_urlButton() {
+    get has_urlButton() {
         return pb_1.Message.getField(this, 2) != null;
     }
     get callButton() {
@@ -389,7 +389,7 @@ export class HydratedTemplateButton extends pb_1.Message {
     clear_callButton() {
         pb_1.Message.setField(this, 3, undefined);
     }
-    has_callButton() {
+    get has_callButton() {
         return pb_1.Message.getField(this, 3) != null;
     }
     get hydratedButton() {
@@ -449,13 +449,13 @@ export class HydratedTemplateButton extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.has_index())
+        if (this.has_index)
             writer.writeUint32(4, this.index);
-        if (this.has_quickReplyButton())
+        if (this.has_quickReplyButton)
             writer.writeMessage(1, this.quickReplyButton, () => this.quickReplyButton.serialize(writer));
-        if (this.has_urlButton())
+        if (this.has_urlButton)
             writer.writeMessage(2, this.urlButton, () => this.urlButton.serialize(writer));
-        if (this.has_callButton())
+        if (this.has_callButton)
             writer.writeMessage(3, this.callButton, () => this.callButton.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
@@ -516,7 +516,7 @@ export class QuickReplyButton extends pb_1.Message {
     clear_displayText() {
         pb_1.Message.setField(this, 1, undefined);
     }
-    has_displayText() {
+    get has_displayText() {
         return pb_1.Message.getField(this, 1) != null;
     }
     get id() {
@@ -528,7 +528,7 @@ export class QuickReplyButton extends pb_1.Message {
     clear_id() {
         pb_1.Message.setField(this, 2, undefined);
     }
-    has_id() {
+    get has_id() {
         return pb_1.Message.getField(this, 2) != null;
     }
     static fromObject(data: {
@@ -561,9 +561,9 @@ export class QuickReplyButton extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.has_displayText())
+        if (this.has_displayText)
             writer.writeMessage(1, this.displayText, () => this.displayText.serialize(writer));
-        if (this.has_id() && this.id.length)
+        if (this.has_id && this.id.length)
             writer.writeString(2, this.id);
         if (!w)
             return writer.getResultBuffer();
@@ -618,7 +618,7 @@ export class URLButton extends pb_1.Message {
     clear_displayText() {
         pb_1.Message.setField(this, 1, undefined);
     }
-    has_displayText() {
+    get has_displayText() {
         return pb_1.Message.getField(this, 1) != null;
     }
     get url() {
@@ -630,7 +630,7 @@ export class URLButton extends pb_1.Message {
     clear_url() {
         pb_1.Message.setField(this, 2, undefined);
     }
-    has_url() {
+    get has_url() {
         return pb_1.Message.getField(this, 2) != null;
     }
     static fromObject(data: {
@@ -663,9 +663,9 @@ export class URLButton extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.has_displayText())
+        if (this.has_displayText)
             writer.writeMessage(1, this.displayText, () => this.displayText.serialize(writer));
-        if (this.has_url())
+        if (this.has_url)
             writer.writeMessage(2, this.url, () => this.url.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
@@ -720,7 +720,7 @@ export class CallButton extends pb_1.Message {
     clear_displayText() {
         pb_1.Message.setField(this, 1, undefined);
     }
-    has_displayText() {
+    get has_displayText() {
         return pb_1.Message.getField(this, 1) != null;
     }
     get phoneNumber() {
@@ -732,7 +732,7 @@ export class CallButton extends pb_1.Message {
     clear_phoneNumber() {
         pb_1.Message.setField(this, 2, undefined);
     }
-    has_phoneNumber() {
+    get has_phoneNumber() {
         return pb_1.Message.getField(this, 2) != null;
     }
     static fromObject(data: {
@@ -765,9 +765,9 @@ export class CallButton extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.has_displayText())
+        if (this.has_displayText)
             writer.writeMessage(1, this.displayText, () => this.displayText.serialize(writer));
-        if (this.has_phoneNumber())
+        if (this.has_phoneNumber)
             writer.writeMessage(2, this.phoneNumber, () => this.phoneNumber.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
@@ -839,7 +839,7 @@ export class TemplateButton extends pb_1.Message {
     clear_index() {
         pb_1.Message.setField(this, 4, undefined);
     }
-    has_index() {
+    get has_index() {
         return pb_1.Message.getField(this, 4) != null;
     }
     get quickReplyButton() {
@@ -851,7 +851,7 @@ export class TemplateButton extends pb_1.Message {
     clear_quickReplyButton() {
         pb_1.Message.setField(this, 1, undefined);
     }
-    has_quickReplyButton() {
+    get has_quickReplyButton() {
         return pb_1.Message.getField(this, 1) != null;
     }
     get urlButton() {
@@ -863,7 +863,7 @@ export class TemplateButton extends pb_1.Message {
     clear_urlButton() {
         pb_1.Message.setField(this, 2, undefined);
     }
-    has_urlButton() {
+    get has_urlButton() {
         return pb_1.Message.getField(this, 2) != null;
     }
     get callButton() {
@@ -875,7 +875,7 @@ export class TemplateButton extends pb_1.Message {
     clear_callButton() {
         pb_1.Message.setField(this, 3, undefined);
     }
-    has_callButton() {
+    get has_callButton() {
         return pb_1.Message.getField(this, 3) != null;
     }
     get button() {
@@ -935,13 +935,13 @@ export class TemplateButton extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.has_index())
+        if (this.has_index)
             writer.writeUint32(4, this.index);
-        if (this.has_quickReplyButton())
+        if (this.has_quickReplyButton)
             writer.writeMessage(1, this.quickReplyButton, () => this.quickReplyButton.serialize(writer));
-        if (this.has_urlButton())
+        if (this.has_urlButton)
             writer.writeMessage(2, this.urlButton, () => this.urlButton.serialize(writer));
-        if (this.has_callButton())
+        if (this.has_callButton)
             writer.writeMessage(3, this.callButton, () => this.callButton.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
@@ -1006,7 +1006,7 @@ export class Location extends pb_1.Message {
     clear_degreesLatitude() {
         pb_1.Message.setField(this, 1, undefined);
     }
-    has_degreesLatitude() {
+    get has_degreesLatitude() {
         return pb_1.Message.getField(this, 1) != null;
     }
     get degreesLongitude() {
@@ -1018,7 +1018,7 @@ export class Location extends pb_1.Message {
     clear_degreesLongitude() {
         pb_1.Message.setField(this, 2, undefined);
     }
-    has_degreesLongitude() {
+    get has_degreesLongitude() {
         return pb_1.Message.getField(this, 2) != null;
     }
     get name() {
@@ -1030,7 +1030,7 @@ export class Location extends pb_1.Message {
     clear_name() {
         pb_1.Message.setField(this, 3, undefined);
     }
-    has_name() {
+    get has_name() {
         return pb_1.Message.getField(this, 3) != null;
     }
     static fromObject(data: {
@@ -1071,11 +1071,11 @@ export class Location extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.has_degreesLatitude())
+        if (this.has_degreesLatitude)
             writer.writeDouble(1, this.degreesLatitude);
-        if (this.has_degreesLongitude())
+        if (this.has_degreesLongitude)
             writer.writeDouble(2, this.degreesLongitude);
-        if (this.has_name() && this.name.length)
+        if (this.has_name && this.name.length)
             writer.writeString(3, this.name);
         if (!w)
             return writer.getResultBuffer();
@@ -1141,7 +1141,7 @@ export class Point extends pb_1.Message {
     clear_xDeprecated() {
         pb_1.Message.setField(this, 1, undefined);
     }
-    has_xDeprecated() {
+    get has_xDeprecated() {
         return pb_1.Message.getField(this, 1) != null;
     }
     get yDeprecated() {
@@ -1153,7 +1153,7 @@ export class Point extends pb_1.Message {
     clear_yDeprecated() {
         pb_1.Message.setField(this, 2, undefined);
     }
-    has_yDeprecated() {
+    get has_yDeprecated() {
         return pb_1.Message.getField(this, 2) != null;
     }
     get x() {
@@ -1165,7 +1165,7 @@ export class Point extends pb_1.Message {
     clear_x() {
         pb_1.Message.setField(this, 3, undefined);
     }
-    has_x() {
+    get has_x() {
         return pb_1.Message.getField(this, 3) != null;
     }
     get y() {
@@ -1177,7 +1177,7 @@ export class Point extends pb_1.Message {
     clear_y() {
         pb_1.Message.setField(this, 4, undefined);
     }
-    has_y() {
+    get has_y() {
         return pb_1.Message.getField(this, 4) != null;
     }
     static fromObject(data: {
@@ -1226,13 +1226,13 @@ export class Point extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.has_xDeprecated())
+        if (this.has_xDeprecated)
             writer.writeInt32(1, this.xDeprecated);
-        if (this.has_yDeprecated())
+        if (this.has_yDeprecated)
             writer.writeInt32(2, this.yDeprecated);
-        if (this.has_x())
+        if (this.has_x)
             writer.writeDouble(3, this.x);
-        if (this.has_y())
+        if (this.has_y)
             writer.writeDouble(4, this.y);
         if (!w)
             return writer.getResultBuffer();
@@ -1298,7 +1298,7 @@ export class InteractiveAnnotation extends pb_1.Message {
     clear_location() {
         pb_1.Message.setField(this, 2, undefined);
     }
-    has_location() {
+    get has_location() {
         return pb_1.Message.getField(this, 2) != null;
     }
     get action() {
@@ -1341,7 +1341,7 @@ export class InteractiveAnnotation extends pb_1.Message {
         const writer = w || new pb_1.BinaryWriter();
         if (this.polygonVertices.length)
             writer.writeRepeatedMessage(1, this.polygonVertices, (item: Point) => item.serialize(writer));
-        if (this.has_location())
+        if (this.has_location)
             writer.writeMessage(2, this.location, () => this.location.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
@@ -1404,7 +1404,7 @@ export class AdReplyInfo extends pb_1.Message {
     clear_advertiserName() {
         pb_1.Message.setField(this, 1, undefined);
     }
-    has_advertiserName() {
+    get has_advertiserName() {
         return pb_1.Message.getField(this, 1) != null;
     }
     get mediaType() {
@@ -1416,7 +1416,7 @@ export class AdReplyInfo extends pb_1.Message {
     clear_mediaType() {
         pb_1.Message.setField(this, 2, undefined);
     }
-    has_mediaType() {
+    get has_mediaType() {
         return pb_1.Message.getField(this, 2) != null;
     }
     get jpegThumbnail() {
@@ -1428,7 +1428,7 @@ export class AdReplyInfo extends pb_1.Message {
     clear_jpegThumbnail() {
         pb_1.Message.setField(this, 16, undefined);
     }
-    has_jpegThumbnail() {
+    get has_jpegThumbnail() {
         return pb_1.Message.getField(this, 16) != null;
     }
     get caption() {
@@ -1440,7 +1440,7 @@ export class AdReplyInfo extends pb_1.Message {
     clear_caption() {
         pb_1.Message.setField(this, 17, undefined);
     }
-    has_caption() {
+    get has_caption() {
         return pb_1.Message.getField(this, 17) != null;
     }
     static fromObject(data: {
@@ -1489,13 +1489,13 @@ export class AdReplyInfo extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.has_advertiserName() && this.advertiserName.length)
+        if (this.has_advertiserName && this.advertiserName.length)
             writer.writeString(1, this.advertiserName);
-        if (this.has_mediaType())
+        if (this.has_mediaType)
             writer.writeEnum(2, this.mediaType);
-        if (this.has_jpegThumbnail() && this.jpegThumbnail.length)
+        if (this.has_jpegThumbnail && this.jpegThumbnail.length)
             writer.writeBytes(16, this.jpegThumbnail);
-        if (this.has_caption() && this.caption.length)
+        if (this.has_caption && this.caption.length)
             writer.writeString(17, this.caption);
         if (!w)
             return writer.getResultBuffer();
@@ -1613,7 +1613,7 @@ export class ContextInfo extends pb_1.Message {
     clear_stanzaId() {
         pb_1.Message.setField(this, 1, undefined);
     }
-    has_stanzaId() {
+    get has_stanzaId() {
         return pb_1.Message.getField(this, 1) != null;
     }
     get participant() {
@@ -1625,7 +1625,7 @@ export class ContextInfo extends pb_1.Message {
     clear_participant() {
         pb_1.Message.setField(this, 2, undefined);
     }
-    has_participant() {
+    get has_participant() {
         return pb_1.Message.getField(this, 2) != null;
     }
     get quotedMessage() {
@@ -1637,7 +1637,7 @@ export class ContextInfo extends pb_1.Message {
     clear_quotedMessage() {
         pb_1.Message.setField(this, 3, undefined);
     }
-    has_quotedMessage() {
+    get has_quotedMessage() {
         return pb_1.Message.getField(this, 3) != null;
     }
     get remoteJid() {
@@ -1649,7 +1649,7 @@ export class ContextInfo extends pb_1.Message {
     clear_remoteJid() {
         pb_1.Message.setField(this, 4, undefined);
     }
-    has_remoteJid() {
+    get has_remoteJid() {
         return pb_1.Message.getField(this, 4) != null;
     }
     get mentionedJid() {
@@ -1667,7 +1667,7 @@ export class ContextInfo extends pb_1.Message {
     clear_conversionSource() {
         pb_1.Message.setField(this, 18, undefined);
     }
-    has_conversionSource() {
+    get has_conversionSource() {
         return pb_1.Message.getField(this, 18) != null;
     }
     get conversionData() {
@@ -1679,7 +1679,7 @@ export class ContextInfo extends pb_1.Message {
     clear_conversionData() {
         pb_1.Message.setField(this, 19, undefined);
     }
-    has_conversionData() {
+    get has_conversionData() {
         return pb_1.Message.getField(this, 19) != null;
     }
     get conversionDelaySeconds() {
@@ -1691,7 +1691,7 @@ export class ContextInfo extends pb_1.Message {
     clear_conversionDelaySeconds() {
         pb_1.Message.setField(this, 20, undefined);
     }
-    has_conversionDelaySeconds() {
+    get has_conversionDelaySeconds() {
         return pb_1.Message.getField(this, 20) != null;
     }
     get forwardingScore() {
@@ -1703,7 +1703,7 @@ export class ContextInfo extends pb_1.Message {
     clear_forwardingScore() {
         pb_1.Message.setField(this, 21, undefined);
     }
-    has_forwardingScore() {
+    get has_forwardingScore() {
         return pb_1.Message.getField(this, 21) != null;
     }
     get isForwarded() {
@@ -1715,7 +1715,7 @@ export class ContextInfo extends pb_1.Message {
     clear_isForwarded() {
         pb_1.Message.setField(this, 22, undefined);
     }
-    has_isForwarded() {
+    get has_isForwarded() {
         return pb_1.Message.getField(this, 22) != null;
     }
     get quotedAd() {
@@ -1727,7 +1727,7 @@ export class ContextInfo extends pb_1.Message {
     clear_quotedAd() {
         pb_1.Message.setField(this, 23, undefined);
     }
-    has_quotedAd() {
+    get has_quotedAd() {
         return pb_1.Message.getField(this, 23) != null;
     }
     get placeholderKey() {
@@ -1739,7 +1739,7 @@ export class ContextInfo extends pb_1.Message {
     clear_placeholderKey() {
         pb_1.Message.setField(this, 24, undefined);
     }
-    has_placeholderKey() {
+    get has_placeholderKey() {
         return pb_1.Message.getField(this, 24) != null;
     }
     get expiration() {
@@ -1751,7 +1751,7 @@ export class ContextInfo extends pb_1.Message {
     clear_expiration() {
         pb_1.Message.setField(this, 25, undefined);
     }
-    has_expiration() {
+    get has_expiration() {
         return pb_1.Message.getField(this, 25) != null;
     }
     get ephemeralSettingTimestamp() {
@@ -1763,7 +1763,7 @@ export class ContextInfo extends pb_1.Message {
     clear_ephemeralSettingTimestamp() {
         pb_1.Message.setField(this, 26, undefined);
     }
-    has_ephemeralSettingTimestamp() {
+    get has_ephemeralSettingTimestamp() {
         return pb_1.Message.getField(this, 26) != null;
     }
     get ephemeralSharedSecret() {
@@ -1775,7 +1775,7 @@ export class ContextInfo extends pb_1.Message {
     clear_ephemeralSharedSecret() {
         pb_1.Message.setField(this, 27, undefined);
     }
-    has_ephemeralSharedSecret() {
+    get has_ephemeralSharedSecret() {
         return pb_1.Message.getField(this, 27) != null;
     }
     static fromObject(data: {
@@ -1910,35 +1910,35 @@ export class ContextInfo extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.has_stanzaId() && this.stanzaId.length)
+        if (this.has_stanzaId && this.stanzaId.length)
             writer.writeString(1, this.stanzaId);
-        if (this.has_participant() && this.participant.length)
+        if (this.has_participant && this.participant.length)
             writer.writeString(2, this.participant);
-        if (this.has_quotedMessage())
+        if (this.has_quotedMessage)
             writer.writeMessage(3, this.quotedMessage, () => this.quotedMessage.serialize(writer));
-        if (this.has_remoteJid() && this.remoteJid.length)
+        if (this.has_remoteJid && this.remoteJid.length)
             writer.writeString(4, this.remoteJid);
         if (this.mentionedJid.length)
             writer.writeRepeatedString(15, this.mentionedJid);
-        if (this.has_conversionSource() && this.conversionSource.length)
+        if (this.has_conversionSource && this.conversionSource.length)
             writer.writeString(18, this.conversionSource);
-        if (this.has_conversionData() && this.conversionData.length)
+        if (this.has_conversionData && this.conversionData.length)
             writer.writeBytes(19, this.conversionData);
-        if (this.has_conversionDelaySeconds())
+        if (this.has_conversionDelaySeconds)
             writer.writeUint32(20, this.conversionDelaySeconds);
-        if (this.has_forwardingScore())
+        if (this.has_forwardingScore)
             writer.writeUint32(21, this.forwardingScore);
-        if (this.has_isForwarded())
+        if (this.has_isForwarded)
             writer.writeBool(22, this.isForwarded);
-        if (this.has_quotedAd())
+        if (this.has_quotedAd)
             writer.writeMessage(23, this.quotedAd, () => this.quotedAd.serialize(writer));
-        if (this.has_placeholderKey())
+        if (this.has_placeholderKey)
             writer.writeMessage(24, this.placeholderKey, () => this.placeholderKey.serialize(writer));
-        if (this.has_expiration())
+        if (this.has_expiration)
             writer.writeUint32(25, this.expiration);
-        if (this.has_ephemeralSettingTimestamp())
+        if (this.has_ephemeralSettingTimestamp)
             writer.writeInt64(26, this.ephemeralSettingTimestamp);
-        if (this.has_ephemeralSharedSecret() && this.ephemeralSharedSecret.length)
+        if (this.has_ephemeralSharedSecret && this.ephemeralSharedSecret.length)
             writer.writeBytes(27, this.ephemeralSharedSecret);
         if (!w)
             return writer.getResultBuffer();
@@ -2032,7 +2032,7 @@ export class SenderKeyDistributionMessage extends pb_1.Message {
     clear_groupId() {
         pb_1.Message.setField(this, 1, undefined);
     }
-    has_groupId() {
+    get has_groupId() {
         return pb_1.Message.getField(this, 1) != null;
     }
     get axolotlSenderKeyDistributionMessage() {
@@ -2044,7 +2044,7 @@ export class SenderKeyDistributionMessage extends pb_1.Message {
     clear_axolotlSenderKeyDistributionMessage() {
         pb_1.Message.setField(this, 2, undefined);
     }
-    has_axolotlSenderKeyDistributionMessage() {
+    get has_axolotlSenderKeyDistributionMessage() {
         return pb_1.Message.getField(this, 2) != null;
     }
     static fromObject(data: {
@@ -2077,9 +2077,9 @@ export class SenderKeyDistributionMessage extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.has_groupId() && this.groupId.length)
+        if (this.has_groupId && this.groupId.length)
             writer.writeString(1, this.groupId);
-        if (this.has_axolotlSenderKeyDistributionMessage() && this.axolotlSenderKeyDistributionMessage.length)
+        if (this.has_axolotlSenderKeyDistributionMessage && this.axolotlSenderKeyDistributionMessage.length)
             writer.writeBytes(2, this.axolotlSenderKeyDistributionMessage);
         if (!w)
             return writer.getResultBuffer();
@@ -2206,7 +2206,7 @@ export class ImageMessage extends pb_1.Message {
     clear_url() {
         pb_1.Message.setField(this, 1, undefined);
     }
-    has_url() {
+    get has_url() {
         return pb_1.Message.getField(this, 1) != null;
     }
     get mimetype() {
@@ -2218,7 +2218,7 @@ export class ImageMessage extends pb_1.Message {
     clear_mimetype() {
         pb_1.Message.setField(this, 2, undefined);
     }
-    has_mimetype() {
+    get has_mimetype() {
         return pb_1.Message.getField(this, 2) != null;
     }
     get caption() {
@@ -2230,7 +2230,7 @@ export class ImageMessage extends pb_1.Message {
     clear_caption() {
         pb_1.Message.setField(this, 3, undefined);
     }
-    has_caption() {
+    get has_caption() {
         return pb_1.Message.getField(this, 3) != null;
     }
     get fileSha256() {
@@ -2242,7 +2242,7 @@ export class ImageMessage extends pb_1.Message {
     clear_fileSha256() {
         pb_1.Message.setField(this, 4, undefined);
     }
-    has_fileSha256() {
+    get has_fileSha256() {
         return pb_1.Message.getField(this, 4) != null;
     }
     get fileLength() {
@@ -2254,7 +2254,7 @@ export class ImageMessage extends pb_1.Message {
     clear_fileLength() {
         pb_1.Message.setField(this, 5, undefined);
     }
-    has_fileLength() {
+    get has_fileLength() {
         return pb_1.Message.getField(this, 5) != null;
     }
     get height() {
@@ -2266,7 +2266,7 @@ export class ImageMessage extends pb_1.Message {
     clear_height() {
         pb_1.Message.setField(this, 6, undefined);
     }
-    has_height() {
+    get has_height() {
         return pb_1.Message.getField(this, 6) != null;
     }
     get width() {
@@ -2278,7 +2278,7 @@ export class ImageMessage extends pb_1.Message {
     clear_width() {
         pb_1.Message.setField(this, 7, undefined);
     }
-    has_width() {
+    get has_width() {
         return pb_1.Message.getField(this, 7) != null;
     }
     get mediaKey() {
@@ -2290,7 +2290,7 @@ export class ImageMessage extends pb_1.Message {
     clear_mediaKey() {
         pb_1.Message.setField(this, 8, undefined);
     }
-    has_mediaKey() {
+    get has_mediaKey() {
         return pb_1.Message.getField(this, 8) != null;
     }
     get fileEncSha256() {
@@ -2302,7 +2302,7 @@ export class ImageMessage extends pb_1.Message {
     clear_fileEncSha256() {
         pb_1.Message.setField(this, 9, undefined);
     }
-    has_fileEncSha256() {
+    get has_fileEncSha256() {
         return pb_1.Message.getField(this, 9) != null;
     }
     get interactiveAnnotations() {
@@ -2320,7 +2320,7 @@ export class ImageMessage extends pb_1.Message {
     clear_directPath() {
         pb_1.Message.setField(this, 11, undefined);
     }
-    has_directPath() {
+    get has_directPath() {
         return pb_1.Message.getField(this, 11) != null;
     }
     get mediaKeyTimestamp() {
@@ -2332,7 +2332,7 @@ export class ImageMessage extends pb_1.Message {
     clear_mediaKeyTimestamp() {
         pb_1.Message.setField(this, 12, undefined);
     }
-    has_mediaKeyTimestamp() {
+    get has_mediaKeyTimestamp() {
         return pb_1.Message.getField(this, 12) != null;
     }
     get jpegThumbnail() {
@@ -2344,7 +2344,7 @@ export class ImageMessage extends pb_1.Message {
     clear_jpegThumbnail() {
         pb_1.Message.setField(this, 16, undefined);
     }
-    has_jpegThumbnail() {
+    get has_jpegThumbnail() {
         return pb_1.Message.getField(this, 16) != null;
     }
     get contextInfo() {
@@ -2356,7 +2356,7 @@ export class ImageMessage extends pb_1.Message {
     clear_contextInfo() {
         pb_1.Message.setField(this, 17, undefined);
     }
-    has_contextInfo() {
+    get has_contextInfo() {
         return pb_1.Message.getField(this, 17) != null;
     }
     get firstScanSidecar() {
@@ -2368,7 +2368,7 @@ export class ImageMessage extends pb_1.Message {
     clear_firstScanSidecar() {
         pb_1.Message.setField(this, 18, undefined);
     }
-    has_firstScanSidecar() {
+    get has_firstScanSidecar() {
         return pb_1.Message.getField(this, 18) != null;
     }
     get firstScanLength() {
@@ -2380,7 +2380,7 @@ export class ImageMessage extends pb_1.Message {
     clear_firstScanLength() {
         pb_1.Message.setField(this, 19, undefined);
     }
-    has_firstScanLength() {
+    get has_firstScanLength() {
         return pb_1.Message.getField(this, 19) != null;
     }
     get experimentGroupId() {
@@ -2392,7 +2392,7 @@ export class ImageMessage extends pb_1.Message {
     clear_experimentGroupId() {
         pb_1.Message.setField(this, 20, undefined);
     }
-    has_experimentGroupId() {
+    get has_experimentGroupId() {
         return pb_1.Message.getField(this, 20) != null;
     }
     get scansSidecar() {
@@ -2404,7 +2404,7 @@ export class ImageMessage extends pb_1.Message {
     clear_scansSidecar() {
         pb_1.Message.setField(this, 21, undefined);
     }
-    has_scansSidecar() {
+    get has_scansSidecar() {
         return pb_1.Message.getField(this, 21) != null;
     }
     get scanLengths() {
@@ -2422,7 +2422,7 @@ export class ImageMessage extends pb_1.Message {
     clear_midQualityFileSha256() {
         pb_1.Message.setField(this, 23, undefined);
     }
-    has_midQualityFileSha256() {
+    get has_midQualityFileSha256() {
         return pb_1.Message.getField(this, 23) != null;
     }
     get midQualityFileEncSha256() {
@@ -2434,7 +2434,7 @@ export class ImageMessage extends pb_1.Message {
     clear_midQualityFileEncSha256() {
         pb_1.Message.setField(this, 24, undefined);
     }
-    has_midQualityFileEncSha256() {
+    get has_midQualityFileEncSha256() {
         return pb_1.Message.getField(this, 24) != null;
     }
     static fromObject(data: {
@@ -2615,47 +2615,47 @@ export class ImageMessage extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.has_url() && this.url.length)
+        if (this.has_url && this.url.length)
             writer.writeString(1, this.url);
-        if (this.has_mimetype() && this.mimetype.length)
+        if (this.has_mimetype && this.mimetype.length)
             writer.writeString(2, this.mimetype);
-        if (this.has_caption() && this.caption.length)
+        if (this.has_caption && this.caption.length)
             writer.writeString(3, this.caption);
-        if (this.has_fileSha256() && this.fileSha256.length)
+        if (this.has_fileSha256 && this.fileSha256.length)
             writer.writeBytes(4, this.fileSha256);
-        if (this.has_fileLength())
+        if (this.has_fileLength)
             writer.writeUint64(5, this.fileLength);
-        if (this.has_height())
+        if (this.has_height)
             writer.writeUint32(6, this.height);
-        if (this.has_width())
+        if (this.has_width)
             writer.writeUint32(7, this.width);
-        if (this.has_mediaKey() && this.mediaKey.length)
+        if (this.has_mediaKey && this.mediaKey.length)
             writer.writeBytes(8, this.mediaKey);
-        if (this.has_fileEncSha256() && this.fileEncSha256.length)
+        if (this.has_fileEncSha256 && this.fileEncSha256.length)
             writer.writeBytes(9, this.fileEncSha256);
         if (this.interactiveAnnotations.length)
             writer.writeRepeatedMessage(10, this.interactiveAnnotations, (item: InteractiveAnnotation) => item.serialize(writer));
-        if (this.has_directPath() && this.directPath.length)
+        if (this.has_directPath && this.directPath.length)
             writer.writeString(11, this.directPath);
-        if (this.has_mediaKeyTimestamp())
+        if (this.has_mediaKeyTimestamp)
             writer.writeInt64(12, this.mediaKeyTimestamp);
-        if (this.has_jpegThumbnail() && this.jpegThumbnail.length)
+        if (this.has_jpegThumbnail && this.jpegThumbnail.length)
             writer.writeBytes(16, this.jpegThumbnail);
-        if (this.has_contextInfo())
+        if (this.has_contextInfo)
             writer.writeMessage(17, this.contextInfo, () => this.contextInfo.serialize(writer));
-        if (this.has_firstScanSidecar() && this.firstScanSidecar.length)
+        if (this.has_firstScanSidecar && this.firstScanSidecar.length)
             writer.writeBytes(18, this.firstScanSidecar);
-        if (this.has_firstScanLength())
+        if (this.has_firstScanLength)
             writer.writeUint32(19, this.firstScanLength);
-        if (this.has_experimentGroupId())
+        if (this.has_experimentGroupId)
             writer.writeUint32(20, this.experimentGroupId);
-        if (this.has_scansSidecar() && this.scansSidecar.length)
+        if (this.has_scansSidecar && this.scansSidecar.length)
             writer.writeBytes(21, this.scansSidecar);
         if (this.scanLengths.length)
             writer.writeRepeatedUint32(22, this.scanLengths);
-        if (this.has_midQualityFileSha256() && this.midQualityFileSha256.length)
+        if (this.has_midQualityFileSha256 && this.midQualityFileSha256.length)
             writer.writeBytes(23, this.midQualityFileSha256);
-        if (this.has_midQualityFileEncSha256() && this.midQualityFileEncSha256.length)
+        if (this.has_midQualityFileEncSha256 && this.midQualityFileEncSha256.length)
             writer.writeBytes(24, this.midQualityFileEncSha256);
         if (!w)
             return writer.getResultBuffer();
@@ -2771,7 +2771,7 @@ export class ContactMessage extends pb_1.Message {
     clear_displayName() {
         pb_1.Message.setField(this, 1, undefined);
     }
-    has_displayName() {
+    get has_displayName() {
         return pb_1.Message.getField(this, 1) != null;
     }
     get vcard() {
@@ -2783,7 +2783,7 @@ export class ContactMessage extends pb_1.Message {
     clear_vcard() {
         pb_1.Message.setField(this, 16, undefined);
     }
-    has_vcard() {
+    get has_vcard() {
         return pb_1.Message.getField(this, 16) != null;
     }
     get contextInfo() {
@@ -2795,7 +2795,7 @@ export class ContactMessage extends pb_1.Message {
     clear_contextInfo() {
         pb_1.Message.setField(this, 17, undefined);
     }
-    has_contextInfo() {
+    get has_contextInfo() {
         return pb_1.Message.getField(this, 17) != null;
     }
     static fromObject(data: {
@@ -2836,11 +2836,11 @@ export class ContactMessage extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.has_displayName() && this.displayName.length)
+        if (this.has_displayName && this.displayName.length)
             writer.writeString(1, this.displayName);
-        if (this.has_vcard() && this.vcard.length)
+        if (this.has_vcard && this.vcard.length)
             writer.writeString(16, this.vcard);
-        if (this.has_contextInfo())
+        if (this.has_contextInfo)
             writer.writeMessage(17, this.contextInfo, () => this.contextInfo.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
@@ -2938,7 +2938,7 @@ export class LocationMessage extends pb_1.Message {
     clear_degreesLatitude() {
         pb_1.Message.setField(this, 1, undefined);
     }
-    has_degreesLatitude() {
+    get has_degreesLatitude() {
         return pb_1.Message.getField(this, 1) != null;
     }
     get degreesLongitude() {
@@ -2950,7 +2950,7 @@ export class LocationMessage extends pb_1.Message {
     clear_degreesLongitude() {
         pb_1.Message.setField(this, 2, undefined);
     }
-    has_degreesLongitude() {
+    get has_degreesLongitude() {
         return pb_1.Message.getField(this, 2) != null;
     }
     get name() {
@@ -2962,7 +2962,7 @@ export class LocationMessage extends pb_1.Message {
     clear_name() {
         pb_1.Message.setField(this, 3, undefined);
     }
-    has_name() {
+    get has_name() {
         return pb_1.Message.getField(this, 3) != null;
     }
     get address() {
@@ -2974,7 +2974,7 @@ export class LocationMessage extends pb_1.Message {
     clear_address() {
         pb_1.Message.setField(this, 4, undefined);
     }
-    has_address() {
+    get has_address() {
         return pb_1.Message.getField(this, 4) != null;
     }
     get url() {
@@ -2986,7 +2986,7 @@ export class LocationMessage extends pb_1.Message {
     clear_url() {
         pb_1.Message.setField(this, 5, undefined);
     }
-    has_url() {
+    get has_url() {
         return pb_1.Message.getField(this, 5) != null;
     }
     get isLive() {
@@ -2998,7 +2998,7 @@ export class LocationMessage extends pb_1.Message {
     clear_isLive() {
         pb_1.Message.setField(this, 6, undefined);
     }
-    has_isLive() {
+    get has_isLive() {
         return pb_1.Message.getField(this, 6) != null;
     }
     get accuracyInMeters() {
@@ -3010,7 +3010,7 @@ export class LocationMessage extends pb_1.Message {
     clear_accuracyInMeters() {
         pb_1.Message.setField(this, 7, undefined);
     }
-    has_accuracyInMeters() {
+    get has_accuracyInMeters() {
         return pb_1.Message.getField(this, 7) != null;
     }
     get speedInMps() {
@@ -3022,7 +3022,7 @@ export class LocationMessage extends pb_1.Message {
     clear_speedInMps() {
         pb_1.Message.setField(this, 8, undefined);
     }
-    has_speedInMps() {
+    get has_speedInMps() {
         return pb_1.Message.getField(this, 8) != null;
     }
     get degreesClockwiseFromMagneticNorth() {
@@ -3034,7 +3034,7 @@ export class LocationMessage extends pb_1.Message {
     clear_degreesClockwiseFromMagneticNorth() {
         pb_1.Message.setField(this, 9, undefined);
     }
-    has_degreesClockwiseFromMagneticNorth() {
+    get has_degreesClockwiseFromMagneticNorth() {
         return pb_1.Message.getField(this, 9) != null;
     }
     get comment() {
@@ -3046,7 +3046,7 @@ export class LocationMessage extends pb_1.Message {
     clear_comment() {
         pb_1.Message.setField(this, 11, undefined);
     }
-    has_comment() {
+    get has_comment() {
         return pb_1.Message.getField(this, 11) != null;
     }
     get jpegThumbnail() {
@@ -3058,7 +3058,7 @@ export class LocationMessage extends pb_1.Message {
     clear_jpegThumbnail() {
         pb_1.Message.setField(this, 16, undefined);
     }
-    has_jpegThumbnail() {
+    get has_jpegThumbnail() {
         return pb_1.Message.getField(this, 16) != null;
     }
     get contextInfo() {
@@ -3070,7 +3070,7 @@ export class LocationMessage extends pb_1.Message {
     clear_contextInfo() {
         pb_1.Message.setField(this, 17, undefined);
     }
-    has_contextInfo() {
+    get has_contextInfo() {
         return pb_1.Message.getField(this, 17) != null;
     }
     static fromObject(data: {
@@ -3183,29 +3183,29 @@ export class LocationMessage extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.has_degreesLatitude())
+        if (this.has_degreesLatitude)
             writer.writeDouble(1, this.degreesLatitude);
-        if (this.has_degreesLongitude())
+        if (this.has_degreesLongitude)
             writer.writeDouble(2, this.degreesLongitude);
-        if (this.has_name() && this.name.length)
+        if (this.has_name && this.name.length)
             writer.writeString(3, this.name);
-        if (this.has_address() && this.address.length)
+        if (this.has_address && this.address.length)
             writer.writeString(4, this.address);
-        if (this.has_url() && this.url.length)
+        if (this.has_url && this.url.length)
             writer.writeString(5, this.url);
-        if (this.has_isLive())
+        if (this.has_isLive)
             writer.writeBool(6, this.isLive);
-        if (this.has_accuracyInMeters())
+        if (this.has_accuracyInMeters)
             writer.writeUint32(7, this.accuracyInMeters);
-        if (this.has_speedInMps())
+        if (this.has_speedInMps)
             writer.writeFloat(8, this.speedInMps);
-        if (this.has_degreesClockwiseFromMagneticNorth())
+        if (this.has_degreesClockwiseFromMagneticNorth)
             writer.writeUint32(9, this.degreesClockwiseFromMagneticNorth);
-        if (this.has_comment() && this.comment.length)
+        if (this.has_comment && this.comment.length)
             writer.writeString(11, this.comment);
-        if (this.has_jpegThumbnail() && this.jpegThumbnail.length)
+        if (this.has_jpegThumbnail && this.jpegThumbnail.length)
             writer.writeBytes(16, this.jpegThumbnail);
-        if (this.has_contextInfo())
+        if (this.has_contextInfo)
             writer.writeMessage(17, this.contextInfo, () => this.contextInfo.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
@@ -3330,7 +3330,7 @@ export class ExtendedTextMessage extends pb_1.Message {
     clear_text() {
         pb_1.Message.setField(this, 1, undefined);
     }
-    has_text() {
+    get has_text() {
         return pb_1.Message.getField(this, 1) != null;
     }
     get matchedText() {
@@ -3342,7 +3342,7 @@ export class ExtendedTextMessage extends pb_1.Message {
     clear_matchedText() {
         pb_1.Message.setField(this, 2, undefined);
     }
-    has_matchedText() {
+    get has_matchedText() {
         return pb_1.Message.getField(this, 2) != null;
     }
     get canonicalUrl() {
@@ -3354,7 +3354,7 @@ export class ExtendedTextMessage extends pb_1.Message {
     clear_canonicalUrl() {
         pb_1.Message.setField(this, 4, undefined);
     }
-    has_canonicalUrl() {
+    get has_canonicalUrl() {
         return pb_1.Message.getField(this, 4) != null;
     }
     get description() {
@@ -3366,7 +3366,7 @@ export class ExtendedTextMessage extends pb_1.Message {
     clear_description() {
         pb_1.Message.setField(this, 5, undefined);
     }
-    has_description() {
+    get has_description() {
         return pb_1.Message.getField(this, 5) != null;
     }
     get title() {
@@ -3378,7 +3378,7 @@ export class ExtendedTextMessage extends pb_1.Message {
     clear_title() {
         pb_1.Message.setField(this, 6, undefined);
     }
-    has_title() {
+    get has_title() {
         return pb_1.Message.getField(this, 6) != null;
     }
     get textArgb() {
@@ -3390,7 +3390,7 @@ export class ExtendedTextMessage extends pb_1.Message {
     clear_textArgb() {
         pb_1.Message.setField(this, 7, undefined);
     }
-    has_textArgb() {
+    get has_textArgb() {
         return pb_1.Message.getField(this, 7) != null;
     }
     get backgroundArgb() {
@@ -3402,7 +3402,7 @@ export class ExtendedTextMessage extends pb_1.Message {
     clear_backgroundArgb() {
         pb_1.Message.setField(this, 8, undefined);
     }
-    has_backgroundArgb() {
+    get has_backgroundArgb() {
         return pb_1.Message.getField(this, 8) != null;
     }
     get font() {
@@ -3414,7 +3414,7 @@ export class ExtendedTextMessage extends pb_1.Message {
     clear_font() {
         pb_1.Message.setField(this, 9, undefined);
     }
-    has_font() {
+    get has_font() {
         return pb_1.Message.getField(this, 9) != null;
     }
     get previewType() {
@@ -3426,7 +3426,7 @@ export class ExtendedTextMessage extends pb_1.Message {
     clear_previewType() {
         pb_1.Message.setField(this, 10, undefined);
     }
-    has_previewType() {
+    get has_previewType() {
         return pb_1.Message.getField(this, 10) != null;
     }
     get jpegThumbnail() {
@@ -3438,7 +3438,7 @@ export class ExtendedTextMessage extends pb_1.Message {
     clear_jpegThumbnail() {
         pb_1.Message.setField(this, 16, undefined);
     }
-    has_jpegThumbnail() {
+    get has_jpegThumbnail() {
         return pb_1.Message.getField(this, 16) != null;
     }
     get contextInfo() {
@@ -3450,7 +3450,7 @@ export class ExtendedTextMessage extends pb_1.Message {
     clear_contextInfo() {
         pb_1.Message.setField(this, 17, undefined);
     }
-    has_contextInfo() {
+    get has_contextInfo() {
         return pb_1.Message.getField(this, 17) != null;
     }
     get doNotPlayInline() {
@@ -3462,7 +3462,7 @@ export class ExtendedTextMessage extends pb_1.Message {
     clear_doNotPlayInline() {
         pb_1.Message.setField(this, 18, undefined);
     }
-    has_doNotPlayInline() {
+    get has_doNotPlayInline() {
         return pb_1.Message.getField(this, 18) != null;
     }
     static fromObject(data: {
@@ -3575,29 +3575,29 @@ export class ExtendedTextMessage extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.has_text() && this.text.length)
+        if (this.has_text && this.text.length)
             writer.writeString(1, this.text);
-        if (this.has_matchedText() && this.matchedText.length)
+        if (this.has_matchedText && this.matchedText.length)
             writer.writeString(2, this.matchedText);
-        if (this.has_canonicalUrl() && this.canonicalUrl.length)
+        if (this.has_canonicalUrl && this.canonicalUrl.length)
             writer.writeString(4, this.canonicalUrl);
-        if (this.has_description() && this.description.length)
+        if (this.has_description && this.description.length)
             writer.writeString(5, this.description);
-        if (this.has_title() && this.title.length)
+        if (this.has_title && this.title.length)
             writer.writeString(6, this.title);
-        if (this.has_textArgb())
+        if (this.has_textArgb)
             writer.writeFixed32(7, this.textArgb);
-        if (this.has_backgroundArgb())
+        if (this.has_backgroundArgb)
             writer.writeFixed32(8, this.backgroundArgb);
-        if (this.has_font())
+        if (this.has_font)
             writer.writeEnum(9, this.font);
-        if (this.has_previewType())
+        if (this.has_previewType)
             writer.writeEnum(10, this.previewType);
-        if (this.has_jpegThumbnail() && this.jpegThumbnail.length)
+        if (this.has_jpegThumbnail && this.jpegThumbnail.length)
             writer.writeBytes(16, this.jpegThumbnail);
-        if (this.has_contextInfo())
+        if (this.has_contextInfo)
             writer.writeMessage(17, this.contextInfo, () => this.contextInfo.serialize(writer));
-        if (this.has_doNotPlayInline())
+        if (this.has_doNotPlayInline)
             writer.writeBool(18, this.doNotPlayInline);
         if (!w)
             return writer.getResultBuffer();
@@ -3740,7 +3740,7 @@ export class DocumentMessage extends pb_1.Message {
     clear_url() {
         pb_1.Message.setField(this, 1, undefined);
     }
-    has_url() {
+    get has_url() {
         return pb_1.Message.getField(this, 1) != null;
     }
     get mimetype() {
@@ -3752,7 +3752,7 @@ export class DocumentMessage extends pb_1.Message {
     clear_mimetype() {
         pb_1.Message.setField(this, 2, undefined);
     }
-    has_mimetype() {
+    get has_mimetype() {
         return pb_1.Message.getField(this, 2) != null;
     }
     get title() {
@@ -3764,7 +3764,7 @@ export class DocumentMessage extends pb_1.Message {
     clear_title() {
         pb_1.Message.setField(this, 3, undefined);
     }
-    has_title() {
+    get has_title() {
         return pb_1.Message.getField(this, 3) != null;
     }
     get fileSha256() {
@@ -3776,7 +3776,7 @@ export class DocumentMessage extends pb_1.Message {
     clear_fileSha256() {
         pb_1.Message.setField(this, 4, undefined);
     }
-    has_fileSha256() {
+    get has_fileSha256() {
         return pb_1.Message.getField(this, 4) != null;
     }
     get fileLength() {
@@ -3788,7 +3788,7 @@ export class DocumentMessage extends pb_1.Message {
     clear_fileLength() {
         pb_1.Message.setField(this, 5, undefined);
     }
-    has_fileLength() {
+    get has_fileLength() {
         return pb_1.Message.getField(this, 5) != null;
     }
     get pageCount() {
@@ -3800,7 +3800,7 @@ export class DocumentMessage extends pb_1.Message {
     clear_pageCount() {
         pb_1.Message.setField(this, 6, undefined);
     }
-    has_pageCount() {
+    get has_pageCount() {
         return pb_1.Message.getField(this, 6) != null;
     }
     get mediaKey() {
@@ -3812,7 +3812,7 @@ export class DocumentMessage extends pb_1.Message {
     clear_mediaKey() {
         pb_1.Message.setField(this, 7, undefined);
     }
-    has_mediaKey() {
+    get has_mediaKey() {
         return pb_1.Message.getField(this, 7) != null;
     }
     get fileName() {
@@ -3824,7 +3824,7 @@ export class DocumentMessage extends pb_1.Message {
     clear_fileName() {
         pb_1.Message.setField(this, 8, undefined);
     }
-    has_fileName() {
+    get has_fileName() {
         return pb_1.Message.getField(this, 8) != null;
     }
     get fileEncSha256() {
@@ -3836,7 +3836,7 @@ export class DocumentMessage extends pb_1.Message {
     clear_fileEncSha256() {
         pb_1.Message.setField(this, 9, undefined);
     }
-    has_fileEncSha256() {
+    get has_fileEncSha256() {
         return pb_1.Message.getField(this, 9) != null;
     }
     get directPath() {
@@ -3848,7 +3848,7 @@ export class DocumentMessage extends pb_1.Message {
     clear_directPath() {
         pb_1.Message.setField(this, 10, undefined);
     }
-    has_directPath() {
+    get has_directPath() {
         return pb_1.Message.getField(this, 10) != null;
     }
     get mediaKeyTimestamp() {
@@ -3860,7 +3860,7 @@ export class DocumentMessage extends pb_1.Message {
     clear_mediaKeyTimestamp() {
         pb_1.Message.setField(this, 11, undefined);
     }
-    has_mediaKeyTimestamp() {
+    get has_mediaKeyTimestamp() {
         return pb_1.Message.getField(this, 11) != null;
     }
     get jpegThumbnail() {
@@ -3872,7 +3872,7 @@ export class DocumentMessage extends pb_1.Message {
     clear_jpegThumbnail() {
         pb_1.Message.setField(this, 16, undefined);
     }
-    has_jpegThumbnail() {
+    get has_jpegThumbnail() {
         return pb_1.Message.getField(this, 16) != null;
     }
     get contextInfo() {
@@ -3884,7 +3884,7 @@ export class DocumentMessage extends pb_1.Message {
     clear_contextInfo() {
         pb_1.Message.setField(this, 17, undefined);
     }
-    has_contextInfo() {
+    get has_contextInfo() {
         return pb_1.Message.getField(this, 17) != null;
     }
     static fromObject(data: {
@@ -4005,31 +4005,31 @@ export class DocumentMessage extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.has_url() && this.url.length)
+        if (this.has_url && this.url.length)
             writer.writeString(1, this.url);
-        if (this.has_mimetype() && this.mimetype.length)
+        if (this.has_mimetype && this.mimetype.length)
             writer.writeString(2, this.mimetype);
-        if (this.has_title() && this.title.length)
+        if (this.has_title && this.title.length)
             writer.writeString(3, this.title);
-        if (this.has_fileSha256() && this.fileSha256.length)
+        if (this.has_fileSha256 && this.fileSha256.length)
             writer.writeBytes(4, this.fileSha256);
-        if (this.has_fileLength())
+        if (this.has_fileLength)
             writer.writeUint64(5, this.fileLength);
-        if (this.has_pageCount())
+        if (this.has_pageCount)
             writer.writeUint32(6, this.pageCount);
-        if (this.has_mediaKey() && this.mediaKey.length)
+        if (this.has_mediaKey && this.mediaKey.length)
             writer.writeBytes(7, this.mediaKey);
-        if (this.has_fileName() && this.fileName.length)
+        if (this.has_fileName && this.fileName.length)
             writer.writeString(8, this.fileName);
-        if (this.has_fileEncSha256() && this.fileEncSha256.length)
+        if (this.has_fileEncSha256 && this.fileEncSha256.length)
             writer.writeBytes(9, this.fileEncSha256);
-        if (this.has_directPath() && this.directPath.length)
+        if (this.has_directPath && this.directPath.length)
             writer.writeString(10, this.directPath);
-        if (this.has_mediaKeyTimestamp())
+        if (this.has_mediaKeyTimestamp)
             writer.writeInt64(11, this.mediaKeyTimestamp);
-        if (this.has_jpegThumbnail() && this.jpegThumbnail.length)
+        if (this.has_jpegThumbnail && this.jpegThumbnail.length)
             writer.writeBytes(16, this.jpegThumbnail);
-        if (this.has_contextInfo())
+        if (this.has_contextInfo)
             writer.writeMessage(17, this.contextInfo, () => this.contextInfo.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
@@ -4157,7 +4157,7 @@ export class AudioMessage extends pb_1.Message {
     clear_url() {
         pb_1.Message.setField(this, 1, undefined);
     }
-    has_url() {
+    get has_url() {
         return pb_1.Message.getField(this, 1) != null;
     }
     get mimetype() {
@@ -4169,7 +4169,7 @@ export class AudioMessage extends pb_1.Message {
     clear_mimetype() {
         pb_1.Message.setField(this, 2, undefined);
     }
-    has_mimetype() {
+    get has_mimetype() {
         return pb_1.Message.getField(this, 2) != null;
     }
     get fileSha256() {
@@ -4181,7 +4181,7 @@ export class AudioMessage extends pb_1.Message {
     clear_fileSha256() {
         pb_1.Message.setField(this, 3, undefined);
     }
-    has_fileSha256() {
+    get has_fileSha256() {
         return pb_1.Message.getField(this, 3) != null;
     }
     get fileLength() {
@@ -4193,7 +4193,7 @@ export class AudioMessage extends pb_1.Message {
     clear_fileLength() {
         pb_1.Message.setField(this, 4, undefined);
     }
-    has_fileLength() {
+    get has_fileLength() {
         return pb_1.Message.getField(this, 4) != null;
     }
     get seconds() {
@@ -4205,7 +4205,7 @@ export class AudioMessage extends pb_1.Message {
     clear_seconds() {
         pb_1.Message.setField(this, 5, undefined);
     }
-    has_seconds() {
+    get has_seconds() {
         return pb_1.Message.getField(this, 5) != null;
     }
     get ptt() {
@@ -4217,7 +4217,7 @@ export class AudioMessage extends pb_1.Message {
     clear_ptt() {
         pb_1.Message.setField(this, 6, undefined);
     }
-    has_ptt() {
+    get has_ptt() {
         return pb_1.Message.getField(this, 6) != null;
     }
     get mediaKey() {
@@ -4229,7 +4229,7 @@ export class AudioMessage extends pb_1.Message {
     clear_mediaKey() {
         pb_1.Message.setField(this, 7, undefined);
     }
-    has_mediaKey() {
+    get has_mediaKey() {
         return pb_1.Message.getField(this, 7) != null;
     }
     get fileEncSha256() {
@@ -4241,7 +4241,7 @@ export class AudioMessage extends pb_1.Message {
     clear_fileEncSha256() {
         pb_1.Message.setField(this, 8, undefined);
     }
-    has_fileEncSha256() {
+    get has_fileEncSha256() {
         return pb_1.Message.getField(this, 8) != null;
     }
     get directPath() {
@@ -4253,7 +4253,7 @@ export class AudioMessage extends pb_1.Message {
     clear_directPath() {
         pb_1.Message.setField(this, 9, undefined);
     }
-    has_directPath() {
+    get has_directPath() {
         return pb_1.Message.getField(this, 9) != null;
     }
     get mediaKeyTimestamp() {
@@ -4265,7 +4265,7 @@ export class AudioMessage extends pb_1.Message {
     clear_mediaKeyTimestamp() {
         pb_1.Message.setField(this, 10, undefined);
     }
-    has_mediaKeyTimestamp() {
+    get has_mediaKeyTimestamp() {
         return pb_1.Message.getField(this, 10) != null;
     }
     get contextInfo() {
@@ -4277,7 +4277,7 @@ export class AudioMessage extends pb_1.Message {
     clear_contextInfo() {
         pb_1.Message.setField(this, 17, undefined);
     }
-    has_contextInfo() {
+    get has_contextInfo() {
         return pb_1.Message.getField(this, 17) != null;
     }
     get streamingSidecar() {
@@ -4289,7 +4289,7 @@ export class AudioMessage extends pb_1.Message {
     clear_streamingSidecar() {
         pb_1.Message.setField(this, 18, undefined);
     }
-    has_streamingSidecar() {
+    get has_streamingSidecar() {
         return pb_1.Message.getField(this, 18) != null;
     }
     static fromObject(data: {
@@ -4402,29 +4402,29 @@ export class AudioMessage extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.has_url() && this.url.length)
+        if (this.has_url && this.url.length)
             writer.writeString(1, this.url);
-        if (this.has_mimetype() && this.mimetype.length)
+        if (this.has_mimetype && this.mimetype.length)
             writer.writeString(2, this.mimetype);
-        if (this.has_fileSha256() && this.fileSha256.length)
+        if (this.has_fileSha256 && this.fileSha256.length)
             writer.writeBytes(3, this.fileSha256);
-        if (this.has_fileLength())
+        if (this.has_fileLength)
             writer.writeUint64(4, this.fileLength);
-        if (this.has_seconds())
+        if (this.has_seconds)
             writer.writeUint32(5, this.seconds);
-        if (this.has_ptt())
+        if (this.has_ptt)
             writer.writeBool(6, this.ptt);
-        if (this.has_mediaKey() && this.mediaKey.length)
+        if (this.has_mediaKey && this.mediaKey.length)
             writer.writeBytes(7, this.mediaKey);
-        if (this.has_fileEncSha256() && this.fileEncSha256.length)
+        if (this.has_fileEncSha256 && this.fileEncSha256.length)
             writer.writeBytes(8, this.fileEncSha256);
-        if (this.has_directPath() && this.directPath.length)
+        if (this.has_directPath && this.directPath.length)
             writer.writeString(9, this.directPath);
-        if (this.has_mediaKeyTimestamp())
+        if (this.has_mediaKeyTimestamp)
             writer.writeInt64(10, this.mediaKeyTimestamp);
-        if (this.has_contextInfo())
+        if (this.has_contextInfo)
             writer.writeMessage(17, this.contextInfo, () => this.contextInfo.serialize(writer));
-        if (this.has_streamingSidecar() && this.streamingSidecar.length)
+        if (this.has_streamingSidecar && this.streamingSidecar.length)
             writer.writeBytes(18, this.streamingSidecar);
         if (!w)
             return writer.getResultBuffer();
@@ -4571,7 +4571,7 @@ export class VideoMessage extends pb_1.Message {
     clear_url() {
         pb_1.Message.setField(this, 1, undefined);
     }
-    has_url() {
+    get has_url() {
         return pb_1.Message.getField(this, 1) != null;
     }
     get mimetype() {
@@ -4583,7 +4583,7 @@ export class VideoMessage extends pb_1.Message {
     clear_mimetype() {
         pb_1.Message.setField(this, 2, undefined);
     }
-    has_mimetype() {
+    get has_mimetype() {
         return pb_1.Message.getField(this, 2) != null;
     }
     get fileSha256() {
@@ -4595,7 +4595,7 @@ export class VideoMessage extends pb_1.Message {
     clear_fileSha256() {
         pb_1.Message.setField(this, 3, undefined);
     }
-    has_fileSha256() {
+    get has_fileSha256() {
         return pb_1.Message.getField(this, 3) != null;
     }
     get fileLength() {
@@ -4607,7 +4607,7 @@ export class VideoMessage extends pb_1.Message {
     clear_fileLength() {
         pb_1.Message.setField(this, 4, undefined);
     }
-    has_fileLength() {
+    get has_fileLength() {
         return pb_1.Message.getField(this, 4) != null;
     }
     get seconds() {
@@ -4619,7 +4619,7 @@ export class VideoMessage extends pb_1.Message {
     clear_seconds() {
         pb_1.Message.setField(this, 5, undefined);
     }
-    has_seconds() {
+    get has_seconds() {
         return pb_1.Message.getField(this, 5) != null;
     }
     get mediaKey() {
@@ -4631,7 +4631,7 @@ export class VideoMessage extends pb_1.Message {
     clear_mediaKey() {
         pb_1.Message.setField(this, 6, undefined);
     }
-    has_mediaKey() {
+    get has_mediaKey() {
         return pb_1.Message.getField(this, 6) != null;
     }
     get caption() {
@@ -4643,7 +4643,7 @@ export class VideoMessage extends pb_1.Message {
     clear_caption() {
         pb_1.Message.setField(this, 7, undefined);
     }
-    has_caption() {
+    get has_caption() {
         return pb_1.Message.getField(this, 7) != null;
     }
     get gifPlayback() {
@@ -4655,7 +4655,7 @@ export class VideoMessage extends pb_1.Message {
     clear_gifPlayback() {
         pb_1.Message.setField(this, 8, undefined);
     }
-    has_gifPlayback() {
+    get has_gifPlayback() {
         return pb_1.Message.getField(this, 8) != null;
     }
     get height() {
@@ -4667,7 +4667,7 @@ export class VideoMessage extends pb_1.Message {
     clear_height() {
         pb_1.Message.setField(this, 9, undefined);
     }
-    has_height() {
+    get has_height() {
         return pb_1.Message.getField(this, 9) != null;
     }
     get width() {
@@ -4679,7 +4679,7 @@ export class VideoMessage extends pb_1.Message {
     clear_width() {
         pb_1.Message.setField(this, 10, undefined);
     }
-    has_width() {
+    get has_width() {
         return pb_1.Message.getField(this, 10) != null;
     }
     get fileEncSha256() {
@@ -4691,7 +4691,7 @@ export class VideoMessage extends pb_1.Message {
     clear_fileEncSha256() {
         pb_1.Message.setField(this, 11, undefined);
     }
-    has_fileEncSha256() {
+    get has_fileEncSha256() {
         return pb_1.Message.getField(this, 11) != null;
     }
     get interactiveAnnotations() {
@@ -4709,7 +4709,7 @@ export class VideoMessage extends pb_1.Message {
     clear_directPath() {
         pb_1.Message.setField(this, 13, undefined);
     }
-    has_directPath() {
+    get has_directPath() {
         return pb_1.Message.getField(this, 13) != null;
     }
     get mediaKeyTimestamp() {
@@ -4721,7 +4721,7 @@ export class VideoMessage extends pb_1.Message {
     clear_mediaKeyTimestamp() {
         pb_1.Message.setField(this, 14, undefined);
     }
-    has_mediaKeyTimestamp() {
+    get has_mediaKeyTimestamp() {
         return pb_1.Message.getField(this, 14) != null;
     }
     get jpegThumbnail() {
@@ -4733,7 +4733,7 @@ export class VideoMessage extends pb_1.Message {
     clear_jpegThumbnail() {
         pb_1.Message.setField(this, 16, undefined);
     }
-    has_jpegThumbnail() {
+    get has_jpegThumbnail() {
         return pb_1.Message.getField(this, 16) != null;
     }
     get contextInfo() {
@@ -4745,7 +4745,7 @@ export class VideoMessage extends pb_1.Message {
     clear_contextInfo() {
         pb_1.Message.setField(this, 17, undefined);
     }
-    has_contextInfo() {
+    get has_contextInfo() {
         return pb_1.Message.getField(this, 17) != null;
     }
     get streamingSidecar() {
@@ -4757,7 +4757,7 @@ export class VideoMessage extends pb_1.Message {
     clear_streamingSidecar() {
         pb_1.Message.setField(this, 18, undefined);
     }
-    has_streamingSidecar() {
+    get has_streamingSidecar() {
         return pb_1.Message.getField(this, 18) != null;
     }
     get gifAttribution() {
@@ -4769,7 +4769,7 @@ export class VideoMessage extends pb_1.Message {
     clear_gifAttribution() {
         pb_1.Message.setField(this, 19, undefined);
     }
-    has_gifAttribution() {
+    get has_gifAttribution() {
         return pb_1.Message.getField(this, 19) != null;
     }
     static fromObject(data: {
@@ -4929,41 +4929,41 @@ export class VideoMessage extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.has_url() && this.url.length)
+        if (this.has_url && this.url.length)
             writer.writeString(1, this.url);
-        if (this.has_mimetype() && this.mimetype.length)
+        if (this.has_mimetype && this.mimetype.length)
             writer.writeString(2, this.mimetype);
-        if (this.has_fileSha256() && this.fileSha256.length)
+        if (this.has_fileSha256 && this.fileSha256.length)
             writer.writeBytes(3, this.fileSha256);
-        if (this.has_fileLength())
+        if (this.has_fileLength)
             writer.writeUint64(4, this.fileLength);
-        if (this.has_seconds())
+        if (this.has_seconds)
             writer.writeUint32(5, this.seconds);
-        if (this.has_mediaKey() && this.mediaKey.length)
+        if (this.has_mediaKey && this.mediaKey.length)
             writer.writeBytes(6, this.mediaKey);
-        if (this.has_caption() && this.caption.length)
+        if (this.has_caption && this.caption.length)
             writer.writeString(7, this.caption);
-        if (this.has_gifPlayback())
+        if (this.has_gifPlayback)
             writer.writeBool(8, this.gifPlayback);
-        if (this.has_height())
+        if (this.has_height)
             writer.writeUint32(9, this.height);
-        if (this.has_width())
+        if (this.has_width)
             writer.writeUint32(10, this.width);
-        if (this.has_fileEncSha256() && this.fileEncSha256.length)
+        if (this.has_fileEncSha256 && this.fileEncSha256.length)
             writer.writeBytes(11, this.fileEncSha256);
         if (this.interactiveAnnotations.length)
             writer.writeRepeatedMessage(12, this.interactiveAnnotations, (item: InteractiveAnnotation) => item.serialize(writer));
-        if (this.has_directPath() && this.directPath.length)
+        if (this.has_directPath && this.directPath.length)
             writer.writeString(13, this.directPath);
-        if (this.has_mediaKeyTimestamp())
+        if (this.has_mediaKeyTimestamp)
             writer.writeInt64(14, this.mediaKeyTimestamp);
-        if (this.has_jpegThumbnail() && this.jpegThumbnail.length)
+        if (this.has_jpegThumbnail && this.jpegThumbnail.length)
             writer.writeBytes(16, this.jpegThumbnail);
-        if (this.has_contextInfo())
+        if (this.has_contextInfo)
             writer.writeMessage(17, this.contextInfo, () => this.contextInfo.serialize(writer));
-        if (this.has_streamingSidecar() && this.streamingSidecar.length)
+        if (this.has_streamingSidecar && this.streamingSidecar.length)
             writer.writeBytes(18, this.streamingSidecar);
-        if (this.has_gifAttribution())
+        if (this.has_gifAttribution)
             writer.writeEnum(19, this.gifAttribution);
         if (!w)
             return writer.getResultBuffer();
@@ -5069,7 +5069,7 @@ export class Call extends pb_1.Message {
     clear_callKey() {
         pb_1.Message.setField(this, 1, undefined);
     }
-    has_callKey() {
+    get has_callKey() {
         return pb_1.Message.getField(this, 1) != null;
     }
     static fromObject(data: {
@@ -5094,7 +5094,7 @@ export class Call extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.has_callKey() && this.callKey.length)
+        if (this.has_callKey && this.callKey.length)
             writer.writeBytes(1, this.callKey);
         if (!w)
             return writer.getResultBuffer();
@@ -5146,7 +5146,7 @@ export class Chat extends pb_1.Message {
     clear_displayName() {
         pb_1.Message.setField(this, 1, undefined);
     }
-    has_displayName() {
+    get has_displayName() {
         return pb_1.Message.getField(this, 1) != null;
     }
     get id() {
@@ -5158,7 +5158,7 @@ export class Chat extends pb_1.Message {
     clear_id() {
         pb_1.Message.setField(this, 2, undefined);
     }
-    has_id() {
+    get has_id() {
         return pb_1.Message.getField(this, 2) != null;
     }
     static fromObject(data: {
@@ -5191,9 +5191,9 @@ export class Chat extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.has_displayName() && this.displayName.length)
+        if (this.has_displayName && this.displayName.length)
             writer.writeString(1, this.displayName);
-        if (this.has_id() && this.id.length)
+        if (this.has_id && this.id.length)
             writer.writeString(2, this.id);
         if (!w)
             return writer.getResultBuffer();
@@ -5260,7 +5260,7 @@ export class ProtocolMessage extends pb_1.Message {
     clear_key() {
         pb_1.Message.setField(this, 1, undefined);
     }
-    has_key() {
+    get has_key() {
         return pb_1.Message.getField(this, 1) != null;
     }
     get type() {
@@ -5272,7 +5272,7 @@ export class ProtocolMessage extends pb_1.Message {
     clear_type() {
         pb_1.Message.setField(this, 2, undefined);
     }
-    has_type() {
+    get has_type() {
         return pb_1.Message.getField(this, 2) != null;
     }
     get ephemeralExpiration() {
@@ -5284,7 +5284,7 @@ export class ProtocolMessage extends pb_1.Message {
     clear_ephemeralExpiration() {
         pb_1.Message.setField(this, 4, undefined);
     }
-    has_ephemeralExpiration() {
+    get has_ephemeralExpiration() {
         return pb_1.Message.getField(this, 4) != null;
     }
     get ephemeralSettingTimestamp() {
@@ -5296,7 +5296,7 @@ export class ProtocolMessage extends pb_1.Message {
     clear_ephemeralSettingTimestamp() {
         pb_1.Message.setField(this, 5, undefined);
     }
-    has_ephemeralSettingTimestamp() {
+    get has_ephemeralSettingTimestamp() {
         return pb_1.Message.getField(this, 5) != null;
     }
     get historySyncNotification() {
@@ -5308,7 +5308,7 @@ export class ProtocolMessage extends pb_1.Message {
     clear_historySyncNotification() {
         pb_1.Message.setField(this, 6, undefined);
     }
-    has_historySyncNotification() {
+    get has_historySyncNotification() {
         return pb_1.Message.getField(this, 6) != null;
     }
     static fromObject(data: {
@@ -5365,15 +5365,15 @@ export class ProtocolMessage extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.has_key())
+        if (this.has_key)
             writer.writeMessage(1, this.key, () => this.key.serialize(writer));
-        if (this.has_type())
+        if (this.has_type)
             writer.writeEnum(2, this.type);
-        if (this.has_ephemeralExpiration())
+        if (this.has_ephemeralExpiration)
             writer.writeUint32(4, this.ephemeralExpiration);
-        if (this.has_ephemeralSettingTimestamp())
+        if (this.has_ephemeralSettingTimestamp)
             writer.writeInt64(5, this.ephemeralSettingTimestamp);
-        if (this.has_historySyncNotification())
+        if (this.has_historySyncNotification)
             writer.writeMessage(6, this.historySyncNotification, () => this.historySyncNotification.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
@@ -5469,7 +5469,7 @@ export class HistorySyncNotification extends pb_1.Message {
     clear_fileSha256() {
         pb_1.Message.setField(this, 1, undefined);
     }
-    has_fileSha256() {
+    get has_fileSha256() {
         return pb_1.Message.getField(this, 1) != null;
     }
     get fileLength() {
@@ -5481,7 +5481,7 @@ export class HistorySyncNotification extends pb_1.Message {
     clear_fileLength() {
         pb_1.Message.setField(this, 2, undefined);
     }
-    has_fileLength() {
+    get has_fileLength() {
         return pb_1.Message.getField(this, 2) != null;
     }
     get mediaKey() {
@@ -5493,7 +5493,7 @@ export class HistorySyncNotification extends pb_1.Message {
     clear_mediaKey() {
         pb_1.Message.setField(this, 3, undefined);
     }
-    has_mediaKey() {
+    get has_mediaKey() {
         return pb_1.Message.getField(this, 3) != null;
     }
     get fileEncSha256() {
@@ -5505,7 +5505,7 @@ export class HistorySyncNotification extends pb_1.Message {
     clear_fileEncSha256() {
         pb_1.Message.setField(this, 4, undefined);
     }
-    has_fileEncSha256() {
+    get has_fileEncSha256() {
         return pb_1.Message.getField(this, 4) != null;
     }
     get directPath() {
@@ -5517,7 +5517,7 @@ export class HistorySyncNotification extends pb_1.Message {
     clear_directPath() {
         pb_1.Message.setField(this, 5, undefined);
     }
-    has_directPath() {
+    get has_directPath() {
         return pb_1.Message.getField(this, 5) != null;
     }
     get syncType() {
@@ -5529,7 +5529,7 @@ export class HistorySyncNotification extends pb_1.Message {
     clear_syncType() {
         pb_1.Message.setField(this, 6, undefined);
     }
-    has_syncType() {
+    get has_syncType() {
         return pb_1.Message.getField(this, 6) != null;
     }
     get chunkOrder() {
@@ -5541,7 +5541,7 @@ export class HistorySyncNotification extends pb_1.Message {
     clear_chunkOrder() {
         pb_1.Message.setField(this, 7, undefined);
     }
-    has_chunkOrder() {
+    get has_chunkOrder() {
         return pb_1.Message.getField(this, 7) != null;
     }
     get originalMessageId() {
@@ -5553,7 +5553,7 @@ export class HistorySyncNotification extends pb_1.Message {
     clear_originalMessageId() {
         pb_1.Message.setField(this, 8, undefined);
     }
-    has_originalMessageId() {
+    get has_originalMessageId() {
         return pb_1.Message.getField(this, 8) != null;
     }
     static fromObject(data: {
@@ -5634,21 +5634,21 @@ export class HistorySyncNotification extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.has_fileSha256() && this.fileSha256.length)
+        if (this.has_fileSha256 && this.fileSha256.length)
             writer.writeBytes(1, this.fileSha256);
-        if (this.has_fileLength())
+        if (this.has_fileLength)
             writer.writeUint64(2, this.fileLength);
-        if (this.has_mediaKey() && this.mediaKey.length)
+        if (this.has_mediaKey && this.mediaKey.length)
             writer.writeBytes(3, this.mediaKey);
-        if (this.has_fileEncSha256() && this.fileEncSha256.length)
+        if (this.has_fileEncSha256 && this.fileEncSha256.length)
             writer.writeBytes(4, this.fileEncSha256);
-        if (this.has_directPath() && this.directPath.length)
+        if (this.has_directPath && this.directPath.length)
             writer.writeString(5, this.directPath);
-        if (this.has_syncType())
+        if (this.has_syncType)
             writer.writeEnum(6, this.syncType);
-        if (this.has_chunkOrder())
+        if (this.has_chunkOrder)
             writer.writeUint32(7, this.chunkOrder);
-        if (this.has_originalMessageId() && this.originalMessageId.length)
+        if (this.has_originalMessageId && this.originalMessageId.length)
             writer.writeString(8, this.originalMessageId);
         if (!w)
             return writer.getResultBuffer();
@@ -5732,7 +5732,7 @@ export class ContactsArrayMessage extends pb_1.Message {
     clear_displayName() {
         pb_1.Message.setField(this, 1, undefined);
     }
-    has_displayName() {
+    get has_displayName() {
         return pb_1.Message.getField(this, 1) != null;
     }
     get contacts() {
@@ -5750,7 +5750,7 @@ export class ContactsArrayMessage extends pb_1.Message {
     clear_contextInfo() {
         pb_1.Message.setField(this, 17, undefined);
     }
-    has_contextInfo() {
+    get has_contextInfo() {
         return pb_1.Message.getField(this, 17) != null;
     }
     static fromObject(data: {
@@ -5790,11 +5790,11 @@ export class ContactsArrayMessage extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.has_displayName() && this.displayName.length)
+        if (this.has_displayName && this.displayName.length)
             writer.writeString(1, this.displayName);
         if (this.contacts.length)
             writer.writeRepeatedMessage(2, this.contacts, (item: ContactMessage) => item.serialize(writer));
-        if (this.has_contextInfo())
+        if (this.has_contextInfo)
             writer.writeMessage(17, this.contextInfo, () => this.contextInfo.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
@@ -5852,7 +5852,7 @@ export class HSMCurrency extends pb_1.Message {
     clear_currencyCode() {
         pb_1.Message.setField(this, 1, undefined);
     }
-    has_currencyCode() {
+    get has_currencyCode() {
         return pb_1.Message.getField(this, 1) != null;
     }
     get amount1000() {
@@ -5864,7 +5864,7 @@ export class HSMCurrency extends pb_1.Message {
     clear_amount1000() {
         pb_1.Message.setField(this, 2, undefined);
     }
-    has_amount1000() {
+    get has_amount1000() {
         return pb_1.Message.getField(this, 2) != null;
     }
     static fromObject(data: {
@@ -5897,9 +5897,9 @@ export class HSMCurrency extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.has_currencyCode() && this.currencyCode.length)
+        if (this.has_currencyCode && this.currencyCode.length)
             writer.writeString(1, this.currencyCode);
-        if (this.has_amount1000())
+        if (this.has_amount1000)
             writer.writeInt64(2, this.amount1000);
         if (!w)
             return writer.getResultBuffer();
@@ -5974,7 +5974,7 @@ export class HSMDateTimeComponent extends pb_1.Message {
     clear_dayOfWeek() {
         pb_1.Message.setField(this, 1, undefined);
     }
-    has_dayOfWeek() {
+    get has_dayOfWeek() {
         return pb_1.Message.getField(this, 1) != null;
     }
     get year() {
@@ -5986,7 +5986,7 @@ export class HSMDateTimeComponent extends pb_1.Message {
     clear_year() {
         pb_1.Message.setField(this, 2, undefined);
     }
-    has_year() {
+    get has_year() {
         return pb_1.Message.getField(this, 2) != null;
     }
     get month() {
@@ -5998,7 +5998,7 @@ export class HSMDateTimeComponent extends pb_1.Message {
     clear_month() {
         pb_1.Message.setField(this, 3, undefined);
     }
-    has_month() {
+    get has_month() {
         return pb_1.Message.getField(this, 3) != null;
     }
     get dayOfMonth() {
@@ -6010,7 +6010,7 @@ export class HSMDateTimeComponent extends pb_1.Message {
     clear_dayOfMonth() {
         pb_1.Message.setField(this, 4, undefined);
     }
-    has_dayOfMonth() {
+    get has_dayOfMonth() {
         return pb_1.Message.getField(this, 4) != null;
     }
     get hour() {
@@ -6022,7 +6022,7 @@ export class HSMDateTimeComponent extends pb_1.Message {
     clear_hour() {
         pb_1.Message.setField(this, 5, undefined);
     }
-    has_hour() {
+    get has_hour() {
         return pb_1.Message.getField(this, 5) != null;
     }
     get minute() {
@@ -6034,7 +6034,7 @@ export class HSMDateTimeComponent extends pb_1.Message {
     clear_minute() {
         pb_1.Message.setField(this, 6, undefined);
     }
-    has_minute() {
+    get has_minute() {
         return pb_1.Message.getField(this, 6) != null;
     }
     get calendar() {
@@ -6046,7 +6046,7 @@ export class HSMDateTimeComponent extends pb_1.Message {
     clear_calendar() {
         pb_1.Message.setField(this, 7, undefined);
     }
-    has_calendar() {
+    get has_calendar() {
         return pb_1.Message.getField(this, 7) != null;
     }
     static fromObject(data: {
@@ -6119,19 +6119,19 @@ export class HSMDateTimeComponent extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.has_dayOfWeek())
+        if (this.has_dayOfWeek)
             writer.writeEnum(1, this.dayOfWeek);
-        if (this.has_year())
+        if (this.has_year)
             writer.writeUint32(2, this.year);
-        if (this.has_month())
+        if (this.has_month)
             writer.writeUint32(3, this.month);
-        if (this.has_dayOfMonth())
+        if (this.has_dayOfMonth)
             writer.writeUint32(4, this.dayOfMonth);
-        if (this.has_hour())
+        if (this.has_hour)
             writer.writeUint32(5, this.hour);
-        if (this.has_minute())
+        if (this.has_minute)
             writer.writeUint32(6, this.minute);
-        if (this.has_calendar())
+        if (this.has_calendar)
             writer.writeEnum(7, this.calendar);
         if (!w)
             return writer.getResultBuffer();
@@ -6212,7 +6212,7 @@ export class HSMDateTimeUnixEpoch extends pb_1.Message {
     clear_timestamp() {
         pb_1.Message.setField(this, 1, undefined);
     }
-    has_timestamp() {
+    get has_timestamp() {
         return pb_1.Message.getField(this, 1) != null;
     }
     static fromObject(data: {
@@ -6237,7 +6237,7 @@ export class HSMDateTimeUnixEpoch extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.has_timestamp())
+        if (this.has_timestamp)
             writer.writeInt64(1, this.timestamp);
         if (!w)
             return writer.getResultBuffer();
@@ -6292,7 +6292,7 @@ export class HSMDateTime extends pb_1.Message {
     clear_component() {
         pb_1.Message.setField(this, 1, undefined);
     }
-    has_component() {
+    get has_component() {
         return pb_1.Message.getField(this, 1) != null;
     }
     get unixEpoch() {
@@ -6304,7 +6304,7 @@ export class HSMDateTime extends pb_1.Message {
     clear_unixEpoch() {
         pb_1.Message.setField(this, 2, undefined);
     }
-    has_unixEpoch() {
+    get has_unixEpoch() {
         return pb_1.Message.getField(this, 2) != null;
     }
     get datetimeOneof() {
@@ -6347,9 +6347,9 @@ export class HSMDateTime extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.has_component())
+        if (this.has_component)
             writer.writeMessage(1, this.component, () => this.component.serialize(writer));
-        if (this.has_unixEpoch())
+        if (this.has_unixEpoch)
             writer.writeMessage(2, this.unixEpoch, () => this.unixEpoch.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
@@ -6412,7 +6412,7 @@ export class HSMLocalizableParameter extends pb_1.Message {
     clear_default() {
         pb_1.Message.setField(this, 1, undefined);
     }
-    has_default() {
+    get has_default() {
         return pb_1.Message.getField(this, 1) != null;
     }
     get currency() {
@@ -6424,7 +6424,7 @@ export class HSMLocalizableParameter extends pb_1.Message {
     clear_currency() {
         pb_1.Message.setField(this, 2, undefined);
     }
-    has_currency() {
+    get has_currency() {
         return pb_1.Message.getField(this, 2) != null;
     }
     get dateTime() {
@@ -6436,7 +6436,7 @@ export class HSMLocalizableParameter extends pb_1.Message {
     clear_dateTime() {
         pb_1.Message.setField(this, 3, undefined);
     }
-    has_dateTime() {
+    get has_dateTime() {
         return pb_1.Message.getField(this, 3) != null;
     }
     get paramOneof() {
@@ -6487,11 +6487,11 @@ export class HSMLocalizableParameter extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.has_default() && this.default.length)
+        if (this.has_default && this.default.length)
             writer.writeString(1, this.default);
-        if (this.has_currency())
+        if (this.has_currency)
             writer.writeMessage(2, this.currency, () => this.currency.serialize(writer));
-        if (this.has_dateTime())
+        if (this.has_dateTime)
             writer.writeMessage(3, this.dateTime, () => this.dateTime.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
@@ -6573,7 +6573,7 @@ export class HighlyStructuredMessage extends pb_1.Message {
     clear_namespace() {
         pb_1.Message.setField(this, 1, undefined);
     }
-    has_namespace() {
+    get has_namespace() {
         return pb_1.Message.getField(this, 1) != null;
     }
     get elementName() {
@@ -6585,7 +6585,7 @@ export class HighlyStructuredMessage extends pb_1.Message {
     clear_elementName() {
         pb_1.Message.setField(this, 2, undefined);
     }
-    has_elementName() {
+    get has_elementName() {
         return pb_1.Message.getField(this, 2) != null;
     }
     get params() {
@@ -6603,7 +6603,7 @@ export class HighlyStructuredMessage extends pb_1.Message {
     clear_fallbackLg() {
         pb_1.Message.setField(this, 4, undefined);
     }
-    has_fallbackLg() {
+    get has_fallbackLg() {
         return pb_1.Message.getField(this, 4) != null;
     }
     get fallbackLc() {
@@ -6615,7 +6615,7 @@ export class HighlyStructuredMessage extends pb_1.Message {
     clear_fallbackLc() {
         pb_1.Message.setField(this, 5, undefined);
     }
-    has_fallbackLc() {
+    get has_fallbackLc() {
         return pb_1.Message.getField(this, 5) != null;
     }
     get localizableParams() {
@@ -6633,7 +6633,7 @@ export class HighlyStructuredMessage extends pb_1.Message {
     clear_deterministicLg() {
         pb_1.Message.setField(this, 7, undefined);
     }
-    has_deterministicLg() {
+    get has_deterministicLg() {
         return pb_1.Message.getField(this, 7) != null;
     }
     get deterministicLc() {
@@ -6645,7 +6645,7 @@ export class HighlyStructuredMessage extends pb_1.Message {
     clear_deterministicLc() {
         pb_1.Message.setField(this, 8, undefined);
     }
-    has_deterministicLc() {
+    get has_deterministicLc() {
         return pb_1.Message.getField(this, 8) != null;
     }
     get hydratedHsm() {
@@ -6657,7 +6657,7 @@ export class HighlyStructuredMessage extends pb_1.Message {
     clear_hydratedHsm() {
         pb_1.Message.setField(this, 9, undefined);
     }
-    has_hydratedHsm() {
+    get has_hydratedHsm() {
         return pb_1.Message.getField(this, 9) != null;
     }
     static fromObject(data: {
@@ -6742,23 +6742,23 @@ export class HighlyStructuredMessage extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.has_namespace() && this.namespace.length)
+        if (this.has_namespace && this.namespace.length)
             writer.writeString(1, this.namespace);
-        if (this.has_elementName() && this.elementName.length)
+        if (this.has_elementName && this.elementName.length)
             writer.writeString(2, this.elementName);
         if (this.params.length)
             writer.writeRepeatedString(3, this.params);
-        if (this.has_fallbackLg() && this.fallbackLg.length)
+        if (this.has_fallbackLg && this.fallbackLg.length)
             writer.writeString(4, this.fallbackLg);
-        if (this.has_fallbackLc() && this.fallbackLc.length)
+        if (this.has_fallbackLc && this.fallbackLc.length)
             writer.writeString(5, this.fallbackLc);
         if (this.localizableParams.length)
             writer.writeRepeatedMessage(6, this.localizableParams, (item: HSMLocalizableParameter) => item.serialize(writer));
-        if (this.has_deterministicLg() && this.deterministicLg.length)
+        if (this.has_deterministicLg && this.deterministicLg.length)
             writer.writeString(7, this.deterministicLg);
-        if (this.has_deterministicLc() && this.deterministicLc.length)
+        if (this.has_deterministicLc && this.deterministicLc.length)
             writer.writeString(8, this.deterministicLc);
-        if (this.has_hydratedHsm())
+        if (this.has_hydratedHsm)
             writer.writeMessage(9, this.hydratedHsm, () => this.hydratedHsm.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
@@ -6834,7 +6834,7 @@ export class SendPaymentMessage extends pb_1.Message {
     clear_noteMessage() {
         pb_1.Message.setField(this, 2, undefined);
     }
-    has_noteMessage() {
+    get has_noteMessage() {
         return pb_1.Message.getField(this, 2) != null;
     }
     get requestMessageKey() {
@@ -6846,7 +6846,7 @@ export class SendPaymentMessage extends pb_1.Message {
     clear_requestMessageKey() {
         pb_1.Message.setField(this, 3, undefined);
     }
-    has_requestMessageKey() {
+    get has_requestMessageKey() {
         return pb_1.Message.getField(this, 3) != null;
     }
     static fromObject(data: {
@@ -6879,9 +6879,9 @@ export class SendPaymentMessage extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.has_noteMessage())
+        if (this.has_noteMessage)
             writer.writeMessage(2, this.noteMessage, () => this.noteMessage.serialize(writer));
-        if (this.has_requestMessageKey())
+        if (this.has_requestMessageKey)
             writer.writeMessage(3, this.requestMessageKey, () => this.requestMessageKey.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
@@ -6948,7 +6948,7 @@ export class RequestPaymentMessage extends pb_1.Message {
     clear_noteMessage() {
         pb_1.Message.setField(this, 4, undefined);
     }
-    has_noteMessage() {
+    get has_noteMessage() {
         return pb_1.Message.getField(this, 4) != null;
     }
     get currencyCodeIso4217() {
@@ -6960,7 +6960,7 @@ export class RequestPaymentMessage extends pb_1.Message {
     clear_currencyCodeIso4217() {
         pb_1.Message.setField(this, 1, undefined);
     }
-    has_currencyCodeIso4217() {
+    get has_currencyCodeIso4217() {
         return pb_1.Message.getField(this, 1) != null;
     }
     get amount1000() {
@@ -6972,7 +6972,7 @@ export class RequestPaymentMessage extends pb_1.Message {
     clear_amount1000() {
         pb_1.Message.setField(this, 2, undefined);
     }
-    has_amount1000() {
+    get has_amount1000() {
         return pb_1.Message.getField(this, 2) != null;
     }
     get requestFrom() {
@@ -6984,7 +6984,7 @@ export class RequestPaymentMessage extends pb_1.Message {
     clear_requestFrom() {
         pb_1.Message.setField(this, 3, undefined);
     }
-    has_requestFrom() {
+    get has_requestFrom() {
         return pb_1.Message.getField(this, 3) != null;
     }
     get expiryTimestamp() {
@@ -6996,7 +6996,7 @@ export class RequestPaymentMessage extends pb_1.Message {
     clear_expiryTimestamp() {
         pb_1.Message.setField(this, 5, undefined);
     }
-    has_expiryTimestamp() {
+    get has_expiryTimestamp() {
         return pb_1.Message.getField(this, 5) != null;
     }
     static fromObject(data: {
@@ -7053,15 +7053,15 @@ export class RequestPaymentMessage extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.has_noteMessage())
+        if (this.has_noteMessage)
             writer.writeMessage(4, this.noteMessage, () => this.noteMessage.serialize(writer));
-        if (this.has_currencyCodeIso4217() && this.currencyCodeIso4217.length)
+        if (this.has_currencyCodeIso4217 && this.currencyCodeIso4217.length)
             writer.writeString(1, this.currencyCodeIso4217);
-        if (this.has_amount1000())
+        if (this.has_amount1000)
             writer.writeUint64(2, this.amount1000);
-        if (this.has_requestFrom() && this.requestFrom.length)
+        if (this.has_requestFrom && this.requestFrom.length)
             writer.writeString(3, this.requestFrom);
-        if (this.has_expiryTimestamp())
+        if (this.has_expiryTimestamp)
             writer.writeInt64(5, this.expiryTimestamp);
         if (!w)
             return writer.getResultBuffer();
@@ -7121,7 +7121,7 @@ export class DeclinePaymentRequestMessage extends pb_1.Message {
     clear_key() {
         pb_1.Message.setField(this, 1, undefined);
     }
-    has_key() {
+    get has_key() {
         return pb_1.Message.getField(this, 1) != null;
     }
     static fromObject(data: {
@@ -7146,7 +7146,7 @@ export class DeclinePaymentRequestMessage extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.has_key())
+        if (this.has_key)
             writer.writeMessage(1, this.key, () => this.key.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
@@ -7194,7 +7194,7 @@ export class CancelPaymentRequestMessage extends pb_1.Message {
     clear_key() {
         pb_1.Message.setField(this, 1, undefined);
     }
-    has_key() {
+    get has_key() {
         return pb_1.Message.getField(this, 1) != null;
     }
     static fromObject(data: {
@@ -7219,7 +7219,7 @@ export class CancelPaymentRequestMessage extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.has_key())
+        if (this.has_key)
             writer.writeMessage(1, this.key, () => this.key.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
@@ -7303,7 +7303,7 @@ export class LiveLocationMessage extends pb_1.Message {
     clear_degreesLatitude() {
         pb_1.Message.setField(this, 1, undefined);
     }
-    has_degreesLatitude() {
+    get has_degreesLatitude() {
         return pb_1.Message.getField(this, 1) != null;
     }
     get degreesLongitude() {
@@ -7315,7 +7315,7 @@ export class LiveLocationMessage extends pb_1.Message {
     clear_degreesLongitude() {
         pb_1.Message.setField(this, 2, undefined);
     }
-    has_degreesLongitude() {
+    get has_degreesLongitude() {
         return pb_1.Message.getField(this, 2) != null;
     }
     get accuracyInMeters() {
@@ -7327,7 +7327,7 @@ export class LiveLocationMessage extends pb_1.Message {
     clear_accuracyInMeters() {
         pb_1.Message.setField(this, 3, undefined);
     }
-    has_accuracyInMeters() {
+    get has_accuracyInMeters() {
         return pb_1.Message.getField(this, 3) != null;
     }
     get speedInMps() {
@@ -7339,7 +7339,7 @@ export class LiveLocationMessage extends pb_1.Message {
     clear_speedInMps() {
         pb_1.Message.setField(this, 4, undefined);
     }
-    has_speedInMps() {
+    get has_speedInMps() {
         return pb_1.Message.getField(this, 4) != null;
     }
     get degreesClockwiseFromMagneticNorth() {
@@ -7351,7 +7351,7 @@ export class LiveLocationMessage extends pb_1.Message {
     clear_degreesClockwiseFromMagneticNorth() {
         pb_1.Message.setField(this, 5, undefined);
     }
-    has_degreesClockwiseFromMagneticNorth() {
+    get has_degreesClockwiseFromMagneticNorth() {
         return pb_1.Message.getField(this, 5) != null;
     }
     get caption() {
@@ -7363,7 +7363,7 @@ export class LiveLocationMessage extends pb_1.Message {
     clear_caption() {
         pb_1.Message.setField(this, 6, undefined);
     }
-    has_caption() {
+    get has_caption() {
         return pb_1.Message.getField(this, 6) != null;
     }
     get sequenceNumber() {
@@ -7375,7 +7375,7 @@ export class LiveLocationMessage extends pb_1.Message {
     clear_sequenceNumber() {
         pb_1.Message.setField(this, 7, undefined);
     }
-    has_sequenceNumber() {
+    get has_sequenceNumber() {
         return pb_1.Message.getField(this, 7) != null;
     }
     get timeOffset() {
@@ -7387,7 +7387,7 @@ export class LiveLocationMessage extends pb_1.Message {
     clear_timeOffset() {
         pb_1.Message.setField(this, 8, undefined);
     }
-    has_timeOffset() {
+    get has_timeOffset() {
         return pb_1.Message.getField(this, 8) != null;
     }
     get jpegThumbnail() {
@@ -7399,7 +7399,7 @@ export class LiveLocationMessage extends pb_1.Message {
     clear_jpegThumbnail() {
         pb_1.Message.setField(this, 16, undefined);
     }
-    has_jpegThumbnail() {
+    get has_jpegThumbnail() {
         return pb_1.Message.getField(this, 16) != null;
     }
     get contextInfo() {
@@ -7411,7 +7411,7 @@ export class LiveLocationMessage extends pb_1.Message {
     clear_contextInfo() {
         pb_1.Message.setField(this, 17, undefined);
     }
-    has_contextInfo() {
+    get has_contextInfo() {
         return pb_1.Message.getField(this, 17) != null;
     }
     static fromObject(data: {
@@ -7508,25 +7508,25 @@ export class LiveLocationMessage extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.has_degreesLatitude())
+        if (this.has_degreesLatitude)
             writer.writeDouble(1, this.degreesLatitude);
-        if (this.has_degreesLongitude())
+        if (this.has_degreesLongitude)
             writer.writeDouble(2, this.degreesLongitude);
-        if (this.has_accuracyInMeters())
+        if (this.has_accuracyInMeters)
             writer.writeUint32(3, this.accuracyInMeters);
-        if (this.has_speedInMps())
+        if (this.has_speedInMps)
             writer.writeFloat(4, this.speedInMps);
-        if (this.has_degreesClockwiseFromMagneticNorth())
+        if (this.has_degreesClockwiseFromMagneticNorth)
             writer.writeUint32(5, this.degreesClockwiseFromMagneticNorth);
-        if (this.has_caption() && this.caption.length)
+        if (this.has_caption && this.caption.length)
             writer.writeString(6, this.caption);
-        if (this.has_sequenceNumber())
+        if (this.has_sequenceNumber)
             writer.writeInt64(7, this.sequenceNumber);
-        if (this.has_timeOffset())
+        if (this.has_timeOffset)
             writer.writeUint32(8, this.timeOffset);
-        if (this.has_jpegThumbnail() && this.jpegThumbnail.length)
+        if (this.has_jpegThumbnail && this.jpegThumbnail.length)
             writer.writeBytes(16, this.jpegThumbnail);
-        if (this.has_contextInfo())
+        if (this.has_contextInfo)
             writer.writeMessage(17, this.contextInfo, () => this.contextInfo.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
@@ -7657,7 +7657,7 @@ export class StickerMessage extends pb_1.Message {
     clear_url() {
         pb_1.Message.setField(this, 1, undefined);
     }
-    has_url() {
+    get has_url() {
         return pb_1.Message.getField(this, 1) != null;
     }
     get fileSha256() {
@@ -7669,7 +7669,7 @@ export class StickerMessage extends pb_1.Message {
     clear_fileSha256() {
         pb_1.Message.setField(this, 2, undefined);
     }
-    has_fileSha256() {
+    get has_fileSha256() {
         return pb_1.Message.getField(this, 2) != null;
     }
     get fileEncSha256() {
@@ -7681,7 +7681,7 @@ export class StickerMessage extends pb_1.Message {
     clear_fileEncSha256() {
         pb_1.Message.setField(this, 3, undefined);
     }
-    has_fileEncSha256() {
+    get has_fileEncSha256() {
         return pb_1.Message.getField(this, 3) != null;
     }
     get mediaKey() {
@@ -7693,7 +7693,7 @@ export class StickerMessage extends pb_1.Message {
     clear_mediaKey() {
         pb_1.Message.setField(this, 4, undefined);
     }
-    has_mediaKey() {
+    get has_mediaKey() {
         return pb_1.Message.getField(this, 4) != null;
     }
     get mimetype() {
@@ -7705,7 +7705,7 @@ export class StickerMessage extends pb_1.Message {
     clear_mimetype() {
         pb_1.Message.setField(this, 5, undefined);
     }
-    has_mimetype() {
+    get has_mimetype() {
         return pb_1.Message.getField(this, 5) != null;
     }
     get height() {
@@ -7717,7 +7717,7 @@ export class StickerMessage extends pb_1.Message {
     clear_height() {
         pb_1.Message.setField(this, 6, undefined);
     }
-    has_height() {
+    get has_height() {
         return pb_1.Message.getField(this, 6) != null;
     }
     get width() {
@@ -7729,7 +7729,7 @@ export class StickerMessage extends pb_1.Message {
     clear_width() {
         pb_1.Message.setField(this, 7, undefined);
     }
-    has_width() {
+    get has_width() {
         return pb_1.Message.getField(this, 7) != null;
     }
     get directPath() {
@@ -7741,7 +7741,7 @@ export class StickerMessage extends pb_1.Message {
     clear_directPath() {
         pb_1.Message.setField(this, 8, undefined);
     }
-    has_directPath() {
+    get has_directPath() {
         return pb_1.Message.getField(this, 8) != null;
     }
     get fileLength() {
@@ -7753,7 +7753,7 @@ export class StickerMessage extends pb_1.Message {
     clear_fileLength() {
         pb_1.Message.setField(this, 9, undefined);
     }
-    has_fileLength() {
+    get has_fileLength() {
         return pb_1.Message.getField(this, 9) != null;
     }
     get mediaKeyTimestamp() {
@@ -7765,7 +7765,7 @@ export class StickerMessage extends pb_1.Message {
     clear_mediaKeyTimestamp() {
         pb_1.Message.setField(this, 10, undefined);
     }
-    has_mediaKeyTimestamp() {
+    get has_mediaKeyTimestamp() {
         return pb_1.Message.getField(this, 10) != null;
     }
     get firstFrameLength() {
@@ -7777,7 +7777,7 @@ export class StickerMessage extends pb_1.Message {
     clear_firstFrameLength() {
         pb_1.Message.setField(this, 11, undefined);
     }
-    has_firstFrameLength() {
+    get has_firstFrameLength() {
         return pb_1.Message.getField(this, 11) != null;
     }
     get firstFrameSidecar() {
@@ -7789,7 +7789,7 @@ export class StickerMessage extends pb_1.Message {
     clear_firstFrameSidecar() {
         pb_1.Message.setField(this, 12, undefined);
     }
-    has_firstFrameSidecar() {
+    get has_firstFrameSidecar() {
         return pb_1.Message.getField(this, 12) != null;
     }
     get isAnimated() {
@@ -7801,7 +7801,7 @@ export class StickerMessage extends pb_1.Message {
     clear_isAnimated() {
         pb_1.Message.setField(this, 13, undefined);
     }
-    has_isAnimated() {
+    get has_isAnimated() {
         return pb_1.Message.getField(this, 13) != null;
     }
     get pngThumbnail() {
@@ -7813,7 +7813,7 @@ export class StickerMessage extends pb_1.Message {
     clear_pngThumbnail() {
         pb_1.Message.setField(this, 16, undefined);
     }
-    has_pngThumbnail() {
+    get has_pngThumbnail() {
         return pb_1.Message.getField(this, 16) != null;
     }
     get contextInfo() {
@@ -7825,7 +7825,7 @@ export class StickerMessage extends pb_1.Message {
     clear_contextInfo() {
         pb_1.Message.setField(this, 17, undefined);
     }
-    has_contextInfo() {
+    get has_contextInfo() {
         return pb_1.Message.getField(this, 17) != null;
     }
     static fromObject(data: {
@@ -7962,35 +7962,35 @@ export class StickerMessage extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.has_url() && this.url.length)
+        if (this.has_url && this.url.length)
             writer.writeString(1, this.url);
-        if (this.has_fileSha256() && this.fileSha256.length)
+        if (this.has_fileSha256 && this.fileSha256.length)
             writer.writeBytes(2, this.fileSha256);
-        if (this.has_fileEncSha256() && this.fileEncSha256.length)
+        if (this.has_fileEncSha256 && this.fileEncSha256.length)
             writer.writeBytes(3, this.fileEncSha256);
-        if (this.has_mediaKey() && this.mediaKey.length)
+        if (this.has_mediaKey && this.mediaKey.length)
             writer.writeBytes(4, this.mediaKey);
-        if (this.has_mimetype() && this.mimetype.length)
+        if (this.has_mimetype && this.mimetype.length)
             writer.writeString(5, this.mimetype);
-        if (this.has_height())
+        if (this.has_height)
             writer.writeUint32(6, this.height);
-        if (this.has_width())
+        if (this.has_width)
             writer.writeUint32(7, this.width);
-        if (this.has_directPath() && this.directPath.length)
+        if (this.has_directPath && this.directPath.length)
             writer.writeString(8, this.directPath);
-        if (this.has_fileLength())
+        if (this.has_fileLength)
             writer.writeUint64(9, this.fileLength);
-        if (this.has_mediaKeyTimestamp())
+        if (this.has_mediaKeyTimestamp)
             writer.writeInt64(10, this.mediaKeyTimestamp);
-        if (this.has_firstFrameLength())
+        if (this.has_firstFrameLength)
             writer.writeUint32(11, this.firstFrameLength);
-        if (this.has_firstFrameSidecar() && this.firstFrameSidecar.length)
+        if (this.has_firstFrameSidecar && this.firstFrameSidecar.length)
             writer.writeBytes(12, this.firstFrameSidecar);
-        if (this.has_isAnimated())
+        if (this.has_isAnimated)
             writer.writeBool(13, this.isAnimated);
-        if (this.has_pngThumbnail() && this.pngThumbnail.length)
+        if (this.has_pngThumbnail && this.pngThumbnail.length)
             writer.writeBytes(16, this.pngThumbnail);
-        if (this.has_contextInfo())
+        if (this.has_contextInfo)
             writer.writeMessage(17, this.contextInfo, () => this.contextInfo.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
@@ -8131,7 +8131,7 @@ export class FourRowTemplate extends pb_1.Message {
     clear_content() {
         pb_1.Message.setField(this, 6, undefined);
     }
-    has_content() {
+    get has_content() {
         return pb_1.Message.getField(this, 6) != null;
     }
     get footer() {
@@ -8143,7 +8143,7 @@ export class FourRowTemplate extends pb_1.Message {
     clear_footer() {
         pb_1.Message.setField(this, 7, undefined);
     }
-    has_footer() {
+    get has_footer() {
         return pb_1.Message.getField(this, 7) != null;
     }
     get buttons() {
@@ -8161,7 +8161,7 @@ export class FourRowTemplate extends pb_1.Message {
     clear_documentMessage() {
         pb_1.Message.setField(this, 1, undefined);
     }
-    has_documentMessage() {
+    get has_documentMessage() {
         return pb_1.Message.getField(this, 1) != null;
     }
     get highlyStructuredMessage() {
@@ -8173,7 +8173,7 @@ export class FourRowTemplate extends pb_1.Message {
     clear_highlyStructuredMessage() {
         pb_1.Message.setField(this, 2, undefined);
     }
-    has_highlyStructuredMessage() {
+    get has_highlyStructuredMessage() {
         return pb_1.Message.getField(this, 2) != null;
     }
     get imageMessage() {
@@ -8185,7 +8185,7 @@ export class FourRowTemplate extends pb_1.Message {
     clear_imageMessage() {
         pb_1.Message.setField(this, 3, undefined);
     }
-    has_imageMessage() {
+    get has_imageMessage() {
         return pb_1.Message.getField(this, 3) != null;
     }
     get videoMessage() {
@@ -8197,7 +8197,7 @@ export class FourRowTemplate extends pb_1.Message {
     clear_videoMessage() {
         pb_1.Message.setField(this, 4, undefined);
     }
-    has_videoMessage() {
+    get has_videoMessage() {
         return pb_1.Message.getField(this, 4) != null;
     }
     get locationMessage() {
@@ -8209,7 +8209,7 @@ export class FourRowTemplate extends pb_1.Message {
     clear_locationMessage() {
         pb_1.Message.setField(this, 5, undefined);
     }
-    has_locationMessage() {
+    get has_locationMessage() {
         return pb_1.Message.getField(this, 5) != null;
     }
     get title() {
@@ -8302,21 +8302,21 @@ export class FourRowTemplate extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.has_content())
+        if (this.has_content)
             writer.writeMessage(6, this.content, () => this.content.serialize(writer));
-        if (this.has_footer())
+        if (this.has_footer)
             writer.writeMessage(7, this.footer, () => this.footer.serialize(writer));
         if (this.buttons.length)
             writer.writeRepeatedMessage(8, this.buttons, (item: TemplateButton) => item.serialize(writer));
-        if (this.has_documentMessage())
+        if (this.has_documentMessage)
             writer.writeMessage(1, this.documentMessage, () => this.documentMessage.serialize(writer));
-        if (this.has_highlyStructuredMessage())
+        if (this.has_highlyStructuredMessage)
             writer.writeMessage(2, this.highlyStructuredMessage, () => this.highlyStructuredMessage.serialize(writer));
-        if (this.has_imageMessage())
+        if (this.has_imageMessage)
             writer.writeMessage(3, this.imageMessage, () => this.imageMessage.serialize(writer));
-        if (this.has_videoMessage())
+        if (this.has_videoMessage)
             writer.writeMessage(4, this.videoMessage, () => this.videoMessage.serialize(writer));
-        if (this.has_locationMessage())
+        if (this.has_locationMessage)
             writer.writeMessage(5, this.locationMessage, () => this.locationMessage.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
@@ -8440,7 +8440,7 @@ export class HydratedFourRowTemplate extends pb_1.Message {
     clear_hydratedContentText() {
         pb_1.Message.setField(this, 6, undefined);
     }
-    has_hydratedContentText() {
+    get has_hydratedContentText() {
         return pb_1.Message.getField(this, 6) != null;
     }
     get hydratedFooterText() {
@@ -8452,7 +8452,7 @@ export class HydratedFourRowTemplate extends pb_1.Message {
     clear_hydratedFooterText() {
         pb_1.Message.setField(this, 7, undefined);
     }
-    has_hydratedFooterText() {
+    get has_hydratedFooterText() {
         return pb_1.Message.getField(this, 7) != null;
     }
     get hydratedButtons() {
@@ -8470,7 +8470,7 @@ export class HydratedFourRowTemplate extends pb_1.Message {
     clear_templateId() {
         pb_1.Message.setField(this, 9, undefined);
     }
-    has_templateId() {
+    get has_templateId() {
         return pb_1.Message.getField(this, 9) != null;
     }
     get documentMessage() {
@@ -8482,7 +8482,7 @@ export class HydratedFourRowTemplate extends pb_1.Message {
     clear_documentMessage() {
         pb_1.Message.setField(this, 1, undefined);
     }
-    has_documentMessage() {
+    get has_documentMessage() {
         return pb_1.Message.getField(this, 1) != null;
     }
     get hydratedTitleText() {
@@ -8494,7 +8494,7 @@ export class HydratedFourRowTemplate extends pb_1.Message {
     clear_hydratedTitleText() {
         pb_1.Message.setField(this, 2, undefined);
     }
-    has_hydratedTitleText() {
+    get has_hydratedTitleText() {
         return pb_1.Message.getField(this, 2) != null;
     }
     get imageMessage() {
@@ -8506,7 +8506,7 @@ export class HydratedFourRowTemplate extends pb_1.Message {
     clear_imageMessage() {
         pb_1.Message.setField(this, 3, undefined);
     }
-    has_imageMessage() {
+    get has_imageMessage() {
         return pb_1.Message.getField(this, 3) != null;
     }
     get videoMessage() {
@@ -8518,7 +8518,7 @@ export class HydratedFourRowTemplate extends pb_1.Message {
     clear_videoMessage() {
         pb_1.Message.setField(this, 4, undefined);
     }
-    has_videoMessage() {
+    get has_videoMessage() {
         return pb_1.Message.getField(this, 4) != null;
     }
     get locationMessage() {
@@ -8530,7 +8530,7 @@ export class HydratedFourRowTemplate extends pb_1.Message {
     clear_locationMessage() {
         pb_1.Message.setField(this, 5, undefined);
     }
-    has_locationMessage() {
+    get has_locationMessage() {
         return pb_1.Message.getField(this, 5) != null;
     }
     get title() {
@@ -8631,23 +8631,23 @@ export class HydratedFourRowTemplate extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.has_hydratedContentText() && this.hydratedContentText.length)
+        if (this.has_hydratedContentText && this.hydratedContentText.length)
             writer.writeString(6, this.hydratedContentText);
-        if (this.has_hydratedFooterText() && this.hydratedFooterText.length)
+        if (this.has_hydratedFooterText && this.hydratedFooterText.length)
             writer.writeString(7, this.hydratedFooterText);
         if (this.hydratedButtons.length)
             writer.writeRepeatedMessage(8, this.hydratedButtons, (item: HydratedTemplateButton) => item.serialize(writer));
-        if (this.has_templateId() && this.templateId.length)
+        if (this.has_templateId && this.templateId.length)
             writer.writeString(9, this.templateId);
-        if (this.has_documentMessage())
+        if (this.has_documentMessage)
             writer.writeMessage(1, this.documentMessage, () => this.documentMessage.serialize(writer));
-        if (this.has_hydratedTitleText())
+        if (this.has_hydratedTitleText)
             writer.writeString(2, this.hydratedTitleText);
-        if (this.has_imageMessage())
+        if (this.has_imageMessage)
             writer.writeMessage(3, this.imageMessage, () => this.imageMessage.serialize(writer));
-        if (this.has_videoMessage())
+        if (this.has_videoMessage)
             writer.writeMessage(4, this.videoMessage, () => this.videoMessage.serialize(writer));
-        if (this.has_locationMessage())
+        if (this.has_locationMessage)
             writer.writeMessage(5, this.locationMessage, () => this.locationMessage.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
@@ -8735,7 +8735,7 @@ export class TemplateMessage extends pb_1.Message {
     clear_contextInfo() {
         pb_1.Message.setField(this, 3, undefined);
     }
-    has_contextInfo() {
+    get has_contextInfo() {
         return pb_1.Message.getField(this, 3) != null;
     }
     get hydratedTemplate() {
@@ -8747,7 +8747,7 @@ export class TemplateMessage extends pb_1.Message {
     clear_hydratedTemplate() {
         pb_1.Message.setField(this, 4, undefined);
     }
-    has_hydratedTemplate() {
+    get has_hydratedTemplate() {
         return pb_1.Message.getField(this, 4) != null;
     }
     get fourRowTemplate() {
@@ -8759,7 +8759,7 @@ export class TemplateMessage extends pb_1.Message {
     clear_fourRowTemplate() {
         pb_1.Message.setField(this, 1, undefined);
     }
-    has_fourRowTemplate() {
+    get has_fourRowTemplate() {
         return pb_1.Message.getField(this, 1) != null;
     }
     get hydratedFourRowTemplate() {
@@ -8771,7 +8771,7 @@ export class TemplateMessage extends pb_1.Message {
     clear_hydratedFourRowTemplate() {
         pb_1.Message.setField(this, 2, undefined);
     }
-    has_hydratedFourRowTemplate() {
+    get has_hydratedFourRowTemplate() {
         return pb_1.Message.getField(this, 2) != null;
     }
     get format() {
@@ -8830,13 +8830,13 @@ export class TemplateMessage extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.has_contextInfo())
+        if (this.has_contextInfo)
             writer.writeMessage(3, this.contextInfo, () => this.contextInfo.serialize(writer));
-        if (this.has_hydratedTemplate())
+        if (this.has_hydratedTemplate)
             writer.writeMessage(4, this.hydratedTemplate, () => this.hydratedTemplate.serialize(writer));
-        if (this.has_fourRowTemplate())
+        if (this.has_fourRowTemplate)
             writer.writeMessage(1, this.fourRowTemplate, () => this.fourRowTemplate.serialize(writer));
-        if (this.has_hydratedFourRowTemplate())
+        if (this.has_hydratedFourRowTemplate)
             writer.writeMessage(2, this.hydratedFourRowTemplate, () => this.hydratedFourRowTemplate.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
@@ -8905,7 +8905,7 @@ export class TemplateButtonReplyMessage extends pb_1.Message {
     clear_selectedId() {
         pb_1.Message.setField(this, 1, undefined);
     }
-    has_selectedId() {
+    get has_selectedId() {
         return pb_1.Message.getField(this, 1) != null;
     }
     get selectedDisplayText() {
@@ -8917,7 +8917,7 @@ export class TemplateButtonReplyMessage extends pb_1.Message {
     clear_selectedDisplayText() {
         pb_1.Message.setField(this, 2, undefined);
     }
-    has_selectedDisplayText() {
+    get has_selectedDisplayText() {
         return pb_1.Message.getField(this, 2) != null;
     }
     get contextInfo() {
@@ -8929,7 +8929,7 @@ export class TemplateButtonReplyMessage extends pb_1.Message {
     clear_contextInfo() {
         pb_1.Message.setField(this, 3, undefined);
     }
-    has_contextInfo() {
+    get has_contextInfo() {
         return pb_1.Message.getField(this, 3) != null;
     }
     get selectedIndex() {
@@ -8941,7 +8941,7 @@ export class TemplateButtonReplyMessage extends pb_1.Message {
     clear_selectedIndex() {
         pb_1.Message.setField(this, 4, undefined);
     }
-    has_selectedIndex() {
+    get has_selectedIndex() {
         return pb_1.Message.getField(this, 4) != null;
     }
     static fromObject(data: {
@@ -8990,13 +8990,13 @@ export class TemplateButtonReplyMessage extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.has_selectedId() && this.selectedId.length)
+        if (this.has_selectedId && this.selectedId.length)
             writer.writeString(1, this.selectedId);
-        if (this.has_selectedDisplayText() && this.selectedDisplayText.length)
+        if (this.has_selectedDisplayText && this.selectedDisplayText.length)
             writer.writeString(2, this.selectedDisplayText);
-        if (this.has_contextInfo())
+        if (this.has_contextInfo)
             writer.writeMessage(3, this.contextInfo, () => this.contextInfo.serialize(writer));
-        if (this.has_selectedIndex())
+        if (this.has_selectedIndex)
             writer.writeUint32(4, this.selectedIndex);
         if (!w)
             return writer.getResultBuffer();
@@ -9061,7 +9061,7 @@ export class CatalogSnapshot extends pb_1.Message {
     clear_catalogImage() {
         pb_1.Message.setField(this, 1, undefined);
     }
-    has_catalogImage() {
+    get has_catalogImage() {
         return pb_1.Message.getField(this, 1) != null;
     }
     get title() {
@@ -9073,7 +9073,7 @@ export class CatalogSnapshot extends pb_1.Message {
     clear_title() {
         pb_1.Message.setField(this, 2, undefined);
     }
-    has_title() {
+    get has_title() {
         return pb_1.Message.getField(this, 2) != null;
     }
     get description() {
@@ -9085,7 +9085,7 @@ export class CatalogSnapshot extends pb_1.Message {
     clear_description() {
         pb_1.Message.setField(this, 3, undefined);
     }
-    has_description() {
+    get has_description() {
         return pb_1.Message.getField(this, 3) != null;
     }
     static fromObject(data: {
@@ -9126,11 +9126,11 @@ export class CatalogSnapshot extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.has_catalogImage())
+        if (this.has_catalogImage)
             writer.writeMessage(1, this.catalogImage, () => this.catalogImage.serialize(writer));
-        if (this.has_title() && this.title.length)
+        if (this.has_title && this.title.length)
             writer.writeString(2, this.title);
-        if (this.has_description() && this.description.length)
+        if (this.has_description && this.description.length)
             writer.writeString(3, this.description);
         if (!w)
             return writer.getResultBuffer();
@@ -9220,7 +9220,7 @@ export class ProductSnapshot extends pb_1.Message {
     clear_productImage() {
         pb_1.Message.setField(this, 1, undefined);
     }
-    has_productImage() {
+    get has_productImage() {
         return pb_1.Message.getField(this, 1) != null;
     }
     get productId() {
@@ -9232,7 +9232,7 @@ export class ProductSnapshot extends pb_1.Message {
     clear_productId() {
         pb_1.Message.setField(this, 2, undefined);
     }
-    has_productId() {
+    get has_productId() {
         return pb_1.Message.getField(this, 2) != null;
     }
     get title() {
@@ -9244,7 +9244,7 @@ export class ProductSnapshot extends pb_1.Message {
     clear_title() {
         pb_1.Message.setField(this, 3, undefined);
     }
-    has_title() {
+    get has_title() {
         return pb_1.Message.getField(this, 3) != null;
     }
     get description() {
@@ -9256,7 +9256,7 @@ export class ProductSnapshot extends pb_1.Message {
     clear_description() {
         pb_1.Message.setField(this, 4, undefined);
     }
-    has_description() {
+    get has_description() {
         return pb_1.Message.getField(this, 4) != null;
     }
     get currencyCode() {
@@ -9268,7 +9268,7 @@ export class ProductSnapshot extends pb_1.Message {
     clear_currencyCode() {
         pb_1.Message.setField(this, 5, undefined);
     }
-    has_currencyCode() {
+    get has_currencyCode() {
         return pb_1.Message.getField(this, 5) != null;
     }
     get priceAmount1000() {
@@ -9280,7 +9280,7 @@ export class ProductSnapshot extends pb_1.Message {
     clear_priceAmount1000() {
         pb_1.Message.setField(this, 6, undefined);
     }
-    has_priceAmount1000() {
+    get has_priceAmount1000() {
         return pb_1.Message.getField(this, 6) != null;
     }
     get retailerId() {
@@ -9292,7 +9292,7 @@ export class ProductSnapshot extends pb_1.Message {
     clear_retailerId() {
         pb_1.Message.setField(this, 7, undefined);
     }
-    has_retailerId() {
+    get has_retailerId() {
         return pb_1.Message.getField(this, 7) != null;
     }
     get url() {
@@ -9304,7 +9304,7 @@ export class ProductSnapshot extends pb_1.Message {
     clear_url() {
         pb_1.Message.setField(this, 8, undefined);
     }
-    has_url() {
+    get has_url() {
         return pb_1.Message.getField(this, 8) != null;
     }
     get productImageCount() {
@@ -9316,7 +9316,7 @@ export class ProductSnapshot extends pb_1.Message {
     clear_productImageCount() {
         pb_1.Message.setField(this, 9, undefined);
     }
-    has_productImageCount() {
+    get has_productImageCount() {
         return pb_1.Message.getField(this, 9) != null;
     }
     get firstImageId() {
@@ -9328,7 +9328,7 @@ export class ProductSnapshot extends pb_1.Message {
     clear_firstImageId() {
         pb_1.Message.setField(this, 11, undefined);
     }
-    has_firstImageId() {
+    get has_firstImageId() {
         return pb_1.Message.getField(this, 11) != null;
     }
     static fromObject(data: {
@@ -9425,25 +9425,25 @@ export class ProductSnapshot extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.has_productImage())
+        if (this.has_productImage)
             writer.writeMessage(1, this.productImage, () => this.productImage.serialize(writer));
-        if (this.has_productId() && this.productId.length)
+        if (this.has_productId && this.productId.length)
             writer.writeString(2, this.productId);
-        if (this.has_title() && this.title.length)
+        if (this.has_title && this.title.length)
             writer.writeString(3, this.title);
-        if (this.has_description() && this.description.length)
+        if (this.has_description && this.description.length)
             writer.writeString(4, this.description);
-        if (this.has_currencyCode() && this.currencyCode.length)
+        if (this.has_currencyCode && this.currencyCode.length)
             writer.writeString(5, this.currencyCode);
-        if (this.has_priceAmount1000())
+        if (this.has_priceAmount1000)
             writer.writeInt64(6, this.priceAmount1000);
-        if (this.has_retailerId() && this.retailerId.length)
+        if (this.has_retailerId && this.retailerId.length)
             writer.writeString(7, this.retailerId);
-        if (this.has_url() && this.url.length)
+        if (this.has_url && this.url.length)
             writer.writeString(8, this.url);
-        if (this.has_productImageCount())
+        if (this.has_productImageCount)
             writer.writeUint32(9, this.productImageCount);
-        if (this.has_firstImageId() && this.firstImageId.length)
+        if (this.has_firstImageId && this.firstImageId.length)
             writer.writeString(11, this.firstImageId);
         if (!w)
             return writer.getResultBuffer();
@@ -9530,7 +9530,7 @@ export class ProductMessage extends pb_1.Message {
     clear_product() {
         pb_1.Message.setField(this, 1, undefined);
     }
-    has_product() {
+    get has_product() {
         return pb_1.Message.getField(this, 1) != null;
     }
     get businessOwnerJid() {
@@ -9542,7 +9542,7 @@ export class ProductMessage extends pb_1.Message {
     clear_businessOwnerJid() {
         pb_1.Message.setField(this, 2, undefined);
     }
-    has_businessOwnerJid() {
+    get has_businessOwnerJid() {
         return pb_1.Message.getField(this, 2) != null;
     }
     get catalog() {
@@ -9554,7 +9554,7 @@ export class ProductMessage extends pb_1.Message {
     clear_catalog() {
         pb_1.Message.setField(this, 4, undefined);
     }
-    has_catalog() {
+    get has_catalog() {
         return pb_1.Message.getField(this, 4) != null;
     }
     get contextInfo() {
@@ -9566,7 +9566,7 @@ export class ProductMessage extends pb_1.Message {
     clear_contextInfo() {
         pb_1.Message.setField(this, 17, undefined);
     }
-    has_contextInfo() {
+    get has_contextInfo() {
         return pb_1.Message.getField(this, 17) != null;
     }
     static fromObject(data: {
@@ -9615,13 +9615,13 @@ export class ProductMessage extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.has_product())
+        if (this.has_product)
             writer.writeMessage(1, this.product, () => this.product.serialize(writer));
-        if (this.has_businessOwnerJid() && this.businessOwnerJid.length)
+        if (this.has_businessOwnerJid && this.businessOwnerJid.length)
             writer.writeString(2, this.businessOwnerJid);
-        if (this.has_catalog())
+        if (this.has_catalog)
             writer.writeMessage(4, this.catalog, () => this.catalog.serialize(writer));
-        if (this.has_contextInfo())
+        if (this.has_contextInfo)
             writer.writeMessage(17, this.contextInfo, () => this.contextInfo.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
@@ -9702,7 +9702,7 @@ export class GroupInviteMessage extends pb_1.Message {
     clear_groupJid() {
         pb_1.Message.setField(this, 1, undefined);
     }
-    has_groupJid() {
+    get has_groupJid() {
         return pb_1.Message.getField(this, 1) != null;
     }
     get inviteCode() {
@@ -9714,7 +9714,7 @@ export class GroupInviteMessage extends pb_1.Message {
     clear_inviteCode() {
         pb_1.Message.setField(this, 2, undefined);
     }
-    has_inviteCode() {
+    get has_inviteCode() {
         return pb_1.Message.getField(this, 2) != null;
     }
     get inviteExpiration() {
@@ -9726,7 +9726,7 @@ export class GroupInviteMessage extends pb_1.Message {
     clear_inviteExpiration() {
         pb_1.Message.setField(this, 3, undefined);
     }
-    has_inviteExpiration() {
+    get has_inviteExpiration() {
         return pb_1.Message.getField(this, 3) != null;
     }
     get groupName() {
@@ -9738,7 +9738,7 @@ export class GroupInviteMessage extends pb_1.Message {
     clear_groupName() {
         pb_1.Message.setField(this, 4, undefined);
     }
-    has_groupName() {
+    get has_groupName() {
         return pb_1.Message.getField(this, 4) != null;
     }
     get jpegThumbnail() {
@@ -9750,7 +9750,7 @@ export class GroupInviteMessage extends pb_1.Message {
     clear_jpegThumbnail() {
         pb_1.Message.setField(this, 5, undefined);
     }
-    has_jpegThumbnail() {
+    get has_jpegThumbnail() {
         return pb_1.Message.getField(this, 5) != null;
     }
     get caption() {
@@ -9762,7 +9762,7 @@ export class GroupInviteMessage extends pb_1.Message {
     clear_caption() {
         pb_1.Message.setField(this, 6, undefined);
     }
-    has_caption() {
+    get has_caption() {
         return pb_1.Message.getField(this, 6) != null;
     }
     get contextInfo() {
@@ -9774,7 +9774,7 @@ export class GroupInviteMessage extends pb_1.Message {
     clear_contextInfo() {
         pb_1.Message.setField(this, 7, undefined);
     }
-    has_contextInfo() {
+    get has_contextInfo() {
         return pb_1.Message.getField(this, 7) != null;
     }
     static fromObject(data: {
@@ -9847,19 +9847,19 @@ export class GroupInviteMessage extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.has_groupJid() && this.groupJid.length)
+        if (this.has_groupJid && this.groupJid.length)
             writer.writeString(1, this.groupJid);
-        if (this.has_inviteCode() && this.inviteCode.length)
+        if (this.has_inviteCode && this.inviteCode.length)
             writer.writeString(2, this.inviteCode);
-        if (this.has_inviteExpiration())
+        if (this.has_inviteExpiration)
             writer.writeInt64(3, this.inviteExpiration);
-        if (this.has_groupName() && this.groupName.length)
+        if (this.has_groupName && this.groupName.length)
             writer.writeString(4, this.groupName);
-        if (this.has_jpegThumbnail() && this.jpegThumbnail.length)
+        if (this.has_jpegThumbnail && this.jpegThumbnail.length)
             writer.writeBytes(5, this.jpegThumbnail);
-        if (this.has_caption() && this.caption.length)
+        if (this.has_caption && this.caption.length)
             writer.writeString(6, this.caption);
-        if (this.has_contextInfo())
+        if (this.has_contextInfo)
             writer.writeMessage(7, this.contextInfo, () => this.contextInfo.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
@@ -9933,7 +9933,7 @@ export class DeviceSentMessage extends pb_1.Message {
     clear_destinationJid() {
         pb_1.Message.setField(this, 1, undefined);
     }
-    has_destinationJid() {
+    get has_destinationJid() {
         return pb_1.Message.getField(this, 1) != null;
     }
     get message() {
@@ -9945,7 +9945,7 @@ export class DeviceSentMessage extends pb_1.Message {
     clear_message() {
         pb_1.Message.setField(this, 2, undefined);
     }
-    has_message() {
+    get has_message() {
         return pb_1.Message.getField(this, 2) != null;
     }
     get phash() {
@@ -9957,7 +9957,7 @@ export class DeviceSentMessage extends pb_1.Message {
     clear_phash() {
         pb_1.Message.setField(this, 3, undefined);
     }
-    has_phash() {
+    get has_phash() {
         return pb_1.Message.getField(this, 3) != null;
     }
     static fromObject(data: {
@@ -9998,11 +9998,11 @@ export class DeviceSentMessage extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.has_destinationJid() && this.destinationJid.length)
+        if (this.has_destinationJid && this.destinationJid.length)
             writer.writeString(1, this.destinationJid);
-        if (this.has_message())
+        if (this.has_message)
             writer.writeMessage(2, this.message, () => this.message.serialize(writer));
-        if (this.has_phash() && this.phash.length)
+        if (this.has_phash && this.phash.length)
             writer.writeString(3, this.phash);
         if (!w)
             return writer.getResultBuffer();
@@ -10156,7 +10156,7 @@ export class Message extends pb_1.Message {
     clear_conversation() {
         pb_1.Message.setField(this, 1, undefined);
     }
-    has_conversation() {
+    get has_conversation() {
         return pb_1.Message.getField(this, 1) != null;
     }
     get senderKeyDistributionMessage() {
@@ -10168,7 +10168,7 @@ export class Message extends pb_1.Message {
     clear_senderKeyDistributionMessage() {
         pb_1.Message.setField(this, 2, undefined);
     }
-    has_senderKeyDistributionMessage() {
+    get has_senderKeyDistributionMessage() {
         return pb_1.Message.getField(this, 2) != null;
     }
     get imageMessage() {
@@ -10180,7 +10180,7 @@ export class Message extends pb_1.Message {
     clear_imageMessage() {
         pb_1.Message.setField(this, 3, undefined);
     }
-    has_imageMessage() {
+    get has_imageMessage() {
         return pb_1.Message.getField(this, 3) != null;
     }
     get contactMessage() {
@@ -10192,7 +10192,7 @@ export class Message extends pb_1.Message {
     clear_contactMessage() {
         pb_1.Message.setField(this, 4, undefined);
     }
-    has_contactMessage() {
+    get has_contactMessage() {
         return pb_1.Message.getField(this, 4) != null;
     }
     get locationMessage() {
@@ -10204,7 +10204,7 @@ export class Message extends pb_1.Message {
     clear_locationMessage() {
         pb_1.Message.setField(this, 5, undefined);
     }
-    has_locationMessage() {
+    get has_locationMessage() {
         return pb_1.Message.getField(this, 5) != null;
     }
     get extendedTextMessage() {
@@ -10216,7 +10216,7 @@ export class Message extends pb_1.Message {
     clear_extendedTextMessage() {
         pb_1.Message.setField(this, 6, undefined);
     }
-    has_extendedTextMessage() {
+    get has_extendedTextMessage() {
         return pb_1.Message.getField(this, 6) != null;
     }
     get documentMessage() {
@@ -10228,7 +10228,7 @@ export class Message extends pb_1.Message {
     clear_documentMessage() {
         pb_1.Message.setField(this, 7, undefined);
     }
-    has_documentMessage() {
+    get has_documentMessage() {
         return pb_1.Message.getField(this, 7) != null;
     }
     get audioMessage() {
@@ -10240,7 +10240,7 @@ export class Message extends pb_1.Message {
     clear_audioMessage() {
         pb_1.Message.setField(this, 8, undefined);
     }
-    has_audioMessage() {
+    get has_audioMessage() {
         return pb_1.Message.getField(this, 8) != null;
     }
     get videoMessage() {
@@ -10252,7 +10252,7 @@ export class Message extends pb_1.Message {
     clear_videoMessage() {
         pb_1.Message.setField(this, 9, undefined);
     }
-    has_videoMessage() {
+    get has_videoMessage() {
         return pb_1.Message.getField(this, 9) != null;
     }
     get call() {
@@ -10264,7 +10264,7 @@ export class Message extends pb_1.Message {
     clear_call() {
         pb_1.Message.setField(this, 10, undefined);
     }
-    has_call() {
+    get has_call() {
         return pb_1.Message.getField(this, 10) != null;
     }
     get chat() {
@@ -10276,7 +10276,7 @@ export class Message extends pb_1.Message {
     clear_chat() {
         pb_1.Message.setField(this, 11, undefined);
     }
-    has_chat() {
+    get has_chat() {
         return pb_1.Message.getField(this, 11) != null;
     }
     get protocolMessage() {
@@ -10288,7 +10288,7 @@ export class Message extends pb_1.Message {
     clear_protocolMessage() {
         pb_1.Message.setField(this, 12, undefined);
     }
-    has_protocolMessage() {
+    get has_protocolMessage() {
         return pb_1.Message.getField(this, 12) != null;
     }
     get contactsArrayMessage() {
@@ -10300,7 +10300,7 @@ export class Message extends pb_1.Message {
     clear_contactsArrayMessage() {
         pb_1.Message.setField(this, 13, undefined);
     }
-    has_contactsArrayMessage() {
+    get has_contactsArrayMessage() {
         return pb_1.Message.getField(this, 13) != null;
     }
     get highlyStructuredMessage() {
@@ -10312,7 +10312,7 @@ export class Message extends pb_1.Message {
     clear_highlyStructuredMessage() {
         pb_1.Message.setField(this, 14, undefined);
     }
-    has_highlyStructuredMessage() {
+    get has_highlyStructuredMessage() {
         return pb_1.Message.getField(this, 14) != null;
     }
     get fastRatchetKeySenderKeyDistributionMessage() {
@@ -10324,7 +10324,7 @@ export class Message extends pb_1.Message {
     clear_fastRatchetKeySenderKeyDistributionMessage() {
         pb_1.Message.setField(this, 15, undefined);
     }
-    has_fastRatchetKeySenderKeyDistributionMessage() {
+    get has_fastRatchetKeySenderKeyDistributionMessage() {
         return pb_1.Message.getField(this, 15) != null;
     }
     get sendPaymentMessage() {
@@ -10336,7 +10336,7 @@ export class Message extends pb_1.Message {
     clear_sendPaymentMessage() {
         pb_1.Message.setField(this, 16, undefined);
     }
-    has_sendPaymentMessage() {
+    get has_sendPaymentMessage() {
         return pb_1.Message.getField(this, 16) != null;
     }
     get liveLocationMessage() {
@@ -10348,7 +10348,7 @@ export class Message extends pb_1.Message {
     clear_liveLocationMessage() {
         pb_1.Message.setField(this, 18, undefined);
     }
-    has_liveLocationMessage() {
+    get has_liveLocationMessage() {
         return pb_1.Message.getField(this, 18) != null;
     }
     get requestPaymentMessage() {
@@ -10360,7 +10360,7 @@ export class Message extends pb_1.Message {
     clear_requestPaymentMessage() {
         pb_1.Message.setField(this, 22, undefined);
     }
-    has_requestPaymentMessage() {
+    get has_requestPaymentMessage() {
         return pb_1.Message.getField(this, 22) != null;
     }
     get declinePaymentRequestMessage() {
@@ -10372,7 +10372,7 @@ export class Message extends pb_1.Message {
     clear_declinePaymentRequestMessage() {
         pb_1.Message.setField(this, 23, undefined);
     }
-    has_declinePaymentRequestMessage() {
+    get has_declinePaymentRequestMessage() {
         return pb_1.Message.getField(this, 23) != null;
     }
     get cancelPaymentRequestMessage() {
@@ -10384,7 +10384,7 @@ export class Message extends pb_1.Message {
     clear_cancelPaymentRequestMessage() {
         pb_1.Message.setField(this, 24, undefined);
     }
-    has_cancelPaymentRequestMessage() {
+    get has_cancelPaymentRequestMessage() {
         return pb_1.Message.getField(this, 24) != null;
     }
     get templateMessage() {
@@ -10396,7 +10396,7 @@ export class Message extends pb_1.Message {
     clear_templateMessage() {
         pb_1.Message.setField(this, 25, undefined);
     }
-    has_templateMessage() {
+    get has_templateMessage() {
         return pb_1.Message.getField(this, 25) != null;
     }
     get stickerMessage() {
@@ -10408,7 +10408,7 @@ export class Message extends pb_1.Message {
     clear_stickerMessage() {
         pb_1.Message.setField(this, 26, undefined);
     }
-    has_stickerMessage() {
+    get has_stickerMessage() {
         return pb_1.Message.getField(this, 26) != null;
     }
     get groupInviteMessage() {
@@ -10420,7 +10420,7 @@ export class Message extends pb_1.Message {
     clear_groupInviteMessage() {
         pb_1.Message.setField(this, 28, undefined);
     }
-    has_groupInviteMessage() {
+    get has_groupInviteMessage() {
         return pb_1.Message.getField(this, 28) != null;
     }
     get templateButtonReplyMessage() {
@@ -10432,7 +10432,7 @@ export class Message extends pb_1.Message {
     clear_templateButtonReplyMessage() {
         pb_1.Message.setField(this, 29, undefined);
     }
-    has_templateButtonReplyMessage() {
+    get has_templateButtonReplyMessage() {
         return pb_1.Message.getField(this, 29) != null;
     }
     get productMessage() {
@@ -10444,7 +10444,7 @@ export class Message extends pb_1.Message {
     clear_productMessage() {
         pb_1.Message.setField(this, 30, undefined);
     }
-    has_productMessage() {
+    get has_productMessage() {
         return pb_1.Message.getField(this, 30) != null;
     }
     get deviceSentMessage() {
@@ -10456,7 +10456,7 @@ export class Message extends pb_1.Message {
     clear_deviceSentMessage() {
         pb_1.Message.setField(this, 31, undefined);
     }
-    has_deviceSentMessage() {
+    get has_deviceSentMessage() {
         return pb_1.Message.getField(this, 31) != null;
     }
     static fromObject(data: {
@@ -10681,57 +10681,57 @@ export class Message extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.has_conversation() && this.conversation.length)
+        if (this.has_conversation && this.conversation.length)
             writer.writeString(1, this.conversation);
-        if (this.has_senderKeyDistributionMessage())
+        if (this.has_senderKeyDistributionMessage)
             writer.writeMessage(2, this.senderKeyDistributionMessage, () => this.senderKeyDistributionMessage.serialize(writer));
-        if (this.has_imageMessage())
+        if (this.has_imageMessage)
             writer.writeMessage(3, this.imageMessage, () => this.imageMessage.serialize(writer));
-        if (this.has_contactMessage())
+        if (this.has_contactMessage)
             writer.writeMessage(4, this.contactMessage, () => this.contactMessage.serialize(writer));
-        if (this.has_locationMessage())
+        if (this.has_locationMessage)
             writer.writeMessage(5, this.locationMessage, () => this.locationMessage.serialize(writer));
-        if (this.has_extendedTextMessage())
+        if (this.has_extendedTextMessage)
             writer.writeMessage(6, this.extendedTextMessage, () => this.extendedTextMessage.serialize(writer));
-        if (this.has_documentMessage())
+        if (this.has_documentMessage)
             writer.writeMessage(7, this.documentMessage, () => this.documentMessage.serialize(writer));
-        if (this.has_audioMessage())
+        if (this.has_audioMessage)
             writer.writeMessage(8, this.audioMessage, () => this.audioMessage.serialize(writer));
-        if (this.has_videoMessage())
+        if (this.has_videoMessage)
             writer.writeMessage(9, this.videoMessage, () => this.videoMessage.serialize(writer));
-        if (this.has_call())
+        if (this.has_call)
             writer.writeMessage(10, this.call, () => this.call.serialize(writer));
-        if (this.has_chat())
+        if (this.has_chat)
             writer.writeMessage(11, this.chat, () => this.chat.serialize(writer));
-        if (this.has_protocolMessage())
+        if (this.has_protocolMessage)
             writer.writeMessage(12, this.protocolMessage, () => this.protocolMessage.serialize(writer));
-        if (this.has_contactsArrayMessage())
+        if (this.has_contactsArrayMessage)
             writer.writeMessage(13, this.contactsArrayMessage, () => this.contactsArrayMessage.serialize(writer));
-        if (this.has_highlyStructuredMessage())
+        if (this.has_highlyStructuredMessage)
             writer.writeMessage(14, this.highlyStructuredMessage, () => this.highlyStructuredMessage.serialize(writer));
-        if (this.has_fastRatchetKeySenderKeyDistributionMessage())
+        if (this.has_fastRatchetKeySenderKeyDistributionMessage)
             writer.writeMessage(15, this.fastRatchetKeySenderKeyDistributionMessage, () => this.fastRatchetKeySenderKeyDistributionMessage.serialize(writer));
-        if (this.has_sendPaymentMessage())
+        if (this.has_sendPaymentMessage)
             writer.writeMessage(16, this.sendPaymentMessage, () => this.sendPaymentMessage.serialize(writer));
-        if (this.has_liveLocationMessage())
+        if (this.has_liveLocationMessage)
             writer.writeMessage(18, this.liveLocationMessage, () => this.liveLocationMessage.serialize(writer));
-        if (this.has_requestPaymentMessage())
+        if (this.has_requestPaymentMessage)
             writer.writeMessage(22, this.requestPaymentMessage, () => this.requestPaymentMessage.serialize(writer));
-        if (this.has_declinePaymentRequestMessage())
+        if (this.has_declinePaymentRequestMessage)
             writer.writeMessage(23, this.declinePaymentRequestMessage, () => this.declinePaymentRequestMessage.serialize(writer));
-        if (this.has_cancelPaymentRequestMessage())
+        if (this.has_cancelPaymentRequestMessage)
             writer.writeMessage(24, this.cancelPaymentRequestMessage, () => this.cancelPaymentRequestMessage.serialize(writer));
-        if (this.has_templateMessage())
+        if (this.has_templateMessage)
             writer.writeMessage(25, this.templateMessage, () => this.templateMessage.serialize(writer));
-        if (this.has_stickerMessage())
+        if (this.has_stickerMessage)
             writer.writeMessage(26, this.stickerMessage, () => this.stickerMessage.serialize(writer));
-        if (this.has_groupInviteMessage())
+        if (this.has_groupInviteMessage)
             writer.writeMessage(28, this.groupInviteMessage, () => this.groupInviteMessage.serialize(writer));
-        if (this.has_templateButtonReplyMessage())
+        if (this.has_templateButtonReplyMessage)
             writer.writeMessage(29, this.templateButtonReplyMessage, () => this.templateButtonReplyMessage.serialize(writer));
-        if (this.has_productMessage())
+        if (this.has_productMessage)
             writer.writeMessage(30, this.productMessage, () => this.productMessage.serialize(writer));
-        if (this.has_deviceSentMessage())
+        if (this.has_deviceSentMessage)
             writer.writeMessage(31, this.deviceSentMessage, () => this.deviceSentMessage.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
@@ -10866,7 +10866,7 @@ export class MessageKey extends pb_1.Message {
     clear_remoteJid() {
         pb_1.Message.setField(this, 1, undefined);
     }
-    has_remoteJid() {
+    get has_remoteJid() {
         return pb_1.Message.getField(this, 1) != null;
     }
     get fromMe() {
@@ -10878,7 +10878,7 @@ export class MessageKey extends pb_1.Message {
     clear_fromMe() {
         pb_1.Message.setField(this, 2, undefined);
     }
-    has_fromMe() {
+    get has_fromMe() {
         return pb_1.Message.getField(this, 2) != null;
     }
     get id() {
@@ -10890,7 +10890,7 @@ export class MessageKey extends pb_1.Message {
     clear_id() {
         pb_1.Message.setField(this, 3, undefined);
     }
-    has_id() {
+    get has_id() {
         return pb_1.Message.getField(this, 3) != null;
     }
     get participant() {
@@ -10902,7 +10902,7 @@ export class MessageKey extends pb_1.Message {
     clear_participant() {
         pb_1.Message.setField(this, 4, undefined);
     }
-    has_participant() {
+    get has_participant() {
         return pb_1.Message.getField(this, 4) != null;
     }
     static fromObject(data: {
@@ -10951,13 +10951,13 @@ export class MessageKey extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.has_remoteJid() && this.remoteJid.length)
+        if (this.has_remoteJid && this.remoteJid.length)
             writer.writeString(1, this.remoteJid);
-        if (this.has_fromMe())
+        if (this.has_fromMe)
             writer.writeBool(2, this.fromMe);
-        if (this.has_id() && this.id.length)
+        if (this.has_id && this.id.length)
             writer.writeString(3, this.id);
-        if (this.has_participant() && this.participant.length)
+        if (this.has_participant && this.participant.length)
             writer.writeString(4, this.participant);
         if (!w)
             return writer.getResultBuffer();
@@ -11142,7 +11142,7 @@ export class WebFeatures extends pb_1.Message {
     clear_labelsDisplay() {
         pb_1.Message.setField(this, 1, undefined);
     }
-    has_labelsDisplay() {
+    get has_labelsDisplay() {
         return pb_1.Message.getField(this, 1) != null;
     }
     get voipIndividualOutgoing() {
@@ -11154,7 +11154,7 @@ export class WebFeatures extends pb_1.Message {
     clear_voipIndividualOutgoing() {
         pb_1.Message.setField(this, 2, undefined);
     }
-    has_voipIndividualOutgoing() {
+    get has_voipIndividualOutgoing() {
         return pb_1.Message.getField(this, 2) != null;
     }
     get groupsV3() {
@@ -11166,7 +11166,7 @@ export class WebFeatures extends pb_1.Message {
     clear_groupsV3() {
         pb_1.Message.setField(this, 3, undefined);
     }
-    has_groupsV3() {
+    get has_groupsV3() {
         return pb_1.Message.getField(this, 3) != null;
     }
     get groupsV3Create() {
@@ -11178,7 +11178,7 @@ export class WebFeatures extends pb_1.Message {
     clear_groupsV3Create() {
         pb_1.Message.setField(this, 4, undefined);
     }
-    has_groupsV3Create() {
+    get has_groupsV3Create() {
         return pb_1.Message.getField(this, 4) != null;
     }
     get changeNumberV2() {
@@ -11190,7 +11190,7 @@ export class WebFeatures extends pb_1.Message {
     clear_changeNumberV2() {
         pb_1.Message.setField(this, 5, undefined);
     }
-    has_changeNumberV2() {
+    get has_changeNumberV2() {
         return pb_1.Message.getField(this, 5) != null;
     }
     get queryStatusV3Thumbnail() {
@@ -11202,7 +11202,7 @@ export class WebFeatures extends pb_1.Message {
     clear_queryStatusV3Thumbnail() {
         pb_1.Message.setField(this, 6, undefined);
     }
-    has_queryStatusV3Thumbnail() {
+    get has_queryStatusV3Thumbnail() {
         return pb_1.Message.getField(this, 6) != null;
     }
     get liveLocations() {
@@ -11214,7 +11214,7 @@ export class WebFeatures extends pb_1.Message {
     clear_liveLocations() {
         pb_1.Message.setField(this, 7, undefined);
     }
-    has_liveLocations() {
+    get has_liveLocations() {
         return pb_1.Message.getField(this, 7) != null;
     }
     get queryVname() {
@@ -11226,7 +11226,7 @@ export class WebFeatures extends pb_1.Message {
     clear_queryVname() {
         pb_1.Message.setField(this, 8, undefined);
     }
-    has_queryVname() {
+    get has_queryVname() {
         return pb_1.Message.getField(this, 8) != null;
     }
     get voipIndividualIncoming() {
@@ -11238,7 +11238,7 @@ export class WebFeatures extends pb_1.Message {
     clear_voipIndividualIncoming() {
         pb_1.Message.setField(this, 9, undefined);
     }
-    has_voipIndividualIncoming() {
+    get has_voipIndividualIncoming() {
         return pb_1.Message.getField(this, 9) != null;
     }
     get quickRepliesQuery() {
@@ -11250,7 +11250,7 @@ export class WebFeatures extends pb_1.Message {
     clear_quickRepliesQuery() {
         pb_1.Message.setField(this, 10, undefined);
     }
-    has_quickRepliesQuery() {
+    get has_quickRepliesQuery() {
         return pb_1.Message.getField(this, 10) != null;
     }
     get payments() {
@@ -11262,7 +11262,7 @@ export class WebFeatures extends pb_1.Message {
     clear_payments() {
         pb_1.Message.setField(this, 11, undefined);
     }
-    has_payments() {
+    get has_payments() {
         return pb_1.Message.getField(this, 11) != null;
     }
     get stickerPackQuery() {
@@ -11274,7 +11274,7 @@ export class WebFeatures extends pb_1.Message {
     clear_stickerPackQuery() {
         pb_1.Message.setField(this, 12, undefined);
     }
-    has_stickerPackQuery() {
+    get has_stickerPackQuery() {
         return pb_1.Message.getField(this, 12) != null;
     }
     get liveLocationsFinal() {
@@ -11286,7 +11286,7 @@ export class WebFeatures extends pb_1.Message {
     clear_liveLocationsFinal() {
         pb_1.Message.setField(this, 13, undefined);
     }
-    has_liveLocationsFinal() {
+    get has_liveLocationsFinal() {
         return pb_1.Message.getField(this, 13) != null;
     }
     get labelsEdit() {
@@ -11298,7 +11298,7 @@ export class WebFeatures extends pb_1.Message {
     clear_labelsEdit() {
         pb_1.Message.setField(this, 14, undefined);
     }
-    has_labelsEdit() {
+    get has_labelsEdit() {
         return pb_1.Message.getField(this, 14) != null;
     }
     get mediaUpload() {
@@ -11310,7 +11310,7 @@ export class WebFeatures extends pb_1.Message {
     clear_mediaUpload() {
         pb_1.Message.setField(this, 15, undefined);
     }
-    has_mediaUpload() {
+    get has_mediaUpload() {
         return pb_1.Message.getField(this, 15) != null;
     }
     get mediaUploadRichQuickReplies() {
@@ -11322,7 +11322,7 @@ export class WebFeatures extends pb_1.Message {
     clear_mediaUploadRichQuickReplies() {
         pb_1.Message.setField(this, 18, undefined);
     }
-    has_mediaUploadRichQuickReplies() {
+    get has_mediaUploadRichQuickReplies() {
         return pb_1.Message.getField(this, 18) != null;
     }
     get vnameV2() {
@@ -11334,7 +11334,7 @@ export class WebFeatures extends pb_1.Message {
     clear_vnameV2() {
         pb_1.Message.setField(this, 19, undefined);
     }
-    has_vnameV2() {
+    get has_vnameV2() {
         return pb_1.Message.getField(this, 19) != null;
     }
     get videoPlaybackUrl() {
@@ -11346,7 +11346,7 @@ export class WebFeatures extends pb_1.Message {
     clear_videoPlaybackUrl() {
         pb_1.Message.setField(this, 20, undefined);
     }
-    has_videoPlaybackUrl() {
+    get has_videoPlaybackUrl() {
         return pb_1.Message.getField(this, 20) != null;
     }
     get statusRanking() {
@@ -11358,7 +11358,7 @@ export class WebFeatures extends pb_1.Message {
     clear_statusRanking() {
         pb_1.Message.setField(this, 21, undefined);
     }
-    has_statusRanking() {
+    get has_statusRanking() {
         return pb_1.Message.getField(this, 21) != null;
     }
     get voipIndividualVideo() {
@@ -11370,7 +11370,7 @@ export class WebFeatures extends pb_1.Message {
     clear_voipIndividualVideo() {
         pb_1.Message.setField(this, 22, undefined);
     }
-    has_voipIndividualVideo() {
+    get has_voipIndividualVideo() {
         return pb_1.Message.getField(this, 22) != null;
     }
     get thirdPartyStickers() {
@@ -11382,7 +11382,7 @@ export class WebFeatures extends pb_1.Message {
     clear_thirdPartyStickers() {
         pb_1.Message.setField(this, 23, undefined);
     }
-    has_thirdPartyStickers() {
+    get has_thirdPartyStickers() {
         return pb_1.Message.getField(this, 23) != null;
     }
     get frequentlyForwardedSetting() {
@@ -11394,7 +11394,7 @@ export class WebFeatures extends pb_1.Message {
     clear_frequentlyForwardedSetting() {
         pb_1.Message.setField(this, 24, undefined);
     }
-    has_frequentlyForwardedSetting() {
+    get has_frequentlyForwardedSetting() {
         return pb_1.Message.getField(this, 24) != null;
     }
     get groupsV4JoinPermission() {
@@ -11406,7 +11406,7 @@ export class WebFeatures extends pb_1.Message {
     clear_groupsV4JoinPermission() {
         pb_1.Message.setField(this, 25, undefined);
     }
-    has_groupsV4JoinPermission() {
+    get has_groupsV4JoinPermission() {
         return pb_1.Message.getField(this, 25) != null;
     }
     get recentStickers() {
@@ -11418,7 +11418,7 @@ export class WebFeatures extends pb_1.Message {
     clear_recentStickers() {
         pb_1.Message.setField(this, 26, undefined);
     }
-    has_recentStickers() {
+    get has_recentStickers() {
         return pb_1.Message.getField(this, 26) != null;
     }
     get catalog() {
@@ -11430,7 +11430,7 @@ export class WebFeatures extends pb_1.Message {
     clear_catalog() {
         pb_1.Message.setField(this, 27, undefined);
     }
-    has_catalog() {
+    get has_catalog() {
         return pb_1.Message.getField(this, 27) != null;
     }
     get starredStickers() {
@@ -11442,7 +11442,7 @@ export class WebFeatures extends pb_1.Message {
     clear_starredStickers() {
         pb_1.Message.setField(this, 28, undefined);
     }
-    has_starredStickers() {
+    get has_starredStickers() {
         return pb_1.Message.getField(this, 28) != null;
     }
     get voipGroupCall() {
@@ -11454,7 +11454,7 @@ export class WebFeatures extends pb_1.Message {
     clear_voipGroupCall() {
         pb_1.Message.setField(this, 29, undefined);
     }
-    has_voipGroupCall() {
+    get has_voipGroupCall() {
         return pb_1.Message.getField(this, 29) != null;
     }
     get templateMessage() {
@@ -11466,7 +11466,7 @@ export class WebFeatures extends pb_1.Message {
     clear_templateMessage() {
         pb_1.Message.setField(this, 30, undefined);
     }
-    has_templateMessage() {
+    get has_templateMessage() {
         return pb_1.Message.getField(this, 30) != null;
     }
     get templateMessageInteractivity() {
@@ -11478,7 +11478,7 @@ export class WebFeatures extends pb_1.Message {
     clear_templateMessageInteractivity() {
         pb_1.Message.setField(this, 31, undefined);
     }
-    has_templateMessageInteractivity() {
+    get has_templateMessageInteractivity() {
         return pb_1.Message.getField(this, 31) != null;
     }
     get ephemeralMessages() {
@@ -11490,7 +11490,7 @@ export class WebFeatures extends pb_1.Message {
     clear_ephemeralMessages() {
         pb_1.Message.setField(this, 32, undefined);
     }
-    has_ephemeralMessages() {
+    get has_ephemeralMessages() {
         return pb_1.Message.getField(this, 32) != null;
     }
     get e2ENotificationSync() {
@@ -11502,7 +11502,7 @@ export class WebFeatures extends pb_1.Message {
     clear_e2ENotificationSync() {
         pb_1.Message.setField(this, 33, undefined);
     }
-    has_e2ENotificationSync() {
+    get has_e2ENotificationSync() {
         return pb_1.Message.getField(this, 33) != null;
     }
     get recentStickersV2() {
@@ -11514,7 +11514,7 @@ export class WebFeatures extends pb_1.Message {
     clear_recentStickersV2() {
         pb_1.Message.setField(this, 34, undefined);
     }
-    has_recentStickersV2() {
+    get has_recentStickersV2() {
         return pb_1.Message.getField(this, 34) != null;
     }
     get syncdRelease1() {
@@ -11526,7 +11526,7 @@ export class WebFeatures extends pb_1.Message {
     clear_syncdRelease1() {
         pb_1.Message.setField(this, 35, undefined);
     }
-    has_syncdRelease1() {
+    get has_syncdRelease1() {
         return pb_1.Message.getField(this, 35) != null;
     }
     static fromObject(data: {
@@ -11807,71 +11807,71 @@ export class WebFeatures extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.has_labelsDisplay())
+        if (this.has_labelsDisplay)
             writer.writeEnum(1, this.labelsDisplay);
-        if (this.has_voipIndividualOutgoing())
+        if (this.has_voipIndividualOutgoing)
             writer.writeEnum(2, this.voipIndividualOutgoing);
-        if (this.has_groupsV3())
+        if (this.has_groupsV3)
             writer.writeEnum(3, this.groupsV3);
-        if (this.has_groupsV3Create())
+        if (this.has_groupsV3Create)
             writer.writeEnum(4, this.groupsV3Create);
-        if (this.has_changeNumberV2())
+        if (this.has_changeNumberV2)
             writer.writeEnum(5, this.changeNumberV2);
-        if (this.has_queryStatusV3Thumbnail())
+        if (this.has_queryStatusV3Thumbnail)
             writer.writeEnum(6, this.queryStatusV3Thumbnail);
-        if (this.has_liveLocations())
+        if (this.has_liveLocations)
             writer.writeEnum(7, this.liveLocations);
-        if (this.has_queryVname())
+        if (this.has_queryVname)
             writer.writeEnum(8, this.queryVname);
-        if (this.has_voipIndividualIncoming())
+        if (this.has_voipIndividualIncoming)
             writer.writeEnum(9, this.voipIndividualIncoming);
-        if (this.has_quickRepliesQuery())
+        if (this.has_quickRepliesQuery)
             writer.writeEnum(10, this.quickRepliesQuery);
-        if (this.has_payments())
+        if (this.has_payments)
             writer.writeEnum(11, this.payments);
-        if (this.has_stickerPackQuery())
+        if (this.has_stickerPackQuery)
             writer.writeEnum(12, this.stickerPackQuery);
-        if (this.has_liveLocationsFinal())
+        if (this.has_liveLocationsFinal)
             writer.writeEnum(13, this.liveLocationsFinal);
-        if (this.has_labelsEdit())
+        if (this.has_labelsEdit)
             writer.writeEnum(14, this.labelsEdit);
-        if (this.has_mediaUpload())
+        if (this.has_mediaUpload)
             writer.writeEnum(15, this.mediaUpload);
-        if (this.has_mediaUploadRichQuickReplies())
+        if (this.has_mediaUploadRichQuickReplies)
             writer.writeEnum(18, this.mediaUploadRichQuickReplies);
-        if (this.has_vnameV2())
+        if (this.has_vnameV2)
             writer.writeEnum(19, this.vnameV2);
-        if (this.has_videoPlaybackUrl())
+        if (this.has_videoPlaybackUrl)
             writer.writeEnum(20, this.videoPlaybackUrl);
-        if (this.has_statusRanking())
+        if (this.has_statusRanking)
             writer.writeEnum(21, this.statusRanking);
-        if (this.has_voipIndividualVideo())
+        if (this.has_voipIndividualVideo)
             writer.writeEnum(22, this.voipIndividualVideo);
-        if (this.has_thirdPartyStickers())
+        if (this.has_thirdPartyStickers)
             writer.writeEnum(23, this.thirdPartyStickers);
-        if (this.has_frequentlyForwardedSetting())
+        if (this.has_frequentlyForwardedSetting)
             writer.writeEnum(24, this.frequentlyForwardedSetting);
-        if (this.has_groupsV4JoinPermission())
+        if (this.has_groupsV4JoinPermission)
             writer.writeEnum(25, this.groupsV4JoinPermission);
-        if (this.has_recentStickers())
+        if (this.has_recentStickers)
             writer.writeEnum(26, this.recentStickers);
-        if (this.has_catalog())
+        if (this.has_catalog)
             writer.writeEnum(27, this.catalog);
-        if (this.has_starredStickers())
+        if (this.has_starredStickers)
             writer.writeEnum(28, this.starredStickers);
-        if (this.has_voipGroupCall())
+        if (this.has_voipGroupCall)
             writer.writeEnum(29, this.voipGroupCall);
-        if (this.has_templateMessage())
+        if (this.has_templateMessage)
             writer.writeEnum(30, this.templateMessage);
-        if (this.has_templateMessageInteractivity())
+        if (this.has_templateMessageInteractivity)
             writer.writeEnum(31, this.templateMessageInteractivity);
-        if (this.has_ephemeralMessages())
+        if (this.has_ephemeralMessages)
             writer.writeEnum(32, this.ephemeralMessages);
-        if (this.has_e2ENotificationSync())
+        if (this.has_e2ENotificationSync)
             writer.writeEnum(33, this.e2ENotificationSync);
-        if (this.has_recentStickersV2())
+        if (this.has_recentStickersV2)
             writer.writeEnum(34, this.recentStickersV2);
-        if (this.has_syncdRelease1())
+        if (this.has_syncdRelease1)
             writer.writeEnum(35, this.syncdRelease1);
         if (!w)
             return writer.getResultBuffer();
@@ -12033,7 +12033,7 @@ export class TabletNotificationsInfo extends pb_1.Message {
     clear_timestamp() {
         pb_1.Message.setField(this, 2, undefined);
     }
-    has_timestamp() {
+    get has_timestamp() {
         return pb_1.Message.getField(this, 2) != null;
     }
     get unreadChats() {
@@ -12045,7 +12045,7 @@ export class TabletNotificationsInfo extends pb_1.Message {
     clear_unreadChats() {
         pb_1.Message.setField(this, 3, undefined);
     }
-    has_unreadChats() {
+    get has_unreadChats() {
         return pb_1.Message.getField(this, 3) != null;
     }
     get notifyMessageCount() {
@@ -12057,7 +12057,7 @@ export class TabletNotificationsInfo extends pb_1.Message {
     clear_notifyMessageCount() {
         pb_1.Message.setField(this, 4, undefined);
     }
-    has_notifyMessageCount() {
+    get has_notifyMessageCount() {
         return pb_1.Message.getField(this, 4) != null;
     }
     get notifyMessage() {
@@ -12111,11 +12111,11 @@ export class TabletNotificationsInfo extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.has_timestamp())
+        if (this.has_timestamp)
             writer.writeUint64(2, this.timestamp);
-        if (this.has_unreadChats())
+        if (this.has_unreadChats)
             writer.writeUint32(3, this.unreadChats);
-        if (this.has_notifyMessageCount())
+        if (this.has_notifyMessageCount)
             writer.writeUint32(4, this.notifyMessageCount);
         if (this.notifyMessage.length)
             writer.writeRepeatedMessage(5, this.notifyMessage, (item: NotificationMessageInfo) => item.serialize(writer));
@@ -12186,7 +12186,7 @@ export class NotificationMessageInfo extends pb_1.Message {
     clear_key() {
         pb_1.Message.setField(this, 1, undefined);
     }
-    has_key() {
+    get has_key() {
         return pb_1.Message.getField(this, 1) != null;
     }
     get message() {
@@ -12198,7 +12198,7 @@ export class NotificationMessageInfo extends pb_1.Message {
     clear_message() {
         pb_1.Message.setField(this, 2, undefined);
     }
-    has_message() {
+    get has_message() {
         return pb_1.Message.getField(this, 2) != null;
     }
     get messageTimestamp() {
@@ -12210,7 +12210,7 @@ export class NotificationMessageInfo extends pb_1.Message {
     clear_messageTimestamp() {
         pb_1.Message.setField(this, 3, undefined);
     }
-    has_messageTimestamp() {
+    get has_messageTimestamp() {
         return pb_1.Message.getField(this, 3) != null;
     }
     get participant() {
@@ -12222,7 +12222,7 @@ export class NotificationMessageInfo extends pb_1.Message {
     clear_participant() {
         pb_1.Message.setField(this, 4, undefined);
     }
-    has_participant() {
+    get has_participant() {
         return pb_1.Message.getField(this, 4) != null;
     }
     static fromObject(data: {
@@ -12271,13 +12271,13 @@ export class NotificationMessageInfo extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.has_key())
+        if (this.has_key)
             writer.writeMessage(1, this.key, () => this.key.serialize(writer));
-        if (this.has_message())
+        if (this.has_message)
             writer.writeMessage(2, this.message, () => this.message.serialize(writer));
-        if (this.has_messageTimestamp())
+        if (this.has_messageTimestamp)
             writer.writeUint64(3, this.messageTimestamp);
-        if (this.has_participant() && this.participant.length)
+        if (this.has_participant && this.participant.length)
             writer.writeString(4, this.participant);
         if (!w)
             return writer.getResultBuffer();
@@ -12344,7 +12344,7 @@ export class WebNotificationsInfo extends pb_1.Message {
     clear_timestamp() {
         pb_1.Message.setField(this, 2, undefined);
     }
-    has_timestamp() {
+    get has_timestamp() {
         return pb_1.Message.getField(this, 2) != null;
     }
     get unreadChats() {
@@ -12356,7 +12356,7 @@ export class WebNotificationsInfo extends pb_1.Message {
     clear_unreadChats() {
         pb_1.Message.setField(this, 3, undefined);
     }
-    has_unreadChats() {
+    get has_unreadChats() {
         return pb_1.Message.getField(this, 3) != null;
     }
     get notifyMessageCount() {
@@ -12368,7 +12368,7 @@ export class WebNotificationsInfo extends pb_1.Message {
     clear_notifyMessageCount() {
         pb_1.Message.setField(this, 4, undefined);
     }
-    has_notifyMessageCount() {
+    get has_notifyMessageCount() {
         return pb_1.Message.getField(this, 4) != null;
     }
     get notifyMessages() {
@@ -12422,11 +12422,11 @@ export class WebNotificationsInfo extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.has_timestamp())
+        if (this.has_timestamp)
             writer.writeUint64(2, this.timestamp);
-        if (this.has_unreadChats())
+        if (this.has_unreadChats)
             writer.writeUint32(3, this.unreadChats);
-        if (this.has_notifyMessageCount())
+        if (this.has_notifyMessageCount)
             writer.writeUint32(4, this.notifyMessageCount);
         if (this.notifyMessages.length)
             writer.writeRepeatedMessage(5, this.notifyMessages, (item: WebMessageInfo) => item.serialize(writer));
@@ -12521,7 +12521,7 @@ export class PaymentInfo extends pb_1.Message {
     clear_currencyDeprecated() {
         pb_1.Message.setField(this, 1, undefined);
     }
-    has_currencyDeprecated() {
+    get has_currencyDeprecated() {
         return pb_1.Message.getField(this, 1) != null;
     }
     get amount1000() {
@@ -12533,7 +12533,7 @@ export class PaymentInfo extends pb_1.Message {
     clear_amount1000() {
         pb_1.Message.setField(this, 2, undefined);
     }
-    has_amount1000() {
+    get has_amount1000() {
         return pb_1.Message.getField(this, 2) != null;
     }
     get receiverJid() {
@@ -12545,7 +12545,7 @@ export class PaymentInfo extends pb_1.Message {
     clear_receiverJid() {
         pb_1.Message.setField(this, 3, undefined);
     }
-    has_receiverJid() {
+    get has_receiverJid() {
         return pb_1.Message.getField(this, 3) != null;
     }
     get status() {
@@ -12557,7 +12557,7 @@ export class PaymentInfo extends pb_1.Message {
     clear_status() {
         pb_1.Message.setField(this, 4, undefined);
     }
-    has_status() {
+    get has_status() {
         return pb_1.Message.getField(this, 4) != null;
     }
     get transactionTimestamp() {
@@ -12569,7 +12569,7 @@ export class PaymentInfo extends pb_1.Message {
     clear_transactionTimestamp() {
         pb_1.Message.setField(this, 5, undefined);
     }
-    has_transactionTimestamp() {
+    get has_transactionTimestamp() {
         return pb_1.Message.getField(this, 5) != null;
     }
     get requestMessageKey() {
@@ -12581,7 +12581,7 @@ export class PaymentInfo extends pb_1.Message {
     clear_requestMessageKey() {
         pb_1.Message.setField(this, 6, undefined);
     }
-    has_requestMessageKey() {
+    get has_requestMessageKey() {
         return pb_1.Message.getField(this, 6) != null;
     }
     get expiryTimestamp() {
@@ -12593,7 +12593,7 @@ export class PaymentInfo extends pb_1.Message {
     clear_expiryTimestamp() {
         pb_1.Message.setField(this, 7, undefined);
     }
-    has_expiryTimestamp() {
+    get has_expiryTimestamp() {
         return pb_1.Message.getField(this, 7) != null;
     }
     get futureproofed() {
@@ -12605,7 +12605,7 @@ export class PaymentInfo extends pb_1.Message {
     clear_futureproofed() {
         pb_1.Message.setField(this, 8, undefined);
     }
-    has_futureproofed() {
+    get has_futureproofed() {
         return pb_1.Message.getField(this, 8) != null;
     }
     get currency() {
@@ -12617,7 +12617,7 @@ export class PaymentInfo extends pb_1.Message {
     clear_currency() {
         pb_1.Message.setField(this, 9, undefined);
     }
-    has_currency() {
+    get has_currency() {
         return pb_1.Message.getField(this, 9) != null;
     }
     get txnStatus() {
@@ -12629,7 +12629,7 @@ export class PaymentInfo extends pb_1.Message {
     clear_txnStatus() {
         pb_1.Message.setField(this, 10, undefined);
     }
-    has_txnStatus() {
+    get has_txnStatus() {
         return pb_1.Message.getField(this, 10) != null;
     }
     static fromObject(data: {
@@ -12726,25 +12726,25 @@ export class PaymentInfo extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.has_currencyDeprecated())
+        if (this.has_currencyDeprecated)
             writer.writeEnum(1, this.currencyDeprecated);
-        if (this.has_amount1000())
+        if (this.has_amount1000)
             writer.writeUint64(2, this.amount1000);
-        if (this.has_receiverJid() && this.receiverJid.length)
+        if (this.has_receiverJid && this.receiverJid.length)
             writer.writeString(3, this.receiverJid);
-        if (this.has_status())
+        if (this.has_status)
             writer.writeEnum(4, this.status);
-        if (this.has_transactionTimestamp())
+        if (this.has_transactionTimestamp)
             writer.writeUint64(5, this.transactionTimestamp);
-        if (this.has_requestMessageKey())
+        if (this.has_requestMessageKey)
             writer.writeMessage(6, this.requestMessageKey, () => this.requestMessageKey.serialize(writer));
-        if (this.has_expiryTimestamp())
+        if (this.has_expiryTimestamp)
             writer.writeUint64(7, this.expiryTimestamp);
-        if (this.has_futureproofed())
+        if (this.has_futureproofed)
             writer.writeBool(8, this.futureproofed);
-        if (this.has_currency() && this.currency.length)
+        if (this.has_currency && this.currency.length)
             writer.writeString(9, this.currency);
-        if (this.has_txnStatus())
+        if (this.has_txnStatus)
             writer.writeEnum(10, this.txnStatus);
         if (!w)
             return writer.getResultBuffer();
@@ -12955,7 +12955,7 @@ export class WebMessageInfo extends pb_1.Message {
     clear_key() {
         pb_1.Message.setField(this, 1, undefined);
     }
-    has_key() {
+    get has_key() {
         return pb_1.Message.getField(this, 1) != null;
     }
     get message() {
@@ -12967,7 +12967,7 @@ export class WebMessageInfo extends pb_1.Message {
     clear_message() {
         pb_1.Message.setField(this, 2, undefined);
     }
-    has_message() {
+    get has_message() {
         return pb_1.Message.getField(this, 2) != null;
     }
     get messageTimestamp() {
@@ -12979,7 +12979,7 @@ export class WebMessageInfo extends pb_1.Message {
     clear_messageTimestamp() {
         pb_1.Message.setField(this, 3, undefined);
     }
-    has_messageTimestamp() {
+    get has_messageTimestamp() {
         return pb_1.Message.getField(this, 3) != null;
     }
     get status() {
@@ -12991,7 +12991,7 @@ export class WebMessageInfo extends pb_1.Message {
     clear_status() {
         pb_1.Message.setField(this, 4, undefined);
     }
-    has_status() {
+    get has_status() {
         return pb_1.Message.getField(this, 4) != null;
     }
     get participant() {
@@ -13003,7 +13003,7 @@ export class WebMessageInfo extends pb_1.Message {
     clear_participant() {
         pb_1.Message.setField(this, 5, undefined);
     }
-    has_participant() {
+    get has_participant() {
         return pb_1.Message.getField(this, 5) != null;
     }
     get ignore() {
@@ -13015,7 +13015,7 @@ export class WebMessageInfo extends pb_1.Message {
     clear_ignore() {
         pb_1.Message.setField(this, 16, undefined);
     }
-    has_ignore() {
+    get has_ignore() {
         return pb_1.Message.getField(this, 16) != null;
     }
     get starred() {
@@ -13027,7 +13027,7 @@ export class WebMessageInfo extends pb_1.Message {
     clear_starred() {
         pb_1.Message.setField(this, 17, undefined);
     }
-    has_starred() {
+    get has_starred() {
         return pb_1.Message.getField(this, 17) != null;
     }
     get broadcast() {
@@ -13039,7 +13039,7 @@ export class WebMessageInfo extends pb_1.Message {
     clear_broadcast() {
         pb_1.Message.setField(this, 18, undefined);
     }
-    has_broadcast() {
+    get has_broadcast() {
         return pb_1.Message.getField(this, 18) != null;
     }
     get pushName() {
@@ -13051,7 +13051,7 @@ export class WebMessageInfo extends pb_1.Message {
     clear_pushName() {
         pb_1.Message.setField(this, 19, undefined);
     }
-    has_pushName() {
+    get has_pushName() {
         return pb_1.Message.getField(this, 19) != null;
     }
     get mediaCiphertextSha256() {
@@ -13063,7 +13063,7 @@ export class WebMessageInfo extends pb_1.Message {
     clear_mediaCiphertextSha256() {
         pb_1.Message.setField(this, 20, undefined);
     }
-    has_mediaCiphertextSha256() {
+    get has_mediaCiphertextSha256() {
         return pb_1.Message.getField(this, 20) != null;
     }
     get multicast() {
@@ -13075,7 +13075,7 @@ export class WebMessageInfo extends pb_1.Message {
     clear_multicast() {
         pb_1.Message.setField(this, 21, undefined);
     }
-    has_multicast() {
+    get has_multicast() {
         return pb_1.Message.getField(this, 21) != null;
     }
     get urlText() {
@@ -13087,7 +13087,7 @@ export class WebMessageInfo extends pb_1.Message {
     clear_urlText() {
         pb_1.Message.setField(this, 22, undefined);
     }
-    has_urlText() {
+    get has_urlText() {
         return pb_1.Message.getField(this, 22) != null;
     }
     get urlNumber() {
@@ -13099,7 +13099,7 @@ export class WebMessageInfo extends pb_1.Message {
     clear_urlNumber() {
         pb_1.Message.setField(this, 23, undefined);
     }
-    has_urlNumber() {
+    get has_urlNumber() {
         return pb_1.Message.getField(this, 23) != null;
     }
     get messageStubType() {
@@ -13111,7 +13111,7 @@ export class WebMessageInfo extends pb_1.Message {
     clear_messageStubType() {
         pb_1.Message.setField(this, 24, undefined);
     }
-    has_messageStubType() {
+    get has_messageStubType() {
         return pb_1.Message.getField(this, 24) != null;
     }
     get clearMedia() {
@@ -13123,7 +13123,7 @@ export class WebMessageInfo extends pb_1.Message {
     clear_clearMedia() {
         pb_1.Message.setField(this, 25, undefined);
     }
-    has_clearMedia() {
+    get has_clearMedia() {
         return pb_1.Message.getField(this, 25) != null;
     }
     get messageStubParameters() {
@@ -13141,7 +13141,7 @@ export class WebMessageInfo extends pb_1.Message {
     clear_duration() {
         pb_1.Message.setField(this, 27, undefined);
     }
-    has_duration() {
+    get has_duration() {
         return pb_1.Message.getField(this, 27) != null;
     }
     get labels() {
@@ -13159,7 +13159,7 @@ export class WebMessageInfo extends pb_1.Message {
     clear_paymentInfo() {
         pb_1.Message.setField(this, 29, undefined);
     }
-    has_paymentInfo() {
+    get has_paymentInfo() {
         return pb_1.Message.getField(this, 29) != null;
     }
     get finalLiveLocation() {
@@ -13171,7 +13171,7 @@ export class WebMessageInfo extends pb_1.Message {
     clear_finalLiveLocation() {
         pb_1.Message.setField(this, 30, undefined);
     }
-    has_finalLiveLocation() {
+    get has_finalLiveLocation() {
         return pb_1.Message.getField(this, 30) != null;
     }
     get quotedPaymentInfo() {
@@ -13183,7 +13183,7 @@ export class WebMessageInfo extends pb_1.Message {
     clear_quotedPaymentInfo() {
         pb_1.Message.setField(this, 31, undefined);
     }
-    has_quotedPaymentInfo() {
+    get has_quotedPaymentInfo() {
         return pb_1.Message.getField(this, 31) != null;
     }
     get ephemeralStartTimestamp() {
@@ -13195,7 +13195,7 @@ export class WebMessageInfo extends pb_1.Message {
     clear_ephemeralStartTimestamp() {
         pb_1.Message.setField(this, 32, undefined);
     }
-    has_ephemeralStartTimestamp() {
+    get has_ephemeralStartTimestamp() {
         return pb_1.Message.getField(this, 32) != null;
     }
     get ephemeralDuration() {
@@ -13207,7 +13207,7 @@ export class WebMessageInfo extends pb_1.Message {
     clear_ephemeralDuration() {
         pb_1.Message.setField(this, 33, undefined);
     }
-    has_ephemeralDuration() {
+    get has_ephemeralDuration() {
         return pb_1.Message.getField(this, 33) != null;
     }
     get ephemeralOffToOn() {
@@ -13219,7 +13219,7 @@ export class WebMessageInfo extends pb_1.Message {
     clear_ephemeralOffToOn() {
         pb_1.Message.setField(this, 34, undefined);
     }
-    has_ephemeralOffToOn() {
+    get has_ephemeralOffToOn() {
         return pb_1.Message.getField(this, 34) != null;
     }
     static fromObject(data: {
@@ -13420,53 +13420,53 @@ export class WebMessageInfo extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.has_key())
+        if (this.has_key)
             writer.writeMessage(1, this.key, () => this.key.serialize(writer));
-        if (this.has_message())
+        if (this.has_message)
             writer.writeMessage(2, this.message, () => this.message.serialize(writer));
-        if (this.has_messageTimestamp())
+        if (this.has_messageTimestamp)
             writer.writeUint64(3, this.messageTimestamp);
-        if (this.has_status())
+        if (this.has_status)
             writer.writeEnum(4, this.status);
-        if (this.has_participant() && this.participant.length)
+        if (this.has_participant && this.participant.length)
             writer.writeString(5, this.participant);
-        if (this.has_ignore())
+        if (this.has_ignore)
             writer.writeBool(16, this.ignore);
-        if (this.has_starred())
+        if (this.has_starred)
             writer.writeBool(17, this.starred);
-        if (this.has_broadcast())
+        if (this.has_broadcast)
             writer.writeBool(18, this.broadcast);
-        if (this.has_pushName() && this.pushName.length)
+        if (this.has_pushName && this.pushName.length)
             writer.writeString(19, this.pushName);
-        if (this.has_mediaCiphertextSha256() && this.mediaCiphertextSha256.length)
+        if (this.has_mediaCiphertextSha256 && this.mediaCiphertextSha256.length)
             writer.writeBytes(20, this.mediaCiphertextSha256);
-        if (this.has_multicast())
+        if (this.has_multicast)
             writer.writeBool(21, this.multicast);
-        if (this.has_urlText())
+        if (this.has_urlText)
             writer.writeBool(22, this.urlText);
-        if (this.has_urlNumber())
+        if (this.has_urlNumber)
             writer.writeBool(23, this.urlNumber);
-        if (this.has_messageStubType())
+        if (this.has_messageStubType)
             writer.writeEnum(24, this.messageStubType);
-        if (this.has_clearMedia())
+        if (this.has_clearMedia)
             writer.writeBool(25, this.clearMedia);
         if (this.messageStubParameters.length)
             writer.writeRepeatedString(26, this.messageStubParameters);
-        if (this.has_duration())
+        if (this.has_duration)
             writer.writeUint32(27, this.duration);
         if (this.labels.length)
             writer.writeRepeatedString(28, this.labels);
-        if (this.has_paymentInfo())
+        if (this.has_paymentInfo)
             writer.writeMessage(29, this.paymentInfo, () => this.paymentInfo.serialize(writer));
-        if (this.has_finalLiveLocation())
+        if (this.has_finalLiveLocation)
             writer.writeMessage(30, this.finalLiveLocation, () => this.finalLiveLocation.serialize(writer));
-        if (this.has_quotedPaymentInfo())
+        if (this.has_quotedPaymentInfo)
             writer.writeMessage(31, this.quotedPaymentInfo, () => this.quotedPaymentInfo.serialize(writer));
-        if (this.has_ephemeralStartTimestamp())
+        if (this.has_ephemeralStartTimestamp)
             writer.writeUint64(32, this.ephemeralStartTimestamp);
-        if (this.has_ephemeralDuration())
+        if (this.has_ephemeralDuration)
             writer.writeUint32(33, this.ephemeralDuration);
-        if (this.has_ephemeralOffToOn())
+        if (this.has_ephemeralOffToOn)
             writer.writeBool(34, this.ephemeralOffToOn);
         if (!w)
             return writer.getResultBuffer();

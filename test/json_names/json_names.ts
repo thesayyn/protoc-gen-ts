@@ -71,7 +71,7 @@ export class JsonNamesMessage extends pb_1.Message {
     clearANestedMessage() {
         pb_1.Message.setField(this, 3, undefined);
     }
-    hasANestedMessage() {
+    get hasANestedMessage() {
         return pb_1.Message.getField(this, 3) != null;
     }
     get colorSpace() {
@@ -89,7 +89,7 @@ export class JsonNamesMessage extends pb_1.Message {
     clearAnOptionalString() {
         pb_1.Message.setField(this, 5, undefined);
     }
-    hasAnOptionalString() {
+    get hasAnOptionalString() {
         return pb_1.Message.getField(this, 5) != null;
     }
     get aSingleString() {
@@ -101,7 +101,7 @@ export class JsonNamesMessage extends pb_1.Message {
     clearASingleString() {
         pb_1.Message.setField(this, 6, undefined);
     }
-    hasASingleString() {
+    get hasASingleString() {
         return pb_1.Message.getField(this, 6) != null;
     }
     get aSingleNumber() {
@@ -113,7 +113,7 @@ export class JsonNamesMessage extends pb_1.Message {
     clearASingleNumber() {
         pb_1.Message.setField(this, 7, undefined);
     }
-    hasASingleNumber() {
+    get hasASingleNumber() {
         return pb_1.Message.getField(this, 7) != null;
     }
     get mut_ex_field() {
@@ -209,15 +209,15 @@ export class JsonNamesMessage extends pb_1.Message {
             writer.writeRepeatedString(1, this.someStrings);
         if (this.anInteger != 0)
             writer.writeInt32(2, this.anInteger);
-        if (this.hasANestedMessage())
+        if (this.hasANestedMessage)
             writer.writeMessage(3, this.aNestedMessage, () => this.aNestedMessage.serialize(writer));
         if (this.colorSpace != ColorSpace.RED_GREEN_BLUE)
             writer.writeEnum(4, this.colorSpace);
-        if (this.hasAnOptionalString())
+        if (this.hasAnOptionalString)
             writer.writeString(5, this.anOptionalString);
-        if (this.hasASingleString())
+        if (this.hasASingleString)
             writer.writeString(6, this.aSingleString);
-        if (this.hasASingleNumber())
+        if (this.hasASingleNumber)
             writer.writeInt32(7, this.aSingleNumber);
         if (!w)
             return writer.getResultBuffer();

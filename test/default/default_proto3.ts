@@ -127,7 +127,7 @@ export class DefaultMessageV3 extends pb_1.Message {
     clear_message() {
         pb_1.Message.setField(this, 1, undefined);
     }
-    has_message() {
+    get has_message() {
         return pb_1.Message.getField(this, 1) != null;
     }
     get enum() {
@@ -259,7 +259,7 @@ export class DefaultMessageV3 extends pb_1.Message {
     clear_one_of_int32() {
         pb_1.Message.setField(this, 22, undefined);
     }
-    has_one_of_int32() {
+    get has_one_of_int32() {
         return pb_1.Message.getField(this, 22) != null;
     }
     get one_of_message() {
@@ -271,7 +271,7 @@ export class DefaultMessageV3 extends pb_1.Message {
     clear_one_of_message() {
         pb_1.Message.setField(this, 23, undefined);
     }
-    has_one_of_message() {
+    get has_one_of_message() {
         return pb_1.Message.getField(this, 23) != null;
     }
     get bytes() {
@@ -504,7 +504,7 @@ export class DefaultMessageV3 extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.has_message())
+        if (this.has_message)
             writer.writeMessage(1, this.message, () => this.message.serialize(writer));
         if (this.enum != dependency_1.DefaultCommonEnum.ZERO)
             writer.writeEnum(2, this.enum);
@@ -554,9 +554,9 @@ export class DefaultMessageV3 extends pb_1.Message {
             writer.writePackedInt32(20, this.array_int32);
         if (this.array_message.length)
             writer.writeRepeatedMessage(21, this.array_message, (item: dependency_1.DefaultCommonMessage) => item.serialize(writer));
-        if (this.has_one_of_int32())
+        if (this.has_one_of_int32)
             writer.writeInt32(22, this.one_of_int32);
-        if (this.has_one_of_message())
+        if (this.has_one_of_message)
             writer.writeMessage(23, this.one_of_message, () => this.one_of_message.serialize(writer));
         if (this.bytes.length)
             writer.writeBytes(24, this.bytes);
@@ -759,7 +759,7 @@ export class DefaultMessageOptionalV3 extends pb_1.Message {
     clear_enum() {
         pb_1.Message.setField(this, 2, undefined);
     }
-    has_enum() {
+    get has_enum() {
         return pb_1.Message.getField(this, 2) != null;
     }
     get bool() {
@@ -771,7 +771,7 @@ export class DefaultMessageOptionalV3 extends pb_1.Message {
     clear_bool() {
         pb_1.Message.setField(this, 3, undefined);
     }
-    has_bool() {
+    get has_bool() {
         return pb_1.Message.getField(this, 3) != null;
     }
     get string() {
@@ -783,7 +783,7 @@ export class DefaultMessageOptionalV3 extends pb_1.Message {
     clear_string() {
         pb_1.Message.setField(this, 4, undefined);
     }
-    has_string() {
+    get has_string() {
         return pb_1.Message.getField(this, 4) != null;
     }
     get int32() {
@@ -795,7 +795,7 @@ export class DefaultMessageOptionalV3 extends pb_1.Message {
     clear_int32() {
         pb_1.Message.setField(this, 5, undefined);
     }
-    has_int32() {
+    get has_int32() {
         return pb_1.Message.getField(this, 5) != null;
     }
     get fixed32() {
@@ -807,7 +807,7 @@ export class DefaultMessageOptionalV3 extends pb_1.Message {
     clear_fixed32() {
         pb_1.Message.setField(this, 6, undefined);
     }
-    has_fixed32() {
+    get has_fixed32() {
         return pb_1.Message.getField(this, 6) != null;
     }
     get sfixed32() {
@@ -819,7 +819,7 @@ export class DefaultMessageOptionalV3 extends pb_1.Message {
     clear_sfixed32() {
         pb_1.Message.setField(this, 7, undefined);
     }
-    has_sfixed32() {
+    get has_sfixed32() {
         return pb_1.Message.getField(this, 7) != null;
     }
     get uint32() {
@@ -831,7 +831,7 @@ export class DefaultMessageOptionalV3 extends pb_1.Message {
     clear_uint32() {
         pb_1.Message.setField(this, 8, undefined);
     }
-    has_uint32() {
+    get has_uint32() {
         return pb_1.Message.getField(this, 8) != null;
     }
     get sint32() {
@@ -843,7 +843,7 @@ export class DefaultMessageOptionalV3 extends pb_1.Message {
     clear_sint32() {
         pb_1.Message.setField(this, 9, undefined);
     }
-    has_sint32() {
+    get has_sint32() {
         return pb_1.Message.getField(this, 9) != null;
     }
     get int64() {
@@ -855,7 +855,7 @@ export class DefaultMessageOptionalV3 extends pb_1.Message {
     clear_int64() {
         pb_1.Message.setField(this, 10, undefined);
     }
-    has_int64() {
+    get has_int64() {
         return pb_1.Message.getField(this, 10) != null;
     }
     get fixed64() {
@@ -867,7 +867,7 @@ export class DefaultMessageOptionalV3 extends pb_1.Message {
     clear_fixed64() {
         pb_1.Message.setField(this, 11, undefined);
     }
-    has_fixed64() {
+    get has_fixed64() {
         return pb_1.Message.getField(this, 11) != null;
     }
     get sfixed64() {
@@ -879,7 +879,7 @@ export class DefaultMessageOptionalV3 extends pb_1.Message {
     clear_sfixed64() {
         pb_1.Message.setField(this, 12, undefined);
     }
-    has_sfixed64() {
+    get has_sfixed64() {
         return pb_1.Message.getField(this, 12) != null;
     }
     get uint64() {
@@ -891,7 +891,7 @@ export class DefaultMessageOptionalV3 extends pb_1.Message {
     clear_uint64() {
         pb_1.Message.setField(this, 13, undefined);
     }
-    has_uint64() {
+    get has_uint64() {
         return pb_1.Message.getField(this, 13) != null;
     }
     get sint64() {
@@ -903,7 +903,7 @@ export class DefaultMessageOptionalV3 extends pb_1.Message {
     clear_sint64() {
         pb_1.Message.setField(this, 14, undefined);
     }
-    has_sint64() {
+    get has_sint64() {
         return pb_1.Message.getField(this, 14) != null;
     }
     get float() {
@@ -915,7 +915,7 @@ export class DefaultMessageOptionalV3 extends pb_1.Message {
     clear_float() {
         pb_1.Message.setField(this, 15, undefined);
     }
-    has_float() {
+    get has_float() {
         return pb_1.Message.getField(this, 15) != null;
     }
     get double() {
@@ -927,7 +927,7 @@ export class DefaultMessageOptionalV3 extends pb_1.Message {
     clear_double() {
         pb_1.Message.setField(this, 16, undefined);
     }
-    has_double() {
+    get has_double() {
         return pb_1.Message.getField(this, 16) != null;
     }
     get int_but_string() {
@@ -939,7 +939,7 @@ export class DefaultMessageOptionalV3 extends pb_1.Message {
     clear_int_but_string() {
         pb_1.Message.setField(this, 17, undefined);
     }
-    has_int_but_string() {
+    get has_int_but_string() {
         return pb_1.Message.getField(this, 17) != null;
     }
     get bytes() {
@@ -951,7 +951,7 @@ export class DefaultMessageOptionalV3 extends pb_1.Message {
     clear_bytes() {
         pb_1.Message.setField(this, 24, undefined);
     }
-    has_bytes() {
+    get has_bytes() {
         return pb_1.Message.getField(this, 24) != null;
     }
     get _enum() {
@@ -1257,39 +1257,39 @@ export class DefaultMessageOptionalV3 extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.has_enum())
+        if (this.has_enum)
             writer.writeEnum(2, this.enum);
-        if (this.has_bool())
+        if (this.has_bool)
             writer.writeBool(3, this.bool);
-        if (this.has_string())
+        if (this.has_string)
             writer.writeString(4, this.string);
-        if (this.has_int32())
+        if (this.has_int32)
             writer.writeInt32(5, this.int32);
-        if (this.has_fixed32())
+        if (this.has_fixed32)
             writer.writeFixed32(6, this.fixed32);
-        if (this.has_sfixed32())
+        if (this.has_sfixed32)
             writer.writeSfixed32(7, this.sfixed32);
-        if (this.has_uint32())
+        if (this.has_uint32)
             writer.writeUint32(8, this.uint32);
-        if (this.has_sint32())
+        if (this.has_sint32)
             writer.writeSint32(9, this.sint32);
-        if (this.has_int64())
+        if (this.has_int64)
             writer.writeInt64(10, this.int64);
-        if (this.has_fixed64())
+        if (this.has_fixed64)
             writer.writeFixed64(11, this.fixed64);
-        if (this.has_sfixed64())
+        if (this.has_sfixed64)
             writer.writeSfixed64(12, this.sfixed64);
-        if (this.has_uint64())
+        if (this.has_uint64)
             writer.writeUint64(13, this.uint64);
-        if (this.has_sint64())
+        if (this.has_sint64)
             writer.writeSint64(14, this.sint64);
-        if (this.has_float())
+        if (this.has_float)
             writer.writeFloat(15, this.float);
-        if (this.has_double())
+        if (this.has_double)
             writer.writeDouble(16, this.double);
-        if (this.has_int_but_string())
+        if (this.has_int_but_string)
             writer.writeInt64String(17, this.int_but_string);
-        if (this.has_bytes())
+        if (this.has_bytes)
             writer.writeBytes(24, this.bytes);
         if (!w)
             return writer.getResultBuffer();

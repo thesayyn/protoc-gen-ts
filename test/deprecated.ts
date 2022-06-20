@@ -59,7 +59,7 @@ export class MessageName extends pb_1.Message {
     clear_me() {
         pb_1.Message.setField(this, 2, undefined);
     }
-    has_me() {
+    get has_me() {
         return pb_1.Message.getField(this, 2) != null;
     }
     /** @deprecated*/
@@ -73,7 +73,7 @@ export class MessageName extends pb_1.Message {
     clear_me_deprecated() {
         pb_1.Message.setField(this, 3, undefined);
     }
-    has_me_deprecated() {
+    get has_me_deprecated() {
         return pb_1.Message.getField(this, 3) != null;
     }
     get test() {
@@ -126,9 +126,9 @@ export class MessageName extends pb_1.Message {
         const writer = w || new pb_1.BinaryWriter();
         if (this.deprecated_field.length)
             writer.writeString(1, this.deprecated_field);
-        if (this.has_me())
+        if (this.has_me)
             writer.writeString(2, this.me);
-        if (this.has_me_deprecated())
+        if (this.has_me_deprecated)
             writer.writeString(3, this.me_deprecated);
         if (!w)
             return writer.getResultBuffer();

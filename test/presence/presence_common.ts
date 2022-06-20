@@ -105,7 +105,7 @@ export class PresenceCommonMessageOneOf extends pb_1.Message {
     clear_int32() {
         pb_1.Message.setField(this, 1, undefined);
     }
-    has_int32() {
+    get has_int32() {
         return pb_1.Message.getField(this, 1) != null;
     }
     get message() {
@@ -117,7 +117,7 @@ export class PresenceCommonMessageOneOf extends pb_1.Message {
     clear_message() {
         pb_1.Message.setField(this, 2, undefined);
     }
-    has_message() {
+    get has_message() {
         return pb_1.Message.getField(this, 2) != null;
     }
     get oneof() {
@@ -160,9 +160,9 @@ export class PresenceCommonMessageOneOf extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.has_int32())
+        if (this.has_int32)
             writer.writeInt32(1, this.int32);
-        if (this.has_message())
+        if (this.has_message)
             writer.writeMessage(2, this.message, () => this.message.serialize(writer));
         if (!w)
             return writer.getResultBuffer();

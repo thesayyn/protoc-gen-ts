@@ -1,7 +1,6 @@
 import * as descriptor from "./compiler/descriptor.js";
 import * as type from "./type.js";
 import * as ts from "typescript";
-import * as pb from "google-protobuf";
 
 /**
  * @param {*} type
@@ -142,7 +141,7 @@ export function isMessage(fieldDescriptor: descriptor.FieldDescriptorProto) {
 }
 
 /**
- * @param {descriptor.FieldDescriptorProto} fieldDescriptorń
+ * @param {descriptor.FieldDescriptorProto} fieldDescriptor
  */
 export function isNumber(fieldDescriptor: descriptor.FieldDescriptorProto) {
   switch (fieldDescriptor.type) {
@@ -203,7 +202,7 @@ export function isRequiredWithoutExplicitDefault(
   return (
     rootDescriptor.syntax != "proto3" &&
     fieldDescriptor.label == descriptor.FieldDescriptorProto.Label.LABEL_REQUIRED &&
-    !fieldDescriptor.has_default_value()
+    !fieldDescriptor.has_default_value
   );
 }
 
@@ -284,7 +283,7 @@ export function isPacked(
     !(
       rootDescriptor.syntax == "proto3" &&
       !(
-        fieldDescriptor.proto3_optional || isMessage(fieldDescriptor) || fieldDescriptor.has_oneof_index()
+        fieldDescriptor.proto3_optional || isMessage(fieldDescriptor) || fieldDescriptor.has_oneof_index
       )
     )
   );

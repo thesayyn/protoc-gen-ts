@@ -45,7 +45,7 @@ export class OneOfWithoutAnyOtherFields extends pb_1.Message {
     clear_nickname() {
         pb_1.Message.setField(this, 1, undefined);
     }
-    has_nickname() {
+    get has_nickname() {
         return pb_1.Message.getField(this, 1) != null;
     }
     get realname() {
@@ -57,7 +57,7 @@ export class OneOfWithoutAnyOtherFields extends pb_1.Message {
     clear_realname() {
         pb_1.Message.setField(this, 2, undefined);
     }
-    has_realname() {
+    get has_realname() {
         return pb_1.Message.getField(this, 2) != null;
     }
     get age() {
@@ -69,7 +69,7 @@ export class OneOfWithoutAnyOtherFields extends pb_1.Message {
     clear_age() {
         pb_1.Message.setField(this, 4, undefined);
     }
-    has_age() {
+    get has_age() {
         return pb_1.Message.getField(this, 4) != null;
     }
     get date_of_birth() {
@@ -81,7 +81,7 @@ export class OneOfWithoutAnyOtherFields extends pb_1.Message {
     clear_date_of_birth() {
         pb_1.Message.setField(this, 3, undefined);
     }
-    has_date_of_birth() {
+    get has_date_of_birth() {
         return pb_1.Message.getField(this, 3) != null;
     }
     get nickname_or_realname() {
@@ -150,13 +150,13 @@ export class OneOfWithoutAnyOtherFields extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.has_nickname())
+        if (this.has_nickname)
             writer.writeString(1, this.nickname);
-        if (this.has_realname())
+        if (this.has_realname)
             writer.writeString(2, this.realname);
-        if (this.has_age())
+        if (this.has_age)
             writer.writeString(4, this.age);
-        if (this.has_date_of_birth())
+        if (this.has_date_of_birth)
             writer.writeString(3, this.date_of_birth);
         if (!w)
             return writer.getResultBuffer();
@@ -231,7 +231,7 @@ export class OneOf extends pb_1.Message {
     clear_date_of_birth() {
         pb_1.Message.setField(this, 3, undefined);
     }
-    has_date_of_birth() {
+    get has_date_of_birth() {
         return pb_1.Message.getField(this, 3) != null;
     }
     get age() {
@@ -243,7 +243,7 @@ export class OneOf extends pb_1.Message {
     clear_age() {
         pb_1.Message.setField(this, 4, undefined);
     }
-    has_age() {
+    get has_age() {
         return pb_1.Message.getField(this, 4) != null;
     }
     get age_or_dateofbirth() {
@@ -296,9 +296,9 @@ export class OneOf extends pb_1.Message {
         const writer = w || new pb_1.BinaryWriter();
         if (this.nickname.length)
             writer.writeString(1, this.nickname);
-        if (this.has_date_of_birth())
+        if (this.has_date_of_birth)
             writer.writeString(3, this.date_of_birth);
-        if (this.has_age())
+        if (this.has_age)
             writer.writeString(4, this.age);
         if (!w)
             return writer.getResultBuffer();

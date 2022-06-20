@@ -26,7 +26,7 @@ export class NoOptionalValues extends pb_1.Message {
     clear_test() {
         pb_1.Message.setField(this, 1, undefined);
     }
-    has_test() {
+    get has_test() {
         return pb_1.Message.getField(this, 1) != null;
     }
     get test2() {
@@ -38,7 +38,7 @@ export class NoOptionalValues extends pb_1.Message {
     clear_test2() {
         pb_1.Message.setField(this, 2, undefined);
     }
-    has_test2() {
+    get has_test2() {
         return pb_1.Message.getField(this, 2) != null;
     }
     static fromObject(data: {
@@ -68,9 +68,9 @@ export class NoOptionalValues extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.has_test() && this.test.length)
+        if (this.has_test && this.test.length)
             writer.writeString(1, this.test);
-        if (this.has_test2() && this.test2.length)
+        if (this.has_test2 && this.test2.length)
             writer.writeString(2, this.test2);
         if (!w)
             return writer.getResultBuffer();

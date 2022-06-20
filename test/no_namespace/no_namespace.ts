@@ -36,7 +36,7 @@ export class NoNamespace extends pb_1.Message {
     clear_label() {
         pb_1.Message.setField(this, 1, undefined);
     }
-    has_label() {
+    get has_label() {
         return pb_1.Message.getField(this, 1) != null;
     }
     get other_fields() {
@@ -48,7 +48,7 @@ export class NoNamespace extends pb_1.Message {
     clear_other_fields() {
         pb_1.Message.setField(this, 2, undefined);
     }
-    has_other_fields() {
+    get has_other_fields() {
         return pb_1.Message.getField(this, 2) != null;
     }
     get batch_fields() {
@@ -60,7 +60,7 @@ export class NoNamespace extends pb_1.Message {
     clear_batch_fields() {
         pb_1.Message.setField(this, 3, undefined);
     }
-    has_batch_fields() {
+    get has_batch_fields() {
         return pb_1.Message.getField(this, 3) != null;
     }
     static fromObject(data: {
@@ -101,11 +101,11 @@ export class NoNamespace extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.has_label())
+        if (this.has_label)
             writer.writeMessage(1, this.label, () => this.label.serialize(writer));
-        if (this.has_other_fields())
+        if (this.has_other_fields)
             writer.writeMessage(2, this.other_fields, () => this.other_fields.serialize(writer));
-        if (this.has_batch_fields())
+        if (this.has_batch_fields)
             writer.writeMessage(3, this.batch_fields, () => this.batch_fields.serialize(writer));
         if (!w)
             return writer.getResultBuffer();

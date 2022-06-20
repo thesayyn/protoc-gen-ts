@@ -37,7 +37,7 @@ export namespace importdirective {
         clear_importedField() {
             pb_1.Message.setField(this, 1, undefined);
         }
-        has_importedField() {
+        get has_importedField() {
             return pb_1.Message.getField(this, 1) != null;
         }
         get submessageField() {
@@ -49,7 +49,7 @@ export namespace importdirective {
         clear_submessageField() {
             pb_1.Message.setField(this, 2, undefined);
         }
-        has_submessageField() {
+        get has_submessageField() {
             return pb_1.Message.getField(this, 2) != null;
         }
         get enumField() {
@@ -96,9 +96,9 @@ export namespace importdirective {
         serialize(w: pb_1.BinaryWriter): void;
         serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
             const writer = w || new pb_1.BinaryWriter();
-            if (this.has_importedField())
+            if (this.has_importedField)
                 writer.writeMessage(1, this.importedField, () => this.importedField.serialize(writer));
-            if (this.has_submessageField())
+            if (this.has_submessageField)
                 writer.writeMessage(2, this.submessageField, () => this.submessageField.serialize(writer));
             if (this.enumField != dependency_1.importdirective.Imported.SubMessage.MyEnum.VALUE)
                 writer.writeEnum(3, this.enumField);
