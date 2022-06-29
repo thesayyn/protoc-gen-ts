@@ -175,7 +175,7 @@ If your corporate has a OSS funding scheme, please consider supporting us monthl
 |------------------------------|-----------------|:----------:|:------------:|:---------:|:--------:|:-----------:|:-----------------------------------------------------------------------------------------------------------------------------------:|
 | thesayyn/protoc-gen-ts | Yes | Yes | Yes | Yes | Partial | Yes | The generated messages are compatible with ever-green browsers.<br>However, you might need to use third-party packages to use rpcs. |
 | improbable-eng/ts-protoc-gen | Yes | No | Yes | No | Yes | Partial | Drawback: You can't bundle generated files with rollup since<br>they are not >= ES6 compatible. |
-| stephenh/ts-proto | No | Yes | Yes | No | No | Yes | There is no support for rpcs.<br>See: https://github.com/stephenh/ts-proto/issues/2 |
+| stephenh/ts-proto | No | Yes | Yes | No | Yes | Yes | |
 
 
 ## Development
