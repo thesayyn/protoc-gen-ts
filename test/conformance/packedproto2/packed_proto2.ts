@@ -27,9 +27,6 @@ export class HydratedQuickReplyButton extends pb_1.Message {
     set displayText(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
-    clear_displayText() {
-        pb_1.Message.setField(this, 1, undefined);
-    }
     get has_displayText() {
         return pb_1.Message.getField(this, 1) != null;
     }
@@ -38,9 +35,6 @@ export class HydratedQuickReplyButton extends pb_1.Message {
     }
     set id(value: string) {
         pb_1.Message.setField(this, 2, value);
-    }
-    clear_id() {
-        pb_1.Message.setField(this, 2, undefined);
     }
     get has_id() {
         return pb_1.Message.getField(this, 2) != null;
@@ -129,9 +123,6 @@ export class HydratedURLButton extends pb_1.Message {
     set displayText(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
-    clear_displayText() {
-        pb_1.Message.setField(this, 1, undefined);
-    }
     get has_displayText() {
         return pb_1.Message.getField(this, 1) != null;
     }
@@ -140,9 +131,6 @@ export class HydratedURLButton extends pb_1.Message {
     }
     set url(value: string) {
         pb_1.Message.setField(this, 2, value);
-    }
-    clear_url() {
-        pb_1.Message.setField(this, 2, undefined);
     }
     get has_url() {
         return pb_1.Message.getField(this, 2) != null;
@@ -231,9 +219,6 @@ export class HydratedCallButton extends pb_1.Message {
     set displayText(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
-    clear_displayText() {
-        pb_1.Message.setField(this, 1, undefined);
-    }
     get has_displayText() {
         return pb_1.Message.getField(this, 1) != null;
     }
@@ -242,9 +227,6 @@ export class HydratedCallButton extends pb_1.Message {
     }
     set phoneNumber(value: string) {
         pb_1.Message.setField(this, 2, value);
-    }
-    clear_phoneNumber() {
-        pb_1.Message.setField(this, 2, undefined);
     }
     get has_phoneNumber() {
         return pb_1.Message.getField(this, 2) != null;
@@ -350,9 +332,6 @@ export class HydratedTemplateButton extends pb_1.Message {
     set index(value: number) {
         pb_1.Message.setField(this, 4, value);
     }
-    clear_index() {
-        pb_1.Message.setField(this, 4, undefined);
-    }
     get has_index() {
         return pb_1.Message.getField(this, 4) != null;
     }
@@ -361,9 +340,6 @@ export class HydratedTemplateButton extends pb_1.Message {
     }
     set quickReplyButton(value: HydratedQuickReplyButton) {
         pb_1.Message.setOneofWrapperField(this, 1, this.#one_of_decls[0], value);
-    }
-    clear_quickReplyButton() {
-        pb_1.Message.setField(this, 1, undefined);
     }
     get has_quickReplyButton() {
         return pb_1.Message.getField(this, 1) != null;
@@ -374,9 +350,6 @@ export class HydratedTemplateButton extends pb_1.Message {
     set urlButton(value: HydratedURLButton) {
         pb_1.Message.setOneofWrapperField(this, 2, this.#one_of_decls[0], value);
     }
-    clear_urlButton() {
-        pb_1.Message.setField(this, 2, undefined);
-    }
     get has_urlButton() {
         return pb_1.Message.getField(this, 2) != null;
     }
@@ -385,9 +358,6 @@ export class HydratedTemplateButton extends pb_1.Message {
     }
     set callButton(value: HydratedCallButton) {
         pb_1.Message.setOneofWrapperField(this, 3, this.#one_of_decls[0], value);
-    }
-    clear_callButton() {
-        pb_1.Message.setField(this, 3, undefined);
     }
     get has_callButton() {
         return pb_1.Message.getField(this, 3) != null;
@@ -513,9 +483,6 @@ export class QuickReplyButton extends pb_1.Message {
     set displayText(value: HighlyStructuredMessage) {
         pb_1.Message.setWrapperField(this, 1, value);
     }
-    clear_displayText() {
-        pb_1.Message.setField(this, 1, undefined);
-    }
     get has_displayText() {
         return pb_1.Message.getField(this, 1) != null;
     }
@@ -524,9 +491,6 @@ export class QuickReplyButton extends pb_1.Message {
     }
     set id(value: string) {
         pb_1.Message.setField(this, 2, value);
-    }
-    clear_id() {
-        pb_1.Message.setField(this, 2, undefined);
     }
     get has_id() {
         return pb_1.Message.getField(this, 2) != null;
@@ -615,9 +579,6 @@ export class URLButton extends pb_1.Message {
     set displayText(value: HighlyStructuredMessage) {
         pb_1.Message.setWrapperField(this, 1, value);
     }
-    clear_displayText() {
-        pb_1.Message.setField(this, 1, undefined);
-    }
     get has_displayText() {
         return pb_1.Message.getField(this, 1) != null;
     }
@@ -626,9 +587,6 @@ export class URLButton extends pb_1.Message {
     }
     set url(value: HighlyStructuredMessage) {
         pb_1.Message.setWrapperField(this, 2, value);
-    }
-    clear_url() {
-        pb_1.Message.setField(this, 2, undefined);
     }
     get has_url() {
         return pb_1.Message.getField(this, 2) != null;
@@ -717,9 +675,6 @@ export class CallButton extends pb_1.Message {
     set displayText(value: HighlyStructuredMessage) {
         pb_1.Message.setWrapperField(this, 1, value);
     }
-    clear_displayText() {
-        pb_1.Message.setField(this, 1, undefined);
-    }
     get has_displayText() {
         return pb_1.Message.getField(this, 1) != null;
     }
@@ -728,9 +683,6 @@ export class CallButton extends pb_1.Message {
     }
     set phoneNumber(value: HighlyStructuredMessage) {
         pb_1.Message.setWrapperField(this, 2, value);
-    }
-    clear_phoneNumber() {
-        pb_1.Message.setField(this, 2, undefined);
     }
     get has_phoneNumber() {
         return pb_1.Message.getField(this, 2) != null;
@@ -836,9 +788,6 @@ export class TemplateButton extends pb_1.Message {
     set index(value: number) {
         pb_1.Message.setField(this, 4, value);
     }
-    clear_index() {
-        pb_1.Message.setField(this, 4, undefined);
-    }
     get has_index() {
         return pb_1.Message.getField(this, 4) != null;
     }
@@ -847,9 +796,6 @@ export class TemplateButton extends pb_1.Message {
     }
     set quickReplyButton(value: QuickReplyButton) {
         pb_1.Message.setOneofWrapperField(this, 1, this.#one_of_decls[0], value);
-    }
-    clear_quickReplyButton() {
-        pb_1.Message.setField(this, 1, undefined);
     }
     get has_quickReplyButton() {
         return pb_1.Message.getField(this, 1) != null;
@@ -860,9 +806,6 @@ export class TemplateButton extends pb_1.Message {
     set urlButton(value: URLButton) {
         pb_1.Message.setOneofWrapperField(this, 2, this.#one_of_decls[0], value);
     }
-    clear_urlButton() {
-        pb_1.Message.setField(this, 2, undefined);
-    }
     get has_urlButton() {
         return pb_1.Message.getField(this, 2) != null;
     }
@@ -871,9 +814,6 @@ export class TemplateButton extends pb_1.Message {
     }
     set callButton(value: CallButton) {
         pb_1.Message.setOneofWrapperField(this, 3, this.#one_of_decls[0], value);
-    }
-    clear_callButton() {
-        pb_1.Message.setField(this, 3, undefined);
     }
     get has_callButton() {
         return pb_1.Message.getField(this, 3) != null;
@@ -1003,9 +943,6 @@ export class Location extends pb_1.Message {
     set degreesLatitude(value: number) {
         pb_1.Message.setField(this, 1, value);
     }
-    clear_degreesLatitude() {
-        pb_1.Message.setField(this, 1, undefined);
-    }
     get has_degreesLatitude() {
         return pb_1.Message.getField(this, 1) != null;
     }
@@ -1015,9 +952,6 @@ export class Location extends pb_1.Message {
     set degreesLongitude(value: number) {
         pb_1.Message.setField(this, 2, value);
     }
-    clear_degreesLongitude() {
-        pb_1.Message.setField(this, 2, undefined);
-    }
     get has_degreesLongitude() {
         return pb_1.Message.getField(this, 2) != null;
     }
@@ -1026,9 +960,6 @@ export class Location extends pb_1.Message {
     }
     set name(value: string) {
         pb_1.Message.setField(this, 3, value);
-    }
-    clear_name() {
-        pb_1.Message.setField(this, 3, undefined);
     }
     get has_name() {
         return pb_1.Message.getField(this, 3) != null;
@@ -1138,9 +1069,6 @@ export class Point extends pb_1.Message {
     set xDeprecated(value: number) {
         pb_1.Message.setField(this, 1, value);
     }
-    clear_xDeprecated() {
-        pb_1.Message.setField(this, 1, undefined);
-    }
     get has_xDeprecated() {
         return pb_1.Message.getField(this, 1) != null;
     }
@@ -1149,9 +1077,6 @@ export class Point extends pb_1.Message {
     }
     set yDeprecated(value: number) {
         pb_1.Message.setField(this, 2, value);
-    }
-    clear_yDeprecated() {
-        pb_1.Message.setField(this, 2, undefined);
     }
     get has_yDeprecated() {
         return pb_1.Message.getField(this, 2) != null;
@@ -1162,9 +1087,6 @@ export class Point extends pb_1.Message {
     set x(value: number) {
         pb_1.Message.setField(this, 3, value);
     }
-    clear_x() {
-        pb_1.Message.setField(this, 3, undefined);
-    }
     get has_x() {
         return pb_1.Message.getField(this, 3) != null;
     }
@@ -1173,9 +1095,6 @@ export class Point extends pb_1.Message {
     }
     set y(value: number) {
         pb_1.Message.setField(this, 4, value);
-    }
-    clear_y() {
-        pb_1.Message.setField(this, 4, undefined);
     }
     get has_y() {
         return pb_1.Message.getField(this, 4) != null;
@@ -1295,9 +1214,6 @@ export class InteractiveAnnotation extends pb_1.Message {
     set location(value: Location) {
         pb_1.Message.setOneofWrapperField(this, 2, this.#one_of_decls[0], value);
     }
-    clear_location() {
-        pb_1.Message.setField(this, 2, undefined);
-    }
     get has_location() {
         return pb_1.Message.getField(this, 2) != null;
     }
@@ -1401,9 +1317,6 @@ export class AdReplyInfo extends pb_1.Message {
     set advertiserName(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
-    clear_advertiserName() {
-        pb_1.Message.setField(this, 1, undefined);
-    }
     get has_advertiserName() {
         return pb_1.Message.getField(this, 1) != null;
     }
@@ -1412,9 +1325,6 @@ export class AdReplyInfo extends pb_1.Message {
     }
     set mediaType(value: AdReplyInfo.AD_REPLY_INFO_MEDIATYPE) {
         pb_1.Message.setField(this, 2, value);
-    }
-    clear_mediaType() {
-        pb_1.Message.setField(this, 2, undefined);
     }
     get has_mediaType() {
         return pb_1.Message.getField(this, 2) != null;
@@ -1425,9 +1335,6 @@ export class AdReplyInfo extends pb_1.Message {
     set jpegThumbnail(value: Uint8Array) {
         pb_1.Message.setField(this, 16, value);
     }
-    clear_jpegThumbnail() {
-        pb_1.Message.setField(this, 16, undefined);
-    }
     get has_jpegThumbnail() {
         return pb_1.Message.getField(this, 16) != null;
     }
@@ -1436,9 +1343,6 @@ export class AdReplyInfo extends pb_1.Message {
     }
     set caption(value: string) {
         pb_1.Message.setField(this, 17, value);
-    }
-    clear_caption() {
-        pb_1.Message.setField(this, 17, undefined);
     }
     get has_caption() {
         return pb_1.Message.getField(this, 17) != null;
@@ -1610,9 +1514,6 @@ export class ContextInfo extends pb_1.Message {
     set stanzaId(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
-    clear_stanzaId() {
-        pb_1.Message.setField(this, 1, undefined);
-    }
     get has_stanzaId() {
         return pb_1.Message.getField(this, 1) != null;
     }
@@ -1621,9 +1522,6 @@ export class ContextInfo extends pb_1.Message {
     }
     set participant(value: string) {
         pb_1.Message.setField(this, 2, value);
-    }
-    clear_participant() {
-        pb_1.Message.setField(this, 2, undefined);
     }
     get has_participant() {
         return pb_1.Message.getField(this, 2) != null;
@@ -1634,9 +1532,6 @@ export class ContextInfo extends pb_1.Message {
     set quotedMessage(value: Message) {
         pb_1.Message.setWrapperField(this, 3, value);
     }
-    clear_quotedMessage() {
-        pb_1.Message.setField(this, 3, undefined);
-    }
     get has_quotedMessage() {
         return pb_1.Message.getField(this, 3) != null;
     }
@@ -1645,9 +1540,6 @@ export class ContextInfo extends pb_1.Message {
     }
     set remoteJid(value: string) {
         pb_1.Message.setField(this, 4, value);
-    }
-    clear_remoteJid() {
-        pb_1.Message.setField(this, 4, undefined);
     }
     get has_remoteJid() {
         return pb_1.Message.getField(this, 4) != null;
@@ -1664,9 +1556,6 @@ export class ContextInfo extends pb_1.Message {
     set conversionSource(value: string) {
         pb_1.Message.setField(this, 18, value);
     }
-    clear_conversionSource() {
-        pb_1.Message.setField(this, 18, undefined);
-    }
     get has_conversionSource() {
         return pb_1.Message.getField(this, 18) != null;
     }
@@ -1675,9 +1564,6 @@ export class ContextInfo extends pb_1.Message {
     }
     set conversionData(value: Uint8Array) {
         pb_1.Message.setField(this, 19, value);
-    }
-    clear_conversionData() {
-        pb_1.Message.setField(this, 19, undefined);
     }
     get has_conversionData() {
         return pb_1.Message.getField(this, 19) != null;
@@ -1688,9 +1574,6 @@ export class ContextInfo extends pb_1.Message {
     set conversionDelaySeconds(value: number) {
         pb_1.Message.setField(this, 20, value);
     }
-    clear_conversionDelaySeconds() {
-        pb_1.Message.setField(this, 20, undefined);
-    }
     get has_conversionDelaySeconds() {
         return pb_1.Message.getField(this, 20) != null;
     }
@@ -1699,9 +1582,6 @@ export class ContextInfo extends pb_1.Message {
     }
     set forwardingScore(value: number) {
         pb_1.Message.setField(this, 21, value);
-    }
-    clear_forwardingScore() {
-        pb_1.Message.setField(this, 21, undefined);
     }
     get has_forwardingScore() {
         return pb_1.Message.getField(this, 21) != null;
@@ -1712,9 +1592,6 @@ export class ContextInfo extends pb_1.Message {
     set isForwarded(value: boolean) {
         pb_1.Message.setField(this, 22, value);
     }
-    clear_isForwarded() {
-        pb_1.Message.setField(this, 22, undefined);
-    }
     get has_isForwarded() {
         return pb_1.Message.getField(this, 22) != null;
     }
@@ -1723,9 +1600,6 @@ export class ContextInfo extends pb_1.Message {
     }
     set quotedAd(value: AdReplyInfo) {
         pb_1.Message.setWrapperField(this, 23, value);
-    }
-    clear_quotedAd() {
-        pb_1.Message.setField(this, 23, undefined);
     }
     get has_quotedAd() {
         return pb_1.Message.getField(this, 23) != null;
@@ -1736,9 +1610,6 @@ export class ContextInfo extends pb_1.Message {
     set placeholderKey(value: MessageKey) {
         pb_1.Message.setWrapperField(this, 24, value);
     }
-    clear_placeholderKey() {
-        pb_1.Message.setField(this, 24, undefined);
-    }
     get has_placeholderKey() {
         return pb_1.Message.getField(this, 24) != null;
     }
@@ -1747,9 +1618,6 @@ export class ContextInfo extends pb_1.Message {
     }
     set expiration(value: number) {
         pb_1.Message.setField(this, 25, value);
-    }
-    clear_expiration() {
-        pb_1.Message.setField(this, 25, undefined);
     }
     get has_expiration() {
         return pb_1.Message.getField(this, 25) != null;
@@ -1760,9 +1628,6 @@ export class ContextInfo extends pb_1.Message {
     set ephemeralSettingTimestamp(value: number) {
         pb_1.Message.setField(this, 26, value);
     }
-    clear_ephemeralSettingTimestamp() {
-        pb_1.Message.setField(this, 26, undefined);
-    }
     get has_ephemeralSettingTimestamp() {
         return pb_1.Message.getField(this, 26) != null;
     }
@@ -1771,9 +1636,6 @@ export class ContextInfo extends pb_1.Message {
     }
     set ephemeralSharedSecret(value: Uint8Array) {
         pb_1.Message.setField(this, 27, value);
-    }
-    clear_ephemeralSharedSecret() {
-        pb_1.Message.setField(this, 27, undefined);
     }
     get has_ephemeralSharedSecret() {
         return pb_1.Message.getField(this, 27) != null;
@@ -2029,9 +1891,6 @@ export class SenderKeyDistributionMessage extends pb_1.Message {
     set groupId(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
-    clear_groupId() {
-        pb_1.Message.setField(this, 1, undefined);
-    }
     get has_groupId() {
         return pb_1.Message.getField(this, 1) != null;
     }
@@ -2040,9 +1899,6 @@ export class SenderKeyDistributionMessage extends pb_1.Message {
     }
     set axolotlSenderKeyDistributionMessage(value: Uint8Array) {
         pb_1.Message.setField(this, 2, value);
-    }
-    clear_axolotlSenderKeyDistributionMessage() {
-        pb_1.Message.setField(this, 2, undefined);
     }
     get has_axolotlSenderKeyDistributionMessage() {
         return pb_1.Message.getField(this, 2) != null;
@@ -2203,9 +2059,6 @@ export class ImageMessage extends pb_1.Message {
     set url(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
-    clear_url() {
-        pb_1.Message.setField(this, 1, undefined);
-    }
     get has_url() {
         return pb_1.Message.getField(this, 1) != null;
     }
@@ -2214,9 +2067,6 @@ export class ImageMessage extends pb_1.Message {
     }
     set mimetype(value: string) {
         pb_1.Message.setField(this, 2, value);
-    }
-    clear_mimetype() {
-        pb_1.Message.setField(this, 2, undefined);
     }
     get has_mimetype() {
         return pb_1.Message.getField(this, 2) != null;
@@ -2227,9 +2077,6 @@ export class ImageMessage extends pb_1.Message {
     set caption(value: string) {
         pb_1.Message.setField(this, 3, value);
     }
-    clear_caption() {
-        pb_1.Message.setField(this, 3, undefined);
-    }
     get has_caption() {
         return pb_1.Message.getField(this, 3) != null;
     }
@@ -2238,9 +2085,6 @@ export class ImageMessage extends pb_1.Message {
     }
     set fileSha256(value: Uint8Array) {
         pb_1.Message.setField(this, 4, value);
-    }
-    clear_fileSha256() {
-        pb_1.Message.setField(this, 4, undefined);
     }
     get has_fileSha256() {
         return pb_1.Message.getField(this, 4) != null;
@@ -2251,9 +2095,6 @@ export class ImageMessage extends pb_1.Message {
     set fileLength(value: number) {
         pb_1.Message.setField(this, 5, value);
     }
-    clear_fileLength() {
-        pb_1.Message.setField(this, 5, undefined);
-    }
     get has_fileLength() {
         return pb_1.Message.getField(this, 5) != null;
     }
@@ -2262,9 +2103,6 @@ export class ImageMessage extends pb_1.Message {
     }
     set height(value: number) {
         pb_1.Message.setField(this, 6, value);
-    }
-    clear_height() {
-        pb_1.Message.setField(this, 6, undefined);
     }
     get has_height() {
         return pb_1.Message.getField(this, 6) != null;
@@ -2275,9 +2113,6 @@ export class ImageMessage extends pb_1.Message {
     set width(value: number) {
         pb_1.Message.setField(this, 7, value);
     }
-    clear_width() {
-        pb_1.Message.setField(this, 7, undefined);
-    }
     get has_width() {
         return pb_1.Message.getField(this, 7) != null;
     }
@@ -2287,9 +2122,6 @@ export class ImageMessage extends pb_1.Message {
     set mediaKey(value: Uint8Array) {
         pb_1.Message.setField(this, 8, value);
     }
-    clear_mediaKey() {
-        pb_1.Message.setField(this, 8, undefined);
-    }
     get has_mediaKey() {
         return pb_1.Message.getField(this, 8) != null;
     }
@@ -2298,9 +2130,6 @@ export class ImageMessage extends pb_1.Message {
     }
     set fileEncSha256(value: Uint8Array) {
         pb_1.Message.setField(this, 9, value);
-    }
-    clear_fileEncSha256() {
-        pb_1.Message.setField(this, 9, undefined);
     }
     get has_fileEncSha256() {
         return pb_1.Message.getField(this, 9) != null;
@@ -2317,9 +2146,6 @@ export class ImageMessage extends pb_1.Message {
     set directPath(value: string) {
         pb_1.Message.setField(this, 11, value);
     }
-    clear_directPath() {
-        pb_1.Message.setField(this, 11, undefined);
-    }
     get has_directPath() {
         return pb_1.Message.getField(this, 11) != null;
     }
@@ -2328,9 +2154,6 @@ export class ImageMessage extends pb_1.Message {
     }
     set mediaKeyTimestamp(value: number) {
         pb_1.Message.setField(this, 12, value);
-    }
-    clear_mediaKeyTimestamp() {
-        pb_1.Message.setField(this, 12, undefined);
     }
     get has_mediaKeyTimestamp() {
         return pb_1.Message.getField(this, 12) != null;
@@ -2341,9 +2164,6 @@ export class ImageMessage extends pb_1.Message {
     set jpegThumbnail(value: Uint8Array) {
         pb_1.Message.setField(this, 16, value);
     }
-    clear_jpegThumbnail() {
-        pb_1.Message.setField(this, 16, undefined);
-    }
     get has_jpegThumbnail() {
         return pb_1.Message.getField(this, 16) != null;
     }
@@ -2352,9 +2172,6 @@ export class ImageMessage extends pb_1.Message {
     }
     set contextInfo(value: ContextInfo) {
         pb_1.Message.setWrapperField(this, 17, value);
-    }
-    clear_contextInfo() {
-        pb_1.Message.setField(this, 17, undefined);
     }
     get has_contextInfo() {
         return pb_1.Message.getField(this, 17) != null;
@@ -2365,9 +2182,6 @@ export class ImageMessage extends pb_1.Message {
     set firstScanSidecar(value: Uint8Array) {
         pb_1.Message.setField(this, 18, value);
     }
-    clear_firstScanSidecar() {
-        pb_1.Message.setField(this, 18, undefined);
-    }
     get has_firstScanSidecar() {
         return pb_1.Message.getField(this, 18) != null;
     }
@@ -2376,9 +2190,6 @@ export class ImageMessage extends pb_1.Message {
     }
     set firstScanLength(value: number) {
         pb_1.Message.setField(this, 19, value);
-    }
-    clear_firstScanLength() {
-        pb_1.Message.setField(this, 19, undefined);
     }
     get has_firstScanLength() {
         return pb_1.Message.getField(this, 19) != null;
@@ -2389,9 +2200,6 @@ export class ImageMessage extends pb_1.Message {
     set experimentGroupId(value: number) {
         pb_1.Message.setField(this, 20, value);
     }
-    clear_experimentGroupId() {
-        pb_1.Message.setField(this, 20, undefined);
-    }
     get has_experimentGroupId() {
         return pb_1.Message.getField(this, 20) != null;
     }
@@ -2400,9 +2208,6 @@ export class ImageMessage extends pb_1.Message {
     }
     set scansSidecar(value: Uint8Array) {
         pb_1.Message.setField(this, 21, value);
-    }
-    clear_scansSidecar() {
-        pb_1.Message.setField(this, 21, undefined);
     }
     get has_scansSidecar() {
         return pb_1.Message.getField(this, 21) != null;
@@ -2419,9 +2224,6 @@ export class ImageMessage extends pb_1.Message {
     set midQualityFileSha256(value: Uint8Array) {
         pb_1.Message.setField(this, 23, value);
     }
-    clear_midQualityFileSha256() {
-        pb_1.Message.setField(this, 23, undefined);
-    }
     get has_midQualityFileSha256() {
         return pb_1.Message.getField(this, 23) != null;
     }
@@ -2430,9 +2232,6 @@ export class ImageMessage extends pb_1.Message {
     }
     set midQualityFileEncSha256(value: Uint8Array) {
         pb_1.Message.setField(this, 24, value);
-    }
-    clear_midQualityFileEncSha256() {
-        pb_1.Message.setField(this, 24, undefined);
     }
     get has_midQualityFileEncSha256() {
         return pb_1.Message.getField(this, 24) != null;
@@ -2768,9 +2567,6 @@ export class ContactMessage extends pb_1.Message {
     set displayName(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
-    clear_displayName() {
-        pb_1.Message.setField(this, 1, undefined);
-    }
     get has_displayName() {
         return pb_1.Message.getField(this, 1) != null;
     }
@@ -2780,9 +2576,6 @@ export class ContactMessage extends pb_1.Message {
     set vcard(value: string) {
         pb_1.Message.setField(this, 16, value);
     }
-    clear_vcard() {
-        pb_1.Message.setField(this, 16, undefined);
-    }
     get has_vcard() {
         return pb_1.Message.getField(this, 16) != null;
     }
@@ -2791,9 +2584,6 @@ export class ContactMessage extends pb_1.Message {
     }
     set contextInfo(value: ContextInfo) {
         pb_1.Message.setWrapperField(this, 17, value);
-    }
-    clear_contextInfo() {
-        pb_1.Message.setField(this, 17, undefined);
     }
     get has_contextInfo() {
         return pb_1.Message.getField(this, 17) != null;
@@ -2935,9 +2725,6 @@ export class LocationMessage extends pb_1.Message {
     set degreesLatitude(value: number) {
         pb_1.Message.setField(this, 1, value);
     }
-    clear_degreesLatitude() {
-        pb_1.Message.setField(this, 1, undefined);
-    }
     get has_degreesLatitude() {
         return pb_1.Message.getField(this, 1) != null;
     }
@@ -2946,9 +2733,6 @@ export class LocationMessage extends pb_1.Message {
     }
     set degreesLongitude(value: number) {
         pb_1.Message.setField(this, 2, value);
-    }
-    clear_degreesLongitude() {
-        pb_1.Message.setField(this, 2, undefined);
     }
     get has_degreesLongitude() {
         return pb_1.Message.getField(this, 2) != null;
@@ -2959,9 +2743,6 @@ export class LocationMessage extends pb_1.Message {
     set name(value: string) {
         pb_1.Message.setField(this, 3, value);
     }
-    clear_name() {
-        pb_1.Message.setField(this, 3, undefined);
-    }
     get has_name() {
         return pb_1.Message.getField(this, 3) != null;
     }
@@ -2970,9 +2751,6 @@ export class LocationMessage extends pb_1.Message {
     }
     set address(value: string) {
         pb_1.Message.setField(this, 4, value);
-    }
-    clear_address() {
-        pb_1.Message.setField(this, 4, undefined);
     }
     get has_address() {
         return pb_1.Message.getField(this, 4) != null;
@@ -2983,9 +2761,6 @@ export class LocationMessage extends pb_1.Message {
     set url(value: string) {
         pb_1.Message.setField(this, 5, value);
     }
-    clear_url() {
-        pb_1.Message.setField(this, 5, undefined);
-    }
     get has_url() {
         return pb_1.Message.getField(this, 5) != null;
     }
@@ -2994,9 +2769,6 @@ export class LocationMessage extends pb_1.Message {
     }
     set isLive(value: boolean) {
         pb_1.Message.setField(this, 6, value);
-    }
-    clear_isLive() {
-        pb_1.Message.setField(this, 6, undefined);
     }
     get has_isLive() {
         return pb_1.Message.getField(this, 6) != null;
@@ -3007,9 +2779,6 @@ export class LocationMessage extends pb_1.Message {
     set accuracyInMeters(value: number) {
         pb_1.Message.setField(this, 7, value);
     }
-    clear_accuracyInMeters() {
-        pb_1.Message.setField(this, 7, undefined);
-    }
     get has_accuracyInMeters() {
         return pb_1.Message.getField(this, 7) != null;
     }
@@ -3018,9 +2787,6 @@ export class LocationMessage extends pb_1.Message {
     }
     set speedInMps(value: number) {
         pb_1.Message.setField(this, 8, value);
-    }
-    clear_speedInMps() {
-        pb_1.Message.setField(this, 8, undefined);
     }
     get has_speedInMps() {
         return pb_1.Message.getField(this, 8) != null;
@@ -3031,9 +2797,6 @@ export class LocationMessage extends pb_1.Message {
     set degreesClockwiseFromMagneticNorth(value: number) {
         pb_1.Message.setField(this, 9, value);
     }
-    clear_degreesClockwiseFromMagneticNorth() {
-        pb_1.Message.setField(this, 9, undefined);
-    }
     get has_degreesClockwiseFromMagneticNorth() {
         return pb_1.Message.getField(this, 9) != null;
     }
@@ -3042,9 +2805,6 @@ export class LocationMessage extends pb_1.Message {
     }
     set comment(value: string) {
         pb_1.Message.setField(this, 11, value);
-    }
-    clear_comment() {
-        pb_1.Message.setField(this, 11, undefined);
     }
     get has_comment() {
         return pb_1.Message.getField(this, 11) != null;
@@ -3055,9 +2815,6 @@ export class LocationMessage extends pb_1.Message {
     set jpegThumbnail(value: Uint8Array) {
         pb_1.Message.setField(this, 16, value);
     }
-    clear_jpegThumbnail() {
-        pb_1.Message.setField(this, 16, undefined);
-    }
     get has_jpegThumbnail() {
         return pb_1.Message.getField(this, 16) != null;
     }
@@ -3066,9 +2823,6 @@ export class LocationMessage extends pb_1.Message {
     }
     set contextInfo(value: ContextInfo) {
         pb_1.Message.setWrapperField(this, 17, value);
-    }
-    clear_contextInfo() {
-        pb_1.Message.setField(this, 17, undefined);
     }
     get has_contextInfo() {
         return pb_1.Message.getField(this, 17) != null;
@@ -3327,9 +3081,6 @@ export class ExtendedTextMessage extends pb_1.Message {
     set text(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
-    clear_text() {
-        pb_1.Message.setField(this, 1, undefined);
-    }
     get has_text() {
         return pb_1.Message.getField(this, 1) != null;
     }
@@ -3338,9 +3089,6 @@ export class ExtendedTextMessage extends pb_1.Message {
     }
     set matchedText(value: string) {
         pb_1.Message.setField(this, 2, value);
-    }
-    clear_matchedText() {
-        pb_1.Message.setField(this, 2, undefined);
     }
     get has_matchedText() {
         return pb_1.Message.getField(this, 2) != null;
@@ -3351,9 +3099,6 @@ export class ExtendedTextMessage extends pb_1.Message {
     set canonicalUrl(value: string) {
         pb_1.Message.setField(this, 4, value);
     }
-    clear_canonicalUrl() {
-        pb_1.Message.setField(this, 4, undefined);
-    }
     get has_canonicalUrl() {
         return pb_1.Message.getField(this, 4) != null;
     }
@@ -3362,9 +3107,6 @@ export class ExtendedTextMessage extends pb_1.Message {
     }
     set description(value: string) {
         pb_1.Message.setField(this, 5, value);
-    }
-    clear_description() {
-        pb_1.Message.setField(this, 5, undefined);
     }
     get has_description() {
         return pb_1.Message.getField(this, 5) != null;
@@ -3375,9 +3117,6 @@ export class ExtendedTextMessage extends pb_1.Message {
     set title(value: string) {
         pb_1.Message.setField(this, 6, value);
     }
-    clear_title() {
-        pb_1.Message.setField(this, 6, undefined);
-    }
     get has_title() {
         return pb_1.Message.getField(this, 6) != null;
     }
@@ -3386,9 +3125,6 @@ export class ExtendedTextMessage extends pb_1.Message {
     }
     set textArgb(value: number) {
         pb_1.Message.setField(this, 7, value);
-    }
-    clear_textArgb() {
-        pb_1.Message.setField(this, 7, undefined);
     }
     get has_textArgb() {
         return pb_1.Message.getField(this, 7) != null;
@@ -3399,9 +3135,6 @@ export class ExtendedTextMessage extends pb_1.Message {
     set backgroundArgb(value: number) {
         pb_1.Message.setField(this, 8, value);
     }
-    clear_backgroundArgb() {
-        pb_1.Message.setField(this, 8, undefined);
-    }
     get has_backgroundArgb() {
         return pb_1.Message.getField(this, 8) != null;
     }
@@ -3410,9 +3143,6 @@ export class ExtendedTextMessage extends pb_1.Message {
     }
     set font(value: ExtendedTextMessage.EXTENDED_TEXT_MESSAGE_FONTTYPE) {
         pb_1.Message.setField(this, 9, value);
-    }
-    clear_font() {
-        pb_1.Message.setField(this, 9, undefined);
     }
     get has_font() {
         return pb_1.Message.getField(this, 9) != null;
@@ -3423,9 +3153,6 @@ export class ExtendedTextMessage extends pb_1.Message {
     set previewType(value: ExtendedTextMessage.EXTENDED_TEXT_MESSAGE_PREVIEWTYPE) {
         pb_1.Message.setField(this, 10, value);
     }
-    clear_previewType() {
-        pb_1.Message.setField(this, 10, undefined);
-    }
     get has_previewType() {
         return pb_1.Message.getField(this, 10) != null;
     }
@@ -3434,9 +3161,6 @@ export class ExtendedTextMessage extends pb_1.Message {
     }
     set jpegThumbnail(value: Uint8Array) {
         pb_1.Message.setField(this, 16, value);
-    }
-    clear_jpegThumbnail() {
-        pb_1.Message.setField(this, 16, undefined);
     }
     get has_jpegThumbnail() {
         return pb_1.Message.getField(this, 16) != null;
@@ -3447,9 +3171,6 @@ export class ExtendedTextMessage extends pb_1.Message {
     set contextInfo(value: ContextInfo) {
         pb_1.Message.setWrapperField(this, 17, value);
     }
-    clear_contextInfo() {
-        pb_1.Message.setField(this, 17, undefined);
-    }
     get has_contextInfo() {
         return pb_1.Message.getField(this, 17) != null;
     }
@@ -3458,9 +3179,6 @@ export class ExtendedTextMessage extends pb_1.Message {
     }
     set doNotPlayInline(value: boolean) {
         pb_1.Message.setField(this, 18, value);
-    }
-    clear_doNotPlayInline() {
-        pb_1.Message.setField(this, 18, undefined);
     }
     get has_doNotPlayInline() {
         return pb_1.Message.getField(this, 18) != null;
@@ -3737,9 +3455,6 @@ export class DocumentMessage extends pb_1.Message {
     set url(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
-    clear_url() {
-        pb_1.Message.setField(this, 1, undefined);
-    }
     get has_url() {
         return pb_1.Message.getField(this, 1) != null;
     }
@@ -3748,9 +3463,6 @@ export class DocumentMessage extends pb_1.Message {
     }
     set mimetype(value: string) {
         pb_1.Message.setField(this, 2, value);
-    }
-    clear_mimetype() {
-        pb_1.Message.setField(this, 2, undefined);
     }
     get has_mimetype() {
         return pb_1.Message.getField(this, 2) != null;
@@ -3761,9 +3473,6 @@ export class DocumentMessage extends pb_1.Message {
     set title(value: string) {
         pb_1.Message.setField(this, 3, value);
     }
-    clear_title() {
-        pb_1.Message.setField(this, 3, undefined);
-    }
     get has_title() {
         return pb_1.Message.getField(this, 3) != null;
     }
@@ -3772,9 +3481,6 @@ export class DocumentMessage extends pb_1.Message {
     }
     set fileSha256(value: Uint8Array) {
         pb_1.Message.setField(this, 4, value);
-    }
-    clear_fileSha256() {
-        pb_1.Message.setField(this, 4, undefined);
     }
     get has_fileSha256() {
         return pb_1.Message.getField(this, 4) != null;
@@ -3785,9 +3491,6 @@ export class DocumentMessage extends pb_1.Message {
     set fileLength(value: number) {
         pb_1.Message.setField(this, 5, value);
     }
-    clear_fileLength() {
-        pb_1.Message.setField(this, 5, undefined);
-    }
     get has_fileLength() {
         return pb_1.Message.getField(this, 5) != null;
     }
@@ -3796,9 +3499,6 @@ export class DocumentMessage extends pb_1.Message {
     }
     set pageCount(value: number) {
         pb_1.Message.setField(this, 6, value);
-    }
-    clear_pageCount() {
-        pb_1.Message.setField(this, 6, undefined);
     }
     get has_pageCount() {
         return pb_1.Message.getField(this, 6) != null;
@@ -3809,9 +3509,6 @@ export class DocumentMessage extends pb_1.Message {
     set mediaKey(value: Uint8Array) {
         pb_1.Message.setField(this, 7, value);
     }
-    clear_mediaKey() {
-        pb_1.Message.setField(this, 7, undefined);
-    }
     get has_mediaKey() {
         return pb_1.Message.getField(this, 7) != null;
     }
@@ -3820,9 +3517,6 @@ export class DocumentMessage extends pb_1.Message {
     }
     set fileName(value: string) {
         pb_1.Message.setField(this, 8, value);
-    }
-    clear_fileName() {
-        pb_1.Message.setField(this, 8, undefined);
     }
     get has_fileName() {
         return pb_1.Message.getField(this, 8) != null;
@@ -3833,9 +3527,6 @@ export class DocumentMessage extends pb_1.Message {
     set fileEncSha256(value: Uint8Array) {
         pb_1.Message.setField(this, 9, value);
     }
-    clear_fileEncSha256() {
-        pb_1.Message.setField(this, 9, undefined);
-    }
     get has_fileEncSha256() {
         return pb_1.Message.getField(this, 9) != null;
     }
@@ -3844,9 +3535,6 @@ export class DocumentMessage extends pb_1.Message {
     }
     set directPath(value: string) {
         pb_1.Message.setField(this, 10, value);
-    }
-    clear_directPath() {
-        pb_1.Message.setField(this, 10, undefined);
     }
     get has_directPath() {
         return pb_1.Message.getField(this, 10) != null;
@@ -3857,9 +3545,6 @@ export class DocumentMessage extends pb_1.Message {
     set mediaKeyTimestamp(value: number) {
         pb_1.Message.setField(this, 11, value);
     }
-    clear_mediaKeyTimestamp() {
-        pb_1.Message.setField(this, 11, undefined);
-    }
     get has_mediaKeyTimestamp() {
         return pb_1.Message.getField(this, 11) != null;
     }
@@ -3869,9 +3554,6 @@ export class DocumentMessage extends pb_1.Message {
     set jpegThumbnail(value: Uint8Array) {
         pb_1.Message.setField(this, 16, value);
     }
-    clear_jpegThumbnail() {
-        pb_1.Message.setField(this, 16, undefined);
-    }
     get has_jpegThumbnail() {
         return pb_1.Message.getField(this, 16) != null;
     }
@@ -3880,9 +3562,6 @@ export class DocumentMessage extends pb_1.Message {
     }
     set contextInfo(value: ContextInfo) {
         pb_1.Message.setWrapperField(this, 17, value);
-    }
-    clear_contextInfo() {
-        pb_1.Message.setField(this, 17, undefined);
     }
     get has_contextInfo() {
         return pb_1.Message.getField(this, 17) != null;
@@ -4154,9 +3833,6 @@ export class AudioMessage extends pb_1.Message {
     set url(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
-    clear_url() {
-        pb_1.Message.setField(this, 1, undefined);
-    }
     get has_url() {
         return pb_1.Message.getField(this, 1) != null;
     }
@@ -4165,9 +3841,6 @@ export class AudioMessage extends pb_1.Message {
     }
     set mimetype(value: string) {
         pb_1.Message.setField(this, 2, value);
-    }
-    clear_mimetype() {
-        pb_1.Message.setField(this, 2, undefined);
     }
     get has_mimetype() {
         return pb_1.Message.getField(this, 2) != null;
@@ -4178,9 +3851,6 @@ export class AudioMessage extends pb_1.Message {
     set fileSha256(value: Uint8Array) {
         pb_1.Message.setField(this, 3, value);
     }
-    clear_fileSha256() {
-        pb_1.Message.setField(this, 3, undefined);
-    }
     get has_fileSha256() {
         return pb_1.Message.getField(this, 3) != null;
     }
@@ -4189,9 +3859,6 @@ export class AudioMessage extends pb_1.Message {
     }
     set fileLength(value: number) {
         pb_1.Message.setField(this, 4, value);
-    }
-    clear_fileLength() {
-        pb_1.Message.setField(this, 4, undefined);
     }
     get has_fileLength() {
         return pb_1.Message.getField(this, 4) != null;
@@ -4202,9 +3869,6 @@ export class AudioMessage extends pb_1.Message {
     set seconds(value: number) {
         pb_1.Message.setField(this, 5, value);
     }
-    clear_seconds() {
-        pb_1.Message.setField(this, 5, undefined);
-    }
     get has_seconds() {
         return pb_1.Message.getField(this, 5) != null;
     }
@@ -4213,9 +3877,6 @@ export class AudioMessage extends pb_1.Message {
     }
     set ptt(value: boolean) {
         pb_1.Message.setField(this, 6, value);
-    }
-    clear_ptt() {
-        pb_1.Message.setField(this, 6, undefined);
     }
     get has_ptt() {
         return pb_1.Message.getField(this, 6) != null;
@@ -4226,9 +3887,6 @@ export class AudioMessage extends pb_1.Message {
     set mediaKey(value: Uint8Array) {
         pb_1.Message.setField(this, 7, value);
     }
-    clear_mediaKey() {
-        pb_1.Message.setField(this, 7, undefined);
-    }
     get has_mediaKey() {
         return pb_1.Message.getField(this, 7) != null;
     }
@@ -4237,9 +3895,6 @@ export class AudioMessage extends pb_1.Message {
     }
     set fileEncSha256(value: Uint8Array) {
         pb_1.Message.setField(this, 8, value);
-    }
-    clear_fileEncSha256() {
-        pb_1.Message.setField(this, 8, undefined);
     }
     get has_fileEncSha256() {
         return pb_1.Message.getField(this, 8) != null;
@@ -4250,9 +3905,6 @@ export class AudioMessage extends pb_1.Message {
     set directPath(value: string) {
         pb_1.Message.setField(this, 9, value);
     }
-    clear_directPath() {
-        pb_1.Message.setField(this, 9, undefined);
-    }
     get has_directPath() {
         return pb_1.Message.getField(this, 9) != null;
     }
@@ -4261,9 +3913,6 @@ export class AudioMessage extends pb_1.Message {
     }
     set mediaKeyTimestamp(value: number) {
         pb_1.Message.setField(this, 10, value);
-    }
-    clear_mediaKeyTimestamp() {
-        pb_1.Message.setField(this, 10, undefined);
     }
     get has_mediaKeyTimestamp() {
         return pb_1.Message.getField(this, 10) != null;
@@ -4274,9 +3923,6 @@ export class AudioMessage extends pb_1.Message {
     set contextInfo(value: ContextInfo) {
         pb_1.Message.setWrapperField(this, 17, value);
     }
-    clear_contextInfo() {
-        pb_1.Message.setField(this, 17, undefined);
-    }
     get has_contextInfo() {
         return pb_1.Message.getField(this, 17) != null;
     }
@@ -4285,9 +3931,6 @@ export class AudioMessage extends pb_1.Message {
     }
     set streamingSidecar(value: Uint8Array) {
         pb_1.Message.setField(this, 18, value);
-    }
-    clear_streamingSidecar() {
-        pb_1.Message.setField(this, 18, undefined);
     }
     get has_streamingSidecar() {
         return pb_1.Message.getField(this, 18) != null;
@@ -4568,9 +4211,6 @@ export class VideoMessage extends pb_1.Message {
     set url(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
-    clear_url() {
-        pb_1.Message.setField(this, 1, undefined);
-    }
     get has_url() {
         return pb_1.Message.getField(this, 1) != null;
     }
@@ -4579,9 +4219,6 @@ export class VideoMessage extends pb_1.Message {
     }
     set mimetype(value: string) {
         pb_1.Message.setField(this, 2, value);
-    }
-    clear_mimetype() {
-        pb_1.Message.setField(this, 2, undefined);
     }
     get has_mimetype() {
         return pb_1.Message.getField(this, 2) != null;
@@ -4592,9 +4229,6 @@ export class VideoMessage extends pb_1.Message {
     set fileSha256(value: Uint8Array) {
         pb_1.Message.setField(this, 3, value);
     }
-    clear_fileSha256() {
-        pb_1.Message.setField(this, 3, undefined);
-    }
     get has_fileSha256() {
         return pb_1.Message.getField(this, 3) != null;
     }
@@ -4603,9 +4237,6 @@ export class VideoMessage extends pb_1.Message {
     }
     set fileLength(value: number) {
         pb_1.Message.setField(this, 4, value);
-    }
-    clear_fileLength() {
-        pb_1.Message.setField(this, 4, undefined);
     }
     get has_fileLength() {
         return pb_1.Message.getField(this, 4) != null;
@@ -4616,9 +4247,6 @@ export class VideoMessage extends pb_1.Message {
     set seconds(value: number) {
         pb_1.Message.setField(this, 5, value);
     }
-    clear_seconds() {
-        pb_1.Message.setField(this, 5, undefined);
-    }
     get has_seconds() {
         return pb_1.Message.getField(this, 5) != null;
     }
@@ -4627,9 +4255,6 @@ export class VideoMessage extends pb_1.Message {
     }
     set mediaKey(value: Uint8Array) {
         pb_1.Message.setField(this, 6, value);
-    }
-    clear_mediaKey() {
-        pb_1.Message.setField(this, 6, undefined);
     }
     get has_mediaKey() {
         return pb_1.Message.getField(this, 6) != null;
@@ -4640,9 +4265,6 @@ export class VideoMessage extends pb_1.Message {
     set caption(value: string) {
         pb_1.Message.setField(this, 7, value);
     }
-    clear_caption() {
-        pb_1.Message.setField(this, 7, undefined);
-    }
     get has_caption() {
         return pb_1.Message.getField(this, 7) != null;
     }
@@ -4651,9 +4273,6 @@ export class VideoMessage extends pb_1.Message {
     }
     set gifPlayback(value: boolean) {
         pb_1.Message.setField(this, 8, value);
-    }
-    clear_gifPlayback() {
-        pb_1.Message.setField(this, 8, undefined);
     }
     get has_gifPlayback() {
         return pb_1.Message.getField(this, 8) != null;
@@ -4664,9 +4283,6 @@ export class VideoMessage extends pb_1.Message {
     set height(value: number) {
         pb_1.Message.setField(this, 9, value);
     }
-    clear_height() {
-        pb_1.Message.setField(this, 9, undefined);
-    }
     get has_height() {
         return pb_1.Message.getField(this, 9) != null;
     }
@@ -4676,9 +4292,6 @@ export class VideoMessage extends pb_1.Message {
     set width(value: number) {
         pb_1.Message.setField(this, 10, value);
     }
-    clear_width() {
-        pb_1.Message.setField(this, 10, undefined);
-    }
     get has_width() {
         return pb_1.Message.getField(this, 10) != null;
     }
@@ -4687,9 +4300,6 @@ export class VideoMessage extends pb_1.Message {
     }
     set fileEncSha256(value: Uint8Array) {
         pb_1.Message.setField(this, 11, value);
-    }
-    clear_fileEncSha256() {
-        pb_1.Message.setField(this, 11, undefined);
     }
     get has_fileEncSha256() {
         return pb_1.Message.getField(this, 11) != null;
@@ -4706,9 +4316,6 @@ export class VideoMessage extends pb_1.Message {
     set directPath(value: string) {
         pb_1.Message.setField(this, 13, value);
     }
-    clear_directPath() {
-        pb_1.Message.setField(this, 13, undefined);
-    }
     get has_directPath() {
         return pb_1.Message.getField(this, 13) != null;
     }
@@ -4717,9 +4324,6 @@ export class VideoMessage extends pb_1.Message {
     }
     set mediaKeyTimestamp(value: number) {
         pb_1.Message.setField(this, 14, value);
-    }
-    clear_mediaKeyTimestamp() {
-        pb_1.Message.setField(this, 14, undefined);
     }
     get has_mediaKeyTimestamp() {
         return pb_1.Message.getField(this, 14) != null;
@@ -4730,9 +4334,6 @@ export class VideoMessage extends pb_1.Message {
     set jpegThumbnail(value: Uint8Array) {
         pb_1.Message.setField(this, 16, value);
     }
-    clear_jpegThumbnail() {
-        pb_1.Message.setField(this, 16, undefined);
-    }
     get has_jpegThumbnail() {
         return pb_1.Message.getField(this, 16) != null;
     }
@@ -4741,9 +4342,6 @@ export class VideoMessage extends pb_1.Message {
     }
     set contextInfo(value: ContextInfo) {
         pb_1.Message.setWrapperField(this, 17, value);
-    }
-    clear_contextInfo() {
-        pb_1.Message.setField(this, 17, undefined);
     }
     get has_contextInfo() {
         return pb_1.Message.getField(this, 17) != null;
@@ -4754,9 +4352,6 @@ export class VideoMessage extends pb_1.Message {
     set streamingSidecar(value: Uint8Array) {
         pb_1.Message.setField(this, 18, value);
     }
-    clear_streamingSidecar() {
-        pb_1.Message.setField(this, 18, undefined);
-    }
     get has_streamingSidecar() {
         return pb_1.Message.getField(this, 18) != null;
     }
@@ -4765,9 +4360,6 @@ export class VideoMessage extends pb_1.Message {
     }
     set gifAttribution(value: VideoMessage.VIDEO_MESSAGE_ATTRIBUTION) {
         pb_1.Message.setField(this, 19, value);
-    }
-    clear_gifAttribution() {
-        pb_1.Message.setField(this, 19, undefined);
     }
     get has_gifAttribution() {
         return pb_1.Message.getField(this, 19) != null;
@@ -5066,9 +4658,6 @@ export class Call extends pb_1.Message {
     set callKey(value: Uint8Array) {
         pb_1.Message.setField(this, 1, value);
     }
-    clear_callKey() {
-        pb_1.Message.setField(this, 1, undefined);
-    }
     get has_callKey() {
         return pb_1.Message.getField(this, 1) != null;
     }
@@ -5143,9 +4732,6 @@ export class Chat extends pb_1.Message {
     set displayName(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
-    clear_displayName() {
-        pb_1.Message.setField(this, 1, undefined);
-    }
     get has_displayName() {
         return pb_1.Message.getField(this, 1) != null;
     }
@@ -5154,9 +4740,6 @@ export class Chat extends pb_1.Message {
     }
     set id(value: string) {
         pb_1.Message.setField(this, 2, value);
-    }
-    clear_id() {
-        pb_1.Message.setField(this, 2, undefined);
     }
     get has_id() {
         return pb_1.Message.getField(this, 2) != null;
@@ -5257,9 +4840,6 @@ export class ProtocolMessage extends pb_1.Message {
     set key(value: MessageKey) {
         pb_1.Message.setWrapperField(this, 1, value);
     }
-    clear_key() {
-        pb_1.Message.setField(this, 1, undefined);
-    }
     get has_key() {
         return pb_1.Message.getField(this, 1) != null;
     }
@@ -5268,9 +4848,6 @@ export class ProtocolMessage extends pb_1.Message {
     }
     set type(value: ProtocolMessage.PROTOCOL_MESSAGE_TYPE) {
         pb_1.Message.setField(this, 2, value);
-    }
-    clear_type() {
-        pb_1.Message.setField(this, 2, undefined);
     }
     get has_type() {
         return pb_1.Message.getField(this, 2) != null;
@@ -5281,9 +4858,6 @@ export class ProtocolMessage extends pb_1.Message {
     set ephemeralExpiration(value: number) {
         pb_1.Message.setField(this, 4, value);
     }
-    clear_ephemeralExpiration() {
-        pb_1.Message.setField(this, 4, undefined);
-    }
     get has_ephemeralExpiration() {
         return pb_1.Message.getField(this, 4) != null;
     }
@@ -5293,9 +4867,6 @@ export class ProtocolMessage extends pb_1.Message {
     set ephemeralSettingTimestamp(value: number) {
         pb_1.Message.setField(this, 5, value);
     }
-    clear_ephemeralSettingTimestamp() {
-        pb_1.Message.setField(this, 5, undefined);
-    }
     get has_ephemeralSettingTimestamp() {
         return pb_1.Message.getField(this, 5) != null;
     }
@@ -5304,9 +4875,6 @@ export class ProtocolMessage extends pb_1.Message {
     }
     set historySyncNotification(value: HistorySyncNotification) {
         pb_1.Message.setWrapperField(this, 6, value);
-    }
-    clear_historySyncNotification() {
-        pb_1.Message.setField(this, 6, undefined);
     }
     get has_historySyncNotification() {
         return pb_1.Message.getField(this, 6) != null;
@@ -5466,9 +5034,6 @@ export class HistorySyncNotification extends pb_1.Message {
     set fileSha256(value: Uint8Array) {
         pb_1.Message.setField(this, 1, value);
     }
-    clear_fileSha256() {
-        pb_1.Message.setField(this, 1, undefined);
-    }
     get has_fileSha256() {
         return pb_1.Message.getField(this, 1) != null;
     }
@@ -5477,9 +5042,6 @@ export class HistorySyncNotification extends pb_1.Message {
     }
     set fileLength(value: number) {
         pb_1.Message.setField(this, 2, value);
-    }
-    clear_fileLength() {
-        pb_1.Message.setField(this, 2, undefined);
     }
     get has_fileLength() {
         return pb_1.Message.getField(this, 2) != null;
@@ -5490,9 +5052,6 @@ export class HistorySyncNotification extends pb_1.Message {
     set mediaKey(value: Uint8Array) {
         pb_1.Message.setField(this, 3, value);
     }
-    clear_mediaKey() {
-        pb_1.Message.setField(this, 3, undefined);
-    }
     get has_mediaKey() {
         return pb_1.Message.getField(this, 3) != null;
     }
@@ -5501,9 +5060,6 @@ export class HistorySyncNotification extends pb_1.Message {
     }
     set fileEncSha256(value: Uint8Array) {
         pb_1.Message.setField(this, 4, value);
-    }
-    clear_fileEncSha256() {
-        pb_1.Message.setField(this, 4, undefined);
     }
     get has_fileEncSha256() {
         return pb_1.Message.getField(this, 4) != null;
@@ -5514,9 +5070,6 @@ export class HistorySyncNotification extends pb_1.Message {
     set directPath(value: string) {
         pb_1.Message.setField(this, 5, value);
     }
-    clear_directPath() {
-        pb_1.Message.setField(this, 5, undefined);
-    }
     get has_directPath() {
         return pb_1.Message.getField(this, 5) != null;
     }
@@ -5525,9 +5078,6 @@ export class HistorySyncNotification extends pb_1.Message {
     }
     set syncType(value: HistorySyncNotification.HISTORY_SYNC_NOTIFICATION_HISTORYSYNCTYPE) {
         pb_1.Message.setField(this, 6, value);
-    }
-    clear_syncType() {
-        pb_1.Message.setField(this, 6, undefined);
     }
     get has_syncType() {
         return pb_1.Message.getField(this, 6) != null;
@@ -5538,9 +5088,6 @@ export class HistorySyncNotification extends pb_1.Message {
     set chunkOrder(value: number) {
         pb_1.Message.setField(this, 7, value);
     }
-    clear_chunkOrder() {
-        pb_1.Message.setField(this, 7, undefined);
-    }
     get has_chunkOrder() {
         return pb_1.Message.getField(this, 7) != null;
     }
@@ -5549,9 +5096,6 @@ export class HistorySyncNotification extends pb_1.Message {
     }
     set originalMessageId(value: string) {
         pb_1.Message.setField(this, 8, value);
-    }
-    clear_originalMessageId() {
-        pb_1.Message.setField(this, 8, undefined);
     }
     get has_originalMessageId() {
         return pb_1.Message.getField(this, 8) != null;
@@ -5729,9 +5273,6 @@ export class ContactsArrayMessage extends pb_1.Message {
     set displayName(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
-    clear_displayName() {
-        pb_1.Message.setField(this, 1, undefined);
-    }
     get has_displayName() {
         return pb_1.Message.getField(this, 1) != null;
     }
@@ -5746,9 +5287,6 @@ export class ContactsArrayMessage extends pb_1.Message {
     }
     set contextInfo(value: ContextInfo) {
         pb_1.Message.setWrapperField(this, 17, value);
-    }
-    clear_contextInfo() {
-        pb_1.Message.setField(this, 17, undefined);
     }
     get has_contextInfo() {
         return pb_1.Message.getField(this, 17) != null;
@@ -5849,9 +5387,6 @@ export class HSMCurrency extends pb_1.Message {
     set currencyCode(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
-    clear_currencyCode() {
-        pb_1.Message.setField(this, 1, undefined);
-    }
     get has_currencyCode() {
         return pb_1.Message.getField(this, 1) != null;
     }
@@ -5860,9 +5395,6 @@ export class HSMCurrency extends pb_1.Message {
     }
     set amount1000(value: number) {
         pb_1.Message.setField(this, 2, value);
-    }
-    clear_amount1000() {
-        pb_1.Message.setField(this, 2, undefined);
     }
     get has_amount1000() {
         return pb_1.Message.getField(this, 2) != null;
@@ -5971,9 +5503,6 @@ export class HSMDateTimeComponent extends pb_1.Message {
     set dayOfWeek(value: HSMDateTimeComponent.HSM_DATE_TIME_COMPONENT_DAYOFWEEKTYPE) {
         pb_1.Message.setField(this, 1, value);
     }
-    clear_dayOfWeek() {
-        pb_1.Message.setField(this, 1, undefined);
-    }
     get has_dayOfWeek() {
         return pb_1.Message.getField(this, 1) != null;
     }
@@ -5982,9 +5511,6 @@ export class HSMDateTimeComponent extends pb_1.Message {
     }
     set year(value: number) {
         pb_1.Message.setField(this, 2, value);
-    }
-    clear_year() {
-        pb_1.Message.setField(this, 2, undefined);
     }
     get has_year() {
         return pb_1.Message.getField(this, 2) != null;
@@ -5995,9 +5521,6 @@ export class HSMDateTimeComponent extends pb_1.Message {
     set month(value: number) {
         pb_1.Message.setField(this, 3, value);
     }
-    clear_month() {
-        pb_1.Message.setField(this, 3, undefined);
-    }
     get has_month() {
         return pb_1.Message.getField(this, 3) != null;
     }
@@ -6006,9 +5529,6 @@ export class HSMDateTimeComponent extends pb_1.Message {
     }
     set dayOfMonth(value: number) {
         pb_1.Message.setField(this, 4, value);
-    }
-    clear_dayOfMonth() {
-        pb_1.Message.setField(this, 4, undefined);
     }
     get has_dayOfMonth() {
         return pb_1.Message.getField(this, 4) != null;
@@ -6019,9 +5539,6 @@ export class HSMDateTimeComponent extends pb_1.Message {
     set hour(value: number) {
         pb_1.Message.setField(this, 5, value);
     }
-    clear_hour() {
-        pb_1.Message.setField(this, 5, undefined);
-    }
     get has_hour() {
         return pb_1.Message.getField(this, 5) != null;
     }
@@ -6031,9 +5548,6 @@ export class HSMDateTimeComponent extends pb_1.Message {
     set minute(value: number) {
         pb_1.Message.setField(this, 6, value);
     }
-    clear_minute() {
-        pb_1.Message.setField(this, 6, undefined);
-    }
     get has_minute() {
         return pb_1.Message.getField(this, 6) != null;
     }
@@ -6042,9 +5556,6 @@ export class HSMDateTimeComponent extends pb_1.Message {
     }
     set calendar(value: HSMDateTimeComponent.HSM_DATE_TIME_COMPONENT_CALENDARTYPE) {
         pb_1.Message.setField(this, 7, value);
-    }
-    clear_calendar() {
-        pb_1.Message.setField(this, 7, undefined);
     }
     get has_calendar() {
         return pb_1.Message.getField(this, 7) != null;
@@ -6209,9 +5720,6 @@ export class HSMDateTimeUnixEpoch extends pb_1.Message {
     set timestamp(value: number) {
         pb_1.Message.setField(this, 1, value);
     }
-    clear_timestamp() {
-        pb_1.Message.setField(this, 1, undefined);
-    }
     get has_timestamp() {
         return pb_1.Message.getField(this, 1) != null;
     }
@@ -6289,9 +5797,6 @@ export class HSMDateTime extends pb_1.Message {
     set component(value: HSMDateTimeComponent) {
         pb_1.Message.setOneofWrapperField(this, 1, this.#one_of_decls[0], value);
     }
-    clear_component() {
-        pb_1.Message.setField(this, 1, undefined);
-    }
     get has_component() {
         return pb_1.Message.getField(this, 1) != null;
     }
@@ -6300,9 +5805,6 @@ export class HSMDateTime extends pb_1.Message {
     }
     set unixEpoch(value: HSMDateTimeUnixEpoch) {
         pb_1.Message.setOneofWrapperField(this, 2, this.#one_of_decls[0], value);
-    }
-    clear_unixEpoch() {
-        pb_1.Message.setField(this, 2, undefined);
     }
     get has_unixEpoch() {
         return pb_1.Message.getField(this, 2) != null;
@@ -6409,9 +5911,6 @@ export class HSMLocalizableParameter extends pb_1.Message {
     set default(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
-    clear_default() {
-        pb_1.Message.setField(this, 1, undefined);
-    }
     get has_default() {
         return pb_1.Message.getField(this, 1) != null;
     }
@@ -6421,9 +5920,6 @@ export class HSMLocalizableParameter extends pb_1.Message {
     set currency(value: HSMCurrency) {
         pb_1.Message.setOneofWrapperField(this, 2, this.#one_of_decls[0], value);
     }
-    clear_currency() {
-        pb_1.Message.setField(this, 2, undefined);
-    }
     get has_currency() {
         return pb_1.Message.getField(this, 2) != null;
     }
@@ -6432,9 +5928,6 @@ export class HSMLocalizableParameter extends pb_1.Message {
     }
     set dateTime(value: HSMDateTime) {
         pb_1.Message.setOneofWrapperField(this, 3, this.#one_of_decls[0], value);
-    }
-    clear_dateTime() {
-        pb_1.Message.setField(this, 3, undefined);
     }
     get has_dateTime() {
         return pb_1.Message.getField(this, 3) != null;
@@ -6570,9 +6063,6 @@ export class HighlyStructuredMessage extends pb_1.Message {
     set namespace(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
-    clear_namespace() {
-        pb_1.Message.setField(this, 1, undefined);
-    }
     get has_namespace() {
         return pb_1.Message.getField(this, 1) != null;
     }
@@ -6581,9 +6071,6 @@ export class HighlyStructuredMessage extends pb_1.Message {
     }
     set elementName(value: string) {
         pb_1.Message.setField(this, 2, value);
-    }
-    clear_elementName() {
-        pb_1.Message.setField(this, 2, undefined);
     }
     get has_elementName() {
         return pb_1.Message.getField(this, 2) != null;
@@ -6600,9 +6087,6 @@ export class HighlyStructuredMessage extends pb_1.Message {
     set fallbackLg(value: string) {
         pb_1.Message.setField(this, 4, value);
     }
-    clear_fallbackLg() {
-        pb_1.Message.setField(this, 4, undefined);
-    }
     get has_fallbackLg() {
         return pb_1.Message.getField(this, 4) != null;
     }
@@ -6611,9 +6095,6 @@ export class HighlyStructuredMessage extends pb_1.Message {
     }
     set fallbackLc(value: string) {
         pb_1.Message.setField(this, 5, value);
-    }
-    clear_fallbackLc() {
-        pb_1.Message.setField(this, 5, undefined);
     }
     get has_fallbackLc() {
         return pb_1.Message.getField(this, 5) != null;
@@ -6630,9 +6111,6 @@ export class HighlyStructuredMessage extends pb_1.Message {
     set deterministicLg(value: string) {
         pb_1.Message.setField(this, 7, value);
     }
-    clear_deterministicLg() {
-        pb_1.Message.setField(this, 7, undefined);
-    }
     get has_deterministicLg() {
         return pb_1.Message.getField(this, 7) != null;
     }
@@ -6642,9 +6120,6 @@ export class HighlyStructuredMessage extends pb_1.Message {
     set deterministicLc(value: string) {
         pb_1.Message.setField(this, 8, value);
     }
-    clear_deterministicLc() {
-        pb_1.Message.setField(this, 8, undefined);
-    }
     get has_deterministicLc() {
         return pb_1.Message.getField(this, 8) != null;
     }
@@ -6653,9 +6128,6 @@ export class HighlyStructuredMessage extends pb_1.Message {
     }
     set hydratedHsm(value: TemplateMessage) {
         pb_1.Message.setWrapperField(this, 9, value);
-    }
-    clear_hydratedHsm() {
-        pb_1.Message.setField(this, 9, undefined);
     }
     get has_hydratedHsm() {
         return pb_1.Message.getField(this, 9) != null;
@@ -6831,9 +6303,6 @@ export class SendPaymentMessage extends pb_1.Message {
     set noteMessage(value: Message) {
         pb_1.Message.setWrapperField(this, 2, value);
     }
-    clear_noteMessage() {
-        pb_1.Message.setField(this, 2, undefined);
-    }
     get has_noteMessage() {
         return pb_1.Message.getField(this, 2) != null;
     }
@@ -6842,9 +6311,6 @@ export class SendPaymentMessage extends pb_1.Message {
     }
     set requestMessageKey(value: MessageKey) {
         pb_1.Message.setWrapperField(this, 3, value);
-    }
-    clear_requestMessageKey() {
-        pb_1.Message.setField(this, 3, undefined);
     }
     get has_requestMessageKey() {
         return pb_1.Message.getField(this, 3) != null;
@@ -6945,9 +6411,6 @@ export class RequestPaymentMessage extends pb_1.Message {
     set noteMessage(value: Message) {
         pb_1.Message.setWrapperField(this, 4, value);
     }
-    clear_noteMessage() {
-        pb_1.Message.setField(this, 4, undefined);
-    }
     get has_noteMessage() {
         return pb_1.Message.getField(this, 4) != null;
     }
@@ -6956,9 +6419,6 @@ export class RequestPaymentMessage extends pb_1.Message {
     }
     set currencyCodeIso4217(value: string) {
         pb_1.Message.setField(this, 1, value);
-    }
-    clear_currencyCodeIso4217() {
-        pb_1.Message.setField(this, 1, undefined);
     }
     get has_currencyCodeIso4217() {
         return pb_1.Message.getField(this, 1) != null;
@@ -6969,9 +6429,6 @@ export class RequestPaymentMessage extends pb_1.Message {
     set amount1000(value: number) {
         pb_1.Message.setField(this, 2, value);
     }
-    clear_amount1000() {
-        pb_1.Message.setField(this, 2, undefined);
-    }
     get has_amount1000() {
         return pb_1.Message.getField(this, 2) != null;
     }
@@ -6981,9 +6438,6 @@ export class RequestPaymentMessage extends pb_1.Message {
     set requestFrom(value: string) {
         pb_1.Message.setField(this, 3, value);
     }
-    clear_requestFrom() {
-        pb_1.Message.setField(this, 3, undefined);
-    }
     get has_requestFrom() {
         return pb_1.Message.getField(this, 3) != null;
     }
@@ -6992,9 +6446,6 @@ export class RequestPaymentMessage extends pb_1.Message {
     }
     set expiryTimestamp(value: number) {
         pb_1.Message.setField(this, 5, value);
-    }
-    clear_expiryTimestamp() {
-        pb_1.Message.setField(this, 5, undefined);
     }
     get has_expiryTimestamp() {
         return pb_1.Message.getField(this, 5) != null;
@@ -7118,9 +6569,6 @@ export class DeclinePaymentRequestMessage extends pb_1.Message {
     set key(value: MessageKey) {
         pb_1.Message.setWrapperField(this, 1, value);
     }
-    clear_key() {
-        pb_1.Message.setField(this, 1, undefined);
-    }
     get has_key() {
         return pb_1.Message.getField(this, 1) != null;
     }
@@ -7190,9 +6638,6 @@ export class CancelPaymentRequestMessage extends pb_1.Message {
     }
     set key(value: MessageKey) {
         pb_1.Message.setWrapperField(this, 1, value);
-    }
-    clear_key() {
-        pb_1.Message.setField(this, 1, undefined);
     }
     get has_key() {
         return pb_1.Message.getField(this, 1) != null;
@@ -7300,9 +6745,6 @@ export class LiveLocationMessage extends pb_1.Message {
     set degreesLatitude(value: number) {
         pb_1.Message.setField(this, 1, value);
     }
-    clear_degreesLatitude() {
-        pb_1.Message.setField(this, 1, undefined);
-    }
     get has_degreesLatitude() {
         return pb_1.Message.getField(this, 1) != null;
     }
@@ -7311,9 +6753,6 @@ export class LiveLocationMessage extends pb_1.Message {
     }
     set degreesLongitude(value: number) {
         pb_1.Message.setField(this, 2, value);
-    }
-    clear_degreesLongitude() {
-        pb_1.Message.setField(this, 2, undefined);
     }
     get has_degreesLongitude() {
         return pb_1.Message.getField(this, 2) != null;
@@ -7324,9 +6763,6 @@ export class LiveLocationMessage extends pb_1.Message {
     set accuracyInMeters(value: number) {
         pb_1.Message.setField(this, 3, value);
     }
-    clear_accuracyInMeters() {
-        pb_1.Message.setField(this, 3, undefined);
-    }
     get has_accuracyInMeters() {
         return pb_1.Message.getField(this, 3) != null;
     }
@@ -7335,9 +6771,6 @@ export class LiveLocationMessage extends pb_1.Message {
     }
     set speedInMps(value: number) {
         pb_1.Message.setField(this, 4, value);
-    }
-    clear_speedInMps() {
-        pb_1.Message.setField(this, 4, undefined);
     }
     get has_speedInMps() {
         return pb_1.Message.getField(this, 4) != null;
@@ -7348,9 +6781,6 @@ export class LiveLocationMessage extends pb_1.Message {
     set degreesClockwiseFromMagneticNorth(value: number) {
         pb_1.Message.setField(this, 5, value);
     }
-    clear_degreesClockwiseFromMagneticNorth() {
-        pb_1.Message.setField(this, 5, undefined);
-    }
     get has_degreesClockwiseFromMagneticNorth() {
         return pb_1.Message.getField(this, 5) != null;
     }
@@ -7359,9 +6789,6 @@ export class LiveLocationMessage extends pb_1.Message {
     }
     set caption(value: string) {
         pb_1.Message.setField(this, 6, value);
-    }
-    clear_caption() {
-        pb_1.Message.setField(this, 6, undefined);
     }
     get has_caption() {
         return pb_1.Message.getField(this, 6) != null;
@@ -7372,9 +6799,6 @@ export class LiveLocationMessage extends pb_1.Message {
     set sequenceNumber(value: number) {
         pb_1.Message.setField(this, 7, value);
     }
-    clear_sequenceNumber() {
-        pb_1.Message.setField(this, 7, undefined);
-    }
     get has_sequenceNumber() {
         return pb_1.Message.getField(this, 7) != null;
     }
@@ -7383,9 +6807,6 @@ export class LiveLocationMessage extends pb_1.Message {
     }
     set timeOffset(value: number) {
         pb_1.Message.setField(this, 8, value);
-    }
-    clear_timeOffset() {
-        pb_1.Message.setField(this, 8, undefined);
     }
     get has_timeOffset() {
         return pb_1.Message.getField(this, 8) != null;
@@ -7396,9 +6817,6 @@ export class LiveLocationMessage extends pb_1.Message {
     set jpegThumbnail(value: Uint8Array) {
         pb_1.Message.setField(this, 16, value);
     }
-    clear_jpegThumbnail() {
-        pb_1.Message.setField(this, 16, undefined);
-    }
     get has_jpegThumbnail() {
         return pb_1.Message.getField(this, 16) != null;
     }
@@ -7407,9 +6825,6 @@ export class LiveLocationMessage extends pb_1.Message {
     }
     set contextInfo(value: ContextInfo) {
         pb_1.Message.setWrapperField(this, 17, value);
-    }
-    clear_contextInfo() {
-        pb_1.Message.setField(this, 17, undefined);
     }
     get has_contextInfo() {
         return pb_1.Message.getField(this, 17) != null;
@@ -7654,9 +7069,6 @@ export class StickerMessage extends pb_1.Message {
     set url(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
-    clear_url() {
-        pb_1.Message.setField(this, 1, undefined);
-    }
     get has_url() {
         return pb_1.Message.getField(this, 1) != null;
     }
@@ -7665,9 +7077,6 @@ export class StickerMessage extends pb_1.Message {
     }
     set fileSha256(value: Uint8Array) {
         pb_1.Message.setField(this, 2, value);
-    }
-    clear_fileSha256() {
-        pb_1.Message.setField(this, 2, undefined);
     }
     get has_fileSha256() {
         return pb_1.Message.getField(this, 2) != null;
@@ -7678,9 +7087,6 @@ export class StickerMessage extends pb_1.Message {
     set fileEncSha256(value: Uint8Array) {
         pb_1.Message.setField(this, 3, value);
     }
-    clear_fileEncSha256() {
-        pb_1.Message.setField(this, 3, undefined);
-    }
     get has_fileEncSha256() {
         return pb_1.Message.getField(this, 3) != null;
     }
@@ -7689,9 +7095,6 @@ export class StickerMessage extends pb_1.Message {
     }
     set mediaKey(value: Uint8Array) {
         pb_1.Message.setField(this, 4, value);
-    }
-    clear_mediaKey() {
-        pb_1.Message.setField(this, 4, undefined);
     }
     get has_mediaKey() {
         return pb_1.Message.getField(this, 4) != null;
@@ -7702,9 +7105,6 @@ export class StickerMessage extends pb_1.Message {
     set mimetype(value: string) {
         pb_1.Message.setField(this, 5, value);
     }
-    clear_mimetype() {
-        pb_1.Message.setField(this, 5, undefined);
-    }
     get has_mimetype() {
         return pb_1.Message.getField(this, 5) != null;
     }
@@ -7713,9 +7113,6 @@ export class StickerMessage extends pb_1.Message {
     }
     set height(value: number) {
         pb_1.Message.setField(this, 6, value);
-    }
-    clear_height() {
-        pb_1.Message.setField(this, 6, undefined);
     }
     get has_height() {
         return pb_1.Message.getField(this, 6) != null;
@@ -7726,9 +7123,6 @@ export class StickerMessage extends pb_1.Message {
     set width(value: number) {
         pb_1.Message.setField(this, 7, value);
     }
-    clear_width() {
-        pb_1.Message.setField(this, 7, undefined);
-    }
     get has_width() {
         return pb_1.Message.getField(this, 7) != null;
     }
@@ -7737,9 +7131,6 @@ export class StickerMessage extends pb_1.Message {
     }
     set directPath(value: string) {
         pb_1.Message.setField(this, 8, value);
-    }
-    clear_directPath() {
-        pb_1.Message.setField(this, 8, undefined);
     }
     get has_directPath() {
         return pb_1.Message.getField(this, 8) != null;
@@ -7750,9 +7141,6 @@ export class StickerMessage extends pb_1.Message {
     set fileLength(value: number) {
         pb_1.Message.setField(this, 9, value);
     }
-    clear_fileLength() {
-        pb_1.Message.setField(this, 9, undefined);
-    }
     get has_fileLength() {
         return pb_1.Message.getField(this, 9) != null;
     }
@@ -7761,9 +7149,6 @@ export class StickerMessage extends pb_1.Message {
     }
     set mediaKeyTimestamp(value: number) {
         pb_1.Message.setField(this, 10, value);
-    }
-    clear_mediaKeyTimestamp() {
-        pb_1.Message.setField(this, 10, undefined);
     }
     get has_mediaKeyTimestamp() {
         return pb_1.Message.getField(this, 10) != null;
@@ -7774,9 +7159,6 @@ export class StickerMessage extends pb_1.Message {
     set firstFrameLength(value: number) {
         pb_1.Message.setField(this, 11, value);
     }
-    clear_firstFrameLength() {
-        pb_1.Message.setField(this, 11, undefined);
-    }
     get has_firstFrameLength() {
         return pb_1.Message.getField(this, 11) != null;
     }
@@ -7785,9 +7167,6 @@ export class StickerMessage extends pb_1.Message {
     }
     set firstFrameSidecar(value: Uint8Array) {
         pb_1.Message.setField(this, 12, value);
-    }
-    clear_firstFrameSidecar() {
-        pb_1.Message.setField(this, 12, undefined);
     }
     get has_firstFrameSidecar() {
         return pb_1.Message.getField(this, 12) != null;
@@ -7798,9 +7177,6 @@ export class StickerMessage extends pb_1.Message {
     set isAnimated(value: boolean) {
         pb_1.Message.setField(this, 13, value);
     }
-    clear_isAnimated() {
-        pb_1.Message.setField(this, 13, undefined);
-    }
     get has_isAnimated() {
         return pb_1.Message.getField(this, 13) != null;
     }
@@ -7810,9 +7186,6 @@ export class StickerMessage extends pb_1.Message {
     set pngThumbnail(value: Uint8Array) {
         pb_1.Message.setField(this, 16, value);
     }
-    clear_pngThumbnail() {
-        pb_1.Message.setField(this, 16, undefined);
-    }
     get has_pngThumbnail() {
         return pb_1.Message.getField(this, 16) != null;
     }
@@ -7821,9 +7194,6 @@ export class StickerMessage extends pb_1.Message {
     }
     set contextInfo(value: ContextInfo) {
         pb_1.Message.setWrapperField(this, 17, value);
-    }
-    clear_contextInfo() {
-        pb_1.Message.setField(this, 17, undefined);
     }
     get has_contextInfo() {
         return pb_1.Message.getField(this, 17) != null;
@@ -8128,9 +7498,6 @@ export class FourRowTemplate extends pb_1.Message {
     set content(value: HighlyStructuredMessage) {
         pb_1.Message.setWrapperField(this, 6, value);
     }
-    clear_content() {
-        pb_1.Message.setField(this, 6, undefined);
-    }
     get has_content() {
         return pb_1.Message.getField(this, 6) != null;
     }
@@ -8139,9 +7506,6 @@ export class FourRowTemplate extends pb_1.Message {
     }
     set footer(value: HighlyStructuredMessage) {
         pb_1.Message.setWrapperField(this, 7, value);
-    }
-    clear_footer() {
-        pb_1.Message.setField(this, 7, undefined);
     }
     get has_footer() {
         return pb_1.Message.getField(this, 7) != null;
@@ -8158,9 +7522,6 @@ export class FourRowTemplate extends pb_1.Message {
     set documentMessage(value: DocumentMessage) {
         pb_1.Message.setOneofWrapperField(this, 1, this.#one_of_decls[0], value);
     }
-    clear_documentMessage() {
-        pb_1.Message.setField(this, 1, undefined);
-    }
     get has_documentMessage() {
         return pb_1.Message.getField(this, 1) != null;
     }
@@ -8169,9 +7530,6 @@ export class FourRowTemplate extends pb_1.Message {
     }
     set highlyStructuredMessage(value: HighlyStructuredMessage) {
         pb_1.Message.setOneofWrapperField(this, 2, this.#one_of_decls[0], value);
-    }
-    clear_highlyStructuredMessage() {
-        pb_1.Message.setField(this, 2, undefined);
     }
     get has_highlyStructuredMessage() {
         return pb_1.Message.getField(this, 2) != null;
@@ -8182,9 +7540,6 @@ export class FourRowTemplate extends pb_1.Message {
     set imageMessage(value: ImageMessage) {
         pb_1.Message.setOneofWrapperField(this, 3, this.#one_of_decls[0], value);
     }
-    clear_imageMessage() {
-        pb_1.Message.setField(this, 3, undefined);
-    }
     get has_imageMessage() {
         return pb_1.Message.getField(this, 3) != null;
     }
@@ -8194,9 +7549,6 @@ export class FourRowTemplate extends pb_1.Message {
     set videoMessage(value: VideoMessage) {
         pb_1.Message.setOneofWrapperField(this, 4, this.#one_of_decls[0], value);
     }
-    clear_videoMessage() {
-        pb_1.Message.setField(this, 4, undefined);
-    }
     get has_videoMessage() {
         return pb_1.Message.getField(this, 4) != null;
     }
@@ -8205,9 +7557,6 @@ export class FourRowTemplate extends pb_1.Message {
     }
     set locationMessage(value: LocationMessage) {
         pb_1.Message.setOneofWrapperField(this, 5, this.#one_of_decls[0], value);
-    }
-    clear_locationMessage() {
-        pb_1.Message.setField(this, 5, undefined);
     }
     get has_locationMessage() {
         return pb_1.Message.getField(this, 5) != null;
@@ -8437,9 +7786,6 @@ export class HydratedFourRowTemplate extends pb_1.Message {
     set hydratedContentText(value: string) {
         pb_1.Message.setField(this, 6, value);
     }
-    clear_hydratedContentText() {
-        pb_1.Message.setField(this, 6, undefined);
-    }
     get has_hydratedContentText() {
         return pb_1.Message.getField(this, 6) != null;
     }
@@ -8448,9 +7794,6 @@ export class HydratedFourRowTemplate extends pb_1.Message {
     }
     set hydratedFooterText(value: string) {
         pb_1.Message.setField(this, 7, value);
-    }
-    clear_hydratedFooterText() {
-        pb_1.Message.setField(this, 7, undefined);
     }
     get has_hydratedFooterText() {
         return pb_1.Message.getField(this, 7) != null;
@@ -8467,9 +7810,6 @@ export class HydratedFourRowTemplate extends pb_1.Message {
     set templateId(value: string) {
         pb_1.Message.setField(this, 9, value);
     }
-    clear_templateId() {
-        pb_1.Message.setField(this, 9, undefined);
-    }
     get has_templateId() {
         return pb_1.Message.getField(this, 9) != null;
     }
@@ -8478,9 +7818,6 @@ export class HydratedFourRowTemplate extends pb_1.Message {
     }
     set documentMessage(value: DocumentMessage) {
         pb_1.Message.setOneofWrapperField(this, 1, this.#one_of_decls[0], value);
-    }
-    clear_documentMessage() {
-        pb_1.Message.setField(this, 1, undefined);
     }
     get has_documentMessage() {
         return pb_1.Message.getField(this, 1) != null;
@@ -8491,9 +7828,6 @@ export class HydratedFourRowTemplate extends pb_1.Message {
     set hydratedTitleText(value: string) {
         pb_1.Message.setOneofField(this, 2, this.#one_of_decls[0], value);
     }
-    clear_hydratedTitleText() {
-        pb_1.Message.setField(this, 2, undefined);
-    }
     get has_hydratedTitleText() {
         return pb_1.Message.getField(this, 2) != null;
     }
@@ -8502,9 +7836,6 @@ export class HydratedFourRowTemplate extends pb_1.Message {
     }
     set imageMessage(value: ImageMessage) {
         pb_1.Message.setOneofWrapperField(this, 3, this.#one_of_decls[0], value);
-    }
-    clear_imageMessage() {
-        pb_1.Message.setField(this, 3, undefined);
     }
     get has_imageMessage() {
         return pb_1.Message.getField(this, 3) != null;
@@ -8515,9 +7846,6 @@ export class HydratedFourRowTemplate extends pb_1.Message {
     set videoMessage(value: VideoMessage) {
         pb_1.Message.setOneofWrapperField(this, 4, this.#one_of_decls[0], value);
     }
-    clear_videoMessage() {
-        pb_1.Message.setField(this, 4, undefined);
-    }
     get has_videoMessage() {
         return pb_1.Message.getField(this, 4) != null;
     }
@@ -8526,9 +7854,6 @@ export class HydratedFourRowTemplate extends pb_1.Message {
     }
     set locationMessage(value: LocationMessage) {
         pb_1.Message.setOneofWrapperField(this, 5, this.#one_of_decls[0], value);
-    }
-    clear_locationMessage() {
-        pb_1.Message.setField(this, 5, undefined);
     }
     get has_locationMessage() {
         return pb_1.Message.getField(this, 5) != null;
@@ -8732,9 +8057,6 @@ export class TemplateMessage extends pb_1.Message {
     set contextInfo(value: ContextInfo) {
         pb_1.Message.setWrapperField(this, 3, value);
     }
-    clear_contextInfo() {
-        pb_1.Message.setField(this, 3, undefined);
-    }
     get has_contextInfo() {
         return pb_1.Message.getField(this, 3) != null;
     }
@@ -8743,9 +8065,6 @@ export class TemplateMessage extends pb_1.Message {
     }
     set hydratedTemplate(value: HydratedFourRowTemplate) {
         pb_1.Message.setWrapperField(this, 4, value);
-    }
-    clear_hydratedTemplate() {
-        pb_1.Message.setField(this, 4, undefined);
     }
     get has_hydratedTemplate() {
         return pb_1.Message.getField(this, 4) != null;
@@ -8756,9 +8075,6 @@ export class TemplateMessage extends pb_1.Message {
     set fourRowTemplate(value: FourRowTemplate) {
         pb_1.Message.setOneofWrapperField(this, 1, this.#one_of_decls[0], value);
     }
-    clear_fourRowTemplate() {
-        pb_1.Message.setField(this, 1, undefined);
-    }
     get has_fourRowTemplate() {
         return pb_1.Message.getField(this, 1) != null;
     }
@@ -8767,9 +8083,6 @@ export class TemplateMessage extends pb_1.Message {
     }
     set hydratedFourRowTemplate(value: HydratedFourRowTemplate) {
         pb_1.Message.setOneofWrapperField(this, 2, this.#one_of_decls[0], value);
-    }
-    clear_hydratedFourRowTemplate() {
-        pb_1.Message.setField(this, 2, undefined);
     }
     get has_hydratedFourRowTemplate() {
         return pb_1.Message.getField(this, 2) != null;
@@ -8902,9 +8215,6 @@ export class TemplateButtonReplyMessage extends pb_1.Message {
     set selectedId(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
-    clear_selectedId() {
-        pb_1.Message.setField(this, 1, undefined);
-    }
     get has_selectedId() {
         return pb_1.Message.getField(this, 1) != null;
     }
@@ -8913,9 +8223,6 @@ export class TemplateButtonReplyMessage extends pb_1.Message {
     }
     set selectedDisplayText(value: string) {
         pb_1.Message.setField(this, 2, value);
-    }
-    clear_selectedDisplayText() {
-        pb_1.Message.setField(this, 2, undefined);
     }
     get has_selectedDisplayText() {
         return pb_1.Message.getField(this, 2) != null;
@@ -8926,9 +8233,6 @@ export class TemplateButtonReplyMessage extends pb_1.Message {
     set contextInfo(value: ContextInfo) {
         pb_1.Message.setWrapperField(this, 3, value);
     }
-    clear_contextInfo() {
-        pb_1.Message.setField(this, 3, undefined);
-    }
     get has_contextInfo() {
         return pb_1.Message.getField(this, 3) != null;
     }
@@ -8937,9 +8241,6 @@ export class TemplateButtonReplyMessage extends pb_1.Message {
     }
     set selectedIndex(value: number) {
         pb_1.Message.setField(this, 4, value);
-    }
-    clear_selectedIndex() {
-        pb_1.Message.setField(this, 4, undefined);
     }
     get has_selectedIndex() {
         return pb_1.Message.getField(this, 4) != null;
@@ -9058,9 +8359,6 @@ export class CatalogSnapshot extends pb_1.Message {
     set catalogImage(value: ImageMessage) {
         pb_1.Message.setWrapperField(this, 1, value);
     }
-    clear_catalogImage() {
-        pb_1.Message.setField(this, 1, undefined);
-    }
     get has_catalogImage() {
         return pb_1.Message.getField(this, 1) != null;
     }
@@ -9070,9 +8368,6 @@ export class CatalogSnapshot extends pb_1.Message {
     set title(value: string) {
         pb_1.Message.setField(this, 2, value);
     }
-    clear_title() {
-        pb_1.Message.setField(this, 2, undefined);
-    }
     get has_title() {
         return pb_1.Message.getField(this, 2) != null;
     }
@@ -9081,9 +8376,6 @@ export class CatalogSnapshot extends pb_1.Message {
     }
     set description(value: string) {
         pb_1.Message.setField(this, 3, value);
-    }
-    clear_description() {
-        pb_1.Message.setField(this, 3, undefined);
     }
     get has_description() {
         return pb_1.Message.getField(this, 3) != null;
@@ -9217,9 +8509,6 @@ export class ProductSnapshot extends pb_1.Message {
     set productImage(value: ImageMessage) {
         pb_1.Message.setWrapperField(this, 1, value);
     }
-    clear_productImage() {
-        pb_1.Message.setField(this, 1, undefined);
-    }
     get has_productImage() {
         return pb_1.Message.getField(this, 1) != null;
     }
@@ -9228,9 +8517,6 @@ export class ProductSnapshot extends pb_1.Message {
     }
     set productId(value: string) {
         pb_1.Message.setField(this, 2, value);
-    }
-    clear_productId() {
-        pb_1.Message.setField(this, 2, undefined);
     }
     get has_productId() {
         return pb_1.Message.getField(this, 2) != null;
@@ -9241,9 +8527,6 @@ export class ProductSnapshot extends pb_1.Message {
     set title(value: string) {
         pb_1.Message.setField(this, 3, value);
     }
-    clear_title() {
-        pb_1.Message.setField(this, 3, undefined);
-    }
     get has_title() {
         return pb_1.Message.getField(this, 3) != null;
     }
@@ -9252,9 +8535,6 @@ export class ProductSnapshot extends pb_1.Message {
     }
     set description(value: string) {
         pb_1.Message.setField(this, 4, value);
-    }
-    clear_description() {
-        pb_1.Message.setField(this, 4, undefined);
     }
     get has_description() {
         return pb_1.Message.getField(this, 4) != null;
@@ -9265,9 +8545,6 @@ export class ProductSnapshot extends pb_1.Message {
     set currencyCode(value: string) {
         pb_1.Message.setField(this, 5, value);
     }
-    clear_currencyCode() {
-        pb_1.Message.setField(this, 5, undefined);
-    }
     get has_currencyCode() {
         return pb_1.Message.getField(this, 5) != null;
     }
@@ -9276,9 +8553,6 @@ export class ProductSnapshot extends pb_1.Message {
     }
     set priceAmount1000(value: number) {
         pb_1.Message.setField(this, 6, value);
-    }
-    clear_priceAmount1000() {
-        pb_1.Message.setField(this, 6, undefined);
     }
     get has_priceAmount1000() {
         return pb_1.Message.getField(this, 6) != null;
@@ -9289,9 +8563,6 @@ export class ProductSnapshot extends pb_1.Message {
     set retailerId(value: string) {
         pb_1.Message.setField(this, 7, value);
     }
-    clear_retailerId() {
-        pb_1.Message.setField(this, 7, undefined);
-    }
     get has_retailerId() {
         return pb_1.Message.getField(this, 7) != null;
     }
@@ -9300,9 +8571,6 @@ export class ProductSnapshot extends pb_1.Message {
     }
     set url(value: string) {
         pb_1.Message.setField(this, 8, value);
-    }
-    clear_url() {
-        pb_1.Message.setField(this, 8, undefined);
     }
     get has_url() {
         return pb_1.Message.getField(this, 8) != null;
@@ -9313,9 +8581,6 @@ export class ProductSnapshot extends pb_1.Message {
     set productImageCount(value: number) {
         pb_1.Message.setField(this, 9, value);
     }
-    clear_productImageCount() {
-        pb_1.Message.setField(this, 9, undefined);
-    }
     get has_productImageCount() {
         return pb_1.Message.getField(this, 9) != null;
     }
@@ -9324,9 +8589,6 @@ export class ProductSnapshot extends pb_1.Message {
     }
     set firstImageId(value: string) {
         pb_1.Message.setField(this, 11, value);
-    }
-    clear_firstImageId() {
-        pb_1.Message.setField(this, 11, undefined);
     }
     get has_firstImageId() {
         return pb_1.Message.getField(this, 11) != null;
@@ -9527,9 +8789,6 @@ export class ProductMessage extends pb_1.Message {
     set product(value: ProductSnapshot) {
         pb_1.Message.setWrapperField(this, 1, value);
     }
-    clear_product() {
-        pb_1.Message.setField(this, 1, undefined);
-    }
     get has_product() {
         return pb_1.Message.getField(this, 1) != null;
     }
@@ -9538,9 +8797,6 @@ export class ProductMessage extends pb_1.Message {
     }
     set businessOwnerJid(value: string) {
         pb_1.Message.setField(this, 2, value);
-    }
-    clear_businessOwnerJid() {
-        pb_1.Message.setField(this, 2, undefined);
     }
     get has_businessOwnerJid() {
         return pb_1.Message.getField(this, 2) != null;
@@ -9551,9 +8807,6 @@ export class ProductMessage extends pb_1.Message {
     set catalog(value: CatalogSnapshot) {
         pb_1.Message.setWrapperField(this, 4, value);
     }
-    clear_catalog() {
-        pb_1.Message.setField(this, 4, undefined);
-    }
     get has_catalog() {
         return pb_1.Message.getField(this, 4) != null;
     }
@@ -9562,9 +8815,6 @@ export class ProductMessage extends pb_1.Message {
     }
     set contextInfo(value: ContextInfo) {
         pb_1.Message.setWrapperField(this, 17, value);
-    }
-    clear_contextInfo() {
-        pb_1.Message.setField(this, 17, undefined);
     }
     get has_contextInfo() {
         return pb_1.Message.getField(this, 17) != null;
@@ -9699,9 +8949,6 @@ export class GroupInviteMessage extends pb_1.Message {
     set groupJid(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
-    clear_groupJid() {
-        pb_1.Message.setField(this, 1, undefined);
-    }
     get has_groupJid() {
         return pb_1.Message.getField(this, 1) != null;
     }
@@ -9710,9 +8957,6 @@ export class GroupInviteMessage extends pb_1.Message {
     }
     set inviteCode(value: string) {
         pb_1.Message.setField(this, 2, value);
-    }
-    clear_inviteCode() {
-        pb_1.Message.setField(this, 2, undefined);
     }
     get has_inviteCode() {
         return pb_1.Message.getField(this, 2) != null;
@@ -9723,9 +8967,6 @@ export class GroupInviteMessage extends pb_1.Message {
     set inviteExpiration(value: number) {
         pb_1.Message.setField(this, 3, value);
     }
-    clear_inviteExpiration() {
-        pb_1.Message.setField(this, 3, undefined);
-    }
     get has_inviteExpiration() {
         return pb_1.Message.getField(this, 3) != null;
     }
@@ -9734,9 +8975,6 @@ export class GroupInviteMessage extends pb_1.Message {
     }
     set groupName(value: string) {
         pb_1.Message.setField(this, 4, value);
-    }
-    clear_groupName() {
-        pb_1.Message.setField(this, 4, undefined);
     }
     get has_groupName() {
         return pb_1.Message.getField(this, 4) != null;
@@ -9747,9 +8985,6 @@ export class GroupInviteMessage extends pb_1.Message {
     set jpegThumbnail(value: Uint8Array) {
         pb_1.Message.setField(this, 5, value);
     }
-    clear_jpegThumbnail() {
-        pb_1.Message.setField(this, 5, undefined);
-    }
     get has_jpegThumbnail() {
         return pb_1.Message.getField(this, 5) != null;
     }
@@ -9759,9 +8994,6 @@ export class GroupInviteMessage extends pb_1.Message {
     set caption(value: string) {
         pb_1.Message.setField(this, 6, value);
     }
-    clear_caption() {
-        pb_1.Message.setField(this, 6, undefined);
-    }
     get has_caption() {
         return pb_1.Message.getField(this, 6) != null;
     }
@@ -9770,9 +9002,6 @@ export class GroupInviteMessage extends pb_1.Message {
     }
     set contextInfo(value: ContextInfo) {
         pb_1.Message.setWrapperField(this, 7, value);
-    }
-    clear_contextInfo() {
-        pb_1.Message.setField(this, 7, undefined);
     }
     get has_contextInfo() {
         return pb_1.Message.getField(this, 7) != null;
@@ -9930,9 +9159,6 @@ export class DeviceSentMessage extends pb_1.Message {
     set destinationJid(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
-    clear_destinationJid() {
-        pb_1.Message.setField(this, 1, undefined);
-    }
     get has_destinationJid() {
         return pb_1.Message.getField(this, 1) != null;
     }
@@ -9942,9 +9168,6 @@ export class DeviceSentMessage extends pb_1.Message {
     set message(value: Message) {
         pb_1.Message.setWrapperField(this, 2, value);
     }
-    clear_message() {
-        pb_1.Message.setField(this, 2, undefined);
-    }
     get has_message() {
         return pb_1.Message.getField(this, 2) != null;
     }
@@ -9953,9 +9176,6 @@ export class DeviceSentMessage extends pb_1.Message {
     }
     set phash(value: string) {
         pb_1.Message.setField(this, 3, value);
-    }
-    clear_phash() {
-        pb_1.Message.setField(this, 3, undefined);
     }
     get has_phash() {
         return pb_1.Message.getField(this, 3) != null;
@@ -10153,9 +9373,6 @@ export class Message extends pb_1.Message {
     set conversation(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
-    clear_conversation() {
-        pb_1.Message.setField(this, 1, undefined);
-    }
     get has_conversation() {
         return pb_1.Message.getField(this, 1) != null;
     }
@@ -10164,9 +9381,6 @@ export class Message extends pb_1.Message {
     }
     set senderKeyDistributionMessage(value: SenderKeyDistributionMessage) {
         pb_1.Message.setWrapperField(this, 2, value);
-    }
-    clear_senderKeyDistributionMessage() {
-        pb_1.Message.setField(this, 2, undefined);
     }
     get has_senderKeyDistributionMessage() {
         return pb_1.Message.getField(this, 2) != null;
@@ -10177,9 +9391,6 @@ export class Message extends pb_1.Message {
     set imageMessage(value: ImageMessage) {
         pb_1.Message.setWrapperField(this, 3, value);
     }
-    clear_imageMessage() {
-        pb_1.Message.setField(this, 3, undefined);
-    }
     get has_imageMessage() {
         return pb_1.Message.getField(this, 3) != null;
     }
@@ -10188,9 +9399,6 @@ export class Message extends pb_1.Message {
     }
     set contactMessage(value: ContactMessage) {
         pb_1.Message.setWrapperField(this, 4, value);
-    }
-    clear_contactMessage() {
-        pb_1.Message.setField(this, 4, undefined);
     }
     get has_contactMessage() {
         return pb_1.Message.getField(this, 4) != null;
@@ -10201,9 +9409,6 @@ export class Message extends pb_1.Message {
     set locationMessage(value: LocationMessage) {
         pb_1.Message.setWrapperField(this, 5, value);
     }
-    clear_locationMessage() {
-        pb_1.Message.setField(this, 5, undefined);
-    }
     get has_locationMessage() {
         return pb_1.Message.getField(this, 5) != null;
     }
@@ -10212,9 +9417,6 @@ export class Message extends pb_1.Message {
     }
     set extendedTextMessage(value: ExtendedTextMessage) {
         pb_1.Message.setWrapperField(this, 6, value);
-    }
-    clear_extendedTextMessage() {
-        pb_1.Message.setField(this, 6, undefined);
     }
     get has_extendedTextMessage() {
         return pb_1.Message.getField(this, 6) != null;
@@ -10225,9 +9427,6 @@ export class Message extends pb_1.Message {
     set documentMessage(value: DocumentMessage) {
         pb_1.Message.setWrapperField(this, 7, value);
     }
-    clear_documentMessage() {
-        pb_1.Message.setField(this, 7, undefined);
-    }
     get has_documentMessage() {
         return pb_1.Message.getField(this, 7) != null;
     }
@@ -10236,9 +9435,6 @@ export class Message extends pb_1.Message {
     }
     set audioMessage(value: AudioMessage) {
         pb_1.Message.setWrapperField(this, 8, value);
-    }
-    clear_audioMessage() {
-        pb_1.Message.setField(this, 8, undefined);
     }
     get has_audioMessage() {
         return pb_1.Message.getField(this, 8) != null;
@@ -10249,9 +9445,6 @@ export class Message extends pb_1.Message {
     set videoMessage(value: VideoMessage) {
         pb_1.Message.setWrapperField(this, 9, value);
     }
-    clear_videoMessage() {
-        pb_1.Message.setField(this, 9, undefined);
-    }
     get has_videoMessage() {
         return pb_1.Message.getField(this, 9) != null;
     }
@@ -10260,9 +9453,6 @@ export class Message extends pb_1.Message {
     }
     set call(value: Call) {
         pb_1.Message.setWrapperField(this, 10, value);
-    }
-    clear_call() {
-        pb_1.Message.setField(this, 10, undefined);
     }
     get has_call() {
         return pb_1.Message.getField(this, 10) != null;
@@ -10273,9 +9463,6 @@ export class Message extends pb_1.Message {
     set chat(value: Chat) {
         pb_1.Message.setWrapperField(this, 11, value);
     }
-    clear_chat() {
-        pb_1.Message.setField(this, 11, undefined);
-    }
     get has_chat() {
         return pb_1.Message.getField(this, 11) != null;
     }
@@ -10284,9 +9471,6 @@ export class Message extends pb_1.Message {
     }
     set protocolMessage(value: ProtocolMessage) {
         pb_1.Message.setWrapperField(this, 12, value);
-    }
-    clear_protocolMessage() {
-        pb_1.Message.setField(this, 12, undefined);
     }
     get has_protocolMessage() {
         return pb_1.Message.getField(this, 12) != null;
@@ -10297,9 +9481,6 @@ export class Message extends pb_1.Message {
     set contactsArrayMessage(value: ContactsArrayMessage) {
         pb_1.Message.setWrapperField(this, 13, value);
     }
-    clear_contactsArrayMessage() {
-        pb_1.Message.setField(this, 13, undefined);
-    }
     get has_contactsArrayMessage() {
         return pb_1.Message.getField(this, 13) != null;
     }
@@ -10308,9 +9489,6 @@ export class Message extends pb_1.Message {
     }
     set highlyStructuredMessage(value: HighlyStructuredMessage) {
         pb_1.Message.setWrapperField(this, 14, value);
-    }
-    clear_highlyStructuredMessage() {
-        pb_1.Message.setField(this, 14, undefined);
     }
     get has_highlyStructuredMessage() {
         return pb_1.Message.getField(this, 14) != null;
@@ -10321,9 +9499,6 @@ export class Message extends pb_1.Message {
     set fastRatchetKeySenderKeyDistributionMessage(value: SenderKeyDistributionMessage) {
         pb_1.Message.setWrapperField(this, 15, value);
     }
-    clear_fastRatchetKeySenderKeyDistributionMessage() {
-        pb_1.Message.setField(this, 15, undefined);
-    }
     get has_fastRatchetKeySenderKeyDistributionMessage() {
         return pb_1.Message.getField(this, 15) != null;
     }
@@ -10332,9 +9507,6 @@ export class Message extends pb_1.Message {
     }
     set sendPaymentMessage(value: SendPaymentMessage) {
         pb_1.Message.setWrapperField(this, 16, value);
-    }
-    clear_sendPaymentMessage() {
-        pb_1.Message.setField(this, 16, undefined);
     }
     get has_sendPaymentMessage() {
         return pb_1.Message.getField(this, 16) != null;
@@ -10345,9 +9517,6 @@ export class Message extends pb_1.Message {
     set liveLocationMessage(value: LiveLocationMessage) {
         pb_1.Message.setWrapperField(this, 18, value);
     }
-    clear_liveLocationMessage() {
-        pb_1.Message.setField(this, 18, undefined);
-    }
     get has_liveLocationMessage() {
         return pb_1.Message.getField(this, 18) != null;
     }
@@ -10356,9 +9525,6 @@ export class Message extends pb_1.Message {
     }
     set requestPaymentMessage(value: RequestPaymentMessage) {
         pb_1.Message.setWrapperField(this, 22, value);
-    }
-    clear_requestPaymentMessage() {
-        pb_1.Message.setField(this, 22, undefined);
     }
     get has_requestPaymentMessage() {
         return pb_1.Message.getField(this, 22) != null;
@@ -10369,9 +9535,6 @@ export class Message extends pb_1.Message {
     set declinePaymentRequestMessage(value: DeclinePaymentRequestMessage) {
         pb_1.Message.setWrapperField(this, 23, value);
     }
-    clear_declinePaymentRequestMessage() {
-        pb_1.Message.setField(this, 23, undefined);
-    }
     get has_declinePaymentRequestMessage() {
         return pb_1.Message.getField(this, 23) != null;
     }
@@ -10380,9 +9543,6 @@ export class Message extends pb_1.Message {
     }
     set cancelPaymentRequestMessage(value: CancelPaymentRequestMessage) {
         pb_1.Message.setWrapperField(this, 24, value);
-    }
-    clear_cancelPaymentRequestMessage() {
-        pb_1.Message.setField(this, 24, undefined);
     }
     get has_cancelPaymentRequestMessage() {
         return pb_1.Message.getField(this, 24) != null;
@@ -10393,9 +9553,6 @@ export class Message extends pb_1.Message {
     set templateMessage(value: TemplateMessage) {
         pb_1.Message.setWrapperField(this, 25, value);
     }
-    clear_templateMessage() {
-        pb_1.Message.setField(this, 25, undefined);
-    }
     get has_templateMessage() {
         return pb_1.Message.getField(this, 25) != null;
     }
@@ -10404,9 +9561,6 @@ export class Message extends pb_1.Message {
     }
     set stickerMessage(value: StickerMessage) {
         pb_1.Message.setWrapperField(this, 26, value);
-    }
-    clear_stickerMessage() {
-        pb_1.Message.setField(this, 26, undefined);
     }
     get has_stickerMessage() {
         return pb_1.Message.getField(this, 26) != null;
@@ -10417,9 +9571,6 @@ export class Message extends pb_1.Message {
     set groupInviteMessage(value: GroupInviteMessage) {
         pb_1.Message.setWrapperField(this, 28, value);
     }
-    clear_groupInviteMessage() {
-        pb_1.Message.setField(this, 28, undefined);
-    }
     get has_groupInviteMessage() {
         return pb_1.Message.getField(this, 28) != null;
     }
@@ -10428,9 +9579,6 @@ export class Message extends pb_1.Message {
     }
     set templateButtonReplyMessage(value: TemplateButtonReplyMessage) {
         pb_1.Message.setWrapperField(this, 29, value);
-    }
-    clear_templateButtonReplyMessage() {
-        pb_1.Message.setField(this, 29, undefined);
     }
     get has_templateButtonReplyMessage() {
         return pb_1.Message.getField(this, 29) != null;
@@ -10441,9 +9589,6 @@ export class Message extends pb_1.Message {
     set productMessage(value: ProductMessage) {
         pb_1.Message.setWrapperField(this, 30, value);
     }
-    clear_productMessage() {
-        pb_1.Message.setField(this, 30, undefined);
-    }
     get has_productMessage() {
         return pb_1.Message.getField(this, 30) != null;
     }
@@ -10452,9 +9597,6 @@ export class Message extends pb_1.Message {
     }
     set deviceSentMessage(value: DeviceSentMessage) {
         pb_1.Message.setWrapperField(this, 31, value);
-    }
-    clear_deviceSentMessage() {
-        pb_1.Message.setField(this, 31, undefined);
     }
     get has_deviceSentMessage() {
         return pb_1.Message.getField(this, 31) != null;
@@ -10863,9 +10005,6 @@ export class MessageKey extends pb_1.Message {
     set remoteJid(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
-    clear_remoteJid() {
-        pb_1.Message.setField(this, 1, undefined);
-    }
     get has_remoteJid() {
         return pb_1.Message.getField(this, 1) != null;
     }
@@ -10874,9 +10013,6 @@ export class MessageKey extends pb_1.Message {
     }
     set fromMe(value: boolean) {
         pb_1.Message.setField(this, 2, value);
-    }
-    clear_fromMe() {
-        pb_1.Message.setField(this, 2, undefined);
     }
     get has_fromMe() {
         return pb_1.Message.getField(this, 2) != null;
@@ -10887,9 +10023,6 @@ export class MessageKey extends pb_1.Message {
     set id(value: string) {
         pb_1.Message.setField(this, 3, value);
     }
-    clear_id() {
-        pb_1.Message.setField(this, 3, undefined);
-    }
     get has_id() {
         return pb_1.Message.getField(this, 3) != null;
     }
@@ -10898,9 +10031,6 @@ export class MessageKey extends pb_1.Message {
     }
     set participant(value: string) {
         pb_1.Message.setField(this, 4, value);
-    }
-    clear_participant() {
-        pb_1.Message.setField(this, 4, undefined);
     }
     get has_participant() {
         return pb_1.Message.getField(this, 4) != null;
@@ -11139,9 +10269,6 @@ export class WebFeatures extends pb_1.Message {
     set labelsDisplay(value: WebFeatures.WEB_FEATURES_FLAG) {
         pb_1.Message.setField(this, 1, value);
     }
-    clear_labelsDisplay() {
-        pb_1.Message.setField(this, 1, undefined);
-    }
     get has_labelsDisplay() {
         return pb_1.Message.getField(this, 1) != null;
     }
@@ -11150,9 +10277,6 @@ export class WebFeatures extends pb_1.Message {
     }
     set voipIndividualOutgoing(value: WebFeatures.WEB_FEATURES_FLAG) {
         pb_1.Message.setField(this, 2, value);
-    }
-    clear_voipIndividualOutgoing() {
-        pb_1.Message.setField(this, 2, undefined);
     }
     get has_voipIndividualOutgoing() {
         return pb_1.Message.getField(this, 2) != null;
@@ -11163,9 +10287,6 @@ export class WebFeatures extends pb_1.Message {
     set groupsV3(value: WebFeatures.WEB_FEATURES_FLAG) {
         pb_1.Message.setField(this, 3, value);
     }
-    clear_groupsV3() {
-        pb_1.Message.setField(this, 3, undefined);
-    }
     get has_groupsV3() {
         return pb_1.Message.getField(this, 3) != null;
     }
@@ -11174,9 +10295,6 @@ export class WebFeatures extends pb_1.Message {
     }
     set groupsV3Create(value: WebFeatures.WEB_FEATURES_FLAG) {
         pb_1.Message.setField(this, 4, value);
-    }
-    clear_groupsV3Create() {
-        pb_1.Message.setField(this, 4, undefined);
     }
     get has_groupsV3Create() {
         return pb_1.Message.getField(this, 4) != null;
@@ -11187,9 +10305,6 @@ export class WebFeatures extends pb_1.Message {
     set changeNumberV2(value: WebFeatures.WEB_FEATURES_FLAG) {
         pb_1.Message.setField(this, 5, value);
     }
-    clear_changeNumberV2() {
-        pb_1.Message.setField(this, 5, undefined);
-    }
     get has_changeNumberV2() {
         return pb_1.Message.getField(this, 5) != null;
     }
@@ -11198,9 +10313,6 @@ export class WebFeatures extends pb_1.Message {
     }
     set queryStatusV3Thumbnail(value: WebFeatures.WEB_FEATURES_FLAG) {
         pb_1.Message.setField(this, 6, value);
-    }
-    clear_queryStatusV3Thumbnail() {
-        pb_1.Message.setField(this, 6, undefined);
     }
     get has_queryStatusV3Thumbnail() {
         return pb_1.Message.getField(this, 6) != null;
@@ -11211,9 +10323,6 @@ export class WebFeatures extends pb_1.Message {
     set liveLocations(value: WebFeatures.WEB_FEATURES_FLAG) {
         pb_1.Message.setField(this, 7, value);
     }
-    clear_liveLocations() {
-        pb_1.Message.setField(this, 7, undefined);
-    }
     get has_liveLocations() {
         return pb_1.Message.getField(this, 7) != null;
     }
@@ -11222,9 +10331,6 @@ export class WebFeatures extends pb_1.Message {
     }
     set queryVname(value: WebFeatures.WEB_FEATURES_FLAG) {
         pb_1.Message.setField(this, 8, value);
-    }
-    clear_queryVname() {
-        pb_1.Message.setField(this, 8, undefined);
     }
     get has_queryVname() {
         return pb_1.Message.getField(this, 8) != null;
@@ -11235,9 +10341,6 @@ export class WebFeatures extends pb_1.Message {
     set voipIndividualIncoming(value: WebFeatures.WEB_FEATURES_FLAG) {
         pb_1.Message.setField(this, 9, value);
     }
-    clear_voipIndividualIncoming() {
-        pb_1.Message.setField(this, 9, undefined);
-    }
     get has_voipIndividualIncoming() {
         return pb_1.Message.getField(this, 9) != null;
     }
@@ -11246,9 +10349,6 @@ export class WebFeatures extends pb_1.Message {
     }
     set quickRepliesQuery(value: WebFeatures.WEB_FEATURES_FLAG) {
         pb_1.Message.setField(this, 10, value);
-    }
-    clear_quickRepliesQuery() {
-        pb_1.Message.setField(this, 10, undefined);
     }
     get has_quickRepliesQuery() {
         return pb_1.Message.getField(this, 10) != null;
@@ -11259,9 +10359,6 @@ export class WebFeatures extends pb_1.Message {
     set payments(value: WebFeatures.WEB_FEATURES_FLAG) {
         pb_1.Message.setField(this, 11, value);
     }
-    clear_payments() {
-        pb_1.Message.setField(this, 11, undefined);
-    }
     get has_payments() {
         return pb_1.Message.getField(this, 11) != null;
     }
@@ -11270,9 +10367,6 @@ export class WebFeatures extends pb_1.Message {
     }
     set stickerPackQuery(value: WebFeatures.WEB_FEATURES_FLAG) {
         pb_1.Message.setField(this, 12, value);
-    }
-    clear_stickerPackQuery() {
-        pb_1.Message.setField(this, 12, undefined);
     }
     get has_stickerPackQuery() {
         return pb_1.Message.getField(this, 12) != null;
@@ -11283,9 +10377,6 @@ export class WebFeatures extends pb_1.Message {
     set liveLocationsFinal(value: WebFeatures.WEB_FEATURES_FLAG) {
         pb_1.Message.setField(this, 13, value);
     }
-    clear_liveLocationsFinal() {
-        pb_1.Message.setField(this, 13, undefined);
-    }
     get has_liveLocationsFinal() {
         return pb_1.Message.getField(this, 13) != null;
     }
@@ -11294,9 +10385,6 @@ export class WebFeatures extends pb_1.Message {
     }
     set labelsEdit(value: WebFeatures.WEB_FEATURES_FLAG) {
         pb_1.Message.setField(this, 14, value);
-    }
-    clear_labelsEdit() {
-        pb_1.Message.setField(this, 14, undefined);
     }
     get has_labelsEdit() {
         return pb_1.Message.getField(this, 14) != null;
@@ -11307,9 +10395,6 @@ export class WebFeatures extends pb_1.Message {
     set mediaUpload(value: WebFeatures.WEB_FEATURES_FLAG) {
         pb_1.Message.setField(this, 15, value);
     }
-    clear_mediaUpload() {
-        pb_1.Message.setField(this, 15, undefined);
-    }
     get has_mediaUpload() {
         return pb_1.Message.getField(this, 15) != null;
     }
@@ -11318,9 +10403,6 @@ export class WebFeatures extends pb_1.Message {
     }
     set mediaUploadRichQuickReplies(value: WebFeatures.WEB_FEATURES_FLAG) {
         pb_1.Message.setField(this, 18, value);
-    }
-    clear_mediaUploadRichQuickReplies() {
-        pb_1.Message.setField(this, 18, undefined);
     }
     get has_mediaUploadRichQuickReplies() {
         return pb_1.Message.getField(this, 18) != null;
@@ -11331,9 +10413,6 @@ export class WebFeatures extends pb_1.Message {
     set vnameV2(value: WebFeatures.WEB_FEATURES_FLAG) {
         pb_1.Message.setField(this, 19, value);
     }
-    clear_vnameV2() {
-        pb_1.Message.setField(this, 19, undefined);
-    }
     get has_vnameV2() {
         return pb_1.Message.getField(this, 19) != null;
     }
@@ -11342,9 +10421,6 @@ export class WebFeatures extends pb_1.Message {
     }
     set videoPlaybackUrl(value: WebFeatures.WEB_FEATURES_FLAG) {
         pb_1.Message.setField(this, 20, value);
-    }
-    clear_videoPlaybackUrl() {
-        pb_1.Message.setField(this, 20, undefined);
     }
     get has_videoPlaybackUrl() {
         return pb_1.Message.getField(this, 20) != null;
@@ -11355,9 +10431,6 @@ export class WebFeatures extends pb_1.Message {
     set statusRanking(value: WebFeatures.WEB_FEATURES_FLAG) {
         pb_1.Message.setField(this, 21, value);
     }
-    clear_statusRanking() {
-        pb_1.Message.setField(this, 21, undefined);
-    }
     get has_statusRanking() {
         return pb_1.Message.getField(this, 21) != null;
     }
@@ -11366,9 +10439,6 @@ export class WebFeatures extends pb_1.Message {
     }
     set voipIndividualVideo(value: WebFeatures.WEB_FEATURES_FLAG) {
         pb_1.Message.setField(this, 22, value);
-    }
-    clear_voipIndividualVideo() {
-        pb_1.Message.setField(this, 22, undefined);
     }
     get has_voipIndividualVideo() {
         return pb_1.Message.getField(this, 22) != null;
@@ -11379,9 +10449,6 @@ export class WebFeatures extends pb_1.Message {
     set thirdPartyStickers(value: WebFeatures.WEB_FEATURES_FLAG) {
         pb_1.Message.setField(this, 23, value);
     }
-    clear_thirdPartyStickers() {
-        pb_1.Message.setField(this, 23, undefined);
-    }
     get has_thirdPartyStickers() {
         return pb_1.Message.getField(this, 23) != null;
     }
@@ -11390,9 +10457,6 @@ export class WebFeatures extends pb_1.Message {
     }
     set frequentlyForwardedSetting(value: WebFeatures.WEB_FEATURES_FLAG) {
         pb_1.Message.setField(this, 24, value);
-    }
-    clear_frequentlyForwardedSetting() {
-        pb_1.Message.setField(this, 24, undefined);
     }
     get has_frequentlyForwardedSetting() {
         return pb_1.Message.getField(this, 24) != null;
@@ -11403,9 +10467,6 @@ export class WebFeatures extends pb_1.Message {
     set groupsV4JoinPermission(value: WebFeatures.WEB_FEATURES_FLAG) {
         pb_1.Message.setField(this, 25, value);
     }
-    clear_groupsV4JoinPermission() {
-        pb_1.Message.setField(this, 25, undefined);
-    }
     get has_groupsV4JoinPermission() {
         return pb_1.Message.getField(this, 25) != null;
     }
@@ -11414,9 +10475,6 @@ export class WebFeatures extends pb_1.Message {
     }
     set recentStickers(value: WebFeatures.WEB_FEATURES_FLAG) {
         pb_1.Message.setField(this, 26, value);
-    }
-    clear_recentStickers() {
-        pb_1.Message.setField(this, 26, undefined);
     }
     get has_recentStickers() {
         return pb_1.Message.getField(this, 26) != null;
@@ -11427,9 +10485,6 @@ export class WebFeatures extends pb_1.Message {
     set catalog(value: WebFeatures.WEB_FEATURES_FLAG) {
         pb_1.Message.setField(this, 27, value);
     }
-    clear_catalog() {
-        pb_1.Message.setField(this, 27, undefined);
-    }
     get has_catalog() {
         return pb_1.Message.getField(this, 27) != null;
     }
@@ -11438,9 +10493,6 @@ export class WebFeatures extends pb_1.Message {
     }
     set starredStickers(value: WebFeatures.WEB_FEATURES_FLAG) {
         pb_1.Message.setField(this, 28, value);
-    }
-    clear_starredStickers() {
-        pb_1.Message.setField(this, 28, undefined);
     }
     get has_starredStickers() {
         return pb_1.Message.getField(this, 28) != null;
@@ -11451,9 +10503,6 @@ export class WebFeatures extends pb_1.Message {
     set voipGroupCall(value: WebFeatures.WEB_FEATURES_FLAG) {
         pb_1.Message.setField(this, 29, value);
     }
-    clear_voipGroupCall() {
-        pb_1.Message.setField(this, 29, undefined);
-    }
     get has_voipGroupCall() {
         return pb_1.Message.getField(this, 29) != null;
     }
@@ -11462,9 +10511,6 @@ export class WebFeatures extends pb_1.Message {
     }
     set templateMessage(value: WebFeatures.WEB_FEATURES_FLAG) {
         pb_1.Message.setField(this, 30, value);
-    }
-    clear_templateMessage() {
-        pb_1.Message.setField(this, 30, undefined);
     }
     get has_templateMessage() {
         return pb_1.Message.getField(this, 30) != null;
@@ -11475,9 +10521,6 @@ export class WebFeatures extends pb_1.Message {
     set templateMessageInteractivity(value: WebFeatures.WEB_FEATURES_FLAG) {
         pb_1.Message.setField(this, 31, value);
     }
-    clear_templateMessageInteractivity() {
-        pb_1.Message.setField(this, 31, undefined);
-    }
     get has_templateMessageInteractivity() {
         return pb_1.Message.getField(this, 31) != null;
     }
@@ -11486,9 +10529,6 @@ export class WebFeatures extends pb_1.Message {
     }
     set ephemeralMessages(value: WebFeatures.WEB_FEATURES_FLAG) {
         pb_1.Message.setField(this, 32, value);
-    }
-    clear_ephemeralMessages() {
-        pb_1.Message.setField(this, 32, undefined);
     }
     get has_ephemeralMessages() {
         return pb_1.Message.getField(this, 32) != null;
@@ -11499,9 +10539,6 @@ export class WebFeatures extends pb_1.Message {
     set e2ENotificationSync(value: WebFeatures.WEB_FEATURES_FLAG) {
         pb_1.Message.setField(this, 33, value);
     }
-    clear_e2ENotificationSync() {
-        pb_1.Message.setField(this, 33, undefined);
-    }
     get has_e2ENotificationSync() {
         return pb_1.Message.getField(this, 33) != null;
     }
@@ -11511,9 +10548,6 @@ export class WebFeatures extends pb_1.Message {
     set recentStickersV2(value: WebFeatures.WEB_FEATURES_FLAG) {
         pb_1.Message.setField(this, 34, value);
     }
-    clear_recentStickersV2() {
-        pb_1.Message.setField(this, 34, undefined);
-    }
     get has_recentStickersV2() {
         return pb_1.Message.getField(this, 34) != null;
     }
@@ -11522,9 +10556,6 @@ export class WebFeatures extends pb_1.Message {
     }
     set syncdRelease1(value: WebFeatures.WEB_FEATURES_FLAG) {
         pb_1.Message.setField(this, 35, value);
-    }
-    clear_syncdRelease1() {
-        pb_1.Message.setField(this, 35, undefined);
     }
     get has_syncdRelease1() {
         return pb_1.Message.getField(this, 35) != null;
@@ -12030,9 +11061,6 @@ export class TabletNotificationsInfo extends pb_1.Message {
     set timestamp(value: number) {
         pb_1.Message.setField(this, 2, value);
     }
-    clear_timestamp() {
-        pb_1.Message.setField(this, 2, undefined);
-    }
     get has_timestamp() {
         return pb_1.Message.getField(this, 2) != null;
     }
@@ -12042,9 +11070,6 @@ export class TabletNotificationsInfo extends pb_1.Message {
     set unreadChats(value: number) {
         pb_1.Message.setField(this, 3, value);
     }
-    clear_unreadChats() {
-        pb_1.Message.setField(this, 3, undefined);
-    }
     get has_unreadChats() {
         return pb_1.Message.getField(this, 3) != null;
     }
@@ -12053,9 +11078,6 @@ export class TabletNotificationsInfo extends pb_1.Message {
     }
     set notifyMessageCount(value: number) {
         pb_1.Message.setField(this, 4, value);
-    }
-    clear_notifyMessageCount() {
-        pb_1.Message.setField(this, 4, undefined);
     }
     get has_notifyMessageCount() {
         return pb_1.Message.getField(this, 4) != null;
@@ -12183,9 +11205,6 @@ export class NotificationMessageInfo extends pb_1.Message {
     set key(value: MessageKey) {
         pb_1.Message.setWrapperField(this, 1, value);
     }
-    clear_key() {
-        pb_1.Message.setField(this, 1, undefined);
-    }
     get has_key() {
         return pb_1.Message.getField(this, 1) != null;
     }
@@ -12194,9 +11213,6 @@ export class NotificationMessageInfo extends pb_1.Message {
     }
     set message(value: Message) {
         pb_1.Message.setWrapperField(this, 2, value);
-    }
-    clear_message() {
-        pb_1.Message.setField(this, 2, undefined);
     }
     get has_message() {
         return pb_1.Message.getField(this, 2) != null;
@@ -12207,9 +11223,6 @@ export class NotificationMessageInfo extends pb_1.Message {
     set messageTimestamp(value: number) {
         pb_1.Message.setField(this, 3, value);
     }
-    clear_messageTimestamp() {
-        pb_1.Message.setField(this, 3, undefined);
-    }
     get has_messageTimestamp() {
         return pb_1.Message.getField(this, 3) != null;
     }
@@ -12218,9 +11231,6 @@ export class NotificationMessageInfo extends pb_1.Message {
     }
     set participant(value: string) {
         pb_1.Message.setField(this, 4, value);
-    }
-    clear_participant() {
-        pb_1.Message.setField(this, 4, undefined);
     }
     get has_participant() {
         return pb_1.Message.getField(this, 4) != null;
@@ -12341,9 +11351,6 @@ export class WebNotificationsInfo extends pb_1.Message {
     set timestamp(value: number) {
         pb_1.Message.setField(this, 2, value);
     }
-    clear_timestamp() {
-        pb_1.Message.setField(this, 2, undefined);
-    }
     get has_timestamp() {
         return pb_1.Message.getField(this, 2) != null;
     }
@@ -12353,9 +11360,6 @@ export class WebNotificationsInfo extends pb_1.Message {
     set unreadChats(value: number) {
         pb_1.Message.setField(this, 3, value);
     }
-    clear_unreadChats() {
-        pb_1.Message.setField(this, 3, undefined);
-    }
     get has_unreadChats() {
         return pb_1.Message.getField(this, 3) != null;
     }
@@ -12364,9 +11368,6 @@ export class WebNotificationsInfo extends pb_1.Message {
     }
     set notifyMessageCount(value: number) {
         pb_1.Message.setField(this, 4, value);
-    }
-    clear_notifyMessageCount() {
-        pb_1.Message.setField(this, 4, undefined);
     }
     get has_notifyMessageCount() {
         return pb_1.Message.getField(this, 4) != null;
@@ -12518,9 +11519,6 @@ export class PaymentInfo extends pb_1.Message {
     set currencyDeprecated(value: PaymentInfo.PAYMENT_INFO_CURRENCY) {
         pb_1.Message.setField(this, 1, value);
     }
-    clear_currencyDeprecated() {
-        pb_1.Message.setField(this, 1, undefined);
-    }
     get has_currencyDeprecated() {
         return pb_1.Message.getField(this, 1) != null;
     }
@@ -12529,9 +11527,6 @@ export class PaymentInfo extends pb_1.Message {
     }
     set amount1000(value: number) {
         pb_1.Message.setField(this, 2, value);
-    }
-    clear_amount1000() {
-        pb_1.Message.setField(this, 2, undefined);
     }
     get has_amount1000() {
         return pb_1.Message.getField(this, 2) != null;
@@ -12542,9 +11537,6 @@ export class PaymentInfo extends pb_1.Message {
     set receiverJid(value: string) {
         pb_1.Message.setField(this, 3, value);
     }
-    clear_receiverJid() {
-        pb_1.Message.setField(this, 3, undefined);
-    }
     get has_receiverJid() {
         return pb_1.Message.getField(this, 3) != null;
     }
@@ -12553,9 +11545,6 @@ export class PaymentInfo extends pb_1.Message {
     }
     set status(value: PaymentInfo.PAYMENT_INFO_STATUS) {
         pb_1.Message.setField(this, 4, value);
-    }
-    clear_status() {
-        pb_1.Message.setField(this, 4, undefined);
     }
     get has_status() {
         return pb_1.Message.getField(this, 4) != null;
@@ -12566,9 +11555,6 @@ export class PaymentInfo extends pb_1.Message {
     set transactionTimestamp(value: number) {
         pb_1.Message.setField(this, 5, value);
     }
-    clear_transactionTimestamp() {
-        pb_1.Message.setField(this, 5, undefined);
-    }
     get has_transactionTimestamp() {
         return pb_1.Message.getField(this, 5) != null;
     }
@@ -12577,9 +11563,6 @@ export class PaymentInfo extends pb_1.Message {
     }
     set requestMessageKey(value: MessageKey) {
         pb_1.Message.setWrapperField(this, 6, value);
-    }
-    clear_requestMessageKey() {
-        pb_1.Message.setField(this, 6, undefined);
     }
     get has_requestMessageKey() {
         return pb_1.Message.getField(this, 6) != null;
@@ -12590,9 +11573,6 @@ export class PaymentInfo extends pb_1.Message {
     set expiryTimestamp(value: number) {
         pb_1.Message.setField(this, 7, value);
     }
-    clear_expiryTimestamp() {
-        pb_1.Message.setField(this, 7, undefined);
-    }
     get has_expiryTimestamp() {
         return pb_1.Message.getField(this, 7) != null;
     }
@@ -12601,9 +11581,6 @@ export class PaymentInfo extends pb_1.Message {
     }
     set futureproofed(value: boolean) {
         pb_1.Message.setField(this, 8, value);
-    }
-    clear_futureproofed() {
-        pb_1.Message.setField(this, 8, undefined);
     }
     get has_futureproofed() {
         return pb_1.Message.getField(this, 8) != null;
@@ -12614,9 +11591,6 @@ export class PaymentInfo extends pb_1.Message {
     set currency(value: string) {
         pb_1.Message.setField(this, 9, value);
     }
-    clear_currency() {
-        pb_1.Message.setField(this, 9, undefined);
-    }
     get has_currency() {
         return pb_1.Message.getField(this, 9) != null;
     }
@@ -12625,9 +11599,6 @@ export class PaymentInfo extends pb_1.Message {
     }
     set txnStatus(value: PaymentInfo.PAYMENT_INFO_TXNSTATUS) {
         pb_1.Message.setField(this, 10, value);
-    }
-    clear_txnStatus() {
-        pb_1.Message.setField(this, 10, undefined);
     }
     get has_txnStatus() {
         return pb_1.Message.getField(this, 10) != null;
@@ -12952,9 +11923,6 @@ export class WebMessageInfo extends pb_1.Message {
     set key(value: MessageKey) {
         pb_1.Message.setWrapperField(this, 1, value);
     }
-    clear_key() {
-        pb_1.Message.setField(this, 1, undefined);
-    }
     get has_key() {
         return pb_1.Message.getField(this, 1) != null;
     }
@@ -12963,9 +11931,6 @@ export class WebMessageInfo extends pb_1.Message {
     }
     set message(value: Message) {
         pb_1.Message.setWrapperField(this, 2, value);
-    }
-    clear_message() {
-        pb_1.Message.setField(this, 2, undefined);
     }
     get has_message() {
         return pb_1.Message.getField(this, 2) != null;
@@ -12976,9 +11941,6 @@ export class WebMessageInfo extends pb_1.Message {
     set messageTimestamp(value: number) {
         pb_1.Message.setField(this, 3, value);
     }
-    clear_messageTimestamp() {
-        pb_1.Message.setField(this, 3, undefined);
-    }
     get has_messageTimestamp() {
         return pb_1.Message.getField(this, 3) != null;
     }
@@ -12987,9 +11949,6 @@ export class WebMessageInfo extends pb_1.Message {
     }
     set status(value: WebMessageInfo.WEB_MESSAGE_INFO_STATUS) {
         pb_1.Message.setField(this, 4, value);
-    }
-    clear_status() {
-        pb_1.Message.setField(this, 4, undefined);
     }
     get has_status() {
         return pb_1.Message.getField(this, 4) != null;
@@ -13000,9 +11959,6 @@ export class WebMessageInfo extends pb_1.Message {
     set participant(value: string) {
         pb_1.Message.setField(this, 5, value);
     }
-    clear_participant() {
-        pb_1.Message.setField(this, 5, undefined);
-    }
     get has_participant() {
         return pb_1.Message.getField(this, 5) != null;
     }
@@ -13011,9 +11967,6 @@ export class WebMessageInfo extends pb_1.Message {
     }
     set ignore(value: boolean) {
         pb_1.Message.setField(this, 16, value);
-    }
-    clear_ignore() {
-        pb_1.Message.setField(this, 16, undefined);
     }
     get has_ignore() {
         return pb_1.Message.getField(this, 16) != null;
@@ -13024,9 +11977,6 @@ export class WebMessageInfo extends pb_1.Message {
     set starred(value: boolean) {
         pb_1.Message.setField(this, 17, value);
     }
-    clear_starred() {
-        pb_1.Message.setField(this, 17, undefined);
-    }
     get has_starred() {
         return pb_1.Message.getField(this, 17) != null;
     }
@@ -13035,9 +11985,6 @@ export class WebMessageInfo extends pb_1.Message {
     }
     set broadcast(value: boolean) {
         pb_1.Message.setField(this, 18, value);
-    }
-    clear_broadcast() {
-        pb_1.Message.setField(this, 18, undefined);
     }
     get has_broadcast() {
         return pb_1.Message.getField(this, 18) != null;
@@ -13048,9 +11995,6 @@ export class WebMessageInfo extends pb_1.Message {
     set pushName(value: string) {
         pb_1.Message.setField(this, 19, value);
     }
-    clear_pushName() {
-        pb_1.Message.setField(this, 19, undefined);
-    }
     get has_pushName() {
         return pb_1.Message.getField(this, 19) != null;
     }
@@ -13059,9 +12003,6 @@ export class WebMessageInfo extends pb_1.Message {
     }
     set mediaCiphertextSha256(value: Uint8Array) {
         pb_1.Message.setField(this, 20, value);
-    }
-    clear_mediaCiphertextSha256() {
-        pb_1.Message.setField(this, 20, undefined);
     }
     get has_mediaCiphertextSha256() {
         return pb_1.Message.getField(this, 20) != null;
@@ -13072,9 +12013,6 @@ export class WebMessageInfo extends pb_1.Message {
     set multicast(value: boolean) {
         pb_1.Message.setField(this, 21, value);
     }
-    clear_multicast() {
-        pb_1.Message.setField(this, 21, undefined);
-    }
     get has_multicast() {
         return pb_1.Message.getField(this, 21) != null;
     }
@@ -13083,9 +12021,6 @@ export class WebMessageInfo extends pb_1.Message {
     }
     set urlText(value: boolean) {
         pb_1.Message.setField(this, 22, value);
-    }
-    clear_urlText() {
-        pb_1.Message.setField(this, 22, undefined);
     }
     get has_urlText() {
         return pb_1.Message.getField(this, 22) != null;
@@ -13096,9 +12031,6 @@ export class WebMessageInfo extends pb_1.Message {
     set urlNumber(value: boolean) {
         pb_1.Message.setField(this, 23, value);
     }
-    clear_urlNumber() {
-        pb_1.Message.setField(this, 23, undefined);
-    }
     get has_urlNumber() {
         return pb_1.Message.getField(this, 23) != null;
     }
@@ -13108,9 +12040,6 @@ export class WebMessageInfo extends pb_1.Message {
     set messageStubType(value: WebMessageInfo.WEB_MESSAGE_INFO_STUBTYPE) {
         pb_1.Message.setField(this, 24, value);
     }
-    clear_messageStubType() {
-        pb_1.Message.setField(this, 24, undefined);
-    }
     get has_messageStubType() {
         return pb_1.Message.getField(this, 24) != null;
     }
@@ -13119,9 +12048,6 @@ export class WebMessageInfo extends pb_1.Message {
     }
     set clearMedia(value: boolean) {
         pb_1.Message.setField(this, 25, value);
-    }
-    clear_clearMedia() {
-        pb_1.Message.setField(this, 25, undefined);
     }
     get has_clearMedia() {
         return pb_1.Message.getField(this, 25) != null;
@@ -13138,9 +12064,6 @@ export class WebMessageInfo extends pb_1.Message {
     set duration(value: number) {
         pb_1.Message.setField(this, 27, value);
     }
-    clear_duration() {
-        pb_1.Message.setField(this, 27, undefined);
-    }
     get has_duration() {
         return pb_1.Message.getField(this, 27) != null;
     }
@@ -13156,9 +12079,6 @@ export class WebMessageInfo extends pb_1.Message {
     set paymentInfo(value: PaymentInfo) {
         pb_1.Message.setWrapperField(this, 29, value);
     }
-    clear_paymentInfo() {
-        pb_1.Message.setField(this, 29, undefined);
-    }
     get has_paymentInfo() {
         return pb_1.Message.getField(this, 29) != null;
     }
@@ -13167,9 +12087,6 @@ export class WebMessageInfo extends pb_1.Message {
     }
     set finalLiveLocation(value: LiveLocationMessage) {
         pb_1.Message.setWrapperField(this, 30, value);
-    }
-    clear_finalLiveLocation() {
-        pb_1.Message.setField(this, 30, undefined);
     }
     get has_finalLiveLocation() {
         return pb_1.Message.getField(this, 30) != null;
@@ -13180,9 +12097,6 @@ export class WebMessageInfo extends pb_1.Message {
     set quotedPaymentInfo(value: PaymentInfo) {
         pb_1.Message.setWrapperField(this, 31, value);
     }
-    clear_quotedPaymentInfo() {
-        pb_1.Message.setField(this, 31, undefined);
-    }
     get has_quotedPaymentInfo() {
         return pb_1.Message.getField(this, 31) != null;
     }
@@ -13191,9 +12105,6 @@ export class WebMessageInfo extends pb_1.Message {
     }
     set ephemeralStartTimestamp(value: number) {
         pb_1.Message.setField(this, 32, value);
-    }
-    clear_ephemeralStartTimestamp() {
-        pb_1.Message.setField(this, 32, undefined);
     }
     get has_ephemeralStartTimestamp() {
         return pb_1.Message.getField(this, 32) != null;
@@ -13204,9 +12115,6 @@ export class WebMessageInfo extends pb_1.Message {
     set ephemeralDuration(value: number) {
         pb_1.Message.setField(this, 33, value);
     }
-    clear_ephemeralDuration() {
-        pb_1.Message.setField(this, 33, undefined);
-    }
     get has_ephemeralDuration() {
         return pb_1.Message.getField(this, 33) != null;
     }
@@ -13215,9 +12123,6 @@ export class WebMessageInfo extends pb_1.Message {
     }
     set ephemeralOffToOn(value: boolean) {
         pb_1.Message.setField(this, 34, value);
-    }
-    clear_ephemeralOffToOn() {
-        pb_1.Message.setField(this, 34, undefined);
     }
     get has_ephemeralOffToOn() {
         return pb_1.Message.getField(this, 34) != null;

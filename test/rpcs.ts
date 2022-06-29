@@ -187,9 +187,6 @@ export class Chunk extends pb_1.Message {
     set range(value: Chunk.Range) {
         pb_1.Message.setWrapperField(this, 2, value);
     }
-    clear_range() {
-        pb_1.Message.setField(this, 2, undefined);
-    }
     get has_range() {
         return pb_1.Message.getField(this, 2) != null;
     }
@@ -373,9 +370,6 @@ export namespace Chunk {
         }
         set range(value: Chunk.Range) {
             pb_1.Message.setWrapperField(this, 2, value);
-        }
-        clear_range() {
-            pb_1.Message.setField(this, 2, undefined);
         }
         get has_range() {
             return pb_1.Message.getField(this, 2) != null;
@@ -606,9 +600,6 @@ export class Put extends pb_1.Message {
     }
     set chunk(value: Chunk) {
         pb_1.Message.setWrapperField(this, 3, value);
-    }
-    clear_chunk() {
-        pb_1.Message.setField(this, 3, undefined);
     }
     get has_chunk() {
         return pb_1.Message.getField(this, 3) != null;

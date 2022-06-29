@@ -52,9 +52,6 @@ export class SchedulingContext extends pb_1.Message {
     set batch(value: SchedulingContextBatch) {
         pb_1.Message.setWrapperField(this, 4, value);
     }
-    clear_batch() {
-        pb_1.Message.setField(this, 4, undefined);
-    }
     get has_batch() {
         return pb_1.Message.getField(this, 4) != null;
     }
@@ -261,9 +258,6 @@ export class SchedulingContextBatch extends pb_1.Message {
     set process(value: SchedulingContextBatchProcess) {
         pb_1.Message.setWrapperField(this, 3, value);
     }
-    clear_process() {
-        pb_1.Message.setField(this, 3, undefined);
-    }
     get has_process() {
         return pb_1.Message.getField(this, 3) != null;
     }
@@ -457,9 +451,6 @@ export class Target extends pb_1.Message {
     set context(value: SchedulingContext) {
         pb_1.Message.setWrapperField(this, 4, value);
     }
-    clear_context() {
-        pb_1.Message.setField(this, 4, undefined);
-    }
     get has_context() {
         return pb_1.Message.getField(this, 4) != null;
     }
@@ -588,9 +579,6 @@ export class Event extends pb_1.Message {
     }
     set target(value: Target) {
         pb_1.Message.setWrapperField(this, 3, value);
-    }
-    clear_target() {
-        pb_1.Message.setField(this, 3, undefined);
     }
     get has_target() {
         return pb_1.Message.getField(this, 3) != null;

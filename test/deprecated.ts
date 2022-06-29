@@ -56,9 +56,6 @@ export class MessageName extends pb_1.Message {
     set me(value: string) {
         pb_1.Message.setOneofField(this, 2, this.#one_of_decls[0], value);
     }
-    clear_me() {
-        pb_1.Message.setField(this, 2, undefined);
-    }
     get has_me() {
         return pb_1.Message.getField(this, 2) != null;
     }
@@ -69,9 +66,6 @@ export class MessageName extends pb_1.Message {
     /** @deprecated*/
     set me_deprecated(value: string) {
         pb_1.Message.setOneofField(this, 3, this.#one_of_decls[0], value);
-    }
-    clear_me_deprecated() {
-        pb_1.Message.setField(this, 3, undefined);
     }
     get has_me_deprecated() {
         return pb_1.Message.getField(this, 3) != null;

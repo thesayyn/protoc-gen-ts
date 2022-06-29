@@ -117,9 +117,6 @@ export class FileDescriptorProto extends pb_1.Message {
     set name(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
-    clear_name() {
-        pb_1.Message.setField(this, 1, undefined);
-    }
     get has_name() {
         return pb_1.Message.getField(this, 1) != null;
     }
@@ -128,9 +125,6 @@ export class FileDescriptorProto extends pb_1.Message {
     }
     set package(value: string) {
         pb_1.Message.setField(this, 2, value);
-    }
-    clear_package() {
-        pb_1.Message.setField(this, 2, undefined);
     }
     get has_package() {
         return pb_1.Message.getField(this, 2) != null;
@@ -183,9 +177,6 @@ export class FileDescriptorProto extends pb_1.Message {
     set options(value: FileOptions) {
         pb_1.Message.setWrapperField(this, 8, value);
     }
-    clear_options() {
-        pb_1.Message.setField(this, 8, undefined);
-    }
     get has_options() {
         return pb_1.Message.getField(this, 8) != null;
     }
@@ -195,9 +186,6 @@ export class FileDescriptorProto extends pb_1.Message {
     set source_code_info(value: SourceCodeInfo) {
         pb_1.Message.setWrapperField(this, 9, value);
     }
-    clear_source_code_info() {
-        pb_1.Message.setField(this, 9, undefined);
-    }
     get has_source_code_info() {
         return pb_1.Message.getField(this, 9) != null;
     }
@@ -206,9 +194,6 @@ export class FileDescriptorProto extends pb_1.Message {
     }
     set syntax(value: string) {
         pb_1.Message.setField(this, 12, value);
-    }
-    clear_syntax() {
-        pb_1.Message.setField(this, 12, undefined);
     }
     get has_syntax() {
         return pb_1.Message.getField(this, 12) != null;
@@ -425,9 +410,6 @@ export class DescriptorProto extends pb_1.Message {
     set name(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
-    clear_name() {
-        pb_1.Message.setField(this, 1, undefined);
-    }
     get has_name() {
         return pb_1.Message.getField(this, 1) != null;
     }
@@ -472,9 +454,6 @@ export class DescriptorProto extends pb_1.Message {
     }
     set options(value: MessageOptions) {
         pb_1.Message.setWrapperField(this, 7, value);
-    }
-    clear_options() {
-        pb_1.Message.setField(this, 7, undefined);
     }
     get has_options() {
         return pb_1.Message.getField(this, 7) != null;
@@ -668,9 +647,6 @@ export namespace DescriptorProto {
         set start(value: number) {
             pb_1.Message.setField(this, 1, value);
         }
-        clear_start() {
-            pb_1.Message.setField(this, 1, undefined);
-        }
         get has_start() {
             return pb_1.Message.getField(this, 1) != null;
         }
@@ -680,9 +656,6 @@ export namespace DescriptorProto {
         set end(value: number) {
             pb_1.Message.setField(this, 2, value);
         }
-        clear_end() {
-            pb_1.Message.setField(this, 2, undefined);
-        }
         get has_end() {
             return pb_1.Message.getField(this, 2) != null;
         }
@@ -691,9 +664,6 @@ export namespace DescriptorProto {
         }
         set options(value: ExtensionRangeOptions) {
             pb_1.Message.setWrapperField(this, 3, value);
-        }
-        clear_options() {
-            pb_1.Message.setField(this, 3, undefined);
         }
         get has_options() {
             return pb_1.Message.getField(this, 3) != null;
@@ -795,9 +765,6 @@ export namespace DescriptorProto {
         set start(value: number) {
             pb_1.Message.setField(this, 1, value);
         }
-        clear_start() {
-            pb_1.Message.setField(this, 1, undefined);
-        }
         get has_start() {
             return pb_1.Message.getField(this, 1) != null;
         }
@@ -806,9 +773,6 @@ export namespace DescriptorProto {
         }
         set end(value: number) {
             pb_1.Message.setField(this, 2, value);
-        }
-        clear_end() {
-            pb_1.Message.setField(this, 2, undefined);
         }
         get has_end() {
             return pb_1.Message.getField(this, 2) != null;
@@ -998,9 +962,6 @@ export class FieldDescriptorProto extends pb_1.Message {
     set name(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
-    clear_name() {
-        pb_1.Message.setField(this, 1, undefined);
-    }
     get has_name() {
         return pb_1.Message.getField(this, 1) != null;
     }
@@ -1009,9 +970,6 @@ export class FieldDescriptorProto extends pb_1.Message {
     }
     set number(value: number) {
         pb_1.Message.setField(this, 3, value);
-    }
-    clear_number() {
-        pb_1.Message.setField(this, 3, undefined);
     }
     get has_number() {
         return pb_1.Message.getField(this, 3) != null;
@@ -1022,9 +980,6 @@ export class FieldDescriptorProto extends pb_1.Message {
     set label(value: FieldDescriptorProto.Label) {
         pb_1.Message.setField(this, 4, value);
     }
-    clear_label() {
-        pb_1.Message.setField(this, 4, undefined);
-    }
     get has_label() {
         return pb_1.Message.getField(this, 4) != null;
     }
@@ -1033,9 +988,6 @@ export class FieldDescriptorProto extends pb_1.Message {
     }
     set type(value: FieldDescriptorProto.Type) {
         pb_1.Message.setField(this, 5, value);
-    }
-    clear_type() {
-        pb_1.Message.setField(this, 5, undefined);
     }
     get has_type() {
         return pb_1.Message.getField(this, 5) != null;
@@ -1046,9 +998,6 @@ export class FieldDescriptorProto extends pb_1.Message {
     set type_name(value: string) {
         pb_1.Message.setField(this, 6, value);
     }
-    clear_type_name() {
-        pb_1.Message.setField(this, 6, undefined);
-    }
     get has_type_name() {
         return pb_1.Message.getField(this, 6) != null;
     }
@@ -1057,9 +1006,6 @@ export class FieldDescriptorProto extends pb_1.Message {
     }
     set extendee(value: string) {
         pb_1.Message.setField(this, 2, value);
-    }
-    clear_extendee() {
-        pb_1.Message.setField(this, 2, undefined);
     }
     get has_extendee() {
         return pb_1.Message.getField(this, 2) != null;
@@ -1070,9 +1016,6 @@ export class FieldDescriptorProto extends pb_1.Message {
     set default_value(value: string) {
         pb_1.Message.setField(this, 7, value);
     }
-    clear_default_value() {
-        pb_1.Message.setField(this, 7, undefined);
-    }
     get has_default_value() {
         return pb_1.Message.getField(this, 7) != null;
     }
@@ -1081,9 +1024,6 @@ export class FieldDescriptorProto extends pb_1.Message {
     }
     set oneof_index(value: number) {
         pb_1.Message.setField(this, 9, value);
-    }
-    clear_oneof_index() {
-        pb_1.Message.setField(this, 9, undefined);
     }
     get has_oneof_index() {
         return pb_1.Message.getField(this, 9) != null;
@@ -1094,9 +1034,6 @@ export class FieldDescriptorProto extends pb_1.Message {
     set json_name(value: string) {
         pb_1.Message.setField(this, 10, value);
     }
-    clear_json_name() {
-        pb_1.Message.setField(this, 10, undefined);
-    }
     get has_json_name() {
         return pb_1.Message.getField(this, 10) != null;
     }
@@ -1106,9 +1043,6 @@ export class FieldDescriptorProto extends pb_1.Message {
     set options(value: FieldOptions) {
         pb_1.Message.setWrapperField(this, 8, value);
     }
-    clear_options() {
-        pb_1.Message.setField(this, 8, undefined);
-    }
     get has_options() {
         return pb_1.Message.getField(this, 8) != null;
     }
@@ -1117,9 +1051,6 @@ export class FieldDescriptorProto extends pb_1.Message {
     }
     set proto3_optional(value: boolean) {
         pb_1.Message.setField(this, 17, value);
-    }
-    clear_proto3_optional() {
-        pb_1.Message.setField(this, 17, undefined);
     }
     get has_proto3_optional() {
         return pb_1.Message.getField(this, 17) != null;
@@ -1352,9 +1283,6 @@ export class OneofDescriptorProto extends pb_1.Message {
     set name(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
-    clear_name() {
-        pb_1.Message.setField(this, 1, undefined);
-    }
     get has_name() {
         return pb_1.Message.getField(this, 1) != null;
     }
@@ -1363,9 +1291,6 @@ export class OneofDescriptorProto extends pb_1.Message {
     }
     set options(value: OneofOptions) {
         pb_1.Message.setWrapperField(this, 2, value);
-    }
-    clear_options() {
-        pb_1.Message.setField(this, 2, undefined);
     }
     get has_options() {
         return pb_1.Message.getField(this, 2) != null;
@@ -1460,9 +1385,6 @@ export class EnumDescriptorProto extends pb_1.Message {
     set name(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
-    clear_name() {
-        pb_1.Message.setField(this, 1, undefined);
-    }
     get has_name() {
         return pb_1.Message.getField(this, 1) != null;
     }
@@ -1477,9 +1399,6 @@ export class EnumDescriptorProto extends pb_1.Message {
     }
     set options(value: EnumOptions) {
         pb_1.Message.setWrapperField(this, 3, value);
-    }
-    clear_options() {
-        pb_1.Message.setField(this, 3, undefined);
     }
     get has_options() {
         return pb_1.Message.getField(this, 3) != null;
@@ -1614,9 +1533,6 @@ export namespace EnumDescriptorProto {
         set start(value: number) {
             pb_1.Message.setField(this, 1, value);
         }
-        clear_start() {
-            pb_1.Message.setField(this, 1, undefined);
-        }
         get has_start() {
             return pb_1.Message.getField(this, 1) != null;
         }
@@ -1625,9 +1541,6 @@ export namespace EnumDescriptorProto {
         }
         set end(value: number) {
             pb_1.Message.setField(this, 2, value);
-        }
-        clear_end() {
-            pb_1.Message.setField(this, 2, undefined);
         }
         get has_end() {
             return pb_1.Message.getField(this, 2) != null;
@@ -1721,9 +1634,6 @@ export class EnumValueDescriptorProto extends pb_1.Message {
     set name(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
-    clear_name() {
-        pb_1.Message.setField(this, 1, undefined);
-    }
     get has_name() {
         return pb_1.Message.getField(this, 1) != null;
     }
@@ -1733,9 +1643,6 @@ export class EnumValueDescriptorProto extends pb_1.Message {
     set number(value: number) {
         pb_1.Message.setField(this, 2, value);
     }
-    clear_number() {
-        pb_1.Message.setField(this, 2, undefined);
-    }
     get has_number() {
         return pb_1.Message.getField(this, 2) != null;
     }
@@ -1744,9 +1651,6 @@ export class EnumValueDescriptorProto extends pb_1.Message {
     }
     set options(value: EnumValueOptions) {
         pb_1.Message.setWrapperField(this, 3, value);
-    }
-    clear_options() {
-        pb_1.Message.setField(this, 3, undefined);
     }
     get has_options() {
         return pb_1.Message.getField(this, 3) != null;
@@ -1850,9 +1754,6 @@ export class ServiceDescriptorProto extends pb_1.Message {
     set name(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
-    clear_name() {
-        pb_1.Message.setField(this, 1, undefined);
-    }
     get has_name() {
         return pb_1.Message.getField(this, 1) != null;
     }
@@ -1867,9 +1768,6 @@ export class ServiceDescriptorProto extends pb_1.Message {
     }
     set options(value: ServiceOptions) {
         pb_1.Message.setWrapperField(this, 3, value);
-    }
-    clear_options() {
-        pb_1.Message.setField(this, 3, undefined);
     }
     get has_options() {
         return pb_1.Message.getField(this, 3) != null;
@@ -1986,9 +1884,6 @@ export class MethodDescriptorProto extends pb_1.Message {
     set name(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
-    clear_name() {
-        pb_1.Message.setField(this, 1, undefined);
-    }
     get has_name() {
         return pb_1.Message.getField(this, 1) != null;
     }
@@ -1997,9 +1892,6 @@ export class MethodDescriptorProto extends pb_1.Message {
     }
     set input_type(value: string) {
         pb_1.Message.setField(this, 2, value);
-    }
-    clear_input_type() {
-        pb_1.Message.setField(this, 2, undefined);
     }
     get has_input_type() {
         return pb_1.Message.getField(this, 2) != null;
@@ -2010,9 +1902,6 @@ export class MethodDescriptorProto extends pb_1.Message {
     set output_type(value: string) {
         pb_1.Message.setField(this, 3, value);
     }
-    clear_output_type() {
-        pb_1.Message.setField(this, 3, undefined);
-    }
     get has_output_type() {
         return pb_1.Message.getField(this, 3) != null;
     }
@@ -2021,9 +1910,6 @@ export class MethodDescriptorProto extends pb_1.Message {
     }
     set options(value: MethodOptions) {
         pb_1.Message.setWrapperField(this, 4, value);
-    }
-    clear_options() {
-        pb_1.Message.setField(this, 4, undefined);
     }
     get has_options() {
         return pb_1.Message.getField(this, 4) != null;
@@ -2034,9 +1920,6 @@ export class MethodDescriptorProto extends pb_1.Message {
     set client_streaming(value: boolean) {
         pb_1.Message.setField(this, 5, value);
     }
-    clear_client_streaming() {
-        pb_1.Message.setField(this, 5, undefined);
-    }
     get has_client_streaming() {
         return pb_1.Message.getField(this, 5) != null;
     }
@@ -2045,9 +1928,6 @@ export class MethodDescriptorProto extends pb_1.Message {
     }
     set server_streaming(value: boolean) {
         pb_1.Message.setField(this, 6, value);
-    }
-    clear_server_streaming() {
-        pb_1.Message.setField(this, 6, undefined);
     }
     get has_server_streaming() {
         return pb_1.Message.getField(this, 6) != null;
@@ -2263,9 +2143,6 @@ export class FileOptions extends pb_1.Message {
     set java_package(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
-    clear_java_package() {
-        pb_1.Message.setField(this, 1, undefined);
-    }
     get has_java_package() {
         return pb_1.Message.getField(this, 1) != null;
     }
@@ -2275,9 +2152,6 @@ export class FileOptions extends pb_1.Message {
     set java_outer_classname(value: string) {
         pb_1.Message.setField(this, 8, value);
     }
-    clear_java_outer_classname() {
-        pb_1.Message.setField(this, 8, undefined);
-    }
     get has_java_outer_classname() {
         return pb_1.Message.getField(this, 8) != null;
     }
@@ -2286,9 +2160,6 @@ export class FileOptions extends pb_1.Message {
     }
     set java_multiple_files(value: boolean) {
         pb_1.Message.setField(this, 10, value);
-    }
-    clear_java_multiple_files() {
-        pb_1.Message.setField(this, 10, undefined);
     }
     get has_java_multiple_files() {
         return pb_1.Message.getField(this, 10) != null;
@@ -2301,9 +2172,6 @@ export class FileOptions extends pb_1.Message {
     set java_generate_equals_and_hash(value: boolean) {
         pb_1.Message.setField(this, 20, value);
     }
-    clear_java_generate_equals_and_hash() {
-        pb_1.Message.setField(this, 20, undefined);
-    }
     get has_java_generate_equals_and_hash() {
         return pb_1.Message.getField(this, 20) != null;
     }
@@ -2312,9 +2180,6 @@ export class FileOptions extends pb_1.Message {
     }
     set java_string_check_utf8(value: boolean) {
         pb_1.Message.setField(this, 27, value);
-    }
-    clear_java_string_check_utf8() {
-        pb_1.Message.setField(this, 27, undefined);
     }
     get has_java_string_check_utf8() {
         return pb_1.Message.getField(this, 27) != null;
@@ -2325,9 +2190,6 @@ export class FileOptions extends pb_1.Message {
     set optimize_for(value: FileOptions.OptimizeMode) {
         pb_1.Message.setField(this, 9, value);
     }
-    clear_optimize_for() {
-        pb_1.Message.setField(this, 9, undefined);
-    }
     get has_optimize_for() {
         return pb_1.Message.getField(this, 9) != null;
     }
@@ -2336,9 +2198,6 @@ export class FileOptions extends pb_1.Message {
     }
     set go_package(value: string) {
         pb_1.Message.setField(this, 11, value);
-    }
-    clear_go_package() {
-        pb_1.Message.setField(this, 11, undefined);
     }
     get has_go_package() {
         return pb_1.Message.getField(this, 11) != null;
@@ -2349,9 +2208,6 @@ export class FileOptions extends pb_1.Message {
     set cc_generic_services(value: boolean) {
         pb_1.Message.setField(this, 16, value);
     }
-    clear_cc_generic_services() {
-        pb_1.Message.setField(this, 16, undefined);
-    }
     get has_cc_generic_services() {
         return pb_1.Message.getField(this, 16) != null;
     }
@@ -2360,9 +2216,6 @@ export class FileOptions extends pb_1.Message {
     }
     set java_generic_services(value: boolean) {
         pb_1.Message.setField(this, 17, value);
-    }
-    clear_java_generic_services() {
-        pb_1.Message.setField(this, 17, undefined);
     }
     get has_java_generic_services() {
         return pb_1.Message.getField(this, 17) != null;
@@ -2373,9 +2226,6 @@ export class FileOptions extends pb_1.Message {
     set py_generic_services(value: boolean) {
         pb_1.Message.setField(this, 18, value);
     }
-    clear_py_generic_services() {
-        pb_1.Message.setField(this, 18, undefined);
-    }
     get has_py_generic_services() {
         return pb_1.Message.getField(this, 18) != null;
     }
@@ -2384,9 +2234,6 @@ export class FileOptions extends pb_1.Message {
     }
     set php_generic_services(value: boolean) {
         pb_1.Message.setField(this, 42, value);
-    }
-    clear_php_generic_services() {
-        pb_1.Message.setField(this, 42, undefined);
     }
     get has_php_generic_services() {
         return pb_1.Message.getField(this, 42) != null;
@@ -2397,9 +2244,6 @@ export class FileOptions extends pb_1.Message {
     set deprecated(value: boolean) {
         pb_1.Message.setField(this, 23, value);
     }
-    clear_deprecated() {
-        pb_1.Message.setField(this, 23, undefined);
-    }
     get has_deprecated() {
         return pb_1.Message.getField(this, 23) != null;
     }
@@ -2408,9 +2252,6 @@ export class FileOptions extends pb_1.Message {
     }
     set cc_enable_arenas(value: boolean) {
         pb_1.Message.setField(this, 31, value);
-    }
-    clear_cc_enable_arenas() {
-        pb_1.Message.setField(this, 31, undefined);
     }
     get has_cc_enable_arenas() {
         return pb_1.Message.getField(this, 31) != null;
@@ -2421,9 +2262,6 @@ export class FileOptions extends pb_1.Message {
     set objc_class_prefix(value: string) {
         pb_1.Message.setField(this, 36, value);
     }
-    clear_objc_class_prefix() {
-        pb_1.Message.setField(this, 36, undefined);
-    }
     get has_objc_class_prefix() {
         return pb_1.Message.getField(this, 36) != null;
     }
@@ -2432,9 +2270,6 @@ export class FileOptions extends pb_1.Message {
     }
     set csharp_namespace(value: string) {
         pb_1.Message.setField(this, 37, value);
-    }
-    clear_csharp_namespace() {
-        pb_1.Message.setField(this, 37, undefined);
     }
     get has_csharp_namespace() {
         return pb_1.Message.getField(this, 37) != null;
@@ -2445,9 +2280,6 @@ export class FileOptions extends pb_1.Message {
     set swift_prefix(value: string) {
         pb_1.Message.setField(this, 39, value);
     }
-    clear_swift_prefix() {
-        pb_1.Message.setField(this, 39, undefined);
-    }
     get has_swift_prefix() {
         return pb_1.Message.getField(this, 39) != null;
     }
@@ -2456,9 +2288,6 @@ export class FileOptions extends pb_1.Message {
     }
     set php_class_prefix(value: string) {
         pb_1.Message.setField(this, 40, value);
-    }
-    clear_php_class_prefix() {
-        pb_1.Message.setField(this, 40, undefined);
     }
     get has_php_class_prefix() {
         return pb_1.Message.getField(this, 40) != null;
@@ -2469,9 +2298,6 @@ export class FileOptions extends pb_1.Message {
     set php_namespace(value: string) {
         pb_1.Message.setField(this, 41, value);
     }
-    clear_php_namespace() {
-        pb_1.Message.setField(this, 41, undefined);
-    }
     get has_php_namespace() {
         return pb_1.Message.getField(this, 41) != null;
     }
@@ -2481,9 +2307,6 @@ export class FileOptions extends pb_1.Message {
     set php_metadata_namespace(value: string) {
         pb_1.Message.setField(this, 44, value);
     }
-    clear_php_metadata_namespace() {
-        pb_1.Message.setField(this, 44, undefined);
-    }
     get has_php_metadata_namespace() {
         return pb_1.Message.getField(this, 44) != null;
     }
@@ -2492,9 +2315,6 @@ export class FileOptions extends pb_1.Message {
     }
     set ruby_package(value: string) {
         pb_1.Message.setField(this, 45, value);
-    }
-    clear_ruby_package() {
-        pb_1.Message.setField(this, 45, undefined);
     }
     get has_ruby_package() {
         return pb_1.Message.getField(this, 45) != null;
@@ -2852,9 +2672,6 @@ export class MessageOptions extends pb_1.Message {
     set message_set_wire_format(value: boolean) {
         pb_1.Message.setField(this, 1, value);
     }
-    clear_message_set_wire_format() {
-        pb_1.Message.setField(this, 1, undefined);
-    }
     get has_message_set_wire_format() {
         return pb_1.Message.getField(this, 1) != null;
     }
@@ -2863,9 +2680,6 @@ export class MessageOptions extends pb_1.Message {
     }
     set no_standard_descriptor_accessor(value: boolean) {
         pb_1.Message.setField(this, 2, value);
-    }
-    clear_no_standard_descriptor_accessor() {
-        pb_1.Message.setField(this, 2, undefined);
     }
     get has_no_standard_descriptor_accessor() {
         return pb_1.Message.getField(this, 2) != null;
@@ -2876,9 +2690,6 @@ export class MessageOptions extends pb_1.Message {
     set deprecated(value: boolean) {
         pb_1.Message.setField(this, 3, value);
     }
-    clear_deprecated() {
-        pb_1.Message.setField(this, 3, undefined);
-    }
     get has_deprecated() {
         return pb_1.Message.getField(this, 3) != null;
     }
@@ -2887,9 +2698,6 @@ export class MessageOptions extends pb_1.Message {
     }
     set map_entry(value: boolean) {
         pb_1.Message.setField(this, 7, value);
-    }
-    clear_map_entry() {
-        pb_1.Message.setField(this, 7, undefined);
     }
     get has_map_entry() {
         return pb_1.Message.getField(this, 7) != null;
@@ -3040,9 +2848,6 @@ export class FieldOptions extends pb_1.Message {
     set ctype(value: FieldOptions.CType) {
         pb_1.Message.setField(this, 1, value);
     }
-    clear_ctype() {
-        pb_1.Message.setField(this, 1, undefined);
-    }
     get has_ctype() {
         return pb_1.Message.getField(this, 1) != null;
     }
@@ -3051,9 +2856,6 @@ export class FieldOptions extends pb_1.Message {
     }
     set packed(value: boolean) {
         pb_1.Message.setField(this, 2, value);
-    }
-    clear_packed() {
-        pb_1.Message.setField(this, 2, undefined);
     }
     get has_packed() {
         return pb_1.Message.getField(this, 2) != null;
@@ -3064,9 +2866,6 @@ export class FieldOptions extends pb_1.Message {
     set jstype(value: FieldOptions.JSType) {
         pb_1.Message.setField(this, 6, value);
     }
-    clear_jstype() {
-        pb_1.Message.setField(this, 6, undefined);
-    }
     get has_jstype() {
         return pb_1.Message.getField(this, 6) != null;
     }
@@ -3075,9 +2874,6 @@ export class FieldOptions extends pb_1.Message {
     }
     set lazy(value: boolean) {
         pb_1.Message.setField(this, 5, value);
-    }
-    clear_lazy() {
-        pb_1.Message.setField(this, 5, undefined);
     }
     get has_lazy() {
         return pb_1.Message.getField(this, 5) != null;
@@ -3088,9 +2884,6 @@ export class FieldOptions extends pb_1.Message {
     set deprecated(value: boolean) {
         pb_1.Message.setField(this, 3, value);
     }
-    clear_deprecated() {
-        pb_1.Message.setField(this, 3, undefined);
-    }
     get has_deprecated() {
         return pb_1.Message.getField(this, 3) != null;
     }
@@ -3099,9 +2892,6 @@ export class FieldOptions extends pb_1.Message {
     }
     set weak(value: boolean) {
         pb_1.Message.setField(this, 10, value);
-    }
-    clear_weak() {
-        pb_1.Message.setField(this, 10, undefined);
     }
     get has_weak() {
         return pb_1.Message.getField(this, 10) != null;
@@ -3338,9 +3128,6 @@ export class EnumOptions extends pb_1.Message {
     set allow_alias(value: boolean) {
         pb_1.Message.setField(this, 2, value);
     }
-    clear_allow_alias() {
-        pb_1.Message.setField(this, 2, undefined);
-    }
     get has_allow_alias() {
         return pb_1.Message.getField(this, 2) != null;
     }
@@ -3349,9 +3136,6 @@ export class EnumOptions extends pb_1.Message {
     }
     set deprecated(value: boolean) {
         pb_1.Message.setField(this, 3, value);
-    }
-    clear_deprecated() {
-        pb_1.Message.setField(this, 3, undefined);
     }
     get has_deprecated() {
         return pb_1.Message.getField(this, 3) != null;
@@ -3456,9 +3240,6 @@ export class EnumValueOptions extends pb_1.Message {
     set deprecated(value: boolean) {
         pb_1.Message.setField(this, 1, value);
     }
-    clear_deprecated() {
-        pb_1.Message.setField(this, 1, undefined);
-    }
     get has_deprecated() {
         return pb_1.Message.getField(this, 1) != null;
     }
@@ -3548,9 +3329,6 @@ export class ServiceOptions extends pb_1.Message {
     }
     set deprecated(value: boolean) {
         pb_1.Message.setField(this, 33, value);
-    }
-    clear_deprecated() {
-        pb_1.Message.setField(this, 33, undefined);
     }
     get has_deprecated() {
         return pb_1.Message.getField(this, 33) != null;
@@ -3646,9 +3424,6 @@ export class MethodOptions extends pb_1.Message {
     set deprecated(value: boolean) {
         pb_1.Message.setField(this, 33, value);
     }
-    clear_deprecated() {
-        pb_1.Message.setField(this, 33, undefined);
-    }
     get has_deprecated() {
         return pb_1.Message.getField(this, 33) != null;
     }
@@ -3657,9 +3432,6 @@ export class MethodOptions extends pb_1.Message {
     }
     set idempotency_level(value: MethodOptions.IdempotencyLevel) {
         pb_1.Message.setField(this, 34, value);
-    }
-    clear_idempotency_level() {
-        pb_1.Message.setField(this, 34, undefined);
     }
     get has_idempotency_level() {
         return pb_1.Message.getField(this, 34) != null;
@@ -3797,9 +3569,6 @@ export class UninterpretedOption extends pb_1.Message {
     set identifier_value(value: string) {
         pb_1.Message.setField(this, 3, value);
     }
-    clear_identifier_value() {
-        pb_1.Message.setField(this, 3, undefined);
-    }
     get has_identifier_value() {
         return pb_1.Message.getField(this, 3) != null;
     }
@@ -3808,9 +3577,6 @@ export class UninterpretedOption extends pb_1.Message {
     }
     set positive_int_value(value: number) {
         pb_1.Message.setField(this, 4, value);
-    }
-    clear_positive_int_value() {
-        pb_1.Message.setField(this, 4, undefined);
     }
     get has_positive_int_value() {
         return pb_1.Message.getField(this, 4) != null;
@@ -3821,9 +3587,6 @@ export class UninterpretedOption extends pb_1.Message {
     set negative_int_value(value: number) {
         pb_1.Message.setField(this, 5, value);
     }
-    clear_negative_int_value() {
-        pb_1.Message.setField(this, 5, undefined);
-    }
     get has_negative_int_value() {
         return pb_1.Message.getField(this, 5) != null;
     }
@@ -3832,9 +3595,6 @@ export class UninterpretedOption extends pb_1.Message {
     }
     set double_value(value: number) {
         pb_1.Message.setField(this, 6, value);
-    }
-    clear_double_value() {
-        pb_1.Message.setField(this, 6, undefined);
     }
     get has_double_value() {
         return pb_1.Message.getField(this, 6) != null;
@@ -3845,9 +3605,6 @@ export class UninterpretedOption extends pb_1.Message {
     set string_value(value: Uint8Array) {
         pb_1.Message.setField(this, 7, value);
     }
-    clear_string_value() {
-        pb_1.Message.setField(this, 7, undefined);
-    }
     get has_string_value() {
         return pb_1.Message.getField(this, 7) != null;
     }
@@ -3856,9 +3613,6 @@ export class UninterpretedOption extends pb_1.Message {
     }
     set aggregate_value(value: string) {
         pb_1.Message.setField(this, 8, value);
-    }
-    clear_aggregate_value() {
-        pb_1.Message.setField(this, 8, undefined);
     }
     get has_aggregate_value() {
         return pb_1.Message.getField(this, 8) != null;
@@ -4008,9 +3762,6 @@ export namespace UninterpretedOption {
         set name_part(value: string) {
             pb_1.Message.setField(this, 1, value);
         }
-        clear_name_part() {
-            pb_1.Message.setField(this, 1, undefined);
-        }
         get has_name_part() {
             return pb_1.Message.getField(this, 1) != null;
         }
@@ -4019,9 +3770,6 @@ export namespace UninterpretedOption {
         }
         set is_extension(value: boolean) {
             pb_1.Message.setField(this, 2, value);
-        }
-        clear_is_extension() {
-            pb_1.Message.setField(this, 2, undefined);
         }
         get has_is_extension() {
             return pb_1.Message.getField(this, 2) != null;
@@ -4191,9 +3939,6 @@ export namespace SourceCodeInfo {
         set leading_comments(value: string) {
             pb_1.Message.setField(this, 3, value);
         }
-        clear_leading_comments() {
-            pb_1.Message.setField(this, 3, undefined);
-        }
         get has_leading_comments() {
             return pb_1.Message.getField(this, 3) != null;
         }
@@ -4202,9 +3947,6 @@ export namespace SourceCodeInfo {
         }
         set trailing_comments(value: string) {
             pb_1.Message.setField(this, 4, value);
-        }
-        clear_trailing_comments() {
-            pb_1.Message.setField(this, 4, undefined);
         }
         get has_trailing_comments() {
             return pb_1.Message.getField(this, 4) != null;
@@ -4406,9 +4148,6 @@ export namespace GeneratedCodeInfo {
         set source_file(value: string) {
             pb_1.Message.setField(this, 2, value);
         }
-        clear_source_file() {
-            pb_1.Message.setField(this, 2, undefined);
-        }
         get has_source_file() {
             return pb_1.Message.getField(this, 2) != null;
         }
@@ -4418,9 +4157,6 @@ export namespace GeneratedCodeInfo {
         set begin(value: number) {
             pb_1.Message.setField(this, 3, value);
         }
-        clear_begin() {
-            pb_1.Message.setField(this, 3, undefined);
-        }
         get has_begin() {
             return pb_1.Message.getField(this, 3) != null;
         }
@@ -4429,9 +4165,6 @@ export namespace GeneratedCodeInfo {
         }
         set end(value: number) {
             pb_1.Message.setField(this, 4, value);
-        }
-        clear_end() {
-            pb_1.Message.setField(this, 4, undefined);
         }
         get has_end() {
             return pb_1.Message.getField(this, 4) != null;

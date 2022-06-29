@@ -111,9 +111,6 @@ export class DefaultCommonMessageOneOf extends pb_1.Message {
     set int32(value: number) {
         pb_1.Message.setOneofField(this, 1, this.#one_of_decls[0], value);
     }
-    clear_int32() {
-        pb_1.Message.setField(this, 1, undefined);
-    }
     get has_int32() {
         return pb_1.Message.getField(this, 1) != null;
     }
@@ -123,9 +120,6 @@ export class DefaultCommonMessageOneOf extends pb_1.Message {
     set message(value: DefaultCommonMessage) {
         pb_1.Message.setOneofWrapperField(this, 2, this.#one_of_decls[0], value);
     }
-    clear_message() {
-        pb_1.Message.setField(this, 2, undefined);
-    }
     get has_message() {
         return pb_1.Message.getField(this, 2) != null;
     }
@@ -134,9 +128,6 @@ export class DefaultCommonMessageOneOf extends pb_1.Message {
     }
     set string(value: string) {
         pb_1.Message.setOneofField(this, 3, this.#one_of_decls[0], value);
-    }
-    clear_string() {
-        pb_1.Message.setField(this, 3, undefined);
     }
     get has_string() {
         return pb_1.Message.getField(this, 3) != null;

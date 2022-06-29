@@ -3,7 +3,7 @@ import { PresenceMessageV3 } from "./presence_proto3";
 
 describe("defaults", () => {
 
-    it("should have has and clear methods (v2)", () => {
+    it("should have has_ fields (v2)", () => {
         const presence = new PresenceMessageV2();
 
         expect(typeof presence["has_enum"]).toBe("boolean")
@@ -22,7 +22,7 @@ describe("defaults", () => {
         expect(typeof presence["has_map"]).toBe("undefined")
     });
 
-    it("should have has and clear methods (v3)", () => {
+    it("should have has_ fields (v3)", () => {
         const presence = new PresenceMessageV3();
 
         expect(typeof presence["has_enum"]).toBe("undefined")
@@ -50,10 +50,10 @@ describe("defaults", () => {
         expect(presence.has_opt_message).toBeFalse();
     });
 
-    it("should clear presence", () => {
+    it("should make presence field false on assignment of undefined", () => {
         const presence = new PresenceMessageV3();
         presence.opt_int32 = 10;
-        presence.clear_opt_int32();
+        presence.opt_int32 = undefined;
 
         expect(presence.opt_int32).toBe(0);
         expect(presence.has_opt_int32).toBeFalse();

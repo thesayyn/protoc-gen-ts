@@ -102,9 +102,6 @@ export class PresenceCommonMessageOneOf extends pb_1.Message {
     set int32(value: number) {
         pb_1.Message.setOneofField(this, 1, this.#one_of_decls[0], value);
     }
-    clear_int32() {
-        pb_1.Message.setField(this, 1, undefined);
-    }
     get has_int32() {
         return pb_1.Message.getField(this, 1) != null;
     }
@@ -113,9 +110,6 @@ export class PresenceCommonMessageOneOf extends pb_1.Message {
     }
     set message(value: PresenceCommonMessage) {
         pb_1.Message.setOneofWrapperField(this, 2, this.#one_of_decls[0], value);
-    }
-    clear_message() {
-        pb_1.Message.setField(this, 2, undefined);
     }
     get has_message() {
         return pb_1.Message.getField(this, 2) != null;

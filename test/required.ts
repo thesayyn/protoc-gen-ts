@@ -23,9 +23,6 @@ export class NoOptionalValues extends pb_1.Message {
     set test(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
-    clear_test() {
-        pb_1.Message.setField(this, 1, undefined);
-    }
     get has_test() {
         return pb_1.Message.getField(this, 1) != null;
     }
@@ -34,9 +31,6 @@ export class NoOptionalValues extends pb_1.Message {
     }
     set test2(value: string) {
         pb_1.Message.setField(this, 2, value);
-    }
-    clear_test2() {
-        pb_1.Message.setField(this, 2, undefined);
     }
     get has_test2() {
         return pb_1.Message.getField(this, 2) != null;

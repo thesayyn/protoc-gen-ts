@@ -34,9 +34,6 @@ export namespace importdirective {
         set importedField(value: dependency_1.importdirective.Imported) {
             pb_1.Message.setWrapperField(this, 1, value);
         }
-        clear_importedField() {
-            pb_1.Message.setField(this, 1, undefined);
-        }
         get has_importedField() {
             return pb_1.Message.getField(this, 1) != null;
         }
@@ -45,9 +42,6 @@ export namespace importdirective {
         }
         set submessageField(value: dependency_1.importdirective.Imported.SubMessage) {
             pb_1.Message.setWrapperField(this, 2, value);
-        }
-        clear_submessageField() {
-            pb_1.Message.setField(this, 2, undefined);
         }
         get has_submessageField() {
             return pb_1.Message.getField(this, 2) != null;

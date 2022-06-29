@@ -31,9 +31,6 @@ export class MessageWithDefault extends pb_1.Message {
     set bool_field(value: boolean) {
         pb_1.Message.setField(this, 1, value);
     }
-    clear_bool_field() {
-        pb_1.Message.setField(this, 1, undefined);
-    }
     get has_bool_field() {
         return pb_1.Message.getField(this, 1) != null;
     }
@@ -43,9 +40,6 @@ export class MessageWithDefault extends pb_1.Message {
     set string_field(value: string) {
         pb_1.Message.setField(this, 2, value);
     }
-    clear_string_field() {
-        pb_1.Message.setField(this, 2, undefined);
-    }
     get has_string_field() {
         return pb_1.Message.getField(this, 2) != null;
     }
@@ -54,9 +48,6 @@ export class MessageWithDefault extends pb_1.Message {
     }
     set int32_field(value: number) {
         pb_1.Message.setField(this, 3, value);
-    }
-    clear_int32_field() {
-        pb_1.Message.setField(this, 3, undefined);
     }
     get has_int32_field() {
         return pb_1.Message.getField(this, 3) != null;
@@ -162,9 +153,6 @@ export class MessageWithImplicitDefault extends pb_1.Message {
     set bool_field(value: boolean) {
         pb_1.Message.setField(this, 1, value);
     }
-    clear_bool_field() {
-        pb_1.Message.setField(this, 1, undefined);
-    }
     get has_bool_field() {
         return pb_1.Message.getField(this, 1) != null;
     }
@@ -174,9 +162,6 @@ export class MessageWithImplicitDefault extends pb_1.Message {
     set string_field(value: string) {
         pb_1.Message.setField(this, 2, value);
     }
-    clear_string_field() {
-        pb_1.Message.setField(this, 2, undefined);
-    }
     get has_string_field() {
         return pb_1.Message.getField(this, 2) != null;
     }
@@ -185,9 +170,6 @@ export class MessageWithImplicitDefault extends pb_1.Message {
     }
     set int32_field(value: number) {
         pb_1.Message.setField(this, 3, value);
-    }
-    clear_int32_field() {
-        pb_1.Message.setField(this, 3, undefined);
     }
     get has_int32_field() {
         return pb_1.Message.getField(this, 3) != null;

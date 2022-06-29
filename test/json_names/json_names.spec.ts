@@ -94,12 +94,12 @@ describe('JSON Names', () => {
     expect(message.mut_ex_field).toBe('aSingleString');
   });
 
-  it('should expose presence and clear fields in camel case', () => {
+  it('should expose presence fields in camel case', () => {
     const message = new JsonNamesMessage();
     expect(message.hasASingleString).toBe(false);
     message.aSingleString = 'abcdef';
     expect(message.hasASingleString).toBe(true);
-    message.clearASingleString();
+    message.aSingleString = undefined;
     expect(message.hasASingleString).toBe(false);
   });
 });

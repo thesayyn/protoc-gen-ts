@@ -33,9 +33,6 @@ export class NoNamespace extends pb_1.Message {
     set label(value: dependency_1.eventTarget) {
         pb_1.Message.setWrapperField(this, 1, value);
     }
-    clear_label() {
-        pb_1.Message.setField(this, 1, undefined);
-    }
     get has_label() {
         return pb_1.Message.getField(this, 1) != null;
     }
@@ -45,9 +42,6 @@ export class NoNamespace extends pb_1.Message {
     set other_fields(value: dependency_2.MessageFields) {
         pb_1.Message.setWrapperField(this, 2, value);
     }
-    clear_other_fields() {
-        pb_1.Message.setField(this, 2, undefined);
-    }
     get has_other_fields() {
         return pb_1.Message.getField(this, 2) != null;
     }
@@ -56,9 +50,6 @@ export class NoNamespace extends pb_1.Message {
     }
     set batch_fields(value: dependency_1.eventSchedulingContextBatch) {
         pb_1.Message.setWrapperField(this, 3, value);
-    }
-    clear_batch_fields() {
-        pb_1.Message.setField(this, 3, undefined);
     }
     get has_batch_fields() {
         return pb_1.Message.getField(this, 3) != null;

@@ -34,9 +34,6 @@ export class Optional extends pb_1.Message {
     set proto3_optional(value: string) {
         pb_1.Message.setOneofField(this, 2, this.#one_of_decls[0], value);
     }
-    clear_proto3_optional() {
-        pb_1.Message.setField(this, 2, undefined);
-    }
     get has_proto3_optional() {
         return pb_1.Message.getField(this, 2) != null;
     }

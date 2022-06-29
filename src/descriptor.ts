@@ -1255,59 +1255,6 @@ function createSetterBlock(
 }
 
 /**
- * Returns a presence clear method for the field
- */
-function createPresenceClear(
-  fieldDescriptor: descriptor.FieldDescriptorProto,
-  pbIdentifier: ts.Identifier,
-) {
-  return ts.factory.createMethodDeclaration(
-    undefined,
-    undefined,
-    undefined,
-    getPrefixedFieldName("clear", fieldDescriptor),
-    undefined,
-    undefined,
-    [],
-    undefined,
-    createPresenceClearBlock(fieldDescriptor, pbIdentifier),
-  );
-}
-
-function createPresenceClearBlock(
-  fieldDescriptor: descriptor.FieldDescriptorProto,
-  pbIdentifier: ts.Identifier,
-) {
-  let repeatedExpression = field.isRepeated(fieldDescriptor)
-    ? ts.factory.createIdentifier("[]")
-    : ts.factory.createIdentifier("undefined");
-
-  let expression = (
-    ts.factory.createCallExpression(
-      ts.factory.createPropertyAccessExpression(
-        ts.factory.createPropertyAccessExpression(pbIdentifier, "Message"),
-        "setField",
-      ),
-      undefined,
-      [
-        ts.factory.createThis(),
-        ts.factory.createNumericLiteral(fieldDescriptor.number),
-        repeatedExpression,
-      ],
-    )
-  );
-
-  return ts.factory.createBlock(
-    [
-      ts.factory.createExpressionStatement(
-        expression
-      ),
-    ],
-    true,
-  );
-}
-
-/**
  * Returns a presence has method for the field
  */
 function createPresenceHas(
@@ -2286,7 +2233,6 @@ function createMessage(
     );
 
     if (field.hasPresenceFunctions(rootDescriptor, fieldDescriptor)) {
-      statements.push(createPresenceClear(fieldDescriptor, pbIdentifier))
       statements.push(createPresenceHas(fieldDescriptor, pbIdentifier))
     }
   }

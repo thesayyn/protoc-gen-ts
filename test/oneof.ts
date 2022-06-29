@@ -42,9 +42,6 @@ export class OneOfWithoutAnyOtherFields extends pb_1.Message {
     set nickname(value: string) {
         pb_1.Message.setOneofField(this, 1, this.#one_of_decls[0], value);
     }
-    clear_nickname() {
-        pb_1.Message.setField(this, 1, undefined);
-    }
     get has_nickname() {
         return pb_1.Message.getField(this, 1) != null;
     }
@@ -53,9 +50,6 @@ export class OneOfWithoutAnyOtherFields extends pb_1.Message {
     }
     set realname(value: string) {
         pb_1.Message.setOneofField(this, 2, this.#one_of_decls[0], value);
-    }
-    clear_realname() {
-        pb_1.Message.setField(this, 2, undefined);
     }
     get has_realname() {
         return pb_1.Message.getField(this, 2) != null;
@@ -66,9 +60,6 @@ export class OneOfWithoutAnyOtherFields extends pb_1.Message {
     set age(value: string) {
         pb_1.Message.setOneofField(this, 4, this.#one_of_decls[1], value);
     }
-    clear_age() {
-        pb_1.Message.setField(this, 4, undefined);
-    }
     get has_age() {
         return pb_1.Message.getField(this, 4) != null;
     }
@@ -77,9 +68,6 @@ export class OneOfWithoutAnyOtherFields extends pb_1.Message {
     }
     set date_of_birth(value: string) {
         pb_1.Message.setOneofField(this, 3, this.#one_of_decls[1], value);
-    }
-    clear_date_of_birth() {
-        pb_1.Message.setField(this, 3, undefined);
     }
     get has_date_of_birth() {
         return pb_1.Message.getField(this, 3) != null;
@@ -228,9 +216,6 @@ export class OneOf extends pb_1.Message {
     set date_of_birth(value: string) {
         pb_1.Message.setOneofField(this, 3, this.#one_of_decls[0], value);
     }
-    clear_date_of_birth() {
-        pb_1.Message.setField(this, 3, undefined);
-    }
     get has_date_of_birth() {
         return pb_1.Message.getField(this, 3) != null;
     }
@@ -239,9 +224,6 @@ export class OneOf extends pb_1.Message {
     }
     set age(value: string) {
         pb_1.Message.setOneofField(this, 4, this.#one_of_decls[0], value);
-    }
-    clear_age() {
-        pb_1.Message.setField(this, 4, undefined);
     }
     get has_age() {
         return pb_1.Message.getField(this, 4) != null;

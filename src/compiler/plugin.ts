@@ -36,9 +36,6 @@ export class Version extends pb_1.Message {
     set major(value: number) {
         pb_1.Message.setField(this, 1, value);
     }
-    clear_major() {
-        pb_1.Message.setField(this, 1, undefined);
-    }
     get has_major() {
         return pb_1.Message.getField(this, 1) != null;
     }
@@ -47,9 +44,6 @@ export class Version extends pb_1.Message {
     }
     set minor(value: number) {
         pb_1.Message.setField(this, 2, value);
-    }
-    clear_minor() {
-        pb_1.Message.setField(this, 2, undefined);
     }
     get has_minor() {
         return pb_1.Message.getField(this, 2) != null;
@@ -60,9 +54,6 @@ export class Version extends pb_1.Message {
     set patch(value: number) {
         pb_1.Message.setField(this, 3, value);
     }
-    clear_patch() {
-        pb_1.Message.setField(this, 3, undefined);
-    }
     get has_patch() {
         return pb_1.Message.getField(this, 3) != null;
     }
@@ -71,9 +62,6 @@ export class Version extends pb_1.Message {
     }
     set suffix(value: string) {
         pb_1.Message.setField(this, 4, value);
-    }
-    clear_suffix() {
-        pb_1.Message.setField(this, 4, undefined);
     }
     get has_suffix() {
         return pb_1.Message.getField(this, 4) != null;
@@ -198,9 +186,6 @@ export class CodeGeneratorRequest extends pb_1.Message {
     set parameter(value: string) {
         pb_1.Message.setField(this, 2, value);
     }
-    clear_parameter() {
-        pb_1.Message.setField(this, 2, undefined);
-    }
     get has_parameter() {
         return pb_1.Message.getField(this, 2) != null;
     }
@@ -215,9 +200,6 @@ export class CodeGeneratorRequest extends pb_1.Message {
     }
     set compiler_version(value: Version) {
         pb_1.Message.setWrapperField(this, 3, value);
-    }
-    clear_compiler_version() {
-        pb_1.Message.setField(this, 3, undefined);
     }
     get has_compiler_version() {
         return pb_1.Message.getField(this, 3) != null;
@@ -330,9 +312,6 @@ export class CodeGeneratorResponse extends pb_1.Message {
     set error(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
-    clear_error() {
-        pb_1.Message.setField(this, 1, undefined);
-    }
     get has_error() {
         return pb_1.Message.getField(this, 1) != null;
     }
@@ -341,9 +320,6 @@ export class CodeGeneratorResponse extends pb_1.Message {
     }
     set supported_features(value: number) {
         pb_1.Message.setField(this, 2, value);
-    }
-    clear_supported_features() {
-        pb_1.Message.setField(this, 2, undefined);
     }
     get has_supported_features() {
         return pb_1.Message.getField(this, 2) != null;
@@ -463,9 +439,6 @@ export namespace CodeGeneratorResponse {
         set name(value: string) {
             pb_1.Message.setField(this, 1, value);
         }
-        clear_name() {
-            pb_1.Message.setField(this, 1, undefined);
-        }
         get has_name() {
             return pb_1.Message.getField(this, 1) != null;
         }
@@ -474,9 +447,6 @@ export namespace CodeGeneratorResponse {
         }
         set insertion_point(value: string) {
             pb_1.Message.setField(this, 2, value);
-        }
-        clear_insertion_point() {
-            pb_1.Message.setField(this, 2, undefined);
         }
         get has_insertion_point() {
             return pb_1.Message.getField(this, 2) != null;
@@ -487,9 +457,6 @@ export namespace CodeGeneratorResponse {
         set content(value: string) {
             pb_1.Message.setField(this, 15, value);
         }
-        clear_content() {
-            pb_1.Message.setField(this, 15, undefined);
-        }
         get has_content() {
             return pb_1.Message.getField(this, 15) != null;
         }
@@ -498,9 +465,6 @@ export namespace CodeGeneratorResponse {
         }
         set generated_code_info(value: dependency_1.GeneratedCodeInfo) {
             pb_1.Message.setWrapperField(this, 16, value);
-        }
-        clear_generated_code_info() {
-            pb_1.Message.setField(this, 16, undefined);
         }
         get has_generated_code_info() {
             return pb_1.Message.getField(this, 16) != null;
