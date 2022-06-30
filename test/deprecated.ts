@@ -67,6 +67,7 @@ export class MessageName extends pb_1.Message {
     set me_deprecated(value: string) {
         pb_1.Message.setOneofField(this, 3, this.#one_of_decls[0], value);
     }
+    /** @deprecated*/
     get has_me_deprecated() {
         return pb_1.Message.getField(this, 3) != null;
     }

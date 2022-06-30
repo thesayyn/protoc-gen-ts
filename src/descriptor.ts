@@ -1261,13 +1261,16 @@ function createPresenceHas(
   fieldDescriptor: descriptor.FieldDescriptorProto,
   pbIdentifier: ts.Identifier,
 ) {
-  return ts.factory.createGetAccessorDeclaration(
-    undefined,
-    undefined,
-    getPrefixedFieldName("has", fieldDescriptor),
-    [],
-    undefined,
-    createPresenceHasBlock(fieldDescriptor, pbIdentifier),
+  return comment.addDeprecatedJsDoc(
+    ts.factory.createGetAccessorDeclaration(
+      undefined,
+      undefined,
+      getPrefixedFieldName("has", fieldDescriptor),
+      [],
+      undefined,
+      createPresenceHasBlock(fieldDescriptor, pbIdentifier),
+    ),
+    fieldDescriptor.options?.deprecated,
   );
 }
 
@@ -1342,7 +1345,7 @@ function createSerialize(
       getFieldName(fieldDescriptor),
     );
 
-    const hasFieldCondition = field.hasPresenceFunctions(rootDescriptor, fieldDescriptor)
+    const hasFieldCondition = field.hasPresenceGetter(rootDescriptor, fieldDescriptor)
       ? ts.factory.createPropertyAccessExpression(
           ts.factory.createThis(),
           getPrefixedFieldName("has", fieldDescriptor),
@@ -2232,7 +2235,7 @@ function createMessage(
       createSetter(rootDescriptor, messageDescriptor, fieldDescriptor, pbIdentifier),
     );
 
-    if (field.hasPresenceFunctions(rootDescriptor, fieldDescriptor)) {
+    if (field.hasPresenceGetter(rootDescriptor, fieldDescriptor)) {
       statements.push(createPresenceHas(fieldDescriptor, pbIdentifier))
     }
   }

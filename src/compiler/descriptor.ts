@@ -2172,6 +2172,7 @@ export class FileOptions extends pb_1.Message {
     set java_generate_equals_and_hash(value: boolean) {
         pb_1.Message.setField(this, 20, value);
     }
+    /** @deprecated*/
     get has_java_generate_equals_and_hash() {
         return pb_1.Message.getField(this, 20) != null;
     }

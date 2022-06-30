@@ -273,7 +273,7 @@ export function isPacked(
  * @param {descriptor.FileDescriptorProto} rootDescriptor
  * @param {descriptor.FieldDescriptorProto} fieldDescriptor
  */
- export function hasPresenceFunctions(
+ export function hasPresenceGetter(
   rootDescriptor: descriptor.FileDescriptorProto,
   fieldDescriptor: descriptor.FieldDescriptorProto,
 ) {
