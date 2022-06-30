@@ -12,7 +12,7 @@ describe("maps", () => {
         const gotTags = Tags.deserialize(bytes);
 
         expect(tags.keys).toBeInstanceOf(Map);
-        expect(gotTags.toObject()).toEqual({ keys: { see: 'working' } })
+        expect(gotTags.toObject()).toEqual({ key: "", keys: { see: 'working' } })
     });
 
     it("should take the last seen", () => {
@@ -20,7 +20,7 @@ describe("maps", () => {
         tags.keys.set("see", "not_working");
         tags.keys.set("see", "working");
 
-        expect(Tags.deserialize(tags.serialize()).toObject()).toEqual({ keys: { see: 'working' } })
+        expect(Tags.deserialize(tags.serialize()).toObject()).toEqual({ key: "", keys: { see: 'working' } })
     });
 
 
@@ -31,7 +31,7 @@ describe("maps", () => {
                 ["see", "working"],
             ])
         });
-        expect(Tags.deserialize(tags.serialize()).toObject()).toEqual({ keys: { see: 'working' } })
+        expect(Tags.deserialize(tags.serialize()).toObject()).toEqual({ key: "", keys: { see: 'working' } })
     });
 
 
@@ -44,6 +44,7 @@ describe("maps", () => {
         });
         const transferredTags = Tags.deserialize(tags.serialize());
         expect(transferredTags.toObject()).toEqual({
+            key: "",
             topics: {
                 first: { link: "example1" },
                 second: { link: "example2" }
@@ -64,6 +65,7 @@ describe("maps", () => {
         });
         const transferredTags = Tags.deserialize(tags.serialize());
         expect(transferredTags.toObject()).toEqual({
+            key: "",
             imported: {
                 1: { key: importdirective.Imported.SubMessage.MyEnum.VALUE },
                 2: { key: importdirective.Imported.SubMessage.MyEnum.VALUE2 }
@@ -89,6 +91,7 @@ describe("maps", () => {
         });
         const transferredTags = Tags.deserialize(tags.serialize());
         expect(transferredTags.toObject()).toEqual({
+            key: "",
             imported: {
                 1: { key: importdirective.Imported.SubMessage.MyEnum.VALUE },
                 2: { key: importdirective.Imported.SubMessage.MyEnum.VALUE2 }

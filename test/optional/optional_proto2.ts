@@ -20,7 +20,7 @@ export class NotOptional extends pb_1.Message {
         }
     }
     get should_be_required() {
-        return pb_1.Message.getField(this, 1) as string[];
+        return pb_1.Message.getFieldWithDefault(this, 1, []) as string[];
     }
     set should_be_required(value: string[]) {
         pb_1.Message.setField(this, 1, value);
@@ -30,6 +30,9 @@ export class NotOptional extends pb_1.Message {
     }
     set should_be_optional(value: string) {
         pb_1.Message.setField(this, 2, value);
+    }
+    get has_should_be_optional() {
+        return pb_1.Message.getField(this, 2) != null;
     }
     static fromObject(data: {
         should_be_required: string[];
@@ -50,7 +53,7 @@ export class NotOptional extends pb_1.Message {
         } = {
             should_be_required: this.should_be_required
         };
-        if (pb_1.Message.getField(this, 2) != null) {
+        if (this.should_be_optional != null) {
             data.should_be_optional = this.should_be_optional;
         }
         return data;
@@ -61,7 +64,7 @@ export class NotOptional extends pb_1.Message {
         const writer = w || new pb_1.BinaryWriter();
         if (this.should_be_required.length)
             writer.writeRepeatedString(1, this.should_be_required);
-        if (typeof pb_1.Message.getField(this, 2) === "string" && this.should_be_optional.length)
+        if (this.has_should_be_optional && this.should_be_optional.length)
             writer.writeString(2, this.should_be_optional);
         if (!w)
             return writer.getResultBuffer();

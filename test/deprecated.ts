@@ -56,6 +56,9 @@ export class MessageName extends pb_1.Message {
     set me(value: string) {
         pb_1.Message.setOneofField(this, 2, this.#one_of_decls[0], value);
     }
+    get has_me() {
+        return pb_1.Message.getField(this, 2) != null;
+    }
     /** @deprecated*/
     get me_deprecated() {
         return pb_1.Message.getFieldWithDefault(this, 3, "") as string;
@@ -63,6 +66,10 @@ export class MessageName extends pb_1.Message {
     /** @deprecated*/
     set me_deprecated(value: string) {
         pb_1.Message.setOneofField(this, 3, this.#one_of_decls[0], value);
+    }
+    /** @deprecated*/
+    get has_me_deprecated() {
+        return pb_1.Message.getField(this, 3) != null;
     }
     get test() {
         const cases: {
@@ -97,13 +104,13 @@ export class MessageName extends pb_1.Message {
             me?: string;
             me_deprecated?: string;
         } = {};
-        if (pb_1.Message.getField(this, 1) != null) {
+        if (this.deprecated_field != null) {
             data.deprecated_field = this.deprecated_field;
         }
-        if (pb_1.Message.getField(this, 2) != null) {
+        if (this.me != null) {
             data.me = this.me;
         }
-        if (pb_1.Message.getField(this, 3) != null) {
+        if (this.me_deprecated != null) {
             data.me_deprecated = this.me_deprecated;
         }
         return data;
@@ -112,11 +119,11 @@ export class MessageName extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (typeof pb_1.Message.getField(this, 1) === "string" && this.deprecated_field.length)
+        if (this.deprecated_field.length)
             writer.writeString(1, this.deprecated_field);
-        if (typeof pb_1.Message.getField(this, 2) === "string" && this.me.length)
+        if (this.has_me)
             writer.writeString(2, this.me);
-        if (typeof pb_1.Message.getField(this, 3) === "string" && this.me_deprecated.length)
+        if (this.has_me_deprecated)
             writer.writeString(3, this.me_deprecated);
         if (!w)
             return writer.getResultBuffer();

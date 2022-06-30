@@ -57,7 +57,9 @@ describe('JSON Names', () => {
         aNestedInteger: 456,
       },
       colorSpace: ColorSpace.RED_GREEN_BLUE,
+      anOptionalString: '',
       aSingleString: 'spam',
+      aSingleNumber: 0,
     });
   });
 
@@ -77,6 +79,8 @@ describe('JSON Names', () => {
         aNestedInteger: 102,
       },
       colorSpace: ColorSpace.CYAN_YELLOW_MAGENTA_BLACK,
+      anOptionalString: '',
+      aSingleString: '',
       aSingleNumber: 456,
     });
   });
@@ -88,5 +92,14 @@ describe('JSON Names', () => {
     expect(message.mut_ex_field).toBe('aSingleNumber');
     message.aSingleString = 'abcdef';
     expect(message.mut_ex_field).toBe('aSingleString');
+  });
+
+  it('should expose presence fields in camel case', () => {
+    const message = new JsonNamesMessage();
+    expect(message.hasASingleString).toBe(false);
+    message.aSingleString = 'abcdef';
+    expect(message.hasASingleString).toBe(true);
+    message.aSingleString = undefined;
+    expect(message.hasASingleString).toBe(false);
   });
 });

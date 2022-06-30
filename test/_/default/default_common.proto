@@ -8,6 +8,7 @@ message DefaultCommonMessageOneOf {
     oneof oneof {
         int32 int32 = 1;
         DefaultCommonMessage message = 2;
+        string string = 3;
     }
 }
 

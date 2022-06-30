@@ -37,7 +37,7 @@ export namespace pkg.mycompany {
             const data: {
                 field?: string[];
             } = {};
-            if (pb_1.Message.getField(this, 1) != null) {
+            if (this.field != null) {
                 data.field = this.field;
             }
             return data;

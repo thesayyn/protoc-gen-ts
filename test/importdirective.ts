@@ -34,11 +34,17 @@ export namespace importdirective {
         set importedField(value: dependency_1.importdirective.Imported) {
             pb_1.Message.setWrapperField(this, 1, value);
         }
+        get has_importedField() {
+            return pb_1.Message.getField(this, 1) != null;
+        }
         get submessageField() {
             return pb_1.Message.getWrapperField(this, dependency_1.importdirective.Imported.SubMessage, 2) as dependency_1.importdirective.Imported.SubMessage;
         }
         set submessageField(value: dependency_1.importdirective.Imported.SubMessage) {
             pb_1.Message.setWrapperField(this, 2, value);
+        }
+        get has_submessageField() {
+            return pb_1.Message.getField(this, 2) != null;
         }
         get enumField() {
             return pb_1.Message.getFieldWithDefault(this, 3, dependency_1.importdirective.Imported.SubMessage.MyEnum.VALUE) as dependency_1.importdirective.Imported.SubMessage.MyEnum;
@@ -69,13 +75,13 @@ export namespace importdirective {
                 submessageField?: ReturnType<typeof dependency_1.importdirective.Imported.SubMessage.prototype.toObject>;
                 enumField?: dependency_1.importdirective.Imported.SubMessage.MyEnum;
             } = {};
-            if (pb_1.Message.getField(this, 1) != null) {
+            if (this.importedField != null) {
                 data.importedField = this.importedField.toObject();
             }
-            if (pb_1.Message.getField(this, 2) != null) {
+            if (this.submessageField != null) {
                 data.submessageField = this.submessageField.toObject();
             }
-            if (pb_1.Message.getField(this, 3) != null) {
+            if (this.enumField != null) {
                 data.enumField = this.enumField;
             }
             return data;
@@ -84,11 +90,11 @@ export namespace importdirective {
         serialize(w: pb_1.BinaryWriter): void;
         serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
             const writer = w || new pb_1.BinaryWriter();
-            if (pb_1.Message.getField(this, 1) != null)
+            if (this.has_importedField)
                 writer.writeMessage(1, this.importedField, () => this.importedField.serialize(writer));
-            if (pb_1.Message.getField(this, 2) != null)
+            if (this.has_submessageField)
                 writer.writeMessage(2, this.submessageField, () => this.submessageField.serialize(writer));
-            if (pb_1.Message.getField(this, 3) != null)
+            if (this.enumField != dependency_1.importdirective.Imported.SubMessage.MyEnum.VALUE)
                 writer.writeEnum(3, this.enumField);
             if (!w)
                 return writer.getResultBuffer();

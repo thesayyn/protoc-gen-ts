@@ -1,10 +1,9 @@
 import { MessageWithDefault, MessageWithImplicitDefault } from "./default";
 import { DefaultMessageV2WithoutDefault, DefaultMessageV2WithDefault } from "./default_proto2";
-import { DefaultMessageV3 } from "./default_proto3";
-import { DefaultCommonEnum } from "./default_common";
+import { DefaultMessageOptionalV3, DefaultMessageV3 } from "./default_proto3";
+import { DefaultCommonEnum, DefaultCommonMessage, DefaultCommonMessageOneOf } from "./default_common";
 
-function toObjectWithDefaults(message: Object): Object {
-    // unfortunately, it is not as simple as: Object.keys(message).filter(k => typeof message[k] != "function")
+function toObjectPreservingUndefined(message: Object): Object {
     function correctFieldValue(fieldValue: unknown): unknown {
         return fieldValue instanceof Map ? { ...fieldValue } : fieldValue;
     }
@@ -24,10 +23,14 @@ describe("defaults", () => {
         expect(message.string_field).toBe("default value");
     });
 
-    it("should not return defaults in the output of toObject()", () => {
+    it("should return defaults in the output of toObject()", () => {
         const message = new MessageWithDefault();
 
-        expect(message.toObject()).toEqual({});
+        expect(message.toObject()).toEqual({
+            bool_field: true,
+            int32_field: 12,
+            string_field: "default value",
+        });
     });
 
     it("should return implicit defaults for optional fields (v2)", () => {
@@ -38,14 +41,42 @@ describe("defaults", () => {
         expect(message.string_field).toBe("");
     });
 
-    it("should not return implicit defaults in the output of toObject() (v2)", () => {
+    it("should return implicit defaults in the output of toObject() (v2)", () => {
         const message = new MessageWithImplicitDefault();
 
-        expect(message.toObject()).toEqual({});
+        expect(message.toObject()).toEqual({
+            bool_field: false,
+            int32_field: 0,
+            string_field: "",
+        });
+    });
+
+    it("should not serialize optional fields that were not assigned a value (v2)", () => {
+        const message1 = new MessageWithDefault();
+        const message2 = new MessageWithImplicitDefault();
+
+        const serializedMessage1 = message1.serialize();
+        const serializedMessage2 = message2.serialize();
+
+        expect(serializedMessage1.length).toBe(0);
+        expect(serializedMessage2.length).toBe(0);
+    });
+
+    it("should serialize optional fields explicitly set to their default value (v2)", () => {
+        const message1 = new MessageWithDefault();
+        message1.int32_field = 12; // 12 is the default field value give in proto file
+        const message2 = new MessageWithImplicitDefault();
+        message2.int32_field = 0; // 0 is the implicit default for optional int32 field
+
+        const serializedMessage1 = message1.serialize();
+        const serializedMessage2 = message2.serialize();
+
+        expect(serializedMessage1.length).toBeGreaterThan(0);
+        expect(serializedMessage2.length).toBeGreaterThan(0);
     });
 
     it("should not return defaults for required fields without [default=] (v2)", () => {
-        expect(toObjectWithDefaults(new DefaultMessageV2WithoutDefault)).toEqual({
+        expect(toObjectPreservingUndefined(new DefaultMessageV2WithoutDefault())).toEqual({
             message: undefined,
             enum: undefined,
 
@@ -77,12 +108,17 @@ describe("defaults", () => {
             one_of_message: undefined,
 
             bytes: undefined
-        })
+        });
+
+        expect(new DefaultMessageV2WithoutDefault().toObject()).toEqual({
+            array_int32: [],
+            array_message: [],
+            one_of_int32: 0, // scalar oneof fields have implicit defaults
+        });
     });
 
     it("should return explicitly specified defaults (v2)", () => {
-        expect(toObjectWithDefaults(new DefaultMessageV2WithDefault)).toEqual({
-            message: undefined,
+        expect(new DefaultMessageV2WithDefault().toObject()).toEqual({
             enum: DefaultCommonEnum.TWO,
 
             bool: true,
@@ -103,12 +139,11 @@ describe("defaults", () => {
 
             int_but_string: "17",
 
-            one_of_int32: 18,
-            one_of_message: undefined
-        })
+            one_of_int32: 18
+        });
     });
 
-    it("should not serialize fields that have not been set (v2)", () => {
+    it("should not serialize required fields that have not been set (v2)", () => {
         const defaults = new DefaultMessageV2WithoutDefault();
         const serializedDefaults = defaults.serialize();
         const transferredDefaults = DefaultMessageV2WithoutDefault.deserialize(serializedDefaults);
@@ -148,7 +183,7 @@ describe("defaults", () => {
         expect(transferredDefaults.bytes).toEqual(undefined);
     });
 
-    it("should not serialize fields that have not been set, even when they have explicit default values (v2)", () => {
+    it("should not serialize required fields that have not been set, even when they have explicit default values (v2)", () => {
         const defaults = new DefaultMessageV2WithDefault();
         const serializedDefaults = defaults.serialize();
         const transferredDefaults = DefaultMessageV2WithDefault.deserialize(serializedDefaults);
@@ -182,7 +217,7 @@ describe("defaults", () => {
     });
 
     it("should return defaults (v3)", () => {
-        expect(toObjectWithDefaults(new DefaultMessageV3())).toEqual({
+        expect(toObjectPreservingUndefined(new DefaultMessageV3())).toEqual({
             message: undefined,
             enum: DefaultCommonEnum.ZERO,
 
@@ -202,7 +237,7 @@ describe("defaults", () => {
             float: 0,
             double: 0,
 
-            int_but_string: "",
+            int_but_string: "0",
 
             map_string_string: {},
             map_string_message: {},
@@ -215,12 +250,45 @@ describe("defaults", () => {
 
             bytes: new Uint8Array()
         })
+
+        expect(new DefaultMessageV3().toObject()).toEqual({
+            enum: DefaultCommonEnum.ZERO,
+
+            bool: false,
+            string: "",
+
+            int32: 0,
+            fixed32: 0,
+            sfixed32: 0,
+            uint32: 0,
+            sint32: 0,
+            int64: 0,
+            fixed64: 0,
+            sfixed64: 0,
+            uint64: 0,
+            sint64: 0,
+            float: 0,
+            double: 0,
+
+            int_but_string: "0",
+
+            array_int32: [],
+            array_message: [],
+
+            one_of_int32: 0,
+
+            bytes: new Uint8Array()
+        });
     });
 
-    it("should be serialized defaults (v3)", () => {
+    it("should omit default values during serialization (v3)", () => {
         const defaults = new DefaultMessageV3();
-        const transferredDefaults = DefaultMessageV3.deserialize(defaults.serialize());
+        const serializedDefaults = defaults.serialize();
+        const transferredDefaults = DefaultMessageV3.deserialize(serializedDefaults);
 
+        expect(serializedDefaults.length).toBe(0);
+
+        // below values are just the defaults in transferredDefaults message, not something that arrived over the wire
         expect(transferredDefaults.message).toBe(undefined);
         expect(transferredDefaults.enum).toBe(DefaultCommonEnum.ZERO);
 
@@ -240,7 +308,7 @@ describe("defaults", () => {
         expect(transferredDefaults.float).toBe(0);
         expect(transferredDefaults.double).toBe(0);
 
-        expect(transferredDefaults.int_but_string).toBe("");
+        expect(transferredDefaults.int_but_string).toBe("0");
 
         expect(transferredDefaults.map_string_string.values.length).toBe(0);
         expect(transferredDefaults.map_string_message.values.length).toBe(0);
@@ -253,4 +321,109 @@ describe("defaults", () => {
 
         expect(transferredDefaults.bytes).toEqual(new Uint8Array());
     });
-})
+
+    it("should omit fields that were explicitly assigned their default values during serialization (v3)", () => {
+        const explicitlyProvidedDefaults = new DefaultMessageV3();
+        explicitlyProvidedDefaults.enum = DefaultCommonEnum.ZERO;
+        explicitlyProvidedDefaults.bool = false;
+        explicitlyProvidedDefaults.string = '';
+        explicitlyProvidedDefaults.int32 = 0;
+        explicitlyProvidedDefaults.fixed32 = 0;
+        explicitlyProvidedDefaults.sfixed32 = 0;
+        explicitlyProvidedDefaults.uint32 = 0;
+        explicitlyProvidedDefaults.sint32 = 0;
+        explicitlyProvidedDefaults.int64 = 0;
+        explicitlyProvidedDefaults.fixed64 = 0;
+        explicitlyProvidedDefaults.sfixed64 = 0;
+        explicitlyProvidedDefaults.uint64 = 0;
+        explicitlyProvidedDefaults.sint64 = 0;
+        explicitlyProvidedDefaults.float = 0;
+        explicitlyProvidedDefaults.double = 0;
+        explicitlyProvidedDefaults.int_but_string = "0";
+        explicitlyProvidedDefaults.bytes = new Uint8Array();
+
+        const serializedExplicitlyProvidedDefaults = explicitlyProvidedDefaults.serialize();
+
+        expect(serializedExplicitlyProvidedDefaults.length).toBe(0);
+    });
+
+    it("should serialize oneof fields if explicitly assigned, even when they were assigned their default value (v3)", () => {
+        const messageHavingInt32 = new DefaultCommonMessageOneOf();
+        messageHavingInt32.int32 = 0;
+        const messageHavingString = new DefaultCommonMessageOneOf();
+        messageHavingString.string = "";
+        const messageHavingSubmessage = new DefaultCommonMessageOneOf();
+        messageHavingSubmessage.message = new DefaultCommonMessage();
+
+        const serializedMessageHavingInt32 = messageHavingInt32.serialize();
+        const transferredMessageHavingInt32 = DefaultCommonMessageOneOf.deserialize(serializedMessageHavingInt32);
+        const serializedMessageHavingString = messageHavingString.serialize();
+        const transferredMessageHavingString = DefaultCommonMessageOneOf.deserialize(serializedMessageHavingString);
+        const serializedMessageHavingSubmessage = messageHavingSubmessage.serialize();
+        const transferredMessageHavingSubmessage = DefaultCommonMessageOneOf.deserialize(serializedMessageHavingSubmessage);
+
+        expect(serializedMessageHavingInt32.length).toBeGreaterThan(0);
+        expect(transferredMessageHavingInt32.has_int32).toBe(true);
+        expect(transferredMessageHavingInt32.oneof).toBe("int32");
+
+        expect(serializedMessageHavingString.length).toBeGreaterThan(0);
+        expect(transferredMessageHavingString.has_string).toBe(true);
+        expect(transferredMessageHavingString.oneof).toBe("string");
+
+        expect(serializedMessageHavingSubmessage.length).toBeGreaterThan(0);
+        expect(transferredMessageHavingSubmessage.has_message).toBe(true);
+        expect(transferredMessageHavingSubmessage.oneof).toBe("message");
+    });
+
+    it ("should serialize repeated properties when they occur at least once (v3)", () => {
+        const defaultsHavingRepeatedProp = new DefaultMessageV3();
+        defaultsHavingRepeatedProp.array_int32.push(0);
+
+        const serializedDefaultsHavingRepeatedProp = defaultsHavingRepeatedProp.serialize();
+        const transferredDefaultsHavingRepeatedProp = DefaultMessageV3.deserialize(serializedDefaultsHavingRepeatedProp);
+
+        expect(serializedDefaultsHavingRepeatedProp.length).toBeGreaterThan(0);
+        expect(transferredDefaultsHavingRepeatedProp.array_int32.length).toBe(1);
+        expect(transferredDefaultsHavingRepeatedProp.array_int32[0]).toBe(0);
+    });
+
+    it("should serialize proto3 optional fields if explicitly assigned, even when they were assigned their default value (v3)", () => {
+        const implicitDefaults = new DefaultMessageOptionalV3();
+        const explicitlyProvidedDefaults1 = new DefaultMessageOptionalV3({ enum: DefaultCommonEnum.ZERO });
+        const explicitlyProvidedDefaults2 = new DefaultMessageOptionalV3({ bool: false });
+        const explicitlyProvidedDefaults3 = new DefaultMessageOptionalV3({ string: '' });
+        const explicitlyProvidedDefaults4 = new DefaultMessageOptionalV3({ int32: 0 });
+        const explicitlyProvidedDefaults5 = new DefaultMessageOptionalV3({ fixed32: 0 });
+        const explicitlyProvidedDefaults6 = new DefaultMessageOptionalV3({ sfixed32: 0 });
+        const explicitlyProvidedDefaults7 = new DefaultMessageOptionalV3({ uint32: 0 });
+        const explicitlyProvidedDefaults8 = new DefaultMessageOptionalV3({ sint32: 0 });
+        const explicitlyProvidedDefaults9 = new DefaultMessageOptionalV3({ int64: 0 });
+        const explicitlyProvidedDefaults10 = new DefaultMessageOptionalV3({ fixed64: 0 });
+        const explicitlyProvidedDefaults11 = new DefaultMessageOptionalV3({ sfixed64: 0 });
+        const explicitlyProvidedDefaults12 = new DefaultMessageOptionalV3({ uint64: 0 });
+        const explicitlyProvidedDefaults13 = new DefaultMessageOptionalV3({ sint64: 0 });
+        const explicitlyProvidedDefaults14 = new DefaultMessageOptionalV3({ float: 0 });
+        const explicitlyProvidedDefaults15 = new DefaultMessageOptionalV3({ double: 0 });
+        const explicitlyProvidedDefaults16 = new DefaultMessageOptionalV3({ int_but_string: "0" });
+        const explicitlyProvidedDefaults17 = new DefaultMessageOptionalV3({ bytes: new Uint8Array() });
+
+        expect(implicitDefaults.serialize().length).toBe(0);
+        expect(explicitlyProvidedDefaults1.serialize().length).toBeGreaterThan(0);
+        expect(explicitlyProvidedDefaults2.serialize().length).toBeGreaterThan(0);
+        expect(explicitlyProvidedDefaults3.serialize().length).toBeGreaterThan(0);
+        expect(explicitlyProvidedDefaults4.serialize().length).toBeGreaterThan(0);
+        expect(explicitlyProvidedDefaults5.serialize().length).toBeGreaterThan(0);
+        expect(explicitlyProvidedDefaults6.serialize().length).toBeGreaterThan(0);
+        expect(explicitlyProvidedDefaults7.serialize().length).toBeGreaterThan(0);
+        expect(explicitlyProvidedDefaults8.serialize().length).toBeGreaterThan(0);
+        expect(explicitlyProvidedDefaults9.serialize().length).toBeGreaterThan(0);
+        expect(explicitlyProvidedDefaults10.serialize().length).toBeGreaterThan(0);
+        expect(explicitlyProvidedDefaults11.serialize().length).toBeGreaterThan(0);
+        expect(explicitlyProvidedDefaults12.serialize().length).toBeGreaterThan(0);
+        expect(explicitlyProvidedDefaults13.serialize().length).toBeGreaterThan(0);
+        expect(explicitlyProvidedDefaults14.serialize().length).toBeGreaterThan(0);
+        expect(explicitlyProvidedDefaults15.serialize().length).toBeGreaterThan(0);
+        expect(explicitlyProvidedDefaults16.serialize().length).toBeGreaterThan(0);
+        expect(explicitlyProvidedDefaults17.serialize().length).toBeGreaterThan(0);
+    });
+});

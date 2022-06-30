@@ -35,5 +35,29 @@ message DefaultMessageV3 {
         DefaultCommonMessage one_of_message = 23;
     }
 
-    bytes bytes = 24; 
+    bytes bytes = 24;
+}
+
+message DefaultMessageOptionalV3 {
+    optional DefaultCommonEnum enum = 2;
+
+    optional bool bool = 3;
+    optional string string = 4;
+
+    optional int32 int32 = 5;
+    optional fixed32 fixed32 = 6;
+    optional sfixed32 sfixed32 = 7;
+    optional uint32 uint32 = 8;
+    optional sint32 sint32 = 9;
+    optional int64 int64 = 10;
+    optional fixed64 fixed64 = 11;
+    optional sfixed64 sfixed64 = 12;
+    optional uint64 uint64 = 13;
+    optional sint64 sint64 = 14;
+    optional float float = 15;
+    optional double double = 16;
+
+    optional int64 int_but_string = 17 [jstype = JS_STRING];
+
+    optional bytes bytes = 24;
 }

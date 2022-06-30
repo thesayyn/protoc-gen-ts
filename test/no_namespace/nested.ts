@@ -52,6 +52,9 @@ export class SchedulingContext extends pb_1.Message {
     set batch(value: SchedulingContextBatch) {
         pb_1.Message.setWrapperField(this, 4, value);
     }
+    get has_batch() {
+        return pb_1.Message.getField(this, 4) != null;
+    }
     static fromObject(data: {
         env?: ReturnType<typeof SchedulingContextEnv.prototype.toObject>[];
         timeout?: number;
@@ -75,13 +78,13 @@ export class SchedulingContext extends pb_1.Message {
             timeout?: number;
             batch?: ReturnType<typeof SchedulingContextBatch.prototype.toObject>;
         } = {};
-        if (pb_1.Message.getField(this, 2) != null) {
+        if (this.env != null) {
             data.env = this.env.map((item: SchedulingContextEnv) => item.toObject());
         }
-        if (pb_1.Message.getField(this, 3) != null) {
+        if (this.timeout != null) {
             data.timeout = this.timeout;
         }
-        if (pb_1.Message.getField(this, 4) != null) {
+        if (this.batch != null) {
             data.batch = this.batch.toObject();
         }
         return data;
@@ -92,9 +95,9 @@ export class SchedulingContext extends pb_1.Message {
         const writer = w || new pb_1.BinaryWriter();
         if (this.env.length)
             writer.writeRepeatedMessage(2, this.env, (item: SchedulingContextEnv) => item.serialize(writer));
-        if (pb_1.Message.getField(this, 3) != null)
+        if (this.timeout != 0)
             writer.writeInt32(3, this.timeout);
-        if (pb_1.Message.getField(this, 4) != null)
+        if (this.has_batch)
             writer.writeMessage(4, this.batch, () => this.batch.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
@@ -173,10 +176,10 @@ export class SchedulingContextEnv extends pb_1.Message {
             key?: string;
             value?: string;
         } = {};
-        if (pb_1.Message.getField(this, 1) != null) {
+        if (this.key != null) {
             data.key = this.key;
         }
-        if (pb_1.Message.getField(this, 2) != null) {
+        if (this.value != null) {
             data.value = this.value;
         }
         return data;
@@ -185,9 +188,9 @@ export class SchedulingContextEnv extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (typeof pb_1.Message.getField(this, 1) === "string" && this.key.length)
+        if (this.key.length)
             writer.writeString(1, this.key);
-        if (typeof pb_1.Message.getField(this, 2) === "string" && this.value.length)
+        if (this.value.length)
             writer.writeString(2, this.value);
         if (!w)
             return writer.getResultBuffer();
@@ -255,6 +258,9 @@ export class SchedulingContextBatch extends pb_1.Message {
     set process(value: SchedulingContextBatchProcess) {
         pb_1.Message.setWrapperField(this, 3, value);
     }
+    get has_process() {
+        return pb_1.Message.getField(this, 3) != null;
+    }
     static fromObject(data: {
         limit?: number;
         deadline?: number;
@@ -278,13 +284,13 @@ export class SchedulingContextBatch extends pb_1.Message {
             deadline?: number;
             process?: ReturnType<typeof SchedulingContextBatchProcess.prototype.toObject>;
         } = {};
-        if (pb_1.Message.getField(this, 1) != null) {
+        if (this.limit != null) {
             data.limit = this.limit;
         }
-        if (pb_1.Message.getField(this, 2) != null) {
+        if (this.deadline != null) {
             data.deadline = this.deadline;
         }
-        if (pb_1.Message.getField(this, 3) != null) {
+        if (this.process != null) {
             data.process = this.process.toObject();
         }
         return data;
@@ -293,11 +299,11 @@ export class SchedulingContextBatch extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (pb_1.Message.getField(this, 1) != null)
+        if (this.limit != 0)
             writer.writeUint64(1, this.limit);
-        if (pb_1.Message.getField(this, 2) != null)
+        if (this.deadline != 0)
             writer.writeUint64(2, this.deadline);
-        if (pb_1.Message.getField(this, 3) != null)
+        if (this.has_process)
             writer.writeMessage(3, this.process, () => this.process.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
@@ -361,7 +367,7 @@ export class SchedulingContextBatchProcess extends pb_1.Message {
         const data: {
             id?: string;
         } = {};
-        if (pb_1.Message.getField(this, 1) != null) {
+        if (this.id != null) {
             data.id = this.id;
         }
         return data;
@@ -370,7 +376,7 @@ export class SchedulingContextBatchProcess extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (typeof pb_1.Message.getField(this, 1) === "string" && this.id.length)
+        if (this.id.length)
             writer.writeString(1, this.id);
         if (!w)
             return writer.getResultBuffer();
@@ -445,6 +451,9 @@ export class Target extends pb_1.Message {
     set context(value: SchedulingContext) {
         pb_1.Message.setWrapperField(this, 4, value);
     }
+    get has_context() {
+        return pb_1.Message.getField(this, 4) != null;
+    }
     static fromObject(data: {
         id?: string;
         cwd?: string;
@@ -473,16 +482,16 @@ export class Target extends pb_1.Message {
             handler?: string;
             context?: ReturnType<typeof SchedulingContext.prototype.toObject>;
         } = {};
-        if (pb_1.Message.getField(this, 1) != null) {
+        if (this.id != null) {
             data.id = this.id;
         }
-        if (pb_1.Message.getField(this, 2) != null) {
+        if (this.cwd != null) {
             data.cwd = this.cwd;
         }
-        if (pb_1.Message.getField(this, 3) != null) {
+        if (this.handler != null) {
             data.handler = this.handler;
         }
-        if (pb_1.Message.getField(this, 4) != null) {
+        if (this.context != null) {
             data.context = this.context.toObject();
         }
         return data;
@@ -491,13 +500,13 @@ export class Target extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (typeof pb_1.Message.getField(this, 1) === "string" && this.id.length)
+        if (this.id.length)
             writer.writeString(1, this.id);
-        if (typeof pb_1.Message.getField(this, 2) === "string" && this.cwd.length)
+        if (this.cwd.length)
             writer.writeString(2, this.cwd);
-        if (typeof pb_1.Message.getField(this, 3) === "string" && this.handler.length)
+        if (this.handler.length)
             writer.writeString(3, this.handler);
-        if (pb_1.Message.getField(this, 4) != null)
+        if (this.has_context)
             writer.writeMessage(4, this.context, () => this.context.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
@@ -571,6 +580,9 @@ export class Event extends pb_1.Message {
     set target(value: Target) {
         pb_1.Message.setWrapperField(this, 3, value);
     }
+    get has_target() {
+        return pb_1.Message.getField(this, 3) != null;
+    }
     static fromObject(data: {
         id?: string;
         type?: Type;
@@ -594,13 +606,13 @@ export class Event extends pb_1.Message {
             type?: Type;
             target?: ReturnType<typeof Target.prototype.toObject>;
         } = {};
-        if (pb_1.Message.getField(this, 1) != null) {
+        if (this.id != null) {
             data.id = this.id;
         }
-        if (pb_1.Message.getField(this, 2) != null) {
+        if (this.type != null) {
             data.type = this.type;
         }
-        if (pb_1.Message.getField(this, 3) != null) {
+        if (this.target != null) {
             data.target = this.target.toObject();
         }
         return data;
@@ -609,11 +621,11 @@ export class Event extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (typeof pb_1.Message.getField(this, 1) === "string" && this.id.length)
+        if (this.id.length)
             writer.writeString(1, this.id);
-        if (pb_1.Message.getField(this, 2) != null)
+        if (this.type != Type.HTTP)
             writer.writeEnum(2, this.type);
-        if (pb_1.Message.getField(this, 3) != null)
+        if (this.has_target)
             writer.writeMessage(3, this.target, () => this.target.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
@@ -677,7 +689,7 @@ export class Pop extends pb_1.Message {
         const data: {
             id?: string;
         } = {};
-        if (pb_1.Message.getField(this, 1) != null) {
+        if (this.id != null) {
             data.id = this.id;
         }
         return data;
@@ -686,7 +698,7 @@ export class Pop extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (typeof pb_1.Message.getField(this, 1) === "string" && this.id.length)
+        if (this.id.length)
             writer.writeString(1, this.id);
         if (!w)
             return writer.getResultBuffer();
@@ -744,7 +756,7 @@ export class Complete extends pb_1.Message {
         const data: {
             id?: string;
         } = {};
-        if (pb_1.Message.getField(this, 1) != null) {
+        if (this.id != null) {
             data.id = this.id;
         }
         return data;
@@ -753,7 +765,7 @@ export class Complete extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (typeof pb_1.Message.getField(this, 1) === "string" && this.id.length)
+        if (this.id.length)
             writer.writeString(1, this.id);
         if (!w)
             return writer.getResultBuffer();

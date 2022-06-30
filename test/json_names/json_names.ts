@@ -68,6 +68,9 @@ export class JsonNamesMessage extends pb_1.Message {
     set aNestedMessage(value: JsonNamesMessage.NestedMessage) {
         pb_1.Message.setWrapperField(this, 3, value);
     }
+    get hasANestedMessage() {
+        return pb_1.Message.getField(this, 3) != null;
+    }
     get colorSpace() {
         return pb_1.Message.getFieldWithDefault(this, 4, ColorSpace.RED_GREEN_BLUE) as ColorSpace;
     }
@@ -80,17 +83,26 @@ export class JsonNamesMessage extends pb_1.Message {
     set anOptionalString(value: string) {
         pb_1.Message.setOneofField(this, 5, this.#one_of_decls[1], value);
     }
+    get hasAnOptionalString() {
+        return pb_1.Message.getField(this, 5) != null;
+    }
     get aSingleString() {
         return pb_1.Message.getFieldWithDefault(this, 6, "") as string;
     }
     set aSingleString(value: string) {
         pb_1.Message.setOneofField(this, 6, this.#one_of_decls[0], value);
     }
+    get hasASingleString() {
+        return pb_1.Message.getField(this, 6) != null;
+    }
     get aSingleNumber() {
         return pb_1.Message.getFieldWithDefault(this, 7, 0) as number;
     }
     set aSingleNumber(value: number) {
         pb_1.Message.setOneofField(this, 7, this.#one_of_decls[0], value);
+    }
+    get hasASingleNumber() {
+        return pb_1.Message.getField(this, 7) != null;
     }
     get mut_ex_field() {
         const cases: {
@@ -154,25 +166,25 @@ export class JsonNamesMessage extends pb_1.Message {
             aSingleString?: string;
             aSingleNumber?: number;
         } = {};
-        if (pb_1.Message.getField(this, 1) != null) {
+        if (this.someStrings != null) {
             data.someStrings = this.someStrings;
         }
-        if (pb_1.Message.getField(this, 2) != null) {
+        if (this.anInteger != null) {
             data.anInteger = this.anInteger;
         }
-        if (pb_1.Message.getField(this, 3) != null) {
+        if (this.aNestedMessage != null) {
             data.aNestedMessage = this.aNestedMessage.toObject();
         }
-        if (pb_1.Message.getField(this, 4) != null) {
+        if (this.colorSpace != null) {
             data.colorSpace = this.colorSpace;
         }
-        if (pb_1.Message.getField(this, 5) != null) {
+        if (this.anOptionalString != null) {
             data.anOptionalString = this.anOptionalString;
         }
-        if (pb_1.Message.getField(this, 6) != null) {
+        if (this.aSingleString != null) {
             data.aSingleString = this.aSingleString;
         }
-        if (pb_1.Message.getField(this, 7) != null) {
+        if (this.aSingleNumber != null) {
             data.aSingleNumber = this.aSingleNumber;
         }
         return data;
@@ -183,17 +195,17 @@ export class JsonNamesMessage extends pb_1.Message {
         const writer = w || new pb_1.BinaryWriter();
         if (this.someStrings.length)
             writer.writeRepeatedString(1, this.someStrings);
-        if (pb_1.Message.getField(this, 2) != null)
+        if (this.anInteger != 0)
             writer.writeInt32(2, this.anInteger);
-        if (pb_1.Message.getField(this, 3) != null)
+        if (this.hasANestedMessage)
             writer.writeMessage(3, this.aNestedMessage, () => this.aNestedMessage.serialize(writer));
-        if (pb_1.Message.getField(this, 4) != null)
+        if (this.colorSpace != ColorSpace.RED_GREEN_BLUE)
             writer.writeEnum(4, this.colorSpace);
-        if (typeof pb_1.Message.getField(this, 5) === "string" && this.anOptionalString.length)
+        if (this.hasAnOptionalString)
             writer.writeString(5, this.anOptionalString);
-        if (typeof pb_1.Message.getField(this, 6) === "string" && this.aSingleString.length)
+        if (this.hasASingleString)
             writer.writeString(6, this.aSingleString);
-        if (pb_1.Message.getField(this, 7) != null)
+        if (this.hasASingleNumber)
             writer.writeInt32(7, this.aSingleNumber);
         if (!w)
             return writer.getResultBuffer();
@@ -270,7 +282,7 @@ export namespace JsonNamesMessage {
             const data: {
                 aNestedInteger?: number;
             } = {};
-            if (pb_1.Message.getField(this, 1) != null) {
+            if (this.aNestedInteger != null) {
                 data.aNestedInteger = this.aNestedInteger;
             }
             return data;
@@ -279,7 +291,7 @@ export namespace JsonNamesMessage {
         serialize(w: pb_1.BinaryWriter): void;
         serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
             const writer = w || new pb_1.BinaryWriter();
-            if (pb_1.Message.getField(this, 1) != null)
+            if (this.aNestedInteger != 0)
                 writer.writeUint32(1, this.aNestedInteger);
             if (!w)
                 return writer.getResultBuffer();

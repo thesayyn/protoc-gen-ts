@@ -1,7 +1,6 @@
 import * as descriptor from "./compiler/descriptor.js";
 import * as type from "./type.js";
 import * as ts from "typescript";
-import * as pb from "google-protobuf";
 
 /**
  * @param {*} type
@@ -123,13 +122,6 @@ export function isMap(fieldDescriptor: descriptor.FieldDescriptorProto) {
 }
 
 /**
- * @param {descriptor.FieldDescriptorProto} fieldDescriptor 
- */
-export function isOneOf(fieldDescriptor: descriptor.FieldDescriptorProto) {
-    return typeof pb.Message.getField(fieldDescriptor, 9) == "number"; // 9 means oneof_index
-}
-
-/**
  * @param {descriptor.FieldDescriptorProto} fieldDescriptor
  */
 export function isRepeated(fieldDescriptor: descriptor.FieldDescriptorProto) {
@@ -199,6 +191,20 @@ export function isOptional(
     descriptor.FieldDescriptorProto.Label.LABEL_OPTIONAL
   );
 }
+/**
+ * @param {descriptor.FileDescriptorProto} rootDescriptor
+ * @param {descriptor.FieldDescriptorProto} fieldDescriptor
+ */
+export function isRequiredWithoutExplicitDefault(
+  rootDescriptor: descriptor.FileDescriptorProto,
+  fieldDescriptor: descriptor.FieldDescriptorProto,
+) {
+  return (
+    rootDescriptor.syntax != "proto3" &&
+    fieldDescriptor.label == descriptor.FieldDescriptorProto.Label.LABEL_REQUIRED &&
+    !fieldDescriptor.has_default_value
+  );
+}
 
 /**
  * @param {descriptor.FieldDescriptorProto} fieldDescriptor
@@ -206,6 +212,15 @@ export function isOptional(
 export function isString(fieldDescriptor: descriptor.FieldDescriptorProto) {
   return (
     fieldDescriptor.type == descriptor.FieldDescriptorProto.Type.TYPE_STRING
+  );
+}
+
+/**
+ * @param {descriptor.FieldDescriptorProto} fieldDescriptor
+ */
+ export function isBytes(fieldDescriptor: descriptor.FieldDescriptorProto) {
+  return (
+    fieldDescriptor.type == descriptor.FieldDescriptorProto.Type.TYPE_BYTES
   );
 }
 
@@ -252,4 +267,24 @@ export function isPacked(
   }
 
   return options != null && options.packed;
+}
+
+/**
+ * @param {descriptor.FileDescriptorProto} rootDescriptor
+ * @param {descriptor.FieldDescriptorProto} fieldDescriptor
+ */
+ export function hasPresenceGetter(
+  rootDescriptor: descriptor.FileDescriptorProto,
+  fieldDescriptor: descriptor.FieldDescriptorProto,
+) {
+  return (
+    !isRepeated(fieldDescriptor) &&
+    !isMap(fieldDescriptor) &&
+    !(
+      rootDescriptor.syntax == "proto3" &&
+      !(
+        fieldDescriptor.proto3_optional || isMessage(fieldDescriptor) || fieldDescriptor.has_oneof_index
+      )
+    )
+  );
 }

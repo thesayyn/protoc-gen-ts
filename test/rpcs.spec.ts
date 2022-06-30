@@ -50,7 +50,7 @@ describe("RPCs", () => {
 
     client.get(new Query(), metadata, (err, value) => {
       expect(err).toBeNull();
-      expect(value?.toObject()).toEqual({ id: "1", size: 1000 });
+      expect(value?.toObject()).toEqual({ id: "1", size: 1000, mimeType: "" });
 
 
       expect(storageServer.get).toHaveBeenCalledTimes(1);
@@ -67,7 +67,7 @@ describe("RPCs", () => {
     })
     client.get(new Query(), (err, response) => {
       expect(err).toBeNull();
-      expect(response?.toObject()).toEqual({ id: "1", size: 1000 });
+      expect(response?.toObject()).toEqual({ id: "1", size: 1000, mimeType: "" });
       expect(storageServer.get).toHaveBeenCalledTimes(1);
       done();
     });    

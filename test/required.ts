@@ -23,15 +23,21 @@ export class NoOptionalValues extends pb_1.Message {
     set test(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
+    get has_test() {
+        return pb_1.Message.getField(this, 1) != null;
+    }
     get test2() {
         return pb_1.Message.getField(this, 2) as string;
     }
     set test2(value: string) {
         pb_1.Message.setField(this, 2, value);
     }
+    get has_test2() {
+        return pb_1.Message.getField(this, 2) != null;
+    }
     static fromObject(data: {
-        test: string;
-        test2: string;
+        test?: string;
+        test2?: string;
     }): NoOptionalValues {
         const message = new NoOptionalValues({
             test: data.test,
@@ -41,21 +47,24 @@ export class NoOptionalValues extends pb_1.Message {
     }
     toObject() {
         const data: {
-            test: string;
-            test2: string;
-        } = {
-            test: this.test,
-            test2: this.test2
-        };
+            test?: string;
+            test2?: string;
+        } = {};
+        if (this.test != null) {
+            data.test = this.test;
+        }
+        if (this.test2 != null) {
+            data.test2 = this.test2;
+        }
         return data;
     }
     serialize(): Uint8Array;
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (typeof pb_1.Message.getField(this, 1) === "string" && this.test.length)
+        if (this.has_test && this.test.length)
             writer.writeString(1, this.test);
-        if (typeof pb_1.Message.getField(this, 2) === "string" && this.test2.length)
+        if (this.has_test2 && this.test2.length)
             writer.writeString(2, this.test2);
         if (!w)
             return writer.getResultBuffer();

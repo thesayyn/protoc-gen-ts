@@ -37,7 +37,7 @@ export class Chunk extends pb_1.Message {
         const data: {
             data?: Uint8Array;
         } = {};
-        if (pb_1.Message.getField(this, 1) != null) {
+        if (this.data != null) {
             data.data = this.data;
         }
         return data;
@@ -46,7 +46,7 @@ export class Chunk extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (pb_1.Message.getField(this, 1) != null)
+        if (this.data.length)
             writer.writeBytes(1, this.data);
         if (!w)
             return writer.getResultBuffer();
@@ -104,7 +104,7 @@ export class Result extends pb_1.Message {
         const data: {
             id?: number;
         } = {};
-        if (pb_1.Message.getField(this, 1) != null) {
+        if (this.id != null) {
             data.id = this.id;
         }
         return data;
@@ -113,7 +113,7 @@ export class Result extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (pb_1.Message.getField(this, 1) != null)
+        if (this.id != 0)
             writer.writeInt32(1, this.id);
         if (!w)
             return writer.getResultBuffer();

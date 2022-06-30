@@ -34,6 +34,9 @@ export class Optional extends pb_1.Message {
     set proto3_optional(value: string) {
         pb_1.Message.setOneofField(this, 2, this.#one_of_decls[0], value);
     }
+    get has_proto3_optional() {
+        return pb_1.Message.getField(this, 2) != null;
+    }
     get _proto3_optional() {
         const cases: {
             [index: number]: "none" | "proto3_optional";
@@ -61,10 +64,10 @@ export class Optional extends pb_1.Message {
             should_not_be_required?: string[];
             proto3_optional?: string;
         } = {};
-        if (pb_1.Message.getField(this, 1) != null) {
+        if (this.should_not_be_required != null) {
             data.should_not_be_required = this.should_not_be_required;
         }
-        if (pb_1.Message.getField(this, 2) != null) {
+        if (this.proto3_optional != null) {
             data.proto3_optional = this.proto3_optional;
         }
         return data;
@@ -75,7 +78,7 @@ export class Optional extends pb_1.Message {
         const writer = w || new pb_1.BinaryWriter();
         if (this.should_not_be_required.length)
             writer.writeRepeatedString(1, this.should_not_be_required);
-        if (typeof pb_1.Message.getField(this, 2) === "string" && this.proto3_optional.length)
+        if (this.has_proto3_optional)
             writer.writeString(2, this.proto3_optional);
         if (!w)
             return writer.getResultBuffer();

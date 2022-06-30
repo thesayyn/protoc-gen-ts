@@ -27,6 +27,9 @@ export class MessageFields extends pb_1.Message {
     set sub_message(value: SubMessage) {
         pb_1.Message.setWrapperField(this, 1, value);
     }
+    get has_sub_message() {
+        return pb_1.Message.getField(this, 1) != null;
+    }
     get array_prop() {
         return pb_1.Message.getRepeatedWrapperField(this, SubMessage, 2) as SubMessage[];
     }
@@ -51,10 +54,10 @@ export class MessageFields extends pb_1.Message {
             sub_message?: ReturnType<typeof SubMessage.prototype.toObject>;
             array_prop?: ReturnType<typeof SubMessage.prototype.toObject>[];
         } = {};
-        if (pb_1.Message.getField(this, 1) != null) {
+        if (this.sub_message != null) {
             data.sub_message = this.sub_message.toObject();
         }
-        if (pb_1.Message.getField(this, 2) != null) {
+        if (this.array_prop != null) {
             data.array_prop = this.array_prop.map((item: SubMessage) => item.toObject());
         }
         return data;
@@ -63,7 +66,7 @@ export class MessageFields extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (pb_1.Message.getField(this, 1) != null)
+        if (this.has_sub_message)
             writer.writeMessage(1, this.sub_message, () => this.sub_message.serialize(writer));
         if (this.array_prop.length)
             writer.writeRepeatedMessage(2, this.array_prop, (item: SubMessage) => item.serialize(writer));
@@ -141,10 +144,10 @@ export class SubMessage extends pb_1.Message {
             field_1?: string;
             field_2?: string;
         } = {};
-        if (pb_1.Message.getField(this, 1) != null) {
+        if (this.field_1 != null) {
             data.field_1 = this.field_1;
         }
-        if (pb_1.Message.getField(this, 2) != null) {
+        if (this.field_2 != null) {
             data.field_2 = this.field_2;
         }
         return data;
@@ -153,9 +156,9 @@ export class SubMessage extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (typeof pb_1.Message.getField(this, 1) === "string" && this.field_1.length)
+        if (this.field_1.length)
             writer.writeString(1, this.field_1);
-        if (typeof pb_1.Message.getField(this, 2) === "string" && this.field_2.length)
+        if (this.field_2.length)
             writer.writeString(2, this.field_2);
         if (!w)
             return writer.getResultBuffer();
