@@ -15,12 +15,11 @@ ts_project(
     srcs = glob(["*.ts"]),
     tsconfig = {
         "compilerOptions": {
-            "target": "ES2020",
-            "module": "CommonJS",
             "noImplicitAny": True,
             "noImplicitOverride": True
         },
     },
+    extends = "//test:tsconfig.json",
     deps = [
         "@npm//@types/jasmine",
         "@npm//@types/node",
