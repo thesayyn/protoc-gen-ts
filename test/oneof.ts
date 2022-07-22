@@ -115,23 +115,16 @@ export class OneOfWithoutAnyOtherFields extends pb_1.Message {
     }
     toObject() {
         const data: {
-            nickname?: string;
-            realname?: string;
-            age?: string;
-            date_of_birth?: string;
-        } = {};
-        if (this.nickname != null) {
-            data.nickname = this.nickname;
-        }
-        if (this.realname != null) {
-            data.realname = this.realname;
-        }
-        if (this.age != null) {
-            data.age = this.age;
-        }
-        if (this.date_of_birth != null) {
-            data.date_of_birth = this.date_of_birth;
-        }
+            nickname: string;
+            realname: string;
+            age: string;
+            date_of_birth: string;
+        } = {
+            nickname: this.nickname,
+            realname: this.realname,
+            age: this.age,
+            date_of_birth: this.date_of_birth
+        };
         return data;
     }
     serialize(): Uint8Array;
@@ -257,19 +250,14 @@ export class OneOf extends pb_1.Message {
     }
     toObject() {
         const data: {
-            nickname?: string;
-            date_of_birth?: string;
-            age?: string;
-        } = {};
-        if (this.nickname != null) {
-            data.nickname = this.nickname;
-        }
-        if (this.date_of_birth != null) {
-            data.date_of_birth = this.date_of_birth;
-        }
-        if (this.age != null) {
-            data.age = this.age;
-        }
+            nickname: string;
+            date_of_birth: string;
+            age: string;
+        } = {
+            nickname: this.nickname,
+            date_of_birth: this.date_of_birth,
+            age: this.age
+        };
         return data;
     }
     serialize(): Uint8Array;

@@ -39,11 +39,10 @@ export class DefaultCommonMessage extends pb_1.Message {
     }
     toObject() {
         const data: {
-            message?: string;
-        } = {};
-        if (this.message != null) {
-            data.message = this.message;
-        }
+            message: string;
+        } = {
+            message: this.message
+        };
         return data;
     }
     serialize(): Uint8Array;
@@ -145,7 +144,7 @@ export class DefaultCommonMessageOneOf extends pb_1.Message {
     }
     static fromObject(data: {
         int32?: number;
-        message?: ReturnType<typeof DefaultCommonMessage.prototype.toObject>;
+        message?: Parameters<typeof DefaultCommonMessage.fromObject>[0];
         string?: string;
     }): DefaultCommonMessageOneOf {
         const message = new DefaultCommonMessageOneOf({});
@@ -162,18 +161,15 @@ export class DefaultCommonMessageOneOf extends pb_1.Message {
     }
     toObject() {
         const data: {
-            int32?: number;
-            message?: ReturnType<typeof DefaultCommonMessage.prototype.toObject>;
-            string?: string;
-        } = {};
-        if (this.int32 != null) {
-            data.int32 = this.int32;
-        }
+            int32: number;
+            message?: Parameters<typeof DefaultCommonMessage.fromObject>[0];
+            string: string;
+        } = {
+            int32: this.int32,
+            string: this.string
+        };
         if (this.message != null) {
             data.message = this.message.toObject();
-        }
-        if (this.string != null) {
-            data.string = this.string;
         }
         return data;
     }

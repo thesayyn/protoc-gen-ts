@@ -65,7 +65,7 @@ export function getType(
       return ts.factory.createTypeReferenceNode("Uint8Array");
     case descriptor.FieldDescriptorProto.Type.TYPE_MESSAGE:
     case descriptor.FieldDescriptorProto.Type.TYPE_ENUM:
-      return type.getTypeReference(rootDescriptor, fieldDescriptor.type_name)
+      return type.getTypeReference(rootDescriptor, fieldDescriptor.type_name);
     default:
       throw new Error("Unhandled type " + fieldDescriptor.type);
   }
@@ -191,6 +191,28 @@ export function isOptional(
     descriptor.FieldDescriptorProto.Label.LABEL_OPTIONAL
   );
 }
+
+/**
+ * Function is used to determine, whether the field must be non-null
+ * in the toObject() method or getter function return type.
+ * @param {descriptor.FileDescriptorProto} rootDescriptor
+ * @param {descriptor.FieldDescriptorProto} fieldDescriptor
+ */
+export function alwaysHasValue(
+  rootDescriptor: descriptor.FileDescriptorProto,
+  fieldDescriptor: descriptor.FieldDescriptorProto,
+) {
+  return (
+    isNumber(fieldDescriptor) ||
+    isEnum(fieldDescriptor) ||
+    isRepeated(fieldDescriptor) ||
+    isBytes(fieldDescriptor) ||
+    isString(fieldDescriptor) ||
+    isBoolean(fieldDescriptor) ||
+    isMap(fieldDescriptor)
+  ) && !isRequiredWithoutExplicitDefault(rootDescriptor, fieldDescriptor);
+}
+
 /**
  * @param {descriptor.FileDescriptorProto} rootDescriptor
  * @param {descriptor.FieldDescriptorProto} fieldDescriptor
@@ -218,7 +240,7 @@ export function isString(fieldDescriptor: descriptor.FieldDescriptorProto) {
 /**
  * @param {descriptor.FieldDescriptorProto} fieldDescriptor
  */
- export function isBytes(fieldDescriptor: descriptor.FieldDescriptorProto) {
+export function isBytes(fieldDescriptor: descriptor.FieldDescriptorProto) {
   return (
     fieldDescriptor.type == descriptor.FieldDescriptorProto.Type.TYPE_BYTES
   );

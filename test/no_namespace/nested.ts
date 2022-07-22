@@ -56,9 +56,9 @@ export class SchedulingContext extends pb_1.Message {
         return pb_1.Message.getField(this, 4) != null;
     }
     static fromObject(data: {
-        env?: ReturnType<typeof SchedulingContextEnv.prototype.toObject>[];
+        env?: Parameters<typeof SchedulingContextEnv.fromObject>[0][];
         timeout?: number;
-        batch?: ReturnType<typeof SchedulingContextBatch.prototype.toObject>;
+        batch?: Parameters<typeof SchedulingContextBatch.fromObject>[0];
     }): SchedulingContext {
         const message = new SchedulingContext({});
         if (data.env != null) {
@@ -74,16 +74,13 @@ export class SchedulingContext extends pb_1.Message {
     }
     toObject() {
         const data: {
-            env?: ReturnType<typeof SchedulingContextEnv.prototype.toObject>[];
-            timeout?: number;
-            batch?: ReturnType<typeof SchedulingContextBatch.prototype.toObject>;
-        } = {};
-        if (this.env != null) {
-            data.env = this.env.map((item: SchedulingContextEnv) => item.toObject());
-        }
-        if (this.timeout != null) {
-            data.timeout = this.timeout;
-        }
+            env: Parameters<typeof SchedulingContextEnv.fromObject>[0][];
+            timeout: number;
+            batch?: Parameters<typeof SchedulingContextBatch.fromObject>[0];
+        } = {
+            env: this.env.map((item: SchedulingContextEnv) => item.toObject()),
+            timeout: this.timeout
+        };
         if (this.batch != null) {
             data.batch = this.batch.toObject();
         }
@@ -173,15 +170,12 @@ export class SchedulingContextEnv extends pb_1.Message {
     }
     toObject() {
         const data: {
-            key?: string;
-            value?: string;
-        } = {};
-        if (this.key != null) {
-            data.key = this.key;
-        }
-        if (this.value != null) {
-            data.value = this.value;
-        }
+            key: string;
+            value: string;
+        } = {
+            key: this.key,
+            value: this.value
+        };
         return data;
     }
     serialize(): Uint8Array;
@@ -264,7 +258,7 @@ export class SchedulingContextBatch extends pb_1.Message {
     static fromObject(data: {
         limit?: number;
         deadline?: number;
-        process?: ReturnType<typeof SchedulingContextBatchProcess.prototype.toObject>;
+        process?: Parameters<typeof SchedulingContextBatchProcess.fromObject>[0];
     }): SchedulingContextBatch {
         const message = new SchedulingContextBatch({});
         if (data.limit != null) {
@@ -280,16 +274,13 @@ export class SchedulingContextBatch extends pb_1.Message {
     }
     toObject() {
         const data: {
-            limit?: number;
-            deadline?: number;
-            process?: ReturnType<typeof SchedulingContextBatchProcess.prototype.toObject>;
-        } = {};
-        if (this.limit != null) {
-            data.limit = this.limit;
-        }
-        if (this.deadline != null) {
-            data.deadline = this.deadline;
-        }
+            limit: number;
+            deadline: number;
+            process?: Parameters<typeof SchedulingContextBatchProcess.fromObject>[0];
+        } = {
+            limit: this.limit,
+            deadline: this.deadline
+        };
         if (this.process != null) {
             data.process = this.process.toObject();
         }
@@ -365,11 +356,10 @@ export class SchedulingContextBatchProcess extends pb_1.Message {
     }
     toObject() {
         const data: {
-            id?: string;
-        } = {};
-        if (this.id != null) {
-            data.id = this.id;
-        }
+            id: string;
+        } = {
+            id: this.id
+        };
         return data;
     }
     serialize(): Uint8Array;
@@ -458,7 +448,7 @@ export class Target extends pb_1.Message {
         id?: string;
         cwd?: string;
         handler?: string;
-        context?: ReturnType<typeof SchedulingContext.prototype.toObject>;
+        context?: Parameters<typeof SchedulingContext.fromObject>[0];
     }): Target {
         const message = new Target({});
         if (data.id != null) {
@@ -477,20 +467,15 @@ export class Target extends pb_1.Message {
     }
     toObject() {
         const data: {
-            id?: string;
-            cwd?: string;
-            handler?: string;
-            context?: ReturnType<typeof SchedulingContext.prototype.toObject>;
-        } = {};
-        if (this.id != null) {
-            data.id = this.id;
-        }
-        if (this.cwd != null) {
-            data.cwd = this.cwd;
-        }
-        if (this.handler != null) {
-            data.handler = this.handler;
-        }
+            id: string;
+            cwd: string;
+            handler: string;
+            context?: Parameters<typeof SchedulingContext.fromObject>[0];
+        } = {
+            id: this.id,
+            cwd: this.cwd,
+            handler: this.handler
+        };
         if (this.context != null) {
             data.context = this.context.toObject();
         }
@@ -586,7 +571,7 @@ export class Event extends pb_1.Message {
     static fromObject(data: {
         id?: string;
         type?: Type;
-        target?: ReturnType<typeof Target.prototype.toObject>;
+        target?: Parameters<typeof Target.fromObject>[0];
     }): Event {
         const message = new Event({});
         if (data.id != null) {
@@ -602,16 +587,13 @@ export class Event extends pb_1.Message {
     }
     toObject() {
         const data: {
-            id?: string;
-            type?: Type;
-            target?: ReturnType<typeof Target.prototype.toObject>;
-        } = {};
-        if (this.id != null) {
-            data.id = this.id;
-        }
-        if (this.type != null) {
-            data.type = this.type;
-        }
+            id: string;
+            type: Type;
+            target?: Parameters<typeof Target.fromObject>[0];
+        } = {
+            id: this.id,
+            type: this.type
+        };
         if (this.target != null) {
             data.target = this.target.toObject();
         }
@@ -687,11 +669,10 @@ export class Pop extends pb_1.Message {
     }
     toObject() {
         const data: {
-            id?: string;
-        } = {};
-        if (this.id != null) {
-            data.id = this.id;
-        }
+            id: string;
+        } = {
+            id: this.id
+        };
         return data;
     }
     serialize(): Uint8Array;
@@ -754,11 +735,10 @@ export class Complete extends pb_1.Message {
     }
     toObject() {
         const data: {
-            id?: string;
-        } = {};
-        if (this.id != null) {
-            data.id = this.id;
-        }
+            id: string;
+        } = {
+            id: this.id
+        };
         return data;
     }
     serialize(): Uint8Array;

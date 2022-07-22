@@ -34,11 +34,10 @@ export class Serialization extends pb_1.Message {
     }
     toObject() {
         const data: {
-            test?: string;
-        } = {};
-        if (this.test != null) {
-            data.test = this.test;
-        }
+            test: string;
+        } = {
+            test: this.test
+        };
         return data;
     }
     serialize(): Uint8Array;

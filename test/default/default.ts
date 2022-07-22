@@ -71,19 +71,14 @@ export class MessageWithDefault extends pb_1.Message {
     }
     toObject() {
         const data: {
-            bool_field?: boolean;
-            string_field?: string;
-            int32_field?: number;
-        } = {};
-        if (this.bool_field != null) {
-            data.bool_field = this.bool_field;
-        }
-        if (this.string_field != null) {
-            data.string_field = this.string_field;
-        }
-        if (this.int32_field != null) {
-            data.int32_field = this.int32_field;
-        }
+            bool_field: boolean;
+            string_field: string;
+            int32_field: number;
+        } = {
+            bool_field: this.bool_field,
+            string_field: this.string_field,
+            int32_field: this.int32_field
+        };
         return data;
     }
     serialize(): Uint8Array;
@@ -193,19 +188,14 @@ export class MessageWithImplicitDefault extends pb_1.Message {
     }
     toObject() {
         const data: {
-            bool_field?: boolean;
-            string_field?: string;
-            int32_field?: number;
-        } = {};
-        if (this.bool_field != null) {
-            data.bool_field = this.bool_field;
-        }
-        if (this.string_field != null) {
-            data.string_field = this.string_field;
-        }
-        if (this.int32_field != null) {
-            data.int32_field = this.int32_field;
-        }
+            bool_field: boolean;
+            string_field: string;
+            int32_field: number;
+        } = {
+            bool_field: this.bool_field,
+            string_field: this.string_field,
+            int32_field: this.int32_field
+        };
         return data;
     }
     serialize(): Uint8Array;

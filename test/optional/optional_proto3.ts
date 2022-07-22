@@ -61,15 +61,12 @@ export class Optional extends pb_1.Message {
     }
     toObject() {
         const data: {
-            should_not_be_required?: string[];
-            proto3_optional?: string;
-        } = {};
-        if (this.should_not_be_required != null) {
-            data.should_not_be_required = this.should_not_be_required;
-        }
-        if (this.proto3_optional != null) {
-            data.proto3_optional = this.proto3_optional;
-        }
+            should_not_be_required: string[];
+            proto3_optional: string;
+        } = {
+            should_not_be_required: this.should_not_be_required,
+            proto3_optional: this.proto3_optional
+        };
         return data;
     }
     serialize(): Uint8Array;

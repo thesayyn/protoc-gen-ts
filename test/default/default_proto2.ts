@@ -289,7 +289,7 @@ export class DefaultMessageV2WithoutDefault extends pb_1.Message {
         return cases[pb_1.Message.computeOneofCase(this, [22, 23])];
     }
     static fromObject(data: {
-        message?: ReturnType<typeof dependency_1.DefaultCommonMessage.prototype.toObject>;
+        message?: Parameters<typeof dependency_1.DefaultCommonMessage.fromObject>[0];
         enum?: dependency_1.DefaultCommonEnum;
         bool?: boolean;
         string?: string;
@@ -310,12 +310,12 @@ export class DefaultMessageV2WithoutDefault extends pb_1.Message {
             [key: string]: string;
         };
         map_string_message?: {
-            [key: string]: ReturnType<typeof dependency_1.DefaultCommonMessage.prototype.toObject>;
+            [key: string]: Parameters<typeof dependency_1.DefaultCommonMessage.fromObject>[0];
         };
-        array_int32: number[];
-        array_message?: ReturnType<typeof dependency_1.DefaultCommonMessage.prototype.toObject>[];
+        array_int32?: number[];
+        array_message?: Parameters<typeof dependency_1.DefaultCommonMessage.fromObject>[0][];
         one_of_int32?: number;
-        one_of_message?: ReturnType<typeof dependency_1.DefaultCommonMessage.prototype.toObject>;
+        one_of_message?: Parameters<typeof dependency_1.DefaultCommonMessage.fromObject>[0];
         bytes?: Uint8Array;
     }): DefaultMessageV2WithoutDefault {
         const message = new DefaultMessageV2WithoutDefault({
@@ -352,7 +352,7 @@ export class DefaultMessageV2WithoutDefault extends pb_1.Message {
     }
     toObject() {
         const data: {
-            message?: ReturnType<typeof dependency_1.DefaultCommonMessage.prototype.toObject>;
+            message?: Parameters<typeof dependency_1.DefaultCommonMessage.fromObject>[0];
             enum?: dependency_1.DefaultCommonEnum;
             bool?: boolean;
             string?: string;
@@ -369,19 +369,23 @@ export class DefaultMessageV2WithoutDefault extends pb_1.Message {
             float?: number;
             double?: number;
             int_but_string?: string;
-            map_string_string?: {
+            map_string_string: {
                 [key: string]: string;
             };
-            map_string_message?: {
-                [key: string]: ReturnType<typeof dependency_1.DefaultCommonMessage.prototype.toObject>;
+            map_string_message: {
+                [key: string]: Parameters<typeof dependency_1.DefaultCommonMessage.fromObject>[0];
             };
             array_int32: number[];
-            array_message?: ReturnType<typeof dependency_1.DefaultCommonMessage.prototype.toObject>[];
-            one_of_int32?: number;
-            one_of_message?: ReturnType<typeof dependency_1.DefaultCommonMessage.prototype.toObject>;
+            array_message: Parameters<typeof dependency_1.DefaultCommonMessage.fromObject>[0][];
+            one_of_int32: number;
+            one_of_message?: Parameters<typeof dependency_1.DefaultCommonMessage.fromObject>[0];
             bytes?: Uint8Array;
         } = {
-            array_int32: this.array_int32
+            map_string_string: Object.fromEntries(this.map_string_string),
+            map_string_message: Object.fromEntries(Array.from(this.map_string_message).map(([key, value]) => [key, value.toObject()])),
+            array_int32: this.array_int32,
+            array_message: this.array_message.map((item: dependency_1.DefaultCommonMessage) => item.toObject()),
+            one_of_int32: this.one_of_int32
         };
         if (this.message != null) {
             data.message = this.message.toObject();
@@ -433,18 +437,6 @@ export class DefaultMessageV2WithoutDefault extends pb_1.Message {
         }
         if (this.int_but_string != null) {
             data.int_but_string = this.int_but_string;
-        }
-        if (this.map_string_string != null) {
-            data.map_string_string = Object.fromEntries(this.map_string_string);
-        }
-        if (this.map_string_message != null) {
-            data.map_string_message = Object.fromEntries(Array.from(this.map_string_message).map(([key, value]) => [key, value.toObject()]));
-        }
-        if (this.array_message != null) {
-            data.array_message = this.array_message.map((item: dependency_1.DefaultCommonMessage) => item.toObject());
-        }
-        if (this.one_of_int32 != null) {
-            data.one_of_int32 = this.one_of_int32;
         }
         if (this.one_of_message != null) {
             data.one_of_message = this.one_of_message.toObject();
@@ -848,25 +840,25 @@ export class DefaultMessageV2WithDefault extends pb_1.Message {
         return cases[pb_1.Message.computeOneofCase(this, [18, 19])];
     }
     static fromObject(data: {
-        message?: ReturnType<typeof dependency_1.DefaultCommonMessage.prototype.toObject>;
-        enum: dependency_1.DefaultCommonEnum;
-        bool: boolean;
-        string: string;
-        int32: number;
-        fixed32: number;
-        sfixed32: number;
-        uint32: number;
-        sint32: number;
-        int64: number;
-        fixed64: number;
-        sfixed64: number;
-        uint64: number;
-        sint64: number;
-        float: number;
-        double: number;
-        int_but_string: string;
+        message?: Parameters<typeof dependency_1.DefaultCommonMessage.fromObject>[0];
+        enum?: dependency_1.DefaultCommonEnum;
+        bool?: boolean;
+        string?: string;
+        int32?: number;
+        fixed32?: number;
+        sfixed32?: number;
+        uint32?: number;
+        sint32?: number;
+        int64?: number;
+        fixed64?: number;
+        sfixed64?: number;
+        uint64?: number;
+        sint64?: number;
+        float?: number;
+        double?: number;
+        int_but_string?: string;
         one_of_int32?: number;
-        one_of_message?: ReturnType<typeof dependency_1.DefaultCommonMessage.prototype.toObject>;
+        one_of_message?: Parameters<typeof dependency_1.DefaultCommonMessage.fromObject>[0];
     }): DefaultMessageV2WithDefault {
         const message = new DefaultMessageV2WithDefault({
             message: dependency_1.DefaultCommonMessage.fromObject(data.message),
@@ -897,7 +889,7 @@ export class DefaultMessageV2WithDefault extends pb_1.Message {
     }
     toObject() {
         const data: {
-            message?: ReturnType<typeof dependency_1.DefaultCommonMessage.prototype.toObject>;
+            message?: Parameters<typeof dependency_1.DefaultCommonMessage.fromObject>[0];
             enum: dependency_1.DefaultCommonEnum;
             bool: boolean;
             string: string;
@@ -914,8 +906,8 @@ export class DefaultMessageV2WithDefault extends pb_1.Message {
             float: number;
             double: number;
             int_but_string: string;
-            one_of_int32?: number;
-            one_of_message?: ReturnType<typeof dependency_1.DefaultCommonMessage.prototype.toObject>;
+            one_of_int32: number;
+            one_of_message?: Parameters<typeof dependency_1.DefaultCommonMessage.fromObject>[0];
         } = {
             enum: this.enum,
             bool: this.bool,
@@ -932,13 +924,11 @@ export class DefaultMessageV2WithDefault extends pb_1.Message {
             sint64: this.sint64,
             float: this.float,
             double: this.double,
-            int_but_string: this.int_but_string
+            int_but_string: this.int_but_string,
+            one_of_int32: this.one_of_int32
         };
         if (this.message != null) {
             data.message = this.message.toObject();
-        }
-        if (this.one_of_int32 != null) {
-            data.one_of_int32 = this.one_of_int32;
         }
         if (this.one_of_message != null) {
             data.one_of_message = this.one_of_message.toObject();

@@ -35,11 +35,10 @@ export class Chunk extends pb_1.Message {
     }
     toObject() {
         const data: {
-            data?: Uint8Array;
-        } = {};
-        if (this.data != null) {
-            data.data = this.data;
-        }
+            data: Uint8Array;
+        } = {
+            data: this.data
+        };
         return data;
     }
     serialize(): Uint8Array;
@@ -102,11 +101,10 @@ export class Result extends pb_1.Message {
     }
     toObject() {
         const data: {
-            id?: number;
-        } = {};
-        if (this.id != null) {
-            data.id = this.id;
-        }
+            id: number;
+        } = {
+            id: this.id
+        };
         return data;
     }
     serialize(): Uint8Array;

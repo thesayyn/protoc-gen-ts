@@ -35,11 +35,10 @@ export class Topic extends pb_1.Message {
     }
     toObject() {
         const data: {
-            link?: string;
-        } = {};
-        if (this.link != null) {
-            data.link = this.link;
-        }
+            link: string;
+        } = {
+            link: this.link
+        };
         return data;
     }
     serialize(): Uint8Array;
@@ -145,10 +144,10 @@ export class Tags extends pb_1.Message {
             [key: string]: string;
         };
         topics?: {
-            [key: string]: ReturnType<typeof Topic.prototype.toObject>;
+            [key: string]: Parameters<typeof Topic.fromObject>[0];
         };
         imported?: {
-            [key: number]: ReturnType<typeof dependency_1.importdirective.Imported.SubMessage.prototype.toObject>;
+            [key: number]: Parameters<typeof dependency_1.importdirective.Imported.SubMessage.fromObject>[0];
         };
         imported2?: {
             [key: number]: dependency_1.importdirective.Imported.SubMessage.MyEnum;
@@ -174,35 +173,26 @@ export class Tags extends pb_1.Message {
     }
     toObject() {
         const data: {
-            key?: string;
-            keys?: {
+            key: string;
+            keys: {
                 [key: string]: string;
             };
-            topics?: {
-                [key: string]: ReturnType<typeof Topic.prototype.toObject>;
+            topics: {
+                [key: string]: Parameters<typeof Topic.fromObject>[0];
             };
-            imported?: {
-                [key: number]: ReturnType<typeof dependency_1.importdirective.Imported.SubMessage.prototype.toObject>;
+            imported: {
+                [key: number]: Parameters<typeof dependency_1.importdirective.Imported.SubMessage.fromObject>[0];
             };
-            imported2?: {
+            imported2: {
                 [key: number]: dependency_1.importdirective.Imported.SubMessage.MyEnum;
             };
-        } = {};
-        if (this.key != null) {
-            data.key = this.key;
-        }
-        if (this.keys != null) {
-            data.keys = Object.fromEntries(this.keys);
-        }
-        if (this.topics != null) {
-            data.topics = Object.fromEntries(Array.from(this.topics).map(([key, value]) => [key, value.toObject()]));
-        }
-        if (this.imported != null) {
-            data.imported = Object.fromEntries(Array.from(this.imported).map(([key, value]) => [key, value.toObject()]));
-        }
-        if (this.imported2 != null) {
-            data.imported2 = Object.fromEntries(this.imported2);
-        }
+        } = {
+            key: this.key,
+            keys: Object.fromEntries(this.keys),
+            topics: Object.fromEntries(Array.from(this.topics).map(([key, value]) => [key, value.toObject()])),
+            imported: Object.fromEntries(Array.from(this.imported).map(([key, value]) => [key, value.toObject()])),
+            imported2: Object.fromEntries(this.imported2)
+        };
         return data;
     }
     serialize(): Uint8Array;

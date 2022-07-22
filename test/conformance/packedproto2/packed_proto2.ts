@@ -54,15 +54,12 @@ export class HydratedQuickReplyButton extends pb_1.Message {
     }
     toObject() {
         const data: {
-            displayText?: string;
-            id?: string;
-        } = {};
-        if (this.displayText != null) {
-            data.displayText = this.displayText;
-        }
-        if (this.id != null) {
-            data.id = this.id;
-        }
+            displayText: string;
+            id: string;
+        } = {
+            displayText: this.displayText,
+            id: this.id
+        };
         return data;
     }
     serialize(): Uint8Array;
@@ -150,15 +147,12 @@ export class HydratedURLButton extends pb_1.Message {
     }
     toObject() {
         const data: {
-            displayText?: string;
-            url?: string;
-        } = {};
-        if (this.displayText != null) {
-            data.displayText = this.displayText;
-        }
-        if (this.url != null) {
-            data.url = this.url;
-        }
+            displayText: string;
+            url: string;
+        } = {
+            displayText: this.displayText,
+            url: this.url
+        };
         return data;
     }
     serialize(): Uint8Array;
@@ -246,15 +240,12 @@ export class HydratedCallButton extends pb_1.Message {
     }
     toObject() {
         const data: {
-            displayText?: string;
-            phoneNumber?: string;
-        } = {};
-        if (this.displayText != null) {
-            data.displayText = this.displayText;
-        }
-        if (this.phoneNumber != null) {
-            data.phoneNumber = this.phoneNumber;
-        }
+            displayText: string;
+            phoneNumber: string;
+        } = {
+            displayText: this.displayText,
+            phoneNumber: this.phoneNumber
+        };
         return data;
     }
     serialize(): Uint8Array;
@@ -375,9 +366,9 @@ export class HydratedTemplateButton extends pb_1.Message {
     }
     static fromObject(data: {
         index?: number;
-        quickReplyButton?: ReturnType<typeof HydratedQuickReplyButton.prototype.toObject>;
-        urlButton?: ReturnType<typeof HydratedURLButton.prototype.toObject>;
-        callButton?: ReturnType<typeof HydratedCallButton.prototype.toObject>;
+        quickReplyButton?: Parameters<typeof HydratedQuickReplyButton.fromObject>[0];
+        urlButton?: Parameters<typeof HydratedURLButton.fromObject>[0];
+        callButton?: Parameters<typeof HydratedCallButton.fromObject>[0];
     }): HydratedTemplateButton {
         const message = new HydratedTemplateButton({});
         if (data.index != null) {
@@ -396,14 +387,13 @@ export class HydratedTemplateButton extends pb_1.Message {
     }
     toObject() {
         const data: {
-            index?: number;
-            quickReplyButton?: ReturnType<typeof HydratedQuickReplyButton.prototype.toObject>;
-            urlButton?: ReturnType<typeof HydratedURLButton.prototype.toObject>;
-            callButton?: ReturnType<typeof HydratedCallButton.prototype.toObject>;
-        } = {};
-        if (this.index != null) {
-            data.index = this.index;
-        }
+            index: number;
+            quickReplyButton?: Parameters<typeof HydratedQuickReplyButton.fromObject>[0];
+            urlButton?: Parameters<typeof HydratedURLButton.fromObject>[0];
+            callButton?: Parameters<typeof HydratedCallButton.fromObject>[0];
+        } = {
+            index: this.index
+        };
         if (this.quickReplyButton != null) {
             data.quickReplyButton = this.quickReplyButton.toObject();
         }
@@ -496,7 +486,7 @@ export class QuickReplyButton extends pb_1.Message {
         return pb_1.Message.getField(this, 2) != null;
     }
     static fromObject(data: {
-        displayText?: ReturnType<typeof HighlyStructuredMessage.prototype.toObject>;
+        displayText?: Parameters<typeof HighlyStructuredMessage.fromObject>[0];
         id?: string;
     }): QuickReplyButton {
         const message = new QuickReplyButton({});
@@ -510,14 +500,13 @@ export class QuickReplyButton extends pb_1.Message {
     }
     toObject() {
         const data: {
-            displayText?: ReturnType<typeof HighlyStructuredMessage.prototype.toObject>;
-            id?: string;
-        } = {};
+            displayText?: Parameters<typeof HighlyStructuredMessage.fromObject>[0];
+            id: string;
+        } = {
+            id: this.id
+        };
         if (this.displayText != null) {
             data.displayText = this.displayText.toObject();
-        }
-        if (this.id != null) {
-            data.id = this.id;
         }
         return data;
     }
@@ -592,8 +581,8 @@ export class URLButton extends pb_1.Message {
         return pb_1.Message.getField(this, 2) != null;
     }
     static fromObject(data: {
-        displayText?: ReturnType<typeof HighlyStructuredMessage.prototype.toObject>;
-        url?: ReturnType<typeof HighlyStructuredMessage.prototype.toObject>;
+        displayText?: Parameters<typeof HighlyStructuredMessage.fromObject>[0];
+        url?: Parameters<typeof HighlyStructuredMessage.fromObject>[0];
     }): URLButton {
         const message = new URLButton({});
         if (data.displayText != null) {
@@ -606,8 +595,8 @@ export class URLButton extends pb_1.Message {
     }
     toObject() {
         const data: {
-            displayText?: ReturnType<typeof HighlyStructuredMessage.prototype.toObject>;
-            url?: ReturnType<typeof HighlyStructuredMessage.prototype.toObject>;
+            displayText?: Parameters<typeof HighlyStructuredMessage.fromObject>[0];
+            url?: Parameters<typeof HighlyStructuredMessage.fromObject>[0];
         } = {};
         if (this.displayText != null) {
             data.displayText = this.displayText.toObject();
@@ -688,8 +677,8 @@ export class CallButton extends pb_1.Message {
         return pb_1.Message.getField(this, 2) != null;
     }
     static fromObject(data: {
-        displayText?: ReturnType<typeof HighlyStructuredMessage.prototype.toObject>;
-        phoneNumber?: ReturnType<typeof HighlyStructuredMessage.prototype.toObject>;
+        displayText?: Parameters<typeof HighlyStructuredMessage.fromObject>[0];
+        phoneNumber?: Parameters<typeof HighlyStructuredMessage.fromObject>[0];
     }): CallButton {
         const message = new CallButton({});
         if (data.displayText != null) {
@@ -702,8 +691,8 @@ export class CallButton extends pb_1.Message {
     }
     toObject() {
         const data: {
-            displayText?: ReturnType<typeof HighlyStructuredMessage.prototype.toObject>;
-            phoneNumber?: ReturnType<typeof HighlyStructuredMessage.prototype.toObject>;
+            displayText?: Parameters<typeof HighlyStructuredMessage.fromObject>[0];
+            phoneNumber?: Parameters<typeof HighlyStructuredMessage.fromObject>[0];
         } = {};
         if (this.displayText != null) {
             data.displayText = this.displayText.toObject();
@@ -831,9 +820,9 @@ export class TemplateButton extends pb_1.Message {
     }
     static fromObject(data: {
         index?: number;
-        quickReplyButton?: ReturnType<typeof QuickReplyButton.prototype.toObject>;
-        urlButton?: ReturnType<typeof URLButton.prototype.toObject>;
-        callButton?: ReturnType<typeof CallButton.prototype.toObject>;
+        quickReplyButton?: Parameters<typeof QuickReplyButton.fromObject>[0];
+        urlButton?: Parameters<typeof URLButton.fromObject>[0];
+        callButton?: Parameters<typeof CallButton.fromObject>[0];
     }): TemplateButton {
         const message = new TemplateButton({});
         if (data.index != null) {
@@ -852,14 +841,13 @@ export class TemplateButton extends pb_1.Message {
     }
     toObject() {
         const data: {
-            index?: number;
-            quickReplyButton?: ReturnType<typeof QuickReplyButton.prototype.toObject>;
-            urlButton?: ReturnType<typeof URLButton.prototype.toObject>;
-            callButton?: ReturnType<typeof CallButton.prototype.toObject>;
-        } = {};
-        if (this.index != null) {
-            data.index = this.index;
-        }
+            index: number;
+            quickReplyButton?: Parameters<typeof QuickReplyButton.fromObject>[0];
+            urlButton?: Parameters<typeof URLButton.fromObject>[0];
+            callButton?: Parameters<typeof CallButton.fromObject>[0];
+        } = {
+            index: this.index
+        };
         if (this.quickReplyButton != null) {
             data.quickReplyButton = this.quickReplyButton.toObject();
         }
@@ -983,19 +971,14 @@ export class Location extends pb_1.Message {
     }
     toObject() {
         const data: {
-            degreesLatitude?: number;
-            degreesLongitude?: number;
-            name?: string;
-        } = {};
-        if (this.degreesLatitude != null) {
-            data.degreesLatitude = this.degreesLatitude;
-        }
-        if (this.degreesLongitude != null) {
-            data.degreesLongitude = this.degreesLongitude;
-        }
-        if (this.name != null) {
-            data.name = this.name;
-        }
+            degreesLatitude: number;
+            degreesLongitude: number;
+            name: string;
+        } = {
+            degreesLatitude: this.degreesLatitude,
+            degreesLongitude: this.degreesLongitude,
+            name: this.name
+        };
         return data;
     }
     serialize(): Uint8Array;
@@ -1122,23 +1105,16 @@ export class Point extends pb_1.Message {
     }
     toObject() {
         const data: {
-            xDeprecated?: number;
-            yDeprecated?: number;
-            x?: number;
-            y?: number;
-        } = {};
-        if (this.xDeprecated != null) {
-            data.xDeprecated = this.xDeprecated;
-        }
-        if (this.yDeprecated != null) {
-            data.yDeprecated = this.yDeprecated;
-        }
-        if (this.x != null) {
-            data.x = this.x;
-        }
-        if (this.y != null) {
-            data.y = this.y;
-        }
+            xDeprecated: number;
+            yDeprecated: number;
+            x: number;
+            y: number;
+        } = {
+            xDeprecated: this.xDeprecated,
+            yDeprecated: this.yDeprecated,
+            x: this.x,
+            y: this.y
+        };
         return data;
     }
     serialize(): Uint8Array;
@@ -1227,8 +1203,8 @@ export class InteractiveAnnotation extends pb_1.Message {
         return cases[pb_1.Message.computeOneofCase(this, [2])];
     }
     static fromObject(data: {
-        polygonVertices?: ReturnType<typeof Point.prototype.toObject>[];
-        location?: ReturnType<typeof Location.prototype.toObject>;
+        polygonVertices?: Parameters<typeof Point.fromObject>[0][];
+        location?: Parameters<typeof Location.fromObject>[0];
     }): InteractiveAnnotation {
         const message = new InteractiveAnnotation({
             polygonVertices: data.polygonVertices.map(item => Point.fromObject(item))
@@ -1240,12 +1216,11 @@ export class InteractiveAnnotation extends pb_1.Message {
     }
     toObject() {
         const data: {
-            polygonVertices?: ReturnType<typeof Point.prototype.toObject>[];
-            location?: ReturnType<typeof Location.prototype.toObject>;
-        } = {};
-        if (this.polygonVertices != null) {
-            data.polygonVertices = this.polygonVertices.map((item: Point) => item.toObject());
-        }
+            polygonVertices: Parameters<typeof Point.fromObject>[0][];
+            location?: Parameters<typeof Location.fromObject>[0];
+        } = {
+            polygonVertices: this.polygonVertices.map((item: Point) => item.toObject())
+        };
         if (this.location != null) {
             data.location = this.location.toObject();
         }
@@ -1370,23 +1345,16 @@ export class AdReplyInfo extends pb_1.Message {
     }
     toObject() {
         const data: {
-            advertiserName?: string;
-            mediaType?: AdReplyInfo.AD_REPLY_INFO_MEDIATYPE;
-            jpegThumbnail?: Uint8Array;
-            caption?: string;
-        } = {};
-        if (this.advertiserName != null) {
-            data.advertiserName = this.advertiserName;
-        }
-        if (this.mediaType != null) {
-            data.mediaType = this.mediaType;
-        }
-        if (this.jpegThumbnail != null) {
-            data.jpegThumbnail = this.jpegThumbnail;
-        }
-        if (this.caption != null) {
-            data.caption = this.caption;
-        }
+            advertiserName: string;
+            mediaType: AdReplyInfo.AD_REPLY_INFO_MEDIATYPE;
+            jpegThumbnail: Uint8Array;
+            caption: string;
+        } = {
+            advertiserName: this.advertiserName,
+            mediaType: this.mediaType,
+            jpegThumbnail: this.jpegThumbnail,
+            caption: this.caption
+        };
         return data;
     }
     serialize(): Uint8Array;
@@ -1643,16 +1611,16 @@ export class ContextInfo extends pb_1.Message {
     static fromObject(data: {
         stanzaId?: string;
         participant?: string;
-        quotedMessage?: ReturnType<typeof Message.prototype.toObject>;
+        quotedMessage?: Parameters<typeof Message.fromObject>[0];
         remoteJid?: string;
-        mentionedJid: string[];
+        mentionedJid?: string[];
         conversionSource?: string;
         conversionData?: Uint8Array;
         conversionDelaySeconds?: number;
         forwardingScore?: number;
         isForwarded?: boolean;
-        quotedAd?: ReturnType<typeof AdReplyInfo.prototype.toObject>;
-        placeholderKey?: ReturnType<typeof MessageKey.prototype.toObject>;
+        quotedAd?: Parameters<typeof AdReplyInfo.fromObject>[0];
+        placeholderKey?: Parameters<typeof MessageKey.fromObject>[0];
         expiration?: number;
         ephemeralSettingTimestamp?: number;
         ephemeralSharedSecret?: Uint8Array;
@@ -1706,65 +1674,43 @@ export class ContextInfo extends pb_1.Message {
     }
     toObject() {
         const data: {
-            stanzaId?: string;
-            participant?: string;
-            quotedMessage?: ReturnType<typeof Message.prototype.toObject>;
-            remoteJid?: string;
+            stanzaId: string;
+            participant: string;
+            quotedMessage?: Parameters<typeof Message.fromObject>[0];
+            remoteJid: string;
             mentionedJid: string[];
-            conversionSource?: string;
-            conversionData?: Uint8Array;
-            conversionDelaySeconds?: number;
-            forwardingScore?: number;
-            isForwarded?: boolean;
-            quotedAd?: ReturnType<typeof AdReplyInfo.prototype.toObject>;
-            placeholderKey?: ReturnType<typeof MessageKey.prototype.toObject>;
-            expiration?: number;
-            ephemeralSettingTimestamp?: number;
-            ephemeralSharedSecret?: Uint8Array;
+            conversionSource: string;
+            conversionData: Uint8Array;
+            conversionDelaySeconds: number;
+            forwardingScore: number;
+            isForwarded: boolean;
+            quotedAd?: Parameters<typeof AdReplyInfo.fromObject>[0];
+            placeholderKey?: Parameters<typeof MessageKey.fromObject>[0];
+            expiration: number;
+            ephemeralSettingTimestamp: number;
+            ephemeralSharedSecret: Uint8Array;
         } = {
-            mentionedJid: this.mentionedJid
+            stanzaId: this.stanzaId,
+            participant: this.participant,
+            remoteJid: this.remoteJid,
+            mentionedJid: this.mentionedJid,
+            conversionSource: this.conversionSource,
+            conversionData: this.conversionData,
+            conversionDelaySeconds: this.conversionDelaySeconds,
+            forwardingScore: this.forwardingScore,
+            isForwarded: this.isForwarded,
+            expiration: this.expiration,
+            ephemeralSettingTimestamp: this.ephemeralSettingTimestamp,
+            ephemeralSharedSecret: this.ephemeralSharedSecret
         };
-        if (this.stanzaId != null) {
-            data.stanzaId = this.stanzaId;
-        }
-        if (this.participant != null) {
-            data.participant = this.participant;
-        }
         if (this.quotedMessage != null) {
             data.quotedMessage = this.quotedMessage.toObject();
-        }
-        if (this.remoteJid != null) {
-            data.remoteJid = this.remoteJid;
-        }
-        if (this.conversionSource != null) {
-            data.conversionSource = this.conversionSource;
-        }
-        if (this.conversionData != null) {
-            data.conversionData = this.conversionData;
-        }
-        if (this.conversionDelaySeconds != null) {
-            data.conversionDelaySeconds = this.conversionDelaySeconds;
-        }
-        if (this.forwardingScore != null) {
-            data.forwardingScore = this.forwardingScore;
-        }
-        if (this.isForwarded != null) {
-            data.isForwarded = this.isForwarded;
         }
         if (this.quotedAd != null) {
             data.quotedAd = this.quotedAd.toObject();
         }
         if (this.placeholderKey != null) {
             data.placeholderKey = this.placeholderKey.toObject();
-        }
-        if (this.expiration != null) {
-            data.expiration = this.expiration;
-        }
-        if (this.ephemeralSettingTimestamp != null) {
-            data.ephemeralSettingTimestamp = this.ephemeralSettingTimestamp;
-        }
-        if (this.ephemeralSharedSecret != null) {
-            data.ephemeralSharedSecret = this.ephemeralSharedSecret;
         }
         return data;
     }
@@ -1918,15 +1864,12 @@ export class SenderKeyDistributionMessage extends pb_1.Message {
     }
     toObject() {
         const data: {
-            groupId?: string;
-            axolotlSenderKeyDistributionMessage?: Uint8Array;
-        } = {};
-        if (this.groupId != null) {
-            data.groupId = this.groupId;
-        }
-        if (this.axolotlSenderKeyDistributionMessage != null) {
-            data.axolotlSenderKeyDistributionMessage = this.axolotlSenderKeyDistributionMessage;
-        }
+            groupId: string;
+            axolotlSenderKeyDistributionMessage: Uint8Array;
+        } = {
+            groupId: this.groupId,
+            axolotlSenderKeyDistributionMessage: this.axolotlSenderKeyDistributionMessage
+        };
         return data;
     }
     serialize(): Uint8Array;
@@ -2246,16 +2189,16 @@ export class ImageMessage extends pb_1.Message {
         width?: number;
         mediaKey?: Uint8Array;
         fileEncSha256?: Uint8Array;
-        interactiveAnnotations?: ReturnType<typeof InteractiveAnnotation.prototype.toObject>[];
+        interactiveAnnotations?: Parameters<typeof InteractiveAnnotation.fromObject>[0][];
         directPath?: string;
         mediaKeyTimestamp?: number;
         jpegThumbnail?: Uint8Array;
-        contextInfo?: ReturnType<typeof ContextInfo.prototype.toObject>;
+        contextInfo?: Parameters<typeof ContextInfo.fromObject>[0];
         firstScanSidecar?: Uint8Array;
         firstScanLength?: number;
         experimentGroupId?: number;
         scansSidecar?: Uint8Array;
-        scanLengths: number[];
+        scanLengths?: number[];
         midQualityFileSha256?: Uint8Array;
         midQualityFileEncSha256?: Uint8Array;
     }): ImageMessage {
@@ -2324,89 +2267,51 @@ export class ImageMessage extends pb_1.Message {
     }
     toObject() {
         const data: {
-            url?: string;
-            mimetype?: string;
-            caption?: string;
-            fileSha256?: Uint8Array;
-            fileLength?: number;
-            height?: number;
-            width?: number;
-            mediaKey?: Uint8Array;
-            fileEncSha256?: Uint8Array;
-            interactiveAnnotations?: ReturnType<typeof InteractiveAnnotation.prototype.toObject>[];
-            directPath?: string;
-            mediaKeyTimestamp?: number;
-            jpegThumbnail?: Uint8Array;
-            contextInfo?: ReturnType<typeof ContextInfo.prototype.toObject>;
-            firstScanSidecar?: Uint8Array;
-            firstScanLength?: number;
-            experimentGroupId?: number;
-            scansSidecar?: Uint8Array;
+            url: string;
+            mimetype: string;
+            caption: string;
+            fileSha256: Uint8Array;
+            fileLength: number;
+            height: number;
+            width: number;
+            mediaKey: Uint8Array;
+            fileEncSha256: Uint8Array;
+            interactiveAnnotations: Parameters<typeof InteractiveAnnotation.fromObject>[0][];
+            directPath: string;
+            mediaKeyTimestamp: number;
+            jpegThumbnail: Uint8Array;
+            contextInfo?: Parameters<typeof ContextInfo.fromObject>[0];
+            firstScanSidecar: Uint8Array;
+            firstScanLength: number;
+            experimentGroupId: number;
+            scansSidecar: Uint8Array;
             scanLengths: number[];
-            midQualityFileSha256?: Uint8Array;
-            midQualityFileEncSha256?: Uint8Array;
+            midQualityFileSha256: Uint8Array;
+            midQualityFileEncSha256: Uint8Array;
         } = {
-            scanLengths: this.scanLengths
+            url: this.url,
+            mimetype: this.mimetype,
+            caption: this.caption,
+            fileSha256: this.fileSha256,
+            fileLength: this.fileLength,
+            height: this.height,
+            width: this.width,
+            mediaKey: this.mediaKey,
+            fileEncSha256: this.fileEncSha256,
+            interactiveAnnotations: this.interactiveAnnotations.map((item: InteractiveAnnotation) => item.toObject()),
+            directPath: this.directPath,
+            mediaKeyTimestamp: this.mediaKeyTimestamp,
+            jpegThumbnail: this.jpegThumbnail,
+            firstScanSidecar: this.firstScanSidecar,
+            firstScanLength: this.firstScanLength,
+            experimentGroupId: this.experimentGroupId,
+            scansSidecar: this.scansSidecar,
+            scanLengths: this.scanLengths,
+            midQualityFileSha256: this.midQualityFileSha256,
+            midQualityFileEncSha256: this.midQualityFileEncSha256
         };
-        if (this.url != null) {
-            data.url = this.url;
-        }
-        if (this.mimetype != null) {
-            data.mimetype = this.mimetype;
-        }
-        if (this.caption != null) {
-            data.caption = this.caption;
-        }
-        if (this.fileSha256 != null) {
-            data.fileSha256 = this.fileSha256;
-        }
-        if (this.fileLength != null) {
-            data.fileLength = this.fileLength;
-        }
-        if (this.height != null) {
-            data.height = this.height;
-        }
-        if (this.width != null) {
-            data.width = this.width;
-        }
-        if (this.mediaKey != null) {
-            data.mediaKey = this.mediaKey;
-        }
-        if (this.fileEncSha256 != null) {
-            data.fileEncSha256 = this.fileEncSha256;
-        }
-        if (this.interactiveAnnotations != null) {
-            data.interactiveAnnotations = this.interactiveAnnotations.map((item: InteractiveAnnotation) => item.toObject());
-        }
-        if (this.directPath != null) {
-            data.directPath = this.directPath;
-        }
-        if (this.mediaKeyTimestamp != null) {
-            data.mediaKeyTimestamp = this.mediaKeyTimestamp;
-        }
-        if (this.jpegThumbnail != null) {
-            data.jpegThumbnail = this.jpegThumbnail;
-        }
         if (this.contextInfo != null) {
             data.contextInfo = this.contextInfo.toObject();
-        }
-        if (this.firstScanSidecar != null) {
-            data.firstScanSidecar = this.firstScanSidecar;
-        }
-        if (this.firstScanLength != null) {
-            data.firstScanLength = this.firstScanLength;
-        }
-        if (this.experimentGroupId != null) {
-            data.experimentGroupId = this.experimentGroupId;
-        }
-        if (this.scansSidecar != null) {
-            data.scansSidecar = this.scansSidecar;
-        }
-        if (this.midQualityFileSha256 != null) {
-            data.midQualityFileSha256 = this.midQualityFileSha256;
-        }
-        if (this.midQualityFileEncSha256 != null) {
-            data.midQualityFileEncSha256 = this.midQualityFileEncSha256;
         }
         return data;
     }
@@ -2591,7 +2496,7 @@ export class ContactMessage extends pb_1.Message {
     static fromObject(data: {
         displayName?: string;
         vcard?: string;
-        contextInfo?: ReturnType<typeof ContextInfo.prototype.toObject>;
+        contextInfo?: Parameters<typeof ContextInfo.fromObject>[0];
     }): ContactMessage {
         const message = new ContactMessage({});
         if (data.displayName != null) {
@@ -2607,16 +2512,13 @@ export class ContactMessage extends pb_1.Message {
     }
     toObject() {
         const data: {
-            displayName?: string;
-            vcard?: string;
-            contextInfo?: ReturnType<typeof ContextInfo.prototype.toObject>;
-        } = {};
-        if (this.displayName != null) {
-            data.displayName = this.displayName;
-        }
-        if (this.vcard != null) {
-            data.vcard = this.vcard;
-        }
+            displayName: string;
+            vcard: string;
+            contextInfo?: Parameters<typeof ContextInfo.fromObject>[0];
+        } = {
+            displayName: this.displayName,
+            vcard: this.vcard
+        };
         if (this.contextInfo != null) {
             data.contextInfo = this.contextInfo.toObject();
         }
@@ -2839,7 +2741,7 @@ export class LocationMessage extends pb_1.Message {
         degreesClockwiseFromMagneticNorth?: number;
         comment?: string;
         jpegThumbnail?: Uint8Array;
-        contextInfo?: ReturnType<typeof ContextInfo.prototype.toObject>;
+        contextInfo?: Parameters<typeof ContextInfo.fromObject>[0];
     }): LocationMessage {
         const message = new LocationMessage({});
         if (data.degreesLatitude != null) {
@@ -2882,52 +2784,31 @@ export class LocationMessage extends pb_1.Message {
     }
     toObject() {
         const data: {
-            degreesLatitude?: number;
-            degreesLongitude?: number;
-            name?: string;
-            address?: string;
-            url?: string;
-            isLive?: boolean;
-            accuracyInMeters?: number;
-            speedInMps?: number;
-            degreesClockwiseFromMagneticNorth?: number;
-            comment?: string;
-            jpegThumbnail?: Uint8Array;
-            contextInfo?: ReturnType<typeof ContextInfo.prototype.toObject>;
-        } = {};
-        if (this.degreesLatitude != null) {
-            data.degreesLatitude = this.degreesLatitude;
-        }
-        if (this.degreesLongitude != null) {
-            data.degreesLongitude = this.degreesLongitude;
-        }
-        if (this.name != null) {
-            data.name = this.name;
-        }
-        if (this.address != null) {
-            data.address = this.address;
-        }
-        if (this.url != null) {
-            data.url = this.url;
-        }
-        if (this.isLive != null) {
-            data.isLive = this.isLive;
-        }
-        if (this.accuracyInMeters != null) {
-            data.accuracyInMeters = this.accuracyInMeters;
-        }
-        if (this.speedInMps != null) {
-            data.speedInMps = this.speedInMps;
-        }
-        if (this.degreesClockwiseFromMagneticNorth != null) {
-            data.degreesClockwiseFromMagneticNorth = this.degreesClockwiseFromMagneticNorth;
-        }
-        if (this.comment != null) {
-            data.comment = this.comment;
-        }
-        if (this.jpegThumbnail != null) {
-            data.jpegThumbnail = this.jpegThumbnail;
-        }
+            degreesLatitude: number;
+            degreesLongitude: number;
+            name: string;
+            address: string;
+            url: string;
+            isLive: boolean;
+            accuracyInMeters: number;
+            speedInMps: number;
+            degreesClockwiseFromMagneticNorth: number;
+            comment: string;
+            jpegThumbnail: Uint8Array;
+            contextInfo?: Parameters<typeof ContextInfo.fromObject>[0];
+        } = {
+            degreesLatitude: this.degreesLatitude,
+            degreesLongitude: this.degreesLongitude,
+            name: this.name,
+            address: this.address,
+            url: this.url,
+            isLive: this.isLive,
+            accuracyInMeters: this.accuracyInMeters,
+            speedInMps: this.speedInMps,
+            degreesClockwiseFromMagneticNorth: this.degreesClockwiseFromMagneticNorth,
+            comment: this.comment,
+            jpegThumbnail: this.jpegThumbnail
+        };
         if (this.contextInfo != null) {
             data.contextInfo = this.contextInfo.toObject();
         }
@@ -3194,7 +3075,7 @@ export class ExtendedTextMessage extends pb_1.Message {
         font?: ExtendedTextMessage.EXTENDED_TEXT_MESSAGE_FONTTYPE;
         previewType?: ExtendedTextMessage.EXTENDED_TEXT_MESSAGE_PREVIEWTYPE;
         jpegThumbnail?: Uint8Array;
-        contextInfo?: ReturnType<typeof ContextInfo.prototype.toObject>;
+        contextInfo?: Parameters<typeof ContextInfo.fromObject>[0];
         doNotPlayInline?: boolean;
     }): ExtendedTextMessage {
         const message = new ExtendedTextMessage({});
@@ -3238,54 +3119,33 @@ export class ExtendedTextMessage extends pb_1.Message {
     }
     toObject() {
         const data: {
-            text?: string;
-            matchedText?: string;
-            canonicalUrl?: string;
-            description?: string;
-            title?: string;
-            textArgb?: number;
-            backgroundArgb?: number;
-            font?: ExtendedTextMessage.EXTENDED_TEXT_MESSAGE_FONTTYPE;
-            previewType?: ExtendedTextMessage.EXTENDED_TEXT_MESSAGE_PREVIEWTYPE;
-            jpegThumbnail?: Uint8Array;
-            contextInfo?: ReturnType<typeof ContextInfo.prototype.toObject>;
-            doNotPlayInline?: boolean;
-        } = {};
-        if (this.text != null) {
-            data.text = this.text;
-        }
-        if (this.matchedText != null) {
-            data.matchedText = this.matchedText;
-        }
-        if (this.canonicalUrl != null) {
-            data.canonicalUrl = this.canonicalUrl;
-        }
-        if (this.description != null) {
-            data.description = this.description;
-        }
-        if (this.title != null) {
-            data.title = this.title;
-        }
-        if (this.textArgb != null) {
-            data.textArgb = this.textArgb;
-        }
-        if (this.backgroundArgb != null) {
-            data.backgroundArgb = this.backgroundArgb;
-        }
-        if (this.font != null) {
-            data.font = this.font;
-        }
-        if (this.previewType != null) {
-            data.previewType = this.previewType;
-        }
-        if (this.jpegThumbnail != null) {
-            data.jpegThumbnail = this.jpegThumbnail;
-        }
+            text: string;
+            matchedText: string;
+            canonicalUrl: string;
+            description: string;
+            title: string;
+            textArgb: number;
+            backgroundArgb: number;
+            font: ExtendedTextMessage.EXTENDED_TEXT_MESSAGE_FONTTYPE;
+            previewType: ExtendedTextMessage.EXTENDED_TEXT_MESSAGE_PREVIEWTYPE;
+            jpegThumbnail: Uint8Array;
+            contextInfo?: Parameters<typeof ContextInfo.fromObject>[0];
+            doNotPlayInline: boolean;
+        } = {
+            text: this.text,
+            matchedText: this.matchedText,
+            canonicalUrl: this.canonicalUrl,
+            description: this.description,
+            title: this.title,
+            textArgb: this.textArgb,
+            backgroundArgb: this.backgroundArgb,
+            font: this.font,
+            previewType: this.previewType,
+            jpegThumbnail: this.jpegThumbnail,
+            doNotPlayInline: this.doNotPlayInline
+        };
         if (this.contextInfo != null) {
             data.contextInfo = this.contextInfo.toObject();
-        }
-        if (this.doNotPlayInline != null) {
-            data.doNotPlayInline = this.doNotPlayInline;
         }
         return data;
     }
@@ -3579,7 +3439,7 @@ export class DocumentMessage extends pb_1.Message {
         directPath?: string;
         mediaKeyTimestamp?: number;
         jpegThumbnail?: Uint8Array;
-        contextInfo?: ReturnType<typeof ContextInfo.prototype.toObject>;
+        contextInfo?: Parameters<typeof ContextInfo.fromObject>[0];
     }): DocumentMessage {
         const message = new DocumentMessage({});
         if (data.url != null) {
@@ -3625,56 +3485,33 @@ export class DocumentMessage extends pb_1.Message {
     }
     toObject() {
         const data: {
-            url?: string;
-            mimetype?: string;
-            title?: string;
-            fileSha256?: Uint8Array;
-            fileLength?: number;
-            pageCount?: number;
-            mediaKey?: Uint8Array;
-            fileName?: string;
-            fileEncSha256?: Uint8Array;
-            directPath?: string;
-            mediaKeyTimestamp?: number;
-            jpegThumbnail?: Uint8Array;
-            contextInfo?: ReturnType<typeof ContextInfo.prototype.toObject>;
-        } = {};
-        if (this.url != null) {
-            data.url = this.url;
-        }
-        if (this.mimetype != null) {
-            data.mimetype = this.mimetype;
-        }
-        if (this.title != null) {
-            data.title = this.title;
-        }
-        if (this.fileSha256 != null) {
-            data.fileSha256 = this.fileSha256;
-        }
-        if (this.fileLength != null) {
-            data.fileLength = this.fileLength;
-        }
-        if (this.pageCount != null) {
-            data.pageCount = this.pageCount;
-        }
-        if (this.mediaKey != null) {
-            data.mediaKey = this.mediaKey;
-        }
-        if (this.fileName != null) {
-            data.fileName = this.fileName;
-        }
-        if (this.fileEncSha256 != null) {
-            data.fileEncSha256 = this.fileEncSha256;
-        }
-        if (this.directPath != null) {
-            data.directPath = this.directPath;
-        }
-        if (this.mediaKeyTimestamp != null) {
-            data.mediaKeyTimestamp = this.mediaKeyTimestamp;
-        }
-        if (this.jpegThumbnail != null) {
-            data.jpegThumbnail = this.jpegThumbnail;
-        }
+            url: string;
+            mimetype: string;
+            title: string;
+            fileSha256: Uint8Array;
+            fileLength: number;
+            pageCount: number;
+            mediaKey: Uint8Array;
+            fileName: string;
+            fileEncSha256: Uint8Array;
+            directPath: string;
+            mediaKeyTimestamp: number;
+            jpegThumbnail: Uint8Array;
+            contextInfo?: Parameters<typeof ContextInfo.fromObject>[0];
+        } = {
+            url: this.url,
+            mimetype: this.mimetype,
+            title: this.title,
+            fileSha256: this.fileSha256,
+            fileLength: this.fileLength,
+            pageCount: this.pageCount,
+            mediaKey: this.mediaKey,
+            fileName: this.fileName,
+            fileEncSha256: this.fileEncSha256,
+            directPath: this.directPath,
+            mediaKeyTimestamp: this.mediaKeyTimestamp,
+            jpegThumbnail: this.jpegThumbnail
+        };
         if (this.contextInfo != null) {
             data.contextInfo = this.contextInfo.toObject();
         }
@@ -3946,7 +3783,7 @@ export class AudioMessage extends pb_1.Message {
         fileEncSha256?: Uint8Array;
         directPath?: string;
         mediaKeyTimestamp?: number;
-        contextInfo?: ReturnType<typeof ContextInfo.prototype.toObject>;
+        contextInfo?: Parameters<typeof ContextInfo.fromObject>[0];
         streamingSidecar?: Uint8Array;
     }): AudioMessage {
         const message = new AudioMessage({});
@@ -3990,54 +3827,33 @@ export class AudioMessage extends pb_1.Message {
     }
     toObject() {
         const data: {
-            url?: string;
-            mimetype?: string;
-            fileSha256?: Uint8Array;
-            fileLength?: number;
-            seconds?: number;
-            ptt?: boolean;
-            mediaKey?: Uint8Array;
-            fileEncSha256?: Uint8Array;
-            directPath?: string;
-            mediaKeyTimestamp?: number;
-            contextInfo?: ReturnType<typeof ContextInfo.prototype.toObject>;
-            streamingSidecar?: Uint8Array;
-        } = {};
-        if (this.url != null) {
-            data.url = this.url;
-        }
-        if (this.mimetype != null) {
-            data.mimetype = this.mimetype;
-        }
-        if (this.fileSha256 != null) {
-            data.fileSha256 = this.fileSha256;
-        }
-        if (this.fileLength != null) {
-            data.fileLength = this.fileLength;
-        }
-        if (this.seconds != null) {
-            data.seconds = this.seconds;
-        }
-        if (this.ptt != null) {
-            data.ptt = this.ptt;
-        }
-        if (this.mediaKey != null) {
-            data.mediaKey = this.mediaKey;
-        }
-        if (this.fileEncSha256 != null) {
-            data.fileEncSha256 = this.fileEncSha256;
-        }
-        if (this.directPath != null) {
-            data.directPath = this.directPath;
-        }
-        if (this.mediaKeyTimestamp != null) {
-            data.mediaKeyTimestamp = this.mediaKeyTimestamp;
-        }
+            url: string;
+            mimetype: string;
+            fileSha256: Uint8Array;
+            fileLength: number;
+            seconds: number;
+            ptt: boolean;
+            mediaKey: Uint8Array;
+            fileEncSha256: Uint8Array;
+            directPath: string;
+            mediaKeyTimestamp: number;
+            contextInfo?: Parameters<typeof ContextInfo.fromObject>[0];
+            streamingSidecar: Uint8Array;
+        } = {
+            url: this.url,
+            mimetype: this.mimetype,
+            fileSha256: this.fileSha256,
+            fileLength: this.fileLength,
+            seconds: this.seconds,
+            ptt: this.ptt,
+            mediaKey: this.mediaKey,
+            fileEncSha256: this.fileEncSha256,
+            directPath: this.directPath,
+            mediaKeyTimestamp: this.mediaKeyTimestamp,
+            streamingSidecar: this.streamingSidecar
+        };
         if (this.contextInfo != null) {
             data.contextInfo = this.contextInfo.toObject();
-        }
-        if (this.streamingSidecar != null) {
-            data.streamingSidecar = this.streamingSidecar;
         }
         return data;
     }
@@ -4376,11 +4192,11 @@ export class VideoMessage extends pb_1.Message {
         height?: number;
         width?: number;
         fileEncSha256?: Uint8Array;
-        interactiveAnnotations?: ReturnType<typeof InteractiveAnnotation.prototype.toObject>[];
+        interactiveAnnotations?: Parameters<typeof InteractiveAnnotation.fromObject>[0][];
         directPath?: string;
         mediaKeyTimestamp?: number;
         jpegThumbnail?: Uint8Array;
-        contextInfo?: ReturnType<typeof ContextInfo.prototype.toObject>;
+        contextInfo?: Parameters<typeof ContextInfo.fromObject>[0];
         streamingSidecar?: Uint8Array;
         gifAttribution?: VideoMessage.VIDEO_MESSAGE_ATTRIBUTION;
     }): VideoMessage {
@@ -4442,78 +4258,45 @@ export class VideoMessage extends pb_1.Message {
     }
     toObject() {
         const data: {
-            url?: string;
-            mimetype?: string;
-            fileSha256?: Uint8Array;
-            fileLength?: number;
-            seconds?: number;
-            mediaKey?: Uint8Array;
-            caption?: string;
-            gifPlayback?: boolean;
-            height?: number;
-            width?: number;
-            fileEncSha256?: Uint8Array;
-            interactiveAnnotations?: ReturnType<typeof InteractiveAnnotation.prototype.toObject>[];
-            directPath?: string;
-            mediaKeyTimestamp?: number;
-            jpegThumbnail?: Uint8Array;
-            contextInfo?: ReturnType<typeof ContextInfo.prototype.toObject>;
-            streamingSidecar?: Uint8Array;
-            gifAttribution?: VideoMessage.VIDEO_MESSAGE_ATTRIBUTION;
-        } = {};
-        if (this.url != null) {
-            data.url = this.url;
-        }
-        if (this.mimetype != null) {
-            data.mimetype = this.mimetype;
-        }
-        if (this.fileSha256 != null) {
-            data.fileSha256 = this.fileSha256;
-        }
-        if (this.fileLength != null) {
-            data.fileLength = this.fileLength;
-        }
-        if (this.seconds != null) {
-            data.seconds = this.seconds;
-        }
-        if (this.mediaKey != null) {
-            data.mediaKey = this.mediaKey;
-        }
-        if (this.caption != null) {
-            data.caption = this.caption;
-        }
-        if (this.gifPlayback != null) {
-            data.gifPlayback = this.gifPlayback;
-        }
-        if (this.height != null) {
-            data.height = this.height;
-        }
-        if (this.width != null) {
-            data.width = this.width;
-        }
-        if (this.fileEncSha256 != null) {
-            data.fileEncSha256 = this.fileEncSha256;
-        }
-        if (this.interactiveAnnotations != null) {
-            data.interactiveAnnotations = this.interactiveAnnotations.map((item: InteractiveAnnotation) => item.toObject());
-        }
-        if (this.directPath != null) {
-            data.directPath = this.directPath;
-        }
-        if (this.mediaKeyTimestamp != null) {
-            data.mediaKeyTimestamp = this.mediaKeyTimestamp;
-        }
-        if (this.jpegThumbnail != null) {
-            data.jpegThumbnail = this.jpegThumbnail;
-        }
+            url: string;
+            mimetype: string;
+            fileSha256: Uint8Array;
+            fileLength: number;
+            seconds: number;
+            mediaKey: Uint8Array;
+            caption: string;
+            gifPlayback: boolean;
+            height: number;
+            width: number;
+            fileEncSha256: Uint8Array;
+            interactiveAnnotations: Parameters<typeof InteractiveAnnotation.fromObject>[0][];
+            directPath: string;
+            mediaKeyTimestamp: number;
+            jpegThumbnail: Uint8Array;
+            contextInfo?: Parameters<typeof ContextInfo.fromObject>[0];
+            streamingSidecar: Uint8Array;
+            gifAttribution: VideoMessage.VIDEO_MESSAGE_ATTRIBUTION;
+        } = {
+            url: this.url,
+            mimetype: this.mimetype,
+            fileSha256: this.fileSha256,
+            fileLength: this.fileLength,
+            seconds: this.seconds,
+            mediaKey: this.mediaKey,
+            caption: this.caption,
+            gifPlayback: this.gifPlayback,
+            height: this.height,
+            width: this.width,
+            fileEncSha256: this.fileEncSha256,
+            interactiveAnnotations: this.interactiveAnnotations.map((item: InteractiveAnnotation) => item.toObject()),
+            directPath: this.directPath,
+            mediaKeyTimestamp: this.mediaKeyTimestamp,
+            jpegThumbnail: this.jpegThumbnail,
+            streamingSidecar: this.streamingSidecar,
+            gifAttribution: this.gifAttribution
+        };
         if (this.contextInfo != null) {
             data.contextInfo = this.contextInfo.toObject();
-        }
-        if (this.streamingSidecar != null) {
-            data.streamingSidecar = this.streamingSidecar;
-        }
-        if (this.gifAttribution != null) {
-            data.gifAttribution = this.gifAttribution;
         }
         return data;
     }
@@ -4672,11 +4455,10 @@ export class Call extends pb_1.Message {
     }
     toObject() {
         const data: {
-            callKey?: Uint8Array;
-        } = {};
-        if (this.callKey != null) {
-            data.callKey = this.callKey;
-        }
+            callKey: Uint8Array;
+        } = {
+            callKey: this.callKey
+        };
         return data;
     }
     serialize(): Uint8Array;
@@ -4759,15 +4541,12 @@ export class Chat extends pb_1.Message {
     }
     toObject() {
         const data: {
-            displayName?: string;
-            id?: string;
-        } = {};
-        if (this.displayName != null) {
-            data.displayName = this.displayName;
-        }
-        if (this.id != null) {
-            data.id = this.id;
-        }
+            displayName: string;
+            id: string;
+        } = {
+            displayName: this.displayName,
+            id: this.id
+        };
         return data;
     }
     serialize(): Uint8Array;
@@ -4880,11 +4659,11 @@ export class ProtocolMessage extends pb_1.Message {
         return pb_1.Message.getField(this, 6) != null;
     }
     static fromObject(data: {
-        key?: ReturnType<typeof MessageKey.prototype.toObject>;
+        key?: Parameters<typeof MessageKey.fromObject>[0];
         type?: ProtocolMessage.PROTOCOL_MESSAGE_TYPE;
         ephemeralExpiration?: number;
         ephemeralSettingTimestamp?: number;
-        historySyncNotification?: ReturnType<typeof HistorySyncNotification.prototype.toObject>;
+        historySyncNotification?: Parameters<typeof HistorySyncNotification.fromObject>[0];
     }): ProtocolMessage {
         const message = new ProtocolMessage({});
         if (data.key != null) {
@@ -4906,23 +4685,18 @@ export class ProtocolMessage extends pb_1.Message {
     }
     toObject() {
         const data: {
-            key?: ReturnType<typeof MessageKey.prototype.toObject>;
-            type?: ProtocolMessage.PROTOCOL_MESSAGE_TYPE;
-            ephemeralExpiration?: number;
-            ephemeralSettingTimestamp?: number;
-            historySyncNotification?: ReturnType<typeof HistorySyncNotification.prototype.toObject>;
-        } = {};
+            key?: Parameters<typeof MessageKey.fromObject>[0];
+            type: ProtocolMessage.PROTOCOL_MESSAGE_TYPE;
+            ephemeralExpiration: number;
+            ephemeralSettingTimestamp: number;
+            historySyncNotification?: Parameters<typeof HistorySyncNotification.fromObject>[0];
+        } = {
+            type: this.type,
+            ephemeralExpiration: this.ephemeralExpiration,
+            ephemeralSettingTimestamp: this.ephemeralSettingTimestamp
+        };
         if (this.key != null) {
             data.key = this.key.toObject();
-        }
-        if (this.type != null) {
-            data.type = this.type;
-        }
-        if (this.ephemeralExpiration != null) {
-            data.ephemeralExpiration = this.ephemeralExpiration;
-        }
-        if (this.ephemeralSettingTimestamp != null) {
-            data.ephemeralSettingTimestamp = this.ephemeralSettingTimestamp;
         }
         if (this.historySyncNotification != null) {
             data.historySyncNotification = this.historySyncNotification.toObject();
@@ -5139,39 +4913,24 @@ export class HistorySyncNotification extends pb_1.Message {
     }
     toObject() {
         const data: {
-            fileSha256?: Uint8Array;
-            fileLength?: number;
-            mediaKey?: Uint8Array;
-            fileEncSha256?: Uint8Array;
-            directPath?: string;
-            syncType?: HistorySyncNotification.HISTORY_SYNC_NOTIFICATION_HISTORYSYNCTYPE;
-            chunkOrder?: number;
-            originalMessageId?: string;
-        } = {};
-        if (this.fileSha256 != null) {
-            data.fileSha256 = this.fileSha256;
-        }
-        if (this.fileLength != null) {
-            data.fileLength = this.fileLength;
-        }
-        if (this.mediaKey != null) {
-            data.mediaKey = this.mediaKey;
-        }
-        if (this.fileEncSha256 != null) {
-            data.fileEncSha256 = this.fileEncSha256;
-        }
-        if (this.directPath != null) {
-            data.directPath = this.directPath;
-        }
-        if (this.syncType != null) {
-            data.syncType = this.syncType;
-        }
-        if (this.chunkOrder != null) {
-            data.chunkOrder = this.chunkOrder;
-        }
-        if (this.originalMessageId != null) {
-            data.originalMessageId = this.originalMessageId;
-        }
+            fileSha256: Uint8Array;
+            fileLength: number;
+            mediaKey: Uint8Array;
+            fileEncSha256: Uint8Array;
+            directPath: string;
+            syncType: HistorySyncNotification.HISTORY_SYNC_NOTIFICATION_HISTORYSYNCTYPE;
+            chunkOrder: number;
+            originalMessageId: string;
+        } = {
+            fileSha256: this.fileSha256,
+            fileLength: this.fileLength,
+            mediaKey: this.mediaKey,
+            fileEncSha256: this.fileEncSha256,
+            directPath: this.directPath,
+            syncType: this.syncType,
+            chunkOrder: this.chunkOrder,
+            originalMessageId: this.originalMessageId
+        };
         return data;
     }
     serialize(): Uint8Array;
@@ -5293,8 +5052,8 @@ export class ContactsArrayMessage extends pb_1.Message {
     }
     static fromObject(data: {
         displayName?: string;
-        contacts?: ReturnType<typeof ContactMessage.prototype.toObject>[];
-        contextInfo?: ReturnType<typeof ContextInfo.prototype.toObject>;
+        contacts?: Parameters<typeof ContactMessage.fromObject>[0][];
+        contextInfo?: Parameters<typeof ContextInfo.fromObject>[0];
     }): ContactsArrayMessage {
         const message = new ContactsArrayMessage({
             contacts: data.contacts.map(item => ContactMessage.fromObject(item))
@@ -5309,16 +5068,13 @@ export class ContactsArrayMessage extends pb_1.Message {
     }
     toObject() {
         const data: {
-            displayName?: string;
-            contacts?: ReturnType<typeof ContactMessage.prototype.toObject>[];
-            contextInfo?: ReturnType<typeof ContextInfo.prototype.toObject>;
-        } = {};
-        if (this.displayName != null) {
-            data.displayName = this.displayName;
-        }
-        if (this.contacts != null) {
-            data.contacts = this.contacts.map((item: ContactMessage) => item.toObject());
-        }
+            displayName: string;
+            contacts: Parameters<typeof ContactMessage.fromObject>[0][];
+            contextInfo?: Parameters<typeof ContextInfo.fromObject>[0];
+        } = {
+            displayName: this.displayName,
+            contacts: this.contacts.map((item: ContactMessage) => item.toObject())
+        };
         if (this.contextInfo != null) {
             data.contextInfo = this.contextInfo.toObject();
         }
@@ -5414,15 +5170,12 @@ export class HSMCurrency extends pb_1.Message {
     }
     toObject() {
         const data: {
-            currencyCode?: string;
-            amount1000?: number;
-        } = {};
-        if (this.currencyCode != null) {
-            data.currencyCode = this.currencyCode;
-        }
-        if (this.amount1000 != null) {
-            data.amount1000 = this.amount1000;
-        }
+            currencyCode: string;
+            amount1000: number;
+        } = {
+            currencyCode: this.currencyCode,
+            amount1000: this.amount1000
+        };
         return data;
     }
     serialize(): Uint8Array;
@@ -5595,35 +5348,22 @@ export class HSMDateTimeComponent extends pb_1.Message {
     }
     toObject() {
         const data: {
-            dayOfWeek?: HSMDateTimeComponent.HSM_DATE_TIME_COMPONENT_DAYOFWEEKTYPE;
-            year?: number;
-            month?: number;
-            dayOfMonth?: number;
-            hour?: number;
-            minute?: number;
-            calendar?: HSMDateTimeComponent.HSM_DATE_TIME_COMPONENT_CALENDARTYPE;
-        } = {};
-        if (this.dayOfWeek != null) {
-            data.dayOfWeek = this.dayOfWeek;
-        }
-        if (this.year != null) {
-            data.year = this.year;
-        }
-        if (this.month != null) {
-            data.month = this.month;
-        }
-        if (this.dayOfMonth != null) {
-            data.dayOfMonth = this.dayOfMonth;
-        }
-        if (this.hour != null) {
-            data.hour = this.hour;
-        }
-        if (this.minute != null) {
-            data.minute = this.minute;
-        }
-        if (this.calendar != null) {
-            data.calendar = this.calendar;
-        }
+            dayOfWeek: HSMDateTimeComponent.HSM_DATE_TIME_COMPONENT_DAYOFWEEKTYPE;
+            year: number;
+            month: number;
+            dayOfMonth: number;
+            hour: number;
+            minute: number;
+            calendar: HSMDateTimeComponent.HSM_DATE_TIME_COMPONENT_CALENDARTYPE;
+        } = {
+            dayOfWeek: this.dayOfWeek,
+            year: this.year,
+            month: this.month,
+            dayOfMonth: this.dayOfMonth,
+            hour: this.hour,
+            minute: this.minute,
+            calendar: this.calendar
+        };
         return data;
     }
     serialize(): Uint8Array;
@@ -5734,11 +5474,10 @@ export class HSMDateTimeUnixEpoch extends pb_1.Message {
     }
     toObject() {
         const data: {
-            timestamp?: number;
-        } = {};
-        if (this.timestamp != null) {
-            data.timestamp = this.timestamp;
-        }
+            timestamp: number;
+        } = {
+            timestamp: this.timestamp
+        };
         return data;
     }
     serialize(): Uint8Array;
@@ -5820,8 +5559,8 @@ export class HSMDateTime extends pb_1.Message {
         return cases[pb_1.Message.computeOneofCase(this, [1, 2])];
     }
     static fromObject(data: {
-        component?: ReturnType<typeof HSMDateTimeComponent.prototype.toObject>;
-        unixEpoch?: ReturnType<typeof HSMDateTimeUnixEpoch.prototype.toObject>;
+        component?: Parameters<typeof HSMDateTimeComponent.fromObject>[0];
+        unixEpoch?: Parameters<typeof HSMDateTimeUnixEpoch.fromObject>[0];
     }): HSMDateTime {
         const message = new HSMDateTime({});
         if (data.component != null) {
@@ -5834,8 +5573,8 @@ export class HSMDateTime extends pb_1.Message {
     }
     toObject() {
         const data: {
-            component?: ReturnType<typeof HSMDateTimeComponent.prototype.toObject>;
-            unixEpoch?: ReturnType<typeof HSMDateTimeUnixEpoch.prototype.toObject>;
+            component?: Parameters<typeof HSMDateTimeComponent.fromObject>[0];
+            unixEpoch?: Parameters<typeof HSMDateTimeUnixEpoch.fromObject>[0];
         } = {};
         if (this.component != null) {
             data.component = this.component.toObject();
@@ -5944,8 +5683,8 @@ export class HSMLocalizableParameter extends pb_1.Message {
     }
     static fromObject(data: {
         default?: string;
-        currency?: ReturnType<typeof HSMCurrency.prototype.toObject>;
-        dateTime?: ReturnType<typeof HSMDateTime.prototype.toObject>;
+        currency?: Parameters<typeof HSMCurrency.fromObject>[0];
+        dateTime?: Parameters<typeof HSMDateTime.fromObject>[0];
     }): HSMLocalizableParameter {
         const message = new HSMLocalizableParameter({});
         if (data.default != null) {
@@ -5961,13 +5700,12 @@ export class HSMLocalizableParameter extends pb_1.Message {
     }
     toObject() {
         const data: {
-            default?: string;
-            currency?: ReturnType<typeof HSMCurrency.prototype.toObject>;
-            dateTime?: ReturnType<typeof HSMDateTime.prototype.toObject>;
-        } = {};
-        if (this.default != null) {
-            data.default = this.default;
-        }
+            default: string;
+            currency?: Parameters<typeof HSMCurrency.fromObject>[0];
+            dateTime?: Parameters<typeof HSMDateTime.fromObject>[0];
+        } = {
+            default: this.default
+        };
         if (this.currency != null) {
             data.currency = this.currency.toObject();
         }
@@ -6135,13 +5873,13 @@ export class HighlyStructuredMessage extends pb_1.Message {
     static fromObject(data: {
         namespace?: string;
         elementName?: string;
-        params: string[];
+        params?: string[];
         fallbackLg?: string;
         fallbackLc?: string;
-        localizableParams?: ReturnType<typeof HSMLocalizableParameter.prototype.toObject>[];
+        localizableParams?: Parameters<typeof HSMLocalizableParameter.fromObject>[0][];
         deterministicLg?: string;
         deterministicLc?: string;
-        hydratedHsm?: ReturnType<typeof TemplateMessage.prototype.toObject>;
+        hydratedHsm?: Parameters<typeof TemplateMessage.fromObject>[0];
     }): HighlyStructuredMessage {
         const message = new HighlyStructuredMessage({
             params: data.params,
@@ -6172,39 +5910,25 @@ export class HighlyStructuredMessage extends pb_1.Message {
     }
     toObject() {
         const data: {
-            namespace?: string;
-            elementName?: string;
+            namespace: string;
+            elementName: string;
             params: string[];
-            fallbackLg?: string;
-            fallbackLc?: string;
-            localizableParams?: ReturnType<typeof HSMLocalizableParameter.prototype.toObject>[];
-            deterministicLg?: string;
-            deterministicLc?: string;
-            hydratedHsm?: ReturnType<typeof TemplateMessage.prototype.toObject>;
+            fallbackLg: string;
+            fallbackLc: string;
+            localizableParams: Parameters<typeof HSMLocalizableParameter.fromObject>[0][];
+            deterministicLg: string;
+            deterministicLc: string;
+            hydratedHsm?: Parameters<typeof TemplateMessage.fromObject>[0];
         } = {
-            params: this.params
+            namespace: this.namespace,
+            elementName: this.elementName,
+            params: this.params,
+            fallbackLg: this.fallbackLg,
+            fallbackLc: this.fallbackLc,
+            localizableParams: this.localizableParams.map((item: HSMLocalizableParameter) => item.toObject()),
+            deterministicLg: this.deterministicLg,
+            deterministicLc: this.deterministicLc
         };
-        if (this.namespace != null) {
-            data.namespace = this.namespace;
-        }
-        if (this.elementName != null) {
-            data.elementName = this.elementName;
-        }
-        if (this.fallbackLg != null) {
-            data.fallbackLg = this.fallbackLg;
-        }
-        if (this.fallbackLc != null) {
-            data.fallbackLc = this.fallbackLc;
-        }
-        if (this.localizableParams != null) {
-            data.localizableParams = this.localizableParams.map((item: HSMLocalizableParameter) => item.toObject());
-        }
-        if (this.deterministicLg != null) {
-            data.deterministicLg = this.deterministicLg;
-        }
-        if (this.deterministicLc != null) {
-            data.deterministicLc = this.deterministicLc;
-        }
         if (this.hydratedHsm != null) {
             data.hydratedHsm = this.hydratedHsm.toObject();
         }
@@ -6316,8 +6040,8 @@ export class SendPaymentMessage extends pb_1.Message {
         return pb_1.Message.getField(this, 3) != null;
     }
     static fromObject(data: {
-        noteMessage?: ReturnType<typeof Message.prototype.toObject>;
-        requestMessageKey?: ReturnType<typeof MessageKey.prototype.toObject>;
+        noteMessage?: Parameters<typeof Message.fromObject>[0];
+        requestMessageKey?: Parameters<typeof MessageKey.fromObject>[0];
     }): SendPaymentMessage {
         const message = new SendPaymentMessage({});
         if (data.noteMessage != null) {
@@ -6330,8 +6054,8 @@ export class SendPaymentMessage extends pb_1.Message {
     }
     toObject() {
         const data: {
-            noteMessage?: ReturnType<typeof Message.prototype.toObject>;
-            requestMessageKey?: ReturnType<typeof MessageKey.prototype.toObject>;
+            noteMessage?: Parameters<typeof Message.fromObject>[0];
+            requestMessageKey?: Parameters<typeof MessageKey.fromObject>[0];
         } = {};
         if (this.noteMessage != null) {
             data.noteMessage = this.noteMessage.toObject();
@@ -6451,7 +6175,7 @@ export class RequestPaymentMessage extends pb_1.Message {
         return pb_1.Message.getField(this, 5) != null;
     }
     static fromObject(data: {
-        noteMessage?: ReturnType<typeof Message.prototype.toObject>;
+        noteMessage?: Parameters<typeof Message.fromObject>[0];
         currencyCodeIso4217?: string;
         amount1000?: number;
         requestFrom?: string;
@@ -6477,26 +6201,19 @@ export class RequestPaymentMessage extends pb_1.Message {
     }
     toObject() {
         const data: {
-            noteMessage?: ReturnType<typeof Message.prototype.toObject>;
-            currencyCodeIso4217?: string;
-            amount1000?: number;
-            requestFrom?: string;
-            expiryTimestamp?: number;
-        } = {};
+            noteMessage?: Parameters<typeof Message.fromObject>[0];
+            currencyCodeIso4217: string;
+            amount1000: number;
+            requestFrom: string;
+            expiryTimestamp: number;
+        } = {
+            currencyCodeIso4217: this.currencyCodeIso4217,
+            amount1000: this.amount1000,
+            requestFrom: this.requestFrom,
+            expiryTimestamp: this.expiryTimestamp
+        };
         if (this.noteMessage != null) {
             data.noteMessage = this.noteMessage.toObject();
-        }
-        if (this.currencyCodeIso4217 != null) {
-            data.currencyCodeIso4217 = this.currencyCodeIso4217;
-        }
-        if (this.amount1000 != null) {
-            data.amount1000 = this.amount1000;
-        }
-        if (this.requestFrom != null) {
-            data.requestFrom = this.requestFrom;
-        }
-        if (this.expiryTimestamp != null) {
-            data.expiryTimestamp = this.expiryTimestamp;
         }
         return data;
     }
@@ -6573,7 +6290,7 @@ export class DeclinePaymentRequestMessage extends pb_1.Message {
         return pb_1.Message.getField(this, 1) != null;
     }
     static fromObject(data: {
-        key?: ReturnType<typeof MessageKey.prototype.toObject>;
+        key?: Parameters<typeof MessageKey.fromObject>[0];
     }): DeclinePaymentRequestMessage {
         const message = new DeclinePaymentRequestMessage({});
         if (data.key != null) {
@@ -6583,7 +6300,7 @@ export class DeclinePaymentRequestMessage extends pb_1.Message {
     }
     toObject() {
         const data: {
-            key?: ReturnType<typeof MessageKey.prototype.toObject>;
+            key?: Parameters<typeof MessageKey.fromObject>[0];
         } = {};
         if (this.key != null) {
             data.key = this.key.toObject();
@@ -6643,7 +6360,7 @@ export class CancelPaymentRequestMessage extends pb_1.Message {
         return pb_1.Message.getField(this, 1) != null;
     }
     static fromObject(data: {
-        key?: ReturnType<typeof MessageKey.prototype.toObject>;
+        key?: Parameters<typeof MessageKey.fromObject>[0];
     }): CancelPaymentRequestMessage {
         const message = new CancelPaymentRequestMessage({});
         if (data.key != null) {
@@ -6653,7 +6370,7 @@ export class CancelPaymentRequestMessage extends pb_1.Message {
     }
     toObject() {
         const data: {
-            key?: ReturnType<typeof MessageKey.prototype.toObject>;
+            key?: Parameters<typeof MessageKey.fromObject>[0];
         } = {};
         if (this.key != null) {
             data.key = this.key.toObject();
@@ -6839,7 +6556,7 @@ export class LiveLocationMessage extends pb_1.Message {
         sequenceNumber?: number;
         timeOffset?: number;
         jpegThumbnail?: Uint8Array;
-        contextInfo?: ReturnType<typeof ContextInfo.prototype.toObject>;
+        contextInfo?: Parameters<typeof ContextInfo.fromObject>[0];
     }): LiveLocationMessage {
         const message = new LiveLocationMessage({});
         if (data.degreesLatitude != null) {
@@ -6876,44 +6593,27 @@ export class LiveLocationMessage extends pb_1.Message {
     }
     toObject() {
         const data: {
-            degreesLatitude?: number;
-            degreesLongitude?: number;
-            accuracyInMeters?: number;
-            speedInMps?: number;
-            degreesClockwiseFromMagneticNorth?: number;
-            caption?: string;
-            sequenceNumber?: number;
-            timeOffset?: number;
-            jpegThumbnail?: Uint8Array;
-            contextInfo?: ReturnType<typeof ContextInfo.prototype.toObject>;
-        } = {};
-        if (this.degreesLatitude != null) {
-            data.degreesLatitude = this.degreesLatitude;
-        }
-        if (this.degreesLongitude != null) {
-            data.degreesLongitude = this.degreesLongitude;
-        }
-        if (this.accuracyInMeters != null) {
-            data.accuracyInMeters = this.accuracyInMeters;
-        }
-        if (this.speedInMps != null) {
-            data.speedInMps = this.speedInMps;
-        }
-        if (this.degreesClockwiseFromMagneticNorth != null) {
-            data.degreesClockwiseFromMagneticNorth = this.degreesClockwiseFromMagneticNorth;
-        }
-        if (this.caption != null) {
-            data.caption = this.caption;
-        }
-        if (this.sequenceNumber != null) {
-            data.sequenceNumber = this.sequenceNumber;
-        }
-        if (this.timeOffset != null) {
-            data.timeOffset = this.timeOffset;
-        }
-        if (this.jpegThumbnail != null) {
-            data.jpegThumbnail = this.jpegThumbnail;
-        }
+            degreesLatitude: number;
+            degreesLongitude: number;
+            accuracyInMeters: number;
+            speedInMps: number;
+            degreesClockwiseFromMagneticNorth: number;
+            caption: string;
+            sequenceNumber: number;
+            timeOffset: number;
+            jpegThumbnail: Uint8Array;
+            contextInfo?: Parameters<typeof ContextInfo.fromObject>[0];
+        } = {
+            degreesLatitude: this.degreesLatitude,
+            degreesLongitude: this.degreesLongitude,
+            accuracyInMeters: this.accuracyInMeters,
+            speedInMps: this.speedInMps,
+            degreesClockwiseFromMagneticNorth: this.degreesClockwiseFromMagneticNorth,
+            caption: this.caption,
+            sequenceNumber: this.sequenceNumber,
+            timeOffset: this.timeOffset,
+            jpegThumbnail: this.jpegThumbnail
+        };
         if (this.contextInfo != null) {
             data.contextInfo = this.contextInfo.toObject();
         }
@@ -7213,7 +6913,7 @@ export class StickerMessage extends pb_1.Message {
         firstFrameSidecar?: Uint8Array;
         isAnimated?: boolean;
         pngThumbnail?: Uint8Array;
-        contextInfo?: ReturnType<typeof ContextInfo.prototype.toObject>;
+        contextInfo?: Parameters<typeof ContextInfo.fromObject>[0];
     }): StickerMessage {
         const message = new StickerMessage({});
         if (data.url != null) {
@@ -7265,64 +6965,37 @@ export class StickerMessage extends pb_1.Message {
     }
     toObject() {
         const data: {
-            url?: string;
-            fileSha256?: Uint8Array;
-            fileEncSha256?: Uint8Array;
-            mediaKey?: Uint8Array;
-            mimetype?: string;
-            height?: number;
-            width?: number;
-            directPath?: string;
-            fileLength?: number;
-            mediaKeyTimestamp?: number;
-            firstFrameLength?: number;
-            firstFrameSidecar?: Uint8Array;
-            isAnimated?: boolean;
-            pngThumbnail?: Uint8Array;
-            contextInfo?: ReturnType<typeof ContextInfo.prototype.toObject>;
-        } = {};
-        if (this.url != null) {
-            data.url = this.url;
-        }
-        if (this.fileSha256 != null) {
-            data.fileSha256 = this.fileSha256;
-        }
-        if (this.fileEncSha256 != null) {
-            data.fileEncSha256 = this.fileEncSha256;
-        }
-        if (this.mediaKey != null) {
-            data.mediaKey = this.mediaKey;
-        }
-        if (this.mimetype != null) {
-            data.mimetype = this.mimetype;
-        }
-        if (this.height != null) {
-            data.height = this.height;
-        }
-        if (this.width != null) {
-            data.width = this.width;
-        }
-        if (this.directPath != null) {
-            data.directPath = this.directPath;
-        }
-        if (this.fileLength != null) {
-            data.fileLength = this.fileLength;
-        }
-        if (this.mediaKeyTimestamp != null) {
-            data.mediaKeyTimestamp = this.mediaKeyTimestamp;
-        }
-        if (this.firstFrameLength != null) {
-            data.firstFrameLength = this.firstFrameLength;
-        }
-        if (this.firstFrameSidecar != null) {
-            data.firstFrameSidecar = this.firstFrameSidecar;
-        }
-        if (this.isAnimated != null) {
-            data.isAnimated = this.isAnimated;
-        }
-        if (this.pngThumbnail != null) {
-            data.pngThumbnail = this.pngThumbnail;
-        }
+            url: string;
+            fileSha256: Uint8Array;
+            fileEncSha256: Uint8Array;
+            mediaKey: Uint8Array;
+            mimetype: string;
+            height: number;
+            width: number;
+            directPath: string;
+            fileLength: number;
+            mediaKeyTimestamp: number;
+            firstFrameLength: number;
+            firstFrameSidecar: Uint8Array;
+            isAnimated: boolean;
+            pngThumbnail: Uint8Array;
+            contextInfo?: Parameters<typeof ContextInfo.fromObject>[0];
+        } = {
+            url: this.url,
+            fileSha256: this.fileSha256,
+            fileEncSha256: this.fileEncSha256,
+            mediaKey: this.mediaKey,
+            mimetype: this.mimetype,
+            height: this.height,
+            width: this.width,
+            directPath: this.directPath,
+            fileLength: this.fileLength,
+            mediaKeyTimestamp: this.mediaKeyTimestamp,
+            firstFrameLength: this.firstFrameLength,
+            firstFrameSidecar: this.firstFrameSidecar,
+            isAnimated: this.isAnimated,
+            pngThumbnail: this.pngThumbnail
+        };
         if (this.contextInfo != null) {
             data.contextInfo = this.contextInfo.toObject();
         }
@@ -7575,14 +7248,14 @@ export class FourRowTemplate extends pb_1.Message {
         return cases[pb_1.Message.computeOneofCase(this, [1, 2, 3, 4, 5])];
     }
     static fromObject(data: {
-        content?: ReturnType<typeof HighlyStructuredMessage.prototype.toObject>;
-        footer?: ReturnType<typeof HighlyStructuredMessage.prototype.toObject>;
-        buttons?: ReturnType<typeof TemplateButton.prototype.toObject>[];
-        documentMessage?: ReturnType<typeof DocumentMessage.prototype.toObject>;
-        highlyStructuredMessage?: ReturnType<typeof HighlyStructuredMessage.prototype.toObject>;
-        imageMessage?: ReturnType<typeof ImageMessage.prototype.toObject>;
-        videoMessage?: ReturnType<typeof VideoMessage.prototype.toObject>;
-        locationMessage?: ReturnType<typeof LocationMessage.prototype.toObject>;
+        content?: Parameters<typeof HighlyStructuredMessage.fromObject>[0];
+        footer?: Parameters<typeof HighlyStructuredMessage.fromObject>[0];
+        buttons?: Parameters<typeof TemplateButton.fromObject>[0][];
+        documentMessage?: Parameters<typeof DocumentMessage.fromObject>[0];
+        highlyStructuredMessage?: Parameters<typeof HighlyStructuredMessage.fromObject>[0];
+        imageMessage?: Parameters<typeof ImageMessage.fromObject>[0];
+        videoMessage?: Parameters<typeof VideoMessage.fromObject>[0];
+        locationMessage?: Parameters<typeof LocationMessage.fromObject>[0];
     }): FourRowTemplate {
         const message = new FourRowTemplate({
             buttons: data.buttons.map(item => TemplateButton.fromObject(item))
@@ -7612,23 +7285,22 @@ export class FourRowTemplate extends pb_1.Message {
     }
     toObject() {
         const data: {
-            content?: ReturnType<typeof HighlyStructuredMessage.prototype.toObject>;
-            footer?: ReturnType<typeof HighlyStructuredMessage.prototype.toObject>;
-            buttons?: ReturnType<typeof TemplateButton.prototype.toObject>[];
-            documentMessage?: ReturnType<typeof DocumentMessage.prototype.toObject>;
-            highlyStructuredMessage?: ReturnType<typeof HighlyStructuredMessage.prototype.toObject>;
-            imageMessage?: ReturnType<typeof ImageMessage.prototype.toObject>;
-            videoMessage?: ReturnType<typeof VideoMessage.prototype.toObject>;
-            locationMessage?: ReturnType<typeof LocationMessage.prototype.toObject>;
-        } = {};
+            content?: Parameters<typeof HighlyStructuredMessage.fromObject>[0];
+            footer?: Parameters<typeof HighlyStructuredMessage.fromObject>[0];
+            buttons: Parameters<typeof TemplateButton.fromObject>[0][];
+            documentMessage?: Parameters<typeof DocumentMessage.fromObject>[0];
+            highlyStructuredMessage?: Parameters<typeof HighlyStructuredMessage.fromObject>[0];
+            imageMessage?: Parameters<typeof ImageMessage.fromObject>[0];
+            videoMessage?: Parameters<typeof VideoMessage.fromObject>[0];
+            locationMessage?: Parameters<typeof LocationMessage.fromObject>[0];
+        } = {
+            buttons: this.buttons.map((item: TemplateButton) => item.toObject())
+        };
         if (this.content != null) {
             data.content = this.content.toObject();
         }
         if (this.footer != null) {
             data.footer = this.footer.toObject();
-        }
-        if (this.buttons != null) {
-            data.buttons = this.buttons.map((item: TemplateButton) => item.toObject());
         }
         if (this.documentMessage != null) {
             data.documentMessage = this.documentMessage.toObject();
@@ -7874,13 +7546,13 @@ export class HydratedFourRowTemplate extends pb_1.Message {
     static fromObject(data: {
         hydratedContentText?: string;
         hydratedFooterText?: string;
-        hydratedButtons?: ReturnType<typeof HydratedTemplateButton.prototype.toObject>[];
+        hydratedButtons?: Parameters<typeof HydratedTemplateButton.fromObject>[0][];
         templateId?: string;
-        documentMessage?: ReturnType<typeof DocumentMessage.prototype.toObject>;
+        documentMessage?: Parameters<typeof DocumentMessage.fromObject>[0];
         hydratedTitleText?: string;
-        imageMessage?: ReturnType<typeof ImageMessage.prototype.toObject>;
-        videoMessage?: ReturnType<typeof VideoMessage.prototype.toObject>;
-        locationMessage?: ReturnType<typeof LocationMessage.prototype.toObject>;
+        imageMessage?: Parameters<typeof ImageMessage.fromObject>[0];
+        videoMessage?: Parameters<typeof VideoMessage.fromObject>[0];
+        locationMessage?: Parameters<typeof LocationMessage.fromObject>[0];
     }): HydratedFourRowTemplate {
         const message = new HydratedFourRowTemplate({
             hydratedButtons: data.hydratedButtons.map(item => HydratedTemplateButton.fromObject(item))
@@ -7913,33 +7585,24 @@ export class HydratedFourRowTemplate extends pb_1.Message {
     }
     toObject() {
         const data: {
-            hydratedContentText?: string;
-            hydratedFooterText?: string;
-            hydratedButtons?: ReturnType<typeof HydratedTemplateButton.prototype.toObject>[];
-            templateId?: string;
-            documentMessage?: ReturnType<typeof DocumentMessage.prototype.toObject>;
-            hydratedTitleText?: string;
-            imageMessage?: ReturnType<typeof ImageMessage.prototype.toObject>;
-            videoMessage?: ReturnType<typeof VideoMessage.prototype.toObject>;
-            locationMessage?: ReturnType<typeof LocationMessage.prototype.toObject>;
-        } = {};
-        if (this.hydratedContentText != null) {
-            data.hydratedContentText = this.hydratedContentText;
-        }
-        if (this.hydratedFooterText != null) {
-            data.hydratedFooterText = this.hydratedFooterText;
-        }
-        if (this.hydratedButtons != null) {
-            data.hydratedButtons = this.hydratedButtons.map((item: HydratedTemplateButton) => item.toObject());
-        }
-        if (this.templateId != null) {
-            data.templateId = this.templateId;
-        }
+            hydratedContentText: string;
+            hydratedFooterText: string;
+            hydratedButtons: Parameters<typeof HydratedTemplateButton.fromObject>[0][];
+            templateId: string;
+            documentMessage?: Parameters<typeof DocumentMessage.fromObject>[0];
+            hydratedTitleText: string;
+            imageMessage?: Parameters<typeof ImageMessage.fromObject>[0];
+            videoMessage?: Parameters<typeof VideoMessage.fromObject>[0];
+            locationMessage?: Parameters<typeof LocationMessage.fromObject>[0];
+        } = {
+            hydratedContentText: this.hydratedContentText,
+            hydratedFooterText: this.hydratedFooterText,
+            hydratedButtons: this.hydratedButtons.map((item: HydratedTemplateButton) => item.toObject()),
+            templateId: this.templateId,
+            hydratedTitleText: this.hydratedTitleText
+        };
         if (this.documentMessage != null) {
             data.documentMessage = this.documentMessage.toObject();
-        }
-        if (this.hydratedTitleText != null) {
-            data.hydratedTitleText = this.hydratedTitleText;
         }
         if (this.imageMessage != null) {
             data.imageMessage = this.imageMessage.toObject();
@@ -8098,10 +7761,10 @@ export class TemplateMessage extends pb_1.Message {
         return cases[pb_1.Message.computeOneofCase(this, [1, 2])];
     }
     static fromObject(data: {
-        contextInfo?: ReturnType<typeof ContextInfo.prototype.toObject>;
-        hydratedTemplate?: ReturnType<typeof HydratedFourRowTemplate.prototype.toObject>;
-        fourRowTemplate?: ReturnType<typeof FourRowTemplate.prototype.toObject>;
-        hydratedFourRowTemplate?: ReturnType<typeof HydratedFourRowTemplate.prototype.toObject>;
+        contextInfo?: Parameters<typeof ContextInfo.fromObject>[0];
+        hydratedTemplate?: Parameters<typeof HydratedFourRowTemplate.fromObject>[0];
+        fourRowTemplate?: Parameters<typeof FourRowTemplate.fromObject>[0];
+        hydratedFourRowTemplate?: Parameters<typeof HydratedFourRowTemplate.fromObject>[0];
     }): TemplateMessage {
         const message = new TemplateMessage({});
         if (data.contextInfo != null) {
@@ -8120,10 +7783,10 @@ export class TemplateMessage extends pb_1.Message {
     }
     toObject() {
         const data: {
-            contextInfo?: ReturnType<typeof ContextInfo.prototype.toObject>;
-            hydratedTemplate?: ReturnType<typeof HydratedFourRowTemplate.prototype.toObject>;
-            fourRowTemplate?: ReturnType<typeof FourRowTemplate.prototype.toObject>;
-            hydratedFourRowTemplate?: ReturnType<typeof HydratedFourRowTemplate.prototype.toObject>;
+            contextInfo?: Parameters<typeof ContextInfo.fromObject>[0];
+            hydratedTemplate?: Parameters<typeof HydratedFourRowTemplate.fromObject>[0];
+            fourRowTemplate?: Parameters<typeof FourRowTemplate.fromObject>[0];
+            hydratedFourRowTemplate?: Parameters<typeof HydratedFourRowTemplate.fromObject>[0];
         } = {};
         if (this.contextInfo != null) {
             data.contextInfo = this.contextInfo.toObject();
@@ -8248,7 +7911,7 @@ export class TemplateButtonReplyMessage extends pb_1.Message {
     static fromObject(data: {
         selectedId?: string;
         selectedDisplayText?: string;
-        contextInfo?: ReturnType<typeof ContextInfo.prototype.toObject>;
+        contextInfo?: Parameters<typeof ContextInfo.fromObject>[0];
         selectedIndex?: number;
     }): TemplateButtonReplyMessage {
         const message = new TemplateButtonReplyMessage({});
@@ -8268,22 +7931,17 @@ export class TemplateButtonReplyMessage extends pb_1.Message {
     }
     toObject() {
         const data: {
-            selectedId?: string;
-            selectedDisplayText?: string;
-            contextInfo?: ReturnType<typeof ContextInfo.prototype.toObject>;
-            selectedIndex?: number;
-        } = {};
-        if (this.selectedId != null) {
-            data.selectedId = this.selectedId;
-        }
-        if (this.selectedDisplayText != null) {
-            data.selectedDisplayText = this.selectedDisplayText;
-        }
+            selectedId: string;
+            selectedDisplayText: string;
+            contextInfo?: Parameters<typeof ContextInfo.fromObject>[0];
+            selectedIndex: number;
+        } = {
+            selectedId: this.selectedId,
+            selectedDisplayText: this.selectedDisplayText,
+            selectedIndex: this.selectedIndex
+        };
         if (this.contextInfo != null) {
             data.contextInfo = this.contextInfo.toObject();
-        }
-        if (this.selectedIndex != null) {
-            data.selectedIndex = this.selectedIndex;
         }
         return data;
     }
@@ -8381,7 +8039,7 @@ export class CatalogSnapshot extends pb_1.Message {
         return pb_1.Message.getField(this, 3) != null;
     }
     static fromObject(data: {
-        catalogImage?: ReturnType<typeof ImageMessage.prototype.toObject>;
+        catalogImage?: Parameters<typeof ImageMessage.fromObject>[0];
         title?: string;
         description?: string;
     }): CatalogSnapshot {
@@ -8399,18 +8057,15 @@ export class CatalogSnapshot extends pb_1.Message {
     }
     toObject() {
         const data: {
-            catalogImage?: ReturnType<typeof ImageMessage.prototype.toObject>;
-            title?: string;
-            description?: string;
-        } = {};
+            catalogImage?: Parameters<typeof ImageMessage.fromObject>[0];
+            title: string;
+            description: string;
+        } = {
+            title: this.title,
+            description: this.description
+        };
         if (this.catalogImage != null) {
             data.catalogImage = this.catalogImage.toObject();
-        }
-        if (this.title != null) {
-            data.title = this.title;
-        }
-        if (this.description != null) {
-            data.description = this.description;
         }
         return data;
     }
@@ -8594,7 +8249,7 @@ export class ProductSnapshot extends pb_1.Message {
         return pb_1.Message.getField(this, 11) != null;
     }
     static fromObject(data: {
-        productImage?: ReturnType<typeof ImageMessage.prototype.toObject>;
+        productImage?: Parameters<typeof ImageMessage.fromObject>[0];
         productId?: string;
         title?: string;
         description?: string;
@@ -8640,46 +8295,29 @@ export class ProductSnapshot extends pb_1.Message {
     }
     toObject() {
         const data: {
-            productImage?: ReturnType<typeof ImageMessage.prototype.toObject>;
-            productId?: string;
-            title?: string;
-            description?: string;
-            currencyCode?: string;
-            priceAmount1000?: number;
-            retailerId?: string;
-            url?: string;
-            productImageCount?: number;
-            firstImageId?: string;
-        } = {};
+            productImage?: Parameters<typeof ImageMessage.fromObject>[0];
+            productId: string;
+            title: string;
+            description: string;
+            currencyCode: string;
+            priceAmount1000: number;
+            retailerId: string;
+            url: string;
+            productImageCount: number;
+            firstImageId: string;
+        } = {
+            productId: this.productId,
+            title: this.title,
+            description: this.description,
+            currencyCode: this.currencyCode,
+            priceAmount1000: this.priceAmount1000,
+            retailerId: this.retailerId,
+            url: this.url,
+            productImageCount: this.productImageCount,
+            firstImageId: this.firstImageId
+        };
         if (this.productImage != null) {
             data.productImage = this.productImage.toObject();
-        }
-        if (this.productId != null) {
-            data.productId = this.productId;
-        }
-        if (this.title != null) {
-            data.title = this.title;
-        }
-        if (this.description != null) {
-            data.description = this.description;
-        }
-        if (this.currencyCode != null) {
-            data.currencyCode = this.currencyCode;
-        }
-        if (this.priceAmount1000 != null) {
-            data.priceAmount1000 = this.priceAmount1000;
-        }
-        if (this.retailerId != null) {
-            data.retailerId = this.retailerId;
-        }
-        if (this.url != null) {
-            data.url = this.url;
-        }
-        if (this.productImageCount != null) {
-            data.productImageCount = this.productImageCount;
-        }
-        if (this.firstImageId != null) {
-            data.firstImageId = this.firstImageId;
         }
         return data;
     }
@@ -8820,10 +8458,10 @@ export class ProductMessage extends pb_1.Message {
         return pb_1.Message.getField(this, 17) != null;
     }
     static fromObject(data: {
-        product?: ReturnType<typeof ProductSnapshot.prototype.toObject>;
+        product?: Parameters<typeof ProductSnapshot.fromObject>[0];
         businessOwnerJid?: string;
-        catalog?: ReturnType<typeof CatalogSnapshot.prototype.toObject>;
-        contextInfo?: ReturnType<typeof ContextInfo.prototype.toObject>;
+        catalog?: Parameters<typeof CatalogSnapshot.fromObject>[0];
+        contextInfo?: Parameters<typeof ContextInfo.fromObject>[0];
     }): ProductMessage {
         const message = new ProductMessage({});
         if (data.product != null) {
@@ -8842,16 +8480,15 @@ export class ProductMessage extends pb_1.Message {
     }
     toObject() {
         const data: {
-            product?: ReturnType<typeof ProductSnapshot.prototype.toObject>;
-            businessOwnerJid?: string;
-            catalog?: ReturnType<typeof CatalogSnapshot.prototype.toObject>;
-            contextInfo?: ReturnType<typeof ContextInfo.prototype.toObject>;
-        } = {};
+            product?: Parameters<typeof ProductSnapshot.fromObject>[0];
+            businessOwnerJid: string;
+            catalog?: Parameters<typeof CatalogSnapshot.fromObject>[0];
+            contextInfo?: Parameters<typeof ContextInfo.fromObject>[0];
+        } = {
+            businessOwnerJid: this.businessOwnerJid
+        };
         if (this.product != null) {
             data.product = this.product.toObject();
-        }
-        if (this.businessOwnerJid != null) {
-            data.businessOwnerJid = this.businessOwnerJid;
         }
         if (this.catalog != null) {
             data.catalog = this.catalog.toObject();
@@ -9013,7 +8650,7 @@ export class GroupInviteMessage extends pb_1.Message {
         groupName?: string;
         jpegThumbnail?: Uint8Array;
         caption?: string;
-        contextInfo?: ReturnType<typeof ContextInfo.prototype.toObject>;
+        contextInfo?: Parameters<typeof ContextInfo.fromObject>[0];
     }): GroupInviteMessage {
         const message = new GroupInviteMessage({});
         if (data.groupJid != null) {
@@ -9041,32 +8678,21 @@ export class GroupInviteMessage extends pb_1.Message {
     }
     toObject() {
         const data: {
-            groupJid?: string;
-            inviteCode?: string;
-            inviteExpiration?: number;
-            groupName?: string;
-            jpegThumbnail?: Uint8Array;
-            caption?: string;
-            contextInfo?: ReturnType<typeof ContextInfo.prototype.toObject>;
-        } = {};
-        if (this.groupJid != null) {
-            data.groupJid = this.groupJid;
-        }
-        if (this.inviteCode != null) {
-            data.inviteCode = this.inviteCode;
-        }
-        if (this.inviteExpiration != null) {
-            data.inviteExpiration = this.inviteExpiration;
-        }
-        if (this.groupName != null) {
-            data.groupName = this.groupName;
-        }
-        if (this.jpegThumbnail != null) {
-            data.jpegThumbnail = this.jpegThumbnail;
-        }
-        if (this.caption != null) {
-            data.caption = this.caption;
-        }
+            groupJid: string;
+            inviteCode: string;
+            inviteExpiration: number;
+            groupName: string;
+            jpegThumbnail: Uint8Array;
+            caption: string;
+            contextInfo?: Parameters<typeof ContextInfo.fromObject>[0];
+        } = {
+            groupJid: this.groupJid,
+            inviteCode: this.inviteCode,
+            inviteExpiration: this.inviteExpiration,
+            groupName: this.groupName,
+            jpegThumbnail: this.jpegThumbnail,
+            caption: this.caption
+        };
         if (this.contextInfo != null) {
             data.contextInfo = this.contextInfo.toObject();
         }
@@ -9182,7 +8808,7 @@ export class DeviceSentMessage extends pb_1.Message {
     }
     static fromObject(data: {
         destinationJid?: string;
-        message?: ReturnType<typeof Message.prototype.toObject>;
+        message?: Parameters<typeof Message.fromObject>[0];
         phash?: string;
     }): DeviceSentMessage {
         const message = new DeviceSentMessage({});
@@ -9199,18 +8825,15 @@ export class DeviceSentMessage extends pb_1.Message {
     }
     toObject() {
         const data: {
-            destinationJid?: string;
-            message?: ReturnType<typeof Message.prototype.toObject>;
-            phash?: string;
-        } = {};
-        if (this.destinationJid != null) {
-            data.destinationJid = this.destinationJid;
-        }
+            destinationJid: string;
+            message?: Parameters<typeof Message.fromObject>[0];
+            phash: string;
+        } = {
+            destinationJid: this.destinationJid,
+            phash: this.phash
+        };
         if (this.message != null) {
             data.message = this.message.toObject();
-        }
-        if (this.phash != null) {
-            data.phash = this.phash;
         }
         return data;
     }
@@ -9603,31 +9226,31 @@ export class Message extends pb_1.Message {
     }
     static fromObject(data: {
         conversation?: string;
-        senderKeyDistributionMessage?: ReturnType<typeof SenderKeyDistributionMessage.prototype.toObject>;
-        imageMessage?: ReturnType<typeof ImageMessage.prototype.toObject>;
-        contactMessage?: ReturnType<typeof ContactMessage.prototype.toObject>;
-        locationMessage?: ReturnType<typeof LocationMessage.prototype.toObject>;
-        extendedTextMessage?: ReturnType<typeof ExtendedTextMessage.prototype.toObject>;
-        documentMessage?: ReturnType<typeof DocumentMessage.prototype.toObject>;
-        audioMessage?: ReturnType<typeof AudioMessage.prototype.toObject>;
-        videoMessage?: ReturnType<typeof VideoMessage.prototype.toObject>;
-        call?: ReturnType<typeof Call.prototype.toObject>;
-        chat?: ReturnType<typeof Chat.prototype.toObject>;
-        protocolMessage?: ReturnType<typeof ProtocolMessage.prototype.toObject>;
-        contactsArrayMessage?: ReturnType<typeof ContactsArrayMessage.prototype.toObject>;
-        highlyStructuredMessage?: ReturnType<typeof HighlyStructuredMessage.prototype.toObject>;
-        fastRatchetKeySenderKeyDistributionMessage?: ReturnType<typeof SenderKeyDistributionMessage.prototype.toObject>;
-        sendPaymentMessage?: ReturnType<typeof SendPaymentMessage.prototype.toObject>;
-        liveLocationMessage?: ReturnType<typeof LiveLocationMessage.prototype.toObject>;
-        requestPaymentMessage?: ReturnType<typeof RequestPaymentMessage.prototype.toObject>;
-        declinePaymentRequestMessage?: ReturnType<typeof DeclinePaymentRequestMessage.prototype.toObject>;
-        cancelPaymentRequestMessage?: ReturnType<typeof CancelPaymentRequestMessage.prototype.toObject>;
-        templateMessage?: ReturnType<typeof TemplateMessage.prototype.toObject>;
-        stickerMessage?: ReturnType<typeof StickerMessage.prototype.toObject>;
-        groupInviteMessage?: ReturnType<typeof GroupInviteMessage.prototype.toObject>;
-        templateButtonReplyMessage?: ReturnType<typeof TemplateButtonReplyMessage.prototype.toObject>;
-        productMessage?: ReturnType<typeof ProductMessage.prototype.toObject>;
-        deviceSentMessage?: ReturnType<typeof DeviceSentMessage.prototype.toObject>;
+        senderKeyDistributionMessage?: Parameters<typeof SenderKeyDistributionMessage.fromObject>[0];
+        imageMessage?: Parameters<typeof ImageMessage.fromObject>[0];
+        contactMessage?: Parameters<typeof ContactMessage.fromObject>[0];
+        locationMessage?: Parameters<typeof LocationMessage.fromObject>[0];
+        extendedTextMessage?: Parameters<typeof ExtendedTextMessage.fromObject>[0];
+        documentMessage?: Parameters<typeof DocumentMessage.fromObject>[0];
+        audioMessage?: Parameters<typeof AudioMessage.fromObject>[0];
+        videoMessage?: Parameters<typeof VideoMessage.fromObject>[0];
+        call?: Parameters<typeof Call.fromObject>[0];
+        chat?: Parameters<typeof Chat.fromObject>[0];
+        protocolMessage?: Parameters<typeof ProtocolMessage.fromObject>[0];
+        contactsArrayMessage?: Parameters<typeof ContactsArrayMessage.fromObject>[0];
+        highlyStructuredMessage?: Parameters<typeof HighlyStructuredMessage.fromObject>[0];
+        fastRatchetKeySenderKeyDistributionMessage?: Parameters<typeof SenderKeyDistributionMessage.fromObject>[0];
+        sendPaymentMessage?: Parameters<typeof SendPaymentMessage.fromObject>[0];
+        liveLocationMessage?: Parameters<typeof LiveLocationMessage.fromObject>[0];
+        requestPaymentMessage?: Parameters<typeof RequestPaymentMessage.fromObject>[0];
+        declinePaymentRequestMessage?: Parameters<typeof DeclinePaymentRequestMessage.fromObject>[0];
+        cancelPaymentRequestMessage?: Parameters<typeof CancelPaymentRequestMessage.fromObject>[0];
+        templateMessage?: Parameters<typeof TemplateMessage.fromObject>[0];
+        stickerMessage?: Parameters<typeof StickerMessage.fromObject>[0];
+        groupInviteMessage?: Parameters<typeof GroupInviteMessage.fromObject>[0];
+        templateButtonReplyMessage?: Parameters<typeof TemplateButtonReplyMessage.fromObject>[0];
+        productMessage?: Parameters<typeof ProductMessage.fromObject>[0];
+        deviceSentMessage?: Parameters<typeof DeviceSentMessage.fromObject>[0];
     }): Message {
         const message = new Message({});
         if (data.conversation != null) {
@@ -9712,36 +9335,35 @@ export class Message extends pb_1.Message {
     }
     toObject() {
         const data: {
-            conversation?: string;
-            senderKeyDistributionMessage?: ReturnType<typeof SenderKeyDistributionMessage.prototype.toObject>;
-            imageMessage?: ReturnType<typeof ImageMessage.prototype.toObject>;
-            contactMessage?: ReturnType<typeof ContactMessage.prototype.toObject>;
-            locationMessage?: ReturnType<typeof LocationMessage.prototype.toObject>;
-            extendedTextMessage?: ReturnType<typeof ExtendedTextMessage.prototype.toObject>;
-            documentMessage?: ReturnType<typeof DocumentMessage.prototype.toObject>;
-            audioMessage?: ReturnType<typeof AudioMessage.prototype.toObject>;
-            videoMessage?: ReturnType<typeof VideoMessage.prototype.toObject>;
-            call?: ReturnType<typeof Call.prototype.toObject>;
-            chat?: ReturnType<typeof Chat.prototype.toObject>;
-            protocolMessage?: ReturnType<typeof ProtocolMessage.prototype.toObject>;
-            contactsArrayMessage?: ReturnType<typeof ContactsArrayMessage.prototype.toObject>;
-            highlyStructuredMessage?: ReturnType<typeof HighlyStructuredMessage.prototype.toObject>;
-            fastRatchetKeySenderKeyDistributionMessage?: ReturnType<typeof SenderKeyDistributionMessage.prototype.toObject>;
-            sendPaymentMessage?: ReturnType<typeof SendPaymentMessage.prototype.toObject>;
-            liveLocationMessage?: ReturnType<typeof LiveLocationMessage.prototype.toObject>;
-            requestPaymentMessage?: ReturnType<typeof RequestPaymentMessage.prototype.toObject>;
-            declinePaymentRequestMessage?: ReturnType<typeof DeclinePaymentRequestMessage.prototype.toObject>;
-            cancelPaymentRequestMessage?: ReturnType<typeof CancelPaymentRequestMessage.prototype.toObject>;
-            templateMessage?: ReturnType<typeof TemplateMessage.prototype.toObject>;
-            stickerMessage?: ReturnType<typeof StickerMessage.prototype.toObject>;
-            groupInviteMessage?: ReturnType<typeof GroupInviteMessage.prototype.toObject>;
-            templateButtonReplyMessage?: ReturnType<typeof TemplateButtonReplyMessage.prototype.toObject>;
-            productMessage?: ReturnType<typeof ProductMessage.prototype.toObject>;
-            deviceSentMessage?: ReturnType<typeof DeviceSentMessage.prototype.toObject>;
-        } = {};
-        if (this.conversation != null) {
-            data.conversation = this.conversation;
-        }
+            conversation: string;
+            senderKeyDistributionMessage?: Parameters<typeof SenderKeyDistributionMessage.fromObject>[0];
+            imageMessage?: Parameters<typeof ImageMessage.fromObject>[0];
+            contactMessage?: Parameters<typeof ContactMessage.fromObject>[0];
+            locationMessage?: Parameters<typeof LocationMessage.fromObject>[0];
+            extendedTextMessage?: Parameters<typeof ExtendedTextMessage.fromObject>[0];
+            documentMessage?: Parameters<typeof DocumentMessage.fromObject>[0];
+            audioMessage?: Parameters<typeof AudioMessage.fromObject>[0];
+            videoMessage?: Parameters<typeof VideoMessage.fromObject>[0];
+            call?: Parameters<typeof Call.fromObject>[0];
+            chat?: Parameters<typeof Chat.fromObject>[0];
+            protocolMessage?: Parameters<typeof ProtocolMessage.fromObject>[0];
+            contactsArrayMessage?: Parameters<typeof ContactsArrayMessage.fromObject>[0];
+            highlyStructuredMessage?: Parameters<typeof HighlyStructuredMessage.fromObject>[0];
+            fastRatchetKeySenderKeyDistributionMessage?: Parameters<typeof SenderKeyDistributionMessage.fromObject>[0];
+            sendPaymentMessage?: Parameters<typeof SendPaymentMessage.fromObject>[0];
+            liveLocationMessage?: Parameters<typeof LiveLocationMessage.fromObject>[0];
+            requestPaymentMessage?: Parameters<typeof RequestPaymentMessage.fromObject>[0];
+            declinePaymentRequestMessage?: Parameters<typeof DeclinePaymentRequestMessage.fromObject>[0];
+            cancelPaymentRequestMessage?: Parameters<typeof CancelPaymentRequestMessage.fromObject>[0];
+            templateMessage?: Parameters<typeof TemplateMessage.fromObject>[0];
+            stickerMessage?: Parameters<typeof StickerMessage.fromObject>[0];
+            groupInviteMessage?: Parameters<typeof GroupInviteMessage.fromObject>[0];
+            templateButtonReplyMessage?: Parameters<typeof TemplateButtonReplyMessage.fromObject>[0];
+            productMessage?: Parameters<typeof ProductMessage.fromObject>[0];
+            deviceSentMessage?: Parameters<typeof DeviceSentMessage.fromObject>[0];
+        } = {
+            conversation: this.conversation
+        };
         if (this.senderKeyDistributionMessage != null) {
             data.senderKeyDistributionMessage = this.senderKeyDistributionMessage.toObject();
         }
@@ -10058,23 +9680,16 @@ export class MessageKey extends pb_1.Message {
     }
     toObject() {
         const data: {
-            remoteJid?: string;
-            fromMe?: boolean;
-            id?: string;
-            participant?: string;
-        } = {};
-        if (this.remoteJid != null) {
-            data.remoteJid = this.remoteJid;
-        }
-        if (this.fromMe != null) {
-            data.fromMe = this.fromMe;
-        }
-        if (this.id != null) {
-            data.id = this.id;
-        }
-        if (this.participant != null) {
-            data.participant = this.participant;
-        }
+            remoteJid: string;
+            fromMe: boolean;
+            id: string;
+            participant: string;
+        } = {
+            remoteJid: this.remoteJid,
+            fromMe: this.fromMe,
+            id: this.id,
+            participant: this.participant
+        };
         return data;
     }
     serialize(): Uint8Array;
@@ -10699,139 +10314,74 @@ export class WebFeatures extends pb_1.Message {
     }
     toObject() {
         const data: {
-            labelsDisplay?: WebFeatures.WEB_FEATURES_FLAG;
-            voipIndividualOutgoing?: WebFeatures.WEB_FEATURES_FLAG;
-            groupsV3?: WebFeatures.WEB_FEATURES_FLAG;
-            groupsV3Create?: WebFeatures.WEB_FEATURES_FLAG;
-            changeNumberV2?: WebFeatures.WEB_FEATURES_FLAG;
-            queryStatusV3Thumbnail?: WebFeatures.WEB_FEATURES_FLAG;
-            liveLocations?: WebFeatures.WEB_FEATURES_FLAG;
-            queryVname?: WebFeatures.WEB_FEATURES_FLAG;
-            voipIndividualIncoming?: WebFeatures.WEB_FEATURES_FLAG;
-            quickRepliesQuery?: WebFeatures.WEB_FEATURES_FLAG;
-            payments?: WebFeatures.WEB_FEATURES_FLAG;
-            stickerPackQuery?: WebFeatures.WEB_FEATURES_FLAG;
-            liveLocationsFinal?: WebFeatures.WEB_FEATURES_FLAG;
-            labelsEdit?: WebFeatures.WEB_FEATURES_FLAG;
-            mediaUpload?: WebFeatures.WEB_FEATURES_FLAG;
-            mediaUploadRichQuickReplies?: WebFeatures.WEB_FEATURES_FLAG;
-            vnameV2?: WebFeatures.WEB_FEATURES_FLAG;
-            videoPlaybackUrl?: WebFeatures.WEB_FEATURES_FLAG;
-            statusRanking?: WebFeatures.WEB_FEATURES_FLAG;
-            voipIndividualVideo?: WebFeatures.WEB_FEATURES_FLAG;
-            thirdPartyStickers?: WebFeatures.WEB_FEATURES_FLAG;
-            frequentlyForwardedSetting?: WebFeatures.WEB_FEATURES_FLAG;
-            groupsV4JoinPermission?: WebFeatures.WEB_FEATURES_FLAG;
-            recentStickers?: WebFeatures.WEB_FEATURES_FLAG;
-            catalog?: WebFeatures.WEB_FEATURES_FLAG;
-            starredStickers?: WebFeatures.WEB_FEATURES_FLAG;
-            voipGroupCall?: WebFeatures.WEB_FEATURES_FLAG;
-            templateMessage?: WebFeatures.WEB_FEATURES_FLAG;
-            templateMessageInteractivity?: WebFeatures.WEB_FEATURES_FLAG;
-            ephemeralMessages?: WebFeatures.WEB_FEATURES_FLAG;
-            e2ENotificationSync?: WebFeatures.WEB_FEATURES_FLAG;
-            recentStickersV2?: WebFeatures.WEB_FEATURES_FLAG;
-            syncdRelease1?: WebFeatures.WEB_FEATURES_FLAG;
-        } = {};
-        if (this.labelsDisplay != null) {
-            data.labelsDisplay = this.labelsDisplay;
-        }
-        if (this.voipIndividualOutgoing != null) {
-            data.voipIndividualOutgoing = this.voipIndividualOutgoing;
-        }
-        if (this.groupsV3 != null) {
-            data.groupsV3 = this.groupsV3;
-        }
-        if (this.groupsV3Create != null) {
-            data.groupsV3Create = this.groupsV3Create;
-        }
-        if (this.changeNumberV2 != null) {
-            data.changeNumberV2 = this.changeNumberV2;
-        }
-        if (this.queryStatusV3Thumbnail != null) {
-            data.queryStatusV3Thumbnail = this.queryStatusV3Thumbnail;
-        }
-        if (this.liveLocations != null) {
-            data.liveLocations = this.liveLocations;
-        }
-        if (this.queryVname != null) {
-            data.queryVname = this.queryVname;
-        }
-        if (this.voipIndividualIncoming != null) {
-            data.voipIndividualIncoming = this.voipIndividualIncoming;
-        }
-        if (this.quickRepliesQuery != null) {
-            data.quickRepliesQuery = this.quickRepliesQuery;
-        }
-        if (this.payments != null) {
-            data.payments = this.payments;
-        }
-        if (this.stickerPackQuery != null) {
-            data.stickerPackQuery = this.stickerPackQuery;
-        }
-        if (this.liveLocationsFinal != null) {
-            data.liveLocationsFinal = this.liveLocationsFinal;
-        }
-        if (this.labelsEdit != null) {
-            data.labelsEdit = this.labelsEdit;
-        }
-        if (this.mediaUpload != null) {
-            data.mediaUpload = this.mediaUpload;
-        }
-        if (this.mediaUploadRichQuickReplies != null) {
-            data.mediaUploadRichQuickReplies = this.mediaUploadRichQuickReplies;
-        }
-        if (this.vnameV2 != null) {
-            data.vnameV2 = this.vnameV2;
-        }
-        if (this.videoPlaybackUrl != null) {
-            data.videoPlaybackUrl = this.videoPlaybackUrl;
-        }
-        if (this.statusRanking != null) {
-            data.statusRanking = this.statusRanking;
-        }
-        if (this.voipIndividualVideo != null) {
-            data.voipIndividualVideo = this.voipIndividualVideo;
-        }
-        if (this.thirdPartyStickers != null) {
-            data.thirdPartyStickers = this.thirdPartyStickers;
-        }
-        if (this.frequentlyForwardedSetting != null) {
-            data.frequentlyForwardedSetting = this.frequentlyForwardedSetting;
-        }
-        if (this.groupsV4JoinPermission != null) {
-            data.groupsV4JoinPermission = this.groupsV4JoinPermission;
-        }
-        if (this.recentStickers != null) {
-            data.recentStickers = this.recentStickers;
-        }
-        if (this.catalog != null) {
-            data.catalog = this.catalog;
-        }
-        if (this.starredStickers != null) {
-            data.starredStickers = this.starredStickers;
-        }
-        if (this.voipGroupCall != null) {
-            data.voipGroupCall = this.voipGroupCall;
-        }
-        if (this.templateMessage != null) {
-            data.templateMessage = this.templateMessage;
-        }
-        if (this.templateMessageInteractivity != null) {
-            data.templateMessageInteractivity = this.templateMessageInteractivity;
-        }
-        if (this.ephemeralMessages != null) {
-            data.ephemeralMessages = this.ephemeralMessages;
-        }
-        if (this.e2ENotificationSync != null) {
-            data.e2ENotificationSync = this.e2ENotificationSync;
-        }
-        if (this.recentStickersV2 != null) {
-            data.recentStickersV2 = this.recentStickersV2;
-        }
-        if (this.syncdRelease1 != null) {
-            data.syncdRelease1 = this.syncdRelease1;
-        }
+            labelsDisplay: WebFeatures.WEB_FEATURES_FLAG;
+            voipIndividualOutgoing: WebFeatures.WEB_FEATURES_FLAG;
+            groupsV3: WebFeatures.WEB_FEATURES_FLAG;
+            groupsV3Create: WebFeatures.WEB_FEATURES_FLAG;
+            changeNumberV2: WebFeatures.WEB_FEATURES_FLAG;
+            queryStatusV3Thumbnail: WebFeatures.WEB_FEATURES_FLAG;
+            liveLocations: WebFeatures.WEB_FEATURES_FLAG;
+            queryVname: WebFeatures.WEB_FEATURES_FLAG;
+            voipIndividualIncoming: WebFeatures.WEB_FEATURES_FLAG;
+            quickRepliesQuery: WebFeatures.WEB_FEATURES_FLAG;
+            payments: WebFeatures.WEB_FEATURES_FLAG;
+            stickerPackQuery: WebFeatures.WEB_FEATURES_FLAG;
+            liveLocationsFinal: WebFeatures.WEB_FEATURES_FLAG;
+            labelsEdit: WebFeatures.WEB_FEATURES_FLAG;
+            mediaUpload: WebFeatures.WEB_FEATURES_FLAG;
+            mediaUploadRichQuickReplies: WebFeatures.WEB_FEATURES_FLAG;
+            vnameV2: WebFeatures.WEB_FEATURES_FLAG;
+            videoPlaybackUrl: WebFeatures.WEB_FEATURES_FLAG;
+            statusRanking: WebFeatures.WEB_FEATURES_FLAG;
+            voipIndividualVideo: WebFeatures.WEB_FEATURES_FLAG;
+            thirdPartyStickers: WebFeatures.WEB_FEATURES_FLAG;
+            frequentlyForwardedSetting: WebFeatures.WEB_FEATURES_FLAG;
+            groupsV4JoinPermission: WebFeatures.WEB_FEATURES_FLAG;
+            recentStickers: WebFeatures.WEB_FEATURES_FLAG;
+            catalog: WebFeatures.WEB_FEATURES_FLAG;
+            starredStickers: WebFeatures.WEB_FEATURES_FLAG;
+            voipGroupCall: WebFeatures.WEB_FEATURES_FLAG;
+            templateMessage: WebFeatures.WEB_FEATURES_FLAG;
+            templateMessageInteractivity: WebFeatures.WEB_FEATURES_FLAG;
+            ephemeralMessages: WebFeatures.WEB_FEATURES_FLAG;
+            e2ENotificationSync: WebFeatures.WEB_FEATURES_FLAG;
+            recentStickersV2: WebFeatures.WEB_FEATURES_FLAG;
+            syncdRelease1: WebFeatures.WEB_FEATURES_FLAG;
+        } = {
+            labelsDisplay: this.labelsDisplay,
+            voipIndividualOutgoing: this.voipIndividualOutgoing,
+            groupsV3: this.groupsV3,
+            groupsV3Create: this.groupsV3Create,
+            changeNumberV2: this.changeNumberV2,
+            queryStatusV3Thumbnail: this.queryStatusV3Thumbnail,
+            liveLocations: this.liveLocations,
+            queryVname: this.queryVname,
+            voipIndividualIncoming: this.voipIndividualIncoming,
+            quickRepliesQuery: this.quickRepliesQuery,
+            payments: this.payments,
+            stickerPackQuery: this.stickerPackQuery,
+            liveLocationsFinal: this.liveLocationsFinal,
+            labelsEdit: this.labelsEdit,
+            mediaUpload: this.mediaUpload,
+            mediaUploadRichQuickReplies: this.mediaUploadRichQuickReplies,
+            vnameV2: this.vnameV2,
+            videoPlaybackUrl: this.videoPlaybackUrl,
+            statusRanking: this.statusRanking,
+            voipIndividualVideo: this.voipIndividualVideo,
+            thirdPartyStickers: this.thirdPartyStickers,
+            frequentlyForwardedSetting: this.frequentlyForwardedSetting,
+            groupsV4JoinPermission: this.groupsV4JoinPermission,
+            recentStickers: this.recentStickers,
+            catalog: this.catalog,
+            starredStickers: this.starredStickers,
+            voipGroupCall: this.voipGroupCall,
+            templateMessage: this.templateMessage,
+            templateMessageInteractivity: this.templateMessageInteractivity,
+            ephemeralMessages: this.ephemeralMessages,
+            e2ENotificationSync: this.e2ENotificationSync,
+            recentStickersV2: this.recentStickersV2,
+            syncdRelease1: this.syncdRelease1
+        };
         return data;
     }
     serialize(): Uint8Array;
@@ -11092,7 +10642,7 @@ export class TabletNotificationsInfo extends pb_1.Message {
         timestamp?: number;
         unreadChats?: number;
         notifyMessageCount?: number;
-        notifyMessage?: ReturnType<typeof NotificationMessageInfo.prototype.toObject>[];
+        notifyMessage?: Parameters<typeof NotificationMessageInfo.fromObject>[0][];
     }): TabletNotificationsInfo {
         const message = new TabletNotificationsInfo({
             notifyMessage: data.notifyMessage.map(item => NotificationMessageInfo.fromObject(item))
@@ -11110,23 +10660,16 @@ export class TabletNotificationsInfo extends pb_1.Message {
     }
     toObject() {
         const data: {
-            timestamp?: number;
-            unreadChats?: number;
-            notifyMessageCount?: number;
-            notifyMessage?: ReturnType<typeof NotificationMessageInfo.prototype.toObject>[];
-        } = {};
-        if (this.timestamp != null) {
-            data.timestamp = this.timestamp;
-        }
-        if (this.unreadChats != null) {
-            data.unreadChats = this.unreadChats;
-        }
-        if (this.notifyMessageCount != null) {
-            data.notifyMessageCount = this.notifyMessageCount;
-        }
-        if (this.notifyMessage != null) {
-            data.notifyMessage = this.notifyMessage.map((item: NotificationMessageInfo) => item.toObject());
-        }
+            timestamp: number;
+            unreadChats: number;
+            notifyMessageCount: number;
+            notifyMessage: Parameters<typeof NotificationMessageInfo.fromObject>[0][];
+        } = {
+            timestamp: this.timestamp,
+            unreadChats: this.unreadChats,
+            notifyMessageCount: this.notifyMessageCount,
+            notifyMessage: this.notifyMessage.map((item: NotificationMessageInfo) => item.toObject())
+        };
         return data;
     }
     serialize(): Uint8Array;
@@ -11236,8 +10779,8 @@ export class NotificationMessageInfo extends pb_1.Message {
         return pb_1.Message.getField(this, 4) != null;
     }
     static fromObject(data: {
-        key?: ReturnType<typeof MessageKey.prototype.toObject>;
-        message?: ReturnType<typeof Message.prototype.toObject>;
+        key?: Parameters<typeof MessageKey.fromObject>[0];
+        message?: Parameters<typeof Message.fromObject>[0];
         messageTimestamp?: number;
         participant?: string;
     }): NotificationMessageInfo {
@@ -11258,22 +10801,19 @@ export class NotificationMessageInfo extends pb_1.Message {
     }
     toObject() {
         const data: {
-            key?: ReturnType<typeof MessageKey.prototype.toObject>;
-            message?: ReturnType<typeof Message.prototype.toObject>;
-            messageTimestamp?: number;
-            participant?: string;
-        } = {};
+            key?: Parameters<typeof MessageKey.fromObject>[0];
+            message?: Parameters<typeof Message.fromObject>[0];
+            messageTimestamp: number;
+            participant: string;
+        } = {
+            messageTimestamp: this.messageTimestamp,
+            participant: this.participant
+        };
         if (this.key != null) {
             data.key = this.key.toObject();
         }
         if (this.message != null) {
             data.message = this.message.toObject();
-        }
-        if (this.messageTimestamp != null) {
-            data.messageTimestamp = this.messageTimestamp;
-        }
-        if (this.participant != null) {
-            data.participant = this.participant;
         }
         return data;
     }
@@ -11382,7 +10922,7 @@ export class WebNotificationsInfo extends pb_1.Message {
         timestamp?: number;
         unreadChats?: number;
         notifyMessageCount?: number;
-        notifyMessages?: ReturnType<typeof WebMessageInfo.prototype.toObject>[];
+        notifyMessages?: Parameters<typeof WebMessageInfo.fromObject>[0][];
     }): WebNotificationsInfo {
         const message = new WebNotificationsInfo({
             notifyMessages: data.notifyMessages.map(item => WebMessageInfo.fromObject(item))
@@ -11400,23 +10940,16 @@ export class WebNotificationsInfo extends pb_1.Message {
     }
     toObject() {
         const data: {
-            timestamp?: number;
-            unreadChats?: number;
-            notifyMessageCount?: number;
-            notifyMessages?: ReturnType<typeof WebMessageInfo.prototype.toObject>[];
-        } = {};
-        if (this.timestamp != null) {
-            data.timestamp = this.timestamp;
-        }
-        if (this.unreadChats != null) {
-            data.unreadChats = this.unreadChats;
-        }
-        if (this.notifyMessageCount != null) {
-            data.notifyMessageCount = this.notifyMessageCount;
-        }
-        if (this.notifyMessages != null) {
-            data.notifyMessages = this.notifyMessages.map((item: WebMessageInfo) => item.toObject());
-        }
+            timestamp: number;
+            unreadChats: number;
+            notifyMessageCount: number;
+            notifyMessages: Parameters<typeof WebMessageInfo.fromObject>[0][];
+        } = {
+            timestamp: this.timestamp,
+            unreadChats: this.unreadChats,
+            notifyMessageCount: this.notifyMessageCount,
+            notifyMessages: this.notifyMessages.map((item: WebMessageInfo) => item.toObject())
+        };
         return data;
     }
     serialize(): Uint8Array;
@@ -11609,7 +11142,7 @@ export class PaymentInfo extends pb_1.Message {
         receiverJid?: string;
         status?: PaymentInfo.PAYMENT_INFO_STATUS;
         transactionTimestamp?: number;
-        requestMessageKey?: ReturnType<typeof MessageKey.prototype.toObject>;
+        requestMessageKey?: Parameters<typeof MessageKey.fromObject>[0];
         expiryTimestamp?: number;
         futureproofed?: boolean;
         currency?: string;
@@ -11650,46 +11183,29 @@ export class PaymentInfo extends pb_1.Message {
     }
     toObject() {
         const data: {
-            currencyDeprecated?: PaymentInfo.PAYMENT_INFO_CURRENCY;
-            amount1000?: number;
-            receiverJid?: string;
-            status?: PaymentInfo.PAYMENT_INFO_STATUS;
-            transactionTimestamp?: number;
-            requestMessageKey?: ReturnType<typeof MessageKey.prototype.toObject>;
-            expiryTimestamp?: number;
-            futureproofed?: boolean;
-            currency?: string;
-            txnStatus?: PaymentInfo.PAYMENT_INFO_TXNSTATUS;
-        } = {};
-        if (this.currencyDeprecated != null) {
-            data.currencyDeprecated = this.currencyDeprecated;
-        }
-        if (this.amount1000 != null) {
-            data.amount1000 = this.amount1000;
-        }
-        if (this.receiverJid != null) {
-            data.receiverJid = this.receiverJid;
-        }
-        if (this.status != null) {
-            data.status = this.status;
-        }
-        if (this.transactionTimestamp != null) {
-            data.transactionTimestamp = this.transactionTimestamp;
-        }
+            currencyDeprecated: PaymentInfo.PAYMENT_INFO_CURRENCY;
+            amount1000: number;
+            receiverJid: string;
+            status: PaymentInfo.PAYMENT_INFO_STATUS;
+            transactionTimestamp: number;
+            requestMessageKey?: Parameters<typeof MessageKey.fromObject>[0];
+            expiryTimestamp: number;
+            futureproofed: boolean;
+            currency: string;
+            txnStatus: PaymentInfo.PAYMENT_INFO_TXNSTATUS;
+        } = {
+            currencyDeprecated: this.currencyDeprecated,
+            amount1000: this.amount1000,
+            receiverJid: this.receiverJid,
+            status: this.status,
+            transactionTimestamp: this.transactionTimestamp,
+            expiryTimestamp: this.expiryTimestamp,
+            futureproofed: this.futureproofed,
+            currency: this.currency,
+            txnStatus: this.txnStatus
+        };
         if (this.requestMessageKey != null) {
             data.requestMessageKey = this.requestMessageKey.toObject();
-        }
-        if (this.expiryTimestamp != null) {
-            data.expiryTimestamp = this.expiryTimestamp;
-        }
-        if (this.futureproofed != null) {
-            data.futureproofed = this.futureproofed;
-        }
-        if (this.currency != null) {
-            data.currency = this.currency;
-        }
-        if (this.txnStatus != null) {
-            data.txnStatus = this.txnStatus;
         }
         return data;
     }
@@ -12128,8 +11644,8 @@ export class WebMessageInfo extends pb_1.Message {
         return pb_1.Message.getField(this, 34) != null;
     }
     static fromObject(data: {
-        key?: ReturnType<typeof MessageKey.prototype.toObject>;
-        message?: ReturnType<typeof Message.prototype.toObject>;
+        key?: Parameters<typeof MessageKey.fromObject>[0];
+        message?: Parameters<typeof Message.fromObject>[0];
         messageTimestamp?: number;
         status?: WebMessageInfo.WEB_MESSAGE_INFO_STATUS;
         participant?: string;
@@ -12143,12 +11659,12 @@ export class WebMessageInfo extends pb_1.Message {
         urlNumber?: boolean;
         messageStubType?: WebMessageInfo.WEB_MESSAGE_INFO_STUBTYPE;
         clearMedia?: boolean;
-        messageStubParameters: string[];
+        messageStubParameters?: string[];
         duration?: number;
-        labels: string[];
-        paymentInfo?: ReturnType<typeof PaymentInfo.prototype.toObject>;
-        finalLiveLocation?: ReturnType<typeof LiveLocationMessage.prototype.toObject>;
-        quotedPaymentInfo?: ReturnType<typeof PaymentInfo.prototype.toObject>;
+        labels?: string[];
+        paymentInfo?: Parameters<typeof PaymentInfo.fromObject>[0];
+        finalLiveLocation?: Parameters<typeof LiveLocationMessage.fromObject>[0];
+        quotedPaymentInfo?: Parameters<typeof PaymentInfo.fromObject>[0];
         ephemeralStartTimestamp?: number;
         ephemeralDuration?: number;
         ephemeralOffToOn?: boolean;
@@ -12225,81 +11741,56 @@ export class WebMessageInfo extends pb_1.Message {
     }
     toObject() {
         const data: {
-            key?: ReturnType<typeof MessageKey.prototype.toObject>;
-            message?: ReturnType<typeof Message.prototype.toObject>;
-            messageTimestamp?: number;
-            status?: WebMessageInfo.WEB_MESSAGE_INFO_STATUS;
-            participant?: string;
-            ignore?: boolean;
-            starred?: boolean;
-            broadcast?: boolean;
-            pushName?: string;
-            mediaCiphertextSha256?: Uint8Array;
-            multicast?: boolean;
-            urlText?: boolean;
-            urlNumber?: boolean;
-            messageStubType?: WebMessageInfo.WEB_MESSAGE_INFO_STUBTYPE;
-            clearMedia?: boolean;
+            key?: Parameters<typeof MessageKey.fromObject>[0];
+            message?: Parameters<typeof Message.fromObject>[0];
+            messageTimestamp: number;
+            status: WebMessageInfo.WEB_MESSAGE_INFO_STATUS;
+            participant: string;
+            ignore: boolean;
+            starred: boolean;
+            broadcast: boolean;
+            pushName: string;
+            mediaCiphertextSha256: Uint8Array;
+            multicast: boolean;
+            urlText: boolean;
+            urlNumber: boolean;
+            messageStubType: WebMessageInfo.WEB_MESSAGE_INFO_STUBTYPE;
+            clearMedia: boolean;
             messageStubParameters: string[];
-            duration?: number;
+            duration: number;
             labels: string[];
-            paymentInfo?: ReturnType<typeof PaymentInfo.prototype.toObject>;
-            finalLiveLocation?: ReturnType<typeof LiveLocationMessage.prototype.toObject>;
-            quotedPaymentInfo?: ReturnType<typeof PaymentInfo.prototype.toObject>;
-            ephemeralStartTimestamp?: number;
-            ephemeralDuration?: number;
-            ephemeralOffToOn?: boolean;
+            paymentInfo?: Parameters<typeof PaymentInfo.fromObject>[0];
+            finalLiveLocation?: Parameters<typeof LiveLocationMessage.fromObject>[0];
+            quotedPaymentInfo?: Parameters<typeof PaymentInfo.fromObject>[0];
+            ephemeralStartTimestamp: number;
+            ephemeralDuration: number;
+            ephemeralOffToOn: boolean;
         } = {
+            messageTimestamp: this.messageTimestamp,
+            status: this.status,
+            participant: this.participant,
+            ignore: this.ignore,
+            starred: this.starred,
+            broadcast: this.broadcast,
+            pushName: this.pushName,
+            mediaCiphertextSha256: this.mediaCiphertextSha256,
+            multicast: this.multicast,
+            urlText: this.urlText,
+            urlNumber: this.urlNumber,
+            messageStubType: this.messageStubType,
+            clearMedia: this.clearMedia,
             messageStubParameters: this.messageStubParameters,
-            labels: this.labels
+            duration: this.duration,
+            labels: this.labels,
+            ephemeralStartTimestamp: this.ephemeralStartTimestamp,
+            ephemeralDuration: this.ephemeralDuration,
+            ephemeralOffToOn: this.ephemeralOffToOn
         };
         if (this.key != null) {
             data.key = this.key.toObject();
         }
         if (this.message != null) {
             data.message = this.message.toObject();
-        }
-        if (this.messageTimestamp != null) {
-            data.messageTimestamp = this.messageTimestamp;
-        }
-        if (this.status != null) {
-            data.status = this.status;
-        }
-        if (this.participant != null) {
-            data.participant = this.participant;
-        }
-        if (this.ignore != null) {
-            data.ignore = this.ignore;
-        }
-        if (this.starred != null) {
-            data.starred = this.starred;
-        }
-        if (this.broadcast != null) {
-            data.broadcast = this.broadcast;
-        }
-        if (this.pushName != null) {
-            data.pushName = this.pushName;
-        }
-        if (this.mediaCiphertextSha256 != null) {
-            data.mediaCiphertextSha256 = this.mediaCiphertextSha256;
-        }
-        if (this.multicast != null) {
-            data.multicast = this.multicast;
-        }
-        if (this.urlText != null) {
-            data.urlText = this.urlText;
-        }
-        if (this.urlNumber != null) {
-            data.urlNumber = this.urlNumber;
-        }
-        if (this.messageStubType != null) {
-            data.messageStubType = this.messageStubType;
-        }
-        if (this.clearMedia != null) {
-            data.clearMedia = this.clearMedia;
-        }
-        if (this.duration != null) {
-            data.duration = this.duration;
         }
         if (this.paymentInfo != null) {
             data.paymentInfo = this.paymentInfo.toObject();
@@ -12309,15 +11800,6 @@ export class WebMessageInfo extends pb_1.Message {
         }
         if (this.quotedPaymentInfo != null) {
             data.quotedPaymentInfo = this.quotedPaymentInfo.toObject();
-        }
-        if (this.ephemeralStartTimestamp != null) {
-            data.ephemeralStartTimestamp = this.ephemeralStartTimestamp;
-        }
-        if (this.ephemeralDuration != null) {
-            data.ephemeralDuration = this.ephemeralDuration;
-        }
-        if (this.ephemeralOffToOn != null) {
-            data.ephemeralOffToOn = this.ephemeralOffToOn;
         }
         return data;
     }

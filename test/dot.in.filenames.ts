@@ -35,11 +35,10 @@ export namespace dot {
         }
         toObject() {
             const data: {
-                name?: string[];
-            } = {};
-            if (this.name != null) {
-                data.name = this.name;
-            }
+                name: string[];
+            } = {
+                name: this.name
+            };
             return data;
         }
         serialize(): Uint8Array;

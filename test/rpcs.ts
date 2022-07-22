@@ -103,19 +103,14 @@ export class _Object extends pb_1.Message {
     }
     toObject() {
         const data: {
-            id?: string;
-            size?: number;
-            mimeType?: string;
-        } = {};
-        if (this.id != null) {
-            data.id = this.id;
-        }
-        if (this.size != null) {
-            data.size = this.size;
-        }
-        if (this.mimeType != null) {
-            data.mimeType = this.mimeType;
-        }
+            id: string;
+            size: number;
+            mimeType: string;
+        } = {
+            id: this.id,
+            size: this.size,
+            mimeType: this.mimeType
+        };
         return data;
     }
     serialize(): Uint8Array;
@@ -192,7 +187,7 @@ export class Chunk extends pb_1.Message {
     }
     static fromObject(data: {
         data?: Uint8Array;
-        range?: ReturnType<typeof Chunk.Range.prototype.toObject>;
+        range?: Parameters<typeof Chunk.Range.fromObject>[0];
     }): Chunk {
         const message = new Chunk({});
         if (data.data != null) {
@@ -205,12 +200,11 @@ export class Chunk extends pb_1.Message {
     }
     toObject() {
         const data: {
-            data?: Uint8Array;
-            range?: ReturnType<typeof Chunk.Range.prototype.toObject>;
-        } = {};
-        if (this.data != null) {
-            data.data = this.data;
-        }
+            data: Uint8Array;
+            range?: Parameters<typeof Chunk.Range.fromObject>[0];
+        } = {
+            data: this.data
+        };
         if (this.range != null) {
             data.range = this.range.toObject();
         }
@@ -296,15 +290,12 @@ export namespace Chunk {
         }
         toObject() {
             const data: {
-                start?: number;
-                end?: number;
-            } = {};
-            if (this.start != null) {
-                data.start = this.start;
-            }
-            if (this.end != null) {
-                data.end = this.end;
-            }
+                start: number;
+                end: number;
+            } = {
+                start: this.start,
+                end: this.end
+            };
             return data;
         }
         serialize(): Uint8Array;
@@ -376,7 +367,7 @@ export namespace Chunk {
         }
         static fromObject(data: {
             id?: string;
-            range?: ReturnType<typeof Chunk.Range.prototype.toObject>;
+            range?: Parameters<typeof Chunk.Range.fromObject>[0];
         }): Query {
             const message = new Query({});
             if (data.id != null) {
@@ -389,12 +380,11 @@ export namespace Chunk {
         }
         toObject() {
             const data: {
-                id?: string;
-                range?: ReturnType<typeof Chunk.Range.prototype.toObject>;
-            } = {};
-            if (this.id != null) {
-                data.id = this.id;
-            }
+                id: string;
+                range?: Parameters<typeof Chunk.Range.fromObject>[0];
+            } = {
+                id: this.id
+            };
             if (this.range != null) {
                 data.range = this.range.toObject();
             }
@@ -466,11 +456,10 @@ export class Query extends pb_1.Message {
     }
     toObject() {
         const data: {
-            id?: string;
-        } = {};
-        if (this.id != null) {
-            data.id = this.id;
-        }
+            id: string;
+        } = {
+            id: this.id
+        };
         return data;
     }
     serialize(): Uint8Array;
@@ -524,7 +513,7 @@ export namespace Query {
             pb_1.Message.setRepeatedWrapperField(this, 1, value);
         }
         static fromObject(data: {
-            objects?: ReturnType<typeof _Object.prototype.toObject>[];
+            objects?: Parameters<typeof _Object.fromObject>[0][];
         }): Result {
             const message = new Result({});
             if (data.objects != null) {
@@ -534,11 +523,10 @@ export namespace Query {
         }
         toObject() {
             const data: {
-                objects?: ReturnType<typeof _Object.prototype.toObject>[];
-            } = {};
-            if (this.objects != null) {
-                data.objects = this.objects.map((item: _Object) => item.toObject());
-            }
+                objects: Parameters<typeof _Object.fromObject>[0][];
+            } = {
+                objects: this.objects.map((item: _Object) => item.toObject())
+            };
             return data;
         }
         serialize(): Uint8Array;
@@ -606,7 +594,7 @@ export class Put extends pb_1.Message {
     }
     static fromObject(data: {
         id?: string;
-        chunk?: ReturnType<typeof Chunk.prototype.toObject>;
+        chunk?: Parameters<typeof Chunk.fromObject>[0];
     }): Put {
         const message = new Put({});
         if (data.id != null) {
@@ -619,12 +607,11 @@ export class Put extends pb_1.Message {
     }
     toObject() {
         const data: {
-            id?: string;
-            chunk?: ReturnType<typeof Chunk.prototype.toObject>;
-        } = {};
-        if (this.id != null) {
-            data.id = this.id;
-        }
+            id: string;
+            chunk?: Parameters<typeof Chunk.fromObject>[0];
+        } = {
+            id: this.id
+        };
         if (this.chunk != null) {
             data.chunk = this.chunk.toObject();
         }

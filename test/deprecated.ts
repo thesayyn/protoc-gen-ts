@@ -100,19 +100,14 @@ export class MessageName extends pb_1.Message {
     }
     toObject() {
         const data: {
-            deprecated_field?: string;
-            me?: string;
-            me_deprecated?: string;
-        } = {};
-        if (this.deprecated_field != null) {
-            data.deprecated_field = this.deprecated_field;
-        }
-        if (this.me != null) {
-            data.me = this.me;
-        }
-        if (this.me_deprecated != null) {
-            data.me_deprecated = this.me_deprecated;
-        }
+            deprecated_field: string;
+            me: string;
+            me_deprecated: string;
+        } = {
+            deprecated_field: this.deprecated_field,
+            me: this.me,
+            me_deprecated: this.me_deprecated
+        };
         return data;
     }
     serialize(): Uint8Array;

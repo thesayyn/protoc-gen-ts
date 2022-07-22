@@ -53,8 +53,8 @@ export namespace importdirective {
             pb_1.Message.setField(this, 3, value);
         }
         static fromObject(data: {
-            importedField?: ReturnType<typeof dependency_1.importdirective.Imported.prototype.toObject>;
-            submessageField?: ReturnType<typeof dependency_1.importdirective.Imported.SubMessage.prototype.toObject>;
+            importedField?: Parameters<typeof dependency_1.importdirective.Imported.fromObject>[0];
+            submessageField?: Parameters<typeof dependency_1.importdirective.Imported.SubMessage.fromObject>[0];
             enumField?: dependency_1.importdirective.Imported.SubMessage.MyEnum;
         }): Message {
             const message = new Message({});
@@ -71,18 +71,17 @@ export namespace importdirective {
         }
         toObject() {
             const data: {
-                importedField?: ReturnType<typeof dependency_1.importdirective.Imported.prototype.toObject>;
-                submessageField?: ReturnType<typeof dependency_1.importdirective.Imported.SubMessage.prototype.toObject>;
-                enumField?: dependency_1.importdirective.Imported.SubMessage.MyEnum;
-            } = {};
+                importedField?: Parameters<typeof dependency_1.importdirective.Imported.fromObject>[0];
+                submessageField?: Parameters<typeof dependency_1.importdirective.Imported.SubMessage.fromObject>[0];
+                enumField: dependency_1.importdirective.Imported.SubMessage.MyEnum;
+            } = {
+                enumField: this.enumField
+            };
             if (this.importedField != null) {
                 data.importedField = this.importedField.toObject();
             }
             if (this.submessageField != null) {
                 data.submessageField = this.submessageField.toObject();
-            }
-            if (this.enumField != null) {
-                data.enumField = this.enumField;
             }
             return data;
         }

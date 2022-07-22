@@ -49,15 +49,12 @@ export namespace main {
         }
         toObject() {
             const data: {
-                language?: Code.Language;
-                lines?: number;
-            } = {};
-            if (this.language != null) {
-                data.language = this.language;
-            }
-            if (this.lines != null) {
-                data.lines = this.lines;
-            }
+                language: Code.Language;
+                lines: number;
+            } = {
+                language: this.language,
+                lines: this.lines
+            };
             return data;
         }
         serialize(): Uint8Array;

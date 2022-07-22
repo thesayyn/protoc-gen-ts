@@ -62,19 +62,14 @@ export class JSType extends pb_1.Message {
     }
     toObject() {
         const data: {
-            int_but_string?: string;
-            int_and_normal?: number;
-            int_and_number?: number;
-        } = {};
-        if (this.int_but_string != null) {
-            data.int_but_string = this.int_but_string;
-        }
-        if (this.int_and_normal != null) {
-            data.int_and_normal = this.int_and_normal;
-        }
-        if (this.int_and_number != null) {
-            data.int_and_number = this.int_and_number;
-        }
+            int_but_string: string;
+            int_and_normal: number;
+            int_and_number: number;
+        } = {
+            int_but_string: this.int_but_string,
+            int_and_normal: this.int_and_normal,
+            int_and_number: this.int_and_number
+        };
         return data;
     }
     serialize(): Uint8Array;
