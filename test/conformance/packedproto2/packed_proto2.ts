@@ -4,6 +4,9 @@
  * source: test/conformance/packedproto2/packedproto2.proto
  * git: https://github.com/thesayyn/protoc-gen-ts */
 import * as pb_1 from "google-protobuf";
+type RecursivePartial<T> = {
+    [P in keyof T]?: T[P] extends (infer U)[] ? RecursivePartial<U>[] : T[P] extends Uint8Array ? T[P] : T[P] extends object ? RecursivePartial<T[P]> : T[P];
+};
 export class HydratedQuickReplyButton extends pb_1.Message {
     #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
@@ -39,10 +42,7 @@ export class HydratedQuickReplyButton extends pb_1.Message {
     get has_id() {
         return pb_1.Message.getField(this, 2) != null;
     }
-    static fromObject(data: {
-        displayText?: string;
-        id?: string;
-    }): HydratedQuickReplyButton {
+    static fromObject(data: RecursivePartial<HydratedQuickReplyButton.AsObject>): HydratedQuickReplyButton {
         const message = new HydratedQuickReplyButton({});
         if (data.displayText != null) {
             message.displayText = data.displayText;
@@ -53,10 +53,7 @@ export class HydratedQuickReplyButton extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            displayText: string;
-            id: string;
-        } = {
+        const data: HydratedQuickReplyButton.AsObject = {
             displayText: this.displayText,
             id: this.id
         };
@@ -97,6 +94,12 @@ export class HydratedQuickReplyButton extends pb_1.Message {
         return HydratedQuickReplyButton.deserialize(bytes);
     }
 }
+export namespace HydratedQuickReplyButton {
+    export type AsObject = {
+        displayText: string;
+        id: string;
+    };
+}
 export class HydratedURLButton extends pb_1.Message {
     #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
@@ -132,10 +135,7 @@ export class HydratedURLButton extends pb_1.Message {
     get has_url() {
         return pb_1.Message.getField(this, 2) != null;
     }
-    static fromObject(data: {
-        displayText?: string;
-        url?: string;
-    }): HydratedURLButton {
+    static fromObject(data: RecursivePartial<HydratedURLButton.AsObject>): HydratedURLButton {
         const message = new HydratedURLButton({});
         if (data.displayText != null) {
             message.displayText = data.displayText;
@@ -146,10 +146,7 @@ export class HydratedURLButton extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            displayText: string;
-            url: string;
-        } = {
+        const data: HydratedURLButton.AsObject = {
             displayText: this.displayText,
             url: this.url
         };
@@ -190,6 +187,12 @@ export class HydratedURLButton extends pb_1.Message {
         return HydratedURLButton.deserialize(bytes);
     }
 }
+export namespace HydratedURLButton {
+    export type AsObject = {
+        displayText: string;
+        url: string;
+    };
+}
 export class HydratedCallButton extends pb_1.Message {
     #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
@@ -225,10 +228,7 @@ export class HydratedCallButton extends pb_1.Message {
     get has_phoneNumber() {
         return pb_1.Message.getField(this, 2) != null;
     }
-    static fromObject(data: {
-        displayText?: string;
-        phoneNumber?: string;
-    }): HydratedCallButton {
+    static fromObject(data: RecursivePartial<HydratedCallButton.AsObject>): HydratedCallButton {
         const message = new HydratedCallButton({});
         if (data.displayText != null) {
             message.displayText = data.displayText;
@@ -239,10 +239,7 @@ export class HydratedCallButton extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            displayText: string;
-            phoneNumber: string;
-        } = {
+        const data: HydratedCallButton.AsObject = {
             displayText: this.displayText,
             phoneNumber: this.phoneNumber
         };
@@ -282,6 +279,12 @@ export class HydratedCallButton extends pb_1.Message {
     static deserializeBinary(bytes: Uint8Array): HydratedCallButton {
         return HydratedCallButton.deserialize(bytes);
     }
+}
+export namespace HydratedCallButton {
+    export type AsObject = {
+        displayText: string;
+        phoneNumber: string;
+    };
 }
 export class HydratedTemplateButton extends pb_1.Message {
     #one_of_decls: number[][] = [[1, 2, 3]];
@@ -364,12 +367,7 @@ export class HydratedTemplateButton extends pb_1.Message {
         };
         return cases[pb_1.Message.computeOneofCase(this, [1, 2, 3])];
     }
-    static fromObject(data: {
-        index?: number;
-        quickReplyButton?: Parameters<typeof HydratedQuickReplyButton.fromObject>[0];
-        urlButton?: Parameters<typeof HydratedURLButton.fromObject>[0];
-        callButton?: Parameters<typeof HydratedCallButton.fromObject>[0];
-    }): HydratedTemplateButton {
+    static fromObject(data: RecursivePartial<HydratedTemplateButton.AsObject>): HydratedTemplateButton {
         const message = new HydratedTemplateButton({});
         if (data.index != null) {
             message.index = data.index;
@@ -386,12 +384,7 @@ export class HydratedTemplateButton extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            index: number;
-            quickReplyButton?: Parameters<typeof HydratedQuickReplyButton.fromObject>[0];
-            urlButton?: Parameters<typeof HydratedURLButton.fromObject>[0];
-            callButton?: Parameters<typeof HydratedCallButton.fromObject>[0];
-        } = {
+        const data: HydratedTemplateButton.AsObject = {
             index: this.index
         };
         if (this.quickReplyButton != null) {
@@ -450,6 +443,14 @@ export class HydratedTemplateButton extends pb_1.Message {
         return HydratedTemplateButton.deserialize(bytes);
     }
 }
+export namespace HydratedTemplateButton {
+    export type AsObject = {
+        index: number;
+        quickReplyButton?: HydratedQuickReplyButton.AsObject;
+        urlButton?: HydratedURLButton.AsObject;
+        callButton?: HydratedCallButton.AsObject;
+    };
+}
 export class QuickReplyButton extends pb_1.Message {
     #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
@@ -485,10 +486,7 @@ export class QuickReplyButton extends pb_1.Message {
     get has_id() {
         return pb_1.Message.getField(this, 2) != null;
     }
-    static fromObject(data: {
-        displayText?: Parameters<typeof HighlyStructuredMessage.fromObject>[0];
-        id?: string;
-    }): QuickReplyButton {
+    static fromObject(data: RecursivePartial<QuickReplyButton.AsObject>): QuickReplyButton {
         const message = new QuickReplyButton({});
         if (data.displayText != null) {
             message.displayText = HighlyStructuredMessage.fromObject(data.displayText);
@@ -499,10 +497,7 @@ export class QuickReplyButton extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            displayText?: Parameters<typeof HighlyStructuredMessage.fromObject>[0];
-            id: string;
-        } = {
+        const data: QuickReplyButton.AsObject = {
             id: this.id
         };
         if (this.displayText != null) {
@@ -545,6 +540,12 @@ export class QuickReplyButton extends pb_1.Message {
         return QuickReplyButton.deserialize(bytes);
     }
 }
+export namespace QuickReplyButton {
+    export type AsObject = {
+        displayText?: HighlyStructuredMessage.AsObject;
+        id: string;
+    };
+}
 export class URLButton extends pb_1.Message {
     #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
@@ -580,10 +581,7 @@ export class URLButton extends pb_1.Message {
     get has_url() {
         return pb_1.Message.getField(this, 2) != null;
     }
-    static fromObject(data: {
-        displayText?: Parameters<typeof HighlyStructuredMessage.fromObject>[0];
-        url?: Parameters<typeof HighlyStructuredMessage.fromObject>[0];
-    }): URLButton {
+    static fromObject(data: RecursivePartial<URLButton.AsObject>): URLButton {
         const message = new URLButton({});
         if (data.displayText != null) {
             message.displayText = HighlyStructuredMessage.fromObject(data.displayText);
@@ -594,10 +592,7 @@ export class URLButton extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            displayText?: Parameters<typeof HighlyStructuredMessage.fromObject>[0];
-            url?: Parameters<typeof HighlyStructuredMessage.fromObject>[0];
-        } = {};
+        const data: URLButton.AsObject = {};
         if (this.displayText != null) {
             data.displayText = this.displayText.toObject();
         }
@@ -641,6 +636,12 @@ export class URLButton extends pb_1.Message {
         return URLButton.deserialize(bytes);
     }
 }
+export namespace URLButton {
+    export type AsObject = {
+        displayText?: HighlyStructuredMessage.AsObject;
+        url?: HighlyStructuredMessage.AsObject;
+    };
+}
 export class CallButton extends pb_1.Message {
     #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
@@ -676,10 +677,7 @@ export class CallButton extends pb_1.Message {
     get has_phoneNumber() {
         return pb_1.Message.getField(this, 2) != null;
     }
-    static fromObject(data: {
-        displayText?: Parameters<typeof HighlyStructuredMessage.fromObject>[0];
-        phoneNumber?: Parameters<typeof HighlyStructuredMessage.fromObject>[0];
-    }): CallButton {
+    static fromObject(data: RecursivePartial<CallButton.AsObject>): CallButton {
         const message = new CallButton({});
         if (data.displayText != null) {
             message.displayText = HighlyStructuredMessage.fromObject(data.displayText);
@@ -690,10 +688,7 @@ export class CallButton extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            displayText?: Parameters<typeof HighlyStructuredMessage.fromObject>[0];
-            phoneNumber?: Parameters<typeof HighlyStructuredMessage.fromObject>[0];
-        } = {};
+        const data: CallButton.AsObject = {};
         if (this.displayText != null) {
             data.displayText = this.displayText.toObject();
         }
@@ -736,6 +731,12 @@ export class CallButton extends pb_1.Message {
     static deserializeBinary(bytes: Uint8Array): CallButton {
         return CallButton.deserialize(bytes);
     }
+}
+export namespace CallButton {
+    export type AsObject = {
+        displayText?: HighlyStructuredMessage.AsObject;
+        phoneNumber?: HighlyStructuredMessage.AsObject;
+    };
 }
 export class TemplateButton extends pb_1.Message {
     #one_of_decls: number[][] = [[1, 2, 3]];
@@ -818,12 +819,7 @@ export class TemplateButton extends pb_1.Message {
         };
         return cases[pb_1.Message.computeOneofCase(this, [1, 2, 3])];
     }
-    static fromObject(data: {
-        index?: number;
-        quickReplyButton?: Parameters<typeof QuickReplyButton.fromObject>[0];
-        urlButton?: Parameters<typeof URLButton.fromObject>[0];
-        callButton?: Parameters<typeof CallButton.fromObject>[0];
-    }): TemplateButton {
+    static fromObject(data: RecursivePartial<TemplateButton.AsObject>): TemplateButton {
         const message = new TemplateButton({});
         if (data.index != null) {
             message.index = data.index;
@@ -840,12 +836,7 @@ export class TemplateButton extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            index: number;
-            quickReplyButton?: Parameters<typeof QuickReplyButton.fromObject>[0];
-            urlButton?: Parameters<typeof URLButton.fromObject>[0];
-            callButton?: Parameters<typeof CallButton.fromObject>[0];
-        } = {
+        const data: TemplateButton.AsObject = {
             index: this.index
         };
         if (this.quickReplyButton != null) {
@@ -904,6 +895,14 @@ export class TemplateButton extends pb_1.Message {
         return TemplateButton.deserialize(bytes);
     }
 }
+export namespace TemplateButton {
+    export type AsObject = {
+        index: number;
+        quickReplyButton?: QuickReplyButton.AsObject;
+        urlButton?: URLButton.AsObject;
+        callButton?: CallButton.AsObject;
+    };
+}
 export class Location extends pb_1.Message {
     #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
@@ -952,11 +951,7 @@ export class Location extends pb_1.Message {
     get has_name() {
         return pb_1.Message.getField(this, 3) != null;
     }
-    static fromObject(data: {
-        degreesLatitude?: number;
-        degreesLongitude?: number;
-        name?: string;
-    }): Location {
+    static fromObject(data: RecursivePartial<Location.AsObject>): Location {
         const message = new Location({});
         if (data.degreesLatitude != null) {
             message.degreesLatitude = data.degreesLatitude;
@@ -970,11 +965,7 @@ export class Location extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            degreesLatitude: number;
-            degreesLongitude: number;
-            name: string;
-        } = {
+        const data: Location.AsObject = {
             degreesLatitude: this.degreesLatitude,
             degreesLongitude: this.degreesLongitude,
             name: this.name
@@ -1020,6 +1011,13 @@ export class Location extends pb_1.Message {
     static deserializeBinary(bytes: Uint8Array): Location {
         return Location.deserialize(bytes);
     }
+}
+export namespace Location {
+    export type AsObject = {
+        degreesLatitude: number;
+        degreesLongitude: number;
+        name: string;
+    };
 }
 export class Point extends pb_1.Message {
     #one_of_decls: number[][] = [];
@@ -1082,12 +1080,7 @@ export class Point extends pb_1.Message {
     get has_y() {
         return pb_1.Message.getField(this, 4) != null;
     }
-    static fromObject(data: {
-        xDeprecated?: number;
-        yDeprecated?: number;
-        x?: number;
-        y?: number;
-    }): Point {
+    static fromObject(data: RecursivePartial<Point.AsObject>): Point {
         const message = new Point({});
         if (data.xDeprecated != null) {
             message.xDeprecated = data.xDeprecated;
@@ -1104,12 +1097,7 @@ export class Point extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            xDeprecated: number;
-            yDeprecated: number;
-            x: number;
-            y: number;
-        } = {
+        const data: Point.AsObject = {
             xDeprecated: this.xDeprecated,
             yDeprecated: this.yDeprecated,
             x: this.x,
@@ -1162,6 +1150,14 @@ export class Point extends pb_1.Message {
         return Point.deserialize(bytes);
     }
 }
+export namespace Point {
+    export type AsObject = {
+        xDeprecated: number;
+        yDeprecated: number;
+        x: number;
+        y: number;
+    };
+}
 export class InteractiveAnnotation extends pb_1.Message {
     #one_of_decls: number[][] = [[2]];
     constructor(data?: any[] | ({
@@ -1202,10 +1198,7 @@ export class InteractiveAnnotation extends pb_1.Message {
         };
         return cases[pb_1.Message.computeOneofCase(this, [2])];
     }
-    static fromObject(data: {
-        polygonVertices?: Parameters<typeof Point.fromObject>[0][];
-        location?: Parameters<typeof Location.fromObject>[0];
-    }): InteractiveAnnotation {
+    static fromObject(data: RecursivePartial<InteractiveAnnotation.AsObject>): InteractiveAnnotation {
         const message = new InteractiveAnnotation({
             polygonVertices: data.polygonVertices.map(item => Point.fromObject(item))
         });
@@ -1215,10 +1208,7 @@ export class InteractiveAnnotation extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            polygonVertices: Parameters<typeof Point.fromObject>[0][];
-            location?: Parameters<typeof Location.fromObject>[0];
-        } = {
+        const data: InteractiveAnnotation.AsObject = {
             polygonVertices: this.polygonVertices.map((item: Point) => item.toObject())
         };
         if (this.location != null) {
@@ -1260,6 +1250,12 @@ export class InteractiveAnnotation extends pb_1.Message {
     static deserializeBinary(bytes: Uint8Array): InteractiveAnnotation {
         return InteractiveAnnotation.deserialize(bytes);
     }
+}
+export namespace InteractiveAnnotation {
+    export type AsObject = {
+        polygonVertices: Point.AsObject[];
+        location?: Location.AsObject;
+    };
 }
 export class AdReplyInfo extends pb_1.Message {
     #one_of_decls: number[][] = [];
@@ -1322,12 +1318,7 @@ export class AdReplyInfo extends pb_1.Message {
     get has_caption() {
         return pb_1.Message.getField(this, 17) != null;
     }
-    static fromObject(data: {
-        advertiserName?: string;
-        mediaType?: AdReplyInfo.AD_REPLY_INFO_MEDIATYPE;
-        jpegThumbnail?: Uint8Array;
-        caption?: string;
-    }): AdReplyInfo {
+    static fromObject(data: RecursivePartial<AdReplyInfo.AsObject>): AdReplyInfo {
         const message = new AdReplyInfo({});
         if (data.advertiserName != null) {
             message.advertiserName = data.advertiserName;
@@ -1344,12 +1335,7 @@ export class AdReplyInfo extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            advertiserName: string;
-            mediaType: AdReplyInfo.AD_REPLY_INFO_MEDIATYPE;
-            jpegThumbnail: Uint8Array;
-            caption: string;
-        } = {
+        const data: AdReplyInfo.AsObject = {
             advertiserName: this.advertiserName,
             mediaType: this.mediaType,
             jpegThumbnail: this.jpegThumbnail,
@@ -1403,6 +1389,12 @@ export class AdReplyInfo extends pb_1.Message {
     }
 }
 export namespace AdReplyInfo {
+    export type AsObject = {
+        advertiserName: string;
+        mediaType: AdReplyInfo.AD_REPLY_INFO_MEDIATYPE;
+        jpegThumbnail: Uint8Array;
+        caption: string;
+    };
     export enum AD_REPLY_INFO_MEDIATYPE {
         NONE = 0,
         IMAGE = 1,
@@ -1608,23 +1600,7 @@ export class ContextInfo extends pb_1.Message {
     get has_ephemeralSharedSecret() {
         return pb_1.Message.getField(this, 27) != null;
     }
-    static fromObject(data: {
-        stanzaId?: string;
-        participant?: string;
-        quotedMessage?: Parameters<typeof Message.fromObject>[0];
-        remoteJid?: string;
-        mentionedJid?: string[];
-        conversionSource?: string;
-        conversionData?: Uint8Array;
-        conversionDelaySeconds?: number;
-        forwardingScore?: number;
-        isForwarded?: boolean;
-        quotedAd?: Parameters<typeof AdReplyInfo.fromObject>[0];
-        placeholderKey?: Parameters<typeof MessageKey.fromObject>[0];
-        expiration?: number;
-        ephemeralSettingTimestamp?: number;
-        ephemeralSharedSecret?: Uint8Array;
-    }): ContextInfo {
+    static fromObject(data: RecursivePartial<ContextInfo.AsObject>): ContextInfo {
         const message = new ContextInfo({
             mentionedJid: data.mentionedJid
         });
@@ -1673,23 +1649,7 @@ export class ContextInfo extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            stanzaId: string;
-            participant: string;
-            quotedMessage?: Parameters<typeof Message.fromObject>[0];
-            remoteJid: string;
-            mentionedJid: string[];
-            conversionSource: string;
-            conversionData: Uint8Array;
-            conversionDelaySeconds: number;
-            forwardingScore: number;
-            isForwarded: boolean;
-            quotedAd?: Parameters<typeof AdReplyInfo.fromObject>[0];
-            placeholderKey?: Parameters<typeof MessageKey.fromObject>[0];
-            expiration: number;
-            ephemeralSettingTimestamp: number;
-            ephemeralSharedSecret: Uint8Array;
-        } = {
+        const data: ContextInfo.AsObject = {
             stanzaId: this.stanzaId,
             participant: this.participant,
             remoteJid: this.remoteJid,
@@ -1814,6 +1774,25 @@ export class ContextInfo extends pb_1.Message {
         return ContextInfo.deserialize(bytes);
     }
 }
+export namespace ContextInfo {
+    export type AsObject = {
+        stanzaId: string;
+        participant: string;
+        quotedMessage?: Message.AsObject;
+        remoteJid: string;
+        mentionedJid: string[];
+        conversionSource: string;
+        conversionData: Uint8Array;
+        conversionDelaySeconds: number;
+        forwardingScore: number;
+        isForwarded: boolean;
+        quotedAd?: AdReplyInfo.AsObject;
+        placeholderKey?: MessageKey.AsObject;
+        expiration: number;
+        ephemeralSettingTimestamp: number;
+        ephemeralSharedSecret: Uint8Array;
+    };
+}
 export class SenderKeyDistributionMessage extends pb_1.Message {
     #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
@@ -1849,10 +1828,7 @@ export class SenderKeyDistributionMessage extends pb_1.Message {
     get has_axolotlSenderKeyDistributionMessage() {
         return pb_1.Message.getField(this, 2) != null;
     }
-    static fromObject(data: {
-        groupId?: string;
-        axolotlSenderKeyDistributionMessage?: Uint8Array;
-    }): SenderKeyDistributionMessage {
+    static fromObject(data: RecursivePartial<SenderKeyDistributionMessage.AsObject>): SenderKeyDistributionMessage {
         const message = new SenderKeyDistributionMessage({});
         if (data.groupId != null) {
             message.groupId = data.groupId;
@@ -1863,10 +1839,7 @@ export class SenderKeyDistributionMessage extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            groupId: string;
-            axolotlSenderKeyDistributionMessage: Uint8Array;
-        } = {
+        const data: SenderKeyDistributionMessage.AsObject = {
             groupId: this.groupId,
             axolotlSenderKeyDistributionMessage: this.axolotlSenderKeyDistributionMessage
         };
@@ -1906,6 +1879,12 @@ export class SenderKeyDistributionMessage extends pb_1.Message {
     static deserializeBinary(bytes: Uint8Array): SenderKeyDistributionMessage {
         return SenderKeyDistributionMessage.deserialize(bytes);
     }
+}
+export namespace SenderKeyDistributionMessage {
+    export type AsObject = {
+        groupId: string;
+        axolotlSenderKeyDistributionMessage: Uint8Array;
+    };
 }
 export class ImageMessage extends pb_1.Message {
     #one_of_decls: number[][] = [];
@@ -2179,29 +2158,7 @@ export class ImageMessage extends pb_1.Message {
     get has_midQualityFileEncSha256() {
         return pb_1.Message.getField(this, 24) != null;
     }
-    static fromObject(data: {
-        url?: string;
-        mimetype?: string;
-        caption?: string;
-        fileSha256?: Uint8Array;
-        fileLength?: number;
-        height?: number;
-        width?: number;
-        mediaKey?: Uint8Array;
-        fileEncSha256?: Uint8Array;
-        interactiveAnnotations?: Parameters<typeof InteractiveAnnotation.fromObject>[0][];
-        directPath?: string;
-        mediaKeyTimestamp?: number;
-        jpegThumbnail?: Uint8Array;
-        contextInfo?: Parameters<typeof ContextInfo.fromObject>[0];
-        firstScanSidecar?: Uint8Array;
-        firstScanLength?: number;
-        experimentGroupId?: number;
-        scansSidecar?: Uint8Array;
-        scanLengths?: number[];
-        midQualityFileSha256?: Uint8Array;
-        midQualityFileEncSha256?: Uint8Array;
-    }): ImageMessage {
+    static fromObject(data: RecursivePartial<ImageMessage.AsObject>): ImageMessage {
         const message = new ImageMessage({
             interactiveAnnotations: data.interactiveAnnotations.map(item => InteractiveAnnotation.fromObject(item)),
             scanLengths: data.scanLengths
@@ -2266,29 +2223,7 @@ export class ImageMessage extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            url: string;
-            mimetype: string;
-            caption: string;
-            fileSha256: Uint8Array;
-            fileLength: number;
-            height: number;
-            width: number;
-            mediaKey: Uint8Array;
-            fileEncSha256: Uint8Array;
-            interactiveAnnotations: Parameters<typeof InteractiveAnnotation.fromObject>[0][];
-            directPath: string;
-            mediaKeyTimestamp: number;
-            jpegThumbnail: Uint8Array;
-            contextInfo?: Parameters<typeof ContextInfo.fromObject>[0];
-            firstScanSidecar: Uint8Array;
-            firstScanLength: number;
-            experimentGroupId: number;
-            scansSidecar: Uint8Array;
-            scanLengths: number[];
-            midQualityFileSha256: Uint8Array;
-            midQualityFileEncSha256: Uint8Array;
-        } = {
+        const data: ImageMessage.AsObject = {
             url: this.url,
             mimetype: this.mimetype,
             caption: this.caption,
@@ -2445,6 +2380,31 @@ export class ImageMessage extends pb_1.Message {
         return ImageMessage.deserialize(bytes);
     }
 }
+export namespace ImageMessage {
+    export type AsObject = {
+        url: string;
+        mimetype: string;
+        caption: string;
+        fileSha256: Uint8Array;
+        fileLength: number;
+        height: number;
+        width: number;
+        mediaKey: Uint8Array;
+        fileEncSha256: Uint8Array;
+        interactiveAnnotations: InteractiveAnnotation.AsObject[];
+        directPath: string;
+        mediaKeyTimestamp: number;
+        jpegThumbnail: Uint8Array;
+        contextInfo?: ContextInfo.AsObject;
+        firstScanSidecar: Uint8Array;
+        firstScanLength: number;
+        experimentGroupId: number;
+        scansSidecar: Uint8Array;
+        scanLengths: number[];
+        midQualityFileSha256: Uint8Array;
+        midQualityFileEncSha256: Uint8Array;
+    };
+}
 export class ContactMessage extends pb_1.Message {
     #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
@@ -2493,11 +2453,7 @@ export class ContactMessage extends pb_1.Message {
     get has_contextInfo() {
         return pb_1.Message.getField(this, 17) != null;
     }
-    static fromObject(data: {
-        displayName?: string;
-        vcard?: string;
-        contextInfo?: Parameters<typeof ContextInfo.fromObject>[0];
-    }): ContactMessage {
+    static fromObject(data: RecursivePartial<ContactMessage.AsObject>): ContactMessage {
         const message = new ContactMessage({});
         if (data.displayName != null) {
             message.displayName = data.displayName;
@@ -2511,11 +2467,7 @@ export class ContactMessage extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            displayName: string;
-            vcard: string;
-            contextInfo?: Parameters<typeof ContextInfo.fromObject>[0];
-        } = {
+        const data: ContactMessage.AsObject = {
             displayName: this.displayName,
             vcard: this.vcard
         };
@@ -2563,6 +2515,13 @@ export class ContactMessage extends pb_1.Message {
     static deserializeBinary(bytes: Uint8Array): ContactMessage {
         return ContactMessage.deserialize(bytes);
     }
+}
+export namespace ContactMessage {
+    export type AsObject = {
+        displayName: string;
+        vcard: string;
+        contextInfo?: ContextInfo.AsObject;
+    };
 }
 export class LocationMessage extends pb_1.Message {
     #one_of_decls: number[][] = [];
@@ -2729,20 +2688,7 @@ export class LocationMessage extends pb_1.Message {
     get has_contextInfo() {
         return pb_1.Message.getField(this, 17) != null;
     }
-    static fromObject(data: {
-        degreesLatitude?: number;
-        degreesLongitude?: number;
-        name?: string;
-        address?: string;
-        url?: string;
-        isLive?: boolean;
-        accuracyInMeters?: number;
-        speedInMps?: number;
-        degreesClockwiseFromMagneticNorth?: number;
-        comment?: string;
-        jpegThumbnail?: Uint8Array;
-        contextInfo?: Parameters<typeof ContextInfo.fromObject>[0];
-    }): LocationMessage {
+    static fromObject(data: RecursivePartial<LocationMessage.AsObject>): LocationMessage {
         const message = new LocationMessage({});
         if (data.degreesLatitude != null) {
             message.degreesLatitude = data.degreesLatitude;
@@ -2783,20 +2729,7 @@ export class LocationMessage extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            degreesLatitude: number;
-            degreesLongitude: number;
-            name: string;
-            address: string;
-            url: string;
-            isLive: boolean;
-            accuracyInMeters: number;
-            speedInMps: number;
-            degreesClockwiseFromMagneticNorth: number;
-            comment: string;
-            jpegThumbnail: Uint8Array;
-            contextInfo?: Parameters<typeof ContextInfo.fromObject>[0];
-        } = {
+        const data: LocationMessage.AsObject = {
             degreesLatitude: this.degreesLatitude,
             degreesLongitude: this.degreesLongitude,
             name: this.name,
@@ -2898,6 +2831,22 @@ export class LocationMessage extends pb_1.Message {
     static deserializeBinary(bytes: Uint8Array): LocationMessage {
         return LocationMessage.deserialize(bytes);
     }
+}
+export namespace LocationMessage {
+    export type AsObject = {
+        degreesLatitude: number;
+        degreesLongitude: number;
+        name: string;
+        address: string;
+        url: string;
+        isLive: boolean;
+        accuracyInMeters: number;
+        speedInMps: number;
+        degreesClockwiseFromMagneticNorth: number;
+        comment: string;
+        jpegThumbnail: Uint8Array;
+        contextInfo?: ContextInfo.AsObject;
+    };
 }
 export class ExtendedTextMessage extends pb_1.Message {
     #one_of_decls: number[][] = [];
@@ -3064,20 +3013,7 @@ export class ExtendedTextMessage extends pb_1.Message {
     get has_doNotPlayInline() {
         return pb_1.Message.getField(this, 18) != null;
     }
-    static fromObject(data: {
-        text?: string;
-        matchedText?: string;
-        canonicalUrl?: string;
-        description?: string;
-        title?: string;
-        textArgb?: number;
-        backgroundArgb?: number;
-        font?: ExtendedTextMessage.EXTENDED_TEXT_MESSAGE_FONTTYPE;
-        previewType?: ExtendedTextMessage.EXTENDED_TEXT_MESSAGE_PREVIEWTYPE;
-        jpegThumbnail?: Uint8Array;
-        contextInfo?: Parameters<typeof ContextInfo.fromObject>[0];
-        doNotPlayInline?: boolean;
-    }): ExtendedTextMessage {
+    static fromObject(data: RecursivePartial<ExtendedTextMessage.AsObject>): ExtendedTextMessage {
         const message = new ExtendedTextMessage({});
         if (data.text != null) {
             message.text = data.text;
@@ -3118,20 +3054,7 @@ export class ExtendedTextMessage extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            text: string;
-            matchedText: string;
-            canonicalUrl: string;
-            description: string;
-            title: string;
-            textArgb: number;
-            backgroundArgb: number;
-            font: ExtendedTextMessage.EXTENDED_TEXT_MESSAGE_FONTTYPE;
-            previewType: ExtendedTextMessage.EXTENDED_TEXT_MESSAGE_PREVIEWTYPE;
-            jpegThumbnail: Uint8Array;
-            contextInfo?: Parameters<typeof ContextInfo.fromObject>[0];
-            doNotPlayInline: boolean;
-        } = {
+        const data: ExtendedTextMessage.AsObject = {
             text: this.text,
             matchedText: this.matchedText,
             canonicalUrl: this.canonicalUrl,
@@ -3235,6 +3158,20 @@ export class ExtendedTextMessage extends pb_1.Message {
     }
 }
 export namespace ExtendedTextMessage {
+    export type AsObject = {
+        text: string;
+        matchedText: string;
+        canonicalUrl: string;
+        description: string;
+        title: string;
+        textArgb: number;
+        backgroundArgb: number;
+        font: ExtendedTextMessage.EXTENDED_TEXT_MESSAGE_FONTTYPE;
+        previewType: ExtendedTextMessage.EXTENDED_TEXT_MESSAGE_PREVIEWTYPE;
+        jpegThumbnail: Uint8Array;
+        contextInfo?: ContextInfo.AsObject;
+        doNotPlayInline: boolean;
+    };
     export enum EXTENDED_TEXT_MESSAGE_FONTTYPE {
         SANS_SERIF = 0,
         SERIF = 1,
@@ -3426,21 +3363,7 @@ export class DocumentMessage extends pb_1.Message {
     get has_contextInfo() {
         return pb_1.Message.getField(this, 17) != null;
     }
-    static fromObject(data: {
-        url?: string;
-        mimetype?: string;
-        title?: string;
-        fileSha256?: Uint8Array;
-        fileLength?: number;
-        pageCount?: number;
-        mediaKey?: Uint8Array;
-        fileName?: string;
-        fileEncSha256?: Uint8Array;
-        directPath?: string;
-        mediaKeyTimestamp?: number;
-        jpegThumbnail?: Uint8Array;
-        contextInfo?: Parameters<typeof ContextInfo.fromObject>[0];
-    }): DocumentMessage {
+    static fromObject(data: RecursivePartial<DocumentMessage.AsObject>): DocumentMessage {
         const message = new DocumentMessage({});
         if (data.url != null) {
             message.url = data.url;
@@ -3484,21 +3407,7 @@ export class DocumentMessage extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            url: string;
-            mimetype: string;
-            title: string;
-            fileSha256: Uint8Array;
-            fileLength: number;
-            pageCount: number;
-            mediaKey: Uint8Array;
-            fileName: string;
-            fileEncSha256: Uint8Array;
-            directPath: string;
-            mediaKeyTimestamp: number;
-            jpegThumbnail: Uint8Array;
-            contextInfo?: Parameters<typeof ContextInfo.fromObject>[0];
-        } = {
+        const data: DocumentMessage.AsObject = {
             url: this.url,
             mimetype: this.mimetype,
             title: this.title,
@@ -3606,6 +3515,23 @@ export class DocumentMessage extends pb_1.Message {
     static deserializeBinary(bytes: Uint8Array): DocumentMessage {
         return DocumentMessage.deserialize(bytes);
     }
+}
+export namespace DocumentMessage {
+    export type AsObject = {
+        url: string;
+        mimetype: string;
+        title: string;
+        fileSha256: Uint8Array;
+        fileLength: number;
+        pageCount: number;
+        mediaKey: Uint8Array;
+        fileName: string;
+        fileEncSha256: Uint8Array;
+        directPath: string;
+        mediaKeyTimestamp: number;
+        jpegThumbnail: Uint8Array;
+        contextInfo?: ContextInfo.AsObject;
+    };
 }
 export class AudioMessage extends pb_1.Message {
     #one_of_decls: number[][] = [];
@@ -3772,20 +3698,7 @@ export class AudioMessage extends pb_1.Message {
     get has_streamingSidecar() {
         return pb_1.Message.getField(this, 18) != null;
     }
-    static fromObject(data: {
-        url?: string;
-        mimetype?: string;
-        fileSha256?: Uint8Array;
-        fileLength?: number;
-        seconds?: number;
-        ptt?: boolean;
-        mediaKey?: Uint8Array;
-        fileEncSha256?: Uint8Array;
-        directPath?: string;
-        mediaKeyTimestamp?: number;
-        contextInfo?: Parameters<typeof ContextInfo.fromObject>[0];
-        streamingSidecar?: Uint8Array;
-    }): AudioMessage {
+    static fromObject(data: RecursivePartial<AudioMessage.AsObject>): AudioMessage {
         const message = new AudioMessage({});
         if (data.url != null) {
             message.url = data.url;
@@ -3826,20 +3739,7 @@ export class AudioMessage extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            url: string;
-            mimetype: string;
-            fileSha256: Uint8Array;
-            fileLength: number;
-            seconds: number;
-            ptt: boolean;
-            mediaKey: Uint8Array;
-            fileEncSha256: Uint8Array;
-            directPath: string;
-            mediaKeyTimestamp: number;
-            contextInfo?: Parameters<typeof ContextInfo.fromObject>[0];
-            streamingSidecar: Uint8Array;
-        } = {
+        const data: AudioMessage.AsObject = {
             url: this.url,
             mimetype: this.mimetype,
             fileSha256: this.fileSha256,
@@ -3941,6 +3841,22 @@ export class AudioMessage extends pb_1.Message {
     static deserializeBinary(bytes: Uint8Array): AudioMessage {
         return AudioMessage.deserialize(bytes);
     }
+}
+export namespace AudioMessage {
+    export type AsObject = {
+        url: string;
+        mimetype: string;
+        fileSha256: Uint8Array;
+        fileLength: number;
+        seconds: number;
+        ptt: boolean;
+        mediaKey: Uint8Array;
+        fileEncSha256: Uint8Array;
+        directPath: string;
+        mediaKeyTimestamp: number;
+        contextInfo?: ContextInfo.AsObject;
+        streamingSidecar: Uint8Array;
+    };
 }
 export class VideoMessage extends pb_1.Message {
     #one_of_decls: number[][] = [];
@@ -4180,26 +4096,7 @@ export class VideoMessage extends pb_1.Message {
     get has_gifAttribution() {
         return pb_1.Message.getField(this, 19) != null;
     }
-    static fromObject(data: {
-        url?: string;
-        mimetype?: string;
-        fileSha256?: Uint8Array;
-        fileLength?: number;
-        seconds?: number;
-        mediaKey?: Uint8Array;
-        caption?: string;
-        gifPlayback?: boolean;
-        height?: number;
-        width?: number;
-        fileEncSha256?: Uint8Array;
-        interactiveAnnotations?: Parameters<typeof InteractiveAnnotation.fromObject>[0][];
-        directPath?: string;
-        mediaKeyTimestamp?: number;
-        jpegThumbnail?: Uint8Array;
-        contextInfo?: Parameters<typeof ContextInfo.fromObject>[0];
-        streamingSidecar?: Uint8Array;
-        gifAttribution?: VideoMessage.VIDEO_MESSAGE_ATTRIBUTION;
-    }): VideoMessage {
+    static fromObject(data: RecursivePartial<VideoMessage.AsObject>): VideoMessage {
         const message = new VideoMessage({
             interactiveAnnotations: data.interactiveAnnotations.map(item => InteractiveAnnotation.fromObject(item))
         });
@@ -4257,26 +4154,7 @@ export class VideoMessage extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            url: string;
-            mimetype: string;
-            fileSha256: Uint8Array;
-            fileLength: number;
-            seconds: number;
-            mediaKey: Uint8Array;
-            caption: string;
-            gifPlayback: boolean;
-            height: number;
-            width: number;
-            fileEncSha256: Uint8Array;
-            interactiveAnnotations: Parameters<typeof InteractiveAnnotation.fromObject>[0][];
-            directPath: string;
-            mediaKeyTimestamp: number;
-            jpegThumbnail: Uint8Array;
-            contextInfo?: Parameters<typeof ContextInfo.fromObject>[0];
-            streamingSidecar: Uint8Array;
-            gifAttribution: VideoMessage.VIDEO_MESSAGE_ATTRIBUTION;
-        } = {
+        const data: VideoMessage.AsObject = {
             url: this.url,
             mimetype: this.mimetype,
             fileSha256: this.fileSha256,
@@ -4416,6 +4294,26 @@ export class VideoMessage extends pb_1.Message {
     }
 }
 export namespace VideoMessage {
+    export type AsObject = {
+        url: string;
+        mimetype: string;
+        fileSha256: Uint8Array;
+        fileLength: number;
+        seconds: number;
+        mediaKey: Uint8Array;
+        caption: string;
+        gifPlayback: boolean;
+        height: number;
+        width: number;
+        fileEncSha256: Uint8Array;
+        interactiveAnnotations: InteractiveAnnotation.AsObject[];
+        directPath: string;
+        mediaKeyTimestamp: number;
+        jpegThumbnail: Uint8Array;
+        contextInfo?: ContextInfo.AsObject;
+        streamingSidecar: Uint8Array;
+        gifAttribution: VideoMessage.VIDEO_MESSAGE_ATTRIBUTION;
+    };
     export enum VIDEO_MESSAGE_ATTRIBUTION {
         NONE = 0,
         GIPHY = 1,
@@ -4444,9 +4342,7 @@ export class Call extends pb_1.Message {
     get has_callKey() {
         return pb_1.Message.getField(this, 1) != null;
     }
-    static fromObject(data: {
-        callKey?: Uint8Array;
-    }): Call {
+    static fromObject(data: RecursivePartial<Call.AsObject>): Call {
         const message = new Call({});
         if (data.callKey != null) {
             message.callKey = data.callKey;
@@ -4454,9 +4350,7 @@ export class Call extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            callKey: Uint8Array;
-        } = {
+        const data: Call.AsObject = {
             callKey: this.callKey
         };
         return data;
@@ -4490,6 +4384,11 @@ export class Call extends pb_1.Message {
     static deserializeBinary(bytes: Uint8Array): Call {
         return Call.deserialize(bytes);
     }
+}
+export namespace Call {
+    export type AsObject = {
+        callKey: Uint8Array;
+    };
 }
 export class Chat extends pb_1.Message {
     #one_of_decls: number[][] = [];
@@ -4526,10 +4425,7 @@ export class Chat extends pb_1.Message {
     get has_id() {
         return pb_1.Message.getField(this, 2) != null;
     }
-    static fromObject(data: {
-        displayName?: string;
-        id?: string;
-    }): Chat {
+    static fromObject(data: RecursivePartial<Chat.AsObject>): Chat {
         const message = new Chat({});
         if (data.displayName != null) {
             message.displayName = data.displayName;
@@ -4540,10 +4436,7 @@ export class Chat extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            displayName: string;
-            id: string;
-        } = {
+        const data: Chat.AsObject = {
             displayName: this.displayName,
             id: this.id
         };
@@ -4583,6 +4476,12 @@ export class Chat extends pb_1.Message {
     static deserializeBinary(bytes: Uint8Array): Chat {
         return Chat.deserialize(bytes);
     }
+}
+export namespace Chat {
+    export type AsObject = {
+        displayName: string;
+        id: string;
+    };
 }
 export class ProtocolMessage extends pb_1.Message {
     #one_of_decls: number[][] = [];
@@ -4658,13 +4557,7 @@ export class ProtocolMessage extends pb_1.Message {
     get has_historySyncNotification() {
         return pb_1.Message.getField(this, 6) != null;
     }
-    static fromObject(data: {
-        key?: Parameters<typeof MessageKey.fromObject>[0];
-        type?: ProtocolMessage.PROTOCOL_MESSAGE_TYPE;
-        ephemeralExpiration?: number;
-        ephemeralSettingTimestamp?: number;
-        historySyncNotification?: Parameters<typeof HistorySyncNotification.fromObject>[0];
-    }): ProtocolMessage {
+    static fromObject(data: RecursivePartial<ProtocolMessage.AsObject>): ProtocolMessage {
         const message = new ProtocolMessage({});
         if (data.key != null) {
             message.key = MessageKey.fromObject(data.key);
@@ -4684,13 +4577,7 @@ export class ProtocolMessage extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            key?: Parameters<typeof MessageKey.fromObject>[0];
-            type: ProtocolMessage.PROTOCOL_MESSAGE_TYPE;
-            ephemeralExpiration: number;
-            ephemeralSettingTimestamp: number;
-            historySyncNotification?: Parameters<typeof HistorySyncNotification.fromObject>[0];
-        } = {
+        const data: ProtocolMessage.AsObject = {
             type: this.type,
             ephemeralExpiration: this.ephemeralExpiration,
             ephemeralSettingTimestamp: this.ephemeralSettingTimestamp
@@ -4754,6 +4641,13 @@ export class ProtocolMessage extends pb_1.Message {
     }
 }
 export namespace ProtocolMessage {
+    export type AsObject = {
+        key?: MessageKey.AsObject;
+        type: ProtocolMessage.PROTOCOL_MESSAGE_TYPE;
+        ephemeralExpiration: number;
+        ephemeralSettingTimestamp: number;
+        historySyncNotification?: HistorySyncNotification.AsObject;
+    };
     export enum PROTOCOL_MESSAGE_TYPE {
         REVOKE = 0,
         EPHEMERAL_SETTING = 3,
@@ -4874,16 +4768,7 @@ export class HistorySyncNotification extends pb_1.Message {
     get has_originalMessageId() {
         return pb_1.Message.getField(this, 8) != null;
     }
-    static fromObject(data: {
-        fileSha256?: Uint8Array;
-        fileLength?: number;
-        mediaKey?: Uint8Array;
-        fileEncSha256?: Uint8Array;
-        directPath?: string;
-        syncType?: HistorySyncNotification.HISTORY_SYNC_NOTIFICATION_HISTORYSYNCTYPE;
-        chunkOrder?: number;
-        originalMessageId?: string;
-    }): HistorySyncNotification {
+    static fromObject(data: RecursivePartial<HistorySyncNotification.AsObject>): HistorySyncNotification {
         const message = new HistorySyncNotification({});
         if (data.fileSha256 != null) {
             message.fileSha256 = data.fileSha256;
@@ -4912,16 +4797,7 @@ export class HistorySyncNotification extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            fileSha256: Uint8Array;
-            fileLength: number;
-            mediaKey: Uint8Array;
-            fileEncSha256: Uint8Array;
-            directPath: string;
-            syncType: HistorySyncNotification.HISTORY_SYNC_NOTIFICATION_HISTORYSYNCTYPE;
-            chunkOrder: number;
-            originalMessageId: string;
-        } = {
+        const data: HistorySyncNotification.AsObject = {
             fileSha256: this.fileSha256,
             fileLength: this.fileLength,
             mediaKey: this.mediaKey,
@@ -4999,6 +4875,16 @@ export class HistorySyncNotification extends pb_1.Message {
     }
 }
 export namespace HistorySyncNotification {
+    export type AsObject = {
+        fileSha256: Uint8Array;
+        fileLength: number;
+        mediaKey: Uint8Array;
+        fileEncSha256: Uint8Array;
+        directPath: string;
+        syncType: HistorySyncNotification.HISTORY_SYNC_NOTIFICATION_HISTORYSYNCTYPE;
+        chunkOrder: number;
+        originalMessageId: string;
+    };
     export enum HISTORY_SYNC_NOTIFICATION_HISTORYSYNCTYPE {
         INITIAL_BOOTSTRAP = 0,
         INITIAL_STATUS_V3 = 1,
@@ -5050,11 +4936,7 @@ export class ContactsArrayMessage extends pb_1.Message {
     get has_contextInfo() {
         return pb_1.Message.getField(this, 17) != null;
     }
-    static fromObject(data: {
-        displayName?: string;
-        contacts?: Parameters<typeof ContactMessage.fromObject>[0][];
-        contextInfo?: Parameters<typeof ContextInfo.fromObject>[0];
-    }): ContactsArrayMessage {
+    static fromObject(data: RecursivePartial<ContactsArrayMessage.AsObject>): ContactsArrayMessage {
         const message = new ContactsArrayMessage({
             contacts: data.contacts.map(item => ContactMessage.fromObject(item))
         });
@@ -5067,11 +4949,7 @@ export class ContactsArrayMessage extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            displayName: string;
-            contacts: Parameters<typeof ContactMessage.fromObject>[0][];
-            contextInfo?: Parameters<typeof ContextInfo.fromObject>[0];
-        } = {
+        const data: ContactsArrayMessage.AsObject = {
             displayName: this.displayName,
             contacts: this.contacts.map((item: ContactMessage) => item.toObject())
         };
@@ -5120,6 +4998,13 @@ export class ContactsArrayMessage extends pb_1.Message {
         return ContactsArrayMessage.deserialize(bytes);
     }
 }
+export namespace ContactsArrayMessage {
+    export type AsObject = {
+        displayName: string;
+        contacts: ContactMessage.AsObject[];
+        contextInfo?: ContextInfo.AsObject;
+    };
+}
 export class HSMCurrency extends pb_1.Message {
     #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
@@ -5155,10 +5040,7 @@ export class HSMCurrency extends pb_1.Message {
     get has_amount1000() {
         return pb_1.Message.getField(this, 2) != null;
     }
-    static fromObject(data: {
-        currencyCode?: string;
-        amount1000?: number;
-    }): HSMCurrency {
+    static fromObject(data: RecursivePartial<HSMCurrency.AsObject>): HSMCurrency {
         const message = new HSMCurrency({});
         if (data.currencyCode != null) {
             message.currencyCode = data.currencyCode;
@@ -5169,10 +5051,7 @@ export class HSMCurrency extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            currencyCode: string;
-            amount1000: number;
-        } = {
+        const data: HSMCurrency.AsObject = {
             currencyCode: this.currencyCode,
             amount1000: this.amount1000
         };
@@ -5212,6 +5091,12 @@ export class HSMCurrency extends pb_1.Message {
     static deserializeBinary(bytes: Uint8Array): HSMCurrency {
         return HSMCurrency.deserialize(bytes);
     }
+}
+export namespace HSMCurrency {
+    export type AsObject = {
+        currencyCode: string;
+        amount1000: number;
+    };
 }
 export class HSMDateTimeComponent extends pb_1.Message {
     #one_of_decls: number[][] = [];
@@ -5313,15 +5198,7 @@ export class HSMDateTimeComponent extends pb_1.Message {
     get has_calendar() {
         return pb_1.Message.getField(this, 7) != null;
     }
-    static fromObject(data: {
-        dayOfWeek?: HSMDateTimeComponent.HSM_DATE_TIME_COMPONENT_DAYOFWEEKTYPE;
-        year?: number;
-        month?: number;
-        dayOfMonth?: number;
-        hour?: number;
-        minute?: number;
-        calendar?: HSMDateTimeComponent.HSM_DATE_TIME_COMPONENT_CALENDARTYPE;
-    }): HSMDateTimeComponent {
+    static fromObject(data: RecursivePartial<HSMDateTimeComponent.AsObject>): HSMDateTimeComponent {
         const message = new HSMDateTimeComponent({});
         if (data.dayOfWeek != null) {
             message.dayOfWeek = data.dayOfWeek;
@@ -5347,15 +5224,7 @@ export class HSMDateTimeComponent extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            dayOfWeek: HSMDateTimeComponent.HSM_DATE_TIME_COMPONENT_DAYOFWEEKTYPE;
-            year: number;
-            month: number;
-            dayOfMonth: number;
-            hour: number;
-            minute: number;
-            calendar: HSMDateTimeComponent.HSM_DATE_TIME_COMPONENT_CALENDARTYPE;
-        } = {
+        const data: HSMDateTimeComponent.AsObject = {
             dayOfWeek: this.dayOfWeek,
             year: this.year,
             month: this.month,
@@ -5427,6 +5296,15 @@ export class HSMDateTimeComponent extends pb_1.Message {
     }
 }
 export namespace HSMDateTimeComponent {
+    export type AsObject = {
+        dayOfWeek: HSMDateTimeComponent.HSM_DATE_TIME_COMPONENT_DAYOFWEEKTYPE;
+        year: number;
+        month: number;
+        dayOfMonth: number;
+        hour: number;
+        minute: number;
+        calendar: HSMDateTimeComponent.HSM_DATE_TIME_COMPONENT_CALENDARTYPE;
+    };
     export enum HSM_DATE_TIME_COMPONENT_DAYOFWEEKTYPE {
         MONDAY = 1,
         TUESDAY = 2,
@@ -5463,9 +5341,7 @@ export class HSMDateTimeUnixEpoch extends pb_1.Message {
     get has_timestamp() {
         return pb_1.Message.getField(this, 1) != null;
     }
-    static fromObject(data: {
-        timestamp?: number;
-    }): HSMDateTimeUnixEpoch {
+    static fromObject(data: RecursivePartial<HSMDateTimeUnixEpoch.AsObject>): HSMDateTimeUnixEpoch {
         const message = new HSMDateTimeUnixEpoch({});
         if (data.timestamp != null) {
             message.timestamp = data.timestamp;
@@ -5473,9 +5349,7 @@ export class HSMDateTimeUnixEpoch extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            timestamp: number;
-        } = {
+        const data: HSMDateTimeUnixEpoch.AsObject = {
             timestamp: this.timestamp
         };
         return data;
@@ -5509,6 +5383,11 @@ export class HSMDateTimeUnixEpoch extends pb_1.Message {
     static deserializeBinary(bytes: Uint8Array): HSMDateTimeUnixEpoch {
         return HSMDateTimeUnixEpoch.deserialize(bytes);
     }
+}
+export namespace HSMDateTimeUnixEpoch {
+    export type AsObject = {
+        timestamp: number;
+    };
 }
 export class HSMDateTime extends pb_1.Message {
     #one_of_decls: number[][] = [[1, 2]];
@@ -5558,10 +5437,7 @@ export class HSMDateTime extends pb_1.Message {
         };
         return cases[pb_1.Message.computeOneofCase(this, [1, 2])];
     }
-    static fromObject(data: {
-        component?: Parameters<typeof HSMDateTimeComponent.fromObject>[0];
-        unixEpoch?: Parameters<typeof HSMDateTimeUnixEpoch.fromObject>[0];
-    }): HSMDateTime {
+    static fromObject(data: RecursivePartial<HSMDateTime.AsObject>): HSMDateTime {
         const message = new HSMDateTime({});
         if (data.component != null) {
             message.component = HSMDateTimeComponent.fromObject(data.component);
@@ -5572,10 +5448,7 @@ export class HSMDateTime extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            component?: Parameters<typeof HSMDateTimeComponent.fromObject>[0];
-            unixEpoch?: Parameters<typeof HSMDateTimeUnixEpoch.fromObject>[0];
-        } = {};
+        const data: HSMDateTime.AsObject = {};
         if (this.component != null) {
             data.component = this.component.toObject();
         }
@@ -5618,6 +5491,12 @@ export class HSMDateTime extends pb_1.Message {
     static deserializeBinary(bytes: Uint8Array): HSMDateTime {
         return HSMDateTime.deserialize(bytes);
     }
+}
+export namespace HSMDateTime {
+    export type AsObject = {
+        component?: HSMDateTimeComponent.AsObject;
+        unixEpoch?: HSMDateTimeUnixEpoch.AsObject;
+    };
 }
 export class HSMLocalizableParameter extends pb_1.Message {
     #one_of_decls: number[][] = [[2, 3]];
@@ -5681,11 +5560,7 @@ export class HSMLocalizableParameter extends pb_1.Message {
         };
         return cases[pb_1.Message.computeOneofCase(this, [2, 3])];
     }
-    static fromObject(data: {
-        default?: string;
-        currency?: Parameters<typeof HSMCurrency.fromObject>[0];
-        dateTime?: Parameters<typeof HSMDateTime.fromObject>[0];
-    }): HSMLocalizableParameter {
+    static fromObject(data: RecursivePartial<HSMLocalizableParameter.AsObject>): HSMLocalizableParameter {
         const message = new HSMLocalizableParameter({});
         if (data.default != null) {
             message.default = data.default;
@@ -5699,11 +5574,7 @@ export class HSMLocalizableParameter extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            default: string;
-            currency?: Parameters<typeof HSMCurrency.fromObject>[0];
-            dateTime?: Parameters<typeof HSMDateTime.fromObject>[0];
-        } = {
+        const data: HSMLocalizableParameter.AsObject = {
             default: this.default
         };
         if (this.currency != null) {
@@ -5753,6 +5624,13 @@ export class HSMLocalizableParameter extends pb_1.Message {
     static deserializeBinary(bytes: Uint8Array): HSMLocalizableParameter {
         return HSMLocalizableParameter.deserialize(bytes);
     }
+}
+export namespace HSMLocalizableParameter {
+    export type AsObject = {
+        default: string;
+        currency?: HSMCurrency.AsObject;
+        dateTime?: HSMDateTime.AsObject;
+    };
 }
 export class HighlyStructuredMessage extends pb_1.Message {
     #one_of_decls: number[][] = [];
@@ -5870,17 +5748,7 @@ export class HighlyStructuredMessage extends pb_1.Message {
     get has_hydratedHsm() {
         return pb_1.Message.getField(this, 9) != null;
     }
-    static fromObject(data: {
-        namespace?: string;
-        elementName?: string;
-        params?: string[];
-        fallbackLg?: string;
-        fallbackLc?: string;
-        localizableParams?: Parameters<typeof HSMLocalizableParameter.fromObject>[0][];
-        deterministicLg?: string;
-        deterministicLc?: string;
-        hydratedHsm?: Parameters<typeof TemplateMessage.fromObject>[0];
-    }): HighlyStructuredMessage {
+    static fromObject(data: RecursivePartial<HighlyStructuredMessage.AsObject>): HighlyStructuredMessage {
         const message = new HighlyStructuredMessage({
             params: data.params,
             localizableParams: data.localizableParams.map(item => HSMLocalizableParameter.fromObject(item))
@@ -5909,17 +5777,7 @@ export class HighlyStructuredMessage extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            namespace: string;
-            elementName: string;
-            params: string[];
-            fallbackLg: string;
-            fallbackLc: string;
-            localizableParams: Parameters<typeof HSMLocalizableParameter.fromObject>[0][];
-            deterministicLg: string;
-            deterministicLc: string;
-            hydratedHsm?: Parameters<typeof TemplateMessage.fromObject>[0];
-        } = {
+        const data: HighlyStructuredMessage.AsObject = {
             namespace: this.namespace,
             elementName: this.elementName,
             params: this.params,
@@ -6004,6 +5862,19 @@ export class HighlyStructuredMessage extends pb_1.Message {
         return HighlyStructuredMessage.deserialize(bytes);
     }
 }
+export namespace HighlyStructuredMessage {
+    export type AsObject = {
+        namespace: string;
+        elementName: string;
+        params: string[];
+        fallbackLg: string;
+        fallbackLc: string;
+        localizableParams: HSMLocalizableParameter.AsObject[];
+        deterministicLg: string;
+        deterministicLc: string;
+        hydratedHsm?: TemplateMessage.AsObject;
+    };
+}
 export class SendPaymentMessage extends pb_1.Message {
     #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
@@ -6039,10 +5910,7 @@ export class SendPaymentMessage extends pb_1.Message {
     get has_requestMessageKey() {
         return pb_1.Message.getField(this, 3) != null;
     }
-    static fromObject(data: {
-        noteMessage?: Parameters<typeof Message.fromObject>[0];
-        requestMessageKey?: Parameters<typeof MessageKey.fromObject>[0];
-    }): SendPaymentMessage {
+    static fromObject(data: RecursivePartial<SendPaymentMessage.AsObject>): SendPaymentMessage {
         const message = new SendPaymentMessage({});
         if (data.noteMessage != null) {
             message.noteMessage = Message.fromObject(data.noteMessage);
@@ -6053,10 +5921,7 @@ export class SendPaymentMessage extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            noteMessage?: Parameters<typeof Message.fromObject>[0];
-            requestMessageKey?: Parameters<typeof MessageKey.fromObject>[0];
-        } = {};
+        const data: SendPaymentMessage.AsObject = {};
         if (this.noteMessage != null) {
             data.noteMessage = this.noteMessage.toObject();
         }
@@ -6099,6 +5964,12 @@ export class SendPaymentMessage extends pb_1.Message {
     static deserializeBinary(bytes: Uint8Array): SendPaymentMessage {
         return SendPaymentMessage.deserialize(bytes);
     }
+}
+export namespace SendPaymentMessage {
+    export type AsObject = {
+        noteMessage?: Message.AsObject;
+        requestMessageKey?: MessageKey.AsObject;
+    };
 }
 export class RequestPaymentMessage extends pb_1.Message {
     #one_of_decls: number[][] = [];
@@ -6174,13 +6045,7 @@ export class RequestPaymentMessage extends pb_1.Message {
     get has_expiryTimestamp() {
         return pb_1.Message.getField(this, 5) != null;
     }
-    static fromObject(data: {
-        noteMessage?: Parameters<typeof Message.fromObject>[0];
-        currencyCodeIso4217?: string;
-        amount1000?: number;
-        requestFrom?: string;
-        expiryTimestamp?: number;
-    }): RequestPaymentMessage {
+    static fromObject(data: RecursivePartial<RequestPaymentMessage.AsObject>): RequestPaymentMessage {
         const message = new RequestPaymentMessage({});
         if (data.noteMessage != null) {
             message.noteMessage = Message.fromObject(data.noteMessage);
@@ -6200,13 +6065,7 @@ export class RequestPaymentMessage extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            noteMessage?: Parameters<typeof Message.fromObject>[0];
-            currencyCodeIso4217: string;
-            amount1000: number;
-            requestFrom: string;
-            expiryTimestamp: number;
-        } = {
+        const data: RequestPaymentMessage.AsObject = {
             currencyCodeIso4217: this.currencyCodeIso4217,
             amount1000: this.amount1000,
             requestFrom: this.requestFrom,
@@ -6267,6 +6126,15 @@ export class RequestPaymentMessage extends pb_1.Message {
         return RequestPaymentMessage.deserialize(bytes);
     }
 }
+export namespace RequestPaymentMessage {
+    export type AsObject = {
+        noteMessage?: Message.AsObject;
+        currencyCodeIso4217: string;
+        amount1000: number;
+        requestFrom: string;
+        expiryTimestamp: number;
+    };
+}
 export class DeclinePaymentRequestMessage extends pb_1.Message {
     #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
@@ -6289,9 +6157,7 @@ export class DeclinePaymentRequestMessage extends pb_1.Message {
     get has_key() {
         return pb_1.Message.getField(this, 1) != null;
     }
-    static fromObject(data: {
-        key?: Parameters<typeof MessageKey.fromObject>[0];
-    }): DeclinePaymentRequestMessage {
+    static fromObject(data: RecursivePartial<DeclinePaymentRequestMessage.AsObject>): DeclinePaymentRequestMessage {
         const message = new DeclinePaymentRequestMessage({});
         if (data.key != null) {
             message.key = MessageKey.fromObject(data.key);
@@ -6299,9 +6165,7 @@ export class DeclinePaymentRequestMessage extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            key?: Parameters<typeof MessageKey.fromObject>[0];
-        } = {};
+        const data: DeclinePaymentRequestMessage.AsObject = {};
         if (this.key != null) {
             data.key = this.key.toObject();
         }
@@ -6337,6 +6201,11 @@ export class DeclinePaymentRequestMessage extends pb_1.Message {
         return DeclinePaymentRequestMessage.deserialize(bytes);
     }
 }
+export namespace DeclinePaymentRequestMessage {
+    export type AsObject = {
+        key?: MessageKey.AsObject;
+    };
+}
 export class CancelPaymentRequestMessage extends pb_1.Message {
     #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
@@ -6359,9 +6228,7 @@ export class CancelPaymentRequestMessage extends pb_1.Message {
     get has_key() {
         return pb_1.Message.getField(this, 1) != null;
     }
-    static fromObject(data: {
-        key?: Parameters<typeof MessageKey.fromObject>[0];
-    }): CancelPaymentRequestMessage {
+    static fromObject(data: RecursivePartial<CancelPaymentRequestMessage.AsObject>): CancelPaymentRequestMessage {
         const message = new CancelPaymentRequestMessage({});
         if (data.key != null) {
             message.key = MessageKey.fromObject(data.key);
@@ -6369,9 +6236,7 @@ export class CancelPaymentRequestMessage extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            key?: Parameters<typeof MessageKey.fromObject>[0];
-        } = {};
+        const data: CancelPaymentRequestMessage.AsObject = {};
         if (this.key != null) {
             data.key = this.key.toObject();
         }
@@ -6406,6 +6271,11 @@ export class CancelPaymentRequestMessage extends pb_1.Message {
     static deserializeBinary(bytes: Uint8Array): CancelPaymentRequestMessage {
         return CancelPaymentRequestMessage.deserialize(bytes);
     }
+}
+export namespace CancelPaymentRequestMessage {
+    export type AsObject = {
+        key?: MessageKey.AsObject;
+    };
 }
 export class LiveLocationMessage extends pb_1.Message {
     #one_of_decls: number[][] = [];
@@ -6546,18 +6416,7 @@ export class LiveLocationMessage extends pb_1.Message {
     get has_contextInfo() {
         return pb_1.Message.getField(this, 17) != null;
     }
-    static fromObject(data: {
-        degreesLatitude?: number;
-        degreesLongitude?: number;
-        accuracyInMeters?: number;
-        speedInMps?: number;
-        degreesClockwiseFromMagneticNorth?: number;
-        caption?: string;
-        sequenceNumber?: number;
-        timeOffset?: number;
-        jpegThumbnail?: Uint8Array;
-        contextInfo?: Parameters<typeof ContextInfo.fromObject>[0];
-    }): LiveLocationMessage {
+    static fromObject(data: RecursivePartial<LiveLocationMessage.AsObject>): LiveLocationMessage {
         const message = new LiveLocationMessage({});
         if (data.degreesLatitude != null) {
             message.degreesLatitude = data.degreesLatitude;
@@ -6592,18 +6451,7 @@ export class LiveLocationMessage extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            degreesLatitude: number;
-            degreesLongitude: number;
-            accuracyInMeters: number;
-            speedInMps: number;
-            degreesClockwiseFromMagneticNorth: number;
-            caption: string;
-            sequenceNumber: number;
-            timeOffset: number;
-            jpegThumbnail: Uint8Array;
-            contextInfo?: Parameters<typeof ContextInfo.fromObject>[0];
-        } = {
+        const data: LiveLocationMessage.AsObject = {
             degreesLatitude: this.degreesLatitude,
             degreesLongitude: this.degreesLongitude,
             accuracyInMeters: this.accuracyInMeters,
@@ -6693,6 +6541,20 @@ export class LiveLocationMessage extends pb_1.Message {
     static deserializeBinary(bytes: Uint8Array): LiveLocationMessage {
         return LiveLocationMessage.deserialize(bytes);
     }
+}
+export namespace LiveLocationMessage {
+    export type AsObject = {
+        degreesLatitude: number;
+        degreesLongitude: number;
+        accuracyInMeters: number;
+        speedInMps: number;
+        degreesClockwiseFromMagneticNorth: number;
+        caption: string;
+        sequenceNumber: number;
+        timeOffset: number;
+        jpegThumbnail: Uint8Array;
+        contextInfo?: ContextInfo.AsObject;
+    };
 }
 export class StickerMessage extends pb_1.Message {
     #one_of_decls: number[][] = [];
@@ -6898,23 +6760,7 @@ export class StickerMessage extends pb_1.Message {
     get has_contextInfo() {
         return pb_1.Message.getField(this, 17) != null;
     }
-    static fromObject(data: {
-        url?: string;
-        fileSha256?: Uint8Array;
-        fileEncSha256?: Uint8Array;
-        mediaKey?: Uint8Array;
-        mimetype?: string;
-        height?: number;
-        width?: number;
-        directPath?: string;
-        fileLength?: number;
-        mediaKeyTimestamp?: number;
-        firstFrameLength?: number;
-        firstFrameSidecar?: Uint8Array;
-        isAnimated?: boolean;
-        pngThumbnail?: Uint8Array;
-        contextInfo?: Parameters<typeof ContextInfo.fromObject>[0];
-    }): StickerMessage {
+    static fromObject(data: RecursivePartial<StickerMessage.AsObject>): StickerMessage {
         const message = new StickerMessage({});
         if (data.url != null) {
             message.url = data.url;
@@ -6964,23 +6810,7 @@ export class StickerMessage extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            url: string;
-            fileSha256: Uint8Array;
-            fileEncSha256: Uint8Array;
-            mediaKey: Uint8Array;
-            mimetype: string;
-            height: number;
-            width: number;
-            directPath: string;
-            fileLength: number;
-            mediaKeyTimestamp: number;
-            firstFrameLength: number;
-            firstFrameSidecar: Uint8Array;
-            isAnimated: boolean;
-            pngThumbnail: Uint8Array;
-            contextInfo?: Parameters<typeof ContextInfo.fromObject>[0];
-        } = {
+        const data: StickerMessage.AsObject = {
             url: this.url,
             fileSha256: this.fileSha256,
             fileEncSha256: this.fileEncSha256,
@@ -7100,6 +6930,25 @@ export class StickerMessage extends pb_1.Message {
     static deserializeBinary(bytes: Uint8Array): StickerMessage {
         return StickerMessage.deserialize(bytes);
     }
+}
+export namespace StickerMessage {
+    export type AsObject = {
+        url: string;
+        fileSha256: Uint8Array;
+        fileEncSha256: Uint8Array;
+        mediaKey: Uint8Array;
+        mimetype: string;
+        height: number;
+        width: number;
+        directPath: string;
+        fileLength: number;
+        mediaKeyTimestamp: number;
+        firstFrameLength: number;
+        firstFrameSidecar: Uint8Array;
+        isAnimated: boolean;
+        pngThumbnail: Uint8Array;
+        contextInfo?: ContextInfo.AsObject;
+    };
 }
 export class FourRowTemplate extends pb_1.Message {
     #one_of_decls: number[][] = [[1, 2, 3, 4, 5]];
@@ -7247,16 +7096,7 @@ export class FourRowTemplate extends pb_1.Message {
         };
         return cases[pb_1.Message.computeOneofCase(this, [1, 2, 3, 4, 5])];
     }
-    static fromObject(data: {
-        content?: Parameters<typeof HighlyStructuredMessage.fromObject>[0];
-        footer?: Parameters<typeof HighlyStructuredMessage.fromObject>[0];
-        buttons?: Parameters<typeof TemplateButton.fromObject>[0][];
-        documentMessage?: Parameters<typeof DocumentMessage.fromObject>[0];
-        highlyStructuredMessage?: Parameters<typeof HighlyStructuredMessage.fromObject>[0];
-        imageMessage?: Parameters<typeof ImageMessage.fromObject>[0];
-        videoMessage?: Parameters<typeof VideoMessage.fromObject>[0];
-        locationMessage?: Parameters<typeof LocationMessage.fromObject>[0];
-    }): FourRowTemplate {
+    static fromObject(data: RecursivePartial<FourRowTemplate.AsObject>): FourRowTemplate {
         const message = new FourRowTemplate({
             buttons: data.buttons.map(item => TemplateButton.fromObject(item))
         });
@@ -7284,16 +7124,7 @@ export class FourRowTemplate extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            content?: Parameters<typeof HighlyStructuredMessage.fromObject>[0];
-            footer?: Parameters<typeof HighlyStructuredMessage.fromObject>[0];
-            buttons: Parameters<typeof TemplateButton.fromObject>[0][];
-            documentMessage?: Parameters<typeof DocumentMessage.fromObject>[0];
-            highlyStructuredMessage?: Parameters<typeof HighlyStructuredMessage.fromObject>[0];
-            imageMessage?: Parameters<typeof ImageMessage.fromObject>[0];
-            videoMessage?: Parameters<typeof VideoMessage.fromObject>[0];
-            locationMessage?: Parameters<typeof LocationMessage.fromObject>[0];
-        } = {
+        const data: FourRowTemplate.AsObject = {
             buttons: this.buttons.map((item: TemplateButton) => item.toObject())
         };
         if (this.content != null) {
@@ -7383,6 +7214,18 @@ export class FourRowTemplate extends pb_1.Message {
     static deserializeBinary(bytes: Uint8Array): FourRowTemplate {
         return FourRowTemplate.deserialize(bytes);
     }
+}
+export namespace FourRowTemplate {
+    export type AsObject = {
+        content?: HighlyStructuredMessage.AsObject;
+        footer?: HighlyStructuredMessage.AsObject;
+        buttons: TemplateButton.AsObject[];
+        documentMessage?: DocumentMessage.AsObject;
+        highlyStructuredMessage?: HighlyStructuredMessage.AsObject;
+        imageMessage?: ImageMessage.AsObject;
+        videoMessage?: VideoMessage.AsObject;
+        locationMessage?: LocationMessage.AsObject;
+    };
 }
 export class HydratedFourRowTemplate extends pb_1.Message {
     #one_of_decls: number[][] = [[1, 2, 3, 4, 5]];
@@ -7543,17 +7386,7 @@ export class HydratedFourRowTemplate extends pb_1.Message {
         };
         return cases[pb_1.Message.computeOneofCase(this, [1, 2, 3, 4, 5])];
     }
-    static fromObject(data: {
-        hydratedContentText?: string;
-        hydratedFooterText?: string;
-        hydratedButtons?: Parameters<typeof HydratedTemplateButton.fromObject>[0][];
-        templateId?: string;
-        documentMessage?: Parameters<typeof DocumentMessage.fromObject>[0];
-        hydratedTitleText?: string;
-        imageMessage?: Parameters<typeof ImageMessage.fromObject>[0];
-        videoMessage?: Parameters<typeof VideoMessage.fromObject>[0];
-        locationMessage?: Parameters<typeof LocationMessage.fromObject>[0];
-    }): HydratedFourRowTemplate {
+    static fromObject(data: RecursivePartial<HydratedFourRowTemplate.AsObject>): HydratedFourRowTemplate {
         const message = new HydratedFourRowTemplate({
             hydratedButtons: data.hydratedButtons.map(item => HydratedTemplateButton.fromObject(item))
         });
@@ -7584,17 +7417,7 @@ export class HydratedFourRowTemplate extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            hydratedContentText: string;
-            hydratedFooterText: string;
-            hydratedButtons: Parameters<typeof HydratedTemplateButton.fromObject>[0][];
-            templateId: string;
-            documentMessage?: Parameters<typeof DocumentMessage.fromObject>[0];
-            hydratedTitleText: string;
-            imageMessage?: Parameters<typeof ImageMessage.fromObject>[0];
-            videoMessage?: Parameters<typeof VideoMessage.fromObject>[0];
-            locationMessage?: Parameters<typeof LocationMessage.fromObject>[0];
-        } = {
+        const data: HydratedFourRowTemplate.AsObject = {
             hydratedContentText: this.hydratedContentText,
             hydratedFooterText: this.hydratedFooterText,
             hydratedButtons: this.hydratedButtons.map((item: HydratedTemplateButton) => item.toObject()),
@@ -7685,6 +7508,19 @@ export class HydratedFourRowTemplate extends pb_1.Message {
         return HydratedFourRowTemplate.deserialize(bytes);
     }
 }
+export namespace HydratedFourRowTemplate {
+    export type AsObject = {
+        hydratedContentText: string;
+        hydratedFooterText: string;
+        hydratedButtons: HydratedTemplateButton.AsObject[];
+        templateId: string;
+        documentMessage?: DocumentMessage.AsObject;
+        hydratedTitleText: string;
+        imageMessage?: ImageMessage.AsObject;
+        videoMessage?: VideoMessage.AsObject;
+        locationMessage?: LocationMessage.AsObject;
+    };
+}
 export class TemplateMessage extends pb_1.Message {
     #one_of_decls: number[][] = [[1, 2]];
     constructor(data?: any[] | ({
@@ -7760,12 +7596,7 @@ export class TemplateMessage extends pb_1.Message {
         };
         return cases[pb_1.Message.computeOneofCase(this, [1, 2])];
     }
-    static fromObject(data: {
-        contextInfo?: Parameters<typeof ContextInfo.fromObject>[0];
-        hydratedTemplate?: Parameters<typeof HydratedFourRowTemplate.fromObject>[0];
-        fourRowTemplate?: Parameters<typeof FourRowTemplate.fromObject>[0];
-        hydratedFourRowTemplate?: Parameters<typeof HydratedFourRowTemplate.fromObject>[0];
-    }): TemplateMessage {
+    static fromObject(data: RecursivePartial<TemplateMessage.AsObject>): TemplateMessage {
         const message = new TemplateMessage({});
         if (data.contextInfo != null) {
             message.contextInfo = ContextInfo.fromObject(data.contextInfo);
@@ -7782,12 +7613,7 @@ export class TemplateMessage extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            contextInfo?: Parameters<typeof ContextInfo.fromObject>[0];
-            hydratedTemplate?: Parameters<typeof HydratedFourRowTemplate.fromObject>[0];
-            fourRowTemplate?: Parameters<typeof FourRowTemplate.fromObject>[0];
-            hydratedFourRowTemplate?: Parameters<typeof HydratedFourRowTemplate.fromObject>[0];
-        } = {};
+        const data: TemplateMessage.AsObject = {};
         if (this.contextInfo != null) {
             data.contextInfo = this.contextInfo.toObject();
         }
@@ -7846,6 +7672,14 @@ export class TemplateMessage extends pb_1.Message {
     static deserializeBinary(bytes: Uint8Array): TemplateMessage {
         return TemplateMessage.deserialize(bytes);
     }
+}
+export namespace TemplateMessage {
+    export type AsObject = {
+        contextInfo?: ContextInfo.AsObject;
+        hydratedTemplate?: HydratedFourRowTemplate.AsObject;
+        fourRowTemplate?: FourRowTemplate.AsObject;
+        hydratedFourRowTemplate?: HydratedFourRowTemplate.AsObject;
+    };
 }
 export class TemplateButtonReplyMessage extends pb_1.Message {
     #one_of_decls: number[][] = [];
@@ -7908,12 +7742,7 @@ export class TemplateButtonReplyMessage extends pb_1.Message {
     get has_selectedIndex() {
         return pb_1.Message.getField(this, 4) != null;
     }
-    static fromObject(data: {
-        selectedId?: string;
-        selectedDisplayText?: string;
-        contextInfo?: Parameters<typeof ContextInfo.fromObject>[0];
-        selectedIndex?: number;
-    }): TemplateButtonReplyMessage {
+    static fromObject(data: RecursivePartial<TemplateButtonReplyMessage.AsObject>): TemplateButtonReplyMessage {
         const message = new TemplateButtonReplyMessage({});
         if (data.selectedId != null) {
             message.selectedId = data.selectedId;
@@ -7930,12 +7759,7 @@ export class TemplateButtonReplyMessage extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            selectedId: string;
-            selectedDisplayText: string;
-            contextInfo?: Parameters<typeof ContextInfo.fromObject>[0];
-            selectedIndex: number;
-        } = {
+        const data: TemplateButtonReplyMessage.AsObject = {
             selectedId: this.selectedId,
             selectedDisplayText: this.selectedDisplayText,
             selectedIndex: this.selectedIndex
@@ -7990,6 +7814,14 @@ export class TemplateButtonReplyMessage extends pb_1.Message {
         return TemplateButtonReplyMessage.deserialize(bytes);
     }
 }
+export namespace TemplateButtonReplyMessage {
+    export type AsObject = {
+        selectedId: string;
+        selectedDisplayText: string;
+        contextInfo?: ContextInfo.AsObject;
+        selectedIndex: number;
+    };
+}
 export class CatalogSnapshot extends pb_1.Message {
     #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
@@ -8038,11 +7870,7 @@ export class CatalogSnapshot extends pb_1.Message {
     get has_description() {
         return pb_1.Message.getField(this, 3) != null;
     }
-    static fromObject(data: {
-        catalogImage?: Parameters<typeof ImageMessage.fromObject>[0];
-        title?: string;
-        description?: string;
-    }): CatalogSnapshot {
+    static fromObject(data: RecursivePartial<CatalogSnapshot.AsObject>): CatalogSnapshot {
         const message = new CatalogSnapshot({});
         if (data.catalogImage != null) {
             message.catalogImage = ImageMessage.fromObject(data.catalogImage);
@@ -8056,11 +7884,7 @@ export class CatalogSnapshot extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            catalogImage?: Parameters<typeof ImageMessage.fromObject>[0];
-            title: string;
-            description: string;
-        } = {
+        const data: CatalogSnapshot.AsObject = {
             title: this.title,
             description: this.description
         };
@@ -8108,6 +7932,13 @@ export class CatalogSnapshot extends pb_1.Message {
     static deserializeBinary(bytes: Uint8Array): CatalogSnapshot {
         return CatalogSnapshot.deserialize(bytes);
     }
+}
+export namespace CatalogSnapshot {
+    export type AsObject = {
+        catalogImage?: ImageMessage.AsObject;
+        title: string;
+        description: string;
+    };
 }
 export class ProductSnapshot extends pb_1.Message {
     #one_of_decls: number[][] = [];
@@ -8248,18 +8079,7 @@ export class ProductSnapshot extends pb_1.Message {
     get has_firstImageId() {
         return pb_1.Message.getField(this, 11) != null;
     }
-    static fromObject(data: {
-        productImage?: Parameters<typeof ImageMessage.fromObject>[0];
-        productId?: string;
-        title?: string;
-        description?: string;
-        currencyCode?: string;
-        priceAmount1000?: number;
-        retailerId?: string;
-        url?: string;
-        productImageCount?: number;
-        firstImageId?: string;
-    }): ProductSnapshot {
+    static fromObject(data: RecursivePartial<ProductSnapshot.AsObject>): ProductSnapshot {
         const message = new ProductSnapshot({});
         if (data.productImage != null) {
             message.productImage = ImageMessage.fromObject(data.productImage);
@@ -8294,18 +8114,7 @@ export class ProductSnapshot extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            productImage?: Parameters<typeof ImageMessage.fromObject>[0];
-            productId: string;
-            title: string;
-            description: string;
-            currencyCode: string;
-            priceAmount1000: number;
-            retailerId: string;
-            url: string;
-            productImageCount: number;
-            firstImageId: string;
-        } = {
+        const data: ProductSnapshot.AsObject = {
             productId: this.productId,
             title: this.title,
             description: this.description,
@@ -8396,6 +8205,20 @@ export class ProductSnapshot extends pb_1.Message {
         return ProductSnapshot.deserialize(bytes);
     }
 }
+export namespace ProductSnapshot {
+    export type AsObject = {
+        productImage?: ImageMessage.AsObject;
+        productId: string;
+        title: string;
+        description: string;
+        currencyCode: string;
+        priceAmount1000: number;
+        retailerId: string;
+        url: string;
+        productImageCount: number;
+        firstImageId: string;
+    };
+}
 export class ProductMessage extends pb_1.Message {
     #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
@@ -8457,12 +8280,7 @@ export class ProductMessage extends pb_1.Message {
     get has_contextInfo() {
         return pb_1.Message.getField(this, 17) != null;
     }
-    static fromObject(data: {
-        product?: Parameters<typeof ProductSnapshot.fromObject>[0];
-        businessOwnerJid?: string;
-        catalog?: Parameters<typeof CatalogSnapshot.fromObject>[0];
-        contextInfo?: Parameters<typeof ContextInfo.fromObject>[0];
-    }): ProductMessage {
+    static fromObject(data: RecursivePartial<ProductMessage.AsObject>): ProductMessage {
         const message = new ProductMessage({});
         if (data.product != null) {
             message.product = ProductSnapshot.fromObject(data.product);
@@ -8479,12 +8297,7 @@ export class ProductMessage extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            product?: Parameters<typeof ProductSnapshot.fromObject>[0];
-            businessOwnerJid: string;
-            catalog?: Parameters<typeof CatalogSnapshot.fromObject>[0];
-            contextInfo?: Parameters<typeof ContextInfo.fromObject>[0];
-        } = {
+        const data: ProductMessage.AsObject = {
             businessOwnerJid: this.businessOwnerJid
         };
         if (this.product != null) {
@@ -8542,6 +8355,14 @@ export class ProductMessage extends pb_1.Message {
     static deserializeBinary(bytes: Uint8Array): ProductMessage {
         return ProductMessage.deserialize(bytes);
     }
+}
+export namespace ProductMessage {
+    export type AsObject = {
+        product?: ProductSnapshot.AsObject;
+        businessOwnerJid: string;
+        catalog?: CatalogSnapshot.AsObject;
+        contextInfo?: ContextInfo.AsObject;
+    };
 }
 export class GroupInviteMessage extends pb_1.Message {
     #one_of_decls: number[][] = [];
@@ -8643,15 +8464,7 @@ export class GroupInviteMessage extends pb_1.Message {
     get has_contextInfo() {
         return pb_1.Message.getField(this, 7) != null;
     }
-    static fromObject(data: {
-        groupJid?: string;
-        inviteCode?: string;
-        inviteExpiration?: number;
-        groupName?: string;
-        jpegThumbnail?: Uint8Array;
-        caption?: string;
-        contextInfo?: Parameters<typeof ContextInfo.fromObject>[0];
-    }): GroupInviteMessage {
+    static fromObject(data: RecursivePartial<GroupInviteMessage.AsObject>): GroupInviteMessage {
         const message = new GroupInviteMessage({});
         if (data.groupJid != null) {
             message.groupJid = data.groupJid;
@@ -8677,15 +8490,7 @@ export class GroupInviteMessage extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            groupJid: string;
-            inviteCode: string;
-            inviteExpiration: number;
-            groupName: string;
-            jpegThumbnail: Uint8Array;
-            caption: string;
-            contextInfo?: Parameters<typeof ContextInfo.fromObject>[0];
-        } = {
+        const data: GroupInviteMessage.AsObject = {
             groupJid: this.groupJid,
             inviteCode: this.inviteCode,
             inviteExpiration: this.inviteExpiration,
@@ -8758,6 +8563,17 @@ export class GroupInviteMessage extends pb_1.Message {
         return GroupInviteMessage.deserialize(bytes);
     }
 }
+export namespace GroupInviteMessage {
+    export type AsObject = {
+        groupJid: string;
+        inviteCode: string;
+        inviteExpiration: number;
+        groupName: string;
+        jpegThumbnail: Uint8Array;
+        caption: string;
+        contextInfo?: ContextInfo.AsObject;
+    };
+}
 export class DeviceSentMessage extends pb_1.Message {
     #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
@@ -8806,11 +8622,7 @@ export class DeviceSentMessage extends pb_1.Message {
     get has_phash() {
         return pb_1.Message.getField(this, 3) != null;
     }
-    static fromObject(data: {
-        destinationJid?: string;
-        message?: Parameters<typeof Message.fromObject>[0];
-        phash?: string;
-    }): DeviceSentMessage {
+    static fromObject(data: RecursivePartial<DeviceSentMessage.AsObject>): DeviceSentMessage {
         const message = new DeviceSentMessage({});
         if (data.destinationJid != null) {
             message.destinationJid = data.destinationJid;
@@ -8824,11 +8636,7 @@ export class DeviceSentMessage extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            destinationJid: string;
-            message?: Parameters<typeof Message.fromObject>[0];
-            phash: string;
-        } = {
+        const data: DeviceSentMessage.AsObject = {
             destinationJid: this.destinationJid,
             phash: this.phash
         };
@@ -8876,6 +8684,13 @@ export class DeviceSentMessage extends pb_1.Message {
     static deserializeBinary(bytes: Uint8Array): DeviceSentMessage {
         return DeviceSentMessage.deserialize(bytes);
     }
+}
+export namespace DeviceSentMessage {
+    export type AsObject = {
+        destinationJid: string;
+        message?: Message.AsObject;
+        phash: string;
+    };
 }
 export class Message extends pb_1.Message {
     #one_of_decls: number[][] = [];
@@ -9224,34 +9039,7 @@ export class Message extends pb_1.Message {
     get has_deviceSentMessage() {
         return pb_1.Message.getField(this, 31) != null;
     }
-    static fromObject(data: {
-        conversation?: string;
-        senderKeyDistributionMessage?: Parameters<typeof SenderKeyDistributionMessage.fromObject>[0];
-        imageMessage?: Parameters<typeof ImageMessage.fromObject>[0];
-        contactMessage?: Parameters<typeof ContactMessage.fromObject>[0];
-        locationMessage?: Parameters<typeof LocationMessage.fromObject>[0];
-        extendedTextMessage?: Parameters<typeof ExtendedTextMessage.fromObject>[0];
-        documentMessage?: Parameters<typeof DocumentMessage.fromObject>[0];
-        audioMessage?: Parameters<typeof AudioMessage.fromObject>[0];
-        videoMessage?: Parameters<typeof VideoMessage.fromObject>[0];
-        call?: Parameters<typeof Call.fromObject>[0];
-        chat?: Parameters<typeof Chat.fromObject>[0];
-        protocolMessage?: Parameters<typeof ProtocolMessage.fromObject>[0];
-        contactsArrayMessage?: Parameters<typeof ContactsArrayMessage.fromObject>[0];
-        highlyStructuredMessage?: Parameters<typeof HighlyStructuredMessage.fromObject>[0];
-        fastRatchetKeySenderKeyDistributionMessage?: Parameters<typeof SenderKeyDistributionMessage.fromObject>[0];
-        sendPaymentMessage?: Parameters<typeof SendPaymentMessage.fromObject>[0];
-        liveLocationMessage?: Parameters<typeof LiveLocationMessage.fromObject>[0];
-        requestPaymentMessage?: Parameters<typeof RequestPaymentMessage.fromObject>[0];
-        declinePaymentRequestMessage?: Parameters<typeof DeclinePaymentRequestMessage.fromObject>[0];
-        cancelPaymentRequestMessage?: Parameters<typeof CancelPaymentRequestMessage.fromObject>[0];
-        templateMessage?: Parameters<typeof TemplateMessage.fromObject>[0];
-        stickerMessage?: Parameters<typeof StickerMessage.fromObject>[0];
-        groupInviteMessage?: Parameters<typeof GroupInviteMessage.fromObject>[0];
-        templateButtonReplyMessage?: Parameters<typeof TemplateButtonReplyMessage.fromObject>[0];
-        productMessage?: Parameters<typeof ProductMessage.fromObject>[0];
-        deviceSentMessage?: Parameters<typeof DeviceSentMessage.fromObject>[0];
-    }): Message {
+    static fromObject(data: RecursivePartial<Message.AsObject>): Message {
         const message = new Message({});
         if (data.conversation != null) {
             message.conversation = data.conversation;
@@ -9334,34 +9122,7 @@ export class Message extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            conversation: string;
-            senderKeyDistributionMessage?: Parameters<typeof SenderKeyDistributionMessage.fromObject>[0];
-            imageMessage?: Parameters<typeof ImageMessage.fromObject>[0];
-            contactMessage?: Parameters<typeof ContactMessage.fromObject>[0];
-            locationMessage?: Parameters<typeof LocationMessage.fromObject>[0];
-            extendedTextMessage?: Parameters<typeof ExtendedTextMessage.fromObject>[0];
-            documentMessage?: Parameters<typeof DocumentMessage.fromObject>[0];
-            audioMessage?: Parameters<typeof AudioMessage.fromObject>[0];
-            videoMessage?: Parameters<typeof VideoMessage.fromObject>[0];
-            call?: Parameters<typeof Call.fromObject>[0];
-            chat?: Parameters<typeof Chat.fromObject>[0];
-            protocolMessage?: Parameters<typeof ProtocolMessage.fromObject>[0];
-            contactsArrayMessage?: Parameters<typeof ContactsArrayMessage.fromObject>[0];
-            highlyStructuredMessage?: Parameters<typeof HighlyStructuredMessage.fromObject>[0];
-            fastRatchetKeySenderKeyDistributionMessage?: Parameters<typeof SenderKeyDistributionMessage.fromObject>[0];
-            sendPaymentMessage?: Parameters<typeof SendPaymentMessage.fromObject>[0];
-            liveLocationMessage?: Parameters<typeof LiveLocationMessage.fromObject>[0];
-            requestPaymentMessage?: Parameters<typeof RequestPaymentMessage.fromObject>[0];
-            declinePaymentRequestMessage?: Parameters<typeof DeclinePaymentRequestMessage.fromObject>[0];
-            cancelPaymentRequestMessage?: Parameters<typeof CancelPaymentRequestMessage.fromObject>[0];
-            templateMessage?: Parameters<typeof TemplateMessage.fromObject>[0];
-            stickerMessage?: Parameters<typeof StickerMessage.fromObject>[0];
-            groupInviteMessage?: Parameters<typeof GroupInviteMessage.fromObject>[0];
-            templateButtonReplyMessage?: Parameters<typeof TemplateButtonReplyMessage.fromObject>[0];
-            productMessage?: Parameters<typeof ProductMessage.fromObject>[0];
-            deviceSentMessage?: Parameters<typeof DeviceSentMessage.fromObject>[0];
-        } = {
+        const data: Message.AsObject = {
             conversation: this.conversation
         };
         if (this.senderKeyDistributionMessage != null) {
@@ -9596,6 +9357,36 @@ export class Message extends pb_1.Message {
         return Message.deserialize(bytes);
     }
 }
+export namespace Message {
+    export type AsObject = {
+        conversation: string;
+        senderKeyDistributionMessage?: SenderKeyDistributionMessage.AsObject;
+        imageMessage?: ImageMessage.AsObject;
+        contactMessage?: ContactMessage.AsObject;
+        locationMessage?: LocationMessage.AsObject;
+        extendedTextMessage?: ExtendedTextMessage.AsObject;
+        documentMessage?: DocumentMessage.AsObject;
+        audioMessage?: AudioMessage.AsObject;
+        videoMessage?: VideoMessage.AsObject;
+        call?: Call.AsObject;
+        chat?: Chat.AsObject;
+        protocolMessage?: ProtocolMessage.AsObject;
+        contactsArrayMessage?: ContactsArrayMessage.AsObject;
+        highlyStructuredMessage?: HighlyStructuredMessage.AsObject;
+        fastRatchetKeySenderKeyDistributionMessage?: SenderKeyDistributionMessage.AsObject;
+        sendPaymentMessage?: SendPaymentMessage.AsObject;
+        liveLocationMessage?: LiveLocationMessage.AsObject;
+        requestPaymentMessage?: RequestPaymentMessage.AsObject;
+        declinePaymentRequestMessage?: DeclinePaymentRequestMessage.AsObject;
+        cancelPaymentRequestMessage?: CancelPaymentRequestMessage.AsObject;
+        templateMessage?: TemplateMessage.AsObject;
+        stickerMessage?: StickerMessage.AsObject;
+        groupInviteMessage?: GroupInviteMessage.AsObject;
+        templateButtonReplyMessage?: TemplateButtonReplyMessage.AsObject;
+        productMessage?: ProductMessage.AsObject;
+        deviceSentMessage?: DeviceSentMessage.AsObject;
+    };
+}
 export class MessageKey extends pb_1.Message {
     #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
@@ -9657,12 +9448,7 @@ export class MessageKey extends pb_1.Message {
     get has_participant() {
         return pb_1.Message.getField(this, 4) != null;
     }
-    static fromObject(data: {
-        remoteJid?: string;
-        fromMe?: boolean;
-        id?: string;
-        participant?: string;
-    }): MessageKey {
+    static fromObject(data: RecursivePartial<MessageKey.AsObject>): MessageKey {
         const message = new MessageKey({});
         if (data.remoteJid != null) {
             message.remoteJid = data.remoteJid;
@@ -9679,12 +9465,7 @@ export class MessageKey extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            remoteJid: string;
-            fromMe: boolean;
-            id: string;
-            participant: string;
-        } = {
+        const data: MessageKey.AsObject = {
             remoteJid: this.remoteJid,
             fromMe: this.fromMe,
             id: this.id,
@@ -9736,6 +9517,14 @@ export class MessageKey extends pb_1.Message {
     static deserializeBinary(bytes: Uint8Array): MessageKey {
         return MessageKey.deserialize(bytes);
     }
+}
+export namespace MessageKey {
+    export type AsObject = {
+        remoteJid: string;
+        fromMe: boolean;
+        id: string;
+        participant: string;
+    };
 }
 export class WebFeatures extends pb_1.Message {
     #one_of_decls: number[][] = [];
@@ -10175,41 +9964,7 @@ export class WebFeatures extends pb_1.Message {
     get has_syncdRelease1() {
         return pb_1.Message.getField(this, 35) != null;
     }
-    static fromObject(data: {
-        labelsDisplay?: WebFeatures.WEB_FEATURES_FLAG;
-        voipIndividualOutgoing?: WebFeatures.WEB_FEATURES_FLAG;
-        groupsV3?: WebFeatures.WEB_FEATURES_FLAG;
-        groupsV3Create?: WebFeatures.WEB_FEATURES_FLAG;
-        changeNumberV2?: WebFeatures.WEB_FEATURES_FLAG;
-        queryStatusV3Thumbnail?: WebFeatures.WEB_FEATURES_FLAG;
-        liveLocations?: WebFeatures.WEB_FEATURES_FLAG;
-        queryVname?: WebFeatures.WEB_FEATURES_FLAG;
-        voipIndividualIncoming?: WebFeatures.WEB_FEATURES_FLAG;
-        quickRepliesQuery?: WebFeatures.WEB_FEATURES_FLAG;
-        payments?: WebFeatures.WEB_FEATURES_FLAG;
-        stickerPackQuery?: WebFeatures.WEB_FEATURES_FLAG;
-        liveLocationsFinal?: WebFeatures.WEB_FEATURES_FLAG;
-        labelsEdit?: WebFeatures.WEB_FEATURES_FLAG;
-        mediaUpload?: WebFeatures.WEB_FEATURES_FLAG;
-        mediaUploadRichQuickReplies?: WebFeatures.WEB_FEATURES_FLAG;
-        vnameV2?: WebFeatures.WEB_FEATURES_FLAG;
-        videoPlaybackUrl?: WebFeatures.WEB_FEATURES_FLAG;
-        statusRanking?: WebFeatures.WEB_FEATURES_FLAG;
-        voipIndividualVideo?: WebFeatures.WEB_FEATURES_FLAG;
-        thirdPartyStickers?: WebFeatures.WEB_FEATURES_FLAG;
-        frequentlyForwardedSetting?: WebFeatures.WEB_FEATURES_FLAG;
-        groupsV4JoinPermission?: WebFeatures.WEB_FEATURES_FLAG;
-        recentStickers?: WebFeatures.WEB_FEATURES_FLAG;
-        catalog?: WebFeatures.WEB_FEATURES_FLAG;
-        starredStickers?: WebFeatures.WEB_FEATURES_FLAG;
-        voipGroupCall?: WebFeatures.WEB_FEATURES_FLAG;
-        templateMessage?: WebFeatures.WEB_FEATURES_FLAG;
-        templateMessageInteractivity?: WebFeatures.WEB_FEATURES_FLAG;
-        ephemeralMessages?: WebFeatures.WEB_FEATURES_FLAG;
-        e2ENotificationSync?: WebFeatures.WEB_FEATURES_FLAG;
-        recentStickersV2?: WebFeatures.WEB_FEATURES_FLAG;
-        syncdRelease1?: WebFeatures.WEB_FEATURES_FLAG;
-    }): WebFeatures {
+    static fromObject(data: RecursivePartial<WebFeatures.AsObject>): WebFeatures {
         const message = new WebFeatures({});
         if (data.labelsDisplay != null) {
             message.labelsDisplay = data.labelsDisplay;
@@ -10313,41 +10068,7 @@ export class WebFeatures extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            labelsDisplay: WebFeatures.WEB_FEATURES_FLAG;
-            voipIndividualOutgoing: WebFeatures.WEB_FEATURES_FLAG;
-            groupsV3: WebFeatures.WEB_FEATURES_FLAG;
-            groupsV3Create: WebFeatures.WEB_FEATURES_FLAG;
-            changeNumberV2: WebFeatures.WEB_FEATURES_FLAG;
-            queryStatusV3Thumbnail: WebFeatures.WEB_FEATURES_FLAG;
-            liveLocations: WebFeatures.WEB_FEATURES_FLAG;
-            queryVname: WebFeatures.WEB_FEATURES_FLAG;
-            voipIndividualIncoming: WebFeatures.WEB_FEATURES_FLAG;
-            quickRepliesQuery: WebFeatures.WEB_FEATURES_FLAG;
-            payments: WebFeatures.WEB_FEATURES_FLAG;
-            stickerPackQuery: WebFeatures.WEB_FEATURES_FLAG;
-            liveLocationsFinal: WebFeatures.WEB_FEATURES_FLAG;
-            labelsEdit: WebFeatures.WEB_FEATURES_FLAG;
-            mediaUpload: WebFeatures.WEB_FEATURES_FLAG;
-            mediaUploadRichQuickReplies: WebFeatures.WEB_FEATURES_FLAG;
-            vnameV2: WebFeatures.WEB_FEATURES_FLAG;
-            videoPlaybackUrl: WebFeatures.WEB_FEATURES_FLAG;
-            statusRanking: WebFeatures.WEB_FEATURES_FLAG;
-            voipIndividualVideo: WebFeatures.WEB_FEATURES_FLAG;
-            thirdPartyStickers: WebFeatures.WEB_FEATURES_FLAG;
-            frequentlyForwardedSetting: WebFeatures.WEB_FEATURES_FLAG;
-            groupsV4JoinPermission: WebFeatures.WEB_FEATURES_FLAG;
-            recentStickers: WebFeatures.WEB_FEATURES_FLAG;
-            catalog: WebFeatures.WEB_FEATURES_FLAG;
-            starredStickers: WebFeatures.WEB_FEATURES_FLAG;
-            voipGroupCall: WebFeatures.WEB_FEATURES_FLAG;
-            templateMessage: WebFeatures.WEB_FEATURES_FLAG;
-            templateMessageInteractivity: WebFeatures.WEB_FEATURES_FLAG;
-            ephemeralMessages: WebFeatures.WEB_FEATURES_FLAG;
-            e2ENotificationSync: WebFeatures.WEB_FEATURES_FLAG;
-            recentStickersV2: WebFeatures.WEB_FEATURES_FLAG;
-            syncdRelease1: WebFeatures.WEB_FEATURES_FLAG;
-        } = {
+        const data: WebFeatures.AsObject = {
             labelsDisplay: this.labelsDisplay,
             voipIndividualOutgoing: this.voipIndividualOutgoing,
             groupsV3: this.groupsV3,
@@ -10575,6 +10296,41 @@ export class WebFeatures extends pb_1.Message {
     }
 }
 export namespace WebFeatures {
+    export type AsObject = {
+        labelsDisplay: WebFeatures.WEB_FEATURES_FLAG;
+        voipIndividualOutgoing: WebFeatures.WEB_FEATURES_FLAG;
+        groupsV3: WebFeatures.WEB_FEATURES_FLAG;
+        groupsV3Create: WebFeatures.WEB_FEATURES_FLAG;
+        changeNumberV2: WebFeatures.WEB_FEATURES_FLAG;
+        queryStatusV3Thumbnail: WebFeatures.WEB_FEATURES_FLAG;
+        liveLocations: WebFeatures.WEB_FEATURES_FLAG;
+        queryVname: WebFeatures.WEB_FEATURES_FLAG;
+        voipIndividualIncoming: WebFeatures.WEB_FEATURES_FLAG;
+        quickRepliesQuery: WebFeatures.WEB_FEATURES_FLAG;
+        payments: WebFeatures.WEB_FEATURES_FLAG;
+        stickerPackQuery: WebFeatures.WEB_FEATURES_FLAG;
+        liveLocationsFinal: WebFeatures.WEB_FEATURES_FLAG;
+        labelsEdit: WebFeatures.WEB_FEATURES_FLAG;
+        mediaUpload: WebFeatures.WEB_FEATURES_FLAG;
+        mediaUploadRichQuickReplies: WebFeatures.WEB_FEATURES_FLAG;
+        vnameV2: WebFeatures.WEB_FEATURES_FLAG;
+        videoPlaybackUrl: WebFeatures.WEB_FEATURES_FLAG;
+        statusRanking: WebFeatures.WEB_FEATURES_FLAG;
+        voipIndividualVideo: WebFeatures.WEB_FEATURES_FLAG;
+        thirdPartyStickers: WebFeatures.WEB_FEATURES_FLAG;
+        frequentlyForwardedSetting: WebFeatures.WEB_FEATURES_FLAG;
+        groupsV4JoinPermission: WebFeatures.WEB_FEATURES_FLAG;
+        recentStickers: WebFeatures.WEB_FEATURES_FLAG;
+        catalog: WebFeatures.WEB_FEATURES_FLAG;
+        starredStickers: WebFeatures.WEB_FEATURES_FLAG;
+        voipGroupCall: WebFeatures.WEB_FEATURES_FLAG;
+        templateMessage: WebFeatures.WEB_FEATURES_FLAG;
+        templateMessageInteractivity: WebFeatures.WEB_FEATURES_FLAG;
+        ephemeralMessages: WebFeatures.WEB_FEATURES_FLAG;
+        e2ENotificationSync: WebFeatures.WEB_FEATURES_FLAG;
+        recentStickersV2: WebFeatures.WEB_FEATURES_FLAG;
+        syncdRelease1: WebFeatures.WEB_FEATURES_FLAG;
+    };
     export enum WEB_FEATURES_FLAG {
         NOT_STARTED = 0,
         FORCE_UPGRADE = 1,
@@ -10638,12 +10394,7 @@ export class TabletNotificationsInfo extends pb_1.Message {
     set notifyMessage(value: NotificationMessageInfo[]) {
         pb_1.Message.setRepeatedWrapperField(this, 5, value);
     }
-    static fromObject(data: {
-        timestamp?: number;
-        unreadChats?: number;
-        notifyMessageCount?: number;
-        notifyMessage?: Parameters<typeof NotificationMessageInfo.fromObject>[0][];
-    }): TabletNotificationsInfo {
+    static fromObject(data: RecursivePartial<TabletNotificationsInfo.AsObject>): TabletNotificationsInfo {
         const message = new TabletNotificationsInfo({
             notifyMessage: data.notifyMessage.map(item => NotificationMessageInfo.fromObject(item))
         });
@@ -10659,12 +10410,7 @@ export class TabletNotificationsInfo extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            timestamp: number;
-            unreadChats: number;
-            notifyMessageCount: number;
-            notifyMessage: Parameters<typeof NotificationMessageInfo.fromObject>[0][];
-        } = {
+        const data: TabletNotificationsInfo.AsObject = {
             timestamp: this.timestamp,
             unreadChats: this.unreadChats,
             notifyMessageCount: this.notifyMessageCount,
@@ -10716,6 +10462,14 @@ export class TabletNotificationsInfo extends pb_1.Message {
     static deserializeBinary(bytes: Uint8Array): TabletNotificationsInfo {
         return TabletNotificationsInfo.deserialize(bytes);
     }
+}
+export namespace TabletNotificationsInfo {
+    export type AsObject = {
+        timestamp: number;
+        unreadChats: number;
+        notifyMessageCount: number;
+        notifyMessage: NotificationMessageInfo.AsObject[];
+    };
 }
 export class NotificationMessageInfo extends pb_1.Message {
     #one_of_decls: number[][] = [];
@@ -10778,12 +10532,7 @@ export class NotificationMessageInfo extends pb_1.Message {
     get has_participant() {
         return pb_1.Message.getField(this, 4) != null;
     }
-    static fromObject(data: {
-        key?: Parameters<typeof MessageKey.fromObject>[0];
-        message?: Parameters<typeof Message.fromObject>[0];
-        messageTimestamp?: number;
-        participant?: string;
-    }): NotificationMessageInfo {
+    static fromObject(data: RecursivePartial<NotificationMessageInfo.AsObject>): NotificationMessageInfo {
         const message = new NotificationMessageInfo({});
         if (data.key != null) {
             message.key = MessageKey.fromObject(data.key);
@@ -10800,12 +10549,7 @@ export class NotificationMessageInfo extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            key?: Parameters<typeof MessageKey.fromObject>[0];
-            message?: Parameters<typeof Message.fromObject>[0];
-            messageTimestamp: number;
-            participant: string;
-        } = {
+        const data: NotificationMessageInfo.AsObject = {
             messageTimestamp: this.messageTimestamp,
             participant: this.participant
         };
@@ -10861,6 +10605,14 @@ export class NotificationMessageInfo extends pb_1.Message {
     static deserializeBinary(bytes: Uint8Array): NotificationMessageInfo {
         return NotificationMessageInfo.deserialize(bytes);
     }
+}
+export namespace NotificationMessageInfo {
+    export type AsObject = {
+        key?: MessageKey.AsObject;
+        message?: Message.AsObject;
+        messageTimestamp: number;
+        participant: string;
+    };
 }
 export class WebNotificationsInfo extends pb_1.Message {
     #one_of_decls: number[][] = [];
@@ -10918,12 +10670,7 @@ export class WebNotificationsInfo extends pb_1.Message {
     set notifyMessages(value: WebMessageInfo[]) {
         pb_1.Message.setRepeatedWrapperField(this, 5, value);
     }
-    static fromObject(data: {
-        timestamp?: number;
-        unreadChats?: number;
-        notifyMessageCount?: number;
-        notifyMessages?: Parameters<typeof WebMessageInfo.fromObject>[0][];
-    }): WebNotificationsInfo {
+    static fromObject(data: RecursivePartial<WebNotificationsInfo.AsObject>): WebNotificationsInfo {
         const message = new WebNotificationsInfo({
             notifyMessages: data.notifyMessages.map(item => WebMessageInfo.fromObject(item))
         });
@@ -10939,12 +10686,7 @@ export class WebNotificationsInfo extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            timestamp: number;
-            unreadChats: number;
-            notifyMessageCount: number;
-            notifyMessages: Parameters<typeof WebMessageInfo.fromObject>[0][];
-        } = {
+        const data: WebNotificationsInfo.AsObject = {
             timestamp: this.timestamp,
             unreadChats: this.unreadChats,
             notifyMessageCount: this.notifyMessageCount,
@@ -10996,6 +10738,14 @@ export class WebNotificationsInfo extends pb_1.Message {
     static deserializeBinary(bytes: Uint8Array): WebNotificationsInfo {
         return WebNotificationsInfo.deserialize(bytes);
     }
+}
+export namespace WebNotificationsInfo {
+    export type AsObject = {
+        timestamp: number;
+        unreadChats: number;
+        notifyMessageCount: number;
+        notifyMessages: WebMessageInfo.AsObject[];
+    };
 }
 export class PaymentInfo extends pb_1.Message {
     #one_of_decls: number[][] = [];
@@ -11136,18 +10886,7 @@ export class PaymentInfo extends pb_1.Message {
     get has_txnStatus() {
         return pb_1.Message.getField(this, 10) != null;
     }
-    static fromObject(data: {
-        currencyDeprecated?: PaymentInfo.PAYMENT_INFO_CURRENCY;
-        amount1000?: number;
-        receiverJid?: string;
-        status?: PaymentInfo.PAYMENT_INFO_STATUS;
-        transactionTimestamp?: number;
-        requestMessageKey?: Parameters<typeof MessageKey.fromObject>[0];
-        expiryTimestamp?: number;
-        futureproofed?: boolean;
-        currency?: string;
-        txnStatus?: PaymentInfo.PAYMENT_INFO_TXNSTATUS;
-    }): PaymentInfo {
+    static fromObject(data: RecursivePartial<PaymentInfo.AsObject>): PaymentInfo {
         const message = new PaymentInfo({});
         if (data.currencyDeprecated != null) {
             message.currencyDeprecated = data.currencyDeprecated;
@@ -11182,18 +10921,7 @@ export class PaymentInfo extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            currencyDeprecated: PaymentInfo.PAYMENT_INFO_CURRENCY;
-            amount1000: number;
-            receiverJid: string;
-            status: PaymentInfo.PAYMENT_INFO_STATUS;
-            transactionTimestamp: number;
-            requestMessageKey?: Parameters<typeof MessageKey.fromObject>[0];
-            expiryTimestamp: number;
-            futureproofed: boolean;
-            currency: string;
-            txnStatus: PaymentInfo.PAYMENT_INFO_TXNSTATUS;
-        } = {
+        const data: PaymentInfo.AsObject = {
             currencyDeprecated: this.currencyDeprecated,
             amount1000: this.amount1000,
             receiverJid: this.receiverJid,
@@ -11285,6 +11013,18 @@ export class PaymentInfo extends pb_1.Message {
     }
 }
 export namespace PaymentInfo {
+    export type AsObject = {
+        currencyDeprecated: PaymentInfo.PAYMENT_INFO_CURRENCY;
+        amount1000: number;
+        receiverJid: string;
+        status: PaymentInfo.PAYMENT_INFO_STATUS;
+        transactionTimestamp: number;
+        requestMessageKey?: MessageKey.AsObject;
+        expiryTimestamp: number;
+        futureproofed: boolean;
+        currency: string;
+        txnStatus: PaymentInfo.PAYMENT_INFO_TXNSTATUS;
+    };
     export enum PAYMENT_INFO_CURRENCY {
         UNKNOWN_CURRENCY = 0,
         INR = 1
@@ -11643,32 +11383,7 @@ export class WebMessageInfo extends pb_1.Message {
     get has_ephemeralOffToOn() {
         return pb_1.Message.getField(this, 34) != null;
     }
-    static fromObject(data: {
-        key?: Parameters<typeof MessageKey.fromObject>[0];
-        message?: Parameters<typeof Message.fromObject>[0];
-        messageTimestamp?: number;
-        status?: WebMessageInfo.WEB_MESSAGE_INFO_STATUS;
-        participant?: string;
-        ignore?: boolean;
-        starred?: boolean;
-        broadcast?: boolean;
-        pushName?: string;
-        mediaCiphertextSha256?: Uint8Array;
-        multicast?: boolean;
-        urlText?: boolean;
-        urlNumber?: boolean;
-        messageStubType?: WebMessageInfo.WEB_MESSAGE_INFO_STUBTYPE;
-        clearMedia?: boolean;
-        messageStubParameters?: string[];
-        duration?: number;
-        labels?: string[];
-        paymentInfo?: Parameters<typeof PaymentInfo.fromObject>[0];
-        finalLiveLocation?: Parameters<typeof LiveLocationMessage.fromObject>[0];
-        quotedPaymentInfo?: Parameters<typeof PaymentInfo.fromObject>[0];
-        ephemeralStartTimestamp?: number;
-        ephemeralDuration?: number;
-        ephemeralOffToOn?: boolean;
-    }): WebMessageInfo {
+    static fromObject(data: RecursivePartial<WebMessageInfo.AsObject>): WebMessageInfo {
         const message = new WebMessageInfo({
             key: MessageKey.fromObject(data.key),
             messageStubParameters: data.messageStubParameters,
@@ -11740,32 +11455,7 @@ export class WebMessageInfo extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            key?: Parameters<typeof MessageKey.fromObject>[0];
-            message?: Parameters<typeof Message.fromObject>[0];
-            messageTimestamp: number;
-            status: WebMessageInfo.WEB_MESSAGE_INFO_STATUS;
-            participant: string;
-            ignore: boolean;
-            starred: boolean;
-            broadcast: boolean;
-            pushName: string;
-            mediaCiphertextSha256: Uint8Array;
-            multicast: boolean;
-            urlText: boolean;
-            urlNumber: boolean;
-            messageStubType: WebMessageInfo.WEB_MESSAGE_INFO_STUBTYPE;
-            clearMedia: boolean;
-            messageStubParameters: string[];
-            duration: number;
-            labels: string[];
-            paymentInfo?: Parameters<typeof PaymentInfo.fromObject>[0];
-            finalLiveLocation?: Parameters<typeof LiveLocationMessage.fromObject>[0];
-            quotedPaymentInfo?: Parameters<typeof PaymentInfo.fromObject>[0];
-            ephemeralStartTimestamp: number;
-            ephemeralDuration: number;
-            ephemeralOffToOn: boolean;
-        } = {
+        const data: WebMessageInfo.AsObject = {
             messageTimestamp: this.messageTimestamp,
             status: this.status,
             participant: this.participant,
@@ -11949,6 +11639,32 @@ export class WebMessageInfo extends pb_1.Message {
     }
 }
 export namespace WebMessageInfo {
+    export type AsObject = {
+        key?: MessageKey.AsObject;
+        message?: Message.AsObject;
+        messageTimestamp: number;
+        status: WebMessageInfo.WEB_MESSAGE_INFO_STATUS;
+        participant: string;
+        ignore: boolean;
+        starred: boolean;
+        broadcast: boolean;
+        pushName: string;
+        mediaCiphertextSha256: Uint8Array;
+        multicast: boolean;
+        urlText: boolean;
+        urlNumber: boolean;
+        messageStubType: WebMessageInfo.WEB_MESSAGE_INFO_STUBTYPE;
+        clearMedia: boolean;
+        messageStubParameters: string[];
+        duration: number;
+        labels: string[];
+        paymentInfo?: PaymentInfo.AsObject;
+        finalLiveLocation?: LiveLocationMessage.AsObject;
+        quotedPaymentInfo?: PaymentInfo.AsObject;
+        ephemeralStartTimestamp: number;
+        ephemeralDuration: number;
+        ephemeralOffToOn: boolean;
+    };
     export enum WEB_MESSAGE_INFO_STATUS {
         ERROR = 0,
         PENDING = 1,

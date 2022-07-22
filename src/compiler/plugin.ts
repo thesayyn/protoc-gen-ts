@@ -5,6 +5,9 @@
  * git: https://github.com/thesayyn/protoc-gen-ts */
 import * as dependency_1 from "./descriptor";
 import * as pb_1 from "google-protobuf";
+type RecursivePartial<T> = {
+    [P in keyof T]?: T[P] extends (infer U)[] ? RecursivePartial<U>[] : T[P] extends Uint8Array ? T[P] : T[P] extends object ? RecursivePartial<T[P]> : T[P];
+};
 export class Version extends pb_1.Message {
     #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
@@ -66,12 +69,7 @@ export class Version extends pb_1.Message {
     get has_suffix() {
         return pb_1.Message.getField(this, 4) != null;
     }
-    static fromObject(data: {
-        major?: number;
-        minor?: number;
-        patch?: number;
-        suffix?: string;
-    }): Version {
+    static fromObject(data: RecursivePartial<Version.AsObject>): Version {
         const message = new Version({});
         if (data.major != null) {
             message.major = data.major;
@@ -88,12 +86,7 @@ export class Version extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            major: number;
-            minor: number;
-            patch: number;
-            suffix: string;
-        } = {
+        const data: Version.AsObject = {
             major: this.major,
             minor: this.minor,
             patch: this.patch,
@@ -146,6 +139,14 @@ export class Version extends pb_1.Message {
         return Version.deserialize(bytes);
     }
 }
+export namespace Version {
+    export type AsObject = {
+        major: number;
+        minor: number;
+        patch: number;
+        suffix: string;
+    };
+}
 export class CodeGeneratorRequest extends pb_1.Message {
     #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
@@ -197,12 +198,7 @@ export class CodeGeneratorRequest extends pb_1.Message {
     get has_compiler_version() {
         return pb_1.Message.getField(this, 3) != null;
     }
-    static fromObject(data: {
-        file_to_generate?: string[];
-        parameter?: string;
-        proto_file?: Parameters<typeof dependency_1.FileDescriptorProto.fromObject>[0][];
-        compiler_version?: Parameters<typeof Version.fromObject>[0];
-    }): CodeGeneratorRequest {
+    static fromObject(data: RecursivePartial<CodeGeneratorRequest.AsObject>): CodeGeneratorRequest {
         const message = new CodeGeneratorRequest({
             file_to_generate: data.file_to_generate,
             proto_file: data.proto_file.map(item => dependency_1.FileDescriptorProto.fromObject(item))
@@ -216,12 +212,7 @@ export class CodeGeneratorRequest extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            file_to_generate: string[];
-            parameter: string;
-            proto_file: Parameters<typeof dependency_1.FileDescriptorProto.fromObject>[0][];
-            compiler_version?: Parameters<typeof Version.fromObject>[0];
-        } = {
+        const data: CodeGeneratorRequest.AsObject = {
             file_to_generate: this.file_to_generate,
             parameter: this.parameter,
             proto_file: this.proto_file.map((item: dependency_1.FileDescriptorProto) => item.toObject())
@@ -276,6 +267,14 @@ export class CodeGeneratorRequest extends pb_1.Message {
         return CodeGeneratorRequest.deserialize(bytes);
     }
 }
+export namespace CodeGeneratorRequest {
+    export type AsObject = {
+        file_to_generate: string[];
+        parameter: string;
+        proto_file: dependency_1.FileDescriptorProto.AsObject[];
+        compiler_version?: Version.AsObject;
+    };
+}
 export class CodeGeneratorResponse extends pb_1.Message {
     #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
@@ -319,11 +318,7 @@ export class CodeGeneratorResponse extends pb_1.Message {
     set file(value: CodeGeneratorResponse.File[]) {
         pb_1.Message.setRepeatedWrapperField(this, 15, value);
     }
-    static fromObject(data: {
-        error?: string;
-        supported_features?: number;
-        file?: Parameters<typeof CodeGeneratorResponse.File.fromObject>[0][];
-    }): CodeGeneratorResponse {
+    static fromObject(data: RecursivePartial<CodeGeneratorResponse.AsObject>): CodeGeneratorResponse {
         const message = new CodeGeneratorResponse({
             file: data.file.map(item => CodeGeneratorResponse.File.fromObject(item))
         });
@@ -336,11 +331,7 @@ export class CodeGeneratorResponse extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            error: string;
-            supported_features: number;
-            file: Parameters<typeof CodeGeneratorResponse.File.fromObject>[0][];
-        } = {
+        const data: CodeGeneratorResponse.AsObject = {
             error: this.error,
             supported_features: this.supported_features,
             file: this.file.map((item: CodeGeneratorResponse.File) => item.toObject())
@@ -388,6 +379,11 @@ export class CodeGeneratorResponse extends pb_1.Message {
     }
 }
 export namespace CodeGeneratorResponse {
+    export type AsObject = {
+        error: string;
+        supported_features: number;
+        file: CodeGeneratorResponse.File.AsObject[];
+    };
     export enum Feature {
         FEATURE_NONE = 0,
         FEATURE_PROTO3_OPTIONAL = 1
@@ -453,12 +449,7 @@ export namespace CodeGeneratorResponse {
         get has_generated_code_info() {
             return pb_1.Message.getField(this, 16) != null;
         }
-        static fromObject(data: {
-            name?: string;
-            insertion_point?: string;
-            content?: string;
-            generated_code_info?: Parameters<typeof dependency_1.GeneratedCodeInfo.fromObject>[0];
-        }): File {
+        static fromObject(data: RecursivePartial<File.AsObject>): File {
             const message = new File({});
             if (data.name != null) {
                 message.name = data.name;
@@ -475,12 +466,7 @@ export namespace CodeGeneratorResponse {
             return message;
         }
         toObject() {
-            const data: {
-                name: string;
-                insertion_point: string;
-                content: string;
-                generated_code_info?: Parameters<typeof dependency_1.GeneratedCodeInfo.fromObject>[0];
-            } = {
+            const data: File.AsObject = {
                 name: this.name,
                 insertion_point: this.insertion_point,
                 content: this.content
@@ -534,5 +520,13 @@ export namespace CodeGeneratorResponse {
         static deserializeBinary(bytes: Uint8Array): File {
             return File.deserialize(bytes);
         }
+    }
+    export namespace File {
+        export type AsObject = {
+            name: string;
+            insertion_point: string;
+            content: string;
+            generated_code_info?: dependency_1.GeneratedCodeInfo.AsObject;
+        };
     }
 }

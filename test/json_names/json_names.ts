@@ -4,6 +4,9 @@
  * source: test/_/json_names/json_names.proto
  * git: https://github.com/thesayyn/protoc-gen-ts */
 import * as pb_1 from "google-protobuf";
+type RecursivePartial<T> = {
+    [P in keyof T]?: T[P] extends (infer U)[] ? RecursivePartial<U>[] : T[P] extends Uint8Array ? T[P] : T[P] extends object ? RecursivePartial<T[P]> : T[P];
+};
 export enum ColorSpace {
     RED_GREEN_BLUE = 0,
     CYAN_YELLOW_MAGENTA_BLACK = 1
@@ -123,15 +126,7 @@ export class JsonNamesMessage extends pb_1.Message {
         };
         return cases[pb_1.Message.computeOneofCase(this, [5])];
     }
-    static fromObject(data: {
-        someStrings?: string[];
-        anInteger?: number;
-        aNestedMessage?: Parameters<typeof JsonNamesMessage.NestedMessage.fromObject>[0];
-        colorSpace?: ColorSpace;
-        anOptionalString?: string;
-        aSingleString?: string;
-        aSingleNumber?: number;
-    }): JsonNamesMessage {
+    static fromObject(data: RecursivePartial<JsonNamesMessage.AsObject>): JsonNamesMessage {
         const message = new JsonNamesMessage({});
         if (data.someStrings != null) {
             message.someStrings = data.someStrings;
@@ -157,15 +152,7 @@ export class JsonNamesMessage extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            someStrings: string[];
-            anInteger: number;
-            aNestedMessage?: Parameters<typeof JsonNamesMessage.NestedMessage.fromObject>[0];
-            colorSpace: ColorSpace;
-            anOptionalString: string;
-            aSingleString: string;
-            aSingleNumber: number;
-        } = {
+        const data: JsonNamesMessage.AsObject = {
             someStrings: this.someStrings,
             anInteger: this.anInteger,
             colorSpace: this.colorSpace,
@@ -239,6 +226,15 @@ export class JsonNamesMessage extends pb_1.Message {
     }
 }
 export namespace JsonNamesMessage {
+    export type AsObject = {
+        someStrings: string[];
+        anInteger: number;
+        aNestedMessage?: JsonNamesMessage.NestedMessage.AsObject;
+        colorSpace: ColorSpace;
+        anOptionalString: string;
+        aSingleString: string;
+        aSingleNumber: number;
+    };
     export class NestedMessage extends pb_1.Message {
         #one_of_decls: number[][] = [];
         constructor(data?: any[] | {
@@ -258,9 +254,7 @@ export namespace JsonNamesMessage {
         set aNestedInteger(value: number) {
             pb_1.Message.setField(this, 1, value);
         }
-        static fromObject(data: {
-            aNestedInteger?: number;
-        }): NestedMessage {
+        static fromObject(data: RecursivePartial<NestedMessage.AsObject>): NestedMessage {
             const message = new NestedMessage({});
             if (data.aNestedInteger != null) {
                 message.aNestedInteger = data.aNestedInteger;
@@ -268,9 +262,7 @@ export namespace JsonNamesMessage {
             return message;
         }
         toObject() {
-            const data: {
-                aNestedInteger: number;
-            } = {
+            const data: NestedMessage.AsObject = {
                 aNestedInteger: this.aNestedInteger
             };
             return data;
@@ -304,5 +296,10 @@ export namespace JsonNamesMessage {
         static deserializeBinary(bytes: Uint8Array): NestedMessage {
             return NestedMessage.deserialize(bytes);
         }
+    }
+    export namespace NestedMessage {
+        export type AsObject = {
+            aNestedInteger: number;
+        };
     }
 }

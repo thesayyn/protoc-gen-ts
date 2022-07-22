@@ -5,6 +5,9 @@
  * git: https://github.com/thesayyn/protoc-gen-ts */
 import * as pb_1 from "google-protobuf";
 import * as grpc_1 from "@grpc/grpc-js";
+type RecursivePartial<T> = {
+    [P in keyof T]?: T[P] extends (infer U)[] ? RecursivePartial<U>[] : T[P] extends Uint8Array ? T[P] : T[P] extends object ? RecursivePartial<T[P]> : T[P];
+};
 export enum Type {
     HTTP = 0,
     DATABASE = 1,
@@ -55,11 +58,7 @@ export class SchedulingContext extends pb_1.Message {
     get has_batch() {
         return pb_1.Message.getField(this, 4) != null;
     }
-    static fromObject(data: {
-        env?: Parameters<typeof SchedulingContextEnv.fromObject>[0][];
-        timeout?: number;
-        batch?: Parameters<typeof SchedulingContextBatch.fromObject>[0];
-    }): SchedulingContext {
+    static fromObject(data: RecursivePartial<SchedulingContextAsObject>): SchedulingContext {
         const message = new SchedulingContext({});
         if (data.env != null) {
             message.env = data.env.map(item => SchedulingContextEnv.fromObject(item));
@@ -73,11 +72,7 @@ export class SchedulingContext extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            env: Parameters<typeof SchedulingContextEnv.fromObject>[0][];
-            timeout: number;
-            batch?: Parameters<typeof SchedulingContextBatch.fromObject>[0];
-        } = {
+        const data: SchedulingContextAsObject = {
             env: this.env.map((item: SchedulingContextEnv) => item.toObject()),
             timeout: this.timeout
         };
@@ -126,6 +121,11 @@ export class SchedulingContext extends pb_1.Message {
         return SchedulingContext.deserialize(bytes);
     }
 }
+export type SchedulingContextAsObject = {
+    env: SchedulingContextEnvAsObject[];
+    timeout: number;
+    batch?: SchedulingContextBatchAsObject;
+};
 export class SchedulingContextEnv extends pb_1.Message {
     #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
@@ -155,10 +155,7 @@ export class SchedulingContextEnv extends pb_1.Message {
     set value(value: string) {
         pb_1.Message.setField(this, 2, value);
     }
-    static fromObject(data: {
-        key?: string;
-        value?: string;
-    }): SchedulingContextEnv {
+    static fromObject(data: RecursivePartial<SchedulingContextEnvAsObject>): SchedulingContextEnv {
         const message = new SchedulingContextEnv({});
         if (data.key != null) {
             message.key = data.key;
@@ -169,10 +166,7 @@ export class SchedulingContextEnv extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            key: string;
-            value: string;
-        } = {
+        const data: SchedulingContextEnvAsObject = {
             key: this.key,
             value: this.value
         };
@@ -213,6 +207,10 @@ export class SchedulingContextEnv extends pb_1.Message {
         return SchedulingContextEnv.deserialize(bytes);
     }
 }
+export type SchedulingContextEnvAsObject = {
+    key: string;
+    value: string;
+};
 export class SchedulingContextBatch extends pb_1.Message {
     #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
@@ -255,11 +253,7 @@ export class SchedulingContextBatch extends pb_1.Message {
     get has_process() {
         return pb_1.Message.getField(this, 3) != null;
     }
-    static fromObject(data: {
-        limit?: number;
-        deadline?: number;
-        process?: Parameters<typeof SchedulingContextBatchProcess.fromObject>[0];
-    }): SchedulingContextBatch {
+    static fromObject(data: RecursivePartial<SchedulingContextBatchAsObject>): SchedulingContextBatch {
         const message = new SchedulingContextBatch({});
         if (data.limit != null) {
             message.limit = data.limit;
@@ -273,11 +267,7 @@ export class SchedulingContextBatch extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            limit: number;
-            deadline: number;
-            process?: Parameters<typeof SchedulingContextBatchProcess.fromObject>[0];
-        } = {
+        const data: SchedulingContextBatchAsObject = {
             limit: this.limit,
             deadline: this.deadline
         };
@@ -326,6 +316,11 @@ export class SchedulingContextBatch extends pb_1.Message {
         return SchedulingContextBatch.deserialize(bytes);
     }
 }
+export type SchedulingContextBatchAsObject = {
+    limit: number;
+    deadline: number;
+    process?: SchedulingContextBatchProcessAsObject;
+};
 export class SchedulingContextBatchProcess extends pb_1.Message {
     #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
@@ -345,9 +340,7 @@ export class SchedulingContextBatchProcess extends pb_1.Message {
     set id(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
-    static fromObject(data: {
-        id?: string;
-    }): SchedulingContextBatchProcess {
+    static fromObject(data: RecursivePartial<SchedulingContextBatchProcessAsObject>): SchedulingContextBatchProcess {
         const message = new SchedulingContextBatchProcess({});
         if (data.id != null) {
             message.id = data.id;
@@ -355,9 +348,7 @@ export class SchedulingContextBatchProcess extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            id: string;
-        } = {
+        const data: SchedulingContextBatchProcessAsObject = {
             id: this.id
         };
         return data;
@@ -392,6 +383,9 @@ export class SchedulingContextBatchProcess extends pb_1.Message {
         return SchedulingContextBatchProcess.deserialize(bytes);
     }
 }
+export type SchedulingContextBatchProcessAsObject = {
+    id: string;
+};
 export class Target extends pb_1.Message {
     #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
@@ -444,12 +438,7 @@ export class Target extends pb_1.Message {
     get has_context() {
         return pb_1.Message.getField(this, 4) != null;
     }
-    static fromObject(data: {
-        id?: string;
-        cwd?: string;
-        handler?: string;
-        context?: Parameters<typeof SchedulingContext.fromObject>[0];
-    }): Target {
+    static fromObject(data: RecursivePartial<TargetAsObject>): Target {
         const message = new Target({});
         if (data.id != null) {
             message.id = data.id;
@@ -466,12 +455,7 @@ export class Target extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            id: string;
-            cwd: string;
-            handler: string;
-            context?: Parameters<typeof SchedulingContext.fromObject>[0];
-        } = {
+        const data: TargetAsObject = {
             id: this.id,
             cwd: this.cwd,
             handler: this.handler
@@ -526,6 +510,12 @@ export class Target extends pb_1.Message {
         return Target.deserialize(bytes);
     }
 }
+export type TargetAsObject = {
+    id: string;
+    cwd: string;
+    handler: string;
+    context?: SchedulingContextAsObject;
+};
 export class Event extends pb_1.Message {
     #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
@@ -568,11 +558,7 @@ export class Event extends pb_1.Message {
     get has_target() {
         return pb_1.Message.getField(this, 3) != null;
     }
-    static fromObject(data: {
-        id?: string;
-        type?: Type;
-        target?: Parameters<typeof Target.fromObject>[0];
-    }): Event {
+    static fromObject(data: RecursivePartial<EventAsObject>): Event {
         const message = new Event({});
         if (data.id != null) {
             message.id = data.id;
@@ -586,11 +572,7 @@ export class Event extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            id: string;
-            type: Type;
-            target?: Parameters<typeof Target.fromObject>[0];
-        } = {
+        const data: EventAsObject = {
             id: this.id,
             type: this.type
         };
@@ -639,6 +621,11 @@ export class Event extends pb_1.Message {
         return Event.deserialize(bytes);
     }
 }
+export type EventAsObject = {
+    id: string;
+    type: Type;
+    target?: TargetAsObject;
+};
 export class Pop extends pb_1.Message {
     #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
@@ -658,9 +645,7 @@ export class Pop extends pb_1.Message {
     set id(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
-    static fromObject(data: {
-        id?: string;
-    }): Pop {
+    static fromObject(data: RecursivePartial<PopAsObject>): Pop {
         const message = new Pop({});
         if (data.id != null) {
             message.id = data.id;
@@ -668,9 +653,7 @@ export class Pop extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            id: string;
-        } = {
+        const data: PopAsObject = {
             id: this.id
         };
         return data;
@@ -705,6 +688,9 @@ export class Pop extends pb_1.Message {
         return Pop.deserialize(bytes);
     }
 }
+export type PopAsObject = {
+    id: string;
+};
 export class Complete extends pb_1.Message {
     #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
@@ -724,9 +710,7 @@ export class Complete extends pb_1.Message {
     set id(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
-    static fromObject(data: {
-        id?: string;
-    }): Complete {
+    static fromObject(data: RecursivePartial<CompleteAsObject>): Complete {
         const message = new Complete({});
         if (data.id != null) {
             message.id = data.id;
@@ -734,9 +718,7 @@ export class Complete extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            id: string;
-        } = {
+        const data: CompleteAsObject = {
             id: this.id
         };
         return data;
@@ -771,6 +753,9 @@ export class Complete extends pb_1.Message {
         return Complete.deserialize(bytes);
     }
 }
+export type CompleteAsObject = {
+    id: string;
+};
 export class CompleteResult extends pb_1.Message {
     #one_of_decls: number[][] = [];
     constructor(data?: any[] | {}) {
@@ -778,12 +763,12 @@ export class CompleteResult extends pb_1.Message {
         pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
         if (!Array.isArray(data) && typeof data == "object") { }
     }
-    static fromObject(data: {}): CompleteResult {
+    static fromObject(data: RecursivePartial<CompleteResultAsObject>): CompleteResult {
         const message = new CompleteResult({});
         return message;
     }
     toObject() {
-        const data: {} = {};
+        const data: CompleteResultAsObject = {};
         return data;
     }
     serialize(): Uint8Array;
@@ -811,6 +796,7 @@ export class CompleteResult extends pb_1.Message {
         return CompleteResult.deserialize(bytes);
     }
 }
+export type CompleteResultAsObject = {};
 interface GrpcUnaryServiceInterface<P, R> {
     (message: P, metadata: grpc_1.Metadata, options: grpc_1.CallOptions, callback: grpc_1.requestCallback<R>): grpc_1.ClientUnaryCall;
     (message: P, metadata: grpc_1.Metadata, callback: grpc_1.requestCallback<R>): grpc_1.ClientUnaryCall;

@@ -4,6 +4,9 @@
  * source: test/_/messagefields.proto
  * git: https://github.com/thesayyn/protoc-gen-ts */
 import * as pb_1 from "google-protobuf";
+type RecursivePartial<T> = {
+    [P in keyof T]?: T[P] extends (infer U)[] ? RecursivePartial<U>[] : T[P] extends Uint8Array ? T[P] : T[P] extends object ? RecursivePartial<T[P]> : T[P];
+};
 export class MessageFields extends pb_1.Message {
     #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
@@ -36,10 +39,7 @@ export class MessageFields extends pb_1.Message {
     set array_prop(value: SubMessage[]) {
         pb_1.Message.setRepeatedWrapperField(this, 2, value);
     }
-    static fromObject(data: {
-        sub_message?: Parameters<typeof SubMessage.fromObject>[0];
-        array_prop?: Parameters<typeof SubMessage.fromObject>[0][];
-    }): MessageFields {
+    static fromObject(data: RecursivePartial<MessageFields.AsObject>): MessageFields {
         const message = new MessageFields({});
         if (data.sub_message != null) {
             message.sub_message = SubMessage.fromObject(data.sub_message);
@@ -50,10 +50,7 @@ export class MessageFields extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            sub_message?: Parameters<typeof SubMessage.fromObject>[0];
-            array_prop: Parameters<typeof SubMessage.fromObject>[0][];
-        } = {
+        const data: MessageFields.AsObject = {
             array_prop: this.array_prop.map((item: SubMessage) => item.toObject())
         };
         if (this.sub_message != null) {
@@ -96,6 +93,12 @@ export class MessageFields extends pb_1.Message {
         return MessageFields.deserialize(bytes);
     }
 }
+export namespace MessageFields {
+    export type AsObject = {
+        sub_message?: SubMessage.AsObject;
+        array_prop: SubMessage.AsObject[];
+    };
+}
 export class SubMessage extends pb_1.Message {
     #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
@@ -125,10 +128,7 @@ export class SubMessage extends pb_1.Message {
     set field_2(value: string) {
         pb_1.Message.setField(this, 2, value);
     }
-    static fromObject(data: {
-        field_1?: string;
-        field_2?: string;
-    }): SubMessage {
+    static fromObject(data: RecursivePartial<SubMessage.AsObject>): SubMessage {
         const message = new SubMessage({});
         if (data.field_1 != null) {
             message.field_1 = data.field_1;
@@ -139,10 +139,7 @@ export class SubMessage extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            field_1: string;
-            field_2: string;
-        } = {
+        const data: SubMessage.AsObject = {
             field_1: this.field_1,
             field_2: this.field_2
         };
@@ -182,4 +179,10 @@ export class SubMessage extends pb_1.Message {
     static deserializeBinary(bytes: Uint8Array): SubMessage {
         return SubMessage.deserialize(bytes);
     }
+}
+export namespace SubMessage {
+    export type AsObject = {
+        field_1: string;
+        field_2: string;
+    };
 }

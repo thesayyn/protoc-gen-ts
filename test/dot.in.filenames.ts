@@ -5,6 +5,9 @@
  * git: https://github.com/thesayyn/protoc-gen-ts */
 import * as pb_1 from "google-protobuf";
 export namespace dot {
+    type RecursivePartial<T> = {
+        [P in keyof T]?: T[P] extends (infer U)[] ? RecursivePartial<U>[] : T[P] extends Uint8Array ? T[P] : T[P] extends object ? RecursivePartial<T[P]> : T[P];
+    };
     export class Message extends pb_1.Message {
         #one_of_decls: number[][] = [];
         constructor(data?: any[] | {
@@ -24,9 +27,7 @@ export namespace dot {
         set name(value: string[]) {
             pb_1.Message.setField(this, 1, value);
         }
-        static fromObject(data: {
-            name?: string[];
-        }): Message {
+        static fromObject(data: RecursivePartial<Message.AsObject>): Message {
             const message = new Message({});
             if (data.name != null) {
                 message.name = data.name;
@@ -34,9 +35,7 @@ export namespace dot {
             return message;
         }
         toObject() {
-            const data: {
-                name: string[];
-            } = {
+            const data: Message.AsObject = {
                 name: this.name
             };
             return data;
@@ -70,5 +69,10 @@ export namespace dot {
         static deserializeBinary(bytes: Uint8Array): Message {
             return Message.deserialize(bytes);
         }
+    }
+    export namespace Message {
+        export type AsObject = {
+            name: string[];
+        };
     }
 }

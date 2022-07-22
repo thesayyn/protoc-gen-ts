@@ -5,6 +5,9 @@
  * git: https://github.com/thesayyn/protoc-gen-ts */
 import * as dependency_1 from "./presence_common";
 import * as pb_1 from "google-protobuf";
+type RecursivePartial<T> = {
+    [P in keyof T]?: T[P] extends (infer U)[] ? RecursivePartial<U>[] : T[P] extends Uint8Array ? T[P] : T[P] extends object ? RecursivePartial<T[P]> : T[P];
+};
 export class PresenceMessageV2 extends pb_1.Message {
     #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
@@ -152,22 +155,7 @@ export class PresenceMessageV2 extends pb_1.Message {
     set map(value: Map<string, string>) {
         pb_1.Message.setField(this, 12, value as any);
     }
-    static fromObject(data: {
-        int32?: number;
-        enum?: dependency_1.PresenceCommonEnum;
-        string?: string;
-        message?: Parameters<typeof dependency_1.PresenceCommonMessage.fromObject>[0];
-        oneof?: Parameters<typeof dependency_1.PresenceCommonMessageOneOf.fromObject>[0];
-        opt_int32?: number;
-        opt_enum?: dependency_1.PresenceCommonEnum;
-        opt_string?: string;
-        opt_message?: Parameters<typeof dependency_1.PresenceCommonMessage.fromObject>[0];
-        opt_oneof?: Parameters<typeof dependency_1.PresenceCommonMessageOneOf.fromObject>[0];
-        repeated?: number[];
-        map?: {
-            [key: string]: string;
-        };
-    }): PresenceMessageV2 {
+    static fromObject(data: RecursivePartial<PresenceMessageV2.AsObject>): PresenceMessageV2 {
         const message = new PresenceMessageV2({
             int32: data.int32,
             enum: data.enum,
@@ -195,22 +183,7 @@ export class PresenceMessageV2 extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            int32?: number;
-            enum?: dependency_1.PresenceCommonEnum;
-            string?: string;
-            message?: Parameters<typeof dependency_1.PresenceCommonMessage.fromObject>[0];
-            oneof?: Parameters<typeof dependency_1.PresenceCommonMessageOneOf.fromObject>[0];
-            opt_int32: number;
-            opt_enum: dependency_1.PresenceCommonEnum;
-            opt_string: string;
-            opt_message?: Parameters<typeof dependency_1.PresenceCommonMessage.fromObject>[0];
-            opt_oneof?: Parameters<typeof dependency_1.PresenceCommonMessageOneOf.fromObject>[0];
-            repeated: number[];
-            map: {
-                [key: string]: string;
-            };
-        } = {
+        const data: PresenceMessageV2.AsObject = {
             opt_int32: this.opt_int32,
             opt_enum: this.opt_enum,
             opt_string: this.opt_string,
@@ -328,4 +301,22 @@ export class PresenceMessageV2 extends pb_1.Message {
     static deserializeBinary(bytes: Uint8Array): PresenceMessageV2 {
         return PresenceMessageV2.deserialize(bytes);
     }
+}
+export namespace PresenceMessageV2 {
+    export type AsObject = {
+        int32?: number;
+        enum?: dependency_1.PresenceCommonEnum;
+        string?: string;
+        message?: dependency_1.PresenceCommonMessage.AsObject;
+        oneof?: dependency_1.PresenceCommonMessageOneOf.AsObject;
+        opt_int32: number;
+        opt_enum: dependency_1.PresenceCommonEnum;
+        opt_string: string;
+        opt_message?: dependency_1.PresenceCommonMessage.AsObject;
+        opt_oneof?: dependency_1.PresenceCommonMessageOneOf.AsObject;
+        repeated: number[];
+        map: {
+            [key: string]: string;
+        };
+    };
 }

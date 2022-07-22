@@ -5,6 +5,9 @@
  * git: https://github.com/thesayyn/protoc-gen-ts */
 import * as pb_1 from "google-protobuf";
 import * as grpc_1 from "@grpc/grpc-js";
+type RecursivePartial<T> = {
+    [P in keyof T]?: T[P] extends (infer U)[] ? RecursivePartial<U>[] : T[P] extends Uint8Array ? T[P] : T[P] extends object ? RecursivePartial<T[P]> : T[P];
+};
 export class None extends pb_1.Message {
     #one_of_decls: number[][] = [];
     constructor(data?: any[] | {}) {
@@ -12,12 +15,12 @@ export class None extends pb_1.Message {
         pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
         if (!Array.isArray(data) && typeof data == "object") { }
     }
-    static fromObject(data: {}): None {
+    static fromObject(data: RecursivePartial<None.AsObject>): None {
         const message = new None({});
         return message;
     }
     toObject() {
-        const data: {} = {};
+        const data: None.AsObject = {};
         return data;
     }
     serialize(): Uint8Array;
@@ -44,6 +47,9 @@ export class None extends pb_1.Message {
     static deserializeBinary(bytes: Uint8Array): None {
         return None.deserialize(bytes);
     }
+}
+export namespace None {
+    export type AsObject = {};
 }
 export class _Object extends pb_1.Message {
     #one_of_decls: number[][] = [];
@@ -84,11 +90,7 @@ export class _Object extends pb_1.Message {
     set mimeType(value: string) {
         pb_1.Message.setField(this, 4, value);
     }
-    static fromObject(data: {
-        id?: string;
-        size?: number;
-        mimeType?: string;
-    }): _Object {
+    static fromObject(data: RecursivePartial<_Object.AsObject>): _Object {
         const message = new _Object({});
         if (data.id != null) {
             message.id = data.id;
@@ -102,11 +104,7 @@ export class _Object extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            id: string;
-            size: number;
-            mimeType: string;
-        } = {
+        const data: _Object.AsObject = {
             id: this.id,
             size: this.size,
             mimeType: this.mimeType
@@ -153,6 +151,13 @@ export class _Object extends pb_1.Message {
         return _Object.deserialize(bytes);
     }
 }
+export namespace _Object {
+    export type AsObject = {
+        id: string;
+        size: number;
+        mimeType: string;
+    };
+}
 export class Chunk extends pb_1.Message {
     #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
@@ -185,10 +190,7 @@ export class Chunk extends pb_1.Message {
     get has_range() {
         return pb_1.Message.getField(this, 2) != null;
     }
-    static fromObject(data: {
-        data?: Uint8Array;
-        range?: Parameters<typeof Chunk.Range.fromObject>[0];
-    }): Chunk {
+    static fromObject(data: RecursivePartial<Chunk.AsObject>): Chunk {
         const message = new Chunk({});
         if (data.data != null) {
             message.data = data.data;
@@ -199,10 +201,7 @@ export class Chunk extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            data: Uint8Array;
-            range?: Parameters<typeof Chunk.Range.fromObject>[0];
-        } = {
+        const data: Chunk.AsObject = {
             data: this.data
         };
         if (this.range != null) {
@@ -246,6 +245,10 @@ export class Chunk extends pb_1.Message {
     }
 }
 export namespace Chunk {
+    export type AsObject = {
+        data: Uint8Array;
+        range?: Chunk.Range.AsObject;
+    };
     export class Range extends pb_1.Message {
         #one_of_decls: number[][] = [];
         constructor(data?: any[] | {
@@ -275,10 +278,7 @@ export namespace Chunk {
         set end(value: number) {
             pb_1.Message.setField(this, 2, value);
         }
-        static fromObject(data: {
-            start?: number;
-            end?: number;
-        }): Range {
+        static fromObject(data: RecursivePartial<Range.AsObject>): Range {
             const message = new Range({});
             if (data.start != null) {
                 message.start = data.start;
@@ -289,10 +289,7 @@ export namespace Chunk {
             return message;
         }
         toObject() {
-            const data: {
-                start: number;
-                end: number;
-            } = {
+            const data: Range.AsObject = {
                 start: this.start,
                 end: this.end
             };
@@ -333,6 +330,12 @@ export namespace Chunk {
             return Range.deserialize(bytes);
         }
     }
+    export namespace Range {
+        export type AsObject = {
+            start: number;
+            end: number;
+        };
+    }
     export class Query extends pb_1.Message {
         #one_of_decls: number[][] = [];
         constructor(data?: any[] | {
@@ -365,10 +368,7 @@ export namespace Chunk {
         get has_range() {
             return pb_1.Message.getField(this, 2) != null;
         }
-        static fromObject(data: {
-            id?: string;
-            range?: Parameters<typeof Chunk.Range.fromObject>[0];
-        }): Query {
+        static fromObject(data: RecursivePartial<Query.AsObject>): Query {
             const message = new Query({});
             if (data.id != null) {
                 message.id = data.id;
@@ -379,10 +379,7 @@ export namespace Chunk {
             return message;
         }
         toObject() {
-            const data: {
-                id: string;
-                range?: Parameters<typeof Chunk.Range.fromObject>[0];
-            } = {
+            const data: Query.AsObject = {
                 id: this.id
             };
             if (this.range != null) {
@@ -425,6 +422,12 @@ export namespace Chunk {
             return Query.deserialize(bytes);
         }
     }
+    export namespace Query {
+        export type AsObject = {
+            id: string;
+            range?: Chunk.Range.AsObject;
+        };
+    }
 }
 export class Query extends pb_1.Message {
     #one_of_decls: number[][] = [];
@@ -445,9 +448,7 @@ export class Query extends pb_1.Message {
     set id(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
-    static fromObject(data: {
-        id?: string;
-    }): Query {
+    static fromObject(data: RecursivePartial<Query.AsObject>): Query {
         const message = new Query({});
         if (data.id != null) {
             message.id = data.id;
@@ -455,9 +456,7 @@ export class Query extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            id: string;
-        } = {
+        const data: Query.AsObject = {
             id: this.id
         };
         return data;
@@ -493,6 +492,9 @@ export class Query extends pb_1.Message {
     }
 }
 export namespace Query {
+    export type AsObject = {
+        id: string;
+    };
     export class Result extends pb_1.Message {
         #one_of_decls: number[][] = [];
         constructor(data?: any[] | {
@@ -512,9 +514,7 @@ export namespace Query {
         set objects(value: _Object[]) {
             pb_1.Message.setRepeatedWrapperField(this, 1, value);
         }
-        static fromObject(data: {
-            objects?: Parameters<typeof _Object.fromObject>[0][];
-        }): Result {
+        static fromObject(data: RecursivePartial<Result.AsObject>): Result {
             const message = new Result({});
             if (data.objects != null) {
                 message.objects = data.objects.map(item => _Object.fromObject(item));
@@ -522,9 +522,7 @@ export namespace Query {
             return message;
         }
         toObject() {
-            const data: {
-                objects: Parameters<typeof _Object.fromObject>[0][];
-            } = {
+            const data: Result.AsObject = {
                 objects: this.objects.map((item: _Object) => item.toObject())
             };
             return data;
@@ -559,6 +557,11 @@ export namespace Query {
             return Result.deserialize(bytes);
         }
     }
+    export namespace Result {
+        export type AsObject = {
+            objects: _Object.AsObject[];
+        };
+    }
 }
 export class Put extends pb_1.Message {
     #one_of_decls: number[][] = [];
@@ -592,10 +595,7 @@ export class Put extends pb_1.Message {
     get has_chunk() {
         return pb_1.Message.getField(this, 3) != null;
     }
-    static fromObject(data: {
-        id?: string;
-        chunk?: Parameters<typeof Chunk.fromObject>[0];
-    }): Put {
+    static fromObject(data: RecursivePartial<Put.AsObject>): Put {
         const message = new Put({});
         if (data.id != null) {
             message.id = data.id;
@@ -606,10 +606,7 @@ export class Put extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            id: string;
-            chunk?: Parameters<typeof Chunk.fromObject>[0];
-        } = {
+        const data: Put.AsObject = {
             id: this.id
         };
         if (this.chunk != null) {
@@ -651,6 +648,12 @@ export class Put extends pb_1.Message {
     static deserializeBinary(bytes: Uint8Array): Put {
         return Put.deserialize(bytes);
     }
+}
+export namespace Put {
+    export type AsObject = {
+        id: string;
+        chunk?: Chunk.AsObject;
+    };
 }
 interface GrpcUnaryServiceInterface<P, R> {
     (message: P, metadata: grpc_1.Metadata, options: grpc_1.CallOptions, callback: grpc_1.requestCallback<R>): grpc_1.ClientUnaryCall;

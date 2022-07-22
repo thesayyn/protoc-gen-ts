@@ -4,6 +4,9 @@
  * source: test/_/integers.proto
  * git: https://github.com/thesayyn/protoc-gen-ts */
 import * as pb_1 from "google-protobuf";
+type RecursivePartial<T> = {
+    [P in keyof T]?: T[P] extends (infer U)[] ? RecursivePartial<U>[] : T[P] extends Uint8Array ? T[P] : T[P] extends object ? RecursivePartial<T[P]> : T[P];
+};
 export class Integers extends pb_1.Message {
     #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
@@ -93,16 +96,7 @@ export class Integers extends pb_1.Message {
     set fixed64(value: number) {
         pb_1.Message.setField(this, 9, value);
     }
-    static fromObject(data: {
-        int32?: number;
-        int64?: number;
-        sint32?: number;
-        sint64?: number;
-        sfixed32?: number;
-        sfixed64?: number;
-        fixed32?: number;
-        fixed64?: number;
-    }): Integers {
+    static fromObject(data: RecursivePartial<Integers.AsObject>): Integers {
         const message = new Integers({});
         if (data.int32 != null) {
             message.int32 = data.int32;
@@ -131,16 +125,7 @@ export class Integers extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            int32: number;
-            int64: number;
-            sint32: number;
-            sint64: number;
-            sfixed32: number;
-            sfixed64: number;
-            fixed32: number;
-            fixed64: number;
-        } = {
+        const data: Integers.AsObject = {
             int32: this.int32,
             int64: this.int64,
             sint32: this.sint32,
@@ -216,4 +201,16 @@ export class Integers extends pb_1.Message {
     static deserializeBinary(bytes: Uint8Array): Integers {
         return Integers.deserialize(bytes);
     }
+}
+export namespace Integers {
+    export type AsObject = {
+        int32: number;
+        int64: number;
+        sint32: number;
+        sint64: number;
+        sfixed32: number;
+        sfixed64: number;
+        fixed32: number;
+        fixed64: number;
+    };
 }

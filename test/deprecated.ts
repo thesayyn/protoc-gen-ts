@@ -6,6 +6,9 @@
  * @deprecated */
 import * as pb_1 from "google-protobuf";
 import * as grpc_1 from "@grpc/grpc-js";
+type RecursivePartial<T> = {
+    [P in keyof T]?: T[P] extends (infer U)[] ? RecursivePartial<U>[] : T[P] extends Uint8Array ? T[P] : T[P] extends object ? RecursivePartial<T[P]> : T[P];
+};
 export enum EnumName {
     FIRST = 0,
     /** @deprecated*/
@@ -81,11 +84,7 @@ export class MessageName extends pb_1.Message {
         };
         return cases[pb_1.Message.computeOneofCase(this, [2, 3])];
     }
-    static fromObject(data: {
-        deprecated_field?: string;
-        me?: string;
-        me_deprecated?: string;
-    }): MessageName {
+    static fromObject(data: RecursivePartial<MessageName.AsObject>): MessageName {
         const message = new MessageName({});
         if (data.deprecated_field != null) {
             message.deprecated_field = data.deprecated_field;
@@ -99,11 +98,7 @@ export class MessageName extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            deprecated_field: string;
-            me: string;
-            me_deprecated: string;
-        } = {
+        const data: MessageName.AsObject = {
             deprecated_field: this.deprecated_field,
             me: this.me,
             me_deprecated: this.me_deprecated
@@ -150,6 +145,13 @@ export class MessageName extends pb_1.Message {
         return MessageName.deserialize(bytes);
     }
 }
+export namespace MessageName {
+    export type AsObject = {
+        deprecated_field: string;
+        me: string;
+        me_deprecated: string;
+    };
+}
 /** @deprecated*/
 export class MessageName2 extends pb_1.Message {
     #one_of_decls: number[][] = [];
@@ -158,12 +160,12 @@ export class MessageName2 extends pb_1.Message {
         pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
         if (!Array.isArray(data) && typeof data == "object") { }
     }
-    static fromObject(data: {}): MessageName2 {
+    static fromObject(data: RecursivePartial<MessageName2.AsObject>): MessageName2 {
         const message = new MessageName2({});
         return message;
     }
     toObject() {
-        const data: {} = {};
+        const data: MessageName2.AsObject = {};
         return data;
     }
     serialize(): Uint8Array;
@@ -190,6 +192,9 @@ export class MessageName2 extends pb_1.Message {
     static deserializeBinary(bytes: Uint8Array): MessageName2 {
         return MessageName2.deserialize(bytes);
     }
+}
+export namespace MessageName2 {
+    export type AsObject = {};
 }
 interface GrpcUnaryServiceInterface<P, R> {
     (message: P, metadata: grpc_1.Metadata, options: grpc_1.CallOptions, callback: grpc_1.requestCallback<R>): grpc_1.ClientUnaryCall;

@@ -4,6 +4,9 @@
  * source: test/_/required.proto
  * git: https://github.com/thesayyn/protoc-gen-ts */
 import * as pb_1 from "google-protobuf";
+type RecursivePartial<T> = {
+    [P in keyof T]?: T[P] extends (infer U)[] ? RecursivePartial<U>[] : T[P] extends Uint8Array ? T[P] : T[P] extends object ? RecursivePartial<T[P]> : T[P];
+};
 export class NoOptionalValues extends pb_1.Message {
     #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
@@ -35,10 +38,7 @@ export class NoOptionalValues extends pb_1.Message {
     get has_test2() {
         return pb_1.Message.getField(this, 2) != null;
     }
-    static fromObject(data: {
-        test?: string;
-        test2?: string;
-    }): NoOptionalValues {
+    static fromObject(data: RecursivePartial<NoOptionalValues.AsObject>): NoOptionalValues {
         const message = new NoOptionalValues({
             test: data.test,
             test2: data.test2
@@ -46,10 +46,7 @@ export class NoOptionalValues extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            test?: string;
-            test2?: string;
-        } = {};
+        const data: NoOptionalValues.AsObject = {};
         if (this.test != null) {
             data.test = this.test;
         }
@@ -92,4 +89,10 @@ export class NoOptionalValues extends pb_1.Message {
     static deserializeBinary(bytes: Uint8Array): NoOptionalValues {
         return NoOptionalValues.deserialize(bytes);
     }
+}
+export namespace NoOptionalValues {
+    export type AsObject = {
+        test?: string;
+        test2?: string;
+    };
 }

@@ -4,6 +4,9 @@
  * source: test/_/optional/optional_proto3.proto
  * git: https://github.com/thesayyn/protoc-gen-ts */
 import * as pb_1 from "google-protobuf";
+type RecursivePartial<T> = {
+    [P in keyof T]?: T[P] extends (infer U)[] ? RecursivePartial<U>[] : T[P] extends Uint8Array ? T[P] : T[P] extends object ? RecursivePartial<T[P]> : T[P];
+};
 export class Optional extends pb_1.Message {
     #one_of_decls: number[][] = [[2]];
     constructor(data?: any[] | ({
@@ -46,10 +49,7 @@ export class Optional extends pb_1.Message {
         };
         return cases[pb_1.Message.computeOneofCase(this, [2])];
     }
-    static fromObject(data: {
-        should_not_be_required?: string[];
-        proto3_optional?: string;
-    }): Optional {
+    static fromObject(data: RecursivePartial<Optional.AsObject>): Optional {
         const message = new Optional({});
         if (data.should_not_be_required != null) {
             message.should_not_be_required = data.should_not_be_required;
@@ -60,10 +60,7 @@ export class Optional extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            should_not_be_required: string[];
-            proto3_optional: string;
-        } = {
+        const data: Optional.AsObject = {
             should_not_be_required: this.should_not_be_required,
             proto3_optional: this.proto3_optional
         };
@@ -103,4 +100,10 @@ export class Optional extends pb_1.Message {
     static deserializeBinary(bytes: Uint8Array): Optional {
         return Optional.deserialize(bytes);
     }
+}
+export namespace Optional {
+    export type AsObject = {
+        should_not_be_required: string[];
+        proto3_optional: string;
+    };
 }

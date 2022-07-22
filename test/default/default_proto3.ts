@@ -5,6 +5,9 @@
  * git: https://github.com/thesayyn/protoc-gen-ts */
 import * as dependency_1 from "./default_common";
 import * as pb_1 from "google-protobuf";
+type RecursivePartial<T> = {
+    [P in keyof T]?: T[P] extends (infer U)[] ? RecursivePartial<U>[] : T[P] extends Uint8Array ? T[P] : T[P] extends object ? RecursivePartial<T[P]> : T[P];
+};
 export class DefaultMessageV3 extends pb_1.Message {
     #one_of_decls: number[][] = [[22, 23]];
     constructor(data?: any[] | ({
@@ -281,36 +284,7 @@ export class DefaultMessageV3 extends pb_1.Message {
         };
         return cases[pb_1.Message.computeOneofCase(this, [22, 23])];
     }
-    static fromObject(data: {
-        message?: Parameters<typeof dependency_1.DefaultCommonMessage.fromObject>[0];
-        enum?: dependency_1.DefaultCommonEnum;
-        bool?: boolean;
-        string?: string;
-        int32?: number;
-        fixed32?: number;
-        sfixed32?: number;
-        uint32?: number;
-        sint32?: number;
-        int64?: number;
-        fixed64?: number;
-        sfixed64?: number;
-        uint64?: number;
-        sint64?: number;
-        float?: number;
-        double?: number;
-        int_but_string?: string;
-        map_string_string?: {
-            [key: string]: string;
-        };
-        map_string_message?: {
-            [key: string]: Parameters<typeof dependency_1.DefaultCommonMessage.fromObject>[0];
-        };
-        array_int32?: number[];
-        array_message?: Parameters<typeof dependency_1.DefaultCommonMessage.fromObject>[0][];
-        one_of_int32?: number;
-        one_of_message?: Parameters<typeof dependency_1.DefaultCommonMessage.fromObject>[0];
-        bytes?: Uint8Array;
-    }): DefaultMessageV3 {
+    static fromObject(data: RecursivePartial<DefaultMessageV3.AsObject>): DefaultMessageV3 {
         const message = new DefaultMessageV3({});
         if (data.message != null) {
             message.message = dependency_1.DefaultCommonMessage.fromObject(data.message);
@@ -387,36 +361,7 @@ export class DefaultMessageV3 extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            message?: Parameters<typeof dependency_1.DefaultCommonMessage.fromObject>[0];
-            enum: dependency_1.DefaultCommonEnum;
-            bool: boolean;
-            string: string;
-            int32: number;
-            fixed32: number;
-            sfixed32: number;
-            uint32: number;
-            sint32: number;
-            int64: number;
-            fixed64: number;
-            sfixed64: number;
-            uint64: number;
-            sint64: number;
-            float: number;
-            double: number;
-            int_but_string: string;
-            map_string_string: {
-                [key: string]: string;
-            };
-            map_string_message: {
-                [key: string]: Parameters<typeof dependency_1.DefaultCommonMessage.fromObject>[0];
-            };
-            array_int32: number[];
-            array_message: Parameters<typeof dependency_1.DefaultCommonMessage.fromObject>[0][];
-            one_of_int32: number;
-            one_of_message?: Parameters<typeof dependency_1.DefaultCommonMessage.fromObject>[0];
-            bytes: Uint8Array;
-        } = {
+        const data: DefaultMessageV3.AsObject = {
             enum: this.enum,
             bool: this.bool,
             string: this.string,
@@ -604,6 +549,38 @@ export class DefaultMessageV3 extends pb_1.Message {
     static deserializeBinary(bytes: Uint8Array): DefaultMessageV3 {
         return DefaultMessageV3.deserialize(bytes);
     }
+}
+export namespace DefaultMessageV3 {
+    export type AsObject = {
+        message?: dependency_1.DefaultCommonMessage.AsObject;
+        enum: dependency_1.DefaultCommonEnum;
+        bool: boolean;
+        string: string;
+        int32: number;
+        fixed32: number;
+        sfixed32: number;
+        uint32: number;
+        sint32: number;
+        int64: number;
+        fixed64: number;
+        sfixed64: number;
+        uint64: number;
+        sint64: number;
+        float: number;
+        double: number;
+        int_but_string: string;
+        map_string_string: {
+            [key: string]: string;
+        };
+        map_string_message: {
+            [key: string]: dependency_1.DefaultCommonMessage.AsObject;
+        };
+        array_int32: number[];
+        array_message: dependency_1.DefaultCommonMessage.AsObject[];
+        one_of_int32: number;
+        one_of_message?: dependency_1.DefaultCommonMessage.AsObject;
+        bytes: Uint8Array;
+    };
 }
 export class DefaultMessageOptionalV3 extends pb_1.Message {
     #one_of_decls: number[][] = [[2], [3], [4], [5], [6], [7], [8], [9], [10], [11], [12], [13], [14], [15], [16], [17], [24]];
@@ -1004,25 +981,7 @@ export class DefaultMessageOptionalV3 extends pb_1.Message {
         };
         return cases[pb_1.Message.computeOneofCase(this, [24])];
     }
-    static fromObject(data: {
-        enum?: dependency_1.DefaultCommonEnum;
-        bool?: boolean;
-        string?: string;
-        int32?: number;
-        fixed32?: number;
-        sfixed32?: number;
-        uint32?: number;
-        sint32?: number;
-        int64?: number;
-        fixed64?: number;
-        sfixed64?: number;
-        uint64?: number;
-        sint64?: number;
-        float?: number;
-        double?: number;
-        int_but_string?: string;
-        bytes?: Uint8Array;
-    }): DefaultMessageOptionalV3 {
+    static fromObject(data: RecursivePartial<DefaultMessageOptionalV3.AsObject>): DefaultMessageOptionalV3 {
         const message = new DefaultMessageOptionalV3({});
         if (data.enum != null) {
             message.enum = data.enum;
@@ -1078,25 +1037,7 @@ export class DefaultMessageOptionalV3 extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            enum: dependency_1.DefaultCommonEnum;
-            bool: boolean;
-            string: string;
-            int32: number;
-            fixed32: number;
-            sfixed32: number;
-            uint32: number;
-            sint32: number;
-            int64: number;
-            fixed64: number;
-            sfixed64: number;
-            uint64: number;
-            sint64: number;
-            float: number;
-            double: number;
-            int_but_string: string;
-            bytes: Uint8Array;
-        } = {
+        const data: DefaultMessageOptionalV3.AsObject = {
             enum: this.enum,
             bool: this.bool,
             string: this.string,
@@ -1226,4 +1167,25 @@ export class DefaultMessageOptionalV3 extends pb_1.Message {
     static deserializeBinary(bytes: Uint8Array): DefaultMessageOptionalV3 {
         return DefaultMessageOptionalV3.deserialize(bytes);
     }
+}
+export namespace DefaultMessageOptionalV3 {
+    export type AsObject = {
+        enum: dependency_1.DefaultCommonEnum;
+        bool: boolean;
+        string: string;
+        int32: number;
+        fixed32: number;
+        sfixed32: number;
+        uint32: number;
+        sint32: number;
+        int64: number;
+        fixed64: number;
+        sfixed64: number;
+        uint64: number;
+        sint64: number;
+        float: number;
+        double: number;
+        int_but_string: string;
+        bytes: Uint8Array;
+    };
 }

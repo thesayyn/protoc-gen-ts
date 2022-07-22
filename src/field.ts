@@ -31,11 +31,13 @@ export function getMapType(rootDescriptor: descriptor.FileDescriptorProto, field
 /**
  * @param {descriptor.FieldDescriptorProto} fieldDescriptor
  * @param {descriptor.FileDescriptorProto} rootDescriptor
+ * @param asObject to return message AsObject representation reference
  * @returns {ts.TypeReferenceNode | ts.Identifier | ts.PropertyAccessExpression}
  */
 export function getType(
   fieldDescriptor: descriptor.FieldDescriptorProto,
   rootDescriptor: descriptor.FileDescriptorProto,
+  asObject = false,
 ): ts.TypeReferenceNode {
   if (isMap(fieldDescriptor)) {
     return getMapType(rootDescriptor, fieldDescriptor);
@@ -64,6 +66,11 @@ export function getType(
     case descriptor.FieldDescriptorProto.Type.TYPE_BYTES:
       return ts.factory.createTypeReferenceNode("Uint8Array");
     case descriptor.FieldDescriptorProto.Type.TYPE_MESSAGE:
+      return type.getTypeReference(
+        rootDescriptor,
+        fieldDescriptor.type_name,
+        asObject
+      );
     case descriptor.FieldDescriptorProto.Type.TYPE_ENUM:
       return type.getTypeReference(rootDescriptor, fieldDescriptor.type_name);
     default:

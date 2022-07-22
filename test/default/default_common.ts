@@ -4,6 +4,9 @@
  * source: test/_/default/default_common.proto
  * git: https://github.com/thesayyn/protoc-gen-ts */
 import * as pb_1 from "google-protobuf";
+type RecursivePartial<T> = {
+    [P in keyof T]?: T[P] extends (infer U)[] ? RecursivePartial<U>[] : T[P] extends Uint8Array ? T[P] : T[P] extends object ? RecursivePartial<T[P]> : T[P];
+};
 export enum DefaultCommonEnum {
     ZERO = 0,
     ONE = 1,
@@ -28,9 +31,7 @@ export class DefaultCommonMessage extends pb_1.Message {
     set message(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
-    static fromObject(data: {
-        message?: string;
-    }): DefaultCommonMessage {
+    static fromObject(data: RecursivePartial<DefaultCommonMessage.AsObject>): DefaultCommonMessage {
         const message = new DefaultCommonMessage({});
         if (data.message != null) {
             message.message = data.message;
@@ -38,9 +39,7 @@ export class DefaultCommonMessage extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            message: string;
-        } = {
+        const data: DefaultCommonMessage.AsObject = {
             message: this.message
         };
         return data;
@@ -74,6 +73,11 @@ export class DefaultCommonMessage extends pb_1.Message {
     static deserializeBinary(bytes: Uint8Array): DefaultCommonMessage {
         return DefaultCommonMessage.deserialize(bytes);
     }
+}
+export namespace DefaultCommonMessage {
+    export type AsObject = {
+        message: string;
+    };
 }
 export class DefaultCommonMessageOneOf extends pb_1.Message {
     #one_of_decls: number[][] = [[1, 2, 3]];
@@ -142,11 +146,7 @@ export class DefaultCommonMessageOneOf extends pb_1.Message {
         };
         return cases[pb_1.Message.computeOneofCase(this, [1, 2, 3])];
     }
-    static fromObject(data: {
-        int32?: number;
-        message?: Parameters<typeof DefaultCommonMessage.fromObject>[0];
-        string?: string;
-    }): DefaultCommonMessageOneOf {
+    static fromObject(data: RecursivePartial<DefaultCommonMessageOneOf.AsObject>): DefaultCommonMessageOneOf {
         const message = new DefaultCommonMessageOneOf({});
         if (data.int32 != null) {
             message.int32 = data.int32;
@@ -160,11 +160,7 @@ export class DefaultCommonMessageOneOf extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            int32: number;
-            message?: Parameters<typeof DefaultCommonMessage.fromObject>[0];
-            string: string;
-        } = {
+        const data: DefaultCommonMessageOneOf.AsObject = {
             int32: this.int32,
             string: this.string
         };
@@ -212,4 +208,11 @@ export class DefaultCommonMessageOneOf extends pb_1.Message {
     static deserializeBinary(bytes: Uint8Array): DefaultCommonMessageOneOf {
         return DefaultCommonMessageOneOf.deserialize(bytes);
     }
+}
+export namespace DefaultCommonMessageOneOf {
+    export type AsObject = {
+        int32: number;
+        message?: DefaultCommonMessage.AsObject;
+        string: string;
+    };
 }

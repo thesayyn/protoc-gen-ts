@@ -7,6 +7,9 @@ import * as dependency_1 from "./imported";
 import * as pb_1 from "google-protobuf";
 import * as grpc_1 from "@grpc/grpc-js";
 export namespace importdirective {
+    type RecursivePartial<T> = {
+        [P in keyof T]?: T[P] extends (infer U)[] ? RecursivePartial<U>[] : T[P] extends Uint8Array ? T[P] : T[P] extends object ? RecursivePartial<T[P]> : T[P];
+    };
     export class Message extends pb_1.Message {
         #one_of_decls: number[][] = [];
         constructor(data?: any[] | {
@@ -52,11 +55,7 @@ export namespace importdirective {
         set enumField(value: dependency_1.importdirective.Imported.SubMessage.MyEnum) {
             pb_1.Message.setField(this, 3, value);
         }
-        static fromObject(data: {
-            importedField?: Parameters<typeof dependency_1.importdirective.Imported.fromObject>[0];
-            submessageField?: Parameters<typeof dependency_1.importdirective.Imported.SubMessage.fromObject>[0];
-            enumField?: dependency_1.importdirective.Imported.SubMessage.MyEnum;
-        }): Message {
+        static fromObject(data: RecursivePartial<Message.AsObject>): Message {
             const message = new Message({});
             if (data.importedField != null) {
                 message.importedField = dependency_1.importdirective.Imported.fromObject(data.importedField);
@@ -70,11 +69,7 @@ export namespace importdirective {
             return message;
         }
         toObject() {
-            const data: {
-                importedField?: Parameters<typeof dependency_1.importdirective.Imported.fromObject>[0];
-                submessageField?: Parameters<typeof dependency_1.importdirective.Imported.SubMessage.fromObject>[0];
-                enumField: dependency_1.importdirective.Imported.SubMessage.MyEnum;
-            } = {
+            const data: Message.AsObject = {
                 enumField: this.enumField
             };
             if (this.importedField != null) {
@@ -124,6 +119,13 @@ export namespace importdirective {
         static deserializeBinary(bytes: Uint8Array): Message {
             return Message.deserialize(bytes);
         }
+    }
+    export namespace Message {
+        export type AsObject = {
+            importedField?: dependency_1.importdirective.Imported.AsObject;
+            submessageField?: dependency_1.importdirective.Imported.SubMessage.AsObject;
+            enumField: dependency_1.importdirective.Imported.SubMessage.MyEnum;
+        };
     }
     interface GrpcUnaryServiceInterface<P, R> {
         (message: P, metadata: grpc_1.Metadata, options: grpc_1.CallOptions, callback: grpc_1.requestCallback<R>): grpc_1.ClientUnaryCall;

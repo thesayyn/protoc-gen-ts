@@ -4,6 +4,9 @@
  * source: test/_/oneof.proto
  * git: https://github.com/thesayyn/protoc-gen-ts */
 import * as pb_1 from "google-protobuf";
+type RecursivePartial<T> = {
+    [P in keyof T]?: T[P] extends (infer U)[] ? RecursivePartial<U>[] : T[P] extends Uint8Array ? T[P] : T[P] extends object ? RecursivePartial<T[P]> : T[P];
+};
 export class OneOfWithoutAnyOtherFields extends pb_1.Message {
     #one_of_decls: number[][] = [[1, 2], [4, 3]];
     constructor(data?: any[] | ({} & (({
@@ -92,12 +95,7 @@ export class OneOfWithoutAnyOtherFields extends pb_1.Message {
         };
         return cases[pb_1.Message.computeOneofCase(this, [4, 3])];
     }
-    static fromObject(data: {
-        nickname?: string;
-        realname?: string;
-        age?: string;
-        date_of_birth?: string;
-    }): OneOfWithoutAnyOtherFields {
+    static fromObject(data: RecursivePartial<OneOfWithoutAnyOtherFields.AsObject>): OneOfWithoutAnyOtherFields {
         const message = new OneOfWithoutAnyOtherFields({});
         if (data.nickname != null) {
             message.nickname = data.nickname;
@@ -114,12 +112,7 @@ export class OneOfWithoutAnyOtherFields extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            nickname: string;
-            realname: string;
-            age: string;
-            date_of_birth: string;
-        } = {
+        const data: OneOfWithoutAnyOtherFields.AsObject = {
             nickname: this.nickname,
             realname: this.realname,
             age: this.age,
@@ -171,6 +164,14 @@ export class OneOfWithoutAnyOtherFields extends pb_1.Message {
     static deserializeBinary(bytes: Uint8Array): OneOfWithoutAnyOtherFields {
         return OneOfWithoutAnyOtherFields.deserialize(bytes);
     }
+}
+export namespace OneOfWithoutAnyOtherFields {
+    export type AsObject = {
+        nickname: string;
+        realname: string;
+        age: string;
+        date_of_birth: string;
+    };
 }
 export class OneOf extends pb_1.Message {
     #one_of_decls: number[][] = [[3, 4]];
@@ -231,11 +232,7 @@ export class OneOf extends pb_1.Message {
         };
         return cases[pb_1.Message.computeOneofCase(this, [3, 4])];
     }
-    static fromObject(data: {
-        nickname?: string;
-        date_of_birth?: string;
-        age?: string;
-    }): OneOf {
+    static fromObject(data: RecursivePartial<OneOf.AsObject>): OneOf {
         const message = new OneOf({});
         if (data.nickname != null) {
             message.nickname = data.nickname;
@@ -249,11 +246,7 @@ export class OneOf extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            nickname: string;
-            date_of_birth: string;
-            age: string;
-        } = {
+        const data: OneOf.AsObject = {
             nickname: this.nickname,
             date_of_birth: this.date_of_birth,
             age: this.age
@@ -299,4 +292,11 @@ export class OneOf extends pb_1.Message {
     static deserializeBinary(bytes: Uint8Array): OneOf {
         return OneOf.deserialize(bytes);
     }
+}
+export namespace OneOf {
+    export type AsObject = {
+        nickname: string;
+        date_of_birth: string;
+        age: string;
+    };
 }

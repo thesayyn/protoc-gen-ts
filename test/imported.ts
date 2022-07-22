@@ -5,6 +5,9 @@
  * git: https://github.com/thesayyn/protoc-gen-ts */
 import * as pb_1 from "google-protobuf";
 export namespace importdirective {
+    type RecursivePartial<T> = {
+        [P in keyof T]?: T[P] extends (infer U)[] ? RecursivePartial<U>[] : T[P] extends Uint8Array ? T[P] : T[P] extends object ? RecursivePartial<T[P]> : T[P];
+    };
     export class Imported extends pb_1.Message {
         #one_of_decls: number[][] = [];
         constructor(data?: any[] | {}) {
@@ -12,12 +15,12 @@ export namespace importdirective {
             pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") { }
         }
-        static fromObject(data: {}): Imported {
+        static fromObject(data: RecursivePartial<Imported.AsObject>): Imported {
             const message = new Imported({});
             return message;
         }
         toObject() {
-            const data: {} = {};
+            const data: Imported.AsObject = {};
             return data;
         }
         serialize(): Uint8Array;
@@ -46,6 +49,7 @@ export namespace importdirective {
         }
     }
     export namespace Imported {
+        export type AsObject = {};
         export class SubMessage extends pb_1.Message {
             #one_of_decls: number[][] = [];
             constructor(data?: any[] | {
@@ -65,9 +69,7 @@ export namespace importdirective {
             set key(value: Imported.SubMessage.MyEnum) {
                 pb_1.Message.setField(this, 1, value);
             }
-            static fromObject(data: {
-                key?: Imported.SubMessage.MyEnum;
-            }): SubMessage {
+            static fromObject(data: RecursivePartial<SubMessage.AsObject>): SubMessage {
                 const message = new SubMessage({});
                 if (data.key != null) {
                     message.key = data.key;
@@ -75,9 +77,7 @@ export namespace importdirective {
                 return message;
             }
             toObject() {
-                const data: {
-                    key: Imported.SubMessage.MyEnum;
-                } = {
+                const data: SubMessage.AsObject = {
                     key: this.key
                 };
                 return data;
@@ -113,6 +113,9 @@ export namespace importdirective {
             }
         }
         export namespace SubMessage {
+            export type AsObject = {
+                key: Imported.SubMessage.MyEnum;
+            };
             export enum MyEnum {
                 VALUE = 0,
                 VALUE2 = 1
