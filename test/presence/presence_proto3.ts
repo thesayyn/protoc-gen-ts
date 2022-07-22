@@ -312,7 +312,7 @@ export class PresenceMessageV3 extends pb_1.Message {
         if (this.repeated != null) {
             data.repeated = this.repeated;
         }
-        if (this.map.size > 0) {
+        if (this.map != null) {
             data.map = Object.fromEntries(this.map);
         }
         return data;
