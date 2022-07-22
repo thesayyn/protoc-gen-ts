@@ -35,7 +35,7 @@ export class NotOptional extends pb_1.Message {
         return pb_1.Message.getField(this, 2) != null;
     }
     static fromObject(data: {
-        should_be_required: string[];
+        should_be_required?: string[];
         should_be_optional?: string;
     }): NotOptional {
         const message = new NotOptional({
@@ -49,13 +49,11 @@ export class NotOptional extends pb_1.Message {
     toObject() {
         const data: {
             should_be_required: string[];
-            should_be_optional?: string;
+            should_be_optional: string;
         } = {
-            should_be_required: this.should_be_required
+            should_be_required: this.should_be_required,
+            should_be_optional: this.should_be_optional
         };
-        if (this.should_be_optional != null) {
-            data.should_be_optional = this.should_be_optional;
-        }
         return data;
     }
     serialize(): Uint8Array;

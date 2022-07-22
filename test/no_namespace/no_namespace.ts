@@ -55,9 +55,9 @@ export class NoNamespace extends pb_1.Message {
         return pb_1.Message.getField(this, 3) != null;
     }
     static fromObject(data: {
-        label?: ReturnType<typeof dependency_1.eventTarget.prototype.toObject>;
-        other_fields?: ReturnType<typeof dependency_2.MessageFields.prototype.toObject>;
-        batch_fields?: ReturnType<typeof dependency_1.eventSchedulingContextBatch.prototype.toObject>;
+        label?: Parameters<typeof dependency_1.eventTarget.fromObject>[0];
+        other_fields?: Parameters<typeof dependency_2.MessageFields.fromObject>[0];
+        batch_fields?: Parameters<typeof dependency_1.eventSchedulingContextBatch.fromObject>[0];
     }): NoNamespace {
         const message = new NoNamespace({});
         if (data.label != null) {
@@ -73,9 +73,9 @@ export class NoNamespace extends pb_1.Message {
     }
     toObject() {
         const data: {
-            label?: ReturnType<typeof dependency_1.eventTarget.prototype.toObject>;
-            other_fields?: ReturnType<typeof dependency_2.MessageFields.prototype.toObject>;
-            batch_fields?: ReturnType<typeof dependency_1.eventSchedulingContextBatch.prototype.toObject>;
+            label?: Parameters<typeof dependency_1.eventTarget.fromObject>[0];
+            other_fields?: Parameters<typeof dependency_2.MessageFields.fromObject>[0];
+            batch_fields?: Parameters<typeof dependency_1.eventSchedulingContextBatch.fromObject>[0];
         } = {};
         if (this.label != null) {
             data.label = this.label.toObject();

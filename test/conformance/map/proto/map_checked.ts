@@ -35,11 +35,10 @@ export namespace maps {
         }
         toObject() {
             const data: {
-                link?: string;
-            } = {};
-            if (this.link != null) {
-                data.link = this.link;
-            }
+                link: string;
+            } = {
+                link: this.link
+            };
             return data;
         }
         serialize(): Uint8Array;
@@ -133,10 +132,10 @@ export namespace maps {
                 [key: string]: string;
             };
             topics?: {
-                [key: string]: ReturnType<typeof Topic.prototype.toObject>;
+                [key: string]: Parameters<typeof Topic.fromObject>[0];
             };
             topics_with_intkeys?: {
-                [key: number]: ReturnType<typeof Topic.prototype.toObject>;
+                [key: number]: Parameters<typeof Topic.fromObject>[0];
             };
         }): Tags {
             const message = new Tags({});
@@ -156,29 +155,22 @@ export namespace maps {
         }
         toObject() {
             const data: {
-                key?: string;
-                keys?: {
+                key: string;
+                keys: {
                     [key: string]: string;
                 };
-                topics?: {
-                    [key: string]: ReturnType<typeof Topic.prototype.toObject>;
+                topics: {
+                    [key: string]: Parameters<typeof Topic.fromObject>[0];
                 };
-                topics_with_intkeys?: {
-                    [key: number]: ReturnType<typeof Topic.prototype.toObject>;
+                topics_with_intkeys: {
+                    [key: number]: Parameters<typeof Topic.fromObject>[0];
                 };
-            } = {};
-            if (this.key != null) {
-                data.key = this.key;
-            }
-            if (this.keys != null) {
-                data.keys = Object.fromEntries(this.keys);
-            }
-            if (this.topics != null) {
-                data.topics = Object.fromEntries(Array.from(this.topics).map(([key, value]) => [key, value.toObject()]));
-            }
-            if (this.topics_with_intkeys != null) {
-                data.topics_with_intkeys = Object.fromEntries(Array.from(this.topics_with_intkeys).map(([key, value]) => [key, value.toObject()]));
-            }
+            } = {
+                key: this.key,
+                keys: Object.fromEntries(this.keys),
+                topics: Object.fromEntries(Array.from(this.topics).map(([key, value]) => [key, value.toObject()])),
+                topics_with_intkeys: Object.fromEntries(Array.from(this.topics_with_intkeys).map(([key, value]) => [key, value.toObject()]))
+            };
             return data;
         }
         serialize(): Uint8Array;

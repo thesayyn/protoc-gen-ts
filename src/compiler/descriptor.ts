@@ -22,7 +22,7 @@ export class FileDescriptorSet extends pb_1.Message {
         pb_1.Message.setRepeatedWrapperField(this, 1, value);
     }
     static fromObject(data: {
-        file?: ReturnType<typeof FileDescriptorProto.prototype.toObject>[];
+        file?: Parameters<typeof FileDescriptorProto.fromObject>[0][];
     }): FileDescriptorSet {
         const message = new FileDescriptorSet({
             file: data.file.map(item => FileDescriptorProto.fromObject(item))
@@ -31,11 +31,10 @@ export class FileDescriptorSet extends pb_1.Message {
     }
     toObject() {
         const data: {
-            file?: ReturnType<typeof FileDescriptorProto.prototype.toObject>[];
-        } = {};
-        if (this.file != null) {
-            data.file = this.file.map((item: FileDescriptorProto) => item.toObject());
-        }
+            file: Parameters<typeof FileDescriptorProto.fromObject>[0][];
+        } = {
+            file: this.file.map((item: FileDescriptorProto) => item.toObject())
+        };
         return data;
     }
     serialize(): Uint8Array;
@@ -201,15 +200,15 @@ export class FileDescriptorProto extends pb_1.Message {
     static fromObject(data: {
         name?: string;
         package?: string;
-        dependency: string[];
-        public_dependency: number[];
-        weak_dependency: number[];
-        message_type?: ReturnType<typeof DescriptorProto.prototype.toObject>[];
-        enum_type?: ReturnType<typeof EnumDescriptorProto.prototype.toObject>[];
-        service?: ReturnType<typeof ServiceDescriptorProto.prototype.toObject>[];
-        extension?: ReturnType<typeof FieldDescriptorProto.prototype.toObject>[];
-        options?: ReturnType<typeof FileOptions.prototype.toObject>;
-        source_code_info?: ReturnType<typeof SourceCodeInfo.prototype.toObject>;
+        dependency?: string[];
+        public_dependency?: number[];
+        weak_dependency?: number[];
+        message_type?: Parameters<typeof DescriptorProto.fromObject>[0][];
+        enum_type?: Parameters<typeof EnumDescriptorProto.fromObject>[0][];
+        service?: Parameters<typeof ServiceDescriptorProto.fromObject>[0][];
+        extension?: Parameters<typeof FieldDescriptorProto.fromObject>[0][];
+        options?: Parameters<typeof FileOptions.fromObject>[0];
+        source_code_info?: Parameters<typeof SourceCodeInfo.fromObject>[0];
         syntax?: string;
     }): FileDescriptorProto {
         const message = new FileDescriptorProto({
@@ -240,49 +239,35 @@ export class FileDescriptorProto extends pb_1.Message {
     }
     toObject() {
         const data: {
-            name?: string;
-            package?: string;
+            name: string;
+            package: string;
             dependency: string[];
             public_dependency: number[];
             weak_dependency: number[];
-            message_type?: ReturnType<typeof DescriptorProto.prototype.toObject>[];
-            enum_type?: ReturnType<typeof EnumDescriptorProto.prototype.toObject>[];
-            service?: ReturnType<typeof ServiceDescriptorProto.prototype.toObject>[];
-            extension?: ReturnType<typeof FieldDescriptorProto.prototype.toObject>[];
-            options?: ReturnType<typeof FileOptions.prototype.toObject>;
-            source_code_info?: ReturnType<typeof SourceCodeInfo.prototype.toObject>;
-            syntax?: string;
+            message_type: Parameters<typeof DescriptorProto.fromObject>[0][];
+            enum_type: Parameters<typeof EnumDescriptorProto.fromObject>[0][];
+            service: Parameters<typeof ServiceDescriptorProto.fromObject>[0][];
+            extension: Parameters<typeof FieldDescriptorProto.fromObject>[0][];
+            options?: Parameters<typeof FileOptions.fromObject>[0];
+            source_code_info?: Parameters<typeof SourceCodeInfo.fromObject>[0];
+            syntax: string;
         } = {
+            name: this.name,
+            package: this.package,
             dependency: this.dependency,
             public_dependency: this.public_dependency,
-            weak_dependency: this.weak_dependency
+            weak_dependency: this.weak_dependency,
+            message_type: this.message_type.map((item: DescriptorProto) => item.toObject()),
+            enum_type: this.enum_type.map((item: EnumDescriptorProto) => item.toObject()),
+            service: this.service.map((item: ServiceDescriptorProto) => item.toObject()),
+            extension: this.extension.map((item: FieldDescriptorProto) => item.toObject()),
+            syntax: this.syntax
         };
-        if (this.name != null) {
-            data.name = this.name;
-        }
-        if (this.package != null) {
-            data.package = this.package;
-        }
-        if (this.message_type != null) {
-            data.message_type = this.message_type.map((item: DescriptorProto) => item.toObject());
-        }
-        if (this.enum_type != null) {
-            data.enum_type = this.enum_type.map((item: EnumDescriptorProto) => item.toObject());
-        }
-        if (this.service != null) {
-            data.service = this.service.map((item: ServiceDescriptorProto) => item.toObject());
-        }
-        if (this.extension != null) {
-            data.extension = this.extension.map((item: FieldDescriptorProto) => item.toObject());
-        }
         if (this.options != null) {
             data.options = this.options.toObject();
         }
         if (this.source_code_info != null) {
             data.source_code_info = this.source_code_info.toObject();
-        }
-        if (this.syntax != null) {
-            data.syntax = this.syntax;
         }
         return data;
     }
@@ -472,15 +457,15 @@ export class DescriptorProto extends pb_1.Message {
     }
     static fromObject(data: {
         name?: string;
-        field?: ReturnType<typeof FieldDescriptorProto.prototype.toObject>[];
-        extension?: ReturnType<typeof FieldDescriptorProto.prototype.toObject>[];
-        nested_type?: ReturnType<typeof DescriptorProto.prototype.toObject>[];
-        enum_type?: ReturnType<typeof EnumDescriptorProto.prototype.toObject>[];
-        extension_range?: ReturnType<typeof DescriptorProto.ExtensionRange.prototype.toObject>[];
-        oneof_decl?: ReturnType<typeof OneofDescriptorProto.prototype.toObject>[];
-        options?: ReturnType<typeof MessageOptions.prototype.toObject>;
-        reserved_range?: ReturnType<typeof DescriptorProto.ReservedRange.prototype.toObject>[];
-        reserved_name: string[];
+        field?: Parameters<typeof FieldDescriptorProto.fromObject>[0][];
+        extension?: Parameters<typeof FieldDescriptorProto.fromObject>[0][];
+        nested_type?: Parameters<typeof DescriptorProto.fromObject>[0][];
+        enum_type?: Parameters<typeof EnumDescriptorProto.fromObject>[0][];
+        extension_range?: Parameters<typeof DescriptorProto.ExtensionRange.fromObject>[0][];
+        oneof_decl?: Parameters<typeof OneofDescriptorProto.fromObject>[0][];
+        options?: Parameters<typeof MessageOptions.fromObject>[0];
+        reserved_range?: Parameters<typeof DescriptorProto.ReservedRange.fromObject>[0][];
+        reserved_name?: string[];
     }): DescriptorProto {
         const message = new DescriptorProto({
             field: data.field.map(item => FieldDescriptorProto.fromObject(item)),
@@ -502,45 +487,29 @@ export class DescriptorProto extends pb_1.Message {
     }
     toObject() {
         const data: {
-            name?: string;
-            field?: ReturnType<typeof FieldDescriptorProto.prototype.toObject>[];
-            extension?: ReturnType<typeof FieldDescriptorProto.prototype.toObject>[];
-            nested_type?: ReturnType<typeof DescriptorProto.prototype.toObject>[];
-            enum_type?: ReturnType<typeof EnumDescriptorProto.prototype.toObject>[];
-            extension_range?: ReturnType<typeof DescriptorProto.ExtensionRange.prototype.toObject>[];
-            oneof_decl?: ReturnType<typeof OneofDescriptorProto.prototype.toObject>[];
-            options?: ReturnType<typeof MessageOptions.prototype.toObject>;
-            reserved_range?: ReturnType<typeof DescriptorProto.ReservedRange.prototype.toObject>[];
+            name: string;
+            field: Parameters<typeof FieldDescriptorProto.fromObject>[0][];
+            extension: Parameters<typeof FieldDescriptorProto.fromObject>[0][];
+            nested_type: Parameters<typeof DescriptorProto.fromObject>[0][];
+            enum_type: Parameters<typeof EnumDescriptorProto.fromObject>[0][];
+            extension_range: Parameters<typeof DescriptorProto.ExtensionRange.fromObject>[0][];
+            oneof_decl: Parameters<typeof OneofDescriptorProto.fromObject>[0][];
+            options?: Parameters<typeof MessageOptions.fromObject>[0];
+            reserved_range: Parameters<typeof DescriptorProto.ReservedRange.fromObject>[0][];
             reserved_name: string[];
         } = {
+            name: this.name,
+            field: this.field.map((item: FieldDescriptorProto) => item.toObject()),
+            extension: this.extension.map((item: FieldDescriptorProto) => item.toObject()),
+            nested_type: this.nested_type.map((item: DescriptorProto) => item.toObject()),
+            enum_type: this.enum_type.map((item: EnumDescriptorProto) => item.toObject()),
+            extension_range: this.extension_range.map((item: DescriptorProto.ExtensionRange) => item.toObject()),
+            oneof_decl: this.oneof_decl.map((item: OneofDescriptorProto) => item.toObject()),
+            reserved_range: this.reserved_range.map((item: DescriptorProto.ReservedRange) => item.toObject()),
             reserved_name: this.reserved_name
         };
-        if (this.name != null) {
-            data.name = this.name;
-        }
-        if (this.field != null) {
-            data.field = this.field.map((item: FieldDescriptorProto) => item.toObject());
-        }
-        if (this.extension != null) {
-            data.extension = this.extension.map((item: FieldDescriptorProto) => item.toObject());
-        }
-        if (this.nested_type != null) {
-            data.nested_type = this.nested_type.map((item: DescriptorProto) => item.toObject());
-        }
-        if (this.enum_type != null) {
-            data.enum_type = this.enum_type.map((item: EnumDescriptorProto) => item.toObject());
-        }
-        if (this.extension_range != null) {
-            data.extension_range = this.extension_range.map((item: DescriptorProto.ExtensionRange) => item.toObject());
-        }
-        if (this.oneof_decl != null) {
-            data.oneof_decl = this.oneof_decl.map((item: OneofDescriptorProto) => item.toObject());
-        }
         if (this.options != null) {
             data.options = this.options.toObject();
-        }
-        if (this.reserved_range != null) {
-            data.reserved_range = this.reserved_range.map((item: DescriptorProto.ReservedRange) => item.toObject());
         }
         return data;
     }
@@ -671,7 +640,7 @@ export namespace DescriptorProto {
         static fromObject(data: {
             start?: number;
             end?: number;
-            options?: ReturnType<typeof ExtensionRangeOptions.prototype.toObject>;
+            options?: Parameters<typeof ExtensionRangeOptions.fromObject>[0];
         }): ExtensionRange {
             const message = new ExtensionRange({});
             if (data.start != null) {
@@ -687,16 +656,13 @@ export namespace DescriptorProto {
         }
         toObject() {
             const data: {
-                start?: number;
-                end?: number;
-                options?: ReturnType<typeof ExtensionRangeOptions.prototype.toObject>;
-            } = {};
-            if (this.start != null) {
-                data.start = this.start;
-            }
-            if (this.end != null) {
-                data.end = this.end;
-            }
+                start: number;
+                end: number;
+                options?: Parameters<typeof ExtensionRangeOptions.fromObject>[0];
+            } = {
+                start: this.start,
+                end: this.end
+            };
             if (this.options != null) {
                 data.options = this.options.toObject();
             }
@@ -792,15 +758,12 @@ export namespace DescriptorProto {
         }
         toObject() {
             const data: {
-                start?: number;
-                end?: number;
-            } = {};
-            if (this.start != null) {
-                data.start = this.start;
-            }
-            if (this.end != null) {
-                data.end = this.end;
-            }
+                start: number;
+                end: number;
+            } = {
+                start: this.start,
+                end: this.end
+            };
             return data;
         }
         serialize(): Uint8Array;
@@ -857,7 +820,7 @@ export class ExtensionRangeOptions extends pb_1.Message {
         pb_1.Message.setRepeatedWrapperField(this, 999, value);
     }
     static fromObject(data: {
-        uninterpreted_option?: ReturnType<typeof UninterpretedOption.prototype.toObject>[];
+        uninterpreted_option?: Parameters<typeof UninterpretedOption.fromObject>[0][];
     }): ExtensionRangeOptions {
         const message = new ExtensionRangeOptions({
             uninterpreted_option: data.uninterpreted_option.map(item => UninterpretedOption.fromObject(item))
@@ -866,11 +829,10 @@ export class ExtensionRangeOptions extends pb_1.Message {
     }
     toObject() {
         const data: {
-            uninterpreted_option?: ReturnType<typeof UninterpretedOption.prototype.toObject>[];
-        } = {};
-        if (this.uninterpreted_option != null) {
-            data.uninterpreted_option = this.uninterpreted_option.map((item: UninterpretedOption) => item.toObject());
-        }
+            uninterpreted_option: Parameters<typeof UninterpretedOption.fromObject>[0][];
+        } = {
+            uninterpreted_option: this.uninterpreted_option.map((item: UninterpretedOption) => item.toObject())
+        };
         return data;
     }
     serialize(): Uint8Array;
@@ -1065,7 +1027,7 @@ export class FieldDescriptorProto extends pb_1.Message {
         default_value?: string;
         oneof_index?: number;
         json_name?: string;
-        options?: ReturnType<typeof FieldOptions.prototype.toObject>;
+        options?: Parameters<typeof FieldOptions.fromObject>[0];
         proto3_optional?: boolean;
     }): FieldDescriptorProto {
         const message = new FieldDescriptorProto({});
@@ -1106,50 +1068,31 @@ export class FieldDescriptorProto extends pb_1.Message {
     }
     toObject() {
         const data: {
-            name?: string;
-            number?: number;
-            label?: FieldDescriptorProto.Label;
-            type?: FieldDescriptorProto.Type;
-            type_name?: string;
-            extendee?: string;
-            default_value?: string;
-            oneof_index?: number;
-            json_name?: string;
-            options?: ReturnType<typeof FieldOptions.prototype.toObject>;
-            proto3_optional?: boolean;
-        } = {};
-        if (this.name != null) {
-            data.name = this.name;
-        }
-        if (this.number != null) {
-            data.number = this.number;
-        }
-        if (this.label != null) {
-            data.label = this.label;
-        }
-        if (this.type != null) {
-            data.type = this.type;
-        }
-        if (this.type_name != null) {
-            data.type_name = this.type_name;
-        }
-        if (this.extendee != null) {
-            data.extendee = this.extendee;
-        }
-        if (this.default_value != null) {
-            data.default_value = this.default_value;
-        }
-        if (this.oneof_index != null) {
-            data.oneof_index = this.oneof_index;
-        }
-        if (this.json_name != null) {
-            data.json_name = this.json_name;
-        }
+            name: string;
+            number: number;
+            label: FieldDescriptorProto.Label;
+            type: FieldDescriptorProto.Type;
+            type_name: string;
+            extendee: string;
+            default_value: string;
+            oneof_index: number;
+            json_name: string;
+            options?: Parameters<typeof FieldOptions.fromObject>[0];
+            proto3_optional: boolean;
+        } = {
+            name: this.name,
+            number: this.number,
+            label: this.label,
+            type: this.type,
+            type_name: this.type_name,
+            extendee: this.extendee,
+            default_value: this.default_value,
+            oneof_index: this.oneof_index,
+            json_name: this.json_name,
+            proto3_optional: this.proto3_optional
+        };
         if (this.options != null) {
             data.options = this.options.toObject();
-        }
-        if (this.proto3_optional != null) {
-            data.proto3_optional = this.proto3_optional;
         }
         return data;
     }
@@ -1297,7 +1240,7 @@ export class OneofDescriptorProto extends pb_1.Message {
     }
     static fromObject(data: {
         name?: string;
-        options?: ReturnType<typeof OneofOptions.prototype.toObject>;
+        options?: Parameters<typeof OneofOptions.fromObject>[0];
     }): OneofDescriptorProto {
         const message = new OneofDescriptorProto({});
         if (data.name != null) {
@@ -1310,12 +1253,11 @@ export class OneofDescriptorProto extends pb_1.Message {
     }
     toObject() {
         const data: {
-            name?: string;
-            options?: ReturnType<typeof OneofOptions.prototype.toObject>;
-        } = {};
-        if (this.name != null) {
-            data.name = this.name;
-        }
+            name: string;
+            options?: Parameters<typeof OneofOptions.fromObject>[0];
+        } = {
+            name: this.name
+        };
         if (this.options != null) {
             data.options = this.options.toObject();
         }
@@ -1417,10 +1359,10 @@ export class EnumDescriptorProto extends pb_1.Message {
     }
     static fromObject(data: {
         name?: string;
-        value?: ReturnType<typeof EnumValueDescriptorProto.prototype.toObject>[];
-        options?: ReturnType<typeof EnumOptions.prototype.toObject>;
-        reserved_range?: ReturnType<typeof EnumDescriptorProto.EnumReservedRange.prototype.toObject>[];
-        reserved_name: string[];
+        value?: Parameters<typeof EnumValueDescriptorProto.fromObject>[0][];
+        options?: Parameters<typeof EnumOptions.fromObject>[0];
+        reserved_range?: Parameters<typeof EnumDescriptorProto.EnumReservedRange.fromObject>[0][];
+        reserved_name?: string[];
     }): EnumDescriptorProto {
         const message = new EnumDescriptorProto({
             value: data.value.map(item => EnumValueDescriptorProto.fromObject(item)),
@@ -1437,25 +1379,19 @@ export class EnumDescriptorProto extends pb_1.Message {
     }
     toObject() {
         const data: {
-            name?: string;
-            value?: ReturnType<typeof EnumValueDescriptorProto.prototype.toObject>[];
-            options?: ReturnType<typeof EnumOptions.prototype.toObject>;
-            reserved_range?: ReturnType<typeof EnumDescriptorProto.EnumReservedRange.prototype.toObject>[];
+            name: string;
+            value: Parameters<typeof EnumValueDescriptorProto.fromObject>[0][];
+            options?: Parameters<typeof EnumOptions.fromObject>[0];
+            reserved_range: Parameters<typeof EnumDescriptorProto.EnumReservedRange.fromObject>[0][];
             reserved_name: string[];
         } = {
+            name: this.name,
+            value: this.value.map((item: EnumValueDescriptorProto) => item.toObject()),
+            reserved_range: this.reserved_range.map((item: EnumDescriptorProto.EnumReservedRange) => item.toObject()),
             reserved_name: this.reserved_name
         };
-        if (this.name != null) {
-            data.name = this.name;
-        }
-        if (this.value != null) {
-            data.value = this.value.map((item: EnumValueDescriptorProto) => item.toObject());
-        }
         if (this.options != null) {
             data.options = this.options.toObject();
-        }
-        if (this.reserved_range != null) {
-            data.reserved_range = this.reserved_range.map((item: EnumDescriptorProto.EnumReservedRange) => item.toObject());
         }
         return data;
     }
@@ -1560,15 +1496,12 @@ export namespace EnumDescriptorProto {
         }
         toObject() {
             const data: {
-                start?: number;
-                end?: number;
-            } = {};
-            if (this.start != null) {
-                data.start = this.start;
-            }
-            if (this.end != null) {
-                data.end = this.end;
-            }
+                start: number;
+                end: number;
+            } = {
+                start: this.start,
+                end: this.end
+            };
             return data;
         }
         serialize(): Uint8Array;
@@ -1658,7 +1591,7 @@ export class EnumValueDescriptorProto extends pb_1.Message {
     static fromObject(data: {
         name?: string;
         number?: number;
-        options?: ReturnType<typeof EnumValueOptions.prototype.toObject>;
+        options?: Parameters<typeof EnumValueOptions.fromObject>[0];
     }): EnumValueDescriptorProto {
         const message = new EnumValueDescriptorProto({});
         if (data.name != null) {
@@ -1674,16 +1607,13 @@ export class EnumValueDescriptorProto extends pb_1.Message {
     }
     toObject() {
         const data: {
-            name?: string;
-            number?: number;
-            options?: ReturnType<typeof EnumValueOptions.prototype.toObject>;
-        } = {};
-        if (this.name != null) {
-            data.name = this.name;
-        }
-        if (this.number != null) {
-            data.number = this.number;
-        }
+            name: string;
+            number: number;
+            options?: Parameters<typeof EnumValueOptions.fromObject>[0];
+        } = {
+            name: this.name,
+            number: this.number
+        };
         if (this.options != null) {
             data.options = this.options.toObject();
         }
@@ -1774,8 +1704,8 @@ export class ServiceDescriptorProto extends pb_1.Message {
     }
     static fromObject(data: {
         name?: string;
-        method?: ReturnType<typeof MethodDescriptorProto.prototype.toObject>[];
-        options?: ReturnType<typeof ServiceOptions.prototype.toObject>;
+        method?: Parameters<typeof MethodDescriptorProto.fromObject>[0][];
+        options?: Parameters<typeof ServiceOptions.fromObject>[0];
     }): ServiceDescriptorProto {
         const message = new ServiceDescriptorProto({
             method: data.method.map(item => MethodDescriptorProto.fromObject(item))
@@ -1790,16 +1720,13 @@ export class ServiceDescriptorProto extends pb_1.Message {
     }
     toObject() {
         const data: {
-            name?: string;
-            method?: ReturnType<typeof MethodDescriptorProto.prototype.toObject>[];
-            options?: ReturnType<typeof ServiceOptions.prototype.toObject>;
-        } = {};
-        if (this.name != null) {
-            data.name = this.name;
-        }
-        if (this.method != null) {
-            data.method = this.method.map((item: MethodDescriptorProto) => item.toObject());
-        }
+            name: string;
+            method: Parameters<typeof MethodDescriptorProto.fromObject>[0][];
+            options?: Parameters<typeof ServiceOptions.fromObject>[0];
+        } = {
+            name: this.name,
+            method: this.method.map((item: MethodDescriptorProto) => item.toObject())
+        };
         if (this.options != null) {
             data.options = this.options.toObject();
         }
@@ -1936,7 +1863,7 @@ export class MethodDescriptorProto extends pb_1.Message {
         name?: string;
         input_type?: string;
         output_type?: string;
-        options?: ReturnType<typeof MethodOptions.prototype.toObject>;
+        options?: Parameters<typeof MethodOptions.fromObject>[0];
         client_streaming?: boolean;
         server_streaming?: boolean;
     }): MethodDescriptorProto {
@@ -1963,30 +1890,21 @@ export class MethodDescriptorProto extends pb_1.Message {
     }
     toObject() {
         const data: {
-            name?: string;
-            input_type?: string;
-            output_type?: string;
-            options?: ReturnType<typeof MethodOptions.prototype.toObject>;
-            client_streaming?: boolean;
-            server_streaming?: boolean;
-        } = {};
-        if (this.name != null) {
-            data.name = this.name;
-        }
-        if (this.input_type != null) {
-            data.input_type = this.input_type;
-        }
-        if (this.output_type != null) {
-            data.output_type = this.output_type;
-        }
+            name: string;
+            input_type: string;
+            output_type: string;
+            options?: Parameters<typeof MethodOptions.fromObject>[0];
+            client_streaming: boolean;
+            server_streaming: boolean;
+        } = {
+            name: this.name,
+            input_type: this.input_type,
+            output_type: this.output_type,
+            client_streaming: this.client_streaming,
+            server_streaming: this.server_streaming
+        };
         if (this.options != null) {
             data.options = this.options.toObject();
-        }
-        if (this.client_streaming != null) {
-            data.client_streaming = this.client_streaming;
-        }
-        if (this.server_streaming != null) {
-            data.server_streaming = this.server_streaming;
         }
         return data;
     }
@@ -2347,7 +2265,7 @@ export class FileOptions extends pb_1.Message {
         php_namespace?: string;
         php_metadata_namespace?: string;
         ruby_package?: string;
-        uninterpreted_option?: ReturnType<typeof UninterpretedOption.prototype.toObject>[];
+        uninterpreted_option?: Parameters<typeof UninterpretedOption.fromObject>[0][];
     }): FileOptions {
         const message = new FileOptions({
             uninterpreted_option: data.uninterpreted_option.map(item => UninterpretedOption.fromObject(item))
@@ -2416,91 +2334,50 @@ export class FileOptions extends pb_1.Message {
     }
     toObject() {
         const data: {
-            java_package?: string;
-            java_outer_classname?: string;
-            java_multiple_files?: boolean;
-            java_generate_equals_and_hash?: boolean;
-            java_string_check_utf8?: boolean;
-            optimize_for?: FileOptions.OptimizeMode;
-            go_package?: string;
-            cc_generic_services?: boolean;
-            java_generic_services?: boolean;
-            py_generic_services?: boolean;
-            php_generic_services?: boolean;
-            deprecated?: boolean;
-            cc_enable_arenas?: boolean;
-            objc_class_prefix?: string;
-            csharp_namespace?: string;
-            swift_prefix?: string;
-            php_class_prefix?: string;
-            php_namespace?: string;
-            php_metadata_namespace?: string;
-            ruby_package?: string;
-            uninterpreted_option?: ReturnType<typeof UninterpretedOption.prototype.toObject>[];
-        } = {};
-        if (this.java_package != null) {
-            data.java_package = this.java_package;
-        }
-        if (this.java_outer_classname != null) {
-            data.java_outer_classname = this.java_outer_classname;
-        }
-        if (this.java_multiple_files != null) {
-            data.java_multiple_files = this.java_multiple_files;
-        }
-        if (this.java_generate_equals_and_hash != null) {
-            data.java_generate_equals_and_hash = this.java_generate_equals_and_hash;
-        }
-        if (this.java_string_check_utf8 != null) {
-            data.java_string_check_utf8 = this.java_string_check_utf8;
-        }
-        if (this.optimize_for != null) {
-            data.optimize_for = this.optimize_for;
-        }
-        if (this.go_package != null) {
-            data.go_package = this.go_package;
-        }
-        if (this.cc_generic_services != null) {
-            data.cc_generic_services = this.cc_generic_services;
-        }
-        if (this.java_generic_services != null) {
-            data.java_generic_services = this.java_generic_services;
-        }
-        if (this.py_generic_services != null) {
-            data.py_generic_services = this.py_generic_services;
-        }
-        if (this.php_generic_services != null) {
-            data.php_generic_services = this.php_generic_services;
-        }
-        if (this.deprecated != null) {
-            data.deprecated = this.deprecated;
-        }
-        if (this.cc_enable_arenas != null) {
-            data.cc_enable_arenas = this.cc_enable_arenas;
-        }
-        if (this.objc_class_prefix != null) {
-            data.objc_class_prefix = this.objc_class_prefix;
-        }
-        if (this.csharp_namespace != null) {
-            data.csharp_namespace = this.csharp_namespace;
-        }
-        if (this.swift_prefix != null) {
-            data.swift_prefix = this.swift_prefix;
-        }
-        if (this.php_class_prefix != null) {
-            data.php_class_prefix = this.php_class_prefix;
-        }
-        if (this.php_namespace != null) {
-            data.php_namespace = this.php_namespace;
-        }
-        if (this.php_metadata_namespace != null) {
-            data.php_metadata_namespace = this.php_metadata_namespace;
-        }
-        if (this.ruby_package != null) {
-            data.ruby_package = this.ruby_package;
-        }
-        if (this.uninterpreted_option != null) {
-            data.uninterpreted_option = this.uninterpreted_option.map((item: UninterpretedOption) => item.toObject());
-        }
+            java_package: string;
+            java_outer_classname: string;
+            java_multiple_files: boolean;
+            java_generate_equals_and_hash: boolean;
+            java_string_check_utf8: boolean;
+            optimize_for: FileOptions.OptimizeMode;
+            go_package: string;
+            cc_generic_services: boolean;
+            java_generic_services: boolean;
+            py_generic_services: boolean;
+            php_generic_services: boolean;
+            deprecated: boolean;
+            cc_enable_arenas: boolean;
+            objc_class_prefix: string;
+            csharp_namespace: string;
+            swift_prefix: string;
+            php_class_prefix: string;
+            php_namespace: string;
+            php_metadata_namespace: string;
+            ruby_package: string;
+            uninterpreted_option: Parameters<typeof UninterpretedOption.fromObject>[0][];
+        } = {
+            java_package: this.java_package,
+            java_outer_classname: this.java_outer_classname,
+            java_multiple_files: this.java_multiple_files,
+            java_generate_equals_and_hash: this.java_generate_equals_and_hash,
+            java_string_check_utf8: this.java_string_check_utf8,
+            optimize_for: this.optimize_for,
+            go_package: this.go_package,
+            cc_generic_services: this.cc_generic_services,
+            java_generic_services: this.java_generic_services,
+            py_generic_services: this.py_generic_services,
+            php_generic_services: this.php_generic_services,
+            deprecated: this.deprecated,
+            cc_enable_arenas: this.cc_enable_arenas,
+            objc_class_prefix: this.objc_class_prefix,
+            csharp_namespace: this.csharp_namespace,
+            swift_prefix: this.swift_prefix,
+            php_class_prefix: this.php_class_prefix,
+            php_namespace: this.php_namespace,
+            php_metadata_namespace: this.php_metadata_namespace,
+            ruby_package: this.ruby_package,
+            uninterpreted_option: this.uninterpreted_option.map((item: UninterpretedOption) => item.toObject())
+        };
         return data;
     }
     serialize(): Uint8Array;
@@ -2714,7 +2591,7 @@ export class MessageOptions extends pb_1.Message {
         no_standard_descriptor_accessor?: boolean;
         deprecated?: boolean;
         map_entry?: boolean;
-        uninterpreted_option?: ReturnType<typeof UninterpretedOption.prototype.toObject>[];
+        uninterpreted_option?: Parameters<typeof UninterpretedOption.fromObject>[0][];
     }): MessageOptions {
         const message = new MessageOptions({
             uninterpreted_option: data.uninterpreted_option.map(item => UninterpretedOption.fromObject(item))
@@ -2735,27 +2612,18 @@ export class MessageOptions extends pb_1.Message {
     }
     toObject() {
         const data: {
-            message_set_wire_format?: boolean;
-            no_standard_descriptor_accessor?: boolean;
-            deprecated?: boolean;
-            map_entry?: boolean;
-            uninterpreted_option?: ReturnType<typeof UninterpretedOption.prototype.toObject>[];
-        } = {};
-        if (this.message_set_wire_format != null) {
-            data.message_set_wire_format = this.message_set_wire_format;
-        }
-        if (this.no_standard_descriptor_accessor != null) {
-            data.no_standard_descriptor_accessor = this.no_standard_descriptor_accessor;
-        }
-        if (this.deprecated != null) {
-            data.deprecated = this.deprecated;
-        }
-        if (this.map_entry != null) {
-            data.map_entry = this.map_entry;
-        }
-        if (this.uninterpreted_option != null) {
-            data.uninterpreted_option = this.uninterpreted_option.map((item: UninterpretedOption) => item.toObject());
-        }
+            message_set_wire_format: boolean;
+            no_standard_descriptor_accessor: boolean;
+            deprecated: boolean;
+            map_entry: boolean;
+            uninterpreted_option: Parameters<typeof UninterpretedOption.fromObject>[0][];
+        } = {
+            message_set_wire_format: this.message_set_wire_format,
+            no_standard_descriptor_accessor: this.no_standard_descriptor_accessor,
+            deprecated: this.deprecated,
+            map_entry: this.map_entry,
+            uninterpreted_option: this.uninterpreted_option.map((item: UninterpretedOption) => item.toObject())
+        };
         return data;
     }
     serialize(): Uint8Array;
@@ -2910,7 +2778,7 @@ export class FieldOptions extends pb_1.Message {
         lazy?: boolean;
         deprecated?: boolean;
         weak?: boolean;
-        uninterpreted_option?: ReturnType<typeof UninterpretedOption.prototype.toObject>[];
+        uninterpreted_option?: Parameters<typeof UninterpretedOption.fromObject>[0][];
     }): FieldOptions {
         const message = new FieldOptions({
             uninterpreted_option: data.uninterpreted_option.map(item => UninterpretedOption.fromObject(item))
@@ -2937,35 +2805,22 @@ export class FieldOptions extends pb_1.Message {
     }
     toObject() {
         const data: {
-            ctype?: FieldOptions.CType;
-            packed?: boolean;
-            jstype?: FieldOptions.JSType;
-            lazy?: boolean;
-            deprecated?: boolean;
-            weak?: boolean;
-            uninterpreted_option?: ReturnType<typeof UninterpretedOption.prototype.toObject>[];
-        } = {};
-        if (this.ctype != null) {
-            data.ctype = this.ctype;
-        }
-        if (this.packed != null) {
-            data.packed = this.packed;
-        }
-        if (this.jstype != null) {
-            data.jstype = this.jstype;
-        }
-        if (this.lazy != null) {
-            data.lazy = this.lazy;
-        }
-        if (this.deprecated != null) {
-            data.deprecated = this.deprecated;
-        }
-        if (this.weak != null) {
-            data.weak = this.weak;
-        }
-        if (this.uninterpreted_option != null) {
-            data.uninterpreted_option = this.uninterpreted_option.map((item: UninterpretedOption) => item.toObject());
-        }
+            ctype: FieldOptions.CType;
+            packed: boolean;
+            jstype: FieldOptions.JSType;
+            lazy: boolean;
+            deprecated: boolean;
+            weak: boolean;
+            uninterpreted_option: Parameters<typeof UninterpretedOption.fromObject>[0][];
+        } = {
+            ctype: this.ctype,
+            packed: this.packed,
+            jstype: this.jstype,
+            lazy: this.lazy,
+            deprecated: this.deprecated,
+            weak: this.weak,
+            uninterpreted_option: this.uninterpreted_option.map((item: UninterpretedOption) => item.toObject())
+        };
         return data;
     }
     serialize(): Uint8Array;
@@ -3058,7 +2913,7 @@ export class OneofOptions extends pb_1.Message {
         pb_1.Message.setRepeatedWrapperField(this, 999, value);
     }
     static fromObject(data: {
-        uninterpreted_option?: ReturnType<typeof UninterpretedOption.prototype.toObject>[];
+        uninterpreted_option?: Parameters<typeof UninterpretedOption.fromObject>[0][];
     }): OneofOptions {
         const message = new OneofOptions({
             uninterpreted_option: data.uninterpreted_option.map(item => UninterpretedOption.fromObject(item))
@@ -3067,11 +2922,10 @@ export class OneofOptions extends pb_1.Message {
     }
     toObject() {
         const data: {
-            uninterpreted_option?: ReturnType<typeof UninterpretedOption.prototype.toObject>[];
-        } = {};
-        if (this.uninterpreted_option != null) {
-            data.uninterpreted_option = this.uninterpreted_option.map((item: UninterpretedOption) => item.toObject());
-        }
+            uninterpreted_option: Parameters<typeof UninterpretedOption.fromObject>[0][];
+        } = {
+            uninterpreted_option: this.uninterpreted_option.map((item: UninterpretedOption) => item.toObject())
+        };
         return data;
     }
     serialize(): Uint8Array;
@@ -3150,7 +3004,7 @@ export class EnumOptions extends pb_1.Message {
     static fromObject(data: {
         allow_alias?: boolean;
         deprecated?: boolean;
-        uninterpreted_option?: ReturnType<typeof UninterpretedOption.prototype.toObject>[];
+        uninterpreted_option?: Parameters<typeof UninterpretedOption.fromObject>[0][];
     }): EnumOptions {
         const message = new EnumOptions({
             uninterpreted_option: data.uninterpreted_option.map(item => UninterpretedOption.fromObject(item))
@@ -3165,19 +3019,14 @@ export class EnumOptions extends pb_1.Message {
     }
     toObject() {
         const data: {
-            allow_alias?: boolean;
-            deprecated?: boolean;
-            uninterpreted_option?: ReturnType<typeof UninterpretedOption.prototype.toObject>[];
-        } = {};
-        if (this.allow_alias != null) {
-            data.allow_alias = this.allow_alias;
-        }
-        if (this.deprecated != null) {
-            data.deprecated = this.deprecated;
-        }
-        if (this.uninterpreted_option != null) {
-            data.uninterpreted_option = this.uninterpreted_option.map((item: UninterpretedOption) => item.toObject());
-        }
+            allow_alias: boolean;
+            deprecated: boolean;
+            uninterpreted_option: Parameters<typeof UninterpretedOption.fromObject>[0][];
+        } = {
+            allow_alias: this.allow_alias,
+            deprecated: this.deprecated,
+            uninterpreted_option: this.uninterpreted_option.map((item: UninterpretedOption) => item.toObject())
+        };
         return data;
     }
     serialize(): Uint8Array;
@@ -3252,7 +3101,7 @@ export class EnumValueOptions extends pb_1.Message {
     }
     static fromObject(data: {
         deprecated?: boolean;
-        uninterpreted_option?: ReturnType<typeof UninterpretedOption.prototype.toObject>[];
+        uninterpreted_option?: Parameters<typeof UninterpretedOption.fromObject>[0][];
     }): EnumValueOptions {
         const message = new EnumValueOptions({
             uninterpreted_option: data.uninterpreted_option.map(item => UninterpretedOption.fromObject(item))
@@ -3264,15 +3113,12 @@ export class EnumValueOptions extends pb_1.Message {
     }
     toObject() {
         const data: {
-            deprecated?: boolean;
-            uninterpreted_option?: ReturnType<typeof UninterpretedOption.prototype.toObject>[];
-        } = {};
-        if (this.deprecated != null) {
-            data.deprecated = this.deprecated;
-        }
-        if (this.uninterpreted_option != null) {
-            data.uninterpreted_option = this.uninterpreted_option.map((item: UninterpretedOption) => item.toObject());
-        }
+            deprecated: boolean;
+            uninterpreted_option: Parameters<typeof UninterpretedOption.fromObject>[0][];
+        } = {
+            deprecated: this.deprecated,
+            uninterpreted_option: this.uninterpreted_option.map((item: UninterpretedOption) => item.toObject())
+        };
         return data;
     }
     serialize(): Uint8Array;
@@ -3342,7 +3188,7 @@ export class ServiceOptions extends pb_1.Message {
     }
     static fromObject(data: {
         deprecated?: boolean;
-        uninterpreted_option?: ReturnType<typeof UninterpretedOption.prototype.toObject>[];
+        uninterpreted_option?: Parameters<typeof UninterpretedOption.fromObject>[0][];
     }): ServiceOptions {
         const message = new ServiceOptions({
             uninterpreted_option: data.uninterpreted_option.map(item => UninterpretedOption.fromObject(item))
@@ -3354,15 +3200,12 @@ export class ServiceOptions extends pb_1.Message {
     }
     toObject() {
         const data: {
-            deprecated?: boolean;
-            uninterpreted_option?: ReturnType<typeof UninterpretedOption.prototype.toObject>[];
-        } = {};
-        if (this.deprecated != null) {
-            data.deprecated = this.deprecated;
-        }
-        if (this.uninterpreted_option != null) {
-            data.uninterpreted_option = this.uninterpreted_option.map((item: UninterpretedOption) => item.toObject());
-        }
+            deprecated: boolean;
+            uninterpreted_option: Parameters<typeof UninterpretedOption.fromObject>[0][];
+        } = {
+            deprecated: this.deprecated,
+            uninterpreted_option: this.uninterpreted_option.map((item: UninterpretedOption) => item.toObject())
+        };
         return data;
     }
     serialize(): Uint8Array;
@@ -3446,7 +3289,7 @@ export class MethodOptions extends pb_1.Message {
     static fromObject(data: {
         deprecated?: boolean;
         idempotency_level?: MethodOptions.IdempotencyLevel;
-        uninterpreted_option?: ReturnType<typeof UninterpretedOption.prototype.toObject>[];
+        uninterpreted_option?: Parameters<typeof UninterpretedOption.fromObject>[0][];
     }): MethodOptions {
         const message = new MethodOptions({
             uninterpreted_option: data.uninterpreted_option.map(item => UninterpretedOption.fromObject(item))
@@ -3461,19 +3304,14 @@ export class MethodOptions extends pb_1.Message {
     }
     toObject() {
         const data: {
-            deprecated?: boolean;
-            idempotency_level?: MethodOptions.IdempotencyLevel;
-            uninterpreted_option?: ReturnType<typeof UninterpretedOption.prototype.toObject>[];
-        } = {};
-        if (this.deprecated != null) {
-            data.deprecated = this.deprecated;
-        }
-        if (this.idempotency_level != null) {
-            data.idempotency_level = this.idempotency_level;
-        }
-        if (this.uninterpreted_option != null) {
-            data.uninterpreted_option = this.uninterpreted_option.map((item: UninterpretedOption) => item.toObject());
-        }
+            deprecated: boolean;
+            idempotency_level: MethodOptions.IdempotencyLevel;
+            uninterpreted_option: Parameters<typeof UninterpretedOption.fromObject>[0][];
+        } = {
+            deprecated: this.deprecated,
+            idempotency_level: this.idempotency_level,
+            uninterpreted_option: this.uninterpreted_option.map((item: UninterpretedOption) => item.toObject())
+        };
         return data;
     }
     serialize(): Uint8Array;
@@ -3619,7 +3457,7 @@ export class UninterpretedOption extends pb_1.Message {
         return pb_1.Message.getField(this, 8) != null;
     }
     static fromObject(data: {
-        name?: ReturnType<typeof UninterpretedOption.NamePart.prototype.toObject>[];
+        name?: Parameters<typeof UninterpretedOption.NamePart.fromObject>[0][];
         identifier_value?: string;
         positive_int_value?: number;
         negative_int_value?: number;
@@ -3652,35 +3490,22 @@ export class UninterpretedOption extends pb_1.Message {
     }
     toObject() {
         const data: {
-            name?: ReturnType<typeof UninterpretedOption.NamePart.prototype.toObject>[];
-            identifier_value?: string;
-            positive_int_value?: number;
-            negative_int_value?: number;
-            double_value?: number;
-            string_value?: Uint8Array;
-            aggregate_value?: string;
-        } = {};
-        if (this.name != null) {
-            data.name = this.name.map((item: UninterpretedOption.NamePart) => item.toObject());
-        }
-        if (this.identifier_value != null) {
-            data.identifier_value = this.identifier_value;
-        }
-        if (this.positive_int_value != null) {
-            data.positive_int_value = this.positive_int_value;
-        }
-        if (this.negative_int_value != null) {
-            data.negative_int_value = this.negative_int_value;
-        }
-        if (this.double_value != null) {
-            data.double_value = this.double_value;
-        }
-        if (this.string_value != null) {
-            data.string_value = this.string_value;
-        }
-        if (this.aggregate_value != null) {
-            data.aggregate_value = this.aggregate_value;
-        }
+            name: Parameters<typeof UninterpretedOption.NamePart.fromObject>[0][];
+            identifier_value: string;
+            positive_int_value: number;
+            negative_int_value: number;
+            double_value: number;
+            string_value: Uint8Array;
+            aggregate_value: string;
+        } = {
+            name: this.name.map((item: UninterpretedOption.NamePart) => item.toObject()),
+            identifier_value: this.identifier_value,
+            positive_int_value: this.positive_int_value,
+            negative_int_value: this.negative_int_value,
+            double_value: this.double_value,
+            string_value: this.string_value,
+            aggregate_value: this.aggregate_value
+        };
         return data;
     }
     serialize(): Uint8Array;
@@ -3852,7 +3677,7 @@ export class SourceCodeInfo extends pb_1.Message {
         pb_1.Message.setRepeatedWrapperField(this, 1, value);
     }
     static fromObject(data: {
-        location?: ReturnType<typeof SourceCodeInfo.Location.prototype.toObject>[];
+        location?: Parameters<typeof SourceCodeInfo.Location.fromObject>[0][];
     }): SourceCodeInfo {
         const message = new SourceCodeInfo({
             location: data.location.map(item => SourceCodeInfo.Location.fromObject(item))
@@ -3861,11 +3686,10 @@ export class SourceCodeInfo extends pb_1.Message {
     }
     toObject() {
         const data: {
-            location?: ReturnType<typeof SourceCodeInfo.Location.prototype.toObject>[];
-        } = {};
-        if (this.location != null) {
-            data.location = this.location.map((item: SourceCodeInfo.Location) => item.toObject());
-        }
+            location: Parameters<typeof SourceCodeInfo.Location.fromObject>[0][];
+        } = {
+            location: this.location.map((item: SourceCodeInfo.Location) => item.toObject())
+        };
         return data;
     }
     serialize(): Uint8Array;
@@ -3959,11 +3783,11 @@ export namespace SourceCodeInfo {
             pb_1.Message.setField(this, 6, value);
         }
         static fromObject(data: {
-            path: number[];
-            span: number[];
+            path?: number[];
+            span?: number[];
             leading_comments?: string;
             trailing_comments?: string;
-            leading_detached_comments: string[];
+            leading_detached_comments?: string[];
         }): Location {
             const message = new Location({
                 path: data.path,
@@ -3982,20 +3806,16 @@ export namespace SourceCodeInfo {
             const data: {
                 path: number[];
                 span: number[];
-                leading_comments?: string;
-                trailing_comments?: string;
+                leading_comments: string;
+                trailing_comments: string;
                 leading_detached_comments: string[];
             } = {
                 path: this.path,
                 span: this.span,
+                leading_comments: this.leading_comments,
+                trailing_comments: this.trailing_comments,
                 leading_detached_comments: this.leading_detached_comments
             };
-            if (this.leading_comments != null) {
-                data.leading_comments = this.leading_comments;
-            }
-            if (this.trailing_comments != null) {
-                data.trailing_comments = this.trailing_comments;
-            }
             return data;
         }
         serialize(): Uint8Array;
@@ -4067,7 +3887,7 @@ export class GeneratedCodeInfo extends pb_1.Message {
         pb_1.Message.setRepeatedWrapperField(this, 1, value);
     }
     static fromObject(data: {
-        annotation?: ReturnType<typeof GeneratedCodeInfo.Annotation.prototype.toObject>[];
+        annotation?: Parameters<typeof GeneratedCodeInfo.Annotation.fromObject>[0][];
     }): GeneratedCodeInfo {
         const message = new GeneratedCodeInfo({
             annotation: data.annotation.map(item => GeneratedCodeInfo.Annotation.fromObject(item))
@@ -4076,11 +3896,10 @@ export class GeneratedCodeInfo extends pb_1.Message {
     }
     toObject() {
         const data: {
-            annotation?: ReturnType<typeof GeneratedCodeInfo.Annotation.prototype.toObject>[];
-        } = {};
-        if (this.annotation != null) {
-            data.annotation = this.annotation.map((item: GeneratedCodeInfo.Annotation) => item.toObject());
-        }
+            annotation: Parameters<typeof GeneratedCodeInfo.Annotation.fromObject>[0][];
+        } = {
+            annotation: this.annotation.map((item: GeneratedCodeInfo.Annotation) => item.toObject())
+        };
         return data;
     }
     serialize(): Uint8Array;
@@ -4171,7 +3990,7 @@ export namespace GeneratedCodeInfo {
             return pb_1.Message.getField(this, 4) != null;
         }
         static fromObject(data: {
-            path: number[];
+            path?: number[];
             source_file?: string;
             begin?: number;
             end?: number;
@@ -4193,21 +4012,15 @@ export namespace GeneratedCodeInfo {
         toObject() {
             const data: {
                 path: number[];
-                source_file?: string;
-                begin?: number;
-                end?: number;
+                source_file: string;
+                begin: number;
+                end: number;
             } = {
-                path: this.path
+                path: this.path,
+                source_file: this.source_file,
+                begin: this.begin,
+                end: this.end
             };
-            if (this.source_file != null) {
-                data.source_file = this.source_file;
-            }
-            if (this.begin != null) {
-                data.begin = this.begin;
-            }
-            if (this.end != null) {
-                data.end = this.end;
-            }
             return data;
         }
         serialize(): Uint8Array;

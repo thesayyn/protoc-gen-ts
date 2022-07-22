@@ -211,13 +211,13 @@ export class PresenceMessageV3 extends pb_1.Message {
         int32?: number;
         enum?: dependency_1.PresenceCommonEnum;
         string?: string;
-        message?: ReturnType<typeof dependency_1.PresenceCommonMessage.prototype.toObject>;
-        oneof?: ReturnType<typeof dependency_1.PresenceCommonMessageOneOf.prototype.toObject>;
+        message?: Parameters<typeof dependency_1.PresenceCommonMessage.fromObject>[0];
+        oneof?: Parameters<typeof dependency_1.PresenceCommonMessageOneOf.fromObject>[0];
         opt_int32?: number;
         opt_enum?: dependency_1.PresenceCommonEnum;
         opt_string?: string;
-        opt_message?: ReturnType<typeof dependency_1.PresenceCommonMessage.prototype.toObject>;
-        opt_oneof?: ReturnType<typeof dependency_1.PresenceCommonMessageOneOf.prototype.toObject>;
+        opt_message?: Parameters<typeof dependency_1.PresenceCommonMessage.fromObject>[0];
+        opt_oneof?: Parameters<typeof dependency_1.PresenceCommonMessageOneOf.fromObject>[0];
         repeated?: number[];
         map?: {
             [key: string]: string;
@@ -264,56 +264,41 @@ export class PresenceMessageV3 extends pb_1.Message {
     }
     toObject() {
         const data: {
-            int32?: number;
-            enum?: dependency_1.PresenceCommonEnum;
-            string?: string;
-            message?: ReturnType<typeof dependency_1.PresenceCommonMessage.prototype.toObject>;
-            oneof?: ReturnType<typeof dependency_1.PresenceCommonMessageOneOf.prototype.toObject>;
-            opt_int32?: number;
-            opt_enum?: dependency_1.PresenceCommonEnum;
-            opt_string?: string;
-            opt_message?: ReturnType<typeof dependency_1.PresenceCommonMessage.prototype.toObject>;
-            opt_oneof?: ReturnType<typeof dependency_1.PresenceCommonMessageOneOf.prototype.toObject>;
-            repeated?: number[];
-            map?: {
+            int32: number;
+            enum: dependency_1.PresenceCommonEnum;
+            string: string;
+            message?: Parameters<typeof dependency_1.PresenceCommonMessage.fromObject>[0];
+            oneof?: Parameters<typeof dependency_1.PresenceCommonMessageOneOf.fromObject>[0];
+            opt_int32: number;
+            opt_enum: dependency_1.PresenceCommonEnum;
+            opt_string: string;
+            opt_message?: Parameters<typeof dependency_1.PresenceCommonMessage.fromObject>[0];
+            opt_oneof?: Parameters<typeof dependency_1.PresenceCommonMessageOneOf.fromObject>[0];
+            repeated: number[];
+            map: {
                 [key: string]: string;
             };
-        } = {};
-        if (this.int32 != null) {
-            data.int32 = this.int32;
-        }
-        if (this.enum != null) {
-            data.enum = this.enum;
-        }
-        if (this.string != null) {
-            data.string = this.string;
-        }
+        } = {
+            int32: this.int32,
+            enum: this.enum,
+            string: this.string,
+            opt_int32: this.opt_int32,
+            opt_enum: this.opt_enum,
+            opt_string: this.opt_string,
+            repeated: this.repeated,
+            map: Object.fromEntries(this.map)
+        };
         if (this.message != null) {
             data.message = this.message.toObject();
         }
         if (this.oneof != null) {
             data.oneof = this.oneof.toObject();
         }
-        if (this.opt_int32 != null) {
-            data.opt_int32 = this.opt_int32;
-        }
-        if (this.opt_enum != null) {
-            data.opt_enum = this.opt_enum;
-        }
-        if (this.opt_string != null) {
-            data.opt_string = this.opt_string;
-        }
         if (this.opt_message != null) {
             data.opt_message = this.opt_message.toObject();
         }
         if (this.opt_oneof != null) {
             data.opt_oneof = this.opt_oneof.toObject();
-        }
-        if (this.repeated != null) {
-            data.repeated = this.repeated;
-        }
-        if (this.map != null) {
-            data.map = Object.fromEntries(this.map);
         }
         return data;
     }

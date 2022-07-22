@@ -35,11 +35,10 @@ export namespace pkg.mycompany {
         }
         toObject() {
             const data: {
-                field?: string[];
-            } = {};
-            if (this.field != null) {
-                data.field = this.field;
-            }
+                field: string[];
+            } = {
+                field: this.field
+            };
             return data;
         }
         serialize(): Uint8Array;

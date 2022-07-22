@@ -76,11 +76,10 @@ export namespace importdirective {
             }
             toObject() {
                 const data: {
-                    key?: Imported.SubMessage.MyEnum;
-                } = {};
-                if (this.key != null) {
-                    data.key = this.key;
-                }
+                    key: Imported.SubMessage.MyEnum;
+                } = {
+                    key: this.key
+                };
                 return data;
             }
             serialize(): Uint8Array;

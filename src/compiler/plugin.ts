@@ -89,23 +89,16 @@ export class Version extends pb_1.Message {
     }
     toObject() {
         const data: {
-            major?: number;
-            minor?: number;
-            patch?: number;
-            suffix?: string;
-        } = {};
-        if (this.major != null) {
-            data.major = this.major;
-        }
-        if (this.minor != null) {
-            data.minor = this.minor;
-        }
-        if (this.patch != null) {
-            data.patch = this.patch;
-        }
-        if (this.suffix != null) {
-            data.suffix = this.suffix;
-        }
+            major: number;
+            minor: number;
+            patch: number;
+            suffix: string;
+        } = {
+            major: this.major,
+            minor: this.minor,
+            patch: this.patch,
+            suffix: this.suffix
+        };
         return data;
     }
     serialize(): Uint8Array;
@@ -205,10 +198,10 @@ export class CodeGeneratorRequest extends pb_1.Message {
         return pb_1.Message.getField(this, 3) != null;
     }
     static fromObject(data: {
-        file_to_generate: string[];
+        file_to_generate?: string[];
         parameter?: string;
-        proto_file?: ReturnType<typeof dependency_1.FileDescriptorProto.prototype.toObject>[];
-        compiler_version?: ReturnType<typeof Version.prototype.toObject>;
+        proto_file?: Parameters<typeof dependency_1.FileDescriptorProto.fromObject>[0][];
+        compiler_version?: Parameters<typeof Version.fromObject>[0];
     }): CodeGeneratorRequest {
         const message = new CodeGeneratorRequest({
             file_to_generate: data.file_to_generate,
@@ -225,18 +218,14 @@ export class CodeGeneratorRequest extends pb_1.Message {
     toObject() {
         const data: {
             file_to_generate: string[];
-            parameter?: string;
-            proto_file?: ReturnType<typeof dependency_1.FileDescriptorProto.prototype.toObject>[];
-            compiler_version?: ReturnType<typeof Version.prototype.toObject>;
+            parameter: string;
+            proto_file: Parameters<typeof dependency_1.FileDescriptorProto.fromObject>[0][];
+            compiler_version?: Parameters<typeof Version.fromObject>[0];
         } = {
-            file_to_generate: this.file_to_generate
+            file_to_generate: this.file_to_generate,
+            parameter: this.parameter,
+            proto_file: this.proto_file.map((item: dependency_1.FileDescriptorProto) => item.toObject())
         };
-        if (this.parameter != null) {
-            data.parameter = this.parameter;
-        }
-        if (this.proto_file != null) {
-            data.proto_file = this.proto_file.map((item: dependency_1.FileDescriptorProto) => item.toObject());
-        }
         if (this.compiler_version != null) {
             data.compiler_version = this.compiler_version.toObject();
         }
@@ -333,7 +322,7 @@ export class CodeGeneratorResponse extends pb_1.Message {
     static fromObject(data: {
         error?: string;
         supported_features?: number;
-        file?: ReturnType<typeof CodeGeneratorResponse.File.prototype.toObject>[];
+        file?: Parameters<typeof CodeGeneratorResponse.File.fromObject>[0][];
     }): CodeGeneratorResponse {
         const message = new CodeGeneratorResponse({
             file: data.file.map(item => CodeGeneratorResponse.File.fromObject(item))
@@ -348,19 +337,14 @@ export class CodeGeneratorResponse extends pb_1.Message {
     }
     toObject() {
         const data: {
-            error?: string;
-            supported_features?: number;
-            file?: ReturnType<typeof CodeGeneratorResponse.File.prototype.toObject>[];
-        } = {};
-        if (this.error != null) {
-            data.error = this.error;
-        }
-        if (this.supported_features != null) {
-            data.supported_features = this.supported_features;
-        }
-        if (this.file != null) {
-            data.file = this.file.map((item: CodeGeneratorResponse.File) => item.toObject());
-        }
+            error: string;
+            supported_features: number;
+            file: Parameters<typeof CodeGeneratorResponse.File.fromObject>[0][];
+        } = {
+            error: this.error,
+            supported_features: this.supported_features,
+            file: this.file.map((item: CodeGeneratorResponse.File) => item.toObject())
+        };
         return data;
     }
     serialize(): Uint8Array;
@@ -473,7 +457,7 @@ export namespace CodeGeneratorResponse {
             name?: string;
             insertion_point?: string;
             content?: string;
-            generated_code_info?: ReturnType<typeof dependency_1.GeneratedCodeInfo.prototype.toObject>;
+            generated_code_info?: Parameters<typeof dependency_1.GeneratedCodeInfo.fromObject>[0];
         }): File {
             const message = new File({});
             if (data.name != null) {
@@ -492,20 +476,15 @@ export namespace CodeGeneratorResponse {
         }
         toObject() {
             const data: {
-                name?: string;
-                insertion_point?: string;
-                content?: string;
-                generated_code_info?: ReturnType<typeof dependency_1.GeneratedCodeInfo.prototype.toObject>;
-            } = {};
-            if (this.name != null) {
-                data.name = this.name;
-            }
-            if (this.insertion_point != null) {
-                data.insertion_point = this.insertion_point;
-            }
-            if (this.content != null) {
-                data.content = this.content;
-            }
+                name: string;
+                insertion_point: string;
+                content: string;
+                generated_code_info?: Parameters<typeof dependency_1.GeneratedCodeInfo.fromObject>[0];
+            } = {
+                name: this.name,
+                insertion_point: this.insertion_point,
+                content: this.content
+            };
             if (this.generated_code_info != null) {
                 data.generated_code_info = this.generated_code_info.toObject();
             }

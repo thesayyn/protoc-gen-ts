@@ -126,7 +126,7 @@ export class JsonNamesMessage extends pb_1.Message {
     static fromObject(data: {
         someStrings?: string[];
         anInteger?: number;
-        aNestedMessage?: ReturnType<typeof JsonNamesMessage.NestedMessage.prototype.toObject>;
+        aNestedMessage?: Parameters<typeof JsonNamesMessage.NestedMessage.fromObject>[0];
         colorSpace?: ColorSpace;
         anOptionalString?: string;
         aSingleString?: string;
@@ -158,34 +158,23 @@ export class JsonNamesMessage extends pb_1.Message {
     }
     toObject() {
         const data: {
-            someStrings?: string[];
-            anInteger?: number;
-            aNestedMessage?: ReturnType<typeof JsonNamesMessage.NestedMessage.prototype.toObject>;
-            colorSpace?: ColorSpace;
-            anOptionalString?: string;
-            aSingleString?: string;
-            aSingleNumber?: number;
-        } = {};
-        if (this.someStrings != null) {
-            data.someStrings = this.someStrings;
-        }
-        if (this.anInteger != null) {
-            data.anInteger = this.anInteger;
-        }
+            someStrings: string[];
+            anInteger: number;
+            aNestedMessage?: Parameters<typeof JsonNamesMessage.NestedMessage.fromObject>[0];
+            colorSpace: ColorSpace;
+            anOptionalString: string;
+            aSingleString: string;
+            aSingleNumber: number;
+        } = {
+            someStrings: this.someStrings,
+            anInteger: this.anInteger,
+            colorSpace: this.colorSpace,
+            anOptionalString: this.anOptionalString,
+            aSingleString: this.aSingleString,
+            aSingleNumber: this.aSingleNumber
+        };
         if (this.aNestedMessage != null) {
             data.aNestedMessage = this.aNestedMessage.toObject();
-        }
-        if (this.colorSpace != null) {
-            data.colorSpace = this.colorSpace;
-        }
-        if (this.anOptionalString != null) {
-            data.anOptionalString = this.anOptionalString;
-        }
-        if (this.aSingleString != null) {
-            data.aSingleString = this.aSingleString;
-        }
-        if (this.aSingleNumber != null) {
-            data.aSingleNumber = this.aSingleNumber;
         }
         return data;
     }
@@ -280,11 +269,10 @@ export namespace JsonNamesMessage {
         }
         toObject() {
             const data: {
-                aNestedInteger?: number;
-            } = {};
-            if (this.aNestedInteger != null) {
-                data.aNestedInteger = this.aNestedInteger;
-            }
+                aNestedInteger: number;
+            } = {
+                aNestedInteger: this.aNestedInteger
+            };
             return data;
         }
         serialize(): Uint8Array;

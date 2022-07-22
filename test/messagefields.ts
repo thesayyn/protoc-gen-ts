@@ -37,8 +37,8 @@ export class MessageFields extends pb_1.Message {
         pb_1.Message.setRepeatedWrapperField(this, 2, value);
     }
     static fromObject(data: {
-        sub_message?: ReturnType<typeof SubMessage.prototype.toObject>;
-        array_prop?: ReturnType<typeof SubMessage.prototype.toObject>[];
+        sub_message?: Parameters<typeof SubMessage.fromObject>[0];
+        array_prop?: Parameters<typeof SubMessage.fromObject>[0][];
     }): MessageFields {
         const message = new MessageFields({});
         if (data.sub_message != null) {
@@ -51,14 +51,13 @@ export class MessageFields extends pb_1.Message {
     }
     toObject() {
         const data: {
-            sub_message?: ReturnType<typeof SubMessage.prototype.toObject>;
-            array_prop?: ReturnType<typeof SubMessage.prototype.toObject>[];
-        } = {};
+            sub_message?: Parameters<typeof SubMessage.fromObject>[0];
+            array_prop: Parameters<typeof SubMessage.fromObject>[0][];
+        } = {
+            array_prop: this.array_prop.map((item: SubMessage) => item.toObject())
+        };
         if (this.sub_message != null) {
             data.sub_message = this.sub_message.toObject();
-        }
-        if (this.array_prop != null) {
-            data.array_prop = this.array_prop.map((item: SubMessage) => item.toObject());
         }
         return data;
     }
@@ -141,15 +140,12 @@ export class SubMessage extends pb_1.Message {
     }
     toObject() {
         const data: {
-            field_1?: string;
-            field_2?: string;
-        } = {};
-        if (this.field_1 != null) {
-            data.field_1 = this.field_1;
-        }
-        if (this.field_2 != null) {
-            data.field_2 = this.field_2;
-        }
+            field_1: string;
+            field_2: string;
+        } = {
+            field_1: this.field_1,
+            field_2: this.field_2
+        };
         return data;
     }
     serialize(): Uint8Array;

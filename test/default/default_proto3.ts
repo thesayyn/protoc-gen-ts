@@ -282,7 +282,7 @@ export class DefaultMessageV3 extends pb_1.Message {
         return cases[pb_1.Message.computeOneofCase(this, [22, 23])];
     }
     static fromObject(data: {
-        message?: ReturnType<typeof dependency_1.DefaultCommonMessage.prototype.toObject>;
+        message?: Parameters<typeof dependency_1.DefaultCommonMessage.fromObject>[0];
         enum?: dependency_1.DefaultCommonEnum;
         bool?: boolean;
         string?: string;
@@ -303,12 +303,12 @@ export class DefaultMessageV3 extends pb_1.Message {
             [key: string]: string;
         };
         map_string_message?: {
-            [key: string]: ReturnType<typeof dependency_1.DefaultCommonMessage.prototype.toObject>;
+            [key: string]: Parameters<typeof dependency_1.DefaultCommonMessage.fromObject>[0];
         };
         array_int32?: number[];
-        array_message?: ReturnType<typeof dependency_1.DefaultCommonMessage.prototype.toObject>[];
+        array_message?: Parameters<typeof dependency_1.DefaultCommonMessage.fromObject>[0][];
         one_of_int32?: number;
-        one_of_message?: ReturnType<typeof dependency_1.DefaultCommonMessage.prototype.toObject>;
+        one_of_message?: Parameters<typeof dependency_1.DefaultCommonMessage.fromObject>[0];
         bytes?: Uint8Array;
     }): DefaultMessageV3 {
         const message = new DefaultMessageV3({});
@@ -388,106 +388,63 @@ export class DefaultMessageV3 extends pb_1.Message {
     }
     toObject() {
         const data: {
-            message?: ReturnType<typeof dependency_1.DefaultCommonMessage.prototype.toObject>;
-            enum?: dependency_1.DefaultCommonEnum;
-            bool?: boolean;
-            string?: string;
-            int32?: number;
-            fixed32?: number;
-            sfixed32?: number;
-            uint32?: number;
-            sint32?: number;
-            int64?: number;
-            fixed64?: number;
-            sfixed64?: number;
-            uint64?: number;
-            sint64?: number;
-            float?: number;
-            double?: number;
-            int_but_string?: string;
-            map_string_string?: {
+            message?: Parameters<typeof dependency_1.DefaultCommonMessage.fromObject>[0];
+            enum: dependency_1.DefaultCommonEnum;
+            bool: boolean;
+            string: string;
+            int32: number;
+            fixed32: number;
+            sfixed32: number;
+            uint32: number;
+            sint32: number;
+            int64: number;
+            fixed64: number;
+            sfixed64: number;
+            uint64: number;
+            sint64: number;
+            float: number;
+            double: number;
+            int_but_string: string;
+            map_string_string: {
                 [key: string]: string;
             };
-            map_string_message?: {
-                [key: string]: ReturnType<typeof dependency_1.DefaultCommonMessage.prototype.toObject>;
+            map_string_message: {
+                [key: string]: Parameters<typeof dependency_1.DefaultCommonMessage.fromObject>[0];
             };
-            array_int32?: number[];
-            array_message?: ReturnType<typeof dependency_1.DefaultCommonMessage.prototype.toObject>[];
-            one_of_int32?: number;
-            one_of_message?: ReturnType<typeof dependency_1.DefaultCommonMessage.prototype.toObject>;
-            bytes?: Uint8Array;
-        } = {};
+            array_int32: number[];
+            array_message: Parameters<typeof dependency_1.DefaultCommonMessage.fromObject>[0][];
+            one_of_int32: number;
+            one_of_message?: Parameters<typeof dependency_1.DefaultCommonMessage.fromObject>[0];
+            bytes: Uint8Array;
+        } = {
+            enum: this.enum,
+            bool: this.bool,
+            string: this.string,
+            int32: this.int32,
+            fixed32: this.fixed32,
+            sfixed32: this.sfixed32,
+            uint32: this.uint32,
+            sint32: this.sint32,
+            int64: this.int64,
+            fixed64: this.fixed64,
+            sfixed64: this.sfixed64,
+            uint64: this.uint64,
+            sint64: this.sint64,
+            float: this.float,
+            double: this.double,
+            int_but_string: this.int_but_string,
+            map_string_string: Object.fromEntries(this.map_string_string),
+            map_string_message: Object.fromEntries(Array.from(this.map_string_message).map(([key, value]) => [key, value.toObject()])),
+            array_int32: this.array_int32,
+            array_message: this.array_message.map((item: dependency_1.DefaultCommonMessage) => item.toObject()),
+            one_of_int32: this.one_of_int32,
+            bytes: this.bytes
+        };
         if (this.message != null) {
             data.message = this.message.toObject();
         }
-        if (this.enum != null) {
-            data.enum = this.enum;
-        }
-        if (this.bool != null) {
-            data.bool = this.bool;
-        }
-        if (this.string != null) {
-            data.string = this.string;
-        }
-        if (this.int32 != null) {
-            data.int32 = this.int32;
-        }
-        if (this.fixed32 != null) {
-            data.fixed32 = this.fixed32;
-        }
-        if (this.sfixed32 != null) {
-            data.sfixed32 = this.sfixed32;
-        }
-        if (this.uint32 != null) {
-            data.uint32 = this.uint32;
-        }
-        if (this.sint32 != null) {
-            data.sint32 = this.sint32;
-        }
-        if (this.int64 != null) {
-            data.int64 = this.int64;
-        }
-        if (this.fixed64 != null) {
-            data.fixed64 = this.fixed64;
-        }
-        if (this.sfixed64 != null) {
-            data.sfixed64 = this.sfixed64;
-        }
-        if (this.uint64 != null) {
-            data.uint64 = this.uint64;
-        }
-        if (this.sint64 != null) {
-            data.sint64 = this.sint64;
-        }
-        if (this.float != null) {
-            data.float = this.float;
-        }
-        if (this.double != null) {
-            data.double = this.double;
-        }
-        if (this.int_but_string != null) {
-            data.int_but_string = this.int_but_string;
-        }
-        if (this.map_string_string != null) {
-            data.map_string_string = Object.fromEntries(this.map_string_string);
-        }
-        if (this.map_string_message != null) {
-            data.map_string_message = Object.fromEntries(Array.from(this.map_string_message).map(([key, value]) => [key, value.toObject()]));
-        }
-        if (this.array_int32 != null) {
-            data.array_int32 = this.array_int32;
-        }
-        if (this.array_message != null) {
-            data.array_message = this.array_message.map((item: dependency_1.DefaultCommonMessage) => item.toObject());
-        }
-        if (this.one_of_int32 != null) {
-            data.one_of_int32 = this.one_of_int32;
-        }
         if (this.one_of_message != null) {
             data.one_of_message = this.one_of_message.toObject();
-        }
-        if (this.bytes != null) {
-            data.bytes = this.bytes;
         }
         return data;
     }
@@ -1122,75 +1079,42 @@ export class DefaultMessageOptionalV3 extends pb_1.Message {
     }
     toObject() {
         const data: {
-            enum?: dependency_1.DefaultCommonEnum;
-            bool?: boolean;
-            string?: string;
-            int32?: number;
-            fixed32?: number;
-            sfixed32?: number;
-            uint32?: number;
-            sint32?: number;
-            int64?: number;
-            fixed64?: number;
-            sfixed64?: number;
-            uint64?: number;
-            sint64?: number;
-            float?: number;
-            double?: number;
-            int_but_string?: string;
-            bytes?: Uint8Array;
-        } = {};
-        if (this.enum != null) {
-            data.enum = this.enum;
-        }
-        if (this.bool != null) {
-            data.bool = this.bool;
-        }
-        if (this.string != null) {
-            data.string = this.string;
-        }
-        if (this.int32 != null) {
-            data.int32 = this.int32;
-        }
-        if (this.fixed32 != null) {
-            data.fixed32 = this.fixed32;
-        }
-        if (this.sfixed32 != null) {
-            data.sfixed32 = this.sfixed32;
-        }
-        if (this.uint32 != null) {
-            data.uint32 = this.uint32;
-        }
-        if (this.sint32 != null) {
-            data.sint32 = this.sint32;
-        }
-        if (this.int64 != null) {
-            data.int64 = this.int64;
-        }
-        if (this.fixed64 != null) {
-            data.fixed64 = this.fixed64;
-        }
-        if (this.sfixed64 != null) {
-            data.sfixed64 = this.sfixed64;
-        }
-        if (this.uint64 != null) {
-            data.uint64 = this.uint64;
-        }
-        if (this.sint64 != null) {
-            data.sint64 = this.sint64;
-        }
-        if (this.float != null) {
-            data.float = this.float;
-        }
-        if (this.double != null) {
-            data.double = this.double;
-        }
-        if (this.int_but_string != null) {
-            data.int_but_string = this.int_but_string;
-        }
-        if (this.bytes != null) {
-            data.bytes = this.bytes;
-        }
+            enum: dependency_1.DefaultCommonEnum;
+            bool: boolean;
+            string: string;
+            int32: number;
+            fixed32: number;
+            sfixed32: number;
+            uint32: number;
+            sint32: number;
+            int64: number;
+            fixed64: number;
+            sfixed64: number;
+            uint64: number;
+            sint64: number;
+            float: number;
+            double: number;
+            int_but_string: string;
+            bytes: Uint8Array;
+        } = {
+            enum: this.enum,
+            bool: this.bool,
+            string: this.string,
+            int32: this.int32,
+            fixed32: this.fixed32,
+            sfixed32: this.sfixed32,
+            uint32: this.uint32,
+            sint32: this.sint32,
+            int64: this.int64,
+            fixed64: this.fixed64,
+            sfixed64: this.sfixed64,
+            uint64: this.uint64,
+            sint64: this.sint64,
+            float: this.float,
+            double: this.double,
+            int_but_string: this.int_but_string,
+            bytes: this.bytes
+        };
         return data;
     }
     serialize(): Uint8Array;

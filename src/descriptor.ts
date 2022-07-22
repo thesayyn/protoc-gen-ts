@@ -7,9 +7,8 @@ import * as op from "./option.js";
 
 let config: op.Options;
 
-export function initialize(configParameters: op.Options): void
-{
-    config = configParameters;
+export function initialize(configParameters: op.Options): void {
+  config = configParameters;
 }
 
 function getFieldName(fieldDescriptor: descriptor.FieldDescriptorProto): string {
@@ -34,7 +33,7 @@ function getPrefixedFieldName(prefix: string, fieldDescriptor: descriptor.FieldD
  */
 export function createEnum(
   enumDescriptor: descriptor.EnumDescriptorProto,
-  parentName: string = ''
+  parentName: string = "",
 ): ts.EnumDeclaration {
   const values = [];
 
@@ -302,7 +301,11 @@ function createFromObject(
         undefined,
         dataIdentifier,
         undefined,
-        createPrimitiveMessageSignature(rootDescriptor, messageDescriptor),
+        createPrimitiveMessageSignature(
+          rootDescriptor,
+          messageDescriptor,
+          true
+        ),
       ),
     ],
     ts.factory.createTypeReferenceNode(
@@ -438,11 +441,7 @@ function createToObject(
       }
     }
 
-    if (
-      field.isOptional(rootDescriptor, fieldDescriptor) ||
-      field.isMessage(fieldDescriptor) ||
-      field.isRequiredWithoutExplicitDefault(rootDescriptor, fieldDescriptor)
-    ) {
+    if (!field.alwaysHasValue(rootDescriptor, fieldDescriptor)) {
       const propertyAccessor = ts.factory.createPropertyAccessExpression(
         ts.factory.createThis(),
         getFieldName(fieldDescriptor),
@@ -488,7 +487,11 @@ function createToObject(
           ts.factory.createVariableDeclaration(
             "data",
             undefined,
-            createPrimitiveMessageSignature(rootDescriptor, messageDescriptor),
+            createPrimitiveMessageSignature(
+              rootDescriptor,
+              messageDescriptor,
+              false
+            ),
             ts.factory.createObjectLiteralExpression(properties, true),
           ),
         ],
@@ -622,19 +625,24 @@ function createMessageSignature(
 function createPrimitiveMessageSignature(
   rootDescriptor: descriptor.FileDescriptorProto,
   messageDescriptor: descriptor.DescriptorProto,
+  isFromObject: boolean, // if true, most of the values are not required to provide.
 ) {
   const fieldSignatures = [];
 
+  // Parameters<typeof Message.fromObject>[0]
   const wrapMessageType = (
     fieldType: ts.TypeReferenceNode,
-  ): ts.TypeReferenceNode => {
+  ): ts.IndexedAccessTypeNode => {
     const type = ts.factory.createTypeQueryNode(
       ts.factory.createQualifiedName(
-        ts.factory.createQualifiedName(fieldType.typeName, "prototype"),
-        "toObject",
+        fieldType.typeName,
+        "fromObject",
       ),
     );
-    return ts.factory.createTypeReferenceNode("ReturnType", [type]);
+    return ts.factory.createIndexedAccessTypeNode(
+      ts.factory.createTypeReferenceNode("Parameters", [type]),
+      ts.factory.createLiteralTypeNode(ts.factory.createNumericLiteral("0"))
+    );
   };
 
   for (const fieldDescriptor of messageDescriptor.field) {
@@ -645,11 +653,10 @@ function createPrimitiveMessageSignature(
         fieldDescriptor.type_name,
       ).field;
 
-      let valueType = field.getType(valueDescriptor, rootDescriptor);
-
-      if (field.isMessage(valueDescriptor)) {
-        valueType = wrapMessageType(valueType);
-      }
+      let baseValueType = field.getType(valueDescriptor, rootDescriptor);
+      const valueType: ts.TypeNode = field.isMessage(valueDescriptor)
+        ? wrapMessageType(baseValueType)
+        : baseValueType
 
       fieldType = ts.factory.createTypeLiteralNode([
         ts.factory.createIndexSignature(
@@ -677,9 +684,8 @@ function createPrimitiveMessageSignature(
         undefined,
         getFieldName(fieldDescriptor),
         (
-          field.isOptional(rootDescriptor, fieldDescriptor) ||
-          field.isMessage(fieldDescriptor) ||
-          field.isRequiredWithoutExplicitDefault(rootDescriptor, fieldDescriptor)
+          isFromObject ||
+          !field.alwaysHasValue(rootDescriptor, fieldDescriptor)
         )
           ? ts.factory.createToken(ts.SyntaxKind.QuestionToken)
           : undefined,
@@ -943,6 +949,9 @@ function createGetterCall(
   pbIdentifier: ts.Identifier,
   parentName: string = '',
 ): ts.CallExpression {
+  // if you update the default value, returned by the getter,
+  // do not forget to update the field.alwaysHasValue function,
+  // so toObject() return type is synced with the getters
   let args: ts.Expression[];
   let getterMethod = "getField";
 
