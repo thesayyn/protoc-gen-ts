@@ -243,7 +243,7 @@ export class PresenceMessageV2 extends pb_1.Message {
         if (this.opt_oneof != null) {
             data.opt_oneof = this.opt_oneof.toObject();
         }
-        if (this.map.size > 0) {
+        if (this.map != null) {
             data.map = Object.fromEntries(this.map);
         }
         return data;

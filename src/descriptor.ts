@@ -453,14 +453,6 @@ function createToObject(
         ts.factory.createNull(),
       );
 
-      if (field.isMap(fieldDescriptor)) {
-        condition = ts.factory.createBinaryExpression(
-          ts.factory.createPropertyAccessExpression(propertyAccessor, "size"),
-          ts.factory.createToken(ts.SyntaxKind.GreaterThanToken),
-          ts.factory.createNumericLiteral(0),
-        );
-      }
-
       statements.push(
         ts.factory.createIfStatement(
           condition,
