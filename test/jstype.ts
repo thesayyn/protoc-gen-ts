@@ -4,6 +4,9 @@
  * source: test/_/jstype.proto
  * git: https://github.com/thesayyn/protoc-gen-ts */
 import * as pb_1 from "google-protobuf";
+type RecursivePartial<T> = {
+    [P in keyof T]?: T[P] extends (infer U)[] ? RecursivePartial<U>[] : T[P] extends Uint8Array ? T[P] : T[P] extends object ? RecursivePartial<T[P]> : T[P];
+};
 export class JSType extends pb_1.Message {
     #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
@@ -43,11 +46,7 @@ export class JSType extends pb_1.Message {
     set int_and_number(value: number) {
         pb_1.Message.setField(this, 3, value);
     }
-    static fromObject(data: {
-        int_but_string?: string;
-        int_and_normal?: number;
-        int_and_number?: number;
-    }): JSType {
+    static fromObject(data: RecursivePartial<JSType.AsObject>): JSType {
         const message = new JSType({});
         if (data.int_but_string != null) {
             message.int_but_string = data.int_but_string;
@@ -61,11 +60,7 @@ export class JSType extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            int_but_string: string;
-            int_and_normal: number;
-            int_and_number: number;
-        } = {
+        const data: JSType.AsObject = {
             int_but_string: this.int_but_string,
             int_and_normal: this.int_and_normal,
             int_and_number: this.int_and_number
@@ -111,4 +106,11 @@ export class JSType extends pb_1.Message {
     static deserializeBinary(bytes: Uint8Array): JSType {
         return JSType.deserialize(bytes);
     }
+}
+export namespace JSType {
+    export type AsObject = {
+        int_but_string: string;
+        int_and_normal: number;
+        int_and_number: number;
+    };
 }

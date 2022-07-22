@@ -5,6 +5,9 @@
  * git: https://github.com/thesayyn/protoc-gen-ts */
 import * as pb_1 from "google-protobuf";
 export namespace maps {
+    type RecursivePartial<T> = {
+        [P in keyof T]?: T[P] extends (infer U)[] ? RecursivePartial<U>[] : T[P] extends Uint8Array ? T[P] : T[P] extends object ? RecursivePartial<T[P]> : T[P];
+    };
     export class Topic extends pb_1.Message {
         #one_of_decls: number[][] = [];
         constructor(data?: any[] | {
@@ -24,9 +27,7 @@ export namespace maps {
         set link(value: string) {
             pb_1.Message.setField(this, 2, value);
         }
-        static fromObject(data: {
-            link?: string;
-        }): Topic {
+        static fromObject(data: RecursivePartial<Topic.AsObject>): Topic {
             const message = new Topic({});
             if (data.link != null) {
                 message.link = data.link;
@@ -34,9 +35,7 @@ export namespace maps {
             return message;
         }
         toObject() {
-            const data: {
-                link: string;
-            } = {
+            const data: Topic.AsObject = {
                 link: this.link
             };
             return data;
@@ -70,6 +69,11 @@ export namespace maps {
         static deserializeBinary(bytes: Uint8Array): Topic {
             return Topic.deserialize(bytes);
         }
+    }
+    export namespace Topic {
+        export type AsObject = {
+            link: string;
+        };
     }
     export class Tags extends pb_1.Message {
         #one_of_decls: number[][] = [];
@@ -126,18 +130,7 @@ export namespace maps {
         set topics_with_intkeys(value: Map<number, Topic>) {
             pb_1.Message.setField(this, 4, value as any);
         }
-        static fromObject(data: {
-            key?: string;
-            keys?: {
-                [key: string]: string;
-            };
-            topics?: {
-                [key: string]: Parameters<typeof Topic.fromObject>[0];
-            };
-            topics_with_intkeys?: {
-                [key: number]: Parameters<typeof Topic.fromObject>[0];
-            };
-        }): Tags {
+        static fromObject(data: RecursivePartial<Tags.AsObject>): Tags {
             const message = new Tags({});
             if (data.key != null) {
                 message.key = data.key;
@@ -154,18 +147,7 @@ export namespace maps {
             return message;
         }
         toObject() {
-            const data: {
-                key: string;
-                keys: {
-                    [key: string]: string;
-                };
-                topics: {
-                    [key: string]: Parameters<typeof Topic.fromObject>[0];
-                };
-                topics_with_intkeys: {
-                    [key: number]: Parameters<typeof Topic.fromObject>[0];
-                };
-            } = {
+            const data: Tags.AsObject = {
                 key: this.key,
                 keys: Object.fromEntries(this.keys),
                 topics: Object.fromEntries(Array.from(this.topics).map(([key, value]) => [key, value.toObject()])),
@@ -237,5 +219,19 @@ export namespace maps {
         static deserializeBinary(bytes: Uint8Array): Tags {
             return Tags.deserialize(bytes);
         }
+    }
+    export namespace Tags {
+        export type AsObject = {
+            key: string;
+            keys: {
+                [key: string]: string;
+            };
+            topics: {
+                [key: string]: Topic.AsObject;
+            };
+            topics_with_intkeys: {
+                [key: number]: Topic.AsObject;
+            };
+        };
     }
 }

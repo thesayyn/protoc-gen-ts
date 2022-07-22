@@ -4,6 +4,9 @@
  * source: test/_/explicit_override/explicit_override.proto
  * git: https://github.com/thesayyn/protoc-gen-ts */
 import * as pb_1 from "google-protobuf";
+type RecursivePartial<T> = {
+    [P in keyof T]?: T[P] extends (infer U)[] ? RecursivePartial<U>[] : T[P] extends Uint8Array ? T[P] : T[P] extends object ? RecursivePartial<T[P]> : T[P];
+};
 export class ExplicitOverrideMessage extends pb_1.Message {
     #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
@@ -23,9 +26,7 @@ export class ExplicitOverrideMessage extends pb_1.Message {
     set example(value: number) {
         pb_1.Message.setField(this, 1, value);
     }
-    static fromObject(data: {
-        example?: number;
-    }): ExplicitOverrideMessage {
+    static fromObject(data: RecursivePartial<ExplicitOverrideMessage.AsObject>): ExplicitOverrideMessage {
         const message = new ExplicitOverrideMessage({});
         if (data.example != null) {
             message.example = data.example;
@@ -33,9 +34,7 @@ export class ExplicitOverrideMessage extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            example: number;
-        } = {
+        const data: ExplicitOverrideMessage.AsObject = {
             example: this.example
         };
         return data;
@@ -69,4 +68,9 @@ export class ExplicitOverrideMessage extends pb_1.Message {
     static override deserializeBinary(bytes: Uint8Array): ExplicitOverrideMessage {
         return ExplicitOverrideMessage.deserialize(bytes);
     }
+}
+export namespace ExplicitOverrideMessage {
+    export type AsObject = {
+        example: number;
+    };
 }

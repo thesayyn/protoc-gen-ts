@@ -301,10 +301,15 @@ function createFromObject(
         undefined,
         dataIdentifier,
         undefined,
-        createPrimitiveMessageSignature(
-          rootDescriptor,
-          messageDescriptor,
-          true
+        type.wrapRecursivePartial(
+          ts.factory.createTypeReferenceNode(
+            ts.factory.createIdentifier(
+              type.addAsObject(
+                `${parentName}${messageDescriptor.name}`,
+                true
+              )
+            )
+          )
         ),
       ),
     ],
@@ -319,6 +324,7 @@ function createFromObject(
 function createToObject(
   rootDescriptor: descriptor.FileDescriptorProto,
   messageDescriptor: descriptor.DescriptorProto,
+  parentName: string = ''
 ): ts.MethodDeclaration {
   const statements = [];
   const properties = [];
@@ -487,10 +493,13 @@ function createToObject(
           ts.factory.createVariableDeclaration(
             "data",
             undefined,
-            createPrimitiveMessageSignature(
-              rootDescriptor,
-              messageDescriptor,
-              false
+            ts.factory.createTypeReferenceNode(
+              ts.factory.createIdentifier(
+                type.addAsObject(
+                  `${parentName}${messageDescriptor.name}`,
+                  true
+                )
+              )
             ),
             ts.factory.createObjectLiteralExpression(properties, true),
           ),
@@ -625,38 +634,18 @@ function createMessageSignature(
 function createPrimitiveMessageSignature(
   rootDescriptor: descriptor.FileDescriptorProto,
   messageDescriptor: descriptor.DescriptorProto,
-  isFromObject: boolean, // if true, most of the values are not required to provide.
 ) {
   const fieldSignatures = [];
 
-  // Parameters<typeof Message.fromObject>[0]
-  const wrapMessageType = (
-    fieldType: ts.TypeReferenceNode,
-  ): ts.IndexedAccessTypeNode => {
-    const type = ts.factory.createTypeQueryNode(
-      ts.factory.createQualifiedName(
-        fieldType.typeName,
-        "fromObject",
-      ),
-    );
-    return ts.factory.createIndexedAccessTypeNode(
-      ts.factory.createTypeReferenceNode("Parameters", [type]),
-      ts.factory.createLiteralTypeNode(ts.factory.createNumericLiteral("0"))
-    );
-  };
-
   for (const fieldDescriptor of messageDescriptor.field) {
-    let fieldType: ts.TypeNode = field.getType(fieldDescriptor, rootDescriptor);
+    let fieldType: ts.TypeNode = field.getType(fieldDescriptor, rootDescriptor, true);
 
     if (field.isMap(fieldDescriptor)) {
       const [keyDescriptor, valueDescriptor] = type.getMapDescriptor(
         fieldDescriptor.type_name,
       ).field;
 
-      let baseValueType = field.getType(valueDescriptor, rootDescriptor);
-      const valueType: ts.TypeNode = field.isMessage(valueDescriptor)
-        ? wrapMessageType(baseValueType)
-        : baseValueType
+      let valueType = field.getType(valueDescriptor, rootDescriptor, true);
 
       fieldType = ts.factory.createTypeLiteralNode([
         ts.factory.createIndexSignature(
@@ -675,18 +664,13 @@ function createPrimitiveMessageSignature(
           valueType as ts.TypeNode,
         ),
       ]);
-    } else if (field.isMessage(fieldDescriptor)) {
-      fieldType = wrapMessageType(fieldType as ts.TypeReferenceNode);
     }
 
     fieldSignatures.push(
       ts.factory.createPropertySignature(
         undefined,
         getFieldName(fieldDescriptor),
-        (
-          isFromObject ||
-          !field.alwaysHasValue(rootDescriptor, fieldDescriptor)
-        )
+        !field.alwaysHasValue(rootDescriptor, fieldDescriptor)
           ? ts.factory.createToken(ts.SyntaxKind.QuestionToken)
           : undefined,
         field.wrapRepeatedType(fieldType as ts.TypeNode, fieldDescriptor),
@@ -695,6 +679,31 @@ function createPrimitiveMessageSignature(
   }
 
   return ts.factory.createTypeLiteralNode(fieldSignatures);
+}
+
+/**
+ * Creates AsObject type export, for example:
+ * ```typescript
+ *   export type AsObject = {
+ *     id: number;
+ *   }
+ * ```
+ * @param {descriptor.FileDescriptorProto} rootDescriptor
+ * @param {descriptor.DescriptorProto} messageDescriptor
+ * @param parentName a string to become a prefix
+ */
+function createAsObjectType(
+  rootDescriptor: descriptor.FileDescriptorProto,
+  messageDescriptor: descriptor.DescriptorProto,
+  parentName: string = '',
+) {
+  return ts.factory.createTypeAliasDeclaration(
+    undefined,
+    [ts.factory.createModifier(ts.SyntaxKind.ExportKeyword)],
+    ts.factory.createIdentifier(`${parentName}AsObject`),
+    undefined,
+    createPrimitiveMessageSignature(rootDescriptor, messageDescriptor),
+  )
 }
 
 function getPivot(descriptor: descriptor.DescriptorProto) {
@@ -2252,7 +2261,7 @@ function createMessage(
     // Create fromObject method
     createFromObject(rootDescriptor, messageDescriptor, parentName),
     // Create toObject method
-    createToObject(rootDescriptor, messageDescriptor),
+    createToObject(rootDescriptor, messageDescriptor, parentName),
   );
 
   statements.push(
@@ -2306,6 +2315,11 @@ export function processDescriptorRecursively(
 
   const namespacedStatements: ts.Statement[] = [];
 
+  if (no_namespace) {
+    statements.push(createAsObjectType(rootDescriptor, descriptor, `${parentName}${descriptor.name}`))
+  } else {
+    namespacedStatements.push(createAsObjectType(rootDescriptor, descriptor))
+  }
 
   for (const _enum of descriptor.enum_type) {
     if (no_namespace) {

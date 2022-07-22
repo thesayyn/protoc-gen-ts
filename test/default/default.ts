@@ -4,6 +4,9 @@
  * source: test/_/default/default.proto
  * git: https://github.com/thesayyn/protoc-gen-ts */
 import * as pb_1 from "google-protobuf";
+type RecursivePartial<T> = {
+    [P in keyof T]?: T[P] extends (infer U)[] ? RecursivePartial<U>[] : T[P] extends Uint8Array ? T[P] : T[P] extends object ? RecursivePartial<T[P]> : T[P];
+};
 export class MessageWithDefault extends pb_1.Message {
     #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
@@ -52,11 +55,7 @@ export class MessageWithDefault extends pb_1.Message {
     get has_int32_field() {
         return pb_1.Message.getField(this, 3) != null;
     }
-    static fromObject(data: {
-        bool_field?: boolean;
-        string_field?: string;
-        int32_field?: number;
-    }): MessageWithDefault {
+    static fromObject(data: RecursivePartial<MessageWithDefault.AsObject>): MessageWithDefault {
         const message = new MessageWithDefault({});
         if (data.bool_field != null) {
             message.bool_field = data.bool_field;
@@ -70,11 +69,7 @@ export class MessageWithDefault extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            bool_field: boolean;
-            string_field: string;
-            int32_field: number;
-        } = {
+        const data: MessageWithDefault.AsObject = {
             bool_field: this.bool_field,
             string_field: this.string_field,
             int32_field: this.int32_field
@@ -120,6 +115,13 @@ export class MessageWithDefault extends pb_1.Message {
     static deserializeBinary(bytes: Uint8Array): MessageWithDefault {
         return MessageWithDefault.deserialize(bytes);
     }
+}
+export namespace MessageWithDefault {
+    export type AsObject = {
+        bool_field: boolean;
+        string_field: string;
+        int32_field: number;
+    };
 }
 export class MessageWithImplicitDefault extends pb_1.Message {
     #one_of_decls: number[][] = [];
@@ -169,11 +171,7 @@ export class MessageWithImplicitDefault extends pb_1.Message {
     get has_int32_field() {
         return pb_1.Message.getField(this, 3) != null;
     }
-    static fromObject(data: {
-        bool_field?: boolean;
-        string_field?: string;
-        int32_field?: number;
-    }): MessageWithImplicitDefault {
+    static fromObject(data: RecursivePartial<MessageWithImplicitDefault.AsObject>): MessageWithImplicitDefault {
         const message = new MessageWithImplicitDefault({});
         if (data.bool_field != null) {
             message.bool_field = data.bool_field;
@@ -187,11 +185,7 @@ export class MessageWithImplicitDefault extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            bool_field: boolean;
-            string_field: string;
-            int32_field: number;
-        } = {
+        const data: MessageWithImplicitDefault.AsObject = {
             bool_field: this.bool_field,
             string_field: this.string_field,
             int32_field: this.int32_field
@@ -237,4 +231,11 @@ export class MessageWithImplicitDefault extends pb_1.Message {
     static deserializeBinary(bytes: Uint8Array): MessageWithImplicitDefault {
         return MessageWithImplicitDefault.deserialize(bytes);
     }
+}
+export namespace MessageWithImplicitDefault {
+    export type AsObject = {
+        bool_field: boolean;
+        string_field: string;
+        int32_field: number;
+    };
 }

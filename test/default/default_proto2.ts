@@ -5,6 +5,9 @@
  * git: https://github.com/thesayyn/protoc-gen-ts */
 import * as dependency_1 from "./default_common";
 import * as pb_1 from "google-protobuf";
+type RecursivePartial<T> = {
+    [P in keyof T]?: T[P] extends (infer U)[] ? RecursivePartial<U>[] : T[P] extends Uint8Array ? T[P] : T[P] extends object ? RecursivePartial<T[P]> : T[P];
+};
 export class DefaultMessageV2WithoutDefault extends pb_1.Message {
     #one_of_decls: number[][] = [[22, 23]];
     constructor(data?: any[] | ({
@@ -288,36 +291,7 @@ export class DefaultMessageV2WithoutDefault extends pb_1.Message {
         };
         return cases[pb_1.Message.computeOneofCase(this, [22, 23])];
     }
-    static fromObject(data: {
-        message?: Parameters<typeof dependency_1.DefaultCommonMessage.fromObject>[0];
-        enum?: dependency_1.DefaultCommonEnum;
-        bool?: boolean;
-        string?: string;
-        int32?: number;
-        fixed32?: number;
-        sfixed32?: number;
-        uint32?: number;
-        sint32?: number;
-        int64?: number;
-        fixed64?: number;
-        sfixed64?: number;
-        uint64?: number;
-        sint64?: number;
-        float?: number;
-        double?: number;
-        int_but_string?: string;
-        map_string_string?: {
-            [key: string]: string;
-        };
-        map_string_message?: {
-            [key: string]: Parameters<typeof dependency_1.DefaultCommonMessage.fromObject>[0];
-        };
-        array_int32?: number[];
-        array_message?: Parameters<typeof dependency_1.DefaultCommonMessage.fromObject>[0][];
-        one_of_int32?: number;
-        one_of_message?: Parameters<typeof dependency_1.DefaultCommonMessage.fromObject>[0];
-        bytes?: Uint8Array;
-    }): DefaultMessageV2WithoutDefault {
+    static fromObject(data: RecursivePartial<DefaultMessageV2WithoutDefault.AsObject>): DefaultMessageV2WithoutDefault {
         const message = new DefaultMessageV2WithoutDefault({
             message: dependency_1.DefaultCommonMessage.fromObject(data.message),
             enum: data.enum,
@@ -351,36 +325,7 @@ export class DefaultMessageV2WithoutDefault extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            message?: Parameters<typeof dependency_1.DefaultCommonMessage.fromObject>[0];
-            enum?: dependency_1.DefaultCommonEnum;
-            bool?: boolean;
-            string?: string;
-            int32?: number;
-            fixed32?: number;
-            sfixed32?: number;
-            uint32?: number;
-            sint32?: number;
-            int64?: number;
-            fixed64?: number;
-            sfixed64?: number;
-            uint64?: number;
-            sint64?: number;
-            float?: number;
-            double?: number;
-            int_but_string?: string;
-            map_string_string: {
-                [key: string]: string;
-            };
-            map_string_message: {
-                [key: string]: Parameters<typeof dependency_1.DefaultCommonMessage.fromObject>[0];
-            };
-            array_int32: number[];
-            array_message: Parameters<typeof dependency_1.DefaultCommonMessage.fromObject>[0][];
-            one_of_int32: number;
-            one_of_message?: Parameters<typeof dependency_1.DefaultCommonMessage.fromObject>[0];
-            bytes?: Uint8Array;
-        } = {
+        const data: DefaultMessageV2WithoutDefault.AsObject = {
             map_string_string: Object.fromEntries(this.map_string_string),
             map_string_message: Object.fromEntries(Array.from(this.map_string_message).map(([key, value]) => [key, value.toObject()])),
             array_int32: this.array_int32,
@@ -602,6 +547,38 @@ export class DefaultMessageV2WithoutDefault extends pb_1.Message {
     static deserializeBinary(bytes: Uint8Array): DefaultMessageV2WithoutDefault {
         return DefaultMessageV2WithoutDefault.deserialize(bytes);
     }
+}
+export namespace DefaultMessageV2WithoutDefault {
+    export type AsObject = {
+        message?: dependency_1.DefaultCommonMessage.AsObject;
+        enum?: dependency_1.DefaultCommonEnum;
+        bool?: boolean;
+        string?: string;
+        int32?: number;
+        fixed32?: number;
+        sfixed32?: number;
+        uint32?: number;
+        sint32?: number;
+        int64?: number;
+        fixed64?: number;
+        sfixed64?: number;
+        uint64?: number;
+        sint64?: number;
+        float?: number;
+        double?: number;
+        int_but_string?: string;
+        map_string_string: {
+            [key: string]: string;
+        };
+        map_string_message: {
+            [key: string]: dependency_1.DefaultCommonMessage.AsObject;
+        };
+        array_int32: number[];
+        array_message: dependency_1.DefaultCommonMessage.AsObject[];
+        one_of_int32: number;
+        one_of_message?: dependency_1.DefaultCommonMessage.AsObject;
+        bytes?: Uint8Array;
+    };
 }
 export class DefaultMessageV2WithDefault extends pb_1.Message {
     #one_of_decls: number[][] = [[18, 19]];
@@ -839,27 +816,7 @@ export class DefaultMessageV2WithDefault extends pb_1.Message {
         };
         return cases[pb_1.Message.computeOneofCase(this, [18, 19])];
     }
-    static fromObject(data: {
-        message?: Parameters<typeof dependency_1.DefaultCommonMessage.fromObject>[0];
-        enum?: dependency_1.DefaultCommonEnum;
-        bool?: boolean;
-        string?: string;
-        int32?: number;
-        fixed32?: number;
-        sfixed32?: number;
-        uint32?: number;
-        sint32?: number;
-        int64?: number;
-        fixed64?: number;
-        sfixed64?: number;
-        uint64?: number;
-        sint64?: number;
-        float?: number;
-        double?: number;
-        int_but_string?: string;
-        one_of_int32?: number;
-        one_of_message?: Parameters<typeof dependency_1.DefaultCommonMessage.fromObject>[0];
-    }): DefaultMessageV2WithDefault {
+    static fromObject(data: RecursivePartial<DefaultMessageV2WithDefault.AsObject>): DefaultMessageV2WithDefault {
         const message = new DefaultMessageV2WithDefault({
             message: dependency_1.DefaultCommonMessage.fromObject(data.message),
             enum: data.enum,
@@ -888,27 +845,7 @@ export class DefaultMessageV2WithDefault extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            message?: Parameters<typeof dependency_1.DefaultCommonMessage.fromObject>[0];
-            enum: dependency_1.DefaultCommonEnum;
-            bool: boolean;
-            string: string;
-            int32: number;
-            fixed32: number;
-            sfixed32: number;
-            uint32: number;
-            sint32: number;
-            int64: number;
-            fixed64: number;
-            sfixed64: number;
-            uint64: number;
-            sint64: number;
-            float: number;
-            double: number;
-            int_but_string: string;
-            one_of_int32: number;
-            one_of_message?: Parameters<typeof dependency_1.DefaultCommonMessage.fromObject>[0];
-        } = {
+        const data: DefaultMessageV2WithDefault.AsObject = {
             enum: this.enum,
             bool: this.bool,
             string: this.string,
@@ -1054,4 +991,27 @@ export class DefaultMessageV2WithDefault extends pb_1.Message {
     static deserializeBinary(bytes: Uint8Array): DefaultMessageV2WithDefault {
         return DefaultMessageV2WithDefault.deserialize(bytes);
     }
+}
+export namespace DefaultMessageV2WithDefault {
+    export type AsObject = {
+        message?: dependency_1.DefaultCommonMessage.AsObject;
+        enum: dependency_1.DefaultCommonEnum;
+        bool: boolean;
+        string: string;
+        int32: number;
+        fixed32: number;
+        sfixed32: number;
+        uint32: number;
+        sint32: number;
+        int64: number;
+        fixed64: number;
+        sfixed64: number;
+        uint64: number;
+        sint64: number;
+        float: number;
+        double: number;
+        int_but_string: string;
+        one_of_int32: number;
+        one_of_message?: dependency_1.DefaultCommonMessage.AsObject;
+    };
 }

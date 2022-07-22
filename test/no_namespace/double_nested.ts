@@ -4,6 +4,9 @@
  * source: test/_/no_namespace/double_nested.proto
  * git: https://github.com/thesayyn/protoc-gen-ts */
 import * as pb_1 from "google-protobuf";
+type RecursivePartial<T> = {
+    [P in keyof T]?: T[P] extends (infer U)[] ? RecursivePartial<U>[] : T[P] extends Uint8Array ? T[P] : T[P] extends object ? RecursivePartial<T[P]> : T[P];
+};
 export class MessageFields extends pb_1.Message {
     #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
@@ -23,9 +26,7 @@ export class MessageFields extends pb_1.Message {
     set field(value: string[]) {
         pb_1.Message.setField(this, 1, value);
     }
-    static fromObject(data: {
-        field?: string[];
-    }): MessageFields {
+    static fromObject(data: RecursivePartial<MessageFieldsAsObject>): MessageFields {
         const message = new MessageFields({});
         if (data.field != null) {
             message.field = data.field;
@@ -33,9 +34,7 @@ export class MessageFields extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            field: string[];
-        } = {
+        const data: MessageFieldsAsObject = {
             field: this.field
         };
         return data;
@@ -70,3 +69,6 @@ export class MessageFields extends pb_1.Message {
         return MessageFields.deserialize(bytes);
     }
 }
+export type MessageFieldsAsObject = {
+    field: string[];
+};

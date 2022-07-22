@@ -5,6 +5,9 @@
  * git: https://github.com/thesayyn/protoc-gen-ts */
 import * as pb_1 from "google-protobuf";
 import * as grpc_1 from "@grpc/grpc-js";
+type RecursivePartial<T> = {
+    [P in keyof T]?: T[P] extends (infer U)[] ? RecursivePartial<U>[] : T[P] extends Uint8Array ? T[P] : T[P] extends object ? RecursivePartial<T[P]> : T[P];
+};
 export class Chunk extends pb_1.Message {
     #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
@@ -24,9 +27,7 @@ export class Chunk extends pb_1.Message {
     set data(value: Uint8Array) {
         pb_1.Message.setField(this, 1, value);
     }
-    static fromObject(data: {
-        data?: Uint8Array;
-    }): Chunk {
+    static fromObject(data: RecursivePartial<Chunk.AsObject>): Chunk {
         const message = new Chunk({});
         if (data.data != null) {
             message.data = data.data;
@@ -34,9 +35,7 @@ export class Chunk extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            data: Uint8Array;
-        } = {
+        const data: Chunk.AsObject = {
             data: this.data
         };
         return data;
@@ -71,6 +70,11 @@ export class Chunk extends pb_1.Message {
         return Chunk.deserialize(bytes);
     }
 }
+export namespace Chunk {
+    export type AsObject = {
+        data: Uint8Array;
+    };
+}
 export class Result extends pb_1.Message {
     #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
@@ -90,9 +94,7 @@ export class Result extends pb_1.Message {
     set id(value: number) {
         pb_1.Message.setField(this, 1, value);
     }
-    static fromObject(data: {
-        id?: number;
-    }): Result {
+    static fromObject(data: RecursivePartial<Result.AsObject>): Result {
         const message = new Result({});
         if (data.id != null) {
             message.id = data.id;
@@ -100,9 +102,7 @@ export class Result extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            id: number;
-        } = {
+        const data: Result.AsObject = {
             id: this.id
         };
         return data;
@@ -136,6 +136,11 @@ export class Result extends pb_1.Message {
     static deserializeBinary(bytes: Uint8Array): Result {
         return Result.deserialize(bytes);
     }
+}
+export namespace Result {
+    export type AsObject = {
+        id: number;
+    };
 }
 interface GrpcUnaryServiceInterface<P, R> {
     (message: P, metadata: grpc_1.Metadata, options: grpc_1.CallOptions, callback: grpc_1.requestCallback<R>): grpc_1.ClientUnaryCall;

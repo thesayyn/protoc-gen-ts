@@ -6,6 +6,9 @@
 import * as dependency_1 from "./nested";
 import * as dependency_2 from "./double_nested";
 import * as pb_1 from "google-protobuf";
+type RecursivePartial<T> = {
+    [P in keyof T]?: T[P] extends (infer U)[] ? RecursivePartial<U>[] : T[P] extends Uint8Array ? T[P] : T[P] extends object ? RecursivePartial<T[P]> : T[P];
+};
 export class NoNamespace extends pb_1.Message {
     #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
@@ -54,11 +57,7 @@ export class NoNamespace extends pb_1.Message {
     get has_batch_fields() {
         return pb_1.Message.getField(this, 3) != null;
     }
-    static fromObject(data: {
-        label?: Parameters<typeof dependency_1.eventTarget.fromObject>[0];
-        other_fields?: Parameters<typeof dependency_2.MessageFields.fromObject>[0];
-        batch_fields?: Parameters<typeof dependency_1.eventSchedulingContextBatch.fromObject>[0];
-    }): NoNamespace {
+    static fromObject(data: RecursivePartial<NoNamespaceAsObject>): NoNamespace {
         const message = new NoNamespace({});
         if (data.label != null) {
             message.label = dependency_1.eventTarget.fromObject(data.label);
@@ -72,11 +71,7 @@ export class NoNamespace extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            label?: Parameters<typeof dependency_1.eventTarget.fromObject>[0];
-            other_fields?: Parameters<typeof dependency_2.MessageFields.fromObject>[0];
-            batch_fields?: Parameters<typeof dependency_1.eventSchedulingContextBatch.fromObject>[0];
-        } = {};
+        const data: NoNamespaceAsObject = {};
         if (this.label != null) {
             data.label = this.label.toObject();
         }
@@ -128,3 +123,8 @@ export class NoNamespace extends pb_1.Message {
         return NoNamespace.deserialize(bytes);
     }
 }
+export type NoNamespaceAsObject = {
+    label?: dependency_1.eventTargetAsObject;
+    other_fields?: dependency_2.MessageFieldsAsObject;
+    batch_fields?: dependency_1.eventSchedulingContextBatchAsObject;
+};

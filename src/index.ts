@@ -87,6 +87,13 @@ for (const fileDescriptor of request.proto_file) {
     ),
   ];
 
+
+  if (fileDescriptor.message_type.length > 0) {
+    statements.unshift(
+      type.recursivePartialDeclaration()
+    )
+  }
+
   if (statements.length) {
     importStatements.push(createImport(pbIdentifier, "google-protobuf"));
   }

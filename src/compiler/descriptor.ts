@@ -4,6 +4,9 @@
  * source: descriptor.proto
  * git: https://github.com/thesayyn/protoc-gen-ts */
 import * as pb_1 from "google-protobuf";
+type RecursivePartial<T> = {
+    [P in keyof T]?: T[P] extends (infer U)[] ? RecursivePartial<U>[] : T[P] extends Uint8Array ? T[P] : T[P] extends object ? RecursivePartial<T[P]> : T[P];
+};
 export class FileDescriptorSet extends pb_1.Message {
     #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
@@ -21,18 +24,14 @@ export class FileDescriptorSet extends pb_1.Message {
     set file(value: FileDescriptorProto[]) {
         pb_1.Message.setRepeatedWrapperField(this, 1, value);
     }
-    static fromObject(data: {
-        file?: Parameters<typeof FileDescriptorProto.fromObject>[0][];
-    }): FileDescriptorSet {
+    static fromObject(data: RecursivePartial<FileDescriptorSet.AsObject>): FileDescriptorSet {
         const message = new FileDescriptorSet({
             file: data.file.map(item => FileDescriptorProto.fromObject(item))
         });
         return message;
     }
     toObject() {
-        const data: {
-            file: Parameters<typeof FileDescriptorProto.fromObject>[0][];
-        } = {
+        const data: FileDescriptorSet.AsObject = {
             file: this.file.map((item: FileDescriptorProto) => item.toObject())
         };
         return data;
@@ -66,6 +65,11 @@ export class FileDescriptorSet extends pb_1.Message {
     static deserializeBinary(bytes: Uint8Array): FileDescriptorSet {
         return FileDescriptorSet.deserialize(bytes);
     }
+}
+export namespace FileDescriptorSet {
+    export type AsObject = {
+        file: FileDescriptorProto.AsObject[];
+    };
 }
 export class FileDescriptorProto extends pb_1.Message {
     #one_of_decls: number[][] = [];
@@ -197,20 +201,7 @@ export class FileDescriptorProto extends pb_1.Message {
     get has_syntax() {
         return pb_1.Message.getField(this, 12) != null;
     }
-    static fromObject(data: {
-        name?: string;
-        package?: string;
-        dependency?: string[];
-        public_dependency?: number[];
-        weak_dependency?: number[];
-        message_type?: Parameters<typeof DescriptorProto.fromObject>[0][];
-        enum_type?: Parameters<typeof EnumDescriptorProto.fromObject>[0][];
-        service?: Parameters<typeof ServiceDescriptorProto.fromObject>[0][];
-        extension?: Parameters<typeof FieldDescriptorProto.fromObject>[0][];
-        options?: Parameters<typeof FileOptions.fromObject>[0];
-        source_code_info?: Parameters<typeof SourceCodeInfo.fromObject>[0];
-        syntax?: string;
-    }): FileDescriptorProto {
+    static fromObject(data: RecursivePartial<FileDescriptorProto.AsObject>): FileDescriptorProto {
         const message = new FileDescriptorProto({
             dependency: data.dependency,
             public_dependency: data.public_dependency,
@@ -238,20 +229,7 @@ export class FileDescriptorProto extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            name: string;
-            package: string;
-            dependency: string[];
-            public_dependency: number[];
-            weak_dependency: number[];
-            message_type: Parameters<typeof DescriptorProto.fromObject>[0][];
-            enum_type: Parameters<typeof EnumDescriptorProto.fromObject>[0][];
-            service: Parameters<typeof ServiceDescriptorProto.fromObject>[0][];
-            extension: Parameters<typeof FieldDescriptorProto.fromObject>[0][];
-            options?: Parameters<typeof FileOptions.fromObject>[0];
-            source_code_info?: Parameters<typeof SourceCodeInfo.fromObject>[0];
-            syntax: string;
-        } = {
+        const data: FileDescriptorProto.AsObject = {
             name: this.name,
             package: this.package,
             dependency: this.dependency,
@@ -356,6 +334,22 @@ export class FileDescriptorProto extends pb_1.Message {
         return FileDescriptorProto.deserialize(bytes);
     }
 }
+export namespace FileDescriptorProto {
+    export type AsObject = {
+        name: string;
+        package: string;
+        dependency: string[];
+        public_dependency: number[];
+        weak_dependency: number[];
+        message_type: DescriptorProto.AsObject[];
+        enum_type: EnumDescriptorProto.AsObject[];
+        service: ServiceDescriptorProto.AsObject[];
+        extension: FieldDescriptorProto.AsObject[];
+        options?: FileOptions.AsObject;
+        source_code_info?: SourceCodeInfo.AsObject;
+        syntax: string;
+    };
+}
 export class DescriptorProto extends pb_1.Message {
     #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
@@ -455,18 +449,7 @@ export class DescriptorProto extends pb_1.Message {
     set reserved_name(value: string[]) {
         pb_1.Message.setField(this, 10, value);
     }
-    static fromObject(data: {
-        name?: string;
-        field?: Parameters<typeof FieldDescriptorProto.fromObject>[0][];
-        extension?: Parameters<typeof FieldDescriptorProto.fromObject>[0][];
-        nested_type?: Parameters<typeof DescriptorProto.fromObject>[0][];
-        enum_type?: Parameters<typeof EnumDescriptorProto.fromObject>[0][];
-        extension_range?: Parameters<typeof DescriptorProto.ExtensionRange.fromObject>[0][];
-        oneof_decl?: Parameters<typeof OneofDescriptorProto.fromObject>[0][];
-        options?: Parameters<typeof MessageOptions.fromObject>[0];
-        reserved_range?: Parameters<typeof DescriptorProto.ReservedRange.fromObject>[0][];
-        reserved_name?: string[];
-    }): DescriptorProto {
+    static fromObject(data: RecursivePartial<DescriptorProto.AsObject>): DescriptorProto {
         const message = new DescriptorProto({
             field: data.field.map(item => FieldDescriptorProto.fromObject(item)),
             extension: data.extension.map(item => FieldDescriptorProto.fromObject(item)),
@@ -486,18 +469,7 @@ export class DescriptorProto extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            name: string;
-            field: Parameters<typeof FieldDescriptorProto.fromObject>[0][];
-            extension: Parameters<typeof FieldDescriptorProto.fromObject>[0][];
-            nested_type: Parameters<typeof DescriptorProto.fromObject>[0][];
-            enum_type: Parameters<typeof EnumDescriptorProto.fromObject>[0][];
-            extension_range: Parameters<typeof DescriptorProto.ExtensionRange.fromObject>[0][];
-            oneof_decl: Parameters<typeof OneofDescriptorProto.fromObject>[0][];
-            options?: Parameters<typeof MessageOptions.fromObject>[0];
-            reserved_range: Parameters<typeof DescriptorProto.ReservedRange.fromObject>[0][];
-            reserved_name: string[];
-        } = {
+        const data: DescriptorProto.AsObject = {
             name: this.name,
             field: this.field.map((item: FieldDescriptorProto) => item.toObject()),
             extension: this.extension.map((item: FieldDescriptorProto) => item.toObject()),
@@ -589,6 +561,18 @@ export class DescriptorProto extends pb_1.Message {
     }
 }
 export namespace DescriptorProto {
+    export type AsObject = {
+        name: string;
+        field: FieldDescriptorProto.AsObject[];
+        extension: FieldDescriptorProto.AsObject[];
+        nested_type: DescriptorProto.AsObject[];
+        enum_type: EnumDescriptorProto.AsObject[];
+        extension_range: DescriptorProto.ExtensionRange.AsObject[];
+        oneof_decl: OneofDescriptorProto.AsObject[];
+        options?: MessageOptions.AsObject;
+        reserved_range: DescriptorProto.ReservedRange.AsObject[];
+        reserved_name: string[];
+    };
     export class ExtensionRange extends pb_1.Message {
         #one_of_decls: number[][] = [];
         constructor(data?: any[] | {
@@ -637,11 +621,7 @@ export namespace DescriptorProto {
         get has_options() {
             return pb_1.Message.getField(this, 3) != null;
         }
-        static fromObject(data: {
-            start?: number;
-            end?: number;
-            options?: Parameters<typeof ExtensionRangeOptions.fromObject>[0];
-        }): ExtensionRange {
+        static fromObject(data: RecursivePartial<ExtensionRange.AsObject>): ExtensionRange {
             const message = new ExtensionRange({});
             if (data.start != null) {
                 message.start = data.start;
@@ -655,11 +635,7 @@ export namespace DescriptorProto {
             return message;
         }
         toObject() {
-            const data: {
-                start: number;
-                end: number;
-                options?: Parameters<typeof ExtensionRangeOptions.fromObject>[0];
-            } = {
+            const data: ExtensionRange.AsObject = {
                 start: this.start,
                 end: this.end
             };
@@ -708,6 +684,13 @@ export namespace DescriptorProto {
             return ExtensionRange.deserialize(bytes);
         }
     }
+    export namespace ExtensionRange {
+        export type AsObject = {
+            start: number;
+            end: number;
+            options?: ExtensionRangeOptions.AsObject;
+        };
+    }
     export class ReservedRange extends pb_1.Message {
         #one_of_decls: number[][] = [];
         constructor(data?: any[] | {
@@ -743,10 +726,7 @@ export namespace DescriptorProto {
         get has_end() {
             return pb_1.Message.getField(this, 2) != null;
         }
-        static fromObject(data: {
-            start?: number;
-            end?: number;
-        }): ReservedRange {
+        static fromObject(data: RecursivePartial<ReservedRange.AsObject>): ReservedRange {
             const message = new ReservedRange({});
             if (data.start != null) {
                 message.start = data.start;
@@ -757,10 +737,7 @@ export namespace DescriptorProto {
             return message;
         }
         toObject() {
-            const data: {
-                start: number;
-                end: number;
-            } = {
+            const data: ReservedRange.AsObject = {
                 start: this.start,
                 end: this.end
             };
@@ -801,6 +778,12 @@ export namespace DescriptorProto {
             return ReservedRange.deserialize(bytes);
         }
     }
+    export namespace ReservedRange {
+        export type AsObject = {
+            start: number;
+            end: number;
+        };
+    }
 }
 export class ExtensionRangeOptions extends pb_1.Message {
     #one_of_decls: number[][] = [];
@@ -819,18 +802,14 @@ export class ExtensionRangeOptions extends pb_1.Message {
     set uninterpreted_option(value: UninterpretedOption[]) {
         pb_1.Message.setRepeatedWrapperField(this, 999, value);
     }
-    static fromObject(data: {
-        uninterpreted_option?: Parameters<typeof UninterpretedOption.fromObject>[0][];
-    }): ExtensionRangeOptions {
+    static fromObject(data: RecursivePartial<ExtensionRangeOptions.AsObject>): ExtensionRangeOptions {
         const message = new ExtensionRangeOptions({
             uninterpreted_option: data.uninterpreted_option.map(item => UninterpretedOption.fromObject(item))
         });
         return message;
     }
     toObject() {
-        const data: {
-            uninterpreted_option: Parameters<typeof UninterpretedOption.fromObject>[0][];
-        } = {
+        const data: ExtensionRangeOptions.AsObject = {
             uninterpreted_option: this.uninterpreted_option.map((item: UninterpretedOption) => item.toObject())
         };
         return data;
@@ -864,6 +843,11 @@ export class ExtensionRangeOptions extends pb_1.Message {
     static deserializeBinary(bytes: Uint8Array): ExtensionRangeOptions {
         return ExtensionRangeOptions.deserialize(bytes);
     }
+}
+export namespace ExtensionRangeOptions {
+    export type AsObject = {
+        uninterpreted_option: UninterpretedOption.AsObject[];
+    };
 }
 export class FieldDescriptorProto extends pb_1.Message {
     #one_of_decls: number[][] = [];
@@ -1017,19 +1001,7 @@ export class FieldDescriptorProto extends pb_1.Message {
     get has_proto3_optional() {
         return pb_1.Message.getField(this, 17) != null;
     }
-    static fromObject(data: {
-        name?: string;
-        number?: number;
-        label?: FieldDescriptorProto.Label;
-        type?: FieldDescriptorProto.Type;
-        type_name?: string;
-        extendee?: string;
-        default_value?: string;
-        oneof_index?: number;
-        json_name?: string;
-        options?: Parameters<typeof FieldOptions.fromObject>[0];
-        proto3_optional?: boolean;
-    }): FieldDescriptorProto {
+    static fromObject(data: RecursivePartial<FieldDescriptorProto.AsObject>): FieldDescriptorProto {
         const message = new FieldDescriptorProto({});
         if (data.name != null) {
             message.name = data.name;
@@ -1067,19 +1039,7 @@ export class FieldDescriptorProto extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            name: string;
-            number: number;
-            label: FieldDescriptorProto.Label;
-            type: FieldDescriptorProto.Type;
-            type_name: string;
-            extendee: string;
-            default_value: string;
-            oneof_index: number;
-            json_name: string;
-            options?: Parameters<typeof FieldOptions.fromObject>[0];
-            proto3_optional: boolean;
-        } = {
+        const data: FieldDescriptorProto.AsObject = {
             name: this.name,
             number: this.number,
             label: this.label,
@@ -1177,6 +1137,19 @@ export class FieldDescriptorProto extends pb_1.Message {
     }
 }
 export namespace FieldDescriptorProto {
+    export type AsObject = {
+        name: string;
+        number: number;
+        label: FieldDescriptorProto.Label;
+        type: FieldDescriptorProto.Type;
+        type_name: string;
+        extendee: string;
+        default_value: string;
+        oneof_index: number;
+        json_name: string;
+        options?: FieldOptions.AsObject;
+        proto3_optional: boolean;
+    };
     export enum Type {
         TYPE_DOUBLE = 1,
         TYPE_FLOAT = 2,
@@ -1238,10 +1211,7 @@ export class OneofDescriptorProto extends pb_1.Message {
     get has_options() {
         return pb_1.Message.getField(this, 2) != null;
     }
-    static fromObject(data: {
-        name?: string;
-        options?: Parameters<typeof OneofOptions.fromObject>[0];
-    }): OneofDescriptorProto {
+    static fromObject(data: RecursivePartial<OneofDescriptorProto.AsObject>): OneofDescriptorProto {
         const message = new OneofDescriptorProto({});
         if (data.name != null) {
             message.name = data.name;
@@ -1252,10 +1222,7 @@ export class OneofDescriptorProto extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            name: string;
-            options?: Parameters<typeof OneofOptions.fromObject>[0];
-        } = {
+        const data: OneofDescriptorProto.AsObject = {
             name: this.name
         };
         if (this.options != null) {
@@ -1297,6 +1264,12 @@ export class OneofDescriptorProto extends pb_1.Message {
     static deserializeBinary(bytes: Uint8Array): OneofDescriptorProto {
         return OneofDescriptorProto.deserialize(bytes);
     }
+}
+export namespace OneofDescriptorProto {
+    export type AsObject = {
+        name: string;
+        options?: OneofOptions.AsObject;
+    };
 }
 export class EnumDescriptorProto extends pb_1.Message {
     #one_of_decls: number[][] = [];
@@ -1357,13 +1330,7 @@ export class EnumDescriptorProto extends pb_1.Message {
     set reserved_name(value: string[]) {
         pb_1.Message.setField(this, 5, value);
     }
-    static fromObject(data: {
-        name?: string;
-        value?: Parameters<typeof EnumValueDescriptorProto.fromObject>[0][];
-        options?: Parameters<typeof EnumOptions.fromObject>[0];
-        reserved_range?: Parameters<typeof EnumDescriptorProto.EnumReservedRange.fromObject>[0][];
-        reserved_name?: string[];
-    }): EnumDescriptorProto {
+    static fromObject(data: RecursivePartial<EnumDescriptorProto.AsObject>): EnumDescriptorProto {
         const message = new EnumDescriptorProto({
             value: data.value.map(item => EnumValueDescriptorProto.fromObject(item)),
             reserved_range: data.reserved_range.map(item => EnumDescriptorProto.EnumReservedRange.fromObject(item)),
@@ -1378,13 +1345,7 @@ export class EnumDescriptorProto extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            name: string;
-            value: Parameters<typeof EnumValueDescriptorProto.fromObject>[0][];
-            options?: Parameters<typeof EnumOptions.fromObject>[0];
-            reserved_range: Parameters<typeof EnumDescriptorProto.EnumReservedRange.fromObject>[0][];
-            reserved_name: string[];
-        } = {
+        const data: EnumDescriptorProto.AsObject = {
             name: this.name,
             value: this.value.map((item: EnumValueDescriptorProto) => item.toObject()),
             reserved_range: this.reserved_range.map((item: EnumDescriptorProto.EnumReservedRange) => item.toObject()),
@@ -1446,6 +1407,13 @@ export class EnumDescriptorProto extends pb_1.Message {
     }
 }
 export namespace EnumDescriptorProto {
+    export type AsObject = {
+        name: string;
+        value: EnumValueDescriptorProto.AsObject[];
+        options?: EnumOptions.AsObject;
+        reserved_range: EnumDescriptorProto.EnumReservedRange.AsObject[];
+        reserved_name: string[];
+    };
     export class EnumReservedRange extends pb_1.Message {
         #one_of_decls: number[][] = [];
         constructor(data?: any[] | {
@@ -1481,10 +1449,7 @@ export namespace EnumDescriptorProto {
         get has_end() {
             return pb_1.Message.getField(this, 2) != null;
         }
-        static fromObject(data: {
-            start?: number;
-            end?: number;
-        }): EnumReservedRange {
+        static fromObject(data: RecursivePartial<EnumReservedRange.AsObject>): EnumReservedRange {
             const message = new EnumReservedRange({});
             if (data.start != null) {
                 message.start = data.start;
@@ -1495,10 +1460,7 @@ export namespace EnumDescriptorProto {
             return message;
         }
         toObject() {
-            const data: {
-                start: number;
-                end: number;
-            } = {
+            const data: EnumReservedRange.AsObject = {
                 start: this.start,
                 end: this.end
             };
@@ -1538,6 +1500,12 @@ export namespace EnumDescriptorProto {
         static deserializeBinary(bytes: Uint8Array): EnumReservedRange {
             return EnumReservedRange.deserialize(bytes);
         }
+    }
+    export namespace EnumReservedRange {
+        export type AsObject = {
+            start: number;
+            end: number;
+        };
     }
 }
 export class EnumValueDescriptorProto extends pb_1.Message {
@@ -1588,11 +1556,7 @@ export class EnumValueDescriptorProto extends pb_1.Message {
     get has_options() {
         return pb_1.Message.getField(this, 3) != null;
     }
-    static fromObject(data: {
-        name?: string;
-        number?: number;
-        options?: Parameters<typeof EnumValueOptions.fromObject>[0];
-    }): EnumValueDescriptorProto {
+    static fromObject(data: RecursivePartial<EnumValueDescriptorProto.AsObject>): EnumValueDescriptorProto {
         const message = new EnumValueDescriptorProto({});
         if (data.name != null) {
             message.name = data.name;
@@ -1606,11 +1570,7 @@ export class EnumValueDescriptorProto extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            name: string;
-            number: number;
-            options?: Parameters<typeof EnumValueOptions.fromObject>[0];
-        } = {
+        const data: EnumValueDescriptorProto.AsObject = {
             name: this.name,
             number: this.number
         };
@@ -1659,6 +1619,13 @@ export class EnumValueDescriptorProto extends pb_1.Message {
         return EnumValueDescriptorProto.deserialize(bytes);
     }
 }
+export namespace EnumValueDescriptorProto {
+    export type AsObject = {
+        name: string;
+        number: number;
+        options?: EnumValueOptions.AsObject;
+    };
+}
 export class ServiceDescriptorProto extends pb_1.Message {
     #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
@@ -1702,11 +1669,7 @@ export class ServiceDescriptorProto extends pb_1.Message {
     get has_options() {
         return pb_1.Message.getField(this, 3) != null;
     }
-    static fromObject(data: {
-        name?: string;
-        method?: Parameters<typeof MethodDescriptorProto.fromObject>[0][];
-        options?: Parameters<typeof ServiceOptions.fromObject>[0];
-    }): ServiceDescriptorProto {
+    static fromObject(data: RecursivePartial<ServiceDescriptorProto.AsObject>): ServiceDescriptorProto {
         const message = new ServiceDescriptorProto({
             method: data.method.map(item => MethodDescriptorProto.fromObject(item))
         });
@@ -1719,11 +1682,7 @@ export class ServiceDescriptorProto extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            name: string;
-            method: Parameters<typeof MethodDescriptorProto.fromObject>[0][];
-            options?: Parameters<typeof ServiceOptions.fromObject>[0];
-        } = {
+        const data: ServiceDescriptorProto.AsObject = {
             name: this.name,
             method: this.method.map((item: MethodDescriptorProto) => item.toObject())
         };
@@ -1771,6 +1730,13 @@ export class ServiceDescriptorProto extends pb_1.Message {
     static deserializeBinary(bytes: Uint8Array): ServiceDescriptorProto {
         return ServiceDescriptorProto.deserialize(bytes);
     }
+}
+export namespace ServiceDescriptorProto {
+    export type AsObject = {
+        name: string;
+        method: MethodDescriptorProto.AsObject[];
+        options?: ServiceOptions.AsObject;
+    };
 }
 export class MethodDescriptorProto extends pb_1.Message {
     #one_of_decls: number[][] = [];
@@ -1859,14 +1825,7 @@ export class MethodDescriptorProto extends pb_1.Message {
     get has_server_streaming() {
         return pb_1.Message.getField(this, 6) != null;
     }
-    static fromObject(data: {
-        name?: string;
-        input_type?: string;
-        output_type?: string;
-        options?: Parameters<typeof MethodOptions.fromObject>[0];
-        client_streaming?: boolean;
-        server_streaming?: boolean;
-    }): MethodDescriptorProto {
+    static fromObject(data: RecursivePartial<MethodDescriptorProto.AsObject>): MethodDescriptorProto {
         const message = new MethodDescriptorProto({});
         if (data.name != null) {
             message.name = data.name;
@@ -1889,14 +1848,7 @@ export class MethodDescriptorProto extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            name: string;
-            input_type: string;
-            output_type: string;
-            options?: Parameters<typeof MethodOptions.fromObject>[0];
-            client_streaming: boolean;
-            server_streaming: boolean;
-        } = {
+        const data: MethodDescriptorProto.AsObject = {
             name: this.name,
             input_type: this.input_type,
             output_type: this.output_type,
@@ -1962,6 +1914,16 @@ export class MethodDescriptorProto extends pb_1.Message {
     static deserializeBinary(bytes: Uint8Array): MethodDescriptorProto {
         return MethodDescriptorProto.deserialize(bytes);
     }
+}
+export namespace MethodDescriptorProto {
+    export type AsObject = {
+        name: string;
+        input_type: string;
+        output_type: string;
+        options?: MethodOptions.AsObject;
+        client_streaming: boolean;
+        server_streaming: boolean;
+    };
 }
 export class FileOptions extends pb_1.Message {
     #one_of_decls: number[][] = [];
@@ -2244,29 +2206,7 @@ export class FileOptions extends pb_1.Message {
     set uninterpreted_option(value: UninterpretedOption[]) {
         pb_1.Message.setRepeatedWrapperField(this, 999, value);
     }
-    static fromObject(data: {
-        java_package?: string;
-        java_outer_classname?: string;
-        java_multiple_files?: boolean;
-        java_generate_equals_and_hash?: boolean;
-        java_string_check_utf8?: boolean;
-        optimize_for?: FileOptions.OptimizeMode;
-        go_package?: string;
-        cc_generic_services?: boolean;
-        java_generic_services?: boolean;
-        py_generic_services?: boolean;
-        php_generic_services?: boolean;
-        deprecated?: boolean;
-        cc_enable_arenas?: boolean;
-        objc_class_prefix?: string;
-        csharp_namespace?: string;
-        swift_prefix?: string;
-        php_class_prefix?: string;
-        php_namespace?: string;
-        php_metadata_namespace?: string;
-        ruby_package?: string;
-        uninterpreted_option?: Parameters<typeof UninterpretedOption.fromObject>[0][];
-    }): FileOptions {
+    static fromObject(data: RecursivePartial<FileOptions.AsObject>): FileOptions {
         const message = new FileOptions({
             uninterpreted_option: data.uninterpreted_option.map(item => UninterpretedOption.fromObject(item))
         });
@@ -2333,29 +2273,7 @@ export class FileOptions extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            java_package: string;
-            java_outer_classname: string;
-            java_multiple_files: boolean;
-            java_generate_equals_and_hash: boolean;
-            java_string_check_utf8: boolean;
-            optimize_for: FileOptions.OptimizeMode;
-            go_package: string;
-            cc_generic_services: boolean;
-            java_generic_services: boolean;
-            py_generic_services: boolean;
-            php_generic_services: boolean;
-            deprecated: boolean;
-            cc_enable_arenas: boolean;
-            objc_class_prefix: string;
-            csharp_namespace: string;
-            swift_prefix: string;
-            php_class_prefix: string;
-            php_namespace: string;
-            php_metadata_namespace: string;
-            ruby_package: string;
-            uninterpreted_option: Parameters<typeof UninterpretedOption.fromObject>[0][];
-        } = {
+        const data: FileOptions.AsObject = {
             java_package: this.java_package,
             java_outer_classname: this.java_outer_classname,
             java_multiple_files: this.java_multiple_files,
@@ -2511,6 +2429,29 @@ export class FileOptions extends pb_1.Message {
     }
 }
 export namespace FileOptions {
+    export type AsObject = {
+        java_package: string;
+        java_outer_classname: string;
+        java_multiple_files: boolean;
+        java_generate_equals_and_hash: boolean;
+        java_string_check_utf8: boolean;
+        optimize_for: FileOptions.OptimizeMode;
+        go_package: string;
+        cc_generic_services: boolean;
+        java_generic_services: boolean;
+        py_generic_services: boolean;
+        php_generic_services: boolean;
+        deprecated: boolean;
+        cc_enable_arenas: boolean;
+        objc_class_prefix: string;
+        csharp_namespace: string;
+        swift_prefix: string;
+        php_class_prefix: string;
+        php_namespace: string;
+        php_metadata_namespace: string;
+        ruby_package: string;
+        uninterpreted_option: UninterpretedOption.AsObject[];
+    };
     export enum OptimizeMode {
         SPEED = 1,
         CODE_SIZE = 2,
@@ -2586,13 +2527,7 @@ export class MessageOptions extends pb_1.Message {
     set uninterpreted_option(value: UninterpretedOption[]) {
         pb_1.Message.setRepeatedWrapperField(this, 999, value);
     }
-    static fromObject(data: {
-        message_set_wire_format?: boolean;
-        no_standard_descriptor_accessor?: boolean;
-        deprecated?: boolean;
-        map_entry?: boolean;
-        uninterpreted_option?: Parameters<typeof UninterpretedOption.fromObject>[0][];
-    }): MessageOptions {
+    static fromObject(data: RecursivePartial<MessageOptions.AsObject>): MessageOptions {
         const message = new MessageOptions({
             uninterpreted_option: data.uninterpreted_option.map(item => UninterpretedOption.fromObject(item))
         });
@@ -2611,13 +2546,7 @@ export class MessageOptions extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            message_set_wire_format: boolean;
-            no_standard_descriptor_accessor: boolean;
-            deprecated: boolean;
-            map_entry: boolean;
-            uninterpreted_option: Parameters<typeof UninterpretedOption.fromObject>[0][];
-        } = {
+        const data: MessageOptions.AsObject = {
             message_set_wire_format: this.message_set_wire_format,
             no_standard_descriptor_accessor: this.no_standard_descriptor_accessor,
             deprecated: this.deprecated,
@@ -2675,6 +2604,15 @@ export class MessageOptions extends pb_1.Message {
     static deserializeBinary(bytes: Uint8Array): MessageOptions {
         return MessageOptions.deserialize(bytes);
     }
+}
+export namespace MessageOptions {
+    export type AsObject = {
+        message_set_wire_format: boolean;
+        no_standard_descriptor_accessor: boolean;
+        deprecated: boolean;
+        map_entry: boolean;
+        uninterpreted_option: UninterpretedOption.AsObject[];
+    };
 }
 export class FieldOptions extends pb_1.Message {
     #one_of_decls: number[][] = [];
@@ -2771,15 +2709,7 @@ export class FieldOptions extends pb_1.Message {
     set uninterpreted_option(value: UninterpretedOption[]) {
         pb_1.Message.setRepeatedWrapperField(this, 999, value);
     }
-    static fromObject(data: {
-        ctype?: FieldOptions.CType;
-        packed?: boolean;
-        jstype?: FieldOptions.JSType;
-        lazy?: boolean;
-        deprecated?: boolean;
-        weak?: boolean;
-        uninterpreted_option?: Parameters<typeof UninterpretedOption.fromObject>[0][];
-    }): FieldOptions {
+    static fromObject(data: RecursivePartial<FieldOptions.AsObject>): FieldOptions {
         const message = new FieldOptions({
             uninterpreted_option: data.uninterpreted_option.map(item => UninterpretedOption.fromObject(item))
         });
@@ -2804,15 +2734,7 @@ export class FieldOptions extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            ctype: FieldOptions.CType;
-            packed: boolean;
-            jstype: FieldOptions.JSType;
-            lazy: boolean;
-            deprecated: boolean;
-            weak: boolean;
-            uninterpreted_option: Parameters<typeof UninterpretedOption.fromObject>[0][];
-        } = {
+        const data: FieldOptions.AsObject = {
             ctype: this.ctype,
             packed: this.packed,
             jstype: this.jstype,
@@ -2884,6 +2806,15 @@ export class FieldOptions extends pb_1.Message {
     }
 }
 export namespace FieldOptions {
+    export type AsObject = {
+        ctype: FieldOptions.CType;
+        packed: boolean;
+        jstype: FieldOptions.JSType;
+        lazy: boolean;
+        deprecated: boolean;
+        weak: boolean;
+        uninterpreted_option: UninterpretedOption.AsObject[];
+    };
     export enum CType {
         STRING = 0,
         CORD = 1,
@@ -2912,18 +2843,14 @@ export class OneofOptions extends pb_1.Message {
     set uninterpreted_option(value: UninterpretedOption[]) {
         pb_1.Message.setRepeatedWrapperField(this, 999, value);
     }
-    static fromObject(data: {
-        uninterpreted_option?: Parameters<typeof UninterpretedOption.fromObject>[0][];
-    }): OneofOptions {
+    static fromObject(data: RecursivePartial<OneofOptions.AsObject>): OneofOptions {
         const message = new OneofOptions({
             uninterpreted_option: data.uninterpreted_option.map(item => UninterpretedOption.fromObject(item))
         });
         return message;
     }
     toObject() {
-        const data: {
-            uninterpreted_option: Parameters<typeof UninterpretedOption.fromObject>[0][];
-        } = {
+        const data: OneofOptions.AsObject = {
             uninterpreted_option: this.uninterpreted_option.map((item: UninterpretedOption) => item.toObject())
         };
         return data;
@@ -2957,6 +2884,11 @@ export class OneofOptions extends pb_1.Message {
     static deserializeBinary(bytes: Uint8Array): OneofOptions {
         return OneofOptions.deserialize(bytes);
     }
+}
+export namespace OneofOptions {
+    export type AsObject = {
+        uninterpreted_option: UninterpretedOption.AsObject[];
+    };
 }
 export class EnumOptions extends pb_1.Message {
     #one_of_decls: number[][] = [];
@@ -3001,11 +2933,7 @@ export class EnumOptions extends pb_1.Message {
     set uninterpreted_option(value: UninterpretedOption[]) {
         pb_1.Message.setRepeatedWrapperField(this, 999, value);
     }
-    static fromObject(data: {
-        allow_alias?: boolean;
-        deprecated?: boolean;
-        uninterpreted_option?: Parameters<typeof UninterpretedOption.fromObject>[0][];
-    }): EnumOptions {
+    static fromObject(data: RecursivePartial<EnumOptions.AsObject>): EnumOptions {
         const message = new EnumOptions({
             uninterpreted_option: data.uninterpreted_option.map(item => UninterpretedOption.fromObject(item))
         });
@@ -3018,11 +2946,7 @@ export class EnumOptions extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            allow_alias: boolean;
-            deprecated: boolean;
-            uninterpreted_option: Parameters<typeof UninterpretedOption.fromObject>[0][];
-        } = {
+        const data: EnumOptions.AsObject = {
             allow_alias: this.allow_alias,
             deprecated: this.deprecated,
             uninterpreted_option: this.uninterpreted_option.map((item: UninterpretedOption) => item.toObject())
@@ -3069,6 +2993,13 @@ export class EnumOptions extends pb_1.Message {
         return EnumOptions.deserialize(bytes);
     }
 }
+export namespace EnumOptions {
+    export type AsObject = {
+        allow_alias: boolean;
+        deprecated: boolean;
+        uninterpreted_option: UninterpretedOption.AsObject[];
+    };
+}
 export class EnumValueOptions extends pb_1.Message {
     #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
@@ -3099,10 +3030,7 @@ export class EnumValueOptions extends pb_1.Message {
     set uninterpreted_option(value: UninterpretedOption[]) {
         pb_1.Message.setRepeatedWrapperField(this, 999, value);
     }
-    static fromObject(data: {
-        deprecated?: boolean;
-        uninterpreted_option?: Parameters<typeof UninterpretedOption.fromObject>[0][];
-    }): EnumValueOptions {
+    static fromObject(data: RecursivePartial<EnumValueOptions.AsObject>): EnumValueOptions {
         const message = new EnumValueOptions({
             uninterpreted_option: data.uninterpreted_option.map(item => UninterpretedOption.fromObject(item))
         });
@@ -3112,10 +3040,7 @@ export class EnumValueOptions extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            deprecated: boolean;
-            uninterpreted_option: Parameters<typeof UninterpretedOption.fromObject>[0][];
-        } = {
+        const data: EnumValueOptions.AsObject = {
             deprecated: this.deprecated,
             uninterpreted_option: this.uninterpreted_option.map((item: UninterpretedOption) => item.toObject())
         };
@@ -3156,6 +3081,12 @@ export class EnumValueOptions extends pb_1.Message {
         return EnumValueOptions.deserialize(bytes);
     }
 }
+export namespace EnumValueOptions {
+    export type AsObject = {
+        deprecated: boolean;
+        uninterpreted_option: UninterpretedOption.AsObject[];
+    };
+}
 export class ServiceOptions extends pb_1.Message {
     #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
@@ -3186,10 +3117,7 @@ export class ServiceOptions extends pb_1.Message {
     set uninterpreted_option(value: UninterpretedOption[]) {
         pb_1.Message.setRepeatedWrapperField(this, 999, value);
     }
-    static fromObject(data: {
-        deprecated?: boolean;
-        uninterpreted_option?: Parameters<typeof UninterpretedOption.fromObject>[0][];
-    }): ServiceOptions {
+    static fromObject(data: RecursivePartial<ServiceOptions.AsObject>): ServiceOptions {
         const message = new ServiceOptions({
             uninterpreted_option: data.uninterpreted_option.map(item => UninterpretedOption.fromObject(item))
         });
@@ -3199,10 +3127,7 @@ export class ServiceOptions extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            deprecated: boolean;
-            uninterpreted_option: Parameters<typeof UninterpretedOption.fromObject>[0][];
-        } = {
+        const data: ServiceOptions.AsObject = {
             deprecated: this.deprecated,
             uninterpreted_option: this.uninterpreted_option.map((item: UninterpretedOption) => item.toObject())
         };
@@ -3242,6 +3167,12 @@ export class ServiceOptions extends pb_1.Message {
     static deserializeBinary(bytes: Uint8Array): ServiceOptions {
         return ServiceOptions.deserialize(bytes);
     }
+}
+export namespace ServiceOptions {
+    export type AsObject = {
+        deprecated: boolean;
+        uninterpreted_option: UninterpretedOption.AsObject[];
+    };
 }
 export class MethodOptions extends pb_1.Message {
     #one_of_decls: number[][] = [];
@@ -3286,11 +3217,7 @@ export class MethodOptions extends pb_1.Message {
     set uninterpreted_option(value: UninterpretedOption[]) {
         pb_1.Message.setRepeatedWrapperField(this, 999, value);
     }
-    static fromObject(data: {
-        deprecated?: boolean;
-        idempotency_level?: MethodOptions.IdempotencyLevel;
-        uninterpreted_option?: Parameters<typeof UninterpretedOption.fromObject>[0][];
-    }): MethodOptions {
+    static fromObject(data: RecursivePartial<MethodOptions.AsObject>): MethodOptions {
         const message = new MethodOptions({
             uninterpreted_option: data.uninterpreted_option.map(item => UninterpretedOption.fromObject(item))
         });
@@ -3303,11 +3230,7 @@ export class MethodOptions extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            deprecated: boolean;
-            idempotency_level: MethodOptions.IdempotencyLevel;
-            uninterpreted_option: Parameters<typeof UninterpretedOption.fromObject>[0][];
-        } = {
+        const data: MethodOptions.AsObject = {
             deprecated: this.deprecated,
             idempotency_level: this.idempotency_level,
             uninterpreted_option: this.uninterpreted_option.map((item: UninterpretedOption) => item.toObject())
@@ -3355,6 +3278,11 @@ export class MethodOptions extends pb_1.Message {
     }
 }
 export namespace MethodOptions {
+    export type AsObject = {
+        deprecated: boolean;
+        idempotency_level: MethodOptions.IdempotencyLevel;
+        uninterpreted_option: UninterpretedOption.AsObject[];
+    };
     export enum IdempotencyLevel {
         IDEMPOTENCY_UNKNOWN = 0,
         NO_SIDE_EFFECTS = 1,
@@ -3456,15 +3384,7 @@ export class UninterpretedOption extends pb_1.Message {
     get has_aggregate_value() {
         return pb_1.Message.getField(this, 8) != null;
     }
-    static fromObject(data: {
-        name?: Parameters<typeof UninterpretedOption.NamePart.fromObject>[0][];
-        identifier_value?: string;
-        positive_int_value?: number;
-        negative_int_value?: number;
-        double_value?: number;
-        string_value?: Uint8Array;
-        aggregate_value?: string;
-    }): UninterpretedOption {
+    static fromObject(data: RecursivePartial<UninterpretedOption.AsObject>): UninterpretedOption {
         const message = new UninterpretedOption({
             name: data.name.map(item => UninterpretedOption.NamePart.fromObject(item))
         });
@@ -3489,15 +3409,7 @@ export class UninterpretedOption extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            name: Parameters<typeof UninterpretedOption.NamePart.fromObject>[0][];
-            identifier_value: string;
-            positive_int_value: number;
-            negative_int_value: number;
-            double_value: number;
-            string_value: Uint8Array;
-            aggregate_value: string;
-        } = {
+        const data: UninterpretedOption.AsObject = {
             name: this.name.map((item: UninterpretedOption.NamePart) => item.toObject()),
             identifier_value: this.identifier_value,
             positive_int_value: this.positive_int_value,
@@ -3569,6 +3481,15 @@ export class UninterpretedOption extends pb_1.Message {
     }
 }
 export namespace UninterpretedOption {
+    export type AsObject = {
+        name: UninterpretedOption.NamePart.AsObject[];
+        identifier_value: string;
+        positive_int_value: number;
+        negative_int_value: number;
+        double_value: number;
+        string_value: Uint8Array;
+        aggregate_value: string;
+    };
     export class NamePart extends pb_1.Message {
         #one_of_decls: number[][] = [];
         constructor(data?: any[] | {
@@ -3600,10 +3521,7 @@ export namespace UninterpretedOption {
         get has_is_extension() {
             return pb_1.Message.getField(this, 2) != null;
         }
-        static fromObject(data: {
-            name_part?: string;
-            is_extension?: boolean;
-        }): NamePart {
+        static fromObject(data: RecursivePartial<NamePart.AsObject>): NamePart {
             const message = new NamePart({
                 name_part: data.name_part,
                 is_extension: data.is_extension
@@ -3611,10 +3529,7 @@ export namespace UninterpretedOption {
             return message;
         }
         toObject() {
-            const data: {
-                name_part?: string;
-                is_extension?: boolean;
-            } = {};
+            const data: NamePart.AsObject = {};
             if (this.name_part != null) {
                 data.name_part = this.name_part;
             }
@@ -3658,6 +3573,12 @@ export namespace UninterpretedOption {
             return NamePart.deserialize(bytes);
         }
     }
+    export namespace NamePart {
+        export type AsObject = {
+            name_part?: string;
+            is_extension?: boolean;
+        };
+    }
 }
 export class SourceCodeInfo extends pb_1.Message {
     #one_of_decls: number[][] = [];
@@ -3676,18 +3597,14 @@ export class SourceCodeInfo extends pb_1.Message {
     set location(value: SourceCodeInfo.Location[]) {
         pb_1.Message.setRepeatedWrapperField(this, 1, value);
     }
-    static fromObject(data: {
-        location?: Parameters<typeof SourceCodeInfo.Location.fromObject>[0][];
-    }): SourceCodeInfo {
+    static fromObject(data: RecursivePartial<SourceCodeInfo.AsObject>): SourceCodeInfo {
         const message = new SourceCodeInfo({
             location: data.location.map(item => SourceCodeInfo.Location.fromObject(item))
         });
         return message;
     }
     toObject() {
-        const data: {
-            location: Parameters<typeof SourceCodeInfo.Location.fromObject>[0][];
-        } = {
+        const data: SourceCodeInfo.AsObject = {
             location: this.location.map((item: SourceCodeInfo.Location) => item.toObject())
         };
         return data;
@@ -3723,6 +3640,9 @@ export class SourceCodeInfo extends pb_1.Message {
     }
 }
 export namespace SourceCodeInfo {
+    export type AsObject = {
+        location: SourceCodeInfo.Location.AsObject[];
+    };
     export class Location extends pb_1.Message {
         #one_of_decls: number[][] = [];
         constructor(data?: any[] | {
@@ -3782,13 +3702,7 @@ export namespace SourceCodeInfo {
         set leading_detached_comments(value: string[]) {
             pb_1.Message.setField(this, 6, value);
         }
-        static fromObject(data: {
-            path?: number[];
-            span?: number[];
-            leading_comments?: string;
-            trailing_comments?: string;
-            leading_detached_comments?: string[];
-        }): Location {
+        static fromObject(data: RecursivePartial<Location.AsObject>): Location {
             const message = new Location({
                 path: data.path,
                 span: data.span,
@@ -3803,13 +3717,7 @@ export namespace SourceCodeInfo {
             return message;
         }
         toObject() {
-            const data: {
-                path: number[];
-                span: number[];
-                leading_comments: string;
-                trailing_comments: string;
-                leading_detached_comments: string[];
-            } = {
+            const data: Location.AsObject = {
                 path: this.path,
                 span: this.span,
                 leading_comments: this.leading_comments,
@@ -3868,6 +3776,15 @@ export namespace SourceCodeInfo {
             return Location.deserialize(bytes);
         }
     }
+    export namespace Location {
+        export type AsObject = {
+            path: number[];
+            span: number[];
+            leading_comments: string;
+            trailing_comments: string;
+            leading_detached_comments: string[];
+        };
+    }
 }
 export class GeneratedCodeInfo extends pb_1.Message {
     #one_of_decls: number[][] = [];
@@ -3886,18 +3803,14 @@ export class GeneratedCodeInfo extends pb_1.Message {
     set annotation(value: GeneratedCodeInfo.Annotation[]) {
         pb_1.Message.setRepeatedWrapperField(this, 1, value);
     }
-    static fromObject(data: {
-        annotation?: Parameters<typeof GeneratedCodeInfo.Annotation.fromObject>[0][];
-    }): GeneratedCodeInfo {
+    static fromObject(data: RecursivePartial<GeneratedCodeInfo.AsObject>): GeneratedCodeInfo {
         const message = new GeneratedCodeInfo({
             annotation: data.annotation.map(item => GeneratedCodeInfo.Annotation.fromObject(item))
         });
         return message;
     }
     toObject() {
-        const data: {
-            annotation: Parameters<typeof GeneratedCodeInfo.Annotation.fromObject>[0][];
-        } = {
+        const data: GeneratedCodeInfo.AsObject = {
             annotation: this.annotation.map((item: GeneratedCodeInfo.Annotation) => item.toObject())
         };
         return data;
@@ -3933,6 +3846,9 @@ export class GeneratedCodeInfo extends pb_1.Message {
     }
 }
 export namespace GeneratedCodeInfo {
+    export type AsObject = {
+        annotation: GeneratedCodeInfo.Annotation.AsObject[];
+    };
     export class Annotation extends pb_1.Message {
         #one_of_decls: number[][] = [];
         constructor(data?: any[] | {
@@ -3989,12 +3905,7 @@ export namespace GeneratedCodeInfo {
         get has_end() {
             return pb_1.Message.getField(this, 4) != null;
         }
-        static fromObject(data: {
-            path?: number[];
-            source_file?: string;
-            begin?: number;
-            end?: number;
-        }): Annotation {
+        static fromObject(data: RecursivePartial<Annotation.AsObject>): Annotation {
             const message = new Annotation({
                 path: data.path
             });
@@ -4010,12 +3921,7 @@ export namespace GeneratedCodeInfo {
             return message;
         }
         toObject() {
-            const data: {
-                path: number[];
-                source_file: string;
-                begin: number;
-                end: number;
-            } = {
+            const data: Annotation.AsObject = {
                 path: this.path,
                 source_file: this.source_file,
                 begin: this.begin,
@@ -4067,5 +3973,13 @@ export namespace GeneratedCodeInfo {
         static deserializeBinary(bytes: Uint8Array): Annotation {
             return Annotation.deserialize(bytes);
         }
+    }
+    export namespace Annotation {
+        export type AsObject = {
+            path: number[];
+            source_file: string;
+            begin: number;
+            end: number;
+        };
     }
 }

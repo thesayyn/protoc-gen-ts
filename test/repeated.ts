@@ -4,6 +4,9 @@
  * source: test/_/repeated.proto
  * git: https://github.com/thesayyn/protoc-gen-ts */
 import * as pb_1 from "google-protobuf";
+type RecursivePartial<T> = {
+    [P in keyof T]?: T[P] extends (infer U)[] ? RecursivePartial<U>[] : T[P] extends Uint8Array ? T[P] : T[P] extends object ? RecursivePartial<T[P]> : T[P];
+};
 export class Repeated extends pb_1.Message {
     #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
@@ -23,9 +26,7 @@ export class Repeated extends pb_1.Message {
     set indx(value: number[]) {
         pb_1.Message.setField(this, 4, value);
     }
-    static fromObject(data: {
-        indx?: number[];
-    }): Repeated {
+    static fromObject(data: RecursivePartial<Repeated.AsObject>): Repeated {
         const message = new Repeated({});
         if (data.indx != null) {
             message.indx = data.indx;
@@ -33,9 +34,7 @@ export class Repeated extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            indx: number[];
-        } = {
+        const data: Repeated.AsObject = {
             indx: this.indx
         };
         return data;
@@ -69,4 +68,9 @@ export class Repeated extends pb_1.Message {
     static deserializeBinary(bytes: Uint8Array): Repeated {
         return Repeated.deserialize(bytes);
     }
+}
+export namespace Repeated {
+    export type AsObject = {
+        indx: number[];
+    };
 }

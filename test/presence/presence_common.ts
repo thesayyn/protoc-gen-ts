@@ -4,6 +4,9 @@
  * source: test/_/presence/presence_common.proto
  * git: https://github.com/thesayyn/protoc-gen-ts */
 import * as pb_1 from "google-protobuf";
+type RecursivePartial<T> = {
+    [P in keyof T]?: T[P] extends (infer U)[] ? RecursivePartial<U>[] : T[P] extends Uint8Array ? T[P] : T[P] extends object ? RecursivePartial<T[P]> : T[P];
+};
 export enum PresenceCommonEnum {
     ZERO = 0,
     ONE = 1,
@@ -28,9 +31,7 @@ export class PresenceCommonMessage extends pb_1.Message {
     set message(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
-    static fromObject(data: {
-        message?: string;
-    }): PresenceCommonMessage {
+    static fromObject(data: RecursivePartial<PresenceCommonMessage.AsObject>): PresenceCommonMessage {
         const message = new PresenceCommonMessage({});
         if (data.message != null) {
             message.message = data.message;
@@ -38,9 +39,7 @@ export class PresenceCommonMessage extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            message: string;
-        } = {
+        const data: PresenceCommonMessage.AsObject = {
             message: this.message
         };
         return data;
@@ -74,6 +73,11 @@ export class PresenceCommonMessage extends pb_1.Message {
     static deserializeBinary(bytes: Uint8Array): PresenceCommonMessage {
         return PresenceCommonMessage.deserialize(bytes);
     }
+}
+export namespace PresenceCommonMessage {
+    export type AsObject = {
+        message: string;
+    };
 }
 export class PresenceCommonMessageOneOf extends pb_1.Message {
     #one_of_decls: number[][] = [[1, 2]];
@@ -123,10 +127,7 @@ export class PresenceCommonMessageOneOf extends pb_1.Message {
         };
         return cases[pb_1.Message.computeOneofCase(this, [1, 2])];
     }
-    static fromObject(data: {
-        int32?: number;
-        message?: Parameters<typeof PresenceCommonMessage.fromObject>[0];
-    }): PresenceCommonMessageOneOf {
+    static fromObject(data: RecursivePartial<PresenceCommonMessageOneOf.AsObject>): PresenceCommonMessageOneOf {
         const message = new PresenceCommonMessageOneOf({});
         if (data.int32 != null) {
             message.int32 = data.int32;
@@ -137,10 +138,7 @@ export class PresenceCommonMessageOneOf extends pb_1.Message {
         return message;
     }
     toObject() {
-        const data: {
-            int32: number;
-            message?: Parameters<typeof PresenceCommonMessage.fromObject>[0];
-        } = {
+        const data: PresenceCommonMessageOneOf.AsObject = {
             int32: this.int32
         };
         if (this.message != null) {
@@ -182,4 +180,10 @@ export class PresenceCommonMessageOneOf extends pb_1.Message {
     static deserializeBinary(bytes: Uint8Array): PresenceCommonMessageOneOf {
         return PresenceCommonMessageOneOf.deserialize(bytes);
     }
+}
+export namespace PresenceCommonMessageOneOf {
+    export type AsObject = {
+        int32: number;
+        message?: PresenceCommonMessage.AsObject;
+    };
 }
