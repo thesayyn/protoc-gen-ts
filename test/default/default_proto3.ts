@@ -122,9 +122,9 @@ export class DefaultMessageV3 extends pb_1.Message {
             this.map_string_message = new Map();
     }
     get message() {
-        return pb_1.Message.getWrapperField(this, dependency_1.DefaultCommonMessage, 1) as dependency_1.DefaultCommonMessage;
+        return pb_1.Message.getWrapperField(this, dependency_1.DefaultCommonMessage, 1) as dependency_1.DefaultCommonMessage | undefined | null;
     }
-    set message(value: dependency_1.DefaultCommonMessage) {
+    set message(value: dependency_1.DefaultCommonMessage | undefined | null) {
         pb_1.Message.setWrapperField(this, 1, value);
     }
     get has_message() {
@@ -260,9 +260,9 @@ export class DefaultMessageV3 extends pb_1.Message {
         return pb_1.Message.getField(this, 22) != null;
     }
     get one_of_message() {
-        return pb_1.Message.getWrapperField(this, dependency_1.DefaultCommonMessage, 23) as dependency_1.DefaultCommonMessage;
+        return pb_1.Message.getWrapperField(this, dependency_1.DefaultCommonMessage, 23) as dependency_1.DefaultCommonMessage | undefined | null;
     }
-    set one_of_message(value: dependency_1.DefaultCommonMessage) {
+    set one_of_message(value: dependency_1.DefaultCommonMessage | undefined | null) {
         pb_1.Message.setOneofWrapperField(this, 23, this.#one_of_decls[0], value);
     }
     get has_one_of_message() {

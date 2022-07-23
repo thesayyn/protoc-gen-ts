@@ -182,9 +182,9 @@ export class Chunk extends pb_1.Message {
         pb_1.Message.setField(this, 1, value);
     }
     get range() {
-        return pb_1.Message.getWrapperField(this, Chunk.Range, 2) as Chunk.Range;
+        return pb_1.Message.getWrapperField(this, Chunk.Range, 2) as Chunk.Range | undefined | null;
     }
-    set range(value: Chunk.Range) {
+    set range(value: Chunk.Range | undefined | null) {
         pb_1.Message.setWrapperField(this, 2, value);
     }
     get has_range() {
@@ -360,9 +360,9 @@ export namespace Chunk {
             pb_1.Message.setField(this, 1, value);
         }
         get range() {
-            return pb_1.Message.getWrapperField(this, Chunk.Range, 2) as Chunk.Range;
+            return pb_1.Message.getWrapperField(this, Chunk.Range, 2) as Chunk.Range | undefined | null;
         }
-        set range(value: Chunk.Range) {
+        set range(value: Chunk.Range | undefined | null) {
             pb_1.Message.setWrapperField(this, 2, value);
         }
         get has_range() {
@@ -587,9 +587,9 @@ export class Put extends pb_1.Message {
         pb_1.Message.setField(this, 1, value);
     }
     get chunk() {
-        return pb_1.Message.getWrapperField(this, Chunk, 3) as Chunk;
+        return pb_1.Message.getWrapperField(this, Chunk, 3) as Chunk | undefined | null;
     }
-    set chunk(value: Chunk) {
+    set chunk(value: Chunk | undefined | null) {
         pb_1.Message.setWrapperField(this, 3, value);
     }
     get has_chunk() {

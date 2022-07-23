@@ -190,9 +190,9 @@ export class CodeGeneratorRequest extends pb_1.Message {
         pb_1.Message.setRepeatedWrapperField(this, 15, value);
     }
     get compiler_version() {
-        return pb_1.Message.getWrapperField(this, Version, 3) as Version;
+        return pb_1.Message.getWrapperField(this, Version, 3) as Version | undefined | null;
     }
-    set compiler_version(value: Version) {
+    set compiler_version(value: Version | undefined | null) {
         pb_1.Message.setWrapperField(this, 3, value);
     }
     get has_compiler_version() {
@@ -441,9 +441,9 @@ export namespace CodeGeneratorResponse {
             return pb_1.Message.getField(this, 15) != null;
         }
         get generated_code_info() {
-            return pb_1.Message.getWrapperField(this, dependency_1.GeneratedCodeInfo, 16) as dependency_1.GeneratedCodeInfo;
+            return pb_1.Message.getWrapperField(this, dependency_1.GeneratedCodeInfo, 16) as dependency_1.GeneratedCodeInfo | undefined | null;
         }
-        set generated_code_info(value: dependency_1.GeneratedCodeInfo) {
+        set generated_code_info(value: dependency_1.GeneratedCodeInfo | undefined | null) {
             pb_1.Message.setWrapperField(this, 16, value);
         }
         get has_generated_code_info() {

@@ -66,9 +66,9 @@ export class JsonNamesMessage extends pb_1.Message {
         pb_1.Message.setField(this, 2, value);
     }
     get aNestedMessage() {
-        return pb_1.Message.getWrapperField(this, JsonNamesMessage.NestedMessage, 3) as JsonNamesMessage.NestedMessage;
+        return pb_1.Message.getWrapperField(this, JsonNamesMessage.NestedMessage, 3) as JsonNamesMessage.NestedMessage | undefined | null;
     }
-    set aNestedMessage(value: JsonNamesMessage.NestedMessage) {
+    set aNestedMessage(value: JsonNamesMessage.NestedMessage | undefined | null) {
         pb_1.Message.setWrapperField(this, 3, value);
     }
     get hasANestedMessage() {

@@ -15,6 +15,18 @@ export function wrapRepeatedType(type: any, fieldDescriptor: descriptor.FieldDes
 }
 
 /**
+ * Given the type T constructs T | undefined | null.
+ * @param type
+ */
+export function wrapNullableType(type: ts.TypeNode) {
+  return ts.factory.createUnionTypeNode([
+    type,
+    ts.factory.createKeywordTypeNode(ts.SyntaxKind.UndefinedKeyword),
+    ts.factory.createLiteralTypeNode(ts.factory.createNull()),
+  ])
+}
+
+/**
  * @param {descriptor.FileDescriptorProto} rootDescriptor
  * @param {descriptor.FieldDescriptorProto} fieldDescriptor
  */

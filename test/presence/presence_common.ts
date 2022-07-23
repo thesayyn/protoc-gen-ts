@@ -109,9 +109,9 @@ export class PresenceCommonMessageOneOf extends pb_1.Message {
         return pb_1.Message.getField(this, 1) != null;
     }
     get message() {
-        return pb_1.Message.getWrapperField(this, PresenceCommonMessage, 2) as PresenceCommonMessage;
+        return pb_1.Message.getWrapperField(this, PresenceCommonMessage, 2) as PresenceCommonMessage | undefined | null;
     }
-    set message(value: PresenceCommonMessage) {
+    set message(value: PresenceCommonMessage | undefined | null) {
         pb_1.Message.setOneofWrapperField(this, 2, this.#one_of_decls[0], value);
     }
     get has_message() {

@@ -54,45 +54,45 @@ export class PresenceMessageV2 extends pb_1.Message {
             this.map = new Map();
     }
     get int32() {
-        return pb_1.Message.getField(this, 1) as number;
+        return pb_1.Message.getField(this, 1) as number | undefined | null;
     }
-    set int32(value: number) {
+    set int32(value: number | undefined | null) {
         pb_1.Message.setField(this, 1, value);
     }
     get has_int32() {
         return pb_1.Message.getField(this, 1) != null;
     }
     get enum() {
-        return pb_1.Message.getField(this, 2) as dependency_1.PresenceCommonEnum;
+        return pb_1.Message.getField(this, 2) as dependency_1.PresenceCommonEnum | undefined | null;
     }
-    set enum(value: dependency_1.PresenceCommonEnum) {
+    set enum(value: dependency_1.PresenceCommonEnum | undefined | null) {
         pb_1.Message.setField(this, 2, value);
     }
     get has_enum() {
         return pb_1.Message.getField(this, 2) != null;
     }
     get string() {
-        return pb_1.Message.getField(this, 3) as string;
+        return pb_1.Message.getField(this, 3) as string | undefined | null;
     }
-    set string(value: string) {
+    set string(value: string | undefined | null) {
         pb_1.Message.setField(this, 3, value);
     }
     get has_string() {
         return pb_1.Message.getField(this, 3) != null;
     }
     get message() {
-        return pb_1.Message.getWrapperField(this, dependency_1.PresenceCommonMessage, 4) as dependency_1.PresenceCommonMessage;
+        return pb_1.Message.getWrapperField(this, dependency_1.PresenceCommonMessage, 4) as dependency_1.PresenceCommonMessage | undefined | null;
     }
-    set message(value: dependency_1.PresenceCommonMessage) {
+    set message(value: dependency_1.PresenceCommonMessage | undefined | null) {
         pb_1.Message.setWrapperField(this, 4, value);
     }
     get has_message() {
         return pb_1.Message.getField(this, 4) != null;
     }
     get oneof() {
-        return pb_1.Message.getWrapperField(this, dependency_1.PresenceCommonMessageOneOf, 5) as dependency_1.PresenceCommonMessageOneOf;
+        return pb_1.Message.getWrapperField(this, dependency_1.PresenceCommonMessageOneOf, 5) as dependency_1.PresenceCommonMessageOneOf | undefined | null;
     }
-    set oneof(value: dependency_1.PresenceCommonMessageOneOf) {
+    set oneof(value: dependency_1.PresenceCommonMessageOneOf | undefined | null) {
         pb_1.Message.setWrapperField(this, 5, value);
     }
     get has_oneof() {
@@ -126,18 +126,18 @@ export class PresenceMessageV2 extends pb_1.Message {
         return pb_1.Message.getField(this, 8) != null;
     }
     get opt_message() {
-        return pb_1.Message.getWrapperField(this, dependency_1.PresenceCommonMessage, 9) as dependency_1.PresenceCommonMessage;
+        return pb_1.Message.getWrapperField(this, dependency_1.PresenceCommonMessage, 9) as dependency_1.PresenceCommonMessage | undefined | null;
     }
-    set opt_message(value: dependency_1.PresenceCommonMessage) {
+    set opt_message(value: dependency_1.PresenceCommonMessage | undefined | null) {
         pb_1.Message.setWrapperField(this, 9, value);
     }
     get has_opt_message() {
         return pb_1.Message.getField(this, 9) != null;
     }
     get opt_oneof() {
-        return pb_1.Message.getWrapperField(this, dependency_1.PresenceCommonMessageOneOf, 10) as dependency_1.PresenceCommonMessageOneOf;
+        return pb_1.Message.getWrapperField(this, dependency_1.PresenceCommonMessageOneOf, 10) as dependency_1.PresenceCommonMessageOneOf | undefined | null;
     }
-    set opt_oneof(value: dependency_1.PresenceCommonMessageOneOf) {
+    set opt_oneof(value: dependency_1.PresenceCommonMessageOneOf | undefined | null) {
         pb_1.Message.setWrapperField(this, 10, value);
     }
     get has_opt_oneof() {

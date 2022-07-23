@@ -175,18 +175,18 @@ export class FileDescriptorProto extends pb_1.Message {
         pb_1.Message.setRepeatedWrapperField(this, 7, value);
     }
     get options() {
-        return pb_1.Message.getWrapperField(this, FileOptions, 8) as FileOptions;
+        return pb_1.Message.getWrapperField(this, FileOptions, 8) as FileOptions | undefined | null;
     }
-    set options(value: FileOptions) {
+    set options(value: FileOptions | undefined | null) {
         pb_1.Message.setWrapperField(this, 8, value);
     }
     get has_options() {
         return pb_1.Message.getField(this, 8) != null;
     }
     get source_code_info() {
-        return pb_1.Message.getWrapperField(this, SourceCodeInfo, 9) as SourceCodeInfo;
+        return pb_1.Message.getWrapperField(this, SourceCodeInfo, 9) as SourceCodeInfo | undefined | null;
     }
-    set source_code_info(value: SourceCodeInfo) {
+    set source_code_info(value: SourceCodeInfo | undefined | null) {
         pb_1.Message.setWrapperField(this, 9, value);
     }
     get has_source_code_info() {
@@ -429,9 +429,9 @@ export class DescriptorProto extends pb_1.Message {
         pb_1.Message.setRepeatedWrapperField(this, 8, value);
     }
     get options() {
-        return pb_1.Message.getWrapperField(this, MessageOptions, 7) as MessageOptions;
+        return pb_1.Message.getWrapperField(this, MessageOptions, 7) as MessageOptions | undefined | null;
     }
-    set options(value: MessageOptions) {
+    set options(value: MessageOptions | undefined | null) {
         pb_1.Message.setWrapperField(this, 7, value);
     }
     get has_options() {
@@ -613,9 +613,9 @@ export namespace DescriptorProto {
             return pb_1.Message.getField(this, 2) != null;
         }
         get options() {
-            return pb_1.Message.getWrapperField(this, ExtensionRangeOptions, 3) as ExtensionRangeOptions;
+            return pb_1.Message.getWrapperField(this, ExtensionRangeOptions, 3) as ExtensionRangeOptions | undefined | null;
         }
-        set options(value: ExtensionRangeOptions) {
+        set options(value: ExtensionRangeOptions | undefined | null) {
             pb_1.Message.setWrapperField(this, 3, value);
         }
         get has_options() {
@@ -984,9 +984,9 @@ export class FieldDescriptorProto extends pb_1.Message {
         return pb_1.Message.getField(this, 10) != null;
     }
     get options() {
-        return pb_1.Message.getWrapperField(this, FieldOptions, 8) as FieldOptions;
+        return pb_1.Message.getWrapperField(this, FieldOptions, 8) as FieldOptions | undefined | null;
     }
-    set options(value: FieldOptions) {
+    set options(value: FieldOptions | undefined | null) {
         pb_1.Message.setWrapperField(this, 8, value);
     }
     get has_options() {
@@ -1203,9 +1203,9 @@ export class OneofDescriptorProto extends pb_1.Message {
         return pb_1.Message.getField(this, 1) != null;
     }
     get options() {
-        return pb_1.Message.getWrapperField(this, OneofOptions, 2) as OneofOptions;
+        return pb_1.Message.getWrapperField(this, OneofOptions, 2) as OneofOptions | undefined | null;
     }
-    set options(value: OneofOptions) {
+    set options(value: OneofOptions | undefined | null) {
         pb_1.Message.setWrapperField(this, 2, value);
     }
     get has_options() {
@@ -1310,9 +1310,9 @@ export class EnumDescriptorProto extends pb_1.Message {
         pb_1.Message.setRepeatedWrapperField(this, 2, value);
     }
     get options() {
-        return pb_1.Message.getWrapperField(this, EnumOptions, 3) as EnumOptions;
+        return pb_1.Message.getWrapperField(this, EnumOptions, 3) as EnumOptions | undefined | null;
     }
-    set options(value: EnumOptions) {
+    set options(value: EnumOptions | undefined | null) {
         pb_1.Message.setWrapperField(this, 3, value);
     }
     get has_options() {
@@ -1548,9 +1548,9 @@ export class EnumValueDescriptorProto extends pb_1.Message {
         return pb_1.Message.getField(this, 2) != null;
     }
     get options() {
-        return pb_1.Message.getWrapperField(this, EnumValueOptions, 3) as EnumValueOptions;
+        return pb_1.Message.getWrapperField(this, EnumValueOptions, 3) as EnumValueOptions | undefined | null;
     }
-    set options(value: EnumValueOptions) {
+    set options(value: EnumValueOptions | undefined | null) {
         pb_1.Message.setWrapperField(this, 3, value);
     }
     get has_options() {
@@ -1661,9 +1661,9 @@ export class ServiceDescriptorProto extends pb_1.Message {
         pb_1.Message.setRepeatedWrapperField(this, 2, value);
     }
     get options() {
-        return pb_1.Message.getWrapperField(this, ServiceOptions, 3) as ServiceOptions;
+        return pb_1.Message.getWrapperField(this, ServiceOptions, 3) as ServiceOptions | undefined | null;
     }
-    set options(value: ServiceOptions) {
+    set options(value: ServiceOptions | undefined | null) {
         pb_1.Message.setWrapperField(this, 3, value);
     }
     get has_options() {
@@ -1799,9 +1799,9 @@ export class MethodDescriptorProto extends pb_1.Message {
         return pb_1.Message.getField(this, 3) != null;
     }
     get options() {
-        return pb_1.Message.getWrapperField(this, MethodOptions, 4) as MethodOptions;
+        return pb_1.Message.getWrapperField(this, MethodOptions, 4) as MethodOptions | undefined | null;
     }
-    set options(value: MethodOptions) {
+    set options(value: MethodOptions | undefined | null) {
         pb_1.Message.setWrapperField(this, 4, value);
     }
     get has_options() {
@@ -3504,18 +3504,18 @@ export namespace UninterpretedOption {
             }
         }
         get name_part() {
-            return pb_1.Message.getField(this, 1) as string;
+            return pb_1.Message.getField(this, 1) as string | undefined | null;
         }
-        set name_part(value: string) {
+        set name_part(value: string | undefined | null) {
             pb_1.Message.setField(this, 1, value);
         }
         get has_name_part() {
             return pb_1.Message.getField(this, 1) != null;
         }
         get is_extension() {
-            return pb_1.Message.getField(this, 2) as boolean;
+            return pb_1.Message.getField(this, 2) as boolean | undefined | null;
         }
-        set is_extension(value: boolean) {
+        set is_extension(value: boolean | undefined | null) {
             pb_1.Message.setField(this, 2, value);
         }
         get has_is_extension() {

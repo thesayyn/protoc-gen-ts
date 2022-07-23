@@ -21,18 +21,18 @@ export class NoOptionalValues extends pb_1.Message {
         }
     }
     get test() {
-        return pb_1.Message.getField(this, 1) as string;
+        return pb_1.Message.getField(this, 1) as string | undefined | null;
     }
-    set test(value: string) {
+    set test(value: string | undefined | null) {
         pb_1.Message.setField(this, 1, value);
     }
     get has_test() {
         return pb_1.Message.getField(this, 1) != null;
     }
     get test2() {
-        return pb_1.Message.getField(this, 2) as string;
+        return pb_1.Message.getField(this, 2) as string | undefined | null;
     }
-    set test2(value: string) {
+    set test2(value: string | undefined | null) {
         pb_1.Message.setField(this, 2, value);
     }
     get has_test2() {

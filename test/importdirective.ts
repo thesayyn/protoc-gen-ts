@@ -32,18 +32,18 @@ export namespace importdirective {
             }
         }
         get importedField() {
-            return pb_1.Message.getWrapperField(this, dependency_1.importdirective.Imported, 1) as dependency_1.importdirective.Imported;
+            return pb_1.Message.getWrapperField(this, dependency_1.importdirective.Imported, 1) as dependency_1.importdirective.Imported | undefined | null;
         }
-        set importedField(value: dependency_1.importdirective.Imported) {
+        set importedField(value: dependency_1.importdirective.Imported | undefined | null) {
             pb_1.Message.setWrapperField(this, 1, value);
         }
         get has_importedField() {
             return pb_1.Message.getField(this, 1) != null;
         }
         get submessageField() {
-            return pb_1.Message.getWrapperField(this, dependency_1.importdirective.Imported.SubMessage, 2) as dependency_1.importdirective.Imported.SubMessage;
+            return pb_1.Message.getWrapperField(this, dependency_1.importdirective.Imported.SubMessage, 2) as dependency_1.importdirective.Imported.SubMessage | undefined | null;
         }
-        set submessageField(value: dependency_1.importdirective.Imported.SubMessage) {
+        set submessageField(value: dependency_1.importdirective.Imported.SubMessage | undefined | null) {
             pb_1.Message.setWrapperField(this, 2, value);
         }
         get has_submessageField() {
