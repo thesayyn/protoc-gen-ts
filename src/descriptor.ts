@@ -914,10 +914,13 @@ function createGetter(
   pbIdentifier: ts.Identifier,
   parentName: string = '',
 ): ts.GetAccessorDeclaration {
-  const getterType = field.wrapRepeatedType(
+  let getterType = field.wrapRepeatedType(
     field.getType(fieldDescriptor, rootDescriptor) as ts.TypeNode,
     fieldDescriptor,
   );
+  if (!field.alwaysHasValue(rootDescriptor, fieldDescriptor)) {
+    getterType = field.wrapNullableType(getterType)
+  }
   let getterExpr: ts.Expression = createGetterCall(
     rootDescriptor,
     fieldDescriptor,
@@ -1148,10 +1151,13 @@ function createSetter(
   fieldDescriptor: descriptor.FieldDescriptorProto,
   pbIdentifier: ts.Identifier,
 ) {
-  const type = field.wrapRepeatedType(
+  let type = field.wrapRepeatedType(
     field.getType(fieldDescriptor, rootDescriptor),
     fieldDescriptor,
   );
+  if (!field.alwaysHasValue(rootDescriptor, fieldDescriptor)) {
+    type = field.wrapNullableType(type)
+  }
   const valueParameter = ts.factory.createIdentifier("value");
 
   let block: ts.Block;

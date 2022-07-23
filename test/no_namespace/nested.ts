@@ -50,9 +50,9 @@ export class SchedulingContext extends pb_1.Message {
         pb_1.Message.setField(this, 3, value);
     }
     get batch() {
-        return pb_1.Message.getWrapperField(this, SchedulingContextBatch, 4) as SchedulingContextBatch;
+        return pb_1.Message.getWrapperField(this, SchedulingContextBatch, 4) as SchedulingContextBatch | undefined | null;
     }
-    set batch(value: SchedulingContextBatch) {
+    set batch(value: SchedulingContextBatch | undefined | null) {
         pb_1.Message.setWrapperField(this, 4, value);
     }
     get has_batch() {
@@ -245,9 +245,9 @@ export class SchedulingContextBatch extends pb_1.Message {
         pb_1.Message.setField(this, 2, value);
     }
     get process() {
-        return pb_1.Message.getWrapperField(this, SchedulingContextBatchProcess, 3) as SchedulingContextBatchProcess;
+        return pb_1.Message.getWrapperField(this, SchedulingContextBatchProcess, 3) as SchedulingContextBatchProcess | undefined | null;
     }
-    set process(value: SchedulingContextBatchProcess) {
+    set process(value: SchedulingContextBatchProcess | undefined | null) {
         pb_1.Message.setWrapperField(this, 3, value);
     }
     get has_process() {
@@ -430,9 +430,9 @@ export class Target extends pb_1.Message {
         pb_1.Message.setField(this, 3, value);
     }
     get context() {
-        return pb_1.Message.getWrapperField(this, SchedulingContext, 4) as SchedulingContext;
+        return pb_1.Message.getWrapperField(this, SchedulingContext, 4) as SchedulingContext | undefined | null;
     }
-    set context(value: SchedulingContext) {
+    set context(value: SchedulingContext | undefined | null) {
         pb_1.Message.setWrapperField(this, 4, value);
     }
     get has_context() {
@@ -550,9 +550,9 @@ export class Event extends pb_1.Message {
         pb_1.Message.setField(this, 2, value);
     }
     get target() {
-        return pb_1.Message.getWrapperField(this, Target, 3) as Target;
+        return pb_1.Message.getWrapperField(this, Target, 3) as Target | undefined | null;
     }
-    set target(value: Target) {
+    set target(value: Target | undefined | null) {
         pb_1.Message.setWrapperField(this, 3, value);
     }
     get has_target() {

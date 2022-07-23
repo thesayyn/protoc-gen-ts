@@ -330,27 +330,27 @@ export class HydratedTemplateButton extends pb_1.Message {
         return pb_1.Message.getField(this, 4) != null;
     }
     get quickReplyButton() {
-        return pb_1.Message.getWrapperField(this, HydratedQuickReplyButton, 1) as HydratedQuickReplyButton;
+        return pb_1.Message.getWrapperField(this, HydratedQuickReplyButton, 1) as HydratedQuickReplyButton | undefined | null;
     }
-    set quickReplyButton(value: HydratedQuickReplyButton) {
+    set quickReplyButton(value: HydratedQuickReplyButton | undefined | null) {
         pb_1.Message.setOneofWrapperField(this, 1, this.#one_of_decls[0], value);
     }
     get has_quickReplyButton() {
         return pb_1.Message.getField(this, 1) != null;
     }
     get urlButton() {
-        return pb_1.Message.getWrapperField(this, HydratedURLButton, 2) as HydratedURLButton;
+        return pb_1.Message.getWrapperField(this, HydratedURLButton, 2) as HydratedURLButton | undefined | null;
     }
-    set urlButton(value: HydratedURLButton) {
+    set urlButton(value: HydratedURLButton | undefined | null) {
         pb_1.Message.setOneofWrapperField(this, 2, this.#one_of_decls[0], value);
     }
     get has_urlButton() {
         return pb_1.Message.getField(this, 2) != null;
     }
     get callButton() {
-        return pb_1.Message.getWrapperField(this, HydratedCallButton, 3) as HydratedCallButton;
+        return pb_1.Message.getWrapperField(this, HydratedCallButton, 3) as HydratedCallButton | undefined | null;
     }
-    set callButton(value: HydratedCallButton) {
+    set callButton(value: HydratedCallButton | undefined | null) {
         pb_1.Message.setOneofWrapperField(this, 3, this.#one_of_decls[0], value);
     }
     get has_callButton() {
@@ -469,9 +469,9 @@ export class QuickReplyButton extends pb_1.Message {
         }
     }
     get displayText() {
-        return pb_1.Message.getWrapperField(this, HighlyStructuredMessage, 1) as HighlyStructuredMessage;
+        return pb_1.Message.getWrapperField(this, HighlyStructuredMessage, 1) as HighlyStructuredMessage | undefined | null;
     }
-    set displayText(value: HighlyStructuredMessage) {
+    set displayText(value: HighlyStructuredMessage | undefined | null) {
         pb_1.Message.setWrapperField(this, 1, value);
     }
     get has_displayText() {
@@ -564,18 +564,18 @@ export class URLButton extends pb_1.Message {
         }
     }
     get displayText() {
-        return pb_1.Message.getWrapperField(this, HighlyStructuredMessage, 1) as HighlyStructuredMessage;
+        return pb_1.Message.getWrapperField(this, HighlyStructuredMessage, 1) as HighlyStructuredMessage | undefined | null;
     }
-    set displayText(value: HighlyStructuredMessage) {
+    set displayText(value: HighlyStructuredMessage | undefined | null) {
         pb_1.Message.setWrapperField(this, 1, value);
     }
     get has_displayText() {
         return pb_1.Message.getField(this, 1) != null;
     }
     get url() {
-        return pb_1.Message.getWrapperField(this, HighlyStructuredMessage, 2) as HighlyStructuredMessage;
+        return pb_1.Message.getWrapperField(this, HighlyStructuredMessage, 2) as HighlyStructuredMessage | undefined | null;
     }
-    set url(value: HighlyStructuredMessage) {
+    set url(value: HighlyStructuredMessage | undefined | null) {
         pb_1.Message.setWrapperField(this, 2, value);
     }
     get has_url() {
@@ -660,18 +660,18 @@ export class CallButton extends pb_1.Message {
         }
     }
     get displayText() {
-        return pb_1.Message.getWrapperField(this, HighlyStructuredMessage, 1) as HighlyStructuredMessage;
+        return pb_1.Message.getWrapperField(this, HighlyStructuredMessage, 1) as HighlyStructuredMessage | undefined | null;
     }
-    set displayText(value: HighlyStructuredMessage) {
+    set displayText(value: HighlyStructuredMessage | undefined | null) {
         pb_1.Message.setWrapperField(this, 1, value);
     }
     get has_displayText() {
         return pb_1.Message.getField(this, 1) != null;
     }
     get phoneNumber() {
-        return pb_1.Message.getWrapperField(this, HighlyStructuredMessage, 2) as HighlyStructuredMessage;
+        return pb_1.Message.getWrapperField(this, HighlyStructuredMessage, 2) as HighlyStructuredMessage | undefined | null;
     }
-    set phoneNumber(value: HighlyStructuredMessage) {
+    set phoneNumber(value: HighlyStructuredMessage | undefined | null) {
         pb_1.Message.setWrapperField(this, 2, value);
     }
     get has_phoneNumber() {
@@ -782,27 +782,27 @@ export class TemplateButton extends pb_1.Message {
         return pb_1.Message.getField(this, 4) != null;
     }
     get quickReplyButton() {
-        return pb_1.Message.getWrapperField(this, QuickReplyButton, 1) as QuickReplyButton;
+        return pb_1.Message.getWrapperField(this, QuickReplyButton, 1) as QuickReplyButton | undefined | null;
     }
-    set quickReplyButton(value: QuickReplyButton) {
+    set quickReplyButton(value: QuickReplyButton | undefined | null) {
         pb_1.Message.setOneofWrapperField(this, 1, this.#one_of_decls[0], value);
     }
     get has_quickReplyButton() {
         return pb_1.Message.getField(this, 1) != null;
     }
     get urlButton() {
-        return pb_1.Message.getWrapperField(this, URLButton, 2) as URLButton;
+        return pb_1.Message.getWrapperField(this, URLButton, 2) as URLButton | undefined | null;
     }
-    set urlButton(value: URLButton) {
+    set urlButton(value: URLButton | undefined | null) {
         pb_1.Message.setOneofWrapperField(this, 2, this.#one_of_decls[0], value);
     }
     get has_urlButton() {
         return pb_1.Message.getField(this, 2) != null;
     }
     get callButton() {
-        return pb_1.Message.getWrapperField(this, CallButton, 3) as CallButton;
+        return pb_1.Message.getWrapperField(this, CallButton, 3) as CallButton | undefined | null;
     }
-    set callButton(value: CallButton) {
+    set callButton(value: CallButton | undefined | null) {
         pb_1.Message.setOneofWrapperField(this, 3, this.#one_of_decls[0], value);
     }
     get has_callButton() {
@@ -1181,9 +1181,9 @@ export class InteractiveAnnotation extends pb_1.Message {
         pb_1.Message.setRepeatedWrapperField(this, 1, value);
     }
     get location() {
-        return pb_1.Message.getWrapperField(this, Location, 2) as Location;
+        return pb_1.Message.getWrapperField(this, Location, 2) as Location | undefined | null;
     }
-    set location(value: Location) {
+    set location(value: Location | undefined | null) {
         pb_1.Message.setOneofWrapperField(this, 2, this.#one_of_decls[0], value);
     }
     get has_location() {
@@ -1487,9 +1487,9 @@ export class ContextInfo extends pb_1.Message {
         return pb_1.Message.getField(this, 2) != null;
     }
     get quotedMessage() {
-        return pb_1.Message.getWrapperField(this, Message, 3) as Message;
+        return pb_1.Message.getWrapperField(this, Message, 3) as Message | undefined | null;
     }
-    set quotedMessage(value: Message) {
+    set quotedMessage(value: Message | undefined | null) {
         pb_1.Message.setWrapperField(this, 3, value);
     }
     get has_quotedMessage() {
@@ -1556,18 +1556,18 @@ export class ContextInfo extends pb_1.Message {
         return pb_1.Message.getField(this, 22) != null;
     }
     get quotedAd() {
-        return pb_1.Message.getWrapperField(this, AdReplyInfo, 23) as AdReplyInfo;
+        return pb_1.Message.getWrapperField(this, AdReplyInfo, 23) as AdReplyInfo | undefined | null;
     }
-    set quotedAd(value: AdReplyInfo) {
+    set quotedAd(value: AdReplyInfo | undefined | null) {
         pb_1.Message.setWrapperField(this, 23, value);
     }
     get has_quotedAd() {
         return pb_1.Message.getField(this, 23) != null;
     }
     get placeholderKey() {
-        return pb_1.Message.getWrapperField(this, MessageKey, 24) as MessageKey;
+        return pb_1.Message.getWrapperField(this, MessageKey, 24) as MessageKey | undefined | null;
     }
-    set placeholderKey(value: MessageKey) {
+    set placeholderKey(value: MessageKey | undefined | null) {
         pb_1.Message.setWrapperField(this, 24, value);
     }
     get has_placeholderKey() {
@@ -2090,9 +2090,9 @@ export class ImageMessage extends pb_1.Message {
         return pb_1.Message.getField(this, 16) != null;
     }
     get contextInfo() {
-        return pb_1.Message.getWrapperField(this, ContextInfo, 17) as ContextInfo;
+        return pb_1.Message.getWrapperField(this, ContextInfo, 17) as ContextInfo | undefined | null;
     }
-    set contextInfo(value: ContextInfo) {
+    set contextInfo(value: ContextInfo | undefined | null) {
         pb_1.Message.setWrapperField(this, 17, value);
     }
     get has_contextInfo() {
@@ -2445,9 +2445,9 @@ export class ContactMessage extends pb_1.Message {
         return pb_1.Message.getField(this, 16) != null;
     }
     get contextInfo() {
-        return pb_1.Message.getWrapperField(this, ContextInfo, 17) as ContextInfo;
+        return pb_1.Message.getWrapperField(this, ContextInfo, 17) as ContextInfo | undefined | null;
     }
-    set contextInfo(value: ContextInfo) {
+    set contextInfo(value: ContextInfo | undefined | null) {
         pb_1.Message.setWrapperField(this, 17, value);
     }
     get has_contextInfo() {
@@ -2680,9 +2680,9 @@ export class LocationMessage extends pb_1.Message {
         return pb_1.Message.getField(this, 16) != null;
     }
     get contextInfo() {
-        return pb_1.Message.getWrapperField(this, ContextInfo, 17) as ContextInfo;
+        return pb_1.Message.getWrapperField(this, ContextInfo, 17) as ContextInfo | undefined | null;
     }
-    set contextInfo(value: ContextInfo) {
+    set contextInfo(value: ContextInfo | undefined | null) {
         pb_1.Message.setWrapperField(this, 17, value);
     }
     get has_contextInfo() {
@@ -2996,9 +2996,9 @@ export class ExtendedTextMessage extends pb_1.Message {
         return pb_1.Message.getField(this, 16) != null;
     }
     get contextInfo() {
-        return pb_1.Message.getWrapperField(this, ContextInfo, 17) as ContextInfo;
+        return pb_1.Message.getWrapperField(this, ContextInfo, 17) as ContextInfo | undefined | null;
     }
-    set contextInfo(value: ContextInfo) {
+    set contextInfo(value: ContextInfo | undefined | null) {
         pb_1.Message.setWrapperField(this, 17, value);
     }
     get has_contextInfo() {
@@ -3355,9 +3355,9 @@ export class DocumentMessage extends pb_1.Message {
         return pb_1.Message.getField(this, 16) != null;
     }
     get contextInfo() {
-        return pb_1.Message.getWrapperField(this, ContextInfo, 17) as ContextInfo;
+        return pb_1.Message.getWrapperField(this, ContextInfo, 17) as ContextInfo | undefined | null;
     }
-    set contextInfo(value: ContextInfo) {
+    set contextInfo(value: ContextInfo | undefined | null) {
         pb_1.Message.setWrapperField(this, 17, value);
     }
     get has_contextInfo() {
@@ -3681,9 +3681,9 @@ export class AudioMessage extends pb_1.Message {
         return pb_1.Message.getField(this, 10) != null;
     }
     get contextInfo() {
-        return pb_1.Message.getWrapperField(this, ContextInfo, 17) as ContextInfo;
+        return pb_1.Message.getWrapperField(this, ContextInfo, 17) as ContextInfo | undefined | null;
     }
-    set contextInfo(value: ContextInfo) {
+    set contextInfo(value: ContextInfo | undefined | null) {
         pb_1.Message.setWrapperField(this, 17, value);
     }
     get has_contextInfo() {
@@ -4070,9 +4070,9 @@ export class VideoMessage extends pb_1.Message {
         return pb_1.Message.getField(this, 16) != null;
     }
     get contextInfo() {
-        return pb_1.Message.getWrapperField(this, ContextInfo, 17) as ContextInfo;
+        return pb_1.Message.getWrapperField(this, ContextInfo, 17) as ContextInfo | undefined | null;
     }
-    set contextInfo(value: ContextInfo) {
+    set contextInfo(value: ContextInfo | undefined | null) {
         pb_1.Message.setWrapperField(this, 17, value);
     }
     get has_contextInfo() {
@@ -4513,9 +4513,9 @@ export class ProtocolMessage extends pb_1.Message {
         }
     }
     get key() {
-        return pb_1.Message.getWrapperField(this, MessageKey, 1) as MessageKey;
+        return pb_1.Message.getWrapperField(this, MessageKey, 1) as MessageKey | undefined | null;
     }
-    set key(value: MessageKey) {
+    set key(value: MessageKey | undefined | null) {
         pb_1.Message.setWrapperField(this, 1, value);
     }
     get has_key() {
@@ -4549,9 +4549,9 @@ export class ProtocolMessage extends pb_1.Message {
         return pb_1.Message.getField(this, 5) != null;
     }
     get historySyncNotification() {
-        return pb_1.Message.getWrapperField(this, HistorySyncNotification, 6) as HistorySyncNotification;
+        return pb_1.Message.getWrapperField(this, HistorySyncNotification, 6) as HistorySyncNotification | undefined | null;
     }
-    set historySyncNotification(value: HistorySyncNotification) {
+    set historySyncNotification(value: HistorySyncNotification | undefined | null) {
         pb_1.Message.setWrapperField(this, 6, value);
     }
     get has_historySyncNotification() {
@@ -4928,9 +4928,9 @@ export class ContactsArrayMessage extends pb_1.Message {
         pb_1.Message.setRepeatedWrapperField(this, 2, value);
     }
     get contextInfo() {
-        return pb_1.Message.getWrapperField(this, ContextInfo, 17) as ContextInfo;
+        return pb_1.Message.getWrapperField(this, ContextInfo, 17) as ContextInfo | undefined | null;
     }
-    set contextInfo(value: ContextInfo) {
+    set contextInfo(value: ContextInfo | undefined | null) {
         pb_1.Message.setWrapperField(this, 17, value);
     }
     get has_contextInfo() {
@@ -5410,18 +5410,18 @@ export class HSMDateTime extends pb_1.Message {
         }
     }
     get component() {
-        return pb_1.Message.getWrapperField(this, HSMDateTimeComponent, 1) as HSMDateTimeComponent;
+        return pb_1.Message.getWrapperField(this, HSMDateTimeComponent, 1) as HSMDateTimeComponent | undefined | null;
     }
-    set component(value: HSMDateTimeComponent) {
+    set component(value: HSMDateTimeComponent | undefined | null) {
         pb_1.Message.setOneofWrapperField(this, 1, this.#one_of_decls[0], value);
     }
     get has_component() {
         return pb_1.Message.getField(this, 1) != null;
     }
     get unixEpoch() {
-        return pb_1.Message.getWrapperField(this, HSMDateTimeUnixEpoch, 2) as HSMDateTimeUnixEpoch;
+        return pb_1.Message.getWrapperField(this, HSMDateTimeUnixEpoch, 2) as HSMDateTimeUnixEpoch | undefined | null;
     }
-    set unixEpoch(value: HSMDateTimeUnixEpoch) {
+    set unixEpoch(value: HSMDateTimeUnixEpoch | undefined | null) {
         pb_1.Message.setOneofWrapperField(this, 2, this.#one_of_decls[0], value);
     }
     get has_unixEpoch() {
@@ -5533,18 +5533,18 @@ export class HSMLocalizableParameter extends pb_1.Message {
         return pb_1.Message.getField(this, 1) != null;
     }
     get currency() {
-        return pb_1.Message.getWrapperField(this, HSMCurrency, 2) as HSMCurrency;
+        return pb_1.Message.getWrapperField(this, HSMCurrency, 2) as HSMCurrency | undefined | null;
     }
-    set currency(value: HSMCurrency) {
+    set currency(value: HSMCurrency | undefined | null) {
         pb_1.Message.setOneofWrapperField(this, 2, this.#one_of_decls[0], value);
     }
     get has_currency() {
         return pb_1.Message.getField(this, 2) != null;
     }
     get dateTime() {
-        return pb_1.Message.getWrapperField(this, HSMDateTime, 3) as HSMDateTime;
+        return pb_1.Message.getWrapperField(this, HSMDateTime, 3) as HSMDateTime | undefined | null;
     }
-    set dateTime(value: HSMDateTime) {
+    set dateTime(value: HSMDateTime | undefined | null) {
         pb_1.Message.setOneofWrapperField(this, 3, this.#one_of_decls[0], value);
     }
     get has_dateTime() {
@@ -5740,9 +5740,9 @@ export class HighlyStructuredMessage extends pb_1.Message {
         return pb_1.Message.getField(this, 8) != null;
     }
     get hydratedHsm() {
-        return pb_1.Message.getWrapperField(this, TemplateMessage, 9) as TemplateMessage;
+        return pb_1.Message.getWrapperField(this, TemplateMessage, 9) as TemplateMessage | undefined | null;
     }
-    set hydratedHsm(value: TemplateMessage) {
+    set hydratedHsm(value: TemplateMessage | undefined | null) {
         pb_1.Message.setWrapperField(this, 9, value);
     }
     get has_hydratedHsm() {
@@ -5893,18 +5893,18 @@ export class SendPaymentMessage extends pb_1.Message {
         }
     }
     get noteMessage() {
-        return pb_1.Message.getWrapperField(this, Message, 2) as Message;
+        return pb_1.Message.getWrapperField(this, Message, 2) as Message | undefined | null;
     }
-    set noteMessage(value: Message) {
+    set noteMessage(value: Message | undefined | null) {
         pb_1.Message.setWrapperField(this, 2, value);
     }
     get has_noteMessage() {
         return pb_1.Message.getField(this, 2) != null;
     }
     get requestMessageKey() {
-        return pb_1.Message.getWrapperField(this, MessageKey, 3) as MessageKey;
+        return pb_1.Message.getWrapperField(this, MessageKey, 3) as MessageKey | undefined | null;
     }
-    set requestMessageKey(value: MessageKey) {
+    set requestMessageKey(value: MessageKey | undefined | null) {
         pb_1.Message.setWrapperField(this, 3, value);
     }
     get has_requestMessageKey() {
@@ -6001,9 +6001,9 @@ export class RequestPaymentMessage extends pb_1.Message {
         }
     }
     get noteMessage() {
-        return pb_1.Message.getWrapperField(this, Message, 4) as Message;
+        return pb_1.Message.getWrapperField(this, Message, 4) as Message | undefined | null;
     }
-    set noteMessage(value: Message) {
+    set noteMessage(value: Message | undefined | null) {
         pb_1.Message.setWrapperField(this, 4, value);
     }
     get has_noteMessage() {
@@ -6149,9 +6149,9 @@ export class DeclinePaymentRequestMessage extends pb_1.Message {
         }
     }
     get key() {
-        return pb_1.Message.getWrapperField(this, MessageKey, 1) as MessageKey;
+        return pb_1.Message.getWrapperField(this, MessageKey, 1) as MessageKey | undefined | null;
     }
-    set key(value: MessageKey) {
+    set key(value: MessageKey | undefined | null) {
         pb_1.Message.setWrapperField(this, 1, value);
     }
     get has_key() {
@@ -6220,9 +6220,9 @@ export class CancelPaymentRequestMessage extends pb_1.Message {
         }
     }
     get key() {
-        return pb_1.Message.getWrapperField(this, MessageKey, 1) as MessageKey;
+        return pb_1.Message.getWrapperField(this, MessageKey, 1) as MessageKey | undefined | null;
     }
-    set key(value: MessageKey) {
+    set key(value: MessageKey | undefined | null) {
         pb_1.Message.setWrapperField(this, 1, value);
     }
     get has_key() {
@@ -6408,9 +6408,9 @@ export class LiveLocationMessage extends pb_1.Message {
         return pb_1.Message.getField(this, 16) != null;
     }
     get contextInfo() {
-        return pb_1.Message.getWrapperField(this, ContextInfo, 17) as ContextInfo;
+        return pb_1.Message.getWrapperField(this, ContextInfo, 17) as ContextInfo | undefined | null;
     }
-    set contextInfo(value: ContextInfo) {
+    set contextInfo(value: ContextInfo | undefined | null) {
         pb_1.Message.setWrapperField(this, 17, value);
     }
     get has_contextInfo() {
@@ -6752,9 +6752,9 @@ export class StickerMessage extends pb_1.Message {
         return pb_1.Message.getField(this, 16) != null;
     }
     get contextInfo() {
-        return pb_1.Message.getWrapperField(this, ContextInfo, 17) as ContextInfo;
+        return pb_1.Message.getWrapperField(this, ContextInfo, 17) as ContextInfo | undefined | null;
     }
-    set contextInfo(value: ContextInfo) {
+    set contextInfo(value: ContextInfo | undefined | null) {
         pb_1.Message.setWrapperField(this, 17, value);
     }
     get has_contextInfo() {
@@ -7015,18 +7015,18 @@ export class FourRowTemplate extends pb_1.Message {
         }
     }
     get content() {
-        return pb_1.Message.getWrapperField(this, HighlyStructuredMessage, 6) as HighlyStructuredMessage;
+        return pb_1.Message.getWrapperField(this, HighlyStructuredMessage, 6) as HighlyStructuredMessage | undefined | null;
     }
-    set content(value: HighlyStructuredMessage) {
+    set content(value: HighlyStructuredMessage | undefined | null) {
         pb_1.Message.setWrapperField(this, 6, value);
     }
     get has_content() {
         return pb_1.Message.getField(this, 6) != null;
     }
     get footer() {
-        return pb_1.Message.getWrapperField(this, HighlyStructuredMessage, 7) as HighlyStructuredMessage;
+        return pb_1.Message.getWrapperField(this, HighlyStructuredMessage, 7) as HighlyStructuredMessage | undefined | null;
     }
-    set footer(value: HighlyStructuredMessage) {
+    set footer(value: HighlyStructuredMessage | undefined | null) {
         pb_1.Message.setWrapperField(this, 7, value);
     }
     get has_footer() {
@@ -7039,45 +7039,45 @@ export class FourRowTemplate extends pb_1.Message {
         pb_1.Message.setRepeatedWrapperField(this, 8, value);
     }
     get documentMessage() {
-        return pb_1.Message.getWrapperField(this, DocumentMessage, 1) as DocumentMessage;
+        return pb_1.Message.getWrapperField(this, DocumentMessage, 1) as DocumentMessage | undefined | null;
     }
-    set documentMessage(value: DocumentMessage) {
+    set documentMessage(value: DocumentMessage | undefined | null) {
         pb_1.Message.setOneofWrapperField(this, 1, this.#one_of_decls[0], value);
     }
     get has_documentMessage() {
         return pb_1.Message.getField(this, 1) != null;
     }
     get highlyStructuredMessage() {
-        return pb_1.Message.getWrapperField(this, HighlyStructuredMessage, 2) as HighlyStructuredMessage;
+        return pb_1.Message.getWrapperField(this, HighlyStructuredMessage, 2) as HighlyStructuredMessage | undefined | null;
     }
-    set highlyStructuredMessage(value: HighlyStructuredMessage) {
+    set highlyStructuredMessage(value: HighlyStructuredMessage | undefined | null) {
         pb_1.Message.setOneofWrapperField(this, 2, this.#one_of_decls[0], value);
     }
     get has_highlyStructuredMessage() {
         return pb_1.Message.getField(this, 2) != null;
     }
     get imageMessage() {
-        return pb_1.Message.getWrapperField(this, ImageMessage, 3) as ImageMessage;
+        return pb_1.Message.getWrapperField(this, ImageMessage, 3) as ImageMessage | undefined | null;
     }
-    set imageMessage(value: ImageMessage) {
+    set imageMessage(value: ImageMessage | undefined | null) {
         pb_1.Message.setOneofWrapperField(this, 3, this.#one_of_decls[0], value);
     }
     get has_imageMessage() {
         return pb_1.Message.getField(this, 3) != null;
     }
     get videoMessage() {
-        return pb_1.Message.getWrapperField(this, VideoMessage, 4) as VideoMessage;
+        return pb_1.Message.getWrapperField(this, VideoMessage, 4) as VideoMessage | undefined | null;
     }
-    set videoMessage(value: VideoMessage) {
+    set videoMessage(value: VideoMessage | undefined | null) {
         pb_1.Message.setOneofWrapperField(this, 4, this.#one_of_decls[0], value);
     }
     get has_videoMessage() {
         return pb_1.Message.getField(this, 4) != null;
     }
     get locationMessage() {
-        return pb_1.Message.getWrapperField(this, LocationMessage, 5) as LocationMessage;
+        return pb_1.Message.getWrapperField(this, LocationMessage, 5) as LocationMessage | undefined | null;
     }
-    set locationMessage(value: LocationMessage) {
+    set locationMessage(value: LocationMessage | undefined | null) {
         pb_1.Message.setOneofWrapperField(this, 5, this.#one_of_decls[0], value);
     }
     get has_locationMessage() {
@@ -7329,9 +7329,9 @@ export class HydratedFourRowTemplate extends pb_1.Message {
         return pb_1.Message.getField(this, 9) != null;
     }
     get documentMessage() {
-        return pb_1.Message.getWrapperField(this, DocumentMessage, 1) as DocumentMessage;
+        return pb_1.Message.getWrapperField(this, DocumentMessage, 1) as DocumentMessage | undefined | null;
     }
-    set documentMessage(value: DocumentMessage) {
+    set documentMessage(value: DocumentMessage | undefined | null) {
         pb_1.Message.setOneofWrapperField(this, 1, this.#one_of_decls[0], value);
     }
     get has_documentMessage() {
@@ -7347,27 +7347,27 @@ export class HydratedFourRowTemplate extends pb_1.Message {
         return pb_1.Message.getField(this, 2) != null;
     }
     get imageMessage() {
-        return pb_1.Message.getWrapperField(this, ImageMessage, 3) as ImageMessage;
+        return pb_1.Message.getWrapperField(this, ImageMessage, 3) as ImageMessage | undefined | null;
     }
-    set imageMessage(value: ImageMessage) {
+    set imageMessage(value: ImageMessage | undefined | null) {
         pb_1.Message.setOneofWrapperField(this, 3, this.#one_of_decls[0], value);
     }
     get has_imageMessage() {
         return pb_1.Message.getField(this, 3) != null;
     }
     get videoMessage() {
-        return pb_1.Message.getWrapperField(this, VideoMessage, 4) as VideoMessage;
+        return pb_1.Message.getWrapperField(this, VideoMessage, 4) as VideoMessage | undefined | null;
     }
-    set videoMessage(value: VideoMessage) {
+    set videoMessage(value: VideoMessage | undefined | null) {
         pb_1.Message.setOneofWrapperField(this, 4, this.#one_of_decls[0], value);
     }
     get has_videoMessage() {
         return pb_1.Message.getField(this, 4) != null;
     }
     get locationMessage() {
-        return pb_1.Message.getWrapperField(this, LocationMessage, 5) as LocationMessage;
+        return pb_1.Message.getWrapperField(this, LocationMessage, 5) as LocationMessage | undefined | null;
     }
-    set locationMessage(value: LocationMessage) {
+    set locationMessage(value: LocationMessage | undefined | null) {
         pb_1.Message.setOneofWrapperField(this, 5, this.#one_of_decls[0], value);
     }
     get has_locationMessage() {
@@ -7551,36 +7551,36 @@ export class TemplateMessage extends pb_1.Message {
         }
     }
     get contextInfo() {
-        return pb_1.Message.getWrapperField(this, ContextInfo, 3) as ContextInfo;
+        return pb_1.Message.getWrapperField(this, ContextInfo, 3) as ContextInfo | undefined | null;
     }
-    set contextInfo(value: ContextInfo) {
+    set contextInfo(value: ContextInfo | undefined | null) {
         pb_1.Message.setWrapperField(this, 3, value);
     }
     get has_contextInfo() {
         return pb_1.Message.getField(this, 3) != null;
     }
     get hydratedTemplate() {
-        return pb_1.Message.getWrapperField(this, HydratedFourRowTemplate, 4) as HydratedFourRowTemplate;
+        return pb_1.Message.getWrapperField(this, HydratedFourRowTemplate, 4) as HydratedFourRowTemplate | undefined | null;
     }
-    set hydratedTemplate(value: HydratedFourRowTemplate) {
+    set hydratedTemplate(value: HydratedFourRowTemplate | undefined | null) {
         pb_1.Message.setWrapperField(this, 4, value);
     }
     get has_hydratedTemplate() {
         return pb_1.Message.getField(this, 4) != null;
     }
     get fourRowTemplate() {
-        return pb_1.Message.getWrapperField(this, FourRowTemplate, 1) as FourRowTemplate;
+        return pb_1.Message.getWrapperField(this, FourRowTemplate, 1) as FourRowTemplate | undefined | null;
     }
-    set fourRowTemplate(value: FourRowTemplate) {
+    set fourRowTemplate(value: FourRowTemplate | undefined | null) {
         pb_1.Message.setOneofWrapperField(this, 1, this.#one_of_decls[0], value);
     }
     get has_fourRowTemplate() {
         return pb_1.Message.getField(this, 1) != null;
     }
     get hydratedFourRowTemplate() {
-        return pb_1.Message.getWrapperField(this, HydratedFourRowTemplate, 2) as HydratedFourRowTemplate;
+        return pb_1.Message.getWrapperField(this, HydratedFourRowTemplate, 2) as HydratedFourRowTemplate | undefined | null;
     }
-    set hydratedFourRowTemplate(value: HydratedFourRowTemplate) {
+    set hydratedFourRowTemplate(value: HydratedFourRowTemplate | undefined | null) {
         pb_1.Message.setOneofWrapperField(this, 2, this.#one_of_decls[0], value);
     }
     get has_hydratedFourRowTemplate() {
@@ -7725,9 +7725,9 @@ export class TemplateButtonReplyMessage extends pb_1.Message {
         return pb_1.Message.getField(this, 2) != null;
     }
     get contextInfo() {
-        return pb_1.Message.getWrapperField(this, ContextInfo, 3) as ContextInfo;
+        return pb_1.Message.getWrapperField(this, ContextInfo, 3) as ContextInfo | undefined | null;
     }
-    set contextInfo(value: ContextInfo) {
+    set contextInfo(value: ContextInfo | undefined | null) {
         pb_1.Message.setWrapperField(this, 3, value);
     }
     get has_contextInfo() {
@@ -7844,9 +7844,9 @@ export class CatalogSnapshot extends pb_1.Message {
         }
     }
     get catalogImage() {
-        return pb_1.Message.getWrapperField(this, ImageMessage, 1) as ImageMessage;
+        return pb_1.Message.getWrapperField(this, ImageMessage, 1) as ImageMessage | undefined | null;
     }
-    set catalogImage(value: ImageMessage) {
+    set catalogImage(value: ImageMessage | undefined | null) {
         pb_1.Message.setWrapperField(this, 1, value);
     }
     get has_catalogImage() {
@@ -7990,9 +7990,9 @@ export class ProductSnapshot extends pb_1.Message {
         }
     }
     get productImage() {
-        return pb_1.Message.getWrapperField(this, ImageMessage, 1) as ImageMessage;
+        return pb_1.Message.getWrapperField(this, ImageMessage, 1) as ImageMessage | undefined | null;
     }
-    set productImage(value: ImageMessage) {
+    set productImage(value: ImageMessage | undefined | null) {
         pb_1.Message.setWrapperField(this, 1, value);
     }
     get has_productImage() {
@@ -8245,9 +8245,9 @@ export class ProductMessage extends pb_1.Message {
         }
     }
     get product() {
-        return pb_1.Message.getWrapperField(this, ProductSnapshot, 1) as ProductSnapshot;
+        return pb_1.Message.getWrapperField(this, ProductSnapshot, 1) as ProductSnapshot | undefined | null;
     }
-    set product(value: ProductSnapshot) {
+    set product(value: ProductSnapshot | undefined | null) {
         pb_1.Message.setWrapperField(this, 1, value);
     }
     get has_product() {
@@ -8263,18 +8263,18 @@ export class ProductMessage extends pb_1.Message {
         return pb_1.Message.getField(this, 2) != null;
     }
     get catalog() {
-        return pb_1.Message.getWrapperField(this, CatalogSnapshot, 4) as CatalogSnapshot;
+        return pb_1.Message.getWrapperField(this, CatalogSnapshot, 4) as CatalogSnapshot | undefined | null;
     }
-    set catalog(value: CatalogSnapshot) {
+    set catalog(value: CatalogSnapshot | undefined | null) {
         pb_1.Message.setWrapperField(this, 4, value);
     }
     get has_catalog() {
         return pb_1.Message.getField(this, 4) != null;
     }
     get contextInfo() {
-        return pb_1.Message.getWrapperField(this, ContextInfo, 17) as ContextInfo;
+        return pb_1.Message.getWrapperField(this, ContextInfo, 17) as ContextInfo | undefined | null;
     }
-    set contextInfo(value: ContextInfo) {
+    set contextInfo(value: ContextInfo | undefined | null) {
         pb_1.Message.setWrapperField(this, 17, value);
     }
     get has_contextInfo() {
@@ -8456,9 +8456,9 @@ export class GroupInviteMessage extends pb_1.Message {
         return pb_1.Message.getField(this, 6) != null;
     }
     get contextInfo() {
-        return pb_1.Message.getWrapperField(this, ContextInfo, 7) as ContextInfo;
+        return pb_1.Message.getWrapperField(this, ContextInfo, 7) as ContextInfo | undefined | null;
     }
-    set contextInfo(value: ContextInfo) {
+    set contextInfo(value: ContextInfo | undefined | null) {
         pb_1.Message.setWrapperField(this, 7, value);
     }
     get has_contextInfo() {
@@ -8605,9 +8605,9 @@ export class DeviceSentMessage extends pb_1.Message {
         return pb_1.Message.getField(this, 1) != null;
     }
     get message() {
-        return pb_1.Message.getWrapperField(this, Message, 2) as Message;
+        return pb_1.Message.getWrapperField(this, Message, 2) as Message | undefined | null;
     }
-    set message(value: Message) {
+    set message(value: Message | undefined | null) {
         pb_1.Message.setWrapperField(this, 2, value);
     }
     get has_message() {
@@ -8815,225 +8815,225 @@ export class Message extends pb_1.Message {
         return pb_1.Message.getField(this, 1) != null;
     }
     get senderKeyDistributionMessage() {
-        return pb_1.Message.getWrapperField(this, SenderKeyDistributionMessage, 2) as SenderKeyDistributionMessage;
+        return pb_1.Message.getWrapperField(this, SenderKeyDistributionMessage, 2) as SenderKeyDistributionMessage | undefined | null;
     }
-    set senderKeyDistributionMessage(value: SenderKeyDistributionMessage) {
+    set senderKeyDistributionMessage(value: SenderKeyDistributionMessage | undefined | null) {
         pb_1.Message.setWrapperField(this, 2, value);
     }
     get has_senderKeyDistributionMessage() {
         return pb_1.Message.getField(this, 2) != null;
     }
     get imageMessage() {
-        return pb_1.Message.getWrapperField(this, ImageMessage, 3) as ImageMessage;
+        return pb_1.Message.getWrapperField(this, ImageMessage, 3) as ImageMessage | undefined | null;
     }
-    set imageMessage(value: ImageMessage) {
+    set imageMessage(value: ImageMessage | undefined | null) {
         pb_1.Message.setWrapperField(this, 3, value);
     }
     get has_imageMessage() {
         return pb_1.Message.getField(this, 3) != null;
     }
     get contactMessage() {
-        return pb_1.Message.getWrapperField(this, ContactMessage, 4) as ContactMessage;
+        return pb_1.Message.getWrapperField(this, ContactMessage, 4) as ContactMessage | undefined | null;
     }
-    set contactMessage(value: ContactMessage) {
+    set contactMessage(value: ContactMessage | undefined | null) {
         pb_1.Message.setWrapperField(this, 4, value);
     }
     get has_contactMessage() {
         return pb_1.Message.getField(this, 4) != null;
     }
     get locationMessage() {
-        return pb_1.Message.getWrapperField(this, LocationMessage, 5) as LocationMessage;
+        return pb_1.Message.getWrapperField(this, LocationMessage, 5) as LocationMessage | undefined | null;
     }
-    set locationMessage(value: LocationMessage) {
+    set locationMessage(value: LocationMessage | undefined | null) {
         pb_1.Message.setWrapperField(this, 5, value);
     }
     get has_locationMessage() {
         return pb_1.Message.getField(this, 5) != null;
     }
     get extendedTextMessage() {
-        return pb_1.Message.getWrapperField(this, ExtendedTextMessage, 6) as ExtendedTextMessage;
+        return pb_1.Message.getWrapperField(this, ExtendedTextMessage, 6) as ExtendedTextMessage | undefined | null;
     }
-    set extendedTextMessage(value: ExtendedTextMessage) {
+    set extendedTextMessage(value: ExtendedTextMessage | undefined | null) {
         pb_1.Message.setWrapperField(this, 6, value);
     }
     get has_extendedTextMessage() {
         return pb_1.Message.getField(this, 6) != null;
     }
     get documentMessage() {
-        return pb_1.Message.getWrapperField(this, DocumentMessage, 7) as DocumentMessage;
+        return pb_1.Message.getWrapperField(this, DocumentMessage, 7) as DocumentMessage | undefined | null;
     }
-    set documentMessage(value: DocumentMessage) {
+    set documentMessage(value: DocumentMessage | undefined | null) {
         pb_1.Message.setWrapperField(this, 7, value);
     }
     get has_documentMessage() {
         return pb_1.Message.getField(this, 7) != null;
     }
     get audioMessage() {
-        return pb_1.Message.getWrapperField(this, AudioMessage, 8) as AudioMessage;
+        return pb_1.Message.getWrapperField(this, AudioMessage, 8) as AudioMessage | undefined | null;
     }
-    set audioMessage(value: AudioMessage) {
+    set audioMessage(value: AudioMessage | undefined | null) {
         pb_1.Message.setWrapperField(this, 8, value);
     }
     get has_audioMessage() {
         return pb_1.Message.getField(this, 8) != null;
     }
     get videoMessage() {
-        return pb_1.Message.getWrapperField(this, VideoMessage, 9) as VideoMessage;
+        return pb_1.Message.getWrapperField(this, VideoMessage, 9) as VideoMessage | undefined | null;
     }
-    set videoMessage(value: VideoMessage) {
+    set videoMessage(value: VideoMessage | undefined | null) {
         pb_1.Message.setWrapperField(this, 9, value);
     }
     get has_videoMessage() {
         return pb_1.Message.getField(this, 9) != null;
     }
     get call() {
-        return pb_1.Message.getWrapperField(this, Call, 10) as Call;
+        return pb_1.Message.getWrapperField(this, Call, 10) as Call | undefined | null;
     }
-    set call(value: Call) {
+    set call(value: Call | undefined | null) {
         pb_1.Message.setWrapperField(this, 10, value);
     }
     get has_call() {
         return pb_1.Message.getField(this, 10) != null;
     }
     get chat() {
-        return pb_1.Message.getWrapperField(this, Chat, 11) as Chat;
+        return pb_1.Message.getWrapperField(this, Chat, 11) as Chat | undefined | null;
     }
-    set chat(value: Chat) {
+    set chat(value: Chat | undefined | null) {
         pb_1.Message.setWrapperField(this, 11, value);
     }
     get has_chat() {
         return pb_1.Message.getField(this, 11) != null;
     }
     get protocolMessage() {
-        return pb_1.Message.getWrapperField(this, ProtocolMessage, 12) as ProtocolMessage;
+        return pb_1.Message.getWrapperField(this, ProtocolMessage, 12) as ProtocolMessage | undefined | null;
     }
-    set protocolMessage(value: ProtocolMessage) {
+    set protocolMessage(value: ProtocolMessage | undefined | null) {
         pb_1.Message.setWrapperField(this, 12, value);
     }
     get has_protocolMessage() {
         return pb_1.Message.getField(this, 12) != null;
     }
     get contactsArrayMessage() {
-        return pb_1.Message.getWrapperField(this, ContactsArrayMessage, 13) as ContactsArrayMessage;
+        return pb_1.Message.getWrapperField(this, ContactsArrayMessage, 13) as ContactsArrayMessage | undefined | null;
     }
-    set contactsArrayMessage(value: ContactsArrayMessage) {
+    set contactsArrayMessage(value: ContactsArrayMessage | undefined | null) {
         pb_1.Message.setWrapperField(this, 13, value);
     }
     get has_contactsArrayMessage() {
         return pb_1.Message.getField(this, 13) != null;
     }
     get highlyStructuredMessage() {
-        return pb_1.Message.getWrapperField(this, HighlyStructuredMessage, 14) as HighlyStructuredMessage;
+        return pb_1.Message.getWrapperField(this, HighlyStructuredMessage, 14) as HighlyStructuredMessage | undefined | null;
     }
-    set highlyStructuredMessage(value: HighlyStructuredMessage) {
+    set highlyStructuredMessage(value: HighlyStructuredMessage | undefined | null) {
         pb_1.Message.setWrapperField(this, 14, value);
     }
     get has_highlyStructuredMessage() {
         return pb_1.Message.getField(this, 14) != null;
     }
     get fastRatchetKeySenderKeyDistributionMessage() {
-        return pb_1.Message.getWrapperField(this, SenderKeyDistributionMessage, 15) as SenderKeyDistributionMessage;
+        return pb_1.Message.getWrapperField(this, SenderKeyDistributionMessage, 15) as SenderKeyDistributionMessage | undefined | null;
     }
-    set fastRatchetKeySenderKeyDistributionMessage(value: SenderKeyDistributionMessage) {
+    set fastRatchetKeySenderKeyDistributionMessage(value: SenderKeyDistributionMessage | undefined | null) {
         pb_1.Message.setWrapperField(this, 15, value);
     }
     get has_fastRatchetKeySenderKeyDistributionMessage() {
         return pb_1.Message.getField(this, 15) != null;
     }
     get sendPaymentMessage() {
-        return pb_1.Message.getWrapperField(this, SendPaymentMessage, 16) as SendPaymentMessage;
+        return pb_1.Message.getWrapperField(this, SendPaymentMessage, 16) as SendPaymentMessage | undefined | null;
     }
-    set sendPaymentMessage(value: SendPaymentMessage) {
+    set sendPaymentMessage(value: SendPaymentMessage | undefined | null) {
         pb_1.Message.setWrapperField(this, 16, value);
     }
     get has_sendPaymentMessage() {
         return pb_1.Message.getField(this, 16) != null;
     }
     get liveLocationMessage() {
-        return pb_1.Message.getWrapperField(this, LiveLocationMessage, 18) as LiveLocationMessage;
+        return pb_1.Message.getWrapperField(this, LiveLocationMessage, 18) as LiveLocationMessage | undefined | null;
     }
-    set liveLocationMessage(value: LiveLocationMessage) {
+    set liveLocationMessage(value: LiveLocationMessage | undefined | null) {
         pb_1.Message.setWrapperField(this, 18, value);
     }
     get has_liveLocationMessage() {
         return pb_1.Message.getField(this, 18) != null;
     }
     get requestPaymentMessage() {
-        return pb_1.Message.getWrapperField(this, RequestPaymentMessage, 22) as RequestPaymentMessage;
+        return pb_1.Message.getWrapperField(this, RequestPaymentMessage, 22) as RequestPaymentMessage | undefined | null;
     }
-    set requestPaymentMessage(value: RequestPaymentMessage) {
+    set requestPaymentMessage(value: RequestPaymentMessage | undefined | null) {
         pb_1.Message.setWrapperField(this, 22, value);
     }
     get has_requestPaymentMessage() {
         return pb_1.Message.getField(this, 22) != null;
     }
     get declinePaymentRequestMessage() {
-        return pb_1.Message.getWrapperField(this, DeclinePaymentRequestMessage, 23) as DeclinePaymentRequestMessage;
+        return pb_1.Message.getWrapperField(this, DeclinePaymentRequestMessage, 23) as DeclinePaymentRequestMessage | undefined | null;
     }
-    set declinePaymentRequestMessage(value: DeclinePaymentRequestMessage) {
+    set declinePaymentRequestMessage(value: DeclinePaymentRequestMessage | undefined | null) {
         pb_1.Message.setWrapperField(this, 23, value);
     }
     get has_declinePaymentRequestMessage() {
         return pb_1.Message.getField(this, 23) != null;
     }
     get cancelPaymentRequestMessage() {
-        return pb_1.Message.getWrapperField(this, CancelPaymentRequestMessage, 24) as CancelPaymentRequestMessage;
+        return pb_1.Message.getWrapperField(this, CancelPaymentRequestMessage, 24) as CancelPaymentRequestMessage | undefined | null;
     }
-    set cancelPaymentRequestMessage(value: CancelPaymentRequestMessage) {
+    set cancelPaymentRequestMessage(value: CancelPaymentRequestMessage | undefined | null) {
         pb_1.Message.setWrapperField(this, 24, value);
     }
     get has_cancelPaymentRequestMessage() {
         return pb_1.Message.getField(this, 24) != null;
     }
     get templateMessage() {
-        return pb_1.Message.getWrapperField(this, TemplateMessage, 25) as TemplateMessage;
+        return pb_1.Message.getWrapperField(this, TemplateMessage, 25) as TemplateMessage | undefined | null;
     }
-    set templateMessage(value: TemplateMessage) {
+    set templateMessage(value: TemplateMessage | undefined | null) {
         pb_1.Message.setWrapperField(this, 25, value);
     }
     get has_templateMessage() {
         return pb_1.Message.getField(this, 25) != null;
     }
     get stickerMessage() {
-        return pb_1.Message.getWrapperField(this, StickerMessage, 26) as StickerMessage;
+        return pb_1.Message.getWrapperField(this, StickerMessage, 26) as StickerMessage | undefined | null;
     }
-    set stickerMessage(value: StickerMessage) {
+    set stickerMessage(value: StickerMessage | undefined | null) {
         pb_1.Message.setWrapperField(this, 26, value);
     }
     get has_stickerMessage() {
         return pb_1.Message.getField(this, 26) != null;
     }
     get groupInviteMessage() {
-        return pb_1.Message.getWrapperField(this, GroupInviteMessage, 28) as GroupInviteMessage;
+        return pb_1.Message.getWrapperField(this, GroupInviteMessage, 28) as GroupInviteMessage | undefined | null;
     }
-    set groupInviteMessage(value: GroupInviteMessage) {
+    set groupInviteMessage(value: GroupInviteMessage | undefined | null) {
         pb_1.Message.setWrapperField(this, 28, value);
     }
     get has_groupInviteMessage() {
         return pb_1.Message.getField(this, 28) != null;
     }
     get templateButtonReplyMessage() {
-        return pb_1.Message.getWrapperField(this, TemplateButtonReplyMessage, 29) as TemplateButtonReplyMessage;
+        return pb_1.Message.getWrapperField(this, TemplateButtonReplyMessage, 29) as TemplateButtonReplyMessage | undefined | null;
     }
-    set templateButtonReplyMessage(value: TemplateButtonReplyMessage) {
+    set templateButtonReplyMessage(value: TemplateButtonReplyMessage | undefined | null) {
         pb_1.Message.setWrapperField(this, 29, value);
     }
     get has_templateButtonReplyMessage() {
         return pb_1.Message.getField(this, 29) != null;
     }
     get productMessage() {
-        return pb_1.Message.getWrapperField(this, ProductMessage, 30) as ProductMessage;
+        return pb_1.Message.getWrapperField(this, ProductMessage, 30) as ProductMessage | undefined | null;
     }
-    set productMessage(value: ProductMessage) {
+    set productMessage(value: ProductMessage | undefined | null) {
         pb_1.Message.setWrapperField(this, 30, value);
     }
     get has_productMessage() {
         return pb_1.Message.getField(this, 30) != null;
     }
     get deviceSentMessage() {
-        return pb_1.Message.getWrapperField(this, DeviceSentMessage, 31) as DeviceSentMessage;
+        return pb_1.Message.getWrapperField(this, DeviceSentMessage, 31) as DeviceSentMessage | undefined | null;
     }
-    set deviceSentMessage(value: DeviceSentMessage) {
+    set deviceSentMessage(value: DeviceSentMessage | undefined | null) {
         pb_1.Message.setWrapperField(this, 31, value);
     }
     get has_deviceSentMessage() {
@@ -10497,18 +10497,18 @@ export class NotificationMessageInfo extends pb_1.Message {
         }
     }
     get key() {
-        return pb_1.Message.getWrapperField(this, MessageKey, 1) as MessageKey;
+        return pb_1.Message.getWrapperField(this, MessageKey, 1) as MessageKey | undefined | null;
     }
-    set key(value: MessageKey) {
+    set key(value: MessageKey | undefined | null) {
         pb_1.Message.setWrapperField(this, 1, value);
     }
     get has_key() {
         return pb_1.Message.getField(this, 1) != null;
     }
     get message() {
-        return pb_1.Message.getWrapperField(this, Message, 2) as Message;
+        return pb_1.Message.getWrapperField(this, Message, 2) as Message | undefined | null;
     }
-    set message(value: Message) {
+    set message(value: Message | undefined | null) {
         pb_1.Message.setWrapperField(this, 2, value);
     }
     get has_message() {
@@ -10842,9 +10842,9 @@ export class PaymentInfo extends pb_1.Message {
         return pb_1.Message.getField(this, 5) != null;
     }
     get requestMessageKey() {
-        return pb_1.Message.getWrapperField(this, MessageKey, 6) as MessageKey;
+        return pb_1.Message.getWrapperField(this, MessageKey, 6) as MessageKey | undefined | null;
     }
-    set requestMessageKey(value: MessageKey) {
+    set requestMessageKey(value: MessageKey | undefined | null) {
         pb_1.Message.setWrapperField(this, 6, value);
     }
     get has_requestMessageKey() {
@@ -11174,18 +11174,18 @@ export class WebMessageInfo extends pb_1.Message {
         }
     }
     get key() {
-        return pb_1.Message.getWrapperField(this, MessageKey, 1) as MessageKey;
+        return pb_1.Message.getWrapperField(this, MessageKey, 1) as MessageKey | undefined | null;
     }
-    set key(value: MessageKey) {
+    set key(value: MessageKey | undefined | null) {
         pb_1.Message.setWrapperField(this, 1, value);
     }
     get has_key() {
         return pb_1.Message.getField(this, 1) != null;
     }
     get message() {
-        return pb_1.Message.getWrapperField(this, Message, 2) as Message;
+        return pb_1.Message.getWrapperField(this, Message, 2) as Message | undefined | null;
     }
-    set message(value: Message) {
+    set message(value: Message | undefined | null) {
         pb_1.Message.setWrapperField(this, 2, value);
     }
     get has_message() {
@@ -11330,27 +11330,27 @@ export class WebMessageInfo extends pb_1.Message {
         pb_1.Message.setField(this, 28, value);
     }
     get paymentInfo() {
-        return pb_1.Message.getWrapperField(this, PaymentInfo, 29) as PaymentInfo;
+        return pb_1.Message.getWrapperField(this, PaymentInfo, 29) as PaymentInfo | undefined | null;
     }
-    set paymentInfo(value: PaymentInfo) {
+    set paymentInfo(value: PaymentInfo | undefined | null) {
         pb_1.Message.setWrapperField(this, 29, value);
     }
     get has_paymentInfo() {
         return pb_1.Message.getField(this, 29) != null;
     }
     get finalLiveLocation() {
-        return pb_1.Message.getWrapperField(this, LiveLocationMessage, 30) as LiveLocationMessage;
+        return pb_1.Message.getWrapperField(this, LiveLocationMessage, 30) as LiveLocationMessage | undefined | null;
     }
-    set finalLiveLocation(value: LiveLocationMessage) {
+    set finalLiveLocation(value: LiveLocationMessage | undefined | null) {
         pb_1.Message.setWrapperField(this, 30, value);
     }
     get has_finalLiveLocation() {
         return pb_1.Message.getField(this, 30) != null;
     }
     get quotedPaymentInfo() {
-        return pb_1.Message.getWrapperField(this, PaymentInfo, 31) as PaymentInfo;
+        return pb_1.Message.getWrapperField(this, PaymentInfo, 31) as PaymentInfo | undefined | null;
     }
-    set quotedPaymentInfo(value: PaymentInfo) {
+    set quotedPaymentInfo(value: PaymentInfo | undefined | null) {
         pb_1.Message.setWrapperField(this, 31, value);
     }
     get has_quotedPaymentInfo() {

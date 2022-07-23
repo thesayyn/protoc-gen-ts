@@ -118,9 +118,9 @@ export class DefaultCommonMessageOneOf extends pb_1.Message {
         return pb_1.Message.getField(this, 1) != null;
     }
     get message() {
-        return pb_1.Message.getWrapperField(this, DefaultCommonMessage, 2) as DefaultCommonMessage;
+        return pb_1.Message.getWrapperField(this, DefaultCommonMessage, 2) as DefaultCommonMessage | undefined | null;
     }
-    set message(value: DefaultCommonMessage) {
+    set message(value: DefaultCommonMessage | undefined | null) {
         pb_1.Message.setOneofWrapperField(this, 2, this.#one_of_decls[0], value);
     }
     get has_message() {

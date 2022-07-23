@@ -31,27 +31,27 @@ export class NoNamespace extends pb_1.Message {
         }
     }
     get label() {
-        return pb_1.Message.getWrapperField(this, dependency_1.eventTarget, 1) as dependency_1.eventTarget;
+        return pb_1.Message.getWrapperField(this, dependency_1.eventTarget, 1) as dependency_1.eventTarget | undefined | null;
     }
-    set label(value: dependency_1.eventTarget) {
+    set label(value: dependency_1.eventTarget | undefined | null) {
         pb_1.Message.setWrapperField(this, 1, value);
     }
     get has_label() {
         return pb_1.Message.getField(this, 1) != null;
     }
     get other_fields() {
-        return pb_1.Message.getWrapperField(this, dependency_2.MessageFields, 2) as dependency_2.MessageFields;
+        return pb_1.Message.getWrapperField(this, dependency_2.MessageFields, 2) as dependency_2.MessageFields | undefined | null;
     }
-    set other_fields(value: dependency_2.MessageFields) {
+    set other_fields(value: dependency_2.MessageFields | undefined | null) {
         pb_1.Message.setWrapperField(this, 2, value);
     }
     get has_other_fields() {
         return pb_1.Message.getField(this, 2) != null;
     }
     get batch_fields() {
-        return pb_1.Message.getWrapperField(this, dependency_1.eventSchedulingContextBatch, 3) as dependency_1.eventSchedulingContextBatch;
+        return pb_1.Message.getWrapperField(this, dependency_1.eventSchedulingContextBatch, 3) as dependency_1.eventSchedulingContextBatch | undefined | null;
     }
-    set batch_fields(value: dependency_1.eventSchedulingContextBatch) {
+    set batch_fields(value: dependency_1.eventSchedulingContextBatch | undefined | null) {
         pb_1.Message.setWrapperField(this, 3, value);
     }
     get has_batch_fields() {

@@ -25,9 +25,9 @@ export class MessageFields extends pb_1.Message {
         }
     }
     get sub_message() {
-        return pb_1.Message.getWrapperField(this, SubMessage, 1) as SubMessage;
+        return pb_1.Message.getWrapperField(this, SubMessage, 1) as SubMessage | undefined | null;
     }
-    set sub_message(value: SubMessage) {
+    set sub_message(value: SubMessage | undefined | null) {
         pb_1.Message.setWrapperField(this, 1, value);
     }
     get has_sub_message() {
