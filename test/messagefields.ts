@@ -4,9 +4,6 @@
  * source: test/_/messagefields.proto
  * git: https://github.com/thesayyn/protoc-gen-ts */
 import * as pb_1 from "google-protobuf";
-type RecursivePartial<T> = {
-    [P in keyof T]?: T[P] extends (infer U)[] ? RecursivePartial<U>[] : T[P] extends Uint8Array ? T[P] : T[P] extends object ? RecursivePartial<T[P]> : T[P];
-};
 export class MessageFields extends pb_1.Message {
     #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
@@ -25,9 +22,9 @@ export class MessageFields extends pb_1.Message {
         }
     }
     get sub_message() {
-        return pb_1.Message.getWrapperField(this, SubMessage, 1) as SubMessage | undefined | null;
+        return pb_1.Message.getWrapperField(this, SubMessage, 1) as SubMessage | undefined;
     }
-    set sub_message(value: SubMessage | undefined | null) {
+    set sub_message(value: SubMessage | undefined) {
         pb_1.Message.setWrapperField(this, 1, value);
     }
     get has_sub_message() {
@@ -39,7 +36,7 @@ export class MessageFields extends pb_1.Message {
     set array_prop(value: SubMessage[]) {
         pb_1.Message.setRepeatedWrapperField(this, 2, value);
     }
-    static fromObject(data: RecursivePartial<MessageFields.AsObject>): MessageFields {
+    static fromObject(data: MessageFields.AsObjectPartial): MessageFields {
         const message = new MessageFields({});
         if (data.sub_message != null) {
             message.sub_message = SubMessage.fromObject(data.sub_message);
@@ -63,9 +60,9 @@ export class MessageFields extends pb_1.Message {
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
         if (this.has_sub_message)
-            writer.writeMessage(1, this.sub_message, () => this.sub_message.serialize(writer));
+            writer.writeMessage(1, this.sub_message, () => this.sub_message!.serialize(writer));
         if (this.array_prop.length)
-            writer.writeRepeatedMessage(2, this.array_prop, (item: SubMessage) => item.serialize(writer));
+            writer.writeRepeatedMessage(2, this.array_prop, (item: SubMessage) => item!.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
     }
@@ -98,6 +95,10 @@ export namespace MessageFields {
         sub_message?: SubMessage.AsObject;
         array_prop: SubMessage.AsObject[];
     };
+    export type AsObjectPartial = {
+        sub_message?: SubMessage.AsObjectPartial;
+        array_prop?: SubMessage.AsObjectPartial[];
+    };
 }
 export class SubMessage extends pb_1.Message {
     #one_of_decls: number[][] = [];
@@ -128,7 +129,7 @@ export class SubMessage extends pb_1.Message {
     set field_2(value: string) {
         pb_1.Message.setField(this, 2, value);
     }
-    static fromObject(data: RecursivePartial<SubMessage.AsObject>): SubMessage {
+    static fromObject(data: SubMessage.AsObjectPartial): SubMessage {
         const message = new SubMessage({});
         if (data.field_1 != null) {
             message.field_1 = data.field_1;
@@ -184,5 +185,9 @@ export namespace SubMessage {
     export type AsObject = {
         field_1: string;
         field_2: string;
+    };
+    export type AsObjectPartial = {
+        field_1?: string;
+        field_2?: string;
     };
 }

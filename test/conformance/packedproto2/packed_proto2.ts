@@ -4,9 +4,6 @@
  * source: test/conformance/packedproto2/packedproto2.proto
  * git: https://github.com/thesayyn/protoc-gen-ts */
 import * as pb_1 from "google-protobuf";
-type RecursivePartial<T> = {
-    [P in keyof T]?: T[P] extends (infer U)[] ? RecursivePartial<U>[] : T[P] extends Uint8Array ? T[P] : T[P] extends object ? RecursivePartial<T[P]> : T[P];
-};
 export class HydratedQuickReplyButton extends pb_1.Message {
     #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
@@ -42,7 +39,7 @@ export class HydratedQuickReplyButton extends pb_1.Message {
     get has_id() {
         return pb_1.Message.getField(this, 2) != null;
     }
-    static fromObject(data: RecursivePartial<HydratedQuickReplyButton.AsObject>): HydratedQuickReplyButton {
+    static fromObject(data: HydratedQuickReplyButton.AsObjectPartial): HydratedQuickReplyButton {
         const message = new HydratedQuickReplyButton({});
         if (data.displayText != null) {
             message.displayText = data.displayText;
@@ -63,9 +60,9 @@ export class HydratedQuickReplyButton extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.has_displayText && this.displayText.length)
+        if (this.has_displayText && this.displayText!.length)
             writer.writeString(1, this.displayText);
-        if (this.has_id && this.id.length)
+        if (this.has_id && this.id!.length)
             writer.writeString(2, this.id);
         if (!w)
             return writer.getResultBuffer();
@@ -98,6 +95,10 @@ export namespace HydratedQuickReplyButton {
     export type AsObject = {
         displayText: string;
         id: string;
+    };
+    export type AsObjectPartial = {
+        displayText?: string;
+        id?: string;
     };
 }
 export class HydratedURLButton extends pb_1.Message {
@@ -135,7 +136,7 @@ export class HydratedURLButton extends pb_1.Message {
     get has_url() {
         return pb_1.Message.getField(this, 2) != null;
     }
-    static fromObject(data: RecursivePartial<HydratedURLButton.AsObject>): HydratedURLButton {
+    static fromObject(data: HydratedURLButton.AsObjectPartial): HydratedURLButton {
         const message = new HydratedURLButton({});
         if (data.displayText != null) {
             message.displayText = data.displayText;
@@ -156,9 +157,9 @@ export class HydratedURLButton extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.has_displayText && this.displayText.length)
+        if (this.has_displayText && this.displayText!.length)
             writer.writeString(1, this.displayText);
-        if (this.has_url && this.url.length)
+        if (this.has_url && this.url!.length)
             writer.writeString(2, this.url);
         if (!w)
             return writer.getResultBuffer();
@@ -191,6 +192,10 @@ export namespace HydratedURLButton {
     export type AsObject = {
         displayText: string;
         url: string;
+    };
+    export type AsObjectPartial = {
+        displayText?: string;
+        url?: string;
     };
 }
 export class HydratedCallButton extends pb_1.Message {
@@ -228,7 +233,7 @@ export class HydratedCallButton extends pb_1.Message {
     get has_phoneNumber() {
         return pb_1.Message.getField(this, 2) != null;
     }
-    static fromObject(data: RecursivePartial<HydratedCallButton.AsObject>): HydratedCallButton {
+    static fromObject(data: HydratedCallButton.AsObjectPartial): HydratedCallButton {
         const message = new HydratedCallButton({});
         if (data.displayText != null) {
             message.displayText = data.displayText;
@@ -249,9 +254,9 @@ export class HydratedCallButton extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.has_displayText && this.displayText.length)
+        if (this.has_displayText && this.displayText!.length)
             writer.writeString(1, this.displayText);
-        if (this.has_phoneNumber && this.phoneNumber.length)
+        if (this.has_phoneNumber && this.phoneNumber!.length)
             writer.writeString(2, this.phoneNumber);
         if (!w)
             return writer.getResultBuffer();
@@ -284,6 +289,10 @@ export namespace HydratedCallButton {
     export type AsObject = {
         displayText: string;
         phoneNumber: string;
+    };
+    export type AsObjectPartial = {
+        displayText?: string;
+        phoneNumber?: string;
     };
 }
 export class HydratedTemplateButton extends pb_1.Message {
@@ -330,27 +339,27 @@ export class HydratedTemplateButton extends pb_1.Message {
         return pb_1.Message.getField(this, 4) != null;
     }
     get quickReplyButton() {
-        return pb_1.Message.getWrapperField(this, HydratedQuickReplyButton, 1) as HydratedQuickReplyButton | undefined | null;
+        return pb_1.Message.getWrapperField(this, HydratedQuickReplyButton, 1) as HydratedQuickReplyButton | undefined;
     }
-    set quickReplyButton(value: HydratedQuickReplyButton | undefined | null) {
+    set quickReplyButton(value: HydratedQuickReplyButton | undefined) {
         pb_1.Message.setOneofWrapperField(this, 1, this.#one_of_decls[0], value);
     }
     get has_quickReplyButton() {
         return pb_1.Message.getField(this, 1) != null;
     }
     get urlButton() {
-        return pb_1.Message.getWrapperField(this, HydratedURLButton, 2) as HydratedURLButton | undefined | null;
+        return pb_1.Message.getWrapperField(this, HydratedURLButton, 2) as HydratedURLButton | undefined;
     }
-    set urlButton(value: HydratedURLButton | undefined | null) {
+    set urlButton(value: HydratedURLButton | undefined) {
         pb_1.Message.setOneofWrapperField(this, 2, this.#one_of_decls[0], value);
     }
     get has_urlButton() {
         return pb_1.Message.getField(this, 2) != null;
     }
     get callButton() {
-        return pb_1.Message.getWrapperField(this, HydratedCallButton, 3) as HydratedCallButton | undefined | null;
+        return pb_1.Message.getWrapperField(this, HydratedCallButton, 3) as HydratedCallButton | undefined;
     }
-    set callButton(value: HydratedCallButton | undefined | null) {
+    set callButton(value: HydratedCallButton | undefined) {
         pb_1.Message.setOneofWrapperField(this, 3, this.#one_of_decls[0], value);
     }
     get has_callButton() {
@@ -367,7 +376,7 @@ export class HydratedTemplateButton extends pb_1.Message {
         };
         return cases[pb_1.Message.computeOneofCase(this, [1, 2, 3])];
     }
-    static fromObject(data: RecursivePartial<HydratedTemplateButton.AsObject>): HydratedTemplateButton {
+    static fromObject(data: HydratedTemplateButton.AsObjectPartial): HydratedTemplateButton {
         const message = new HydratedTemplateButton({});
         if (data.index != null) {
             message.index = data.index;
@@ -405,11 +414,11 @@ export class HydratedTemplateButton extends pb_1.Message {
         if (this.has_index)
             writer.writeUint32(4, this.index);
         if (this.has_quickReplyButton)
-            writer.writeMessage(1, this.quickReplyButton, () => this.quickReplyButton.serialize(writer));
+            writer.writeMessage(1, this.quickReplyButton, () => this.quickReplyButton!.serialize(writer));
         if (this.has_urlButton)
-            writer.writeMessage(2, this.urlButton, () => this.urlButton.serialize(writer));
+            writer.writeMessage(2, this.urlButton, () => this.urlButton!.serialize(writer));
         if (this.has_callButton)
-            writer.writeMessage(3, this.callButton, () => this.callButton.serialize(writer));
+            writer.writeMessage(3, this.callButton, () => this.callButton!.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
     }
@@ -450,6 +459,12 @@ export namespace HydratedTemplateButton {
         urlButton?: HydratedURLButton.AsObject;
         callButton?: HydratedCallButton.AsObject;
     };
+    export type AsObjectPartial = {
+        index?: number;
+        quickReplyButton?: HydratedQuickReplyButton.AsObjectPartial;
+        urlButton?: HydratedURLButton.AsObjectPartial;
+        callButton?: HydratedCallButton.AsObjectPartial;
+    };
 }
 export class QuickReplyButton extends pb_1.Message {
     #one_of_decls: number[][] = [];
@@ -469,9 +484,9 @@ export class QuickReplyButton extends pb_1.Message {
         }
     }
     get displayText() {
-        return pb_1.Message.getWrapperField(this, HighlyStructuredMessage, 1) as HighlyStructuredMessage | undefined | null;
+        return pb_1.Message.getWrapperField(this, HighlyStructuredMessage, 1) as HighlyStructuredMessage | undefined;
     }
-    set displayText(value: HighlyStructuredMessage | undefined | null) {
+    set displayText(value: HighlyStructuredMessage | undefined) {
         pb_1.Message.setWrapperField(this, 1, value);
     }
     get has_displayText() {
@@ -486,7 +501,7 @@ export class QuickReplyButton extends pb_1.Message {
     get has_id() {
         return pb_1.Message.getField(this, 2) != null;
     }
-    static fromObject(data: RecursivePartial<QuickReplyButton.AsObject>): QuickReplyButton {
+    static fromObject(data: QuickReplyButton.AsObjectPartial): QuickReplyButton {
         const message = new QuickReplyButton({});
         if (data.displayText != null) {
             message.displayText = HighlyStructuredMessage.fromObject(data.displayText);
@@ -510,8 +525,8 @@ export class QuickReplyButton extends pb_1.Message {
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
         if (this.has_displayText)
-            writer.writeMessage(1, this.displayText, () => this.displayText.serialize(writer));
-        if (this.has_id && this.id.length)
+            writer.writeMessage(1, this.displayText, () => this.displayText!.serialize(writer));
+        if (this.has_id && this.id!.length)
             writer.writeString(2, this.id);
         if (!w)
             return writer.getResultBuffer();
@@ -545,6 +560,10 @@ export namespace QuickReplyButton {
         displayText?: HighlyStructuredMessage.AsObject;
         id: string;
     };
+    export type AsObjectPartial = {
+        displayText?: HighlyStructuredMessage.AsObjectPartial;
+        id?: string;
+    };
 }
 export class URLButton extends pb_1.Message {
     #one_of_decls: number[][] = [];
@@ -564,24 +583,24 @@ export class URLButton extends pb_1.Message {
         }
     }
     get displayText() {
-        return pb_1.Message.getWrapperField(this, HighlyStructuredMessage, 1) as HighlyStructuredMessage | undefined | null;
+        return pb_1.Message.getWrapperField(this, HighlyStructuredMessage, 1) as HighlyStructuredMessage | undefined;
     }
-    set displayText(value: HighlyStructuredMessage | undefined | null) {
+    set displayText(value: HighlyStructuredMessage | undefined) {
         pb_1.Message.setWrapperField(this, 1, value);
     }
     get has_displayText() {
         return pb_1.Message.getField(this, 1) != null;
     }
     get url() {
-        return pb_1.Message.getWrapperField(this, HighlyStructuredMessage, 2) as HighlyStructuredMessage | undefined | null;
+        return pb_1.Message.getWrapperField(this, HighlyStructuredMessage, 2) as HighlyStructuredMessage | undefined;
     }
-    set url(value: HighlyStructuredMessage | undefined | null) {
+    set url(value: HighlyStructuredMessage | undefined) {
         pb_1.Message.setWrapperField(this, 2, value);
     }
     get has_url() {
         return pb_1.Message.getField(this, 2) != null;
     }
-    static fromObject(data: RecursivePartial<URLButton.AsObject>): URLButton {
+    static fromObject(data: URLButton.AsObjectPartial): URLButton {
         const message = new URLButton({});
         if (data.displayText != null) {
             message.displayText = HighlyStructuredMessage.fromObject(data.displayText);
@@ -606,9 +625,9 @@ export class URLButton extends pb_1.Message {
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
         if (this.has_displayText)
-            writer.writeMessage(1, this.displayText, () => this.displayText.serialize(writer));
+            writer.writeMessage(1, this.displayText, () => this.displayText!.serialize(writer));
         if (this.has_url)
-            writer.writeMessage(2, this.url, () => this.url.serialize(writer));
+            writer.writeMessage(2, this.url, () => this.url!.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
     }
@@ -641,6 +660,10 @@ export namespace URLButton {
         displayText?: HighlyStructuredMessage.AsObject;
         url?: HighlyStructuredMessage.AsObject;
     };
+    export type AsObjectPartial = {
+        displayText?: HighlyStructuredMessage.AsObjectPartial;
+        url?: HighlyStructuredMessage.AsObjectPartial;
+    };
 }
 export class CallButton extends pb_1.Message {
     #one_of_decls: number[][] = [];
@@ -660,24 +683,24 @@ export class CallButton extends pb_1.Message {
         }
     }
     get displayText() {
-        return pb_1.Message.getWrapperField(this, HighlyStructuredMessage, 1) as HighlyStructuredMessage | undefined | null;
+        return pb_1.Message.getWrapperField(this, HighlyStructuredMessage, 1) as HighlyStructuredMessage | undefined;
     }
-    set displayText(value: HighlyStructuredMessage | undefined | null) {
+    set displayText(value: HighlyStructuredMessage | undefined) {
         pb_1.Message.setWrapperField(this, 1, value);
     }
     get has_displayText() {
         return pb_1.Message.getField(this, 1) != null;
     }
     get phoneNumber() {
-        return pb_1.Message.getWrapperField(this, HighlyStructuredMessage, 2) as HighlyStructuredMessage | undefined | null;
+        return pb_1.Message.getWrapperField(this, HighlyStructuredMessage, 2) as HighlyStructuredMessage | undefined;
     }
-    set phoneNumber(value: HighlyStructuredMessage | undefined | null) {
+    set phoneNumber(value: HighlyStructuredMessage | undefined) {
         pb_1.Message.setWrapperField(this, 2, value);
     }
     get has_phoneNumber() {
         return pb_1.Message.getField(this, 2) != null;
     }
-    static fromObject(data: RecursivePartial<CallButton.AsObject>): CallButton {
+    static fromObject(data: CallButton.AsObjectPartial): CallButton {
         const message = new CallButton({});
         if (data.displayText != null) {
             message.displayText = HighlyStructuredMessage.fromObject(data.displayText);
@@ -702,9 +725,9 @@ export class CallButton extends pb_1.Message {
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
         if (this.has_displayText)
-            writer.writeMessage(1, this.displayText, () => this.displayText.serialize(writer));
+            writer.writeMessage(1, this.displayText, () => this.displayText!.serialize(writer));
         if (this.has_phoneNumber)
-            writer.writeMessage(2, this.phoneNumber, () => this.phoneNumber.serialize(writer));
+            writer.writeMessage(2, this.phoneNumber, () => this.phoneNumber!.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
     }
@@ -736,6 +759,10 @@ export namespace CallButton {
     export type AsObject = {
         displayText?: HighlyStructuredMessage.AsObject;
         phoneNumber?: HighlyStructuredMessage.AsObject;
+    };
+    export type AsObjectPartial = {
+        displayText?: HighlyStructuredMessage.AsObjectPartial;
+        phoneNumber?: HighlyStructuredMessage.AsObjectPartial;
     };
 }
 export class TemplateButton extends pb_1.Message {
@@ -782,27 +809,27 @@ export class TemplateButton extends pb_1.Message {
         return pb_1.Message.getField(this, 4) != null;
     }
     get quickReplyButton() {
-        return pb_1.Message.getWrapperField(this, QuickReplyButton, 1) as QuickReplyButton | undefined | null;
+        return pb_1.Message.getWrapperField(this, QuickReplyButton, 1) as QuickReplyButton | undefined;
     }
-    set quickReplyButton(value: QuickReplyButton | undefined | null) {
+    set quickReplyButton(value: QuickReplyButton | undefined) {
         pb_1.Message.setOneofWrapperField(this, 1, this.#one_of_decls[0], value);
     }
     get has_quickReplyButton() {
         return pb_1.Message.getField(this, 1) != null;
     }
     get urlButton() {
-        return pb_1.Message.getWrapperField(this, URLButton, 2) as URLButton | undefined | null;
+        return pb_1.Message.getWrapperField(this, URLButton, 2) as URLButton | undefined;
     }
-    set urlButton(value: URLButton | undefined | null) {
+    set urlButton(value: URLButton | undefined) {
         pb_1.Message.setOneofWrapperField(this, 2, this.#one_of_decls[0], value);
     }
     get has_urlButton() {
         return pb_1.Message.getField(this, 2) != null;
     }
     get callButton() {
-        return pb_1.Message.getWrapperField(this, CallButton, 3) as CallButton | undefined | null;
+        return pb_1.Message.getWrapperField(this, CallButton, 3) as CallButton | undefined;
     }
-    set callButton(value: CallButton | undefined | null) {
+    set callButton(value: CallButton | undefined) {
         pb_1.Message.setOneofWrapperField(this, 3, this.#one_of_decls[0], value);
     }
     get has_callButton() {
@@ -819,7 +846,7 @@ export class TemplateButton extends pb_1.Message {
         };
         return cases[pb_1.Message.computeOneofCase(this, [1, 2, 3])];
     }
-    static fromObject(data: RecursivePartial<TemplateButton.AsObject>): TemplateButton {
+    static fromObject(data: TemplateButton.AsObjectPartial): TemplateButton {
         const message = new TemplateButton({});
         if (data.index != null) {
             message.index = data.index;
@@ -857,11 +884,11 @@ export class TemplateButton extends pb_1.Message {
         if (this.has_index)
             writer.writeUint32(4, this.index);
         if (this.has_quickReplyButton)
-            writer.writeMessage(1, this.quickReplyButton, () => this.quickReplyButton.serialize(writer));
+            writer.writeMessage(1, this.quickReplyButton, () => this.quickReplyButton!.serialize(writer));
         if (this.has_urlButton)
-            writer.writeMessage(2, this.urlButton, () => this.urlButton.serialize(writer));
+            writer.writeMessage(2, this.urlButton, () => this.urlButton!.serialize(writer));
         if (this.has_callButton)
-            writer.writeMessage(3, this.callButton, () => this.callButton.serialize(writer));
+            writer.writeMessage(3, this.callButton, () => this.callButton!.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
     }
@@ -901,6 +928,12 @@ export namespace TemplateButton {
         quickReplyButton?: QuickReplyButton.AsObject;
         urlButton?: URLButton.AsObject;
         callButton?: CallButton.AsObject;
+    };
+    export type AsObjectPartial = {
+        index?: number;
+        quickReplyButton?: QuickReplyButton.AsObjectPartial;
+        urlButton?: URLButton.AsObjectPartial;
+        callButton?: CallButton.AsObjectPartial;
     };
 }
 export class Location extends pb_1.Message {
@@ -951,7 +984,7 @@ export class Location extends pb_1.Message {
     get has_name() {
         return pb_1.Message.getField(this, 3) != null;
     }
-    static fromObject(data: RecursivePartial<Location.AsObject>): Location {
+    static fromObject(data: Location.AsObjectPartial): Location {
         const message = new Location({});
         if (data.degreesLatitude != null) {
             message.degreesLatitude = data.degreesLatitude;
@@ -980,7 +1013,7 @@ export class Location extends pb_1.Message {
             writer.writeDouble(1, this.degreesLatitude);
         if (this.has_degreesLongitude)
             writer.writeDouble(2, this.degreesLongitude);
-        if (this.has_name && this.name.length)
+        if (this.has_name && this.name!.length)
             writer.writeString(3, this.name);
         if (!w)
             return writer.getResultBuffer();
@@ -1017,6 +1050,11 @@ export namespace Location {
         degreesLatitude: number;
         degreesLongitude: number;
         name: string;
+    };
+    export type AsObjectPartial = {
+        degreesLatitude?: number;
+        degreesLongitude?: number;
+        name?: string;
     };
 }
 export class Point extends pb_1.Message {
@@ -1080,7 +1118,7 @@ export class Point extends pb_1.Message {
     get has_y() {
         return pb_1.Message.getField(this, 4) != null;
     }
-    static fromObject(data: RecursivePartial<Point.AsObject>): Point {
+    static fromObject(data: Point.AsObjectPartial): Point {
         const message = new Point({});
         if (data.xDeprecated != null) {
             message.xDeprecated = data.xDeprecated;
@@ -1157,6 +1195,12 @@ export namespace Point {
         x: number;
         y: number;
     };
+    export type AsObjectPartial = {
+        xDeprecated?: number;
+        yDeprecated?: number;
+        x?: number;
+        y?: number;
+    };
 }
 export class InteractiveAnnotation extends pb_1.Message {
     #one_of_decls: number[][] = [[2]];
@@ -1181,9 +1225,9 @@ export class InteractiveAnnotation extends pb_1.Message {
         pb_1.Message.setRepeatedWrapperField(this, 1, value);
     }
     get location() {
-        return pb_1.Message.getWrapperField(this, Location, 2) as Location | undefined | null;
+        return pb_1.Message.getWrapperField(this, Location, 2) as Location | undefined;
     }
-    set location(value: Location | undefined | null) {
+    set location(value: Location | undefined) {
         pb_1.Message.setOneofWrapperField(this, 2, this.#one_of_decls[0], value);
     }
     get has_location() {
@@ -1198,7 +1242,7 @@ export class InteractiveAnnotation extends pb_1.Message {
         };
         return cases[pb_1.Message.computeOneofCase(this, [2])];
     }
-    static fromObject(data: RecursivePartial<InteractiveAnnotation.AsObject>): InteractiveAnnotation {
+    static fromObject(data: InteractiveAnnotation.AsObjectPartial): InteractiveAnnotation {
         const message = new InteractiveAnnotation({
             polygonVertices: data.polygonVertices.map(item => Point.fromObject(item))
         });
@@ -1221,9 +1265,9 @@ export class InteractiveAnnotation extends pb_1.Message {
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
         if (this.polygonVertices.length)
-            writer.writeRepeatedMessage(1, this.polygonVertices, (item: Point) => item.serialize(writer));
+            writer.writeRepeatedMessage(1, this.polygonVertices, (item: Point) => item!.serialize(writer));
         if (this.has_location)
-            writer.writeMessage(2, this.location, () => this.location.serialize(writer));
+            writer.writeMessage(2, this.location, () => this.location!.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
     }
@@ -1255,6 +1299,10 @@ export namespace InteractiveAnnotation {
     export type AsObject = {
         polygonVertices: Point.AsObject[];
         location?: Location.AsObject;
+    };
+    export type AsObjectPartial = {
+        polygonVertices: Point.AsObjectPartial[];
+        location?: Location.AsObjectPartial;
     };
 }
 export class AdReplyInfo extends pb_1.Message {
@@ -1318,7 +1366,7 @@ export class AdReplyInfo extends pb_1.Message {
     get has_caption() {
         return pb_1.Message.getField(this, 17) != null;
     }
-    static fromObject(data: RecursivePartial<AdReplyInfo.AsObject>): AdReplyInfo {
+    static fromObject(data: AdReplyInfo.AsObjectPartial): AdReplyInfo {
         const message = new AdReplyInfo({});
         if (data.advertiserName != null) {
             message.advertiserName = data.advertiserName;
@@ -1347,13 +1395,13 @@ export class AdReplyInfo extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.has_advertiserName && this.advertiserName.length)
+        if (this.has_advertiserName && this.advertiserName!.length)
             writer.writeString(1, this.advertiserName);
         if (this.has_mediaType)
             writer.writeEnum(2, this.mediaType);
-        if (this.has_jpegThumbnail && this.jpegThumbnail.length)
+        if (this.has_jpegThumbnail && this.jpegThumbnail!.length)
             writer.writeBytes(16, this.jpegThumbnail);
-        if (this.has_caption && this.caption.length)
+        if (this.has_caption && this.caption!.length)
             writer.writeString(17, this.caption);
         if (!w)
             return writer.getResultBuffer();
@@ -1394,6 +1442,12 @@ export namespace AdReplyInfo {
         mediaType: AdReplyInfo.AD_REPLY_INFO_MEDIATYPE;
         jpegThumbnail: Uint8Array;
         caption: string;
+    };
+    export type AsObjectPartial = {
+        advertiserName?: string;
+        mediaType?: AdReplyInfo.AD_REPLY_INFO_MEDIATYPE;
+        jpegThumbnail?: Uint8Array;
+        caption?: string;
     };
     export enum AD_REPLY_INFO_MEDIATYPE {
         NONE = 0,
@@ -1487,9 +1541,9 @@ export class ContextInfo extends pb_1.Message {
         return pb_1.Message.getField(this, 2) != null;
     }
     get quotedMessage() {
-        return pb_1.Message.getWrapperField(this, Message, 3) as Message | undefined | null;
+        return pb_1.Message.getWrapperField(this, Message, 3) as Message | undefined;
     }
-    set quotedMessage(value: Message | undefined | null) {
+    set quotedMessage(value: Message | undefined) {
         pb_1.Message.setWrapperField(this, 3, value);
     }
     get has_quotedMessage() {
@@ -1556,18 +1610,18 @@ export class ContextInfo extends pb_1.Message {
         return pb_1.Message.getField(this, 22) != null;
     }
     get quotedAd() {
-        return pb_1.Message.getWrapperField(this, AdReplyInfo, 23) as AdReplyInfo | undefined | null;
+        return pb_1.Message.getWrapperField(this, AdReplyInfo, 23) as AdReplyInfo | undefined;
     }
-    set quotedAd(value: AdReplyInfo | undefined | null) {
+    set quotedAd(value: AdReplyInfo | undefined) {
         pb_1.Message.setWrapperField(this, 23, value);
     }
     get has_quotedAd() {
         return pb_1.Message.getField(this, 23) != null;
     }
     get placeholderKey() {
-        return pb_1.Message.getWrapperField(this, MessageKey, 24) as MessageKey | undefined | null;
+        return pb_1.Message.getWrapperField(this, MessageKey, 24) as MessageKey | undefined;
     }
-    set placeholderKey(value: MessageKey | undefined | null) {
+    set placeholderKey(value: MessageKey | undefined) {
         pb_1.Message.setWrapperField(this, 24, value);
     }
     get has_placeholderKey() {
@@ -1600,7 +1654,7 @@ export class ContextInfo extends pb_1.Message {
     get has_ephemeralSharedSecret() {
         return pb_1.Message.getField(this, 27) != null;
     }
-    static fromObject(data: RecursivePartial<ContextInfo.AsObject>): ContextInfo {
+    static fromObject(data: ContextInfo.AsObjectPartial): ContextInfo {
         const message = new ContextInfo({
             mentionedJid: data.mentionedJid
         });
@@ -1678,19 +1732,19 @@ export class ContextInfo extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.has_stanzaId && this.stanzaId.length)
+        if (this.has_stanzaId && this.stanzaId!.length)
             writer.writeString(1, this.stanzaId);
-        if (this.has_participant && this.participant.length)
+        if (this.has_participant && this.participant!.length)
             writer.writeString(2, this.participant);
         if (this.has_quotedMessage)
-            writer.writeMessage(3, this.quotedMessage, () => this.quotedMessage.serialize(writer));
-        if (this.has_remoteJid && this.remoteJid.length)
+            writer.writeMessage(3, this.quotedMessage, () => this.quotedMessage!.serialize(writer));
+        if (this.has_remoteJid && this.remoteJid!.length)
             writer.writeString(4, this.remoteJid);
         if (this.mentionedJid.length)
             writer.writeRepeatedString(15, this.mentionedJid);
-        if (this.has_conversionSource && this.conversionSource.length)
+        if (this.has_conversionSource && this.conversionSource!.length)
             writer.writeString(18, this.conversionSource);
-        if (this.has_conversionData && this.conversionData.length)
+        if (this.has_conversionData && this.conversionData!.length)
             writer.writeBytes(19, this.conversionData);
         if (this.has_conversionDelaySeconds)
             writer.writeUint32(20, this.conversionDelaySeconds);
@@ -1699,14 +1753,14 @@ export class ContextInfo extends pb_1.Message {
         if (this.has_isForwarded)
             writer.writeBool(22, this.isForwarded);
         if (this.has_quotedAd)
-            writer.writeMessage(23, this.quotedAd, () => this.quotedAd.serialize(writer));
+            writer.writeMessage(23, this.quotedAd, () => this.quotedAd!.serialize(writer));
         if (this.has_placeholderKey)
-            writer.writeMessage(24, this.placeholderKey, () => this.placeholderKey.serialize(writer));
+            writer.writeMessage(24, this.placeholderKey, () => this.placeholderKey!.serialize(writer));
         if (this.has_expiration)
             writer.writeUint32(25, this.expiration);
         if (this.has_ephemeralSettingTimestamp)
             writer.writeInt64(26, this.ephemeralSettingTimestamp);
-        if (this.has_ephemeralSharedSecret && this.ephemeralSharedSecret.length)
+        if (this.has_ephemeralSharedSecret && this.ephemeralSharedSecret!.length)
             writer.writeBytes(27, this.ephemeralSharedSecret);
         if (!w)
             return writer.getResultBuffer();
@@ -1792,6 +1846,23 @@ export namespace ContextInfo {
         ephemeralSettingTimestamp: number;
         ephemeralSharedSecret: Uint8Array;
     };
+    export type AsObjectPartial = {
+        stanzaId?: string;
+        participant?: string;
+        quotedMessage?: Message.AsObjectPartial;
+        remoteJid?: string;
+        mentionedJid: string[];
+        conversionSource?: string;
+        conversionData?: Uint8Array;
+        conversionDelaySeconds?: number;
+        forwardingScore?: number;
+        isForwarded?: boolean;
+        quotedAd?: AdReplyInfo.AsObjectPartial;
+        placeholderKey?: MessageKey.AsObjectPartial;
+        expiration?: number;
+        ephemeralSettingTimestamp?: number;
+        ephemeralSharedSecret?: Uint8Array;
+    };
 }
 export class SenderKeyDistributionMessage extends pb_1.Message {
     #one_of_decls: number[][] = [];
@@ -1828,7 +1899,7 @@ export class SenderKeyDistributionMessage extends pb_1.Message {
     get has_axolotlSenderKeyDistributionMessage() {
         return pb_1.Message.getField(this, 2) != null;
     }
-    static fromObject(data: RecursivePartial<SenderKeyDistributionMessage.AsObject>): SenderKeyDistributionMessage {
+    static fromObject(data: SenderKeyDistributionMessage.AsObjectPartial): SenderKeyDistributionMessage {
         const message = new SenderKeyDistributionMessage({});
         if (data.groupId != null) {
             message.groupId = data.groupId;
@@ -1849,9 +1920,9 @@ export class SenderKeyDistributionMessage extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.has_groupId && this.groupId.length)
+        if (this.has_groupId && this.groupId!.length)
             writer.writeString(1, this.groupId);
-        if (this.has_axolotlSenderKeyDistributionMessage && this.axolotlSenderKeyDistributionMessage.length)
+        if (this.has_axolotlSenderKeyDistributionMessage && this.axolotlSenderKeyDistributionMessage!.length)
             writer.writeBytes(2, this.axolotlSenderKeyDistributionMessage);
         if (!w)
             return writer.getResultBuffer();
@@ -1884,6 +1955,10 @@ export namespace SenderKeyDistributionMessage {
     export type AsObject = {
         groupId: string;
         axolotlSenderKeyDistributionMessage: Uint8Array;
+    };
+    export type AsObjectPartial = {
+        groupId?: string;
+        axolotlSenderKeyDistributionMessage?: Uint8Array;
     };
 }
 export class ImageMessage extends pb_1.Message {
@@ -2090,9 +2165,9 @@ export class ImageMessage extends pb_1.Message {
         return pb_1.Message.getField(this, 16) != null;
     }
     get contextInfo() {
-        return pb_1.Message.getWrapperField(this, ContextInfo, 17) as ContextInfo | undefined | null;
+        return pb_1.Message.getWrapperField(this, ContextInfo, 17) as ContextInfo | undefined;
     }
-    set contextInfo(value: ContextInfo | undefined | null) {
+    set contextInfo(value: ContextInfo | undefined) {
         pb_1.Message.setWrapperField(this, 17, value);
     }
     get has_contextInfo() {
@@ -2158,7 +2233,7 @@ export class ImageMessage extends pb_1.Message {
     get has_midQualityFileEncSha256() {
         return pb_1.Message.getField(this, 24) != null;
     }
-    static fromObject(data: RecursivePartial<ImageMessage.AsObject>): ImageMessage {
+    static fromObject(data: ImageMessage.AsObjectPartial): ImageMessage {
         const message = new ImageMessage({
             interactiveAnnotations: data.interactiveAnnotations.map(item => InteractiveAnnotation.fromObject(item)),
             scanLengths: data.scanLengths
@@ -2254,13 +2329,13 @@ export class ImageMessage extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.has_url && this.url.length)
+        if (this.has_url && this.url!.length)
             writer.writeString(1, this.url);
-        if (this.has_mimetype && this.mimetype.length)
+        if (this.has_mimetype && this.mimetype!.length)
             writer.writeString(2, this.mimetype);
-        if (this.has_caption && this.caption.length)
+        if (this.has_caption && this.caption!.length)
             writer.writeString(3, this.caption);
-        if (this.has_fileSha256 && this.fileSha256.length)
+        if (this.has_fileSha256 && this.fileSha256!.length)
             writer.writeBytes(4, this.fileSha256);
         if (this.has_fileLength)
             writer.writeUint64(5, this.fileLength);
@@ -2268,33 +2343,33 @@ export class ImageMessage extends pb_1.Message {
             writer.writeUint32(6, this.height);
         if (this.has_width)
             writer.writeUint32(7, this.width);
-        if (this.has_mediaKey && this.mediaKey.length)
+        if (this.has_mediaKey && this.mediaKey!.length)
             writer.writeBytes(8, this.mediaKey);
-        if (this.has_fileEncSha256 && this.fileEncSha256.length)
+        if (this.has_fileEncSha256 && this.fileEncSha256!.length)
             writer.writeBytes(9, this.fileEncSha256);
         if (this.interactiveAnnotations.length)
-            writer.writeRepeatedMessage(10, this.interactiveAnnotations, (item: InteractiveAnnotation) => item.serialize(writer));
-        if (this.has_directPath && this.directPath.length)
+            writer.writeRepeatedMessage(10, this.interactiveAnnotations, (item: InteractiveAnnotation) => item!.serialize(writer));
+        if (this.has_directPath && this.directPath!.length)
             writer.writeString(11, this.directPath);
         if (this.has_mediaKeyTimestamp)
             writer.writeInt64(12, this.mediaKeyTimestamp);
-        if (this.has_jpegThumbnail && this.jpegThumbnail.length)
+        if (this.has_jpegThumbnail && this.jpegThumbnail!.length)
             writer.writeBytes(16, this.jpegThumbnail);
         if (this.has_contextInfo)
-            writer.writeMessage(17, this.contextInfo, () => this.contextInfo.serialize(writer));
-        if (this.has_firstScanSidecar && this.firstScanSidecar.length)
+            writer.writeMessage(17, this.contextInfo, () => this.contextInfo!.serialize(writer));
+        if (this.has_firstScanSidecar && this.firstScanSidecar!.length)
             writer.writeBytes(18, this.firstScanSidecar);
         if (this.has_firstScanLength)
             writer.writeUint32(19, this.firstScanLength);
         if (this.has_experimentGroupId)
             writer.writeUint32(20, this.experimentGroupId);
-        if (this.has_scansSidecar && this.scansSidecar.length)
+        if (this.has_scansSidecar && this.scansSidecar!.length)
             writer.writeBytes(21, this.scansSidecar);
         if (this.scanLengths.length)
             writer.writeRepeatedUint32(22, this.scanLengths);
-        if (this.has_midQualityFileSha256 && this.midQualityFileSha256.length)
+        if (this.has_midQualityFileSha256 && this.midQualityFileSha256!.length)
             writer.writeBytes(23, this.midQualityFileSha256);
-        if (this.has_midQualityFileEncSha256 && this.midQualityFileEncSha256.length)
+        if (this.has_midQualityFileEncSha256 && this.midQualityFileEncSha256!.length)
             writer.writeBytes(24, this.midQualityFileEncSha256);
         if (!w)
             return writer.getResultBuffer();
@@ -2404,6 +2479,29 @@ export namespace ImageMessage {
         midQualityFileSha256: Uint8Array;
         midQualityFileEncSha256: Uint8Array;
     };
+    export type AsObjectPartial = {
+        url?: string;
+        mimetype?: string;
+        caption?: string;
+        fileSha256?: Uint8Array;
+        fileLength?: number;
+        height?: number;
+        width?: number;
+        mediaKey?: Uint8Array;
+        fileEncSha256?: Uint8Array;
+        interactiveAnnotations: InteractiveAnnotation.AsObjectPartial[];
+        directPath?: string;
+        mediaKeyTimestamp?: number;
+        jpegThumbnail?: Uint8Array;
+        contextInfo?: ContextInfo.AsObjectPartial;
+        firstScanSidecar?: Uint8Array;
+        firstScanLength?: number;
+        experimentGroupId?: number;
+        scansSidecar?: Uint8Array;
+        scanLengths: number[];
+        midQualityFileSha256?: Uint8Array;
+        midQualityFileEncSha256?: Uint8Array;
+    };
 }
 export class ContactMessage extends pb_1.Message {
     #one_of_decls: number[][] = [];
@@ -2445,15 +2543,15 @@ export class ContactMessage extends pb_1.Message {
         return pb_1.Message.getField(this, 16) != null;
     }
     get contextInfo() {
-        return pb_1.Message.getWrapperField(this, ContextInfo, 17) as ContextInfo | undefined | null;
+        return pb_1.Message.getWrapperField(this, ContextInfo, 17) as ContextInfo | undefined;
     }
-    set contextInfo(value: ContextInfo | undefined | null) {
+    set contextInfo(value: ContextInfo | undefined) {
         pb_1.Message.setWrapperField(this, 17, value);
     }
     get has_contextInfo() {
         return pb_1.Message.getField(this, 17) != null;
     }
-    static fromObject(data: RecursivePartial<ContactMessage.AsObject>): ContactMessage {
+    static fromObject(data: ContactMessage.AsObjectPartial): ContactMessage {
         const message = new ContactMessage({});
         if (data.displayName != null) {
             message.displayName = data.displayName;
@@ -2480,12 +2578,12 @@ export class ContactMessage extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.has_displayName && this.displayName.length)
+        if (this.has_displayName && this.displayName!.length)
             writer.writeString(1, this.displayName);
-        if (this.has_vcard && this.vcard.length)
+        if (this.has_vcard && this.vcard!.length)
             writer.writeString(16, this.vcard);
         if (this.has_contextInfo)
-            writer.writeMessage(17, this.contextInfo, () => this.contextInfo.serialize(writer));
+            writer.writeMessage(17, this.contextInfo, () => this.contextInfo!.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
     }
@@ -2521,6 +2619,11 @@ export namespace ContactMessage {
         displayName: string;
         vcard: string;
         contextInfo?: ContextInfo.AsObject;
+    };
+    export type AsObjectPartial = {
+        displayName?: string;
+        vcard?: string;
+        contextInfo?: ContextInfo.AsObjectPartial;
     };
 }
 export class LocationMessage extends pb_1.Message {
@@ -2680,15 +2783,15 @@ export class LocationMessage extends pb_1.Message {
         return pb_1.Message.getField(this, 16) != null;
     }
     get contextInfo() {
-        return pb_1.Message.getWrapperField(this, ContextInfo, 17) as ContextInfo | undefined | null;
+        return pb_1.Message.getWrapperField(this, ContextInfo, 17) as ContextInfo | undefined;
     }
-    set contextInfo(value: ContextInfo | undefined | null) {
+    set contextInfo(value: ContextInfo | undefined) {
         pb_1.Message.setWrapperField(this, 17, value);
     }
     get has_contextInfo() {
         return pb_1.Message.getField(this, 17) != null;
     }
-    static fromObject(data: RecursivePartial<LocationMessage.AsObject>): LocationMessage {
+    static fromObject(data: LocationMessage.AsObjectPartial): LocationMessage {
         const message = new LocationMessage({});
         if (data.degreesLatitude != null) {
             message.degreesLatitude = data.degreesLatitude;
@@ -2755,11 +2858,11 @@ export class LocationMessage extends pb_1.Message {
             writer.writeDouble(1, this.degreesLatitude);
         if (this.has_degreesLongitude)
             writer.writeDouble(2, this.degreesLongitude);
-        if (this.has_name && this.name.length)
+        if (this.has_name && this.name!.length)
             writer.writeString(3, this.name);
-        if (this.has_address && this.address.length)
+        if (this.has_address && this.address!.length)
             writer.writeString(4, this.address);
-        if (this.has_url && this.url.length)
+        if (this.has_url && this.url!.length)
             writer.writeString(5, this.url);
         if (this.has_isLive)
             writer.writeBool(6, this.isLive);
@@ -2769,12 +2872,12 @@ export class LocationMessage extends pb_1.Message {
             writer.writeFloat(8, this.speedInMps);
         if (this.has_degreesClockwiseFromMagneticNorth)
             writer.writeUint32(9, this.degreesClockwiseFromMagneticNorth);
-        if (this.has_comment && this.comment.length)
+        if (this.has_comment && this.comment!.length)
             writer.writeString(11, this.comment);
-        if (this.has_jpegThumbnail && this.jpegThumbnail.length)
+        if (this.has_jpegThumbnail && this.jpegThumbnail!.length)
             writer.writeBytes(16, this.jpegThumbnail);
         if (this.has_contextInfo)
-            writer.writeMessage(17, this.contextInfo, () => this.contextInfo.serialize(writer));
+            writer.writeMessage(17, this.contextInfo, () => this.contextInfo!.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
     }
@@ -2846,6 +2949,20 @@ export namespace LocationMessage {
         comment: string;
         jpegThumbnail: Uint8Array;
         contextInfo?: ContextInfo.AsObject;
+    };
+    export type AsObjectPartial = {
+        degreesLatitude?: number;
+        degreesLongitude?: number;
+        name?: string;
+        address?: string;
+        url?: string;
+        isLive?: boolean;
+        accuracyInMeters?: number;
+        speedInMps?: number;
+        degreesClockwiseFromMagneticNorth?: number;
+        comment?: string;
+        jpegThumbnail?: Uint8Array;
+        contextInfo?: ContextInfo.AsObjectPartial;
     };
 }
 export class ExtendedTextMessage extends pb_1.Message {
@@ -2996,9 +3113,9 @@ export class ExtendedTextMessage extends pb_1.Message {
         return pb_1.Message.getField(this, 16) != null;
     }
     get contextInfo() {
-        return pb_1.Message.getWrapperField(this, ContextInfo, 17) as ContextInfo | undefined | null;
+        return pb_1.Message.getWrapperField(this, ContextInfo, 17) as ContextInfo | undefined;
     }
-    set contextInfo(value: ContextInfo | undefined | null) {
+    set contextInfo(value: ContextInfo | undefined) {
         pb_1.Message.setWrapperField(this, 17, value);
     }
     get has_contextInfo() {
@@ -3013,7 +3130,7 @@ export class ExtendedTextMessage extends pb_1.Message {
     get has_doNotPlayInline() {
         return pb_1.Message.getField(this, 18) != null;
     }
-    static fromObject(data: RecursivePartial<ExtendedTextMessage.AsObject>): ExtendedTextMessage {
+    static fromObject(data: ExtendedTextMessage.AsObjectPartial): ExtendedTextMessage {
         const message = new ExtendedTextMessage({});
         if (data.text != null) {
             message.text = data.text;
@@ -3076,15 +3193,15 @@ export class ExtendedTextMessage extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.has_text && this.text.length)
+        if (this.has_text && this.text!.length)
             writer.writeString(1, this.text);
-        if (this.has_matchedText && this.matchedText.length)
+        if (this.has_matchedText && this.matchedText!.length)
             writer.writeString(2, this.matchedText);
-        if (this.has_canonicalUrl && this.canonicalUrl.length)
+        if (this.has_canonicalUrl && this.canonicalUrl!.length)
             writer.writeString(4, this.canonicalUrl);
-        if (this.has_description && this.description.length)
+        if (this.has_description && this.description!.length)
             writer.writeString(5, this.description);
-        if (this.has_title && this.title.length)
+        if (this.has_title && this.title!.length)
             writer.writeString(6, this.title);
         if (this.has_textArgb)
             writer.writeFixed32(7, this.textArgb);
@@ -3094,10 +3211,10 @@ export class ExtendedTextMessage extends pb_1.Message {
             writer.writeEnum(9, this.font);
         if (this.has_previewType)
             writer.writeEnum(10, this.previewType);
-        if (this.has_jpegThumbnail && this.jpegThumbnail.length)
+        if (this.has_jpegThumbnail && this.jpegThumbnail!.length)
             writer.writeBytes(16, this.jpegThumbnail);
         if (this.has_contextInfo)
-            writer.writeMessage(17, this.contextInfo, () => this.contextInfo.serialize(writer));
+            writer.writeMessage(17, this.contextInfo, () => this.contextInfo!.serialize(writer));
         if (this.has_doNotPlayInline)
             writer.writeBool(18, this.doNotPlayInline);
         if (!w)
@@ -3171,6 +3288,20 @@ export namespace ExtendedTextMessage {
         jpegThumbnail: Uint8Array;
         contextInfo?: ContextInfo.AsObject;
         doNotPlayInline: boolean;
+    };
+    export type AsObjectPartial = {
+        text?: string;
+        matchedText?: string;
+        canonicalUrl?: string;
+        description?: string;
+        title?: string;
+        textArgb?: number;
+        backgroundArgb?: number;
+        font?: ExtendedTextMessage.EXTENDED_TEXT_MESSAGE_FONTTYPE;
+        previewType?: ExtendedTextMessage.EXTENDED_TEXT_MESSAGE_PREVIEWTYPE;
+        jpegThumbnail?: Uint8Array;
+        contextInfo?: ContextInfo.AsObjectPartial;
+        doNotPlayInline?: boolean;
     };
     export enum EXTENDED_TEXT_MESSAGE_FONTTYPE {
         SANS_SERIF = 0,
@@ -3355,15 +3486,15 @@ export class DocumentMessage extends pb_1.Message {
         return pb_1.Message.getField(this, 16) != null;
     }
     get contextInfo() {
-        return pb_1.Message.getWrapperField(this, ContextInfo, 17) as ContextInfo | undefined | null;
+        return pb_1.Message.getWrapperField(this, ContextInfo, 17) as ContextInfo | undefined;
     }
-    set contextInfo(value: ContextInfo | undefined | null) {
+    set contextInfo(value: ContextInfo | undefined) {
         pb_1.Message.setWrapperField(this, 17, value);
     }
     get has_contextInfo() {
         return pb_1.Message.getField(this, 17) != null;
     }
-    static fromObject(data: RecursivePartial<DocumentMessage.AsObject>): DocumentMessage {
+    static fromObject(data: DocumentMessage.AsObjectPartial): DocumentMessage {
         const message = new DocumentMessage({});
         if (data.url != null) {
             message.url = data.url;
@@ -3430,32 +3561,32 @@ export class DocumentMessage extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.has_url && this.url.length)
+        if (this.has_url && this.url!.length)
             writer.writeString(1, this.url);
-        if (this.has_mimetype && this.mimetype.length)
+        if (this.has_mimetype && this.mimetype!.length)
             writer.writeString(2, this.mimetype);
-        if (this.has_title && this.title.length)
+        if (this.has_title && this.title!.length)
             writer.writeString(3, this.title);
-        if (this.has_fileSha256 && this.fileSha256.length)
+        if (this.has_fileSha256 && this.fileSha256!.length)
             writer.writeBytes(4, this.fileSha256);
         if (this.has_fileLength)
             writer.writeUint64(5, this.fileLength);
         if (this.has_pageCount)
             writer.writeUint32(6, this.pageCount);
-        if (this.has_mediaKey && this.mediaKey.length)
+        if (this.has_mediaKey && this.mediaKey!.length)
             writer.writeBytes(7, this.mediaKey);
-        if (this.has_fileName && this.fileName.length)
+        if (this.has_fileName && this.fileName!.length)
             writer.writeString(8, this.fileName);
-        if (this.has_fileEncSha256 && this.fileEncSha256.length)
+        if (this.has_fileEncSha256 && this.fileEncSha256!.length)
             writer.writeBytes(9, this.fileEncSha256);
-        if (this.has_directPath && this.directPath.length)
+        if (this.has_directPath && this.directPath!.length)
             writer.writeString(10, this.directPath);
         if (this.has_mediaKeyTimestamp)
             writer.writeInt64(11, this.mediaKeyTimestamp);
-        if (this.has_jpegThumbnail && this.jpegThumbnail.length)
+        if (this.has_jpegThumbnail && this.jpegThumbnail!.length)
             writer.writeBytes(16, this.jpegThumbnail);
         if (this.has_contextInfo)
-            writer.writeMessage(17, this.contextInfo, () => this.contextInfo.serialize(writer));
+            writer.writeMessage(17, this.contextInfo, () => this.contextInfo!.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
     }
@@ -3531,6 +3662,21 @@ export namespace DocumentMessage {
         mediaKeyTimestamp: number;
         jpegThumbnail: Uint8Array;
         contextInfo?: ContextInfo.AsObject;
+    };
+    export type AsObjectPartial = {
+        url?: string;
+        mimetype?: string;
+        title?: string;
+        fileSha256?: Uint8Array;
+        fileLength?: number;
+        pageCount?: number;
+        mediaKey?: Uint8Array;
+        fileName?: string;
+        fileEncSha256?: Uint8Array;
+        directPath?: string;
+        mediaKeyTimestamp?: number;
+        jpegThumbnail?: Uint8Array;
+        contextInfo?: ContextInfo.AsObjectPartial;
     };
 }
 export class AudioMessage extends pb_1.Message {
@@ -3681,9 +3827,9 @@ export class AudioMessage extends pb_1.Message {
         return pb_1.Message.getField(this, 10) != null;
     }
     get contextInfo() {
-        return pb_1.Message.getWrapperField(this, ContextInfo, 17) as ContextInfo | undefined | null;
+        return pb_1.Message.getWrapperField(this, ContextInfo, 17) as ContextInfo | undefined;
     }
-    set contextInfo(value: ContextInfo | undefined | null) {
+    set contextInfo(value: ContextInfo | undefined) {
         pb_1.Message.setWrapperField(this, 17, value);
     }
     get has_contextInfo() {
@@ -3698,7 +3844,7 @@ export class AudioMessage extends pb_1.Message {
     get has_streamingSidecar() {
         return pb_1.Message.getField(this, 18) != null;
     }
-    static fromObject(data: RecursivePartial<AudioMessage.AsObject>): AudioMessage {
+    static fromObject(data: AudioMessage.AsObjectPartial): AudioMessage {
         const message = new AudioMessage({});
         if (data.url != null) {
             message.url = data.url;
@@ -3761,11 +3907,11 @@ export class AudioMessage extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.has_url && this.url.length)
+        if (this.has_url && this.url!.length)
             writer.writeString(1, this.url);
-        if (this.has_mimetype && this.mimetype.length)
+        if (this.has_mimetype && this.mimetype!.length)
             writer.writeString(2, this.mimetype);
-        if (this.has_fileSha256 && this.fileSha256.length)
+        if (this.has_fileSha256 && this.fileSha256!.length)
             writer.writeBytes(3, this.fileSha256);
         if (this.has_fileLength)
             writer.writeUint64(4, this.fileLength);
@@ -3773,17 +3919,17 @@ export class AudioMessage extends pb_1.Message {
             writer.writeUint32(5, this.seconds);
         if (this.has_ptt)
             writer.writeBool(6, this.ptt);
-        if (this.has_mediaKey && this.mediaKey.length)
+        if (this.has_mediaKey && this.mediaKey!.length)
             writer.writeBytes(7, this.mediaKey);
-        if (this.has_fileEncSha256 && this.fileEncSha256.length)
+        if (this.has_fileEncSha256 && this.fileEncSha256!.length)
             writer.writeBytes(8, this.fileEncSha256);
-        if (this.has_directPath && this.directPath.length)
+        if (this.has_directPath && this.directPath!.length)
             writer.writeString(9, this.directPath);
         if (this.has_mediaKeyTimestamp)
             writer.writeInt64(10, this.mediaKeyTimestamp);
         if (this.has_contextInfo)
-            writer.writeMessage(17, this.contextInfo, () => this.contextInfo.serialize(writer));
-        if (this.has_streamingSidecar && this.streamingSidecar.length)
+            writer.writeMessage(17, this.contextInfo, () => this.contextInfo!.serialize(writer));
+        if (this.has_streamingSidecar && this.streamingSidecar!.length)
             writer.writeBytes(18, this.streamingSidecar);
         if (!w)
             return writer.getResultBuffer();
@@ -3856,6 +4002,20 @@ export namespace AudioMessage {
         mediaKeyTimestamp: number;
         contextInfo?: ContextInfo.AsObject;
         streamingSidecar: Uint8Array;
+    };
+    export type AsObjectPartial = {
+        url?: string;
+        mimetype?: string;
+        fileSha256?: Uint8Array;
+        fileLength?: number;
+        seconds?: number;
+        ptt?: boolean;
+        mediaKey?: Uint8Array;
+        fileEncSha256?: Uint8Array;
+        directPath?: string;
+        mediaKeyTimestamp?: number;
+        contextInfo?: ContextInfo.AsObjectPartial;
+        streamingSidecar?: Uint8Array;
     };
 }
 export class VideoMessage extends pb_1.Message {
@@ -4070,9 +4230,9 @@ export class VideoMessage extends pb_1.Message {
         return pb_1.Message.getField(this, 16) != null;
     }
     get contextInfo() {
-        return pb_1.Message.getWrapperField(this, ContextInfo, 17) as ContextInfo | undefined | null;
+        return pb_1.Message.getWrapperField(this, ContextInfo, 17) as ContextInfo | undefined;
     }
-    set contextInfo(value: ContextInfo | undefined | null) {
+    set contextInfo(value: ContextInfo | undefined) {
         pb_1.Message.setWrapperField(this, 17, value);
     }
     get has_contextInfo() {
@@ -4096,7 +4256,7 @@ export class VideoMessage extends pb_1.Message {
     get has_gifAttribution() {
         return pb_1.Message.getField(this, 19) != null;
     }
-    static fromObject(data: RecursivePartial<VideoMessage.AsObject>): VideoMessage {
+    static fromObject(data: VideoMessage.AsObjectPartial): VideoMessage {
         const message = new VideoMessage({
             interactiveAnnotations: data.interactiveAnnotations.map(item => InteractiveAnnotation.fromObject(item))
         });
@@ -4182,19 +4342,19 @@ export class VideoMessage extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.has_url && this.url.length)
+        if (this.has_url && this.url!.length)
             writer.writeString(1, this.url);
-        if (this.has_mimetype && this.mimetype.length)
+        if (this.has_mimetype && this.mimetype!.length)
             writer.writeString(2, this.mimetype);
-        if (this.has_fileSha256 && this.fileSha256.length)
+        if (this.has_fileSha256 && this.fileSha256!.length)
             writer.writeBytes(3, this.fileSha256);
         if (this.has_fileLength)
             writer.writeUint64(4, this.fileLength);
         if (this.has_seconds)
             writer.writeUint32(5, this.seconds);
-        if (this.has_mediaKey && this.mediaKey.length)
+        if (this.has_mediaKey && this.mediaKey!.length)
             writer.writeBytes(6, this.mediaKey);
-        if (this.has_caption && this.caption.length)
+        if (this.has_caption && this.caption!.length)
             writer.writeString(7, this.caption);
         if (this.has_gifPlayback)
             writer.writeBool(8, this.gifPlayback);
@@ -4202,19 +4362,19 @@ export class VideoMessage extends pb_1.Message {
             writer.writeUint32(9, this.height);
         if (this.has_width)
             writer.writeUint32(10, this.width);
-        if (this.has_fileEncSha256 && this.fileEncSha256.length)
+        if (this.has_fileEncSha256 && this.fileEncSha256!.length)
             writer.writeBytes(11, this.fileEncSha256);
         if (this.interactiveAnnotations.length)
-            writer.writeRepeatedMessage(12, this.interactiveAnnotations, (item: InteractiveAnnotation) => item.serialize(writer));
-        if (this.has_directPath && this.directPath.length)
+            writer.writeRepeatedMessage(12, this.interactiveAnnotations, (item: InteractiveAnnotation) => item!.serialize(writer));
+        if (this.has_directPath && this.directPath!.length)
             writer.writeString(13, this.directPath);
         if (this.has_mediaKeyTimestamp)
             writer.writeInt64(14, this.mediaKeyTimestamp);
-        if (this.has_jpegThumbnail && this.jpegThumbnail.length)
+        if (this.has_jpegThumbnail && this.jpegThumbnail!.length)
             writer.writeBytes(16, this.jpegThumbnail);
         if (this.has_contextInfo)
-            writer.writeMessage(17, this.contextInfo, () => this.contextInfo.serialize(writer));
-        if (this.has_streamingSidecar && this.streamingSidecar.length)
+            writer.writeMessage(17, this.contextInfo, () => this.contextInfo!.serialize(writer));
+        if (this.has_streamingSidecar && this.streamingSidecar!.length)
             writer.writeBytes(18, this.streamingSidecar);
         if (this.has_gifAttribution)
             writer.writeEnum(19, this.gifAttribution);
@@ -4314,6 +4474,26 @@ export namespace VideoMessage {
         streamingSidecar: Uint8Array;
         gifAttribution: VideoMessage.VIDEO_MESSAGE_ATTRIBUTION;
     };
+    export type AsObjectPartial = {
+        url?: string;
+        mimetype?: string;
+        fileSha256?: Uint8Array;
+        fileLength?: number;
+        seconds?: number;
+        mediaKey?: Uint8Array;
+        caption?: string;
+        gifPlayback?: boolean;
+        height?: number;
+        width?: number;
+        fileEncSha256?: Uint8Array;
+        interactiveAnnotations: InteractiveAnnotation.AsObjectPartial[];
+        directPath?: string;
+        mediaKeyTimestamp?: number;
+        jpegThumbnail?: Uint8Array;
+        contextInfo?: ContextInfo.AsObjectPartial;
+        streamingSidecar?: Uint8Array;
+        gifAttribution?: VideoMessage.VIDEO_MESSAGE_ATTRIBUTION;
+    };
     export enum VIDEO_MESSAGE_ATTRIBUTION {
         NONE = 0,
         GIPHY = 1,
@@ -4342,7 +4522,7 @@ export class Call extends pb_1.Message {
     get has_callKey() {
         return pb_1.Message.getField(this, 1) != null;
     }
-    static fromObject(data: RecursivePartial<Call.AsObject>): Call {
+    static fromObject(data: Call.AsObjectPartial): Call {
         const message = new Call({});
         if (data.callKey != null) {
             message.callKey = data.callKey;
@@ -4359,7 +4539,7 @@ export class Call extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.has_callKey && this.callKey.length)
+        if (this.has_callKey && this.callKey!.length)
             writer.writeBytes(1, this.callKey);
         if (!w)
             return writer.getResultBuffer();
@@ -4388,6 +4568,9 @@ export class Call extends pb_1.Message {
 export namespace Call {
     export type AsObject = {
         callKey: Uint8Array;
+    };
+    export type AsObjectPartial = {
+        callKey?: Uint8Array;
     };
 }
 export class Chat extends pb_1.Message {
@@ -4425,7 +4608,7 @@ export class Chat extends pb_1.Message {
     get has_id() {
         return pb_1.Message.getField(this, 2) != null;
     }
-    static fromObject(data: RecursivePartial<Chat.AsObject>): Chat {
+    static fromObject(data: Chat.AsObjectPartial): Chat {
         const message = new Chat({});
         if (data.displayName != null) {
             message.displayName = data.displayName;
@@ -4446,9 +4629,9 @@ export class Chat extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.has_displayName && this.displayName.length)
+        if (this.has_displayName && this.displayName!.length)
             writer.writeString(1, this.displayName);
-        if (this.has_id && this.id.length)
+        if (this.has_id && this.id!.length)
             writer.writeString(2, this.id);
         if (!w)
             return writer.getResultBuffer();
@@ -4482,6 +4665,10 @@ export namespace Chat {
         displayName: string;
         id: string;
     };
+    export type AsObjectPartial = {
+        displayName?: string;
+        id?: string;
+    };
 }
 export class ProtocolMessage extends pb_1.Message {
     #one_of_decls: number[][] = [];
@@ -4513,9 +4700,9 @@ export class ProtocolMessage extends pb_1.Message {
         }
     }
     get key() {
-        return pb_1.Message.getWrapperField(this, MessageKey, 1) as MessageKey | undefined | null;
+        return pb_1.Message.getWrapperField(this, MessageKey, 1) as MessageKey | undefined;
     }
-    set key(value: MessageKey | undefined | null) {
+    set key(value: MessageKey | undefined) {
         pb_1.Message.setWrapperField(this, 1, value);
     }
     get has_key() {
@@ -4549,15 +4736,15 @@ export class ProtocolMessage extends pb_1.Message {
         return pb_1.Message.getField(this, 5) != null;
     }
     get historySyncNotification() {
-        return pb_1.Message.getWrapperField(this, HistorySyncNotification, 6) as HistorySyncNotification | undefined | null;
+        return pb_1.Message.getWrapperField(this, HistorySyncNotification, 6) as HistorySyncNotification | undefined;
     }
-    set historySyncNotification(value: HistorySyncNotification | undefined | null) {
+    set historySyncNotification(value: HistorySyncNotification | undefined) {
         pb_1.Message.setWrapperField(this, 6, value);
     }
     get has_historySyncNotification() {
         return pb_1.Message.getField(this, 6) != null;
     }
-    static fromObject(data: RecursivePartial<ProtocolMessage.AsObject>): ProtocolMessage {
+    static fromObject(data: ProtocolMessage.AsObjectPartial): ProtocolMessage {
         const message = new ProtocolMessage({});
         if (data.key != null) {
             message.key = MessageKey.fromObject(data.key);
@@ -4595,7 +4782,7 @@ export class ProtocolMessage extends pb_1.Message {
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
         if (this.has_key)
-            writer.writeMessage(1, this.key, () => this.key.serialize(writer));
+            writer.writeMessage(1, this.key, () => this.key!.serialize(writer));
         if (this.has_type)
             writer.writeEnum(2, this.type);
         if (this.has_ephemeralExpiration)
@@ -4603,7 +4790,7 @@ export class ProtocolMessage extends pb_1.Message {
         if (this.has_ephemeralSettingTimestamp)
             writer.writeInt64(5, this.ephemeralSettingTimestamp);
         if (this.has_historySyncNotification)
-            writer.writeMessage(6, this.historySyncNotification, () => this.historySyncNotification.serialize(writer));
+            writer.writeMessage(6, this.historySyncNotification, () => this.historySyncNotification!.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
     }
@@ -4647,6 +4834,13 @@ export namespace ProtocolMessage {
         ephemeralExpiration: number;
         ephemeralSettingTimestamp: number;
         historySyncNotification?: HistorySyncNotification.AsObject;
+    };
+    export type AsObjectPartial = {
+        key?: MessageKey.AsObjectPartial;
+        type?: ProtocolMessage.PROTOCOL_MESSAGE_TYPE;
+        ephemeralExpiration?: number;
+        ephemeralSettingTimestamp?: number;
+        historySyncNotification?: HistorySyncNotification.AsObjectPartial;
     };
     export enum PROTOCOL_MESSAGE_TYPE {
         REVOKE = 0,
@@ -4768,7 +4962,7 @@ export class HistorySyncNotification extends pb_1.Message {
     get has_originalMessageId() {
         return pb_1.Message.getField(this, 8) != null;
     }
-    static fromObject(data: RecursivePartial<HistorySyncNotification.AsObject>): HistorySyncNotification {
+    static fromObject(data: HistorySyncNotification.AsObjectPartial): HistorySyncNotification {
         const message = new HistorySyncNotification({});
         if (data.fileSha256 != null) {
             message.fileSha256 = data.fileSha256;
@@ -4813,21 +5007,21 @@ export class HistorySyncNotification extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.has_fileSha256 && this.fileSha256.length)
+        if (this.has_fileSha256 && this.fileSha256!.length)
             writer.writeBytes(1, this.fileSha256);
         if (this.has_fileLength)
             writer.writeUint64(2, this.fileLength);
-        if (this.has_mediaKey && this.mediaKey.length)
+        if (this.has_mediaKey && this.mediaKey!.length)
             writer.writeBytes(3, this.mediaKey);
-        if (this.has_fileEncSha256 && this.fileEncSha256.length)
+        if (this.has_fileEncSha256 && this.fileEncSha256!.length)
             writer.writeBytes(4, this.fileEncSha256);
-        if (this.has_directPath && this.directPath.length)
+        if (this.has_directPath && this.directPath!.length)
             writer.writeString(5, this.directPath);
         if (this.has_syncType)
             writer.writeEnum(6, this.syncType);
         if (this.has_chunkOrder)
             writer.writeUint32(7, this.chunkOrder);
-        if (this.has_originalMessageId && this.originalMessageId.length)
+        if (this.has_originalMessageId && this.originalMessageId!.length)
             writer.writeString(8, this.originalMessageId);
         if (!w)
             return writer.getResultBuffer();
@@ -4885,6 +5079,16 @@ export namespace HistorySyncNotification {
         chunkOrder: number;
         originalMessageId: string;
     };
+    export type AsObjectPartial = {
+        fileSha256?: Uint8Array;
+        fileLength?: number;
+        mediaKey?: Uint8Array;
+        fileEncSha256?: Uint8Array;
+        directPath?: string;
+        syncType?: HistorySyncNotification.HISTORY_SYNC_NOTIFICATION_HISTORYSYNCTYPE;
+        chunkOrder?: number;
+        originalMessageId?: string;
+    };
     export enum HISTORY_SYNC_NOTIFICATION_HISTORYSYNCTYPE {
         INITIAL_BOOTSTRAP = 0,
         INITIAL_STATUS_V3 = 1,
@@ -4928,15 +5132,15 @@ export class ContactsArrayMessage extends pb_1.Message {
         pb_1.Message.setRepeatedWrapperField(this, 2, value);
     }
     get contextInfo() {
-        return pb_1.Message.getWrapperField(this, ContextInfo, 17) as ContextInfo | undefined | null;
+        return pb_1.Message.getWrapperField(this, ContextInfo, 17) as ContextInfo | undefined;
     }
-    set contextInfo(value: ContextInfo | undefined | null) {
+    set contextInfo(value: ContextInfo | undefined) {
         pb_1.Message.setWrapperField(this, 17, value);
     }
     get has_contextInfo() {
         return pb_1.Message.getField(this, 17) != null;
     }
-    static fromObject(data: RecursivePartial<ContactsArrayMessage.AsObject>): ContactsArrayMessage {
+    static fromObject(data: ContactsArrayMessage.AsObjectPartial): ContactsArrayMessage {
         const message = new ContactsArrayMessage({
             contacts: data.contacts.map(item => ContactMessage.fromObject(item))
         });
@@ -4962,12 +5166,12 @@ export class ContactsArrayMessage extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.has_displayName && this.displayName.length)
+        if (this.has_displayName && this.displayName!.length)
             writer.writeString(1, this.displayName);
         if (this.contacts.length)
-            writer.writeRepeatedMessage(2, this.contacts, (item: ContactMessage) => item.serialize(writer));
+            writer.writeRepeatedMessage(2, this.contacts, (item: ContactMessage) => item!.serialize(writer));
         if (this.has_contextInfo)
-            writer.writeMessage(17, this.contextInfo, () => this.contextInfo.serialize(writer));
+            writer.writeMessage(17, this.contextInfo, () => this.contextInfo!.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
     }
@@ -5003,6 +5207,11 @@ export namespace ContactsArrayMessage {
         displayName: string;
         contacts: ContactMessage.AsObject[];
         contextInfo?: ContextInfo.AsObject;
+    };
+    export type AsObjectPartial = {
+        displayName?: string;
+        contacts: ContactMessage.AsObjectPartial[];
+        contextInfo?: ContextInfo.AsObjectPartial;
     };
 }
 export class HSMCurrency extends pb_1.Message {
@@ -5040,7 +5249,7 @@ export class HSMCurrency extends pb_1.Message {
     get has_amount1000() {
         return pb_1.Message.getField(this, 2) != null;
     }
-    static fromObject(data: RecursivePartial<HSMCurrency.AsObject>): HSMCurrency {
+    static fromObject(data: HSMCurrency.AsObjectPartial): HSMCurrency {
         const message = new HSMCurrency({});
         if (data.currencyCode != null) {
             message.currencyCode = data.currencyCode;
@@ -5061,7 +5270,7 @@ export class HSMCurrency extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.has_currencyCode && this.currencyCode.length)
+        if (this.has_currencyCode && this.currencyCode!.length)
             writer.writeString(1, this.currencyCode);
         if (this.has_amount1000)
             writer.writeInt64(2, this.amount1000);
@@ -5096,6 +5305,10 @@ export namespace HSMCurrency {
     export type AsObject = {
         currencyCode: string;
         amount1000: number;
+    };
+    export type AsObjectPartial = {
+        currencyCode?: string;
+        amount1000?: number;
     };
 }
 export class HSMDateTimeComponent extends pb_1.Message {
@@ -5198,7 +5411,7 @@ export class HSMDateTimeComponent extends pb_1.Message {
     get has_calendar() {
         return pb_1.Message.getField(this, 7) != null;
     }
-    static fromObject(data: RecursivePartial<HSMDateTimeComponent.AsObject>): HSMDateTimeComponent {
+    static fromObject(data: HSMDateTimeComponent.AsObjectPartial): HSMDateTimeComponent {
         const message = new HSMDateTimeComponent({});
         if (data.dayOfWeek != null) {
             message.dayOfWeek = data.dayOfWeek;
@@ -5305,6 +5518,15 @@ export namespace HSMDateTimeComponent {
         minute: number;
         calendar: HSMDateTimeComponent.HSM_DATE_TIME_COMPONENT_CALENDARTYPE;
     };
+    export type AsObjectPartial = {
+        dayOfWeek?: HSMDateTimeComponent.HSM_DATE_TIME_COMPONENT_DAYOFWEEKTYPE;
+        year?: number;
+        month?: number;
+        dayOfMonth?: number;
+        hour?: number;
+        minute?: number;
+        calendar?: HSMDateTimeComponent.HSM_DATE_TIME_COMPONENT_CALENDARTYPE;
+    };
     export enum HSM_DATE_TIME_COMPONENT_DAYOFWEEKTYPE {
         MONDAY = 1,
         TUESDAY = 2,
@@ -5341,7 +5563,7 @@ export class HSMDateTimeUnixEpoch extends pb_1.Message {
     get has_timestamp() {
         return pb_1.Message.getField(this, 1) != null;
     }
-    static fromObject(data: RecursivePartial<HSMDateTimeUnixEpoch.AsObject>): HSMDateTimeUnixEpoch {
+    static fromObject(data: HSMDateTimeUnixEpoch.AsObjectPartial): HSMDateTimeUnixEpoch {
         const message = new HSMDateTimeUnixEpoch({});
         if (data.timestamp != null) {
             message.timestamp = data.timestamp;
@@ -5388,6 +5610,9 @@ export namespace HSMDateTimeUnixEpoch {
     export type AsObject = {
         timestamp: number;
     };
+    export type AsObjectPartial = {
+        timestamp?: number;
+    };
 }
 export class HSMDateTime extends pb_1.Message {
     #one_of_decls: number[][] = [[1, 2]];
@@ -5410,18 +5635,18 @@ export class HSMDateTime extends pb_1.Message {
         }
     }
     get component() {
-        return pb_1.Message.getWrapperField(this, HSMDateTimeComponent, 1) as HSMDateTimeComponent | undefined | null;
+        return pb_1.Message.getWrapperField(this, HSMDateTimeComponent, 1) as HSMDateTimeComponent | undefined;
     }
-    set component(value: HSMDateTimeComponent | undefined | null) {
+    set component(value: HSMDateTimeComponent | undefined) {
         pb_1.Message.setOneofWrapperField(this, 1, this.#one_of_decls[0], value);
     }
     get has_component() {
         return pb_1.Message.getField(this, 1) != null;
     }
     get unixEpoch() {
-        return pb_1.Message.getWrapperField(this, HSMDateTimeUnixEpoch, 2) as HSMDateTimeUnixEpoch | undefined | null;
+        return pb_1.Message.getWrapperField(this, HSMDateTimeUnixEpoch, 2) as HSMDateTimeUnixEpoch | undefined;
     }
-    set unixEpoch(value: HSMDateTimeUnixEpoch | undefined | null) {
+    set unixEpoch(value: HSMDateTimeUnixEpoch | undefined) {
         pb_1.Message.setOneofWrapperField(this, 2, this.#one_of_decls[0], value);
     }
     get has_unixEpoch() {
@@ -5437,7 +5662,7 @@ export class HSMDateTime extends pb_1.Message {
         };
         return cases[pb_1.Message.computeOneofCase(this, [1, 2])];
     }
-    static fromObject(data: RecursivePartial<HSMDateTime.AsObject>): HSMDateTime {
+    static fromObject(data: HSMDateTime.AsObjectPartial): HSMDateTime {
         const message = new HSMDateTime({});
         if (data.component != null) {
             message.component = HSMDateTimeComponent.fromObject(data.component);
@@ -5462,9 +5687,9 @@ export class HSMDateTime extends pb_1.Message {
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
         if (this.has_component)
-            writer.writeMessage(1, this.component, () => this.component.serialize(writer));
+            writer.writeMessage(1, this.component, () => this.component!.serialize(writer));
         if (this.has_unixEpoch)
-            writer.writeMessage(2, this.unixEpoch, () => this.unixEpoch.serialize(writer));
+            writer.writeMessage(2, this.unixEpoch, () => this.unixEpoch!.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
     }
@@ -5496,6 +5721,10 @@ export namespace HSMDateTime {
     export type AsObject = {
         component?: HSMDateTimeComponent.AsObject;
         unixEpoch?: HSMDateTimeUnixEpoch.AsObject;
+    };
+    export type AsObjectPartial = {
+        component?: HSMDateTimeComponent.AsObjectPartial;
+        unixEpoch?: HSMDateTimeUnixEpoch.AsObjectPartial;
     };
 }
 export class HSMLocalizableParameter extends pb_1.Message {
@@ -5533,18 +5762,18 @@ export class HSMLocalizableParameter extends pb_1.Message {
         return pb_1.Message.getField(this, 1) != null;
     }
     get currency() {
-        return pb_1.Message.getWrapperField(this, HSMCurrency, 2) as HSMCurrency | undefined | null;
+        return pb_1.Message.getWrapperField(this, HSMCurrency, 2) as HSMCurrency | undefined;
     }
-    set currency(value: HSMCurrency | undefined | null) {
+    set currency(value: HSMCurrency | undefined) {
         pb_1.Message.setOneofWrapperField(this, 2, this.#one_of_decls[0], value);
     }
     get has_currency() {
         return pb_1.Message.getField(this, 2) != null;
     }
     get dateTime() {
-        return pb_1.Message.getWrapperField(this, HSMDateTime, 3) as HSMDateTime | undefined | null;
+        return pb_1.Message.getWrapperField(this, HSMDateTime, 3) as HSMDateTime | undefined;
     }
-    set dateTime(value: HSMDateTime | undefined | null) {
+    set dateTime(value: HSMDateTime | undefined) {
         pb_1.Message.setOneofWrapperField(this, 3, this.#one_of_decls[0], value);
     }
     get has_dateTime() {
@@ -5560,7 +5789,7 @@ export class HSMLocalizableParameter extends pb_1.Message {
         };
         return cases[pb_1.Message.computeOneofCase(this, [2, 3])];
     }
-    static fromObject(data: RecursivePartial<HSMLocalizableParameter.AsObject>): HSMLocalizableParameter {
+    static fromObject(data: HSMLocalizableParameter.AsObjectPartial): HSMLocalizableParameter {
         const message = new HSMLocalizableParameter({});
         if (data.default != null) {
             message.default = data.default;
@@ -5589,12 +5818,12 @@ export class HSMLocalizableParameter extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.has_default && this.default.length)
+        if (this.has_default && this.default!.length)
             writer.writeString(1, this.default);
         if (this.has_currency)
-            writer.writeMessage(2, this.currency, () => this.currency.serialize(writer));
+            writer.writeMessage(2, this.currency, () => this.currency!.serialize(writer));
         if (this.has_dateTime)
-            writer.writeMessage(3, this.dateTime, () => this.dateTime.serialize(writer));
+            writer.writeMessage(3, this.dateTime, () => this.dateTime!.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
     }
@@ -5630,6 +5859,11 @@ export namespace HSMLocalizableParameter {
         default: string;
         currency?: HSMCurrency.AsObject;
         dateTime?: HSMDateTime.AsObject;
+    };
+    export type AsObjectPartial = {
+        default?: string;
+        currency?: HSMCurrency.AsObjectPartial;
+        dateTime?: HSMDateTime.AsObjectPartial;
     };
 }
 export class HighlyStructuredMessage extends pb_1.Message {
@@ -5740,15 +5974,15 @@ export class HighlyStructuredMessage extends pb_1.Message {
         return pb_1.Message.getField(this, 8) != null;
     }
     get hydratedHsm() {
-        return pb_1.Message.getWrapperField(this, TemplateMessage, 9) as TemplateMessage | undefined | null;
+        return pb_1.Message.getWrapperField(this, TemplateMessage, 9) as TemplateMessage | undefined;
     }
-    set hydratedHsm(value: TemplateMessage | undefined | null) {
+    set hydratedHsm(value: TemplateMessage | undefined) {
         pb_1.Message.setWrapperField(this, 9, value);
     }
     get has_hydratedHsm() {
         return pb_1.Message.getField(this, 9) != null;
     }
-    static fromObject(data: RecursivePartial<HighlyStructuredMessage.AsObject>): HighlyStructuredMessage {
+    static fromObject(data: HighlyStructuredMessage.AsObjectPartial): HighlyStructuredMessage {
         const message = new HighlyStructuredMessage({
             params: data.params,
             localizableParams: data.localizableParams.map(item => HSMLocalizableParameter.fromObject(item))
@@ -5796,24 +6030,24 @@ export class HighlyStructuredMessage extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.has_namespace && this.namespace.length)
+        if (this.has_namespace && this.namespace!.length)
             writer.writeString(1, this.namespace);
-        if (this.has_elementName && this.elementName.length)
+        if (this.has_elementName && this.elementName!.length)
             writer.writeString(2, this.elementName);
         if (this.params.length)
             writer.writeRepeatedString(3, this.params);
-        if (this.has_fallbackLg && this.fallbackLg.length)
+        if (this.has_fallbackLg && this.fallbackLg!.length)
             writer.writeString(4, this.fallbackLg);
-        if (this.has_fallbackLc && this.fallbackLc.length)
+        if (this.has_fallbackLc && this.fallbackLc!.length)
             writer.writeString(5, this.fallbackLc);
         if (this.localizableParams.length)
-            writer.writeRepeatedMessage(6, this.localizableParams, (item: HSMLocalizableParameter) => item.serialize(writer));
-        if (this.has_deterministicLg && this.deterministicLg.length)
+            writer.writeRepeatedMessage(6, this.localizableParams, (item: HSMLocalizableParameter) => item!.serialize(writer));
+        if (this.has_deterministicLg && this.deterministicLg!.length)
             writer.writeString(7, this.deterministicLg);
-        if (this.has_deterministicLc && this.deterministicLc.length)
+        if (this.has_deterministicLc && this.deterministicLc!.length)
             writer.writeString(8, this.deterministicLc);
         if (this.has_hydratedHsm)
-            writer.writeMessage(9, this.hydratedHsm, () => this.hydratedHsm.serialize(writer));
+            writer.writeMessage(9, this.hydratedHsm, () => this.hydratedHsm!.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
     }
@@ -5874,6 +6108,17 @@ export namespace HighlyStructuredMessage {
         deterministicLc: string;
         hydratedHsm?: TemplateMessage.AsObject;
     };
+    export type AsObjectPartial = {
+        namespace?: string;
+        elementName?: string;
+        params: string[];
+        fallbackLg?: string;
+        fallbackLc?: string;
+        localizableParams: HSMLocalizableParameter.AsObjectPartial[];
+        deterministicLg?: string;
+        deterministicLc?: string;
+        hydratedHsm?: TemplateMessage.AsObjectPartial;
+    };
 }
 export class SendPaymentMessage extends pb_1.Message {
     #one_of_decls: number[][] = [];
@@ -5893,24 +6138,24 @@ export class SendPaymentMessage extends pb_1.Message {
         }
     }
     get noteMessage() {
-        return pb_1.Message.getWrapperField(this, Message, 2) as Message | undefined | null;
+        return pb_1.Message.getWrapperField(this, Message, 2) as Message | undefined;
     }
-    set noteMessage(value: Message | undefined | null) {
+    set noteMessage(value: Message | undefined) {
         pb_1.Message.setWrapperField(this, 2, value);
     }
     get has_noteMessage() {
         return pb_1.Message.getField(this, 2) != null;
     }
     get requestMessageKey() {
-        return pb_1.Message.getWrapperField(this, MessageKey, 3) as MessageKey | undefined | null;
+        return pb_1.Message.getWrapperField(this, MessageKey, 3) as MessageKey | undefined;
     }
-    set requestMessageKey(value: MessageKey | undefined | null) {
+    set requestMessageKey(value: MessageKey | undefined) {
         pb_1.Message.setWrapperField(this, 3, value);
     }
     get has_requestMessageKey() {
         return pb_1.Message.getField(this, 3) != null;
     }
-    static fromObject(data: RecursivePartial<SendPaymentMessage.AsObject>): SendPaymentMessage {
+    static fromObject(data: SendPaymentMessage.AsObjectPartial): SendPaymentMessage {
         const message = new SendPaymentMessage({});
         if (data.noteMessage != null) {
             message.noteMessage = Message.fromObject(data.noteMessage);
@@ -5935,9 +6180,9 @@ export class SendPaymentMessage extends pb_1.Message {
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
         if (this.has_noteMessage)
-            writer.writeMessage(2, this.noteMessage, () => this.noteMessage.serialize(writer));
+            writer.writeMessage(2, this.noteMessage, () => this.noteMessage!.serialize(writer));
         if (this.has_requestMessageKey)
-            writer.writeMessage(3, this.requestMessageKey, () => this.requestMessageKey.serialize(writer));
+            writer.writeMessage(3, this.requestMessageKey, () => this.requestMessageKey!.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
     }
@@ -5970,6 +6215,10 @@ export namespace SendPaymentMessage {
         noteMessage?: Message.AsObject;
         requestMessageKey?: MessageKey.AsObject;
     };
+    export type AsObjectPartial = {
+        noteMessage?: Message.AsObjectPartial;
+        requestMessageKey?: MessageKey.AsObjectPartial;
+    };
 }
 export class RequestPaymentMessage extends pb_1.Message {
     #one_of_decls: number[][] = [];
@@ -6001,9 +6250,9 @@ export class RequestPaymentMessage extends pb_1.Message {
         }
     }
     get noteMessage() {
-        return pb_1.Message.getWrapperField(this, Message, 4) as Message | undefined | null;
+        return pb_1.Message.getWrapperField(this, Message, 4) as Message | undefined;
     }
-    set noteMessage(value: Message | undefined | null) {
+    set noteMessage(value: Message | undefined) {
         pb_1.Message.setWrapperField(this, 4, value);
     }
     get has_noteMessage() {
@@ -6045,7 +6294,7 @@ export class RequestPaymentMessage extends pb_1.Message {
     get has_expiryTimestamp() {
         return pb_1.Message.getField(this, 5) != null;
     }
-    static fromObject(data: RecursivePartial<RequestPaymentMessage.AsObject>): RequestPaymentMessage {
+    static fromObject(data: RequestPaymentMessage.AsObjectPartial): RequestPaymentMessage {
         const message = new RequestPaymentMessage({});
         if (data.noteMessage != null) {
             message.noteMessage = Message.fromObject(data.noteMessage);
@@ -6081,12 +6330,12 @@ export class RequestPaymentMessage extends pb_1.Message {
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
         if (this.has_noteMessage)
-            writer.writeMessage(4, this.noteMessage, () => this.noteMessage.serialize(writer));
-        if (this.has_currencyCodeIso4217 && this.currencyCodeIso4217.length)
+            writer.writeMessage(4, this.noteMessage, () => this.noteMessage!.serialize(writer));
+        if (this.has_currencyCodeIso4217 && this.currencyCodeIso4217!.length)
             writer.writeString(1, this.currencyCodeIso4217);
         if (this.has_amount1000)
             writer.writeUint64(2, this.amount1000);
-        if (this.has_requestFrom && this.requestFrom.length)
+        if (this.has_requestFrom && this.requestFrom!.length)
             writer.writeString(3, this.requestFrom);
         if (this.has_expiryTimestamp)
             writer.writeInt64(5, this.expiryTimestamp);
@@ -6134,6 +6383,13 @@ export namespace RequestPaymentMessage {
         requestFrom: string;
         expiryTimestamp: number;
     };
+    export type AsObjectPartial = {
+        noteMessage?: Message.AsObjectPartial;
+        currencyCodeIso4217?: string;
+        amount1000?: number;
+        requestFrom?: string;
+        expiryTimestamp?: number;
+    };
 }
 export class DeclinePaymentRequestMessage extends pb_1.Message {
     #one_of_decls: number[][] = [];
@@ -6149,15 +6405,15 @@ export class DeclinePaymentRequestMessage extends pb_1.Message {
         }
     }
     get key() {
-        return pb_1.Message.getWrapperField(this, MessageKey, 1) as MessageKey | undefined | null;
+        return pb_1.Message.getWrapperField(this, MessageKey, 1) as MessageKey | undefined;
     }
-    set key(value: MessageKey | undefined | null) {
+    set key(value: MessageKey | undefined) {
         pb_1.Message.setWrapperField(this, 1, value);
     }
     get has_key() {
         return pb_1.Message.getField(this, 1) != null;
     }
-    static fromObject(data: RecursivePartial<DeclinePaymentRequestMessage.AsObject>): DeclinePaymentRequestMessage {
+    static fromObject(data: DeclinePaymentRequestMessage.AsObjectPartial): DeclinePaymentRequestMessage {
         const message = new DeclinePaymentRequestMessage({});
         if (data.key != null) {
             message.key = MessageKey.fromObject(data.key);
@@ -6176,7 +6432,7 @@ export class DeclinePaymentRequestMessage extends pb_1.Message {
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
         if (this.has_key)
-            writer.writeMessage(1, this.key, () => this.key.serialize(writer));
+            writer.writeMessage(1, this.key, () => this.key!.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
     }
@@ -6205,6 +6461,9 @@ export namespace DeclinePaymentRequestMessage {
     export type AsObject = {
         key?: MessageKey.AsObject;
     };
+    export type AsObjectPartial = {
+        key?: MessageKey.AsObjectPartial;
+    };
 }
 export class CancelPaymentRequestMessage extends pb_1.Message {
     #one_of_decls: number[][] = [];
@@ -6220,15 +6479,15 @@ export class CancelPaymentRequestMessage extends pb_1.Message {
         }
     }
     get key() {
-        return pb_1.Message.getWrapperField(this, MessageKey, 1) as MessageKey | undefined | null;
+        return pb_1.Message.getWrapperField(this, MessageKey, 1) as MessageKey | undefined;
     }
-    set key(value: MessageKey | undefined | null) {
+    set key(value: MessageKey | undefined) {
         pb_1.Message.setWrapperField(this, 1, value);
     }
     get has_key() {
         return pb_1.Message.getField(this, 1) != null;
     }
-    static fromObject(data: RecursivePartial<CancelPaymentRequestMessage.AsObject>): CancelPaymentRequestMessage {
+    static fromObject(data: CancelPaymentRequestMessage.AsObjectPartial): CancelPaymentRequestMessage {
         const message = new CancelPaymentRequestMessage({});
         if (data.key != null) {
             message.key = MessageKey.fromObject(data.key);
@@ -6247,7 +6506,7 @@ export class CancelPaymentRequestMessage extends pb_1.Message {
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
         if (this.has_key)
-            writer.writeMessage(1, this.key, () => this.key.serialize(writer));
+            writer.writeMessage(1, this.key, () => this.key!.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
     }
@@ -6275,6 +6534,9 @@ export class CancelPaymentRequestMessage extends pb_1.Message {
 export namespace CancelPaymentRequestMessage {
     export type AsObject = {
         key?: MessageKey.AsObject;
+    };
+    export type AsObjectPartial = {
+        key?: MessageKey.AsObjectPartial;
     };
 }
 export class LiveLocationMessage extends pb_1.Message {
@@ -6408,15 +6670,15 @@ export class LiveLocationMessage extends pb_1.Message {
         return pb_1.Message.getField(this, 16) != null;
     }
     get contextInfo() {
-        return pb_1.Message.getWrapperField(this, ContextInfo, 17) as ContextInfo | undefined | null;
+        return pb_1.Message.getWrapperField(this, ContextInfo, 17) as ContextInfo | undefined;
     }
-    set contextInfo(value: ContextInfo | undefined | null) {
+    set contextInfo(value: ContextInfo | undefined) {
         pb_1.Message.setWrapperField(this, 17, value);
     }
     get has_contextInfo() {
         return pb_1.Message.getField(this, 17) != null;
     }
-    static fromObject(data: RecursivePartial<LiveLocationMessage.AsObject>): LiveLocationMessage {
+    static fromObject(data: LiveLocationMessage.AsObjectPartial): LiveLocationMessage {
         const message = new LiveLocationMessage({});
         if (data.degreesLatitude != null) {
             message.degreesLatitude = data.degreesLatitude;
@@ -6481,16 +6743,16 @@ export class LiveLocationMessage extends pb_1.Message {
             writer.writeFloat(4, this.speedInMps);
         if (this.has_degreesClockwiseFromMagneticNorth)
             writer.writeUint32(5, this.degreesClockwiseFromMagneticNorth);
-        if (this.has_caption && this.caption.length)
+        if (this.has_caption && this.caption!.length)
             writer.writeString(6, this.caption);
         if (this.has_sequenceNumber)
             writer.writeInt64(7, this.sequenceNumber);
         if (this.has_timeOffset)
             writer.writeUint32(8, this.timeOffset);
-        if (this.has_jpegThumbnail && this.jpegThumbnail.length)
+        if (this.has_jpegThumbnail && this.jpegThumbnail!.length)
             writer.writeBytes(16, this.jpegThumbnail);
         if (this.has_contextInfo)
-            writer.writeMessage(17, this.contextInfo, () => this.contextInfo.serialize(writer));
+            writer.writeMessage(17, this.contextInfo, () => this.contextInfo!.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
     }
@@ -6554,6 +6816,18 @@ export namespace LiveLocationMessage {
         timeOffset: number;
         jpegThumbnail: Uint8Array;
         contextInfo?: ContextInfo.AsObject;
+    };
+    export type AsObjectPartial = {
+        degreesLatitude?: number;
+        degreesLongitude?: number;
+        accuracyInMeters?: number;
+        speedInMps?: number;
+        degreesClockwiseFromMagneticNorth?: number;
+        caption?: string;
+        sequenceNumber?: number;
+        timeOffset?: number;
+        jpegThumbnail?: Uint8Array;
+        contextInfo?: ContextInfo.AsObjectPartial;
     };
 }
 export class StickerMessage extends pb_1.Message {
@@ -6752,15 +7026,15 @@ export class StickerMessage extends pb_1.Message {
         return pb_1.Message.getField(this, 16) != null;
     }
     get contextInfo() {
-        return pb_1.Message.getWrapperField(this, ContextInfo, 17) as ContextInfo | undefined | null;
+        return pb_1.Message.getWrapperField(this, ContextInfo, 17) as ContextInfo | undefined;
     }
-    set contextInfo(value: ContextInfo | undefined | null) {
+    set contextInfo(value: ContextInfo | undefined) {
         pb_1.Message.setWrapperField(this, 17, value);
     }
     get has_contextInfo() {
         return pb_1.Message.getField(this, 17) != null;
     }
-    static fromObject(data: RecursivePartial<StickerMessage.AsObject>): StickerMessage {
+    static fromObject(data: StickerMessage.AsObjectPartial): StickerMessage {
         const message = new StickerMessage({});
         if (data.url != null) {
             message.url = data.url;
@@ -6835,21 +7109,21 @@ export class StickerMessage extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.has_url && this.url.length)
+        if (this.has_url && this.url!.length)
             writer.writeString(1, this.url);
-        if (this.has_fileSha256 && this.fileSha256.length)
+        if (this.has_fileSha256 && this.fileSha256!.length)
             writer.writeBytes(2, this.fileSha256);
-        if (this.has_fileEncSha256 && this.fileEncSha256.length)
+        if (this.has_fileEncSha256 && this.fileEncSha256!.length)
             writer.writeBytes(3, this.fileEncSha256);
-        if (this.has_mediaKey && this.mediaKey.length)
+        if (this.has_mediaKey && this.mediaKey!.length)
             writer.writeBytes(4, this.mediaKey);
-        if (this.has_mimetype && this.mimetype.length)
+        if (this.has_mimetype && this.mimetype!.length)
             writer.writeString(5, this.mimetype);
         if (this.has_height)
             writer.writeUint32(6, this.height);
         if (this.has_width)
             writer.writeUint32(7, this.width);
-        if (this.has_directPath && this.directPath.length)
+        if (this.has_directPath && this.directPath!.length)
             writer.writeString(8, this.directPath);
         if (this.has_fileLength)
             writer.writeUint64(9, this.fileLength);
@@ -6857,14 +7131,14 @@ export class StickerMessage extends pb_1.Message {
             writer.writeInt64(10, this.mediaKeyTimestamp);
         if (this.has_firstFrameLength)
             writer.writeUint32(11, this.firstFrameLength);
-        if (this.has_firstFrameSidecar && this.firstFrameSidecar.length)
+        if (this.has_firstFrameSidecar && this.firstFrameSidecar!.length)
             writer.writeBytes(12, this.firstFrameSidecar);
         if (this.has_isAnimated)
             writer.writeBool(13, this.isAnimated);
-        if (this.has_pngThumbnail && this.pngThumbnail.length)
+        if (this.has_pngThumbnail && this.pngThumbnail!.length)
             writer.writeBytes(16, this.pngThumbnail);
         if (this.has_contextInfo)
-            writer.writeMessage(17, this.contextInfo, () => this.contextInfo.serialize(writer));
+            writer.writeMessage(17, this.contextInfo, () => this.contextInfo!.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
     }
@@ -6949,6 +7223,23 @@ export namespace StickerMessage {
         pngThumbnail: Uint8Array;
         contextInfo?: ContextInfo.AsObject;
     };
+    export type AsObjectPartial = {
+        url?: string;
+        fileSha256?: Uint8Array;
+        fileEncSha256?: Uint8Array;
+        mediaKey?: Uint8Array;
+        mimetype?: string;
+        height?: number;
+        width?: number;
+        directPath?: string;
+        fileLength?: number;
+        mediaKeyTimestamp?: number;
+        firstFrameLength?: number;
+        firstFrameSidecar?: Uint8Array;
+        isAnimated?: boolean;
+        pngThumbnail?: Uint8Array;
+        contextInfo?: ContextInfo.AsObjectPartial;
+    };
 }
 export class FourRowTemplate extends pb_1.Message {
     #one_of_decls: number[][] = [[1, 2, 3, 4, 5]];
@@ -7015,18 +7306,18 @@ export class FourRowTemplate extends pb_1.Message {
         }
     }
     get content() {
-        return pb_1.Message.getWrapperField(this, HighlyStructuredMessage, 6) as HighlyStructuredMessage | undefined | null;
+        return pb_1.Message.getWrapperField(this, HighlyStructuredMessage, 6) as HighlyStructuredMessage | undefined;
     }
-    set content(value: HighlyStructuredMessage | undefined | null) {
+    set content(value: HighlyStructuredMessage | undefined) {
         pb_1.Message.setWrapperField(this, 6, value);
     }
     get has_content() {
         return pb_1.Message.getField(this, 6) != null;
     }
     get footer() {
-        return pb_1.Message.getWrapperField(this, HighlyStructuredMessage, 7) as HighlyStructuredMessage | undefined | null;
+        return pb_1.Message.getWrapperField(this, HighlyStructuredMessage, 7) as HighlyStructuredMessage | undefined;
     }
-    set footer(value: HighlyStructuredMessage | undefined | null) {
+    set footer(value: HighlyStructuredMessage | undefined) {
         pb_1.Message.setWrapperField(this, 7, value);
     }
     get has_footer() {
@@ -7039,45 +7330,45 @@ export class FourRowTemplate extends pb_1.Message {
         pb_1.Message.setRepeatedWrapperField(this, 8, value);
     }
     get documentMessage() {
-        return pb_1.Message.getWrapperField(this, DocumentMessage, 1) as DocumentMessage | undefined | null;
+        return pb_1.Message.getWrapperField(this, DocumentMessage, 1) as DocumentMessage | undefined;
     }
-    set documentMessage(value: DocumentMessage | undefined | null) {
+    set documentMessage(value: DocumentMessage | undefined) {
         pb_1.Message.setOneofWrapperField(this, 1, this.#one_of_decls[0], value);
     }
     get has_documentMessage() {
         return pb_1.Message.getField(this, 1) != null;
     }
     get highlyStructuredMessage() {
-        return pb_1.Message.getWrapperField(this, HighlyStructuredMessage, 2) as HighlyStructuredMessage | undefined | null;
+        return pb_1.Message.getWrapperField(this, HighlyStructuredMessage, 2) as HighlyStructuredMessage | undefined;
     }
-    set highlyStructuredMessage(value: HighlyStructuredMessage | undefined | null) {
+    set highlyStructuredMessage(value: HighlyStructuredMessage | undefined) {
         pb_1.Message.setOneofWrapperField(this, 2, this.#one_of_decls[0], value);
     }
     get has_highlyStructuredMessage() {
         return pb_1.Message.getField(this, 2) != null;
     }
     get imageMessage() {
-        return pb_1.Message.getWrapperField(this, ImageMessage, 3) as ImageMessage | undefined | null;
+        return pb_1.Message.getWrapperField(this, ImageMessage, 3) as ImageMessage | undefined;
     }
-    set imageMessage(value: ImageMessage | undefined | null) {
+    set imageMessage(value: ImageMessage | undefined) {
         pb_1.Message.setOneofWrapperField(this, 3, this.#one_of_decls[0], value);
     }
     get has_imageMessage() {
         return pb_1.Message.getField(this, 3) != null;
     }
     get videoMessage() {
-        return pb_1.Message.getWrapperField(this, VideoMessage, 4) as VideoMessage | undefined | null;
+        return pb_1.Message.getWrapperField(this, VideoMessage, 4) as VideoMessage | undefined;
     }
-    set videoMessage(value: VideoMessage | undefined | null) {
+    set videoMessage(value: VideoMessage | undefined) {
         pb_1.Message.setOneofWrapperField(this, 4, this.#one_of_decls[0], value);
     }
     get has_videoMessage() {
         return pb_1.Message.getField(this, 4) != null;
     }
     get locationMessage() {
-        return pb_1.Message.getWrapperField(this, LocationMessage, 5) as LocationMessage | undefined | null;
+        return pb_1.Message.getWrapperField(this, LocationMessage, 5) as LocationMessage | undefined;
     }
-    set locationMessage(value: LocationMessage | undefined | null) {
+    set locationMessage(value: LocationMessage | undefined) {
         pb_1.Message.setOneofWrapperField(this, 5, this.#one_of_decls[0], value);
     }
     get has_locationMessage() {
@@ -7096,7 +7387,7 @@ export class FourRowTemplate extends pb_1.Message {
         };
         return cases[pb_1.Message.computeOneofCase(this, [1, 2, 3, 4, 5])];
     }
-    static fromObject(data: RecursivePartial<FourRowTemplate.AsObject>): FourRowTemplate {
+    static fromObject(data: FourRowTemplate.AsObjectPartial): FourRowTemplate {
         const message = new FourRowTemplate({
             buttons: data.buttons.map(item => TemplateButton.fromObject(item))
         });
@@ -7155,21 +7446,21 @@ export class FourRowTemplate extends pb_1.Message {
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
         if (this.has_content)
-            writer.writeMessage(6, this.content, () => this.content.serialize(writer));
+            writer.writeMessage(6, this.content, () => this.content!.serialize(writer));
         if (this.has_footer)
-            writer.writeMessage(7, this.footer, () => this.footer.serialize(writer));
+            writer.writeMessage(7, this.footer, () => this.footer!.serialize(writer));
         if (this.buttons.length)
-            writer.writeRepeatedMessage(8, this.buttons, (item: TemplateButton) => item.serialize(writer));
+            writer.writeRepeatedMessage(8, this.buttons, (item: TemplateButton) => item!.serialize(writer));
         if (this.has_documentMessage)
-            writer.writeMessage(1, this.documentMessage, () => this.documentMessage.serialize(writer));
+            writer.writeMessage(1, this.documentMessage, () => this.documentMessage!.serialize(writer));
         if (this.has_highlyStructuredMessage)
-            writer.writeMessage(2, this.highlyStructuredMessage, () => this.highlyStructuredMessage.serialize(writer));
+            writer.writeMessage(2, this.highlyStructuredMessage, () => this.highlyStructuredMessage!.serialize(writer));
         if (this.has_imageMessage)
-            writer.writeMessage(3, this.imageMessage, () => this.imageMessage.serialize(writer));
+            writer.writeMessage(3, this.imageMessage, () => this.imageMessage!.serialize(writer));
         if (this.has_videoMessage)
-            writer.writeMessage(4, this.videoMessage, () => this.videoMessage.serialize(writer));
+            writer.writeMessage(4, this.videoMessage, () => this.videoMessage!.serialize(writer));
         if (this.has_locationMessage)
-            writer.writeMessage(5, this.locationMessage, () => this.locationMessage.serialize(writer));
+            writer.writeMessage(5, this.locationMessage, () => this.locationMessage!.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
     }
@@ -7225,6 +7516,16 @@ export namespace FourRowTemplate {
         imageMessage?: ImageMessage.AsObject;
         videoMessage?: VideoMessage.AsObject;
         locationMessage?: LocationMessage.AsObject;
+    };
+    export type AsObjectPartial = {
+        content?: HighlyStructuredMessage.AsObjectPartial;
+        footer?: HighlyStructuredMessage.AsObjectPartial;
+        buttons: TemplateButton.AsObjectPartial[];
+        documentMessage?: DocumentMessage.AsObjectPartial;
+        highlyStructuredMessage?: HighlyStructuredMessage.AsObjectPartial;
+        imageMessage?: ImageMessage.AsObjectPartial;
+        videoMessage?: VideoMessage.AsObjectPartial;
+        locationMessage?: LocationMessage.AsObjectPartial;
     };
 }
 export class HydratedFourRowTemplate extends pb_1.Message {
@@ -7329,9 +7630,9 @@ export class HydratedFourRowTemplate extends pb_1.Message {
         return pb_1.Message.getField(this, 9) != null;
     }
     get documentMessage() {
-        return pb_1.Message.getWrapperField(this, DocumentMessage, 1) as DocumentMessage | undefined | null;
+        return pb_1.Message.getWrapperField(this, DocumentMessage, 1) as DocumentMessage | undefined;
     }
-    set documentMessage(value: DocumentMessage | undefined | null) {
+    set documentMessage(value: DocumentMessage | undefined) {
         pb_1.Message.setOneofWrapperField(this, 1, this.#one_of_decls[0], value);
     }
     get has_documentMessage() {
@@ -7347,27 +7648,27 @@ export class HydratedFourRowTemplate extends pb_1.Message {
         return pb_1.Message.getField(this, 2) != null;
     }
     get imageMessage() {
-        return pb_1.Message.getWrapperField(this, ImageMessage, 3) as ImageMessage | undefined | null;
+        return pb_1.Message.getWrapperField(this, ImageMessage, 3) as ImageMessage | undefined;
     }
-    set imageMessage(value: ImageMessage | undefined | null) {
+    set imageMessage(value: ImageMessage | undefined) {
         pb_1.Message.setOneofWrapperField(this, 3, this.#one_of_decls[0], value);
     }
     get has_imageMessage() {
         return pb_1.Message.getField(this, 3) != null;
     }
     get videoMessage() {
-        return pb_1.Message.getWrapperField(this, VideoMessage, 4) as VideoMessage | undefined | null;
+        return pb_1.Message.getWrapperField(this, VideoMessage, 4) as VideoMessage | undefined;
     }
-    set videoMessage(value: VideoMessage | undefined | null) {
+    set videoMessage(value: VideoMessage | undefined) {
         pb_1.Message.setOneofWrapperField(this, 4, this.#one_of_decls[0], value);
     }
     get has_videoMessage() {
         return pb_1.Message.getField(this, 4) != null;
     }
     get locationMessage() {
-        return pb_1.Message.getWrapperField(this, LocationMessage, 5) as LocationMessage | undefined | null;
+        return pb_1.Message.getWrapperField(this, LocationMessage, 5) as LocationMessage | undefined;
     }
-    set locationMessage(value: LocationMessage | undefined | null) {
+    set locationMessage(value: LocationMessage | undefined) {
         pb_1.Message.setOneofWrapperField(this, 5, this.#one_of_decls[0], value);
     }
     get has_locationMessage() {
@@ -7386,7 +7687,7 @@ export class HydratedFourRowTemplate extends pb_1.Message {
         };
         return cases[pb_1.Message.computeOneofCase(this, [1, 2, 3, 4, 5])];
     }
-    static fromObject(data: RecursivePartial<HydratedFourRowTemplate.AsObject>): HydratedFourRowTemplate {
+    static fromObject(data: HydratedFourRowTemplate.AsObjectPartial): HydratedFourRowTemplate {
         const message = new HydratedFourRowTemplate({
             hydratedButtons: data.hydratedButtons.map(item => HydratedTemplateButton.fromObject(item))
         });
@@ -7442,24 +7743,24 @@ export class HydratedFourRowTemplate extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.has_hydratedContentText && this.hydratedContentText.length)
+        if (this.has_hydratedContentText && this.hydratedContentText!.length)
             writer.writeString(6, this.hydratedContentText);
-        if (this.has_hydratedFooterText && this.hydratedFooterText.length)
+        if (this.has_hydratedFooterText && this.hydratedFooterText!.length)
             writer.writeString(7, this.hydratedFooterText);
         if (this.hydratedButtons.length)
-            writer.writeRepeatedMessage(8, this.hydratedButtons, (item: HydratedTemplateButton) => item.serialize(writer));
-        if (this.has_templateId && this.templateId.length)
+            writer.writeRepeatedMessage(8, this.hydratedButtons, (item: HydratedTemplateButton) => item!.serialize(writer));
+        if (this.has_templateId && this.templateId!.length)
             writer.writeString(9, this.templateId);
         if (this.has_documentMessage)
-            writer.writeMessage(1, this.documentMessage, () => this.documentMessage.serialize(writer));
+            writer.writeMessage(1, this.documentMessage, () => this.documentMessage!.serialize(writer));
         if (this.has_hydratedTitleText)
             writer.writeString(2, this.hydratedTitleText);
         if (this.has_imageMessage)
-            writer.writeMessage(3, this.imageMessage, () => this.imageMessage.serialize(writer));
+            writer.writeMessage(3, this.imageMessage, () => this.imageMessage!.serialize(writer));
         if (this.has_videoMessage)
-            writer.writeMessage(4, this.videoMessage, () => this.videoMessage.serialize(writer));
+            writer.writeMessage(4, this.videoMessage, () => this.videoMessage!.serialize(writer));
         if (this.has_locationMessage)
-            writer.writeMessage(5, this.locationMessage, () => this.locationMessage.serialize(writer));
+            writer.writeMessage(5, this.locationMessage, () => this.locationMessage!.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
     }
@@ -7520,6 +7821,17 @@ export namespace HydratedFourRowTemplate {
         videoMessage?: VideoMessage.AsObject;
         locationMessage?: LocationMessage.AsObject;
     };
+    export type AsObjectPartial = {
+        hydratedContentText?: string;
+        hydratedFooterText?: string;
+        hydratedButtons: HydratedTemplateButton.AsObjectPartial[];
+        templateId?: string;
+        documentMessage?: DocumentMessage.AsObjectPartial;
+        hydratedTitleText?: string;
+        imageMessage?: ImageMessage.AsObjectPartial;
+        videoMessage?: VideoMessage.AsObjectPartial;
+        locationMessage?: LocationMessage.AsObjectPartial;
+    };
 }
 export class TemplateMessage extends pb_1.Message {
     #one_of_decls: number[][] = [[1, 2]];
@@ -7551,36 +7863,36 @@ export class TemplateMessage extends pb_1.Message {
         }
     }
     get contextInfo() {
-        return pb_1.Message.getWrapperField(this, ContextInfo, 3) as ContextInfo | undefined | null;
+        return pb_1.Message.getWrapperField(this, ContextInfo, 3) as ContextInfo | undefined;
     }
-    set contextInfo(value: ContextInfo | undefined | null) {
+    set contextInfo(value: ContextInfo | undefined) {
         pb_1.Message.setWrapperField(this, 3, value);
     }
     get has_contextInfo() {
         return pb_1.Message.getField(this, 3) != null;
     }
     get hydratedTemplate() {
-        return pb_1.Message.getWrapperField(this, HydratedFourRowTemplate, 4) as HydratedFourRowTemplate | undefined | null;
+        return pb_1.Message.getWrapperField(this, HydratedFourRowTemplate, 4) as HydratedFourRowTemplate | undefined;
     }
-    set hydratedTemplate(value: HydratedFourRowTemplate | undefined | null) {
+    set hydratedTemplate(value: HydratedFourRowTemplate | undefined) {
         pb_1.Message.setWrapperField(this, 4, value);
     }
     get has_hydratedTemplate() {
         return pb_1.Message.getField(this, 4) != null;
     }
     get fourRowTemplate() {
-        return pb_1.Message.getWrapperField(this, FourRowTemplate, 1) as FourRowTemplate | undefined | null;
+        return pb_1.Message.getWrapperField(this, FourRowTemplate, 1) as FourRowTemplate | undefined;
     }
-    set fourRowTemplate(value: FourRowTemplate | undefined | null) {
+    set fourRowTemplate(value: FourRowTemplate | undefined) {
         pb_1.Message.setOneofWrapperField(this, 1, this.#one_of_decls[0], value);
     }
     get has_fourRowTemplate() {
         return pb_1.Message.getField(this, 1) != null;
     }
     get hydratedFourRowTemplate() {
-        return pb_1.Message.getWrapperField(this, HydratedFourRowTemplate, 2) as HydratedFourRowTemplate | undefined | null;
+        return pb_1.Message.getWrapperField(this, HydratedFourRowTemplate, 2) as HydratedFourRowTemplate | undefined;
     }
-    set hydratedFourRowTemplate(value: HydratedFourRowTemplate | undefined | null) {
+    set hydratedFourRowTemplate(value: HydratedFourRowTemplate | undefined) {
         pb_1.Message.setOneofWrapperField(this, 2, this.#one_of_decls[0], value);
     }
     get has_hydratedFourRowTemplate() {
@@ -7596,7 +7908,7 @@ export class TemplateMessage extends pb_1.Message {
         };
         return cases[pb_1.Message.computeOneofCase(this, [1, 2])];
     }
-    static fromObject(data: RecursivePartial<TemplateMessage.AsObject>): TemplateMessage {
+    static fromObject(data: TemplateMessage.AsObjectPartial): TemplateMessage {
         const message = new TemplateMessage({});
         if (data.contextInfo != null) {
             message.contextInfo = ContextInfo.fromObject(data.contextInfo);
@@ -7633,13 +7945,13 @@ export class TemplateMessage extends pb_1.Message {
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
         if (this.has_contextInfo)
-            writer.writeMessage(3, this.contextInfo, () => this.contextInfo.serialize(writer));
+            writer.writeMessage(3, this.contextInfo, () => this.contextInfo!.serialize(writer));
         if (this.has_hydratedTemplate)
-            writer.writeMessage(4, this.hydratedTemplate, () => this.hydratedTemplate.serialize(writer));
+            writer.writeMessage(4, this.hydratedTemplate, () => this.hydratedTemplate!.serialize(writer));
         if (this.has_fourRowTemplate)
-            writer.writeMessage(1, this.fourRowTemplate, () => this.fourRowTemplate.serialize(writer));
+            writer.writeMessage(1, this.fourRowTemplate, () => this.fourRowTemplate!.serialize(writer));
         if (this.has_hydratedFourRowTemplate)
-            writer.writeMessage(2, this.hydratedFourRowTemplate, () => this.hydratedFourRowTemplate.serialize(writer));
+            writer.writeMessage(2, this.hydratedFourRowTemplate, () => this.hydratedFourRowTemplate!.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
     }
@@ -7679,6 +7991,12 @@ export namespace TemplateMessage {
         hydratedTemplate?: HydratedFourRowTemplate.AsObject;
         fourRowTemplate?: FourRowTemplate.AsObject;
         hydratedFourRowTemplate?: HydratedFourRowTemplate.AsObject;
+    };
+    export type AsObjectPartial = {
+        contextInfo?: ContextInfo.AsObjectPartial;
+        hydratedTemplate?: HydratedFourRowTemplate.AsObjectPartial;
+        fourRowTemplate?: FourRowTemplate.AsObjectPartial;
+        hydratedFourRowTemplate?: HydratedFourRowTemplate.AsObjectPartial;
     };
 }
 export class TemplateButtonReplyMessage extends pb_1.Message {
@@ -7725,9 +8043,9 @@ export class TemplateButtonReplyMessage extends pb_1.Message {
         return pb_1.Message.getField(this, 2) != null;
     }
     get contextInfo() {
-        return pb_1.Message.getWrapperField(this, ContextInfo, 3) as ContextInfo | undefined | null;
+        return pb_1.Message.getWrapperField(this, ContextInfo, 3) as ContextInfo | undefined;
     }
-    set contextInfo(value: ContextInfo | undefined | null) {
+    set contextInfo(value: ContextInfo | undefined) {
         pb_1.Message.setWrapperField(this, 3, value);
     }
     get has_contextInfo() {
@@ -7742,7 +8060,7 @@ export class TemplateButtonReplyMessage extends pb_1.Message {
     get has_selectedIndex() {
         return pb_1.Message.getField(this, 4) != null;
     }
-    static fromObject(data: RecursivePartial<TemplateButtonReplyMessage.AsObject>): TemplateButtonReplyMessage {
+    static fromObject(data: TemplateButtonReplyMessage.AsObjectPartial): TemplateButtonReplyMessage {
         const message = new TemplateButtonReplyMessage({});
         if (data.selectedId != null) {
             message.selectedId = data.selectedId;
@@ -7773,12 +8091,12 @@ export class TemplateButtonReplyMessage extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.has_selectedId && this.selectedId.length)
+        if (this.has_selectedId && this.selectedId!.length)
             writer.writeString(1, this.selectedId);
-        if (this.has_selectedDisplayText && this.selectedDisplayText.length)
+        if (this.has_selectedDisplayText && this.selectedDisplayText!.length)
             writer.writeString(2, this.selectedDisplayText);
         if (this.has_contextInfo)
-            writer.writeMessage(3, this.contextInfo, () => this.contextInfo.serialize(writer));
+            writer.writeMessage(3, this.contextInfo, () => this.contextInfo!.serialize(writer));
         if (this.has_selectedIndex)
             writer.writeUint32(4, this.selectedIndex);
         if (!w)
@@ -7821,6 +8139,12 @@ export namespace TemplateButtonReplyMessage {
         contextInfo?: ContextInfo.AsObject;
         selectedIndex: number;
     };
+    export type AsObjectPartial = {
+        selectedId?: string;
+        selectedDisplayText?: string;
+        contextInfo?: ContextInfo.AsObjectPartial;
+        selectedIndex?: number;
+    };
 }
 export class CatalogSnapshot extends pb_1.Message {
     #one_of_decls: number[][] = [];
@@ -7844,9 +8168,9 @@ export class CatalogSnapshot extends pb_1.Message {
         }
     }
     get catalogImage() {
-        return pb_1.Message.getWrapperField(this, ImageMessage, 1) as ImageMessage | undefined | null;
+        return pb_1.Message.getWrapperField(this, ImageMessage, 1) as ImageMessage | undefined;
     }
-    set catalogImage(value: ImageMessage | undefined | null) {
+    set catalogImage(value: ImageMessage | undefined) {
         pb_1.Message.setWrapperField(this, 1, value);
     }
     get has_catalogImage() {
@@ -7870,7 +8194,7 @@ export class CatalogSnapshot extends pb_1.Message {
     get has_description() {
         return pb_1.Message.getField(this, 3) != null;
     }
-    static fromObject(data: RecursivePartial<CatalogSnapshot.AsObject>): CatalogSnapshot {
+    static fromObject(data: CatalogSnapshot.AsObjectPartial): CatalogSnapshot {
         const message = new CatalogSnapshot({});
         if (data.catalogImage != null) {
             message.catalogImage = ImageMessage.fromObject(data.catalogImage);
@@ -7898,10 +8222,10 @@ export class CatalogSnapshot extends pb_1.Message {
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
         if (this.has_catalogImage)
-            writer.writeMessage(1, this.catalogImage, () => this.catalogImage.serialize(writer));
-        if (this.has_title && this.title.length)
+            writer.writeMessage(1, this.catalogImage, () => this.catalogImage!.serialize(writer));
+        if (this.has_title && this.title!.length)
             writer.writeString(2, this.title);
-        if (this.has_description && this.description.length)
+        if (this.has_description && this.description!.length)
             writer.writeString(3, this.description);
         if (!w)
             return writer.getResultBuffer();
@@ -7938,6 +8262,11 @@ export namespace CatalogSnapshot {
         catalogImage?: ImageMessage.AsObject;
         title: string;
         description: string;
+    };
+    export type AsObjectPartial = {
+        catalogImage?: ImageMessage.AsObjectPartial;
+        title?: string;
+        description?: string;
     };
 }
 export class ProductSnapshot extends pb_1.Message {
@@ -7990,9 +8319,9 @@ export class ProductSnapshot extends pb_1.Message {
         }
     }
     get productImage() {
-        return pb_1.Message.getWrapperField(this, ImageMessage, 1) as ImageMessage | undefined | null;
+        return pb_1.Message.getWrapperField(this, ImageMessage, 1) as ImageMessage | undefined;
     }
-    set productImage(value: ImageMessage | undefined | null) {
+    set productImage(value: ImageMessage | undefined) {
         pb_1.Message.setWrapperField(this, 1, value);
     }
     get has_productImage() {
@@ -8079,7 +8408,7 @@ export class ProductSnapshot extends pb_1.Message {
     get has_firstImageId() {
         return pb_1.Message.getField(this, 11) != null;
     }
-    static fromObject(data: RecursivePartial<ProductSnapshot.AsObject>): ProductSnapshot {
+    static fromObject(data: ProductSnapshot.AsObjectPartial): ProductSnapshot {
         const message = new ProductSnapshot({});
         if (data.productImage != null) {
             message.productImage = ImageMessage.fromObject(data.productImage);
@@ -8135,24 +8464,24 @@ export class ProductSnapshot extends pb_1.Message {
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
         if (this.has_productImage)
-            writer.writeMessage(1, this.productImage, () => this.productImage.serialize(writer));
-        if (this.has_productId && this.productId.length)
+            writer.writeMessage(1, this.productImage, () => this.productImage!.serialize(writer));
+        if (this.has_productId && this.productId!.length)
             writer.writeString(2, this.productId);
-        if (this.has_title && this.title.length)
+        if (this.has_title && this.title!.length)
             writer.writeString(3, this.title);
-        if (this.has_description && this.description.length)
+        if (this.has_description && this.description!.length)
             writer.writeString(4, this.description);
-        if (this.has_currencyCode && this.currencyCode.length)
+        if (this.has_currencyCode && this.currencyCode!.length)
             writer.writeString(5, this.currencyCode);
         if (this.has_priceAmount1000)
             writer.writeInt64(6, this.priceAmount1000);
-        if (this.has_retailerId && this.retailerId.length)
+        if (this.has_retailerId && this.retailerId!.length)
             writer.writeString(7, this.retailerId);
-        if (this.has_url && this.url.length)
+        if (this.has_url && this.url!.length)
             writer.writeString(8, this.url);
         if (this.has_productImageCount)
             writer.writeUint32(9, this.productImageCount);
-        if (this.has_firstImageId && this.firstImageId.length)
+        if (this.has_firstImageId && this.firstImageId!.length)
             writer.writeString(11, this.firstImageId);
         if (!w)
             return writer.getResultBuffer();
@@ -8218,6 +8547,18 @@ export namespace ProductSnapshot {
         productImageCount: number;
         firstImageId: string;
     };
+    export type AsObjectPartial = {
+        productImage?: ImageMessage.AsObjectPartial;
+        productId?: string;
+        title?: string;
+        description?: string;
+        currencyCode?: string;
+        priceAmount1000?: number;
+        retailerId?: string;
+        url?: string;
+        productImageCount?: number;
+        firstImageId?: string;
+    };
 }
 export class ProductMessage extends pb_1.Message {
     #one_of_decls: number[][] = [];
@@ -8245,9 +8586,9 @@ export class ProductMessage extends pb_1.Message {
         }
     }
     get product() {
-        return pb_1.Message.getWrapperField(this, ProductSnapshot, 1) as ProductSnapshot | undefined | null;
+        return pb_1.Message.getWrapperField(this, ProductSnapshot, 1) as ProductSnapshot | undefined;
     }
-    set product(value: ProductSnapshot | undefined | null) {
+    set product(value: ProductSnapshot | undefined) {
         pb_1.Message.setWrapperField(this, 1, value);
     }
     get has_product() {
@@ -8263,24 +8604,24 @@ export class ProductMessage extends pb_1.Message {
         return pb_1.Message.getField(this, 2) != null;
     }
     get catalog() {
-        return pb_1.Message.getWrapperField(this, CatalogSnapshot, 4) as CatalogSnapshot | undefined | null;
+        return pb_1.Message.getWrapperField(this, CatalogSnapshot, 4) as CatalogSnapshot | undefined;
     }
-    set catalog(value: CatalogSnapshot | undefined | null) {
+    set catalog(value: CatalogSnapshot | undefined) {
         pb_1.Message.setWrapperField(this, 4, value);
     }
     get has_catalog() {
         return pb_1.Message.getField(this, 4) != null;
     }
     get contextInfo() {
-        return pb_1.Message.getWrapperField(this, ContextInfo, 17) as ContextInfo | undefined | null;
+        return pb_1.Message.getWrapperField(this, ContextInfo, 17) as ContextInfo | undefined;
     }
-    set contextInfo(value: ContextInfo | undefined | null) {
+    set contextInfo(value: ContextInfo | undefined) {
         pb_1.Message.setWrapperField(this, 17, value);
     }
     get has_contextInfo() {
         return pb_1.Message.getField(this, 17) != null;
     }
-    static fromObject(data: RecursivePartial<ProductMessage.AsObject>): ProductMessage {
+    static fromObject(data: ProductMessage.AsObjectPartial): ProductMessage {
         const message = new ProductMessage({});
         if (data.product != null) {
             message.product = ProductSnapshot.fromObject(data.product);
@@ -8316,13 +8657,13 @@ export class ProductMessage extends pb_1.Message {
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
         if (this.has_product)
-            writer.writeMessage(1, this.product, () => this.product.serialize(writer));
-        if (this.has_businessOwnerJid && this.businessOwnerJid.length)
+            writer.writeMessage(1, this.product, () => this.product!.serialize(writer));
+        if (this.has_businessOwnerJid && this.businessOwnerJid!.length)
             writer.writeString(2, this.businessOwnerJid);
         if (this.has_catalog)
-            writer.writeMessage(4, this.catalog, () => this.catalog.serialize(writer));
+            writer.writeMessage(4, this.catalog, () => this.catalog!.serialize(writer));
         if (this.has_contextInfo)
-            writer.writeMessage(17, this.contextInfo, () => this.contextInfo.serialize(writer));
+            writer.writeMessage(17, this.contextInfo, () => this.contextInfo!.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
     }
@@ -8362,6 +8703,12 @@ export namespace ProductMessage {
         businessOwnerJid: string;
         catalog?: CatalogSnapshot.AsObject;
         contextInfo?: ContextInfo.AsObject;
+    };
+    export type AsObjectPartial = {
+        product?: ProductSnapshot.AsObjectPartial;
+        businessOwnerJid?: string;
+        catalog?: CatalogSnapshot.AsObjectPartial;
+        contextInfo?: ContextInfo.AsObjectPartial;
     };
 }
 export class GroupInviteMessage extends pb_1.Message {
@@ -8456,15 +8803,15 @@ export class GroupInviteMessage extends pb_1.Message {
         return pb_1.Message.getField(this, 6) != null;
     }
     get contextInfo() {
-        return pb_1.Message.getWrapperField(this, ContextInfo, 7) as ContextInfo | undefined | null;
+        return pb_1.Message.getWrapperField(this, ContextInfo, 7) as ContextInfo | undefined;
     }
-    set contextInfo(value: ContextInfo | undefined | null) {
+    set contextInfo(value: ContextInfo | undefined) {
         pb_1.Message.setWrapperField(this, 7, value);
     }
     get has_contextInfo() {
         return pb_1.Message.getField(this, 7) != null;
     }
-    static fromObject(data: RecursivePartial<GroupInviteMessage.AsObject>): GroupInviteMessage {
+    static fromObject(data: GroupInviteMessage.AsObjectPartial): GroupInviteMessage {
         const message = new GroupInviteMessage({});
         if (data.groupJid != null) {
             message.groupJid = data.groupJid;
@@ -8507,20 +8854,20 @@ export class GroupInviteMessage extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.has_groupJid && this.groupJid.length)
+        if (this.has_groupJid && this.groupJid!.length)
             writer.writeString(1, this.groupJid);
-        if (this.has_inviteCode && this.inviteCode.length)
+        if (this.has_inviteCode && this.inviteCode!.length)
             writer.writeString(2, this.inviteCode);
         if (this.has_inviteExpiration)
             writer.writeInt64(3, this.inviteExpiration);
-        if (this.has_groupName && this.groupName.length)
+        if (this.has_groupName && this.groupName!.length)
             writer.writeString(4, this.groupName);
-        if (this.has_jpegThumbnail && this.jpegThumbnail.length)
+        if (this.has_jpegThumbnail && this.jpegThumbnail!.length)
             writer.writeBytes(5, this.jpegThumbnail);
-        if (this.has_caption && this.caption.length)
+        if (this.has_caption && this.caption!.length)
             writer.writeString(6, this.caption);
         if (this.has_contextInfo)
-            writer.writeMessage(7, this.contextInfo, () => this.contextInfo.serialize(writer));
+            writer.writeMessage(7, this.contextInfo, () => this.contextInfo!.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
     }
@@ -8573,6 +8920,15 @@ export namespace GroupInviteMessage {
         caption: string;
         contextInfo?: ContextInfo.AsObject;
     };
+    export type AsObjectPartial = {
+        groupJid?: string;
+        inviteCode?: string;
+        inviteExpiration?: number;
+        groupName?: string;
+        jpegThumbnail?: Uint8Array;
+        caption?: string;
+        contextInfo?: ContextInfo.AsObjectPartial;
+    };
 }
 export class DeviceSentMessage extends pb_1.Message {
     #one_of_decls: number[][] = [];
@@ -8605,9 +8961,9 @@ export class DeviceSentMessage extends pb_1.Message {
         return pb_1.Message.getField(this, 1) != null;
     }
     get message() {
-        return pb_1.Message.getWrapperField(this, Message, 2) as Message | undefined | null;
+        return pb_1.Message.getWrapperField(this, Message, 2) as Message | undefined;
     }
-    set message(value: Message | undefined | null) {
+    set message(value: Message | undefined) {
         pb_1.Message.setWrapperField(this, 2, value);
     }
     get has_message() {
@@ -8622,7 +8978,7 @@ export class DeviceSentMessage extends pb_1.Message {
     get has_phash() {
         return pb_1.Message.getField(this, 3) != null;
     }
-    static fromObject(data: RecursivePartial<DeviceSentMessage.AsObject>): DeviceSentMessage {
+    static fromObject(data: DeviceSentMessage.AsObjectPartial): DeviceSentMessage {
         const message = new DeviceSentMessage({});
         if (data.destinationJid != null) {
             message.destinationJid = data.destinationJid;
@@ -8649,11 +9005,11 @@ export class DeviceSentMessage extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.has_destinationJid && this.destinationJid.length)
+        if (this.has_destinationJid && this.destinationJid!.length)
             writer.writeString(1, this.destinationJid);
         if (this.has_message)
-            writer.writeMessage(2, this.message, () => this.message.serialize(writer));
-        if (this.has_phash && this.phash.length)
+            writer.writeMessage(2, this.message, () => this.message!.serialize(writer));
+        if (this.has_phash && this.phash!.length)
             writer.writeString(3, this.phash);
         if (!w)
             return writer.getResultBuffer();
@@ -8690,6 +9046,11 @@ export namespace DeviceSentMessage {
         destinationJid: string;
         message?: Message.AsObject;
         phash: string;
+    };
+    export type AsObjectPartial = {
+        destinationJid?: string;
+        message?: Message.AsObjectPartial;
+        phash?: string;
     };
 }
 export class Message extends pb_1.Message {
@@ -8815,231 +9176,231 @@ export class Message extends pb_1.Message {
         return pb_1.Message.getField(this, 1) != null;
     }
     get senderKeyDistributionMessage() {
-        return pb_1.Message.getWrapperField(this, SenderKeyDistributionMessage, 2) as SenderKeyDistributionMessage | undefined | null;
+        return pb_1.Message.getWrapperField(this, SenderKeyDistributionMessage, 2) as SenderKeyDistributionMessage | undefined;
     }
-    set senderKeyDistributionMessage(value: SenderKeyDistributionMessage | undefined | null) {
+    set senderKeyDistributionMessage(value: SenderKeyDistributionMessage | undefined) {
         pb_1.Message.setWrapperField(this, 2, value);
     }
     get has_senderKeyDistributionMessage() {
         return pb_1.Message.getField(this, 2) != null;
     }
     get imageMessage() {
-        return pb_1.Message.getWrapperField(this, ImageMessage, 3) as ImageMessage | undefined | null;
+        return pb_1.Message.getWrapperField(this, ImageMessage, 3) as ImageMessage | undefined;
     }
-    set imageMessage(value: ImageMessage | undefined | null) {
+    set imageMessage(value: ImageMessage | undefined) {
         pb_1.Message.setWrapperField(this, 3, value);
     }
     get has_imageMessage() {
         return pb_1.Message.getField(this, 3) != null;
     }
     get contactMessage() {
-        return pb_1.Message.getWrapperField(this, ContactMessage, 4) as ContactMessage | undefined | null;
+        return pb_1.Message.getWrapperField(this, ContactMessage, 4) as ContactMessage | undefined;
     }
-    set contactMessage(value: ContactMessage | undefined | null) {
+    set contactMessage(value: ContactMessage | undefined) {
         pb_1.Message.setWrapperField(this, 4, value);
     }
     get has_contactMessage() {
         return pb_1.Message.getField(this, 4) != null;
     }
     get locationMessage() {
-        return pb_1.Message.getWrapperField(this, LocationMessage, 5) as LocationMessage | undefined | null;
+        return pb_1.Message.getWrapperField(this, LocationMessage, 5) as LocationMessage | undefined;
     }
-    set locationMessage(value: LocationMessage | undefined | null) {
+    set locationMessage(value: LocationMessage | undefined) {
         pb_1.Message.setWrapperField(this, 5, value);
     }
     get has_locationMessage() {
         return pb_1.Message.getField(this, 5) != null;
     }
     get extendedTextMessage() {
-        return pb_1.Message.getWrapperField(this, ExtendedTextMessage, 6) as ExtendedTextMessage | undefined | null;
+        return pb_1.Message.getWrapperField(this, ExtendedTextMessage, 6) as ExtendedTextMessage | undefined;
     }
-    set extendedTextMessage(value: ExtendedTextMessage | undefined | null) {
+    set extendedTextMessage(value: ExtendedTextMessage | undefined) {
         pb_1.Message.setWrapperField(this, 6, value);
     }
     get has_extendedTextMessage() {
         return pb_1.Message.getField(this, 6) != null;
     }
     get documentMessage() {
-        return pb_1.Message.getWrapperField(this, DocumentMessage, 7) as DocumentMessage | undefined | null;
+        return pb_1.Message.getWrapperField(this, DocumentMessage, 7) as DocumentMessage | undefined;
     }
-    set documentMessage(value: DocumentMessage | undefined | null) {
+    set documentMessage(value: DocumentMessage | undefined) {
         pb_1.Message.setWrapperField(this, 7, value);
     }
     get has_documentMessage() {
         return pb_1.Message.getField(this, 7) != null;
     }
     get audioMessage() {
-        return pb_1.Message.getWrapperField(this, AudioMessage, 8) as AudioMessage | undefined | null;
+        return pb_1.Message.getWrapperField(this, AudioMessage, 8) as AudioMessage | undefined;
     }
-    set audioMessage(value: AudioMessage | undefined | null) {
+    set audioMessage(value: AudioMessage | undefined) {
         pb_1.Message.setWrapperField(this, 8, value);
     }
     get has_audioMessage() {
         return pb_1.Message.getField(this, 8) != null;
     }
     get videoMessage() {
-        return pb_1.Message.getWrapperField(this, VideoMessage, 9) as VideoMessage | undefined | null;
+        return pb_1.Message.getWrapperField(this, VideoMessage, 9) as VideoMessage | undefined;
     }
-    set videoMessage(value: VideoMessage | undefined | null) {
+    set videoMessage(value: VideoMessage | undefined) {
         pb_1.Message.setWrapperField(this, 9, value);
     }
     get has_videoMessage() {
         return pb_1.Message.getField(this, 9) != null;
     }
     get call() {
-        return pb_1.Message.getWrapperField(this, Call, 10) as Call | undefined | null;
+        return pb_1.Message.getWrapperField(this, Call, 10) as Call | undefined;
     }
-    set call(value: Call | undefined | null) {
+    set call(value: Call | undefined) {
         pb_1.Message.setWrapperField(this, 10, value);
     }
     get has_call() {
         return pb_1.Message.getField(this, 10) != null;
     }
     get chat() {
-        return pb_1.Message.getWrapperField(this, Chat, 11) as Chat | undefined | null;
+        return pb_1.Message.getWrapperField(this, Chat, 11) as Chat | undefined;
     }
-    set chat(value: Chat | undefined | null) {
+    set chat(value: Chat | undefined) {
         pb_1.Message.setWrapperField(this, 11, value);
     }
     get has_chat() {
         return pb_1.Message.getField(this, 11) != null;
     }
     get protocolMessage() {
-        return pb_1.Message.getWrapperField(this, ProtocolMessage, 12) as ProtocolMessage | undefined | null;
+        return pb_1.Message.getWrapperField(this, ProtocolMessage, 12) as ProtocolMessage | undefined;
     }
-    set protocolMessage(value: ProtocolMessage | undefined | null) {
+    set protocolMessage(value: ProtocolMessage | undefined) {
         pb_1.Message.setWrapperField(this, 12, value);
     }
     get has_protocolMessage() {
         return pb_1.Message.getField(this, 12) != null;
     }
     get contactsArrayMessage() {
-        return pb_1.Message.getWrapperField(this, ContactsArrayMessage, 13) as ContactsArrayMessage | undefined | null;
+        return pb_1.Message.getWrapperField(this, ContactsArrayMessage, 13) as ContactsArrayMessage | undefined;
     }
-    set contactsArrayMessage(value: ContactsArrayMessage | undefined | null) {
+    set contactsArrayMessage(value: ContactsArrayMessage | undefined) {
         pb_1.Message.setWrapperField(this, 13, value);
     }
     get has_contactsArrayMessage() {
         return pb_1.Message.getField(this, 13) != null;
     }
     get highlyStructuredMessage() {
-        return pb_1.Message.getWrapperField(this, HighlyStructuredMessage, 14) as HighlyStructuredMessage | undefined | null;
+        return pb_1.Message.getWrapperField(this, HighlyStructuredMessage, 14) as HighlyStructuredMessage | undefined;
     }
-    set highlyStructuredMessage(value: HighlyStructuredMessage | undefined | null) {
+    set highlyStructuredMessage(value: HighlyStructuredMessage | undefined) {
         pb_1.Message.setWrapperField(this, 14, value);
     }
     get has_highlyStructuredMessage() {
         return pb_1.Message.getField(this, 14) != null;
     }
     get fastRatchetKeySenderKeyDistributionMessage() {
-        return pb_1.Message.getWrapperField(this, SenderKeyDistributionMessage, 15) as SenderKeyDistributionMessage | undefined | null;
+        return pb_1.Message.getWrapperField(this, SenderKeyDistributionMessage, 15) as SenderKeyDistributionMessage | undefined;
     }
-    set fastRatchetKeySenderKeyDistributionMessage(value: SenderKeyDistributionMessage | undefined | null) {
+    set fastRatchetKeySenderKeyDistributionMessage(value: SenderKeyDistributionMessage | undefined) {
         pb_1.Message.setWrapperField(this, 15, value);
     }
     get has_fastRatchetKeySenderKeyDistributionMessage() {
         return pb_1.Message.getField(this, 15) != null;
     }
     get sendPaymentMessage() {
-        return pb_1.Message.getWrapperField(this, SendPaymentMessage, 16) as SendPaymentMessage | undefined | null;
+        return pb_1.Message.getWrapperField(this, SendPaymentMessage, 16) as SendPaymentMessage | undefined;
     }
-    set sendPaymentMessage(value: SendPaymentMessage | undefined | null) {
+    set sendPaymentMessage(value: SendPaymentMessage | undefined) {
         pb_1.Message.setWrapperField(this, 16, value);
     }
     get has_sendPaymentMessage() {
         return pb_1.Message.getField(this, 16) != null;
     }
     get liveLocationMessage() {
-        return pb_1.Message.getWrapperField(this, LiveLocationMessage, 18) as LiveLocationMessage | undefined | null;
+        return pb_1.Message.getWrapperField(this, LiveLocationMessage, 18) as LiveLocationMessage | undefined;
     }
-    set liveLocationMessage(value: LiveLocationMessage | undefined | null) {
+    set liveLocationMessage(value: LiveLocationMessage | undefined) {
         pb_1.Message.setWrapperField(this, 18, value);
     }
     get has_liveLocationMessage() {
         return pb_1.Message.getField(this, 18) != null;
     }
     get requestPaymentMessage() {
-        return pb_1.Message.getWrapperField(this, RequestPaymentMessage, 22) as RequestPaymentMessage | undefined | null;
+        return pb_1.Message.getWrapperField(this, RequestPaymentMessage, 22) as RequestPaymentMessage | undefined;
     }
-    set requestPaymentMessage(value: RequestPaymentMessage | undefined | null) {
+    set requestPaymentMessage(value: RequestPaymentMessage | undefined) {
         pb_1.Message.setWrapperField(this, 22, value);
     }
     get has_requestPaymentMessage() {
         return pb_1.Message.getField(this, 22) != null;
     }
     get declinePaymentRequestMessage() {
-        return pb_1.Message.getWrapperField(this, DeclinePaymentRequestMessage, 23) as DeclinePaymentRequestMessage | undefined | null;
+        return pb_1.Message.getWrapperField(this, DeclinePaymentRequestMessage, 23) as DeclinePaymentRequestMessage | undefined;
     }
-    set declinePaymentRequestMessage(value: DeclinePaymentRequestMessage | undefined | null) {
+    set declinePaymentRequestMessage(value: DeclinePaymentRequestMessage | undefined) {
         pb_1.Message.setWrapperField(this, 23, value);
     }
     get has_declinePaymentRequestMessage() {
         return pb_1.Message.getField(this, 23) != null;
     }
     get cancelPaymentRequestMessage() {
-        return pb_1.Message.getWrapperField(this, CancelPaymentRequestMessage, 24) as CancelPaymentRequestMessage | undefined | null;
+        return pb_1.Message.getWrapperField(this, CancelPaymentRequestMessage, 24) as CancelPaymentRequestMessage | undefined;
     }
-    set cancelPaymentRequestMessage(value: CancelPaymentRequestMessage | undefined | null) {
+    set cancelPaymentRequestMessage(value: CancelPaymentRequestMessage | undefined) {
         pb_1.Message.setWrapperField(this, 24, value);
     }
     get has_cancelPaymentRequestMessage() {
         return pb_1.Message.getField(this, 24) != null;
     }
     get templateMessage() {
-        return pb_1.Message.getWrapperField(this, TemplateMessage, 25) as TemplateMessage | undefined | null;
+        return pb_1.Message.getWrapperField(this, TemplateMessage, 25) as TemplateMessage | undefined;
     }
-    set templateMessage(value: TemplateMessage | undefined | null) {
+    set templateMessage(value: TemplateMessage | undefined) {
         pb_1.Message.setWrapperField(this, 25, value);
     }
     get has_templateMessage() {
         return pb_1.Message.getField(this, 25) != null;
     }
     get stickerMessage() {
-        return pb_1.Message.getWrapperField(this, StickerMessage, 26) as StickerMessage | undefined | null;
+        return pb_1.Message.getWrapperField(this, StickerMessage, 26) as StickerMessage | undefined;
     }
-    set stickerMessage(value: StickerMessage | undefined | null) {
+    set stickerMessage(value: StickerMessage | undefined) {
         pb_1.Message.setWrapperField(this, 26, value);
     }
     get has_stickerMessage() {
         return pb_1.Message.getField(this, 26) != null;
     }
     get groupInviteMessage() {
-        return pb_1.Message.getWrapperField(this, GroupInviteMessage, 28) as GroupInviteMessage | undefined | null;
+        return pb_1.Message.getWrapperField(this, GroupInviteMessage, 28) as GroupInviteMessage | undefined;
     }
-    set groupInviteMessage(value: GroupInviteMessage | undefined | null) {
+    set groupInviteMessage(value: GroupInviteMessage | undefined) {
         pb_1.Message.setWrapperField(this, 28, value);
     }
     get has_groupInviteMessage() {
         return pb_1.Message.getField(this, 28) != null;
     }
     get templateButtonReplyMessage() {
-        return pb_1.Message.getWrapperField(this, TemplateButtonReplyMessage, 29) as TemplateButtonReplyMessage | undefined | null;
+        return pb_1.Message.getWrapperField(this, TemplateButtonReplyMessage, 29) as TemplateButtonReplyMessage | undefined;
     }
-    set templateButtonReplyMessage(value: TemplateButtonReplyMessage | undefined | null) {
+    set templateButtonReplyMessage(value: TemplateButtonReplyMessage | undefined) {
         pb_1.Message.setWrapperField(this, 29, value);
     }
     get has_templateButtonReplyMessage() {
         return pb_1.Message.getField(this, 29) != null;
     }
     get productMessage() {
-        return pb_1.Message.getWrapperField(this, ProductMessage, 30) as ProductMessage | undefined | null;
+        return pb_1.Message.getWrapperField(this, ProductMessage, 30) as ProductMessage | undefined;
     }
-    set productMessage(value: ProductMessage | undefined | null) {
+    set productMessage(value: ProductMessage | undefined) {
         pb_1.Message.setWrapperField(this, 30, value);
     }
     get has_productMessage() {
         return pb_1.Message.getField(this, 30) != null;
     }
     get deviceSentMessage() {
-        return pb_1.Message.getWrapperField(this, DeviceSentMessage, 31) as DeviceSentMessage | undefined | null;
+        return pb_1.Message.getWrapperField(this, DeviceSentMessage, 31) as DeviceSentMessage | undefined;
     }
-    set deviceSentMessage(value: DeviceSentMessage | undefined | null) {
+    set deviceSentMessage(value: DeviceSentMessage | undefined) {
         pb_1.Message.setWrapperField(this, 31, value);
     }
     get has_deviceSentMessage() {
         return pb_1.Message.getField(this, 31) != null;
     }
-    static fromObject(data: RecursivePartial<Message.AsObject>): Message {
+    static fromObject(data: Message.AsObjectPartial): Message {
         const message = new Message({});
         if (data.conversation != null) {
             message.conversation = data.conversation;
@@ -9206,58 +9567,58 @@ export class Message extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.has_conversation && this.conversation.length)
+        if (this.has_conversation && this.conversation!.length)
             writer.writeString(1, this.conversation);
         if (this.has_senderKeyDistributionMessage)
-            writer.writeMessage(2, this.senderKeyDistributionMessage, () => this.senderKeyDistributionMessage.serialize(writer));
+            writer.writeMessage(2, this.senderKeyDistributionMessage, () => this.senderKeyDistributionMessage!.serialize(writer));
         if (this.has_imageMessage)
-            writer.writeMessage(3, this.imageMessage, () => this.imageMessage.serialize(writer));
+            writer.writeMessage(3, this.imageMessage, () => this.imageMessage!.serialize(writer));
         if (this.has_contactMessage)
-            writer.writeMessage(4, this.contactMessage, () => this.contactMessage.serialize(writer));
+            writer.writeMessage(4, this.contactMessage, () => this.contactMessage!.serialize(writer));
         if (this.has_locationMessage)
-            writer.writeMessage(5, this.locationMessage, () => this.locationMessage.serialize(writer));
+            writer.writeMessage(5, this.locationMessage, () => this.locationMessage!.serialize(writer));
         if (this.has_extendedTextMessage)
-            writer.writeMessage(6, this.extendedTextMessage, () => this.extendedTextMessage.serialize(writer));
+            writer.writeMessage(6, this.extendedTextMessage, () => this.extendedTextMessage!.serialize(writer));
         if (this.has_documentMessage)
-            writer.writeMessage(7, this.documentMessage, () => this.documentMessage.serialize(writer));
+            writer.writeMessage(7, this.documentMessage, () => this.documentMessage!.serialize(writer));
         if (this.has_audioMessage)
-            writer.writeMessage(8, this.audioMessage, () => this.audioMessage.serialize(writer));
+            writer.writeMessage(8, this.audioMessage, () => this.audioMessage!.serialize(writer));
         if (this.has_videoMessage)
-            writer.writeMessage(9, this.videoMessage, () => this.videoMessage.serialize(writer));
+            writer.writeMessage(9, this.videoMessage, () => this.videoMessage!.serialize(writer));
         if (this.has_call)
-            writer.writeMessage(10, this.call, () => this.call.serialize(writer));
+            writer.writeMessage(10, this.call, () => this.call!.serialize(writer));
         if (this.has_chat)
-            writer.writeMessage(11, this.chat, () => this.chat.serialize(writer));
+            writer.writeMessage(11, this.chat, () => this.chat!.serialize(writer));
         if (this.has_protocolMessage)
-            writer.writeMessage(12, this.protocolMessage, () => this.protocolMessage.serialize(writer));
+            writer.writeMessage(12, this.protocolMessage, () => this.protocolMessage!.serialize(writer));
         if (this.has_contactsArrayMessage)
-            writer.writeMessage(13, this.contactsArrayMessage, () => this.contactsArrayMessage.serialize(writer));
+            writer.writeMessage(13, this.contactsArrayMessage, () => this.contactsArrayMessage!.serialize(writer));
         if (this.has_highlyStructuredMessage)
-            writer.writeMessage(14, this.highlyStructuredMessage, () => this.highlyStructuredMessage.serialize(writer));
+            writer.writeMessage(14, this.highlyStructuredMessage, () => this.highlyStructuredMessage!.serialize(writer));
         if (this.has_fastRatchetKeySenderKeyDistributionMessage)
-            writer.writeMessage(15, this.fastRatchetKeySenderKeyDistributionMessage, () => this.fastRatchetKeySenderKeyDistributionMessage.serialize(writer));
+            writer.writeMessage(15, this.fastRatchetKeySenderKeyDistributionMessage, () => this.fastRatchetKeySenderKeyDistributionMessage!.serialize(writer));
         if (this.has_sendPaymentMessage)
-            writer.writeMessage(16, this.sendPaymentMessage, () => this.sendPaymentMessage.serialize(writer));
+            writer.writeMessage(16, this.sendPaymentMessage, () => this.sendPaymentMessage!.serialize(writer));
         if (this.has_liveLocationMessage)
-            writer.writeMessage(18, this.liveLocationMessage, () => this.liveLocationMessage.serialize(writer));
+            writer.writeMessage(18, this.liveLocationMessage, () => this.liveLocationMessage!.serialize(writer));
         if (this.has_requestPaymentMessage)
-            writer.writeMessage(22, this.requestPaymentMessage, () => this.requestPaymentMessage.serialize(writer));
+            writer.writeMessage(22, this.requestPaymentMessage, () => this.requestPaymentMessage!.serialize(writer));
         if (this.has_declinePaymentRequestMessage)
-            writer.writeMessage(23, this.declinePaymentRequestMessage, () => this.declinePaymentRequestMessage.serialize(writer));
+            writer.writeMessage(23, this.declinePaymentRequestMessage, () => this.declinePaymentRequestMessage!.serialize(writer));
         if (this.has_cancelPaymentRequestMessage)
-            writer.writeMessage(24, this.cancelPaymentRequestMessage, () => this.cancelPaymentRequestMessage.serialize(writer));
+            writer.writeMessage(24, this.cancelPaymentRequestMessage, () => this.cancelPaymentRequestMessage!.serialize(writer));
         if (this.has_templateMessage)
-            writer.writeMessage(25, this.templateMessage, () => this.templateMessage.serialize(writer));
+            writer.writeMessage(25, this.templateMessage, () => this.templateMessage!.serialize(writer));
         if (this.has_stickerMessage)
-            writer.writeMessage(26, this.stickerMessage, () => this.stickerMessage.serialize(writer));
+            writer.writeMessage(26, this.stickerMessage, () => this.stickerMessage!.serialize(writer));
         if (this.has_groupInviteMessage)
-            writer.writeMessage(28, this.groupInviteMessage, () => this.groupInviteMessage.serialize(writer));
+            writer.writeMessage(28, this.groupInviteMessage, () => this.groupInviteMessage!.serialize(writer));
         if (this.has_templateButtonReplyMessage)
-            writer.writeMessage(29, this.templateButtonReplyMessage, () => this.templateButtonReplyMessage.serialize(writer));
+            writer.writeMessage(29, this.templateButtonReplyMessage, () => this.templateButtonReplyMessage!.serialize(writer));
         if (this.has_productMessage)
-            writer.writeMessage(30, this.productMessage, () => this.productMessage.serialize(writer));
+            writer.writeMessage(30, this.productMessage, () => this.productMessage!.serialize(writer));
         if (this.has_deviceSentMessage)
-            writer.writeMessage(31, this.deviceSentMessage, () => this.deviceSentMessage.serialize(writer));
+            writer.writeMessage(31, this.deviceSentMessage, () => this.deviceSentMessage!.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
     }
@@ -9386,6 +9747,34 @@ export namespace Message {
         productMessage?: ProductMessage.AsObject;
         deviceSentMessage?: DeviceSentMessage.AsObject;
     };
+    export type AsObjectPartial = {
+        conversation?: string;
+        senderKeyDistributionMessage?: SenderKeyDistributionMessage.AsObjectPartial;
+        imageMessage?: ImageMessage.AsObjectPartial;
+        contactMessage?: ContactMessage.AsObjectPartial;
+        locationMessage?: LocationMessage.AsObjectPartial;
+        extendedTextMessage?: ExtendedTextMessage.AsObjectPartial;
+        documentMessage?: DocumentMessage.AsObjectPartial;
+        audioMessage?: AudioMessage.AsObjectPartial;
+        videoMessage?: VideoMessage.AsObjectPartial;
+        call?: Call.AsObjectPartial;
+        chat?: Chat.AsObjectPartial;
+        protocolMessage?: ProtocolMessage.AsObjectPartial;
+        contactsArrayMessage?: ContactsArrayMessage.AsObjectPartial;
+        highlyStructuredMessage?: HighlyStructuredMessage.AsObjectPartial;
+        fastRatchetKeySenderKeyDistributionMessage?: SenderKeyDistributionMessage.AsObjectPartial;
+        sendPaymentMessage?: SendPaymentMessage.AsObjectPartial;
+        liveLocationMessage?: LiveLocationMessage.AsObjectPartial;
+        requestPaymentMessage?: RequestPaymentMessage.AsObjectPartial;
+        declinePaymentRequestMessage?: DeclinePaymentRequestMessage.AsObjectPartial;
+        cancelPaymentRequestMessage?: CancelPaymentRequestMessage.AsObjectPartial;
+        templateMessage?: TemplateMessage.AsObjectPartial;
+        stickerMessage?: StickerMessage.AsObjectPartial;
+        groupInviteMessage?: GroupInviteMessage.AsObjectPartial;
+        templateButtonReplyMessage?: TemplateButtonReplyMessage.AsObjectPartial;
+        productMessage?: ProductMessage.AsObjectPartial;
+        deviceSentMessage?: DeviceSentMessage.AsObjectPartial;
+    };
 }
 export class MessageKey extends pb_1.Message {
     #one_of_decls: number[][] = [];
@@ -9448,7 +9837,7 @@ export class MessageKey extends pb_1.Message {
     get has_participant() {
         return pb_1.Message.getField(this, 4) != null;
     }
-    static fromObject(data: RecursivePartial<MessageKey.AsObject>): MessageKey {
+    static fromObject(data: MessageKey.AsObjectPartial): MessageKey {
         const message = new MessageKey({});
         if (data.remoteJid != null) {
             message.remoteJid = data.remoteJid;
@@ -9477,13 +9866,13 @@ export class MessageKey extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.has_remoteJid && this.remoteJid.length)
+        if (this.has_remoteJid && this.remoteJid!.length)
             writer.writeString(1, this.remoteJid);
         if (this.has_fromMe)
             writer.writeBool(2, this.fromMe);
-        if (this.has_id && this.id.length)
+        if (this.has_id && this.id!.length)
             writer.writeString(3, this.id);
-        if (this.has_participant && this.participant.length)
+        if (this.has_participant && this.participant!.length)
             writer.writeString(4, this.participant);
         if (!w)
             return writer.getResultBuffer();
@@ -9524,6 +9913,12 @@ export namespace MessageKey {
         fromMe: boolean;
         id: string;
         participant: string;
+    };
+    export type AsObjectPartial = {
+        remoteJid?: string;
+        fromMe?: boolean;
+        id?: string;
+        participant?: string;
     };
 }
 export class WebFeatures extends pb_1.Message {
@@ -9964,7 +10359,7 @@ export class WebFeatures extends pb_1.Message {
     get has_syncdRelease1() {
         return pb_1.Message.getField(this, 35) != null;
     }
-    static fromObject(data: RecursivePartial<WebFeatures.AsObject>): WebFeatures {
+    static fromObject(data: WebFeatures.AsObjectPartial): WebFeatures {
         const message = new WebFeatures({});
         if (data.labelsDisplay != null) {
             message.labelsDisplay = data.labelsDisplay;
@@ -10331,6 +10726,41 @@ export namespace WebFeatures {
         recentStickersV2: WebFeatures.WEB_FEATURES_FLAG;
         syncdRelease1: WebFeatures.WEB_FEATURES_FLAG;
     };
+    export type AsObjectPartial = {
+        labelsDisplay?: WebFeatures.WEB_FEATURES_FLAG;
+        voipIndividualOutgoing?: WebFeatures.WEB_FEATURES_FLAG;
+        groupsV3?: WebFeatures.WEB_FEATURES_FLAG;
+        groupsV3Create?: WebFeatures.WEB_FEATURES_FLAG;
+        changeNumberV2?: WebFeatures.WEB_FEATURES_FLAG;
+        queryStatusV3Thumbnail?: WebFeatures.WEB_FEATURES_FLAG;
+        liveLocations?: WebFeatures.WEB_FEATURES_FLAG;
+        queryVname?: WebFeatures.WEB_FEATURES_FLAG;
+        voipIndividualIncoming?: WebFeatures.WEB_FEATURES_FLAG;
+        quickRepliesQuery?: WebFeatures.WEB_FEATURES_FLAG;
+        payments?: WebFeatures.WEB_FEATURES_FLAG;
+        stickerPackQuery?: WebFeatures.WEB_FEATURES_FLAG;
+        liveLocationsFinal?: WebFeatures.WEB_FEATURES_FLAG;
+        labelsEdit?: WebFeatures.WEB_FEATURES_FLAG;
+        mediaUpload?: WebFeatures.WEB_FEATURES_FLAG;
+        mediaUploadRichQuickReplies?: WebFeatures.WEB_FEATURES_FLAG;
+        vnameV2?: WebFeatures.WEB_FEATURES_FLAG;
+        videoPlaybackUrl?: WebFeatures.WEB_FEATURES_FLAG;
+        statusRanking?: WebFeatures.WEB_FEATURES_FLAG;
+        voipIndividualVideo?: WebFeatures.WEB_FEATURES_FLAG;
+        thirdPartyStickers?: WebFeatures.WEB_FEATURES_FLAG;
+        frequentlyForwardedSetting?: WebFeatures.WEB_FEATURES_FLAG;
+        groupsV4JoinPermission?: WebFeatures.WEB_FEATURES_FLAG;
+        recentStickers?: WebFeatures.WEB_FEATURES_FLAG;
+        catalog?: WebFeatures.WEB_FEATURES_FLAG;
+        starredStickers?: WebFeatures.WEB_FEATURES_FLAG;
+        voipGroupCall?: WebFeatures.WEB_FEATURES_FLAG;
+        templateMessage?: WebFeatures.WEB_FEATURES_FLAG;
+        templateMessageInteractivity?: WebFeatures.WEB_FEATURES_FLAG;
+        ephemeralMessages?: WebFeatures.WEB_FEATURES_FLAG;
+        e2ENotificationSync?: WebFeatures.WEB_FEATURES_FLAG;
+        recentStickersV2?: WebFeatures.WEB_FEATURES_FLAG;
+        syncdRelease1?: WebFeatures.WEB_FEATURES_FLAG;
+    };
     export enum WEB_FEATURES_FLAG {
         NOT_STARTED = 0,
         FORCE_UPGRADE = 1,
@@ -10394,7 +10824,7 @@ export class TabletNotificationsInfo extends pb_1.Message {
     set notifyMessage(value: NotificationMessageInfo[]) {
         pb_1.Message.setRepeatedWrapperField(this, 5, value);
     }
-    static fromObject(data: RecursivePartial<TabletNotificationsInfo.AsObject>): TabletNotificationsInfo {
+    static fromObject(data: TabletNotificationsInfo.AsObjectPartial): TabletNotificationsInfo {
         const message = new TabletNotificationsInfo({
             notifyMessage: data.notifyMessage.map(item => NotificationMessageInfo.fromObject(item))
         });
@@ -10429,7 +10859,7 @@ export class TabletNotificationsInfo extends pb_1.Message {
         if (this.has_notifyMessageCount)
             writer.writeUint32(4, this.notifyMessageCount);
         if (this.notifyMessage.length)
-            writer.writeRepeatedMessage(5, this.notifyMessage, (item: NotificationMessageInfo) => item.serialize(writer));
+            writer.writeRepeatedMessage(5, this.notifyMessage, (item: NotificationMessageInfo) => item!.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
     }
@@ -10470,6 +10900,12 @@ export namespace TabletNotificationsInfo {
         notifyMessageCount: number;
         notifyMessage: NotificationMessageInfo.AsObject[];
     };
+    export type AsObjectPartial = {
+        timestamp?: number;
+        unreadChats?: number;
+        notifyMessageCount?: number;
+        notifyMessage: NotificationMessageInfo.AsObjectPartial[];
+    };
 }
 export class NotificationMessageInfo extends pb_1.Message {
     #one_of_decls: number[][] = [];
@@ -10497,18 +10933,18 @@ export class NotificationMessageInfo extends pb_1.Message {
         }
     }
     get key() {
-        return pb_1.Message.getWrapperField(this, MessageKey, 1) as MessageKey | undefined | null;
+        return pb_1.Message.getWrapperField(this, MessageKey, 1) as MessageKey | undefined;
     }
-    set key(value: MessageKey | undefined | null) {
+    set key(value: MessageKey | undefined) {
         pb_1.Message.setWrapperField(this, 1, value);
     }
     get has_key() {
         return pb_1.Message.getField(this, 1) != null;
     }
     get message() {
-        return pb_1.Message.getWrapperField(this, Message, 2) as Message | undefined | null;
+        return pb_1.Message.getWrapperField(this, Message, 2) as Message | undefined;
     }
-    set message(value: Message | undefined | null) {
+    set message(value: Message | undefined) {
         pb_1.Message.setWrapperField(this, 2, value);
     }
     get has_message() {
@@ -10532,7 +10968,7 @@ export class NotificationMessageInfo extends pb_1.Message {
     get has_participant() {
         return pb_1.Message.getField(this, 4) != null;
     }
-    static fromObject(data: RecursivePartial<NotificationMessageInfo.AsObject>): NotificationMessageInfo {
+    static fromObject(data: NotificationMessageInfo.AsObjectPartial): NotificationMessageInfo {
         const message = new NotificationMessageInfo({});
         if (data.key != null) {
             message.key = MessageKey.fromObject(data.key);
@@ -10566,12 +11002,12 @@ export class NotificationMessageInfo extends pb_1.Message {
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
         if (this.has_key)
-            writer.writeMessage(1, this.key, () => this.key.serialize(writer));
+            writer.writeMessage(1, this.key, () => this.key!.serialize(writer));
         if (this.has_message)
-            writer.writeMessage(2, this.message, () => this.message.serialize(writer));
+            writer.writeMessage(2, this.message, () => this.message!.serialize(writer));
         if (this.has_messageTimestamp)
             writer.writeUint64(3, this.messageTimestamp);
-        if (this.has_participant && this.participant.length)
+        if (this.has_participant && this.participant!.length)
             writer.writeString(4, this.participant);
         if (!w)
             return writer.getResultBuffer();
@@ -10612,6 +11048,12 @@ export namespace NotificationMessageInfo {
         message?: Message.AsObject;
         messageTimestamp: number;
         participant: string;
+    };
+    export type AsObjectPartial = {
+        key?: MessageKey.AsObjectPartial;
+        message?: Message.AsObjectPartial;
+        messageTimestamp?: number;
+        participant?: string;
     };
 }
 export class WebNotificationsInfo extends pb_1.Message {
@@ -10670,7 +11112,7 @@ export class WebNotificationsInfo extends pb_1.Message {
     set notifyMessages(value: WebMessageInfo[]) {
         pb_1.Message.setRepeatedWrapperField(this, 5, value);
     }
-    static fromObject(data: RecursivePartial<WebNotificationsInfo.AsObject>): WebNotificationsInfo {
+    static fromObject(data: WebNotificationsInfo.AsObjectPartial): WebNotificationsInfo {
         const message = new WebNotificationsInfo({
             notifyMessages: data.notifyMessages.map(item => WebMessageInfo.fromObject(item))
         });
@@ -10705,7 +11147,7 @@ export class WebNotificationsInfo extends pb_1.Message {
         if (this.has_notifyMessageCount)
             writer.writeUint32(4, this.notifyMessageCount);
         if (this.notifyMessages.length)
-            writer.writeRepeatedMessage(5, this.notifyMessages, (item: WebMessageInfo) => item.serialize(writer));
+            writer.writeRepeatedMessage(5, this.notifyMessages, (item: WebMessageInfo) => item!.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
     }
@@ -10745,6 +11187,12 @@ export namespace WebNotificationsInfo {
         unreadChats: number;
         notifyMessageCount: number;
         notifyMessages: WebMessageInfo.AsObject[];
+    };
+    export type AsObjectPartial = {
+        timestamp?: number;
+        unreadChats?: number;
+        notifyMessageCount?: number;
+        notifyMessages: WebMessageInfo.AsObjectPartial[];
     };
 }
 export class PaymentInfo extends pb_1.Message {
@@ -10842,9 +11290,9 @@ export class PaymentInfo extends pb_1.Message {
         return pb_1.Message.getField(this, 5) != null;
     }
     get requestMessageKey() {
-        return pb_1.Message.getWrapperField(this, MessageKey, 6) as MessageKey | undefined | null;
+        return pb_1.Message.getWrapperField(this, MessageKey, 6) as MessageKey | undefined;
     }
-    set requestMessageKey(value: MessageKey | undefined | null) {
+    set requestMessageKey(value: MessageKey | undefined) {
         pb_1.Message.setWrapperField(this, 6, value);
     }
     get has_requestMessageKey() {
@@ -10886,7 +11334,7 @@ export class PaymentInfo extends pb_1.Message {
     get has_txnStatus() {
         return pb_1.Message.getField(this, 10) != null;
     }
-    static fromObject(data: RecursivePartial<PaymentInfo.AsObject>): PaymentInfo {
+    static fromObject(data: PaymentInfo.AsObjectPartial): PaymentInfo {
         const message = new PaymentInfo({});
         if (data.currencyDeprecated != null) {
             message.currencyDeprecated = data.currencyDeprecated;
@@ -10945,19 +11393,19 @@ export class PaymentInfo extends pb_1.Message {
             writer.writeEnum(1, this.currencyDeprecated);
         if (this.has_amount1000)
             writer.writeUint64(2, this.amount1000);
-        if (this.has_receiverJid && this.receiverJid.length)
+        if (this.has_receiverJid && this.receiverJid!.length)
             writer.writeString(3, this.receiverJid);
         if (this.has_status)
             writer.writeEnum(4, this.status);
         if (this.has_transactionTimestamp)
             writer.writeUint64(5, this.transactionTimestamp);
         if (this.has_requestMessageKey)
-            writer.writeMessage(6, this.requestMessageKey, () => this.requestMessageKey.serialize(writer));
+            writer.writeMessage(6, this.requestMessageKey, () => this.requestMessageKey!.serialize(writer));
         if (this.has_expiryTimestamp)
             writer.writeUint64(7, this.expiryTimestamp);
         if (this.has_futureproofed)
             writer.writeBool(8, this.futureproofed);
-        if (this.has_currency && this.currency.length)
+        if (this.has_currency && this.currency!.length)
             writer.writeString(9, this.currency);
         if (this.has_txnStatus)
             writer.writeEnum(10, this.txnStatus);
@@ -11024,6 +11472,18 @@ export namespace PaymentInfo {
         futureproofed: boolean;
         currency: string;
         txnStatus: PaymentInfo.PAYMENT_INFO_TXNSTATUS;
+    };
+    export type AsObjectPartial = {
+        currencyDeprecated?: PaymentInfo.PAYMENT_INFO_CURRENCY;
+        amount1000?: number;
+        receiverJid?: string;
+        status?: PaymentInfo.PAYMENT_INFO_STATUS;
+        transactionTimestamp?: number;
+        requestMessageKey?: MessageKey.AsObjectPartial;
+        expiryTimestamp?: number;
+        futureproofed?: boolean;
+        currency?: string;
+        txnStatus?: PaymentInfo.PAYMENT_INFO_TXNSTATUS;
     };
     export enum PAYMENT_INFO_CURRENCY {
         UNKNOWN_CURRENCY = 0,
@@ -11174,18 +11634,18 @@ export class WebMessageInfo extends pb_1.Message {
         }
     }
     get key() {
-        return pb_1.Message.getWrapperField(this, MessageKey, 1) as MessageKey | undefined | null;
+        return pb_1.Message.getWrapperField(this, MessageKey, 1) as MessageKey | undefined;
     }
-    set key(value: MessageKey | undefined | null) {
+    set key(value: MessageKey | undefined) {
         pb_1.Message.setWrapperField(this, 1, value);
     }
     get has_key() {
         return pb_1.Message.getField(this, 1) != null;
     }
     get message() {
-        return pb_1.Message.getWrapperField(this, Message, 2) as Message | undefined | null;
+        return pb_1.Message.getWrapperField(this, Message, 2) as Message | undefined;
     }
-    set message(value: Message | undefined | null) {
+    set message(value: Message | undefined) {
         pb_1.Message.setWrapperField(this, 2, value);
     }
     get has_message() {
@@ -11330,27 +11790,27 @@ export class WebMessageInfo extends pb_1.Message {
         pb_1.Message.setField(this, 28, value);
     }
     get paymentInfo() {
-        return pb_1.Message.getWrapperField(this, PaymentInfo, 29) as PaymentInfo | undefined | null;
+        return pb_1.Message.getWrapperField(this, PaymentInfo, 29) as PaymentInfo | undefined;
     }
-    set paymentInfo(value: PaymentInfo | undefined | null) {
+    set paymentInfo(value: PaymentInfo | undefined) {
         pb_1.Message.setWrapperField(this, 29, value);
     }
     get has_paymentInfo() {
         return pb_1.Message.getField(this, 29) != null;
     }
     get finalLiveLocation() {
-        return pb_1.Message.getWrapperField(this, LiveLocationMessage, 30) as LiveLocationMessage | undefined | null;
+        return pb_1.Message.getWrapperField(this, LiveLocationMessage, 30) as LiveLocationMessage | undefined;
     }
-    set finalLiveLocation(value: LiveLocationMessage | undefined | null) {
+    set finalLiveLocation(value: LiveLocationMessage | undefined) {
         pb_1.Message.setWrapperField(this, 30, value);
     }
     get has_finalLiveLocation() {
         return pb_1.Message.getField(this, 30) != null;
     }
     get quotedPaymentInfo() {
-        return pb_1.Message.getWrapperField(this, PaymentInfo, 31) as PaymentInfo | undefined | null;
+        return pb_1.Message.getWrapperField(this, PaymentInfo, 31) as PaymentInfo | undefined;
     }
-    set quotedPaymentInfo(value: PaymentInfo | undefined | null) {
+    set quotedPaymentInfo(value: PaymentInfo | undefined) {
         pb_1.Message.setWrapperField(this, 31, value);
     }
     get has_quotedPaymentInfo() {
@@ -11383,7 +11843,7 @@ export class WebMessageInfo extends pb_1.Message {
     get has_ephemeralOffToOn() {
         return pb_1.Message.getField(this, 34) != null;
     }
-    static fromObject(data: RecursivePartial<WebMessageInfo.AsObject>): WebMessageInfo {
+    static fromObject(data: WebMessageInfo.AsObjectPartial): WebMessageInfo {
         const message = new WebMessageInfo({
             key: MessageKey.fromObject(data.key),
             messageStubParameters: data.messageStubParameters,
@@ -11498,14 +11958,14 @@ export class WebMessageInfo extends pb_1.Message {
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
         if (this.has_key)
-            writer.writeMessage(1, this.key, () => this.key.serialize(writer));
+            writer.writeMessage(1, this.key, () => this.key!.serialize(writer));
         if (this.has_message)
-            writer.writeMessage(2, this.message, () => this.message.serialize(writer));
+            writer.writeMessage(2, this.message, () => this.message!.serialize(writer));
         if (this.has_messageTimestamp)
             writer.writeUint64(3, this.messageTimestamp);
         if (this.has_status)
             writer.writeEnum(4, this.status);
-        if (this.has_participant && this.participant.length)
+        if (this.has_participant && this.participant!.length)
             writer.writeString(5, this.participant);
         if (this.has_ignore)
             writer.writeBool(16, this.ignore);
@@ -11513,9 +11973,9 @@ export class WebMessageInfo extends pb_1.Message {
             writer.writeBool(17, this.starred);
         if (this.has_broadcast)
             writer.writeBool(18, this.broadcast);
-        if (this.has_pushName && this.pushName.length)
+        if (this.has_pushName && this.pushName!.length)
             writer.writeString(19, this.pushName);
-        if (this.has_mediaCiphertextSha256 && this.mediaCiphertextSha256.length)
+        if (this.has_mediaCiphertextSha256 && this.mediaCiphertextSha256!.length)
             writer.writeBytes(20, this.mediaCiphertextSha256);
         if (this.has_multicast)
             writer.writeBool(21, this.multicast);
@@ -11534,11 +11994,11 @@ export class WebMessageInfo extends pb_1.Message {
         if (this.labels.length)
             writer.writeRepeatedString(28, this.labels);
         if (this.has_paymentInfo)
-            writer.writeMessage(29, this.paymentInfo, () => this.paymentInfo.serialize(writer));
+            writer.writeMessage(29, this.paymentInfo, () => this.paymentInfo!.serialize(writer));
         if (this.has_finalLiveLocation)
-            writer.writeMessage(30, this.finalLiveLocation, () => this.finalLiveLocation.serialize(writer));
+            writer.writeMessage(30, this.finalLiveLocation, () => this.finalLiveLocation!.serialize(writer));
         if (this.has_quotedPaymentInfo)
-            writer.writeMessage(31, this.quotedPaymentInfo, () => this.quotedPaymentInfo.serialize(writer));
+            writer.writeMessage(31, this.quotedPaymentInfo, () => this.quotedPaymentInfo!.serialize(writer));
         if (this.has_ephemeralStartTimestamp)
             writer.writeUint64(32, this.ephemeralStartTimestamp);
         if (this.has_ephemeralDuration)
@@ -11664,6 +12124,32 @@ export namespace WebMessageInfo {
         ephemeralStartTimestamp: number;
         ephemeralDuration: number;
         ephemeralOffToOn: boolean;
+    };
+    export type AsObjectPartial = {
+        key: MessageKey.AsObjectPartial;
+        message?: Message.AsObjectPartial;
+        messageTimestamp?: number;
+        status?: WebMessageInfo.WEB_MESSAGE_INFO_STATUS;
+        participant?: string;
+        ignore?: boolean;
+        starred?: boolean;
+        broadcast?: boolean;
+        pushName?: string;
+        mediaCiphertextSha256?: Uint8Array;
+        multicast?: boolean;
+        urlText?: boolean;
+        urlNumber?: boolean;
+        messageStubType?: WebMessageInfo.WEB_MESSAGE_INFO_STUBTYPE;
+        clearMedia?: boolean;
+        messageStubParameters: string[];
+        duration?: number;
+        labels: string[];
+        paymentInfo?: PaymentInfo.AsObjectPartial;
+        finalLiveLocation?: LiveLocationMessage.AsObjectPartial;
+        quotedPaymentInfo?: PaymentInfo.AsObjectPartial;
+        ephemeralStartTimestamp?: number;
+        ephemeralDuration?: number;
+        ephemeralOffToOn?: boolean;
     };
     export enum WEB_MESSAGE_INFO_STATUS {
         ERROR = 0,

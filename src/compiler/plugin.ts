@@ -5,9 +5,6 @@
  * git: https://github.com/thesayyn/protoc-gen-ts */
 import * as dependency_1 from "./descriptor";
 import * as pb_1 from "google-protobuf";
-type RecursivePartial<T> = {
-    [P in keyof T]?: T[P] extends (infer U)[] ? RecursivePartial<U>[] : T[P] extends Uint8Array ? T[P] : T[P] extends object ? RecursivePartial<T[P]> : T[P];
-};
 export class Version extends pb_1.Message {
     #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
@@ -69,7 +66,7 @@ export class Version extends pb_1.Message {
     get has_suffix() {
         return pb_1.Message.getField(this, 4) != null;
     }
-    static fromObject(data: RecursivePartial<Version.AsObject>): Version {
+    static fromObject(data: Version.AsObjectPartial): Version {
         const message = new Version({});
         if (data.major != null) {
             message.major = data.major;
@@ -104,7 +101,7 @@ export class Version extends pb_1.Message {
             writer.writeInt32(2, this.minor);
         if (this.has_patch)
             writer.writeInt32(3, this.patch);
-        if (this.has_suffix && this.suffix.length)
+        if (this.has_suffix && this.suffix!.length)
             writer.writeString(4, this.suffix);
         if (!w)
             return writer.getResultBuffer();
@@ -145,6 +142,12 @@ export namespace Version {
         minor: number;
         patch: number;
         suffix: string;
+    };
+    export type AsObjectPartial = {
+        major?: number;
+        minor?: number;
+        patch?: number;
+        suffix?: string;
     };
 }
 export class CodeGeneratorRequest extends pb_1.Message {
@@ -190,15 +193,15 @@ export class CodeGeneratorRequest extends pb_1.Message {
         pb_1.Message.setRepeatedWrapperField(this, 15, value);
     }
     get compiler_version() {
-        return pb_1.Message.getWrapperField(this, Version, 3) as Version | undefined | null;
+        return pb_1.Message.getWrapperField(this, Version, 3) as Version | undefined;
     }
-    set compiler_version(value: Version | undefined | null) {
+    set compiler_version(value: Version | undefined) {
         pb_1.Message.setWrapperField(this, 3, value);
     }
     get has_compiler_version() {
         return pb_1.Message.getField(this, 3) != null;
     }
-    static fromObject(data: RecursivePartial<CodeGeneratorRequest.AsObject>): CodeGeneratorRequest {
+    static fromObject(data: CodeGeneratorRequest.AsObjectPartial): CodeGeneratorRequest {
         const message = new CodeGeneratorRequest({
             file_to_generate: data.file_to_generate,
             proto_file: data.proto_file.map(item => dependency_1.FileDescriptorProto.fromObject(item))
@@ -228,12 +231,12 @@ export class CodeGeneratorRequest extends pb_1.Message {
         const writer = w || new pb_1.BinaryWriter();
         if (this.file_to_generate.length)
             writer.writeRepeatedString(1, this.file_to_generate);
-        if (this.has_parameter && this.parameter.length)
+        if (this.has_parameter && this.parameter!.length)
             writer.writeString(2, this.parameter);
         if (this.proto_file.length)
-            writer.writeRepeatedMessage(15, this.proto_file, (item: dependency_1.FileDescriptorProto) => item.serialize(writer));
+            writer.writeRepeatedMessage(15, this.proto_file, (item: dependency_1.FileDescriptorProto) => item!.serialize(writer));
         if (this.has_compiler_version)
-            writer.writeMessage(3, this.compiler_version, () => this.compiler_version.serialize(writer));
+            writer.writeMessage(3, this.compiler_version, () => this.compiler_version!.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
     }
@@ -273,6 +276,12 @@ export namespace CodeGeneratorRequest {
         parameter: string;
         proto_file: dependency_1.FileDescriptorProto.AsObject[];
         compiler_version?: Version.AsObject;
+    };
+    export type AsObjectPartial = {
+        file_to_generate: string[];
+        parameter?: string;
+        proto_file: dependency_1.FileDescriptorProto.AsObjectPartial[];
+        compiler_version?: Version.AsObjectPartial;
     };
 }
 export class CodeGeneratorResponse extends pb_1.Message {
@@ -318,7 +327,7 @@ export class CodeGeneratorResponse extends pb_1.Message {
     set file(value: CodeGeneratorResponse.File[]) {
         pb_1.Message.setRepeatedWrapperField(this, 15, value);
     }
-    static fromObject(data: RecursivePartial<CodeGeneratorResponse.AsObject>): CodeGeneratorResponse {
+    static fromObject(data: CodeGeneratorResponse.AsObjectPartial): CodeGeneratorResponse {
         const message = new CodeGeneratorResponse({
             file: data.file.map(item => CodeGeneratorResponse.File.fromObject(item))
         });
@@ -342,12 +351,12 @@ export class CodeGeneratorResponse extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.has_error && this.error.length)
+        if (this.has_error && this.error!.length)
             writer.writeString(1, this.error);
         if (this.has_supported_features)
             writer.writeUint64(2, this.supported_features);
         if (this.file.length)
-            writer.writeRepeatedMessage(15, this.file, (item: CodeGeneratorResponse.File) => item.serialize(writer));
+            writer.writeRepeatedMessage(15, this.file, (item: CodeGeneratorResponse.File) => item!.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
     }
@@ -383,6 +392,11 @@ export namespace CodeGeneratorResponse {
         error: string;
         supported_features: number;
         file: CodeGeneratorResponse.File.AsObject[];
+    };
+    export type AsObjectPartial = {
+        error?: string;
+        supported_features?: number;
+        file: CodeGeneratorResponse.File.AsObjectPartial[];
     };
     export enum Feature {
         FEATURE_NONE = 0,
@@ -441,15 +455,15 @@ export namespace CodeGeneratorResponse {
             return pb_1.Message.getField(this, 15) != null;
         }
         get generated_code_info() {
-            return pb_1.Message.getWrapperField(this, dependency_1.GeneratedCodeInfo, 16) as dependency_1.GeneratedCodeInfo | undefined | null;
+            return pb_1.Message.getWrapperField(this, dependency_1.GeneratedCodeInfo, 16) as dependency_1.GeneratedCodeInfo | undefined;
         }
-        set generated_code_info(value: dependency_1.GeneratedCodeInfo | undefined | null) {
+        set generated_code_info(value: dependency_1.GeneratedCodeInfo | undefined) {
             pb_1.Message.setWrapperField(this, 16, value);
         }
         get has_generated_code_info() {
             return pb_1.Message.getField(this, 16) != null;
         }
-        static fromObject(data: RecursivePartial<File.AsObject>): File {
+        static fromObject(data: File.AsObjectPartial): File {
             const message = new File({});
             if (data.name != null) {
                 message.name = data.name;
@@ -480,14 +494,14 @@ export namespace CodeGeneratorResponse {
         serialize(w: pb_1.BinaryWriter): void;
         serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
             const writer = w || new pb_1.BinaryWriter();
-            if (this.has_name && this.name.length)
+            if (this.has_name && this.name!.length)
                 writer.writeString(1, this.name);
-            if (this.has_insertion_point && this.insertion_point.length)
+            if (this.has_insertion_point && this.insertion_point!.length)
                 writer.writeString(2, this.insertion_point);
-            if (this.has_content && this.content.length)
+            if (this.has_content && this.content!.length)
                 writer.writeString(15, this.content);
             if (this.has_generated_code_info)
-                writer.writeMessage(16, this.generated_code_info, () => this.generated_code_info.serialize(writer));
+                writer.writeMessage(16, this.generated_code_info, () => this.generated_code_info!.serialize(writer));
             if (!w)
                 return writer.getResultBuffer();
         }
@@ -527,6 +541,12 @@ export namespace CodeGeneratorResponse {
             insertion_point: string;
             content: string;
             generated_code_info?: dependency_1.GeneratedCodeInfo.AsObject;
+        };
+        export type AsObjectPartial = {
+            name?: string;
+            insertion_point?: string;
+            content?: string;
+            generated_code_info?: dependency_1.GeneratedCodeInfo.AsObjectPartial;
         };
     }
 }

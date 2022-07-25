@@ -5,9 +5,6 @@
  * git: https://github.com/thesayyn/protoc-gen-ts */
 import * as pb_1 from "google-protobuf";
 export namespace maps {
-    type RecursivePartial<T> = {
-        [P in keyof T]?: T[P] extends (infer U)[] ? RecursivePartial<U>[] : T[P] extends Uint8Array ? T[P] : T[P] extends object ? RecursivePartial<T[P]> : T[P];
-    };
     export class Topic extends pb_1.Message {
         #one_of_decls: number[][] = [];
         constructor(data?: any[] | {
@@ -27,7 +24,7 @@ export namespace maps {
         set link(value: string) {
             pb_1.Message.setField(this, 2, value);
         }
-        static fromObject(data: RecursivePartial<Topic.AsObject>): Topic {
+        static fromObject(data: Topic.AsObjectPartial): Topic {
             const message = new Topic({});
             if (data.link != null) {
                 message.link = data.link;
@@ -73,6 +70,9 @@ export namespace maps {
     export namespace Topic {
         export type AsObject = {
             link: string;
+        };
+        export type AsObjectPartial = {
+            link?: string;
         };
     }
     export class Tags extends pb_1.Message {
@@ -130,7 +130,7 @@ export namespace maps {
         set topics_with_intkeys(value: Map<number, Topic>) {
             pb_1.Message.setField(this, 4, value as any);
         }
-        static fromObject(data: RecursivePartial<Tags.AsObject>): Tags {
+        static fromObject(data: Tags.AsObjectPartial): Tags {
             const message = new Tags({});
             if (data.key != null) {
                 message.key = data.key;
@@ -170,13 +170,13 @@ export namespace maps {
             for (const [key, value] of this.topics) {
                 writer.writeMessage(3, this.topics, () => {
                     writer.writeString(1, key);
-                    writer.writeMessage(2, value, () => value.serialize(writer));
+                    writer.writeMessage(2, value, () => value!.serialize(writer));
                 });
             }
             for (const [key, value] of this.topics_with_intkeys) {
                 writer.writeMessage(4, this.topics_with_intkeys, () => {
                     writer.writeInt64(1, key);
-                    writer.writeMessage(2, value, () => value.serialize(writer));
+                    writer.writeMessage(2, value, () => value!.serialize(writer));
                 });
             }
             if (!w)
@@ -230,6 +230,18 @@ export namespace maps {
                 [key: string]: Topic.AsObject;
             };
             topics_with_intkeys: {
+                [key: number]: Topic.AsObject;
+            };
+        };
+        export type AsObjectPartial = {
+            key?: string;
+            keys?: {
+                [key: string]: string;
+            };
+            topics?: {
+                [key: string]: Topic.AsObject;
+            };
+            topics_with_intkeys?: {
                 [key: number]: Topic.AsObject;
             };
         };

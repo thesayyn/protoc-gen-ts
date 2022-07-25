@@ -5,9 +5,6 @@
  * git: https://github.com/thesayyn/protoc-gen-ts */
 import * as dependency_1 from "./presence_common";
 import * as pb_1 from "google-protobuf";
-type RecursivePartial<T> = {
-    [P in keyof T]?: T[P] extends (infer U)[] ? RecursivePartial<U>[] : T[P] extends Uint8Array ? T[P] : T[P] extends object ? RecursivePartial<T[P]> : T[P];
-};
 export class PresenceMessageV3 extends pb_1.Message {
     #one_of_decls: number[][] = [[6], [7], [8], [9], [10]];
     constructor(data?: any[] | ({
@@ -91,18 +88,18 @@ export class PresenceMessageV3 extends pb_1.Message {
         pb_1.Message.setField(this, 3, value);
     }
     get message() {
-        return pb_1.Message.getWrapperField(this, dependency_1.PresenceCommonMessage, 4) as dependency_1.PresenceCommonMessage | undefined | null;
+        return pb_1.Message.getWrapperField(this, dependency_1.PresenceCommonMessage, 4) as dependency_1.PresenceCommonMessage | undefined;
     }
-    set message(value: dependency_1.PresenceCommonMessage | undefined | null) {
+    set message(value: dependency_1.PresenceCommonMessage | undefined) {
         pb_1.Message.setWrapperField(this, 4, value);
     }
     get has_message() {
         return pb_1.Message.getField(this, 4) != null;
     }
     get oneof() {
-        return pb_1.Message.getWrapperField(this, dependency_1.PresenceCommonMessageOneOf, 5) as dependency_1.PresenceCommonMessageOneOf | undefined | null;
+        return pb_1.Message.getWrapperField(this, dependency_1.PresenceCommonMessageOneOf, 5) as dependency_1.PresenceCommonMessageOneOf | undefined;
     }
-    set oneof(value: dependency_1.PresenceCommonMessageOneOf | undefined | null) {
+    set oneof(value: dependency_1.PresenceCommonMessageOneOf | undefined) {
         pb_1.Message.setWrapperField(this, 5, value);
     }
     get has_oneof() {
@@ -136,18 +133,18 @@ export class PresenceMessageV3 extends pb_1.Message {
         return pb_1.Message.getField(this, 8) != null;
     }
     get opt_message() {
-        return pb_1.Message.getWrapperField(this, dependency_1.PresenceCommonMessage, 9) as dependency_1.PresenceCommonMessage | undefined | null;
+        return pb_1.Message.getWrapperField(this, dependency_1.PresenceCommonMessage, 9) as dependency_1.PresenceCommonMessage | undefined;
     }
-    set opt_message(value: dependency_1.PresenceCommonMessage | undefined | null) {
+    set opt_message(value: dependency_1.PresenceCommonMessage | undefined) {
         pb_1.Message.setOneofWrapperField(this, 9, this.#one_of_decls[3], value);
     }
     get has_opt_message() {
         return pb_1.Message.getField(this, 9) != null;
     }
     get opt_oneof() {
-        return pb_1.Message.getWrapperField(this, dependency_1.PresenceCommonMessageOneOf, 10) as dependency_1.PresenceCommonMessageOneOf | undefined | null;
+        return pb_1.Message.getWrapperField(this, dependency_1.PresenceCommonMessageOneOf, 10) as dependency_1.PresenceCommonMessageOneOf | undefined;
     }
-    set opt_oneof(value: dependency_1.PresenceCommonMessageOneOf | undefined | null) {
+    set opt_oneof(value: dependency_1.PresenceCommonMessageOneOf | undefined) {
         pb_1.Message.setOneofWrapperField(this, 10, this.#one_of_decls[4], value);
     }
     get has_opt_oneof() {
@@ -210,7 +207,7 @@ export class PresenceMessageV3 extends pb_1.Message {
         };
         return cases[pb_1.Message.computeOneofCase(this, [10])];
     }
-    static fromObject(data: RecursivePartial<PresenceMessageV3.AsObject>): PresenceMessageV3 {
+    static fromObject(data: PresenceMessageV3.AsObjectPartial): PresenceMessageV3 {
         const message = new PresenceMessageV3({});
         if (data.int32 != null) {
             message.int32 = data.int32;
@@ -286,9 +283,9 @@ export class PresenceMessageV3 extends pb_1.Message {
         if (this.string.length)
             writer.writeString(3, this.string);
         if (this.has_message)
-            writer.writeMessage(4, this.message, () => this.message.serialize(writer));
+            writer.writeMessage(4, this.message, () => this.message!.serialize(writer));
         if (this.has_oneof)
-            writer.writeMessage(5, this.oneof, () => this.oneof.serialize(writer));
+            writer.writeMessage(5, this.oneof, () => this.oneof!.serialize(writer));
         if (this.has_opt_int32)
             writer.writeInt32(6, this.opt_int32);
         if (this.has_opt_enum)
@@ -296,9 +293,9 @@ export class PresenceMessageV3 extends pb_1.Message {
         if (this.has_opt_string)
             writer.writeString(8, this.opt_string);
         if (this.has_opt_message)
-            writer.writeMessage(9, this.opt_message, () => this.opt_message.serialize(writer));
+            writer.writeMessage(9, this.opt_message, () => this.opt_message!.serialize(writer));
         if (this.has_opt_oneof)
-            writer.writeMessage(10, this.opt_oneof, () => this.opt_oneof.serialize(writer));
+            writer.writeMessage(10, this.opt_oneof, () => this.opt_oneof!.serialize(writer));
         if (this.repeated.length)
             writer.writePackedInt32(11, this.repeated);
         for (const [key, value] of this.map) {
@@ -378,6 +375,22 @@ export namespace PresenceMessageV3 {
         opt_oneof?: dependency_1.PresenceCommonMessageOneOf.AsObject;
         repeated: number[];
         map: {
+            [key: string]: string;
+        };
+    };
+    export type AsObjectPartial = {
+        int32?: number;
+        enum?: dependency_1.PresenceCommonEnum;
+        string?: string;
+        message?: dependency_1.PresenceCommonMessage.AsObjectPartial;
+        oneof?: dependency_1.PresenceCommonMessageOneOf.AsObjectPartial;
+        opt_int32?: number;
+        opt_enum?: dependency_1.PresenceCommonEnum;
+        opt_string?: string;
+        opt_message?: dependency_1.PresenceCommonMessage.AsObjectPartial;
+        opt_oneof?: dependency_1.PresenceCommonMessageOneOf.AsObjectPartial;
+        repeated?: number[];
+        map?: {
             [key: string]: string;
         };
     };

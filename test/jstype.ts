@@ -4,9 +4,6 @@
  * source: test/_/jstype.proto
  * git: https://github.com/thesayyn/protoc-gen-ts */
 import * as pb_1 from "google-protobuf";
-type RecursivePartial<T> = {
-    [P in keyof T]?: T[P] extends (infer U)[] ? RecursivePartial<U>[] : T[P] extends Uint8Array ? T[P] : T[P] extends object ? RecursivePartial<T[P]> : T[P];
-};
 export class JSType extends pb_1.Message {
     #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
@@ -46,7 +43,7 @@ export class JSType extends pb_1.Message {
     set int_and_number(value: number) {
         pb_1.Message.setField(this, 3, value);
     }
-    static fromObject(data: RecursivePartial<JSType.AsObject>): JSType {
+    static fromObject(data: JSType.AsObjectPartial): JSType {
         const message = new JSType({});
         if (data.int_but_string != null) {
             message.int_but_string = data.int_but_string;
@@ -112,5 +109,10 @@ export namespace JSType {
         int_but_string: string;
         int_and_normal: number;
         int_and_number: number;
+    };
+    export type AsObjectPartial = {
+        int_but_string?: string;
+        int_and_normal?: number;
+        int_and_number?: number;
     };
 }

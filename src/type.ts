@@ -69,6 +69,7 @@ export function getTypeReference(
   rootDescriptor: descriptor.FileDescriptorProto,
   typeName: string,
   asObject = false, // add 'AsObject' to the end of the type reference
+  asObjectPartial = false, // add 'Partial', used with AsObject
 ): ts.TypeReferenceNode {
   const path = symbolMap.get(typeName);
 
@@ -78,6 +79,7 @@ export function getTypeReference(
         addAsObject(
           removeRootParentName(typeName, rootDescriptor.package).replace(/\./g, ""),
           asObject,
+          asObjectPartial
         ),
       );
     }
@@ -85,6 +87,7 @@ export function getTypeReference(
       addAsObject(
         removeRootParentName(typeName, rootDescriptor.package),
         asObject,
+        asObjectPartial
       ),
     );
   }
@@ -92,6 +95,7 @@ export function getTypeReference(
   const name = addAsObject(
     removeNamespace(removeLeadingDot(typeName)),
     asObject,
+    asObjectPartial
   );
 
   return ts.factory.createTypeReferenceNode(
@@ -116,9 +120,9 @@ function removeRootParentName(name: string, parentName: string): string {
   );
 }
 
-export function addAsObject(name: string, asObject: boolean) {
+export function addAsObject(name: string, asObject: boolean, partial = false) {
   if (asObject) {
-    return name + (config.no_namespace ? "" : ".") + "AsObject";
+    return name + (config.no_namespace ? "" : ".") + "AsObject" + (partial ? "Partial" : "");
   }
   return name;
 }
@@ -166,47 +170,4 @@ export function preprocess(
     symbolMap.set(name, path);
     preprocess(messageDescriptor, path, name);
   }
-}
-
-/**
- * https://stackoverflow.com/questions/41980195/recursive-partialt-in-typescript
- * Creates a recursive Partial type.
- * Need this to prevent separate declaration of the fromObject argument type.
- * ```typescript
- * type RecursivePartial<T> = {
- *   [P in keyof T]?:
- *     T[P] extends (infer U)[] ? RecursivePartial<U>[] :
- *     T[P] extends object ? RecursivePartial<T[P]> :
- *     T[P];
- * };
- * ```
- */
-export function recursivePartialDeclaration() {
-  // the easiest way to create AST for a simple static declaration
-  const sourceFile = ts.createSourceFile(
-    "fileIsNeverCreatedNameIsNotUsed.ts",
-    `
-    type RecursivePartial<T> = {
-      [P in keyof T]?:
-        T[P] extends (infer U)[] ? RecursivePartial<U>[] :
-        T[P] extends Uint8Array ? T[P]
-        T[P] extends object ? RecursivePartial<T[P]> :
-        T[P];
-    }
-    `,
-    ts.ScriptTarget.Latest,
-    true
-  );
-  return sourceFile.statements[0];
-}
-
-/**
- * Given the type T constructs RecursivePartial<T>
- * @param typeNode type node for T
- */
-export function wrapRecursivePartial(typeNode: ts.TypeReferenceNode) {
-  return ts.factory.createTypeReferenceNode(
-    ts.factory.createIdentifier("RecursivePartial"),
-    [typeNode]
-  )
 }

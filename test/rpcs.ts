@@ -5,9 +5,6 @@
  * git: https://github.com/thesayyn/protoc-gen-ts */
 import * as pb_1 from "google-protobuf";
 import * as grpc_1 from "@grpc/grpc-js";
-type RecursivePartial<T> = {
-    [P in keyof T]?: T[P] extends (infer U)[] ? RecursivePartial<U>[] : T[P] extends Uint8Array ? T[P] : T[P] extends object ? RecursivePartial<T[P]> : T[P];
-};
 export class None extends pb_1.Message {
     #one_of_decls: number[][] = [];
     constructor(data?: any[] | {}) {
@@ -15,7 +12,7 @@ export class None extends pb_1.Message {
         pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
         if (!Array.isArray(data) && typeof data == "object") { }
     }
-    static fromObject(data: RecursivePartial<None.AsObject>): None {
+    static fromObject(data: None.AsObjectPartial): None {
         const message = new None({});
         return message;
     }
@@ -50,6 +47,7 @@ export class None extends pb_1.Message {
 }
 export namespace None {
     export type AsObject = {};
+    export type AsObjectPartial = {};
 }
 export class _Object extends pb_1.Message {
     #one_of_decls: number[][] = [];
@@ -90,7 +88,7 @@ export class _Object extends pb_1.Message {
     set mimeType(value: string) {
         pb_1.Message.setField(this, 4, value);
     }
-    static fromObject(data: RecursivePartial<_Object.AsObject>): _Object {
+    static fromObject(data: _Object.AsObjectPartial): _Object {
         const message = new _Object({});
         if (data.id != null) {
             message.id = data.id;
@@ -157,6 +155,11 @@ export namespace _Object {
         size: number;
         mimeType: string;
     };
+    export type AsObjectPartial = {
+        id?: string;
+        size?: number;
+        mimeType?: string;
+    };
 }
 export class Chunk extends pb_1.Message {
     #one_of_decls: number[][] = [];
@@ -182,15 +185,15 @@ export class Chunk extends pb_1.Message {
         pb_1.Message.setField(this, 1, value);
     }
     get range() {
-        return pb_1.Message.getWrapperField(this, Chunk.Range, 2) as Chunk.Range | undefined | null;
+        return pb_1.Message.getWrapperField(this, Chunk.Range, 2) as Chunk.Range | undefined;
     }
-    set range(value: Chunk.Range | undefined | null) {
+    set range(value: Chunk.Range | undefined) {
         pb_1.Message.setWrapperField(this, 2, value);
     }
     get has_range() {
         return pb_1.Message.getField(this, 2) != null;
     }
-    static fromObject(data: RecursivePartial<Chunk.AsObject>): Chunk {
+    static fromObject(data: Chunk.AsObjectPartial): Chunk {
         const message = new Chunk({});
         if (data.data != null) {
             message.data = data.data;
@@ -216,7 +219,7 @@ export class Chunk extends pb_1.Message {
         if (this.data.length)
             writer.writeBytes(1, this.data);
         if (this.has_range)
-            writer.writeMessage(2, this.range, () => this.range.serialize(writer));
+            writer.writeMessage(2, this.range, () => this.range!.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
     }
@@ -249,6 +252,10 @@ export namespace Chunk {
         data: Uint8Array;
         range?: Chunk.Range.AsObject;
     };
+    export type AsObjectPartial = {
+        data?: Uint8Array;
+        range?: Chunk.Range.AsObjectPartial;
+    };
     export class Range extends pb_1.Message {
         #one_of_decls: number[][] = [];
         constructor(data?: any[] | {
@@ -278,7 +285,7 @@ export namespace Chunk {
         set end(value: number) {
             pb_1.Message.setField(this, 2, value);
         }
-        static fromObject(data: RecursivePartial<Range.AsObject>): Range {
+        static fromObject(data: Range.AsObjectPartial): Range {
             const message = new Range({});
             if (data.start != null) {
                 message.start = data.start;
@@ -335,6 +342,10 @@ export namespace Chunk {
             start: number;
             end: number;
         };
+        export type AsObjectPartial = {
+            start?: number;
+            end?: number;
+        };
     }
     export class Query extends pb_1.Message {
         #one_of_decls: number[][] = [];
@@ -360,15 +371,15 @@ export namespace Chunk {
             pb_1.Message.setField(this, 1, value);
         }
         get range() {
-            return pb_1.Message.getWrapperField(this, Chunk.Range, 2) as Chunk.Range | undefined | null;
+            return pb_1.Message.getWrapperField(this, Chunk.Range, 2) as Chunk.Range | undefined;
         }
-        set range(value: Chunk.Range | undefined | null) {
+        set range(value: Chunk.Range | undefined) {
             pb_1.Message.setWrapperField(this, 2, value);
         }
         get has_range() {
             return pb_1.Message.getField(this, 2) != null;
         }
-        static fromObject(data: RecursivePartial<Query.AsObject>): Query {
+        static fromObject(data: Query.AsObjectPartial): Query {
             const message = new Query({});
             if (data.id != null) {
                 message.id = data.id;
@@ -394,7 +405,7 @@ export namespace Chunk {
             if (this.id.length)
                 writer.writeString(1, this.id);
             if (this.has_range)
-                writer.writeMessage(2, this.range, () => this.range.serialize(writer));
+                writer.writeMessage(2, this.range, () => this.range!.serialize(writer));
             if (!w)
                 return writer.getResultBuffer();
         }
@@ -427,6 +438,10 @@ export namespace Chunk {
             id: string;
             range?: Chunk.Range.AsObject;
         };
+        export type AsObjectPartial = {
+            id?: string;
+            range?: Chunk.Range.AsObjectPartial;
+        };
     }
 }
 export class Query extends pb_1.Message {
@@ -448,7 +463,7 @@ export class Query extends pb_1.Message {
     set id(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
-    static fromObject(data: RecursivePartial<Query.AsObject>): Query {
+    static fromObject(data: Query.AsObjectPartial): Query {
         const message = new Query({});
         if (data.id != null) {
             message.id = data.id;
@@ -495,6 +510,9 @@ export namespace Query {
     export type AsObject = {
         id: string;
     };
+    export type AsObjectPartial = {
+        id?: string;
+    };
     export class Result extends pb_1.Message {
         #one_of_decls: number[][] = [];
         constructor(data?: any[] | {
@@ -514,7 +532,7 @@ export namespace Query {
         set objects(value: _Object[]) {
             pb_1.Message.setRepeatedWrapperField(this, 1, value);
         }
-        static fromObject(data: RecursivePartial<Result.AsObject>): Result {
+        static fromObject(data: Result.AsObjectPartial): Result {
             const message = new Result({});
             if (data.objects != null) {
                 message.objects = data.objects.map(item => _Object.fromObject(item));
@@ -532,7 +550,7 @@ export namespace Query {
         serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
             const writer = w || new pb_1.BinaryWriter();
             if (this.objects.length)
-                writer.writeRepeatedMessage(1, this.objects, (item: _Object) => item.serialize(writer));
+                writer.writeRepeatedMessage(1, this.objects, (item: _Object) => item!.serialize(writer));
             if (!w)
                 return writer.getResultBuffer();
         }
@@ -561,6 +579,9 @@ export namespace Query {
         export type AsObject = {
             objects: _Object.AsObject[];
         };
+        export type AsObjectPartial = {
+            objects?: _Object.AsObjectPartial[];
+        };
     }
 }
 export class Put extends pb_1.Message {
@@ -587,15 +608,15 @@ export class Put extends pb_1.Message {
         pb_1.Message.setField(this, 1, value);
     }
     get chunk() {
-        return pb_1.Message.getWrapperField(this, Chunk, 3) as Chunk | undefined | null;
+        return pb_1.Message.getWrapperField(this, Chunk, 3) as Chunk | undefined;
     }
-    set chunk(value: Chunk | undefined | null) {
+    set chunk(value: Chunk | undefined) {
         pb_1.Message.setWrapperField(this, 3, value);
     }
     get has_chunk() {
         return pb_1.Message.getField(this, 3) != null;
     }
-    static fromObject(data: RecursivePartial<Put.AsObject>): Put {
+    static fromObject(data: Put.AsObjectPartial): Put {
         const message = new Put({});
         if (data.id != null) {
             message.id = data.id;
@@ -621,7 +642,7 @@ export class Put extends pb_1.Message {
         if (this.id.length)
             writer.writeString(1, this.id);
         if (this.has_chunk)
-            writer.writeMessage(3, this.chunk, () => this.chunk.serialize(writer));
+            writer.writeMessage(3, this.chunk, () => this.chunk!.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
     }
@@ -653,6 +674,10 @@ export namespace Put {
     export type AsObject = {
         id: string;
         chunk?: Chunk.AsObject;
+    };
+    export type AsObjectPartial = {
+        id?: string;
+        chunk?: Chunk.AsObjectPartial;
     };
 }
 interface GrpcUnaryServiceInterface<P, R> {

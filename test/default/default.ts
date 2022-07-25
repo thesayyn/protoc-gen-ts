@@ -4,9 +4,6 @@
  * source: test/_/default/default.proto
  * git: https://github.com/thesayyn/protoc-gen-ts */
 import * as pb_1 from "google-protobuf";
-type RecursivePartial<T> = {
-    [P in keyof T]?: T[P] extends (infer U)[] ? RecursivePartial<U>[] : T[P] extends Uint8Array ? T[P] : T[P] extends object ? RecursivePartial<T[P]> : T[P];
-};
 export class MessageWithDefault extends pb_1.Message {
     #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
@@ -55,7 +52,7 @@ export class MessageWithDefault extends pb_1.Message {
     get has_int32_field() {
         return pb_1.Message.getField(this, 3) != null;
     }
-    static fromObject(data: RecursivePartial<MessageWithDefault.AsObject>): MessageWithDefault {
+    static fromObject(data: MessageWithDefault.AsObjectPartial): MessageWithDefault {
         const message = new MessageWithDefault({});
         if (data.bool_field != null) {
             message.bool_field = data.bool_field;
@@ -82,7 +79,7 @@ export class MessageWithDefault extends pb_1.Message {
         const writer = w || new pb_1.BinaryWriter();
         if (this.has_bool_field)
             writer.writeBool(1, this.bool_field);
-        if (this.has_string_field && this.string_field.length)
+        if (this.has_string_field && this.string_field!.length)
             writer.writeString(2, this.string_field);
         if (this.has_int32_field)
             writer.writeInt32(3, this.int32_field);
@@ -121,6 +118,11 @@ export namespace MessageWithDefault {
         bool_field: boolean;
         string_field: string;
         int32_field: number;
+    };
+    export type AsObjectPartial = {
+        bool_field?: boolean;
+        string_field?: string;
+        int32_field?: number;
     };
 }
 export class MessageWithImplicitDefault extends pb_1.Message {
@@ -171,7 +173,7 @@ export class MessageWithImplicitDefault extends pb_1.Message {
     get has_int32_field() {
         return pb_1.Message.getField(this, 3) != null;
     }
-    static fromObject(data: RecursivePartial<MessageWithImplicitDefault.AsObject>): MessageWithImplicitDefault {
+    static fromObject(data: MessageWithImplicitDefault.AsObjectPartial): MessageWithImplicitDefault {
         const message = new MessageWithImplicitDefault({});
         if (data.bool_field != null) {
             message.bool_field = data.bool_field;
@@ -198,7 +200,7 @@ export class MessageWithImplicitDefault extends pb_1.Message {
         const writer = w || new pb_1.BinaryWriter();
         if (this.has_bool_field)
             writer.writeBool(1, this.bool_field);
-        if (this.has_string_field && this.string_field.length)
+        if (this.has_string_field && this.string_field!.length)
             writer.writeString(2, this.string_field);
         if (this.has_int32_field)
             writer.writeInt32(3, this.int32_field);
@@ -237,5 +239,10 @@ export namespace MessageWithImplicitDefault {
         bool_field: boolean;
         string_field: string;
         int32_field: number;
+    };
+    export type AsObjectPartial = {
+        bool_field?: boolean;
+        string_field?: string;
+        int32_field?: number;
     };
 }

@@ -5,9 +5,6 @@
  * git: https://github.com/thesayyn/protoc-gen-ts */
 import * as pb_1 from "google-protobuf";
 export namespace main {
-    type RecursivePartial<T> = {
-        [P in keyof T]?: T[P] extends (infer U)[] ? RecursivePartial<U>[] : T[P] extends Uint8Array ? T[P] : T[P] extends object ? RecursivePartial<T[P]> : T[P];
-    };
     export class Code extends pb_1.Message {
         #one_of_decls: number[][] = [];
         constructor(data?: any[] | {
@@ -37,7 +34,7 @@ export namespace main {
         set lines(value: number) {
             pb_1.Message.setField(this, 2, value);
         }
-        static fromObject(data: RecursivePartial<Code.AsObject>): Code {
+        static fromObject(data: Code.AsObjectPartial): Code {
             const message = new Code({});
             if (data.language != null) {
                 message.language = data.language;
@@ -93,6 +90,10 @@ export namespace main {
         export type AsObject = {
             language: Code.Language;
             lines: number;
+        };
+        export type AsObjectPartial = {
+            language?: Code.Language;
+            lines?: number;
         };
         export enum Language {
             UNKNOWN = 0,

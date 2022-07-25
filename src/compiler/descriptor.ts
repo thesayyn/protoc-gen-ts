@@ -4,9 +4,6 @@
  * source: descriptor.proto
  * git: https://github.com/thesayyn/protoc-gen-ts */
 import * as pb_1 from "google-protobuf";
-type RecursivePartial<T> = {
-    [P in keyof T]?: T[P] extends (infer U)[] ? RecursivePartial<U>[] : T[P] extends Uint8Array ? T[P] : T[P] extends object ? RecursivePartial<T[P]> : T[P];
-};
 export class FileDescriptorSet extends pb_1.Message {
     #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
@@ -24,7 +21,7 @@ export class FileDescriptorSet extends pb_1.Message {
     set file(value: FileDescriptorProto[]) {
         pb_1.Message.setRepeatedWrapperField(this, 1, value);
     }
-    static fromObject(data: RecursivePartial<FileDescriptorSet.AsObject>): FileDescriptorSet {
+    static fromObject(data: FileDescriptorSet.AsObjectPartial): FileDescriptorSet {
         const message = new FileDescriptorSet({
             file: data.file.map(item => FileDescriptorProto.fromObject(item))
         });
@@ -41,7 +38,7 @@ export class FileDescriptorSet extends pb_1.Message {
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
         if (this.file.length)
-            writer.writeRepeatedMessage(1, this.file, (item: FileDescriptorProto) => item.serialize(writer));
+            writer.writeRepeatedMessage(1, this.file, (item: FileDescriptorProto) => item!.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
     }
@@ -69,6 +66,9 @@ export class FileDescriptorSet extends pb_1.Message {
 export namespace FileDescriptorSet {
     export type AsObject = {
         file: FileDescriptorProto.AsObject[];
+    };
+    export type AsObjectPartial = {
+        file: FileDescriptorProto.AsObjectPartial[];
     };
 }
 export class FileDescriptorProto extends pb_1.Message {
@@ -175,18 +175,18 @@ export class FileDescriptorProto extends pb_1.Message {
         pb_1.Message.setRepeatedWrapperField(this, 7, value);
     }
     get options() {
-        return pb_1.Message.getWrapperField(this, FileOptions, 8) as FileOptions | undefined | null;
+        return pb_1.Message.getWrapperField(this, FileOptions, 8) as FileOptions | undefined;
     }
-    set options(value: FileOptions | undefined | null) {
+    set options(value: FileOptions | undefined) {
         pb_1.Message.setWrapperField(this, 8, value);
     }
     get has_options() {
         return pb_1.Message.getField(this, 8) != null;
     }
     get source_code_info() {
-        return pb_1.Message.getWrapperField(this, SourceCodeInfo, 9) as SourceCodeInfo | undefined | null;
+        return pb_1.Message.getWrapperField(this, SourceCodeInfo, 9) as SourceCodeInfo | undefined;
     }
-    set source_code_info(value: SourceCodeInfo | undefined | null) {
+    set source_code_info(value: SourceCodeInfo | undefined) {
         pb_1.Message.setWrapperField(this, 9, value);
     }
     get has_source_code_info() {
@@ -201,7 +201,7 @@ export class FileDescriptorProto extends pb_1.Message {
     get has_syntax() {
         return pb_1.Message.getField(this, 12) != null;
     }
-    static fromObject(data: RecursivePartial<FileDescriptorProto.AsObject>): FileDescriptorProto {
+    static fromObject(data: FileDescriptorProto.AsObjectPartial): FileDescriptorProto {
         const message = new FileDescriptorProto({
             dependency: data.dependency,
             public_dependency: data.public_dependency,
@@ -253,9 +253,9 @@ export class FileDescriptorProto extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.has_name && this.name.length)
+        if (this.has_name && this.name!.length)
             writer.writeString(1, this.name);
-        if (this.has_package && this.package.length)
+        if (this.has_package && this.package!.length)
             writer.writeString(2, this.package);
         if (this.dependency.length)
             writer.writeRepeatedString(3, this.dependency);
@@ -264,18 +264,18 @@ export class FileDescriptorProto extends pb_1.Message {
         if (this.weak_dependency.length)
             writer.writeRepeatedInt32(11, this.weak_dependency);
         if (this.message_type.length)
-            writer.writeRepeatedMessage(4, this.message_type, (item: DescriptorProto) => item.serialize(writer));
+            writer.writeRepeatedMessage(4, this.message_type, (item: DescriptorProto) => item!.serialize(writer));
         if (this.enum_type.length)
-            writer.writeRepeatedMessage(5, this.enum_type, (item: EnumDescriptorProto) => item.serialize(writer));
+            writer.writeRepeatedMessage(5, this.enum_type, (item: EnumDescriptorProto) => item!.serialize(writer));
         if (this.service.length)
-            writer.writeRepeatedMessage(6, this.service, (item: ServiceDescriptorProto) => item.serialize(writer));
+            writer.writeRepeatedMessage(6, this.service, (item: ServiceDescriptorProto) => item!.serialize(writer));
         if (this.extension.length)
-            writer.writeRepeatedMessage(7, this.extension, (item: FieldDescriptorProto) => item.serialize(writer));
+            writer.writeRepeatedMessage(7, this.extension, (item: FieldDescriptorProto) => item!.serialize(writer));
         if (this.has_options)
-            writer.writeMessage(8, this.options, () => this.options.serialize(writer));
+            writer.writeMessage(8, this.options, () => this.options!.serialize(writer));
         if (this.has_source_code_info)
-            writer.writeMessage(9, this.source_code_info, () => this.source_code_info.serialize(writer));
-        if (this.has_syntax && this.syntax.length)
+            writer.writeMessage(9, this.source_code_info, () => this.source_code_info!.serialize(writer));
+        if (this.has_syntax && this.syntax!.length)
             writer.writeString(12, this.syntax);
         if (!w)
             return writer.getResultBuffer();
@@ -348,6 +348,20 @@ export namespace FileDescriptorProto {
         options?: FileOptions.AsObject;
         source_code_info?: SourceCodeInfo.AsObject;
         syntax: string;
+    };
+    export type AsObjectPartial = {
+        name?: string;
+        package?: string;
+        dependency: string[];
+        public_dependency: number[];
+        weak_dependency: number[];
+        message_type: DescriptorProto.AsObjectPartial[];
+        enum_type: EnumDescriptorProto.AsObjectPartial[];
+        service: ServiceDescriptorProto.AsObjectPartial[];
+        extension: FieldDescriptorProto.AsObjectPartial[];
+        options?: FileOptions.AsObjectPartial;
+        source_code_info?: SourceCodeInfo.AsObjectPartial;
+        syntax?: string;
     };
 }
 export class DescriptorProto extends pb_1.Message {
@@ -429,9 +443,9 @@ export class DescriptorProto extends pb_1.Message {
         pb_1.Message.setRepeatedWrapperField(this, 8, value);
     }
     get options() {
-        return pb_1.Message.getWrapperField(this, MessageOptions, 7) as MessageOptions | undefined | null;
+        return pb_1.Message.getWrapperField(this, MessageOptions, 7) as MessageOptions | undefined;
     }
-    set options(value: MessageOptions | undefined | null) {
+    set options(value: MessageOptions | undefined) {
         pb_1.Message.setWrapperField(this, 7, value);
     }
     get has_options() {
@@ -449,7 +463,7 @@ export class DescriptorProto extends pb_1.Message {
     set reserved_name(value: string[]) {
         pb_1.Message.setField(this, 10, value);
     }
-    static fromObject(data: RecursivePartial<DescriptorProto.AsObject>): DescriptorProto {
+    static fromObject(data: DescriptorProto.AsObjectPartial): DescriptorProto {
         const message = new DescriptorProto({
             field: data.field.map(item => FieldDescriptorProto.fromObject(item)),
             extension: data.extension.map(item => FieldDescriptorProto.fromObject(item)),
@@ -489,24 +503,24 @@ export class DescriptorProto extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.has_name && this.name.length)
+        if (this.has_name && this.name!.length)
             writer.writeString(1, this.name);
         if (this.field.length)
-            writer.writeRepeatedMessage(2, this.field, (item: FieldDescriptorProto) => item.serialize(writer));
+            writer.writeRepeatedMessage(2, this.field, (item: FieldDescriptorProto) => item!.serialize(writer));
         if (this.extension.length)
-            writer.writeRepeatedMessage(6, this.extension, (item: FieldDescriptorProto) => item.serialize(writer));
+            writer.writeRepeatedMessage(6, this.extension, (item: FieldDescriptorProto) => item!.serialize(writer));
         if (this.nested_type.length)
-            writer.writeRepeatedMessage(3, this.nested_type, (item: DescriptorProto) => item.serialize(writer));
+            writer.writeRepeatedMessage(3, this.nested_type, (item: DescriptorProto) => item!.serialize(writer));
         if (this.enum_type.length)
-            writer.writeRepeatedMessage(4, this.enum_type, (item: EnumDescriptorProto) => item.serialize(writer));
+            writer.writeRepeatedMessage(4, this.enum_type, (item: EnumDescriptorProto) => item!.serialize(writer));
         if (this.extension_range.length)
-            writer.writeRepeatedMessage(5, this.extension_range, (item: DescriptorProto.ExtensionRange) => item.serialize(writer));
+            writer.writeRepeatedMessage(5, this.extension_range, (item: DescriptorProto.ExtensionRange) => item!.serialize(writer));
         if (this.oneof_decl.length)
-            writer.writeRepeatedMessage(8, this.oneof_decl, (item: OneofDescriptorProto) => item.serialize(writer));
+            writer.writeRepeatedMessage(8, this.oneof_decl, (item: OneofDescriptorProto) => item!.serialize(writer));
         if (this.has_options)
-            writer.writeMessage(7, this.options, () => this.options.serialize(writer));
+            writer.writeMessage(7, this.options, () => this.options!.serialize(writer));
         if (this.reserved_range.length)
-            writer.writeRepeatedMessage(9, this.reserved_range, (item: DescriptorProto.ReservedRange) => item.serialize(writer));
+            writer.writeRepeatedMessage(9, this.reserved_range, (item: DescriptorProto.ReservedRange) => item!.serialize(writer));
         if (this.reserved_name.length)
             writer.writeRepeatedString(10, this.reserved_name);
         if (!w)
@@ -573,6 +587,18 @@ export namespace DescriptorProto {
         reserved_range: DescriptorProto.ReservedRange.AsObject[];
         reserved_name: string[];
     };
+    export type AsObjectPartial = {
+        name?: string;
+        field: FieldDescriptorProto.AsObjectPartial[];
+        extension: FieldDescriptorProto.AsObjectPartial[];
+        nested_type: DescriptorProto.AsObjectPartial[];
+        enum_type: EnumDescriptorProto.AsObjectPartial[];
+        extension_range: DescriptorProto.ExtensionRange.AsObjectPartial[];
+        oneof_decl: OneofDescriptorProto.AsObjectPartial[];
+        options?: MessageOptions.AsObjectPartial;
+        reserved_range: DescriptorProto.ReservedRange.AsObjectPartial[];
+        reserved_name: string[];
+    };
     export class ExtensionRange extends pb_1.Message {
         #one_of_decls: number[][] = [];
         constructor(data?: any[] | {
@@ -613,15 +639,15 @@ export namespace DescriptorProto {
             return pb_1.Message.getField(this, 2) != null;
         }
         get options() {
-            return pb_1.Message.getWrapperField(this, ExtensionRangeOptions, 3) as ExtensionRangeOptions | undefined | null;
+            return pb_1.Message.getWrapperField(this, ExtensionRangeOptions, 3) as ExtensionRangeOptions | undefined;
         }
-        set options(value: ExtensionRangeOptions | undefined | null) {
+        set options(value: ExtensionRangeOptions | undefined) {
             pb_1.Message.setWrapperField(this, 3, value);
         }
         get has_options() {
             return pb_1.Message.getField(this, 3) != null;
         }
-        static fromObject(data: RecursivePartial<ExtensionRange.AsObject>): ExtensionRange {
+        static fromObject(data: ExtensionRange.AsObjectPartial): ExtensionRange {
             const message = new ExtensionRange({});
             if (data.start != null) {
                 message.start = data.start;
@@ -653,7 +679,7 @@ export namespace DescriptorProto {
             if (this.has_end)
                 writer.writeInt32(2, this.end);
             if (this.has_options)
-                writer.writeMessage(3, this.options, () => this.options.serialize(writer));
+                writer.writeMessage(3, this.options, () => this.options!.serialize(writer));
             if (!w)
                 return writer.getResultBuffer();
         }
@@ -689,6 +715,11 @@ export namespace DescriptorProto {
             start: number;
             end: number;
             options?: ExtensionRangeOptions.AsObject;
+        };
+        export type AsObjectPartial = {
+            start?: number;
+            end?: number;
+            options?: ExtensionRangeOptions.AsObjectPartial;
         };
     }
     export class ReservedRange extends pb_1.Message {
@@ -726,7 +757,7 @@ export namespace DescriptorProto {
         get has_end() {
             return pb_1.Message.getField(this, 2) != null;
         }
-        static fromObject(data: RecursivePartial<ReservedRange.AsObject>): ReservedRange {
+        static fromObject(data: ReservedRange.AsObjectPartial): ReservedRange {
             const message = new ReservedRange({});
             if (data.start != null) {
                 message.start = data.start;
@@ -783,6 +814,10 @@ export namespace DescriptorProto {
             start: number;
             end: number;
         };
+        export type AsObjectPartial = {
+            start?: number;
+            end?: number;
+        };
     }
 }
 export class ExtensionRangeOptions extends pb_1.Message {
@@ -802,7 +837,7 @@ export class ExtensionRangeOptions extends pb_1.Message {
     set uninterpreted_option(value: UninterpretedOption[]) {
         pb_1.Message.setRepeatedWrapperField(this, 999, value);
     }
-    static fromObject(data: RecursivePartial<ExtensionRangeOptions.AsObject>): ExtensionRangeOptions {
+    static fromObject(data: ExtensionRangeOptions.AsObjectPartial): ExtensionRangeOptions {
         const message = new ExtensionRangeOptions({
             uninterpreted_option: data.uninterpreted_option.map(item => UninterpretedOption.fromObject(item))
         });
@@ -819,7 +854,7 @@ export class ExtensionRangeOptions extends pb_1.Message {
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
         if (this.uninterpreted_option.length)
-            writer.writeRepeatedMessage(999, this.uninterpreted_option, (item: UninterpretedOption) => item.serialize(writer));
+            writer.writeRepeatedMessage(999, this.uninterpreted_option, (item: UninterpretedOption) => item!.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
     }
@@ -847,6 +882,9 @@ export class ExtensionRangeOptions extends pb_1.Message {
 export namespace ExtensionRangeOptions {
     export type AsObject = {
         uninterpreted_option: UninterpretedOption.AsObject[];
+    };
+    export type AsObjectPartial = {
+        uninterpreted_option: UninterpretedOption.AsObjectPartial[];
     };
 }
 export class FieldDescriptorProto extends pb_1.Message {
@@ -984,9 +1022,9 @@ export class FieldDescriptorProto extends pb_1.Message {
         return pb_1.Message.getField(this, 10) != null;
     }
     get options() {
-        return pb_1.Message.getWrapperField(this, FieldOptions, 8) as FieldOptions | undefined | null;
+        return pb_1.Message.getWrapperField(this, FieldOptions, 8) as FieldOptions | undefined;
     }
-    set options(value: FieldOptions | undefined | null) {
+    set options(value: FieldOptions | undefined) {
         pb_1.Message.setWrapperField(this, 8, value);
     }
     get has_options() {
@@ -1001,7 +1039,7 @@ export class FieldDescriptorProto extends pb_1.Message {
     get has_proto3_optional() {
         return pb_1.Message.getField(this, 17) != null;
     }
-    static fromObject(data: RecursivePartial<FieldDescriptorProto.AsObject>): FieldDescriptorProto {
+    static fromObject(data: FieldDescriptorProto.AsObjectPartial): FieldDescriptorProto {
         const message = new FieldDescriptorProto({});
         if (data.name != null) {
             message.name = data.name;
@@ -1060,7 +1098,7 @@ export class FieldDescriptorProto extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.has_name && this.name.length)
+        if (this.has_name && this.name!.length)
             writer.writeString(1, this.name);
         if (this.has_number)
             writer.writeInt32(3, this.number);
@@ -1068,18 +1106,18 @@ export class FieldDescriptorProto extends pb_1.Message {
             writer.writeEnum(4, this.label);
         if (this.has_type)
             writer.writeEnum(5, this.type);
-        if (this.has_type_name && this.type_name.length)
+        if (this.has_type_name && this.type_name!.length)
             writer.writeString(6, this.type_name);
-        if (this.has_extendee && this.extendee.length)
+        if (this.has_extendee && this.extendee!.length)
             writer.writeString(2, this.extendee);
-        if (this.has_default_value && this.default_value.length)
+        if (this.has_default_value && this.default_value!.length)
             writer.writeString(7, this.default_value);
         if (this.has_oneof_index)
             writer.writeInt32(9, this.oneof_index);
-        if (this.has_json_name && this.json_name.length)
+        if (this.has_json_name && this.json_name!.length)
             writer.writeString(10, this.json_name);
         if (this.has_options)
-            writer.writeMessage(8, this.options, () => this.options.serialize(writer));
+            writer.writeMessage(8, this.options, () => this.options!.serialize(writer));
         if (this.has_proto3_optional)
             writer.writeBool(17, this.proto3_optional);
         if (!w)
@@ -1150,6 +1188,19 @@ export namespace FieldDescriptorProto {
         options?: FieldOptions.AsObject;
         proto3_optional: boolean;
     };
+    export type AsObjectPartial = {
+        name?: string;
+        number?: number;
+        label?: FieldDescriptorProto.Label;
+        type?: FieldDescriptorProto.Type;
+        type_name?: string;
+        extendee?: string;
+        default_value?: string;
+        oneof_index?: number;
+        json_name?: string;
+        options?: FieldOptions.AsObjectPartial;
+        proto3_optional?: boolean;
+    };
     export enum Type {
         TYPE_DOUBLE = 1,
         TYPE_FLOAT = 2,
@@ -1203,15 +1254,15 @@ export class OneofDescriptorProto extends pb_1.Message {
         return pb_1.Message.getField(this, 1) != null;
     }
     get options() {
-        return pb_1.Message.getWrapperField(this, OneofOptions, 2) as OneofOptions | undefined | null;
+        return pb_1.Message.getWrapperField(this, OneofOptions, 2) as OneofOptions | undefined;
     }
-    set options(value: OneofOptions | undefined | null) {
+    set options(value: OneofOptions | undefined) {
         pb_1.Message.setWrapperField(this, 2, value);
     }
     get has_options() {
         return pb_1.Message.getField(this, 2) != null;
     }
-    static fromObject(data: RecursivePartial<OneofDescriptorProto.AsObject>): OneofDescriptorProto {
+    static fromObject(data: OneofDescriptorProto.AsObjectPartial): OneofDescriptorProto {
         const message = new OneofDescriptorProto({});
         if (data.name != null) {
             message.name = data.name;
@@ -1234,10 +1285,10 @@ export class OneofDescriptorProto extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.has_name && this.name.length)
+        if (this.has_name && this.name!.length)
             writer.writeString(1, this.name);
         if (this.has_options)
-            writer.writeMessage(2, this.options, () => this.options.serialize(writer));
+            writer.writeMessage(2, this.options, () => this.options!.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
     }
@@ -1269,6 +1320,10 @@ export namespace OneofDescriptorProto {
     export type AsObject = {
         name: string;
         options?: OneofOptions.AsObject;
+    };
+    export type AsObjectPartial = {
+        name?: string;
+        options?: OneofOptions.AsObjectPartial;
     };
 }
 export class EnumDescriptorProto extends pb_1.Message {
@@ -1310,9 +1365,9 @@ export class EnumDescriptorProto extends pb_1.Message {
         pb_1.Message.setRepeatedWrapperField(this, 2, value);
     }
     get options() {
-        return pb_1.Message.getWrapperField(this, EnumOptions, 3) as EnumOptions | undefined | null;
+        return pb_1.Message.getWrapperField(this, EnumOptions, 3) as EnumOptions | undefined;
     }
-    set options(value: EnumOptions | undefined | null) {
+    set options(value: EnumOptions | undefined) {
         pb_1.Message.setWrapperField(this, 3, value);
     }
     get has_options() {
@@ -1330,7 +1385,7 @@ export class EnumDescriptorProto extends pb_1.Message {
     set reserved_name(value: string[]) {
         pb_1.Message.setField(this, 5, value);
     }
-    static fromObject(data: RecursivePartial<EnumDescriptorProto.AsObject>): EnumDescriptorProto {
+    static fromObject(data: EnumDescriptorProto.AsObjectPartial): EnumDescriptorProto {
         const message = new EnumDescriptorProto({
             value: data.value.map(item => EnumValueDescriptorProto.fromObject(item)),
             reserved_range: data.reserved_range.map(item => EnumDescriptorProto.EnumReservedRange.fromObject(item)),
@@ -1360,14 +1415,14 @@ export class EnumDescriptorProto extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.has_name && this.name.length)
+        if (this.has_name && this.name!.length)
             writer.writeString(1, this.name);
         if (this.value.length)
-            writer.writeRepeatedMessage(2, this.value, (item: EnumValueDescriptorProto) => item.serialize(writer));
+            writer.writeRepeatedMessage(2, this.value, (item: EnumValueDescriptorProto) => item!.serialize(writer));
         if (this.has_options)
-            writer.writeMessage(3, this.options, () => this.options.serialize(writer));
+            writer.writeMessage(3, this.options, () => this.options!.serialize(writer));
         if (this.reserved_range.length)
-            writer.writeRepeatedMessage(4, this.reserved_range, (item: EnumDescriptorProto.EnumReservedRange) => item.serialize(writer));
+            writer.writeRepeatedMessage(4, this.reserved_range, (item: EnumDescriptorProto.EnumReservedRange) => item!.serialize(writer));
         if (this.reserved_name.length)
             writer.writeRepeatedString(5, this.reserved_name);
         if (!w)
@@ -1414,6 +1469,13 @@ export namespace EnumDescriptorProto {
         reserved_range: EnumDescriptorProto.EnumReservedRange.AsObject[];
         reserved_name: string[];
     };
+    export type AsObjectPartial = {
+        name?: string;
+        value: EnumValueDescriptorProto.AsObjectPartial[];
+        options?: EnumOptions.AsObjectPartial;
+        reserved_range: EnumDescriptorProto.EnumReservedRange.AsObjectPartial[];
+        reserved_name: string[];
+    };
     export class EnumReservedRange extends pb_1.Message {
         #one_of_decls: number[][] = [];
         constructor(data?: any[] | {
@@ -1449,7 +1511,7 @@ export namespace EnumDescriptorProto {
         get has_end() {
             return pb_1.Message.getField(this, 2) != null;
         }
-        static fromObject(data: RecursivePartial<EnumReservedRange.AsObject>): EnumReservedRange {
+        static fromObject(data: EnumReservedRange.AsObjectPartial): EnumReservedRange {
             const message = new EnumReservedRange({});
             if (data.start != null) {
                 message.start = data.start;
@@ -1506,6 +1568,10 @@ export namespace EnumDescriptorProto {
             start: number;
             end: number;
         };
+        export type AsObjectPartial = {
+            start?: number;
+            end?: number;
+        };
     }
 }
 export class EnumValueDescriptorProto extends pb_1.Message {
@@ -1548,15 +1614,15 @@ export class EnumValueDescriptorProto extends pb_1.Message {
         return pb_1.Message.getField(this, 2) != null;
     }
     get options() {
-        return pb_1.Message.getWrapperField(this, EnumValueOptions, 3) as EnumValueOptions | undefined | null;
+        return pb_1.Message.getWrapperField(this, EnumValueOptions, 3) as EnumValueOptions | undefined;
     }
-    set options(value: EnumValueOptions | undefined | null) {
+    set options(value: EnumValueOptions | undefined) {
         pb_1.Message.setWrapperField(this, 3, value);
     }
     get has_options() {
         return pb_1.Message.getField(this, 3) != null;
     }
-    static fromObject(data: RecursivePartial<EnumValueDescriptorProto.AsObject>): EnumValueDescriptorProto {
+    static fromObject(data: EnumValueDescriptorProto.AsObjectPartial): EnumValueDescriptorProto {
         const message = new EnumValueDescriptorProto({});
         if (data.name != null) {
             message.name = data.name;
@@ -1583,12 +1649,12 @@ export class EnumValueDescriptorProto extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.has_name && this.name.length)
+        if (this.has_name && this.name!.length)
             writer.writeString(1, this.name);
         if (this.has_number)
             writer.writeInt32(2, this.number);
         if (this.has_options)
-            writer.writeMessage(3, this.options, () => this.options.serialize(writer));
+            writer.writeMessage(3, this.options, () => this.options!.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
     }
@@ -1624,6 +1690,11 @@ export namespace EnumValueDescriptorProto {
         name: string;
         number: number;
         options?: EnumValueOptions.AsObject;
+    };
+    export type AsObjectPartial = {
+        name?: string;
+        number?: number;
+        options?: EnumValueOptions.AsObjectPartial;
     };
 }
 export class ServiceDescriptorProto extends pb_1.Message {
@@ -1661,15 +1732,15 @@ export class ServiceDescriptorProto extends pb_1.Message {
         pb_1.Message.setRepeatedWrapperField(this, 2, value);
     }
     get options() {
-        return pb_1.Message.getWrapperField(this, ServiceOptions, 3) as ServiceOptions | undefined | null;
+        return pb_1.Message.getWrapperField(this, ServiceOptions, 3) as ServiceOptions | undefined;
     }
-    set options(value: ServiceOptions | undefined | null) {
+    set options(value: ServiceOptions | undefined) {
         pb_1.Message.setWrapperField(this, 3, value);
     }
     get has_options() {
         return pb_1.Message.getField(this, 3) != null;
     }
-    static fromObject(data: RecursivePartial<ServiceDescriptorProto.AsObject>): ServiceDescriptorProto {
+    static fromObject(data: ServiceDescriptorProto.AsObjectPartial): ServiceDescriptorProto {
         const message = new ServiceDescriptorProto({
             method: data.method.map(item => MethodDescriptorProto.fromObject(item))
         });
@@ -1695,12 +1766,12 @@ export class ServiceDescriptorProto extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.has_name && this.name.length)
+        if (this.has_name && this.name!.length)
             writer.writeString(1, this.name);
         if (this.method.length)
-            writer.writeRepeatedMessage(2, this.method, (item: MethodDescriptorProto) => item.serialize(writer));
+            writer.writeRepeatedMessage(2, this.method, (item: MethodDescriptorProto) => item!.serialize(writer));
         if (this.has_options)
-            writer.writeMessage(3, this.options, () => this.options.serialize(writer));
+            writer.writeMessage(3, this.options, () => this.options!.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
     }
@@ -1736,6 +1807,11 @@ export namespace ServiceDescriptorProto {
         name: string;
         method: MethodDescriptorProto.AsObject[];
         options?: ServiceOptions.AsObject;
+    };
+    export type AsObjectPartial = {
+        name?: string;
+        method: MethodDescriptorProto.AsObjectPartial[];
+        options?: ServiceOptions.AsObjectPartial;
     };
 }
 export class MethodDescriptorProto extends pb_1.Message {
@@ -1799,9 +1875,9 @@ export class MethodDescriptorProto extends pb_1.Message {
         return pb_1.Message.getField(this, 3) != null;
     }
     get options() {
-        return pb_1.Message.getWrapperField(this, MethodOptions, 4) as MethodOptions | undefined | null;
+        return pb_1.Message.getWrapperField(this, MethodOptions, 4) as MethodOptions | undefined;
     }
-    set options(value: MethodOptions | undefined | null) {
+    set options(value: MethodOptions | undefined) {
         pb_1.Message.setWrapperField(this, 4, value);
     }
     get has_options() {
@@ -1825,7 +1901,7 @@ export class MethodDescriptorProto extends pb_1.Message {
     get has_server_streaming() {
         return pb_1.Message.getField(this, 6) != null;
     }
-    static fromObject(data: RecursivePartial<MethodDescriptorProto.AsObject>): MethodDescriptorProto {
+    static fromObject(data: MethodDescriptorProto.AsObjectPartial): MethodDescriptorProto {
         const message = new MethodDescriptorProto({});
         if (data.name != null) {
             message.name = data.name;
@@ -1864,14 +1940,14 @@ export class MethodDescriptorProto extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.has_name && this.name.length)
+        if (this.has_name && this.name!.length)
             writer.writeString(1, this.name);
-        if (this.has_input_type && this.input_type.length)
+        if (this.has_input_type && this.input_type!.length)
             writer.writeString(2, this.input_type);
-        if (this.has_output_type && this.output_type.length)
+        if (this.has_output_type && this.output_type!.length)
             writer.writeString(3, this.output_type);
         if (this.has_options)
-            writer.writeMessage(4, this.options, () => this.options.serialize(writer));
+            writer.writeMessage(4, this.options, () => this.options!.serialize(writer));
         if (this.has_client_streaming)
             writer.writeBool(5, this.client_streaming);
         if (this.has_server_streaming)
@@ -1923,6 +1999,14 @@ export namespace MethodDescriptorProto {
         options?: MethodOptions.AsObject;
         client_streaming: boolean;
         server_streaming: boolean;
+    };
+    export type AsObjectPartial = {
+        name?: string;
+        input_type?: string;
+        output_type?: string;
+        options?: MethodOptions.AsObjectPartial;
+        client_streaming?: boolean;
+        server_streaming?: boolean;
     };
 }
 export class FileOptions extends pb_1.Message {
@@ -2206,7 +2290,7 @@ export class FileOptions extends pb_1.Message {
     set uninterpreted_option(value: UninterpretedOption[]) {
         pb_1.Message.setRepeatedWrapperField(this, 999, value);
     }
-    static fromObject(data: RecursivePartial<FileOptions.AsObject>): FileOptions {
+    static fromObject(data: FileOptions.AsObjectPartial): FileOptions {
         const message = new FileOptions({
             uninterpreted_option: data.uninterpreted_option.map(item => UninterpretedOption.fromObject(item))
         });
@@ -2302,9 +2386,9 @@ export class FileOptions extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.has_java_package && this.java_package.length)
+        if (this.has_java_package && this.java_package!.length)
             writer.writeString(1, this.java_package);
-        if (this.has_java_outer_classname && this.java_outer_classname.length)
+        if (this.has_java_outer_classname && this.java_outer_classname!.length)
             writer.writeString(8, this.java_outer_classname);
         if (this.has_java_multiple_files)
             writer.writeBool(10, this.java_multiple_files);
@@ -2314,7 +2398,7 @@ export class FileOptions extends pb_1.Message {
             writer.writeBool(27, this.java_string_check_utf8);
         if (this.has_optimize_for)
             writer.writeEnum(9, this.optimize_for);
-        if (this.has_go_package && this.go_package.length)
+        if (this.has_go_package && this.go_package!.length)
             writer.writeString(11, this.go_package);
         if (this.has_cc_generic_services)
             writer.writeBool(16, this.cc_generic_services);
@@ -2328,22 +2412,22 @@ export class FileOptions extends pb_1.Message {
             writer.writeBool(23, this.deprecated);
         if (this.has_cc_enable_arenas)
             writer.writeBool(31, this.cc_enable_arenas);
-        if (this.has_objc_class_prefix && this.objc_class_prefix.length)
+        if (this.has_objc_class_prefix && this.objc_class_prefix!.length)
             writer.writeString(36, this.objc_class_prefix);
-        if (this.has_csharp_namespace && this.csharp_namespace.length)
+        if (this.has_csharp_namespace && this.csharp_namespace!.length)
             writer.writeString(37, this.csharp_namespace);
-        if (this.has_swift_prefix && this.swift_prefix.length)
+        if (this.has_swift_prefix && this.swift_prefix!.length)
             writer.writeString(39, this.swift_prefix);
-        if (this.has_php_class_prefix && this.php_class_prefix.length)
+        if (this.has_php_class_prefix && this.php_class_prefix!.length)
             writer.writeString(40, this.php_class_prefix);
-        if (this.has_php_namespace && this.php_namespace.length)
+        if (this.has_php_namespace && this.php_namespace!.length)
             writer.writeString(41, this.php_namespace);
-        if (this.has_php_metadata_namespace && this.php_metadata_namespace.length)
+        if (this.has_php_metadata_namespace && this.php_metadata_namespace!.length)
             writer.writeString(44, this.php_metadata_namespace);
-        if (this.has_ruby_package && this.ruby_package.length)
+        if (this.has_ruby_package && this.ruby_package!.length)
             writer.writeString(45, this.ruby_package);
         if (this.uninterpreted_option.length)
-            writer.writeRepeatedMessage(999, this.uninterpreted_option, (item: UninterpretedOption) => item.serialize(writer));
+            writer.writeRepeatedMessage(999, this.uninterpreted_option, (item: UninterpretedOption) => item!.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
     }
@@ -2452,6 +2536,29 @@ export namespace FileOptions {
         ruby_package: string;
         uninterpreted_option: UninterpretedOption.AsObject[];
     };
+    export type AsObjectPartial = {
+        java_package?: string;
+        java_outer_classname?: string;
+        java_multiple_files?: boolean;
+        java_generate_equals_and_hash?: boolean;
+        java_string_check_utf8?: boolean;
+        optimize_for?: FileOptions.OptimizeMode;
+        go_package?: string;
+        cc_generic_services?: boolean;
+        java_generic_services?: boolean;
+        py_generic_services?: boolean;
+        php_generic_services?: boolean;
+        deprecated?: boolean;
+        cc_enable_arenas?: boolean;
+        objc_class_prefix?: string;
+        csharp_namespace?: string;
+        swift_prefix?: string;
+        php_class_prefix?: string;
+        php_namespace?: string;
+        php_metadata_namespace?: string;
+        ruby_package?: string;
+        uninterpreted_option: UninterpretedOption.AsObjectPartial[];
+    };
     export enum OptimizeMode {
         SPEED = 1,
         CODE_SIZE = 2,
@@ -2527,7 +2634,7 @@ export class MessageOptions extends pb_1.Message {
     set uninterpreted_option(value: UninterpretedOption[]) {
         pb_1.Message.setRepeatedWrapperField(this, 999, value);
     }
-    static fromObject(data: RecursivePartial<MessageOptions.AsObject>): MessageOptions {
+    static fromObject(data: MessageOptions.AsObjectPartial): MessageOptions {
         const message = new MessageOptions({
             uninterpreted_option: data.uninterpreted_option.map(item => UninterpretedOption.fromObject(item))
         });
@@ -2568,7 +2675,7 @@ export class MessageOptions extends pb_1.Message {
         if (this.has_map_entry)
             writer.writeBool(7, this.map_entry);
         if (this.uninterpreted_option.length)
-            writer.writeRepeatedMessage(999, this.uninterpreted_option, (item: UninterpretedOption) => item.serialize(writer));
+            writer.writeRepeatedMessage(999, this.uninterpreted_option, (item: UninterpretedOption) => item!.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
     }
@@ -2612,6 +2719,13 @@ export namespace MessageOptions {
         deprecated: boolean;
         map_entry: boolean;
         uninterpreted_option: UninterpretedOption.AsObject[];
+    };
+    export type AsObjectPartial = {
+        message_set_wire_format?: boolean;
+        no_standard_descriptor_accessor?: boolean;
+        deprecated?: boolean;
+        map_entry?: boolean;
+        uninterpreted_option: UninterpretedOption.AsObjectPartial[];
     };
 }
 export class FieldOptions extends pb_1.Message {
@@ -2709,7 +2823,7 @@ export class FieldOptions extends pb_1.Message {
     set uninterpreted_option(value: UninterpretedOption[]) {
         pb_1.Message.setRepeatedWrapperField(this, 999, value);
     }
-    static fromObject(data: RecursivePartial<FieldOptions.AsObject>): FieldOptions {
+    static fromObject(data: FieldOptions.AsObjectPartial): FieldOptions {
         const message = new FieldOptions({
             uninterpreted_option: data.uninterpreted_option.map(item => UninterpretedOption.fromObject(item))
         });
@@ -2762,7 +2876,7 @@ export class FieldOptions extends pb_1.Message {
         if (this.has_weak)
             writer.writeBool(10, this.weak);
         if (this.uninterpreted_option.length)
-            writer.writeRepeatedMessage(999, this.uninterpreted_option, (item: UninterpretedOption) => item.serialize(writer));
+            writer.writeRepeatedMessage(999, this.uninterpreted_option, (item: UninterpretedOption) => item!.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
     }
@@ -2815,6 +2929,15 @@ export namespace FieldOptions {
         weak: boolean;
         uninterpreted_option: UninterpretedOption.AsObject[];
     };
+    export type AsObjectPartial = {
+        ctype?: FieldOptions.CType;
+        packed?: boolean;
+        jstype?: FieldOptions.JSType;
+        lazy?: boolean;
+        deprecated?: boolean;
+        weak?: boolean;
+        uninterpreted_option: UninterpretedOption.AsObjectPartial[];
+    };
     export enum CType {
         STRING = 0,
         CORD = 1,
@@ -2843,7 +2966,7 @@ export class OneofOptions extends pb_1.Message {
     set uninterpreted_option(value: UninterpretedOption[]) {
         pb_1.Message.setRepeatedWrapperField(this, 999, value);
     }
-    static fromObject(data: RecursivePartial<OneofOptions.AsObject>): OneofOptions {
+    static fromObject(data: OneofOptions.AsObjectPartial): OneofOptions {
         const message = new OneofOptions({
             uninterpreted_option: data.uninterpreted_option.map(item => UninterpretedOption.fromObject(item))
         });
@@ -2860,7 +2983,7 @@ export class OneofOptions extends pb_1.Message {
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
         if (this.uninterpreted_option.length)
-            writer.writeRepeatedMessage(999, this.uninterpreted_option, (item: UninterpretedOption) => item.serialize(writer));
+            writer.writeRepeatedMessage(999, this.uninterpreted_option, (item: UninterpretedOption) => item!.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
     }
@@ -2888,6 +3011,9 @@ export class OneofOptions extends pb_1.Message {
 export namespace OneofOptions {
     export type AsObject = {
         uninterpreted_option: UninterpretedOption.AsObject[];
+    };
+    export type AsObjectPartial = {
+        uninterpreted_option: UninterpretedOption.AsObjectPartial[];
     };
 }
 export class EnumOptions extends pb_1.Message {
@@ -2933,7 +3059,7 @@ export class EnumOptions extends pb_1.Message {
     set uninterpreted_option(value: UninterpretedOption[]) {
         pb_1.Message.setRepeatedWrapperField(this, 999, value);
     }
-    static fromObject(data: RecursivePartial<EnumOptions.AsObject>): EnumOptions {
+    static fromObject(data: EnumOptions.AsObjectPartial): EnumOptions {
         const message = new EnumOptions({
             uninterpreted_option: data.uninterpreted_option.map(item => UninterpretedOption.fromObject(item))
         });
@@ -2962,7 +3088,7 @@ export class EnumOptions extends pb_1.Message {
         if (this.has_deprecated)
             writer.writeBool(3, this.deprecated);
         if (this.uninterpreted_option.length)
-            writer.writeRepeatedMessage(999, this.uninterpreted_option, (item: UninterpretedOption) => item.serialize(writer));
+            writer.writeRepeatedMessage(999, this.uninterpreted_option, (item: UninterpretedOption) => item!.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
     }
@@ -2999,6 +3125,11 @@ export namespace EnumOptions {
         deprecated: boolean;
         uninterpreted_option: UninterpretedOption.AsObject[];
     };
+    export type AsObjectPartial = {
+        allow_alias?: boolean;
+        deprecated?: boolean;
+        uninterpreted_option: UninterpretedOption.AsObjectPartial[];
+    };
 }
 export class EnumValueOptions extends pb_1.Message {
     #one_of_decls: number[][] = [];
@@ -3030,7 +3161,7 @@ export class EnumValueOptions extends pb_1.Message {
     set uninterpreted_option(value: UninterpretedOption[]) {
         pb_1.Message.setRepeatedWrapperField(this, 999, value);
     }
-    static fromObject(data: RecursivePartial<EnumValueOptions.AsObject>): EnumValueOptions {
+    static fromObject(data: EnumValueOptions.AsObjectPartial): EnumValueOptions {
         const message = new EnumValueOptions({
             uninterpreted_option: data.uninterpreted_option.map(item => UninterpretedOption.fromObject(item))
         });
@@ -3053,7 +3184,7 @@ export class EnumValueOptions extends pb_1.Message {
         if (this.has_deprecated)
             writer.writeBool(1, this.deprecated);
         if (this.uninterpreted_option.length)
-            writer.writeRepeatedMessage(999, this.uninterpreted_option, (item: UninterpretedOption) => item.serialize(writer));
+            writer.writeRepeatedMessage(999, this.uninterpreted_option, (item: UninterpretedOption) => item!.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
     }
@@ -3086,6 +3217,10 @@ export namespace EnumValueOptions {
         deprecated: boolean;
         uninterpreted_option: UninterpretedOption.AsObject[];
     };
+    export type AsObjectPartial = {
+        deprecated?: boolean;
+        uninterpreted_option: UninterpretedOption.AsObjectPartial[];
+    };
 }
 export class ServiceOptions extends pb_1.Message {
     #one_of_decls: number[][] = [];
@@ -3117,7 +3252,7 @@ export class ServiceOptions extends pb_1.Message {
     set uninterpreted_option(value: UninterpretedOption[]) {
         pb_1.Message.setRepeatedWrapperField(this, 999, value);
     }
-    static fromObject(data: RecursivePartial<ServiceOptions.AsObject>): ServiceOptions {
+    static fromObject(data: ServiceOptions.AsObjectPartial): ServiceOptions {
         const message = new ServiceOptions({
             uninterpreted_option: data.uninterpreted_option.map(item => UninterpretedOption.fromObject(item))
         });
@@ -3140,7 +3275,7 @@ export class ServiceOptions extends pb_1.Message {
         if (this.has_deprecated)
             writer.writeBool(33, this.deprecated);
         if (this.uninterpreted_option.length)
-            writer.writeRepeatedMessage(999, this.uninterpreted_option, (item: UninterpretedOption) => item.serialize(writer));
+            writer.writeRepeatedMessage(999, this.uninterpreted_option, (item: UninterpretedOption) => item!.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
     }
@@ -3172,6 +3307,10 @@ export namespace ServiceOptions {
     export type AsObject = {
         deprecated: boolean;
         uninterpreted_option: UninterpretedOption.AsObject[];
+    };
+    export type AsObjectPartial = {
+        deprecated?: boolean;
+        uninterpreted_option: UninterpretedOption.AsObjectPartial[];
     };
 }
 export class MethodOptions extends pb_1.Message {
@@ -3217,7 +3356,7 @@ export class MethodOptions extends pb_1.Message {
     set uninterpreted_option(value: UninterpretedOption[]) {
         pb_1.Message.setRepeatedWrapperField(this, 999, value);
     }
-    static fromObject(data: RecursivePartial<MethodOptions.AsObject>): MethodOptions {
+    static fromObject(data: MethodOptions.AsObjectPartial): MethodOptions {
         const message = new MethodOptions({
             uninterpreted_option: data.uninterpreted_option.map(item => UninterpretedOption.fromObject(item))
         });
@@ -3246,7 +3385,7 @@ export class MethodOptions extends pb_1.Message {
         if (this.has_idempotency_level)
             writer.writeEnum(34, this.idempotency_level);
         if (this.uninterpreted_option.length)
-            writer.writeRepeatedMessage(999, this.uninterpreted_option, (item: UninterpretedOption) => item.serialize(writer));
+            writer.writeRepeatedMessage(999, this.uninterpreted_option, (item: UninterpretedOption) => item!.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
     }
@@ -3282,6 +3421,11 @@ export namespace MethodOptions {
         deprecated: boolean;
         idempotency_level: MethodOptions.IdempotencyLevel;
         uninterpreted_option: UninterpretedOption.AsObject[];
+    };
+    export type AsObjectPartial = {
+        deprecated?: boolean;
+        idempotency_level?: MethodOptions.IdempotencyLevel;
+        uninterpreted_option: UninterpretedOption.AsObjectPartial[];
     };
     export enum IdempotencyLevel {
         IDEMPOTENCY_UNKNOWN = 0,
@@ -3384,7 +3528,7 @@ export class UninterpretedOption extends pb_1.Message {
     get has_aggregate_value() {
         return pb_1.Message.getField(this, 8) != null;
     }
-    static fromObject(data: RecursivePartial<UninterpretedOption.AsObject>): UninterpretedOption {
+    static fromObject(data: UninterpretedOption.AsObjectPartial): UninterpretedOption {
         const message = new UninterpretedOption({
             name: data.name.map(item => UninterpretedOption.NamePart.fromObject(item))
         });
@@ -3425,8 +3569,8 @@ export class UninterpretedOption extends pb_1.Message {
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
         if (this.name.length)
-            writer.writeRepeatedMessage(2, this.name, (item: UninterpretedOption.NamePart) => item.serialize(writer));
-        if (this.has_identifier_value && this.identifier_value.length)
+            writer.writeRepeatedMessage(2, this.name, (item: UninterpretedOption.NamePart) => item!.serialize(writer));
+        if (this.has_identifier_value && this.identifier_value!.length)
             writer.writeString(3, this.identifier_value);
         if (this.has_positive_int_value)
             writer.writeUint64(4, this.positive_int_value);
@@ -3434,9 +3578,9 @@ export class UninterpretedOption extends pb_1.Message {
             writer.writeInt64(5, this.negative_int_value);
         if (this.has_double_value)
             writer.writeDouble(6, this.double_value);
-        if (this.has_string_value && this.string_value.length)
+        if (this.has_string_value && this.string_value!.length)
             writer.writeBytes(7, this.string_value);
-        if (this.has_aggregate_value && this.aggregate_value.length)
+        if (this.has_aggregate_value && this.aggregate_value!.length)
             writer.writeString(8, this.aggregate_value);
         if (!w)
             return writer.getResultBuffer();
@@ -3490,6 +3634,15 @@ export namespace UninterpretedOption {
         string_value: Uint8Array;
         aggregate_value: string;
     };
+    export type AsObjectPartial = {
+        name: UninterpretedOption.NamePart.AsObjectPartial[];
+        identifier_value?: string;
+        positive_int_value?: number;
+        negative_int_value?: number;
+        double_value?: number;
+        string_value?: Uint8Array;
+        aggregate_value?: string;
+    };
     export class NamePart extends pb_1.Message {
         #one_of_decls: number[][] = [];
         constructor(data?: any[] | {
@@ -3504,24 +3657,24 @@ export namespace UninterpretedOption {
             }
         }
         get name_part() {
-            return pb_1.Message.getField(this, 1) as string | undefined | null;
+            return pb_1.Message.getField(this, 1) as string | undefined;
         }
-        set name_part(value: string | undefined | null) {
+        set name_part(value: string | undefined) {
             pb_1.Message.setField(this, 1, value);
         }
         get has_name_part() {
             return pb_1.Message.getField(this, 1) != null;
         }
         get is_extension() {
-            return pb_1.Message.getField(this, 2) as boolean | undefined | null;
+            return pb_1.Message.getField(this, 2) as boolean | undefined;
         }
-        set is_extension(value: boolean | undefined | null) {
+        set is_extension(value: boolean | undefined) {
             pb_1.Message.setField(this, 2, value);
         }
         get has_is_extension() {
             return pb_1.Message.getField(this, 2) != null;
         }
-        static fromObject(data: RecursivePartial<NamePart.AsObject>): NamePart {
+        static fromObject(data: NamePart.AsObjectPartial): NamePart {
             const message = new NamePart({
                 name_part: data.name_part,
                 is_extension: data.is_extension
@@ -3542,7 +3695,7 @@ export namespace UninterpretedOption {
         serialize(w: pb_1.BinaryWriter): void;
         serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
             const writer = w || new pb_1.BinaryWriter();
-            if (this.has_name_part && this.name_part.length)
+            if (this.has_name_part && this.name_part!.length)
                 writer.writeString(1, this.name_part);
             if (this.has_is_extension)
                 writer.writeBool(2, this.is_extension);
@@ -3578,6 +3731,10 @@ export namespace UninterpretedOption {
             name_part?: string;
             is_extension?: boolean;
         };
+        export type AsObjectPartial = {
+            name_part: string;
+            is_extension: boolean;
+        };
     }
 }
 export class SourceCodeInfo extends pb_1.Message {
@@ -3597,7 +3754,7 @@ export class SourceCodeInfo extends pb_1.Message {
     set location(value: SourceCodeInfo.Location[]) {
         pb_1.Message.setRepeatedWrapperField(this, 1, value);
     }
-    static fromObject(data: RecursivePartial<SourceCodeInfo.AsObject>): SourceCodeInfo {
+    static fromObject(data: SourceCodeInfo.AsObjectPartial): SourceCodeInfo {
         const message = new SourceCodeInfo({
             location: data.location.map(item => SourceCodeInfo.Location.fromObject(item))
         });
@@ -3614,7 +3771,7 @@ export class SourceCodeInfo extends pb_1.Message {
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
         if (this.location.length)
-            writer.writeRepeatedMessage(1, this.location, (item: SourceCodeInfo.Location) => item.serialize(writer));
+            writer.writeRepeatedMessage(1, this.location, (item: SourceCodeInfo.Location) => item!.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
     }
@@ -3642,6 +3799,9 @@ export class SourceCodeInfo extends pb_1.Message {
 export namespace SourceCodeInfo {
     export type AsObject = {
         location: SourceCodeInfo.Location.AsObject[];
+    };
+    export type AsObjectPartial = {
+        location: SourceCodeInfo.Location.AsObjectPartial[];
     };
     export class Location extends pb_1.Message {
         #one_of_decls: number[][] = [];
@@ -3702,7 +3862,7 @@ export namespace SourceCodeInfo {
         set leading_detached_comments(value: string[]) {
             pb_1.Message.setField(this, 6, value);
         }
-        static fromObject(data: RecursivePartial<Location.AsObject>): Location {
+        static fromObject(data: Location.AsObjectPartial): Location {
             const message = new Location({
                 path: data.path,
                 span: data.span,
@@ -3734,9 +3894,9 @@ export namespace SourceCodeInfo {
                 writer.writePackedInt32(1, this.path);
             if (this.span.length)
                 writer.writePackedInt32(2, this.span);
-            if (this.has_leading_comments && this.leading_comments.length)
+            if (this.has_leading_comments && this.leading_comments!.length)
                 writer.writeString(3, this.leading_comments);
-            if (this.has_trailing_comments && this.trailing_comments.length)
+            if (this.has_trailing_comments && this.trailing_comments!.length)
                 writer.writeString(4, this.trailing_comments);
             if (this.leading_detached_comments.length)
                 writer.writeRepeatedString(6, this.leading_detached_comments);
@@ -3784,6 +3944,13 @@ export namespace SourceCodeInfo {
             trailing_comments: string;
             leading_detached_comments: string[];
         };
+        export type AsObjectPartial = {
+            path: number[];
+            span: number[];
+            leading_comments?: string;
+            trailing_comments?: string;
+            leading_detached_comments: string[];
+        };
     }
 }
 export class GeneratedCodeInfo extends pb_1.Message {
@@ -3803,7 +3970,7 @@ export class GeneratedCodeInfo extends pb_1.Message {
     set annotation(value: GeneratedCodeInfo.Annotation[]) {
         pb_1.Message.setRepeatedWrapperField(this, 1, value);
     }
-    static fromObject(data: RecursivePartial<GeneratedCodeInfo.AsObject>): GeneratedCodeInfo {
+    static fromObject(data: GeneratedCodeInfo.AsObjectPartial): GeneratedCodeInfo {
         const message = new GeneratedCodeInfo({
             annotation: data.annotation.map(item => GeneratedCodeInfo.Annotation.fromObject(item))
         });
@@ -3820,7 +3987,7 @@ export class GeneratedCodeInfo extends pb_1.Message {
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
         if (this.annotation.length)
-            writer.writeRepeatedMessage(1, this.annotation, (item: GeneratedCodeInfo.Annotation) => item.serialize(writer));
+            writer.writeRepeatedMessage(1, this.annotation, (item: GeneratedCodeInfo.Annotation) => item!.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
     }
@@ -3848,6 +4015,9 @@ export class GeneratedCodeInfo extends pb_1.Message {
 export namespace GeneratedCodeInfo {
     export type AsObject = {
         annotation: GeneratedCodeInfo.Annotation.AsObject[];
+    };
+    export type AsObjectPartial = {
+        annotation: GeneratedCodeInfo.Annotation.AsObjectPartial[];
     };
     export class Annotation extends pb_1.Message {
         #one_of_decls: number[][] = [];
@@ -3905,7 +4075,7 @@ export namespace GeneratedCodeInfo {
         get has_end() {
             return pb_1.Message.getField(this, 4) != null;
         }
-        static fromObject(data: RecursivePartial<Annotation.AsObject>): Annotation {
+        static fromObject(data: Annotation.AsObjectPartial): Annotation {
             const message = new Annotation({
                 path: data.path
             });
@@ -3935,7 +4105,7 @@ export namespace GeneratedCodeInfo {
             const writer = w || new pb_1.BinaryWriter();
             if (this.path.length)
                 writer.writePackedInt32(1, this.path);
-            if (this.has_source_file && this.source_file.length)
+            if (this.has_source_file && this.source_file!.length)
                 writer.writeString(2, this.source_file);
             if (this.has_begin)
                 writer.writeInt32(3, this.begin);
@@ -3980,6 +4150,12 @@ export namespace GeneratedCodeInfo {
             source_file: string;
             begin: number;
             end: number;
+        };
+        export type AsObjectPartial = {
+            path: number[];
+            source_file?: string;
+            begin?: number;
+            end?: number;
         };
     }
 }

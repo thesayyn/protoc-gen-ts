@@ -5,9 +5,6 @@
  * git: https://github.com/thesayyn/protoc-gen-ts */
 import * as pb_1 from "google-protobuf";
 export namespace importdirective {
-    type RecursivePartial<T> = {
-        [P in keyof T]?: T[P] extends (infer U)[] ? RecursivePartial<U>[] : T[P] extends Uint8Array ? T[P] : T[P] extends object ? RecursivePartial<T[P]> : T[P];
-    };
     export class Imported extends pb_1.Message {
         #one_of_decls: number[][] = [];
         constructor(data?: any[] | {}) {
@@ -15,7 +12,7 @@ export namespace importdirective {
             pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") { }
         }
-        static fromObject(data: RecursivePartial<Imported.AsObject>): Imported {
+        static fromObject(data: Imported.AsObjectPartial): Imported {
             const message = new Imported({});
             return message;
         }
@@ -50,6 +47,7 @@ export namespace importdirective {
     }
     export namespace Imported {
         export type AsObject = {};
+        export type AsObjectPartial = {};
         export class SubMessage extends pb_1.Message {
             #one_of_decls: number[][] = [];
             constructor(data?: any[] | {
@@ -69,7 +67,7 @@ export namespace importdirective {
             set key(value: Imported.SubMessage.MyEnum) {
                 pb_1.Message.setField(this, 1, value);
             }
-            static fromObject(data: RecursivePartial<SubMessage.AsObject>): SubMessage {
+            static fromObject(data: SubMessage.AsObjectPartial): SubMessage {
                 const message = new SubMessage({});
                 if (data.key != null) {
                     message.key = data.key;
@@ -115,6 +113,9 @@ export namespace importdirective {
         export namespace SubMessage {
             export type AsObject = {
                 key: Imported.SubMessage.MyEnum;
+            };
+            export type AsObjectPartial = {
+                key?: Imported.SubMessage.MyEnum;
             };
             export enum MyEnum {
                 VALUE = 0,
