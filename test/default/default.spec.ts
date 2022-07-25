@@ -10,7 +10,7 @@ function toObjectPreservingUndefined(message: Object): Object {
     const classPropertyDescriptors = Object.getOwnPropertyDescriptors(message.constructor.prototype);
     const getters = Object.keys(classPropertyDescriptors)
         .filter((k) => classPropertyDescriptors[k].get != null && classPropertyDescriptors[k].set != null);
-    return Object.fromEntries(getters.map((g) => [g, correctFieldValue(message[g])]));
+    return Object.fromEntries(getters.map((g) => [g, correctFieldValue((message as any)[g])]));
 }
 
 describe("defaults", () => {

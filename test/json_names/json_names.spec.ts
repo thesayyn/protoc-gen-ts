@@ -14,7 +14,7 @@ describe('JSON Names', () => {
 
     expect(message.someStrings).toEqual(['a', 'b', 'c']);
     expect(message.anInteger).toEqual(123);
-    expect(message.aNestedMessage.aNestedInteger).toEqual(456);
+    expect(message.aNestedMessage?.aNestedInteger).toEqual(456);
     expect(message.colorSpace).toEqual(ColorSpace.RED_GREEN_BLUE);
     expect(message.aSingleString).toEqual('spam');
     expect(ColorSpace[message.colorSpace]).toEqual('RED_GREEN_BLUE');
@@ -33,7 +33,7 @@ describe('JSON Names', () => {
 
     expect(message.someStrings).toEqual(['a', 'b', 'c']);
     expect(message.anInteger).toEqual(123);
-    expect(message.aNestedMessage.aNestedInteger).toEqual(456);
+    expect(message.aNestedMessage?.aNestedInteger).toEqual(456);
     expect(message.colorSpace).toEqual(ColorSpace.RED_GREEN_BLUE);
     expect(message.aSingleString).toEqual('spam');
     expect(ColorSpace[message.colorSpace]).toEqual('RED_GREEN_BLUE');
@@ -99,7 +99,7 @@ describe('JSON Names', () => {
     expect(message.hasASingleString).toBe(false);
     message.aSingleString = 'abcdef';
     expect(message.hasASingleString).toBe(true);
-    message.aSingleString = undefined;
+    message.aSingleString = undefined!;
     expect(message.hasASingleString).toBe(false);
   });
 });

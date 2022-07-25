@@ -4,9 +4,6 @@
  * source: test/_/oneof.proto
  * git: https://github.com/thesayyn/protoc-gen-ts */
 import * as pb_1 from "google-protobuf";
-type RecursivePartial<T> = {
-    [P in keyof T]?: T[P] extends (infer U)[] ? RecursivePartial<U>[] : T[P] extends Uint8Array ? T[P] : T[P] extends object ? RecursivePartial<T[P]> : T[P];
-};
 export class OneOfWithoutAnyOtherFields extends pb_1.Message {
     #one_of_decls: number[][] = [[1, 2], [4, 3]];
     constructor(data?: any[] | ({} & (({
@@ -95,7 +92,7 @@ export class OneOfWithoutAnyOtherFields extends pb_1.Message {
         };
         return cases[pb_1.Message.computeOneofCase(this, [4, 3])];
     }
-    static fromObject(data: RecursivePartial<OneOfWithoutAnyOtherFields.AsObject>): OneOfWithoutAnyOtherFields {
+    static fromObject(data: OneOfWithoutAnyOtherFields.AsObjectPartial): OneOfWithoutAnyOtherFields {
         const message = new OneOfWithoutAnyOtherFields({});
         if (data.nickname != null) {
             message.nickname = data.nickname;
@@ -172,6 +169,12 @@ export namespace OneOfWithoutAnyOtherFields {
         age: string;
         date_of_birth: string;
     };
+    export type AsObjectPartial = {
+        nickname?: string;
+        realname?: string;
+        age?: string;
+        date_of_birth?: string;
+    };
 }
 export class OneOf extends pb_1.Message {
     #one_of_decls: number[][] = [[3, 4]];
@@ -232,7 +235,7 @@ export class OneOf extends pb_1.Message {
         };
         return cases[pb_1.Message.computeOneofCase(this, [3, 4])];
     }
-    static fromObject(data: RecursivePartial<OneOf.AsObject>): OneOf {
+    static fromObject(data: OneOf.AsObjectPartial): OneOf {
         const message = new OneOf({});
         if (data.nickname != null) {
             message.nickname = data.nickname;
@@ -298,5 +301,10 @@ export namespace OneOf {
         nickname: string;
         date_of_birth: string;
         age: string;
+    };
+    export type AsObjectPartial = {
+        nickname?: string;
+        date_of_birth?: string;
+        age?: string;
     };
 }

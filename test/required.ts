@@ -4,9 +4,6 @@
  * source: test/_/required.proto
  * git: https://github.com/thesayyn/protoc-gen-ts */
 import * as pb_1 from "google-protobuf";
-type RecursivePartial<T> = {
-    [P in keyof T]?: T[P] extends (infer U)[] ? RecursivePartial<U>[] : T[P] extends Uint8Array ? T[P] : T[P] extends object ? RecursivePartial<T[P]> : T[P];
-};
 export class NoOptionalValues extends pb_1.Message {
     #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
@@ -21,24 +18,24 @@ export class NoOptionalValues extends pb_1.Message {
         }
     }
     get test() {
-        return pb_1.Message.getField(this, 1) as string | undefined | null;
+        return pb_1.Message.getField(this, 1) as string | undefined;
     }
-    set test(value: string | undefined | null) {
+    set test(value: string | undefined) {
         pb_1.Message.setField(this, 1, value);
     }
     get has_test() {
         return pb_1.Message.getField(this, 1) != null;
     }
     get test2() {
-        return pb_1.Message.getField(this, 2) as string | undefined | null;
+        return pb_1.Message.getField(this, 2) as string | undefined;
     }
-    set test2(value: string | undefined | null) {
+    set test2(value: string | undefined) {
         pb_1.Message.setField(this, 2, value);
     }
     get has_test2() {
         return pb_1.Message.getField(this, 2) != null;
     }
-    static fromObject(data: RecursivePartial<NoOptionalValues.AsObject>): NoOptionalValues {
+    static fromObject(data: NoOptionalValues.AsObjectPartial): NoOptionalValues {
         const message = new NoOptionalValues({
             test: data.test,
             test2: data.test2
@@ -59,9 +56,9 @@ export class NoOptionalValues extends pb_1.Message {
     serialize(w: pb_1.BinaryWriter): void;
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
-        if (this.has_test && this.test.length)
+        if (this.has_test && this.test!.length)
             writer.writeString(1, this.test);
-        if (this.has_test2 && this.test2.length)
+        if (this.has_test2 && this.test2!.length)
             writer.writeString(2, this.test2);
         if (!w)
             return writer.getResultBuffer();
@@ -94,5 +91,9 @@ export namespace NoOptionalValues {
     export type AsObject = {
         test?: string;
         test2?: string;
+    };
+    export type AsObjectPartial = {
+        test: string;
+        test2: string;
     };
 }

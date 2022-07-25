@@ -4,9 +4,6 @@
  * source: test/_/optional/optional_proto2.proto
  * git: https://github.com/thesayyn/protoc-gen-ts */
 import * as pb_1 from "google-protobuf";
-type RecursivePartial<T> = {
-    [P in keyof T]?: T[P] extends (infer U)[] ? RecursivePartial<U>[] : T[P] extends Uint8Array ? T[P] : T[P] extends object ? RecursivePartial<T[P]> : T[P];
-};
 export class NotOptional extends pb_1.Message {
     #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
@@ -37,7 +34,7 @@ export class NotOptional extends pb_1.Message {
     get has_should_be_optional() {
         return pb_1.Message.getField(this, 2) != null;
     }
-    static fromObject(data: RecursivePartial<NotOptional.AsObject>): NotOptional {
+    static fromObject(data: NotOptional.AsObjectPartial): NotOptional {
         const message = new NotOptional({
             should_be_required: data.should_be_required
         });
@@ -59,7 +56,7 @@ export class NotOptional extends pb_1.Message {
         const writer = w || new pb_1.BinaryWriter();
         if (this.should_be_required.length)
             writer.writeRepeatedString(1, this.should_be_required);
-        if (this.has_should_be_optional && this.should_be_optional.length)
+        if (this.has_should_be_optional && this.should_be_optional!.length)
             writer.writeString(2, this.should_be_optional);
         if (!w)
             return writer.getResultBuffer();
@@ -92,5 +89,9 @@ export namespace NotOptional {
     export type AsObject = {
         should_be_required: string[];
         should_be_optional: string;
+    };
+    export type AsObjectPartial = {
+        should_be_required: string[];
+        should_be_optional?: string;
     };
 }

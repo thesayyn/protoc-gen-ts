@@ -5,9 +5,6 @@
  * git: https://github.com/thesayyn/protoc-gen-ts */
 import * as dependency_1 from "./imported";
 import * as pb_1 from "google-protobuf";
-type RecursivePartial<T> = {
-    [P in keyof T]?: T[P] extends (infer U)[] ? RecursivePartial<U>[] : T[P] extends Uint8Array ? T[P] : T[P] extends object ? RecursivePartial<T[P]> : T[P];
-};
 export class Topic extends pb_1.Message {
     #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
@@ -27,7 +24,7 @@ export class Topic extends pb_1.Message {
     set link(value: string) {
         pb_1.Message.setField(this, 2, value);
     }
-    static fromObject(data: RecursivePartial<Topic.AsObject>): Topic {
+    static fromObject(data: Topic.AsObjectPartial): Topic {
         const message = new Topic({});
         if (data.link != null) {
             message.link = data.link;
@@ -73,6 +70,9 @@ export class Topic extends pb_1.Message {
 export namespace Topic {
     export type AsObject = {
         link: string;
+    };
+    export type AsObjectPartial = {
+        link?: string;
     };
 }
 export class Tags extends pb_1.Message {
@@ -142,7 +142,7 @@ export class Tags extends pb_1.Message {
     set imported2(value: Map<number, dependency_1.importdirective.Imported.SubMessage.MyEnum>) {
         pb_1.Message.setField(this, 5, value as any);
     }
-    static fromObject(data: RecursivePartial<Tags.AsObject>): Tags {
+    static fromObject(data: Tags.AsObjectPartial): Tags {
         const message = new Tags({});
         if (data.key != null) {
             message.key = data.key;
@@ -186,13 +186,13 @@ export class Tags extends pb_1.Message {
         for (const [key, value] of this.topics) {
             writer.writeMessage(3, this.topics, () => {
                 writer.writeString(1, key);
-                writer.writeMessage(2, value, () => value.serialize(writer));
+                writer.writeMessage(2, value, () => value!.serialize(writer));
             });
         }
         for (const [key, value] of this.imported) {
             writer.writeMessage(4, this.imported, () => {
                 writer.writeInt32(1, key);
-                writer.writeMessage(2, value, () => value.serialize(writer));
+                writer.writeMessage(2, value, () => value!.serialize(writer));
             });
         }
         for (const [key, value] of this.imported2) {
@@ -258,6 +258,21 @@ export namespace Tags {
             [key: number]: dependency_1.importdirective.Imported.SubMessage.AsObject;
         };
         imported2: {
+            [key: number]: dependency_1.importdirective.Imported.SubMessage.MyEnum;
+        };
+    };
+    export type AsObjectPartial = {
+        key?: string;
+        keys?: {
+            [key: string]: string;
+        };
+        topics?: {
+            [key: string]: Topic.AsObject;
+        };
+        imported?: {
+            [key: number]: dependency_1.importdirective.Imported.SubMessage.AsObject;
+        };
+        imported2?: {
             [key: number]: dependency_1.importdirective.Imported.SubMessage.MyEnum;
         };
     };

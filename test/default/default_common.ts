@@ -4,9 +4,6 @@
  * source: test/_/default/default_common.proto
  * git: https://github.com/thesayyn/protoc-gen-ts */
 import * as pb_1 from "google-protobuf";
-type RecursivePartial<T> = {
-    [P in keyof T]?: T[P] extends (infer U)[] ? RecursivePartial<U>[] : T[P] extends Uint8Array ? T[P] : T[P] extends object ? RecursivePartial<T[P]> : T[P];
-};
 export enum DefaultCommonEnum {
     ZERO = 0,
     ONE = 1,
@@ -31,7 +28,7 @@ export class DefaultCommonMessage extends pb_1.Message {
     set message(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
-    static fromObject(data: RecursivePartial<DefaultCommonMessage.AsObject>): DefaultCommonMessage {
+    static fromObject(data: DefaultCommonMessage.AsObjectPartial): DefaultCommonMessage {
         const message = new DefaultCommonMessage({});
         if (data.message != null) {
             message.message = data.message;
@@ -78,6 +75,9 @@ export namespace DefaultCommonMessage {
     export type AsObject = {
         message: string;
     };
+    export type AsObjectPartial = {
+        message?: string;
+    };
 }
 export class DefaultCommonMessageOneOf extends pb_1.Message {
     #one_of_decls: number[][] = [[1, 2, 3]];
@@ -118,9 +118,9 @@ export class DefaultCommonMessageOneOf extends pb_1.Message {
         return pb_1.Message.getField(this, 1) != null;
     }
     get message() {
-        return pb_1.Message.getWrapperField(this, DefaultCommonMessage, 2) as DefaultCommonMessage | undefined | null;
+        return pb_1.Message.getWrapperField(this, DefaultCommonMessage, 2) as DefaultCommonMessage | undefined;
     }
-    set message(value: DefaultCommonMessage | undefined | null) {
+    set message(value: DefaultCommonMessage | undefined) {
         pb_1.Message.setOneofWrapperField(this, 2, this.#one_of_decls[0], value);
     }
     get has_message() {
@@ -146,7 +146,7 @@ export class DefaultCommonMessageOneOf extends pb_1.Message {
         };
         return cases[pb_1.Message.computeOneofCase(this, [1, 2, 3])];
     }
-    static fromObject(data: RecursivePartial<DefaultCommonMessageOneOf.AsObject>): DefaultCommonMessageOneOf {
+    static fromObject(data: DefaultCommonMessageOneOf.AsObjectPartial): DefaultCommonMessageOneOf {
         const message = new DefaultCommonMessageOneOf({});
         if (data.int32 != null) {
             message.int32 = data.int32;
@@ -176,7 +176,7 @@ export class DefaultCommonMessageOneOf extends pb_1.Message {
         if (this.has_int32)
             writer.writeInt32(1, this.int32);
         if (this.has_message)
-            writer.writeMessage(2, this.message, () => this.message.serialize(writer));
+            writer.writeMessage(2, this.message, () => this.message!.serialize(writer));
         if (this.has_string)
             writer.writeString(3, this.string);
         if (!w)
@@ -214,5 +214,10 @@ export namespace DefaultCommonMessageOneOf {
         int32: number;
         message?: DefaultCommonMessage.AsObject;
         string: string;
+    };
+    export type AsObjectPartial = {
+        int32?: number;
+        message?: DefaultCommonMessage.AsObjectPartial;
+        string?: string;
     };
 }

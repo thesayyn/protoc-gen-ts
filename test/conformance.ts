@@ -6,9 +6,6 @@
 import * as pb_1 from "google-protobuf";
 import * as grpc_1 from "@grpc/grpc-js";
 export namespace main {
-    type RecursivePartial<T> = {
-        [P in keyof T]?: T[P] extends (infer U)[] ? RecursivePartial<U>[] : T[P] extends Uint8Array ? T[P] : T[P] extends object ? RecursivePartial<T[P]> : T[P];
-    };
     export class Message extends pb_1.Message {
         #one_of_decls: number[][] = [];
         constructor(data?: any[] | {}) {
@@ -16,7 +13,7 @@ export namespace main {
             pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") { }
         }
-        static fromObject(data: RecursivePartial<Message.AsObject>): Message {
+        static fromObject(data: Message.AsObjectPartial): Message {
             const message = new Message({});
             return message;
         }
@@ -51,6 +48,7 @@ export namespace main {
     }
     export namespace Message {
         export type AsObject = {};
+        export type AsObjectPartial = {};
     }
     export class MessageResult extends pb_1.Message {
         #one_of_decls: number[][] = [];
@@ -59,7 +57,7 @@ export namespace main {
             pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") { }
         }
-        static fromObject(data: RecursivePartial<MessageResult.AsObject>): MessageResult {
+        static fromObject(data: MessageResult.AsObjectPartial): MessageResult {
             const message = new MessageResult({});
             return message;
         }
@@ -94,6 +92,7 @@ export namespace main {
     }
     export namespace MessageResult {
         export type AsObject = {};
+        export type AsObjectPartial = {};
     }
     interface GrpcUnaryServiceInterface<P, R> {
         (message: P, metadata: grpc_1.Metadata, options: grpc_1.CallOptions, callback: grpc_1.requestCallback<R>): grpc_1.ClientUnaryCall;

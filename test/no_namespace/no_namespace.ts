@@ -6,9 +6,6 @@
 import * as dependency_1 from "./nested";
 import * as dependency_2 from "./double_nested";
 import * as pb_1 from "google-protobuf";
-type RecursivePartial<T> = {
-    [P in keyof T]?: T[P] extends (infer U)[] ? RecursivePartial<U>[] : T[P] extends Uint8Array ? T[P] : T[P] extends object ? RecursivePartial<T[P]> : T[P];
-};
 export class NoNamespace extends pb_1.Message {
     #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
@@ -31,33 +28,33 @@ export class NoNamespace extends pb_1.Message {
         }
     }
     get label() {
-        return pb_1.Message.getWrapperField(this, dependency_1.eventTarget, 1) as dependency_1.eventTarget | undefined | null;
+        return pb_1.Message.getWrapperField(this, dependency_1.eventTarget, 1) as dependency_1.eventTarget | undefined;
     }
-    set label(value: dependency_1.eventTarget | undefined | null) {
+    set label(value: dependency_1.eventTarget | undefined) {
         pb_1.Message.setWrapperField(this, 1, value);
     }
     get has_label() {
         return pb_1.Message.getField(this, 1) != null;
     }
     get other_fields() {
-        return pb_1.Message.getWrapperField(this, dependency_2.MessageFields, 2) as dependency_2.MessageFields | undefined | null;
+        return pb_1.Message.getWrapperField(this, dependency_2.MessageFields, 2) as dependency_2.MessageFields | undefined;
     }
-    set other_fields(value: dependency_2.MessageFields | undefined | null) {
+    set other_fields(value: dependency_2.MessageFields | undefined) {
         pb_1.Message.setWrapperField(this, 2, value);
     }
     get has_other_fields() {
         return pb_1.Message.getField(this, 2) != null;
     }
     get batch_fields() {
-        return pb_1.Message.getWrapperField(this, dependency_1.eventSchedulingContextBatch, 3) as dependency_1.eventSchedulingContextBatch | undefined | null;
+        return pb_1.Message.getWrapperField(this, dependency_1.eventSchedulingContextBatch, 3) as dependency_1.eventSchedulingContextBatch | undefined;
     }
-    set batch_fields(value: dependency_1.eventSchedulingContextBatch | undefined | null) {
+    set batch_fields(value: dependency_1.eventSchedulingContextBatch | undefined) {
         pb_1.Message.setWrapperField(this, 3, value);
     }
     get has_batch_fields() {
         return pb_1.Message.getField(this, 3) != null;
     }
-    static fromObject(data: RecursivePartial<NoNamespaceAsObject>): NoNamespace {
+    static fromObject(data: NoNamespaceAsObjectPartial): NoNamespace {
         const message = new NoNamespace({});
         if (data.label != null) {
             message.label = dependency_1.eventTarget.fromObject(data.label);
@@ -88,11 +85,11 @@ export class NoNamespace extends pb_1.Message {
     serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
         const writer = w || new pb_1.BinaryWriter();
         if (this.has_label)
-            writer.writeMessage(1, this.label, () => this.label.serialize(writer));
+            writer.writeMessage(1, this.label, () => this.label!.serialize(writer));
         if (this.has_other_fields)
-            writer.writeMessage(2, this.other_fields, () => this.other_fields.serialize(writer));
+            writer.writeMessage(2, this.other_fields, () => this.other_fields!.serialize(writer));
         if (this.has_batch_fields)
-            writer.writeMessage(3, this.batch_fields, () => this.batch_fields.serialize(writer));
+            writer.writeMessage(3, this.batch_fields, () => this.batch_fields!.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
     }
@@ -127,4 +124,9 @@ export type NoNamespaceAsObject = {
     label?: dependency_1.eventTargetAsObject;
     other_fields?: dependency_2.MessageFieldsAsObject;
     batch_fields?: dependency_1.eventSchedulingContextBatchAsObject;
+};
+export type NoNamespaceAsObjectPartial = {
+    label?: dependency_1.eventTargetAsObjectPartial;
+    other_fields?: dependency_2.MessageFieldsAsObjectPartial;
+    batch_fields?: dependency_1.eventSchedulingContextBatchAsObjectPartial;
 };

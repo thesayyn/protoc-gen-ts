@@ -4,9 +4,6 @@
  * source: test/_/presence/presence_common.proto
  * git: https://github.com/thesayyn/protoc-gen-ts */
 import * as pb_1 from "google-protobuf";
-type RecursivePartial<T> = {
-    [P in keyof T]?: T[P] extends (infer U)[] ? RecursivePartial<U>[] : T[P] extends Uint8Array ? T[P] : T[P] extends object ? RecursivePartial<T[P]> : T[P];
-};
 export enum PresenceCommonEnum {
     ZERO = 0,
     ONE = 1,
@@ -31,7 +28,7 @@ export class PresenceCommonMessage extends pb_1.Message {
     set message(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
-    static fromObject(data: RecursivePartial<PresenceCommonMessage.AsObject>): PresenceCommonMessage {
+    static fromObject(data: PresenceCommonMessage.AsObjectPartial): PresenceCommonMessage {
         const message = new PresenceCommonMessage({});
         if (data.message != null) {
             message.message = data.message;
@@ -78,6 +75,9 @@ export namespace PresenceCommonMessage {
     export type AsObject = {
         message: string;
     };
+    export type AsObjectPartial = {
+        message?: string;
+    };
 }
 export class PresenceCommonMessageOneOf extends pb_1.Message {
     #one_of_decls: number[][] = [[1, 2]];
@@ -109,9 +109,9 @@ export class PresenceCommonMessageOneOf extends pb_1.Message {
         return pb_1.Message.getField(this, 1) != null;
     }
     get message() {
-        return pb_1.Message.getWrapperField(this, PresenceCommonMessage, 2) as PresenceCommonMessage | undefined | null;
+        return pb_1.Message.getWrapperField(this, PresenceCommonMessage, 2) as PresenceCommonMessage | undefined;
     }
-    set message(value: PresenceCommonMessage | undefined | null) {
+    set message(value: PresenceCommonMessage | undefined) {
         pb_1.Message.setOneofWrapperField(this, 2, this.#one_of_decls[0], value);
     }
     get has_message() {
@@ -127,7 +127,7 @@ export class PresenceCommonMessageOneOf extends pb_1.Message {
         };
         return cases[pb_1.Message.computeOneofCase(this, [1, 2])];
     }
-    static fromObject(data: RecursivePartial<PresenceCommonMessageOneOf.AsObject>): PresenceCommonMessageOneOf {
+    static fromObject(data: PresenceCommonMessageOneOf.AsObjectPartial): PresenceCommonMessageOneOf {
         const message = new PresenceCommonMessageOneOf({});
         if (data.int32 != null) {
             message.int32 = data.int32;
@@ -153,7 +153,7 @@ export class PresenceCommonMessageOneOf extends pb_1.Message {
         if (this.has_int32)
             writer.writeInt32(1, this.int32);
         if (this.has_message)
-            writer.writeMessage(2, this.message, () => this.message.serialize(writer));
+            writer.writeMessage(2, this.message, () => this.message!.serialize(writer));
         if (!w)
             return writer.getResultBuffer();
     }
@@ -185,5 +185,9 @@ export namespace PresenceCommonMessageOneOf {
     export type AsObject = {
         int32: number;
         message?: PresenceCommonMessage.AsObject;
+    };
+    export type AsObjectPartial = {
+        int32?: number;
+        message?: PresenceCommonMessage.AsObjectPartial;
     };
 }

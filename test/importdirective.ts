@@ -7,9 +7,6 @@ import * as dependency_1 from "./imported";
 import * as pb_1 from "google-protobuf";
 import * as grpc_1 from "@grpc/grpc-js";
 export namespace importdirective {
-    type RecursivePartial<T> = {
-        [P in keyof T]?: T[P] extends (infer U)[] ? RecursivePartial<U>[] : T[P] extends Uint8Array ? T[P] : T[P] extends object ? RecursivePartial<T[P]> : T[P];
-    };
     export class Message extends pb_1.Message {
         #one_of_decls: number[][] = [];
         constructor(data?: any[] | {
@@ -32,18 +29,18 @@ export namespace importdirective {
             }
         }
         get importedField() {
-            return pb_1.Message.getWrapperField(this, dependency_1.importdirective.Imported, 1) as dependency_1.importdirective.Imported | undefined | null;
+            return pb_1.Message.getWrapperField(this, dependency_1.importdirective.Imported, 1) as dependency_1.importdirective.Imported | undefined;
         }
-        set importedField(value: dependency_1.importdirective.Imported | undefined | null) {
+        set importedField(value: dependency_1.importdirective.Imported | undefined) {
             pb_1.Message.setWrapperField(this, 1, value);
         }
         get has_importedField() {
             return pb_1.Message.getField(this, 1) != null;
         }
         get submessageField() {
-            return pb_1.Message.getWrapperField(this, dependency_1.importdirective.Imported.SubMessage, 2) as dependency_1.importdirective.Imported.SubMessage | undefined | null;
+            return pb_1.Message.getWrapperField(this, dependency_1.importdirective.Imported.SubMessage, 2) as dependency_1.importdirective.Imported.SubMessage | undefined;
         }
-        set submessageField(value: dependency_1.importdirective.Imported.SubMessage | undefined | null) {
+        set submessageField(value: dependency_1.importdirective.Imported.SubMessage | undefined) {
             pb_1.Message.setWrapperField(this, 2, value);
         }
         get has_submessageField() {
@@ -55,7 +52,7 @@ export namespace importdirective {
         set enumField(value: dependency_1.importdirective.Imported.SubMessage.MyEnum) {
             pb_1.Message.setField(this, 3, value);
         }
-        static fromObject(data: RecursivePartial<Message.AsObject>): Message {
+        static fromObject(data: Message.AsObjectPartial): Message {
             const message = new Message({});
             if (data.importedField != null) {
                 message.importedField = dependency_1.importdirective.Imported.fromObject(data.importedField);
@@ -85,9 +82,9 @@ export namespace importdirective {
         serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
             const writer = w || new pb_1.BinaryWriter();
             if (this.has_importedField)
-                writer.writeMessage(1, this.importedField, () => this.importedField.serialize(writer));
+                writer.writeMessage(1, this.importedField, () => this.importedField!.serialize(writer));
             if (this.has_submessageField)
-                writer.writeMessage(2, this.submessageField, () => this.submessageField.serialize(writer));
+                writer.writeMessage(2, this.submessageField, () => this.submessageField!.serialize(writer));
             if (this.enumField != dependency_1.importdirective.Imported.SubMessage.MyEnum.VALUE)
                 writer.writeEnum(3, this.enumField);
             if (!w)
@@ -125,6 +122,11 @@ export namespace importdirective {
             importedField?: dependency_1.importdirective.Imported.AsObject;
             submessageField?: dependency_1.importdirective.Imported.SubMessage.AsObject;
             enumField: dependency_1.importdirective.Imported.SubMessage.MyEnum;
+        };
+        export type AsObjectPartial = {
+            importedField?: dependency_1.importdirective.Imported.AsObjectPartial;
+            submessageField?: dependency_1.importdirective.Imported.SubMessage.AsObjectPartial;
+            enumField?: dependency_1.importdirective.Imported.SubMessage.MyEnum;
         };
     }
     interface GrpcUnaryServiceInterface<P, R> {

@@ -4,9 +4,6 @@
  * source: test/_/integers.proto
  * git: https://github.com/thesayyn/protoc-gen-ts */
 import * as pb_1 from "google-protobuf";
-type RecursivePartial<T> = {
-    [P in keyof T]?: T[P] extends (infer U)[] ? RecursivePartial<U>[] : T[P] extends Uint8Array ? T[P] : T[P] extends object ? RecursivePartial<T[P]> : T[P];
-};
 export class Integers extends pb_1.Message {
     #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
@@ -96,7 +93,7 @@ export class Integers extends pb_1.Message {
     set fixed64(value: number) {
         pb_1.Message.setField(this, 9, value);
     }
-    static fromObject(data: RecursivePartial<Integers.AsObject>): Integers {
+    static fromObject(data: Integers.AsObjectPartial): Integers {
         const message = new Integers({});
         if (data.int32 != null) {
             message.int32 = data.int32;
@@ -212,5 +209,15 @@ export namespace Integers {
         sfixed64: number;
         fixed32: number;
         fixed64: number;
+    };
+    export type AsObjectPartial = {
+        int32?: number;
+        int64?: number;
+        sint32?: number;
+        sint64?: number;
+        sfixed32?: number;
+        sfixed64?: number;
+        fixed32?: number;
+        fixed64?: number;
     };
 }

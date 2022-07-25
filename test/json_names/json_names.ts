@@ -4,9 +4,6 @@
  * source: test/_/json_names/json_names.proto
  * git: https://github.com/thesayyn/protoc-gen-ts */
 import * as pb_1 from "google-protobuf";
-type RecursivePartial<T> = {
-    [P in keyof T]?: T[P] extends (infer U)[] ? RecursivePartial<U>[] : T[P] extends Uint8Array ? T[P] : T[P] extends object ? RecursivePartial<T[P]> : T[P];
-};
 export enum ColorSpace {
     RED_GREEN_BLUE = 0,
     CYAN_YELLOW_MAGENTA_BLACK = 1
@@ -66,9 +63,9 @@ export class JsonNamesMessage extends pb_1.Message {
         pb_1.Message.setField(this, 2, value);
     }
     get aNestedMessage() {
-        return pb_1.Message.getWrapperField(this, JsonNamesMessage.NestedMessage, 3) as JsonNamesMessage.NestedMessage | undefined | null;
+        return pb_1.Message.getWrapperField(this, JsonNamesMessage.NestedMessage, 3) as JsonNamesMessage.NestedMessage | undefined;
     }
-    set aNestedMessage(value: JsonNamesMessage.NestedMessage | undefined | null) {
+    set aNestedMessage(value: JsonNamesMessage.NestedMessage | undefined) {
         pb_1.Message.setWrapperField(this, 3, value);
     }
     get hasANestedMessage() {
@@ -126,7 +123,7 @@ export class JsonNamesMessage extends pb_1.Message {
         };
         return cases[pb_1.Message.computeOneofCase(this, [5])];
     }
-    static fromObject(data: RecursivePartial<JsonNamesMessage.AsObject>): JsonNamesMessage {
+    static fromObject(data: JsonNamesMessage.AsObjectPartial): JsonNamesMessage {
         const message = new JsonNamesMessage({});
         if (data.someStrings != null) {
             message.someStrings = data.someStrings;
@@ -174,7 +171,7 @@ export class JsonNamesMessage extends pb_1.Message {
         if (this.anInteger != 0)
             writer.writeInt32(2, this.anInteger);
         if (this.hasANestedMessage)
-            writer.writeMessage(3, this.aNestedMessage, () => this.aNestedMessage.serialize(writer));
+            writer.writeMessage(3, this.aNestedMessage, () => this.aNestedMessage!.serialize(writer));
         if (this.colorSpace != ColorSpace.RED_GREEN_BLUE)
             writer.writeEnum(4, this.colorSpace);
         if (this.hasAnOptionalString)
@@ -235,6 +232,15 @@ export namespace JsonNamesMessage {
         aSingleString: string;
         aSingleNumber: number;
     };
+    export type AsObjectPartial = {
+        someStrings?: string[];
+        anInteger?: number;
+        aNestedMessage?: JsonNamesMessage.NestedMessage.AsObjectPartial;
+        colorSpace?: ColorSpace;
+        anOptionalString?: string;
+        aSingleString?: string;
+        aSingleNumber?: number;
+    };
     export class NestedMessage extends pb_1.Message {
         #one_of_decls: number[][] = [];
         constructor(data?: any[] | {
@@ -254,7 +260,7 @@ export namespace JsonNamesMessage {
         set aNestedInteger(value: number) {
             pb_1.Message.setField(this, 1, value);
         }
-        static fromObject(data: RecursivePartial<NestedMessage.AsObject>): NestedMessage {
+        static fromObject(data: NestedMessage.AsObjectPartial): NestedMessage {
             const message = new NestedMessage({});
             if (data.aNestedInteger != null) {
                 message.aNestedInteger = data.aNestedInteger;
@@ -300,6 +306,9 @@ export namespace JsonNamesMessage {
     export namespace NestedMessage {
         export type AsObject = {
             aNestedInteger: number;
+        };
+        export type AsObjectPartial = {
+            aNestedInteger?: number;
         };
     }
 }
