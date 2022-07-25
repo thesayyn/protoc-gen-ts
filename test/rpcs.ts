@@ -754,15 +754,15 @@ export class StorageClient extends grpc_1.makeGenericClientConstructor(Unimpleme
         super(address, credentials, options);
     }
     query: GrpcStreamServiceInterface<Query, Query> = (message: Query, metadata?: grpc_1.Metadata | grpc_1.CallOptions, options?: grpc_1.CallOptions): grpc_1.ClientReadableStream<Query> => {
-        return super.query(message, metadata, options);
+        return super["query"](message, metadata, options);
     };
     get: GrpcUnaryServiceInterface<Query, _Object> = (message: Query, metadata: grpc_1.Metadata | grpc_1.CallOptions | grpc_1.requestCallback<_Object>, options?: grpc_1.CallOptions | grpc_1.requestCallback<_Object>, callback?: grpc_1.requestCallback<_Object>): grpc_1.ClientUnaryCall => {
-        return super.get(message, metadata, options, callback);
+        return super["get"](message, metadata, options, callback);
     };
     put: GrpWritableServiceInterface<Put, _Object> = (metadata: grpc_1.Metadata | grpc_1.CallOptions | grpc_1.requestCallback<_Object>, options?: grpc_1.CallOptions | grpc_1.requestCallback<_Object>, callback?: grpc_1.requestCallback<_Object>): grpc_1.ClientWritableStream<Put> => {
-        return super.put(metadata, options, callback);
+        return super["put"](metadata, options, callback);
     };
     chunk: GrpcChunkServiceInterface<Chunk.Query, Chunk> = (metadata?: grpc_1.Metadata | grpc_1.CallOptions, options?: grpc_1.CallOptions): grpc_1.ClientDuplexStream<Chunk.Query, Chunk> => {
-        return super.chunk(metadata, options);
+        return super["chunk"](metadata, options);
     };
 }
