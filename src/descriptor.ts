@@ -285,7 +285,18 @@ function createFromObject(
     ),
   );
 
-  statements.push(ts.factory.createReturnStatement(messageIdentifier));
+  statements.push(
+    ts.factory.createReturnStatement(
+      messageDescriptor.field.length > 0
+        ? messageIdentifier
+        // prevent unused parameter
+        : ts.factory.createBinaryExpression(
+          dataIdentifier,
+          ts.factory.createToken(ts.SyntaxKind.AmpersandAmpersandToken),
+          messageIdentifier,
+        ),
+    ),
+  );
 
   return ts.factory.createMethodDeclaration(
     undefined,

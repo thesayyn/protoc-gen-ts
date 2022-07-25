@@ -14,7 +14,7 @@ export class None extends pb_1.Message {
     }
     static fromObject(data: None.AsObjectPartial): None {
         const message = new None({});
-        return message;
+        return data && message;
     }
     toObject() {
         const data: None.AsObject = {};

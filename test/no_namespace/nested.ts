@@ -796,7 +796,7 @@ export class CompleteResult extends pb_1.Message {
     }
     static fromObject(data: CompleteResultAsObjectPartial): CompleteResult {
         const message = new CompleteResult({});
-        return message;
+        return data && message;
     }
     toObject() {
         const data: CompleteResultAsObject = {};

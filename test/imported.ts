@@ -14,7 +14,7 @@ export namespace importdirective {
         }
         static fromObject(data: Imported.AsObjectPartial): Imported {
             const message = new Imported({});
-            return message;
+            return data && message;
         }
         toObject() {
             const data: Imported.AsObject = {};

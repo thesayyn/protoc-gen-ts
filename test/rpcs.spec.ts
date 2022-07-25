@@ -62,7 +62,7 @@ describe("RPCs", () => {
   });
 
   it("should make unary call without metadata", (done) => {
-    storageServer.get.and.callFake((call, callback) => {
+    storageServer.get.and.callFake((_, callback) => {
       callback(null, new _Object({ id: "1", size: 1000 }));
     })
     client.get(new Query(), (err, response) => {
