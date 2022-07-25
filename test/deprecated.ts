@@ -54,7 +54,7 @@ export class MessageName extends pb_1.Message {
         return pb_1.Message.getFieldWithDefault(this, 2, "") as string;
     }
     set me(value: string) {
-        pb_1.Message.setOneofField(this, 2, this.#one_of_decls[0], value);
+        pb_1.Message.setOneofField(this, 2, this.#one_of_decls[0]!, value);
     }
     get has_me() {
         return pb_1.Message.getField(this, 2) != null;
@@ -65,7 +65,7 @@ export class MessageName extends pb_1.Message {
     }
     /** @deprecated*/
     set me_deprecated(value: string) {
-        pb_1.Message.setOneofField(this, 3, this.#one_of_decls[0], value);
+        pb_1.Message.setOneofField(this, 3, this.#one_of_decls[0]!, value);
     }
     /** @deprecated*/
     get has_me_deprecated() {
@@ -79,7 +79,7 @@ export class MessageName extends pb_1.Message {
             2: "me",
             3: "me_deprecated"
         };
-        return cases[pb_1.Message.computeOneofCase(this, [2, 3])];
+        return cases[pb_1.Message.computeOneofCase(this, [2, 3])]!;
     }
     static fromObject(data: MessageName.AsObjectPartial): MessageName {
         const message = new MessageName({});
@@ -244,7 +244,7 @@ export class ServiceNameClient extends grpc_1.makeGenericClientConstructor(Unimp
     }
     /** @deprecated*/
     MethodName: GrpcUnaryServiceInterface<MessageName, MessageName2> = (message: MessageName, metadata: grpc_1.Metadata | grpc_1.CallOptions | grpc_1.requestCallback<MessageName2>, options?: grpc_1.CallOptions | grpc_1.requestCallback<MessageName2>, callback?: grpc_1.requestCallback<MessageName2>): grpc_1.ClientUnaryCall => {
-        return super["MethodName"](message, metadata, options, callback);
+        return super["MethodName"]!(message, metadata, options, callback);
     };
 }
 /** @deprecated*/
@@ -269,6 +269,6 @@ export class ServiceName2Client extends grpc_1.makeGenericClientConstructor(Unim
         super(address, credentials, options);
     }
     MethodName: GrpcUnaryServiceInterface<MessageName, MessageName2> = (message: MessageName, metadata: grpc_1.Metadata | grpc_1.CallOptions | grpc_1.requestCallback<MessageName2>, options?: grpc_1.CallOptions | grpc_1.requestCallback<MessageName2>, callback?: grpc_1.requestCallback<MessageName2>): grpc_1.ClientUnaryCall => {
-        return super["MethodName"](message, metadata, options, callback);
+        return super["MethodName"]!(message, metadata, options, callback);
     };
 }

@@ -192,7 +192,7 @@ export class StorageClient extends grpc_1.makeGenericClientConstructor(Unimpleme
         metadata = new grpc_1.Metadata;
     } if (!options) {
         options = {};
-    } return new Promise((resolve, reject) => super["put"](message, metadata, options, (error: grpc_1.ServiceError, response: Result) => {
+    } return new Promise((resolve, reject) => super["put"]!(message, metadata, options, (error: grpc_1.ServiceError, response: Result) => {
         if (error) {
             reject(error);
         }

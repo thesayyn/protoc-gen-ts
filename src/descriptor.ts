@@ -1125,19 +1125,21 @@ function createOneOfGetter(
     ),
 
     ts.factory.createReturnStatement(
-      ts.factory.createElementAccessExpression(
-        ts.factory.createIdentifier("cases"),
-        ts.factory.createCallExpression(
-          ts.factory.createPropertyAccessExpression(
-            ts.factory.createPropertyAccessExpression(pbIdentifier, "Message"),
-            ts.factory.createIdentifier("computeOneofCase"),
+      ts.factory.createNonNullExpression(
+        ts.factory.createElementAccessExpression(
+          ts.factory.createIdentifier("cases"),
+          ts.factory.createCallExpression(
+            ts.factory.createPropertyAccessExpression(
+              ts.factory.createPropertyAccessExpression(pbIdentifier, "Message"),
+              ts.factory.createIdentifier("computeOneofCase"),
+            ),
+            undefined,
+            [
+              ts.factory.createThis(),
+              ts.factory.createArrayLiteralExpression(numbers),
+            ],
           ),
-          undefined,
-          [
-            ts.factory.createThis(),
-            ts.factory.createArrayLiteralExpression(numbers),
-          ],
-        ),
+        )
       ),
     ),
   ];
@@ -1225,12 +1227,14 @@ function createOneOfSetterBlock(
           [
             ts.factory.createThis(),
             ts.factory.createNumericLiteral(fieldDescriptor.number),
-            ts.factory.createElementAccessExpression(
-              ts.factory.createPropertyAccessExpression(
-                ts.factory.createThis(),
-                ts.factory.createPrivateIdentifier("#one_of_decls"),
-              ),
-              fieldDescriptor.has_oneof_index ? fieldDescriptor.oneof_index : undefined
+            ts.factory.createNonNullExpression(
+              ts.factory.createElementAccessExpression(
+                ts.factory.createPropertyAccessExpression(
+                  ts.factory.createThis(),
+                  ts.factory.createPrivateIdentifier("#one_of_decls"),
+                ),
+                fieldDescriptor.has_oneof_index ? fieldDescriptor.oneof_index : undefined
+              )
             ),
             valueParameter,
           ],

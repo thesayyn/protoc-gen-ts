@@ -342,7 +342,7 @@ export class HydratedTemplateButton extends pb_1.Message {
         return pb_1.Message.getWrapperField(this, HydratedQuickReplyButton, 1) as HydratedQuickReplyButton | undefined;
     }
     set quickReplyButton(value: HydratedQuickReplyButton | undefined) {
-        pb_1.Message.setOneofWrapperField(this, 1, this.#one_of_decls[0], value);
+        pb_1.Message.setOneofWrapperField(this, 1, this.#one_of_decls[0]!, value);
     }
     get has_quickReplyButton() {
         return pb_1.Message.getField(this, 1) != null;
@@ -351,7 +351,7 @@ export class HydratedTemplateButton extends pb_1.Message {
         return pb_1.Message.getWrapperField(this, HydratedURLButton, 2) as HydratedURLButton | undefined;
     }
     set urlButton(value: HydratedURLButton | undefined) {
-        pb_1.Message.setOneofWrapperField(this, 2, this.#one_of_decls[0], value);
+        pb_1.Message.setOneofWrapperField(this, 2, this.#one_of_decls[0]!, value);
     }
     get has_urlButton() {
         return pb_1.Message.getField(this, 2) != null;
@@ -360,7 +360,7 @@ export class HydratedTemplateButton extends pb_1.Message {
         return pb_1.Message.getWrapperField(this, HydratedCallButton, 3) as HydratedCallButton | undefined;
     }
     set callButton(value: HydratedCallButton | undefined) {
-        pb_1.Message.setOneofWrapperField(this, 3, this.#one_of_decls[0], value);
+        pb_1.Message.setOneofWrapperField(this, 3, this.#one_of_decls[0]!, value);
     }
     get has_callButton() {
         return pb_1.Message.getField(this, 3) != null;
@@ -374,7 +374,7 @@ export class HydratedTemplateButton extends pb_1.Message {
             2: "urlButton",
             3: "callButton"
         };
-        return cases[pb_1.Message.computeOneofCase(this, [1, 2, 3])];
+        return cases[pb_1.Message.computeOneofCase(this, [1, 2, 3])]!;
     }
     static fromObject(data: HydratedTemplateButton.AsObjectPartial): HydratedTemplateButton {
         const message = new HydratedTemplateButton({});
@@ -812,7 +812,7 @@ export class TemplateButton extends pb_1.Message {
         return pb_1.Message.getWrapperField(this, QuickReplyButton, 1) as QuickReplyButton | undefined;
     }
     set quickReplyButton(value: QuickReplyButton | undefined) {
-        pb_1.Message.setOneofWrapperField(this, 1, this.#one_of_decls[0], value);
+        pb_1.Message.setOneofWrapperField(this, 1, this.#one_of_decls[0]!, value);
     }
     get has_quickReplyButton() {
         return pb_1.Message.getField(this, 1) != null;
@@ -821,7 +821,7 @@ export class TemplateButton extends pb_1.Message {
         return pb_1.Message.getWrapperField(this, URLButton, 2) as URLButton | undefined;
     }
     set urlButton(value: URLButton | undefined) {
-        pb_1.Message.setOneofWrapperField(this, 2, this.#one_of_decls[0], value);
+        pb_1.Message.setOneofWrapperField(this, 2, this.#one_of_decls[0]!, value);
     }
     get has_urlButton() {
         return pb_1.Message.getField(this, 2) != null;
@@ -830,7 +830,7 @@ export class TemplateButton extends pb_1.Message {
         return pb_1.Message.getWrapperField(this, CallButton, 3) as CallButton | undefined;
     }
     set callButton(value: CallButton | undefined) {
-        pb_1.Message.setOneofWrapperField(this, 3, this.#one_of_decls[0], value);
+        pb_1.Message.setOneofWrapperField(this, 3, this.#one_of_decls[0]!, value);
     }
     get has_callButton() {
         return pb_1.Message.getField(this, 3) != null;
@@ -844,7 +844,7 @@ export class TemplateButton extends pb_1.Message {
             2: "urlButton",
             3: "callButton"
         };
-        return cases[pb_1.Message.computeOneofCase(this, [1, 2, 3])];
+        return cases[pb_1.Message.computeOneofCase(this, [1, 2, 3])]!;
     }
     static fromObject(data: TemplateButton.AsObjectPartial): TemplateButton {
         const message = new TemplateButton({});
@@ -1228,7 +1228,7 @@ export class InteractiveAnnotation extends pb_1.Message {
         return pb_1.Message.getWrapperField(this, Location, 2) as Location | undefined;
     }
     set location(value: Location | undefined) {
-        pb_1.Message.setOneofWrapperField(this, 2, this.#one_of_decls[0], value);
+        pb_1.Message.setOneofWrapperField(this, 2, this.#one_of_decls[0]!, value);
     }
     get has_location() {
         return pb_1.Message.getField(this, 2) != null;
@@ -1240,7 +1240,7 @@ export class InteractiveAnnotation extends pb_1.Message {
             0: "none",
             2: "location"
         };
-        return cases[pb_1.Message.computeOneofCase(this, [2])];
+        return cases[pb_1.Message.computeOneofCase(this, [2])]!;
     }
     static fromObject(data: InteractiveAnnotation.AsObjectPartial): InteractiveAnnotation {
         const message = new InteractiveAnnotation({
@@ -5638,7 +5638,7 @@ export class HSMDateTime extends pb_1.Message {
         return pb_1.Message.getWrapperField(this, HSMDateTimeComponent, 1) as HSMDateTimeComponent | undefined;
     }
     set component(value: HSMDateTimeComponent | undefined) {
-        pb_1.Message.setOneofWrapperField(this, 1, this.#one_of_decls[0], value);
+        pb_1.Message.setOneofWrapperField(this, 1, this.#one_of_decls[0]!, value);
     }
     get has_component() {
         return pb_1.Message.getField(this, 1) != null;
@@ -5647,7 +5647,7 @@ export class HSMDateTime extends pb_1.Message {
         return pb_1.Message.getWrapperField(this, HSMDateTimeUnixEpoch, 2) as HSMDateTimeUnixEpoch | undefined;
     }
     set unixEpoch(value: HSMDateTimeUnixEpoch | undefined) {
-        pb_1.Message.setOneofWrapperField(this, 2, this.#one_of_decls[0], value);
+        pb_1.Message.setOneofWrapperField(this, 2, this.#one_of_decls[0]!, value);
     }
     get has_unixEpoch() {
         return pb_1.Message.getField(this, 2) != null;
@@ -5660,7 +5660,7 @@ export class HSMDateTime extends pb_1.Message {
             1: "component",
             2: "unixEpoch"
         };
-        return cases[pb_1.Message.computeOneofCase(this, [1, 2])];
+        return cases[pb_1.Message.computeOneofCase(this, [1, 2])]!;
     }
     static fromObject(data: HSMDateTime.AsObjectPartial): HSMDateTime {
         const message = new HSMDateTime({});
@@ -5765,7 +5765,7 @@ export class HSMLocalizableParameter extends pb_1.Message {
         return pb_1.Message.getWrapperField(this, HSMCurrency, 2) as HSMCurrency | undefined;
     }
     set currency(value: HSMCurrency | undefined) {
-        pb_1.Message.setOneofWrapperField(this, 2, this.#one_of_decls[0], value);
+        pb_1.Message.setOneofWrapperField(this, 2, this.#one_of_decls[0]!, value);
     }
     get has_currency() {
         return pb_1.Message.getField(this, 2) != null;
@@ -5774,7 +5774,7 @@ export class HSMLocalizableParameter extends pb_1.Message {
         return pb_1.Message.getWrapperField(this, HSMDateTime, 3) as HSMDateTime | undefined;
     }
     set dateTime(value: HSMDateTime | undefined) {
-        pb_1.Message.setOneofWrapperField(this, 3, this.#one_of_decls[0], value);
+        pb_1.Message.setOneofWrapperField(this, 3, this.#one_of_decls[0]!, value);
     }
     get has_dateTime() {
         return pb_1.Message.getField(this, 3) != null;
@@ -5787,7 +5787,7 @@ export class HSMLocalizableParameter extends pb_1.Message {
             2: "currency",
             3: "dateTime"
         };
-        return cases[pb_1.Message.computeOneofCase(this, [2, 3])];
+        return cases[pb_1.Message.computeOneofCase(this, [2, 3])]!;
     }
     static fromObject(data: HSMLocalizableParameter.AsObjectPartial): HSMLocalizableParameter {
         const message = new HSMLocalizableParameter({});
@@ -7333,7 +7333,7 @@ export class FourRowTemplate extends pb_1.Message {
         return pb_1.Message.getWrapperField(this, DocumentMessage, 1) as DocumentMessage | undefined;
     }
     set documentMessage(value: DocumentMessage | undefined) {
-        pb_1.Message.setOneofWrapperField(this, 1, this.#one_of_decls[0], value);
+        pb_1.Message.setOneofWrapperField(this, 1, this.#one_of_decls[0]!, value);
     }
     get has_documentMessage() {
         return pb_1.Message.getField(this, 1) != null;
@@ -7342,7 +7342,7 @@ export class FourRowTemplate extends pb_1.Message {
         return pb_1.Message.getWrapperField(this, HighlyStructuredMessage, 2) as HighlyStructuredMessage | undefined;
     }
     set highlyStructuredMessage(value: HighlyStructuredMessage | undefined) {
-        pb_1.Message.setOneofWrapperField(this, 2, this.#one_of_decls[0], value);
+        pb_1.Message.setOneofWrapperField(this, 2, this.#one_of_decls[0]!, value);
     }
     get has_highlyStructuredMessage() {
         return pb_1.Message.getField(this, 2) != null;
@@ -7351,7 +7351,7 @@ export class FourRowTemplate extends pb_1.Message {
         return pb_1.Message.getWrapperField(this, ImageMessage, 3) as ImageMessage | undefined;
     }
     set imageMessage(value: ImageMessage | undefined) {
-        pb_1.Message.setOneofWrapperField(this, 3, this.#one_of_decls[0], value);
+        pb_1.Message.setOneofWrapperField(this, 3, this.#one_of_decls[0]!, value);
     }
     get has_imageMessage() {
         return pb_1.Message.getField(this, 3) != null;
@@ -7360,7 +7360,7 @@ export class FourRowTemplate extends pb_1.Message {
         return pb_1.Message.getWrapperField(this, VideoMessage, 4) as VideoMessage | undefined;
     }
     set videoMessage(value: VideoMessage | undefined) {
-        pb_1.Message.setOneofWrapperField(this, 4, this.#one_of_decls[0], value);
+        pb_1.Message.setOneofWrapperField(this, 4, this.#one_of_decls[0]!, value);
     }
     get has_videoMessage() {
         return pb_1.Message.getField(this, 4) != null;
@@ -7369,7 +7369,7 @@ export class FourRowTemplate extends pb_1.Message {
         return pb_1.Message.getWrapperField(this, LocationMessage, 5) as LocationMessage | undefined;
     }
     set locationMessage(value: LocationMessage | undefined) {
-        pb_1.Message.setOneofWrapperField(this, 5, this.#one_of_decls[0], value);
+        pb_1.Message.setOneofWrapperField(this, 5, this.#one_of_decls[0]!, value);
     }
     get has_locationMessage() {
         return pb_1.Message.getField(this, 5) != null;
@@ -7385,7 +7385,7 @@ export class FourRowTemplate extends pb_1.Message {
             4: "videoMessage",
             5: "locationMessage"
         };
-        return cases[pb_1.Message.computeOneofCase(this, [1, 2, 3, 4, 5])];
+        return cases[pb_1.Message.computeOneofCase(this, [1, 2, 3, 4, 5])]!;
     }
     static fromObject(data: FourRowTemplate.AsObjectPartial): FourRowTemplate {
         const message = new FourRowTemplate({
@@ -7633,7 +7633,7 @@ export class HydratedFourRowTemplate extends pb_1.Message {
         return pb_1.Message.getWrapperField(this, DocumentMessage, 1) as DocumentMessage | undefined;
     }
     set documentMessage(value: DocumentMessage | undefined) {
-        pb_1.Message.setOneofWrapperField(this, 1, this.#one_of_decls[0], value);
+        pb_1.Message.setOneofWrapperField(this, 1, this.#one_of_decls[0]!, value);
     }
     get has_documentMessage() {
         return pb_1.Message.getField(this, 1) != null;
@@ -7642,7 +7642,7 @@ export class HydratedFourRowTemplate extends pb_1.Message {
         return pb_1.Message.getFieldWithDefault(this, 2, "") as string;
     }
     set hydratedTitleText(value: string) {
-        pb_1.Message.setOneofField(this, 2, this.#one_of_decls[0], value);
+        pb_1.Message.setOneofField(this, 2, this.#one_of_decls[0]!, value);
     }
     get has_hydratedTitleText() {
         return pb_1.Message.getField(this, 2) != null;
@@ -7651,7 +7651,7 @@ export class HydratedFourRowTemplate extends pb_1.Message {
         return pb_1.Message.getWrapperField(this, ImageMessage, 3) as ImageMessage | undefined;
     }
     set imageMessage(value: ImageMessage | undefined) {
-        pb_1.Message.setOneofWrapperField(this, 3, this.#one_of_decls[0], value);
+        pb_1.Message.setOneofWrapperField(this, 3, this.#one_of_decls[0]!, value);
     }
     get has_imageMessage() {
         return pb_1.Message.getField(this, 3) != null;
@@ -7660,7 +7660,7 @@ export class HydratedFourRowTemplate extends pb_1.Message {
         return pb_1.Message.getWrapperField(this, VideoMessage, 4) as VideoMessage | undefined;
     }
     set videoMessage(value: VideoMessage | undefined) {
-        pb_1.Message.setOneofWrapperField(this, 4, this.#one_of_decls[0], value);
+        pb_1.Message.setOneofWrapperField(this, 4, this.#one_of_decls[0]!, value);
     }
     get has_videoMessage() {
         return pb_1.Message.getField(this, 4) != null;
@@ -7669,7 +7669,7 @@ export class HydratedFourRowTemplate extends pb_1.Message {
         return pb_1.Message.getWrapperField(this, LocationMessage, 5) as LocationMessage | undefined;
     }
     set locationMessage(value: LocationMessage | undefined) {
-        pb_1.Message.setOneofWrapperField(this, 5, this.#one_of_decls[0], value);
+        pb_1.Message.setOneofWrapperField(this, 5, this.#one_of_decls[0]!, value);
     }
     get has_locationMessage() {
         return pb_1.Message.getField(this, 5) != null;
@@ -7685,7 +7685,7 @@ export class HydratedFourRowTemplate extends pb_1.Message {
             4: "videoMessage",
             5: "locationMessage"
         };
-        return cases[pb_1.Message.computeOneofCase(this, [1, 2, 3, 4, 5])];
+        return cases[pb_1.Message.computeOneofCase(this, [1, 2, 3, 4, 5])]!;
     }
     static fromObject(data: HydratedFourRowTemplate.AsObjectPartial): HydratedFourRowTemplate {
         const message = new HydratedFourRowTemplate({
@@ -7884,7 +7884,7 @@ export class TemplateMessage extends pb_1.Message {
         return pb_1.Message.getWrapperField(this, FourRowTemplate, 1) as FourRowTemplate | undefined;
     }
     set fourRowTemplate(value: FourRowTemplate | undefined) {
-        pb_1.Message.setOneofWrapperField(this, 1, this.#one_of_decls[0], value);
+        pb_1.Message.setOneofWrapperField(this, 1, this.#one_of_decls[0]!, value);
     }
     get has_fourRowTemplate() {
         return pb_1.Message.getField(this, 1) != null;
@@ -7893,7 +7893,7 @@ export class TemplateMessage extends pb_1.Message {
         return pb_1.Message.getWrapperField(this, HydratedFourRowTemplate, 2) as HydratedFourRowTemplate | undefined;
     }
     set hydratedFourRowTemplate(value: HydratedFourRowTemplate | undefined) {
-        pb_1.Message.setOneofWrapperField(this, 2, this.#one_of_decls[0], value);
+        pb_1.Message.setOneofWrapperField(this, 2, this.#one_of_decls[0]!, value);
     }
     get has_hydratedFourRowTemplate() {
         return pb_1.Message.getField(this, 2) != null;
@@ -7906,7 +7906,7 @@ export class TemplateMessage extends pb_1.Message {
             1: "fourRowTemplate",
             2: "hydratedFourRowTemplate"
         };
-        return cases[pb_1.Message.computeOneofCase(this, [1, 2])];
+        return cases[pb_1.Message.computeOneofCase(this, [1, 2])]!;
     }
     static fromObject(data: TemplateMessage.AsObjectPartial): TemplateMessage {
         const message = new TemplateMessage({});

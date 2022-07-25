@@ -109,7 +109,7 @@ export class PresenceMessageV3 extends pb_1.Message {
         return pb_1.Message.getFieldWithDefault(this, 6, 0) as number;
     }
     set opt_int32(value: number) {
-        pb_1.Message.setOneofField(this, 6, this.#one_of_decls[0], value);
+        pb_1.Message.setOneofField(this, 6, this.#one_of_decls[0]!, value);
     }
     get has_opt_int32() {
         return pb_1.Message.getField(this, 6) != null;
@@ -118,7 +118,7 @@ export class PresenceMessageV3 extends pb_1.Message {
         return pb_1.Message.getFieldWithDefault(this, 7, dependency_1.PresenceCommonEnum.ZERO) as dependency_1.PresenceCommonEnum;
     }
     set opt_enum(value: dependency_1.PresenceCommonEnum) {
-        pb_1.Message.setOneofField(this, 7, this.#one_of_decls[1], value);
+        pb_1.Message.setOneofField(this, 7, this.#one_of_decls[1]!, value);
     }
     get has_opt_enum() {
         return pb_1.Message.getField(this, 7) != null;
@@ -127,7 +127,7 @@ export class PresenceMessageV3 extends pb_1.Message {
         return pb_1.Message.getFieldWithDefault(this, 8, "") as string;
     }
     set opt_string(value: string) {
-        pb_1.Message.setOneofField(this, 8, this.#one_of_decls[2], value);
+        pb_1.Message.setOneofField(this, 8, this.#one_of_decls[2]!, value);
     }
     get has_opt_string() {
         return pb_1.Message.getField(this, 8) != null;
@@ -136,7 +136,7 @@ export class PresenceMessageV3 extends pb_1.Message {
         return pb_1.Message.getWrapperField(this, dependency_1.PresenceCommonMessage, 9) as dependency_1.PresenceCommonMessage | undefined;
     }
     set opt_message(value: dependency_1.PresenceCommonMessage | undefined) {
-        pb_1.Message.setOneofWrapperField(this, 9, this.#one_of_decls[3], value);
+        pb_1.Message.setOneofWrapperField(this, 9, this.#one_of_decls[3]!, value);
     }
     get has_opt_message() {
         return pb_1.Message.getField(this, 9) != null;
@@ -145,7 +145,7 @@ export class PresenceMessageV3 extends pb_1.Message {
         return pb_1.Message.getWrapperField(this, dependency_1.PresenceCommonMessageOneOf, 10) as dependency_1.PresenceCommonMessageOneOf | undefined;
     }
     set opt_oneof(value: dependency_1.PresenceCommonMessageOneOf | undefined) {
-        pb_1.Message.setOneofWrapperField(this, 10, this.#one_of_decls[4], value);
+        pb_1.Message.setOneofWrapperField(this, 10, this.#one_of_decls[4]!, value);
     }
     get has_opt_oneof() {
         return pb_1.Message.getField(this, 10) != null;
@@ -169,7 +169,7 @@ export class PresenceMessageV3 extends pb_1.Message {
             0: "none",
             6: "opt_int32"
         };
-        return cases[pb_1.Message.computeOneofCase(this, [6])];
+        return cases[pb_1.Message.computeOneofCase(this, [6])]!;
     }
     get _opt_enum() {
         const cases: {
@@ -178,7 +178,7 @@ export class PresenceMessageV3 extends pb_1.Message {
             0: "none",
             7: "opt_enum"
         };
-        return cases[pb_1.Message.computeOneofCase(this, [7])];
+        return cases[pb_1.Message.computeOneofCase(this, [7])]!;
     }
     get _opt_string() {
         const cases: {
@@ -187,7 +187,7 @@ export class PresenceMessageV3 extends pb_1.Message {
             0: "none",
             8: "opt_string"
         };
-        return cases[pb_1.Message.computeOneofCase(this, [8])];
+        return cases[pb_1.Message.computeOneofCase(this, [8])]!;
     }
     get _opt_message() {
         const cases: {
@@ -196,7 +196,7 @@ export class PresenceMessageV3 extends pb_1.Message {
             0: "none",
             9: "opt_message"
         };
-        return cases[pb_1.Message.computeOneofCase(this, [9])];
+        return cases[pb_1.Message.computeOneofCase(this, [9])]!;
     }
     get _opt_oneof() {
         const cases: {
@@ -205,7 +205,7 @@ export class PresenceMessageV3 extends pb_1.Message {
             0: "none",
             10: "opt_oneof"
         };
-        return cases[pb_1.Message.computeOneofCase(this, [10])];
+        return cases[pb_1.Message.computeOneofCase(this, [10])]!;
     }
     static fromObject(data: PresenceMessageV3.AsObjectPartial): PresenceMessageV3 {
         const message = new PresenceMessageV3({});
