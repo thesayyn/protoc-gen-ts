@@ -883,9 +883,9 @@ export class QueueClient extends grpc_1.makeGenericClientConstructor(Unimplement
         super(address, credentials, options);
     }
     pop: GrpcUnaryServiceInterface<Pop, Event> = (message: Pop, metadata: grpc_1.Metadata | grpc_1.CallOptions | grpc_1.requestCallback<Event>, options?: grpc_1.CallOptions | grpc_1.requestCallback<Event>, callback?: grpc_1.requestCallback<Event>): grpc_1.ClientUnaryCall => {
-        return super["pop"](message, metadata, options, callback);
+        return super["pop"]!(message, metadata, options, callback);
     };
     complete: GrpcUnaryServiceInterface<Complete, CompleteResult> = (message: Complete, metadata: grpc_1.Metadata | grpc_1.CallOptions | grpc_1.requestCallback<CompleteResult>, options?: grpc_1.CallOptions | grpc_1.requestCallback<CompleteResult>, callback?: grpc_1.requestCallback<CompleteResult>): grpc_1.ClientUnaryCall => {
-        return super["complete"](message, metadata, options, callback);
+        return super["complete"]!(message, metadata, options, callback);
     };
 }

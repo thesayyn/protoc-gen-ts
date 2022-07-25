@@ -255,7 +255,7 @@ export class DefaultMessageV2WithoutDefault extends pb_1.Message {
         return pb_1.Message.getFieldWithDefault(this, 22, 0) as number;
     }
     set one_of_int32(value: number) {
-        pb_1.Message.setOneofField(this, 22, this.#one_of_decls[0], value);
+        pb_1.Message.setOneofField(this, 22, this.#one_of_decls[0]!, value);
     }
     get has_one_of_int32() {
         return pb_1.Message.getField(this, 22) != null;
@@ -264,7 +264,7 @@ export class DefaultMessageV2WithoutDefault extends pb_1.Message {
         return pb_1.Message.getWrapperField(this, dependency_1.DefaultCommonMessage, 23) as dependency_1.DefaultCommonMessage | undefined;
     }
     set one_of_message(value: dependency_1.DefaultCommonMessage | undefined) {
-        pb_1.Message.setOneofWrapperField(this, 23, this.#one_of_decls[0], value);
+        pb_1.Message.setOneofWrapperField(this, 23, this.#one_of_decls[0]!, value);
     }
     get has_one_of_message() {
         return pb_1.Message.getField(this, 23) != null;
@@ -286,7 +286,7 @@ export class DefaultMessageV2WithoutDefault extends pb_1.Message {
             22: "one_of_int32",
             23: "one_of_message"
         };
-        return cases[pb_1.Message.computeOneofCase(this, [22, 23])];
+        return cases[pb_1.Message.computeOneofCase(this, [22, 23])]!;
     }
     static fromObject(data: DefaultMessageV2WithoutDefault.AsObjectPartial): DefaultMessageV2WithoutDefault {
         const message = new DefaultMessageV2WithoutDefault({
@@ -819,7 +819,7 @@ export class DefaultMessageV2WithDefault extends pb_1.Message {
         return pb_1.Message.getFieldWithDefault(this, 18, 18) as number;
     }
     set one_of_int32(value: number) {
-        pb_1.Message.setOneofField(this, 18, this.#one_of_decls[0], value);
+        pb_1.Message.setOneofField(this, 18, this.#one_of_decls[0]!, value);
     }
     get has_one_of_int32() {
         return pb_1.Message.getField(this, 18) != null;
@@ -828,7 +828,7 @@ export class DefaultMessageV2WithDefault extends pb_1.Message {
         return pb_1.Message.getWrapperField(this, dependency_1.DefaultCommonMessage, 19) as dependency_1.DefaultCommonMessage | undefined;
     }
     set one_of_message(value: dependency_1.DefaultCommonMessage | undefined) {
-        pb_1.Message.setOneofWrapperField(this, 19, this.#one_of_decls[0], value);
+        pb_1.Message.setOneofWrapperField(this, 19, this.#one_of_decls[0]!, value);
     }
     get has_one_of_message() {
         return pb_1.Message.getField(this, 19) != null;
@@ -841,7 +841,7 @@ export class DefaultMessageV2WithDefault extends pb_1.Message {
             18: "one_of_int32",
             19: "one_of_message"
         };
-        return cases[pb_1.Message.computeOneofCase(this, [18, 19])];
+        return cases[pb_1.Message.computeOneofCase(this, [18, 19])]!;
     }
     static fromObject(data: DefaultMessageV2WithDefault.AsObjectPartial): DefaultMessageV2WithDefault {
         const message = new DefaultMessageV2WithDefault({

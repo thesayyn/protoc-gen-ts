@@ -5,6 +5,7 @@
     "strict": true,
     "noFallthroughCasesInSwitch": true,
     "noImplicitReturns": true,
-    "noPropertyAccessFromIndexSignature": true
+    "noPropertyAccessFromIndexSignature": true,
+    "noUncheckedIndexedAccess": true
   }
 }

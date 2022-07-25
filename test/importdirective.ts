@@ -173,7 +173,7 @@ export namespace importdirective {
             super(address, credentials, options);
         }
         ImportedServiceTest: GrpcUnaryServiceInterface<dependency_1.importdirective.Imported, dependency_1.importdirective.Imported.SubMessage> = (message: dependency_1.importdirective.Imported, metadata: grpc_1.Metadata | grpc_1.CallOptions | grpc_1.requestCallback<dependency_1.importdirective.Imported.SubMessage>, options?: grpc_1.CallOptions | grpc_1.requestCallback<dependency_1.importdirective.Imported.SubMessage>, callback?: grpc_1.requestCallback<dependency_1.importdirective.Imported.SubMessage>): grpc_1.ClientUnaryCall => {
-            return super["ImportedServiceTest"](message, metadata, options, callback);
+            return super["ImportedServiceTest"]!(message, metadata, options, callback);
         };
     }
 }

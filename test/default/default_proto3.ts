@@ -251,7 +251,7 @@ export class DefaultMessageV3 extends pb_1.Message {
         return pb_1.Message.getFieldWithDefault(this, 22, 0) as number;
     }
     set one_of_int32(value: number) {
-        pb_1.Message.setOneofField(this, 22, this.#one_of_decls[0], value);
+        pb_1.Message.setOneofField(this, 22, this.#one_of_decls[0]!, value);
     }
     get has_one_of_int32() {
         return pb_1.Message.getField(this, 22) != null;
@@ -260,7 +260,7 @@ export class DefaultMessageV3 extends pb_1.Message {
         return pb_1.Message.getWrapperField(this, dependency_1.DefaultCommonMessage, 23) as dependency_1.DefaultCommonMessage | undefined;
     }
     set one_of_message(value: dependency_1.DefaultCommonMessage | undefined) {
-        pb_1.Message.setOneofWrapperField(this, 23, this.#one_of_decls[0], value);
+        pb_1.Message.setOneofWrapperField(this, 23, this.#one_of_decls[0]!, value);
     }
     get has_one_of_message() {
         return pb_1.Message.getField(this, 23) != null;
@@ -279,7 +279,7 @@ export class DefaultMessageV3 extends pb_1.Message {
             22: "one_of_int32",
             23: "one_of_message"
         };
-        return cases[pb_1.Message.computeOneofCase(this, [22, 23])];
+        return cases[pb_1.Message.computeOneofCase(this, [22, 23])]!;
     }
     static fromObject(data: DefaultMessageV3.AsObjectPartial): DefaultMessageV3 {
         const message = new DefaultMessageV3({});
@@ -706,7 +706,7 @@ export class DefaultMessageOptionalV3 extends pb_1.Message {
         return pb_1.Message.getFieldWithDefault(this, 2, dependency_1.DefaultCommonEnum.ZERO) as dependency_1.DefaultCommonEnum;
     }
     set enum(value: dependency_1.DefaultCommonEnum) {
-        pb_1.Message.setOneofField(this, 2, this.#one_of_decls[0], value);
+        pb_1.Message.setOneofField(this, 2, this.#one_of_decls[0]!, value);
     }
     get has_enum() {
         return pb_1.Message.getField(this, 2) != null;
@@ -715,7 +715,7 @@ export class DefaultMessageOptionalV3 extends pb_1.Message {
         return pb_1.Message.getFieldWithDefault(this, 3, false) as boolean;
     }
     set bool(value: boolean) {
-        pb_1.Message.setOneofField(this, 3, this.#one_of_decls[1], value);
+        pb_1.Message.setOneofField(this, 3, this.#one_of_decls[1]!, value);
     }
     get has_bool() {
         return pb_1.Message.getField(this, 3) != null;
@@ -724,7 +724,7 @@ export class DefaultMessageOptionalV3 extends pb_1.Message {
         return pb_1.Message.getFieldWithDefault(this, 4, "") as string;
     }
     set string(value: string) {
-        pb_1.Message.setOneofField(this, 4, this.#one_of_decls[2], value);
+        pb_1.Message.setOneofField(this, 4, this.#one_of_decls[2]!, value);
     }
     get has_string() {
         return pb_1.Message.getField(this, 4) != null;
@@ -733,7 +733,7 @@ export class DefaultMessageOptionalV3 extends pb_1.Message {
         return pb_1.Message.getFieldWithDefault(this, 5, 0) as number;
     }
     set int32(value: number) {
-        pb_1.Message.setOneofField(this, 5, this.#one_of_decls[3], value);
+        pb_1.Message.setOneofField(this, 5, this.#one_of_decls[3]!, value);
     }
     get has_int32() {
         return pb_1.Message.getField(this, 5) != null;
@@ -742,7 +742,7 @@ export class DefaultMessageOptionalV3 extends pb_1.Message {
         return pb_1.Message.getFieldWithDefault(this, 6, 0) as number;
     }
     set fixed32(value: number) {
-        pb_1.Message.setOneofField(this, 6, this.#one_of_decls[4], value);
+        pb_1.Message.setOneofField(this, 6, this.#one_of_decls[4]!, value);
     }
     get has_fixed32() {
         return pb_1.Message.getField(this, 6) != null;
@@ -751,7 +751,7 @@ export class DefaultMessageOptionalV3 extends pb_1.Message {
         return pb_1.Message.getFieldWithDefault(this, 7, 0) as number;
     }
     set sfixed32(value: number) {
-        pb_1.Message.setOneofField(this, 7, this.#one_of_decls[5], value);
+        pb_1.Message.setOneofField(this, 7, this.#one_of_decls[5]!, value);
     }
     get has_sfixed32() {
         return pb_1.Message.getField(this, 7) != null;
@@ -760,7 +760,7 @@ export class DefaultMessageOptionalV3 extends pb_1.Message {
         return pb_1.Message.getFieldWithDefault(this, 8, 0) as number;
     }
     set uint32(value: number) {
-        pb_1.Message.setOneofField(this, 8, this.#one_of_decls[6], value);
+        pb_1.Message.setOneofField(this, 8, this.#one_of_decls[6]!, value);
     }
     get has_uint32() {
         return pb_1.Message.getField(this, 8) != null;
@@ -769,7 +769,7 @@ export class DefaultMessageOptionalV3 extends pb_1.Message {
         return pb_1.Message.getFieldWithDefault(this, 9, 0) as number;
     }
     set sint32(value: number) {
-        pb_1.Message.setOneofField(this, 9, this.#one_of_decls[7], value);
+        pb_1.Message.setOneofField(this, 9, this.#one_of_decls[7]!, value);
     }
     get has_sint32() {
         return pb_1.Message.getField(this, 9) != null;
@@ -778,7 +778,7 @@ export class DefaultMessageOptionalV3 extends pb_1.Message {
         return pb_1.Message.getFieldWithDefault(this, 10, 0) as number;
     }
     set int64(value: number) {
-        pb_1.Message.setOneofField(this, 10, this.#one_of_decls[8], value);
+        pb_1.Message.setOneofField(this, 10, this.#one_of_decls[8]!, value);
     }
     get has_int64() {
         return pb_1.Message.getField(this, 10) != null;
@@ -787,7 +787,7 @@ export class DefaultMessageOptionalV3 extends pb_1.Message {
         return pb_1.Message.getFieldWithDefault(this, 11, 0) as number;
     }
     set fixed64(value: number) {
-        pb_1.Message.setOneofField(this, 11, this.#one_of_decls[9], value);
+        pb_1.Message.setOneofField(this, 11, this.#one_of_decls[9]!, value);
     }
     get has_fixed64() {
         return pb_1.Message.getField(this, 11) != null;
@@ -796,7 +796,7 @@ export class DefaultMessageOptionalV3 extends pb_1.Message {
         return pb_1.Message.getFieldWithDefault(this, 12, 0) as number;
     }
     set sfixed64(value: number) {
-        pb_1.Message.setOneofField(this, 12, this.#one_of_decls[10], value);
+        pb_1.Message.setOneofField(this, 12, this.#one_of_decls[10]!, value);
     }
     get has_sfixed64() {
         return pb_1.Message.getField(this, 12) != null;
@@ -805,7 +805,7 @@ export class DefaultMessageOptionalV3 extends pb_1.Message {
         return pb_1.Message.getFieldWithDefault(this, 13, 0) as number;
     }
     set uint64(value: number) {
-        pb_1.Message.setOneofField(this, 13, this.#one_of_decls[11], value);
+        pb_1.Message.setOneofField(this, 13, this.#one_of_decls[11]!, value);
     }
     get has_uint64() {
         return pb_1.Message.getField(this, 13) != null;
@@ -814,7 +814,7 @@ export class DefaultMessageOptionalV3 extends pb_1.Message {
         return pb_1.Message.getFieldWithDefault(this, 14, 0) as number;
     }
     set sint64(value: number) {
-        pb_1.Message.setOneofField(this, 14, this.#one_of_decls[12], value);
+        pb_1.Message.setOneofField(this, 14, this.#one_of_decls[12]!, value);
     }
     get has_sint64() {
         return pb_1.Message.getField(this, 14) != null;
@@ -823,7 +823,7 @@ export class DefaultMessageOptionalV3 extends pb_1.Message {
         return pb_1.Message.getFieldWithDefault(this, 15, 0) as number;
     }
     set float(value: number) {
-        pb_1.Message.setOneofField(this, 15, this.#one_of_decls[13], value);
+        pb_1.Message.setOneofField(this, 15, this.#one_of_decls[13]!, value);
     }
     get has_float() {
         return pb_1.Message.getField(this, 15) != null;
@@ -832,7 +832,7 @@ export class DefaultMessageOptionalV3 extends pb_1.Message {
         return pb_1.Message.getFieldWithDefault(this, 16, 0) as number;
     }
     set double(value: number) {
-        pb_1.Message.setOneofField(this, 16, this.#one_of_decls[14], value);
+        pb_1.Message.setOneofField(this, 16, this.#one_of_decls[14]!, value);
     }
     get has_double() {
         return pb_1.Message.getField(this, 16) != null;
@@ -841,7 +841,7 @@ export class DefaultMessageOptionalV3 extends pb_1.Message {
         return pb_1.Message.getFieldWithDefault(this, 17, "0") as string;
     }
     set int_but_string(value: string) {
-        pb_1.Message.setOneofField(this, 17, this.#one_of_decls[15], value);
+        pb_1.Message.setOneofField(this, 17, this.#one_of_decls[15]!, value);
     }
     get has_int_but_string() {
         return pb_1.Message.getField(this, 17) != null;
@@ -850,7 +850,7 @@ export class DefaultMessageOptionalV3 extends pb_1.Message {
         return pb_1.Message.getFieldWithDefault(this, 24, new Uint8Array()) as Uint8Array;
     }
     set bytes(value: Uint8Array) {
-        pb_1.Message.setOneofField(this, 24, this.#one_of_decls[16], value);
+        pb_1.Message.setOneofField(this, 24, this.#one_of_decls[16]!, value);
     }
     get has_bytes() {
         return pb_1.Message.getField(this, 24) != null;
@@ -862,7 +862,7 @@ export class DefaultMessageOptionalV3 extends pb_1.Message {
             0: "none",
             2: "enum"
         };
-        return cases[pb_1.Message.computeOneofCase(this, [2])];
+        return cases[pb_1.Message.computeOneofCase(this, [2])]!;
     }
     get _bool() {
         const cases: {
@@ -871,7 +871,7 @@ export class DefaultMessageOptionalV3 extends pb_1.Message {
             0: "none",
             3: "bool"
         };
-        return cases[pb_1.Message.computeOneofCase(this, [3])];
+        return cases[pb_1.Message.computeOneofCase(this, [3])]!;
     }
     get _string() {
         const cases: {
@@ -880,7 +880,7 @@ export class DefaultMessageOptionalV3 extends pb_1.Message {
             0: "none",
             4: "string"
         };
-        return cases[pb_1.Message.computeOneofCase(this, [4])];
+        return cases[pb_1.Message.computeOneofCase(this, [4])]!;
     }
     get _int32() {
         const cases: {
@@ -889,7 +889,7 @@ export class DefaultMessageOptionalV3 extends pb_1.Message {
             0: "none",
             5: "int32"
         };
-        return cases[pb_1.Message.computeOneofCase(this, [5])];
+        return cases[pb_1.Message.computeOneofCase(this, [5])]!;
     }
     get _fixed32() {
         const cases: {
@@ -898,7 +898,7 @@ export class DefaultMessageOptionalV3 extends pb_1.Message {
             0: "none",
             6: "fixed32"
         };
-        return cases[pb_1.Message.computeOneofCase(this, [6])];
+        return cases[pb_1.Message.computeOneofCase(this, [6])]!;
     }
     get _sfixed32() {
         const cases: {
@@ -907,7 +907,7 @@ export class DefaultMessageOptionalV3 extends pb_1.Message {
             0: "none",
             7: "sfixed32"
         };
-        return cases[pb_1.Message.computeOneofCase(this, [7])];
+        return cases[pb_1.Message.computeOneofCase(this, [7])]!;
     }
     get _uint32() {
         const cases: {
@@ -916,7 +916,7 @@ export class DefaultMessageOptionalV3 extends pb_1.Message {
             0: "none",
             8: "uint32"
         };
-        return cases[pb_1.Message.computeOneofCase(this, [8])];
+        return cases[pb_1.Message.computeOneofCase(this, [8])]!;
     }
     get _sint32() {
         const cases: {
@@ -925,7 +925,7 @@ export class DefaultMessageOptionalV3 extends pb_1.Message {
             0: "none",
             9: "sint32"
         };
-        return cases[pb_1.Message.computeOneofCase(this, [9])];
+        return cases[pb_1.Message.computeOneofCase(this, [9])]!;
     }
     get _int64() {
         const cases: {
@@ -934,7 +934,7 @@ export class DefaultMessageOptionalV3 extends pb_1.Message {
             0: "none",
             10: "int64"
         };
-        return cases[pb_1.Message.computeOneofCase(this, [10])];
+        return cases[pb_1.Message.computeOneofCase(this, [10])]!;
     }
     get _fixed64() {
         const cases: {
@@ -943,7 +943,7 @@ export class DefaultMessageOptionalV3 extends pb_1.Message {
             0: "none",
             11: "fixed64"
         };
-        return cases[pb_1.Message.computeOneofCase(this, [11])];
+        return cases[pb_1.Message.computeOneofCase(this, [11])]!;
     }
     get _sfixed64() {
         const cases: {
@@ -952,7 +952,7 @@ export class DefaultMessageOptionalV3 extends pb_1.Message {
             0: "none",
             12: "sfixed64"
         };
-        return cases[pb_1.Message.computeOneofCase(this, [12])];
+        return cases[pb_1.Message.computeOneofCase(this, [12])]!;
     }
     get _uint64() {
         const cases: {
@@ -961,7 +961,7 @@ export class DefaultMessageOptionalV3 extends pb_1.Message {
             0: "none",
             13: "uint64"
         };
-        return cases[pb_1.Message.computeOneofCase(this, [13])];
+        return cases[pb_1.Message.computeOneofCase(this, [13])]!;
     }
     get _sint64() {
         const cases: {
@@ -970,7 +970,7 @@ export class DefaultMessageOptionalV3 extends pb_1.Message {
             0: "none",
             14: "sint64"
         };
-        return cases[pb_1.Message.computeOneofCase(this, [14])];
+        return cases[pb_1.Message.computeOneofCase(this, [14])]!;
     }
     get _float() {
         const cases: {
@@ -979,7 +979,7 @@ export class DefaultMessageOptionalV3 extends pb_1.Message {
             0: "none",
             15: "float"
         };
-        return cases[pb_1.Message.computeOneofCase(this, [15])];
+        return cases[pb_1.Message.computeOneofCase(this, [15])]!;
     }
     get _double() {
         const cases: {
@@ -988,7 +988,7 @@ export class DefaultMessageOptionalV3 extends pb_1.Message {
             0: "none",
             16: "double"
         };
-        return cases[pb_1.Message.computeOneofCase(this, [16])];
+        return cases[pb_1.Message.computeOneofCase(this, [16])]!;
     }
     get _int_but_string() {
         const cases: {
@@ -997,7 +997,7 @@ export class DefaultMessageOptionalV3 extends pb_1.Message {
             0: "none",
             17: "int_but_string"
         };
-        return cases[pb_1.Message.computeOneofCase(this, [17])];
+        return cases[pb_1.Message.computeOneofCase(this, [17])]!;
     }
     get _bytes() {
         const cases: {
@@ -1006,7 +1006,7 @@ export class DefaultMessageOptionalV3 extends pb_1.Message {
             0: "none",
             24: "bytes"
         };
-        return cases[pb_1.Message.computeOneofCase(this, [24])];
+        return cases[pb_1.Message.computeOneofCase(this, [24])]!;
     }
     static fromObject(data: DefaultMessageOptionalV3.AsObjectPartial): DefaultMessageOptionalV3 {
         const message = new DefaultMessageOptionalV3({});
