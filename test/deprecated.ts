@@ -164,7 +164,7 @@ export class MessageName2 extends pb_1.Message {
     }
     static fromObject(data: MessageName2.AsObjectPartial): MessageName2 {
         const message = new MessageName2({});
-        return message;
+        return data && message;
     }
     toObject() {
         const data: MessageName2.AsObject = {};

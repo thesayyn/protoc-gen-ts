@@ -23,7 +23,7 @@ describe("Experimental RPCs", () => {
   })
 
   it("should make unary call", async () => {
-    storageServer.put.and.callFake((call, callback) => {
+    storageServer.put.and.callFake((_, callback) => {
       callback(null, new Result({id: 1}));
     })
 
@@ -39,7 +39,7 @@ describe("Experimental RPCs", () => {
   });
 
   it("should make unary call without metadata", async () => {
-    storageServer.put.and.callFake((call, callback) => {
+    storageServer.put.and.callFake((_, callback) => {
       callback(null, new Result({ id: 2 }));
     })
     const response = await client.put(

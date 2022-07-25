@@ -15,7 +15,7 @@ export namespace main {
         }
         static fromObject(data: Message.AsObjectPartial): Message {
             const message = new Message({});
-            return message;
+            return data && message;
         }
         toObject() {
             const data: Message.AsObject = {};
@@ -59,7 +59,7 @@ export namespace main {
         }
         static fromObject(data: MessageResult.AsObjectPartial): MessageResult {
             const message = new MessageResult({});
-            return message;
+            return data && message;
         }
         toObject() {
             const data: MessageResult.AsObject = {};
