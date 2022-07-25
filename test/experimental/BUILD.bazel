@@ -16,12 +16,7 @@ diff_and_update(
 ts_project(
     name = "experimental",
     srcs = glob(["*.ts"]),
-    tsconfig = {
-        "compilerOptions": {
-            "target": "ES2020",
-            "module": "CommonJS",
-        },
-    },
+    tsconfig = {}, # no special options
     extends = "//test:tsconfig.json",
     deps = [
         "@npm//@types/jasmine",
