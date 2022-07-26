@@ -21,7 +21,10 @@ export class FileDescriptorSet extends pb_1.Message {
     set file(value: FileDescriptorProto[]) {
         pb_1.Message.setRepeatedWrapperField(this, 1, value);
     }
-    static fromObject(data: FileDescriptorSet.AsObjectPartial): FileDescriptorSet {
+    static fromObject(data?: FileDescriptorSet.AsObjectPartial): FileDescriptorSet {
+        if (!data) {
+            return new FileDescriptorSet();
+        }
         const message = new FileDescriptorSet({
             file: data.file.map(item => FileDescriptorProto.fromObject(item))
         });
@@ -201,7 +204,10 @@ export class FileDescriptorProto extends pb_1.Message {
     get has_syntax() {
         return pb_1.Message.getField(this, 12) != null;
     }
-    static fromObject(data: FileDescriptorProto.AsObjectPartial): FileDescriptorProto {
+    static fromObject(data?: FileDescriptorProto.AsObjectPartial): FileDescriptorProto {
+        if (!data) {
+            return new FileDescriptorProto();
+        }
         const message = new FileDescriptorProto({
             dependency: data.dependency,
             public_dependency: data.public_dependency,
@@ -463,7 +469,10 @@ export class DescriptorProto extends pb_1.Message {
     set reserved_name(value: string[]) {
         pb_1.Message.setField(this, 10, value);
     }
-    static fromObject(data: DescriptorProto.AsObjectPartial): DescriptorProto {
+    static fromObject(data?: DescriptorProto.AsObjectPartial): DescriptorProto {
+        if (!data) {
+            return new DescriptorProto();
+        }
         const message = new DescriptorProto({
             field: data.field.map(item => FieldDescriptorProto.fromObject(item)),
             extension: data.extension.map(item => FieldDescriptorProto.fromObject(item)),
@@ -647,7 +656,10 @@ export namespace DescriptorProto {
         get has_options() {
             return pb_1.Message.getField(this, 3) != null;
         }
-        static fromObject(data: ExtensionRange.AsObjectPartial): ExtensionRange {
+        static fromObject(data?: ExtensionRange.AsObjectPartial): ExtensionRange {
+            if (!data) {
+                return new ExtensionRange();
+            }
             const message = new ExtensionRange({});
             if (data.start != null) {
                 message.start = data.start;
@@ -757,7 +769,10 @@ export namespace DescriptorProto {
         get has_end() {
             return pb_1.Message.getField(this, 2) != null;
         }
-        static fromObject(data: ReservedRange.AsObjectPartial): ReservedRange {
+        static fromObject(data?: ReservedRange.AsObjectPartial): ReservedRange {
+            if (!data) {
+                return new ReservedRange();
+            }
             const message = new ReservedRange({});
             if (data.start != null) {
                 message.start = data.start;
@@ -837,7 +852,10 @@ export class ExtensionRangeOptions extends pb_1.Message {
     set uninterpreted_option(value: UninterpretedOption[]) {
         pb_1.Message.setRepeatedWrapperField(this, 999, value);
     }
-    static fromObject(data: ExtensionRangeOptions.AsObjectPartial): ExtensionRangeOptions {
+    static fromObject(data?: ExtensionRangeOptions.AsObjectPartial): ExtensionRangeOptions {
+        if (!data) {
+            return new ExtensionRangeOptions();
+        }
         const message = new ExtensionRangeOptions({
             uninterpreted_option: data.uninterpreted_option.map(item => UninterpretedOption.fromObject(item))
         });
@@ -1039,7 +1057,10 @@ export class FieldDescriptorProto extends pb_1.Message {
     get has_proto3_optional() {
         return pb_1.Message.getField(this, 17) != null;
     }
-    static fromObject(data: FieldDescriptorProto.AsObjectPartial): FieldDescriptorProto {
+    static fromObject(data?: FieldDescriptorProto.AsObjectPartial): FieldDescriptorProto {
+        if (!data) {
+            return new FieldDescriptorProto();
+        }
         const message = new FieldDescriptorProto({});
         if (data.name != null) {
             message.name = data.name;
@@ -1262,7 +1283,10 @@ export class OneofDescriptorProto extends pb_1.Message {
     get has_options() {
         return pb_1.Message.getField(this, 2) != null;
     }
-    static fromObject(data: OneofDescriptorProto.AsObjectPartial): OneofDescriptorProto {
+    static fromObject(data?: OneofDescriptorProto.AsObjectPartial): OneofDescriptorProto {
+        if (!data) {
+            return new OneofDescriptorProto();
+        }
         const message = new OneofDescriptorProto({});
         if (data.name != null) {
             message.name = data.name;
@@ -1385,7 +1409,10 @@ export class EnumDescriptorProto extends pb_1.Message {
     set reserved_name(value: string[]) {
         pb_1.Message.setField(this, 5, value);
     }
-    static fromObject(data: EnumDescriptorProto.AsObjectPartial): EnumDescriptorProto {
+    static fromObject(data?: EnumDescriptorProto.AsObjectPartial): EnumDescriptorProto {
+        if (!data) {
+            return new EnumDescriptorProto();
+        }
         const message = new EnumDescriptorProto({
             value: data.value.map(item => EnumValueDescriptorProto.fromObject(item)),
             reserved_range: data.reserved_range.map(item => EnumDescriptorProto.EnumReservedRange.fromObject(item)),
@@ -1511,7 +1538,10 @@ export namespace EnumDescriptorProto {
         get has_end() {
             return pb_1.Message.getField(this, 2) != null;
         }
-        static fromObject(data: EnumReservedRange.AsObjectPartial): EnumReservedRange {
+        static fromObject(data?: EnumReservedRange.AsObjectPartial): EnumReservedRange {
+            if (!data) {
+                return new EnumReservedRange();
+            }
             const message = new EnumReservedRange({});
             if (data.start != null) {
                 message.start = data.start;
@@ -1622,7 +1652,10 @@ export class EnumValueDescriptorProto extends pb_1.Message {
     get has_options() {
         return pb_1.Message.getField(this, 3) != null;
     }
-    static fromObject(data: EnumValueDescriptorProto.AsObjectPartial): EnumValueDescriptorProto {
+    static fromObject(data?: EnumValueDescriptorProto.AsObjectPartial): EnumValueDescriptorProto {
+        if (!data) {
+            return new EnumValueDescriptorProto();
+        }
         const message = new EnumValueDescriptorProto({});
         if (data.name != null) {
             message.name = data.name;
@@ -1740,7 +1773,10 @@ export class ServiceDescriptorProto extends pb_1.Message {
     get has_options() {
         return pb_1.Message.getField(this, 3) != null;
     }
-    static fromObject(data: ServiceDescriptorProto.AsObjectPartial): ServiceDescriptorProto {
+    static fromObject(data?: ServiceDescriptorProto.AsObjectPartial): ServiceDescriptorProto {
+        if (!data) {
+            return new ServiceDescriptorProto();
+        }
         const message = new ServiceDescriptorProto({
             method: data.method.map(item => MethodDescriptorProto.fromObject(item))
         });
@@ -1901,7 +1937,10 @@ export class MethodDescriptorProto extends pb_1.Message {
     get has_server_streaming() {
         return pb_1.Message.getField(this, 6) != null;
     }
-    static fromObject(data: MethodDescriptorProto.AsObjectPartial): MethodDescriptorProto {
+    static fromObject(data?: MethodDescriptorProto.AsObjectPartial): MethodDescriptorProto {
+        if (!data) {
+            return new MethodDescriptorProto();
+        }
         const message = new MethodDescriptorProto({});
         if (data.name != null) {
             message.name = data.name;
@@ -2290,7 +2329,10 @@ export class FileOptions extends pb_1.Message {
     set uninterpreted_option(value: UninterpretedOption[]) {
         pb_1.Message.setRepeatedWrapperField(this, 999, value);
     }
-    static fromObject(data: FileOptions.AsObjectPartial): FileOptions {
+    static fromObject(data?: FileOptions.AsObjectPartial): FileOptions {
+        if (!data) {
+            return new FileOptions();
+        }
         const message = new FileOptions({
             uninterpreted_option: data.uninterpreted_option.map(item => UninterpretedOption.fromObject(item))
         });
@@ -2634,7 +2676,10 @@ export class MessageOptions extends pb_1.Message {
     set uninterpreted_option(value: UninterpretedOption[]) {
         pb_1.Message.setRepeatedWrapperField(this, 999, value);
     }
-    static fromObject(data: MessageOptions.AsObjectPartial): MessageOptions {
+    static fromObject(data?: MessageOptions.AsObjectPartial): MessageOptions {
+        if (!data) {
+            return new MessageOptions();
+        }
         const message = new MessageOptions({
             uninterpreted_option: data.uninterpreted_option.map(item => UninterpretedOption.fromObject(item))
         });
@@ -2823,7 +2868,10 @@ export class FieldOptions extends pb_1.Message {
     set uninterpreted_option(value: UninterpretedOption[]) {
         pb_1.Message.setRepeatedWrapperField(this, 999, value);
     }
-    static fromObject(data: FieldOptions.AsObjectPartial): FieldOptions {
+    static fromObject(data?: FieldOptions.AsObjectPartial): FieldOptions {
+        if (!data) {
+            return new FieldOptions();
+        }
         const message = new FieldOptions({
             uninterpreted_option: data.uninterpreted_option.map(item => UninterpretedOption.fromObject(item))
         });
@@ -2966,7 +3014,10 @@ export class OneofOptions extends pb_1.Message {
     set uninterpreted_option(value: UninterpretedOption[]) {
         pb_1.Message.setRepeatedWrapperField(this, 999, value);
     }
-    static fromObject(data: OneofOptions.AsObjectPartial): OneofOptions {
+    static fromObject(data?: OneofOptions.AsObjectPartial): OneofOptions {
+        if (!data) {
+            return new OneofOptions();
+        }
         const message = new OneofOptions({
             uninterpreted_option: data.uninterpreted_option.map(item => UninterpretedOption.fromObject(item))
         });
@@ -3059,7 +3110,10 @@ export class EnumOptions extends pb_1.Message {
     set uninterpreted_option(value: UninterpretedOption[]) {
         pb_1.Message.setRepeatedWrapperField(this, 999, value);
     }
-    static fromObject(data: EnumOptions.AsObjectPartial): EnumOptions {
+    static fromObject(data?: EnumOptions.AsObjectPartial): EnumOptions {
+        if (!data) {
+            return new EnumOptions();
+        }
         const message = new EnumOptions({
             uninterpreted_option: data.uninterpreted_option.map(item => UninterpretedOption.fromObject(item))
         });
@@ -3161,7 +3215,10 @@ export class EnumValueOptions extends pb_1.Message {
     set uninterpreted_option(value: UninterpretedOption[]) {
         pb_1.Message.setRepeatedWrapperField(this, 999, value);
     }
-    static fromObject(data: EnumValueOptions.AsObjectPartial): EnumValueOptions {
+    static fromObject(data?: EnumValueOptions.AsObjectPartial): EnumValueOptions {
+        if (!data) {
+            return new EnumValueOptions();
+        }
         const message = new EnumValueOptions({
             uninterpreted_option: data.uninterpreted_option.map(item => UninterpretedOption.fromObject(item))
         });
@@ -3252,7 +3309,10 @@ export class ServiceOptions extends pb_1.Message {
     set uninterpreted_option(value: UninterpretedOption[]) {
         pb_1.Message.setRepeatedWrapperField(this, 999, value);
     }
-    static fromObject(data: ServiceOptions.AsObjectPartial): ServiceOptions {
+    static fromObject(data?: ServiceOptions.AsObjectPartial): ServiceOptions {
+        if (!data) {
+            return new ServiceOptions();
+        }
         const message = new ServiceOptions({
             uninterpreted_option: data.uninterpreted_option.map(item => UninterpretedOption.fromObject(item))
         });
@@ -3356,7 +3416,10 @@ export class MethodOptions extends pb_1.Message {
     set uninterpreted_option(value: UninterpretedOption[]) {
         pb_1.Message.setRepeatedWrapperField(this, 999, value);
     }
-    static fromObject(data: MethodOptions.AsObjectPartial): MethodOptions {
+    static fromObject(data?: MethodOptions.AsObjectPartial): MethodOptions {
+        if (!data) {
+            return new MethodOptions();
+        }
         const message = new MethodOptions({
             uninterpreted_option: data.uninterpreted_option.map(item => UninterpretedOption.fromObject(item))
         });
@@ -3528,7 +3591,10 @@ export class UninterpretedOption extends pb_1.Message {
     get has_aggregate_value() {
         return pb_1.Message.getField(this, 8) != null;
     }
-    static fromObject(data: UninterpretedOption.AsObjectPartial): UninterpretedOption {
+    static fromObject(data?: UninterpretedOption.AsObjectPartial): UninterpretedOption {
+        if (!data) {
+            return new UninterpretedOption();
+        }
         const message = new UninterpretedOption({
             name: data.name.map(item => UninterpretedOption.NamePart.fromObject(item))
         });
@@ -3674,7 +3740,10 @@ export namespace UninterpretedOption {
         get has_is_extension() {
             return pb_1.Message.getField(this, 2) != null;
         }
-        static fromObject(data: NamePart.AsObjectPartial): NamePart {
+        static fromObject(data?: NamePart.AsObjectPartial): NamePart {
+            if (!data) {
+                return new NamePart();
+            }
             const message = new NamePart({
                 name_part: data.name_part,
                 is_extension: data.is_extension
@@ -3754,7 +3823,10 @@ export class SourceCodeInfo extends pb_1.Message {
     set location(value: SourceCodeInfo.Location[]) {
         pb_1.Message.setRepeatedWrapperField(this, 1, value);
     }
-    static fromObject(data: SourceCodeInfo.AsObjectPartial): SourceCodeInfo {
+    static fromObject(data?: SourceCodeInfo.AsObjectPartial): SourceCodeInfo {
+        if (!data) {
+            return new SourceCodeInfo();
+        }
         const message = new SourceCodeInfo({
             location: data.location.map(item => SourceCodeInfo.Location.fromObject(item))
         });
@@ -3862,7 +3934,10 @@ export namespace SourceCodeInfo {
         set leading_detached_comments(value: string[]) {
             pb_1.Message.setField(this, 6, value);
         }
-        static fromObject(data: Location.AsObjectPartial): Location {
+        static fromObject(data?: Location.AsObjectPartial): Location {
+            if (!data) {
+                return new Location();
+            }
             const message = new Location({
                 path: data.path,
                 span: data.span,
@@ -3970,7 +4045,10 @@ export class GeneratedCodeInfo extends pb_1.Message {
     set annotation(value: GeneratedCodeInfo.Annotation[]) {
         pb_1.Message.setRepeatedWrapperField(this, 1, value);
     }
-    static fromObject(data: GeneratedCodeInfo.AsObjectPartial): GeneratedCodeInfo {
+    static fromObject(data?: GeneratedCodeInfo.AsObjectPartial): GeneratedCodeInfo {
+        if (!data) {
+            return new GeneratedCodeInfo();
+        }
         const message = new GeneratedCodeInfo({
             annotation: data.annotation.map(item => GeneratedCodeInfo.Annotation.fromObject(item))
         });
@@ -4075,7 +4153,10 @@ export namespace GeneratedCodeInfo {
         get has_end() {
             return pb_1.Message.getField(this, 4) != null;
         }
-        static fromObject(data: Annotation.AsObjectPartial): Annotation {
+        static fromObject(data?: Annotation.AsObjectPartial): Annotation {
+            if (!data) {
+                return new Annotation();
+            }
             const message = new Annotation({
                 path: data.path
             });

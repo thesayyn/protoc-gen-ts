@@ -39,7 +39,10 @@ export class HydratedQuickReplyButton extends pb_1.Message {
     get has_id() {
         return pb_1.Message.getField(this, 2) != null;
     }
-    static fromObject(data: HydratedQuickReplyButton.AsObjectPartial): HydratedQuickReplyButton {
+    static fromObject(data?: HydratedQuickReplyButton.AsObjectPartial): HydratedQuickReplyButton {
+        if (!data) {
+            return new HydratedQuickReplyButton();
+        }
         const message = new HydratedQuickReplyButton({});
         if (data.displayText != null) {
             message.displayText = data.displayText;
@@ -136,7 +139,10 @@ export class HydratedURLButton extends pb_1.Message {
     get has_url() {
         return pb_1.Message.getField(this, 2) != null;
     }
-    static fromObject(data: HydratedURLButton.AsObjectPartial): HydratedURLButton {
+    static fromObject(data?: HydratedURLButton.AsObjectPartial): HydratedURLButton {
+        if (!data) {
+            return new HydratedURLButton();
+        }
         const message = new HydratedURLButton({});
         if (data.displayText != null) {
             message.displayText = data.displayText;
@@ -233,7 +239,10 @@ export class HydratedCallButton extends pb_1.Message {
     get has_phoneNumber() {
         return pb_1.Message.getField(this, 2) != null;
     }
-    static fromObject(data: HydratedCallButton.AsObjectPartial): HydratedCallButton {
+    static fromObject(data?: HydratedCallButton.AsObjectPartial): HydratedCallButton {
+        if (!data) {
+            return new HydratedCallButton();
+        }
         const message = new HydratedCallButton({});
         if (data.displayText != null) {
             message.displayText = data.displayText;
@@ -376,7 +385,10 @@ export class HydratedTemplateButton extends pb_1.Message {
         };
         return cases[pb_1.Message.computeOneofCase(this, [1, 2, 3])]!;
     }
-    static fromObject(data: HydratedTemplateButton.AsObjectPartial): HydratedTemplateButton {
+    static fromObject(data?: HydratedTemplateButton.AsObjectPartial): HydratedTemplateButton {
+        if (!data) {
+            return new HydratedTemplateButton();
+        }
         const message = new HydratedTemplateButton({});
         if (data.index != null) {
             message.index = data.index;
@@ -501,7 +513,10 @@ export class QuickReplyButton extends pb_1.Message {
     get has_id() {
         return pb_1.Message.getField(this, 2) != null;
     }
-    static fromObject(data: QuickReplyButton.AsObjectPartial): QuickReplyButton {
+    static fromObject(data?: QuickReplyButton.AsObjectPartial): QuickReplyButton {
+        if (!data) {
+            return new QuickReplyButton();
+        }
         const message = new QuickReplyButton({});
         if (data.displayText != null) {
             message.displayText = HighlyStructuredMessage.fromObject(data.displayText);
@@ -600,7 +615,10 @@ export class URLButton extends pb_1.Message {
     get has_url() {
         return pb_1.Message.getField(this, 2) != null;
     }
-    static fromObject(data: URLButton.AsObjectPartial): URLButton {
+    static fromObject(data?: URLButton.AsObjectPartial): URLButton {
+        if (!data) {
+            return new URLButton();
+        }
         const message = new URLButton({});
         if (data.displayText != null) {
             message.displayText = HighlyStructuredMessage.fromObject(data.displayText);
@@ -700,7 +718,10 @@ export class CallButton extends pb_1.Message {
     get has_phoneNumber() {
         return pb_1.Message.getField(this, 2) != null;
     }
-    static fromObject(data: CallButton.AsObjectPartial): CallButton {
+    static fromObject(data?: CallButton.AsObjectPartial): CallButton {
+        if (!data) {
+            return new CallButton();
+        }
         const message = new CallButton({});
         if (data.displayText != null) {
             message.displayText = HighlyStructuredMessage.fromObject(data.displayText);
@@ -846,7 +867,10 @@ export class TemplateButton extends pb_1.Message {
         };
         return cases[pb_1.Message.computeOneofCase(this, [1, 2, 3])]!;
     }
-    static fromObject(data: TemplateButton.AsObjectPartial): TemplateButton {
+    static fromObject(data?: TemplateButton.AsObjectPartial): TemplateButton {
+        if (!data) {
+            return new TemplateButton();
+        }
         const message = new TemplateButton({});
         if (data.index != null) {
             message.index = data.index;
@@ -984,7 +1008,10 @@ export class Location extends pb_1.Message {
     get has_name() {
         return pb_1.Message.getField(this, 3) != null;
     }
-    static fromObject(data: Location.AsObjectPartial): Location {
+    static fromObject(data?: Location.AsObjectPartial): Location {
+        if (!data) {
+            return new Location();
+        }
         const message = new Location({});
         if (data.degreesLatitude != null) {
             message.degreesLatitude = data.degreesLatitude;
@@ -1118,7 +1145,10 @@ export class Point extends pb_1.Message {
     get has_y() {
         return pb_1.Message.getField(this, 4) != null;
     }
-    static fromObject(data: Point.AsObjectPartial): Point {
+    static fromObject(data?: Point.AsObjectPartial): Point {
+        if (!data) {
+            return new Point();
+        }
         const message = new Point({});
         if (data.xDeprecated != null) {
             message.xDeprecated = data.xDeprecated;
@@ -1242,7 +1272,10 @@ export class InteractiveAnnotation extends pb_1.Message {
         };
         return cases[pb_1.Message.computeOneofCase(this, [2])]!;
     }
-    static fromObject(data: InteractiveAnnotation.AsObjectPartial): InteractiveAnnotation {
+    static fromObject(data?: InteractiveAnnotation.AsObjectPartial): InteractiveAnnotation {
+        if (!data) {
+            return new InteractiveAnnotation();
+        }
         const message = new InteractiveAnnotation({
             polygonVertices: data.polygonVertices.map(item => Point.fromObject(item))
         });
@@ -1366,7 +1399,10 @@ export class AdReplyInfo extends pb_1.Message {
     get has_caption() {
         return pb_1.Message.getField(this, 17) != null;
     }
-    static fromObject(data: AdReplyInfo.AsObjectPartial): AdReplyInfo {
+    static fromObject(data?: AdReplyInfo.AsObjectPartial): AdReplyInfo {
+        if (!data) {
+            return new AdReplyInfo();
+        }
         const message = new AdReplyInfo({});
         if (data.advertiserName != null) {
             message.advertiserName = data.advertiserName;
@@ -1654,7 +1690,10 @@ export class ContextInfo extends pb_1.Message {
     get has_ephemeralSharedSecret() {
         return pb_1.Message.getField(this, 27) != null;
     }
-    static fromObject(data: ContextInfo.AsObjectPartial): ContextInfo {
+    static fromObject(data?: ContextInfo.AsObjectPartial): ContextInfo {
+        if (!data) {
+            return new ContextInfo();
+        }
         const message = new ContextInfo({
             mentionedJid: data.mentionedJid
         });
@@ -1899,7 +1938,10 @@ export class SenderKeyDistributionMessage extends pb_1.Message {
     get has_axolotlSenderKeyDistributionMessage() {
         return pb_1.Message.getField(this, 2) != null;
     }
-    static fromObject(data: SenderKeyDistributionMessage.AsObjectPartial): SenderKeyDistributionMessage {
+    static fromObject(data?: SenderKeyDistributionMessage.AsObjectPartial): SenderKeyDistributionMessage {
+        if (!data) {
+            return new SenderKeyDistributionMessage();
+        }
         const message = new SenderKeyDistributionMessage({});
         if (data.groupId != null) {
             message.groupId = data.groupId;
@@ -2233,7 +2275,10 @@ export class ImageMessage extends pb_1.Message {
     get has_midQualityFileEncSha256() {
         return pb_1.Message.getField(this, 24) != null;
     }
-    static fromObject(data: ImageMessage.AsObjectPartial): ImageMessage {
+    static fromObject(data?: ImageMessage.AsObjectPartial): ImageMessage {
+        if (!data) {
+            return new ImageMessage();
+        }
         const message = new ImageMessage({
             interactiveAnnotations: data.interactiveAnnotations.map(item => InteractiveAnnotation.fromObject(item)),
             scanLengths: data.scanLengths
@@ -2551,7 +2596,10 @@ export class ContactMessage extends pb_1.Message {
     get has_contextInfo() {
         return pb_1.Message.getField(this, 17) != null;
     }
-    static fromObject(data: ContactMessage.AsObjectPartial): ContactMessage {
+    static fromObject(data?: ContactMessage.AsObjectPartial): ContactMessage {
+        if (!data) {
+            return new ContactMessage();
+        }
         const message = new ContactMessage({});
         if (data.displayName != null) {
             message.displayName = data.displayName;
@@ -2791,7 +2839,10 @@ export class LocationMessage extends pb_1.Message {
     get has_contextInfo() {
         return pb_1.Message.getField(this, 17) != null;
     }
-    static fromObject(data: LocationMessage.AsObjectPartial): LocationMessage {
+    static fromObject(data?: LocationMessage.AsObjectPartial): LocationMessage {
+        if (!data) {
+            return new LocationMessage();
+        }
         const message = new LocationMessage({});
         if (data.degreesLatitude != null) {
             message.degreesLatitude = data.degreesLatitude;
@@ -3130,7 +3181,10 @@ export class ExtendedTextMessage extends pb_1.Message {
     get has_doNotPlayInline() {
         return pb_1.Message.getField(this, 18) != null;
     }
-    static fromObject(data: ExtendedTextMessage.AsObjectPartial): ExtendedTextMessage {
+    static fromObject(data?: ExtendedTextMessage.AsObjectPartial): ExtendedTextMessage {
+        if (!data) {
+            return new ExtendedTextMessage();
+        }
         const message = new ExtendedTextMessage({});
         if (data.text != null) {
             message.text = data.text;
@@ -3494,7 +3548,10 @@ export class DocumentMessage extends pb_1.Message {
     get has_contextInfo() {
         return pb_1.Message.getField(this, 17) != null;
     }
-    static fromObject(data: DocumentMessage.AsObjectPartial): DocumentMessage {
+    static fromObject(data?: DocumentMessage.AsObjectPartial): DocumentMessage {
+        if (!data) {
+            return new DocumentMessage();
+        }
         const message = new DocumentMessage({});
         if (data.url != null) {
             message.url = data.url;
@@ -3844,7 +3901,10 @@ export class AudioMessage extends pb_1.Message {
     get has_streamingSidecar() {
         return pb_1.Message.getField(this, 18) != null;
     }
-    static fromObject(data: AudioMessage.AsObjectPartial): AudioMessage {
+    static fromObject(data?: AudioMessage.AsObjectPartial): AudioMessage {
+        if (!data) {
+            return new AudioMessage();
+        }
         const message = new AudioMessage({});
         if (data.url != null) {
             message.url = data.url;
@@ -4256,7 +4316,10 @@ export class VideoMessage extends pb_1.Message {
     get has_gifAttribution() {
         return pb_1.Message.getField(this, 19) != null;
     }
-    static fromObject(data: VideoMessage.AsObjectPartial): VideoMessage {
+    static fromObject(data?: VideoMessage.AsObjectPartial): VideoMessage {
+        if (!data) {
+            return new VideoMessage();
+        }
         const message = new VideoMessage({
             interactiveAnnotations: data.interactiveAnnotations.map(item => InteractiveAnnotation.fromObject(item))
         });
@@ -4522,7 +4585,10 @@ export class Call extends pb_1.Message {
     get has_callKey() {
         return pb_1.Message.getField(this, 1) != null;
     }
-    static fromObject(data: Call.AsObjectPartial): Call {
+    static fromObject(data?: Call.AsObjectPartial): Call {
+        if (!data) {
+            return new Call();
+        }
         const message = new Call({});
         if (data.callKey != null) {
             message.callKey = data.callKey;
@@ -4608,7 +4674,10 @@ export class Chat extends pb_1.Message {
     get has_id() {
         return pb_1.Message.getField(this, 2) != null;
     }
-    static fromObject(data: Chat.AsObjectPartial): Chat {
+    static fromObject(data?: Chat.AsObjectPartial): Chat {
+        if (!data) {
+            return new Chat();
+        }
         const message = new Chat({});
         if (data.displayName != null) {
             message.displayName = data.displayName;
@@ -4744,7 +4813,10 @@ export class ProtocolMessage extends pb_1.Message {
     get has_historySyncNotification() {
         return pb_1.Message.getField(this, 6) != null;
     }
-    static fromObject(data: ProtocolMessage.AsObjectPartial): ProtocolMessage {
+    static fromObject(data?: ProtocolMessage.AsObjectPartial): ProtocolMessage {
+        if (!data) {
+            return new ProtocolMessage();
+        }
         const message = new ProtocolMessage({});
         if (data.key != null) {
             message.key = MessageKey.fromObject(data.key);
@@ -4962,7 +5034,10 @@ export class HistorySyncNotification extends pb_1.Message {
     get has_originalMessageId() {
         return pb_1.Message.getField(this, 8) != null;
     }
-    static fromObject(data: HistorySyncNotification.AsObjectPartial): HistorySyncNotification {
+    static fromObject(data?: HistorySyncNotification.AsObjectPartial): HistorySyncNotification {
+        if (!data) {
+            return new HistorySyncNotification();
+        }
         const message = new HistorySyncNotification({});
         if (data.fileSha256 != null) {
             message.fileSha256 = data.fileSha256;
@@ -5140,7 +5215,10 @@ export class ContactsArrayMessage extends pb_1.Message {
     get has_contextInfo() {
         return pb_1.Message.getField(this, 17) != null;
     }
-    static fromObject(data: ContactsArrayMessage.AsObjectPartial): ContactsArrayMessage {
+    static fromObject(data?: ContactsArrayMessage.AsObjectPartial): ContactsArrayMessage {
+        if (!data) {
+            return new ContactsArrayMessage();
+        }
         const message = new ContactsArrayMessage({
             contacts: data.contacts.map(item => ContactMessage.fromObject(item))
         });
@@ -5249,7 +5327,10 @@ export class HSMCurrency extends pb_1.Message {
     get has_amount1000() {
         return pb_1.Message.getField(this, 2) != null;
     }
-    static fromObject(data: HSMCurrency.AsObjectPartial): HSMCurrency {
+    static fromObject(data?: HSMCurrency.AsObjectPartial): HSMCurrency {
+        if (!data) {
+            return new HSMCurrency();
+        }
         const message = new HSMCurrency({});
         if (data.currencyCode != null) {
             message.currencyCode = data.currencyCode;
@@ -5411,7 +5492,10 @@ export class HSMDateTimeComponent extends pb_1.Message {
     get has_calendar() {
         return pb_1.Message.getField(this, 7) != null;
     }
-    static fromObject(data: HSMDateTimeComponent.AsObjectPartial): HSMDateTimeComponent {
+    static fromObject(data?: HSMDateTimeComponent.AsObjectPartial): HSMDateTimeComponent {
+        if (!data) {
+            return new HSMDateTimeComponent();
+        }
         const message = new HSMDateTimeComponent({});
         if (data.dayOfWeek != null) {
             message.dayOfWeek = data.dayOfWeek;
@@ -5563,7 +5647,10 @@ export class HSMDateTimeUnixEpoch extends pb_1.Message {
     get has_timestamp() {
         return pb_1.Message.getField(this, 1) != null;
     }
-    static fromObject(data: HSMDateTimeUnixEpoch.AsObjectPartial): HSMDateTimeUnixEpoch {
+    static fromObject(data?: HSMDateTimeUnixEpoch.AsObjectPartial): HSMDateTimeUnixEpoch {
+        if (!data) {
+            return new HSMDateTimeUnixEpoch();
+        }
         const message = new HSMDateTimeUnixEpoch({});
         if (data.timestamp != null) {
             message.timestamp = data.timestamp;
@@ -5662,7 +5749,10 @@ export class HSMDateTime extends pb_1.Message {
         };
         return cases[pb_1.Message.computeOneofCase(this, [1, 2])]!;
     }
-    static fromObject(data: HSMDateTime.AsObjectPartial): HSMDateTime {
+    static fromObject(data?: HSMDateTime.AsObjectPartial): HSMDateTime {
+        if (!data) {
+            return new HSMDateTime();
+        }
         const message = new HSMDateTime({});
         if (data.component != null) {
             message.component = HSMDateTimeComponent.fromObject(data.component);
@@ -5789,7 +5879,10 @@ export class HSMLocalizableParameter extends pb_1.Message {
         };
         return cases[pb_1.Message.computeOneofCase(this, [2, 3])]!;
     }
-    static fromObject(data: HSMLocalizableParameter.AsObjectPartial): HSMLocalizableParameter {
+    static fromObject(data?: HSMLocalizableParameter.AsObjectPartial): HSMLocalizableParameter {
+        if (!data) {
+            return new HSMLocalizableParameter();
+        }
         const message = new HSMLocalizableParameter({});
         if (data.default != null) {
             message.default = data.default;
@@ -5982,7 +6075,10 @@ export class HighlyStructuredMessage extends pb_1.Message {
     get has_hydratedHsm() {
         return pb_1.Message.getField(this, 9) != null;
     }
-    static fromObject(data: HighlyStructuredMessage.AsObjectPartial): HighlyStructuredMessage {
+    static fromObject(data?: HighlyStructuredMessage.AsObjectPartial): HighlyStructuredMessage {
+        if (!data) {
+            return new HighlyStructuredMessage();
+        }
         const message = new HighlyStructuredMessage({
             params: data.params,
             localizableParams: data.localizableParams.map(item => HSMLocalizableParameter.fromObject(item))
@@ -6155,7 +6251,10 @@ export class SendPaymentMessage extends pb_1.Message {
     get has_requestMessageKey() {
         return pb_1.Message.getField(this, 3) != null;
     }
-    static fromObject(data: SendPaymentMessage.AsObjectPartial): SendPaymentMessage {
+    static fromObject(data?: SendPaymentMessage.AsObjectPartial): SendPaymentMessage {
+        if (!data) {
+            return new SendPaymentMessage();
+        }
         const message = new SendPaymentMessage({});
         if (data.noteMessage != null) {
             message.noteMessage = Message.fromObject(data.noteMessage);
@@ -6294,7 +6393,10 @@ export class RequestPaymentMessage extends pb_1.Message {
     get has_expiryTimestamp() {
         return pb_1.Message.getField(this, 5) != null;
     }
-    static fromObject(data: RequestPaymentMessage.AsObjectPartial): RequestPaymentMessage {
+    static fromObject(data?: RequestPaymentMessage.AsObjectPartial): RequestPaymentMessage {
+        if (!data) {
+            return new RequestPaymentMessage();
+        }
         const message = new RequestPaymentMessage({});
         if (data.noteMessage != null) {
             message.noteMessage = Message.fromObject(data.noteMessage);
@@ -6413,7 +6515,10 @@ export class DeclinePaymentRequestMessage extends pb_1.Message {
     get has_key() {
         return pb_1.Message.getField(this, 1) != null;
     }
-    static fromObject(data: DeclinePaymentRequestMessage.AsObjectPartial): DeclinePaymentRequestMessage {
+    static fromObject(data?: DeclinePaymentRequestMessage.AsObjectPartial): DeclinePaymentRequestMessage {
+        if (!data) {
+            return new DeclinePaymentRequestMessage();
+        }
         const message = new DeclinePaymentRequestMessage({});
         if (data.key != null) {
             message.key = MessageKey.fromObject(data.key);
@@ -6487,7 +6592,10 @@ export class CancelPaymentRequestMessage extends pb_1.Message {
     get has_key() {
         return pb_1.Message.getField(this, 1) != null;
     }
-    static fromObject(data: CancelPaymentRequestMessage.AsObjectPartial): CancelPaymentRequestMessage {
+    static fromObject(data?: CancelPaymentRequestMessage.AsObjectPartial): CancelPaymentRequestMessage {
+        if (!data) {
+            return new CancelPaymentRequestMessage();
+        }
         const message = new CancelPaymentRequestMessage({});
         if (data.key != null) {
             message.key = MessageKey.fromObject(data.key);
@@ -6678,7 +6786,10 @@ export class LiveLocationMessage extends pb_1.Message {
     get has_contextInfo() {
         return pb_1.Message.getField(this, 17) != null;
     }
-    static fromObject(data: LiveLocationMessage.AsObjectPartial): LiveLocationMessage {
+    static fromObject(data?: LiveLocationMessage.AsObjectPartial): LiveLocationMessage {
+        if (!data) {
+            return new LiveLocationMessage();
+        }
         const message = new LiveLocationMessage({});
         if (data.degreesLatitude != null) {
             message.degreesLatitude = data.degreesLatitude;
@@ -7034,7 +7145,10 @@ export class StickerMessage extends pb_1.Message {
     get has_contextInfo() {
         return pb_1.Message.getField(this, 17) != null;
     }
-    static fromObject(data: StickerMessage.AsObjectPartial): StickerMessage {
+    static fromObject(data?: StickerMessage.AsObjectPartial): StickerMessage {
+        if (!data) {
+            return new StickerMessage();
+        }
         const message = new StickerMessage({});
         if (data.url != null) {
             message.url = data.url;
@@ -7387,7 +7501,10 @@ export class FourRowTemplate extends pb_1.Message {
         };
         return cases[pb_1.Message.computeOneofCase(this, [1, 2, 3, 4, 5])]!;
     }
-    static fromObject(data: FourRowTemplate.AsObjectPartial): FourRowTemplate {
+    static fromObject(data?: FourRowTemplate.AsObjectPartial): FourRowTemplate {
+        if (!data) {
+            return new FourRowTemplate();
+        }
         const message = new FourRowTemplate({
             buttons: data.buttons.map(item => TemplateButton.fromObject(item))
         });
@@ -7687,7 +7804,10 @@ export class HydratedFourRowTemplate extends pb_1.Message {
         };
         return cases[pb_1.Message.computeOneofCase(this, [1, 2, 3, 4, 5])]!;
     }
-    static fromObject(data: HydratedFourRowTemplate.AsObjectPartial): HydratedFourRowTemplate {
+    static fromObject(data?: HydratedFourRowTemplate.AsObjectPartial): HydratedFourRowTemplate {
+        if (!data) {
+            return new HydratedFourRowTemplate();
+        }
         const message = new HydratedFourRowTemplate({
             hydratedButtons: data.hydratedButtons.map(item => HydratedTemplateButton.fromObject(item))
         });
@@ -7908,7 +8028,10 @@ export class TemplateMessage extends pb_1.Message {
         };
         return cases[pb_1.Message.computeOneofCase(this, [1, 2])]!;
     }
-    static fromObject(data: TemplateMessage.AsObjectPartial): TemplateMessage {
+    static fromObject(data?: TemplateMessage.AsObjectPartial): TemplateMessage {
+        if (!data) {
+            return new TemplateMessage();
+        }
         const message = new TemplateMessage({});
         if (data.contextInfo != null) {
             message.contextInfo = ContextInfo.fromObject(data.contextInfo);
@@ -8060,7 +8183,10 @@ export class TemplateButtonReplyMessage extends pb_1.Message {
     get has_selectedIndex() {
         return pb_1.Message.getField(this, 4) != null;
     }
-    static fromObject(data: TemplateButtonReplyMessage.AsObjectPartial): TemplateButtonReplyMessage {
+    static fromObject(data?: TemplateButtonReplyMessage.AsObjectPartial): TemplateButtonReplyMessage {
+        if (!data) {
+            return new TemplateButtonReplyMessage();
+        }
         const message = new TemplateButtonReplyMessage({});
         if (data.selectedId != null) {
             message.selectedId = data.selectedId;
@@ -8194,7 +8320,10 @@ export class CatalogSnapshot extends pb_1.Message {
     get has_description() {
         return pb_1.Message.getField(this, 3) != null;
     }
-    static fromObject(data: CatalogSnapshot.AsObjectPartial): CatalogSnapshot {
+    static fromObject(data?: CatalogSnapshot.AsObjectPartial): CatalogSnapshot {
+        if (!data) {
+            return new CatalogSnapshot();
+        }
         const message = new CatalogSnapshot({});
         if (data.catalogImage != null) {
             message.catalogImage = ImageMessage.fromObject(data.catalogImage);
@@ -8408,7 +8537,10 @@ export class ProductSnapshot extends pb_1.Message {
     get has_firstImageId() {
         return pb_1.Message.getField(this, 11) != null;
     }
-    static fromObject(data: ProductSnapshot.AsObjectPartial): ProductSnapshot {
+    static fromObject(data?: ProductSnapshot.AsObjectPartial): ProductSnapshot {
+        if (!data) {
+            return new ProductSnapshot();
+        }
         const message = new ProductSnapshot({});
         if (data.productImage != null) {
             message.productImage = ImageMessage.fromObject(data.productImage);
@@ -8621,7 +8753,10 @@ export class ProductMessage extends pb_1.Message {
     get has_contextInfo() {
         return pb_1.Message.getField(this, 17) != null;
     }
-    static fromObject(data: ProductMessage.AsObjectPartial): ProductMessage {
+    static fromObject(data?: ProductMessage.AsObjectPartial): ProductMessage {
+        if (!data) {
+            return new ProductMessage();
+        }
         const message = new ProductMessage({});
         if (data.product != null) {
             message.product = ProductSnapshot.fromObject(data.product);
@@ -8811,7 +8946,10 @@ export class GroupInviteMessage extends pb_1.Message {
     get has_contextInfo() {
         return pb_1.Message.getField(this, 7) != null;
     }
-    static fromObject(data: GroupInviteMessage.AsObjectPartial): GroupInviteMessage {
+    static fromObject(data?: GroupInviteMessage.AsObjectPartial): GroupInviteMessage {
+        if (!data) {
+            return new GroupInviteMessage();
+        }
         const message = new GroupInviteMessage({});
         if (data.groupJid != null) {
             message.groupJid = data.groupJid;
@@ -8978,7 +9116,10 @@ export class DeviceSentMessage extends pb_1.Message {
     get has_phash() {
         return pb_1.Message.getField(this, 3) != null;
     }
-    static fromObject(data: DeviceSentMessage.AsObjectPartial): DeviceSentMessage {
+    static fromObject(data?: DeviceSentMessage.AsObjectPartial): DeviceSentMessage {
+        if (!data) {
+            return new DeviceSentMessage();
+        }
         const message = new DeviceSentMessage({});
         if (data.destinationJid != null) {
             message.destinationJid = data.destinationJid;
@@ -9400,7 +9541,10 @@ export class Message extends pb_1.Message {
     get has_deviceSentMessage() {
         return pb_1.Message.getField(this, 31) != null;
     }
-    static fromObject(data: Message.AsObjectPartial): Message {
+    static fromObject(data?: Message.AsObjectPartial): Message {
+        if (!data) {
+            return new Message();
+        }
         const message = new Message({});
         if (data.conversation != null) {
             message.conversation = data.conversation;
@@ -9837,7 +9981,10 @@ export class MessageKey extends pb_1.Message {
     get has_participant() {
         return pb_1.Message.getField(this, 4) != null;
     }
-    static fromObject(data: MessageKey.AsObjectPartial): MessageKey {
+    static fromObject(data?: MessageKey.AsObjectPartial): MessageKey {
+        if (!data) {
+            return new MessageKey();
+        }
         const message = new MessageKey({});
         if (data.remoteJid != null) {
             message.remoteJid = data.remoteJid;
@@ -10359,7 +10506,10 @@ export class WebFeatures extends pb_1.Message {
     get has_syncdRelease1() {
         return pb_1.Message.getField(this, 35) != null;
     }
-    static fromObject(data: WebFeatures.AsObjectPartial): WebFeatures {
+    static fromObject(data?: WebFeatures.AsObjectPartial): WebFeatures {
+        if (!data) {
+            return new WebFeatures();
+        }
         const message = new WebFeatures({});
         if (data.labelsDisplay != null) {
             message.labelsDisplay = data.labelsDisplay;
@@ -10824,7 +10974,10 @@ export class TabletNotificationsInfo extends pb_1.Message {
     set notifyMessage(value: NotificationMessageInfo[]) {
         pb_1.Message.setRepeatedWrapperField(this, 5, value);
     }
-    static fromObject(data: TabletNotificationsInfo.AsObjectPartial): TabletNotificationsInfo {
+    static fromObject(data?: TabletNotificationsInfo.AsObjectPartial): TabletNotificationsInfo {
+        if (!data) {
+            return new TabletNotificationsInfo();
+        }
         const message = new TabletNotificationsInfo({
             notifyMessage: data.notifyMessage.map(item => NotificationMessageInfo.fromObject(item))
         });
@@ -10968,7 +11121,10 @@ export class NotificationMessageInfo extends pb_1.Message {
     get has_participant() {
         return pb_1.Message.getField(this, 4) != null;
     }
-    static fromObject(data: NotificationMessageInfo.AsObjectPartial): NotificationMessageInfo {
+    static fromObject(data?: NotificationMessageInfo.AsObjectPartial): NotificationMessageInfo {
+        if (!data) {
+            return new NotificationMessageInfo();
+        }
         const message = new NotificationMessageInfo({});
         if (data.key != null) {
             message.key = MessageKey.fromObject(data.key);
@@ -11112,7 +11268,10 @@ export class WebNotificationsInfo extends pb_1.Message {
     set notifyMessages(value: WebMessageInfo[]) {
         pb_1.Message.setRepeatedWrapperField(this, 5, value);
     }
-    static fromObject(data: WebNotificationsInfo.AsObjectPartial): WebNotificationsInfo {
+    static fromObject(data?: WebNotificationsInfo.AsObjectPartial): WebNotificationsInfo {
+        if (!data) {
+            return new WebNotificationsInfo();
+        }
         const message = new WebNotificationsInfo({
             notifyMessages: data.notifyMessages.map(item => WebMessageInfo.fromObject(item))
         });
@@ -11334,7 +11493,10 @@ export class PaymentInfo extends pb_1.Message {
     get has_txnStatus() {
         return pb_1.Message.getField(this, 10) != null;
     }
-    static fromObject(data: PaymentInfo.AsObjectPartial): PaymentInfo {
+    static fromObject(data?: PaymentInfo.AsObjectPartial): PaymentInfo {
+        if (!data) {
+            return new PaymentInfo();
+        }
         const message = new PaymentInfo({});
         if (data.currencyDeprecated != null) {
             message.currencyDeprecated = data.currencyDeprecated;
@@ -11843,7 +12005,10 @@ export class WebMessageInfo extends pb_1.Message {
     get has_ephemeralOffToOn() {
         return pb_1.Message.getField(this, 34) != null;
     }
-    static fromObject(data: WebMessageInfo.AsObjectPartial): WebMessageInfo {
+    static fromObject(data?: WebMessageInfo.AsObjectPartial): WebMessageInfo {
+        if (!data) {
+            return new WebMessageInfo();
+        }
         const message = new WebMessageInfo({
             key: MessageKey.fromObject(data.key),
             messageStubParameters: data.messageStubParameters,

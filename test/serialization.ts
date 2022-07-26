@@ -23,7 +23,10 @@ export class Serialization extends pb_1.Message {
     set test(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
-    static fromObject(data: Serialization.AsObjectPartial): Serialization {
+    static fromObject(data?: Serialization.AsObjectPartial): Serialization {
+        if (!data) {
+            return new Serialization();
+        }
         const message = new Serialization({});
         if (data.test != null) {
             message.test = data.test;

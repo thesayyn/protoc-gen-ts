@@ -24,7 +24,10 @@ export namespace dot {
         set name(value: string[]) {
             pb_1.Message.setField(this, 1, value);
         }
-        static fromObject(data: Message.AsObjectPartial): Message {
+        static fromObject(data?: Message.AsObjectPartial): Message {
+            if (!data) {
+                return new Message();
+            }
             const message = new Message({});
             if (data.name != null) {
                 message.name = data.name;

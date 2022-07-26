@@ -123,7 +123,10 @@ export class JsonNamesMessage extends pb_1.Message {
         };
         return cases[pb_1.Message.computeOneofCase(this, [5])]!;
     }
-    static fromObject(data: JsonNamesMessage.AsObjectPartial): JsonNamesMessage {
+    static fromObject(data?: JsonNamesMessage.AsObjectPartial): JsonNamesMessage {
+        if (!data) {
+            return new JsonNamesMessage();
+        }
         const message = new JsonNamesMessage({});
         if (data.someStrings != null) {
             message.someStrings = data.someStrings;
@@ -260,7 +263,10 @@ export namespace JsonNamesMessage {
         set aNestedInteger(value: number) {
             pb_1.Message.setField(this, 1, value);
         }
-        static fromObject(data: NestedMessage.AsObjectPartial): NestedMessage {
+        static fromObject(data?: NestedMessage.AsObjectPartial): NestedMessage {
+            if (!data) {
+                return new NestedMessage();
+            }
             const message = new NestedMessage({});
             if (data.aNestedInteger != null) {
                 message.aNestedInteger = data.aNestedInteger;

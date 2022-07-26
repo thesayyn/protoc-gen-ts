@@ -24,7 +24,10 @@ export class Topic extends pb_1.Message {
     set link(value: string) {
         pb_1.Message.setField(this, 2, value);
     }
-    static fromObject(data: Topic.AsObjectPartial): Topic {
+    static fromObject(data?: Topic.AsObjectPartial): Topic {
+        if (!data) {
+            return new Topic();
+        }
         const message = new Topic({});
         if (data.link != null) {
             message.link = data.link;
@@ -142,7 +145,10 @@ export class Tags extends pb_1.Message {
     set imported2(value: Map<number, dependency_1.importdirective.Imported.SubMessage.MyEnum>) {
         pb_1.Message.setField(this, 5, value as any);
     }
-    static fromObject(data: Tags.AsObjectPartial): Tags {
+    static fromObject(data?: Tags.AsObjectPartial): Tags {
+        if (!data) {
+            return new Tags();
+        }
         const message = new Tags({});
         if (data.key != null) {
             message.key = data.key;

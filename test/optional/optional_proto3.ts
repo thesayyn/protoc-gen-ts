@@ -46,7 +46,10 @@ export class Optional extends pb_1.Message {
         };
         return cases[pb_1.Message.computeOneofCase(this, [2])]!;
     }
-    static fromObject(data: Optional.AsObjectPartial): Optional {
+    static fromObject(data?: Optional.AsObjectPartial): Optional {
+        if (!data) {
+            return new Optional();
+        }
         const message = new Optional({});
         if (data.should_not_be_required != null) {
             message.should_not_be_required = data.should_not_be_required;

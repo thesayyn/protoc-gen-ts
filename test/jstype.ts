@@ -43,7 +43,10 @@ export class JSType extends pb_1.Message {
     set int_and_number(value: number) {
         pb_1.Message.setField(this, 3, value);
     }
-    static fromObject(data: JSType.AsObjectPartial): JSType {
+    static fromObject(data?: JSType.AsObjectPartial): JSType {
+        if (!data) {
+            return new JSType();
+        }
         const message = new JSType({});
         if (data.int_but_string != null) {
             message.int_but_string = data.int_but_string;

@@ -66,7 +66,10 @@ export class Version extends pb_1.Message {
     get has_suffix() {
         return pb_1.Message.getField(this, 4) != null;
     }
-    static fromObject(data: Version.AsObjectPartial): Version {
+    static fromObject(data?: Version.AsObjectPartial): Version {
+        if (!data) {
+            return new Version();
+        }
         const message = new Version({});
         if (data.major != null) {
             message.major = data.major;
@@ -201,7 +204,10 @@ export class CodeGeneratorRequest extends pb_1.Message {
     get has_compiler_version() {
         return pb_1.Message.getField(this, 3) != null;
     }
-    static fromObject(data: CodeGeneratorRequest.AsObjectPartial): CodeGeneratorRequest {
+    static fromObject(data?: CodeGeneratorRequest.AsObjectPartial): CodeGeneratorRequest {
+        if (!data) {
+            return new CodeGeneratorRequest();
+        }
         const message = new CodeGeneratorRequest({
             file_to_generate: data.file_to_generate,
             proto_file: data.proto_file.map(item => dependency_1.FileDescriptorProto.fromObject(item))
@@ -327,7 +333,10 @@ export class CodeGeneratorResponse extends pb_1.Message {
     set file(value: CodeGeneratorResponse.File[]) {
         pb_1.Message.setRepeatedWrapperField(this, 15, value);
     }
-    static fromObject(data: CodeGeneratorResponse.AsObjectPartial): CodeGeneratorResponse {
+    static fromObject(data?: CodeGeneratorResponse.AsObjectPartial): CodeGeneratorResponse {
+        if (!data) {
+            return new CodeGeneratorResponse();
+        }
         const message = new CodeGeneratorResponse({
             file: data.file.map(item => CodeGeneratorResponse.File.fromObject(item))
         });
@@ -463,7 +472,10 @@ export namespace CodeGeneratorResponse {
         get has_generated_code_info() {
             return pb_1.Message.getField(this, 16) != null;
         }
-        static fromObject(data: File.AsObjectPartial): File {
+        static fromObject(data?: File.AsObjectPartial): File {
+            if (!data) {
+                return new File();
+            }
             const message = new File({});
             if (data.name != null) {
                 message.name = data.name;

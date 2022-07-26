@@ -92,7 +92,10 @@ export class OneOfWithoutAnyOtherFields extends pb_1.Message {
         };
         return cases[pb_1.Message.computeOneofCase(this, [4, 3])]!;
     }
-    static fromObject(data: OneOfWithoutAnyOtherFields.AsObjectPartial): OneOfWithoutAnyOtherFields {
+    static fromObject(data?: OneOfWithoutAnyOtherFields.AsObjectPartial): OneOfWithoutAnyOtherFields {
+        if (!data) {
+            return new OneOfWithoutAnyOtherFields();
+        }
         const message = new OneOfWithoutAnyOtherFields({});
         if (data.nickname != null) {
             message.nickname = data.nickname;
@@ -235,7 +238,10 @@ export class OneOf extends pb_1.Message {
         };
         return cases[pb_1.Message.computeOneofCase(this, [3, 4])]!;
     }
-    static fromObject(data: OneOf.AsObjectPartial): OneOf {
+    static fromObject(data?: OneOf.AsObjectPartial): OneOf {
+        if (!data) {
+            return new OneOf();
+        }
         const message = new OneOf({});
         if (data.nickname != null) {
             message.nickname = data.nickname;

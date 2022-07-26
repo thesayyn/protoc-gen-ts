@@ -52,7 +52,10 @@ export class MessageWithDefault extends pb_1.Message {
     get has_int32_field() {
         return pb_1.Message.getField(this, 3) != null;
     }
-    static fromObject(data: MessageWithDefault.AsObjectPartial): MessageWithDefault {
+    static fromObject(data?: MessageWithDefault.AsObjectPartial): MessageWithDefault {
+        if (!data) {
+            return new MessageWithDefault();
+        }
         const message = new MessageWithDefault({});
         if (data.bool_field != null) {
             message.bool_field = data.bool_field;
@@ -173,7 +176,10 @@ export class MessageWithImplicitDefault extends pb_1.Message {
     get has_int32_field() {
         return pb_1.Message.getField(this, 3) != null;
     }
-    static fromObject(data: MessageWithImplicitDefault.AsObjectPartial): MessageWithImplicitDefault {
+    static fromObject(data?: MessageWithImplicitDefault.AsObjectPartial): MessageWithImplicitDefault {
+        if (!data) {
+            return new MessageWithImplicitDefault();
+        }
         const message = new MessageWithImplicitDefault({});
         if (data.bool_field != null) {
             message.bool_field = data.bool_field;

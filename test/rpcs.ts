@@ -12,9 +12,12 @@ export class None extends pb_1.Message {
         pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
         if (!Array.isArray(data) && typeof data == "object") { }
     }
-    static fromObject(data: None.AsObjectPartial): None {
+    static fromObject(data?: None.AsObjectPartial): None {
+        if (!data) {
+            return new None();
+        }
         const message = new None({});
-        return data && message;
+        return message;
     }
     toObject() {
         const data: None.AsObject = {};
@@ -88,7 +91,10 @@ export class _Object extends pb_1.Message {
     set mimeType(value: string) {
         pb_1.Message.setField(this, 4, value);
     }
-    static fromObject(data: _Object.AsObjectPartial): _Object {
+    static fromObject(data?: _Object.AsObjectPartial): _Object {
+        if (!data) {
+            return new _Object();
+        }
         const message = new _Object({});
         if (data.id != null) {
             message.id = data.id;
@@ -193,7 +199,10 @@ export class Chunk extends pb_1.Message {
     get has_range() {
         return pb_1.Message.getField(this, 2) != null;
     }
-    static fromObject(data: Chunk.AsObjectPartial): Chunk {
+    static fromObject(data?: Chunk.AsObjectPartial): Chunk {
+        if (!data) {
+            return new Chunk();
+        }
         const message = new Chunk({});
         if (data.data != null) {
             message.data = data.data;
@@ -285,7 +294,10 @@ export namespace Chunk {
         set end(value: number) {
             pb_1.Message.setField(this, 2, value);
         }
-        static fromObject(data: Range.AsObjectPartial): Range {
+        static fromObject(data?: Range.AsObjectPartial): Range {
+            if (!data) {
+                return new Range();
+            }
             const message = new Range({});
             if (data.start != null) {
                 message.start = data.start;
@@ -379,7 +391,10 @@ export namespace Chunk {
         get has_range() {
             return pb_1.Message.getField(this, 2) != null;
         }
-        static fromObject(data: Query.AsObjectPartial): Query {
+        static fromObject(data?: Query.AsObjectPartial): Query {
+            if (!data) {
+                return new Query();
+            }
             const message = new Query({});
             if (data.id != null) {
                 message.id = data.id;
@@ -463,7 +478,10 @@ export class Query extends pb_1.Message {
     set id(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
-    static fromObject(data: Query.AsObjectPartial): Query {
+    static fromObject(data?: Query.AsObjectPartial): Query {
+        if (!data) {
+            return new Query();
+        }
         const message = new Query({});
         if (data.id != null) {
             message.id = data.id;
@@ -532,7 +550,10 @@ export namespace Query {
         set objects(value: _Object[]) {
             pb_1.Message.setRepeatedWrapperField(this, 1, value);
         }
-        static fromObject(data: Result.AsObjectPartial): Result {
+        static fromObject(data?: Result.AsObjectPartial): Result {
+            if (!data) {
+                return new Result();
+            }
             const message = new Result({});
             if (data.objects != null) {
                 message.objects = data.objects.map(item => _Object.fromObject(item));
@@ -616,7 +637,10 @@ export class Put extends pb_1.Message {
     get has_chunk() {
         return pb_1.Message.getField(this, 3) != null;
     }
-    static fromObject(data: Put.AsObjectPartial): Put {
+    static fromObject(data?: Put.AsObjectPartial): Put {
+        if (!data) {
+            return new Put();
+        }
         const message = new Put({});
         if (data.id != null) {
             message.id = data.id;

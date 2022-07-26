@@ -13,9 +13,12 @@ export namespace main {
             pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") { }
         }
-        static fromObject(data: Message.AsObjectPartial): Message {
+        static fromObject(data?: Message.AsObjectPartial): Message {
+            if (!data) {
+                return new Message();
+            }
             const message = new Message({});
-            return data && message;
+            return message;
         }
         toObject() {
             const data: Message.AsObject = {};
@@ -57,9 +60,12 @@ export namespace main {
             pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") { }
         }
-        static fromObject(data: MessageResult.AsObjectPartial): MessageResult {
+        static fromObject(data?: MessageResult.AsObjectPartial): MessageResult {
+            if (!data) {
+                return new MessageResult();
+            }
             const message = new MessageResult({});
-            return data && message;
+            return message;
         }
         toObject() {
             const data: MessageResult.AsObject = {};

@@ -28,7 +28,10 @@ export class PresenceCommonMessage extends pb_1.Message {
     set message(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
-    static fromObject(data: PresenceCommonMessage.AsObjectPartial): PresenceCommonMessage {
+    static fromObject(data?: PresenceCommonMessage.AsObjectPartial): PresenceCommonMessage {
+        if (!data) {
+            return new PresenceCommonMessage();
+        }
         const message = new PresenceCommonMessage({});
         if (data.message != null) {
             message.message = data.message;
@@ -127,7 +130,10 @@ export class PresenceCommonMessageOneOf extends pb_1.Message {
         };
         return cases[pb_1.Message.computeOneofCase(this, [1, 2])]!;
     }
-    static fromObject(data: PresenceCommonMessageOneOf.AsObjectPartial): PresenceCommonMessageOneOf {
+    static fromObject(data?: PresenceCommonMessageOneOf.AsObjectPartial): PresenceCommonMessageOneOf {
+        if (!data) {
+            return new PresenceCommonMessageOneOf();
+        }
         const message = new PresenceCommonMessageOneOf({});
         if (data.int32 != null) {
             message.int32 = data.int32;
