@@ -1,5 +1,5 @@
 import { MessageWithDefault, MessageWithImplicitDefault } from "./default";
-import { DefaultMessageV2WithoutDefault, DefaultMessageV2WithDefault } from "./default_proto2";
+import { DefaultMessageV2WithDefault, DefaultMessageV2WithoutDefault } from "./default_proto2";
 import { DefaultMessageOptionalV3, DefaultMessageV3 } from "./default_proto3";
 import { DefaultCommonEnum, DefaultCommonMessage, DefaultCommonMessageOneOf } from "./default_common";
 
@@ -433,6 +433,28 @@ describe("defaults", () => {
         expect(explicitlyProvidedDefaults16.serialize().length).toBeGreaterThan(0);
         expect(explicitlyProvidedDefaults17.serialize().length).toBeGreaterThan(0);
     });
+    it('should create the same object via fromObject method', () => {
+
+        interface MessageConstructor<T> {
+          new(...args: any[]): T,
+          fromObject(data?: {}): any
+        }
+
+        function checkEquality<T>(messageCtor: MessageConstructor<T>){
+          const withDefaultFromObject = messageCtor.fromObject();
+          const withDefaultConstructed = new messageCtor();
+          expect(toObjectPreservingUndefined(withDefaultFromObject))
+            .toEqual(toObjectPreservingUndefined(withDefaultConstructed));
+        }
+
+        checkEquality(MessageWithDefault);
+        checkEquality(MessageWithImplicitDefault);
+        checkEquality(DefaultCommonMessageOneOf);
+        checkEquality(DefaultMessageV2WithoutDefault);
+        checkEquality(DefaultMessageV2WithDefault);
+        checkEquality(DefaultMessageV3);
+        checkEquality(DefaultMessageOptionalV3);
+    })
     it('should create message from empty object via constructor and fromObject', () => {
         // test the existence of AsObjectPartial type
         const withDefaultBlank: MessageWithDefault.AsObjectPartial = {}
@@ -468,26 +490,102 @@ describe("defaults", () => {
         expect(withImplicitDefaultConstructed.toObject())
           .toEqual(withImplicitDefaultObject)
     })
-    it('should create the same object via fromObject method', () => {
+    it('should create message from object with only required fields (v2)', () => {
+        // test the existence of AsObjectPartial type
+        const blankForFromObject: DefaultMessageV2WithoutDefault.AsObjectPartial = {
+            message: {},
+            enum: DefaultCommonEnum.ZERO,
 
-        interface MessageConstructor<T> {
-          new(...args: any[]): T,
-          fromObject(data?: {}): any
+            bool: false,
+            string: '',
+
+            int32: 0,
+            fixed32: 0,
+            sfixed32: 0,
+            uint32: 0,
+            sint32: 0,
+            int64: 0,
+            fixed64: 0,
+            sfixed64: 0,
+            uint64: 0,
+            sint64: 0,
+            float: 0,
+            double: 0,
+
+            int_but_string: '',
+
+            // maps and repeated fields must be nullable
+            bytes: new Uint8Array(),
         }
+        const blankForConstructor: ConstructorParameters<typeof DefaultMessageV2WithoutDefault>[0] = {
+            message: new DefaultCommonMessage(),
+            enum: DefaultCommonEnum.ZERO,
 
-        function checkEquality<T>(messageCtor: MessageConstructor<T>){
-          const withDefaultFromObject = messageCtor.fromObject();
-          const withDefaultConstructed = new messageCtor();
-          expect(toObjectPreservingUndefined(withDefaultFromObject))
-            .toEqual(toObjectPreservingUndefined(withDefaultConstructed));
+            bool: false,
+            string: '',
+
+            int32: 0,
+            fixed32: 0,
+            sfixed32: 0,
+            uint32: 0,
+            sint32: 0,
+            int64: 0,
+            fixed64: 0,
+            sfixed64: 0,
+            uint64: 0,
+            sint64: 0,
+            float: 0,
+            double: 0,
+
+            int_but_string: '',
+
+            // maps and repeated fields must be nullable
+            bytes: new Uint8Array(),
         }
+        const object: DefaultMessageV2WithoutDefault.AsObject = {
+            message: {
+                message: ''
+            },
+            enum: DefaultCommonEnum.ZERO,
+            bool: false,
+            string: '',
 
-        checkEquality(MessageWithDefault);
-        checkEquality(MessageWithImplicitDefault);
-        checkEquality(DefaultCommonMessageOneOf);
-        checkEquality(DefaultMessageV2WithoutDefault);
-        checkEquality(DefaultMessageV2WithDefault);
-        checkEquality(DefaultMessageV3);
-        checkEquality(DefaultMessageOptionalV3);
+            int32: 0,
+            fixed32: 0,
+            sfixed32: 0,
+            uint32: 0,
+            sint32: 0,
+            int64: 0,
+            fixed64: 0,
+            sfixed64: 0,
+            uint64: 0,
+            sint64: 0,
+            float: 0,
+            double: 0,
+
+            int_but_string: '',
+
+            map_string_string: {},
+            map_string_message: {},
+
+            array_int32: [],
+            array_message: [],
+            one_of_int32: 0, // scalar oneof fields have implicit defaults
+
+            bytes: new Uint8Array()
+        }
+        const fromObject = DefaultMessageV2WithoutDefault.fromObject(blankForFromObject);
+        const constructed = new DefaultMessageV2WithoutDefault(blankForConstructor)
+        expect(constructed.toObject())
+          .toEqual(fromObject.toObject())
+        expect(fromObject.toObject()).toEqual(object)
+        expect(toObjectPreservingUndefined(constructed))
+          .toEqual(toObjectPreservingUndefined(fromObject))
+        expect(toObjectPreservingUndefined(fromObject))
+          .toEqual({
+              ...object,
+              message: new DefaultCommonMessage(),
+              one_of_message: undefined, // no default value
+          })
     })
 });
