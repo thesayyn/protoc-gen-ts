@@ -344,7 +344,7 @@ function createFromObject(
       ),
     ],
     ts.factory.createTypeReferenceNode(
-      ts.factory.createIdentifier(`${parentName}${messageDescriptor.name}`),
+      messageTypeIdentifier,
       undefined,
     ),
     ts.factory.createBlock(statements, true),
