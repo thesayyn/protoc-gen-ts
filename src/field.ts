@@ -215,6 +215,25 @@ export function isOptional(
 }
 
 /**
+ * Function is used to determine, whether the field
+ * must always be provided when passed to a constructor or fromObject method.
+ * @param {descriptor.FileDescriptorProto} rootDescriptor
+ * @param {descriptor.FieldDescriptorProto} fieldDescriptor
+ */
+export function canBeCreatedWithoutValue(
+  rootDescriptor: descriptor.FileDescriptorProto,
+  fieldDescriptor: descriptor.FieldDescriptorProto,
+) {
+  return (
+    isOptional(rootDescriptor, fieldDescriptor) ||
+    // Both proto2 and proto3 don't track presence for maps and repeated fields.
+    // https://github.com/protocolbuffers/protobuf/blob/main/docs/field_presence.md#presence-in-proto2-apis
+    isMap(fieldDescriptor) ||
+    isRepeated(fieldDescriptor)
+  );
+}
+
+/**
  * Function is used to determine, whether the field must be nullable
  * in the toObject() method return type.
  * Getters always

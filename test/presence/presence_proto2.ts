@@ -18,8 +18,8 @@ export class PresenceMessageV2 extends pb_1.Message {
         opt_string?: string;
         opt_message?: dependency_1.PresenceCommonMessage;
         opt_oneof?: dependency_1.PresenceCommonMessageOneOf;
-        repeated: number[];
-        map: Map<string, string>;
+        repeated?: number[];
+        map?: Map<string, string>;
     }) {
         super();
         pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [11], this.#one_of_decls);
@@ -44,8 +44,12 @@ export class PresenceMessageV2 extends pb_1.Message {
             if ("opt_oneof" in data && data.opt_oneof != undefined) {
                 this.opt_oneof = data.opt_oneof;
             }
-            this.repeated = data.repeated;
-            this.map = data.map;
+            if ("repeated" in data && data.repeated != undefined) {
+                this.repeated = data.repeated;
+            }
+            if ("map" in data && data.map != undefined) {
+                this.map = data.map;
+            }
         }
         if (!this.map)
             this.map = new Map();
@@ -161,9 +165,7 @@ export class PresenceMessageV2 extends pb_1.Message {
             enum: data.enum,
             string: data.string,
             message: dependency_1.PresenceCommonMessage.fromObject(data.message),
-            oneof: dependency_1.PresenceCommonMessageOneOf.fromObject(data.oneof),
-            repeated: data.repeated,
-            map: new Map(Object.entries(data.map))
+            oneof: dependency_1.PresenceCommonMessageOneOf.fromObject(data.oneof)
         });
         if (data.opt_int32 != null) {
             message.opt_int32 = data.opt_int32;
@@ -179,6 +181,12 @@ export class PresenceMessageV2 extends pb_1.Message {
         }
         if (data.opt_oneof != null) {
             message.opt_oneof = dependency_1.PresenceCommonMessageOneOf.fromObject(data.opt_oneof);
+        }
+        if (data.repeated != null) {
+            message.repeated = data.repeated;
+        }
+        if (typeof data.map == "object") {
+            message.map = new Map(Object.entries(data.map));
         }
         return message;
     }
@@ -330,8 +338,8 @@ export namespace PresenceMessageV2 {
         opt_string?: string;
         opt_message?: dependency_1.PresenceCommonMessage.AsObjectPartial;
         opt_oneof?: dependency_1.PresenceCommonMessageOneOf.AsObjectPartial;
-        repeated: number[];
-        map: {
+        repeated?: number[];
+        map?: {
             [key: string]: string;
         };
     };

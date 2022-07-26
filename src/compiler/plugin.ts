@@ -156,19 +156,23 @@ export namespace Version {
 export class CodeGeneratorRequest extends pb_1.Message {
     #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
-        file_to_generate: string[];
+        file_to_generate?: string[];
         parameter?: string;
-        proto_file: dependency_1.FileDescriptorProto[];
+        proto_file?: dependency_1.FileDescriptorProto[];
         compiler_version?: Version;
     }) {
         super();
         pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1, 15], this.#one_of_decls);
         if (!Array.isArray(data) && typeof data == "object") {
-            this.file_to_generate = data.file_to_generate;
+            if ("file_to_generate" in data && data.file_to_generate != undefined) {
+                this.file_to_generate = data.file_to_generate;
+            }
             if ("parameter" in data && data.parameter != undefined) {
                 this.parameter = data.parameter;
             }
-            this.proto_file = data.proto_file;
+            if ("proto_file" in data && data.proto_file != undefined) {
+                this.proto_file = data.proto_file;
+            }
             if ("compiler_version" in data && data.compiler_version != undefined) {
                 this.compiler_version = data.compiler_version;
             }
@@ -208,12 +212,15 @@ export class CodeGeneratorRequest extends pb_1.Message {
         if (!data) {
             return new CodeGeneratorRequest();
         }
-        const message = new CodeGeneratorRequest({
-            file_to_generate: data.file_to_generate,
-            proto_file: data.proto_file.map(item => dependency_1.FileDescriptorProto.fromObject(item))
-        });
+        const message = new CodeGeneratorRequest({});
+        if (data.file_to_generate != null) {
+            message.file_to_generate = data.file_to_generate;
+        }
         if (data.parameter != null) {
             message.parameter = data.parameter;
+        }
+        if (data.proto_file != null) {
+            message.proto_file = data.proto_file.map(item => dependency_1.FileDescriptorProto.fromObject(item));
         }
         if (data.compiler_version != null) {
             message.compiler_version = Version.fromObject(data.compiler_version);
@@ -284,9 +291,9 @@ export namespace CodeGeneratorRequest {
         compiler_version?: Version.AsObject;
     };
     export type AsObjectPartial = {
-        file_to_generate: string[];
+        file_to_generate?: string[];
         parameter?: string;
-        proto_file: dependency_1.FileDescriptorProto.AsObjectPartial[];
+        proto_file?: dependency_1.FileDescriptorProto.AsObjectPartial[];
         compiler_version?: Version.AsObjectPartial;
     };
 }
@@ -295,7 +302,7 @@ export class CodeGeneratorResponse extends pb_1.Message {
     constructor(data?: any[] | {
         error?: string;
         supported_features?: number;
-        file: CodeGeneratorResponse.File[];
+        file?: CodeGeneratorResponse.File[];
     }) {
         super();
         pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [15], this.#one_of_decls);
@@ -306,7 +313,9 @@ export class CodeGeneratorResponse extends pb_1.Message {
             if ("supported_features" in data && data.supported_features != undefined) {
                 this.supported_features = data.supported_features;
             }
-            this.file = data.file;
+            if ("file" in data && data.file != undefined) {
+                this.file = data.file;
+            }
         }
     }
     get error() {
@@ -337,14 +346,15 @@ export class CodeGeneratorResponse extends pb_1.Message {
         if (!data) {
             return new CodeGeneratorResponse();
         }
-        const message = new CodeGeneratorResponse({
-            file: data.file.map(item => CodeGeneratorResponse.File.fromObject(item))
-        });
+        const message = new CodeGeneratorResponse({});
         if (data.error != null) {
             message.error = data.error;
         }
         if (data.supported_features != null) {
             message.supported_features = data.supported_features;
+        }
+        if (data.file != null) {
+            message.file = data.file.map(item => CodeGeneratorResponse.File.fromObject(item));
         }
         return message;
     }
@@ -405,7 +415,7 @@ export namespace CodeGeneratorResponse {
     export type AsObjectPartial = {
         error?: string;
         supported_features?: number;
-        file: CodeGeneratorResponse.File.AsObjectPartial[];
+        file?: CodeGeneratorResponse.File.AsObjectPartial[];
     };
     export enum Feature {
         FEATURE_NONE = 0,
