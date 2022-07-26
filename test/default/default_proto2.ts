@@ -25,10 +25,10 @@ export class DefaultMessageV2WithoutDefault extends pb_1.Message {
         float: number;
         double: number;
         int_but_string: string;
-        map_string_string: Map<string, string>;
-        map_string_message: Map<string, dependency_1.DefaultCommonMessage>;
-        array_int32: number[];
-        array_message: dependency_1.DefaultCommonMessage[];
+        map_string_string?: Map<string, string>;
+        map_string_message?: Map<string, dependency_1.DefaultCommonMessage>;
+        array_int32?: number[];
+        array_message?: dependency_1.DefaultCommonMessage[];
         bytes: Uint8Array;
     } & (({
         one_of_int32?: number;
@@ -57,10 +57,18 @@ export class DefaultMessageV2WithoutDefault extends pb_1.Message {
             this.float = data.float;
             this.double = data.double;
             this.int_but_string = data.int_but_string;
-            this.map_string_string = data.map_string_string;
-            this.map_string_message = data.map_string_message;
-            this.array_int32 = data.array_int32;
-            this.array_message = data.array_message;
+            if ("map_string_string" in data && data.map_string_string != undefined) {
+                this.map_string_string = data.map_string_string;
+            }
+            if ("map_string_message" in data && data.map_string_message != undefined) {
+                this.map_string_message = data.map_string_message;
+            }
+            if ("array_int32" in data && data.array_int32 != undefined) {
+                this.array_int32 = data.array_int32;
+            }
+            if ("array_message" in data && data.array_message != undefined) {
+                this.array_message = data.array_message;
+            }
             if ("one_of_int32" in data && data.one_of_int32 != undefined) {
                 this.one_of_int32 = data.one_of_int32;
             }
@@ -310,12 +318,20 @@ export class DefaultMessageV2WithoutDefault extends pb_1.Message {
             float: data.float,
             double: data.double,
             int_but_string: data.int_but_string,
-            map_string_string: new Map(Object.entries(data.map_string_string)),
-            map_string_message: new Map(Object.entries(data.map_string_message).map(([key, value]) => [key, dependency_1.DefaultCommonMessage.fromObject(value)])),
-            array_int32: data.array_int32,
-            array_message: data.array_message.map(item => dependency_1.DefaultCommonMessage.fromObject(item)),
             bytes: data.bytes
         });
+        if (typeof data.map_string_string == "object") {
+            message.map_string_string = new Map(Object.entries(data.map_string_string));
+        }
+        if (typeof data.map_string_message == "object") {
+            message.map_string_message = new Map(Object.entries(data.map_string_message).map(([key, value]) => [key, dependency_1.DefaultCommonMessage.fromObject(value)]));
+        }
+        if (data.array_int32 != null) {
+            message.array_int32 = data.array_int32;
+        }
+        if (data.array_message != null) {
+            message.array_message = data.array_message.map(item => dependency_1.DefaultCommonMessage.fromObject(item));
+        }
         if (data.one_of_int32 != null) {
             message.one_of_int32 = data.one_of_int32;
         }
@@ -597,14 +613,14 @@ export namespace DefaultMessageV2WithoutDefault {
         float: number;
         double: number;
         int_but_string: string;
-        map_string_string: {
+        map_string_string?: {
             [key: string]: string;
         };
-        map_string_message: {
+        map_string_message?: {
             [key: string]: dependency_1.DefaultCommonMessage.AsObject;
         };
-        array_int32: number[];
-        array_message: dependency_1.DefaultCommonMessage.AsObjectPartial[];
+        array_int32?: number[];
+        array_message?: dependency_1.DefaultCommonMessage.AsObjectPartial[];
         one_of_int32?: number;
         one_of_message?: dependency_1.DefaultCommonMessage.AsObjectPartial;
         bytes: Uint8Array;

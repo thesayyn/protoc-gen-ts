@@ -1235,14 +1235,16 @@ export namespace Point {
 export class InteractiveAnnotation extends pb_1.Message {
     #one_of_decls: number[][] = [[2]];
     constructor(data?: any[] | ({
-        polygonVertices: Point[];
+        polygonVertices?: Point[];
     } & (({
         location?: Location;
     })))) {
         super();
         pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
         if (!Array.isArray(data) && typeof data == "object") {
-            this.polygonVertices = data.polygonVertices;
+            if ("polygonVertices" in data && data.polygonVertices != undefined) {
+                this.polygonVertices = data.polygonVertices;
+            }
             if ("location" in data && data.location != undefined) {
                 this.location = data.location;
             }
@@ -1276,9 +1278,10 @@ export class InteractiveAnnotation extends pb_1.Message {
         if (!data) {
             return new InteractiveAnnotation();
         }
-        const message = new InteractiveAnnotation({
-            polygonVertices: data.polygonVertices.map(item => Point.fromObject(item))
-        });
+        const message = new InteractiveAnnotation({});
+        if (data.polygonVertices != null) {
+            message.polygonVertices = data.polygonVertices.map(item => Point.fromObject(item));
+        }
         if (data.location != null) {
             message.location = Location.fromObject(data.location);
         }
@@ -1334,7 +1337,7 @@ export namespace InteractiveAnnotation {
         location?: Location.AsObject;
     };
     export type AsObjectPartial = {
-        polygonVertices: Point.AsObjectPartial[];
+        polygonVertices?: Point.AsObjectPartial[];
         location?: Location.AsObjectPartial;
     };
 }
@@ -1498,7 +1501,7 @@ export class ContextInfo extends pb_1.Message {
         participant?: string;
         quotedMessage?: Message;
         remoteJid?: string;
-        mentionedJid: string[];
+        mentionedJid?: string[];
         conversionSource?: string;
         conversionData?: Uint8Array;
         conversionDelaySeconds?: number;
@@ -1525,7 +1528,9 @@ export class ContextInfo extends pb_1.Message {
             if ("remoteJid" in data && data.remoteJid != undefined) {
                 this.remoteJid = data.remoteJid;
             }
-            this.mentionedJid = data.mentionedJid;
+            if ("mentionedJid" in data && data.mentionedJid != undefined) {
+                this.mentionedJid = data.mentionedJid;
+            }
             if ("conversionSource" in data && data.conversionSource != undefined) {
                 this.conversionSource = data.conversionSource;
             }
@@ -1694,9 +1699,7 @@ export class ContextInfo extends pb_1.Message {
         if (!data) {
             return new ContextInfo();
         }
-        const message = new ContextInfo({
-            mentionedJid: data.mentionedJid
-        });
+        const message = new ContextInfo({});
         if (data.stanzaId != null) {
             message.stanzaId = data.stanzaId;
         }
@@ -1708,6 +1711,9 @@ export class ContextInfo extends pb_1.Message {
         }
         if (data.remoteJid != null) {
             message.remoteJid = data.remoteJid;
+        }
+        if (data.mentionedJid != null) {
+            message.mentionedJid = data.mentionedJid;
         }
         if (data.conversionSource != null) {
             message.conversionSource = data.conversionSource;
@@ -1890,7 +1896,7 @@ export namespace ContextInfo {
         participant?: string;
         quotedMessage?: Message.AsObjectPartial;
         remoteJid?: string;
-        mentionedJid: string[];
+        mentionedJid?: string[];
         conversionSource?: string;
         conversionData?: Uint8Array;
         conversionDelaySeconds?: number;
@@ -2015,7 +2021,7 @@ export class ImageMessage extends pb_1.Message {
         width?: number;
         mediaKey?: Uint8Array;
         fileEncSha256?: Uint8Array;
-        interactiveAnnotations: InteractiveAnnotation[];
+        interactiveAnnotations?: InteractiveAnnotation[];
         directPath?: string;
         mediaKeyTimestamp?: number;
         jpegThumbnail?: Uint8Array;
@@ -2024,7 +2030,7 @@ export class ImageMessage extends pb_1.Message {
         firstScanLength?: number;
         experimentGroupId?: number;
         scansSidecar?: Uint8Array;
-        scanLengths: number[];
+        scanLengths?: number[];
         midQualityFileSha256?: Uint8Array;
         midQualityFileEncSha256?: Uint8Array;
     }) {
@@ -2058,7 +2064,9 @@ export class ImageMessage extends pb_1.Message {
             if ("fileEncSha256" in data && data.fileEncSha256 != undefined) {
                 this.fileEncSha256 = data.fileEncSha256;
             }
-            this.interactiveAnnotations = data.interactiveAnnotations;
+            if ("interactiveAnnotations" in data && data.interactiveAnnotations != undefined) {
+                this.interactiveAnnotations = data.interactiveAnnotations;
+            }
             if ("directPath" in data && data.directPath != undefined) {
                 this.directPath = data.directPath;
             }
@@ -2083,7 +2091,9 @@ export class ImageMessage extends pb_1.Message {
             if ("scansSidecar" in data && data.scansSidecar != undefined) {
                 this.scansSidecar = data.scansSidecar;
             }
-            this.scanLengths = data.scanLengths;
+            if ("scanLengths" in data && data.scanLengths != undefined) {
+                this.scanLengths = data.scanLengths;
+            }
             if ("midQualityFileSha256" in data && data.midQualityFileSha256 != undefined) {
                 this.midQualityFileSha256 = data.midQualityFileSha256;
             }
@@ -2279,10 +2289,7 @@ export class ImageMessage extends pb_1.Message {
         if (!data) {
             return new ImageMessage();
         }
-        const message = new ImageMessage({
-            interactiveAnnotations: data.interactiveAnnotations.map(item => InteractiveAnnotation.fromObject(item)),
-            scanLengths: data.scanLengths
-        });
+        const message = new ImageMessage({});
         if (data.url != null) {
             message.url = data.url;
         }
@@ -2310,6 +2317,9 @@ export class ImageMessage extends pb_1.Message {
         if (data.fileEncSha256 != null) {
             message.fileEncSha256 = data.fileEncSha256;
         }
+        if (data.interactiveAnnotations != null) {
+            message.interactiveAnnotations = data.interactiveAnnotations.map(item => InteractiveAnnotation.fromObject(item));
+        }
         if (data.directPath != null) {
             message.directPath = data.directPath;
         }
@@ -2333,6 +2343,9 @@ export class ImageMessage extends pb_1.Message {
         }
         if (data.scansSidecar != null) {
             message.scansSidecar = data.scansSidecar;
+        }
+        if (data.scanLengths != null) {
+            message.scanLengths = data.scanLengths;
         }
         if (data.midQualityFileSha256 != null) {
             message.midQualityFileSha256 = data.midQualityFileSha256;
@@ -2534,7 +2547,7 @@ export namespace ImageMessage {
         width?: number;
         mediaKey?: Uint8Array;
         fileEncSha256?: Uint8Array;
-        interactiveAnnotations: InteractiveAnnotation.AsObjectPartial[];
+        interactiveAnnotations?: InteractiveAnnotation.AsObjectPartial[];
         directPath?: string;
         mediaKeyTimestamp?: number;
         jpegThumbnail?: Uint8Array;
@@ -2543,7 +2556,7 @@ export namespace ImageMessage {
         firstScanLength?: number;
         experimentGroupId?: number;
         scansSidecar?: Uint8Array;
-        scanLengths: number[];
+        scanLengths?: number[];
         midQualityFileSha256?: Uint8Array;
         midQualityFileEncSha256?: Uint8Array;
     };
@@ -4092,7 +4105,7 @@ export class VideoMessage extends pb_1.Message {
         height?: number;
         width?: number;
         fileEncSha256?: Uint8Array;
-        interactiveAnnotations: InteractiveAnnotation[];
+        interactiveAnnotations?: InteractiveAnnotation[];
         directPath?: string;
         mediaKeyTimestamp?: number;
         jpegThumbnail?: Uint8Array;
@@ -4136,7 +4149,9 @@ export class VideoMessage extends pb_1.Message {
             if ("fileEncSha256" in data && data.fileEncSha256 != undefined) {
                 this.fileEncSha256 = data.fileEncSha256;
             }
-            this.interactiveAnnotations = data.interactiveAnnotations;
+            if ("interactiveAnnotations" in data && data.interactiveAnnotations != undefined) {
+                this.interactiveAnnotations = data.interactiveAnnotations;
+            }
             if ("directPath" in data && data.directPath != undefined) {
                 this.directPath = data.directPath;
             }
@@ -4320,9 +4335,7 @@ export class VideoMessage extends pb_1.Message {
         if (!data) {
             return new VideoMessage();
         }
-        const message = new VideoMessage({
-            interactiveAnnotations: data.interactiveAnnotations.map(item => InteractiveAnnotation.fromObject(item))
-        });
+        const message = new VideoMessage({});
         if (data.url != null) {
             message.url = data.url;
         }
@@ -4355,6 +4368,9 @@ export class VideoMessage extends pb_1.Message {
         }
         if (data.fileEncSha256 != null) {
             message.fileEncSha256 = data.fileEncSha256;
+        }
+        if (data.interactiveAnnotations != null) {
+            message.interactiveAnnotations = data.interactiveAnnotations.map(item => InteractiveAnnotation.fromObject(item));
         }
         if (data.directPath != null) {
             message.directPath = data.directPath;
@@ -4549,7 +4565,7 @@ export namespace VideoMessage {
         height?: number;
         width?: number;
         fileEncSha256?: Uint8Array;
-        interactiveAnnotations: InteractiveAnnotation.AsObjectPartial[];
+        interactiveAnnotations?: InteractiveAnnotation.AsObjectPartial[];
         directPath?: string;
         mediaKeyTimestamp?: number;
         jpegThumbnail?: Uint8Array;
@@ -5176,7 +5192,7 @@ export class ContactsArrayMessage extends pb_1.Message {
     #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         displayName?: string;
-        contacts: ContactMessage[];
+        contacts?: ContactMessage[];
         contextInfo?: ContextInfo;
     }) {
         super();
@@ -5185,7 +5201,9 @@ export class ContactsArrayMessage extends pb_1.Message {
             if ("displayName" in data && data.displayName != undefined) {
                 this.displayName = data.displayName;
             }
-            this.contacts = data.contacts;
+            if ("contacts" in data && data.contacts != undefined) {
+                this.contacts = data.contacts;
+            }
             if ("contextInfo" in data && data.contextInfo != undefined) {
                 this.contextInfo = data.contextInfo;
             }
@@ -5219,11 +5237,12 @@ export class ContactsArrayMessage extends pb_1.Message {
         if (!data) {
             return new ContactsArrayMessage();
         }
-        const message = new ContactsArrayMessage({
-            contacts: data.contacts.map(item => ContactMessage.fromObject(item))
-        });
+        const message = new ContactsArrayMessage({});
         if (data.displayName != null) {
             message.displayName = data.displayName;
+        }
+        if (data.contacts != null) {
+            message.contacts = data.contacts.map(item => ContactMessage.fromObject(item));
         }
         if (data.contextInfo != null) {
             message.contextInfo = ContextInfo.fromObject(data.contextInfo);
@@ -5288,7 +5307,7 @@ export namespace ContactsArrayMessage {
     };
     export type AsObjectPartial = {
         displayName?: string;
-        contacts: ContactMessage.AsObjectPartial[];
+        contacts?: ContactMessage.AsObjectPartial[];
         contextInfo?: ContextInfo.AsObjectPartial;
     };
 }
@@ -5964,10 +5983,10 @@ export class HighlyStructuredMessage extends pb_1.Message {
     constructor(data?: any[] | {
         namespace?: string;
         elementName?: string;
-        params: string[];
+        params?: string[];
         fallbackLg?: string;
         fallbackLc?: string;
-        localizableParams: HSMLocalizableParameter[];
+        localizableParams?: HSMLocalizableParameter[];
         deterministicLg?: string;
         deterministicLc?: string;
         hydratedHsm?: TemplateMessage;
@@ -5981,14 +6000,18 @@ export class HighlyStructuredMessage extends pb_1.Message {
             if ("elementName" in data && data.elementName != undefined) {
                 this.elementName = data.elementName;
             }
-            this.params = data.params;
+            if ("params" in data && data.params != undefined) {
+                this.params = data.params;
+            }
             if ("fallbackLg" in data && data.fallbackLg != undefined) {
                 this.fallbackLg = data.fallbackLg;
             }
             if ("fallbackLc" in data && data.fallbackLc != undefined) {
                 this.fallbackLc = data.fallbackLc;
             }
-            this.localizableParams = data.localizableParams;
+            if ("localizableParams" in data && data.localizableParams != undefined) {
+                this.localizableParams = data.localizableParams;
+            }
             if ("deterministicLg" in data && data.deterministicLg != undefined) {
                 this.deterministicLg = data.deterministicLg;
             }
@@ -6079,21 +6102,24 @@ export class HighlyStructuredMessage extends pb_1.Message {
         if (!data) {
             return new HighlyStructuredMessage();
         }
-        const message = new HighlyStructuredMessage({
-            params: data.params,
-            localizableParams: data.localizableParams.map(item => HSMLocalizableParameter.fromObject(item))
-        });
+        const message = new HighlyStructuredMessage({});
         if (data.namespace != null) {
             message.namespace = data.namespace;
         }
         if (data.elementName != null) {
             message.elementName = data.elementName;
         }
+        if (data.params != null) {
+            message.params = data.params;
+        }
         if (data.fallbackLg != null) {
             message.fallbackLg = data.fallbackLg;
         }
         if (data.fallbackLc != null) {
             message.fallbackLc = data.fallbackLc;
+        }
+        if (data.localizableParams != null) {
+            message.localizableParams = data.localizableParams.map(item => HSMLocalizableParameter.fromObject(item));
         }
         if (data.deterministicLg != null) {
             message.deterministicLg = data.deterministicLg;
@@ -6207,10 +6233,10 @@ export namespace HighlyStructuredMessage {
     export type AsObjectPartial = {
         namespace?: string;
         elementName?: string;
-        params: string[];
+        params?: string[];
         fallbackLg?: string;
         fallbackLc?: string;
-        localizableParams: HSMLocalizableParameter.AsObjectPartial[];
+        localizableParams?: HSMLocalizableParameter.AsObjectPartial[];
         deterministicLg?: string;
         deterministicLc?: string;
         hydratedHsm?: TemplateMessage.AsObjectPartial;
@@ -7360,7 +7386,7 @@ export class FourRowTemplate extends pb_1.Message {
     constructor(data?: any[] | ({
         content?: HighlyStructuredMessage;
         footer?: HighlyStructuredMessage;
-        buttons: TemplateButton[];
+        buttons?: TemplateButton[];
     } & (({
         documentMessage?: DocumentMessage;
         highlyStructuredMessage?: never;
@@ -7401,7 +7427,9 @@ export class FourRowTemplate extends pb_1.Message {
             if ("footer" in data && data.footer != undefined) {
                 this.footer = data.footer;
             }
-            this.buttons = data.buttons;
+            if ("buttons" in data && data.buttons != undefined) {
+                this.buttons = data.buttons;
+            }
             if ("documentMessage" in data && data.documentMessage != undefined) {
                 this.documentMessage = data.documentMessage;
             }
@@ -7505,14 +7533,15 @@ export class FourRowTemplate extends pb_1.Message {
         if (!data) {
             return new FourRowTemplate();
         }
-        const message = new FourRowTemplate({
-            buttons: data.buttons.map(item => TemplateButton.fromObject(item))
-        });
+        const message = new FourRowTemplate({});
         if (data.content != null) {
             message.content = HighlyStructuredMessage.fromObject(data.content);
         }
         if (data.footer != null) {
             message.footer = HighlyStructuredMessage.fromObject(data.footer);
+        }
+        if (data.buttons != null) {
+            message.buttons = data.buttons.map(item => TemplateButton.fromObject(item));
         }
         if (data.documentMessage != null) {
             message.documentMessage = DocumentMessage.fromObject(data.documentMessage);
@@ -7637,7 +7666,7 @@ export namespace FourRowTemplate {
     export type AsObjectPartial = {
         content?: HighlyStructuredMessage.AsObjectPartial;
         footer?: HighlyStructuredMessage.AsObjectPartial;
-        buttons: TemplateButton.AsObjectPartial[];
+        buttons?: TemplateButton.AsObjectPartial[];
         documentMessage?: DocumentMessage.AsObjectPartial;
         highlyStructuredMessage?: HighlyStructuredMessage.AsObjectPartial;
         imageMessage?: ImageMessage.AsObjectPartial;
@@ -7650,7 +7679,7 @@ export class HydratedFourRowTemplate extends pb_1.Message {
     constructor(data?: any[] | ({
         hydratedContentText?: string;
         hydratedFooterText?: string;
-        hydratedButtons: HydratedTemplateButton[];
+        hydratedButtons?: HydratedTemplateButton[];
         templateId?: string;
     } & (({
         documentMessage?: DocumentMessage;
@@ -7692,7 +7721,9 @@ export class HydratedFourRowTemplate extends pb_1.Message {
             if ("hydratedFooterText" in data && data.hydratedFooterText != undefined) {
                 this.hydratedFooterText = data.hydratedFooterText;
             }
-            this.hydratedButtons = data.hydratedButtons;
+            if ("hydratedButtons" in data && data.hydratedButtons != undefined) {
+                this.hydratedButtons = data.hydratedButtons;
+            }
             if ("templateId" in data && data.templateId != undefined) {
                 this.templateId = data.templateId;
             }
@@ -7808,14 +7839,15 @@ export class HydratedFourRowTemplate extends pb_1.Message {
         if (!data) {
             return new HydratedFourRowTemplate();
         }
-        const message = new HydratedFourRowTemplate({
-            hydratedButtons: data.hydratedButtons.map(item => HydratedTemplateButton.fromObject(item))
-        });
+        const message = new HydratedFourRowTemplate({});
         if (data.hydratedContentText != null) {
             message.hydratedContentText = data.hydratedContentText;
         }
         if (data.hydratedFooterText != null) {
             message.hydratedFooterText = data.hydratedFooterText;
+        }
+        if (data.hydratedButtons != null) {
+            message.hydratedButtons = data.hydratedButtons.map(item => HydratedTemplateButton.fromObject(item));
         }
         if (data.templateId != null) {
             message.templateId = data.templateId;
@@ -7944,7 +7976,7 @@ export namespace HydratedFourRowTemplate {
     export type AsObjectPartial = {
         hydratedContentText?: string;
         hydratedFooterText?: string;
-        hydratedButtons: HydratedTemplateButton.AsObjectPartial[];
+        hydratedButtons?: HydratedTemplateButton.AsObjectPartial[];
         templateId?: string;
         documentMessage?: DocumentMessage.AsObjectPartial;
         hydratedTitleText?: string;
@@ -10924,7 +10956,7 @@ export class TabletNotificationsInfo extends pb_1.Message {
         timestamp?: number;
         unreadChats?: number;
         notifyMessageCount?: number;
-        notifyMessage: NotificationMessageInfo[];
+        notifyMessage?: NotificationMessageInfo[];
     }) {
         super();
         pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [5], this.#one_of_decls);
@@ -10938,7 +10970,9 @@ export class TabletNotificationsInfo extends pb_1.Message {
             if ("notifyMessageCount" in data && data.notifyMessageCount != undefined) {
                 this.notifyMessageCount = data.notifyMessageCount;
             }
-            this.notifyMessage = data.notifyMessage;
+            if ("notifyMessage" in data && data.notifyMessage != undefined) {
+                this.notifyMessage = data.notifyMessage;
+            }
         }
     }
     get timestamp() {
@@ -10978,9 +11012,7 @@ export class TabletNotificationsInfo extends pb_1.Message {
         if (!data) {
             return new TabletNotificationsInfo();
         }
-        const message = new TabletNotificationsInfo({
-            notifyMessage: data.notifyMessage.map(item => NotificationMessageInfo.fromObject(item))
-        });
+        const message = new TabletNotificationsInfo({});
         if (data.timestamp != null) {
             message.timestamp = data.timestamp;
         }
@@ -10989,6 +11021,9 @@ export class TabletNotificationsInfo extends pb_1.Message {
         }
         if (data.notifyMessageCount != null) {
             message.notifyMessageCount = data.notifyMessageCount;
+        }
+        if (data.notifyMessage != null) {
+            message.notifyMessage = data.notifyMessage.map(item => NotificationMessageInfo.fromObject(item));
         }
         return message;
     }
@@ -11057,7 +11092,7 @@ export namespace TabletNotificationsInfo {
         timestamp?: number;
         unreadChats?: number;
         notifyMessageCount?: number;
-        notifyMessage: NotificationMessageInfo.AsObjectPartial[];
+        notifyMessage?: NotificationMessageInfo.AsObjectPartial[];
     };
 }
 export class NotificationMessageInfo extends pb_1.Message {
@@ -11218,7 +11253,7 @@ export class WebNotificationsInfo extends pb_1.Message {
         timestamp?: number;
         unreadChats?: number;
         notifyMessageCount?: number;
-        notifyMessages: WebMessageInfo[];
+        notifyMessages?: WebMessageInfo[];
     }) {
         super();
         pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [5], this.#one_of_decls);
@@ -11232,7 +11267,9 @@ export class WebNotificationsInfo extends pb_1.Message {
             if ("notifyMessageCount" in data && data.notifyMessageCount != undefined) {
                 this.notifyMessageCount = data.notifyMessageCount;
             }
-            this.notifyMessages = data.notifyMessages;
+            if ("notifyMessages" in data && data.notifyMessages != undefined) {
+                this.notifyMessages = data.notifyMessages;
+            }
         }
     }
     get timestamp() {
@@ -11272,9 +11309,7 @@ export class WebNotificationsInfo extends pb_1.Message {
         if (!data) {
             return new WebNotificationsInfo();
         }
-        const message = new WebNotificationsInfo({
-            notifyMessages: data.notifyMessages.map(item => WebMessageInfo.fromObject(item))
-        });
+        const message = new WebNotificationsInfo({});
         if (data.timestamp != null) {
             message.timestamp = data.timestamp;
         }
@@ -11283,6 +11318,9 @@ export class WebNotificationsInfo extends pb_1.Message {
         }
         if (data.notifyMessageCount != null) {
             message.notifyMessageCount = data.notifyMessageCount;
+        }
+        if (data.notifyMessages != null) {
+            message.notifyMessages = data.notifyMessages.map(item => WebMessageInfo.fromObject(item));
         }
         return message;
     }
@@ -11351,7 +11389,7 @@ export namespace WebNotificationsInfo {
         timestamp?: number;
         unreadChats?: number;
         notifyMessageCount?: number;
-        notifyMessages: WebMessageInfo.AsObjectPartial[];
+        notifyMessages?: WebMessageInfo.AsObjectPartial[];
     };
 }
 export class PaymentInfo extends pb_1.Message {
@@ -11714,9 +11752,9 @@ export class WebMessageInfo extends pb_1.Message {
         urlNumber?: boolean;
         messageStubType?: WebMessageInfo.WEB_MESSAGE_INFO_STUBTYPE;
         clearMedia?: boolean;
-        messageStubParameters: string[];
+        messageStubParameters?: string[];
         duration?: number;
-        labels: string[];
+        labels?: string[];
         paymentInfo?: PaymentInfo;
         finalLiveLocation?: LiveLocationMessage;
         quotedPaymentInfo?: PaymentInfo;
@@ -11770,11 +11808,15 @@ export class WebMessageInfo extends pb_1.Message {
             if ("clearMedia" in data && data.clearMedia != undefined) {
                 this.clearMedia = data.clearMedia;
             }
-            this.messageStubParameters = data.messageStubParameters;
+            if ("messageStubParameters" in data && data.messageStubParameters != undefined) {
+                this.messageStubParameters = data.messageStubParameters;
+            }
             if ("duration" in data && data.duration != undefined) {
                 this.duration = data.duration;
             }
-            this.labels = data.labels;
+            if ("labels" in data && data.labels != undefined) {
+                this.labels = data.labels;
+            }
             if ("paymentInfo" in data && data.paymentInfo != undefined) {
                 this.paymentInfo = data.paymentInfo;
             }
@@ -12010,9 +12052,7 @@ export class WebMessageInfo extends pb_1.Message {
             return new WebMessageInfo();
         }
         const message = new WebMessageInfo({
-            key: MessageKey.fromObject(data.key),
-            messageStubParameters: data.messageStubParameters,
-            labels: data.labels
+            key: MessageKey.fromObject(data.key)
         });
         if (data.message != null) {
             message.message = Message.fromObject(data.message);
@@ -12056,8 +12096,14 @@ export class WebMessageInfo extends pb_1.Message {
         if (data.clearMedia != null) {
             message.clearMedia = data.clearMedia;
         }
+        if (data.messageStubParameters != null) {
+            message.messageStubParameters = data.messageStubParameters;
+        }
         if (data.duration != null) {
             message.duration = data.duration;
+        }
+        if (data.labels != null) {
+            message.labels = data.labels;
         }
         if (data.paymentInfo != null) {
             message.paymentInfo = PaymentInfo.fromObject(data.paymentInfo);
@@ -12306,9 +12352,9 @@ export namespace WebMessageInfo {
         urlNumber?: boolean;
         messageStubType?: WebMessageInfo.WEB_MESSAGE_INFO_STUBTYPE;
         clearMedia?: boolean;
-        messageStubParameters: string[];
+        messageStubParameters?: string[];
         duration?: number;
-        labels: string[];
+        labels?: string[];
         paymentInfo?: PaymentInfo.AsObjectPartial;
         finalLiveLocation?: LiveLocationMessage.AsObjectPartial;
         quotedPaymentInfo?: PaymentInfo.AsObjectPartial;

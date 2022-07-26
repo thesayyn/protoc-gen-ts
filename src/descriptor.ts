@@ -218,7 +218,7 @@ function createFromObject(
       }
     }
 
-    if (field.isOptional(rootDescriptor, fieldDescriptor)) {
+    if (field.canBeCreatedWithoutValue(rootDescriptor, fieldDescriptor)) {
       const propertyAccessor = ts.factory.createPropertyAccessExpression(
         dataIdentifier,
         getFieldName(fieldDescriptor),
@@ -638,7 +638,7 @@ function createMessageSignature(
           ts.factory.createPropertySignature(
             undefined,
             getFieldName(fieldDescriptor),
-            field.isOptional(rootDescriptor, fieldDescriptor)
+            field.canBeCreatedWithoutValue(rootDescriptor, fieldDescriptor)
               ? ts.factory.createToken(ts.SyntaxKind.QuestionToken)
               : undefined,
             field.wrapRepeatedType(
@@ -704,7 +704,7 @@ function createPrimitiveMessageSignature(
         getFieldName(fieldDescriptor),
         (
           partial
-            ? field.isOptional(rootDescriptor, fieldDescriptor)
+            ? field.canBeCreatedWithoutValue(rootDescriptor, fieldDescriptor)
             : field.canHaveNullValue(rootDescriptor, fieldDescriptor)
         )
           ? ts.factory.createToken(ts.SyntaxKind.QuestionToken)
@@ -871,7 +871,7 @@ function createConstructor(
               ),
             ),
           );
-          if (!field.isOptional(rootDescriptor, fieldDescriptor)) {
+          if (!field.canBeCreatedWithoutValue(rootDescriptor, fieldDescriptor)) {
             return assigmentExpression;
           }
           return ts.factory.createIfStatement(

@@ -7,12 +7,14 @@ import * as pb_1 from "google-protobuf";
 export class FileDescriptorSet extends pb_1.Message {
     #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
-        file: FileDescriptorProto[];
+        file?: FileDescriptorProto[];
     }) {
         super();
         pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
         if (!Array.isArray(data) && typeof data == "object") {
-            this.file = data.file;
+            if ("file" in data && data.file != undefined) {
+                this.file = data.file;
+            }
         }
     }
     get file() {
@@ -25,9 +27,10 @@ export class FileDescriptorSet extends pb_1.Message {
         if (!data) {
             return new FileDescriptorSet();
         }
-        const message = new FileDescriptorSet({
-            file: data.file.map(item => FileDescriptorProto.fromObject(item))
-        });
+        const message = new FileDescriptorSet({});
+        if (data.file != null) {
+            message.file = data.file.map(item => FileDescriptorProto.fromObject(item));
+        }
         return message;
     }
     toObject() {
@@ -71,7 +74,7 @@ export namespace FileDescriptorSet {
         file: FileDescriptorProto.AsObject[];
     };
     export type AsObjectPartial = {
-        file: FileDescriptorProto.AsObjectPartial[];
+        file?: FileDescriptorProto.AsObjectPartial[];
     };
 }
 export class FileDescriptorProto extends pb_1.Message {
@@ -79,13 +82,13 @@ export class FileDescriptorProto extends pb_1.Message {
     constructor(data?: any[] | {
         name?: string;
         package?: string;
-        dependency: string[];
-        public_dependency: number[];
-        weak_dependency: number[];
-        message_type: DescriptorProto[];
-        enum_type: EnumDescriptorProto[];
-        service: ServiceDescriptorProto[];
-        extension: FieldDescriptorProto[];
+        dependency?: string[];
+        public_dependency?: number[];
+        weak_dependency?: number[];
+        message_type?: DescriptorProto[];
+        enum_type?: EnumDescriptorProto[];
+        service?: ServiceDescriptorProto[];
+        extension?: FieldDescriptorProto[];
         options?: FileOptions;
         source_code_info?: SourceCodeInfo;
         syntax?: string;
@@ -99,13 +102,27 @@ export class FileDescriptorProto extends pb_1.Message {
             if ("package" in data && data.package != undefined) {
                 this.package = data.package;
             }
-            this.dependency = data.dependency;
-            this.public_dependency = data.public_dependency;
-            this.weak_dependency = data.weak_dependency;
-            this.message_type = data.message_type;
-            this.enum_type = data.enum_type;
-            this.service = data.service;
-            this.extension = data.extension;
+            if ("dependency" in data && data.dependency != undefined) {
+                this.dependency = data.dependency;
+            }
+            if ("public_dependency" in data && data.public_dependency != undefined) {
+                this.public_dependency = data.public_dependency;
+            }
+            if ("weak_dependency" in data && data.weak_dependency != undefined) {
+                this.weak_dependency = data.weak_dependency;
+            }
+            if ("message_type" in data && data.message_type != undefined) {
+                this.message_type = data.message_type;
+            }
+            if ("enum_type" in data && data.enum_type != undefined) {
+                this.enum_type = data.enum_type;
+            }
+            if ("service" in data && data.service != undefined) {
+                this.service = data.service;
+            }
+            if ("extension" in data && data.extension != undefined) {
+                this.extension = data.extension;
+            }
             if ("options" in data && data.options != undefined) {
                 this.options = data.options;
             }
@@ -208,20 +225,33 @@ export class FileDescriptorProto extends pb_1.Message {
         if (!data) {
             return new FileDescriptorProto();
         }
-        const message = new FileDescriptorProto({
-            dependency: data.dependency,
-            public_dependency: data.public_dependency,
-            weak_dependency: data.weak_dependency,
-            message_type: data.message_type.map(item => DescriptorProto.fromObject(item)),
-            enum_type: data.enum_type.map(item => EnumDescriptorProto.fromObject(item)),
-            service: data.service.map(item => ServiceDescriptorProto.fromObject(item)),
-            extension: data.extension.map(item => FieldDescriptorProto.fromObject(item))
-        });
+        const message = new FileDescriptorProto({});
         if (data.name != null) {
             message.name = data.name;
         }
         if (data.package != null) {
             message.package = data.package;
+        }
+        if (data.dependency != null) {
+            message.dependency = data.dependency;
+        }
+        if (data.public_dependency != null) {
+            message.public_dependency = data.public_dependency;
+        }
+        if (data.weak_dependency != null) {
+            message.weak_dependency = data.weak_dependency;
+        }
+        if (data.message_type != null) {
+            message.message_type = data.message_type.map(item => DescriptorProto.fromObject(item));
+        }
+        if (data.enum_type != null) {
+            message.enum_type = data.enum_type.map(item => EnumDescriptorProto.fromObject(item));
+        }
+        if (data.service != null) {
+            message.service = data.service.map(item => ServiceDescriptorProto.fromObject(item));
+        }
+        if (data.extension != null) {
+            message.extension = data.extension.map(item => FieldDescriptorProto.fromObject(item));
         }
         if (data.options != null) {
             message.options = FileOptions.fromObject(data.options);
@@ -358,13 +388,13 @@ export namespace FileDescriptorProto {
     export type AsObjectPartial = {
         name?: string;
         package?: string;
-        dependency: string[];
-        public_dependency: number[];
-        weak_dependency: number[];
-        message_type: DescriptorProto.AsObjectPartial[];
-        enum_type: EnumDescriptorProto.AsObjectPartial[];
-        service: ServiceDescriptorProto.AsObjectPartial[];
-        extension: FieldDescriptorProto.AsObjectPartial[];
+        dependency?: string[];
+        public_dependency?: number[];
+        weak_dependency?: number[];
+        message_type?: DescriptorProto.AsObjectPartial[];
+        enum_type?: EnumDescriptorProto.AsObjectPartial[];
+        service?: ServiceDescriptorProto.AsObjectPartial[];
+        extension?: FieldDescriptorProto.AsObjectPartial[];
         options?: FileOptions.AsObjectPartial;
         source_code_info?: SourceCodeInfo.AsObjectPartial;
         syntax?: string;
@@ -374,15 +404,15 @@ export class DescriptorProto extends pb_1.Message {
     #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         name?: string;
-        field: FieldDescriptorProto[];
-        extension: FieldDescriptorProto[];
-        nested_type: DescriptorProto[];
-        enum_type: EnumDescriptorProto[];
-        extension_range: DescriptorProto.ExtensionRange[];
-        oneof_decl: OneofDescriptorProto[];
+        field?: FieldDescriptorProto[];
+        extension?: FieldDescriptorProto[];
+        nested_type?: DescriptorProto[];
+        enum_type?: EnumDescriptorProto[];
+        extension_range?: DescriptorProto.ExtensionRange[];
+        oneof_decl?: OneofDescriptorProto[];
         options?: MessageOptions;
-        reserved_range: DescriptorProto.ReservedRange[];
-        reserved_name: string[];
+        reserved_range?: DescriptorProto.ReservedRange[];
+        reserved_name?: string[];
     }) {
         super();
         pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2, 6, 3, 4, 5, 8, 9, 10], this.#one_of_decls);
@@ -390,17 +420,33 @@ export class DescriptorProto extends pb_1.Message {
             if ("name" in data && data.name != undefined) {
                 this.name = data.name;
             }
-            this.field = data.field;
-            this.extension = data.extension;
-            this.nested_type = data.nested_type;
-            this.enum_type = data.enum_type;
-            this.extension_range = data.extension_range;
-            this.oneof_decl = data.oneof_decl;
+            if ("field" in data && data.field != undefined) {
+                this.field = data.field;
+            }
+            if ("extension" in data && data.extension != undefined) {
+                this.extension = data.extension;
+            }
+            if ("nested_type" in data && data.nested_type != undefined) {
+                this.nested_type = data.nested_type;
+            }
+            if ("enum_type" in data && data.enum_type != undefined) {
+                this.enum_type = data.enum_type;
+            }
+            if ("extension_range" in data && data.extension_range != undefined) {
+                this.extension_range = data.extension_range;
+            }
+            if ("oneof_decl" in data && data.oneof_decl != undefined) {
+                this.oneof_decl = data.oneof_decl;
+            }
             if ("options" in data && data.options != undefined) {
                 this.options = data.options;
             }
-            this.reserved_range = data.reserved_range;
-            this.reserved_name = data.reserved_name;
+            if ("reserved_range" in data && data.reserved_range != undefined) {
+                this.reserved_range = data.reserved_range;
+            }
+            if ("reserved_name" in data && data.reserved_name != undefined) {
+                this.reserved_name = data.reserved_name;
+            }
         }
     }
     get name() {
@@ -473,21 +519,36 @@ export class DescriptorProto extends pb_1.Message {
         if (!data) {
             return new DescriptorProto();
         }
-        const message = new DescriptorProto({
-            field: data.field.map(item => FieldDescriptorProto.fromObject(item)),
-            extension: data.extension.map(item => FieldDescriptorProto.fromObject(item)),
-            nested_type: data.nested_type.map(item => DescriptorProto.fromObject(item)),
-            enum_type: data.enum_type.map(item => EnumDescriptorProto.fromObject(item)),
-            extension_range: data.extension_range.map(item => DescriptorProto.ExtensionRange.fromObject(item)),
-            oneof_decl: data.oneof_decl.map(item => OneofDescriptorProto.fromObject(item)),
-            reserved_range: data.reserved_range.map(item => DescriptorProto.ReservedRange.fromObject(item)),
-            reserved_name: data.reserved_name
-        });
+        const message = new DescriptorProto({});
         if (data.name != null) {
             message.name = data.name;
         }
+        if (data.field != null) {
+            message.field = data.field.map(item => FieldDescriptorProto.fromObject(item));
+        }
+        if (data.extension != null) {
+            message.extension = data.extension.map(item => FieldDescriptorProto.fromObject(item));
+        }
+        if (data.nested_type != null) {
+            message.nested_type = data.nested_type.map(item => DescriptorProto.fromObject(item));
+        }
+        if (data.enum_type != null) {
+            message.enum_type = data.enum_type.map(item => EnumDescriptorProto.fromObject(item));
+        }
+        if (data.extension_range != null) {
+            message.extension_range = data.extension_range.map(item => DescriptorProto.ExtensionRange.fromObject(item));
+        }
+        if (data.oneof_decl != null) {
+            message.oneof_decl = data.oneof_decl.map(item => OneofDescriptorProto.fromObject(item));
+        }
         if (data.options != null) {
             message.options = MessageOptions.fromObject(data.options);
+        }
+        if (data.reserved_range != null) {
+            message.reserved_range = data.reserved_range.map(item => DescriptorProto.ReservedRange.fromObject(item));
+        }
+        if (data.reserved_name != null) {
+            message.reserved_name = data.reserved_name;
         }
         return message;
     }
@@ -598,15 +659,15 @@ export namespace DescriptorProto {
     };
     export type AsObjectPartial = {
         name?: string;
-        field: FieldDescriptorProto.AsObjectPartial[];
-        extension: FieldDescriptorProto.AsObjectPartial[];
-        nested_type: DescriptorProto.AsObjectPartial[];
-        enum_type: EnumDescriptorProto.AsObjectPartial[];
-        extension_range: DescriptorProto.ExtensionRange.AsObjectPartial[];
-        oneof_decl: OneofDescriptorProto.AsObjectPartial[];
+        field?: FieldDescriptorProto.AsObjectPartial[];
+        extension?: FieldDescriptorProto.AsObjectPartial[];
+        nested_type?: DescriptorProto.AsObjectPartial[];
+        enum_type?: EnumDescriptorProto.AsObjectPartial[];
+        extension_range?: DescriptorProto.ExtensionRange.AsObjectPartial[];
+        oneof_decl?: OneofDescriptorProto.AsObjectPartial[];
         options?: MessageOptions.AsObjectPartial;
-        reserved_range: DescriptorProto.ReservedRange.AsObjectPartial[];
-        reserved_name: string[];
+        reserved_range?: DescriptorProto.ReservedRange.AsObjectPartial[];
+        reserved_name?: string[];
     };
     export class ExtensionRange extends pb_1.Message {
         #one_of_decls: number[][] = [];
@@ -838,12 +899,14 @@ export namespace DescriptorProto {
 export class ExtensionRangeOptions extends pb_1.Message {
     #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
-        uninterpreted_option: UninterpretedOption[];
+        uninterpreted_option?: UninterpretedOption[];
     }) {
         super();
         pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [999], this.#one_of_decls);
         if (!Array.isArray(data) && typeof data == "object") {
-            this.uninterpreted_option = data.uninterpreted_option;
+            if ("uninterpreted_option" in data && data.uninterpreted_option != undefined) {
+                this.uninterpreted_option = data.uninterpreted_option;
+            }
         }
     }
     get uninterpreted_option() {
@@ -856,9 +919,10 @@ export class ExtensionRangeOptions extends pb_1.Message {
         if (!data) {
             return new ExtensionRangeOptions();
         }
-        const message = new ExtensionRangeOptions({
-            uninterpreted_option: data.uninterpreted_option.map(item => UninterpretedOption.fromObject(item))
-        });
+        const message = new ExtensionRangeOptions({});
+        if (data.uninterpreted_option != null) {
+            message.uninterpreted_option = data.uninterpreted_option.map(item => UninterpretedOption.fromObject(item));
+        }
         return message;
     }
     toObject() {
@@ -902,7 +966,7 @@ export namespace ExtensionRangeOptions {
         uninterpreted_option: UninterpretedOption.AsObject[];
     };
     export type AsObjectPartial = {
-        uninterpreted_option: UninterpretedOption.AsObjectPartial[];
+        uninterpreted_option?: UninterpretedOption.AsObjectPartial[];
     };
 }
 export class FieldDescriptorProto extends pb_1.Message {
@@ -1354,10 +1418,10 @@ export class EnumDescriptorProto extends pb_1.Message {
     #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         name?: string;
-        value: EnumValueDescriptorProto[];
+        value?: EnumValueDescriptorProto[];
         options?: EnumOptions;
-        reserved_range: EnumDescriptorProto.EnumReservedRange[];
-        reserved_name: string[];
+        reserved_range?: EnumDescriptorProto.EnumReservedRange[];
+        reserved_name?: string[];
     }) {
         super();
         pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2, 4, 5], this.#one_of_decls);
@@ -1365,12 +1429,18 @@ export class EnumDescriptorProto extends pb_1.Message {
             if ("name" in data && data.name != undefined) {
                 this.name = data.name;
             }
-            this.value = data.value;
+            if ("value" in data && data.value != undefined) {
+                this.value = data.value;
+            }
             if ("options" in data && data.options != undefined) {
                 this.options = data.options;
             }
-            this.reserved_range = data.reserved_range;
-            this.reserved_name = data.reserved_name;
+            if ("reserved_range" in data && data.reserved_range != undefined) {
+                this.reserved_range = data.reserved_range;
+            }
+            if ("reserved_name" in data && data.reserved_name != undefined) {
+                this.reserved_name = data.reserved_name;
+            }
         }
     }
     get name() {
@@ -1413,16 +1483,21 @@ export class EnumDescriptorProto extends pb_1.Message {
         if (!data) {
             return new EnumDescriptorProto();
         }
-        const message = new EnumDescriptorProto({
-            value: data.value.map(item => EnumValueDescriptorProto.fromObject(item)),
-            reserved_range: data.reserved_range.map(item => EnumDescriptorProto.EnumReservedRange.fromObject(item)),
-            reserved_name: data.reserved_name
-        });
+        const message = new EnumDescriptorProto({});
         if (data.name != null) {
             message.name = data.name;
         }
+        if (data.value != null) {
+            message.value = data.value.map(item => EnumValueDescriptorProto.fromObject(item));
+        }
         if (data.options != null) {
             message.options = EnumOptions.fromObject(data.options);
+        }
+        if (data.reserved_range != null) {
+            message.reserved_range = data.reserved_range.map(item => EnumDescriptorProto.EnumReservedRange.fromObject(item));
+        }
+        if (data.reserved_name != null) {
+            message.reserved_name = data.reserved_name;
         }
         return message;
     }
@@ -1498,10 +1573,10 @@ export namespace EnumDescriptorProto {
     };
     export type AsObjectPartial = {
         name?: string;
-        value: EnumValueDescriptorProto.AsObjectPartial[];
+        value?: EnumValueDescriptorProto.AsObjectPartial[];
         options?: EnumOptions.AsObjectPartial;
-        reserved_range: EnumDescriptorProto.EnumReservedRange.AsObjectPartial[];
-        reserved_name: string[];
+        reserved_range?: EnumDescriptorProto.EnumReservedRange.AsObjectPartial[];
+        reserved_name?: string[];
     };
     export class EnumReservedRange extends pb_1.Message {
         #one_of_decls: number[][] = [];
@@ -1734,7 +1809,7 @@ export class ServiceDescriptorProto extends pb_1.Message {
     #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         name?: string;
-        method: MethodDescriptorProto[];
+        method?: MethodDescriptorProto[];
         options?: ServiceOptions;
     }) {
         super();
@@ -1743,7 +1818,9 @@ export class ServiceDescriptorProto extends pb_1.Message {
             if ("name" in data && data.name != undefined) {
                 this.name = data.name;
             }
-            this.method = data.method;
+            if ("method" in data && data.method != undefined) {
+                this.method = data.method;
+            }
             if ("options" in data && data.options != undefined) {
                 this.options = data.options;
             }
@@ -1777,11 +1854,12 @@ export class ServiceDescriptorProto extends pb_1.Message {
         if (!data) {
             return new ServiceDescriptorProto();
         }
-        const message = new ServiceDescriptorProto({
-            method: data.method.map(item => MethodDescriptorProto.fromObject(item))
-        });
+        const message = new ServiceDescriptorProto({});
         if (data.name != null) {
             message.name = data.name;
+        }
+        if (data.method != null) {
+            message.method = data.method.map(item => MethodDescriptorProto.fromObject(item));
         }
         if (data.options != null) {
             message.options = ServiceOptions.fromObject(data.options);
@@ -1846,7 +1924,7 @@ export namespace ServiceDescriptorProto {
     };
     export type AsObjectPartial = {
         name?: string;
-        method: MethodDescriptorProto.AsObjectPartial[];
+        method?: MethodDescriptorProto.AsObjectPartial[];
         options?: ServiceOptions.AsObjectPartial;
     };
 }
@@ -2072,7 +2150,7 @@ export class FileOptions extends pb_1.Message {
         php_namespace?: string;
         php_metadata_namespace?: string;
         ruby_package?: string;
-        uninterpreted_option: UninterpretedOption[];
+        uninterpreted_option?: UninterpretedOption[];
     }) {
         super();
         pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [999], this.#one_of_decls);
@@ -2137,7 +2215,9 @@ export class FileOptions extends pb_1.Message {
             if ("ruby_package" in data && data.ruby_package != undefined) {
                 this.ruby_package = data.ruby_package;
             }
-            this.uninterpreted_option = data.uninterpreted_option;
+            if ("uninterpreted_option" in data && data.uninterpreted_option != undefined) {
+                this.uninterpreted_option = data.uninterpreted_option;
+            }
         }
     }
     get java_package() {
@@ -2333,9 +2413,7 @@ export class FileOptions extends pb_1.Message {
         if (!data) {
             return new FileOptions();
         }
-        const message = new FileOptions({
-            uninterpreted_option: data.uninterpreted_option.map(item => UninterpretedOption.fromObject(item))
-        });
+        const message = new FileOptions({});
         if (data.java_package != null) {
             message.java_package = data.java_package;
         }
@@ -2395,6 +2473,9 @@ export class FileOptions extends pb_1.Message {
         }
         if (data.ruby_package != null) {
             message.ruby_package = data.ruby_package;
+        }
+        if (data.uninterpreted_option != null) {
+            message.uninterpreted_option = data.uninterpreted_option.map(item => UninterpretedOption.fromObject(item));
         }
         return message;
     }
@@ -2599,7 +2680,7 @@ export namespace FileOptions {
         php_namespace?: string;
         php_metadata_namespace?: string;
         ruby_package?: string;
-        uninterpreted_option: UninterpretedOption.AsObjectPartial[];
+        uninterpreted_option?: UninterpretedOption.AsObjectPartial[];
     };
     export enum OptimizeMode {
         SPEED = 1,
@@ -2614,7 +2695,7 @@ export class MessageOptions extends pb_1.Message {
         no_standard_descriptor_accessor?: boolean;
         deprecated?: boolean;
         map_entry?: boolean;
-        uninterpreted_option: UninterpretedOption[];
+        uninterpreted_option?: UninterpretedOption[];
     }) {
         super();
         pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [999], this.#one_of_decls);
@@ -2631,7 +2712,9 @@ export class MessageOptions extends pb_1.Message {
             if ("map_entry" in data && data.map_entry != undefined) {
                 this.map_entry = data.map_entry;
             }
-            this.uninterpreted_option = data.uninterpreted_option;
+            if ("uninterpreted_option" in data && data.uninterpreted_option != undefined) {
+                this.uninterpreted_option = data.uninterpreted_option;
+            }
         }
     }
     get message_set_wire_format() {
@@ -2680,9 +2763,7 @@ export class MessageOptions extends pb_1.Message {
         if (!data) {
             return new MessageOptions();
         }
-        const message = new MessageOptions({
-            uninterpreted_option: data.uninterpreted_option.map(item => UninterpretedOption.fromObject(item))
-        });
+        const message = new MessageOptions({});
         if (data.message_set_wire_format != null) {
             message.message_set_wire_format = data.message_set_wire_format;
         }
@@ -2694,6 +2775,9 @@ export class MessageOptions extends pb_1.Message {
         }
         if (data.map_entry != null) {
             message.map_entry = data.map_entry;
+        }
+        if (data.uninterpreted_option != null) {
+            message.uninterpreted_option = data.uninterpreted_option.map(item => UninterpretedOption.fromObject(item));
         }
         return message;
     }
@@ -2770,7 +2854,7 @@ export namespace MessageOptions {
         no_standard_descriptor_accessor?: boolean;
         deprecated?: boolean;
         map_entry?: boolean;
-        uninterpreted_option: UninterpretedOption.AsObjectPartial[];
+        uninterpreted_option?: UninterpretedOption.AsObjectPartial[];
     };
 }
 export class FieldOptions extends pb_1.Message {
@@ -2782,7 +2866,7 @@ export class FieldOptions extends pb_1.Message {
         lazy?: boolean;
         deprecated?: boolean;
         weak?: boolean;
-        uninterpreted_option: UninterpretedOption[];
+        uninterpreted_option?: UninterpretedOption[];
     }) {
         super();
         pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [999], this.#one_of_decls);
@@ -2805,7 +2889,9 @@ export class FieldOptions extends pb_1.Message {
             if ("weak" in data && data.weak != undefined) {
                 this.weak = data.weak;
             }
-            this.uninterpreted_option = data.uninterpreted_option;
+            if ("uninterpreted_option" in data && data.uninterpreted_option != undefined) {
+                this.uninterpreted_option = data.uninterpreted_option;
+            }
         }
     }
     get ctype() {
@@ -2872,9 +2958,7 @@ export class FieldOptions extends pb_1.Message {
         if (!data) {
             return new FieldOptions();
         }
-        const message = new FieldOptions({
-            uninterpreted_option: data.uninterpreted_option.map(item => UninterpretedOption.fromObject(item))
-        });
+        const message = new FieldOptions({});
         if (data.ctype != null) {
             message.ctype = data.ctype;
         }
@@ -2892,6 +2976,9 @@ export class FieldOptions extends pb_1.Message {
         }
         if (data.weak != null) {
             message.weak = data.weak;
+        }
+        if (data.uninterpreted_option != null) {
+            message.uninterpreted_option = data.uninterpreted_option.map(item => UninterpretedOption.fromObject(item));
         }
         return message;
     }
@@ -2984,7 +3071,7 @@ export namespace FieldOptions {
         lazy?: boolean;
         deprecated?: boolean;
         weak?: boolean;
-        uninterpreted_option: UninterpretedOption.AsObjectPartial[];
+        uninterpreted_option?: UninterpretedOption.AsObjectPartial[];
     };
     export enum CType {
         STRING = 0,
@@ -3000,12 +3087,14 @@ export namespace FieldOptions {
 export class OneofOptions extends pb_1.Message {
     #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
-        uninterpreted_option: UninterpretedOption[];
+        uninterpreted_option?: UninterpretedOption[];
     }) {
         super();
         pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [999], this.#one_of_decls);
         if (!Array.isArray(data) && typeof data == "object") {
-            this.uninterpreted_option = data.uninterpreted_option;
+            if ("uninterpreted_option" in data && data.uninterpreted_option != undefined) {
+                this.uninterpreted_option = data.uninterpreted_option;
+            }
         }
     }
     get uninterpreted_option() {
@@ -3018,9 +3107,10 @@ export class OneofOptions extends pb_1.Message {
         if (!data) {
             return new OneofOptions();
         }
-        const message = new OneofOptions({
-            uninterpreted_option: data.uninterpreted_option.map(item => UninterpretedOption.fromObject(item))
-        });
+        const message = new OneofOptions({});
+        if (data.uninterpreted_option != null) {
+            message.uninterpreted_option = data.uninterpreted_option.map(item => UninterpretedOption.fromObject(item));
+        }
         return message;
     }
     toObject() {
@@ -3064,7 +3154,7 @@ export namespace OneofOptions {
         uninterpreted_option: UninterpretedOption.AsObject[];
     };
     export type AsObjectPartial = {
-        uninterpreted_option: UninterpretedOption.AsObjectPartial[];
+        uninterpreted_option?: UninterpretedOption.AsObjectPartial[];
     };
 }
 export class EnumOptions extends pb_1.Message {
@@ -3072,7 +3162,7 @@ export class EnumOptions extends pb_1.Message {
     constructor(data?: any[] | {
         allow_alias?: boolean;
         deprecated?: boolean;
-        uninterpreted_option: UninterpretedOption[];
+        uninterpreted_option?: UninterpretedOption[];
     }) {
         super();
         pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [999], this.#one_of_decls);
@@ -3083,7 +3173,9 @@ export class EnumOptions extends pb_1.Message {
             if ("deprecated" in data && data.deprecated != undefined) {
                 this.deprecated = data.deprecated;
             }
-            this.uninterpreted_option = data.uninterpreted_option;
+            if ("uninterpreted_option" in data && data.uninterpreted_option != undefined) {
+                this.uninterpreted_option = data.uninterpreted_option;
+            }
         }
     }
     get allow_alias() {
@@ -3114,14 +3206,15 @@ export class EnumOptions extends pb_1.Message {
         if (!data) {
             return new EnumOptions();
         }
-        const message = new EnumOptions({
-            uninterpreted_option: data.uninterpreted_option.map(item => UninterpretedOption.fromObject(item))
-        });
+        const message = new EnumOptions({});
         if (data.allow_alias != null) {
             message.allow_alias = data.allow_alias;
         }
         if (data.deprecated != null) {
             message.deprecated = data.deprecated;
+        }
+        if (data.uninterpreted_option != null) {
+            message.uninterpreted_option = data.uninterpreted_option.map(item => UninterpretedOption.fromObject(item));
         }
         return message;
     }
@@ -3182,14 +3275,14 @@ export namespace EnumOptions {
     export type AsObjectPartial = {
         allow_alias?: boolean;
         deprecated?: boolean;
-        uninterpreted_option: UninterpretedOption.AsObjectPartial[];
+        uninterpreted_option?: UninterpretedOption.AsObjectPartial[];
     };
 }
 export class EnumValueOptions extends pb_1.Message {
     #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         deprecated?: boolean;
-        uninterpreted_option: UninterpretedOption[];
+        uninterpreted_option?: UninterpretedOption[];
     }) {
         super();
         pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [999], this.#one_of_decls);
@@ -3197,7 +3290,9 @@ export class EnumValueOptions extends pb_1.Message {
             if ("deprecated" in data && data.deprecated != undefined) {
                 this.deprecated = data.deprecated;
             }
-            this.uninterpreted_option = data.uninterpreted_option;
+            if ("uninterpreted_option" in data && data.uninterpreted_option != undefined) {
+                this.uninterpreted_option = data.uninterpreted_option;
+            }
         }
     }
     get deprecated() {
@@ -3219,11 +3314,12 @@ export class EnumValueOptions extends pb_1.Message {
         if (!data) {
             return new EnumValueOptions();
         }
-        const message = new EnumValueOptions({
-            uninterpreted_option: data.uninterpreted_option.map(item => UninterpretedOption.fromObject(item))
-        });
+        const message = new EnumValueOptions({});
         if (data.deprecated != null) {
             message.deprecated = data.deprecated;
+        }
+        if (data.uninterpreted_option != null) {
+            message.uninterpreted_option = data.uninterpreted_option.map(item => UninterpretedOption.fromObject(item));
         }
         return message;
     }
@@ -3276,14 +3372,14 @@ export namespace EnumValueOptions {
     };
     export type AsObjectPartial = {
         deprecated?: boolean;
-        uninterpreted_option: UninterpretedOption.AsObjectPartial[];
+        uninterpreted_option?: UninterpretedOption.AsObjectPartial[];
     };
 }
 export class ServiceOptions extends pb_1.Message {
     #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
         deprecated?: boolean;
-        uninterpreted_option: UninterpretedOption[];
+        uninterpreted_option?: UninterpretedOption[];
     }) {
         super();
         pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [999], this.#one_of_decls);
@@ -3291,7 +3387,9 @@ export class ServiceOptions extends pb_1.Message {
             if ("deprecated" in data && data.deprecated != undefined) {
                 this.deprecated = data.deprecated;
             }
-            this.uninterpreted_option = data.uninterpreted_option;
+            if ("uninterpreted_option" in data && data.uninterpreted_option != undefined) {
+                this.uninterpreted_option = data.uninterpreted_option;
+            }
         }
     }
     get deprecated() {
@@ -3313,11 +3411,12 @@ export class ServiceOptions extends pb_1.Message {
         if (!data) {
             return new ServiceOptions();
         }
-        const message = new ServiceOptions({
-            uninterpreted_option: data.uninterpreted_option.map(item => UninterpretedOption.fromObject(item))
-        });
+        const message = new ServiceOptions({});
         if (data.deprecated != null) {
             message.deprecated = data.deprecated;
+        }
+        if (data.uninterpreted_option != null) {
+            message.uninterpreted_option = data.uninterpreted_option.map(item => UninterpretedOption.fromObject(item));
         }
         return message;
     }
@@ -3370,7 +3469,7 @@ export namespace ServiceOptions {
     };
     export type AsObjectPartial = {
         deprecated?: boolean;
-        uninterpreted_option: UninterpretedOption.AsObjectPartial[];
+        uninterpreted_option?: UninterpretedOption.AsObjectPartial[];
     };
 }
 export class MethodOptions extends pb_1.Message {
@@ -3378,7 +3477,7 @@ export class MethodOptions extends pb_1.Message {
     constructor(data?: any[] | {
         deprecated?: boolean;
         idempotency_level?: MethodOptions.IdempotencyLevel;
-        uninterpreted_option: UninterpretedOption[];
+        uninterpreted_option?: UninterpretedOption[];
     }) {
         super();
         pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [999], this.#one_of_decls);
@@ -3389,7 +3488,9 @@ export class MethodOptions extends pb_1.Message {
             if ("idempotency_level" in data && data.idempotency_level != undefined) {
                 this.idempotency_level = data.idempotency_level;
             }
-            this.uninterpreted_option = data.uninterpreted_option;
+            if ("uninterpreted_option" in data && data.uninterpreted_option != undefined) {
+                this.uninterpreted_option = data.uninterpreted_option;
+            }
         }
     }
     get deprecated() {
@@ -3420,14 +3521,15 @@ export class MethodOptions extends pb_1.Message {
         if (!data) {
             return new MethodOptions();
         }
-        const message = new MethodOptions({
-            uninterpreted_option: data.uninterpreted_option.map(item => UninterpretedOption.fromObject(item))
-        });
+        const message = new MethodOptions({});
         if (data.deprecated != null) {
             message.deprecated = data.deprecated;
         }
         if (data.idempotency_level != null) {
             message.idempotency_level = data.idempotency_level;
+        }
+        if (data.uninterpreted_option != null) {
+            message.uninterpreted_option = data.uninterpreted_option.map(item => UninterpretedOption.fromObject(item));
         }
         return message;
     }
@@ -3488,7 +3590,7 @@ export namespace MethodOptions {
     export type AsObjectPartial = {
         deprecated?: boolean;
         idempotency_level?: MethodOptions.IdempotencyLevel;
-        uninterpreted_option: UninterpretedOption.AsObjectPartial[];
+        uninterpreted_option?: UninterpretedOption.AsObjectPartial[];
     };
     export enum IdempotencyLevel {
         IDEMPOTENCY_UNKNOWN = 0,
@@ -3499,7 +3601,7 @@ export namespace MethodOptions {
 export class UninterpretedOption extends pb_1.Message {
     #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
-        name: UninterpretedOption.NamePart[];
+        name?: UninterpretedOption.NamePart[];
         identifier_value?: string;
         positive_int_value?: number;
         negative_int_value?: number;
@@ -3510,7 +3612,9 @@ export class UninterpretedOption extends pb_1.Message {
         super();
         pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2], this.#one_of_decls);
         if (!Array.isArray(data) && typeof data == "object") {
-            this.name = data.name;
+            if ("name" in data && data.name != undefined) {
+                this.name = data.name;
+            }
             if ("identifier_value" in data && data.identifier_value != undefined) {
                 this.identifier_value = data.identifier_value;
             }
@@ -3595,9 +3699,10 @@ export class UninterpretedOption extends pb_1.Message {
         if (!data) {
             return new UninterpretedOption();
         }
-        const message = new UninterpretedOption({
-            name: data.name.map(item => UninterpretedOption.NamePart.fromObject(item))
-        });
+        const message = new UninterpretedOption({});
+        if (data.name != null) {
+            message.name = data.name.map(item => UninterpretedOption.NamePart.fromObject(item));
+        }
         if (data.identifier_value != null) {
             message.identifier_value = data.identifier_value;
         }
@@ -3701,7 +3806,7 @@ export namespace UninterpretedOption {
         aggregate_value: string;
     };
     export type AsObjectPartial = {
-        name: UninterpretedOption.NamePart.AsObjectPartial[];
+        name?: UninterpretedOption.NamePart.AsObjectPartial[];
         identifier_value?: string;
         positive_int_value?: number;
         negative_int_value?: number;
@@ -3809,12 +3914,14 @@ export namespace UninterpretedOption {
 export class SourceCodeInfo extends pb_1.Message {
     #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
-        location: SourceCodeInfo.Location[];
+        location?: SourceCodeInfo.Location[];
     }) {
         super();
         pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
         if (!Array.isArray(data) && typeof data == "object") {
-            this.location = data.location;
+            if ("location" in data && data.location != undefined) {
+                this.location = data.location;
+            }
         }
     }
     get location() {
@@ -3827,9 +3934,10 @@ export class SourceCodeInfo extends pb_1.Message {
         if (!data) {
             return new SourceCodeInfo();
         }
-        const message = new SourceCodeInfo({
-            location: data.location.map(item => SourceCodeInfo.Location.fromObject(item))
-        });
+        const message = new SourceCodeInfo({});
+        if (data.location != null) {
+            message.location = data.location.map(item => SourceCodeInfo.Location.fromObject(item));
+        }
         return message;
     }
     toObject() {
@@ -3873,29 +3981,35 @@ export namespace SourceCodeInfo {
         location: SourceCodeInfo.Location.AsObject[];
     };
     export type AsObjectPartial = {
-        location: SourceCodeInfo.Location.AsObjectPartial[];
+        location?: SourceCodeInfo.Location.AsObjectPartial[];
     };
     export class Location extends pb_1.Message {
         #one_of_decls: number[][] = [];
         constructor(data?: any[] | {
-            path: number[];
-            span: number[];
+            path?: number[];
+            span?: number[];
             leading_comments?: string;
             trailing_comments?: string;
-            leading_detached_comments: string[];
+            leading_detached_comments?: string[];
         }) {
             super();
             pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1, 2, 6], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
-                this.path = data.path;
-                this.span = data.span;
+                if ("path" in data && data.path != undefined) {
+                    this.path = data.path;
+                }
+                if ("span" in data && data.span != undefined) {
+                    this.span = data.span;
+                }
                 if ("leading_comments" in data && data.leading_comments != undefined) {
                     this.leading_comments = data.leading_comments;
                 }
                 if ("trailing_comments" in data && data.trailing_comments != undefined) {
                     this.trailing_comments = data.trailing_comments;
                 }
-                this.leading_detached_comments = data.leading_detached_comments;
+                if ("leading_detached_comments" in data && data.leading_detached_comments != undefined) {
+                    this.leading_detached_comments = data.leading_detached_comments;
+                }
             }
         }
         get path() {
@@ -3938,16 +4052,21 @@ export namespace SourceCodeInfo {
             if (!data) {
                 return new Location();
             }
-            const message = new Location({
-                path: data.path,
-                span: data.span,
-                leading_detached_comments: data.leading_detached_comments
-            });
+            const message = new Location({});
+            if (data.path != null) {
+                message.path = data.path;
+            }
+            if (data.span != null) {
+                message.span = data.span;
+            }
             if (data.leading_comments != null) {
                 message.leading_comments = data.leading_comments;
             }
             if (data.trailing_comments != null) {
                 message.trailing_comments = data.trailing_comments;
+            }
+            if (data.leading_detached_comments != null) {
+                message.leading_detached_comments = data.leading_detached_comments;
             }
             return message;
         }
@@ -4020,23 +4139,25 @@ export namespace SourceCodeInfo {
             leading_detached_comments: string[];
         };
         export type AsObjectPartial = {
-            path: number[];
-            span: number[];
+            path?: number[];
+            span?: number[];
             leading_comments?: string;
             trailing_comments?: string;
-            leading_detached_comments: string[];
+            leading_detached_comments?: string[];
         };
     }
 }
 export class GeneratedCodeInfo extends pb_1.Message {
     #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
-        annotation: GeneratedCodeInfo.Annotation[];
+        annotation?: GeneratedCodeInfo.Annotation[];
     }) {
         super();
         pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
         if (!Array.isArray(data) && typeof data == "object") {
-            this.annotation = data.annotation;
+            if ("annotation" in data && data.annotation != undefined) {
+                this.annotation = data.annotation;
+            }
         }
     }
     get annotation() {
@@ -4049,9 +4170,10 @@ export class GeneratedCodeInfo extends pb_1.Message {
         if (!data) {
             return new GeneratedCodeInfo();
         }
-        const message = new GeneratedCodeInfo({
-            annotation: data.annotation.map(item => GeneratedCodeInfo.Annotation.fromObject(item))
-        });
+        const message = new GeneratedCodeInfo({});
+        if (data.annotation != null) {
+            message.annotation = data.annotation.map(item => GeneratedCodeInfo.Annotation.fromObject(item));
+        }
         return message;
     }
     toObject() {
@@ -4095,12 +4217,12 @@ export namespace GeneratedCodeInfo {
         annotation: GeneratedCodeInfo.Annotation.AsObject[];
     };
     export type AsObjectPartial = {
-        annotation: GeneratedCodeInfo.Annotation.AsObjectPartial[];
+        annotation?: GeneratedCodeInfo.Annotation.AsObjectPartial[];
     };
     export class Annotation extends pb_1.Message {
         #one_of_decls: number[][] = [];
         constructor(data?: any[] | {
-            path: number[];
+            path?: number[];
             source_file?: string;
             begin?: number;
             end?: number;
@@ -4108,7 +4230,9 @@ export namespace GeneratedCodeInfo {
             super();
             pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
-                this.path = data.path;
+                if ("path" in data && data.path != undefined) {
+                    this.path = data.path;
+                }
                 if ("source_file" in data && data.source_file != undefined) {
                     this.source_file = data.source_file;
                 }
@@ -4157,9 +4281,10 @@ export namespace GeneratedCodeInfo {
             if (!data) {
                 return new Annotation();
             }
-            const message = new Annotation({
-                path: data.path
-            });
+            const message = new Annotation({});
+            if (data.path != null) {
+                message.path = data.path;
+            }
             if (data.source_file != null) {
                 message.source_file = data.source_file;
             }
@@ -4233,7 +4358,7 @@ export namespace GeneratedCodeInfo {
             end: number;
         };
         export type AsObjectPartial = {
-            path: number[];
+            path?: number[];
             source_file?: string;
             begin?: number;
             end?: number;
