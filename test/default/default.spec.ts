@@ -433,4 +433,26 @@ describe("defaults", () => {
         expect(explicitlyProvidedDefaults16.serialize().length).toBeGreaterThan(0);
         expect(explicitlyProvidedDefaults17.serialize().length).toBeGreaterThan(0);
     });
+    it('should create the same object via fromObject method', () => {
+
+        interface MessageConstructor<T> {
+          new(...args: any[]): T,
+          fromObject(data?: {}): any
+        }
+
+        function checkEquality<T>(messageCtor: MessageConstructor<T>){
+          const withDefaultFromObject = messageCtor.fromObject();
+          const withDefaultConstructed = new messageCtor();
+          expect(toObjectPreservingUndefined(withDefaultFromObject))
+            .toEqual(toObjectPreservingUndefined(withDefaultConstructed));
+        }
+
+        checkEquality(MessageWithDefault);
+        checkEquality(MessageWithImplicitDefault);
+        checkEquality(DefaultCommonMessageOneOf);
+        checkEquality(DefaultMessageV2WithoutDefault);
+        checkEquality(DefaultMessageV2WithDefault);
+        checkEquality(DefaultMessageV3);
+        checkEquality(DefaultMessageOptionalV3);
+    })
 });
