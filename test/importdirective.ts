@@ -37,6 +37,9 @@ export namespace importdirective {
         get has_importedField() {
             return pb_1.Message.getField(this, 1) != null;
         }
+        clear_importedField(): void {
+            this.importedField = undefined!;
+        }
         get submessageField() {
             return pb_1.Message.getWrapperField(this, dependency_1.importdirective.Imported.SubMessage, 2) as dependency_1.importdirective.Imported.SubMessage | undefined;
         }
@@ -45,6 +48,9 @@ export namespace importdirective {
         }
         get has_submessageField() {
             return pb_1.Message.getField(this, 2) != null;
+        }
+        clear_submessageField(): void {
+            this.submessageField = undefined!;
         }
         get enumField() {
             return pb_1.Message.getFieldWithDefault(this, 3, dependency_1.importdirective.Imported.SubMessage.MyEnum.VALUE) as dependency_1.importdirective.Imported.SubMessage.MyEnum;

@@ -37,6 +37,9 @@ export class Optional extends pb_1.Message {
     get has_proto3_optional() {
         return pb_1.Message.getField(this, 2) != null;
     }
+    clear_proto3_optional(): void {
+        this.proto3_optional = undefined!;
+    }
     get _proto3_optional() {
         const cases: {
             [index: number]: "none" | "proto3_optional";

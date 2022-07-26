@@ -39,6 +39,9 @@ export class Version extends pb_1.Message {
     get has_major() {
         return pb_1.Message.getField(this, 1) != null;
     }
+    clear_major(): void {
+        this.major = undefined!;
+    }
     get minor() {
         return pb_1.Message.getFieldWithDefault(this, 2, 0) as number;
     }
@@ -47,6 +50,9 @@ export class Version extends pb_1.Message {
     }
     get has_minor() {
         return pb_1.Message.getField(this, 2) != null;
+    }
+    clear_minor(): void {
+        this.minor = undefined!;
     }
     get patch() {
         return pb_1.Message.getFieldWithDefault(this, 3, 0) as number;
@@ -57,6 +63,9 @@ export class Version extends pb_1.Message {
     get has_patch() {
         return pb_1.Message.getField(this, 3) != null;
     }
+    clear_patch(): void {
+        this.patch = undefined!;
+    }
     get suffix() {
         return pb_1.Message.getFieldWithDefault(this, 4, "") as string;
     }
@@ -65,6 +74,9 @@ export class Version extends pb_1.Message {
     }
     get has_suffix() {
         return pb_1.Message.getField(this, 4) != null;
+    }
+    clear_suffix(): void {
+        this.suffix = undefined!;
     }
     static fromObject(data?: Version.AsObjectPartial): Version {
         if (!data) {
@@ -193,6 +205,9 @@ export class CodeGeneratorRequest extends pb_1.Message {
     get has_parameter() {
         return pb_1.Message.getField(this, 2) != null;
     }
+    clear_parameter(): void {
+        this.parameter = undefined!;
+    }
     get proto_file() {
         return pb_1.Message.getRepeatedWrapperField(this, dependency_1.FileDescriptorProto, 15) as dependency_1.FileDescriptorProto[];
     }
@@ -207,6 +222,9 @@ export class CodeGeneratorRequest extends pb_1.Message {
     }
     get has_compiler_version() {
         return pb_1.Message.getField(this, 3) != null;
+    }
+    clear_compiler_version(): void {
+        this.compiler_version = undefined!;
     }
     static fromObject(data?: CodeGeneratorRequest.AsObjectPartial): CodeGeneratorRequest {
         if (!data) {
@@ -327,6 +345,9 @@ export class CodeGeneratorResponse extends pb_1.Message {
     get has_error() {
         return pb_1.Message.getField(this, 1) != null;
     }
+    clear_error(): void {
+        this.error = undefined!;
+    }
     get supported_features() {
         return pb_1.Message.getFieldWithDefault(this, 2, 0) as number;
     }
@@ -335,6 +356,9 @@ export class CodeGeneratorResponse extends pb_1.Message {
     }
     get has_supported_features() {
         return pb_1.Message.getField(this, 2) != null;
+    }
+    clear_supported_features(): void {
+        this.supported_features = undefined!;
     }
     get file() {
         return pb_1.Message.getRepeatedWrapperField(this, CodeGeneratorResponse.File, 15) as CodeGeneratorResponse.File[];
@@ -455,6 +479,9 @@ export namespace CodeGeneratorResponse {
         get has_name() {
             return pb_1.Message.getField(this, 1) != null;
         }
+        clear_name(): void {
+            this.name = undefined!;
+        }
         get insertion_point() {
             return pb_1.Message.getFieldWithDefault(this, 2, "") as string;
         }
@@ -463,6 +490,9 @@ export namespace CodeGeneratorResponse {
         }
         get has_insertion_point() {
             return pb_1.Message.getField(this, 2) != null;
+        }
+        clear_insertion_point(): void {
+            this.insertion_point = undefined!;
         }
         get content() {
             return pb_1.Message.getFieldWithDefault(this, 15, "") as string;
@@ -473,6 +503,9 @@ export namespace CodeGeneratorResponse {
         get has_content() {
             return pb_1.Message.getField(this, 15) != null;
         }
+        clear_content(): void {
+            this.content = undefined!;
+        }
         get generated_code_info() {
             return pb_1.Message.getWrapperField(this, dependency_1.GeneratedCodeInfo, 16) as dependency_1.GeneratedCodeInfo | undefined;
         }
@@ -481,6 +514,9 @@ export namespace CodeGeneratorResponse {
         }
         get has_generated_code_info() {
             return pb_1.Message.getField(this, 16) != null;
+        }
+        clear_generated_code_info(): void {
+            this.generated_code_info = undefined!;
         }
         static fromObject(data?: File.AsObjectPartial): File {
             if (!data) {

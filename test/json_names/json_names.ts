@@ -71,6 +71,9 @@ export class JsonNamesMessage extends pb_1.Message {
     get hasANestedMessage() {
         return pb_1.Message.getField(this, 3) != null;
     }
+    clearANestedMessage(): void {
+        this.aNestedMessage = undefined!;
+    }
     get colorSpace() {
         return pb_1.Message.getFieldWithDefault(this, 4, ColorSpace.RED_GREEN_BLUE) as ColorSpace;
     }
@@ -86,6 +89,9 @@ export class JsonNamesMessage extends pb_1.Message {
     get hasAnOptionalString() {
         return pb_1.Message.getField(this, 5) != null;
     }
+    clearAnOptionalString(): void {
+        this.anOptionalString = undefined!;
+    }
     get aSingleString() {
         return pb_1.Message.getFieldWithDefault(this, 6, "") as string;
     }
@@ -95,6 +101,9 @@ export class JsonNamesMessage extends pb_1.Message {
     get hasASingleString() {
         return pb_1.Message.getField(this, 6) != null;
     }
+    clearASingleString(): void {
+        this.aSingleString = undefined!;
+    }
     get aSingleNumber() {
         return pb_1.Message.getFieldWithDefault(this, 7, 0) as number;
     }
@@ -103,6 +112,9 @@ export class JsonNamesMessage extends pb_1.Message {
     }
     get hasASingleNumber() {
         return pb_1.Message.getField(this, 7) != null;
+    }
+    clearASingleNumber(): void {
+        this.aSingleNumber = undefined!;
     }
     get mut_ex_field() {
         const cases: {

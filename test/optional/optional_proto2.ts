@@ -36,6 +36,9 @@ export class NotOptional extends pb_1.Message {
     get has_should_be_optional() {
         return pb_1.Message.getField(this, 2) != null;
     }
+    clear_should_be_optional(): void {
+        this.should_be_optional = undefined!;
+    }
     static fromObject(data?: NotOptional.AsObjectPartial): NotOptional {
         if (!data) {
             return new NotOptional();

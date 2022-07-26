@@ -1366,6 +1366,50 @@ function createPresenceHasBlock(
 }
 
 /**
+ * Creates a presence clear method for the field as follows:
+ * clear_field(): void {
+ *   this.field = undefined!
+ * }
+ * @param fieldDescriptor
+ */
+function createPresenceClear(
+  fieldDescriptor: descriptor.FieldDescriptorProto,
+) {
+  return comment.addDeprecatedJsDoc(
+    ts.factory.createMethodDeclaration(
+      undefined,
+      undefined,
+      undefined,
+      getPrefixedFieldName("clear", fieldDescriptor),
+      undefined,
+      undefined,
+      [],
+      ts.factory.createTypeReferenceNode("void"),
+      createPresenceClearBlock(fieldDescriptor),
+    ),
+    fieldDescriptor.options?.deprecated
+  );
+}
+
+function createPresenceClearBlock(
+  fieldDescriptor: descriptor.FieldDescriptorProto,
+) {
+  return ts.factory.createBlock(
+    [
+      ts.factory.createExpressionStatement(ts.factory.createBinaryExpression(
+        ts.factory.createPropertyAccessExpression(
+          ts.factory.createThis(),
+          getFieldName(fieldDescriptor),
+        ),
+        ts.factory.createToken(ts.SyntaxKind.EqualsToken),
+        ts.factory.createNonNullExpression(ts.factory.createIdentifier("undefined"))
+      ))
+    ],
+    true,
+  )
+}
+
+/**
  * Returns the serialize method for the message class
  */
 function createSerialize(
@@ -2309,7 +2353,10 @@ function createMessage(
     );
 
     if (field.hasPresenceGetter(rootDescriptor, fieldDescriptor)) {
-      statements.push(createPresenceHas(fieldDescriptor, pbIdentifier))
+      statements.push(
+        createPresenceHas(fieldDescriptor, pbIdentifier),
+        createPresenceClear(fieldDescriptor),
+      )
     }
   }
 

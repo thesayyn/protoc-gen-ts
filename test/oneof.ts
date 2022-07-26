@@ -45,6 +45,9 @@ export class OneOfWithoutAnyOtherFields extends pb_1.Message {
     get has_nickname() {
         return pb_1.Message.getField(this, 1) != null;
     }
+    clear_nickname(): void {
+        this.nickname = undefined!;
+    }
     get realname() {
         return pb_1.Message.getFieldWithDefault(this, 2, "") as string;
     }
@@ -53,6 +56,9 @@ export class OneOfWithoutAnyOtherFields extends pb_1.Message {
     }
     get has_realname() {
         return pb_1.Message.getField(this, 2) != null;
+    }
+    clear_realname(): void {
+        this.realname = undefined!;
     }
     get age() {
         return pb_1.Message.getFieldWithDefault(this, 4, "") as string;
@@ -63,6 +69,9 @@ export class OneOfWithoutAnyOtherFields extends pb_1.Message {
     get has_age() {
         return pb_1.Message.getField(this, 4) != null;
     }
+    clear_age(): void {
+        this.age = undefined!;
+    }
     get date_of_birth() {
         return pb_1.Message.getFieldWithDefault(this, 3, "") as string;
     }
@@ -71,6 +80,9 @@ export class OneOfWithoutAnyOtherFields extends pb_1.Message {
     }
     get has_date_of_birth() {
         return pb_1.Message.getField(this, 3) != null;
+    }
+    clear_date_of_birth(): void {
+        this.date_of_birth = undefined!;
     }
     get nickname_or_realname() {
         const cases: {
@@ -219,6 +231,9 @@ export class OneOf extends pb_1.Message {
     get has_date_of_birth() {
         return pb_1.Message.getField(this, 3) != null;
     }
+    clear_date_of_birth(): void {
+        this.date_of_birth = undefined!;
+    }
     get age() {
         return pb_1.Message.getFieldWithDefault(this, 4, "") as string;
     }
@@ -227,6 +242,9 @@ export class OneOf extends pb_1.Message {
     }
     get has_age() {
         return pb_1.Message.getField(this, 4) != null;
+    }
+    clear_age(): void {
+        this.age = undefined!;
     }
     get age_or_dateofbirth() {
         const cases: {

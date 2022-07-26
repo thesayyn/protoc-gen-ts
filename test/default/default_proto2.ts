@@ -91,6 +91,9 @@ export class DefaultMessageV2WithoutDefault extends pb_1.Message {
     get has_message() {
         return pb_1.Message.getField(this, 1) != null;
     }
+    clear_message(): void {
+        this.message = undefined!;
+    }
     get enum() {
         return pb_1.Message.getField(this, 2) as dependency_1.DefaultCommonEnum | undefined;
     }
@@ -99,6 +102,9 @@ export class DefaultMessageV2WithoutDefault extends pb_1.Message {
     }
     get has_enum() {
         return pb_1.Message.getField(this, 2) != null;
+    }
+    clear_enum(): void {
+        this.enum = undefined!;
     }
     get bool() {
         return pb_1.Message.getField(this, 3) as boolean | undefined;
@@ -109,6 +115,9 @@ export class DefaultMessageV2WithoutDefault extends pb_1.Message {
     get has_bool() {
         return pb_1.Message.getField(this, 3) != null;
     }
+    clear_bool(): void {
+        this.bool = undefined!;
+    }
     get string() {
         return pb_1.Message.getField(this, 4) as string | undefined;
     }
@@ -117,6 +126,9 @@ export class DefaultMessageV2WithoutDefault extends pb_1.Message {
     }
     get has_string() {
         return pb_1.Message.getField(this, 4) != null;
+    }
+    clear_string(): void {
+        this.string = undefined!;
     }
     get int32() {
         return pb_1.Message.getField(this, 5) as number | undefined;
@@ -127,6 +139,9 @@ export class DefaultMessageV2WithoutDefault extends pb_1.Message {
     get has_int32() {
         return pb_1.Message.getField(this, 5) != null;
     }
+    clear_int32(): void {
+        this.int32 = undefined!;
+    }
     get fixed32() {
         return pb_1.Message.getField(this, 6) as number | undefined;
     }
@@ -135,6 +150,9 @@ export class DefaultMessageV2WithoutDefault extends pb_1.Message {
     }
     get has_fixed32() {
         return pb_1.Message.getField(this, 6) != null;
+    }
+    clear_fixed32(): void {
+        this.fixed32 = undefined!;
     }
     get sfixed32() {
         return pb_1.Message.getField(this, 7) as number | undefined;
@@ -145,6 +163,9 @@ export class DefaultMessageV2WithoutDefault extends pb_1.Message {
     get has_sfixed32() {
         return pb_1.Message.getField(this, 7) != null;
     }
+    clear_sfixed32(): void {
+        this.sfixed32 = undefined!;
+    }
     get uint32() {
         return pb_1.Message.getField(this, 8) as number | undefined;
     }
@@ -153,6 +174,9 @@ export class DefaultMessageV2WithoutDefault extends pb_1.Message {
     }
     get has_uint32() {
         return pb_1.Message.getField(this, 8) != null;
+    }
+    clear_uint32(): void {
+        this.uint32 = undefined!;
     }
     get sint32() {
         return pb_1.Message.getField(this, 9) as number | undefined;
@@ -163,6 +187,9 @@ export class DefaultMessageV2WithoutDefault extends pb_1.Message {
     get has_sint32() {
         return pb_1.Message.getField(this, 9) != null;
     }
+    clear_sint32(): void {
+        this.sint32 = undefined!;
+    }
     get int64() {
         return pb_1.Message.getField(this, 10) as number | undefined;
     }
@@ -171,6 +198,9 @@ export class DefaultMessageV2WithoutDefault extends pb_1.Message {
     }
     get has_int64() {
         return pb_1.Message.getField(this, 10) != null;
+    }
+    clear_int64(): void {
+        this.int64 = undefined!;
     }
     get fixed64() {
         return pb_1.Message.getField(this, 11) as number | undefined;
@@ -181,6 +211,9 @@ export class DefaultMessageV2WithoutDefault extends pb_1.Message {
     get has_fixed64() {
         return pb_1.Message.getField(this, 11) != null;
     }
+    clear_fixed64(): void {
+        this.fixed64 = undefined!;
+    }
     get sfixed64() {
         return pb_1.Message.getField(this, 12) as number | undefined;
     }
@@ -189,6 +222,9 @@ export class DefaultMessageV2WithoutDefault extends pb_1.Message {
     }
     get has_sfixed64() {
         return pb_1.Message.getField(this, 12) != null;
+    }
+    clear_sfixed64(): void {
+        this.sfixed64 = undefined!;
     }
     get uint64() {
         return pb_1.Message.getField(this, 13) as number | undefined;
@@ -199,6 +235,9 @@ export class DefaultMessageV2WithoutDefault extends pb_1.Message {
     get has_uint64() {
         return pb_1.Message.getField(this, 13) != null;
     }
+    clear_uint64(): void {
+        this.uint64 = undefined!;
+    }
     get sint64() {
         return pb_1.Message.getField(this, 14) as number | undefined;
     }
@@ -207,6 +246,9 @@ export class DefaultMessageV2WithoutDefault extends pb_1.Message {
     }
     get has_sint64() {
         return pb_1.Message.getField(this, 14) != null;
+    }
+    clear_sint64(): void {
+        this.sint64 = undefined!;
     }
     get float() {
         return pb_1.Message.getField(this, 15) as number | undefined;
@@ -217,6 +259,9 @@ export class DefaultMessageV2WithoutDefault extends pb_1.Message {
     get has_float() {
         return pb_1.Message.getField(this, 15) != null;
     }
+    clear_float(): void {
+        this.float = undefined!;
+    }
     get double() {
         return pb_1.Message.getField(this, 16) as number | undefined;
     }
@@ -226,6 +271,9 @@ export class DefaultMessageV2WithoutDefault extends pb_1.Message {
     get has_double() {
         return pb_1.Message.getField(this, 16) != null;
     }
+    clear_double(): void {
+        this.double = undefined!;
+    }
     get int_but_string() {
         return pb_1.Message.getField(this, 17) as string | undefined;
     }
@@ -234,6 +282,9 @@ export class DefaultMessageV2WithoutDefault extends pb_1.Message {
     }
     get has_int_but_string() {
         return pb_1.Message.getField(this, 17) != null;
+    }
+    clear_int_but_string(): void {
+        this.int_but_string = undefined!;
     }
     get map_string_string() {
         return pb_1.Message.getField(this, 18) as any as Map<string, string>;
@@ -268,6 +319,9 @@ export class DefaultMessageV2WithoutDefault extends pb_1.Message {
     get has_one_of_int32() {
         return pb_1.Message.getField(this, 22) != null;
     }
+    clear_one_of_int32(): void {
+        this.one_of_int32 = undefined!;
+    }
     get one_of_message() {
         return pb_1.Message.getWrapperField(this, dependency_1.DefaultCommonMessage, 23) as dependency_1.DefaultCommonMessage | undefined;
     }
@@ -277,6 +331,9 @@ export class DefaultMessageV2WithoutDefault extends pb_1.Message {
     get has_one_of_message() {
         return pb_1.Message.getField(this, 23) != null;
     }
+    clear_one_of_message(): void {
+        this.one_of_message = undefined!;
+    }
     get bytes() {
         return pb_1.Message.getField(this, 24) as Uint8Array | undefined;
     }
@@ -285,6 +342,9 @@ export class DefaultMessageV2WithoutDefault extends pb_1.Message {
     }
     get has_bytes() {
         return pb_1.Message.getField(this, 24) != null;
+    }
+    clear_bytes(): void {
+        this.bytes = undefined!;
     }
     get one_of() {
         const cases: {
@@ -690,6 +750,9 @@ export class DefaultMessageV2WithDefault extends pb_1.Message {
     get has_message() {
         return pb_1.Message.getField(this, 1) != null;
     }
+    clear_message(): void {
+        this.message = undefined!;
+    }
     get enum() {
         return pb_1.Message.getFieldWithDefault(this, 2, dependency_1.DefaultCommonEnum.TWO) as dependency_1.DefaultCommonEnum;
     }
@@ -698,6 +761,9 @@ export class DefaultMessageV2WithDefault extends pb_1.Message {
     }
     get has_enum() {
         return pb_1.Message.getField(this, 2) != null;
+    }
+    clear_enum(): void {
+        this.enum = undefined!;
     }
     get bool() {
         return pb_1.Message.getFieldWithDefault(this, 3, true) as boolean;
@@ -708,6 +774,9 @@ export class DefaultMessageV2WithDefault extends pb_1.Message {
     get has_bool() {
         return pb_1.Message.getField(this, 3) != null;
     }
+    clear_bool(): void {
+        this.bool = undefined!;
+    }
     get string() {
         return pb_1.Message.getFieldWithDefault(this, 4, "default string") as string;
     }
@@ -716,6 +785,9 @@ export class DefaultMessageV2WithDefault extends pb_1.Message {
     }
     get has_string() {
         return pb_1.Message.getField(this, 4) != null;
+    }
+    clear_string(): void {
+        this.string = undefined!;
     }
     get int32() {
         return pb_1.Message.getFieldWithDefault(this, 5, 5) as number;
@@ -726,6 +798,9 @@ export class DefaultMessageV2WithDefault extends pb_1.Message {
     get has_int32() {
         return pb_1.Message.getField(this, 5) != null;
     }
+    clear_int32(): void {
+        this.int32 = undefined!;
+    }
     get fixed32() {
         return pb_1.Message.getFieldWithDefault(this, 6, 6) as number;
     }
@@ -734,6 +809,9 @@ export class DefaultMessageV2WithDefault extends pb_1.Message {
     }
     get has_fixed32() {
         return pb_1.Message.getField(this, 6) != null;
+    }
+    clear_fixed32(): void {
+        this.fixed32 = undefined!;
     }
     get sfixed32() {
         return pb_1.Message.getFieldWithDefault(this, 7, 7) as number;
@@ -744,6 +822,9 @@ export class DefaultMessageV2WithDefault extends pb_1.Message {
     get has_sfixed32() {
         return pb_1.Message.getField(this, 7) != null;
     }
+    clear_sfixed32(): void {
+        this.sfixed32 = undefined!;
+    }
     get uint32() {
         return pb_1.Message.getFieldWithDefault(this, 8, 8) as number;
     }
@@ -752,6 +833,9 @@ export class DefaultMessageV2WithDefault extends pb_1.Message {
     }
     get has_uint32() {
         return pb_1.Message.getField(this, 8) != null;
+    }
+    clear_uint32(): void {
+        this.uint32 = undefined!;
     }
     get sint32() {
         return pb_1.Message.getFieldWithDefault(this, 9, 9) as number;
@@ -762,6 +846,9 @@ export class DefaultMessageV2WithDefault extends pb_1.Message {
     get has_sint32() {
         return pb_1.Message.getField(this, 9) != null;
     }
+    clear_sint32(): void {
+        this.sint32 = undefined!;
+    }
     get int64() {
         return pb_1.Message.getFieldWithDefault(this, 10, 10) as number;
     }
@@ -770,6 +857,9 @@ export class DefaultMessageV2WithDefault extends pb_1.Message {
     }
     get has_int64() {
         return pb_1.Message.getField(this, 10) != null;
+    }
+    clear_int64(): void {
+        this.int64 = undefined!;
     }
     get fixed64() {
         return pb_1.Message.getFieldWithDefault(this, 11, 11) as number;
@@ -780,6 +870,9 @@ export class DefaultMessageV2WithDefault extends pb_1.Message {
     get has_fixed64() {
         return pb_1.Message.getField(this, 11) != null;
     }
+    clear_fixed64(): void {
+        this.fixed64 = undefined!;
+    }
     get sfixed64() {
         return pb_1.Message.getFieldWithDefault(this, 12, 12) as number;
     }
@@ -788,6 +881,9 @@ export class DefaultMessageV2WithDefault extends pb_1.Message {
     }
     get has_sfixed64() {
         return pb_1.Message.getField(this, 12) != null;
+    }
+    clear_sfixed64(): void {
+        this.sfixed64 = undefined!;
     }
     get uint64() {
         return pb_1.Message.getFieldWithDefault(this, 13, 13) as number;
@@ -798,6 +894,9 @@ export class DefaultMessageV2WithDefault extends pb_1.Message {
     get has_uint64() {
         return pb_1.Message.getField(this, 13) != null;
     }
+    clear_uint64(): void {
+        this.uint64 = undefined!;
+    }
     get sint64() {
         return pb_1.Message.getFieldWithDefault(this, 14, 14) as number;
     }
@@ -806,6 +905,9 @@ export class DefaultMessageV2WithDefault extends pb_1.Message {
     }
     get has_sint64() {
         return pb_1.Message.getField(this, 14) != null;
+    }
+    clear_sint64(): void {
+        this.sint64 = undefined!;
     }
     get float() {
         return pb_1.Message.getFieldWithDefault(this, 15, 15) as number;
@@ -816,6 +918,9 @@ export class DefaultMessageV2WithDefault extends pb_1.Message {
     get has_float() {
         return pb_1.Message.getField(this, 15) != null;
     }
+    clear_float(): void {
+        this.float = undefined!;
+    }
     get double() {
         return pb_1.Message.getFieldWithDefault(this, 16, 16) as number;
     }
@@ -824,6 +929,9 @@ export class DefaultMessageV2WithDefault extends pb_1.Message {
     }
     get has_double() {
         return pb_1.Message.getField(this, 16) != null;
+    }
+    clear_double(): void {
+        this.double = undefined!;
     }
     get int_but_string() {
         return pb_1.Message.getFieldWithDefault(this, 17, "17") as string;
@@ -834,6 +942,9 @@ export class DefaultMessageV2WithDefault extends pb_1.Message {
     get has_int_but_string() {
         return pb_1.Message.getField(this, 17) != null;
     }
+    clear_int_but_string(): void {
+        this.int_but_string = undefined!;
+    }
     get one_of_int32() {
         return pb_1.Message.getFieldWithDefault(this, 18, 18) as number;
     }
@@ -843,6 +954,9 @@ export class DefaultMessageV2WithDefault extends pb_1.Message {
     get has_one_of_int32() {
         return pb_1.Message.getField(this, 18) != null;
     }
+    clear_one_of_int32(): void {
+        this.one_of_int32 = undefined!;
+    }
     get one_of_message() {
         return pb_1.Message.getWrapperField(this, dependency_1.DefaultCommonMessage, 19) as dependency_1.DefaultCommonMessage | undefined;
     }
@@ -851,6 +965,9 @@ export class DefaultMessageV2WithDefault extends pb_1.Message {
     }
     get has_one_of_message() {
         return pb_1.Message.getField(this, 19) != null;
+    }
+    clear_one_of_message(): void {
+        this.one_of_message = undefined!;
     }
     get one_of() {
         const cases: {

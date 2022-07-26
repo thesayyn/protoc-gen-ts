@@ -120,6 +120,9 @@ export class DefaultCommonMessageOneOf extends pb_1.Message {
     get has_int32() {
         return pb_1.Message.getField(this, 1) != null;
     }
+    clear_int32(): void {
+        this.int32 = undefined!;
+    }
     get message() {
         return pb_1.Message.getWrapperField(this, DefaultCommonMessage, 2) as DefaultCommonMessage | undefined;
     }
@@ -129,6 +132,9 @@ export class DefaultCommonMessageOneOf extends pb_1.Message {
     get has_message() {
         return pb_1.Message.getField(this, 2) != null;
     }
+    clear_message(): void {
+        this.message = undefined!;
+    }
     get string() {
         return pb_1.Message.getFieldWithDefault(this, 3, "") as string;
     }
@@ -137,6 +143,9 @@ export class DefaultCommonMessageOneOf extends pb_1.Message {
     }
     get has_string() {
         return pb_1.Message.getField(this, 3) != null;
+    }
+    clear_string(): void {
+        this.string = undefined!;
     }
     get oneof() {
         const cases: {

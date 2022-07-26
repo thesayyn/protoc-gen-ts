@@ -30,6 +30,9 @@ export class HydratedQuickReplyButton extends pb_1.Message {
     get has_displayText() {
         return pb_1.Message.getField(this, 1) != null;
     }
+    clear_displayText(): void {
+        this.displayText = undefined!;
+    }
     get id() {
         return pb_1.Message.getFieldWithDefault(this, 2, "") as string;
     }
@@ -38,6 +41,9 @@ export class HydratedQuickReplyButton extends pb_1.Message {
     }
     get has_id() {
         return pb_1.Message.getField(this, 2) != null;
+    }
+    clear_id(): void {
+        this.id = undefined!;
     }
     static fromObject(data?: HydratedQuickReplyButton.AsObjectPartial): HydratedQuickReplyButton {
         if (!data) {
@@ -130,6 +136,9 @@ export class HydratedURLButton extends pb_1.Message {
     get has_displayText() {
         return pb_1.Message.getField(this, 1) != null;
     }
+    clear_displayText(): void {
+        this.displayText = undefined!;
+    }
     get url() {
         return pb_1.Message.getFieldWithDefault(this, 2, "") as string;
     }
@@ -138,6 +147,9 @@ export class HydratedURLButton extends pb_1.Message {
     }
     get has_url() {
         return pb_1.Message.getField(this, 2) != null;
+    }
+    clear_url(): void {
+        this.url = undefined!;
     }
     static fromObject(data?: HydratedURLButton.AsObjectPartial): HydratedURLButton {
         if (!data) {
@@ -230,6 +242,9 @@ export class HydratedCallButton extends pb_1.Message {
     get has_displayText() {
         return pb_1.Message.getField(this, 1) != null;
     }
+    clear_displayText(): void {
+        this.displayText = undefined!;
+    }
     get phoneNumber() {
         return pb_1.Message.getFieldWithDefault(this, 2, "") as string;
     }
@@ -238,6 +253,9 @@ export class HydratedCallButton extends pb_1.Message {
     }
     get has_phoneNumber() {
         return pb_1.Message.getField(this, 2) != null;
+    }
+    clear_phoneNumber(): void {
+        this.phoneNumber = undefined!;
     }
     static fromObject(data?: HydratedCallButton.AsObjectPartial): HydratedCallButton {
         if (!data) {
@@ -347,6 +365,9 @@ export class HydratedTemplateButton extends pb_1.Message {
     get has_index() {
         return pb_1.Message.getField(this, 4) != null;
     }
+    clear_index(): void {
+        this.index = undefined!;
+    }
     get quickReplyButton() {
         return pb_1.Message.getWrapperField(this, HydratedQuickReplyButton, 1) as HydratedQuickReplyButton | undefined;
     }
@@ -355,6 +376,9 @@ export class HydratedTemplateButton extends pb_1.Message {
     }
     get has_quickReplyButton() {
         return pb_1.Message.getField(this, 1) != null;
+    }
+    clear_quickReplyButton(): void {
+        this.quickReplyButton = undefined!;
     }
     get urlButton() {
         return pb_1.Message.getWrapperField(this, HydratedURLButton, 2) as HydratedURLButton | undefined;
@@ -365,6 +389,9 @@ export class HydratedTemplateButton extends pb_1.Message {
     get has_urlButton() {
         return pb_1.Message.getField(this, 2) != null;
     }
+    clear_urlButton(): void {
+        this.urlButton = undefined!;
+    }
     get callButton() {
         return pb_1.Message.getWrapperField(this, HydratedCallButton, 3) as HydratedCallButton | undefined;
     }
@@ -373,6 +400,9 @@ export class HydratedTemplateButton extends pb_1.Message {
     }
     get has_callButton() {
         return pb_1.Message.getField(this, 3) != null;
+    }
+    clear_callButton(): void {
+        this.callButton = undefined!;
     }
     get hydratedButton() {
         const cases: {
@@ -504,6 +534,9 @@ export class QuickReplyButton extends pb_1.Message {
     get has_displayText() {
         return pb_1.Message.getField(this, 1) != null;
     }
+    clear_displayText(): void {
+        this.displayText = undefined!;
+    }
     get id() {
         return pb_1.Message.getFieldWithDefault(this, 2, "") as string;
     }
@@ -512,6 +545,9 @@ export class QuickReplyButton extends pb_1.Message {
     }
     get has_id() {
         return pb_1.Message.getField(this, 2) != null;
+    }
+    clear_id(): void {
+        this.id = undefined!;
     }
     static fromObject(data?: QuickReplyButton.AsObjectPartial): QuickReplyButton {
         if (!data) {
@@ -606,6 +642,9 @@ export class URLButton extends pb_1.Message {
     get has_displayText() {
         return pb_1.Message.getField(this, 1) != null;
     }
+    clear_displayText(): void {
+        this.displayText = undefined!;
+    }
     get url() {
         return pb_1.Message.getWrapperField(this, HighlyStructuredMessage, 2) as HighlyStructuredMessage | undefined;
     }
@@ -614,6 +653,9 @@ export class URLButton extends pb_1.Message {
     }
     get has_url() {
         return pb_1.Message.getField(this, 2) != null;
+    }
+    clear_url(): void {
+        this.url = undefined!;
     }
     static fromObject(data?: URLButton.AsObjectPartial): URLButton {
         if (!data) {
@@ -709,6 +751,9 @@ export class CallButton extends pb_1.Message {
     get has_displayText() {
         return pb_1.Message.getField(this, 1) != null;
     }
+    clear_displayText(): void {
+        this.displayText = undefined!;
+    }
     get phoneNumber() {
         return pb_1.Message.getWrapperField(this, HighlyStructuredMessage, 2) as HighlyStructuredMessage | undefined;
     }
@@ -717,6 +762,9 @@ export class CallButton extends pb_1.Message {
     }
     get has_phoneNumber() {
         return pb_1.Message.getField(this, 2) != null;
+    }
+    clear_phoneNumber(): void {
+        this.phoneNumber = undefined!;
     }
     static fromObject(data?: CallButton.AsObjectPartial): CallButton {
         if (!data) {
@@ -829,6 +877,9 @@ export class TemplateButton extends pb_1.Message {
     get has_index() {
         return pb_1.Message.getField(this, 4) != null;
     }
+    clear_index(): void {
+        this.index = undefined!;
+    }
     get quickReplyButton() {
         return pb_1.Message.getWrapperField(this, QuickReplyButton, 1) as QuickReplyButton | undefined;
     }
@@ -837,6 +888,9 @@ export class TemplateButton extends pb_1.Message {
     }
     get has_quickReplyButton() {
         return pb_1.Message.getField(this, 1) != null;
+    }
+    clear_quickReplyButton(): void {
+        this.quickReplyButton = undefined!;
     }
     get urlButton() {
         return pb_1.Message.getWrapperField(this, URLButton, 2) as URLButton | undefined;
@@ -847,6 +901,9 @@ export class TemplateButton extends pb_1.Message {
     get has_urlButton() {
         return pb_1.Message.getField(this, 2) != null;
     }
+    clear_urlButton(): void {
+        this.urlButton = undefined!;
+    }
     get callButton() {
         return pb_1.Message.getWrapperField(this, CallButton, 3) as CallButton | undefined;
     }
@@ -855,6 +912,9 @@ export class TemplateButton extends pb_1.Message {
     }
     get has_callButton() {
         return pb_1.Message.getField(this, 3) != null;
+    }
+    clear_callButton(): void {
+        this.callButton = undefined!;
     }
     get button() {
         const cases: {
@@ -990,6 +1050,9 @@ export class Location extends pb_1.Message {
     get has_degreesLatitude() {
         return pb_1.Message.getField(this, 1) != null;
     }
+    clear_degreesLatitude(): void {
+        this.degreesLatitude = undefined!;
+    }
     get degreesLongitude() {
         return pb_1.Message.getFieldWithDefault(this, 2, 0) as number;
     }
@@ -999,6 +1062,9 @@ export class Location extends pb_1.Message {
     get has_degreesLongitude() {
         return pb_1.Message.getField(this, 2) != null;
     }
+    clear_degreesLongitude(): void {
+        this.degreesLongitude = undefined!;
+    }
     get name() {
         return pb_1.Message.getFieldWithDefault(this, 3, "") as string;
     }
@@ -1007,6 +1073,9 @@ export class Location extends pb_1.Message {
     }
     get has_name() {
         return pb_1.Message.getField(this, 3) != null;
+    }
+    clear_name(): void {
+        this.name = undefined!;
     }
     static fromObject(data?: Location.AsObjectPartial): Location {
         if (!data) {
@@ -1118,6 +1187,9 @@ export class Point extends pb_1.Message {
     get has_xDeprecated() {
         return pb_1.Message.getField(this, 1) != null;
     }
+    clear_xDeprecated(): void {
+        this.xDeprecated = undefined!;
+    }
     get yDeprecated() {
         return pb_1.Message.getFieldWithDefault(this, 2, 0) as number;
     }
@@ -1126,6 +1198,9 @@ export class Point extends pb_1.Message {
     }
     get has_yDeprecated() {
         return pb_1.Message.getField(this, 2) != null;
+    }
+    clear_yDeprecated(): void {
+        this.yDeprecated = undefined!;
     }
     get x() {
         return pb_1.Message.getFieldWithDefault(this, 3, 0) as number;
@@ -1136,6 +1211,9 @@ export class Point extends pb_1.Message {
     get has_x() {
         return pb_1.Message.getField(this, 3) != null;
     }
+    clear_x(): void {
+        this.x = undefined!;
+    }
     get y() {
         return pb_1.Message.getFieldWithDefault(this, 4, 0) as number;
     }
@@ -1144,6 +1222,9 @@ export class Point extends pb_1.Message {
     }
     get has_y() {
         return pb_1.Message.getField(this, 4) != null;
+    }
+    clear_y(): void {
+        this.y = undefined!;
     }
     static fromObject(data?: Point.AsObjectPartial): Point {
         if (!data) {
@@ -1265,6 +1346,9 @@ export class InteractiveAnnotation extends pb_1.Message {
     get has_location() {
         return pb_1.Message.getField(this, 2) != null;
     }
+    clear_location(): void {
+        this.location = undefined!;
+    }
     get action() {
         const cases: {
             [index: number]: "none" | "location";
@@ -1375,6 +1459,9 @@ export class AdReplyInfo extends pb_1.Message {
     get has_advertiserName() {
         return pb_1.Message.getField(this, 1) != null;
     }
+    clear_advertiserName(): void {
+        this.advertiserName = undefined!;
+    }
     get mediaType() {
         return pb_1.Message.getFieldWithDefault(this, 2, AdReplyInfo.AD_REPLY_INFO_MEDIATYPE.NONE) as AdReplyInfo.AD_REPLY_INFO_MEDIATYPE;
     }
@@ -1383,6 +1470,9 @@ export class AdReplyInfo extends pb_1.Message {
     }
     get has_mediaType() {
         return pb_1.Message.getField(this, 2) != null;
+    }
+    clear_mediaType(): void {
+        this.mediaType = undefined!;
     }
     get jpegThumbnail() {
         return pb_1.Message.getFieldWithDefault(this, 16, new Uint8Array()) as Uint8Array;
@@ -1393,6 +1483,9 @@ export class AdReplyInfo extends pb_1.Message {
     get has_jpegThumbnail() {
         return pb_1.Message.getField(this, 16) != null;
     }
+    clear_jpegThumbnail(): void {
+        this.jpegThumbnail = undefined!;
+    }
     get caption() {
         return pb_1.Message.getFieldWithDefault(this, 17, "") as string;
     }
@@ -1401,6 +1494,9 @@ export class AdReplyInfo extends pb_1.Message {
     }
     get has_caption() {
         return pb_1.Message.getField(this, 17) != null;
+    }
+    clear_caption(): void {
+        this.caption = undefined!;
     }
     static fromObject(data?: AdReplyInfo.AsObjectPartial): AdReplyInfo {
         if (!data) {
@@ -1572,6 +1668,9 @@ export class ContextInfo extends pb_1.Message {
     get has_stanzaId() {
         return pb_1.Message.getField(this, 1) != null;
     }
+    clear_stanzaId(): void {
+        this.stanzaId = undefined!;
+    }
     get participant() {
         return pb_1.Message.getFieldWithDefault(this, 2, "") as string;
     }
@@ -1580,6 +1679,9 @@ export class ContextInfo extends pb_1.Message {
     }
     get has_participant() {
         return pb_1.Message.getField(this, 2) != null;
+    }
+    clear_participant(): void {
+        this.participant = undefined!;
     }
     get quotedMessage() {
         return pb_1.Message.getWrapperField(this, Message, 3) as Message | undefined;
@@ -1590,6 +1692,9 @@ export class ContextInfo extends pb_1.Message {
     get has_quotedMessage() {
         return pb_1.Message.getField(this, 3) != null;
     }
+    clear_quotedMessage(): void {
+        this.quotedMessage = undefined!;
+    }
     get remoteJid() {
         return pb_1.Message.getFieldWithDefault(this, 4, "") as string;
     }
@@ -1598,6 +1703,9 @@ export class ContextInfo extends pb_1.Message {
     }
     get has_remoteJid() {
         return pb_1.Message.getField(this, 4) != null;
+    }
+    clear_remoteJid(): void {
+        this.remoteJid = undefined!;
     }
     get mentionedJid() {
         return pb_1.Message.getFieldWithDefault(this, 15, []) as string[];
@@ -1614,6 +1722,9 @@ export class ContextInfo extends pb_1.Message {
     get has_conversionSource() {
         return pb_1.Message.getField(this, 18) != null;
     }
+    clear_conversionSource(): void {
+        this.conversionSource = undefined!;
+    }
     get conversionData() {
         return pb_1.Message.getFieldWithDefault(this, 19, new Uint8Array()) as Uint8Array;
     }
@@ -1622,6 +1733,9 @@ export class ContextInfo extends pb_1.Message {
     }
     get has_conversionData() {
         return pb_1.Message.getField(this, 19) != null;
+    }
+    clear_conversionData(): void {
+        this.conversionData = undefined!;
     }
     get conversionDelaySeconds() {
         return pb_1.Message.getFieldWithDefault(this, 20, 0) as number;
@@ -1632,6 +1746,9 @@ export class ContextInfo extends pb_1.Message {
     get has_conversionDelaySeconds() {
         return pb_1.Message.getField(this, 20) != null;
     }
+    clear_conversionDelaySeconds(): void {
+        this.conversionDelaySeconds = undefined!;
+    }
     get forwardingScore() {
         return pb_1.Message.getFieldWithDefault(this, 21, 0) as number;
     }
@@ -1640,6 +1757,9 @@ export class ContextInfo extends pb_1.Message {
     }
     get has_forwardingScore() {
         return pb_1.Message.getField(this, 21) != null;
+    }
+    clear_forwardingScore(): void {
+        this.forwardingScore = undefined!;
     }
     get isForwarded() {
         return pb_1.Message.getFieldWithDefault(this, 22, false) as boolean;
@@ -1650,6 +1770,9 @@ export class ContextInfo extends pb_1.Message {
     get has_isForwarded() {
         return pb_1.Message.getField(this, 22) != null;
     }
+    clear_isForwarded(): void {
+        this.isForwarded = undefined!;
+    }
     get quotedAd() {
         return pb_1.Message.getWrapperField(this, AdReplyInfo, 23) as AdReplyInfo | undefined;
     }
@@ -1658,6 +1781,9 @@ export class ContextInfo extends pb_1.Message {
     }
     get has_quotedAd() {
         return pb_1.Message.getField(this, 23) != null;
+    }
+    clear_quotedAd(): void {
+        this.quotedAd = undefined!;
     }
     get placeholderKey() {
         return pb_1.Message.getWrapperField(this, MessageKey, 24) as MessageKey | undefined;
@@ -1668,6 +1794,9 @@ export class ContextInfo extends pb_1.Message {
     get has_placeholderKey() {
         return pb_1.Message.getField(this, 24) != null;
     }
+    clear_placeholderKey(): void {
+        this.placeholderKey = undefined!;
+    }
     get expiration() {
         return pb_1.Message.getFieldWithDefault(this, 25, 0) as number;
     }
@@ -1676,6 +1805,9 @@ export class ContextInfo extends pb_1.Message {
     }
     get has_expiration() {
         return pb_1.Message.getField(this, 25) != null;
+    }
+    clear_expiration(): void {
+        this.expiration = undefined!;
     }
     get ephemeralSettingTimestamp() {
         return pb_1.Message.getFieldWithDefault(this, 26, 0) as number;
@@ -1686,6 +1818,9 @@ export class ContextInfo extends pb_1.Message {
     get has_ephemeralSettingTimestamp() {
         return pb_1.Message.getField(this, 26) != null;
     }
+    clear_ephemeralSettingTimestamp(): void {
+        this.ephemeralSettingTimestamp = undefined!;
+    }
     get ephemeralSharedSecret() {
         return pb_1.Message.getFieldWithDefault(this, 27, new Uint8Array()) as Uint8Array;
     }
@@ -1694,6 +1829,9 @@ export class ContextInfo extends pb_1.Message {
     }
     get has_ephemeralSharedSecret() {
         return pb_1.Message.getField(this, 27) != null;
+    }
+    clear_ephemeralSharedSecret(): void {
+        this.ephemeralSharedSecret = undefined!;
     }
     static fromObject(data?: ContextInfo.AsObjectPartial): ContextInfo {
         if (!data) {
@@ -1935,6 +2073,9 @@ export class SenderKeyDistributionMessage extends pb_1.Message {
     get has_groupId() {
         return pb_1.Message.getField(this, 1) != null;
     }
+    clear_groupId(): void {
+        this.groupId = undefined!;
+    }
     get axolotlSenderKeyDistributionMessage() {
         return pb_1.Message.getFieldWithDefault(this, 2, new Uint8Array()) as Uint8Array;
     }
@@ -1943,6 +2084,9 @@ export class SenderKeyDistributionMessage extends pb_1.Message {
     }
     get has_axolotlSenderKeyDistributionMessage() {
         return pb_1.Message.getField(this, 2) != null;
+    }
+    clear_axolotlSenderKeyDistributionMessage(): void {
+        this.axolotlSenderKeyDistributionMessage = undefined!;
     }
     static fromObject(data?: SenderKeyDistributionMessage.AsObjectPartial): SenderKeyDistributionMessage {
         if (!data) {
@@ -2111,6 +2255,9 @@ export class ImageMessage extends pb_1.Message {
     get has_url() {
         return pb_1.Message.getField(this, 1) != null;
     }
+    clear_url(): void {
+        this.url = undefined!;
+    }
     get mimetype() {
         return pb_1.Message.getFieldWithDefault(this, 2, "") as string;
     }
@@ -2119,6 +2266,9 @@ export class ImageMessage extends pb_1.Message {
     }
     get has_mimetype() {
         return pb_1.Message.getField(this, 2) != null;
+    }
+    clear_mimetype(): void {
+        this.mimetype = undefined!;
     }
     get caption() {
         return pb_1.Message.getFieldWithDefault(this, 3, "") as string;
@@ -2129,6 +2279,9 @@ export class ImageMessage extends pb_1.Message {
     get has_caption() {
         return pb_1.Message.getField(this, 3) != null;
     }
+    clear_caption(): void {
+        this.caption = undefined!;
+    }
     get fileSha256() {
         return pb_1.Message.getFieldWithDefault(this, 4, new Uint8Array()) as Uint8Array;
     }
@@ -2137,6 +2290,9 @@ export class ImageMessage extends pb_1.Message {
     }
     get has_fileSha256() {
         return pb_1.Message.getField(this, 4) != null;
+    }
+    clear_fileSha256(): void {
+        this.fileSha256 = undefined!;
     }
     get fileLength() {
         return pb_1.Message.getFieldWithDefault(this, 5, 0) as number;
@@ -2147,6 +2303,9 @@ export class ImageMessage extends pb_1.Message {
     get has_fileLength() {
         return pb_1.Message.getField(this, 5) != null;
     }
+    clear_fileLength(): void {
+        this.fileLength = undefined!;
+    }
     get height() {
         return pb_1.Message.getFieldWithDefault(this, 6, 0) as number;
     }
@@ -2155,6 +2314,9 @@ export class ImageMessage extends pb_1.Message {
     }
     get has_height() {
         return pb_1.Message.getField(this, 6) != null;
+    }
+    clear_height(): void {
+        this.height = undefined!;
     }
     get width() {
         return pb_1.Message.getFieldWithDefault(this, 7, 0) as number;
@@ -2165,6 +2327,9 @@ export class ImageMessage extends pb_1.Message {
     get has_width() {
         return pb_1.Message.getField(this, 7) != null;
     }
+    clear_width(): void {
+        this.width = undefined!;
+    }
     get mediaKey() {
         return pb_1.Message.getFieldWithDefault(this, 8, new Uint8Array()) as Uint8Array;
     }
@@ -2174,6 +2339,9 @@ export class ImageMessage extends pb_1.Message {
     get has_mediaKey() {
         return pb_1.Message.getField(this, 8) != null;
     }
+    clear_mediaKey(): void {
+        this.mediaKey = undefined!;
+    }
     get fileEncSha256() {
         return pb_1.Message.getFieldWithDefault(this, 9, new Uint8Array()) as Uint8Array;
     }
@@ -2182,6 +2350,9 @@ export class ImageMessage extends pb_1.Message {
     }
     get has_fileEncSha256() {
         return pb_1.Message.getField(this, 9) != null;
+    }
+    clear_fileEncSha256(): void {
+        this.fileEncSha256 = undefined!;
     }
     get interactiveAnnotations() {
         return pb_1.Message.getRepeatedWrapperField(this, InteractiveAnnotation, 10) as InteractiveAnnotation[];
@@ -2198,6 +2369,9 @@ export class ImageMessage extends pb_1.Message {
     get has_directPath() {
         return pb_1.Message.getField(this, 11) != null;
     }
+    clear_directPath(): void {
+        this.directPath = undefined!;
+    }
     get mediaKeyTimestamp() {
         return pb_1.Message.getFieldWithDefault(this, 12, 0) as number;
     }
@@ -2206,6 +2380,9 @@ export class ImageMessage extends pb_1.Message {
     }
     get has_mediaKeyTimestamp() {
         return pb_1.Message.getField(this, 12) != null;
+    }
+    clear_mediaKeyTimestamp(): void {
+        this.mediaKeyTimestamp = undefined!;
     }
     get jpegThumbnail() {
         return pb_1.Message.getFieldWithDefault(this, 16, new Uint8Array()) as Uint8Array;
@@ -2216,6 +2393,9 @@ export class ImageMessage extends pb_1.Message {
     get has_jpegThumbnail() {
         return pb_1.Message.getField(this, 16) != null;
     }
+    clear_jpegThumbnail(): void {
+        this.jpegThumbnail = undefined!;
+    }
     get contextInfo() {
         return pb_1.Message.getWrapperField(this, ContextInfo, 17) as ContextInfo | undefined;
     }
@@ -2224,6 +2404,9 @@ export class ImageMessage extends pb_1.Message {
     }
     get has_contextInfo() {
         return pb_1.Message.getField(this, 17) != null;
+    }
+    clear_contextInfo(): void {
+        this.contextInfo = undefined!;
     }
     get firstScanSidecar() {
         return pb_1.Message.getFieldWithDefault(this, 18, new Uint8Array()) as Uint8Array;
@@ -2234,6 +2417,9 @@ export class ImageMessage extends pb_1.Message {
     get has_firstScanSidecar() {
         return pb_1.Message.getField(this, 18) != null;
     }
+    clear_firstScanSidecar(): void {
+        this.firstScanSidecar = undefined!;
+    }
     get firstScanLength() {
         return pb_1.Message.getFieldWithDefault(this, 19, 0) as number;
     }
@@ -2242,6 +2428,9 @@ export class ImageMessage extends pb_1.Message {
     }
     get has_firstScanLength() {
         return pb_1.Message.getField(this, 19) != null;
+    }
+    clear_firstScanLength(): void {
+        this.firstScanLength = undefined!;
     }
     get experimentGroupId() {
         return pb_1.Message.getFieldWithDefault(this, 20, 0) as number;
@@ -2252,6 +2441,9 @@ export class ImageMessage extends pb_1.Message {
     get has_experimentGroupId() {
         return pb_1.Message.getField(this, 20) != null;
     }
+    clear_experimentGroupId(): void {
+        this.experimentGroupId = undefined!;
+    }
     get scansSidecar() {
         return pb_1.Message.getFieldWithDefault(this, 21, new Uint8Array()) as Uint8Array;
     }
@@ -2260,6 +2452,9 @@ export class ImageMessage extends pb_1.Message {
     }
     get has_scansSidecar() {
         return pb_1.Message.getField(this, 21) != null;
+    }
+    clear_scansSidecar(): void {
+        this.scansSidecar = undefined!;
     }
     get scanLengths() {
         return pb_1.Message.getFieldWithDefault(this, 22, []) as number[];
@@ -2276,6 +2471,9 @@ export class ImageMessage extends pb_1.Message {
     get has_midQualityFileSha256() {
         return pb_1.Message.getField(this, 23) != null;
     }
+    clear_midQualityFileSha256(): void {
+        this.midQualityFileSha256 = undefined!;
+    }
     get midQualityFileEncSha256() {
         return pb_1.Message.getFieldWithDefault(this, 24, new Uint8Array()) as Uint8Array;
     }
@@ -2284,6 +2482,9 @@ export class ImageMessage extends pb_1.Message {
     }
     get has_midQualityFileEncSha256() {
         return pb_1.Message.getField(this, 24) != null;
+    }
+    clear_midQualityFileEncSha256(): void {
+        this.midQualityFileEncSha256 = undefined!;
     }
     static fromObject(data?: ImageMessage.AsObjectPartial): ImageMessage {
         if (!data) {
@@ -2591,6 +2792,9 @@ export class ContactMessage extends pb_1.Message {
     get has_displayName() {
         return pb_1.Message.getField(this, 1) != null;
     }
+    clear_displayName(): void {
+        this.displayName = undefined!;
+    }
     get vcard() {
         return pb_1.Message.getFieldWithDefault(this, 16, "") as string;
     }
@@ -2600,6 +2804,9 @@ export class ContactMessage extends pb_1.Message {
     get has_vcard() {
         return pb_1.Message.getField(this, 16) != null;
     }
+    clear_vcard(): void {
+        this.vcard = undefined!;
+    }
     get contextInfo() {
         return pb_1.Message.getWrapperField(this, ContextInfo, 17) as ContextInfo | undefined;
     }
@@ -2608,6 +2815,9 @@ export class ContactMessage extends pb_1.Message {
     }
     get has_contextInfo() {
         return pb_1.Message.getField(this, 17) != null;
+    }
+    clear_contextInfo(): void {
+        this.contextInfo = undefined!;
     }
     static fromObject(data?: ContactMessage.AsObjectPartial): ContactMessage {
         if (!data) {
@@ -2753,6 +2963,9 @@ export class LocationMessage extends pb_1.Message {
     get has_degreesLatitude() {
         return pb_1.Message.getField(this, 1) != null;
     }
+    clear_degreesLatitude(): void {
+        this.degreesLatitude = undefined!;
+    }
     get degreesLongitude() {
         return pb_1.Message.getFieldWithDefault(this, 2, 0) as number;
     }
@@ -2761,6 +2974,9 @@ export class LocationMessage extends pb_1.Message {
     }
     get has_degreesLongitude() {
         return pb_1.Message.getField(this, 2) != null;
+    }
+    clear_degreesLongitude(): void {
+        this.degreesLongitude = undefined!;
     }
     get name() {
         return pb_1.Message.getFieldWithDefault(this, 3, "") as string;
@@ -2771,6 +2987,9 @@ export class LocationMessage extends pb_1.Message {
     get has_name() {
         return pb_1.Message.getField(this, 3) != null;
     }
+    clear_name(): void {
+        this.name = undefined!;
+    }
     get address() {
         return pb_1.Message.getFieldWithDefault(this, 4, "") as string;
     }
@@ -2779,6 +2998,9 @@ export class LocationMessage extends pb_1.Message {
     }
     get has_address() {
         return pb_1.Message.getField(this, 4) != null;
+    }
+    clear_address(): void {
+        this.address = undefined!;
     }
     get url() {
         return pb_1.Message.getFieldWithDefault(this, 5, "") as string;
@@ -2789,6 +3011,9 @@ export class LocationMessage extends pb_1.Message {
     get has_url() {
         return pb_1.Message.getField(this, 5) != null;
     }
+    clear_url(): void {
+        this.url = undefined!;
+    }
     get isLive() {
         return pb_1.Message.getFieldWithDefault(this, 6, false) as boolean;
     }
@@ -2797,6 +3022,9 @@ export class LocationMessage extends pb_1.Message {
     }
     get has_isLive() {
         return pb_1.Message.getField(this, 6) != null;
+    }
+    clear_isLive(): void {
+        this.isLive = undefined!;
     }
     get accuracyInMeters() {
         return pb_1.Message.getFieldWithDefault(this, 7, 0) as number;
@@ -2807,6 +3035,9 @@ export class LocationMessage extends pb_1.Message {
     get has_accuracyInMeters() {
         return pb_1.Message.getField(this, 7) != null;
     }
+    clear_accuracyInMeters(): void {
+        this.accuracyInMeters = undefined!;
+    }
     get speedInMps() {
         return pb_1.Message.getFieldWithDefault(this, 8, 0) as number;
     }
@@ -2815,6 +3046,9 @@ export class LocationMessage extends pb_1.Message {
     }
     get has_speedInMps() {
         return pb_1.Message.getField(this, 8) != null;
+    }
+    clear_speedInMps(): void {
+        this.speedInMps = undefined!;
     }
     get degreesClockwiseFromMagneticNorth() {
         return pb_1.Message.getFieldWithDefault(this, 9, 0) as number;
@@ -2825,6 +3059,9 @@ export class LocationMessage extends pb_1.Message {
     get has_degreesClockwiseFromMagneticNorth() {
         return pb_1.Message.getField(this, 9) != null;
     }
+    clear_degreesClockwiseFromMagneticNorth(): void {
+        this.degreesClockwiseFromMagneticNorth = undefined!;
+    }
     get comment() {
         return pb_1.Message.getFieldWithDefault(this, 11, "") as string;
     }
@@ -2833,6 +3070,9 @@ export class LocationMessage extends pb_1.Message {
     }
     get has_comment() {
         return pb_1.Message.getField(this, 11) != null;
+    }
+    clear_comment(): void {
+        this.comment = undefined!;
     }
     get jpegThumbnail() {
         return pb_1.Message.getFieldWithDefault(this, 16, new Uint8Array()) as Uint8Array;
@@ -2843,6 +3083,9 @@ export class LocationMessage extends pb_1.Message {
     get has_jpegThumbnail() {
         return pb_1.Message.getField(this, 16) != null;
     }
+    clear_jpegThumbnail(): void {
+        this.jpegThumbnail = undefined!;
+    }
     get contextInfo() {
         return pb_1.Message.getWrapperField(this, ContextInfo, 17) as ContextInfo | undefined;
     }
@@ -2851,6 +3094,9 @@ export class LocationMessage extends pb_1.Message {
     }
     get has_contextInfo() {
         return pb_1.Message.getField(this, 17) != null;
+    }
+    clear_contextInfo(): void {
+        this.contextInfo = undefined!;
     }
     static fromObject(data?: LocationMessage.AsObjectPartial): LocationMessage {
         if (!data) {
@@ -3095,6 +3341,9 @@ export class ExtendedTextMessage extends pb_1.Message {
     get has_text() {
         return pb_1.Message.getField(this, 1) != null;
     }
+    clear_text(): void {
+        this.text = undefined!;
+    }
     get matchedText() {
         return pb_1.Message.getFieldWithDefault(this, 2, "") as string;
     }
@@ -3103,6 +3352,9 @@ export class ExtendedTextMessage extends pb_1.Message {
     }
     get has_matchedText() {
         return pb_1.Message.getField(this, 2) != null;
+    }
+    clear_matchedText(): void {
+        this.matchedText = undefined!;
     }
     get canonicalUrl() {
         return pb_1.Message.getFieldWithDefault(this, 4, "") as string;
@@ -3113,6 +3365,9 @@ export class ExtendedTextMessage extends pb_1.Message {
     get has_canonicalUrl() {
         return pb_1.Message.getField(this, 4) != null;
     }
+    clear_canonicalUrl(): void {
+        this.canonicalUrl = undefined!;
+    }
     get description() {
         return pb_1.Message.getFieldWithDefault(this, 5, "") as string;
     }
@@ -3121,6 +3376,9 @@ export class ExtendedTextMessage extends pb_1.Message {
     }
     get has_description() {
         return pb_1.Message.getField(this, 5) != null;
+    }
+    clear_description(): void {
+        this.description = undefined!;
     }
     get title() {
         return pb_1.Message.getFieldWithDefault(this, 6, "") as string;
@@ -3131,6 +3389,9 @@ export class ExtendedTextMessage extends pb_1.Message {
     get has_title() {
         return pb_1.Message.getField(this, 6) != null;
     }
+    clear_title(): void {
+        this.title = undefined!;
+    }
     get textArgb() {
         return pb_1.Message.getFieldWithDefault(this, 7, 0) as number;
     }
@@ -3139,6 +3400,9 @@ export class ExtendedTextMessage extends pb_1.Message {
     }
     get has_textArgb() {
         return pb_1.Message.getField(this, 7) != null;
+    }
+    clear_textArgb(): void {
+        this.textArgb = undefined!;
     }
     get backgroundArgb() {
         return pb_1.Message.getFieldWithDefault(this, 8, 0) as number;
@@ -3149,6 +3413,9 @@ export class ExtendedTextMessage extends pb_1.Message {
     get has_backgroundArgb() {
         return pb_1.Message.getField(this, 8) != null;
     }
+    clear_backgroundArgb(): void {
+        this.backgroundArgb = undefined!;
+    }
     get font() {
         return pb_1.Message.getFieldWithDefault(this, 9, ExtendedTextMessage.EXTENDED_TEXT_MESSAGE_FONTTYPE.SANS_SERIF) as ExtendedTextMessage.EXTENDED_TEXT_MESSAGE_FONTTYPE;
     }
@@ -3157,6 +3424,9 @@ export class ExtendedTextMessage extends pb_1.Message {
     }
     get has_font() {
         return pb_1.Message.getField(this, 9) != null;
+    }
+    clear_font(): void {
+        this.font = undefined!;
     }
     get previewType() {
         return pb_1.Message.getFieldWithDefault(this, 10, ExtendedTextMessage.EXTENDED_TEXT_MESSAGE_PREVIEWTYPE.NONE) as ExtendedTextMessage.EXTENDED_TEXT_MESSAGE_PREVIEWTYPE;
@@ -3167,6 +3437,9 @@ export class ExtendedTextMessage extends pb_1.Message {
     get has_previewType() {
         return pb_1.Message.getField(this, 10) != null;
     }
+    clear_previewType(): void {
+        this.previewType = undefined!;
+    }
     get jpegThumbnail() {
         return pb_1.Message.getFieldWithDefault(this, 16, new Uint8Array()) as Uint8Array;
     }
@@ -3175,6 +3448,9 @@ export class ExtendedTextMessage extends pb_1.Message {
     }
     get has_jpegThumbnail() {
         return pb_1.Message.getField(this, 16) != null;
+    }
+    clear_jpegThumbnail(): void {
+        this.jpegThumbnail = undefined!;
     }
     get contextInfo() {
         return pb_1.Message.getWrapperField(this, ContextInfo, 17) as ContextInfo | undefined;
@@ -3185,6 +3461,9 @@ export class ExtendedTextMessage extends pb_1.Message {
     get has_contextInfo() {
         return pb_1.Message.getField(this, 17) != null;
     }
+    clear_contextInfo(): void {
+        this.contextInfo = undefined!;
+    }
     get doNotPlayInline() {
         return pb_1.Message.getFieldWithDefault(this, 18, false) as boolean;
     }
@@ -3193,6 +3472,9 @@ export class ExtendedTextMessage extends pb_1.Message {
     }
     get has_doNotPlayInline() {
         return pb_1.Message.getField(this, 18) != null;
+    }
+    clear_doNotPlayInline(): void {
+        this.doNotPlayInline = undefined!;
     }
     static fromObject(data?: ExtendedTextMessage.AsObjectPartial): ExtendedTextMessage {
         if (!data) {
@@ -3453,6 +3735,9 @@ export class DocumentMessage extends pb_1.Message {
     get has_url() {
         return pb_1.Message.getField(this, 1) != null;
     }
+    clear_url(): void {
+        this.url = undefined!;
+    }
     get mimetype() {
         return pb_1.Message.getFieldWithDefault(this, 2, "") as string;
     }
@@ -3461,6 +3746,9 @@ export class DocumentMessage extends pb_1.Message {
     }
     get has_mimetype() {
         return pb_1.Message.getField(this, 2) != null;
+    }
+    clear_mimetype(): void {
+        this.mimetype = undefined!;
     }
     get title() {
         return pb_1.Message.getFieldWithDefault(this, 3, "") as string;
@@ -3471,6 +3759,9 @@ export class DocumentMessage extends pb_1.Message {
     get has_title() {
         return pb_1.Message.getField(this, 3) != null;
     }
+    clear_title(): void {
+        this.title = undefined!;
+    }
     get fileSha256() {
         return pb_1.Message.getFieldWithDefault(this, 4, new Uint8Array()) as Uint8Array;
     }
@@ -3479,6 +3770,9 @@ export class DocumentMessage extends pb_1.Message {
     }
     get has_fileSha256() {
         return pb_1.Message.getField(this, 4) != null;
+    }
+    clear_fileSha256(): void {
+        this.fileSha256 = undefined!;
     }
     get fileLength() {
         return pb_1.Message.getFieldWithDefault(this, 5, 0) as number;
@@ -3489,6 +3783,9 @@ export class DocumentMessage extends pb_1.Message {
     get has_fileLength() {
         return pb_1.Message.getField(this, 5) != null;
     }
+    clear_fileLength(): void {
+        this.fileLength = undefined!;
+    }
     get pageCount() {
         return pb_1.Message.getFieldWithDefault(this, 6, 0) as number;
     }
@@ -3497,6 +3794,9 @@ export class DocumentMessage extends pb_1.Message {
     }
     get has_pageCount() {
         return pb_1.Message.getField(this, 6) != null;
+    }
+    clear_pageCount(): void {
+        this.pageCount = undefined!;
     }
     get mediaKey() {
         return pb_1.Message.getFieldWithDefault(this, 7, new Uint8Array()) as Uint8Array;
@@ -3507,6 +3807,9 @@ export class DocumentMessage extends pb_1.Message {
     get has_mediaKey() {
         return pb_1.Message.getField(this, 7) != null;
     }
+    clear_mediaKey(): void {
+        this.mediaKey = undefined!;
+    }
     get fileName() {
         return pb_1.Message.getFieldWithDefault(this, 8, "") as string;
     }
@@ -3515,6 +3818,9 @@ export class DocumentMessage extends pb_1.Message {
     }
     get has_fileName() {
         return pb_1.Message.getField(this, 8) != null;
+    }
+    clear_fileName(): void {
+        this.fileName = undefined!;
     }
     get fileEncSha256() {
         return pb_1.Message.getFieldWithDefault(this, 9, new Uint8Array()) as Uint8Array;
@@ -3525,6 +3831,9 @@ export class DocumentMessage extends pb_1.Message {
     get has_fileEncSha256() {
         return pb_1.Message.getField(this, 9) != null;
     }
+    clear_fileEncSha256(): void {
+        this.fileEncSha256 = undefined!;
+    }
     get directPath() {
         return pb_1.Message.getFieldWithDefault(this, 10, "") as string;
     }
@@ -3533,6 +3842,9 @@ export class DocumentMessage extends pb_1.Message {
     }
     get has_directPath() {
         return pb_1.Message.getField(this, 10) != null;
+    }
+    clear_directPath(): void {
+        this.directPath = undefined!;
     }
     get mediaKeyTimestamp() {
         return pb_1.Message.getFieldWithDefault(this, 11, 0) as number;
@@ -3543,6 +3855,9 @@ export class DocumentMessage extends pb_1.Message {
     get has_mediaKeyTimestamp() {
         return pb_1.Message.getField(this, 11) != null;
     }
+    clear_mediaKeyTimestamp(): void {
+        this.mediaKeyTimestamp = undefined!;
+    }
     get jpegThumbnail() {
         return pb_1.Message.getFieldWithDefault(this, 16, new Uint8Array()) as Uint8Array;
     }
@@ -3552,6 +3867,9 @@ export class DocumentMessage extends pb_1.Message {
     get has_jpegThumbnail() {
         return pb_1.Message.getField(this, 16) != null;
     }
+    clear_jpegThumbnail(): void {
+        this.jpegThumbnail = undefined!;
+    }
     get contextInfo() {
         return pb_1.Message.getWrapperField(this, ContextInfo, 17) as ContextInfo | undefined;
     }
@@ -3560,6 +3878,9 @@ export class DocumentMessage extends pb_1.Message {
     }
     get has_contextInfo() {
         return pb_1.Message.getField(this, 17) != null;
+    }
+    clear_contextInfo(): void {
+        this.contextInfo = undefined!;
     }
     static fromObject(data?: DocumentMessage.AsObjectPartial): DocumentMessage {
         if (!data) {
@@ -3815,6 +4136,9 @@ export class AudioMessage extends pb_1.Message {
     get has_url() {
         return pb_1.Message.getField(this, 1) != null;
     }
+    clear_url(): void {
+        this.url = undefined!;
+    }
     get mimetype() {
         return pb_1.Message.getFieldWithDefault(this, 2, "") as string;
     }
@@ -3823,6 +4147,9 @@ export class AudioMessage extends pb_1.Message {
     }
     get has_mimetype() {
         return pb_1.Message.getField(this, 2) != null;
+    }
+    clear_mimetype(): void {
+        this.mimetype = undefined!;
     }
     get fileSha256() {
         return pb_1.Message.getFieldWithDefault(this, 3, new Uint8Array()) as Uint8Array;
@@ -3833,6 +4160,9 @@ export class AudioMessage extends pb_1.Message {
     get has_fileSha256() {
         return pb_1.Message.getField(this, 3) != null;
     }
+    clear_fileSha256(): void {
+        this.fileSha256 = undefined!;
+    }
     get fileLength() {
         return pb_1.Message.getFieldWithDefault(this, 4, 0) as number;
     }
@@ -3841,6 +4171,9 @@ export class AudioMessage extends pb_1.Message {
     }
     get has_fileLength() {
         return pb_1.Message.getField(this, 4) != null;
+    }
+    clear_fileLength(): void {
+        this.fileLength = undefined!;
     }
     get seconds() {
         return pb_1.Message.getFieldWithDefault(this, 5, 0) as number;
@@ -3851,6 +4184,9 @@ export class AudioMessage extends pb_1.Message {
     get has_seconds() {
         return pb_1.Message.getField(this, 5) != null;
     }
+    clear_seconds(): void {
+        this.seconds = undefined!;
+    }
     get ptt() {
         return pb_1.Message.getFieldWithDefault(this, 6, false) as boolean;
     }
@@ -3859,6 +4195,9 @@ export class AudioMessage extends pb_1.Message {
     }
     get has_ptt() {
         return pb_1.Message.getField(this, 6) != null;
+    }
+    clear_ptt(): void {
+        this.ptt = undefined!;
     }
     get mediaKey() {
         return pb_1.Message.getFieldWithDefault(this, 7, new Uint8Array()) as Uint8Array;
@@ -3869,6 +4208,9 @@ export class AudioMessage extends pb_1.Message {
     get has_mediaKey() {
         return pb_1.Message.getField(this, 7) != null;
     }
+    clear_mediaKey(): void {
+        this.mediaKey = undefined!;
+    }
     get fileEncSha256() {
         return pb_1.Message.getFieldWithDefault(this, 8, new Uint8Array()) as Uint8Array;
     }
@@ -3877,6 +4219,9 @@ export class AudioMessage extends pb_1.Message {
     }
     get has_fileEncSha256() {
         return pb_1.Message.getField(this, 8) != null;
+    }
+    clear_fileEncSha256(): void {
+        this.fileEncSha256 = undefined!;
     }
     get directPath() {
         return pb_1.Message.getFieldWithDefault(this, 9, "") as string;
@@ -3887,6 +4232,9 @@ export class AudioMessage extends pb_1.Message {
     get has_directPath() {
         return pb_1.Message.getField(this, 9) != null;
     }
+    clear_directPath(): void {
+        this.directPath = undefined!;
+    }
     get mediaKeyTimestamp() {
         return pb_1.Message.getFieldWithDefault(this, 10, 0) as number;
     }
@@ -3895,6 +4243,9 @@ export class AudioMessage extends pb_1.Message {
     }
     get has_mediaKeyTimestamp() {
         return pb_1.Message.getField(this, 10) != null;
+    }
+    clear_mediaKeyTimestamp(): void {
+        this.mediaKeyTimestamp = undefined!;
     }
     get contextInfo() {
         return pb_1.Message.getWrapperField(this, ContextInfo, 17) as ContextInfo | undefined;
@@ -3905,6 +4256,9 @@ export class AudioMessage extends pb_1.Message {
     get has_contextInfo() {
         return pb_1.Message.getField(this, 17) != null;
     }
+    clear_contextInfo(): void {
+        this.contextInfo = undefined!;
+    }
     get streamingSidecar() {
         return pb_1.Message.getFieldWithDefault(this, 18, new Uint8Array()) as Uint8Array;
     }
@@ -3913,6 +4267,9 @@ export class AudioMessage extends pb_1.Message {
     }
     get has_streamingSidecar() {
         return pb_1.Message.getField(this, 18) != null;
+    }
+    clear_streamingSidecar(): void {
+        this.streamingSidecar = undefined!;
     }
     static fromObject(data?: AudioMessage.AsObjectPartial): AudioMessage {
         if (!data) {
@@ -4181,6 +4538,9 @@ export class VideoMessage extends pb_1.Message {
     get has_url() {
         return pb_1.Message.getField(this, 1) != null;
     }
+    clear_url(): void {
+        this.url = undefined!;
+    }
     get mimetype() {
         return pb_1.Message.getFieldWithDefault(this, 2, "") as string;
     }
@@ -4189,6 +4549,9 @@ export class VideoMessage extends pb_1.Message {
     }
     get has_mimetype() {
         return pb_1.Message.getField(this, 2) != null;
+    }
+    clear_mimetype(): void {
+        this.mimetype = undefined!;
     }
     get fileSha256() {
         return pb_1.Message.getFieldWithDefault(this, 3, new Uint8Array()) as Uint8Array;
@@ -4199,6 +4562,9 @@ export class VideoMessage extends pb_1.Message {
     get has_fileSha256() {
         return pb_1.Message.getField(this, 3) != null;
     }
+    clear_fileSha256(): void {
+        this.fileSha256 = undefined!;
+    }
     get fileLength() {
         return pb_1.Message.getFieldWithDefault(this, 4, 0) as number;
     }
@@ -4207,6 +4573,9 @@ export class VideoMessage extends pb_1.Message {
     }
     get has_fileLength() {
         return pb_1.Message.getField(this, 4) != null;
+    }
+    clear_fileLength(): void {
+        this.fileLength = undefined!;
     }
     get seconds() {
         return pb_1.Message.getFieldWithDefault(this, 5, 0) as number;
@@ -4217,6 +4586,9 @@ export class VideoMessage extends pb_1.Message {
     get has_seconds() {
         return pb_1.Message.getField(this, 5) != null;
     }
+    clear_seconds(): void {
+        this.seconds = undefined!;
+    }
     get mediaKey() {
         return pb_1.Message.getFieldWithDefault(this, 6, new Uint8Array()) as Uint8Array;
     }
@@ -4225,6 +4597,9 @@ export class VideoMessage extends pb_1.Message {
     }
     get has_mediaKey() {
         return pb_1.Message.getField(this, 6) != null;
+    }
+    clear_mediaKey(): void {
+        this.mediaKey = undefined!;
     }
     get caption() {
         return pb_1.Message.getFieldWithDefault(this, 7, "") as string;
@@ -4235,6 +4610,9 @@ export class VideoMessage extends pb_1.Message {
     get has_caption() {
         return pb_1.Message.getField(this, 7) != null;
     }
+    clear_caption(): void {
+        this.caption = undefined!;
+    }
     get gifPlayback() {
         return pb_1.Message.getFieldWithDefault(this, 8, false) as boolean;
     }
@@ -4243,6 +4621,9 @@ export class VideoMessage extends pb_1.Message {
     }
     get has_gifPlayback() {
         return pb_1.Message.getField(this, 8) != null;
+    }
+    clear_gifPlayback(): void {
+        this.gifPlayback = undefined!;
     }
     get height() {
         return pb_1.Message.getFieldWithDefault(this, 9, 0) as number;
@@ -4253,6 +4634,9 @@ export class VideoMessage extends pb_1.Message {
     get has_height() {
         return pb_1.Message.getField(this, 9) != null;
     }
+    clear_height(): void {
+        this.height = undefined!;
+    }
     get width() {
         return pb_1.Message.getFieldWithDefault(this, 10, 0) as number;
     }
@@ -4262,6 +4646,9 @@ export class VideoMessage extends pb_1.Message {
     get has_width() {
         return pb_1.Message.getField(this, 10) != null;
     }
+    clear_width(): void {
+        this.width = undefined!;
+    }
     get fileEncSha256() {
         return pb_1.Message.getFieldWithDefault(this, 11, new Uint8Array()) as Uint8Array;
     }
@@ -4270,6 +4657,9 @@ export class VideoMessage extends pb_1.Message {
     }
     get has_fileEncSha256() {
         return pb_1.Message.getField(this, 11) != null;
+    }
+    clear_fileEncSha256(): void {
+        this.fileEncSha256 = undefined!;
     }
     get interactiveAnnotations() {
         return pb_1.Message.getRepeatedWrapperField(this, InteractiveAnnotation, 12) as InteractiveAnnotation[];
@@ -4286,6 +4676,9 @@ export class VideoMessage extends pb_1.Message {
     get has_directPath() {
         return pb_1.Message.getField(this, 13) != null;
     }
+    clear_directPath(): void {
+        this.directPath = undefined!;
+    }
     get mediaKeyTimestamp() {
         return pb_1.Message.getFieldWithDefault(this, 14, 0) as number;
     }
@@ -4294,6 +4687,9 @@ export class VideoMessage extends pb_1.Message {
     }
     get has_mediaKeyTimestamp() {
         return pb_1.Message.getField(this, 14) != null;
+    }
+    clear_mediaKeyTimestamp(): void {
+        this.mediaKeyTimestamp = undefined!;
     }
     get jpegThumbnail() {
         return pb_1.Message.getFieldWithDefault(this, 16, new Uint8Array()) as Uint8Array;
@@ -4304,6 +4700,9 @@ export class VideoMessage extends pb_1.Message {
     get has_jpegThumbnail() {
         return pb_1.Message.getField(this, 16) != null;
     }
+    clear_jpegThumbnail(): void {
+        this.jpegThumbnail = undefined!;
+    }
     get contextInfo() {
         return pb_1.Message.getWrapperField(this, ContextInfo, 17) as ContextInfo | undefined;
     }
@@ -4312,6 +4711,9 @@ export class VideoMessage extends pb_1.Message {
     }
     get has_contextInfo() {
         return pb_1.Message.getField(this, 17) != null;
+    }
+    clear_contextInfo(): void {
+        this.contextInfo = undefined!;
     }
     get streamingSidecar() {
         return pb_1.Message.getFieldWithDefault(this, 18, new Uint8Array()) as Uint8Array;
@@ -4322,6 +4724,9 @@ export class VideoMessage extends pb_1.Message {
     get has_streamingSidecar() {
         return pb_1.Message.getField(this, 18) != null;
     }
+    clear_streamingSidecar(): void {
+        this.streamingSidecar = undefined!;
+    }
     get gifAttribution() {
         return pb_1.Message.getFieldWithDefault(this, 19, VideoMessage.VIDEO_MESSAGE_ATTRIBUTION.NONE) as VideoMessage.VIDEO_MESSAGE_ATTRIBUTION;
     }
@@ -4330,6 +4735,9 @@ export class VideoMessage extends pb_1.Message {
     }
     get has_gifAttribution() {
         return pb_1.Message.getField(this, 19) != null;
+    }
+    clear_gifAttribution(): void {
+        this.gifAttribution = undefined!;
     }
     static fromObject(data?: VideoMessage.AsObjectPartial): VideoMessage {
         if (!data) {
@@ -4601,6 +5009,9 @@ export class Call extends pb_1.Message {
     get has_callKey() {
         return pb_1.Message.getField(this, 1) != null;
     }
+    clear_callKey(): void {
+        this.callKey = undefined!;
+    }
     static fromObject(data?: Call.AsObjectPartial): Call {
         if (!data) {
             return new Call();
@@ -4681,6 +5092,9 @@ export class Chat extends pb_1.Message {
     get has_displayName() {
         return pb_1.Message.getField(this, 1) != null;
     }
+    clear_displayName(): void {
+        this.displayName = undefined!;
+    }
     get id() {
         return pb_1.Message.getFieldWithDefault(this, 2, "") as string;
     }
@@ -4689,6 +5103,9 @@ export class Chat extends pb_1.Message {
     }
     get has_id() {
         return pb_1.Message.getField(this, 2) != null;
+    }
+    clear_id(): void {
+        this.id = undefined!;
     }
     static fromObject(data?: Chat.AsObjectPartial): Chat {
         if (!data) {
@@ -4793,6 +5210,9 @@ export class ProtocolMessage extends pb_1.Message {
     get has_key() {
         return pb_1.Message.getField(this, 1) != null;
     }
+    clear_key(): void {
+        this.key = undefined!;
+    }
     get type() {
         return pb_1.Message.getFieldWithDefault(this, 2, ProtocolMessage.PROTOCOL_MESSAGE_TYPE.REVOKE) as ProtocolMessage.PROTOCOL_MESSAGE_TYPE;
     }
@@ -4801,6 +5221,9 @@ export class ProtocolMessage extends pb_1.Message {
     }
     get has_type() {
         return pb_1.Message.getField(this, 2) != null;
+    }
+    clear_type(): void {
+        this.type = undefined!;
     }
     get ephemeralExpiration() {
         return pb_1.Message.getFieldWithDefault(this, 4, 0) as number;
@@ -4811,6 +5234,9 @@ export class ProtocolMessage extends pb_1.Message {
     get has_ephemeralExpiration() {
         return pb_1.Message.getField(this, 4) != null;
     }
+    clear_ephemeralExpiration(): void {
+        this.ephemeralExpiration = undefined!;
+    }
     get ephemeralSettingTimestamp() {
         return pb_1.Message.getFieldWithDefault(this, 5, 0) as number;
     }
@@ -4820,6 +5246,9 @@ export class ProtocolMessage extends pb_1.Message {
     get has_ephemeralSettingTimestamp() {
         return pb_1.Message.getField(this, 5) != null;
     }
+    clear_ephemeralSettingTimestamp(): void {
+        this.ephemeralSettingTimestamp = undefined!;
+    }
     get historySyncNotification() {
         return pb_1.Message.getWrapperField(this, HistorySyncNotification, 6) as HistorySyncNotification | undefined;
     }
@@ -4828,6 +5257,9 @@ export class ProtocolMessage extends pb_1.Message {
     }
     get has_historySyncNotification() {
         return pb_1.Message.getField(this, 6) != null;
+    }
+    clear_historySyncNotification(): void {
+        this.historySyncNotification = undefined!;
     }
     static fromObject(data?: ProtocolMessage.AsObjectPartial): ProtocolMessage {
         if (!data) {
@@ -4987,6 +5419,9 @@ export class HistorySyncNotification extends pb_1.Message {
     get has_fileSha256() {
         return pb_1.Message.getField(this, 1) != null;
     }
+    clear_fileSha256(): void {
+        this.fileSha256 = undefined!;
+    }
     get fileLength() {
         return pb_1.Message.getFieldWithDefault(this, 2, 0) as number;
     }
@@ -4995,6 +5430,9 @@ export class HistorySyncNotification extends pb_1.Message {
     }
     get has_fileLength() {
         return pb_1.Message.getField(this, 2) != null;
+    }
+    clear_fileLength(): void {
+        this.fileLength = undefined!;
     }
     get mediaKey() {
         return pb_1.Message.getFieldWithDefault(this, 3, new Uint8Array()) as Uint8Array;
@@ -5005,6 +5443,9 @@ export class HistorySyncNotification extends pb_1.Message {
     get has_mediaKey() {
         return pb_1.Message.getField(this, 3) != null;
     }
+    clear_mediaKey(): void {
+        this.mediaKey = undefined!;
+    }
     get fileEncSha256() {
         return pb_1.Message.getFieldWithDefault(this, 4, new Uint8Array()) as Uint8Array;
     }
@@ -5013,6 +5454,9 @@ export class HistorySyncNotification extends pb_1.Message {
     }
     get has_fileEncSha256() {
         return pb_1.Message.getField(this, 4) != null;
+    }
+    clear_fileEncSha256(): void {
+        this.fileEncSha256 = undefined!;
     }
     get directPath() {
         return pb_1.Message.getFieldWithDefault(this, 5, "") as string;
@@ -5023,6 +5467,9 @@ export class HistorySyncNotification extends pb_1.Message {
     get has_directPath() {
         return pb_1.Message.getField(this, 5) != null;
     }
+    clear_directPath(): void {
+        this.directPath = undefined!;
+    }
     get syncType() {
         return pb_1.Message.getFieldWithDefault(this, 6, HistorySyncNotification.HISTORY_SYNC_NOTIFICATION_HISTORYSYNCTYPE.INITIAL_BOOTSTRAP) as HistorySyncNotification.HISTORY_SYNC_NOTIFICATION_HISTORYSYNCTYPE;
     }
@@ -5031,6 +5478,9 @@ export class HistorySyncNotification extends pb_1.Message {
     }
     get has_syncType() {
         return pb_1.Message.getField(this, 6) != null;
+    }
+    clear_syncType(): void {
+        this.syncType = undefined!;
     }
     get chunkOrder() {
         return pb_1.Message.getFieldWithDefault(this, 7, 0) as number;
@@ -5041,6 +5491,9 @@ export class HistorySyncNotification extends pb_1.Message {
     get has_chunkOrder() {
         return pb_1.Message.getField(this, 7) != null;
     }
+    clear_chunkOrder(): void {
+        this.chunkOrder = undefined!;
+    }
     get originalMessageId() {
         return pb_1.Message.getFieldWithDefault(this, 8, "") as string;
     }
@@ -5049,6 +5502,9 @@ export class HistorySyncNotification extends pb_1.Message {
     }
     get has_originalMessageId() {
         return pb_1.Message.getField(this, 8) != null;
+    }
+    clear_originalMessageId(): void {
+        this.originalMessageId = undefined!;
     }
     static fromObject(data?: HistorySyncNotification.AsObjectPartial): HistorySyncNotification {
         if (!data) {
@@ -5218,6 +5674,9 @@ export class ContactsArrayMessage extends pb_1.Message {
     get has_displayName() {
         return pb_1.Message.getField(this, 1) != null;
     }
+    clear_displayName(): void {
+        this.displayName = undefined!;
+    }
     get contacts() {
         return pb_1.Message.getRepeatedWrapperField(this, ContactMessage, 2) as ContactMessage[];
     }
@@ -5232,6 +5691,9 @@ export class ContactsArrayMessage extends pb_1.Message {
     }
     get has_contextInfo() {
         return pb_1.Message.getField(this, 17) != null;
+    }
+    clear_contextInfo(): void {
+        this.contextInfo = undefined!;
     }
     static fromObject(data?: ContactsArrayMessage.AsObjectPartial): ContactsArrayMessage {
         if (!data) {
@@ -5337,6 +5799,9 @@ export class HSMCurrency extends pb_1.Message {
     get has_currencyCode() {
         return pb_1.Message.getField(this, 1) != null;
     }
+    clear_currencyCode(): void {
+        this.currencyCode = undefined!;
+    }
     get amount1000() {
         return pb_1.Message.getFieldWithDefault(this, 2, 0) as number;
     }
@@ -5345,6 +5810,9 @@ export class HSMCurrency extends pb_1.Message {
     }
     get has_amount1000() {
         return pb_1.Message.getField(this, 2) != null;
+    }
+    clear_amount1000(): void {
+        this.amount1000 = undefined!;
     }
     static fromObject(data?: HSMCurrency.AsObjectPartial): HSMCurrency {
         if (!data) {
@@ -5457,6 +5925,9 @@ export class HSMDateTimeComponent extends pb_1.Message {
     get has_dayOfWeek() {
         return pb_1.Message.getField(this, 1) != null;
     }
+    clear_dayOfWeek(): void {
+        this.dayOfWeek = undefined!;
+    }
     get year() {
         return pb_1.Message.getFieldWithDefault(this, 2, 0) as number;
     }
@@ -5465,6 +5936,9 @@ export class HSMDateTimeComponent extends pb_1.Message {
     }
     get has_year() {
         return pb_1.Message.getField(this, 2) != null;
+    }
+    clear_year(): void {
+        this.year = undefined!;
     }
     get month() {
         return pb_1.Message.getFieldWithDefault(this, 3, 0) as number;
@@ -5475,6 +5949,9 @@ export class HSMDateTimeComponent extends pb_1.Message {
     get has_month() {
         return pb_1.Message.getField(this, 3) != null;
     }
+    clear_month(): void {
+        this.month = undefined!;
+    }
     get dayOfMonth() {
         return pb_1.Message.getFieldWithDefault(this, 4, 0) as number;
     }
@@ -5483,6 +5960,9 @@ export class HSMDateTimeComponent extends pb_1.Message {
     }
     get has_dayOfMonth() {
         return pb_1.Message.getField(this, 4) != null;
+    }
+    clear_dayOfMonth(): void {
+        this.dayOfMonth = undefined!;
     }
     get hour() {
         return pb_1.Message.getFieldWithDefault(this, 5, 0) as number;
@@ -5493,6 +5973,9 @@ export class HSMDateTimeComponent extends pb_1.Message {
     get has_hour() {
         return pb_1.Message.getField(this, 5) != null;
     }
+    clear_hour(): void {
+        this.hour = undefined!;
+    }
     get minute() {
         return pb_1.Message.getFieldWithDefault(this, 6, 0) as number;
     }
@@ -5502,6 +5985,9 @@ export class HSMDateTimeComponent extends pb_1.Message {
     get has_minute() {
         return pb_1.Message.getField(this, 6) != null;
     }
+    clear_minute(): void {
+        this.minute = undefined!;
+    }
     get calendar() {
         return pb_1.Message.getFieldWithDefault(this, 7, HSMDateTimeComponent.HSM_DATE_TIME_COMPONENT_CALENDARTYPE.GREGORIAN) as HSMDateTimeComponent.HSM_DATE_TIME_COMPONENT_CALENDARTYPE;
     }
@@ -5510,6 +5996,9 @@ export class HSMDateTimeComponent extends pb_1.Message {
     }
     get has_calendar() {
         return pb_1.Message.getField(this, 7) != null;
+    }
+    clear_calendar(): void {
+        this.calendar = undefined!;
     }
     static fromObject(data?: HSMDateTimeComponent.AsObjectPartial): HSMDateTimeComponent {
         if (!data) {
@@ -5666,6 +6155,9 @@ export class HSMDateTimeUnixEpoch extends pb_1.Message {
     get has_timestamp() {
         return pb_1.Message.getField(this, 1) != null;
     }
+    clear_timestamp(): void {
+        this.timestamp = undefined!;
+    }
     static fromObject(data?: HSMDateTimeUnixEpoch.AsObjectPartial): HSMDateTimeUnixEpoch {
         if (!data) {
             return new HSMDateTimeUnixEpoch();
@@ -5749,6 +6241,9 @@ export class HSMDateTime extends pb_1.Message {
     get has_component() {
         return pb_1.Message.getField(this, 1) != null;
     }
+    clear_component(): void {
+        this.component = undefined!;
+    }
     get unixEpoch() {
         return pb_1.Message.getWrapperField(this, HSMDateTimeUnixEpoch, 2) as HSMDateTimeUnixEpoch | undefined;
     }
@@ -5757,6 +6252,9 @@ export class HSMDateTime extends pb_1.Message {
     }
     get has_unixEpoch() {
         return pb_1.Message.getField(this, 2) != null;
+    }
+    clear_unixEpoch(): void {
+        this.unixEpoch = undefined!;
     }
     get datetimeOneof() {
         const cases: {
@@ -5870,6 +6368,9 @@ export class HSMLocalizableParameter extends pb_1.Message {
     get has_default() {
         return pb_1.Message.getField(this, 1) != null;
     }
+    clear_default(): void {
+        this.default = undefined!;
+    }
     get currency() {
         return pb_1.Message.getWrapperField(this, HSMCurrency, 2) as HSMCurrency | undefined;
     }
@@ -5879,6 +6380,9 @@ export class HSMLocalizableParameter extends pb_1.Message {
     get has_currency() {
         return pb_1.Message.getField(this, 2) != null;
     }
+    clear_currency(): void {
+        this.currency = undefined!;
+    }
     get dateTime() {
         return pb_1.Message.getWrapperField(this, HSMDateTime, 3) as HSMDateTime | undefined;
     }
@@ -5887,6 +6391,9 @@ export class HSMLocalizableParameter extends pb_1.Message {
     }
     get has_dateTime() {
         return pb_1.Message.getField(this, 3) != null;
+    }
+    clear_dateTime(): void {
+        this.dateTime = undefined!;
     }
     get paramOneof() {
         const cases: {
@@ -6032,6 +6539,9 @@ export class HighlyStructuredMessage extends pb_1.Message {
     get has_namespace() {
         return pb_1.Message.getField(this, 1) != null;
     }
+    clear_namespace(): void {
+        this.namespace = undefined!;
+    }
     get elementName() {
         return pb_1.Message.getFieldWithDefault(this, 2, "") as string;
     }
@@ -6040,6 +6550,9 @@ export class HighlyStructuredMessage extends pb_1.Message {
     }
     get has_elementName() {
         return pb_1.Message.getField(this, 2) != null;
+    }
+    clear_elementName(): void {
+        this.elementName = undefined!;
     }
     get params() {
         return pb_1.Message.getFieldWithDefault(this, 3, []) as string[];
@@ -6056,6 +6569,9 @@ export class HighlyStructuredMessage extends pb_1.Message {
     get has_fallbackLg() {
         return pb_1.Message.getField(this, 4) != null;
     }
+    clear_fallbackLg(): void {
+        this.fallbackLg = undefined!;
+    }
     get fallbackLc() {
         return pb_1.Message.getFieldWithDefault(this, 5, "") as string;
     }
@@ -6064,6 +6580,9 @@ export class HighlyStructuredMessage extends pb_1.Message {
     }
     get has_fallbackLc() {
         return pb_1.Message.getField(this, 5) != null;
+    }
+    clear_fallbackLc(): void {
+        this.fallbackLc = undefined!;
     }
     get localizableParams() {
         return pb_1.Message.getRepeatedWrapperField(this, HSMLocalizableParameter, 6) as HSMLocalizableParameter[];
@@ -6080,6 +6599,9 @@ export class HighlyStructuredMessage extends pb_1.Message {
     get has_deterministicLg() {
         return pb_1.Message.getField(this, 7) != null;
     }
+    clear_deterministicLg(): void {
+        this.deterministicLg = undefined!;
+    }
     get deterministicLc() {
         return pb_1.Message.getFieldWithDefault(this, 8, "") as string;
     }
@@ -6089,6 +6611,9 @@ export class HighlyStructuredMessage extends pb_1.Message {
     get has_deterministicLc() {
         return pb_1.Message.getField(this, 8) != null;
     }
+    clear_deterministicLc(): void {
+        this.deterministicLc = undefined!;
+    }
     get hydratedHsm() {
         return pb_1.Message.getWrapperField(this, TemplateMessage, 9) as TemplateMessage | undefined;
     }
@@ -6097,6 +6622,9 @@ export class HighlyStructuredMessage extends pb_1.Message {
     }
     get has_hydratedHsm() {
         return pb_1.Message.getField(this, 9) != null;
+    }
+    clear_hydratedHsm(): void {
+        this.hydratedHsm = undefined!;
     }
     static fromObject(data?: HighlyStructuredMessage.AsObjectPartial): HighlyStructuredMessage {
         if (!data) {
@@ -6268,6 +6796,9 @@ export class SendPaymentMessage extends pb_1.Message {
     get has_noteMessage() {
         return pb_1.Message.getField(this, 2) != null;
     }
+    clear_noteMessage(): void {
+        this.noteMessage = undefined!;
+    }
     get requestMessageKey() {
         return pb_1.Message.getWrapperField(this, MessageKey, 3) as MessageKey | undefined;
     }
@@ -6276,6 +6807,9 @@ export class SendPaymentMessage extends pb_1.Message {
     }
     get has_requestMessageKey() {
         return pb_1.Message.getField(this, 3) != null;
+    }
+    clear_requestMessageKey(): void {
+        this.requestMessageKey = undefined!;
     }
     static fromObject(data?: SendPaymentMessage.AsObjectPartial): SendPaymentMessage {
         if (!data) {
@@ -6383,6 +6917,9 @@ export class RequestPaymentMessage extends pb_1.Message {
     get has_noteMessage() {
         return pb_1.Message.getField(this, 4) != null;
     }
+    clear_noteMessage(): void {
+        this.noteMessage = undefined!;
+    }
     get currencyCodeIso4217() {
         return pb_1.Message.getFieldWithDefault(this, 1, "") as string;
     }
@@ -6391,6 +6928,9 @@ export class RequestPaymentMessage extends pb_1.Message {
     }
     get has_currencyCodeIso4217() {
         return pb_1.Message.getField(this, 1) != null;
+    }
+    clear_currencyCodeIso4217(): void {
+        this.currencyCodeIso4217 = undefined!;
     }
     get amount1000() {
         return pb_1.Message.getFieldWithDefault(this, 2, 0) as number;
@@ -6401,6 +6941,9 @@ export class RequestPaymentMessage extends pb_1.Message {
     get has_amount1000() {
         return pb_1.Message.getField(this, 2) != null;
     }
+    clear_amount1000(): void {
+        this.amount1000 = undefined!;
+    }
     get requestFrom() {
         return pb_1.Message.getFieldWithDefault(this, 3, "") as string;
     }
@@ -6410,6 +6953,9 @@ export class RequestPaymentMessage extends pb_1.Message {
     get has_requestFrom() {
         return pb_1.Message.getField(this, 3) != null;
     }
+    clear_requestFrom(): void {
+        this.requestFrom = undefined!;
+    }
     get expiryTimestamp() {
         return pb_1.Message.getFieldWithDefault(this, 5, 0) as number;
     }
@@ -6418,6 +6964,9 @@ export class RequestPaymentMessage extends pb_1.Message {
     }
     get has_expiryTimestamp() {
         return pb_1.Message.getField(this, 5) != null;
+    }
+    clear_expiryTimestamp(): void {
+        this.expiryTimestamp = undefined!;
     }
     static fromObject(data?: RequestPaymentMessage.AsObjectPartial): RequestPaymentMessage {
         if (!data) {
@@ -6541,6 +7090,9 @@ export class DeclinePaymentRequestMessage extends pb_1.Message {
     get has_key() {
         return pb_1.Message.getField(this, 1) != null;
     }
+    clear_key(): void {
+        this.key = undefined!;
+    }
     static fromObject(data?: DeclinePaymentRequestMessage.AsObjectPartial): DeclinePaymentRequestMessage {
         if (!data) {
             return new DeclinePaymentRequestMessage();
@@ -6617,6 +7169,9 @@ export class CancelPaymentRequestMessage extends pb_1.Message {
     }
     get has_key() {
         return pb_1.Message.getField(this, 1) != null;
+    }
+    clear_key(): void {
+        this.key = undefined!;
     }
     static fromObject(data?: CancelPaymentRequestMessage.AsObjectPartial): CancelPaymentRequestMessage {
         if (!data) {
@@ -6731,6 +7286,9 @@ export class LiveLocationMessage extends pb_1.Message {
     get has_degreesLatitude() {
         return pb_1.Message.getField(this, 1) != null;
     }
+    clear_degreesLatitude(): void {
+        this.degreesLatitude = undefined!;
+    }
     get degreesLongitude() {
         return pb_1.Message.getFieldWithDefault(this, 2, 0) as number;
     }
@@ -6739,6 +7297,9 @@ export class LiveLocationMessage extends pb_1.Message {
     }
     get has_degreesLongitude() {
         return pb_1.Message.getField(this, 2) != null;
+    }
+    clear_degreesLongitude(): void {
+        this.degreesLongitude = undefined!;
     }
     get accuracyInMeters() {
         return pb_1.Message.getFieldWithDefault(this, 3, 0) as number;
@@ -6749,6 +7310,9 @@ export class LiveLocationMessage extends pb_1.Message {
     get has_accuracyInMeters() {
         return pb_1.Message.getField(this, 3) != null;
     }
+    clear_accuracyInMeters(): void {
+        this.accuracyInMeters = undefined!;
+    }
     get speedInMps() {
         return pb_1.Message.getFieldWithDefault(this, 4, 0) as number;
     }
@@ -6757,6 +7321,9 @@ export class LiveLocationMessage extends pb_1.Message {
     }
     get has_speedInMps() {
         return pb_1.Message.getField(this, 4) != null;
+    }
+    clear_speedInMps(): void {
+        this.speedInMps = undefined!;
     }
     get degreesClockwiseFromMagneticNorth() {
         return pb_1.Message.getFieldWithDefault(this, 5, 0) as number;
@@ -6767,6 +7334,9 @@ export class LiveLocationMessage extends pb_1.Message {
     get has_degreesClockwiseFromMagneticNorth() {
         return pb_1.Message.getField(this, 5) != null;
     }
+    clear_degreesClockwiseFromMagneticNorth(): void {
+        this.degreesClockwiseFromMagneticNorth = undefined!;
+    }
     get caption() {
         return pb_1.Message.getFieldWithDefault(this, 6, "") as string;
     }
@@ -6775,6 +7345,9 @@ export class LiveLocationMessage extends pb_1.Message {
     }
     get has_caption() {
         return pb_1.Message.getField(this, 6) != null;
+    }
+    clear_caption(): void {
+        this.caption = undefined!;
     }
     get sequenceNumber() {
         return pb_1.Message.getFieldWithDefault(this, 7, 0) as number;
@@ -6785,6 +7358,9 @@ export class LiveLocationMessage extends pb_1.Message {
     get has_sequenceNumber() {
         return pb_1.Message.getField(this, 7) != null;
     }
+    clear_sequenceNumber(): void {
+        this.sequenceNumber = undefined!;
+    }
     get timeOffset() {
         return pb_1.Message.getFieldWithDefault(this, 8, 0) as number;
     }
@@ -6793,6 +7369,9 @@ export class LiveLocationMessage extends pb_1.Message {
     }
     get has_timeOffset() {
         return pb_1.Message.getField(this, 8) != null;
+    }
+    clear_timeOffset(): void {
+        this.timeOffset = undefined!;
     }
     get jpegThumbnail() {
         return pb_1.Message.getFieldWithDefault(this, 16, new Uint8Array()) as Uint8Array;
@@ -6803,6 +7382,9 @@ export class LiveLocationMessage extends pb_1.Message {
     get has_jpegThumbnail() {
         return pb_1.Message.getField(this, 16) != null;
     }
+    clear_jpegThumbnail(): void {
+        this.jpegThumbnail = undefined!;
+    }
     get contextInfo() {
         return pb_1.Message.getWrapperField(this, ContextInfo, 17) as ContextInfo | undefined;
     }
@@ -6811,6 +7393,9 @@ export class LiveLocationMessage extends pb_1.Message {
     }
     get has_contextInfo() {
         return pb_1.Message.getField(this, 17) != null;
+    }
+    clear_contextInfo(): void {
+        this.contextInfo = undefined!;
     }
     static fromObject(data?: LiveLocationMessage.AsObjectPartial): LiveLocationMessage {
         if (!data) {
@@ -7045,6 +7630,9 @@ export class StickerMessage extends pb_1.Message {
     get has_url() {
         return pb_1.Message.getField(this, 1) != null;
     }
+    clear_url(): void {
+        this.url = undefined!;
+    }
     get fileSha256() {
         return pb_1.Message.getFieldWithDefault(this, 2, new Uint8Array()) as Uint8Array;
     }
@@ -7053,6 +7641,9 @@ export class StickerMessage extends pb_1.Message {
     }
     get has_fileSha256() {
         return pb_1.Message.getField(this, 2) != null;
+    }
+    clear_fileSha256(): void {
+        this.fileSha256 = undefined!;
     }
     get fileEncSha256() {
         return pb_1.Message.getFieldWithDefault(this, 3, new Uint8Array()) as Uint8Array;
@@ -7063,6 +7654,9 @@ export class StickerMessage extends pb_1.Message {
     get has_fileEncSha256() {
         return pb_1.Message.getField(this, 3) != null;
     }
+    clear_fileEncSha256(): void {
+        this.fileEncSha256 = undefined!;
+    }
     get mediaKey() {
         return pb_1.Message.getFieldWithDefault(this, 4, new Uint8Array()) as Uint8Array;
     }
@@ -7071,6 +7665,9 @@ export class StickerMessage extends pb_1.Message {
     }
     get has_mediaKey() {
         return pb_1.Message.getField(this, 4) != null;
+    }
+    clear_mediaKey(): void {
+        this.mediaKey = undefined!;
     }
     get mimetype() {
         return pb_1.Message.getFieldWithDefault(this, 5, "") as string;
@@ -7081,6 +7678,9 @@ export class StickerMessage extends pb_1.Message {
     get has_mimetype() {
         return pb_1.Message.getField(this, 5) != null;
     }
+    clear_mimetype(): void {
+        this.mimetype = undefined!;
+    }
     get height() {
         return pb_1.Message.getFieldWithDefault(this, 6, 0) as number;
     }
@@ -7089,6 +7689,9 @@ export class StickerMessage extends pb_1.Message {
     }
     get has_height() {
         return pb_1.Message.getField(this, 6) != null;
+    }
+    clear_height(): void {
+        this.height = undefined!;
     }
     get width() {
         return pb_1.Message.getFieldWithDefault(this, 7, 0) as number;
@@ -7099,6 +7702,9 @@ export class StickerMessage extends pb_1.Message {
     get has_width() {
         return pb_1.Message.getField(this, 7) != null;
     }
+    clear_width(): void {
+        this.width = undefined!;
+    }
     get directPath() {
         return pb_1.Message.getFieldWithDefault(this, 8, "") as string;
     }
@@ -7107,6 +7713,9 @@ export class StickerMessage extends pb_1.Message {
     }
     get has_directPath() {
         return pb_1.Message.getField(this, 8) != null;
+    }
+    clear_directPath(): void {
+        this.directPath = undefined!;
     }
     get fileLength() {
         return pb_1.Message.getFieldWithDefault(this, 9, 0) as number;
@@ -7117,6 +7726,9 @@ export class StickerMessage extends pb_1.Message {
     get has_fileLength() {
         return pb_1.Message.getField(this, 9) != null;
     }
+    clear_fileLength(): void {
+        this.fileLength = undefined!;
+    }
     get mediaKeyTimestamp() {
         return pb_1.Message.getFieldWithDefault(this, 10, 0) as number;
     }
@@ -7125,6 +7737,9 @@ export class StickerMessage extends pb_1.Message {
     }
     get has_mediaKeyTimestamp() {
         return pb_1.Message.getField(this, 10) != null;
+    }
+    clear_mediaKeyTimestamp(): void {
+        this.mediaKeyTimestamp = undefined!;
     }
     get firstFrameLength() {
         return pb_1.Message.getFieldWithDefault(this, 11, 0) as number;
@@ -7135,6 +7750,9 @@ export class StickerMessage extends pb_1.Message {
     get has_firstFrameLength() {
         return pb_1.Message.getField(this, 11) != null;
     }
+    clear_firstFrameLength(): void {
+        this.firstFrameLength = undefined!;
+    }
     get firstFrameSidecar() {
         return pb_1.Message.getFieldWithDefault(this, 12, new Uint8Array()) as Uint8Array;
     }
@@ -7143,6 +7761,9 @@ export class StickerMessage extends pb_1.Message {
     }
     get has_firstFrameSidecar() {
         return pb_1.Message.getField(this, 12) != null;
+    }
+    clear_firstFrameSidecar(): void {
+        this.firstFrameSidecar = undefined!;
     }
     get isAnimated() {
         return pb_1.Message.getFieldWithDefault(this, 13, false) as boolean;
@@ -7153,6 +7774,9 @@ export class StickerMessage extends pb_1.Message {
     get has_isAnimated() {
         return pb_1.Message.getField(this, 13) != null;
     }
+    clear_isAnimated(): void {
+        this.isAnimated = undefined!;
+    }
     get pngThumbnail() {
         return pb_1.Message.getFieldWithDefault(this, 16, new Uint8Array()) as Uint8Array;
     }
@@ -7162,6 +7786,9 @@ export class StickerMessage extends pb_1.Message {
     get has_pngThumbnail() {
         return pb_1.Message.getField(this, 16) != null;
     }
+    clear_pngThumbnail(): void {
+        this.pngThumbnail = undefined!;
+    }
     get contextInfo() {
         return pb_1.Message.getWrapperField(this, ContextInfo, 17) as ContextInfo | undefined;
     }
@@ -7170,6 +7797,9 @@ export class StickerMessage extends pb_1.Message {
     }
     get has_contextInfo() {
         return pb_1.Message.getField(this, 17) != null;
+    }
+    clear_contextInfo(): void {
+        this.contextInfo = undefined!;
     }
     static fromObject(data?: StickerMessage.AsObjectPartial): StickerMessage {
         if (!data) {
@@ -7456,6 +8086,9 @@ export class FourRowTemplate extends pb_1.Message {
     get has_content() {
         return pb_1.Message.getField(this, 6) != null;
     }
+    clear_content(): void {
+        this.content = undefined!;
+    }
     get footer() {
         return pb_1.Message.getWrapperField(this, HighlyStructuredMessage, 7) as HighlyStructuredMessage | undefined;
     }
@@ -7464,6 +8097,9 @@ export class FourRowTemplate extends pb_1.Message {
     }
     get has_footer() {
         return pb_1.Message.getField(this, 7) != null;
+    }
+    clear_footer(): void {
+        this.footer = undefined!;
     }
     get buttons() {
         return pb_1.Message.getRepeatedWrapperField(this, TemplateButton, 8) as TemplateButton[];
@@ -7480,6 +8116,9 @@ export class FourRowTemplate extends pb_1.Message {
     get has_documentMessage() {
         return pb_1.Message.getField(this, 1) != null;
     }
+    clear_documentMessage(): void {
+        this.documentMessage = undefined!;
+    }
     get highlyStructuredMessage() {
         return pb_1.Message.getWrapperField(this, HighlyStructuredMessage, 2) as HighlyStructuredMessage | undefined;
     }
@@ -7488,6 +8127,9 @@ export class FourRowTemplate extends pb_1.Message {
     }
     get has_highlyStructuredMessage() {
         return pb_1.Message.getField(this, 2) != null;
+    }
+    clear_highlyStructuredMessage(): void {
+        this.highlyStructuredMessage = undefined!;
     }
     get imageMessage() {
         return pb_1.Message.getWrapperField(this, ImageMessage, 3) as ImageMessage | undefined;
@@ -7498,6 +8140,9 @@ export class FourRowTemplate extends pb_1.Message {
     get has_imageMessage() {
         return pb_1.Message.getField(this, 3) != null;
     }
+    clear_imageMessage(): void {
+        this.imageMessage = undefined!;
+    }
     get videoMessage() {
         return pb_1.Message.getWrapperField(this, VideoMessage, 4) as VideoMessage | undefined;
     }
@@ -7507,6 +8152,9 @@ export class FourRowTemplate extends pb_1.Message {
     get has_videoMessage() {
         return pb_1.Message.getField(this, 4) != null;
     }
+    clear_videoMessage(): void {
+        this.videoMessage = undefined!;
+    }
     get locationMessage() {
         return pb_1.Message.getWrapperField(this, LocationMessage, 5) as LocationMessage | undefined;
     }
@@ -7515,6 +8163,9 @@ export class FourRowTemplate extends pb_1.Message {
     }
     get has_locationMessage() {
         return pb_1.Message.getField(this, 5) != null;
+    }
+    clear_locationMessage(): void {
+        this.locationMessage = undefined!;
     }
     get title() {
         const cases: {
@@ -7753,6 +8404,9 @@ export class HydratedFourRowTemplate extends pb_1.Message {
     get has_hydratedContentText() {
         return pb_1.Message.getField(this, 6) != null;
     }
+    clear_hydratedContentText(): void {
+        this.hydratedContentText = undefined!;
+    }
     get hydratedFooterText() {
         return pb_1.Message.getFieldWithDefault(this, 7, "") as string;
     }
@@ -7761,6 +8415,9 @@ export class HydratedFourRowTemplate extends pb_1.Message {
     }
     get has_hydratedFooterText() {
         return pb_1.Message.getField(this, 7) != null;
+    }
+    clear_hydratedFooterText(): void {
+        this.hydratedFooterText = undefined!;
     }
     get hydratedButtons() {
         return pb_1.Message.getRepeatedWrapperField(this, HydratedTemplateButton, 8) as HydratedTemplateButton[];
@@ -7777,6 +8434,9 @@ export class HydratedFourRowTemplate extends pb_1.Message {
     get has_templateId() {
         return pb_1.Message.getField(this, 9) != null;
     }
+    clear_templateId(): void {
+        this.templateId = undefined!;
+    }
     get documentMessage() {
         return pb_1.Message.getWrapperField(this, DocumentMessage, 1) as DocumentMessage | undefined;
     }
@@ -7785,6 +8445,9 @@ export class HydratedFourRowTemplate extends pb_1.Message {
     }
     get has_documentMessage() {
         return pb_1.Message.getField(this, 1) != null;
+    }
+    clear_documentMessage(): void {
+        this.documentMessage = undefined!;
     }
     get hydratedTitleText() {
         return pb_1.Message.getFieldWithDefault(this, 2, "") as string;
@@ -7795,6 +8458,9 @@ export class HydratedFourRowTemplate extends pb_1.Message {
     get has_hydratedTitleText() {
         return pb_1.Message.getField(this, 2) != null;
     }
+    clear_hydratedTitleText(): void {
+        this.hydratedTitleText = undefined!;
+    }
     get imageMessage() {
         return pb_1.Message.getWrapperField(this, ImageMessage, 3) as ImageMessage | undefined;
     }
@@ -7803,6 +8469,9 @@ export class HydratedFourRowTemplate extends pb_1.Message {
     }
     get has_imageMessage() {
         return pb_1.Message.getField(this, 3) != null;
+    }
+    clear_imageMessage(): void {
+        this.imageMessage = undefined!;
     }
     get videoMessage() {
         return pb_1.Message.getWrapperField(this, VideoMessage, 4) as VideoMessage | undefined;
@@ -7813,6 +8482,9 @@ export class HydratedFourRowTemplate extends pb_1.Message {
     get has_videoMessage() {
         return pb_1.Message.getField(this, 4) != null;
     }
+    clear_videoMessage(): void {
+        this.videoMessage = undefined!;
+    }
     get locationMessage() {
         return pb_1.Message.getWrapperField(this, LocationMessage, 5) as LocationMessage | undefined;
     }
@@ -7821,6 +8493,9 @@ export class HydratedFourRowTemplate extends pb_1.Message {
     }
     get has_locationMessage() {
         return pb_1.Message.getField(this, 5) != null;
+    }
+    clear_locationMessage(): void {
+        this.locationMessage = undefined!;
     }
     get title() {
         const cases: {
@@ -8023,6 +8698,9 @@ export class TemplateMessage extends pb_1.Message {
     get has_contextInfo() {
         return pb_1.Message.getField(this, 3) != null;
     }
+    clear_contextInfo(): void {
+        this.contextInfo = undefined!;
+    }
     get hydratedTemplate() {
         return pb_1.Message.getWrapperField(this, HydratedFourRowTemplate, 4) as HydratedFourRowTemplate | undefined;
     }
@@ -8031,6 +8709,9 @@ export class TemplateMessage extends pb_1.Message {
     }
     get has_hydratedTemplate() {
         return pb_1.Message.getField(this, 4) != null;
+    }
+    clear_hydratedTemplate(): void {
+        this.hydratedTemplate = undefined!;
     }
     get fourRowTemplate() {
         return pb_1.Message.getWrapperField(this, FourRowTemplate, 1) as FourRowTemplate | undefined;
@@ -8041,6 +8722,9 @@ export class TemplateMessage extends pb_1.Message {
     get has_fourRowTemplate() {
         return pb_1.Message.getField(this, 1) != null;
     }
+    clear_fourRowTemplate(): void {
+        this.fourRowTemplate = undefined!;
+    }
     get hydratedFourRowTemplate() {
         return pb_1.Message.getWrapperField(this, HydratedFourRowTemplate, 2) as HydratedFourRowTemplate | undefined;
     }
@@ -8049,6 +8733,9 @@ export class TemplateMessage extends pb_1.Message {
     }
     get has_hydratedFourRowTemplate() {
         return pb_1.Message.getField(this, 2) != null;
+    }
+    clear_hydratedFourRowTemplate(): void {
+        this.hydratedFourRowTemplate = undefined!;
     }
     get format() {
         const cases: {
@@ -8188,6 +8875,9 @@ export class TemplateButtonReplyMessage extends pb_1.Message {
     get has_selectedId() {
         return pb_1.Message.getField(this, 1) != null;
     }
+    clear_selectedId(): void {
+        this.selectedId = undefined!;
+    }
     get selectedDisplayText() {
         return pb_1.Message.getFieldWithDefault(this, 2, "") as string;
     }
@@ -8196,6 +8886,9 @@ export class TemplateButtonReplyMessage extends pb_1.Message {
     }
     get has_selectedDisplayText() {
         return pb_1.Message.getField(this, 2) != null;
+    }
+    clear_selectedDisplayText(): void {
+        this.selectedDisplayText = undefined!;
     }
     get contextInfo() {
         return pb_1.Message.getWrapperField(this, ContextInfo, 3) as ContextInfo | undefined;
@@ -8206,6 +8899,9 @@ export class TemplateButtonReplyMessage extends pb_1.Message {
     get has_contextInfo() {
         return pb_1.Message.getField(this, 3) != null;
     }
+    clear_contextInfo(): void {
+        this.contextInfo = undefined!;
+    }
     get selectedIndex() {
         return pb_1.Message.getFieldWithDefault(this, 4, 0) as number;
     }
@@ -8214,6 +8910,9 @@ export class TemplateButtonReplyMessage extends pb_1.Message {
     }
     get has_selectedIndex() {
         return pb_1.Message.getField(this, 4) != null;
+    }
+    clear_selectedIndex(): void {
+        this.selectedIndex = undefined!;
     }
     static fromObject(data?: TemplateButtonReplyMessage.AsObjectPartial): TemplateButtonReplyMessage {
         if (!data) {
@@ -8334,6 +9033,9 @@ export class CatalogSnapshot extends pb_1.Message {
     get has_catalogImage() {
         return pb_1.Message.getField(this, 1) != null;
     }
+    clear_catalogImage(): void {
+        this.catalogImage = undefined!;
+    }
     get title() {
         return pb_1.Message.getFieldWithDefault(this, 2, "") as string;
     }
@@ -8343,6 +9045,9 @@ export class CatalogSnapshot extends pb_1.Message {
     get has_title() {
         return pb_1.Message.getField(this, 2) != null;
     }
+    clear_title(): void {
+        this.title = undefined!;
+    }
     get description() {
         return pb_1.Message.getFieldWithDefault(this, 3, "") as string;
     }
@@ -8351,6 +9056,9 @@ export class CatalogSnapshot extends pb_1.Message {
     }
     get has_description() {
         return pb_1.Message.getField(this, 3) != null;
+    }
+    clear_description(): void {
+        this.description = undefined!;
     }
     static fromObject(data?: CatalogSnapshot.AsObjectPartial): CatalogSnapshot {
         if (!data) {
@@ -8488,6 +9196,9 @@ export class ProductSnapshot extends pb_1.Message {
     get has_productImage() {
         return pb_1.Message.getField(this, 1) != null;
     }
+    clear_productImage(): void {
+        this.productImage = undefined!;
+    }
     get productId() {
         return pb_1.Message.getFieldWithDefault(this, 2, "") as string;
     }
@@ -8496,6 +9207,9 @@ export class ProductSnapshot extends pb_1.Message {
     }
     get has_productId() {
         return pb_1.Message.getField(this, 2) != null;
+    }
+    clear_productId(): void {
+        this.productId = undefined!;
     }
     get title() {
         return pb_1.Message.getFieldWithDefault(this, 3, "") as string;
@@ -8506,6 +9220,9 @@ export class ProductSnapshot extends pb_1.Message {
     get has_title() {
         return pb_1.Message.getField(this, 3) != null;
     }
+    clear_title(): void {
+        this.title = undefined!;
+    }
     get description() {
         return pb_1.Message.getFieldWithDefault(this, 4, "") as string;
     }
@@ -8514,6 +9231,9 @@ export class ProductSnapshot extends pb_1.Message {
     }
     get has_description() {
         return pb_1.Message.getField(this, 4) != null;
+    }
+    clear_description(): void {
+        this.description = undefined!;
     }
     get currencyCode() {
         return pb_1.Message.getFieldWithDefault(this, 5, "") as string;
@@ -8524,6 +9244,9 @@ export class ProductSnapshot extends pb_1.Message {
     get has_currencyCode() {
         return pb_1.Message.getField(this, 5) != null;
     }
+    clear_currencyCode(): void {
+        this.currencyCode = undefined!;
+    }
     get priceAmount1000() {
         return pb_1.Message.getFieldWithDefault(this, 6, 0) as number;
     }
@@ -8532,6 +9255,9 @@ export class ProductSnapshot extends pb_1.Message {
     }
     get has_priceAmount1000() {
         return pb_1.Message.getField(this, 6) != null;
+    }
+    clear_priceAmount1000(): void {
+        this.priceAmount1000 = undefined!;
     }
     get retailerId() {
         return pb_1.Message.getFieldWithDefault(this, 7, "") as string;
@@ -8542,6 +9268,9 @@ export class ProductSnapshot extends pb_1.Message {
     get has_retailerId() {
         return pb_1.Message.getField(this, 7) != null;
     }
+    clear_retailerId(): void {
+        this.retailerId = undefined!;
+    }
     get url() {
         return pb_1.Message.getFieldWithDefault(this, 8, "") as string;
     }
@@ -8550,6 +9279,9 @@ export class ProductSnapshot extends pb_1.Message {
     }
     get has_url() {
         return pb_1.Message.getField(this, 8) != null;
+    }
+    clear_url(): void {
+        this.url = undefined!;
     }
     get productImageCount() {
         return pb_1.Message.getFieldWithDefault(this, 9, 0) as number;
@@ -8560,6 +9292,9 @@ export class ProductSnapshot extends pb_1.Message {
     get has_productImageCount() {
         return pb_1.Message.getField(this, 9) != null;
     }
+    clear_productImageCount(): void {
+        this.productImageCount = undefined!;
+    }
     get firstImageId() {
         return pb_1.Message.getFieldWithDefault(this, 11, "") as string;
     }
@@ -8568,6 +9303,9 @@ export class ProductSnapshot extends pb_1.Message {
     }
     get has_firstImageId() {
         return pb_1.Message.getField(this, 11) != null;
+    }
+    clear_firstImageId(): void {
+        this.firstImageId = undefined!;
     }
     static fromObject(data?: ProductSnapshot.AsObjectPartial): ProductSnapshot {
         if (!data) {
@@ -8758,6 +9496,9 @@ export class ProductMessage extends pb_1.Message {
     get has_product() {
         return pb_1.Message.getField(this, 1) != null;
     }
+    clear_product(): void {
+        this.product = undefined!;
+    }
     get businessOwnerJid() {
         return pb_1.Message.getFieldWithDefault(this, 2, "") as string;
     }
@@ -8766,6 +9507,9 @@ export class ProductMessage extends pb_1.Message {
     }
     get has_businessOwnerJid() {
         return pb_1.Message.getField(this, 2) != null;
+    }
+    clear_businessOwnerJid(): void {
+        this.businessOwnerJid = undefined!;
     }
     get catalog() {
         return pb_1.Message.getWrapperField(this, CatalogSnapshot, 4) as CatalogSnapshot | undefined;
@@ -8776,6 +9520,9 @@ export class ProductMessage extends pb_1.Message {
     get has_catalog() {
         return pb_1.Message.getField(this, 4) != null;
     }
+    clear_catalog(): void {
+        this.catalog = undefined!;
+    }
     get contextInfo() {
         return pb_1.Message.getWrapperField(this, ContextInfo, 17) as ContextInfo | undefined;
     }
@@ -8784,6 +9531,9 @@ export class ProductMessage extends pb_1.Message {
     }
     get has_contextInfo() {
         return pb_1.Message.getField(this, 17) != null;
+    }
+    clear_contextInfo(): void {
+        this.contextInfo = undefined!;
     }
     static fromObject(data?: ProductMessage.AsObjectPartial): ProductMessage {
         if (!data) {
@@ -8924,6 +9674,9 @@ export class GroupInviteMessage extends pb_1.Message {
     get has_groupJid() {
         return pb_1.Message.getField(this, 1) != null;
     }
+    clear_groupJid(): void {
+        this.groupJid = undefined!;
+    }
     get inviteCode() {
         return pb_1.Message.getFieldWithDefault(this, 2, "") as string;
     }
@@ -8932,6 +9685,9 @@ export class GroupInviteMessage extends pb_1.Message {
     }
     get has_inviteCode() {
         return pb_1.Message.getField(this, 2) != null;
+    }
+    clear_inviteCode(): void {
+        this.inviteCode = undefined!;
     }
     get inviteExpiration() {
         return pb_1.Message.getFieldWithDefault(this, 3, 0) as number;
@@ -8942,6 +9698,9 @@ export class GroupInviteMessage extends pb_1.Message {
     get has_inviteExpiration() {
         return pb_1.Message.getField(this, 3) != null;
     }
+    clear_inviteExpiration(): void {
+        this.inviteExpiration = undefined!;
+    }
     get groupName() {
         return pb_1.Message.getFieldWithDefault(this, 4, "") as string;
     }
@@ -8950,6 +9709,9 @@ export class GroupInviteMessage extends pb_1.Message {
     }
     get has_groupName() {
         return pb_1.Message.getField(this, 4) != null;
+    }
+    clear_groupName(): void {
+        this.groupName = undefined!;
     }
     get jpegThumbnail() {
         return pb_1.Message.getFieldWithDefault(this, 5, new Uint8Array()) as Uint8Array;
@@ -8960,6 +9722,9 @@ export class GroupInviteMessage extends pb_1.Message {
     get has_jpegThumbnail() {
         return pb_1.Message.getField(this, 5) != null;
     }
+    clear_jpegThumbnail(): void {
+        this.jpegThumbnail = undefined!;
+    }
     get caption() {
         return pb_1.Message.getFieldWithDefault(this, 6, "") as string;
     }
@@ -8969,6 +9734,9 @@ export class GroupInviteMessage extends pb_1.Message {
     get has_caption() {
         return pb_1.Message.getField(this, 6) != null;
     }
+    clear_caption(): void {
+        this.caption = undefined!;
+    }
     get contextInfo() {
         return pb_1.Message.getWrapperField(this, ContextInfo, 7) as ContextInfo | undefined;
     }
@@ -8977,6 +9745,9 @@ export class GroupInviteMessage extends pb_1.Message {
     }
     get has_contextInfo() {
         return pb_1.Message.getField(this, 7) != null;
+    }
+    clear_contextInfo(): void {
+        this.contextInfo = undefined!;
     }
     static fromObject(data?: GroupInviteMessage.AsObjectPartial): GroupInviteMessage {
         if (!data) {
@@ -9130,6 +9901,9 @@ export class DeviceSentMessage extends pb_1.Message {
     get has_destinationJid() {
         return pb_1.Message.getField(this, 1) != null;
     }
+    clear_destinationJid(): void {
+        this.destinationJid = undefined!;
+    }
     get message() {
         return pb_1.Message.getWrapperField(this, Message, 2) as Message | undefined;
     }
@@ -9139,6 +9913,9 @@ export class DeviceSentMessage extends pb_1.Message {
     get has_message() {
         return pb_1.Message.getField(this, 2) != null;
     }
+    clear_message(): void {
+        this.message = undefined!;
+    }
     get phash() {
         return pb_1.Message.getFieldWithDefault(this, 3, "") as string;
     }
@@ -9147,6 +9924,9 @@ export class DeviceSentMessage extends pb_1.Message {
     }
     get has_phash() {
         return pb_1.Message.getField(this, 3) != null;
+    }
+    clear_phash(): void {
+        this.phash = undefined!;
     }
     static fromObject(data?: DeviceSentMessage.AsObjectPartial): DeviceSentMessage {
         if (!data) {
@@ -9348,6 +10128,9 @@ export class Message extends pb_1.Message {
     get has_conversation() {
         return pb_1.Message.getField(this, 1) != null;
     }
+    clear_conversation(): void {
+        this.conversation = undefined!;
+    }
     get senderKeyDistributionMessage() {
         return pb_1.Message.getWrapperField(this, SenderKeyDistributionMessage, 2) as SenderKeyDistributionMessage | undefined;
     }
@@ -9356,6 +10139,9 @@ export class Message extends pb_1.Message {
     }
     get has_senderKeyDistributionMessage() {
         return pb_1.Message.getField(this, 2) != null;
+    }
+    clear_senderKeyDistributionMessage(): void {
+        this.senderKeyDistributionMessage = undefined!;
     }
     get imageMessage() {
         return pb_1.Message.getWrapperField(this, ImageMessage, 3) as ImageMessage | undefined;
@@ -9366,6 +10152,9 @@ export class Message extends pb_1.Message {
     get has_imageMessage() {
         return pb_1.Message.getField(this, 3) != null;
     }
+    clear_imageMessage(): void {
+        this.imageMessage = undefined!;
+    }
     get contactMessage() {
         return pb_1.Message.getWrapperField(this, ContactMessage, 4) as ContactMessage | undefined;
     }
@@ -9374,6 +10163,9 @@ export class Message extends pb_1.Message {
     }
     get has_contactMessage() {
         return pb_1.Message.getField(this, 4) != null;
+    }
+    clear_contactMessage(): void {
+        this.contactMessage = undefined!;
     }
     get locationMessage() {
         return pb_1.Message.getWrapperField(this, LocationMessage, 5) as LocationMessage | undefined;
@@ -9384,6 +10176,9 @@ export class Message extends pb_1.Message {
     get has_locationMessage() {
         return pb_1.Message.getField(this, 5) != null;
     }
+    clear_locationMessage(): void {
+        this.locationMessage = undefined!;
+    }
     get extendedTextMessage() {
         return pb_1.Message.getWrapperField(this, ExtendedTextMessage, 6) as ExtendedTextMessage | undefined;
     }
@@ -9392,6 +10187,9 @@ export class Message extends pb_1.Message {
     }
     get has_extendedTextMessage() {
         return pb_1.Message.getField(this, 6) != null;
+    }
+    clear_extendedTextMessage(): void {
+        this.extendedTextMessage = undefined!;
     }
     get documentMessage() {
         return pb_1.Message.getWrapperField(this, DocumentMessage, 7) as DocumentMessage | undefined;
@@ -9402,6 +10200,9 @@ export class Message extends pb_1.Message {
     get has_documentMessage() {
         return pb_1.Message.getField(this, 7) != null;
     }
+    clear_documentMessage(): void {
+        this.documentMessage = undefined!;
+    }
     get audioMessage() {
         return pb_1.Message.getWrapperField(this, AudioMessage, 8) as AudioMessage | undefined;
     }
@@ -9410,6 +10211,9 @@ export class Message extends pb_1.Message {
     }
     get has_audioMessage() {
         return pb_1.Message.getField(this, 8) != null;
+    }
+    clear_audioMessage(): void {
+        this.audioMessage = undefined!;
     }
     get videoMessage() {
         return pb_1.Message.getWrapperField(this, VideoMessage, 9) as VideoMessage | undefined;
@@ -9420,6 +10224,9 @@ export class Message extends pb_1.Message {
     get has_videoMessage() {
         return pb_1.Message.getField(this, 9) != null;
     }
+    clear_videoMessage(): void {
+        this.videoMessage = undefined!;
+    }
     get call() {
         return pb_1.Message.getWrapperField(this, Call, 10) as Call | undefined;
     }
@@ -9428,6 +10235,9 @@ export class Message extends pb_1.Message {
     }
     get has_call() {
         return pb_1.Message.getField(this, 10) != null;
+    }
+    clear_call(): void {
+        this.call = undefined!;
     }
     get chat() {
         return pb_1.Message.getWrapperField(this, Chat, 11) as Chat | undefined;
@@ -9438,6 +10248,9 @@ export class Message extends pb_1.Message {
     get has_chat() {
         return pb_1.Message.getField(this, 11) != null;
     }
+    clear_chat(): void {
+        this.chat = undefined!;
+    }
     get protocolMessage() {
         return pb_1.Message.getWrapperField(this, ProtocolMessage, 12) as ProtocolMessage | undefined;
     }
@@ -9446,6 +10259,9 @@ export class Message extends pb_1.Message {
     }
     get has_protocolMessage() {
         return pb_1.Message.getField(this, 12) != null;
+    }
+    clear_protocolMessage(): void {
+        this.protocolMessage = undefined!;
     }
     get contactsArrayMessage() {
         return pb_1.Message.getWrapperField(this, ContactsArrayMessage, 13) as ContactsArrayMessage | undefined;
@@ -9456,6 +10272,9 @@ export class Message extends pb_1.Message {
     get has_contactsArrayMessage() {
         return pb_1.Message.getField(this, 13) != null;
     }
+    clear_contactsArrayMessage(): void {
+        this.contactsArrayMessage = undefined!;
+    }
     get highlyStructuredMessage() {
         return pb_1.Message.getWrapperField(this, HighlyStructuredMessage, 14) as HighlyStructuredMessage | undefined;
     }
@@ -9464,6 +10283,9 @@ export class Message extends pb_1.Message {
     }
     get has_highlyStructuredMessage() {
         return pb_1.Message.getField(this, 14) != null;
+    }
+    clear_highlyStructuredMessage(): void {
+        this.highlyStructuredMessage = undefined!;
     }
     get fastRatchetKeySenderKeyDistributionMessage() {
         return pb_1.Message.getWrapperField(this, SenderKeyDistributionMessage, 15) as SenderKeyDistributionMessage | undefined;
@@ -9474,6 +10296,9 @@ export class Message extends pb_1.Message {
     get has_fastRatchetKeySenderKeyDistributionMessage() {
         return pb_1.Message.getField(this, 15) != null;
     }
+    clear_fastRatchetKeySenderKeyDistributionMessage(): void {
+        this.fastRatchetKeySenderKeyDistributionMessage = undefined!;
+    }
     get sendPaymentMessage() {
         return pb_1.Message.getWrapperField(this, SendPaymentMessage, 16) as SendPaymentMessage | undefined;
     }
@@ -9482,6 +10307,9 @@ export class Message extends pb_1.Message {
     }
     get has_sendPaymentMessage() {
         return pb_1.Message.getField(this, 16) != null;
+    }
+    clear_sendPaymentMessage(): void {
+        this.sendPaymentMessage = undefined!;
     }
     get liveLocationMessage() {
         return pb_1.Message.getWrapperField(this, LiveLocationMessage, 18) as LiveLocationMessage | undefined;
@@ -9492,6 +10320,9 @@ export class Message extends pb_1.Message {
     get has_liveLocationMessage() {
         return pb_1.Message.getField(this, 18) != null;
     }
+    clear_liveLocationMessage(): void {
+        this.liveLocationMessage = undefined!;
+    }
     get requestPaymentMessage() {
         return pb_1.Message.getWrapperField(this, RequestPaymentMessage, 22) as RequestPaymentMessage | undefined;
     }
@@ -9500,6 +10331,9 @@ export class Message extends pb_1.Message {
     }
     get has_requestPaymentMessage() {
         return pb_1.Message.getField(this, 22) != null;
+    }
+    clear_requestPaymentMessage(): void {
+        this.requestPaymentMessage = undefined!;
     }
     get declinePaymentRequestMessage() {
         return pb_1.Message.getWrapperField(this, DeclinePaymentRequestMessage, 23) as DeclinePaymentRequestMessage | undefined;
@@ -9510,6 +10344,9 @@ export class Message extends pb_1.Message {
     get has_declinePaymentRequestMessage() {
         return pb_1.Message.getField(this, 23) != null;
     }
+    clear_declinePaymentRequestMessage(): void {
+        this.declinePaymentRequestMessage = undefined!;
+    }
     get cancelPaymentRequestMessage() {
         return pb_1.Message.getWrapperField(this, CancelPaymentRequestMessage, 24) as CancelPaymentRequestMessage | undefined;
     }
@@ -9518,6 +10355,9 @@ export class Message extends pb_1.Message {
     }
     get has_cancelPaymentRequestMessage() {
         return pb_1.Message.getField(this, 24) != null;
+    }
+    clear_cancelPaymentRequestMessage(): void {
+        this.cancelPaymentRequestMessage = undefined!;
     }
     get templateMessage() {
         return pb_1.Message.getWrapperField(this, TemplateMessage, 25) as TemplateMessage | undefined;
@@ -9528,6 +10368,9 @@ export class Message extends pb_1.Message {
     get has_templateMessage() {
         return pb_1.Message.getField(this, 25) != null;
     }
+    clear_templateMessage(): void {
+        this.templateMessage = undefined!;
+    }
     get stickerMessage() {
         return pb_1.Message.getWrapperField(this, StickerMessage, 26) as StickerMessage | undefined;
     }
@@ -9536,6 +10379,9 @@ export class Message extends pb_1.Message {
     }
     get has_stickerMessage() {
         return pb_1.Message.getField(this, 26) != null;
+    }
+    clear_stickerMessage(): void {
+        this.stickerMessage = undefined!;
     }
     get groupInviteMessage() {
         return pb_1.Message.getWrapperField(this, GroupInviteMessage, 28) as GroupInviteMessage | undefined;
@@ -9546,6 +10392,9 @@ export class Message extends pb_1.Message {
     get has_groupInviteMessage() {
         return pb_1.Message.getField(this, 28) != null;
     }
+    clear_groupInviteMessage(): void {
+        this.groupInviteMessage = undefined!;
+    }
     get templateButtonReplyMessage() {
         return pb_1.Message.getWrapperField(this, TemplateButtonReplyMessage, 29) as TemplateButtonReplyMessage | undefined;
     }
@@ -9554,6 +10403,9 @@ export class Message extends pb_1.Message {
     }
     get has_templateButtonReplyMessage() {
         return pb_1.Message.getField(this, 29) != null;
+    }
+    clear_templateButtonReplyMessage(): void {
+        this.templateButtonReplyMessage = undefined!;
     }
     get productMessage() {
         return pb_1.Message.getWrapperField(this, ProductMessage, 30) as ProductMessage | undefined;
@@ -9564,6 +10416,9 @@ export class Message extends pb_1.Message {
     get has_productMessage() {
         return pb_1.Message.getField(this, 30) != null;
     }
+    clear_productMessage(): void {
+        this.productMessage = undefined!;
+    }
     get deviceSentMessage() {
         return pb_1.Message.getWrapperField(this, DeviceSentMessage, 31) as DeviceSentMessage | undefined;
     }
@@ -9572,6 +10427,9 @@ export class Message extends pb_1.Message {
     }
     get has_deviceSentMessage() {
         return pb_1.Message.getField(this, 31) != null;
+    }
+    clear_deviceSentMessage(): void {
+        this.deviceSentMessage = undefined!;
     }
     static fromObject(data?: Message.AsObjectPartial): Message {
         if (!data) {
@@ -9986,6 +10844,9 @@ export class MessageKey extends pb_1.Message {
     get has_remoteJid() {
         return pb_1.Message.getField(this, 1) != null;
     }
+    clear_remoteJid(): void {
+        this.remoteJid = undefined!;
+    }
     get fromMe() {
         return pb_1.Message.getFieldWithDefault(this, 2, false) as boolean;
     }
@@ -9994,6 +10855,9 @@ export class MessageKey extends pb_1.Message {
     }
     get has_fromMe() {
         return pb_1.Message.getField(this, 2) != null;
+    }
+    clear_fromMe(): void {
+        this.fromMe = undefined!;
     }
     get id() {
         return pb_1.Message.getFieldWithDefault(this, 3, "") as string;
@@ -10004,6 +10868,9 @@ export class MessageKey extends pb_1.Message {
     get has_id() {
         return pb_1.Message.getField(this, 3) != null;
     }
+    clear_id(): void {
+        this.id = undefined!;
+    }
     get participant() {
         return pb_1.Message.getFieldWithDefault(this, 4, "") as string;
     }
@@ -10012,6 +10879,9 @@ export class MessageKey extends pb_1.Message {
     }
     get has_participant() {
         return pb_1.Message.getField(this, 4) != null;
+    }
+    clear_participant(): void {
+        this.participant = undefined!;
     }
     static fromObject(data?: MessageKey.AsObjectPartial): MessageKey {
         if (!data) {
@@ -10250,6 +11120,9 @@ export class WebFeatures extends pb_1.Message {
     get has_labelsDisplay() {
         return pb_1.Message.getField(this, 1) != null;
     }
+    clear_labelsDisplay(): void {
+        this.labelsDisplay = undefined!;
+    }
     get voipIndividualOutgoing() {
         return pb_1.Message.getFieldWithDefault(this, 2, WebFeatures.WEB_FEATURES_FLAG.NOT_STARTED) as WebFeatures.WEB_FEATURES_FLAG;
     }
@@ -10258,6 +11131,9 @@ export class WebFeatures extends pb_1.Message {
     }
     get has_voipIndividualOutgoing() {
         return pb_1.Message.getField(this, 2) != null;
+    }
+    clear_voipIndividualOutgoing(): void {
+        this.voipIndividualOutgoing = undefined!;
     }
     get groupsV3() {
         return pb_1.Message.getFieldWithDefault(this, 3, WebFeatures.WEB_FEATURES_FLAG.NOT_STARTED) as WebFeatures.WEB_FEATURES_FLAG;
@@ -10268,6 +11144,9 @@ export class WebFeatures extends pb_1.Message {
     get has_groupsV3() {
         return pb_1.Message.getField(this, 3) != null;
     }
+    clear_groupsV3(): void {
+        this.groupsV3 = undefined!;
+    }
     get groupsV3Create() {
         return pb_1.Message.getFieldWithDefault(this, 4, WebFeatures.WEB_FEATURES_FLAG.NOT_STARTED) as WebFeatures.WEB_FEATURES_FLAG;
     }
@@ -10276,6 +11155,9 @@ export class WebFeatures extends pb_1.Message {
     }
     get has_groupsV3Create() {
         return pb_1.Message.getField(this, 4) != null;
+    }
+    clear_groupsV3Create(): void {
+        this.groupsV3Create = undefined!;
     }
     get changeNumberV2() {
         return pb_1.Message.getFieldWithDefault(this, 5, WebFeatures.WEB_FEATURES_FLAG.NOT_STARTED) as WebFeatures.WEB_FEATURES_FLAG;
@@ -10286,6 +11168,9 @@ export class WebFeatures extends pb_1.Message {
     get has_changeNumberV2() {
         return pb_1.Message.getField(this, 5) != null;
     }
+    clear_changeNumberV2(): void {
+        this.changeNumberV2 = undefined!;
+    }
     get queryStatusV3Thumbnail() {
         return pb_1.Message.getFieldWithDefault(this, 6, WebFeatures.WEB_FEATURES_FLAG.NOT_STARTED) as WebFeatures.WEB_FEATURES_FLAG;
     }
@@ -10294,6 +11179,9 @@ export class WebFeatures extends pb_1.Message {
     }
     get has_queryStatusV3Thumbnail() {
         return pb_1.Message.getField(this, 6) != null;
+    }
+    clear_queryStatusV3Thumbnail(): void {
+        this.queryStatusV3Thumbnail = undefined!;
     }
     get liveLocations() {
         return pb_1.Message.getFieldWithDefault(this, 7, WebFeatures.WEB_FEATURES_FLAG.NOT_STARTED) as WebFeatures.WEB_FEATURES_FLAG;
@@ -10304,6 +11192,9 @@ export class WebFeatures extends pb_1.Message {
     get has_liveLocations() {
         return pb_1.Message.getField(this, 7) != null;
     }
+    clear_liveLocations(): void {
+        this.liveLocations = undefined!;
+    }
     get queryVname() {
         return pb_1.Message.getFieldWithDefault(this, 8, WebFeatures.WEB_FEATURES_FLAG.NOT_STARTED) as WebFeatures.WEB_FEATURES_FLAG;
     }
@@ -10312,6 +11203,9 @@ export class WebFeatures extends pb_1.Message {
     }
     get has_queryVname() {
         return pb_1.Message.getField(this, 8) != null;
+    }
+    clear_queryVname(): void {
+        this.queryVname = undefined!;
     }
     get voipIndividualIncoming() {
         return pb_1.Message.getFieldWithDefault(this, 9, WebFeatures.WEB_FEATURES_FLAG.NOT_STARTED) as WebFeatures.WEB_FEATURES_FLAG;
@@ -10322,6 +11216,9 @@ export class WebFeatures extends pb_1.Message {
     get has_voipIndividualIncoming() {
         return pb_1.Message.getField(this, 9) != null;
     }
+    clear_voipIndividualIncoming(): void {
+        this.voipIndividualIncoming = undefined!;
+    }
     get quickRepliesQuery() {
         return pb_1.Message.getFieldWithDefault(this, 10, WebFeatures.WEB_FEATURES_FLAG.NOT_STARTED) as WebFeatures.WEB_FEATURES_FLAG;
     }
@@ -10330,6 +11227,9 @@ export class WebFeatures extends pb_1.Message {
     }
     get has_quickRepliesQuery() {
         return pb_1.Message.getField(this, 10) != null;
+    }
+    clear_quickRepliesQuery(): void {
+        this.quickRepliesQuery = undefined!;
     }
     get payments() {
         return pb_1.Message.getFieldWithDefault(this, 11, WebFeatures.WEB_FEATURES_FLAG.NOT_STARTED) as WebFeatures.WEB_FEATURES_FLAG;
@@ -10340,6 +11240,9 @@ export class WebFeatures extends pb_1.Message {
     get has_payments() {
         return pb_1.Message.getField(this, 11) != null;
     }
+    clear_payments(): void {
+        this.payments = undefined!;
+    }
     get stickerPackQuery() {
         return pb_1.Message.getFieldWithDefault(this, 12, WebFeatures.WEB_FEATURES_FLAG.NOT_STARTED) as WebFeatures.WEB_FEATURES_FLAG;
     }
@@ -10348,6 +11251,9 @@ export class WebFeatures extends pb_1.Message {
     }
     get has_stickerPackQuery() {
         return pb_1.Message.getField(this, 12) != null;
+    }
+    clear_stickerPackQuery(): void {
+        this.stickerPackQuery = undefined!;
     }
     get liveLocationsFinal() {
         return pb_1.Message.getFieldWithDefault(this, 13, WebFeatures.WEB_FEATURES_FLAG.NOT_STARTED) as WebFeatures.WEB_FEATURES_FLAG;
@@ -10358,6 +11264,9 @@ export class WebFeatures extends pb_1.Message {
     get has_liveLocationsFinal() {
         return pb_1.Message.getField(this, 13) != null;
     }
+    clear_liveLocationsFinal(): void {
+        this.liveLocationsFinal = undefined!;
+    }
     get labelsEdit() {
         return pb_1.Message.getFieldWithDefault(this, 14, WebFeatures.WEB_FEATURES_FLAG.NOT_STARTED) as WebFeatures.WEB_FEATURES_FLAG;
     }
@@ -10366,6 +11275,9 @@ export class WebFeatures extends pb_1.Message {
     }
     get has_labelsEdit() {
         return pb_1.Message.getField(this, 14) != null;
+    }
+    clear_labelsEdit(): void {
+        this.labelsEdit = undefined!;
     }
     get mediaUpload() {
         return pb_1.Message.getFieldWithDefault(this, 15, WebFeatures.WEB_FEATURES_FLAG.NOT_STARTED) as WebFeatures.WEB_FEATURES_FLAG;
@@ -10376,6 +11288,9 @@ export class WebFeatures extends pb_1.Message {
     get has_mediaUpload() {
         return pb_1.Message.getField(this, 15) != null;
     }
+    clear_mediaUpload(): void {
+        this.mediaUpload = undefined!;
+    }
     get mediaUploadRichQuickReplies() {
         return pb_1.Message.getFieldWithDefault(this, 18, WebFeatures.WEB_FEATURES_FLAG.NOT_STARTED) as WebFeatures.WEB_FEATURES_FLAG;
     }
@@ -10384,6 +11299,9 @@ export class WebFeatures extends pb_1.Message {
     }
     get has_mediaUploadRichQuickReplies() {
         return pb_1.Message.getField(this, 18) != null;
+    }
+    clear_mediaUploadRichQuickReplies(): void {
+        this.mediaUploadRichQuickReplies = undefined!;
     }
     get vnameV2() {
         return pb_1.Message.getFieldWithDefault(this, 19, WebFeatures.WEB_FEATURES_FLAG.NOT_STARTED) as WebFeatures.WEB_FEATURES_FLAG;
@@ -10394,6 +11312,9 @@ export class WebFeatures extends pb_1.Message {
     get has_vnameV2() {
         return pb_1.Message.getField(this, 19) != null;
     }
+    clear_vnameV2(): void {
+        this.vnameV2 = undefined!;
+    }
     get videoPlaybackUrl() {
         return pb_1.Message.getFieldWithDefault(this, 20, WebFeatures.WEB_FEATURES_FLAG.NOT_STARTED) as WebFeatures.WEB_FEATURES_FLAG;
     }
@@ -10402,6 +11323,9 @@ export class WebFeatures extends pb_1.Message {
     }
     get has_videoPlaybackUrl() {
         return pb_1.Message.getField(this, 20) != null;
+    }
+    clear_videoPlaybackUrl(): void {
+        this.videoPlaybackUrl = undefined!;
     }
     get statusRanking() {
         return pb_1.Message.getFieldWithDefault(this, 21, WebFeatures.WEB_FEATURES_FLAG.NOT_STARTED) as WebFeatures.WEB_FEATURES_FLAG;
@@ -10412,6 +11336,9 @@ export class WebFeatures extends pb_1.Message {
     get has_statusRanking() {
         return pb_1.Message.getField(this, 21) != null;
     }
+    clear_statusRanking(): void {
+        this.statusRanking = undefined!;
+    }
     get voipIndividualVideo() {
         return pb_1.Message.getFieldWithDefault(this, 22, WebFeatures.WEB_FEATURES_FLAG.NOT_STARTED) as WebFeatures.WEB_FEATURES_FLAG;
     }
@@ -10420,6 +11347,9 @@ export class WebFeatures extends pb_1.Message {
     }
     get has_voipIndividualVideo() {
         return pb_1.Message.getField(this, 22) != null;
+    }
+    clear_voipIndividualVideo(): void {
+        this.voipIndividualVideo = undefined!;
     }
     get thirdPartyStickers() {
         return pb_1.Message.getFieldWithDefault(this, 23, WebFeatures.WEB_FEATURES_FLAG.NOT_STARTED) as WebFeatures.WEB_FEATURES_FLAG;
@@ -10430,6 +11360,9 @@ export class WebFeatures extends pb_1.Message {
     get has_thirdPartyStickers() {
         return pb_1.Message.getField(this, 23) != null;
     }
+    clear_thirdPartyStickers(): void {
+        this.thirdPartyStickers = undefined!;
+    }
     get frequentlyForwardedSetting() {
         return pb_1.Message.getFieldWithDefault(this, 24, WebFeatures.WEB_FEATURES_FLAG.NOT_STARTED) as WebFeatures.WEB_FEATURES_FLAG;
     }
@@ -10438,6 +11371,9 @@ export class WebFeatures extends pb_1.Message {
     }
     get has_frequentlyForwardedSetting() {
         return pb_1.Message.getField(this, 24) != null;
+    }
+    clear_frequentlyForwardedSetting(): void {
+        this.frequentlyForwardedSetting = undefined!;
     }
     get groupsV4JoinPermission() {
         return pb_1.Message.getFieldWithDefault(this, 25, WebFeatures.WEB_FEATURES_FLAG.NOT_STARTED) as WebFeatures.WEB_FEATURES_FLAG;
@@ -10448,6 +11384,9 @@ export class WebFeatures extends pb_1.Message {
     get has_groupsV4JoinPermission() {
         return pb_1.Message.getField(this, 25) != null;
     }
+    clear_groupsV4JoinPermission(): void {
+        this.groupsV4JoinPermission = undefined!;
+    }
     get recentStickers() {
         return pb_1.Message.getFieldWithDefault(this, 26, WebFeatures.WEB_FEATURES_FLAG.NOT_STARTED) as WebFeatures.WEB_FEATURES_FLAG;
     }
@@ -10456,6 +11395,9 @@ export class WebFeatures extends pb_1.Message {
     }
     get has_recentStickers() {
         return pb_1.Message.getField(this, 26) != null;
+    }
+    clear_recentStickers(): void {
+        this.recentStickers = undefined!;
     }
     get catalog() {
         return pb_1.Message.getFieldWithDefault(this, 27, WebFeatures.WEB_FEATURES_FLAG.NOT_STARTED) as WebFeatures.WEB_FEATURES_FLAG;
@@ -10466,6 +11408,9 @@ export class WebFeatures extends pb_1.Message {
     get has_catalog() {
         return pb_1.Message.getField(this, 27) != null;
     }
+    clear_catalog(): void {
+        this.catalog = undefined!;
+    }
     get starredStickers() {
         return pb_1.Message.getFieldWithDefault(this, 28, WebFeatures.WEB_FEATURES_FLAG.NOT_STARTED) as WebFeatures.WEB_FEATURES_FLAG;
     }
@@ -10474,6 +11419,9 @@ export class WebFeatures extends pb_1.Message {
     }
     get has_starredStickers() {
         return pb_1.Message.getField(this, 28) != null;
+    }
+    clear_starredStickers(): void {
+        this.starredStickers = undefined!;
     }
     get voipGroupCall() {
         return pb_1.Message.getFieldWithDefault(this, 29, WebFeatures.WEB_FEATURES_FLAG.NOT_STARTED) as WebFeatures.WEB_FEATURES_FLAG;
@@ -10484,6 +11432,9 @@ export class WebFeatures extends pb_1.Message {
     get has_voipGroupCall() {
         return pb_1.Message.getField(this, 29) != null;
     }
+    clear_voipGroupCall(): void {
+        this.voipGroupCall = undefined!;
+    }
     get templateMessage() {
         return pb_1.Message.getFieldWithDefault(this, 30, WebFeatures.WEB_FEATURES_FLAG.NOT_STARTED) as WebFeatures.WEB_FEATURES_FLAG;
     }
@@ -10492,6 +11443,9 @@ export class WebFeatures extends pb_1.Message {
     }
     get has_templateMessage() {
         return pb_1.Message.getField(this, 30) != null;
+    }
+    clear_templateMessage(): void {
+        this.templateMessage = undefined!;
     }
     get templateMessageInteractivity() {
         return pb_1.Message.getFieldWithDefault(this, 31, WebFeatures.WEB_FEATURES_FLAG.NOT_STARTED) as WebFeatures.WEB_FEATURES_FLAG;
@@ -10502,6 +11456,9 @@ export class WebFeatures extends pb_1.Message {
     get has_templateMessageInteractivity() {
         return pb_1.Message.getField(this, 31) != null;
     }
+    clear_templateMessageInteractivity(): void {
+        this.templateMessageInteractivity = undefined!;
+    }
     get ephemeralMessages() {
         return pb_1.Message.getFieldWithDefault(this, 32, WebFeatures.WEB_FEATURES_FLAG.NOT_STARTED) as WebFeatures.WEB_FEATURES_FLAG;
     }
@@ -10510,6 +11467,9 @@ export class WebFeatures extends pb_1.Message {
     }
     get has_ephemeralMessages() {
         return pb_1.Message.getField(this, 32) != null;
+    }
+    clear_ephemeralMessages(): void {
+        this.ephemeralMessages = undefined!;
     }
     get e2ENotificationSync() {
         return pb_1.Message.getFieldWithDefault(this, 33, WebFeatures.WEB_FEATURES_FLAG.NOT_STARTED) as WebFeatures.WEB_FEATURES_FLAG;
@@ -10520,6 +11480,9 @@ export class WebFeatures extends pb_1.Message {
     get has_e2ENotificationSync() {
         return pb_1.Message.getField(this, 33) != null;
     }
+    clear_e2ENotificationSync(): void {
+        this.e2ENotificationSync = undefined!;
+    }
     get recentStickersV2() {
         return pb_1.Message.getFieldWithDefault(this, 34, WebFeatures.WEB_FEATURES_FLAG.NOT_STARTED) as WebFeatures.WEB_FEATURES_FLAG;
     }
@@ -10529,6 +11492,9 @@ export class WebFeatures extends pb_1.Message {
     get has_recentStickersV2() {
         return pb_1.Message.getField(this, 34) != null;
     }
+    clear_recentStickersV2(): void {
+        this.recentStickersV2 = undefined!;
+    }
     get syncdRelease1() {
         return pb_1.Message.getFieldWithDefault(this, 35, WebFeatures.WEB_FEATURES_FLAG.NOT_STARTED) as WebFeatures.WEB_FEATURES_FLAG;
     }
@@ -10537,6 +11503,9 @@ export class WebFeatures extends pb_1.Message {
     }
     get has_syncdRelease1() {
         return pb_1.Message.getField(this, 35) != null;
+    }
+    clear_syncdRelease1(): void {
+        this.syncdRelease1 = undefined!;
     }
     static fromObject(data?: WebFeatures.AsObjectPartial): WebFeatures {
         if (!data) {
@@ -10984,6 +11953,9 @@ export class TabletNotificationsInfo extends pb_1.Message {
     get has_timestamp() {
         return pb_1.Message.getField(this, 2) != null;
     }
+    clear_timestamp(): void {
+        this.timestamp = undefined!;
+    }
     get unreadChats() {
         return pb_1.Message.getFieldWithDefault(this, 3, 0) as number;
     }
@@ -10993,6 +11965,9 @@ export class TabletNotificationsInfo extends pb_1.Message {
     get has_unreadChats() {
         return pb_1.Message.getField(this, 3) != null;
     }
+    clear_unreadChats(): void {
+        this.unreadChats = undefined!;
+    }
     get notifyMessageCount() {
         return pb_1.Message.getFieldWithDefault(this, 4, 0) as number;
     }
@@ -11001,6 +11976,9 @@ export class TabletNotificationsInfo extends pb_1.Message {
     }
     get has_notifyMessageCount() {
         return pb_1.Message.getField(this, 4) != null;
+    }
+    clear_notifyMessageCount(): void {
+        this.notifyMessageCount = undefined!;
     }
     get notifyMessage() {
         return pb_1.Message.getRepeatedWrapperField(this, NotificationMessageInfo, 5) as NotificationMessageInfo[];
@@ -11129,6 +12107,9 @@ export class NotificationMessageInfo extends pb_1.Message {
     get has_key() {
         return pb_1.Message.getField(this, 1) != null;
     }
+    clear_key(): void {
+        this.key = undefined!;
+    }
     get message() {
         return pb_1.Message.getWrapperField(this, Message, 2) as Message | undefined;
     }
@@ -11137,6 +12118,9 @@ export class NotificationMessageInfo extends pb_1.Message {
     }
     get has_message() {
         return pb_1.Message.getField(this, 2) != null;
+    }
+    clear_message(): void {
+        this.message = undefined!;
     }
     get messageTimestamp() {
         return pb_1.Message.getFieldWithDefault(this, 3, 0) as number;
@@ -11147,6 +12131,9 @@ export class NotificationMessageInfo extends pb_1.Message {
     get has_messageTimestamp() {
         return pb_1.Message.getField(this, 3) != null;
     }
+    clear_messageTimestamp(): void {
+        this.messageTimestamp = undefined!;
+    }
     get participant() {
         return pb_1.Message.getFieldWithDefault(this, 4, "") as string;
     }
@@ -11155,6 +12142,9 @@ export class NotificationMessageInfo extends pb_1.Message {
     }
     get has_participant() {
         return pb_1.Message.getField(this, 4) != null;
+    }
+    clear_participant(): void {
+        this.participant = undefined!;
     }
     static fromObject(data?: NotificationMessageInfo.AsObjectPartial): NotificationMessageInfo {
         if (!data) {
@@ -11281,6 +12271,9 @@ export class WebNotificationsInfo extends pb_1.Message {
     get has_timestamp() {
         return pb_1.Message.getField(this, 2) != null;
     }
+    clear_timestamp(): void {
+        this.timestamp = undefined!;
+    }
     get unreadChats() {
         return pb_1.Message.getFieldWithDefault(this, 3, 0) as number;
     }
@@ -11290,6 +12283,9 @@ export class WebNotificationsInfo extends pb_1.Message {
     get has_unreadChats() {
         return pb_1.Message.getField(this, 3) != null;
     }
+    clear_unreadChats(): void {
+        this.unreadChats = undefined!;
+    }
     get notifyMessageCount() {
         return pb_1.Message.getFieldWithDefault(this, 4, 0) as number;
     }
@@ -11298,6 +12294,9 @@ export class WebNotificationsInfo extends pb_1.Message {
     }
     get has_notifyMessageCount() {
         return pb_1.Message.getField(this, 4) != null;
+    }
+    clear_notifyMessageCount(): void {
+        this.notifyMessageCount = undefined!;
     }
     get notifyMessages() {
         return pb_1.Message.getRepeatedWrapperField(this, WebMessageInfo, 5) as WebMessageInfo[];
@@ -11450,6 +12449,9 @@ export class PaymentInfo extends pb_1.Message {
     get has_currencyDeprecated() {
         return pb_1.Message.getField(this, 1) != null;
     }
+    clear_currencyDeprecated(): void {
+        this.currencyDeprecated = undefined!;
+    }
     get amount1000() {
         return pb_1.Message.getFieldWithDefault(this, 2, 0) as number;
     }
@@ -11458,6 +12460,9 @@ export class PaymentInfo extends pb_1.Message {
     }
     get has_amount1000() {
         return pb_1.Message.getField(this, 2) != null;
+    }
+    clear_amount1000(): void {
+        this.amount1000 = undefined!;
     }
     get receiverJid() {
         return pb_1.Message.getFieldWithDefault(this, 3, "") as string;
@@ -11468,6 +12473,9 @@ export class PaymentInfo extends pb_1.Message {
     get has_receiverJid() {
         return pb_1.Message.getField(this, 3) != null;
     }
+    clear_receiverJid(): void {
+        this.receiverJid = undefined!;
+    }
     get status() {
         return pb_1.Message.getFieldWithDefault(this, 4, PaymentInfo.PAYMENT_INFO_STATUS.UNKNOWN_STATUS) as PaymentInfo.PAYMENT_INFO_STATUS;
     }
@@ -11476,6 +12484,9 @@ export class PaymentInfo extends pb_1.Message {
     }
     get has_status() {
         return pb_1.Message.getField(this, 4) != null;
+    }
+    clear_status(): void {
+        this.status = undefined!;
     }
     get transactionTimestamp() {
         return pb_1.Message.getFieldWithDefault(this, 5, 0) as number;
@@ -11486,6 +12497,9 @@ export class PaymentInfo extends pb_1.Message {
     get has_transactionTimestamp() {
         return pb_1.Message.getField(this, 5) != null;
     }
+    clear_transactionTimestamp(): void {
+        this.transactionTimestamp = undefined!;
+    }
     get requestMessageKey() {
         return pb_1.Message.getWrapperField(this, MessageKey, 6) as MessageKey | undefined;
     }
@@ -11494,6 +12508,9 @@ export class PaymentInfo extends pb_1.Message {
     }
     get has_requestMessageKey() {
         return pb_1.Message.getField(this, 6) != null;
+    }
+    clear_requestMessageKey(): void {
+        this.requestMessageKey = undefined!;
     }
     get expiryTimestamp() {
         return pb_1.Message.getFieldWithDefault(this, 7, 0) as number;
@@ -11504,6 +12521,9 @@ export class PaymentInfo extends pb_1.Message {
     get has_expiryTimestamp() {
         return pb_1.Message.getField(this, 7) != null;
     }
+    clear_expiryTimestamp(): void {
+        this.expiryTimestamp = undefined!;
+    }
     get futureproofed() {
         return pb_1.Message.getFieldWithDefault(this, 8, false) as boolean;
     }
@@ -11512,6 +12532,9 @@ export class PaymentInfo extends pb_1.Message {
     }
     get has_futureproofed() {
         return pb_1.Message.getField(this, 8) != null;
+    }
+    clear_futureproofed(): void {
+        this.futureproofed = undefined!;
     }
     get currency() {
         return pb_1.Message.getFieldWithDefault(this, 9, "") as string;
@@ -11522,6 +12545,9 @@ export class PaymentInfo extends pb_1.Message {
     get has_currency() {
         return pb_1.Message.getField(this, 9) != null;
     }
+    clear_currency(): void {
+        this.currency = undefined!;
+    }
     get txnStatus() {
         return pb_1.Message.getFieldWithDefault(this, 10, PaymentInfo.PAYMENT_INFO_TXNSTATUS.UNKNOWN) as PaymentInfo.PAYMENT_INFO_TXNSTATUS;
     }
@@ -11530,6 +12556,9 @@ export class PaymentInfo extends pb_1.Message {
     }
     get has_txnStatus() {
         return pb_1.Message.getField(this, 10) != null;
+    }
+    clear_txnStatus(): void {
+        this.txnStatus = undefined!;
     }
     static fromObject(data?: PaymentInfo.AsObjectPartial): PaymentInfo {
         if (!data) {
@@ -11846,6 +12875,9 @@ export class WebMessageInfo extends pb_1.Message {
     get has_key() {
         return pb_1.Message.getField(this, 1) != null;
     }
+    clear_key(): void {
+        this.key = undefined!;
+    }
     get message() {
         return pb_1.Message.getWrapperField(this, Message, 2) as Message | undefined;
     }
@@ -11854,6 +12886,9 @@ export class WebMessageInfo extends pb_1.Message {
     }
     get has_message() {
         return pb_1.Message.getField(this, 2) != null;
+    }
+    clear_message(): void {
+        this.message = undefined!;
     }
     get messageTimestamp() {
         return pb_1.Message.getFieldWithDefault(this, 3, 0) as number;
@@ -11864,6 +12899,9 @@ export class WebMessageInfo extends pb_1.Message {
     get has_messageTimestamp() {
         return pb_1.Message.getField(this, 3) != null;
     }
+    clear_messageTimestamp(): void {
+        this.messageTimestamp = undefined!;
+    }
     get status() {
         return pb_1.Message.getFieldWithDefault(this, 4, WebMessageInfo.WEB_MESSAGE_INFO_STATUS.ERROR) as WebMessageInfo.WEB_MESSAGE_INFO_STATUS;
     }
@@ -11872,6 +12910,9 @@ export class WebMessageInfo extends pb_1.Message {
     }
     get has_status() {
         return pb_1.Message.getField(this, 4) != null;
+    }
+    clear_status(): void {
+        this.status = undefined!;
     }
     get participant() {
         return pb_1.Message.getFieldWithDefault(this, 5, "") as string;
@@ -11882,6 +12923,9 @@ export class WebMessageInfo extends pb_1.Message {
     get has_participant() {
         return pb_1.Message.getField(this, 5) != null;
     }
+    clear_participant(): void {
+        this.participant = undefined!;
+    }
     get ignore() {
         return pb_1.Message.getFieldWithDefault(this, 16, false) as boolean;
     }
@@ -11890,6 +12934,9 @@ export class WebMessageInfo extends pb_1.Message {
     }
     get has_ignore() {
         return pb_1.Message.getField(this, 16) != null;
+    }
+    clear_ignore(): void {
+        this.ignore = undefined!;
     }
     get starred() {
         return pb_1.Message.getFieldWithDefault(this, 17, false) as boolean;
@@ -11900,6 +12947,9 @@ export class WebMessageInfo extends pb_1.Message {
     get has_starred() {
         return pb_1.Message.getField(this, 17) != null;
     }
+    clear_starred(): void {
+        this.starred = undefined!;
+    }
     get broadcast() {
         return pb_1.Message.getFieldWithDefault(this, 18, false) as boolean;
     }
@@ -11908,6 +12958,9 @@ export class WebMessageInfo extends pb_1.Message {
     }
     get has_broadcast() {
         return pb_1.Message.getField(this, 18) != null;
+    }
+    clear_broadcast(): void {
+        this.broadcast = undefined!;
     }
     get pushName() {
         return pb_1.Message.getFieldWithDefault(this, 19, "") as string;
@@ -11918,6 +12971,9 @@ export class WebMessageInfo extends pb_1.Message {
     get has_pushName() {
         return pb_1.Message.getField(this, 19) != null;
     }
+    clear_pushName(): void {
+        this.pushName = undefined!;
+    }
     get mediaCiphertextSha256() {
         return pb_1.Message.getFieldWithDefault(this, 20, new Uint8Array()) as Uint8Array;
     }
@@ -11926,6 +12982,9 @@ export class WebMessageInfo extends pb_1.Message {
     }
     get has_mediaCiphertextSha256() {
         return pb_1.Message.getField(this, 20) != null;
+    }
+    clear_mediaCiphertextSha256(): void {
+        this.mediaCiphertextSha256 = undefined!;
     }
     get multicast() {
         return pb_1.Message.getFieldWithDefault(this, 21, false) as boolean;
@@ -11936,6 +12995,9 @@ export class WebMessageInfo extends pb_1.Message {
     get has_multicast() {
         return pb_1.Message.getField(this, 21) != null;
     }
+    clear_multicast(): void {
+        this.multicast = undefined!;
+    }
     get urlText() {
         return pb_1.Message.getFieldWithDefault(this, 22, false) as boolean;
     }
@@ -11944,6 +13006,9 @@ export class WebMessageInfo extends pb_1.Message {
     }
     get has_urlText() {
         return pb_1.Message.getField(this, 22) != null;
+    }
+    clear_urlText(): void {
+        this.urlText = undefined!;
     }
     get urlNumber() {
         return pb_1.Message.getFieldWithDefault(this, 23, false) as boolean;
@@ -11954,6 +13019,9 @@ export class WebMessageInfo extends pb_1.Message {
     get has_urlNumber() {
         return pb_1.Message.getField(this, 23) != null;
     }
+    clear_urlNumber(): void {
+        this.urlNumber = undefined!;
+    }
     get messageStubType() {
         return pb_1.Message.getFieldWithDefault(this, 24, WebMessageInfo.WEB_MESSAGE_INFO_STUBTYPE.UNKNOWN) as WebMessageInfo.WEB_MESSAGE_INFO_STUBTYPE;
     }
@@ -11963,6 +13031,9 @@ export class WebMessageInfo extends pb_1.Message {
     get has_messageStubType() {
         return pb_1.Message.getField(this, 24) != null;
     }
+    clear_messageStubType(): void {
+        this.messageStubType = undefined!;
+    }
     get clearMedia() {
         return pb_1.Message.getFieldWithDefault(this, 25, false) as boolean;
     }
@@ -11971,6 +13042,9 @@ export class WebMessageInfo extends pb_1.Message {
     }
     get has_clearMedia() {
         return pb_1.Message.getField(this, 25) != null;
+    }
+    clear_clearMedia(): void {
+        this.clearMedia = undefined!;
     }
     get messageStubParameters() {
         return pb_1.Message.getFieldWithDefault(this, 26, []) as string[];
@@ -11987,6 +13061,9 @@ export class WebMessageInfo extends pb_1.Message {
     get has_duration() {
         return pb_1.Message.getField(this, 27) != null;
     }
+    clear_duration(): void {
+        this.duration = undefined!;
+    }
     get labels() {
         return pb_1.Message.getFieldWithDefault(this, 28, []) as string[];
     }
@@ -12002,6 +13079,9 @@ export class WebMessageInfo extends pb_1.Message {
     get has_paymentInfo() {
         return pb_1.Message.getField(this, 29) != null;
     }
+    clear_paymentInfo(): void {
+        this.paymentInfo = undefined!;
+    }
     get finalLiveLocation() {
         return pb_1.Message.getWrapperField(this, LiveLocationMessage, 30) as LiveLocationMessage | undefined;
     }
@@ -12010,6 +13090,9 @@ export class WebMessageInfo extends pb_1.Message {
     }
     get has_finalLiveLocation() {
         return pb_1.Message.getField(this, 30) != null;
+    }
+    clear_finalLiveLocation(): void {
+        this.finalLiveLocation = undefined!;
     }
     get quotedPaymentInfo() {
         return pb_1.Message.getWrapperField(this, PaymentInfo, 31) as PaymentInfo | undefined;
@@ -12020,6 +13103,9 @@ export class WebMessageInfo extends pb_1.Message {
     get has_quotedPaymentInfo() {
         return pb_1.Message.getField(this, 31) != null;
     }
+    clear_quotedPaymentInfo(): void {
+        this.quotedPaymentInfo = undefined!;
+    }
     get ephemeralStartTimestamp() {
         return pb_1.Message.getFieldWithDefault(this, 32, 0) as number;
     }
@@ -12028,6 +13114,9 @@ export class WebMessageInfo extends pb_1.Message {
     }
     get has_ephemeralStartTimestamp() {
         return pb_1.Message.getField(this, 32) != null;
+    }
+    clear_ephemeralStartTimestamp(): void {
+        this.ephemeralStartTimestamp = undefined!;
     }
     get ephemeralDuration() {
         return pb_1.Message.getFieldWithDefault(this, 33, 0) as number;
@@ -12038,6 +13127,9 @@ export class WebMessageInfo extends pb_1.Message {
     get has_ephemeralDuration() {
         return pb_1.Message.getField(this, 33) != null;
     }
+    clear_ephemeralDuration(): void {
+        this.ephemeralDuration = undefined!;
+    }
     get ephemeralOffToOn() {
         return pb_1.Message.getFieldWithDefault(this, 34, false) as boolean;
     }
@@ -12046,6 +13138,9 @@ export class WebMessageInfo extends pb_1.Message {
     }
     get has_ephemeralOffToOn() {
         return pb_1.Message.getField(this, 34) != null;
+    }
+    clear_ephemeralOffToOn(): void {
+        this.ephemeralOffToOn = undefined!;
     }
     static fromObject(data?: WebMessageInfo.AsObjectPartial): WebMessageInfo {
         if (!data) {

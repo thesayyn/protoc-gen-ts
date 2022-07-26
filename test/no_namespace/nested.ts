@@ -55,6 +55,9 @@ export class SchedulingContext extends pb_1.Message {
     get has_batch() {
         return pb_1.Message.getField(this, 4) != null;
     }
+    clear_batch(): void {
+        this.batch = undefined!;
+    }
     static fromObject(data?: SchedulingContextAsObjectPartial): SchedulingContext {
         if (!data) {
             return new SchedulingContext();
@@ -265,6 +268,9 @@ export class SchedulingContextBatch extends pb_1.Message {
     get has_process() {
         return pb_1.Message.getField(this, 3) != null;
     }
+    clear_process(): void {
+        this.process = undefined!;
+    }
     static fromObject(data?: SchedulingContextBatchAsObjectPartial): SchedulingContextBatch {
         if (!data) {
             return new SchedulingContextBatch();
@@ -464,6 +470,9 @@ export class Target extends pb_1.Message {
     get has_context() {
         return pb_1.Message.getField(this, 4) != null;
     }
+    clear_context(): void {
+        this.context = undefined!;
+    }
     static fromObject(data?: TargetAsObjectPartial): Target {
         if (!data) {
             return new Target();
@@ -592,6 +601,9 @@ export class Event extends pb_1.Message {
     }
     get has_target() {
         return pb_1.Message.getField(this, 3) != null;
+    }
+    clear_target(): void {
+        this.target = undefined!;
     }
     static fromObject(data?: EventAsObjectPartial): Event {
         if (!data) {

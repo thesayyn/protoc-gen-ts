@@ -111,6 +111,9 @@ export class PresenceCommonMessageOneOf extends pb_1.Message {
     get has_int32() {
         return pb_1.Message.getField(this, 1) != null;
     }
+    clear_int32(): void {
+        this.int32 = undefined!;
+    }
     get message() {
         return pb_1.Message.getWrapperField(this, PresenceCommonMessage, 2) as PresenceCommonMessage | undefined;
     }
@@ -119,6 +122,9 @@ export class PresenceCommonMessageOneOf extends pb_1.Message {
     }
     get has_message() {
         return pb_1.Message.getField(this, 2) != null;
+    }
+    clear_message(): void {
+        this.message = undefined!;
     }
     get oneof() {
         const cases: {
