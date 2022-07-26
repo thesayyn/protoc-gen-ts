@@ -63,6 +63,9 @@ export class PresenceMessageV2 extends pb_1.Message {
     get has_int32() {
         return pb_1.Message.getField(this, 1) != null;
     }
+    clear_int32(): void {
+        this.int32 = undefined!;
+    }
     get enum() {
         return pb_1.Message.getField(this, 2) as dependency_1.PresenceCommonEnum | undefined;
     }
@@ -71,6 +74,9 @@ export class PresenceMessageV2 extends pb_1.Message {
     }
     get has_enum() {
         return pb_1.Message.getField(this, 2) != null;
+    }
+    clear_enum(): void {
+        this.enum = undefined!;
     }
     get string() {
         return pb_1.Message.getField(this, 3) as string | undefined;
@@ -81,6 +87,9 @@ export class PresenceMessageV2 extends pb_1.Message {
     get has_string() {
         return pb_1.Message.getField(this, 3) != null;
     }
+    clear_string(): void {
+        this.string = undefined!;
+    }
     get message() {
         return pb_1.Message.getWrapperField(this, dependency_1.PresenceCommonMessage, 4) as dependency_1.PresenceCommonMessage | undefined;
     }
@@ -89,6 +98,9 @@ export class PresenceMessageV2 extends pb_1.Message {
     }
     get has_message() {
         return pb_1.Message.getField(this, 4) != null;
+    }
+    clear_message(): void {
+        this.message = undefined!;
     }
     get oneof() {
         return pb_1.Message.getWrapperField(this, dependency_1.PresenceCommonMessageOneOf, 5) as dependency_1.PresenceCommonMessageOneOf | undefined;
@@ -99,6 +111,9 @@ export class PresenceMessageV2 extends pb_1.Message {
     get has_oneof() {
         return pb_1.Message.getField(this, 5) != null;
     }
+    clear_oneof(): void {
+        this.oneof = undefined!;
+    }
     get opt_int32() {
         return pb_1.Message.getFieldWithDefault(this, 6, 0) as number;
     }
@@ -107,6 +122,9 @@ export class PresenceMessageV2 extends pb_1.Message {
     }
     get has_opt_int32() {
         return pb_1.Message.getField(this, 6) != null;
+    }
+    clear_opt_int32(): void {
+        this.opt_int32 = undefined!;
     }
     get opt_enum() {
         return pb_1.Message.getFieldWithDefault(this, 7, dependency_1.PresenceCommonEnum.ZERO) as dependency_1.PresenceCommonEnum;
@@ -117,6 +135,9 @@ export class PresenceMessageV2 extends pb_1.Message {
     get has_opt_enum() {
         return pb_1.Message.getField(this, 7) != null;
     }
+    clear_opt_enum(): void {
+        this.opt_enum = undefined!;
+    }
     get opt_string() {
         return pb_1.Message.getFieldWithDefault(this, 8, "") as string;
     }
@@ -125,6 +146,9 @@ export class PresenceMessageV2 extends pb_1.Message {
     }
     get has_opt_string() {
         return pb_1.Message.getField(this, 8) != null;
+    }
+    clear_opt_string(): void {
+        this.opt_string = undefined!;
     }
     get opt_message() {
         return pb_1.Message.getWrapperField(this, dependency_1.PresenceCommonMessage, 9) as dependency_1.PresenceCommonMessage | undefined;
@@ -135,6 +159,9 @@ export class PresenceMessageV2 extends pb_1.Message {
     get has_opt_message() {
         return pb_1.Message.getField(this, 9) != null;
     }
+    clear_opt_message(): void {
+        this.opt_message = undefined!;
+    }
     get opt_oneof() {
         return pb_1.Message.getWrapperField(this, dependency_1.PresenceCommonMessageOneOf, 10) as dependency_1.PresenceCommonMessageOneOf | undefined;
     }
@@ -143,6 +170,9 @@ export class PresenceMessageV2 extends pb_1.Message {
     }
     get has_opt_oneof() {
         return pb_1.Message.getField(this, 10) != null;
+    }
+    clear_opt_oneof(): void {
+        this.opt_oneof = undefined!;
     }
     get repeated() {
         return pb_1.Message.getFieldWithDefault(this, 11, []) as number[];

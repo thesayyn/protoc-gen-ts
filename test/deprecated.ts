@@ -59,6 +59,9 @@ export class MessageName extends pb_1.Message {
     get has_me() {
         return pb_1.Message.getField(this, 2) != null;
     }
+    clear_me(): void {
+        this.me = undefined!;
+    }
     /** @deprecated*/
     get me_deprecated() {
         return pb_1.Message.getFieldWithDefault(this, 3, "") as string;
@@ -70,6 +73,10 @@ export class MessageName extends pb_1.Message {
     /** @deprecated*/
     get has_me_deprecated() {
         return pb_1.Message.getField(this, 3) != null;
+    }
+    /** @deprecated*/
+    clear_me_deprecated(): void {
+        this.me_deprecated = undefined!;
     }
     get test() {
         const cases: {

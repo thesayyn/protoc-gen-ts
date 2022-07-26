@@ -30,6 +30,9 @@ export class MessageFields extends pb_1.Message {
     get has_sub_message() {
         return pb_1.Message.getField(this, 1) != null;
     }
+    clear_sub_message(): void {
+        this.sub_message = undefined!;
+    }
     get array_prop() {
         return pb_1.Message.getRepeatedWrapperField(this, SubMessage, 2) as SubMessage[];
     }

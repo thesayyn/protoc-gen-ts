@@ -199,6 +199,9 @@ export class Chunk extends pb_1.Message {
     get has_range() {
         return pb_1.Message.getField(this, 2) != null;
     }
+    clear_range(): void {
+        this.range = undefined!;
+    }
     static fromObject(data?: Chunk.AsObjectPartial): Chunk {
         if (!data) {
             return new Chunk();
@@ -390,6 +393,9 @@ export namespace Chunk {
         }
         get has_range() {
             return pb_1.Message.getField(this, 2) != null;
+        }
+        clear_range(): void {
+            this.range = undefined!;
         }
         static fromObject(data?: Query.AsObjectPartial): Query {
             if (!data) {
@@ -636,6 +642,9 @@ export class Put extends pb_1.Message {
     }
     get has_chunk() {
         return pb_1.Message.getField(this, 3) != null;
+    }
+    clear_chunk(): void {
+        this.chunk = undefined!;
     }
     static fromObject(data?: Put.AsObjectPartial): Put {
         if (!data) {

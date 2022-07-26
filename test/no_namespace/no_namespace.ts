@@ -36,6 +36,9 @@ export class NoNamespace extends pb_1.Message {
     get has_label() {
         return pb_1.Message.getField(this, 1) != null;
     }
+    clear_label(): void {
+        this.label = undefined!;
+    }
     get other_fields() {
         return pb_1.Message.getWrapperField(this, dependency_2.MessageFields, 2) as dependency_2.MessageFields | undefined;
     }
@@ -45,6 +48,9 @@ export class NoNamespace extends pb_1.Message {
     get has_other_fields() {
         return pb_1.Message.getField(this, 2) != null;
     }
+    clear_other_fields(): void {
+        this.other_fields = undefined!;
+    }
     get batch_fields() {
         return pb_1.Message.getWrapperField(this, dependency_1.eventSchedulingContextBatch, 3) as dependency_1.eventSchedulingContextBatch | undefined;
     }
@@ -53,6 +59,9 @@ export class NoNamespace extends pb_1.Message {
     }
     get has_batch_fields() {
         return pb_1.Message.getField(this, 3) != null;
+    }
+    clear_batch_fields(): void {
+        this.batch_fields = undefined!;
     }
     static fromObject(data?: NoNamespaceAsObjectPartial): NoNamespace {
         if (!data) {
