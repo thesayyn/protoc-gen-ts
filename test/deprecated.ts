@@ -81,7 +81,10 @@ export class MessageName extends pb_1.Message {
         };
         return cases[pb_1.Message.computeOneofCase(this, [2, 3])]!;
     }
-    static fromObject(data: MessageName.AsObjectPartial): MessageName {
+    static fromObject(data?: MessageName.AsObjectPartial): MessageName {
+        if (!data) {
+            return new MessageName();
+        }
         const message = new MessageName({});
         if (data.deprecated_field != null) {
             message.deprecated_field = data.deprecated_field;
@@ -162,9 +165,12 @@ export class MessageName2 extends pb_1.Message {
         pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
         if (!Array.isArray(data) && typeof data == "object") { }
     }
-    static fromObject(data: MessageName2.AsObjectPartial): MessageName2 {
+    static fromObject(data?: MessageName2.AsObjectPartial): MessageName2 {
+        if (!data) {
+            return new MessageName2();
+        }
         const message = new MessageName2({});
-        return data && message;
+        return message;
     }
     toObject() {
         const data: MessageName2.AsObject = {};

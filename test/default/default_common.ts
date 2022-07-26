@@ -28,7 +28,10 @@ export class DefaultCommonMessage extends pb_1.Message {
     set message(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
-    static fromObject(data: DefaultCommonMessage.AsObjectPartial): DefaultCommonMessage {
+    static fromObject(data?: DefaultCommonMessage.AsObjectPartial): DefaultCommonMessage {
+        if (!data) {
+            return new DefaultCommonMessage();
+        }
         const message = new DefaultCommonMessage({});
         if (data.message != null) {
             message.message = data.message;
@@ -146,7 +149,10 @@ export class DefaultCommonMessageOneOf extends pb_1.Message {
         };
         return cases[pb_1.Message.computeOneofCase(this, [1, 2, 3])]!;
     }
-    static fromObject(data: DefaultCommonMessageOneOf.AsObjectPartial): DefaultCommonMessageOneOf {
+    static fromObject(data?: DefaultCommonMessageOneOf.AsObjectPartial): DefaultCommonMessageOneOf {
+        if (!data) {
+            return new DefaultCommonMessageOneOf();
+        }
         const message = new DefaultCommonMessageOneOf({});
         if (data.int32 != null) {
             message.int32 = data.int32;

@@ -281,7 +281,10 @@ export class DefaultMessageV3 extends pb_1.Message {
         };
         return cases[pb_1.Message.computeOneofCase(this, [22, 23])]!;
     }
-    static fromObject(data: DefaultMessageV3.AsObjectPartial): DefaultMessageV3 {
+    static fromObject(data?: DefaultMessageV3.AsObjectPartial): DefaultMessageV3 {
+        if (!data) {
+            return new DefaultMessageV3();
+        }
         const message = new DefaultMessageV3({});
         if (data.message != null) {
             message.message = dependency_1.DefaultCommonMessage.fromObject(data.message);
@@ -1008,7 +1011,10 @@ export class DefaultMessageOptionalV3 extends pb_1.Message {
         };
         return cases[pb_1.Message.computeOneofCase(this, [24])]!;
     }
-    static fromObject(data: DefaultMessageOptionalV3.AsObjectPartial): DefaultMessageOptionalV3 {
+    static fromObject(data?: DefaultMessageOptionalV3.AsObjectPartial): DefaultMessageOptionalV3 {
+        if (!data) {
+            return new DefaultMessageOptionalV3();
+        }
         const message = new DefaultMessageOptionalV3({});
         if (data.enum != null) {
             message.enum = data.enum;

@@ -12,9 +12,12 @@ export namespace importdirective {
             pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") { }
         }
-        static fromObject(data: Imported.AsObjectPartial): Imported {
+        static fromObject(data?: Imported.AsObjectPartial): Imported {
+            if (!data) {
+                return new Imported();
+            }
             const message = new Imported({});
-            return data && message;
+            return message;
         }
         toObject() {
             const data: Imported.AsObject = {};
@@ -67,7 +70,10 @@ export namespace importdirective {
             set key(value: Imported.SubMessage.MyEnum) {
                 pb_1.Message.setField(this, 1, value);
             }
-            static fromObject(data: SubMessage.AsObjectPartial): SubMessage {
+            static fromObject(data?: SubMessage.AsObjectPartial): SubMessage {
+                if (!data) {
+                    return new SubMessage();
+                }
                 const message = new SubMessage({});
                 if (data.key != null) {
                     message.key = data.key;

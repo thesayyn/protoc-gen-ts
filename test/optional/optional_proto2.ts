@@ -34,7 +34,10 @@ export class NotOptional extends pb_1.Message {
     get has_should_be_optional() {
         return pb_1.Message.getField(this, 2) != null;
     }
-    static fromObject(data: NotOptional.AsObjectPartial): NotOptional {
+    static fromObject(data?: NotOptional.AsObjectPartial): NotOptional {
+        if (!data) {
+            return new NotOptional();
+        }
         const message = new NotOptional({
             should_be_required: data.should_be_required
         });

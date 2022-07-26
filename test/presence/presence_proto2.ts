@@ -152,7 +152,10 @@ export class PresenceMessageV2 extends pb_1.Message {
     set map(value: Map<string, string>) {
         pb_1.Message.setField(this, 12, value as any);
     }
-    static fromObject(data: PresenceMessageV2.AsObjectPartial): PresenceMessageV2 {
+    static fromObject(data?: PresenceMessageV2.AsObjectPartial): PresenceMessageV2 {
+        if (!data) {
+            return new PresenceMessageV2();
+        }
         const message = new PresenceMessageV2({
             int32: data.int32,
             enum: data.enum,

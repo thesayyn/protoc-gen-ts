@@ -93,7 +93,10 @@ export class Integers extends pb_1.Message {
     set fixed64(value: number) {
         pb_1.Message.setField(this, 9, value);
     }
-    static fromObject(data: Integers.AsObjectPartial): Integers {
+    static fromObject(data?: Integers.AsObjectPartial): Integers {
+        if (!data) {
+            return new Integers();
+        }
         const message = new Integers({});
         if (data.int32 != null) {
             message.int32 = data.int32;

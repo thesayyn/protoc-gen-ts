@@ -36,7 +36,10 @@ export class MessageFields extends pb_1.Message {
     set array_prop(value: SubMessage[]) {
         pb_1.Message.setRepeatedWrapperField(this, 2, value);
     }
-    static fromObject(data: MessageFields.AsObjectPartial): MessageFields {
+    static fromObject(data?: MessageFields.AsObjectPartial): MessageFields {
+        if (!data) {
+            return new MessageFields();
+        }
         const message = new MessageFields({});
         if (data.sub_message != null) {
             message.sub_message = SubMessage.fromObject(data.sub_message);
@@ -129,7 +132,10 @@ export class SubMessage extends pb_1.Message {
     set field_2(value: string) {
         pb_1.Message.setField(this, 2, value);
     }
-    static fromObject(data: SubMessage.AsObjectPartial): SubMessage {
+    static fromObject(data?: SubMessage.AsObjectPartial): SubMessage {
+        if (!data) {
+            return new SubMessage();
+        }
         const message = new SubMessage({});
         if (data.field_1 != null) {
             message.field_1 = data.field_1;

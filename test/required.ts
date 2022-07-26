@@ -35,7 +35,10 @@ export class NoOptionalValues extends pb_1.Message {
     get has_test2() {
         return pb_1.Message.getField(this, 2) != null;
     }
-    static fromObject(data: NoOptionalValues.AsObjectPartial): NoOptionalValues {
+    static fromObject(data?: NoOptionalValues.AsObjectPartial): NoOptionalValues {
+        if (!data) {
+            return new NoOptionalValues();
+        }
         const message = new NoOptionalValues({
             test: data.test,
             test2: data.test2

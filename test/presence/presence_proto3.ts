@@ -207,7 +207,10 @@ export class PresenceMessageV3 extends pb_1.Message {
         };
         return cases[pb_1.Message.computeOneofCase(this, [10])]!;
     }
-    static fromObject(data: PresenceMessageV3.AsObjectPartial): PresenceMessageV3 {
+    static fromObject(data?: PresenceMessageV3.AsObjectPartial): PresenceMessageV3 {
+        if (!data) {
+            return new PresenceMessageV3();
+        }
         const message = new PresenceMessageV3({});
         if (data.int32 != null) {
             message.int32 = data.int32;

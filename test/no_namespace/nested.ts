@@ -55,7 +55,10 @@ export class SchedulingContext extends pb_1.Message {
     get has_batch() {
         return pb_1.Message.getField(this, 4) != null;
     }
-    static fromObject(data: SchedulingContextAsObjectPartial): SchedulingContext {
+    static fromObject(data?: SchedulingContextAsObjectPartial): SchedulingContext {
+        if (!data) {
+            return new SchedulingContext();
+        }
         const message = new SchedulingContext({});
         if (data.env != null) {
             message.env = data.env.map(item => SchedulingContextEnv.fromObject(item));
@@ -157,7 +160,10 @@ export class SchedulingContextEnv extends pb_1.Message {
     set value(value: string) {
         pb_1.Message.setField(this, 2, value);
     }
-    static fromObject(data: SchedulingContextEnvAsObjectPartial): SchedulingContextEnv {
+    static fromObject(data?: SchedulingContextEnvAsObjectPartial): SchedulingContextEnv {
+        if (!data) {
+            return new SchedulingContextEnv();
+        }
         const message = new SchedulingContextEnv({});
         if (data.key != null) {
             message.key = data.key;
@@ -259,7 +265,10 @@ export class SchedulingContextBatch extends pb_1.Message {
     get has_process() {
         return pb_1.Message.getField(this, 3) != null;
     }
-    static fromObject(data: SchedulingContextBatchAsObjectPartial): SchedulingContextBatch {
+    static fromObject(data?: SchedulingContextBatchAsObjectPartial): SchedulingContextBatch {
+        if (!data) {
+            return new SchedulingContextBatch();
+        }
         const message = new SchedulingContextBatch({});
         if (data.limit != null) {
             message.limit = data.limit;
@@ -351,7 +360,10 @@ export class SchedulingContextBatchProcess extends pb_1.Message {
     set id(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
-    static fromObject(data: SchedulingContextBatchProcessAsObjectPartial): SchedulingContextBatchProcess {
+    static fromObject(data?: SchedulingContextBatchProcessAsObjectPartial): SchedulingContextBatchProcess {
+        if (!data) {
+            return new SchedulingContextBatchProcess();
+        }
         const message = new SchedulingContextBatchProcess({});
         if (data.id != null) {
             message.id = data.id;
@@ -452,7 +464,10 @@ export class Target extends pb_1.Message {
     get has_context() {
         return pb_1.Message.getField(this, 4) != null;
     }
-    static fromObject(data: TargetAsObjectPartial): Target {
+    static fromObject(data?: TargetAsObjectPartial): Target {
+        if (!data) {
+            return new Target();
+        }
         const message = new Target({});
         if (data.id != null) {
             message.id = data.id;
@@ -578,7 +593,10 @@ export class Event extends pb_1.Message {
     get has_target() {
         return pb_1.Message.getField(this, 3) != null;
     }
-    static fromObject(data: EventAsObjectPartial): Event {
+    static fromObject(data?: EventAsObjectPartial): Event {
+        if (!data) {
+            return new Event();
+        }
         const message = new Event({});
         if (data.id != null) {
             message.id = data.id;
@@ -670,7 +688,10 @@ export class Pop extends pb_1.Message {
     set id(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
-    static fromObject(data: PopAsObjectPartial): Pop {
+    static fromObject(data?: PopAsObjectPartial): Pop {
+        if (!data) {
+            return new Pop();
+        }
         const message = new Pop({});
         if (data.id != null) {
             message.id = data.id;
@@ -738,7 +759,10 @@ export class Complete extends pb_1.Message {
     set id(value: string) {
         pb_1.Message.setField(this, 1, value);
     }
-    static fromObject(data: CompleteAsObjectPartial): Complete {
+    static fromObject(data?: CompleteAsObjectPartial): Complete {
+        if (!data) {
+            return new Complete();
+        }
         const message = new Complete({});
         if (data.id != null) {
             message.id = data.id;
@@ -794,9 +818,12 @@ export class CompleteResult extends pb_1.Message {
         pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
         if (!Array.isArray(data) && typeof data == "object") { }
     }
-    static fromObject(data: CompleteResultAsObjectPartial): CompleteResult {
+    static fromObject(data?: CompleteResultAsObjectPartial): CompleteResult {
+        if (!data) {
+            return new CompleteResult();
+        }
         const message = new CompleteResult({});
-        return data && message;
+        return message;
     }
     toObject() {
         const data: CompleteResultAsObject = {};

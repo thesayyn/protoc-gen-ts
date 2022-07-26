@@ -24,7 +24,10 @@ export class Chunk extends pb_1.Message {
     set data(value: Uint8Array) {
         pb_1.Message.setField(this, 1, value);
     }
-    static fromObject(data: Chunk.AsObjectPartial): Chunk {
+    static fromObject(data?: Chunk.AsObjectPartial): Chunk {
+        if (!data) {
+            return new Chunk();
+        }
         const message = new Chunk({});
         if (data.data != null) {
             message.data = data.data;
@@ -94,7 +97,10 @@ export class Result extends pb_1.Message {
     set id(value: number) {
         pb_1.Message.setField(this, 1, value);
     }
-    static fromObject(data: Result.AsObjectPartial): Result {
+    static fromObject(data?: Result.AsObjectPartial): Result {
+        if (!data) {
+            return new Result();
+        }
         const message = new Result({});
         if (data.id != null) {
             message.id = data.id;

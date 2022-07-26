@@ -24,7 +24,10 @@ export namespace maps {
         set link(value: string) {
             pb_1.Message.setField(this, 2, value);
         }
-        static fromObject(data: Topic.AsObjectPartial): Topic {
+        static fromObject(data?: Topic.AsObjectPartial): Topic {
+            if (!data) {
+                return new Topic();
+            }
             const message = new Topic({});
             if (data.link != null) {
                 message.link = data.link;
@@ -130,7 +133,10 @@ export namespace maps {
         set topics_with_intkeys(value: Map<number, Topic>) {
             pb_1.Message.setField(this, 4, value as any);
         }
-        static fromObject(data: Tags.AsObjectPartial): Tags {
+        static fromObject(data?: Tags.AsObjectPartial): Tags {
+            if (!data) {
+                return new Tags();
+            }
             const message = new Tags({});
             if (data.key != null) {
                 message.key = data.key;

@@ -52,7 +52,10 @@ export namespace importdirective {
         set enumField(value: dependency_1.importdirective.Imported.SubMessage.MyEnum) {
             pb_1.Message.setField(this, 3, value);
         }
-        static fromObject(data: Message.AsObjectPartial): Message {
+        static fromObject(data?: Message.AsObjectPartial): Message {
+            if (!data) {
+                return new Message();
+            }
             const message = new Message({});
             if (data.importedField != null) {
                 message.importedField = dependency_1.importdirective.Imported.fromObject(data.importedField);

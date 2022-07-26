@@ -23,7 +23,10 @@ export class MessageFields extends pb_1.Message {
     set field(value: string[]) {
         pb_1.Message.setField(this, 1, value);
     }
-    static fromObject(data: MessageFieldsAsObjectPartial): MessageFields {
+    static fromObject(data?: MessageFieldsAsObjectPartial): MessageFields {
+        if (!data) {
+            return new MessageFields();
+        }
         const message = new MessageFields({});
         if (data.field != null) {
             message.field = data.field;

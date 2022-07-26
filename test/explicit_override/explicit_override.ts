@@ -23,7 +23,10 @@ export class ExplicitOverrideMessage extends pb_1.Message {
     set example(value: number) {
         pb_1.Message.setField(this, 1, value);
     }
-    static fromObject(data: ExplicitOverrideMessage.AsObjectPartial): ExplicitOverrideMessage {
+    static fromObject(data?: ExplicitOverrideMessage.AsObjectPartial): ExplicitOverrideMessage {
+        if (!data) {
+            return new ExplicitOverrideMessage();
+        }
         const message = new ExplicitOverrideMessage({});
         if (data.example != null) {
             message.example = data.example;

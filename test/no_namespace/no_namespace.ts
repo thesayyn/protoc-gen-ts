@@ -54,7 +54,10 @@ export class NoNamespace extends pb_1.Message {
     get has_batch_fields() {
         return pb_1.Message.getField(this, 3) != null;
     }
-    static fromObject(data: NoNamespaceAsObjectPartial): NoNamespace {
+    static fromObject(data?: NoNamespaceAsObjectPartial): NoNamespace {
+        if (!data) {
+            return new NoNamespace();
+        }
         const message = new NoNamespace({});
         if (data.label != null) {
             message.label = dependency_1.eventTarget.fromObject(data.label);
