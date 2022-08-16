@@ -348,7 +348,7 @@ export function isPacked(
   // it only sends when the syntax is proto3 so we have to look for it.
   // when it is empty, it indicates that the syntax is proto2 for sure
   if (rootDescriptor.syntax == "proto3") {
-    return !options || options.packed == null || options.packed;
+    return !options || !options.has_packed || options.packed;
   }
 
   return options != null && options.packed;

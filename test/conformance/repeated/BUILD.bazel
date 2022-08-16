@@ -1,0 +1,48 @@
+
+load("@npm//@bazel/jasmine:index.bzl", "jasmine_node_test")
+load("@npm//@bazel/typescript:index.bzl", "ts_project")
+load("@rules_proto//proto:defs.bzl", "proto_library")
+load("//:index.bzl", "ts_proto_library")
+load("//tools:diff_and_update.bzl", "diff_and_update")
+
+proto_library(
+    name = "protos",
+    srcs = glob(["proto/*.proto"])
+)
+
+ts_proto_library(
+    name = "codegen",
+    outs = ["proto/repeated.ts"],
+    deps = [
+        ":protos",
+    ],
+)
+
+diff_and_update(
+    name = "diff",
+    srcs = [":proto/repeated.ts"],
+    checked = ["proto/repeated_checked.ts"],
+)
+
+ts_project(
+    name = "test_lib",
+    srcs = glob(["**/*.ts"]),
+    tsconfig = {}, # no special options
+    extends = "//test:tsconfig.json",
+    deps = [
+        "@npm//@types/jasmine",
+        "@npm//@types/node",
+        "@npm//google-protobuf",
+        "@npm//@types/google-protobuf",
+        "@npm//@grpc/grpc-js",
+    ],
+)
+
+jasmine_node_test(
+    name = "test",
+    data = glob(["**/*.bin"]),
+    tags = ["no-windows-latest"],
+    deps = [
+        ":test_lib",
+    ],
+)
