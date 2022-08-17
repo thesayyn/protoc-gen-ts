@@ -1,5 +1,4 @@
-
-use protobuf::descriptor::DescriptorProto;
+use descriptor::descriptor::DescriptorProto;
 use swc_common::DUMMY_SP;
 use swc_ecma_ast::{
     BlockStmt, Class, ClassDecl, ClassMember, ClassMethod, Decl, Function, MethodKind, ModuleItem,

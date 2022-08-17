@@ -4,8 +4,9 @@ use swc_ecma_ast::*;
 use swc_ecma_codegen::{text_writer::JsWriter, Emitter};
 
 mod descriptor;
+mod message;
 
-use descriptor::plugin::{CodeGeneratorRequest, CodeGeneratorResponse, code_generator_response::File};
+use descriptor::descriptor::plugin::{CodeGeneratorRequest, CodeGeneratorResponse, code_generator_response::File};
 use protobuf::Message;
 use std::io::prelude::*;
 use std::io::*;
@@ -22,7 +23,7 @@ fn main() {
 
     let cm = Lrc::new(SourceMap::new(FilePathMapping::empty()));
 
-    for descriptor in request.proto_file.into_vec() {
+    for descriptor in request.proto_file.to_vec() {
 
         let mut body: Vec<ModuleItem> = Vec::new();
 

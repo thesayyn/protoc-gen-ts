@@ -1,2 +1,3 @@
-pub mod descriptor;
-pub mod plugin;
+pub mod descriptor {
+    include!(concat!(env!("OUT_DIR"), "/protogen/mod.rs"));
+}

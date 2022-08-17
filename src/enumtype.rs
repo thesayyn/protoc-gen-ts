@@ -1,4 +1,4 @@
-use protobuf::descriptor::EnumDescriptorProto;
+use descriptor::descriptor::EnumDescriptorProto;
 use swc_common::DUMMY_SP;
 use swc_ecma_ast::{
     Decl, Expr, Lit, ModuleItem, Number, Stmt, TsEnumDecl, TsEnumMember, TsEnumMemberId,

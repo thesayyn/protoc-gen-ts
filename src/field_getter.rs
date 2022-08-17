@@ -1,4 +1,4 @@
-use protobuf::descriptor::FieldDescriptorProto;
+use descriptor::descriptor::FieldDescriptorProto;
 use swc_common::DUMMY_SP;
 use swc_ecma_ast::{
     Expr, BlockStmt, Lit, ReturnStmt, ClassMember, ClassMethod, Function, MethodKind,

@@ -1,4 +1,4 @@
-use protobuf::descriptor::{
+use descriptor::descriptor::{
     FieldDescriptorProto, FieldDescriptorProto_Label, FieldDescriptorProto_Type,
     FieldOptions_JSType,
 };

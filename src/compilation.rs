@@ -1,7 +1,7 @@
 
 
-use protobuf::descriptor::{FieldDescriptorProto, DescriptorProto};
-use protobuf::plugin::{CodeGeneratorRequest};
+use descriptor::{FieldDescriptorProto, DescriptorProto};
+use descriptor::plugin::{CodeGeneratorRequest};
 use std::collections::HashMap;
 use std::sync::Mutex;
 use lazy_static::*;
