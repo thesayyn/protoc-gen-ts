@@ -1003,7 +1003,7 @@ function createGetterCall(
         : ts.factory.createNewExpression(
           ts.factory.createIdentifier("Uint8Array"),
           undefined,
-          []
+          [factory.createNumericLiteral("0")]
         );
     } else if (field.isString(fieldDescriptor) || field.hasJsTypeString(fieldDescriptor)) {
       _default = fieldDescriptor.has_default_value
