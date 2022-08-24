@@ -176,7 +176,7 @@ export class Chunk extends pb_1.Message {
         }
     }
     get data() {
-        return pb_1.Message.getFieldWithDefault(this, 1, new Uint8Array()) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 1, new Uint8Array(0)) as Uint8Array;
     }
     set data(value: Uint8Array) {
         pb_1.Message.setField(this, 1, value);

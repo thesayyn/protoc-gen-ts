@@ -3601,7 +3601,7 @@ export class UninterpretedOption extends pb_1.Message {
         return pb_1.Message.getField(this, 6) != null;
     }
     get string_value() {
-        return pb_1.Message.getFieldWithDefault(this, 7, new Uint8Array()) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 7, new Uint8Array(0)) as Uint8Array;
     }
     set string_value(value: Uint8Array) {
         pb_1.Message.setField(this, 7, value);

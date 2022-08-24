@@ -1330,7 +1330,7 @@ export class AdReplyInfo extends pb_1.Message {
         return pb_1.Message.getField(this, 2) != null;
     }
     get jpegThumbnail() {
-        return pb_1.Message.getFieldWithDefault(this, 16, new Uint8Array()) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 16, new Uint8Array(0)) as Uint8Array;
     }
     set jpegThumbnail(value: Uint8Array) {
         pb_1.Message.setField(this, 16, value);
@@ -1560,7 +1560,7 @@ export class ContextInfo extends pb_1.Message {
         return pb_1.Message.getField(this, 18) != null;
     }
     get conversionData() {
-        return pb_1.Message.getFieldWithDefault(this, 19, new Uint8Array()) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 19, new Uint8Array(0)) as Uint8Array;
     }
     set conversionData(value: Uint8Array) {
         pb_1.Message.setField(this, 19, value);
@@ -1632,7 +1632,7 @@ export class ContextInfo extends pb_1.Message {
         return pb_1.Message.getField(this, 26) != null;
     }
     get ephemeralSharedSecret() {
-        return pb_1.Message.getFieldWithDefault(this, 27, new Uint8Array()) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 27, new Uint8Array(0)) as Uint8Array;
     }
     set ephemeralSharedSecret(value: Uint8Array) {
         pb_1.Message.setField(this, 27, value);
@@ -1895,7 +1895,7 @@ export class SenderKeyDistributionMessage extends pb_1.Message {
         return pb_1.Message.getField(this, 1) != null;
     }
     get axolotlSenderKeyDistributionMessage() {
-        return pb_1.Message.getFieldWithDefault(this, 2, new Uint8Array()) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 2, new Uint8Array(0)) as Uint8Array;
     }
     set axolotlSenderKeyDistributionMessage(value: Uint8Array) {
         pb_1.Message.setField(this, 2, value);
@@ -2081,7 +2081,7 @@ export class ImageMessage extends pb_1.Message {
         return pb_1.Message.getField(this, 3) != null;
     }
     get fileSha256() {
-        return pb_1.Message.getFieldWithDefault(this, 4, new Uint8Array()) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 4, new Uint8Array(0)) as Uint8Array;
     }
     set fileSha256(value: Uint8Array) {
         pb_1.Message.setField(this, 4, value);
@@ -2117,7 +2117,7 @@ export class ImageMessage extends pb_1.Message {
         return pb_1.Message.getField(this, 7) != null;
     }
     get mediaKey() {
-        return pb_1.Message.getFieldWithDefault(this, 8, new Uint8Array()) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 8, new Uint8Array(0)) as Uint8Array;
     }
     set mediaKey(value: Uint8Array) {
         pb_1.Message.setField(this, 8, value);
@@ -2126,7 +2126,7 @@ export class ImageMessage extends pb_1.Message {
         return pb_1.Message.getField(this, 8) != null;
     }
     get fileEncSha256() {
-        return pb_1.Message.getFieldWithDefault(this, 9, new Uint8Array()) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 9, new Uint8Array(0)) as Uint8Array;
     }
     set fileEncSha256(value: Uint8Array) {
         pb_1.Message.setField(this, 9, value);
@@ -2159,7 +2159,7 @@ export class ImageMessage extends pb_1.Message {
         return pb_1.Message.getField(this, 12) != null;
     }
     get jpegThumbnail() {
-        return pb_1.Message.getFieldWithDefault(this, 16, new Uint8Array()) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 16, new Uint8Array(0)) as Uint8Array;
     }
     set jpegThumbnail(value: Uint8Array) {
         pb_1.Message.setField(this, 16, value);
@@ -2177,7 +2177,7 @@ export class ImageMessage extends pb_1.Message {
         return pb_1.Message.getField(this, 17) != null;
     }
     get firstScanSidecar() {
-        return pb_1.Message.getFieldWithDefault(this, 18, new Uint8Array()) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 18, new Uint8Array(0)) as Uint8Array;
     }
     set firstScanSidecar(value: Uint8Array) {
         pb_1.Message.setField(this, 18, value);
@@ -2204,7 +2204,7 @@ export class ImageMessage extends pb_1.Message {
         return pb_1.Message.getField(this, 20) != null;
     }
     get scansSidecar() {
-        return pb_1.Message.getFieldWithDefault(this, 21, new Uint8Array()) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 21, new Uint8Array(0)) as Uint8Array;
     }
     set scansSidecar(value: Uint8Array) {
         pb_1.Message.setField(this, 21, value);
@@ -2219,7 +2219,7 @@ export class ImageMessage extends pb_1.Message {
         pb_1.Message.setField(this, 22, value);
     }
     get midQualityFileSha256() {
-        return pb_1.Message.getFieldWithDefault(this, 23, new Uint8Array()) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 23, new Uint8Array(0)) as Uint8Array;
     }
     set midQualityFileSha256(value: Uint8Array) {
         pb_1.Message.setField(this, 23, value);
@@ -2228,7 +2228,7 @@ export class ImageMessage extends pb_1.Message {
         return pb_1.Message.getField(this, 23) != null;
     }
     get midQualityFileEncSha256() {
-        return pb_1.Message.getFieldWithDefault(this, 24, new Uint8Array()) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 24, new Uint8Array(0)) as Uint8Array;
     }
     set midQualityFileEncSha256(value: Uint8Array) {
         pb_1.Message.setField(this, 24, value);
@@ -2810,7 +2810,7 @@ export class LocationMessage extends pb_1.Message {
         return pb_1.Message.getField(this, 11) != null;
     }
     get jpegThumbnail() {
-        return pb_1.Message.getFieldWithDefault(this, 16, new Uint8Array()) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 16, new Uint8Array(0)) as Uint8Array;
     }
     set jpegThumbnail(value: Uint8Array) {
         pb_1.Message.setField(this, 16, value);
@@ -3157,7 +3157,7 @@ export class ExtendedTextMessage extends pb_1.Message {
         return pb_1.Message.getField(this, 10) != null;
     }
     get jpegThumbnail() {
-        return pb_1.Message.getFieldWithDefault(this, 16, new Uint8Array()) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 16, new Uint8Array(0)) as Uint8Array;
     }
     set jpegThumbnail(value: Uint8Array) {
         pb_1.Message.setField(this, 16, value);
@@ -3477,7 +3477,7 @@ export class DocumentMessage extends pb_1.Message {
         return pb_1.Message.getField(this, 3) != null;
     }
     get fileSha256() {
-        return pb_1.Message.getFieldWithDefault(this, 4, new Uint8Array()) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 4, new Uint8Array(0)) as Uint8Array;
     }
     set fileSha256(value: Uint8Array) {
         pb_1.Message.setField(this, 4, value);
@@ -3504,7 +3504,7 @@ export class DocumentMessage extends pb_1.Message {
         return pb_1.Message.getField(this, 6) != null;
     }
     get mediaKey() {
-        return pb_1.Message.getFieldWithDefault(this, 7, new Uint8Array()) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 7, new Uint8Array(0)) as Uint8Array;
     }
     set mediaKey(value: Uint8Array) {
         pb_1.Message.setField(this, 7, value);
@@ -3522,7 +3522,7 @@ export class DocumentMessage extends pb_1.Message {
         return pb_1.Message.getField(this, 8) != null;
     }
     get fileEncSha256() {
-        return pb_1.Message.getFieldWithDefault(this, 9, new Uint8Array()) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 9, new Uint8Array(0)) as Uint8Array;
     }
     set fileEncSha256(value: Uint8Array) {
         pb_1.Message.setField(this, 9, value);
@@ -3549,7 +3549,7 @@ export class DocumentMessage extends pb_1.Message {
         return pb_1.Message.getField(this, 11) != null;
     }
     get jpegThumbnail() {
-        return pb_1.Message.getFieldWithDefault(this, 16, new Uint8Array()) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 16, new Uint8Array(0)) as Uint8Array;
     }
     set jpegThumbnail(value: Uint8Array) {
         pb_1.Message.setField(this, 16, value);
@@ -3846,7 +3846,7 @@ export class AudioMessage extends pb_1.Message {
         return pb_1.Message.getField(this, 2) != null;
     }
     get fileSha256() {
-        return pb_1.Message.getFieldWithDefault(this, 3, new Uint8Array()) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 3, new Uint8Array(0)) as Uint8Array;
     }
     set fileSha256(value: Uint8Array) {
         pb_1.Message.setField(this, 3, value);
@@ -3882,7 +3882,7 @@ export class AudioMessage extends pb_1.Message {
         return pb_1.Message.getField(this, 6) != null;
     }
     get mediaKey() {
-        return pb_1.Message.getFieldWithDefault(this, 7, new Uint8Array()) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 7, new Uint8Array(0)) as Uint8Array;
     }
     set mediaKey(value: Uint8Array) {
         pb_1.Message.setField(this, 7, value);
@@ -3891,7 +3891,7 @@ export class AudioMessage extends pb_1.Message {
         return pb_1.Message.getField(this, 7) != null;
     }
     get fileEncSha256() {
-        return pb_1.Message.getFieldWithDefault(this, 8, new Uint8Array()) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 8, new Uint8Array(0)) as Uint8Array;
     }
     set fileEncSha256(value: Uint8Array) {
         pb_1.Message.setField(this, 8, value);
@@ -3927,7 +3927,7 @@ export class AudioMessage extends pb_1.Message {
         return pb_1.Message.getField(this, 17) != null;
     }
     get streamingSidecar() {
-        return pb_1.Message.getFieldWithDefault(this, 18, new Uint8Array()) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 18, new Uint8Array(0)) as Uint8Array;
     }
     set streamingSidecar(value: Uint8Array) {
         pb_1.Message.setField(this, 18, value);
@@ -4224,7 +4224,7 @@ export class VideoMessage extends pb_1.Message {
         return pb_1.Message.getField(this, 2) != null;
     }
     get fileSha256() {
-        return pb_1.Message.getFieldWithDefault(this, 3, new Uint8Array()) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 3, new Uint8Array(0)) as Uint8Array;
     }
     set fileSha256(value: Uint8Array) {
         pb_1.Message.setField(this, 3, value);
@@ -4251,7 +4251,7 @@ export class VideoMessage extends pb_1.Message {
         return pb_1.Message.getField(this, 5) != null;
     }
     get mediaKey() {
-        return pb_1.Message.getFieldWithDefault(this, 6, new Uint8Array()) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 6, new Uint8Array(0)) as Uint8Array;
     }
     set mediaKey(value: Uint8Array) {
         pb_1.Message.setField(this, 6, value);
@@ -4296,7 +4296,7 @@ export class VideoMessage extends pb_1.Message {
         return pb_1.Message.getField(this, 10) != null;
     }
     get fileEncSha256() {
-        return pb_1.Message.getFieldWithDefault(this, 11, new Uint8Array()) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 11, new Uint8Array(0)) as Uint8Array;
     }
     set fileEncSha256(value: Uint8Array) {
         pb_1.Message.setField(this, 11, value);
@@ -4329,7 +4329,7 @@ export class VideoMessage extends pb_1.Message {
         return pb_1.Message.getField(this, 14) != null;
     }
     get jpegThumbnail() {
-        return pb_1.Message.getFieldWithDefault(this, 16, new Uint8Array()) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 16, new Uint8Array(0)) as Uint8Array;
     }
     set jpegThumbnail(value: Uint8Array) {
         pb_1.Message.setField(this, 16, value);
@@ -4347,7 +4347,7 @@ export class VideoMessage extends pb_1.Message {
         return pb_1.Message.getField(this, 17) != null;
     }
     get streamingSidecar() {
-        return pb_1.Message.getFieldWithDefault(this, 18, new Uint8Array()) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 18, new Uint8Array(0)) as Uint8Array;
     }
     set streamingSidecar(value: Uint8Array) {
         pb_1.Message.setField(this, 18, value);
@@ -4653,7 +4653,7 @@ export class Call extends pb_1.Message {
         }
     }
     get callKey() {
-        return pb_1.Message.getFieldWithDefault(this, 1, new Uint8Array()) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 1, new Uint8Array(0)) as Uint8Array;
     }
     set callKey(value: Uint8Array) {
         pb_1.Message.setField(this, 1, value);
@@ -5029,7 +5029,7 @@ export class HistorySyncNotification extends pb_1.Message {
         }
     }
     get fileSha256() {
-        return pb_1.Message.getFieldWithDefault(this, 1, new Uint8Array()) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 1, new Uint8Array(0)) as Uint8Array;
     }
     set fileSha256(value: Uint8Array) {
         pb_1.Message.setField(this, 1, value);
@@ -5047,7 +5047,7 @@ export class HistorySyncNotification extends pb_1.Message {
         return pb_1.Message.getField(this, 2) != null;
     }
     get mediaKey() {
-        return pb_1.Message.getFieldWithDefault(this, 3, new Uint8Array()) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 3, new Uint8Array(0)) as Uint8Array;
     }
     set mediaKey(value: Uint8Array) {
         pb_1.Message.setField(this, 3, value);
@@ -5056,7 +5056,7 @@ export class HistorySyncNotification extends pb_1.Message {
         return pb_1.Message.getField(this, 3) != null;
     }
     get fileEncSha256() {
-        return pb_1.Message.getFieldWithDefault(this, 4, new Uint8Array()) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 4, new Uint8Array(0)) as Uint8Array;
     }
     set fileEncSha256(value: Uint8Array) {
         pb_1.Message.setField(this, 4, value);
@@ -6812,7 +6812,7 @@ export class LiveLocationMessage extends pb_1.Message {
         return pb_1.Message.getField(this, 8) != null;
     }
     get jpegThumbnail() {
-        return pb_1.Message.getFieldWithDefault(this, 16, new Uint8Array()) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 16, new Uint8Array(0)) as Uint8Array;
     }
     set jpegThumbnail(value: Uint8Array) {
         pb_1.Message.setField(this, 16, value);
@@ -7073,7 +7073,7 @@ export class StickerMessage extends pb_1.Message {
         return pb_1.Message.getField(this, 1) != null;
     }
     get fileSha256() {
-        return pb_1.Message.getFieldWithDefault(this, 2, new Uint8Array()) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 2, new Uint8Array(0)) as Uint8Array;
     }
     set fileSha256(value: Uint8Array) {
         pb_1.Message.setField(this, 2, value);
@@ -7082,7 +7082,7 @@ export class StickerMessage extends pb_1.Message {
         return pb_1.Message.getField(this, 2) != null;
     }
     get fileEncSha256() {
-        return pb_1.Message.getFieldWithDefault(this, 3, new Uint8Array()) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 3, new Uint8Array(0)) as Uint8Array;
     }
     set fileEncSha256(value: Uint8Array) {
         pb_1.Message.setField(this, 3, value);
@@ -7091,7 +7091,7 @@ export class StickerMessage extends pb_1.Message {
         return pb_1.Message.getField(this, 3) != null;
     }
     get mediaKey() {
-        return pb_1.Message.getFieldWithDefault(this, 4, new Uint8Array()) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 4, new Uint8Array(0)) as Uint8Array;
     }
     set mediaKey(value: Uint8Array) {
         pb_1.Message.setField(this, 4, value);
@@ -7163,7 +7163,7 @@ export class StickerMessage extends pb_1.Message {
         return pb_1.Message.getField(this, 11) != null;
     }
     get firstFrameSidecar() {
-        return pb_1.Message.getFieldWithDefault(this, 12, new Uint8Array()) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 12, new Uint8Array(0)) as Uint8Array;
     }
     set firstFrameSidecar(value: Uint8Array) {
         pb_1.Message.setField(this, 12, value);
@@ -7181,7 +7181,7 @@ export class StickerMessage extends pb_1.Message {
         return pb_1.Message.getField(this, 13) != null;
     }
     get pngThumbnail() {
-        return pb_1.Message.getFieldWithDefault(this, 16, new Uint8Array()) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 16, new Uint8Array(0)) as Uint8Array;
     }
     set pngThumbnail(value: Uint8Array) {
         pb_1.Message.setField(this, 16, value);
@@ -8980,7 +8980,7 @@ export class GroupInviteMessage extends pb_1.Message {
         return pb_1.Message.getField(this, 4) != null;
     }
     get jpegThumbnail() {
-        return pb_1.Message.getFieldWithDefault(this, 5, new Uint8Array()) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 5, new Uint8Array(0)) as Uint8Array;
     }
     set jpegThumbnail(value: Uint8Array) {
         pb_1.Message.setField(this, 5, value);
@@ -11999,7 +11999,7 @@ export class WebMessageInfo extends pb_1.Message {
         return pb_1.Message.getField(this, 19) != null;
     }
     get mediaCiphertextSha256() {
-        return pb_1.Message.getFieldWithDefault(this, 20, new Uint8Array()) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 20, new Uint8Array(0)) as Uint8Array;
     }
     set mediaCiphertextSha256(value: Uint8Array) {
         pb_1.Message.setField(this, 20, value);
