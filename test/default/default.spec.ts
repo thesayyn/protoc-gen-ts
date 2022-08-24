@@ -248,7 +248,7 @@ describe("defaults", () => {
             one_of_int32: 0,
             one_of_message: undefined,
 
-            bytes: new Uint8Array()
+            bytes: new Uint8Array(0)
         })
 
         expect(new DefaultMessageV3().toObject()).toEqual({
@@ -277,7 +277,7 @@ describe("defaults", () => {
 
             one_of_int32: 0,
 
-            bytes: new Uint8Array()
+            bytes: new Uint8Array(0)
         });
     });
 
@@ -319,7 +319,7 @@ describe("defaults", () => {
         expect(transferredDefaults.one_of_int32).toBe(0);
         expect(transferredDefaults.one_of_message).toBe(undefined);
 
-        expect(transferredDefaults.bytes).toEqual(new Uint8Array());
+        expect(transferredDefaults.bytes).toEqual(new Uint8Array(0));
     });
 
     it("should omit fields that were explicitly assigned their default values during serialization (v3)", () => {
@@ -340,7 +340,7 @@ describe("defaults", () => {
         explicitlyProvidedDefaults.float = 0;
         explicitlyProvidedDefaults.double = 0;
         explicitlyProvidedDefaults.int_but_string = "0";
-        explicitlyProvidedDefaults.bytes = new Uint8Array();
+        explicitlyProvidedDefaults.bytes = new Uint8Array(0);
 
         const serializedExplicitlyProvidedDefaults = explicitlyProvidedDefaults.serialize();
 
@@ -405,7 +405,7 @@ describe("defaults", () => {
         const explicitlyProvidedDefaults14 = new DefaultMessageOptionalV3({ float: 0 });
         const explicitlyProvidedDefaults15 = new DefaultMessageOptionalV3({ double: 0 });
         const explicitlyProvidedDefaults16 = new DefaultMessageOptionalV3({ int_but_string: "0" });
-        const explicitlyProvidedDefaults17 = new DefaultMessageOptionalV3({ bytes: new Uint8Array() });
+        const explicitlyProvidedDefaults17 = new DefaultMessageOptionalV3({ bytes: new Uint8Array(0) });
 
         expect(implicitDefaults.serialize().length).toBe(0);
         expect(explicitlyProvidedDefaults1.serialize().length).toBeGreaterThan(0);
