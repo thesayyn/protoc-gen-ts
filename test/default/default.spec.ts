@@ -111,6 +111,10 @@ describe("defaults", () => {
         });
 
         expect(new DefaultMessageV2WithoutDefault().toObject()).toEqual({
+            // maps are not required
+            map_string_string: {},
+            map_string_message: {},
+
             array_int32: [],
             array_message: [],
             one_of_int32: 0, // scalar oneof fields have implicit defaults
@@ -271,6 +275,9 @@ describe("defaults", () => {
             double: 0,
 
             int_but_string: "0",
+
+            map_string_string: {},
+            map_string_message: {},
 
             array_int32: [],
             array_message: [],

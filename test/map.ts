@@ -191,16 +191,16 @@ export class Tags extends pb_1.Message {
         if (this.key != null) {
             data.key = this.key;
         }
-        if (this.keys.size > 0) {
+        if (this.keys != null) {
             data.keys = Object.fromEntries(this.keys);
         }
-        if (this.topics.size > 0) {
+        if (this.topics != null) {
             data.topics = Object.fromEntries(Array.from(this.topics).map(([key, value]) => [key, value.toObject()]));
         }
-        if (this.imported.size > 0) {
+        if (this.imported != null) {
             data.imported = Object.fromEntries(Array.from(this.imported).map(([key, value]) => [key, value.toObject()]));
         }
-        if (this.imported2.size > 0) {
+        if (this.imported2 != null) {
             data.imported2 = Object.fromEntries(this.imported2);
         }
         return data;

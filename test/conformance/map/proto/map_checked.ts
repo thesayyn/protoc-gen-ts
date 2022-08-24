@@ -170,13 +170,13 @@ export namespace maps {
             if (this.key != null) {
                 data.key = this.key;
             }
-            if (this.keys.size > 0) {
+            if (this.keys != null) {
                 data.keys = Object.fromEntries(this.keys);
             }
-            if (this.topics.size > 0) {
+            if (this.topics != null) {
                 data.topics = Object.fromEntries(Array.from(this.topics).map(([key, value]) => [key, value.toObject()]));
             }
-            if (this.topics_with_intkeys.size > 0) {
+            if (this.topics_with_intkeys != null) {
                 data.topics_with_intkeys = Object.fromEntries(Array.from(this.topics_with_intkeys).map(([key, value]) => [key, value.toObject()]));
             }
             return data;
