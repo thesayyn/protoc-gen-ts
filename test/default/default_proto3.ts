@@ -266,7 +266,7 @@ export class DefaultMessageV3 extends pb_1.Message {
         return pb_1.Message.getField(this, 23) != null;
     }
     get bytes() {
-        return pb_1.Message.getFieldWithDefault(this, 24, new Uint8Array()) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 24, new Uint8Array(0)) as Uint8Array;
     }
     set bytes(value: Uint8Array) {
         pb_1.Message.setField(this, 24, value);
@@ -468,10 +468,10 @@ export class DefaultMessageV3 extends pb_1.Message {
         if (this.int_but_string != null) {
             data.int_but_string = this.int_but_string;
         }
-        if (this.map_string_string.size > 0) {
+        if (this.map_string_string != null) {
             data.map_string_string = Object.fromEntries(this.map_string_string);
         }
-        if (this.map_string_message.size > 0) {
+        if (this.map_string_message != null) {
             data.map_string_message = Object.fromEntries(Array.from(this.map_string_message).map(([key, value]) => [key, value.toObject()]));
         }
         if (this.array_int32 != null) {
@@ -886,7 +886,7 @@ export class DefaultMessageOptionalV3 extends pb_1.Message {
         return pb_1.Message.getField(this, 17) != null;
     }
     get bytes() {
-        return pb_1.Message.getFieldWithDefault(this, 24, new Uint8Array()) as Uint8Array;
+        return pb_1.Message.getFieldWithDefault(this, 24, new Uint8Array(0)) as Uint8Array;
     }
     set bytes(value: Uint8Array) {
         pb_1.Message.setOneofField(this, 24, this.#one_of_decls[16], value);

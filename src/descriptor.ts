@@ -453,14 +453,6 @@ function createToObject(
         ts.factory.createNull(),
       );
 
-      if (field.isMap(fieldDescriptor)) {
-        condition = ts.factory.createBinaryExpression(
-          ts.factory.createPropertyAccessExpression(propertyAccessor, "size"),
-          ts.factory.createToken(ts.SyntaxKind.GreaterThanToken),
-          ts.factory.createNumericLiteral(0),
-        );
-      }
-
       statements.push(
         ts.factory.createIfStatement(
           condition,
@@ -1003,7 +995,7 @@ function createGetterCall(
         : ts.factory.createNewExpression(
           ts.factory.createIdentifier("Uint8Array"),
           undefined,
-          []
+          [ts.factory.createNumericLiteral("0")]
         );
     } else if (field.isString(fieldDescriptor) || field.hasJsTypeString(fieldDescriptor)) {
       _default = fieldDescriptor.has_default_value
