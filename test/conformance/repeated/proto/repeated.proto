@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package repeated;
+
+option optimize_for = SPEED;
+option go_package = "repeated/";
+
+message RepeatedWithOptions {
+  repeated int64 implicitly_packed = 1;
+  repeated int64 explicitly_packed = 2 [packed = true]; // should same as default value
+  repeated int64 explicitly_not_packed = 3 [packed = false];
+  repeated int64 implicitly_packed_options = 4 [jstype = JS_NUMBER]; // options should have no effect
+}
