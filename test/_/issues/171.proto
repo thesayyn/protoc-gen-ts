@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+enum E {
+    One = 0;
+    Two = 1;
+}
+
+message Test {
+    repeated E Enums = 1;
+}
