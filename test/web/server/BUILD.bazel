@@ -1,32 +1,30 @@
-load("@crates//:defs.bzl", "crate")
-load("@rules_rust//rust:defs.bzl", "rust_binary")
-load("@rules_rust//cargo:cargo_build_script.bzl", "cargo_build_script")
+load("@rules_proto//proto:defs.bzl", "proto_library")
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+load("@io_bazel_rules_go//proto:def.bzl", "go_proto_library")
 
-cargo_build_script(
-    name = "build",
-    srcs = ["build.rs"],
-    build_script_env = {
-        "PROTOC": "$(execpath @com_google_protobuf//:protoc)"
-    },
-    data = [
-        "src/weather.proto",
-        "@com_google_protobuf//:protoc"
-    ],
-    deps = [
-        crate("tonic-build")
-    ],
+proto_library(
+    name = "weather_proto",
+    srcs = ["weather.proto"],
+    visibility = ["//visibility:public"],
 )
 
-rust_binary(
+go_proto_library(
+    name = "weather_go_proto",
+    compilers = ["@io_bazel_rules_go//proto:go_grpc"],
+    importpath = "github.com/thesayyn/protoc-gen-ts/test/web/server",
+    proto = ":weather_proto",
+    visibility = ["//visibility:public"],
+)
+
+go_library(
     name = "server",
-    srcs = ["src/main.rs"],
-    edition = "2018",
+    srcs = ["server.go"],
+    embed = [":weather_go_proto"],
+    importpath = "github.com/thesayyn/protoc-gen-ts/test/web/server",
+    visibility = ["//visibility:public"],
     deps = [
-        crate("tonic-web"), 
-        crate("tonic"), 
-        crate("futures"), 
-        crate("tokio"),
-        crate("prost"), 
-        ":build"
-    ]
+        "@com_github_improbable_eng_grpc_web//go/grpcweb",
+        "@org_golang_google_grpc//:go_default_library",
+        "@org_golang_google_grpc//grpclog",
+    ],
 )

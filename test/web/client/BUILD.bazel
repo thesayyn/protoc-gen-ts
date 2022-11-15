@@ -1,0 +1,92 @@
+load("@io_bazel_rules_go//proto:def.bzl", "go_proto_library")
+load("@rules_proto//proto:defs.bzl", "proto_library")
+load("@npm//@bazel/typescript:index.bzl", "ts_project")
+load("@npm//@bazel/rollup:index.bzl", "rollup_bundle")
+load("@npm//http-server:index.bzl", "http_server")
+load("//:index.bzl", "ts_proto_library")
+load("@aspect_bazel_lib//lib:write_source_files.bzl", "write_source_files")
+
+write_source_files(
+    name = "diff",
+    files = {
+        "weather_checked.ts": ":weather_ts_proto",
+        "weather_promise_checked.ts": ":weather_promise_ts_proto"
+    }
+)
+
+proto_library(
+    name = "weather_proto",
+    srcs = ["weather.proto"],
+    visibility = ["//visibility:public"],
+)
+
+proto_library(
+    name = "weather_promise_proto",
+    srcs = ["weather_promise.proto"],
+    visibility = ["//visibility:public"],
+)
+
+ts_proto_library(
+    name = "weather_ts_proto",
+    features = ["target=web"],
+    deps = [":weather_proto"],
+)
+
+ts_proto_library(
+    name = "weather_promise_ts_proto",
+    features = ["target=web", "unary_rpc_promise"],
+    deps = [":weather_promise_proto"],
+)
+
+ts_project(
+    name = "web",
+    srcs = [
+        "index.ts",
+        "weather_checked.ts",
+        "weather_promise_checked.ts"
+    ],
+    tsconfig = {
+        "compilerOptions": {
+            "target": "ES2020",
+            "module": "CommonJS",
+        },
+    },
+    deps = [
+        "@npm//@grpc/grpc-js",
+        "@npm//@types/google-protobuf",
+        "@npm//google-protobuf",
+        "@npm//grpc-web",
+    ],
+)
+
+rollup_bundle(
+    name = "bundle",
+    config_file = "rollup.config.js",
+    entry_point = "index.js",
+    format = "esm",
+    deps = [
+        ":web",
+        "@npm//@rollup/plugin-commonjs",
+        "@npm//@rollup/plugin-node-resolve",
+    ],
+)
+
+http_server(
+    name = "client",
+    data = [
+        "index.html",
+        ":bundle.js",
+    ],
+    templated_args = [
+        package_name(),
+    ],
+    visibility = ["//test/web:__pkg__"],
+)
+
+go_proto_library(
+    name = "weather_go_proto",
+    compilers = ["@io_bazel_rules_go//proto:go_grpc"],
+    importpath = "github.com/thesayyn/protoc-gen-ts/test/web/client",
+    proto = ":weather_proto",
+    visibility = ["//visibility:public"],
+)

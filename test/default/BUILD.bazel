@@ -1,0 +1,38 @@
+load("@npm//@bazel/jasmine:index.bzl", "jasmine_node_test")
+load("@npm//@bazel/typescript:index.bzl", "ts_project")
+load("@aspect_bazel_lib//lib:write_source_files.bzl", "write_source_files")
+
+write_source_files(
+    name = "diff",
+    files = {
+        "default.ts": "//test/_/default:default.ts",
+        "default_common.ts": "//test/_/default:default_common.ts",
+        "default_proto2.ts": "//test/_/default:default_proto2.ts",
+        "default_proto3.ts": "//test/_/default:default_proto3.ts",
+    }
+)
+
+ts_project(
+    name = "default",
+    srcs = glob(["*.ts"]),
+    tsconfig = {
+        "compilerOptions": {
+            "target": "ES2020",
+            "module": "CommonJS",
+        },
+    },
+    deps = [
+        "@npm//@grpc/grpc-js",
+        "@npm//@types/google-protobuf",
+        "@npm//@types/jasmine",
+        "@npm//@types/node",
+        "@npm//google-protobuf",
+    ],
+)
+
+jasmine_node_test(
+    name = "test",
+    deps = [
+        ":default",
+    ],
+)

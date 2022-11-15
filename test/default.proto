@@ -1,7 +1,0 @@
-syntax = "proto2";
-
-message MessageWithDefault {
-    optional bool bool_field = 1 [default = true];
-    optional string string_field = 2 [default = "default value"];
-    optional int32 int32_field = 3 [default = 12];
-}

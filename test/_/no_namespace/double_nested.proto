@@ -1,0 +1,6 @@
+syntax = "proto3";
+
+
+message MessageFields {
+    repeated string field = 1;
+}

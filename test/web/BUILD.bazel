@@ -1,22 +1,29 @@
-load("@npm//@bazel/jasmine:index.bzl", "jasmine_node_test")
-load("@npm//@bazel/typescript:index.bzl", "ts_project")
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
 load("@npm//@bazel/cypress:index.bzl", "cypress_web_test")
-load("@rules_proto//proto:defs.bzl", "proto_library")
-load("@rules_container//container:container.bzl", "container")
-load("@rules_container//language:runfiles.bzl", "expand_runfiles")
-load("@build_bazel_rules_nodejs//:index.bzl", "nodejs_binary")
-load("@rules_pkg//:pkg.bzl", "pkg_tar")
-load("//:index.bzl", "ts_proto_library")
 
 cypress_web_test(
-    name = "test",
+    name = "web_test",
     srcs = [
-        "weather.spec.js",
+        "web.spec.js",
     ],
     config_file = "cypress.json",
     data = [
-        "@npm//@grpc/grpc-js",
-        "@npm//express"
+        "//test/web:server",
+        "//test/web/client",
     ],
-    plugin_file = "plugin.js",
+    plugin_file = "spawn.js",
+)
+
+go_binary(
+    name = "server",
+    embed = [":web_lib"],
+    visibility = ["//visibility:public"],
+)
+
+go_library(
+    name = "web_lib",
+    srcs = ["server.go"],
+    importpath = "github.com/thesayyn/protoc-gen-ts/test/web",
+    visibility = ["//visibility:private"],
+    deps = ["//test/web/server"],
 )

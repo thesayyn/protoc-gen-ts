@@ -1,0 +1,10 @@
+load("@aspect_bazel_lib//lib:write_source_files.bzl", "write_source_files")
+
+write_source_files(
+    name = "diff",
+    files = {
+        "double_nested.ts": "//test/_/no_namespace:double_nested.ts",
+        "nested.ts": "//test/_/no_namespace:nested.ts",
+        "no_namespace.ts": "//test/_/no_namespace:no_namespace.ts",
+    }
+)

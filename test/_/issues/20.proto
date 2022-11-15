@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+// See issue: #20
+
+message Example {
+    oneof foo_or_bar {
+        Foo foo = 1;
+        Bar bar = 2;
+    }
+}
+
+message Foo {}
+
+message Bar {}

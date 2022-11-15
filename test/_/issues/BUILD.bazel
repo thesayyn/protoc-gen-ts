@@ -1,0 +1,21 @@
+load("@rules_proto//proto:defs.bzl", "proto_library")
+load("@bazel_skylib//rules:build_test.bzl", "build_test")
+load("//:index.bzl", "ts_proto_library")
+
+# gazelle:go_generate_proto false
+proto_library(
+    name = "protos",
+    srcs = glob(["**/*.proto"]),
+)
+
+ts_proto_library(
+    name = "issues",
+    deps = [":protos"],
+)
+
+build_test(
+    name = "test",
+    targets = [
+        ":issues",
+    ],
+)

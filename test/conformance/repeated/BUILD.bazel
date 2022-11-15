@@ -1,0 +1,63 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+load("@npm//@bazel/jasmine:index.bzl", "jasmine_node_test")
+load("@npm//@bazel/typescript:index.bzl", "ts_project")
+load("@aspect_bazel_lib//lib:write_source_files.bzl", "write_source_files")
+
+write_source_files(
+    name = "diff",
+    files = {
+        "repeated.ts": "//test/conformance/repeated/pb:repeated.ts"
+    }
+)
+
+ts_project(
+    name = "test_lib",
+    srcs = glob(["**/*.ts"]),
+    tsconfig = {
+        "compilerOptions": {
+            "target": "ES2020",
+            "module": "CommonJS",
+            "noImplicitAny": True,
+        },
+    },
+    deps = [
+        "@npm//@grpc/grpc-js",
+        "@npm//@types/google-protobuf",
+        "@npm//@types/jasmine",
+        "@npm//@types/node",
+        "@npm//google-protobuf",
+    ],
+)
+
+jasmine_node_test(
+    name = "test",
+    data = ["repeated.bin"],
+    tags = ["no-windows-latest"],
+    deps = [
+        ":test_lib",
+    ],
+)
+
+genrule(
+    name = "wire",
+    outs = ["repeated.bin"],
+    cmd = "$(location :repeated) $@",
+    tools = [":repeated"],
+)
+
+go_library(
+    name = "repeated_lib",
+    srcs = ["repeated.go"],
+    importpath = "github.com/thesayyn/protoc-gen-ts/test/conformance/repeated",
+    visibility = ["//visibility:private"],
+    deps = [
+        "//test/conformance/repeated/pb",
+        "@org_golang_google_protobuf//proto",
+    ],
+)
+
+go_binary(
+    name = "repeated",
+    embed = [":repeated_lib"],
+    visibility = ["//visibility:public"],
+)

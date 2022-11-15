@@ -1,7 +1,8 @@
 load("@npm//@bazel/typescript:index.bzl", "ts_project")
 load("@rules_proto//proto:defs.bzl", "proto_library")
 load("@npm//protoc-gen-ts:index.bzl", "ts_proto_library")
-load("@build_bazel_rules_nodejs//:index.bzl", "nodejs_binary")
+load("@io_bazel_rules_docker//nodejs:image.bzl", "nodejs_image")
+load("@bazel_skylib//rules:diff_test.bzl", "diff_test")
 
 package(default_visibility = ["//visibility:public"])
 
@@ -13,6 +14,14 @@ proto_library(
 ts_proto_library(
     name = "type",
     deps = [":proto"],
+    outs = ["type.ts"]
+)
+
+diff_test(
+    name = "check_type_ts",
+    failure_message = "examples/grpc/type_checked.ts differs from the generated file. please copy the changed file from bazel-bin.",
+    file1 = ":type.ts",
+    file2 = "type_checked.ts",
 )
 
 ts_project(
@@ -26,8 +35,14 @@ ts_project(
     ],
 )
 
-nodejs_binary(
-    name = "serve",
-    data = [":lib", "key.pem", "cert.pem"],
+nodejs_image(
+    name = "client",
+    data = [":lib"],
+    entry_point = ":client.ts",
+)
+
+nodejs_image(
+    name = "server",
+    data = [":lib"],
     entry_point = ":server.ts",
 )

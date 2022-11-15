@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+enum ColorSpace {
+    RED_GREEN_BLUE = 0;
+    CYAN_YELLOW_MAGENTA_BLACK = 1;
+}
+
+message JsonNamesMessage {
+    message NestedMessage {
+        uint32 a_nested_integer = 1;
+    }
+
+    repeated string some_strings = 1;
+    int32 an_integer = 2;
+    NestedMessage a_nested_message = 3;
+    ColorSpace color_space = 4;
+    optional string an_optional_string = 5;
+
+    oneof mut_ex_field {
+        string a_single_string = 6;
+        int32 a_single_number = 7;
+    }
+}

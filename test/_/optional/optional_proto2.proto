@@ -1,0 +1,7 @@
+syntax = "proto2";
+
+
+message NotOptional {
+    repeated string should_be_required = 1;
+    optional string should_be_optional = 2;
+}

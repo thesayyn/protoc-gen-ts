@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-message Package {
-    string name = 1;
-    string author = 2;
-    string release_date = 3;
-    string vcs_url = 4;
-    repeated string tags = 5;
-}

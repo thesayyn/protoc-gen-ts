@@ -1,6 +1,0 @@
-
-
-filegroup(
-    name = "cert",
-    srcs = glob(["cert/*"])
-)

@@ -1,0 +1,63 @@
+syntax = "proto3";
+
+import "test/_/default/default_common.proto";
+
+message DefaultMessageV3 {
+    DefaultCommonMessage message = 1;
+    DefaultCommonEnum enum = 2;
+
+    bool bool = 3;
+    string string = 4;
+
+    int32 int32 = 5;
+    fixed32 fixed32 = 6;
+    sfixed32 sfixed32 = 7;
+    uint32 uint32 = 8;
+    sint32 sint32 = 9;
+    int64 int64 = 10;
+    fixed64 fixed64 = 11;
+    sfixed64 sfixed64 = 12;
+    uint64 uint64 = 13;
+    sint64 sint64 = 14;
+    float float = 15;
+    double double = 16;
+
+    int64 int_but_string = 17 [jstype = JS_STRING];
+
+    map<string, string> map_string_string = 18;
+    map<string, DefaultCommonMessage> map_string_message = 19;
+
+    repeated int32 array_int32 = 20;
+    repeated DefaultCommonMessage array_message = 21;
+
+    oneof one_of {
+        int32 one_of_int32 = 22;
+        DefaultCommonMessage one_of_message = 23;
+    }
+
+    bytes bytes = 24;
+}
+
+message DefaultMessageOptionalV3 {
+    optional DefaultCommonEnum enum = 2;
+
+    optional bool bool = 3;
+    optional string string = 4;
+
+    optional int32 int32 = 5;
+    optional fixed32 fixed32 = 6;
+    optional sfixed32 sfixed32 = 7;
+    optional uint32 uint32 = 8;
+    optional sint32 sint32 = 9;
+    optional int64 int64 = 10;
+    optional fixed64 fixed64 = 11;
+    optional sfixed64 sfixed64 = 12;
+    optional uint64 uint64 = 13;
+    optional sint64 sint64 = 14;
+    optional float float = 15;
+    optional double double = 16;
+
+    optional int64 int_but_string = 17 [jstype = JS_STRING];
+
+    optional bytes bytes = 24;
+}

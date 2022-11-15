@@ -1,0 +1,52 @@
+load("@rules_proto//proto:defs.bzl", "proto_library")
+load("//:index.bzl", "ts_proto_library")
+load("@bazel_skylib//rules:build_test.bzl", "build_test")
+load("@bazel_skylib//rules:write_file.bzl", "write_file")
+load("@aspect_bazel_lib//lib:write_source_files.bzl", "write_source_files")
+
+SRCS = glob(["**/*.proto"])
+
+proto_library(
+    name = "protos",
+    srcs = SRCS,
+)
+
+ts_proto_library(
+    name = "_",
+    outs = [
+        src.replace(".proto", ".ts")
+        for src in SRCS
+    ],
+    visibility = ["//test:__pkg__"],
+    deps = [":protos"],
+)
+
+build_test(
+    name = "test",
+    targets = [
+        ":_",
+    ],
+)
+
+write_file(
+    name = "gen_sources",
+    out = "gen_sources.bzl",
+    content = [
+        '"""',
+        "A list of proto files maintained by a write_file",
+        '"""',
+        "PROT_SOURCES = [",
+    ] + [
+        '   "%s",' % src.replace(".proto", ".ts")
+        for src in SRCS
+    ] + [
+        "]",
+    ],
+)
+
+write_source_files(
+    name = "diff",
+    files = {
+        "sources.bzl": ":gen_sources.bzl"
+    }
+)

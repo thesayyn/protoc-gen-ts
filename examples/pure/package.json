@@ -1,14 +1,16 @@
 {
-    "name": "example",
+    "name": "example-pure",
+    "description": "protoc-gen-ts example without bazel involved.",
     "scripts": {
-        "test": "protoc -I=src --ts_out=src test.proto && tsc && node ./dist/index"
+        "test": "protoc -I=src --ts_out=src test.proto && tsc && node ./dist/index",
+        "preinstall": "cd ../../ && bazel build :package"
     },
     "dependencies": {
         "@grpc/grpc-js": "^1.2.12",
         "google-protobuf": "^3.15.8"
     },
     "devDependencies": {
-        "protoc-gen-ts": "file:../../",
+        "protoc-gen-ts": "file:../../bazel-bin/package",
         "typescript": "^4.2.4"
     }
 }

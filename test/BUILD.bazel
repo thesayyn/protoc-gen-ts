@@ -1,58 +1,38 @@
-
 load("@npm//@bazel/jasmine:index.bzl", "jasmine_node_test")
 load("@npm//@bazel/typescript:index.bzl", "ts_project")
-load("@rules_proto//proto:defs.bzl", "proto_library")
-load("//:index.bzl", "ts_proto_library")
+load("//test/_:sources.bzl", "PROT_SOURCES")
+load("@aspect_bazel_lib//lib:write_source_files.bzl", "write_source_files")
 
-proto_library(
-    name = "protos",
-    srcs = glob(
-        include = ["**/*.proto"],
-        exclude = ["**/*experimental*.proto"]
-    )
-)
-
-ts_proto_library(
-    name = "codegen",
-    deps = [
-        ":protos",
-    ],
-)
-
-proto_library(
-    name = "protos_experimental",
-    srcs = glob(["**/*experimental*.proto"])
-)
-
-ts_proto_library(
-    name = "codegen_experimental",
-    experimental_features = True,
-    deps = [
-        ":protos_experimental",
-    ],
+write_source_files(
+    name = "diff",
+    files = {
+        src: "//test/_:%s" % src     
+        for src in PROT_SOURCES
+    }
 )
 
 ts_project(
-    name = "test_lib",
-    srcs = glob(["**/*.ts"]),
+    name = "tests",
+    srcs = glob(["*.ts"]),
     tsconfig = {
         "compilerOptions": {
             "target": "ES2020",
-            "module": "CommonJS"
+            "module": "CommonJS",
+            "noImplicitAny": True,
         },
     },
     deps = [
+        "@npm//@grpc/grpc-js",
+        "@npm//@types/google-protobuf",
         "@npm//@types/jasmine",
         "@npm//@types/node",
         "@npm//google-protobuf",
-        "@npm//@grpc/grpc-js",
     ],
 )
 
 jasmine_node_test(
     name = "test",
-    data = glob(["**/*.bin"]),
     deps = [
-        ":test_lib",
+        ":tests",
     ],
 )
