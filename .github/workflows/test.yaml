@@ -12,22 +12,52 @@ on:
 jobs:
   test:
     runs-on: ${{ matrix.os }}
+
     strategy:
       matrix:
         os: [ubuntu-latest, macos-latest, windows-latest]
         node_version: [14.x, 16.x]
         protoc_version: [3.x]
+        folder:
+          - '.'
+          - 'examples/pure'
+
     steps:
       - uses: actions/checkout@v2
+
       - uses: actions/setup-node@v2
         with:
           node-version: ${{matrix.node_version}}
+
       - uses: arduino/setup-protoc@v1
         with: 
           version: ${{matrix.protoc_version}}
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-      - run: copy .github/workflows/ci.windows.bazelrc user.bazelrc
+
+      - name: Mount bazel caches
+        uses: actions/cache@v3
+        with:
+            path: |
+                "~/.cache/bazel"
+                "~/.cache/bazel-repo"
+            key: bazel-cache-${{ hashFiles('**/BUILD.bazel', '**/*.bzl', 'WORKSPACE') }}
+            restore-keys: bazel-cache-
+
+      - run: |
+          type .github/workflows/ci.bazelrc >> user.bazelrc
+          type .github/workflows/ci.windows.bazelrc >> user.bazelrc
         if: ${{ matrix.os == 'windows-latest' }}
-      - run: yarn --frozen-lockfile
-      - run: yarn test --test_tag_filters=-no-${{ matrix.os }}
-      - run: cd examples/pure && yarn --frozen-lockfile && yarn test
+
+      - run: | 
+          cat .github/workflows/ci.bazelrc >> user.bazelrc
+          cat .github/workflows/ci.nix.bazelrc >> user.bazelrc
+        if: ${{ matrix.os != 'windows-latest' }}
+
+      - name: install dependencies
+        run: yarn --frozen-lockfile
+        working-directory: ${{ matrix.folder }}
+        if: ${{ matrix.folder != '.' }}
+
+      - name: test
+        run: yarn test --test_tag_filters=-no-${{ matrix.os }}
+        working-directory: ${{ matrix.folder }}

@@ -975,20 +975,20 @@ function createGetterCall(
     getterMethod = "getFieldWithDefault";
     let _default: ts.Expression;
 
-    if (field.isEnum(fieldDescriptor)) {
-      _default = ts.factory.createPropertyAccessExpression(
-        type.getTypeReferenceExpr(rootDescriptor, fieldDescriptor.type_name),
-        fieldDescriptor.has_default_value
-          ? fieldDescriptor.default_value
-          : type.getLeadingEnumMember(fieldDescriptor.type_name),
-      );
-    } else if (field.isRepeated(fieldDescriptor)) {
+    if (field.isRepeated(fieldDescriptor)) {
       _default = fieldDescriptor.has_default_value
         ? ts.factory.createIdentifier(fieldDescriptor.default_value)
         : ts.factory.createArrayLiteralExpression(
           [],
           false
         );
+    } else if (field.isEnum(fieldDescriptor)) {
+      _default = ts.factory.createPropertyAccessExpression(
+        type.getTypeReferenceExpr(rootDescriptor, fieldDescriptor.type_name),
+        fieldDescriptor.has_default_value
+          ? fieldDescriptor.default_value
+          : type.getLeadingEnumMember(fieldDescriptor.type_name),
+      );
     } else if (field.isBytes(fieldDescriptor)) {
       _default = fieldDescriptor.has_default_value
         ? ts.factory.createIdentifier(fieldDescriptor.default_value)

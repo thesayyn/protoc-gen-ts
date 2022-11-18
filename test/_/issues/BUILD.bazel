@@ -3,14 +3,21 @@ load("@bazel_skylib//rules:build_test.bzl", "build_test")
 load("//:index.bzl", "ts_proto_library")
 
 # gazelle:go_generate_proto false
+SRCS = glob(["**/*.proto"])
+
 proto_library(
     name = "protos",
-    srcs = glob(["**/*.proto"]),
+    srcs = SRCS,
 )
 
 ts_proto_library(
     name = "issues",
     deps = [":protos"],
+    outs = [
+        src.replace(".proto", ".ts")
+        for src in SRCS
+    ],
+    visibility = ["//visibility:public"],
 )
 
 build_test(

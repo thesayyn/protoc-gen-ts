@@ -12,6 +12,11 @@ cypress_web_test(
         "//test/web/client",
     ],
     plugin_file = "spawn.js",
+    target_compatible_with = [
+        "@platforms//os:linux",
+        "@platforms//os:macos"
+    ],
+    tags = ["no-windows-latest"],
 )
 
 go_binary(

@@ -74,6 +74,7 @@ def _ts_proto_library(ctx):
             outputs = outputs,
             arguments = [args],
             progress_message = "Generating Protocol Buffers for Typescript %s" % ctx.label,
+            env = {"BAZEL_BINDIR": ctx.bin_dir.path},
         )
 
     return [
@@ -92,13 +93,13 @@ ts_proto_library_ = rule(
         "outs": attr.output_list(),
         "_protoc_gen_ts_bin": attr.label(
             executable = True,
-            cfg = "host",
+            cfg = "exec",
             default = (
                 "//protoc-gen-ts/bin:protoc-gen-ts"
             ),
         ),
         "_protoc": attr.label(
-            cfg = "host",
+            cfg = "exec",
             executable = True,
             allow_single_file = True,
             default = (

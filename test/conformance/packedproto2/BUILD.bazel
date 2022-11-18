@@ -49,7 +49,10 @@ ts_project(
 jasmine_node_test(
     name = "test",
     data = glob(["**/*.bin"]),
-    tags = ["no-windows-latest"],
+    target_compatible_with = [
+        "@platforms//os:linux",
+        "@platforms//os:macos"
+    ],
     deps = [
         ":tests",
     ],
