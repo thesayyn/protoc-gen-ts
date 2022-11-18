@@ -74,6 +74,7 @@ def _ts_proto_library(ctx):
             outputs = outputs,
             arguments = [args],
             progress_message = "Generating Protocol Buffers for Typescript %s" % ctx.label,
+            env = {"BAZEL_BINDIR": ctx.bin_dir.path},
         )
 
     return [
