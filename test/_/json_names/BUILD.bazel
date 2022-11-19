@@ -1,9 +1,9 @@
 load("@rules_proto//proto:defs.bzl", "proto_library")
 load("//:index.bzl", "ts_proto_library")
 
-
 SRCS = glob(["**/*.proto"])
 
+# gazelle:go_generate_proto false
 proto_library(
     name = "protos",
     srcs = SRCS,
@@ -16,6 +16,6 @@ ts_proto_library(
         for src in SRCS
     ],
     features = ["json_names"],
+    visibility = ["//test/json_names:__pkg__"],
     deps = [":protos"],
-    visibility = ["//test/json_names:__pkg__"]
 )

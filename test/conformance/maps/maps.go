@@ -3,12 +3,12 @@ package main
 import (
 	"io/ioutil"
 	"log"
-	"maps/maps"
+	"os"
+
+	maps "github.com/thesayyn/protoc-gen-ts/test/conformance/maps/pb"
 
 	"google.golang.org/protobuf/proto"
 )
-
-// run: go run map.go
 
 func main() {
 
@@ -34,5 +34,5 @@ func main() {
 		log.Panic(err)
 	}
 
-	ioutil.WriteFile("./map.bin", bytes, 0644)
+	ioutil.WriteFile(os.Args[1], bytes, 0644)
 }

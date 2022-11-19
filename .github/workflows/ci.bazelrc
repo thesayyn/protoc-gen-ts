@@ -1,0 +1,8 @@
+# Debug where options came from
+build --announce_rc
+
+build --noshow_progress
+
+# Don't rely on test logs being easily accessible from the test runner,
+# though it makes the log noisier.
+test --test_output=errors

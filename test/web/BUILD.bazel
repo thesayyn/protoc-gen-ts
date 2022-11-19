@@ -1,0 +1,34 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+load("@npm//@bazel/cypress:index.bzl", "cypress_web_test")
+
+cypress_web_test(
+    name = "web_test",
+    srcs = [
+        "web.spec.js",
+    ],
+    config_file = "cypress.json",
+    data = [
+        "//test/web:server",
+        "//test/web/client",
+    ],
+    plugin_file = "spawn.js",
+    target_compatible_with = [
+        "@platforms//os:linux",
+        "@platforms//os:macos"
+    ],
+    tags = ["no-windows-latest"],
+)
+
+go_binary(
+    name = "server",
+    embed = [":web_lib"],
+    visibility = ["//visibility:public"],
+)
+
+go_library(
+    name = "web_lib",
+    srcs = ["server.go"],
+    importpath = "github.com/thesayyn/protoc-gen-ts/test/web",
+    visibility = ["//visibility:private"],
+    deps = ["//test/web/server"],
+)

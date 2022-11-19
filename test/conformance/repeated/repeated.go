@@ -1,15 +1,18 @@
 package main
 
 import (
-	"google.golang.org/protobuf/proto"
 	"io/ioutil"
 	"log"
-	"repeated/proto"
+	"os"
+
+	repeated "github.com/thesayyn/protoc-gen-ts/test/conformance/repeated/pb"
+	"google.golang.org/protobuf/proto"
 )
 
 // run: go run repeated.go
 
 func main() {
+
 	//   repeated int64 implicitly_packed = 1;
 	//   repeated int64 explicitly_packed = 2 [packed = true]; // should same as default value
 	//   repeated int64 explicitly_not_packed = 3 [packed = false];
@@ -27,5 +30,5 @@ func main() {
 		log.Panic(err)
 	}
 
-	ioutil.WriteFile("./repeated.bin", bytes, 0644)
+	ioutil.WriteFile(os.Args[1], bytes, 0644)
 }

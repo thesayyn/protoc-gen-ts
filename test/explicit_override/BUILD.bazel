@@ -1,13 +1,12 @@
-load("//tools:diff_and_update.bzl", "diff_and_update")
 load("@npm//@bazel/jasmine:index.bzl", "jasmine_node_test")
 load("@npm//@bazel/typescript:index.bzl", "ts_project")
+load("@aspect_bazel_lib//lib:write_source_files.bzl", "write_source_files")
 
-diff_and_update(
-    name = "diff_explicit_override",
-    srcs = [
-      "//test/_/explicit_override:explicit_override.ts",
-    ],
-    checked = [ "explicit_override.ts" ]
+write_source_files(
+    name = "diff",
+    files = {
+        "explicit_override.ts": "//test/_/explicit_override:explicit_override.ts"
+    }
 )
 
 ts_project(
@@ -18,15 +17,15 @@ ts_project(
             "target": "ES2020",
             "module": "CommonJS",
             "noImplicitAny": True,
-            "noImplicitOverride": True
+            "noImplicitOverride": True,
         },
     },
     deps = [
+        "@npm//@grpc/grpc-js",
+        "@npm//@types/google-protobuf",
         "@npm//@types/jasmine",
         "@npm//@types/node",
-        "@npm//@types/google-protobuf",
         "@npm//google-protobuf",
-        "@npm//@grpc/grpc-js",
     ],
 )
 

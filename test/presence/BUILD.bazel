@@ -1,16 +1,14 @@
-load("//tools:diff_and_update.bzl", "diff_and_update")
 load("@npm//@bazel/jasmine:index.bzl", "jasmine_node_test")
 load("@npm//@bazel/typescript:index.bzl", "ts_project")
+load("@aspect_bazel_lib//lib:write_source_files.bzl", "write_source_files")
 
-
-diff_and_update(
-    name = "diff_presence",
-    srcs = [
-        "//test/_/presence:presence_proto2.ts",
-        "//test/_/presence:presence_proto3.ts",
-        "//test/_/presence:presence_common.ts",
-    ],
-    checked = ["presence_proto2.ts", "presence_proto3.ts", "presence_common.ts"]
+write_source_files(
+    name = "diff",
+    files = {
+        "presence_common.ts": "//test/_/presence:presence_common.ts",
+        "presence_proto2.ts": "//test/_/presence:presence_proto2.ts",
+        "presence_proto3.ts": "//test/_/presence:presence_proto3.ts"
+    }
 )
 
 ts_project(
@@ -19,15 +17,15 @@ ts_project(
     tsconfig = {
         "compilerOptions": {
             "target": "ES2020",
-            "module": "CommonJS"
+            "module": "CommonJS",
         },
     },
     deps = [
+        "@npm//@grpc/grpc-js",
+        "@npm//@types/google-protobuf",
         "@npm//@types/jasmine",
         "@npm//@types/node",
-        "@npm//@types/google-protobuf",
         "@npm//google-protobuf",
-        "@npm//@grpc/grpc-js",
     ],
 )
 

@@ -1,15 +1,12 @@
-load("//tools:diff_and_update.bzl", "diff_and_update")
+load("@aspect_bazel_lib//lib:write_source_files.bzl", "write_source_files")
 load("@bazel_skylib//rules:build_test.bzl", "build_test")
-load("@npm//@bazel/jasmine:index.bzl", "jasmine_node_test")
 load("@npm//@bazel/typescript:index.bzl", "ts_project")
 
-
-diff_and_update(
-    name = "diff_default",
-    srcs = [
-        "//test/_/issues:171.ts",
-    ],
-    checked = ["171.ts"],
+write_source_files(
+    name = "diff",
+    files = {
+        "171.ts": "//test/_/issues:171.ts"
+    }
 )
 
 ts_project(

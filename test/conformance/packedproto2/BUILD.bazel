@@ -1,27 +1,30 @@
-
+load("@rules_proto//proto:defs.bzl", "proto_library")
 load("@npm//@bazel/jasmine:index.bzl", "jasmine_node_test")
 load("@npm//@bazel/typescript:index.bzl", "ts_project")
-load("@rules_proto//proto:defs.bzl", "proto_library")
 load("//:index.bzl", "ts_proto_library")
-load("//tools:diff_and_update.bzl", "diff_and_update")
+load("@aspect_bazel_lib//lib:write_source_files.bzl", "write_source_files")
 
+# gazelle:go_generate_proto false
 proto_library(
-    name = "protos",
-    srcs = glob(["**/*.proto"])
+    name = "packedproto2_proto",
+    srcs = ["packedproto2.proto"],
+    visibility = ["//visibility:public"],
 )
 
 ts_proto_library(
     name = "codegen",
     outs = ["packedproto2.ts"],
     deps = [
-        ":protos"
+        ":packedproto2_proto",
     ],
 )
 
-diff_and_update(
+
+write_source_files(
     name = "diff",
-    srcs = ["packedproto2.ts"],
-    checked = ["packed_proto2.ts"],
+    files = {
+        "packed_proto2.ts": "packedproto2.ts"
+    }
 )
 
 ts_project(
@@ -31,22 +34,25 @@ ts_project(
         "compilerOptions": {
             "target": "ES2020",
             "module": "CommonJS",
-            "noImplicitAny": True
+            "noImplicitAny": True,
         },
     },
     deps = [
+        "@npm//@grpc/grpc-js",
+        "@npm//@types/google-protobuf",
         "@npm//@types/jasmine",
         "@npm//@types/node",
-        "@npm//@types/google-protobuf",
         "@npm//google-protobuf",
-        "@npm//@grpc/grpc-js",
     ],
 )
 
 jasmine_node_test(
     name = "test",
     data = glob(["**/*.bin"]),
-    tags = ["no-windows-latest"],
+    target_compatible_with = [
+        "@platforms//os:linux",
+        "@platforms//os:macos"
+    ],
     deps = [
         ":tests",
     ],

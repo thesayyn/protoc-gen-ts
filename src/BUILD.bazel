@@ -1,16 +1,15 @@
 load("@npm//@bazel/typescript:index.bzl", "ts_project")
 load("@build_bazel_rules_nodejs//:index.bzl", "js_library")
-load("//tools:diff_and_update.bzl", "diff_and_update")
+load("@aspect_bazel_lib//lib:write_source_files.bzl", "write_source_files")
 
 package(default_visibility = ["//visibility:public"])
 
-diff_and_update(
-    name = "diff_compiler",
-    srcs = [
-        "@third_party_protobuf//:plugin.ts",
-        "@third_party_protobuf//:descriptor.ts"
-    ],
-    checked = ["compiler/plugin.ts", "compiler/descriptor.ts"]
+write_source_files(
+    name = "diff",
+    files = {
+        "compiler/descriptor.ts": "@third_party_protobuf//:descriptor.ts",
+        "compiler/plugin.ts": "@third_party_protobuf//:plugin.ts",
+    }
 )
 
 ts_project(
@@ -20,21 +19,21 @@ ts_project(
         "compilerOptions": {
             "target": "ES2020",
             "module": "CommonJS",
-            "noImplicitAny": True
+            "noImplicitAny": True,
         },
     },
     deps = [
         "@npm//@grpc/grpc-js",
-        "@npm//@types/node",
         "@npm//@types/google-protobuf",
+        "@npm//@types/node",
         "@npm//google-protobuf",
-        "@npm//typescript"
+        "@npm//typescript",
     ],
 )
 
 js_library(
     name = "pkg",
     deps = [
-        ":src"
-    ]
+        ":src",
+    ],
 )

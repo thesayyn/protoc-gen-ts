@@ -9,6 +9,4 @@ test --incompatible_strict_action_env
 build --deleted_packages=examples/bazel
 query --deleted_packages=examples/bazel
 
-test --nocache_test_results
-
 try-import  %workspace%/user.bazelrc

@@ -3,7 +3,6 @@ syntax = "proto3";
 package maps;
 
 option optimize_for = SPEED;
-option go_package = "maps/";
 
 message Topic {
     string link = 2;

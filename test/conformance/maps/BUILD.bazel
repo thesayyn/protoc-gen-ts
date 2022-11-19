@@ -1,0 +1,63 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+load("@npm//@bazel/jasmine:index.bzl", "jasmine_node_test")
+load("@npm//@bazel/typescript:index.bzl", "ts_project")
+load("@aspect_bazel_lib//lib:write_source_files.bzl", "write_source_files")
+
+write_source_files(
+    name = "diff",
+    files = {
+        "maps.ts": "//test/conformance/maps/pb:maps.ts"
+    }
+)
+
+ts_project(
+    name = "test_lib",
+    srcs = glob(["**/*.ts"]),
+    tsconfig = {
+        "compilerOptions": {
+            "target": "ES2020",
+            "module": "CommonJS",
+            "noImplicitAny": True,
+        },
+    },
+    deps = [
+        "@npm//@grpc/grpc-js",
+        "@npm//@types/google-protobuf",
+        "@npm//@types/jasmine",
+        "@npm//@types/node",
+        "@npm//google-protobuf",
+    ],
+)
+
+jasmine_node_test(
+    name = "test",
+    data = ["maps.bin"],
+    tags = ["no-windows-latest"],
+    deps = [
+        ":test_lib",
+    ],
+)
+
+genrule(
+    name = "wire",
+    outs = ["maps.bin"],
+    cmd = "$(location :maps) $@",
+    tools = [":maps"],
+)
+
+go_library(
+    name = "maps_lib",
+    srcs = ["maps.go"],
+    importpath = "github.com/thesayyn/protoc-gen-ts/test/conformance/maps",
+    visibility = ["//visibility:private"],
+    deps = [
+        "//test/conformance/maps/pb",
+        "@org_golang_google_protobuf//proto",
+    ],
+)
+
+go_binary(
+    name = "maps",
+    embed = [":maps_lib"],
+    visibility = ["//visibility:public"],
+)

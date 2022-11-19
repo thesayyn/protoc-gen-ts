@@ -2,7 +2,7 @@ load("@rules_proto//proto:defs.bzl", "proto_library")
 load("//:index.bzl", "ts_proto_library")
 load("@bazel_skylib//rules:build_test.bzl", "build_test")
 load("@bazel_skylib//rules:write_file.bzl", "write_file")
-load("//tools:diff_and_update.bzl", "diff_and_update")
+load("@aspect_bazel_lib//lib:write_source_files.bzl", "write_source_files")
 
 SRCS = glob(["**/*.proto"])
 
@@ -44,11 +44,9 @@ write_file(
     ],
 )
 
-diff_and_update(
+write_source_files(
     name = "diff",
-    srcs = ["//test/_:gen_sources.bzl"],
-    checked = [
-        "sources.bzl",
-    ],
-    tags = ["no-windows-latest"],
+    files = {
+        "sources.bzl": ":gen_sources.bzl"
+    }
 )

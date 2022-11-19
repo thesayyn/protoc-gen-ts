@@ -1,9 +1,9 @@
 import * as fs from "fs";
 import * as path from "path";
-import { maps } from "./proto/map_checked";
+import { maps } from "./maps";
 
 describe("maps", () => {
-    const bin = fs.readFileSync(path.join(__dirname, "map.bin"));
+    const bin = fs.readFileSync(path.join(__dirname, "maps.bin"));
     it("should be able to deserialize from go", () => {
         const tags = maps.Tags.deserialize(bin);
         expect(tags.toObject()).toEqual({

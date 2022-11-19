@@ -93,13 +93,13 @@ ts_proto_library_ = rule(
         "outs": attr.output_list(),
         "_protoc_gen_ts_bin": attr.label(
             executable = True,
-            cfg = "host",
+            cfg = "exec",
             default = (
                 "//protoc-gen-ts/bin:protoc-gen-ts"
             ),
         ),
         "_protoc": attr.label(
-            cfg = "host",
+            cfg = "exec",
             executable = True,
             allow_single_file = True,
             default = (

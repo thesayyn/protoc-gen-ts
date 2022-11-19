@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather</title>
+    <script type="module" src="/bundle.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Abel&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <style>
+
+        body, html { 
+            font-family: 'Abel', sans-serif;
+            font-weight: 400;
+            margin: 0;
+            padding: 0;
+            background-color: #303030;
+            color: #fff;
+        }
+        section {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-flow: column;
+            gap: 5px;
+        }
+    </style>
+    <style>
+        .material-symbols-outlined {
+          font-variation-settings:
+          'FILL' 0,
+          'wght' 400,
+          'GRAD' 0,
+          'opsz' 48;
+          font-size: 7em !important;
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <span class="material-symbols-outlined">
+            sunny
+        </span>
+        <h1>Location: <span>loading</span></h1>
+        <h3>Temperature: <span></span> °C</h3>
+        <time>Last updated: <span>now</span></time>
+        <address>uknown</address>
+    </section>
+</body>
+</html>

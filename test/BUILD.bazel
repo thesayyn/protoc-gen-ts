@@ -1,18 +1,15 @@
-
 load("@npm//@bazel/jasmine:index.bzl", "jasmine_node_test")
 load("@npm//@bazel/typescript:index.bzl", "ts_project")
-load("//tools:diff_and_update.bzl", "diff_and_update")
 load("//test/_:sources.bzl", "PROT_SOURCES")
+load("@aspect_bazel_lib//lib:write_source_files.bzl", "write_source_files")
 
-diff_and_update(
+write_source_files(
     name = "diff",
-    srcs = [
-        "//test/_:%s" % src
+    files = {
+        src: "//test/_:%s" % src     
         for src in PROT_SOURCES
-    ],
-    checked = PROT_SOURCES,
+    }
 )
-
 
 ts_project(
     name = "tests",
@@ -21,15 +18,15 @@ ts_project(
         "compilerOptions": {
             "target": "ES2020",
             "module": "CommonJS",
-            "noImplicitAny": True
+            "noImplicitAny": True,
         },
     },
     deps = [
+        "@npm//@grpc/grpc-js",
+        "@npm//@types/google-protobuf",
         "@npm//@types/jasmine",
         "@npm//@types/node",
-        "@npm//@types/google-protobuf",
         "@npm//google-protobuf",
-        "@npm//@grpc/grpc-js",
     ],
 )
 

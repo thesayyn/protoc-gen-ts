@@ -1,3 +1,1 @@
 startup --output_user_root=C:/tmp
-build --noshow_progress
-test --test_output=errors

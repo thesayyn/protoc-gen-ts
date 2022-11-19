@@ -1,11 +1,16 @@
-import * as plugin from "./compiler/plugin.js";
+import * as ts from "typescript";
 import * as path from "path";
 import * as fs from "fs";
-import * as ts from "typescript";
-import * as type from "./type.js";
-import * as descriptor from "./descriptor.js";
-import * as rpc from "./rpc.js";
+
+import * as plugin from "./compiler/plugin";
+import * as type from "./type";
+import * as descriptor from "./descriptor";
 import * as op from "./option";
+
+import * as rpc_node from "./rpc/node";
+import * as rpc_web from "./rpc/web";
+import * as rpc_server from "./rpc/server";
+
 
 function createImport(
   identifier: ts.Identifier,
@@ -50,6 +55,7 @@ for (const fileDescriptor of request.proto_file) {
   const name = replaceExtension(fileDescriptor.name);
   const pbIdentifier = ts.factory.createUniqueName("pb");
   const grpcIdentifier = ts.factory.createUniqueName("grpc");
+  const grpcWebIdentifier = ts.factory.createUniqueName("grpc_web");
 
   // Will keep track of import statements
   const importStatements: ts.ImportDeclaration[] = [
@@ -94,26 +100,50 @@ for (const fileDescriptor of request.proto_file) {
   if (fileDescriptor.service.length) {
     // Import grpc only if there is service statements
     importStatements.push(createImport(grpcIdentifier, options.grpc_package));
-    statements.push(...rpc.createGrpcInterfaceType(grpcIdentifier));
+
+    if (options.target != "web") {
+      statements.push(...rpc_server.createGrpcInterfaceType(grpcIdentifier));
+    } else {
+      // import grc-web when the target is web
+      importStatements.push(
+        createImport(
+          grpcWebIdentifier,
+          "grpc-web",
+        )
+      );
+    }
 
     // Create all services and clients
     for (const serviceDescriptor of fileDescriptor.service) {
+      // target: node server
       statements.push(
-        rpc.createUnimplementedServer(
+        rpc_server.createUnimplementedServer(
           fileDescriptor,
           serviceDescriptor,
           grpcIdentifier,
         ),
       );
-
-      statements.push(
-        rpc.createServiceClient(
-          fileDescriptor,
-          serviceDescriptor,
-          grpcIdentifier,
-          options,
-        ),
-      );
+      // target: web via grpc-web
+      if (options.target == "web") {
+        statements.push(
+          rpc_web.createServiceClient(
+            fileDescriptor,
+            serviceDescriptor,
+            grpcWebIdentifier,
+            options,
+          ),
+        );
+      } else {
+        // target: node via @grpc/grpc-js or grpc (deprecated)
+        statements.push(
+          rpc_node.createServiceClient(
+            fileDescriptor,
+            serviceDescriptor,
+            grpcIdentifier,
+            options,
+          )
+        )
+      }
     }
   }
 
@@ -124,6 +154,7 @@ for (const fileDescriptor of request.proto_file) {
     `compiler version: ${major}.${minor}.${patch}`,
     `source: ${fileDescriptor.name}`,
     `git: https://github.com/thesayyn/protoc-gen-ts`,
+    //`target: ${options.target}`
   ];
 
   if (fileDescriptor.options?.deprecated) {

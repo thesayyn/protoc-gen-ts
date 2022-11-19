@@ -1,6 +1,6 @@
 import * as fs from "fs";
 import * as path from "path";
-import { repeated } from "./proto/repeated_checked";
+import { repeated } from "./repeated";
 
 describe("repeated conformance", () => {
   const bin = fs.readFileSync(path.join(__dirname, "repeated.bin"));
