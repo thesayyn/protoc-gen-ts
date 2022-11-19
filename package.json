@@ -1,7 +1,7 @@
 {
   "name": "protoc-gen-ts",
   "description": "Compile protocol buffers descriptors to Typescript.",
-  "version": "0.8.5",
+  "version": "0.8.6-rc1",
   "license": "MIT",
   "author": {
     "email": "thesayyn@gmail.com",
@@ -18,7 +18,8 @@
   },
   "scripts": {
     "test": "bazel test //...",
-    "release": "bazel run //:package.publish -- --access public --tag latest --registry https://registry.npmjs.org"
+    "release": "bazel run //:package.publish -- --access public --tag latest --registry https://registry.npmjs.org",
+    "prerelease": "bazel run //:package.publish -- --access public --tag next --registry https://registry.npmjs.org"
   },
   "bin": {
     "protoc-gen-ts": "./bin/protoc-gen-ts.js"
