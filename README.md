@@ -168,7 +168,7 @@ If your corporate has a OSS funding scheme, please consider supporting us monthl
 - <s>Support oneof fields</s>
 - <s>Support `map<TYPE, TYPE>` types as ES `Map`.</s>
 - <s>Support for `@deprecated` annotations via deprecated option.</s>
-- Support for grpc-web without any manual intervention.
+- <s>Support for grpc-web without any manual intervention.</s>
 - Interopability with well knowns.
 
 
