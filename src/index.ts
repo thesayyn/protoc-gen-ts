@@ -18,7 +18,6 @@ function createImport(
 ): ts.ImportDeclaration {
   return ts.factory.createImportDeclaration(
     undefined,
-    undefined,
     ts.factory.createImportClause(
       false,
       ts.factory.createNamespaceImport(identifier) as any,
@@ -34,7 +33,7 @@ function replaceExtension(filename: string, extension: string = ".ts"): string {
 
 
 const request = plugin.CodeGeneratorRequest.deserialize(
-  new Uint8Array(fs.readFileSync(0)),
+  new Uint8Array(fs.readFileSync(process.stdin.fd)),
 );
 const response = new plugin.CodeGeneratorResponse({
   supported_features:
@@ -42,13 +41,23 @@ const response = new plugin.CodeGeneratorResponse({
   file: [],
 });
 
+const [tsVersionMajor, tsVersionMinor] = ts.version.split(".").map(Number);
+
+if (!(tsVersionMajor >= 4 && tsVersionMinor >= 9)) {
+  response.error = "protoc-gen-ts requires TypeScript 4.9 or above.";
+  process.stdout.write(response.serialize());
+  // will help to flush the stdout buffer.
+  process.stdout.write(new Uint8Array());
+  process.exit();
+}
+
 const options = op.parse(request.parameter);
 
 type.initialize(options);
 descriptor.initialize(options);
 
-for (const descriptor of request.proto_file) {
-  type.preprocess(descriptor, descriptor.name, `.${descriptor.package ?? ""}`);
+for (const fileDescriptor of request.proto_file) {
+  type.preprocess(fileDescriptor, fileDescriptor.name, `.${fileDescriptor.package ?? ""}`);
 }
 
 for (const fileDescriptor of request.proto_file) {

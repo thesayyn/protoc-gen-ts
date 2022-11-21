@@ -469,10 +469,10 @@ export class DefaultMessageV3 extends pb_1.Message {
             data.int_but_string = this.int_but_string;
         }
         if (this.map_string_string != null) {
-            data.map_string_string = Object.fromEntries(this.map_string_string);
+            data.map_string_string = (Object.fromEntries)(this.map_string_string);
         }
         if (this.map_string_message != null) {
-            data.map_string_message = Object.fromEntries(Array.from(this.map_string_message).map(([key, value]) => [key, value.toObject()]));
+            data.map_string_message = (Object.fromEntries)((Array.from)(this.map_string_message).map(([key, value]) => [key, value.toObject()]));
         }
         if (this.array_int32 != null) {
             data.array_int32 = this.array_int32;

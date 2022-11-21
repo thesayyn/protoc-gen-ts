@@ -13,7 +13,6 @@ export function createParameter(
   return ts.factory.createParameterDeclaration(
     undefined,
     undefined,
-    undefined,
     name,
     optional ? ts.factory.createToken(ts.SyntaxKind.QuestionToken) : undefined,
     typename,
