@@ -435,10 +435,10 @@ export class DefaultMessageV2WithoutDefault extends pb_1.Message {
             data.int_but_string = this.int_but_string;
         }
         if (this.map_string_string != null) {
-            data.map_string_string = Object.fromEntries(this.map_string_string);
+            data.map_string_string = (Object.fromEntries)(this.map_string_string);
         }
         if (this.map_string_message != null) {
-            data.map_string_message = Object.fromEntries(Array.from(this.map_string_message).map(([key, value]) => [key, value.toObject()]));
+            data.map_string_message = (Object.fromEntries)((Array.from)(this.map_string_message).map(([key, value]) => [key, value.toObject()]));
         }
         if (this.array_message != null) {
             data.array_message = this.array_message.map((item: dependency_1.DefaultCommonMessage) => item.toObject());

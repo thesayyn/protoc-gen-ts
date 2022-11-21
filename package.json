@@ -26,7 +26,7 @@
   },
   "peerDependencies": {
     "google-protobuf": "^3.13.0",
-    "typescript": ">=4"
+    "typescript": ">=4.9.3"
   },
   "devDependencies": {
     "@bazel/bazelisk": "^1.9.0",
@@ -35,18 +35,18 @@
     "@bazel/rollup": "5.7.1",
     "@bazel/cypress": "5.7.1",
     "cypress": "7.3.0",
-    "@grpc/grpc-js": "^1.3.4",
+    "@grpc/grpc-js": "^1.7.3",
     "google-protobuf": "^3.19.1",
     "grpc-web": "^1.4.2",
     "jasmine": "^3.7.0",
     "jasmine-core": "^3.7.1",
-    "typescript": "^4.3.4",
+    "typescript": "^4.9.3",
     "@rollup/plugin-commonjs": "^23.0.2",
     "@rollup/plugin-node-resolve": "^15.0.1",
     "rollup": "^3.3.0",
     "http-server": "^14.1.1",
     "@types/google-protobuf": "^3.15.5",
     "@types/jasmine": "^3.7.7",
-    "@types/node": "^15.12.5"
+    "@types/node": "^18.11.9"
   }
 }

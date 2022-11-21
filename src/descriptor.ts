@@ -36,7 +36,7 @@ export function createEnum(
   enumDescriptor: descriptor.EnumDescriptorProto,
   parentName: string = ''
 ): ts.EnumDeclaration {
-  const values = [];
+  const values: ts.EnumMember[] = [];
 
   for (const valueDescriptor of enumDescriptor.value) {
     values.push(
@@ -51,7 +51,6 @@ export function createEnum(
   }
   return comment.addDeprecatedJsDoc(
     ts.factory.createEnumDeclaration(
-      undefined,
       [ts.factory.createModifier(ts.SyntaxKind.ExportKeyword)],
       ts.factory.createIdentifier(`${parentName}${enumDescriptor.name}`),
       values,
@@ -137,7 +136,6 @@ function createFromObject(
                 ts.factory.createParameterDeclaration(
                   undefined,
                   undefined,
-                  undefined,
                   ts.factory.createArrayBindingPattern([
                     ts.factory.createBindingElement(
                       undefined,
@@ -171,7 +169,6 @@ function createFromObject(
           undefined,
           [
             ts.factory.createParameterDeclaration(
-              undefined,
               undefined,
               undefined,
               "item",
@@ -289,7 +286,6 @@ function createFromObject(
   statements.push(ts.factory.createReturnStatement(messageIdentifier));
 
   return ts.factory.createMethodDeclaration(
-    undefined,
     [ts.factory.createModifier(ts.SyntaxKind.StaticKeyword)],
     undefined,
     ts.factory.createIdentifier("fromObject"),
@@ -297,7 +293,6 @@ function createFromObject(
     undefined,
     [
       ts.factory.createParameterDeclaration(
-        undefined,
         undefined,
         undefined,
         dataIdentifier,
@@ -355,7 +350,6 @@ function createToObject(
                 ts.factory.createParameterDeclaration(
                   undefined,
                   undefined,
-                  undefined,
                   ts.factory.createArrayBindingPattern([
                     ts.factory.createBindingElement(
                       undefined,
@@ -404,7 +398,6 @@ function createToObject(
           undefined,
           [
             ts.factory.createParameterDeclaration(
-              undefined,
               undefined,
               undefined,
               "item",
@@ -502,7 +495,6 @@ function createToObject(
   return ts.factory.createMethodDeclaration(
     undefined,
     undefined,
-    undefined,
     ts.factory.createIdentifier("toObject"),
     undefined,
     undefined,
@@ -523,7 +515,6 @@ export function createNamespace(
 
   for (let i = identifiers.length - 1; i >= 0; i--) {
     decl = ts.factory.createModuleDeclaration(
-      undefined,
       [ts.factory.createModifier(ts.SyntaxKind.ExportKeyword)],
       ts.factory.createIdentifier(identifiers[i]),
       decl as ts.ModuleBlock,
@@ -643,7 +634,7 @@ function createPrimitiveMessageSignature(
     if (field.isMap(fieldDescriptor)) {
       const [keyDescriptor, valueDescriptor] = type.getMapDescriptor(
         fieldDescriptor.type_name,
-      ).field;
+      )!.field;
 
       let valueType = field.getType(valueDescriptor, rootDescriptor);
 
@@ -654,10 +645,8 @@ function createPrimitiveMessageSignature(
       fieldType = ts.factory.createTypeLiteralNode([
         ts.factory.createIndexSignature(
           undefined,
-          undefined,
           [
             ts.factory.createParameterDeclaration(
-              undefined,
               undefined,
               undefined,
               "key",
@@ -875,10 +864,8 @@ function createConstructor(
 
   return ts.factory.createConstructorDeclaration(
     undefined,
-    undefined,
     [
       ts.factory.createParameterDeclaration(
-        undefined,
         undefined,
         undefined,
         dataIdentifier,
@@ -919,7 +906,6 @@ function createGetter(
 
   return comment.addDeprecatedJsDoc(
     ts.factory.createGetAccessorDeclaration(
-      undefined,
       undefined,
       getFieldName(fieldDescriptor),
       [],
@@ -1073,10 +1059,8 @@ function createOneOfGetter(
             ts.factory.createTypeLiteralNode([
               ts.factory.createIndexSignature(
                 undefined,
-                undefined,
                 [
                   ts.factory.createParameterDeclaration(
-                    undefined,
                     undefined,
                     undefined,
                     "index",
@@ -1116,7 +1100,6 @@ function createOneOfGetter(
 
   return ts.factory.createGetAccessorDeclaration(
     undefined,
-    undefined,
     oneofDescriptor.name,
     [],
     undefined,
@@ -1151,11 +1134,9 @@ function createSetter(
   return comment.addDeprecatedJsDoc(
     ts.factory.createSetAccessorDeclaration(
       undefined,
-      undefined,
       getFieldName(fieldDescriptor),
       [
         ts.factory.createParameterDeclaration(
-          undefined,
           undefined,
           undefined,
           valueParameter,
@@ -1255,7 +1236,6 @@ function createPresenceHas(
 ) {
   return comment.addDeprecatedJsDoc(
     ts.factory.createGetAccessorDeclaration(
-      undefined,
       undefined,
       getPrefixedFieldName("has", fieldDescriptor),
       [],
@@ -1471,7 +1451,6 @@ function createSerialize(
                 ts.factory.createParameterDeclaration(
                   undefined,
                   undefined,
-                  undefined,
                   "item",
                   undefined,
                   type.getTypeReference(
@@ -1613,7 +1592,6 @@ function createSerialize(
     ts.factory.createMethodDeclaration(
       undefined,
       undefined,
-      undefined,
       "serialize",
       undefined,
       undefined,
@@ -1624,13 +1602,11 @@ function createSerialize(
     ts.factory.createMethodDeclaration(
       undefined,
       undefined,
-      undefined,
       "serialize",
       undefined,
       undefined,
       [
         ts.factory.createParameterDeclaration(
-          undefined,
           undefined,
           undefined,
           "w",
@@ -1647,13 +1623,11 @@ function createSerialize(
     ts.factory.createMethodDeclaration(
       undefined,
       undefined,
-      undefined,
       "serialize",
       undefined,
       undefined,
       [
         ts.factory.createParameterDeclaration(
-          undefined,
           undefined,
           undefined,
           "w",
@@ -2054,7 +2028,6 @@ function createDeserialize(
   );
 
   return ts.factory.createMethodDeclaration(
-    undefined,
     [ts.factory.createModifier(ts.SyntaxKind.StaticKeyword)],
     undefined,
     ts.factory.createIdentifier("deserialize"),
@@ -2062,7 +2035,6 @@ function createDeserialize(
     undefined,
     [
       ts.factory.createParameterDeclaration(
-        undefined,
         undefined,
         undefined,
         ts.factory.createIdentifier("bytes"),
@@ -2100,7 +2072,6 @@ function createDeserializeBinary(
     );
   }
   return ts.factory.createMethodDeclaration(
-    undefined,
     modifiers,
     undefined,
     ts.factory.createIdentifier("deserializeBinary"),
@@ -2108,7 +2079,6 @@ function createDeserializeBinary(
     undefined,
     [
       ts.factory.createParameterDeclaration(
-        undefined,
         undefined,
         undefined,
         ts.factory.createIdentifier("bytes"),
@@ -2142,7 +2112,6 @@ function createDeserializeBinary(
  */
 function createSerializeBinary(): ts.ClassElement {
   return ts.factory.createMethodDeclaration(
-    undefined,
     undefined,
     undefined,
     ts.factory.createIdentifier("serializeBinary"),
@@ -2193,7 +2162,6 @@ function createOneOfDecls(
     decls.push(ts.factory.createArrayLiteralExpression(map));
   }
   return ts.factory.createPropertyDeclaration(
-    undefined,
     [],
     ts.factory.createPrivateIdentifier("#one_of_decls"),
     undefined,
@@ -2263,7 +2231,6 @@ function createMessage(
   // Create message class
   return comment.addDeprecatedJsDoc(
     ts.factory.createClassDeclaration(
-      undefined,
       [ts.factory.createModifier(ts.SyntaxKind.ExportKeyword)],
       `${parentName}${messageDescriptor.name}`,
       undefined,

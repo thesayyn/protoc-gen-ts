@@ -52,7 +52,6 @@ function createMethodDescriptor(
   );
 
   return ts.factory.createPropertyDeclaration(
-    undefined,
     [
       ts.factory.createModifier(ts.SyntaxKind.PrivateKeyword),
       ts.factory.createModifier(ts.SyntaxKind.StaticKeyword),
@@ -80,7 +79,6 @@ function createUnaryRpcMethod(
     ts.factory.createTypeReferenceNode(ts.factory.createQualifiedName(grpcIdentifier, "Metadata")),
   );
   return ts.factory.createMethodDeclaration(
-    undefined,
     undefined,
     undefined,
     methodDescriptor.name,
@@ -176,7 +174,6 @@ function createUnaryRpcMethod(
   return ts.factory.createMethodDeclaration(
     undefined,
     undefined,
-    undefined,
     methodDescriptor.name,
     undefined,
     undefined,
@@ -254,7 +251,6 @@ function createServerStreamingRpcMethod(
   return ts.factory.createMethodDeclaration(
     undefined,
     undefined,
-    undefined,
     methodDescriptor.name,
     undefined,
     undefined,
@@ -326,7 +322,6 @@ export function createServiceClient(
 ) {
   const members: ts.ClassElement[] = [
     ts.factory.createPropertyDeclaration(
-      undefined,
       [ts.factory.createModifier(ts.SyntaxKind.PrivateKeyword)],
       "_address",
       undefined,
@@ -334,7 +329,6 @@ export function createServiceClient(
       undefined,
     ),
     ts.factory.createPropertyDeclaration(
-      undefined,
       [ts.factory.createModifier(ts.SyntaxKind.PrivateKeyword)],
       "_client",
       undefined,
@@ -344,7 +338,6 @@ export function createServiceClient(
       undefined
     ),
     ts.factory.createConstructorDeclaration(
-      undefined,
       undefined,
       [
         util.createParameter(
@@ -479,7 +472,6 @@ export function createServiceClient(
   }
 
   return ts.factory.createClassDeclaration(
-    undefined,
     [ts.factory.createModifier(ts.SyntaxKind.ExportKeyword)],
     ts.factory.createIdentifier(`${serviceDescriptor.name}Client`),
     undefined,
