@@ -1,23 +1,23 @@
 load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
-load("@npm//@bazel/cypress:index.bzl", "cypress_web_test")
+# load("@npm//@bazel/cypress:index.bzl", "cypress_web_test")
 
-cypress_web_test(
-    name = "web_test",
-    srcs = [
-        "web.spec.js",
-    ],
-    config_file = "cypress.json",
-    data = [
-        "//test/web:server",
-        "//test/web/client",
-    ],
-    plugin_file = "spawn.js",
-    target_compatible_with = [
-        "@platforms//os:linux",
-        "@platforms//os:macos"
-    ],
-    tags = ["no-windows-latest"],
-)
+# cypress_web_test(
+#     name = "web_test",
+#     srcs = [
+#         "web.spec.js",
+#     ],
+#     config_file = "cypress.json",
+#     data = [
+#         "//test/web:server",
+#         "//test/web/client",
+#     ],
+#     plugin_file = "spawn.js",
+#     target_compatible_with = [
+#         "@platforms//os:linux",
+#         "@platforms//os:macos"
+#     ],
+#     tags = ["no-windows-latest"],
+# )
 
 go_binary(
     name = "server",

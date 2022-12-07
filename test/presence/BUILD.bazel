@@ -1,4 +1,4 @@
-load("//:node_modules/@bazel/jasmine:index.bzl", "jasmine_node_test")
+load("@aspect_rules_jasmine//jasmine:defs.bzl", "jasmine_test")
 load("@aspect_rules_ts//ts:defs.bzl", "ts_project")
 load("@aspect_bazel_lib//lib:write_source_files.bzl", "write_source_files")
 
@@ -29,9 +29,10 @@ ts_project(
     ],
 )
 
-jasmine_node_test(
+jasmine_test(
     name = "test",
-    deps = [
+    args = ["**/*.spec.js"],
+    data = [
         ":presence",
     ],
 )

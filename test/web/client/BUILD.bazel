@@ -1,8 +1,6 @@
 load("@io_bazel_rules_go//proto:def.bzl", "go_proto_library")
 load("@rules_proto//proto:defs.bzl", "proto_library")
 load("@aspect_rules_ts//ts:defs.bzl", "ts_project")
-load("@npm//@bazel/rollup:index.bzl", "rollup_bundle")
-load("@npm//http-server:index.bzl", "http_server")
 load("//:index.bzl", "ts_proto_library")
 load("@aspect_bazel_lib//lib:write_source_files.bzl", "write_source_files")
 
@@ -57,34 +55,35 @@ ts_project(
     deps = [
         "//:node_modules/@grpc/grpc-js",
         "//:node_modules/@types/google-protobuf",
+        "//:node_modules/@types/node",
         "//:node_modules/google-protobuf",
         "//:node_modules/grpc-web",
     ],
 )
 
-rollup_bundle(
-    name = "bundle",
-    config_file = "rollup.config.js",
-    entry_point = "index.js",
-    format = "esm",
-    deps = [
-        ":web",
-        "//:node_modules/@rollup/plugin-commonjs",
-        "//:node_modules/@rollup/plugin-node-resolve",
-    ],
-)
+# rollup_bundle(
+#     name = "bundle",
+#     config_file = "rollup.config.js",
+#     entry_point = "index.js",
+#     format = "esm",
+#     deps = [
+#         ":web",
+#         "//:node_modules/@rollup/plugin-commonjs",
+#         "//:node_modules/@rollup/plugin-node-resolve",
+#     ],
+# )
 
-http_server(
-    name = "client",
-    data = [
-        "index.html",
-        ":bundle.js",
-    ],
-    templated_args = [
-        package_name(),
-    ],
-    visibility = ["//test/web:__pkg__"],
-)
+# http_server(
+#     name = "client",
+#     data = [
+#         "index.html",
+#         ":bundle.js",
+#     ],
+#     templated_args = [
+#         package_name(),
+#     ],
+#     visibility = ["//test/web:__pkg__"],
+# )
 
 go_proto_library(
     name = "weather_go_proto",

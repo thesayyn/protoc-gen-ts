@@ -1,7 +1,7 @@
 load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
-load("@npm//@bazel/jasmine:index.bzl", "jasmine_node_test")
 load("@aspect_rules_ts//ts:defs.bzl", "ts_project")
 load("@aspect_bazel_lib//lib:write_source_files.bzl", "write_source_files")
+load("@aspect_rules_jasmine//jasmine:defs.bzl", "jasmine_test")
 
 write_source_files(
     name = "diff",
@@ -29,13 +29,14 @@ ts_project(
     ],
 )
 
-jasmine_node_test(
+jasmine_test(
     name = "test",
-    data = ["maps.bin"],
-    tags = ["no-windows-latest"],
-    deps = [
+    args = ["**/*.spec.js"],
+    data = [
+        "maps.bin",
         ":test_lib",
     ],
+    tags = ["no-windows-latest"],
 )
 
 genrule(

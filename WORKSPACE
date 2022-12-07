@@ -53,6 +53,35 @@ load("@aspect_rules_ts//ts:repositories.bzl", "LATEST_VERSION", "rules_ts_depend
 
 rules_ts_dependencies(ts_version = LATEST_VERSION)
 
+http_archive(
+    name = "aspect_rules_jasmine",
+    sha256 = "28bd02acbcd78dd4fbe0ee133b21b11977acd70329a83fc987ff8c0a6ffae9e2",
+    strip_prefix = "rules_jasmine-0.2.3",
+    url = "https://github.com/aspect-build/rules_jasmine/archive/refs/tags/v0.2.3.tar.gz",
+)
+
+######################
+# aspect_rules_jasmine setup #
+######################
+# Fetches the aspect_rules_jasmine dependencies.
+# If you want to have a different version of some dependency,
+# you should fetch it *before* calling this.
+# Alternatively, you can skip calling this function, so long as you've
+# already fetched all the dependencies.
+
+load("@aspect_rules_jasmine//jasmine:dependencies.bzl", "rules_jasmine_dependencies")
+
+# Fetch dependencies which users need as well
+rules_jasmine_dependencies()
+
+load("@aspect_rules_jasmine//jasmine:repositories.bzl", "jasmine_repositories")
+
+jasmine_repositories(name = "jasmine")
+
+load("@jasmine//:npm_repositories.bzl", jasmine_npm_repositories = "npm_repositories")
+
+jasmine_npm_repositories()
+
 # load("@build_bazel_rules_nodejs//toolchains/cypress:cypress_repositories.bzl", "cypress_repositories")
 
 # cypress_repositories(

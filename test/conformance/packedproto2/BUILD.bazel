@@ -1,8 +1,8 @@
 load("@rules_proto//proto:defs.bzl", "proto_library")
-load("@npm//@bazel/jasmine:index.bzl", "jasmine_node_test")
 load("@aspect_rules_ts//ts:defs.bzl", "ts_project")
 load("//:index.bzl", "ts_proto_library")
 load("@aspect_bazel_lib//lib:write_source_files.bzl", "write_source_files")
+load("@aspect_rules_jasmine//jasmine:defs.bzl", "jasmine_test")
 
 # gazelle:go_generate_proto false
 proto_library(
@@ -45,14 +45,12 @@ ts_project(
     ],
 )
 
-jasmine_node_test(
+jasmine_test(
     name = "test",
-    data = glob(["**/*.bin"]),
+    args = ["**/*.spec.js"],
+    data = glob(["**/*.bin"]) + [":tests"],
     target_compatible_with = [
         "@platforms//os:linux",
         "@platforms//os:macos",
-    ],
-    deps = [
-        ":tests",
     ],
 )
