@@ -1,6 +1,6 @@
 load("@rules_proto//proto:defs.bzl", "proto_library")
 load("@npm//@bazel/jasmine:index.bzl", "jasmine_node_test")
-load("@npm//@bazel/typescript:index.bzl", "ts_project")
+load("@aspect_rules_ts//ts:defs.bzl", "ts_project")
 load("//:index.bzl", "ts_proto_library")
 load("@aspect_bazel_lib//lib:write_source_files.bzl", "write_source_files")
 
@@ -19,12 +19,11 @@ ts_proto_library(
     ],
 )
 
-
 write_source_files(
     name = "diff",
     files = {
-        "packed_proto2.ts": "packedproto2.ts"
-    }
+        "packed_proto2.ts": "packedproto2.ts",
+    },
 )
 
 ts_project(
@@ -38,11 +37,11 @@ ts_project(
         },
     },
     deps = [
-        "@npm//@grpc/grpc-js",
-        "@npm//@types/google-protobuf",
-        "@npm//@types/jasmine",
-        "@npm//@types/node",
-        "@npm//google-protobuf",
+        "//:node_modules/@grpc/grpc-js",
+        "//:node_modules/@types/google-protobuf",
+        "//:node_modules/@types/jasmine",
+        "//:node_modules/@types/node",
+        "//:node_modules/google-protobuf",
     ],
 )
 
@@ -51,7 +50,7 @@ jasmine_node_test(
     data = glob(["**/*.bin"]),
     target_compatible_with = [
         "@platforms//os:linux",
-        "@platforms//os:macos"
+        "@platforms//os:macos",
     ],
     deps = [
         ":tests",

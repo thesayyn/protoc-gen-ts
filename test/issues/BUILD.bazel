@@ -1,12 +1,12 @@
 load("@aspect_bazel_lib//lib:write_source_files.bzl", "write_source_files")
 load("@bazel_skylib//rules:build_test.bzl", "build_test")
-load("@npm//@bazel/typescript:index.bzl", "ts_project")
+load("@aspect_rules_ts//ts:defs.bzl", "ts_project")
 
 write_source_files(
     name = "diff",
     files = {
-        "171.ts": "//test/_/issues:171.ts"
-    }
+        "171.ts": "//test/_/issues:171.ts",
+    },
 )
 
 ts_project(
@@ -15,15 +15,15 @@ ts_project(
     tsconfig = {
         "compilerOptions": {
             "target": "ES2020",
-            "module": "CommonJS"
+            "module": "CommonJS",
         },
     },
     deps = [
-        "@npm//@types/jasmine",
-        "@npm//@types/node",
-        "@npm//@types/google-protobuf",
-        "@npm//google-protobuf",
-        "@npm//@grpc/grpc-js",
+        "//:node_modules/@grpc/grpc-js",
+        "//:node_modules/@types/google-protobuf",
+        "//:node_modules/@types/jasmine",
+        "//:node_modules/@types/node",
+        "//:node_modules/google-protobuf",
     ],
 )
 

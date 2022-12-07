@@ -1,6 +1,6 @@
 load("@io_bazel_rules_go//proto:def.bzl", "go_proto_library")
 load("@rules_proto//proto:defs.bzl", "proto_library")
-load("@npm//@bazel/typescript:index.bzl", "ts_project")
+load("@aspect_rules_ts//ts:defs.bzl", "ts_project")
 load("@npm//@bazel/rollup:index.bzl", "rollup_bundle")
 load("@npm//http-server:index.bzl", "http_server")
 load("//:index.bzl", "ts_proto_library")
@@ -10,8 +10,8 @@ write_source_files(
     name = "diff",
     files = {
         "weather_checked.ts": ":weather_ts_proto",
-        "weather_promise_checked.ts": ":weather_promise_ts_proto"
-    }
+        "weather_promise_checked.ts": ":weather_promise_ts_proto",
+    },
 )
 
 proto_library(
@@ -34,7 +34,10 @@ ts_proto_library(
 
 ts_proto_library(
     name = "weather_promise_ts_proto",
-    features = ["target=web", "unary_rpc_promise"],
+    features = [
+        "target=web",
+        "unary_rpc_promise",
+    ],
     deps = [":weather_promise_proto"],
 )
 
@@ -43,7 +46,7 @@ ts_project(
     srcs = [
         "index.ts",
         "weather_checked.ts",
-        "weather_promise_checked.ts"
+        "weather_promise_checked.ts",
     ],
     tsconfig = {
         "compilerOptions": {
@@ -52,10 +55,10 @@ ts_project(
         },
     },
     deps = [
-        "@npm//@grpc/grpc-js",
-        "@npm//@types/google-protobuf",
-        "@npm//google-protobuf",
-        "@npm//grpc-web",
+        "//:node_modules/@grpc/grpc-js",
+        "//:node_modules/@types/google-protobuf",
+        "//:node_modules/google-protobuf",
+        "//:node_modules/grpc-web",
     ],
 )
 
@@ -66,8 +69,8 @@ rollup_bundle(
     format = "esm",
     deps = [
         ":web",
-        "@npm//@rollup/plugin-commonjs",
-        "@npm//@rollup/plugin-node-resolve",
+        "//:node_modules/@rollup/plugin-commonjs",
+        "//:node_modules/@rollup/plugin-node-resolve",
     ],
 )
 

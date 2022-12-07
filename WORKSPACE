@@ -5,34 +5,64 @@ load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository", "new_git_r
 
 # setup nodejs
 http_archive(
-    name = "build_bazel_rules_nodejs",
-    sha256 = "5aae76dced38f784b58d9776e4ab12278bc156a9ed2b1d9fcd3e39921dc88fda",
-    urls = ["https://github.com/bazelbuild/rules_nodejs/releases/download/5.7.1/rules_nodejs-5.7.1.tar.gz"],
+    name = "aspect_rules_js",
+    sha256 = "50ff9396e707b5fbf8c5e9dbd23777c7c999dddc53a39d511ffecf7c8b285cd6",
+    strip_prefix = "rules_js-1.9.0",
+    url = "https://github.com/aspect-build/rules_js/archive/refs/tags/v1.9.0.tar.gz",
 )
 
-load("@build_bazel_rules_nodejs//:repositories.bzl", "build_bazel_rules_nodejs_dependencies")
-build_bazel_rules_nodejs_dependencies()
+load("@aspect_rules_js//js:repositories.bzl", "rules_js_dependencies")
 
-load("@build_bazel_rules_nodejs//:index.bzl", "node_repositories", "yarn_install")
-node_repositories(node_version = "16.3.0")
+rules_js_dependencies()
 
-yarn_install(
+load("@rules_nodejs//nodejs:repositories.bzl", "DEFAULT_NODE_VERSION", "nodejs_register_toolchains")
+
+nodejs_register_toolchains(
+    name = "nodejs",
+    node_version = DEFAULT_NODE_VERSION,
+)
+
+load("@aspect_rules_js//npm:npm_import.bzl", "npm_translate_lock")
+
+npm_translate_lock(
     name = "npm",
-    exports_directories_only = False,
-    package_json = "//:package.json",
-    yarn_lock = "//:yarn.lock",
+    pnpm_lock = "//:pnpm-lock.yaml",
+    verify_node_modules_ignored = "//:.bazelignore",
 )
 
-load("@build_bazel_rules_nodejs//toolchains/cypress:cypress_repositories.bzl", "cypress_repositories")
+load("@npm//:repositories.bzl", "npm_repositories")
 
-cypress_repositories(
-    name = "cypress",
-    darwin_arm64_sha256 = "101a0ced77fb74b356800cb3a3919f5288d23cc63fdd39a0c500673159e954fc",
-    darwin_sha256 = "101a0ced77fb74b356800cb3a3919f5288d23cc63fdd39a0c500673159e954fc",
-    linux_sha256 = "d8ea8d16fed33fdae8f17178bcae076aaf532fa7ccb48f377df1f143e60abd59",
-    version = "7.3.0",
-    windows_sha256 = "8a8809e4fd22fe7bfc3103c39df3f4fce9db0964450ce927558e9a09558cb26c",
+npm_repositories()
+
+http_archive(
+    name = "aspect_rules_ts",
+    sha256 = "5b501313118b06093497b6429f124b973f99d1eb5a27a1cc372e5d6836360e9d",
+    strip_prefix = "rules_ts-1.0.2",
+    url = "https://github.com/aspect-build/rules_ts/archive/refs/tags/v1.0.2.tar.gz",
 )
+
+##################
+# rules_ts setup #
+##################
+# Fetches the rules_ts dependencies.
+# If you want to have a different version of some dependency,
+# you should fetch it *before* calling this.
+# Alternatively, you can skip calling this function, so long as you've
+# already fetched all the dependencies.
+load("@aspect_rules_ts//ts:repositories.bzl", "LATEST_VERSION", "rules_ts_dependencies")
+
+rules_ts_dependencies(ts_version = LATEST_VERSION)
+
+# load("@build_bazel_rules_nodejs//toolchains/cypress:cypress_repositories.bzl", "cypress_repositories")
+
+# cypress_repositories(
+#     name = "cypress",
+#     darwin_arm64_sha256 = "101a0ced77fb74b356800cb3a3919f5288d23cc63fdd39a0c500673159e954fc",
+#     darwin_sha256 = "101a0ced77fb74b356800cb3a3919f5288d23cc63fdd39a0c500673159e954fc",
+#     linux_sha256 = "d8ea8d16fed33fdae8f17178bcae076aaf532fa7ccb48f377df1f143e60abd59",
+#     version = "7.3.0",
+#     windows_sha256 = "8a8809e4fd22fe7bfc3103c39df3f4fce9db0964450ce927558e9a09558cb26c",
+# )
 
 # setup proto
 git_repository(
@@ -43,7 +73,9 @@ git_repository(
 )
 
 load("@rules_proto//proto:repositories.bzl", "rules_proto_dependencies", "rules_proto_toolchains")
+
 rules_proto_dependencies()
+
 rules_proto_toolchains()
 
 # setup go
@@ -56,10 +88,13 @@ http_archive(
 )
 
 load("@io_bazel_rules_go//go:deps.bzl", "go_register_toolchains", "go_rules_dependencies")
+
 go_rules_dependencies()
+
 go_register_toolchains(version = "1.19.1")
 
 load("@com_google_protobuf//:protobuf_deps.bzl", "protobuf_deps")
+
 protobuf_deps()
 
 # setup gazelle
@@ -72,12 +107,13 @@ http_archive(
 )
 
 load("@bazel_gazelle//:deps.bzl", "gazelle_dependencies")
+
 gazelle_dependencies()
 
 load("//:deps.bzl", "go_dependencies")
+
 # gazelle:repository_macro deps.bzl%go_dependencies
 go_dependencies()
-
 
 # setup skylib
 http_archive(
@@ -90,6 +126,7 @@ http_archive(
 )
 
 load("@bazel_skylib//:workspace.bzl", "bazel_skylib_workspace")
+
 bazel_skylib_workspace()
 
 # setup bazel-lib
@@ -101,8 +138,8 @@ http_archive(
 )
 
 load("@aspect_bazel_lib//lib:repositories.bzl", "aspect_bazel_lib_dependencies")
-aspect_bazel_lib_dependencies()
 
+aspect_bazel_lib_dependencies()
 
 # 3rd party: protobuf
 new_git_repository(

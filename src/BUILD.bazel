@@ -1,5 +1,5 @@
-load("@npm//@bazel/typescript:index.bzl", "ts_project")
-load("@build_bazel_rules_nodejs//:index.bzl", "js_library")
+load("@aspect_rules_ts//ts:defs.bzl", "ts_project")
+load("@aspect_rules_js//js:defs.bzl", "js_library")
 load("@aspect_bazel_lib//lib:write_source_files.bzl", "write_source_files")
 
 package(default_visibility = ["//visibility:public"])
@@ -9,7 +9,7 @@ write_source_files(
     files = {
         "compiler/descriptor.ts": "@third_party_protobuf//:descriptor.ts",
         "compiler/plugin.ts": "@third_party_protobuf//:plugin.ts",
-    }
+    },
 )
 
 ts_project(
@@ -23,11 +23,11 @@ ts_project(
         },
     },
     deps = [
-        "@npm//@grpc/grpc-js",
-        "@npm//@types/google-protobuf",
-        "@npm//@types/node",
-        "@npm//google-protobuf",
-        "@npm//typescript",
+        "//:node_modules/@grpc/grpc-js",
+        "//:node_modules/@types/google-protobuf",
+        "//:node_modules/@types/node",
+        "//:node_modules/google-protobuf",
+        "//:node_modules/typescript",
     ],
 )
 

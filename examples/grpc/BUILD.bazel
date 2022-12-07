@@ -1,4 +1,4 @@
-load("@npm//@bazel/typescript:index.bzl", "ts_project")
+load("@aspect_rules_ts//ts:defs.bzl", "ts_project")
 load("@rules_proto//proto:defs.bzl", "proto_library")
 load("@npm//protoc-gen-ts:index.bzl", "ts_proto_library")
 load("@io_bazel_rules_docker//nodejs:image.bzl", "nodejs_image")
@@ -13,8 +13,8 @@ proto_library(
 
 ts_proto_library(
     name = "type",
+    outs = ["type.ts"],
     deps = [":proto"],
-    outs = ["type.ts"]
 )
 
 diff_test(
@@ -26,12 +26,12 @@ diff_test(
 
 ts_project(
     name = "lib",
-    tsconfig = "//:tsconfig.json",
     srcs = glob(["*.ts"]),
+    tsconfig = "//:tsconfig.json",
     deps = [
+        "@npm//@grpc/grpc-js",
         "@npm//@types/google-protobuf",
         "@npm//google-protobuf",
-        "@npm//@grpc/grpc-js",
     ],
 )
 

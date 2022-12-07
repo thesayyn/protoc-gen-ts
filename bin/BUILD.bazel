@@ -1,21 +1,19 @@
-load("@build_bazel_rules_nodejs//:index.bzl", "nodejs_binary")
+load("@aspect_rules_js//js:defs.bzl", "js_binary")
 load("@aspect_bazel_lib//lib:copy_to_bin.bzl", "copy_to_bin")
 
 package(default_visibility = ["//visibility:public"])
 
 copy_to_bin(
     name = "copy_entrypoint",
-    srcs = ["protoc-gen-ts.js"]
+    srcs = ["protoc-gen-ts.js"],
 )
 
-nodejs_binary(
+js_binary(
     name = "bin",
     data = [
         "//src",
     ],
-    # See: https://github.com/bazelbuild/rules_nodejs/issues/2600
-    templated_args = ["--bazel_patch_module_resolver"],
-    entry_point = ":copy_entrypoint",
+    entry_point = "protoc-gen-ts.js",
 )
 
 exports_files(["protoc-gen-ts.js"])

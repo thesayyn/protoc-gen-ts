@@ -117,7 +117,7 @@ protoc -I=sourcedir --ts_out=dist myproto.proto
 ```py
 # Add protoc-gen-ts to dependencies section of your package.json file.
 
-load("@npm//protoc-gen-ts:index.bzl", "ts_proto_library")
+load("@protoc_gen_ts//:index.bzl", "ts_proto_library")
 
 ts_proto_library(
     name = "protos",

@@ -6,8 +6,9 @@ def _get_outputs(target, ctx):
     root = target[ProtoInfo].proto_source_root
     for source in target[ProtoInfo].direct_sources:
         # test.proto -> {designated output dir}/test.ts
-        name = source.basename.replace(source.extension, "ts") 
+        name = source.basename.replace(source.extension, "ts")
         dest = root
+
         # if the dest is pwd then make sure that we do not strip subdirectories.
         if dest == ".":
             dest = source.dirname[len(ctx.label.package) + 1:]
@@ -39,7 +40,7 @@ def _ts_proto_library(ctx):
         fail("deps should only contain exactly one target when outs is declared.")
 
     is_windows_host = ctx.configuration.host_path_separator == ";"
-        
+
     for target in ctx.attr.deps:
         args = ctx.actions.args()
 
@@ -63,9 +64,9 @@ def _ts_proto_library(ctx):
         if not len(ctx.outputs.outs):
             outputs = _get_outputs(target, ctx)
             all_outputs.extend(outputs)
-        else:   
+        else:
             outputs = ctx.outputs.outs
-            all_outputs = ctx.outputs.outs        
+            all_outputs = ctx.outputs.outs
 
         ctx.actions.run(
             inputs = depset(target[ProtoInfo].direct_sources, transitive = [target[ProtoInfo].transitive_descriptor_sets, depset(ctx.files._well_known_protos)]),
@@ -78,9 +79,8 @@ def _ts_proto_library(ctx):
         )
 
     return [
-        DefaultInfo(files = depset(all_outputs))
+        DefaultInfo(files = depset(all_outputs)),
     ]
-
 
 ts_proto_library_ = rule(
     implementation = _ts_proto_library,
@@ -88,14 +88,14 @@ ts_proto_library_ = rule(
         "deps": attr.label_list(
             doc = "List of proto_library targets.",
             providers = [ProtoInfo],
-            mandatory = True
+            mandatory = True,
         ),
         "outs": attr.output_list(),
         "_protoc_gen_ts_bin": attr.label(
             executable = True,
             cfg = "exec",
             default = (
-                "//protoc-gen-ts/bin:protoc-gen-ts"
+                "@protoc_gen_ts//protoc-gen-ts/bin:protoc-gen-ts"
             ),
         ),
         "_protoc": attr.label(
@@ -112,11 +112,10 @@ ts_proto_library_ = rule(
                 "@com_google_protobuf//:well_known_protos"
             ),
         ),
-    }
+    },
 )
 
-
-def ts_proto_library(name, grpc_package_name = None, experimental_features = None,  **kwargs):
+def ts_proto_library(name, grpc_package_name = None, experimental_features = None, **kwargs):
     features = kwargs.pop("features", [])
 
     if experimental_features != None:
@@ -126,7 +125,7 @@ def ts_proto_library(name, grpc_package_name = None, experimental_features = Non
     if grpc_package_name != None:
         print("""grpc_package_name attribute is deprecated. use features = ["grpc_package=@grpc/grpc-js"]""")
         features.append("grpc_package=%s" % grpc_package_name)
-    
+
     ts_proto_library_(
         name = name,
         features = features,

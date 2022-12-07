@@ -1,12 +1,12 @@
-load("@npm//@bazel/jasmine:index.bzl", "jasmine_node_test")
-load("@npm//@bazel/typescript:index.bzl", "ts_project")
+load("//:node_modules/@bazel/jasmine:index.bzl", "jasmine_node_test")
+load("@aspect_rules_ts//ts:defs.bzl", "ts_project")
 load("@aspect_bazel_lib//lib:write_source_files.bzl", "write_source_files")
 
 write_source_files(
     name = "diff",
     files = {
-        "explicit_override.ts": "//test/_/explicit_override:explicit_override.ts"
-    }
+        "explicit_override.ts": "//test/_/explicit_override:explicit_override.ts",
+    },
 )
 
 ts_project(
@@ -21,11 +21,11 @@ ts_project(
         },
     },
     deps = [
-        "@npm//@grpc/grpc-js",
-        "@npm//@types/google-protobuf",
-        "@npm//@types/jasmine",
-        "@npm//@types/node",
-        "@npm//google-protobuf",
+        "//:node_modules/@grpc/grpc-js",
+        "//:node_modules/@types/google-protobuf",
+        "//:node_modules/@types/jasmine",
+        "//:node_modules/@types/node",
+        "//:node_modules/google-protobuf",
     ],
 )
 
