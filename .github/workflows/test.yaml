@@ -53,11 +53,6 @@ jobs:
           cat .github/workflows/ci.nix.bazelrc >> user.bazelrc
         if: ${{ matrix.os != 'windows-latest' }}
 
-      - name: install dependencies
-        run: yarn --frozen-lockfile
-        working-directory: ${{ matrix.folder }}
-        if: ${{ matrix.folder != '.' }}
-
       - name: test
-        run: yarn test --test_tag_filters=-no-${{ matrix.os }}
+        run: bazel test //... --test_tag_filters=-no-${{ matrix.os }}
         working-directory: ${{ matrix.folder }}

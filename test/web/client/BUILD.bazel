@@ -3,6 +3,8 @@ load("@rules_proto//proto:defs.bzl", "proto_library")
 load("@aspect_rules_ts//ts:defs.bzl", "ts_project")
 load("//:index.bzl", "ts_proto_library")
 load("@aspect_bazel_lib//lib:write_source_files.bzl", "write_source_files")
+load("@npm//:rollup/package_json.bzl", rollup_bin = "bin")
+load("@npm//:http-server/package_json.bzl", http_server_bin = "bin")
 
 write_source_files(
     name = "diff",
@@ -61,29 +63,37 @@ ts_project(
     ],
 )
 
-# rollup_bundle(
-#     name = "bundle",
-#     config_file = "rollup.config.js",
-#     entry_point = "index.js",
-#     format = "esm",
-#     deps = [
-#         ":web",
-#         "//:node_modules/@rollup/plugin-commonjs",
-#         "//:node_modules/@rollup/plugin-node-resolve",
-#     ],
-# )
+rollup_bin.rollup(
+    name = "bundle",
+    srcs = [
+        "rollup.config.js",
+        ":web",
+        "//:node_modules/@rollup/plugin-commonjs",
+        "//:node_modules/@rollup/plugin-node-resolve",
+    ],
+    outs = [
+        "bundle.js",
+    ],
+    args = [
+        "--file=bundle.js",
+        "--format=esm",
+        "--config=./rollup.config.js",
+        "-- index.js",
+    ],
+    chdir = package_name(),
+)
 
-# http_server(
-#     name = "client",
-#     data = [
-#         "index.html",
-#         ":bundle.js",
-#     ],
-#     templated_args = [
-#         package_name(),
-#     ],
-#     visibility = ["//test/web:__pkg__"],
-# )
+http_server_bin.http_server_binary(
+    name = "client",
+    args = [
+        package_name(),
+    ],
+    data = [
+        "index.html",
+        ":bundle.js",
+    ],
+    visibility = ["//test/web:__pkg__"],
+)
 
 go_proto_library(
     name = "weather_go_proto",

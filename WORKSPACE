@@ -84,14 +84,25 @@ jasmine_npm_repositories()
 
 # load("@build_bazel_rules_nodejs//toolchains/cypress:cypress_repositories.bzl", "cypress_repositories")
 
-# cypress_repositories(
-#     name = "cypress",
-#     darwin_arm64_sha256 = "101a0ced77fb74b356800cb3a3919f5288d23cc63fdd39a0c500673159e954fc",
-#     darwin_sha256 = "101a0ced77fb74b356800cb3a3919f5288d23cc63fdd39a0c500673159e954fc",
-#     linux_sha256 = "d8ea8d16fed33fdae8f17178bcae076aaf532fa7ccb48f377df1f143e60abd59",
-#     version = "7.3.0",
-#     windows_sha256 = "8a8809e4fd22fe7bfc3103c39df3f4fce9db0964450ce927558e9a09558cb26c",
-# )
+git_repository(
+    name = "aspect_rules_cypress",
+    commit = "50cfdde6c72778f1646284769943558a7f277a7a",
+    remote = "https://github.com/mrmeku/rules_cypress.git",
+    shallow_since = "1669166062 -0700",
+)
+
+load("@aspect_rules_cypress//cypress:repositories.bzl", "cypress_register_toolchains")
+
+cypress_register_toolchains(
+    name = "cypress",
+    cypress_version = "10.8.0",
+    platform_to_integrity_hash = {
+        "darwin-x64": "17dc620ec7e2cb06a205fd1a8a831b3b48ff8223fd5761af257152661d1d9baf",
+        "darwin-arm64": "013cced7e5c1082d22346139e94be33f0ce84483843f038c464df4afa74743f9",
+        "linux-x64": "8cf4a7665b54f2eb5f36ac461841c67152d7f0015c21dda3b9867bf0bc625afd",
+        "linux-arm64": "a1521b1be05fdf3a0f0c008f759789a3d037f3123a1a6ad0f3c0a37308bf4901",
+    },
+)
 
 # setup proto
 git_repository(
