@@ -8,6 +8,7 @@ export interface Options {
   json_names: boolean;
   explicit_override: boolean;
   target: Target;
+  no_grpc: boolean;
 }
 
 export function parse(raw?: string): Options {
@@ -20,7 +21,8 @@ export function parse(raw?: string): Options {
     no_namespace: false,
     json_names: false,
     explicit_override: false,
-    target: "node"
+    target: "node",
+    no_grpc: false
   };
   for (const raw_option of raw.split(",")) {
     let [k, v] = raw_option.split("=", 2);
@@ -31,6 +33,7 @@ export function parse(raw?: string): Options {
       case 'json_names':        options[k] = v != "false"; break;
       case 'explicit_override': options[k] = v != "false"; break;
       case 'target':            options[k] = v as Target;  break;
+      case 'no_grpc':           options[k] = v != "false"; break;
     }
   }
   return options;
