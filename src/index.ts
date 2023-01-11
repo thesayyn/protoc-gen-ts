@@ -106,7 +106,7 @@ for (const fileDescriptor of request.proto_file) {
     importStatements.push(createImport(pbIdentifier, "google-protobuf"));
   }
 
-  if (fileDescriptor.service.length) {
+  if (!options.no_grpc && fileDescriptor.service.length) {
     // Import grpc only if there is service statements
     importStatements.push(createImport(grpcIdentifier, options.grpc_package));
 
