@@ -147,6 +147,8 @@ ts_proto_library(
 
 * With `--ts_opt=target=web`, the generated client class will be compatible with gRPC Web via `grpc-web`. 
 
+* With `--ts_opt=no_grpc`, grpc service code won't be generated. 
+
 ## Support
 
 We need your constant support to keep protoc-gen-ts well maintained and add new features.
