@@ -107,9 +107,11 @@ function removeRootParentName(name: string, parentName: string): string {
 }
 
 function removeNamespace(name: string): string {
-  if(config.no_namespace)
-  {
-    return removeRootParentName(name, packages.find(p => name.startsWith(p))).replace(/\./g, '')
+  if (config.no_namespace) {
+    // Create a copy of the original array. Sort the array copy by length, from longest to shortest.
+    const sortedPackages = packages.map(p => p).sort((a, b) => b.length - a.length);
+    // Return the new package name with longest possible match removed from the name.
+    return removeRootParentName(name, sortedPackages.find(p => name.startsWith(p))).replace(/\./g, '');
   }
   return name;
 }
