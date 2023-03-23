@@ -9,9 +9,9 @@ import * as pb_1 from "google-protobuf";
 export class NoNamespace extends pb_1.Message {
     #one_of_decls: number[][] = [];
     constructor(data?: any[] | {
-        label?: dependency_1.eventTarget;
+        label?: dependency_1.Target;
         other_fields?: dependency_2.MessageFields;
-        batch_fields?: dependency_1.eventSchedulingContextBatch;
+        batch_fields?: dependency_1.SchedulingContextBatch;
     }) {
         super();
         pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
@@ -28,9 +28,9 @@ export class NoNamespace extends pb_1.Message {
         }
     }
     get label() {
-        return pb_1.Message.getWrapperField(this, dependency_1.eventTarget, 1) as dependency_1.eventTarget;
+        return pb_1.Message.getWrapperField(this, dependency_1.Target, 1) as dependency_1.Target;
     }
-    set label(value: dependency_1.eventTarget) {
+    set label(value: dependency_1.Target) {
         pb_1.Message.setWrapperField(this, 1, value);
     }
     get has_label() {
@@ -46,36 +46,36 @@ export class NoNamespace extends pb_1.Message {
         return pb_1.Message.getField(this, 2) != null;
     }
     get batch_fields() {
-        return pb_1.Message.getWrapperField(this, dependency_1.eventSchedulingContextBatch, 3) as dependency_1.eventSchedulingContextBatch;
+        return pb_1.Message.getWrapperField(this, dependency_1.SchedulingContextBatch, 3) as dependency_1.SchedulingContextBatch;
     }
-    set batch_fields(value: dependency_1.eventSchedulingContextBatch) {
+    set batch_fields(value: dependency_1.SchedulingContextBatch) {
         pb_1.Message.setWrapperField(this, 3, value);
     }
     get has_batch_fields() {
         return pb_1.Message.getField(this, 3) != null;
     }
     static fromObject(data: {
-        label?: ReturnType<typeof dependency_1.eventTarget.prototype.toObject>;
+        label?: ReturnType<typeof dependency_1.Target.prototype.toObject>;
         other_fields?: ReturnType<typeof dependency_2.MessageFields.prototype.toObject>;
-        batch_fields?: ReturnType<typeof dependency_1.eventSchedulingContextBatch.prototype.toObject>;
+        batch_fields?: ReturnType<typeof dependency_1.SchedulingContextBatch.prototype.toObject>;
     }): NoNamespace {
         const message = new NoNamespace({});
         if (data.label != null) {
-            message.label = dependency_1.eventTarget.fromObject(data.label);
+            message.label = dependency_1.Target.fromObject(data.label);
         }
         if (data.other_fields != null) {
             message.other_fields = dependency_2.MessageFields.fromObject(data.other_fields);
         }
         if (data.batch_fields != null) {
-            message.batch_fields = dependency_1.eventSchedulingContextBatch.fromObject(data.batch_fields);
+            message.batch_fields = dependency_1.SchedulingContextBatch.fromObject(data.batch_fields);
         }
         return message;
     }
     toObject() {
         const data: {
-            label?: ReturnType<typeof dependency_1.eventTarget.prototype.toObject>;
+            label?: ReturnType<typeof dependency_1.Target.prototype.toObject>;
             other_fields?: ReturnType<typeof dependency_2.MessageFields.prototype.toObject>;
-            batch_fields?: ReturnType<typeof dependency_1.eventSchedulingContextBatch.prototype.toObject>;
+            batch_fields?: ReturnType<typeof dependency_1.SchedulingContextBatch.prototype.toObject>;
         } = {};
         if (this.label != null) {
             data.label = this.label.toObject();
@@ -108,13 +108,13 @@ export class NoNamespace extends pb_1.Message {
                 break;
             switch (reader.getFieldNumber()) {
                 case 1:
-                    reader.readMessage(message.label, () => message.label = dependency_1.eventTarget.deserialize(reader));
+                    reader.readMessage(message.label, () => message.label = dependency_1.Target.deserialize(reader));
                     break;
                 case 2:
                     reader.readMessage(message.other_fields, () => message.other_fields = dependency_2.MessageFields.deserialize(reader));
                     break;
                 case 3:
-                    reader.readMessage(message.batch_fields, () => message.batch_fields = dependency_1.eventSchedulingContextBatch.deserialize(reader));
+                    reader.readMessage(message.batch_fields, () => message.batch_fields = dependency_1.SchedulingContextBatch.deserialize(reader));
                     break;
                 default: reader.skipField();
             }
