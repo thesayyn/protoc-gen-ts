@@ -109,7 +109,7 @@ function removeRootParentName(name: string, parentName: string): string {
 function removeNamespace(name: string): string {
   if(config.no_namespace)
   {
-    return removeRootParentName(name, packages.find(p => name.startsWith(p))).replace(/\./g, '')
+    return removeRootParentName(name, packages.sort((a,b) => b.length - a.length).find(p => name.startsWith(p))).replace(/\./g, '')
   }
   return name;
 }
