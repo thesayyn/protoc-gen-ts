@@ -43,7 +43,7 @@ const response = new plugin.CodeGeneratorResponse({
 
 const [tsVersionMajor, tsVersionMinor] = ts.version.split(".").map(Number);
 
-if (!(tsVersionMajor >= 4 && tsVersionMinor >= 9)) {
+if (!(tsVersionMajor >= 5 || (tsVersionMajor >= 4 && tsVersionMinor >= 9))) {
   response.error = "protoc-gen-ts requires TypeScript 4.9 or above.";
   process.stdout.write(response.serialize());
   // will help to flush the stdout buffer.
