@@ -738,7 +738,7 @@ export class StorageClient extends grpc_1.makeGenericClientConstructor(Unimpleme
     constructor(address: string, credentials: grpc_1.ChannelCredentials, options?: Partial<grpc_1.ChannelOptions>) {
         super(address, credentials, options);
     }
-    query: GrpcStreamServiceInterface<Query, Query> = (message: Query, metadata?: grpc_1.Metadata | grpc_1.CallOptions, options?: grpc_1.CallOptions): grpc_1.ClientReadableStream<Query> => {
+    query: GrpcStreamServiceInterface<Query, Query.Result> = (message: Query, metadata?: grpc_1.Metadata | grpc_1.CallOptions, options?: grpc_1.CallOptions): grpc_1.ClientReadableStream<Query.Result> => {
         return super.query(message, metadata, options);
     };
     get: GrpcUnaryServiceInterface<Query, _Object> = (message: Query, metadata: grpc_1.Metadata | grpc_1.CallOptions | grpc_1.requestCallback<_Object>, options?: grpc_1.CallOptions | grpc_1.requestCallback<_Object>, callback?: grpc_1.requestCallback<_Object>): grpc_1.ClientUnaryCall => {

@@ -408,6 +408,7 @@ function createServerStreamingRpcMethod(
   methodDescriptor: descriptor.MethodDescriptorProto,
   grpcIdentifier: ts.Identifier,
 ) {
+  const responseType = util.getRPCOutputType(rootDescriptor, methodDescriptor);
   const requestType = util.getRPCInputType(rootDescriptor, methodDescriptor);
   const messageParameter = util.createParameter("message", requestType);
   const metadataParameter = util.createParameter(
@@ -425,7 +426,7 @@ function createServerStreamingRpcMethod(
   );
   const returnType = ts.factory.createTypeReferenceNode(
     ts.factory.createQualifiedName(grpcIdentifier, "ClientReadableStream"),
-    [requestType],
+    [responseType],
   );
 
   return comment.addDeprecatedJsDoc(
@@ -435,7 +436,7 @@ function createServerStreamingRpcMethod(
       undefined,
       ts.factory.createTypeReferenceNode("GrpcStreamServiceInterface", [
         requestType,
-        requestType,
+        responseType,
       ]),
 
       ts.factory.createArrowFunction(
