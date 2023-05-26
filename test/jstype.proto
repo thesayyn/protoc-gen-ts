@@ -1,7 +1,0 @@
-syntax = "proto3";
-
-message JSType {
-    int64 int_but_string = 1 [jstype = JS_STRING];
-    int64 int_and_normal = 2 [jstype = JS_NORMAL];
-    int64 int_and_number = 3 [jstype = JS_NUMBER];
-}

@@ -1,62 +1,95 @@
-use descriptor::descriptor::{
-    FieldDescriptorProto, FieldDescriptorProto_Label, FieldDescriptorProto_Type,
-    FieldOptions_JSType,
+use swc_common::DUMMY_SP;
+use swc_ecma_ast::{TsEntityName, TsKeywordTypeKind, TsQualifiedName, TsTypeRef};
+use swc_ecma_utils::quote_ident;
+
+use crate::{
+    context::Context,
+    descriptor::{
+        field_descriptor_proto::Label, field_descriptor_proto::Type, field_options::JSType,
+        FieldDescriptorProto,
+    },
 };
 
-// field type
-pub fn is_message(descriptor: FieldDescriptorProto) -> bool {
-    descriptor.get_field_type() == FieldDescriptorProto_Type::TYPE_MESSAGE
+impl FieldDescriptorProto {
+    pub fn keyword_type_kind(&self) -> Option<TsKeywordTypeKind> {
+        let mut kind: Option<TsKeywordTypeKind> = None;
+        if self.is_string() {
+            kind = Some(TsKeywordTypeKind::TsStringKeyword);
+        } else if self.is_number() {
+            kind = Some(TsKeywordTypeKind::TsNumberKeyword);
+        } else if self.is_booelan() {
+            kind = Some(TsKeywordTypeKind::TsBooleanKeyword);
+        }
+        kind
+    }
+    pub fn typeref(&self, ctx: &mut Context) -> Option<TsTypeRef> {
+        if self.has_type_name() {
+            eprintln!("{}", self.type_name());
+            return Some(TsTypeRef {
+                span: DUMMY_SP,
+                type_name: TsEntityName::TsQualifiedName(ctx.lazy_type_ref(self.type_name())),
+                type_params: None,
+            });
+        }
+        None
+    }
 }
 
-pub fn is_enum(descriptor: FieldDescriptorProto) -> bool {
-    descriptor.get_field_type() == FieldDescriptorProto_Type::TYPE_ENUM
-}
+impl FieldDescriptorProto {
+    // field type
+    pub fn is_message(&self) -> bool {
+        self.type_() == Type::TYPE_MESSAGE
+    }
 
-// TODO
-pub fn is_map(descriptor: FieldDescriptorProto) -> bool {
-    false
-}
+    pub fn is_enum(&self) -> bool {
+        self.type_() == Type::TYPE_ENUM
+    }
 
-pub fn is_string(descriptor: FieldDescriptorProto) -> bool {
-    descriptor.get_field_type() == FieldDescriptorProto_Type::TYPE_STRING
-}
+    pub fn is_string(&self) -> bool {
+        self.type_() == Type::TYPE_STRING
+    }
 
-pub fn is_booelan(descriptor: FieldDescriptorProto) -> bool {
-    descriptor.get_field_type() == FieldDescriptorProto_Type::TYPE_BOOL
-}
+    pub fn is_booelan(&self) -> bool {
+        self.type_() == Type::TYPE_BOOL
+    }
 
-pub fn is_number(descriptor: FieldDescriptorProto) -> bool {
-    descriptor.get_field_type() == FieldDescriptorProto_Type::TYPE_DOUBLE
-        || descriptor.get_field_type() == FieldDescriptorProto_Type::TYPE_FLOAT
-        || descriptor.get_field_type() == FieldDescriptorProto_Type::TYPE_INT32
-        || descriptor.get_field_type() == FieldDescriptorProto_Type::TYPE_INT64
-        || descriptor.get_field_type() == FieldDescriptorProto_Type::TYPE_UINT32
-        || descriptor.get_field_type() == FieldDescriptorProto_Type::TYPE_UINT64
-        || descriptor.get_field_type() == FieldDescriptorProto_Type::TYPE_SINT32
-        || descriptor.get_field_type() == FieldDescriptorProto_Type::TYPE_SINT64
-        || descriptor.get_field_type() == FieldDescriptorProto_Type::TYPE_FIXED32
-        || descriptor.get_field_type() == FieldDescriptorProto_Type::TYPE_FIXED64
-        || descriptor.get_field_type() == FieldDescriptorProto_Type::TYPE_SFIXED32
-        || descriptor.get_field_type() == FieldDescriptorProto_Type::TYPE_SFIXED64
-        || descriptor.get_field_type() == FieldDescriptorProto_Type::TYPE_SFIXED64
-}
+    pub fn is_number(&self) -> bool {
+        self.type_() == Type::TYPE_DOUBLE
+            || self.type_() == Type::TYPE_FLOAT
+            || self.type_() == Type::TYPE_INT32
+            || self.type_() == Type::TYPE_INT64
+            || self.type_() == Type::TYPE_UINT32
+            || self.type_() == Type::TYPE_UINT64
+            || self.type_() == Type::TYPE_SINT32
+            || self.type_() == Type::TYPE_SINT64
+            || self.type_() == Type::TYPE_FIXED32
+            || self.type_() == Type::TYPE_FIXED64
+            || self.type_() == Type::TYPE_SFIXED32
+            || self.type_() == Type::TYPE_SFIXED64
+            || self.type_() == Type::TYPE_SFIXED64
+    }
 
-// Label
-pub fn is_repeated(descriptor: FieldDescriptorProto) -> bool {
-    descriptor.get_label() == FieldDescriptorProto_Label::LABEL_REPEATED
-}
+    // TODO
+    pub fn is_map(&self) -> bool {
+        todo!("is_map")
+    }
 
-pub fn is_optional(descriptor: FieldDescriptorProto) -> bool {
-    // TODO: proto3 optional
-    descriptor.get_label() == FieldDescriptorProto_Label::LABEL_REPEATED
-}
+    // Label
+    pub fn is_repeated(&self) -> bool {
+        self.label() == Label::LABEL_REPEATED
+    }
 
-// TODO: remove
-pub fn is_oneof(descriptor: FieldDescriptorProto) -> bool {
-    descriptor.has_oneof_index()
-}
+    pub fn is_optional(&self) -> bool {
+        // TODO: proto3 optional
+        self.label() == Label::LABEL_REPEATED
+    }
 
-pub fn has_jstype_string(descriptor: FieldDescriptorProto) -> bool {
-    descriptor.has_options()
-        && descriptor.get_options().get_jstype() == FieldOptions_JSType::JS_STRING
+    // TODO: remove
+    pub fn is_oneof(&self) -> bool {
+        self.has_oneof_index()
+    }
+
+    pub fn has_jstype_string(&self) -> bool {
+        self.options.jstype() == JSType::JS_STRING
+    }
 }

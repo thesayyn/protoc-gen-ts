@@ -1,22 +1,2 @@
-node_modules
-compiled
-ast*.json
-*.txt
-bazel-*
-.devcontainer
-.editorconfig
-
-test/**/*.ts
-!test/**/*.spec.ts
-
-src/compiler/*
-!src/compiler/BUILD.bazel
-!src/compiler/index.ts
-!src/compiler/*.js
-src/compiler/index.js
-
-.DS_Store
-
-# Added by cargo
-
-/target
+target/
+outputs/
