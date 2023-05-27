@@ -1,10 +1,9 @@
 use crate::options::Options;
-use once_cell::sync::Lazy;
 use std::{
     collections::HashMap,
     sync::{
         atomic::{AtomicU64, Ordering},
-        Arc, Mutex,
+        Arc,
     },
 };
 use swc_common::DUMMY_SP;
@@ -14,26 +13,19 @@ use swc_ecma_ast::{
 };
 use swc_ecma_utils::quote_ident;
 
-static GLOBAL_TYPE_REG: Lazy<Mutex<Vec<TsQualifiedName>>> = Lazy::new(|| {
-    Mutex::new(vec![
-        TsQualifiedName {
-            left: TsEntityName::Ident(quote_ident!("default")),
-            right: quote_ident!("default"),
-        }
-    ])
-});
 
-pub struct Context {
-    pub options: Options,
+pub struct Context<'a> {
+    pub options: &'a Options,
     namespace: Option<String>,
     counter: Arc<AtomicU64>,
     imports: Box<Vec<ImportDecl>>,
     import_identifier_map: Box<HashMap<String, u64>>,
-    type_reg: Box<HashMap<String, usize>>,
+    type_reg: Box<HashMap<String, Box<TsQualifiedName>>>,
 }
 
-impl Context {
-    pub fn new(options: Options) -> Self {
+
+impl<'a> Context<'a> {
+    pub fn new(options: &'a Options) -> Self {
         Self {
             counter: Arc::new(AtomicU64::new(0)),
             options,
@@ -57,7 +49,7 @@ impl Context {
             _ => Some(nsparts.join("#")),
         };
         Self {
-            options: self.options.clone(),
+            options: self.options,
             counter: self.counter.clone(),
             import_identifier_map: self.import_identifier_map.clone(),
             imports: self.imports.clone(),
@@ -122,23 +114,23 @@ impl Context {
         name.to_string()
     }
 
-    pub fn lazy_type_ref(&mut self, type_name: &str) -> Box<TsQualifiedName> {
-        let mut global_type_reg = GLOBAL_TYPE_REG.lock().unwrap();
-        let i = global_type_reg.get_mut(0).unwrap();
-
-        let ptr = i as *mut TsQualifiedName;
-
-        self.type_reg.insert(String::from(type_name), 0);
-        unsafe { Box::from_raw(ptr) }
+    pub fn lazy_type_ref(&mut self, _type_name: &str) -> Box<TsQualifiedName> {
+        let qn = Box::new(
+            TsQualifiedName {
+                left: TsEntityName::Ident(quote_ident!("default")),
+                right: quote_ident!("default")
+            }   
+        );
+        qn
     }
 
-    pub fn reg_type_ref(&mut self, type_name: &str) {
-        let yy = self.type_reg.get(&String::from(type_name));
-        if let Some(xd) = yy {
-            let ii = xd.to_owned();
-            let mut aa = GLOBAL_TYPE_REG.lock().unwrap();
-            let i = aa.get_mut(ii).unwrap();
-            i.left = TsEntityName::Ident(quote_ident!("hmmmmm"))
-        }
+    pub fn reg_type_ref(&mut self, _type_name: &str) {
+        // let yy = self.type_reg.get(&String::from(type_name));
+        // if let Some(xd) = yy {
+        //     let ii = xd.to_owned();
+        //     let mut aa = GLOBAL_TYPE_REG.lock().unwrap();
+        //     let i = aa.get_mut(ii).unwrap();
+        //     i.left = TsEntityName::Ident(quote_ident!("hmmmmm"))
+        // }
     }
 }

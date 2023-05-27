@@ -10,3 +10,4 @@ pub mod print;
 pub mod runtime;
 pub mod emitter;
 pub mod context;
+pub mod graph;

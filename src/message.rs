@@ -3,10 +3,7 @@ use crate::descriptor::DescriptorProto;
 use crate::print::Print;
 use crate::runtime::Runtime;
 use swc_common::DUMMY_SP;
-use swc_ecma_ast::{
-    BlockStmt, Class, ClassDecl, ClassMember, Constructor, Decl, ExportDecl, Ident, ModuleDecl,
-    ModuleItem,
-};
+use swc_ecma_ast::{Class, ClassDecl, ClassMember, Decl, ExportDecl, ModuleDecl, ModuleItem};
 use swc_ecma_utils::quote_ident;
 
 impl<T> Print<T> for DescriptorProto
