@@ -8,6 +8,6 @@ pub mod message;
 pub mod options;
 pub mod print;
 pub mod runtime;
-pub mod emitter;
+pub mod file;
 pub mod context;
 pub mod graph;

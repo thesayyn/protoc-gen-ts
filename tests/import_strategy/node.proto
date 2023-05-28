@@ -1,0 +1,7 @@
+syntax = "proto3";
+
+import "svc/target.proto";
+
+message Node {
+    svc.Target target = 1;
+}

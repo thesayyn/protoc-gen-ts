@@ -5,5 +5,5 @@ pub trait Print<T>
 where
     T: Runtime + Sized,
 {
-    fn print(&self, ctx: &mut Context, runtime: &mut T) -> ModuleItem;
+    fn print(&self, ctx: &mut Context, runtime: &mut T) -> Vec<ModuleItem>;
 }

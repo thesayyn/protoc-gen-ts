@@ -10,26 +10,12 @@ impl<T> Print<T> for DescriptorProto
 where
     T: Runtime + Sized,
 {
-    fn print(&self, ctx: &mut Context, runtime: &mut T) -> ModuleItem {
+    fn print(&self, ctx: &mut Context, runtime: &mut T) -> Vec<ModuleItem> {
+        ctx.register_type_name(self.name());
+ 
+     
+ 
         let mut members: Vec<ClassMember> = Vec::new();
-
-        // members.push(ClassMember::Constructor(
-        //     Constructor {
-        //         accessibility: None,
-        //         body: Some(BlockStmt {
-        //             span: DUMMY_SP,
-        //             stmts: runtime.constructor_stmts(ctx),
-        //         }),
-        //         is_optional: false,
-        //         params: vec![],
-        //         span: DUMMY_SP,
-        //         key: swc_ecma_ast::PropName::Ident(Ident {
-        //             optional: false,
-        //             span: DUMMY_SP,
-        //             sym: "constructor".into()
-        //         })
-        //     }
-        // ));
 
         for member in &self.field {
             members.push(member.print_prop(ctx, runtime));
@@ -49,10 +35,24 @@ where
                 super_type_params: None,
             }),
         };
-
-        ModuleItem::ModuleDecl(ModuleDecl::ExportDecl(ExportDecl {
+        
+        let module = ModuleItem::ModuleDecl(ModuleDecl::ExportDecl(ExportDecl {
             decl: Decl::Class(class_decl),
             span: DUMMY_SP,
-        }))
+        }));
+
+        let mut modules = vec![module];
+
+        if self.nested_type.len() != 0 {
+            let mut ctx = ctx.descend(self.name().to_string());
+            let mut nested_modules = vec![];
+            for nested in &self.nested_type {
+                ctx.register_type_name(nested.name());
+                nested_modules.append(&mut nested.print(&mut ctx, runtime));
+            }
+            modules.append(&mut ctx.wrap_if_needed(nested_modules));
+        }
+
+        modules
     }
 }

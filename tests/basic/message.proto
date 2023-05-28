@@ -10,4 +10,8 @@ message Theater {
    int32 t_int32 = 3;
    int64 t_int64 = 4;
    HelpTopic t_enum = 5;
+   
+   message MessageName {
+      
+   }
 }

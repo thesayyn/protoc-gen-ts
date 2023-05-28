@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package svc;
+
+enum AddressFamily {
+    IPV4 = 0;
+    IPV6 = 1;
+}
+
+message Address {
+    string source = 1;
+    AddressFamily family = 2;
+}
+
+message Target {
+    Address addres = 1;
+}
