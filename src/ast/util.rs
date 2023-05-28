@@ -1,6 +1,9 @@
-use swc_common::{DUMMY_SP};
-use swc_ecma_ast::{ModuleItem, ModuleDecl, ExportDecl, Decl, TsModuleDecl, TsModuleName, TsNamespaceBody, TsModuleBlock};
-use swc_ecma_utils::{quote_ident};
+use swc_common::DUMMY_SP;
+use swc_ecma_ast::{
+    Decl, ExportDecl, ModuleDecl, ModuleItem, TsModuleBlock, TsModuleDecl, TsModuleName,
+    TsNamespaceBody,
+};
+use swc_ecma_utils::quote_ident;
 
 pub fn wrap(name: &str, body: Vec<ModuleItem>) -> ModuleItem {
     ModuleItem::ModuleDecl(ModuleDecl::ExportDecl(ExportDecl {

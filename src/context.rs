@@ -1,4 +1,4 @@
-use crate::{namespace, options::Options};
+use crate::{options::Options, ast};
 use std::{
     cell::RefCell,
     collections::HashMap,
@@ -114,7 +114,7 @@ impl<'a> Context<'a> {
         }
         let last_item = self.namespace.last().unwrap().clone();
         let name = last_item.as_str();
-        vec![namespace::wrap(name, modules)]
+        vec![ast::util::wrap(name, modules)]
     }
 
     pub fn normalize_type_name(&mut self, name: &str) -> String {

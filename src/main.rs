@@ -4,16 +4,14 @@ use std::io::*;
 use std::string::*;
 use std::iter::IntoIterator;
 
-use protobuf::Message;
-use protoc_gen_ts::graph::GraphMutator;
-use protoc_gen_ts::graph::RelativeImportStrategy;
 use swc_common::FilePathMapping;
 use swc_common::{source_map::SourceMap, sync::Lrc, DUMMY_SP};
 use swc_ecma_ast::*;
 use swc_ecma_codegen::{text_writer::JsWriter, Emitter};
-
 use swc_ecma_visit::FoldWith;
 
+use protobuf::Message;
+use crate::graph::{GraphMutator, RelativeImportStrategy};
 use crate::context::Context;
 use crate::options::Options;
 use crate::plugin::{code_generator_response::File, CodeGeneratorRequest, CodeGeneratorResponse};
