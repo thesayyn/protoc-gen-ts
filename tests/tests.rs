@@ -5,6 +5,8 @@ macro_rules! gen_test {
         #[test]
         fn $name() {
             use std::{env, fs::create_dir_all, process::{Command, Stdio}};
+            use std::io::Read;
+            use std::io::BufReader;
 
             let manifest_dir = env!("CARGO_MANIFEST_DIR");
             let target_dir = env::var("CARGO_TARGET_DIR").unwrap_or_else(|_| String::from("target"));
@@ -30,10 +32,17 @@ macro_rules! gen_test {
             cmd.arg(format!("--plugin=protoc-gen-ts={}", protoc_gen_ts));
             cmd.arg(format!("--ts_out={}", ts_out));
             cmd.args(sources);
+
+            let mut spawn = cmd.spawn().expect("failed to run protoc");
+
+            let stderr = spawn.stderr.take().unwrap();
+            let mut buffer = String::new();
+            assert!(BufReader::new(stderr).read_to_string(&mut buffer).is_ok(), "failed to read stderr");
+    
             
             // make sure it succedded
-            assert!(cmd.status().is_ok(), "protoc has failed");
-
+            assert!(cmd.status().is_ok(), "protoc has failed\nstderr\n{}", buffer);
+            assert_eq!(cmd.status().unwrap().code(), Some(0), "protoc has failed\nstderr\n{}", buffer);
             eprintln!("ts_out: {}", ts_out)
         }
     };
@@ -44,3 +53,5 @@ macro_rules! gen_test {
 gen_test!(test_basic, "tests/basic");
 
 gen_test!(test_import_strategy, "tests/import_strategy");
+
+gen_test!(test_conformance, "tests/conformance");

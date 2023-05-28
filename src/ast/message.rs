@@ -13,8 +13,6 @@ where
     fn print(&self, ctx: &mut Context, runtime: &mut T) -> Vec<ModuleItem> {
         ctx.register_type_name(self.name());
  
-     
- 
         let mut members: Vec<ClassMember> = Vec::new();
 
         for member in &self.field {
@@ -43,13 +41,20 @@ where
 
         let mut modules = vec![module];
 
-        if self.nested_type.len() != 0 {
+        if self.nested_type.len() != 0 || self.enum_type.len() != 0 {
             let mut ctx = ctx.descend(self.name().to_string());
             let mut nested_modules = vec![];
             for nested in &self.nested_type {
                 ctx.register_type_name(nested.name());
                 nested_modules.append(&mut nested.print(&mut ctx, runtime));
             }
+
+            for r#enum in &self.enum_type {
+                ctx.register_type_name(r#enum.name());
+                nested_modules.append(&mut r#enum.print(&mut ctx, runtime));
+            }
+
+
             modules.append(&mut ctx.wrap_if_needed(nested_modules));
         }
 

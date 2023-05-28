@@ -23,7 +23,6 @@ impl FieldDescriptorProto {
     }
     pub fn typeref(&self, ctx: &mut Context) -> Option<TsTypeRef> {
         if self.has_type_name() {
-            eprintln!("{}", self.type_name());
             return Some(TsTypeRef {
                 span: DUMMY_SP,
                 type_name: TsEntityName::TsQualifiedName(ctx.lazy_type_ref(self.type_name())),
