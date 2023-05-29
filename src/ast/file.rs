@@ -1,4 +1,4 @@
-use crate::context::Context;
+use crate::context::{Context, self};
 use crate::descriptor::FileDescriptorProto;
 use crate::print::Print;
 use crate::runtime::Runtime;
@@ -8,23 +8,17 @@ impl<T> Print<T> for FileDescriptorProto
 where
     T: Runtime + Sized,
 {
-    fn print(&self, pctx: &mut Context, runtime: &mut T) -> Vec<ModuleItem> {
-    
-        let mut dctx = pctx.descend(self.package().to_string());
-        
-        let ctx = match self.has_package() {
-            true => &mut dctx,
-            false => pctx
-        };
+    fn print(&self, ctx: &mut Context, runtime: &mut T) -> Vec<ModuleItem> {
+        let mut ctx = context::descend_if_necessary!(ctx, self);
 
         let mut modules: Vec<ModuleItem> = Vec::new();
 
         for r#enum in &self.enum_type {
-            modules.append(&mut r#enum.print(ctx, runtime))
+            modules.append(&mut r#enum.print(&mut ctx, runtime))
         }
 
         for message in &self.message_type {
-            modules.append(&mut message.print(ctx, runtime))
+            modules.append(&mut message.print(&mut ctx, runtime))
         }
 
         let mut modules = ctx.wrap_if_needed(modules);

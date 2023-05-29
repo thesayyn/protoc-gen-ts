@@ -1,0 +1,23 @@
+{
+  "version": "2",
+  "remote": {
+    "https://deno.land/x/get_stdin@v1.1.0/mod.ts": "c5a01c443eea377aef410638a176a31641caed4ae6ad315136dc794000155c27",
+    "https://esm.sh/v78/@types/google-protobuf@3.15.6/index.d.ts": "2aa56385346f3f1abbfde3ca055ca5d80d3dd6a5e73899da739880d007c339d3"
+  },
+  "npm": {
+    "specifiers": {
+      "@types/google-protobuf": "@types/google-protobuf@3.15.6",
+      "google-protobuf": "google-protobuf@3.21.2"
+    },
+    "packages": {
+      "@types/google-protobuf@3.15.6": {
+        "integrity": "sha512-pYVNNJ+winC4aek+lZp93sIKxnXt5qMkuKmaqS3WGuTq0Bw1ZDYNBgzG5kkdtwcv+GmYJGo3yEg6z2cKKAiEdw==",
+        "dependencies": {}
+      },
+      "google-protobuf@3.21.2": {
+        "integrity": "sha512-3MSOYFO5U9mPGikIYCzK0SaThypfGgS6bHqrUGXG3DPHCrb+txNqeEcns1W0lkGfk0rCyNXm7xB9rMxnCiZOoA==",
+        "dependencies": {}
+      }
+    }
+  }
+}

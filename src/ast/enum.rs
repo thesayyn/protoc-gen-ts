@@ -10,7 +10,6 @@ where
     T: Runtime + Sized,
 {
     fn print(&self, ctx: &mut Context, _runtime: &mut T) -> Vec<ModuleItem> {
-        ctx.register_type_name(self.name());
         let mut members: Vec<TsEnumMember> = Vec::new();
         for member in &self.value {
             members.push(TsEnumMember {
@@ -28,7 +27,7 @@ where
                 span: DUMMY_SP,
                 declare: false,
                 is_const: false,
-                id: quote_ident!(ctx.normalize_type_name(self.name())),
+                id: quote_ident!(ctx.normalize_name(self.name())),
                 members,
             },
         ));

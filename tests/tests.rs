@@ -26,18 +26,22 @@ macro_rules! gen_test {
             
             // invoke protoc with protoc-gen-ts
             let mut cmd = Command::new("protoc");
-            cmd.stdout(Stdio::piped());
-            cmd.stderr(Stdio::piped());
+    
             cmd.arg(format!("--proto_path={}", proto_path));
             cmd.arg(format!("--plugin=protoc-gen-ts={}", protoc_gen_ts));
             cmd.arg(format!("--ts_out={}", ts_out));
+            cmd.arg("--ts_opt=namespaces=false");
+            cmd.arg("--ts_opt=import_suffix=.ts");
+            cmd.arg("--ts_opt=runtime_package=npm:google-protobuf");
             cmd.args(sources);
 
-            let mut spawn = cmd.spawn().expect("failed to run protoc");
-
-            let stderr = spawn.stderr.take().unwrap();
             let mut buffer = String::new();
-            assert!(BufReader::new(stderr).read_to_string(&mut buffer).is_ok(), "failed to read stderr");
+            // cmd.stdout(Stdio::piped());
+            // cmd.stderr(Stdio::piped());
+            // let mut spawn = cmd.spawn().expect("failed to run protoc");
+
+            // let stderr = spawn.stderr.take().unwrap();
+            // assert!(BufReader::new(stderr).read_to_string(&mut buffer).is_ok(), "failed to read stderr");
     
             
             // make sure it succedded

@@ -2,7 +2,7 @@ use swc_common::DUMMY_SP;
 use swc_ecma_ast::{TsEntityName, TsKeywordTypeKind, TsTypeRef};
 
 use crate::{
-    context::Context,
+    context::{Context, Syntax},
     descriptor::{
         field_descriptor_proto::Label, field_descriptor_proto::Type, field_options::JSType,
         FieldDescriptorProto,
@@ -25,7 +25,7 @@ impl FieldDescriptorProto {
         if self.has_type_name() {
             return Some(TsTypeRef {
                 span: DUMMY_SP,
-                type_name: TsEntityName::TsQualifiedName(ctx.lazy_type_ref(self.type_name())),
+                type_name: TsEntityName::Ident(ctx.lazy_type_ref(self.type_name())),
                 type_params: None,
             });
         }
@@ -34,7 +34,29 @@ impl FieldDescriptorProto {
 }
 
 impl FieldDescriptorProto {
-    // field type
+
+    fn is_packable(&self) -> bool {
+        return (self.is_string() || self.is_group() || self.is_message() || self.is_bytes()) && self.is_repeated()
+    }
+
+    pub fn is_packed(&self, ctx: &mut Context) -> bool {
+        if !self.is_packable() {
+            return false
+        }
+        if let Syntax::Proto2 = ctx.syntax {
+            return self.options.packed()
+        }
+        !self.options.has_packed() || self.options.packed()
+    }
+
+    pub fn is_bytes(&self) -> bool {
+        self.type_() == Type::TYPE_BYTES
+    }  
+
+    pub fn is_group(&self) -> bool {
+        self.type_() == Type::TYPE_GROUP
+    }  
+
     pub fn is_message(&self) -> bool {
         self.type_() == Type::TYPE_MESSAGE
     }

@@ -1,17 +1,21 @@
 use std::string::String;
 
-#[derive(Clone)]
+#[derive(Clone, Debug)]
 pub struct Options {
     pub unary_rpc_promise: bool,
     pub grpc_package: String,
+    pub runtime_package: String,
     pub namespaces: bool,
+    pub import_suffix: String
 }
 
 impl Options {
     pub fn parse(raw: &str) -> Options {
         let mut grpc_package = "@grpc/grpc-js";
+        let mut runtime_package = "google-protobuf";
         let mut unary_rpc_promise = false;
-        let mut namespaces = false;
+        let mut namespaces = true;
+        let mut import_suffix = "";
 
         let parts = raw.split(",");
 
@@ -32,16 +36,26 @@ impl Options {
                 Some("namespaces") => {
                     namespaces = kv.next().expect("expected a value for unary_rpc_promise") == "true"
                 }
+                Some("import_suffix") => {
+                    import_suffix = kv.next().expect("expected a value for import_suffix")
+                }
+                Some("runtime_package") => {
+                    runtime_package = kv.next().expect("expected a value for runtime_package")
+                }
                 // just silently ignore
-                Some(_) => {}
-                None => {}
+                Some(option) => {
+                    eprintln!("WARNING: unknown option {}", option)
+                }
+                None => panic!("option key can not be empty.")
             };
         }
 
         Options {
             grpc_package: String::from(grpc_package),
-            unary_rpc_promise,
-            namespaces
+            runtime_package: String::from(runtime_package),
+            import_suffix: String::from(import_suffix),
+            namespaces,
+            unary_rpc_promise
         }
     }
 }
@@ -83,6 +97,12 @@ fn should_parse_and_override() {
     let opt = Options::parse("unary_rpc_promise=false , grpc_package=mygrpcpackage ,unary_rpc_promise=true");
     assert_eq!(opt.grpc_package, "mygrpcpackage");
     assert_eq!(opt.unary_rpc_promise, true);
+}
+
+#[test]
+fn should_parse_import_suffix() {
+    let opt = Options::parse("import_suffix=.ts");
+    assert_eq!(opt.import_suffix, ".ts");
 }
 
 #[test]
