@@ -36,18 +36,26 @@ macro_rules! gen_test {
             cmd.args(sources);
 
             let mut buffer = String::new();
-            // cmd.stdout(Stdio::piped());
-            // cmd.stderr(Stdio::piped());
-            // let mut spawn = cmd.spawn().expect("failed to run protoc");
+            cfg_if::cfg_if! {
+                if #[cfg(debug_assertions)] {
+                    cmd.stdout(Stdio::piped());
+                    cmd.stderr(Stdio::piped());
+                    let mut spawn = cmd.spawn().expect("failed to run protoc");
 
-            // let stderr = spawn.stderr.take().unwrap();
-            // assert!(BufReader::new(stderr).read_to_string(&mut buffer).is_ok(), "failed to read stderr");
-    
-            
+                    let stderr = spawn.stderr.take().unwrap();
+                    assert!(BufReader::new(stderr).read_to_string(&mut buffer).is_ok(), "failed to read stderr");
+                }
+            }
+
             // make sure it succedded
             assert!(cmd.status().is_ok(), "protoc has failed\nstderr\n{}", buffer);
             assert_eq!(cmd.status().unwrap().code(), Some(0), "protoc has failed\nstderr\n{}", buffer);
-            eprintln!("ts_out: {}", ts_out)
+
+            cfg_if::cfg_if! {
+                if #[cfg(debug_assertions)] {
+                    eprintln!("output: {}", ts_out)
+                }
+            }
         }
     };
 }

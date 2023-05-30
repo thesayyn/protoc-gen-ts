@@ -556,6 +556,7 @@ dependencies = [
 name = "protoc_gen_ts"
 version = "0.1.0"
 dependencies = [
+ "cfg-if",
  "glob",
  "once_cell",
  "pathdiff",

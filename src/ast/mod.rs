@@ -4,3 +4,4 @@ pub mod field_type;
 pub mod r#enum;
 pub mod message;
 pub mod file;
+pub mod macros;

@@ -1,5 +1,6 @@
 use swc_common::DUMMY_SP;
 use swc_ecma_ast::{TsEntityName, TsKeywordTypeKind, TsTypeRef};
+use swc_ecma_utils::quote_ident;
 
 use crate::{
     context::{Context, Syntax},
@@ -21,7 +22,14 @@ impl FieldDescriptorProto {
         }
         kind
     }
-    pub fn typeref(&self, ctx: &mut Context) -> Option<TsTypeRef> {
+    pub fn type_ref(&self, ctx: &mut Context) -> Option<TsTypeRef> {
+        if self.is_bytes() {
+            return Some(TsTypeRef {
+                span: DUMMY_SP,
+                type_name: TsEntityName::Ident(quote_ident!("Uint8Array")),
+                type_params: None,
+            })
+        }
         if self.has_type_name() {
             return Some(TsTypeRef {
                 span: DUMMY_SP,
@@ -49,26 +57,32 @@ impl FieldDescriptorProto {
         !self.options.has_packed() || self.options.packed()
     }
 
+    #[inline]
     pub fn is_bytes(&self) -> bool {
         self.type_() == Type::TYPE_BYTES
     }  
 
+    #[inline]
     pub fn is_group(&self) -> bool {
         self.type_() == Type::TYPE_GROUP
     }  
 
+    #[inline]
     pub fn is_message(&self) -> bool {
         self.type_() == Type::TYPE_MESSAGE
     }
 
+    #[inline]
     pub fn is_enum(&self) -> bool {
         self.type_() == Type::TYPE_ENUM
     }
 
+    #[inline]
     pub fn is_string(&self) -> bool {
         self.type_() == Type::TYPE_STRING
     }
 
+    #[inline]
     pub fn is_booelan(&self) -> bool {
         self.type_() == Type::TYPE_BOOL
     }
@@ -95,20 +109,24 @@ impl FieldDescriptorProto {
     }
 
     // Label
+    #[inline]
     pub fn is_repeated(&self) -> bool {
         self.label() == Label::LABEL_REPEATED
     }
 
+    #[inline]
     pub fn is_optional(&self) -> bool {
         // TODO: proto3 optional
         self.label() == Label::LABEL_REPEATED
     }
 
     // TODO: remove
+    #[inline]
     pub fn is_oneof(&self) -> bool {
         self.has_oneof_index()
     }
 
+    #[inline]
     pub fn has_jstype_string(&self) -> bool {
         self.options.jstype() == JSType::JS_STRING
     }

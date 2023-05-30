@@ -1,22 +1,47 @@
 {
   "version": "2",
   "remote": {
+    "https://deno.land/std@0.177.1/_util/asserts.ts": "178dfc49a464aee693a7e285567b3d0b555dc805ff490505a8aae34f9cfb1462",
+    "https://deno.land/std@0.177.1/bytes/copy.ts": "939d89e302a9761dcf1d9c937c7711174ed74c59eef40a1e4569a05c9de88219",
+    "https://deno.land/std@0.177.1/io/buffer.ts": "e2b7564f684dad625cab08f5106f33572d325705d19a36822b3272fbdfb8f726",
+    "https://deno.land/std@0.177.1/types.d.ts": "220ed56662a0bd393ba5d124aa6ae2ad36a00d2fcbc0e8666a65f4606aaa9784",
     "https://deno.land/x/get_stdin@v1.1.0/mod.ts": "c5a01c443eea377aef410638a176a31641caed4ae6ad315136dc794000155c27",
     "https://esm.sh/v78/@types/google-protobuf@3.15.6/index.d.ts": "2aa56385346f3f1abbfde3ca055ca5d80d3dd6a5e73899da739880d007c339d3"
   },
   "npm": {
     "specifiers": {
+      "@bufbuild/protobuf": "@bufbuild/protobuf@1.2.0",
       "@types/google-protobuf": "@types/google-protobuf@3.15.6",
-      "google-protobuf": "google-protobuf@3.21.2"
+      "bufferpack": "bufferpack@0.0.6",
+      "google-protobuf": "google-protobuf@3.21.2",
+      "python-struct": "python-struct@1.1.3"
     },
     "packages": {
+      "@bufbuild/protobuf@1.2.0": {
+        "integrity": "sha512-MBVuQMOBHxgGnZ9XCUIi8WOy5O/T4ma3TduCRhRvndv3UDbG9cHgd8h6nOYSGyBYPEvXf1z9nTwhp8mVIDbq2g==",
+        "dependencies": {}
+      },
       "@types/google-protobuf@3.15.6": {
         "integrity": "sha512-pYVNNJ+winC4aek+lZp93sIKxnXt5qMkuKmaqS3WGuTq0Bw1ZDYNBgzG5kkdtwcv+GmYJGo3yEg6z2cKKAiEdw==",
+        "dependencies": {}
+      },
+      "bufferpack@0.0.6": {
+        "integrity": "sha512-MTWvLHElqczrIVhge9qHtqgNigJFyh0+tCDId5yCbFAfuekHWIG+uAgvoHVflwrDPuY/e47JE1ki5qcM7w4uLg==",
         "dependencies": {}
       },
       "google-protobuf@3.21.2": {
         "integrity": "sha512-3MSOYFO5U9mPGikIYCzK0SaThypfGgS6bHqrUGXG3DPHCrb+txNqeEcns1W0lkGfk0rCyNXm7xB9rMxnCiZOoA==",
         "dependencies": {}
+      },
+      "long@4.0.0": {
+        "integrity": "sha512-XsP+KhQif4bjX1kbuSiySJFNAehNxgLb6hPRGJ9QsUr8ajHkuXGdrHmFUTUUXhDwVX2R5bY4JNZEwbUiMhV+MA==",
+        "dependencies": {}
+      },
+      "python-struct@1.1.3": {
+        "integrity": "sha512-UsI/mNvk25jRpGKYI38Nfbv84z48oiIWwG67DLVvjRhy8B/0aIK+5Ju5WOHgw/o9rnEmbAS00v4rgKFQeC332Q==",
+        "dependencies": {
+          "long": "long@4.0.0"
+        }
       }
     }
   }

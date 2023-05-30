@@ -7,7 +7,7 @@ impl FieldDescriptorProto {
     fn type_annotation(&self, ctx: &mut Context) -> Option<Box<TsTypeAnn>> {
         let mut ts_type: Option<TsType> = None;
 
-        if let Some(typref) = self.typeref(ctx) {
+        if let Some(typref) = self.type_ref(ctx) {
             ts_type = Some(TsType::TsTypeRef(typref))
         }
 

@@ -1,24 +1,67 @@
 use std::vec;
 
-use crate::context::Context;
+use crate::{context::Context};
 use crate::descriptor::DescriptorProto;
 use crate::print::Print;
 use crate::runtime::Runtime;
+
 use swc_common::DUMMY_SP;
 use swc_ecma_ast::{
-    BlockStmt, Class, ClassDecl, ClassMember, ClassMethod, Decl, ExportDecl, Function, MethodKind,
-    ModuleDecl, ModuleItem, PropName,
+    BlockStmt, Class, ClassDecl, ClassMember, ClassMethod, Decl, ExportDecl, Expr, Function,
+    MethodKind, ModuleDecl, ModuleItem, Param, PropName, Stmt, TsTypeAnn, TsTypeRef,
 };
 use swc_ecma_utils::quote_ident;
 
 impl DescriptorProto {
+    fn print_serialize<T: Runtime + Sized>(
+        &self,
+        ctx: &mut Context,
+        runtime: &mut T,
+    ) -> ClassMember {
+
+        let mut statements = vec![];
+
+        statements.extend(runtime.serialize_setup(ctx, &self));
+        statements.push(crate::return_stmt!(crate::call_expr!(crate::member_expr!("bw", "getResultBuffer"))));
+
+        ClassMember::Method(ClassMethod {
+            span: DUMMY_SP,
+            accessibility: None,
+            key: PropName::Ident(quote_ident!("serialize")),
+            is_abstract: false,
+            is_optional: false,
+            is_override: false,
+            is_static: false,
+            function: Box::new(Function {
+                body: Some(BlockStmt {
+                    span: DUMMY_SP,
+                    stmts: statements,
+                }),
+                decorators: vec![],
+                is_async: false,
+                is_generator: false,
+                params: vec![],
+                return_type: None,
+                span: DUMMY_SP,
+                type_params: None,
+            }),
+            kind: MethodKind::Method,
+        })
+    }
+
     fn print_deserialize<T: Runtime + Sized>(
         &self,
         ctx: &mut Context,
         runtime: &mut T,
     ) -> ClassMember {
-        let mut body_stmts = runtime.deserialize_setup(ctx);
-        body_stmts.extend(runtime.deserialize_assign_field(ctx, &self));
+
+        let message_const_init = crate::new_expr!(Expr::Ident(quote_ident!(ctx.normalize_name(self.name()))));
+        let message_const = crate::const_decl!("message", Some(message_const_init));
+
+        let mut statements = vec![Stmt::Decl(message_const)];
+
+        statements.extend(runtime.deserialize_setup(ctx, &self));
+        statements.push(crate::return_stmt!(Expr::Ident(quote_ident!("message"))));
 
         ClassMember::Method(ClassMethod {
             span: DUMMY_SP,
@@ -31,12 +74,19 @@ impl DescriptorProto {
             function: Box::new(Function {
                 body: Some(BlockStmt {
                     span: DUMMY_SP,
-                    stmts: body_stmts,
+                    stmts: statements,
                 }),
                 decorators: vec![],
                 is_async: false,
                 is_generator: false,
-                params: vec![],
+                params: vec![Param {
+                    span: DUMMY_SP,
+                    decorators: vec![],
+                    pat: swc_ecma_ast::Pat::Ident(swc_ecma_ast::BindingIdent {
+                        id: quote_ident!("bytes"),
+                        type_ann: Some(crate::type_annotation!("Uint8Array")),
+                    }),
+                }],
                 return_type: None,
                 span: DUMMY_SP,
                 type_params: None,
@@ -51,7 +101,6 @@ where
     T: Runtime + Sized,
 {
     fn print(&self, ctx: &mut Context, runtime: &mut T) -> Vec<ModuleItem> {
-
         let mut members: Vec<ClassMember> = Vec::new();
 
         for member in &self.field {
@@ -59,7 +108,8 @@ where
         }
 
         members.push(self.print_deserialize(ctx, runtime));
-
+        members.push(self.print_serialize(ctx, runtime));
+        
         let class_decl = ClassDecl {
             ident: quote_ident!(ctx.normalize_name(self.name())),
             declare: false,
@@ -85,7 +135,7 @@ where
         if self.nested_type.len() != 0 || self.enum_type.len() != 0 {
             let mut ctx = ctx.descend(self.name().to_string());
             let mut nested_modules = vec![];
-            
+
             for nested in &self.nested_type {
                 nested_modules.append(&mut nested.print(&mut ctx, runtime));
             }
