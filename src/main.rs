@@ -1,4 +1,3 @@
-use std::collections::HashMap;
 use std::io::prelude::*;
 use std::io::*;
 use std::str::FromStr;
@@ -30,11 +29,10 @@ fn main() {
 
     let options: Options = Options::parse(request.parameter());
     let mut ctx = Context::new(&options, &Syntax::Unspecified);
-    let mut runtime = GooglePBRuntime::new();
-    let mut outputs: HashMap<String, Module> = HashMap::new();
-
-    let cm = Lrc::new(SourceMap::new(FilePathMapping::empty()));
     request.map(&mut ctx);
+
+    let mut runtime = GooglePBRuntime::new();
+    let cm = Lrc::new(SourceMap::new(FilePathMapping::empty()));
 
     for descriptor in request.proto_file.to_vec() {
         if !request.file_to_generate.contains(&descriptor.name().to_string()) {

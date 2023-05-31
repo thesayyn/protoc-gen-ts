@@ -4,9 +4,7 @@ macro_rules! gen_test {
     ($name:ident, $path:literal) => {
         #[test]
         fn $name() {
-            use std::{env, fs::create_dir_all, process::{Command, Stdio}};
-            use std::io::Read;
-            use std::io::BufReader;
+            use std::{env, fs::create_dir_all, process::{Command}};
 
             let manifest_dir = env!("CARGO_MANIFEST_DIR");
             let target_dir = env::var("CARGO_TARGET_DIR").unwrap_or_else(|_| String::from("target"));
@@ -32,28 +30,17 @@ macro_rules! gen_test {
             cmd.arg(format!("--ts_out={}", ts_out));
             cmd.arg("--ts_opt=namespaces=false");
             cmd.arg("--ts_opt=import_suffix=.ts");
-            cmd.arg("--ts_opt=runtime_package=npm:google-protobuf");
+            cmd.arg("--ts_opt=runtime_package=https://cdn.skypack.dev/google-protobuf?dts");
             cmd.args(sources);
 
-            let mut buffer = String::new();
-            cfg_if::cfg_if! {
-                if #[cfg(debug_assertions)] {
-                    cmd.stdout(Stdio::piped());
-                    cmd.stderr(Stdio::piped());
-                    let mut spawn = cmd.spawn().expect("failed to run protoc");
-
-                    let stderr = spawn.stderr.take().unwrap();
-                    assert!(BufReader::new(stderr).read_to_string(&mut buffer).is_ok(), "failed to read stderr");
-                }
-            }
 
             // make sure it succedded
-            assert!(cmd.status().is_ok(), "protoc has failed\nstderr\n{}", buffer);
-            assert_eq!(cmd.status().unwrap().code(), Some(0), "protoc has failed\nstderr\n{}", buffer);
+            assert!(cmd.status().is_ok(), "protoc has failed");
+            assert_eq!(cmd.status().unwrap().code(), Some(0), "protoc has failed");
 
             cfg_if::cfg_if! {
                 if #[cfg(debug_assertions)] {
-                    eprintln!("output: {}", ts_out)
+                    dbg!("output: {}", &ts_out);
                 }
             }
         }

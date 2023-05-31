@@ -2,26 +2,23 @@ use super::Runtime;
 use crate::{
     context::Context,
     descriptor::{self, field_descriptor_proto::Type, FieldDescriptorProto},
-    member_expr,
 };
 use std::vec;
 use swc_common::DUMMY_SP;
 use swc_ecma_ast::{
-    AssignExpr, AssignOp, BinExpr, BinaryOp, BindingIdent, BlockStmt, BreakStmt, CallExpr, Callee,
-    Decl, Expr, ExprOrSpread, ExprStmt, IfStmt, Lit, MemberExpr, MemberProp, NewExpr, Number,
-    PatOrExpr, Stmt, SwitchCase, SwitchStmt, UnaryExpr, UnaryOp, VarDecl, VarDeclarator, WhileStmt,
+    ArrowExpr, AssignExpr, AssignOp, BinExpr, BinaryOp, BlockStmt, BlockStmtOrExpr, BreakStmt,
+    Expr, ExprStmt, IfStmt, Lit, Number, PatOrExpr, Stmt, SwitchCase, SwitchStmt, WhileStmt,
 };
 use swc_ecma_utils::quote_ident;
 
 pub struct GooglePBRuntime {}
 
+// default
 impl GooglePBRuntime {
     pub fn new() -> Self {
         GooglePBRuntime {}
     }
-}
 
-impl GooglePBRuntime {
     fn rw_function_name(
         &self,
         rw: &str,
@@ -52,39 +49,56 @@ impl GooglePBRuntime {
             Type::TYPE_SFIXED32 => "_placeholder_Sfixed32",
             Type::TYPE_SFIXED64 => "_placeholder_Sfixed64",
 
-            Type::TYPE_MESSAGE => "todo_message",
             Type::TYPE_GROUP => "todo_group",
+            Type::TYPE_MESSAGE => "todo_group",
+            // _ => unimplemented!("rw_function_name {:?}", field.type_()),
         }
         .replace("_placeholder_", placeholder.as_str())
     }
+}
 
-    fn deserialize_while_loop(&self, ctx: &mut Context, stmt: Stmt) -> Stmt {
-        let test_expr = Expr::Bin(BinExpr {
-            op: BinaryOp::LogicalAnd,
-            left: Box::new(crate::call_expr!(crate::member_expr!("br", "nextField"))),
-            right: Box::new(crate::unary_expr!(crate::call_expr!(crate::member_expr!(
-                "br",
-                "isEndGroup"
-            )))),
-            span: DUMMY_SP,
-        });
-        Stmt::While(WhileStmt {
-            span: DUMMY_SP,
-            test: Box::new(test_expr),
-            body: Box::new(Stmt::Block(BlockStmt {
-                span: DUMMY_SP,
-                stmts: vec![stmt],
-            })),
-        })
+// deserialize
+impl GooglePBRuntime {
+    fn deserialize_message_field_expr(
+        &self,
+        ctx: &mut Context,
+        field: &descriptor::FieldDescriptorProto,
+    ) -> Expr {
+        crate::call_expr!(
+            crate::member_expr!(ctx.lazy_type_ref(field.type_name()), "deserialize"),
+            vec![crate::expr_or_spread!(crate::call_expr!(
+                crate::member_expr_bare!(
+                    crate::call_expr!(crate::member_expr!("br", "getFieldDecoder")),
+                    "getBuffer"
+                )
+            ))]
+        )
     }
 
-    fn deserialize_switch_case(
+    fn deserialize_primitive_field_expr(
+        &self,
+        ctx: &mut Context,
+        field: &descriptor::FieldDescriptorProto,
+    ) -> Expr {
+        crate::call_expr!(crate::member_expr!(
+            "br",
+            self.rw_function_name("read", ctx, field)
+        ))
+    }
+
+    fn deserialize_stmt(
         &self,
         ctx: &mut Context,
         descriptor: &descriptor::DescriptorProto,
     ) -> Stmt {
         let mut cases: Vec<SwitchCase> = vec![];
         for field in &descriptor.field {
+            let read_expr = if field.is_message() {
+                self.deserialize_message_field_expr(ctx, field)
+            } else {
+                self.deserialize_primitive_field_expr(ctx, field)
+            };
+
             cases.push(SwitchCase {
                 span: DUMMY_SP,
                 test: Some(Box::new(Expr::Lit(Lit::Num(Number {
@@ -102,10 +116,7 @@ impl GooglePBRuntime {
                                 "message",
                                 field.name()
                             ))),
-                            right: Box::new(crate::call_expr!(member_expr!(
-                                "br",
-                                self.rw_function_name("read", ctx, field)
-                            ))),
+                            right: Box::new(read_expr),
                         })),
                     }),
                     Stmt::Break(BreakStmt {
@@ -123,12 +134,108 @@ impl GooglePBRuntime {
                 expr: Box::new(crate::call_expr!(crate::member_expr!("br", "skipField"))),
             })],
         });
-        let discriminant = crate::call_expr!(member_expr!("br", "getFieldNumber"));
-        Stmt::Switch(SwitchStmt {
+
+        let switch_stmt = Stmt::Switch(SwitchStmt {
             span: DUMMY_SP,
-            discriminant: Box::new(discriminant),
-            cases: cases,
+            discriminant: Box::new(crate::call_expr!(crate::member_expr!(
+                "br",
+                "getFieldNumber"
+            ))),
+            cases,
+        });
+
+        let while_stmt_test_expr = Expr::Bin(BinExpr {
+            op: BinaryOp::LogicalAnd,
+            left: Box::new(crate::call_expr!(crate::member_expr!("br", "nextField"))),
+            right: Box::new(crate::unary_expr!(crate::call_expr!(crate::member_expr!(
+                "br",
+                "isEndGroup"
+            )))),
+            span: DUMMY_SP,
+        });
+        Stmt::While(WhileStmt {
+            span: DUMMY_SP,
+            test: Box::new(while_stmt_test_expr),
+            body: Box::new(Stmt::Block(BlockStmt {
+                span: DUMMY_SP,
+                stmts: vec![switch_stmt],
+            })),
         })
+    }
+}
+
+// serialize
+impl GooglePBRuntime {
+    fn serialize_primitive_field_expr(
+        &self,
+        ctx: &mut Context,
+        field: &descriptor::FieldDescriptorProto,
+    ) -> Expr {
+        crate::call_expr!(
+            crate::member_expr!("bw", self.rw_function_name("write", ctx, field)),
+            vec![
+                crate::expr_or_spread!(Expr::Lit(Lit::Num(Number {
+                    span: DUMMY_SP,
+                    value: field.number() as f64,
+                    raw: None
+                }))),
+                crate::expr_or_spread!(crate::member_expr!("this", field.name())),
+            ]
+        )
+    }
+
+    fn serialize_message_field_expr(
+        &self,
+        ctx: &mut Context,
+        field: &descriptor::FieldDescriptorProto,
+    ) -> Expr {
+        let arrow_func = Expr::Arrow(ArrowExpr {
+            is_async: false,
+            is_generator: false,
+            params: vec![],
+            return_type: None,
+            span: DUMMY_SP,
+            type_params: None,
+            body: Box::new(BlockStmtOrExpr::BlockStmt(BlockStmt {
+                span: DUMMY_SP,
+                stmts: vec![
+                    Stmt::Decl(crate::const_decl!(
+                        "result",
+                        crate::call_expr!(crate::member_expr_bare!(
+                            crate::member_expr!("this", field.name()),
+                            "serialize"
+                        ))
+                    )),
+                    Stmt::Expr(ExprStmt {
+                        span: DUMMY_SP,
+                        expr: Box::new(crate::call_expr!(
+                            crate::member_expr!("bw", "writeSerializedMessage"),
+                            vec![
+                                crate::expr_or_spread!(Expr::Ident(quote_ident!("result"))),
+                                crate::expr_or_spread!(Expr::Lit(Lit::Num(Number {
+                                    span: DUMMY_SP,
+                                    value: 0 as f64,
+                                    raw: None
+                                }))),
+                                crate::expr_or_spread!(crate::member_expr!("result", "length")),
+                            ]
+                        )),
+                    }),
+                ],
+            })),
+        });
+        crate::call_expr!(
+            crate::member_expr!("bw", "writeMessage"),
+            vec![
+                crate::expr_or_spread!(Expr::Lit(Lit::Num(Number {
+                    span: DUMMY_SP,
+                    value: field.number() as f64,
+                    raw: None
+                }))),
+                crate::expr_or_spread!(crate::member_expr!("this", field.name())),
+                crate::expr_or_spread!(arrow_func),
+            ]
+        )
     }
 }
 
@@ -142,16 +249,14 @@ impl Runtime for GooglePBRuntime {
 
         let br_decl_init = crate::new_expr!(
             crate::member_expr!(import, "BinaryReader"),
-            Some(vec![ExprOrSpread {
-                expr: Box::new(Expr::Ident(quote_ident!("bytes"))),
-                spread: None
-            }])
+            Some(vec![crate::expr_or_spread!(Expr::Ident(quote_ident!(
+                "bytes"
+            )))])
         );
-        let bd_decl = Stmt::Decl(crate::const_decl!("br", Some(br_decl_init)));
+        let br_decl_stmt = Stmt::Decl(crate::const_decl!("br", br_decl_init));
+        let deserialize_stmt = self.deserialize_stmt(ctx, descriptor);
 
-        let switch_case = self.deserialize_switch_case(ctx, descriptor);
-
-        vec![bd_decl, self.deserialize_while_loop(ctx, switch_case)]
+        vec![br_decl_stmt, deserialize_stmt]
     }
 
     fn serialize_setup(
@@ -161,11 +266,21 @@ impl Runtime for GooglePBRuntime {
     ) -> Vec<Stmt> {
         let import = ctx.get_import(&ctx.options.runtime_package);
         let bw_decl_init = crate::new_expr!(crate::member_expr!(import, "BinaryWriter"));
-        let bw_decl = Stmt::Decl(crate::const_decl!("bw", Some(bw_decl_init)));
+        let bw_decl = Stmt::Decl(crate::const_decl!("bw", bw_decl_init));
 
         let mut stmts = vec![bw_decl];
 
         for field in &descriptor.field {
+            // TODO:
+            // bw.writeMessage(6, this.jspb_encoding_options, () => {
+            //     const result = this.jspb_encoding_options.serialize();
+            //     bw.writeSerializedMessage(result, 0, result.length);
+            // });
+            let write_expr = if field.is_message() {
+                self.serialize_message_field_expr(ctx, field)
+            } else {
+                self.serialize_primitive_field_expr(ctx, field)
+            };
             stmts.push(Stmt::If(IfStmt {
                 test: Box::new(Expr::Bin(BinExpr {
                     span: DUMMY_SP,
@@ -177,25 +292,7 @@ impl Runtime for GooglePBRuntime {
                     span: DUMMY_SP,
                     stmts: vec![Stmt::Expr(ExprStmt {
                         span: DUMMY_SP,
-                        expr: Box::new(crate::call_expr!(
-                            crate::member_expr!("bw", self.rw_function_name("write", ctx, field)),
-                            vec![
-                                ExprOrSpread {
-                                    expr: Box::new(Expr::Lit(Lit::Num(Number {
-                                        span: DUMMY_SP,
-                                        value: field.number() as f64,
-                                        raw: None
-                                    }))),
-                                    spread: None
-                                },
-                                ExprOrSpread {
-                                    expr: Box::new(
-                                        crate::member_expr!("this", field.name())
-                                    ),
-                                    spread: None
-                                }
-                            ]
-                        )),
+                        expr: Box::new(write_expr),
                     })],
                 })),
                 span: DUMMY_SP,

@@ -7,12 +7,12 @@ cargo_test() {
 }
 
 conformance_test() {
-    local bin="tests/conformance/bin/conformance_executor"
+    local bin="tests/conformance/bin/pgt_conformance"
     echo "# Remove the conformance binary executor"
     rm -f $bin
     echo "# Creating a conformance binary executor"
     deno compile --allow-read --allow-write --allow-env --no-check --output $bin tests/conformance/bin/main.ts
-    ./tests/conformance/bin/conformance_test_runner ./tests/conformance/bin/conformance_executor
+    ./tests/conformance/bin/conformance_test_runner $bin
 }
 
 

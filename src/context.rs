@@ -1,16 +1,16 @@
 use crate::{ast, options::Options};
+use pathdiff::diff_paths;
 use std::{
     cell::RefCell,
     collections::HashMap,
-    fmt::Error,
+    path::PathBuf,
     rc::Rc,
     str::FromStr,
     sync::{
         atomic::{AtomicU64, Ordering},
         Arc,
-    }, path::PathBuf,
+    },
 };
-use pathdiff::diff_paths;
 use swc_common::DUMMY_SP;
 use swc_ecma_ast::{
     Ident, ImportDecl, ImportSpecifier, ImportStarAsSpecifier, ModuleDecl, ModuleItem, Str,
@@ -104,7 +104,7 @@ impl<'a> Context<'a> {
     }
 
     pub fn fork(&self, name: String, syntax: &'a Syntax) -> Self {
-        eprintln!("forking {}", name);
+        dbg!("forking {}", &name);
         Self {
             options: self.options,
             name,
@@ -118,7 +118,7 @@ impl<'a> Context<'a> {
     }
 
     pub fn descend(&self, ns: String) -> Self {
-        eprintln!("descending {}", ns);
+        dbg!("descending {}", &ns);
         let mut namespace = self.namespace.clone();
         namespace.push(ns);
 
@@ -188,10 +188,11 @@ impl<'a> Context<'a> {
     }
 
     pub fn normalize_type_name(&mut self, name: &str) -> String {
+        let name = name.strip_prefix(".").unwrap_or(name);
         if self.options.namespaces {
             return name.to_string();
         }
-        return name.to_string().replace(".", "_")
+        return name.to_string().replace(".", "_");
     }
 
     pub fn normalize_name(&mut self, name: &str) -> String {
@@ -201,8 +202,7 @@ impl<'a> Context<'a> {
         let mut ns = vec![];
         ns.extend(self.namespace.clone());
         ns.push(name.to_string());
-        ns.join(".")
-        .replace(".", "_")
+        ns.join(".").replace(".", "_")
     }
 
     fn find_type_provider(&self, type_name: &String) -> Option<String> {
@@ -215,15 +215,15 @@ impl<'a> Context<'a> {
     pub fn lazy_type_ref(&mut self, type_name: &str) -> Ident {
         let provided_by = self.find_type_provider(&type_name.to_string());
         if let Some(provided_by) = provided_by {
-            eprintln!("{} {}", provided_by, self.name);
+            dbg!("{} {}", &provided_by, &self.name);
             if self.name == provided_by {
-        
                 return quote_ident!(type_name
                     .strip_prefix(".")
                     .expect("expected type to have leading dot")
-                .replace(".", "_"));
+                    .replace(".", "_"));
             } else {
-                let import_from = resolve_relative(provided_by.into(), PathBuf::from_str(&self.name).unwrap());
+                let import_from =
+                    resolve_relative(provided_by.into(), PathBuf::from_str(&self.name).unwrap());
                 let mut import_from = import_from
                     .to_str()
                     .expect("invalid path conversion")
@@ -232,7 +232,6 @@ impl<'a> Context<'a> {
                     .to_string();
 
                 import_from.push_str(self.options.import_suffix.as_str());
-
 
                 let import_id = self.get_import(import_from.as_str());
                 let type_name = self.normalize_type_name(
@@ -254,7 +253,7 @@ impl<'a> Context<'a> {
             fns.push('.');
         }
         fns.push_str(type_name);
-        eprintln!("{} provides {}", self.name, fns);
+        dbg!("{} provides {}", &self.name, &fns);
         self.type_reg.borrow_mut().insert(fns, self.name.clone());
     }
 }

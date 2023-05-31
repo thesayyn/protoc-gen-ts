@@ -44,13 +44,14 @@ impl FieldDescriptorProto {
 impl FieldDescriptorProto {
 
     fn is_packable(&self) -> bool {
-        return (self.is_string() || self.is_group() || self.is_message() || self.is_bytes()) && self.is_repeated()
+        return (!self.is_string() && !self.is_group() && !self.is_message() && !self.is_bytes()) && self.is_repeated()
     }
 
     pub fn is_packed(&self, ctx: &mut Context) -> bool {
         if !self.is_packable() {
             return false
         }
+        dbg!("is packed {:?}", ctx.syntax);
         if let Syntax::Proto2 = ctx.syntax {
             return self.options.packed()
         }

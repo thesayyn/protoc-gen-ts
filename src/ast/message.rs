@@ -56,7 +56,7 @@ impl DescriptorProto {
     ) -> ClassMember {
 
         let message_const_init = crate::new_expr!(Expr::Ident(quote_ident!(ctx.normalize_name(self.name()))));
-        let message_const = crate::const_decl!("message", Some(message_const_init));
+        let message_const = crate::const_decl!("message", message_const_init);
 
         let mut statements = vec![Stmt::Decl(message_const)];
 
