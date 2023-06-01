@@ -38,7 +38,7 @@ if (req.test_category != conformance_TestCategory.BINARY_TEST) {
       );
       res.protobuf_payload = msg.serialize();
     } catch (e) {
-      res.parse_error = e.toString();
+      res.parse_error = e.stack;
     }
   } else if (
     req.message_type == "protobuf_test_messages.proto2.TestAllTypesProto2"

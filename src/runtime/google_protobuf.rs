@@ -7,7 +7,8 @@ use std::vec;
 use swc_common::DUMMY_SP;
 use swc_ecma_ast::{
     ArrowExpr, AssignExpr, AssignOp, BinExpr, BinaryOp, BlockStmt, BlockStmtOrExpr, BreakStmt,
-    Expr, ExprStmt, IfStmt, Lit, Number, PatOrExpr, Stmt, SwitchCase, SwitchStmt, WhileStmt,
+    Expr, ExprStmt, ForHead, ForOfStmt, IfStmt, Lit, Number, PatOrExpr, Stmt, SwitchCase,
+    SwitchStmt, WhileStmt,
 };
 use swc_ecma_utils::quote_ident;
 
@@ -99,6 +100,20 @@ impl GooglePBRuntime {
                 self.deserialize_primitive_field_expr(ctx, field)
             };
 
+            let assign_or_push_expr = if field.is_repeated() && !field.is_packed(ctx) {
+                crate::call_expr!(
+                    crate::member_expr_bare!(crate::member_expr!("message", field.name()), "push"),
+                    vec![crate::expr_or_spread!(read_expr)]
+                )
+            } else {
+                Expr::Assign(AssignExpr {
+                    span: DUMMY_SP,
+                    op: AssignOp::Assign,
+                    left: PatOrExpr::Expr(Box::new(crate::member_expr!("message", field.name()))),
+                    right: Box::new(read_expr),
+                })
+            };
+
             cases.push(SwitchCase {
                 span: DUMMY_SP,
                 test: Some(Box::new(Expr::Lit(Lit::Num(Number {
@@ -109,15 +124,7 @@ impl GooglePBRuntime {
                 cons: vec![
                     Stmt::Expr(ExprStmt {
                         span: DUMMY_SP,
-                        expr: Box::new(Expr::Assign(AssignExpr {
-                            span: DUMMY_SP,
-                            op: AssignOp::Assign,
-                            left: PatOrExpr::Expr(Box::new(crate::member_expr!(
-                                "message",
-                                field.name()
-                            ))),
-                            right: Box::new(read_expr),
-                        })),
+                        expr: Box::new(assign_or_push_expr),
                     }),
                     Stmt::Break(BreakStmt {
                         label: None,
@@ -171,6 +178,12 @@ impl GooglePBRuntime {
         ctx: &mut Context,
         field: &descriptor::FieldDescriptorProto,
     ) -> Expr {
+        let mut member_expr = crate::member_expr!("this", field.name());
+
+        if field.is_repeated() && !field.is_packed(ctx) { 
+            member_expr = Expr::Ident(quote_ident!("value"))
+        }
+
         crate::call_expr!(
             crate::member_expr!("bw", self.rw_function_name("write", ctx, field)),
             vec![
@@ -179,7 +192,7 @@ impl GooglePBRuntime {
                     value: field.number() as f64,
                     raw: None
                 }))),
-                crate::expr_or_spread!(crate::member_expr!("this", field.name())),
+                crate::expr_or_spread!(member_expr),
             ]
         )
     }
@@ -189,6 +202,12 @@ impl GooglePBRuntime {
         ctx: &mut Context,
         field: &descriptor::FieldDescriptorProto,
     ) -> Expr {
+        let mut member_expr = crate::member_expr!("this", field.name());
+
+        if field.is_repeated() && !field.is_packed(ctx) { 
+            member_expr = Expr::Ident(quote_ident!("value"))
+        }
+
         let arrow_func = Expr::Arrow(ArrowExpr {
             is_async: false,
             is_generator: false,
@@ -202,7 +221,7 @@ impl GooglePBRuntime {
                     Stmt::Decl(crate::const_decl!(
                         "result",
                         crate::call_expr!(crate::member_expr_bare!(
-                            crate::member_expr!("this", field.name()),
+                            member_expr.clone(),
                             "serialize"
                         ))
                     )),
@@ -232,7 +251,7 @@ impl GooglePBRuntime {
                     value: field.number() as f64,
                     raw: None
                 }))),
-                crate::expr_or_spread!(crate::member_expr!("this", field.name())),
+                crate::expr_or_spread!(member_expr.clone()),
                 crate::expr_or_spread!(arrow_func),
             ]
         )
@@ -271,16 +290,26 @@ impl Runtime for GooglePBRuntime {
         let mut stmts = vec![bw_decl];
 
         for field in &descriptor.field {
-            // TODO:
-            // bw.writeMessage(6, this.jspb_encoding_options, () => {
-            //     const result = this.jspb_encoding_options.serialize();
-            //     bw.writeSerializedMessage(result, 0, result.length);
-            // });
+
             let write_expr = if field.is_message() {
                 self.serialize_message_field_expr(ctx, field)
             } else {
                 self.serialize_primitive_field_expr(ctx, field)
             };
+
+
+            let write_stmt = if field.is_repeated() && !field.is_packed(ctx) {
+                Stmt::ForOf(ForOfStmt {
+                    is_await: false,
+                    left: ForHead::VarDecl(Box::new(crate::const_decl_uinit!("value"))),
+                    right: Box::new(crate::member_expr!("this", field.name())),
+                    body: Box::new(   Stmt::Expr(ExprStmt { span: DUMMY_SP, expr: Box::new(write_expr) })),
+                    span: DUMMY_SP,
+                })
+            } else {
+                Stmt::Expr(ExprStmt { span: DUMMY_SP, expr: Box::new(write_expr) })
+            };
+            
             stmts.push(Stmt::If(IfStmt {
                 test: Box::new(Expr::Bin(BinExpr {
                     span: DUMMY_SP,
@@ -290,10 +319,7 @@ impl Runtime for GooglePBRuntime {
                 })),
                 cons: Box::new(Stmt::Block(BlockStmt {
                     span: DUMMY_SP,
-                    stmts: vec![Stmt::Expr(ExprStmt {
-                        span: DUMMY_SP,
-                        expr: Box::new(write_expr),
-                    })],
+                    stmts: vec![write_stmt],
                 })),
                 span: DUMMY_SP,
                 alt: None,

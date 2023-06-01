@@ -76,6 +76,26 @@ macro_rules! const_decl {
 }
 
 #[macro_export]
+macro_rules! const_decl_uinit {
+    ($name:expr) => {
+        swc_ecma_ast::VarDecl {
+            kind: swc_ecma_ast::VarDeclKind::Const,
+            declare: false,
+            decls: vec![swc_ecma_ast::VarDeclarator {
+                definite: false,
+                name: swc_ecma_ast::Pat::Ident(swc_ecma_ast::BindingIdent {
+                    id: swc_ecma_utils::quote_ident!($name),
+                    type_ann: None,
+                }),
+                init: None,
+                span: DUMMY_SP,
+            }],
+            span: DUMMY_SP,
+        }
+    };
+}
+
+#[macro_export]
 macro_rules! new_expr {
     ($callee:expr) => {
         $crate::new_expr!($callee, None)

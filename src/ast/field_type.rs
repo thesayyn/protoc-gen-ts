@@ -51,7 +51,6 @@ impl FieldDescriptorProto {
         if !self.is_packable() {
             return false
         }
-        dbg!("is packed {:?}", ctx.syntax);
         if let Syntax::Proto2 = ctx.syntax {
             return self.options.packed()
         }
