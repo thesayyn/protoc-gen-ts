@@ -95,6 +95,60 @@ macro_rules! const_decl_uinit {
     };
 }
 
+
+#[macro_export]
+macro_rules! let_decl_uinit {
+    ($name:expr) => {
+        swc_ecma_ast::VarDecl {
+            kind: swc_ecma_ast::VarDeclKind::Let,
+            declare: false,
+            decls: vec![swc_ecma_ast::VarDeclarator {
+                definite: false,
+                name: swc_ecma_ast::Pat::Ident(swc_ecma_ast::BindingIdent {
+                    id: swc_ecma_utils::quote_ident!($name),
+                    type_ann: None,
+                }),
+                init: None,
+                span: DUMMY_SP,
+            }],
+            span: DUMMY_SP,
+        }
+    };
+}
+
+
+#[macro_export]
+macro_rules! binding_ident {
+    ($name:literal) => {
+        swc_ecma_ast::Pat::Ident(BindingIdent {
+            id: swc_ecma_utils::quote_ident!($name),
+            type_ann: None,
+        })
+    };
+}
+
+#[macro_export]
+macro_rules! array_var_decl {
+    ($elems:expr) => {
+        VarDecl {
+            declare: false,
+            kind: swc_ecma_ast::VarDeclKind::Const,
+            span: DUMMY_SP,
+            decls: vec![swc_ecma_ast::VarDeclarator {
+                definite: false,
+                init: None,
+                name:swc_ecma_ast::Pat::Array(swc_ecma_ast::ArrayPat {
+                    optional: false,
+                    type_ann: None,
+                    elems: $elems,
+                    span: DUMMY_SP,
+                }),
+                span: DUMMY_SP,
+            }],
+        }
+    };
+}
+
 #[macro_export]
 macro_rules! new_expr {
     ($callee:expr) => {
@@ -124,9 +178,9 @@ macro_rules! return_stmt {
 #[macro_export]
 macro_rules! type_annotation {
     ($lit:literal) => {
-        Box::new(TsTypeAnn {
+        Box::new(swc_ecma_ast::TsTypeAnn {
             span: swc_common::DUMMY_SP,
-            type_ann: Box::new(swc_ecma_ast::TsType::TsTypeRef(TsTypeRef{
+            type_ann: Box::new(swc_ecma_ast::TsType::TsTypeRef(swc_ecma_ast::TsTypeRef{
                 span: swc_common::DUMMY_SP,
                 type_name: swc_ecma_ast::TsEntityName::Ident(quote_ident!($lit)),
                 type_params: None
@@ -146,5 +200,55 @@ macro_rules! expr_or_spread {
 }
 
 
+#[macro_export]
+macro_rules! arrow_func {
+    ($params:expr, $stmts:expr) => {
+        swc_ecma_ast::Expr::Arrow(swc_ecma_ast::ArrowExpr {
+            is_async: false,
+            is_generator: false,
+            params: vec![],
+            return_type: None,
+            span: DUMMY_SP,
+            type_params: None,
+            body: Box::new(swc_ecma_ast::BlockStmtOrExpr::BlockStmt(swc_ecma_ast::BlockStmt {
+                span: DUMMY_SP,
+                stmts: $stmts,
+            })),
+        })
+    };
+}
+
+#[macro_export]
+macro_rules! expr_stmt {
+    ($expr:expr) => {
+        swc_ecma_ast::Stmt::Expr(swc_ecma_ast::ExprStmt {
+            span: DUMMY_SP,
+            expr: Box::new($expr),
+        })
+    };
+}
+
+#[macro_export]
+macro_rules! assign_expr {
+    ($left:expr, $right:expr) => {
+        swc_ecma_ast::Expr::Assign(swc_ecma_ast::AssignExpr {
+            span: DUMMY_SP,
+            op: swc_ecma_ast::AssignOp::Assign,
+            left: $left,
+            right: Box::new($right),
+        })
+    };
+}
 
 
+
+#[macro_export]
+macro_rules! lit_num {
+    ($lit:expr) => {
+        swc_ecma_ast::Lit::Num(swc_ecma_ast::Number {
+            span: DUMMY_SP,
+            value: $lit as f64,
+            raw: None
+        })
+    };
+}

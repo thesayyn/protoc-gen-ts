@@ -47,7 +47,7 @@ impl FieldDescriptorProto {
         return (!self.is_string() && !self.is_group() && !self.is_message() && !self.is_bytes()) && self.is_repeated()
     }
 
-    pub fn is_packed(&self, ctx: &mut Context) -> bool {
+    pub fn is_packed(&self, ctx: &Context) -> bool {
         if !self.is_packable() {
             return false
         }
@@ -103,9 +103,9 @@ impl FieldDescriptorProto {
             || self.type_() == Type::TYPE_SFIXED64
     }
 
-    // TODO
-    pub fn is_map(&self) -> bool {
-        todo!("is_map")
+    pub fn is_map(&self, ctx: &Context) -> bool {
+        let r#type = ctx.get_map_type(self.type_name());
+        return r#type.is_some()
     }
 
     // Label

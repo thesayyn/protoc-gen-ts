@@ -41,6 +41,10 @@ impl Mapper for DescriptorProto {
     fn map(&self, ctx: &mut Context) {
         ctx.register_type_name(self.name());
 
+        if self.options.map_entry() {
+            ctx.register_map_type(&self);
+        }
+
         if self.nested_type.len() == 0 && self.enum_type.len() == 0 {
             return;
         }

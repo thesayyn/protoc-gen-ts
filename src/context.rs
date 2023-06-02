@@ -1,4 +1,4 @@
-use crate::{ast, options::Options};
+use crate::{ast, options::Options, descriptor};
 use pathdiff::diff_paths;
 use std::{
     cell::RefCell,
@@ -72,6 +72,7 @@ pub struct Context<'a> {
     imports: Rc<RefCell<Vec<ImportDecl>>>,
     import_identifier_map: Rc<RefCell<HashMap<String, u64>>>,
     type_reg: Rc<RefCell<HashMap<String, String>>>,
+    map_type_reg: Rc<RefCell<HashMap<String, descriptor::DescriptorProto>>>,
 }
 
 impl<'a> Clone for Context<'a> {
@@ -85,6 +86,7 @@ impl<'a> Clone for Context<'a> {
             imports: Rc::new(RefCell::new(Vec::new())),
             import_identifier_map: Rc::new(RefCell::new(HashMap::new())),
             type_reg: Rc::clone(&self.type_reg),
+            map_type_reg: Rc::clone(&self.map_type_reg),
         }
     }
 }
@@ -100,21 +102,16 @@ impl<'a> Context<'a> {
             imports: Rc::new(RefCell::new(Vec::new())),
             import_identifier_map: Rc::new(RefCell::new(HashMap::new())),
             type_reg: Rc::new(RefCell::new(HashMap::new())),
+            map_type_reg: Rc::new(RefCell::new(HashMap::new())),
         }
     }
 
     pub fn fork(&self, name: String, syntax: &'a Syntax) -> Self {
         dbg!("forking {}", &name);
-        Self {
-            options: self.options,
-            name,
-            namespace: self.namespace.clone(),
-            syntax,
-            counter: self.counter.clone(),
-            imports: Rc::new(RefCell::new(Vec::new())),
-            import_identifier_map: Rc::new(RefCell::new(HashMap::new())),
-            type_reg: Rc::clone(&self.type_reg),
-        }
+        let mut copy = self.clone();
+        copy.name = name;
+        copy.syntax = syntax;
+        copy
     }
 
     pub fn descend(&self, ns: String) -> Self {
@@ -124,13 +121,14 @@ impl<'a> Context<'a> {
 
         Self {
             options: self.options,
-            name: self.name.clone(),
-            namespace: namespace,
             syntax: self.syntax,
+            namespace,
+            name: self.name.clone(),
             counter: self.counter.clone(),
             import_identifier_map: self.import_identifier_map.clone(),
             imports: self.imports.clone(),
             type_reg: self.type_reg.clone(),
+            map_type_reg: self.map_type_reg.clone(),
         }
     }
 
@@ -140,9 +138,9 @@ impl<'a> Context<'a> {
             imports.push(ModuleItem::ModuleDecl(ModuleDecl::Import(import)))
         }
         self.imports.borrow_mut().clear();
-
         imports
     }
+
     pub fn get_import(&mut self, source: &str) -> Ident {
         let import_identifier_map = self.import_identifier_map.borrow();
         let cached_counter = import_identifier_map.get(&String::from(source));
@@ -246,14 +244,34 @@ impl<'a> Context<'a> {
         }
     }
 
-    pub fn register_type_name(&mut self, type_name: &str) {
+    fn calculate_type_name(&self, type_name: &str) -> String {
         let mut fns = String::from(".");
         if self.namespace.len() > 0 {
             fns.push_str(self.namespace.join(".").as_str());
             fns.push('.');
         }
         fns.push_str(type_name);
+        fns
+    }
+
+    pub fn register_type_name(&mut self, type_name: &str) {
+        let fns = self.calculate_type_name(type_name);
         dbg!("{} provides {}", &self.name, &fns);
         self.type_reg.borrow_mut().insert(fns, self.name.clone());
+    }
+
+    pub fn register_map_type(&mut self, descriptor: &descriptor::DescriptorProto) {
+        let fns = self.calculate_type_name(descriptor.name());
+        dbg!("{} provides {}", &self.name, &fns);
+        self.map_type_reg.borrow_mut().insert(fns, descriptor.clone());
+    }
+
+    pub fn get_map_type(&self, type_name: &str) -> Option<descriptor::DescriptorProto> {
+        let map_type_reg = self.map_type_reg.borrow();
+        let res = map_type_reg.get(type_name);
+        if let Some(descriptor) = res {
+            return Some(descriptor.clone());
+        }
+        None
     }
 }

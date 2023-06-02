@@ -1,6 +1,6 @@
 use std::vec;
 
-use crate::{context::Context};
+use crate::context::Context;
 use crate::descriptor::DescriptorProto;
 use crate::print::Print;
 use crate::runtime::Runtime;
@@ -8,7 +8,7 @@ use crate::runtime::Runtime;
 use swc_common::DUMMY_SP;
 use swc_ecma_ast::{
     BlockStmt, Class, ClassDecl, ClassMember, ClassMethod, Decl, ExportDecl, Expr, Function,
-    MethodKind, ModuleDecl, ModuleItem, Param, PropName, Stmt, TsTypeAnn, TsTypeRef,
+    MethodKind, ModuleDecl, ModuleItem, Param, PropName, Stmt
 };
 use swc_ecma_utils::quote_ident;
 
@@ -101,6 +101,11 @@ where
     T: Runtime + Sized,
 {
     fn print(&self, ctx: &mut Context, runtime: &mut T) -> Vec<ModuleItem> {
+
+        if self.options.map_entry() {
+            return vec![]
+        }
+
         let mut members: Vec<ClassMember> = Vec::new();
 
         for member in &self.field {
