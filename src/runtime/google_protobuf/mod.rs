@@ -3,6 +3,7 @@ use crate::{
     descriptor::{self, field_descriptor_proto::Type, FieldDescriptorProto},
     runtime::Runtime
 };
+use crate::ast::field;
 use swc_ecma_ast::Stmt;
 
 pub struct GooglePBRuntime {}
@@ -61,8 +62,8 @@ impl GooglePBRuntime {
             Type::TYPE_SFIXED32 => "_placeholder_Sfixed32",
             Type::TYPE_SFIXED64 => "_placeholder_Sfixed64",
 
-            Type::TYPE_GROUP => "todo_group",
-            Type::TYPE_MESSAGE => "todo_group",
+            Type::TYPE_GROUP => "skipField",
+            Type::TYPE_MESSAGE => "skipField",
             // _ => unimplemented!("rw_function_name {:?}", field.type_()),
         }
         .replace("_placeholder_", placeholder.as_str())
@@ -71,4 +72,3 @@ impl GooglePBRuntime {
 
 pub mod deserialize;
 pub mod serialize;
-pub mod field;

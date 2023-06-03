@@ -52,7 +52,7 @@ impl FieldDescriptorProto {
             return false
         }
         if let Syntax::Proto2 = ctx.syntax {
-            return self.options.packed()
+            return self.options.has_packed() && self.options.packed()
         }
         !self.options.has_packed() || self.options.packed()
     }
@@ -116,18 +116,11 @@ impl FieldDescriptorProto {
 
     #[inline]
     pub fn is_optional(&self) -> bool {
-        // TODO: proto3 optional
-        self.label() == Label::LABEL_REPEATED
-    }
-
-    // TODO: remove
-    #[inline]
-    pub fn is_oneof(&self) -> bool {
-        self.has_oneof_index()
+        self.label() == Label::LABEL_OPTIONAL
     }
 
     #[inline]
-    pub fn has_jstype_string(&self) -> bool {
+    pub fn is_jstype_string(&self) -> bool {
         self.options.jstype() == JSType::JS_STRING
     }
 }

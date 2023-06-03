@@ -1,13 +1,13 @@
 use super::{
-    field::{self, FieldAccessorFn},
     GooglePBRuntime,
 };
+use crate::ast::field;
 use crate::{context::Context, descriptor};
 
 use std::vec;
 use swc_common::DUMMY_SP;
 use swc_ecma_ast::{
-    AssignExpr, AssignOp, BinExpr, BinaryOp, BlockStmt, BreakStmt, Decl, Expr, ExprStmt, Lit,
+    BinExpr, BinaryOp, BlockStmt, BreakStmt, Decl, Expr, ExprStmt, Lit,
     Number, PatOrExpr, Stmt, SwitchCase, SwitchStmt, WhileStmt,
 };
 use swc_ecma_utils::quote_ident;
@@ -69,7 +69,7 @@ impl GooglePBRuntime {
         &self,
         ctx: &mut Context,
         descriptor: &descriptor::DescriptorProto,
-        accessor: FieldAccessorFn,
+        accessor: field::FieldAccessorFn,
     ) -> Stmt {
         let mut cases: Vec<SwitchCase> = vec![];
         for field in &descriptor.field {

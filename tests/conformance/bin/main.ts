@@ -50,7 +50,7 @@ while (true) {
           );
         res.protobuf_payload = msg.serialize();
       } catch (e) {
-        res.parse_error = e.toString();
+        res.parse_error = e.stack;
       }
     } else {
       throw new Error(`not implemented ${req.message_type}`);

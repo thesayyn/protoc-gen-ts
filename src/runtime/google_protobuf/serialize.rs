@@ -1,7 +1,5 @@
-use super::{
-    field::{self, FieldAccessorFn},
-    GooglePBRuntime,
-};
+use super::GooglePBRuntime;
+use crate::ast::field;
 use crate::{context::Context, descriptor};
 
 use std::vec;
@@ -17,7 +15,7 @@ impl GooglePBRuntime {
         &self,
         ctx: &mut Context,
         field: &descriptor::FieldDescriptorProto,
-        field_accessor: FieldAccessorFn,
+        field_accessor: field::FieldAccessorFn,
     ) -> Expr {
         crate::call_expr!(
             crate::member_expr!("bw", self.rw_function_name("write", ctx, field)),
@@ -35,7 +33,7 @@ impl GooglePBRuntime {
     pub fn serialize_message_field_expr(
         &self,
         field: &descriptor::FieldDescriptorProto,
-        field_accessor: FieldAccessorFn,
+        field_accessor: field::FieldAccessorFn,
     ) -> Expr {
         let arrow_func = crate::arrow_func!(
             vec![],
@@ -85,7 +83,7 @@ impl GooglePBRuntime {
         &self,
         ctx: &mut Context,
         descriptor: &descriptor::DescriptorProto,
-        accessor: FieldAccessorFn,
+        accessor: field::FieldAccessorFn,
         create_bw: bool,
     ) -> Vec<Stmt> {
         let mut stmts = vec![];
@@ -163,9 +161,14 @@ impl GooglePBRuntime {
             stmts.push(Stmt::If(IfStmt {
                 test: Box::new(Expr::Bin(BinExpr {
                     span: DUMMY_SP,
-                    op: BinaryOp::NotEqEq,
-                    left: Box::new(accessor(field.name())),
-                    right: Box::new(Expr::Ident(quote_ident!("undefined"))),
+                    op: BinaryOp::LogicalAnd,
+                    left: Box::new(Expr::Bin(BinExpr {
+                        span: DUMMY_SP,
+                        op: BinaryOp::NotEqEq,
+                        left: Box::new(accessor(field.name())),
+                        right: Box::new(Expr::Ident(quote_ident!("undefined"))),
+                    })),
+                    right: Box::new(field.default_value_bin_expr(ctx, accessor)),
                 })),
                 cons: Box::new(Stmt::Block(BlockStmt {
                     span: DUMMY_SP,
