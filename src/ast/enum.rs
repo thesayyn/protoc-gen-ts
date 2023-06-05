@@ -15,11 +15,7 @@ where
             members.push(TsEnumMember {
                 span: DUMMY_SP,
                 id: TsEnumMemberId::Ident(quote_ident!(member.name())),
-                init: Some(Box::new(Expr::Lit(Lit::Num(Number {
-                    span: DUMMY_SP,
-                    value: member.number() as f64,
-                    raw: None,
-                })))),
+                init: Some(Box::new(crate::lit_num!(member.number()).into())),
             })
         }
         let r#enum = Decl::TsEnum(Box::new(

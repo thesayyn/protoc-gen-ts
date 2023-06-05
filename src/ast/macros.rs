@@ -95,24 +95,29 @@ macro_rules! const_decl_uinit {
     };
 }
 
-
 #[macro_export]
-macro_rules! let_decl_uinit {
+macro_rules! let_decl {
     ($name:expr) => {
-        swc_ecma_ast::VarDecl {
+        crate::let_decl!($name, None, None)
+    };
+    ($name:expr, $type:expr) => {
+        crate::let_decl!($name, $type, None)
+    };
+    ($name:expr, $type:expr, $init:expr) => {
+        swc_ecma_ast::Decl::Var(Box::new(swc_ecma_ast::VarDecl {
             kind: swc_ecma_ast::VarDeclKind::Let,
             declare: false,
             decls: vec![swc_ecma_ast::VarDeclarator {
                 definite: false,
                 name: swc_ecma_ast::Pat::Ident(swc_ecma_ast::BindingIdent {
                     id: swc_ecma_utils::quote_ident!($name),
-                    type_ann: None,
+                    type_ann: $type,
                 }),
-                init: None,
+                init: $init,
                 span: DUMMY_SP,
             }],
             span: DUMMY_SP,
-        }
+        }))
     };
 }
 
@@ -191,6 +196,12 @@ macro_rules! type_annotation {
 
 #[macro_export]
 macro_rules! expr_or_spread {
+    ($expr:expr, $spread:literal) => {
+        swc_ecma_ast::ExprOrSpread {
+            expr: Box::new($expr),
+            spread: Some(DUMMY_SP),
+        }
+    };
     ($expr:expr) => {
         swc_ecma_ast::ExprOrSpread {
             expr: Box::new($expr),
@@ -249,6 +260,39 @@ macro_rules! lit_num {
             span: DUMMY_SP,
             value: $lit as f64,
             raw: None
+        })
+    };
+}
+
+#[macro_export]
+macro_rules! bin_expr {
+    ($left:expr, $right:expr) => {
+        crate::bin_expr!($left, $right, swc_ecma_ast::BinaryOp::LogicalAnd)
+    };
+    ($left:expr, $right:expr, $op:expr) => {
+        swc_ecma_ast::Expr::Bin(swc_ecma_ast::BinExpr {
+            span: DUMMY_SP,
+            op: $op,
+            left: Box::new($left),
+            right: Box::new($right),
+        })
+    };
+}
+
+#[macro_export]
+macro_rules! if_stmt {
+    ($test:expr, $consequence:expr) => {
+        crate::if_stmt!($test, $consequence, None, true)
+    };
+    ($test:expr, $consequence:expr, $alt:expr) => {
+        crate::if_stmt!($test, $consequence, Some(Box::new($alt)), true)
+    };
+    ($test:expr, $consequence:expr, $alt:expr, $_:literal) => {
+        swc_ecma_ast::Stmt::If(swc_ecma_ast::IfStmt {
+            test: Box::new($test),
+            cons: Box::new($consequence),
+            span: DUMMY_SP,
+            alt: $alt,
         })
     };
 }

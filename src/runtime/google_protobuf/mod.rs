@@ -23,7 +23,7 @@ impl Runtime for GooglePBRuntime {
         ctx: &mut Context,
         descriptor: &descriptor::DescriptorProto,
     ) -> Vec<Stmt> {
-        self.serialize_setup_inner(ctx, descriptor, field::this_field_member, true)
+        self.serialize_setup_inner(ctx, descriptor, field::this_field_member, true, true)
     }
 }
 
@@ -35,11 +35,13 @@ impl GooglePBRuntime {
     fn rw_function_name(
         &self,
         rw: &str,
+        force_unpacked: bool,
         ctx: &mut Context,
         field: &FieldDescriptorProto,
+
     ) -> String {
         let mut placeholder = format!("{}", rw);
-        if field.is_packed(ctx) {
+        if field.is_packed(ctx) && !force_unpacked {
             placeholder = format!("{}Packed", rw);
         }
         match field.type_() {

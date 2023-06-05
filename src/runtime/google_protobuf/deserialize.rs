@@ -1,14 +1,12 @@
-use super::{
-    GooglePBRuntime,
-};
+use super::GooglePBRuntime;
 use crate::ast::field;
 use crate::{context::Context, descriptor};
 
 use std::vec;
 use swc_common::DUMMY_SP;
 use swc_ecma_ast::{
-    BinExpr, BinaryOp, BlockStmt, BreakStmt, Decl, Expr, ExprStmt, Lit,
-    Number, PatOrExpr, Stmt, SwitchCase, SwitchStmt, WhileStmt,
+    ArrayLit, BinaryOp, BlockStmt, BreakStmt, CondExpr, Expr, Lit, Number, PatOrExpr, Stmt,
+    SwitchCase, SwitchStmt, ThrowStmt, TsNonNullExpr, WhileStmt,
 };
 use swc_ecma_utils::quote_ident;
 
@@ -29,7 +27,7 @@ impl GooglePBRuntime {
                     "bytes"
                 )))])
             );
-            let br_decl = Stmt::Decl(crate::const_decl!("br", br_decl_init));
+            let br_decl = Stmt::Decl(crate::let_decl!("br", None, Some(Box::new(br_decl_init))));
             stmts.push(br_decl)
         }
 
@@ -58,11 +56,25 @@ impl GooglePBRuntime {
         &self,
         ctx: &mut Context,
         field: &descriptor::FieldDescriptorProto,
+        force_unpacked: bool,
     ) -> Expr {
         crate::call_expr!(crate::member_expr!(
             "br",
-            self.rw_function_name("read", ctx, field)
+            self.rw_function_name("read", force_unpacked, ctx, field)
         ))
+    }
+
+    fn deserialize_field_expr(
+        &self,
+        ctx: &mut Context,
+        field: &descriptor::FieldDescriptorProto,
+        force_unpacked: bool,
+    ) -> Expr {
+        if field.is_message() {
+            self.deserialize_message_field_expr(ctx, field)
+        } else {
+            self.deserialize_primitive_field_expr(ctx, field, force_unpacked)
+        }
     }
 
     pub fn deserialize_stmt(
@@ -73,37 +85,63 @@ impl GooglePBRuntime {
     ) -> Stmt {
         let mut cases: Vec<SwitchCase> = vec![];
         for field in &descriptor.field {
-            let read_expr = if field.is_message() {
-                self.deserialize_message_field_expr(ctx, field)
-            } else {
-                self.deserialize_primitive_field_expr(ctx, field)
-            };
-
-            let read_stmt = if field.is_repeated() && field.is_map(ctx) {
+            let read_expr = self.deserialize_field_expr(ctx, field, false);
+            let read_stmt = if field.is_map(ctx) {
+                let import = ctx.get_import(ctx.options.runtime_package.as_str());
                 let descriptor = ctx
                     .get_map_type(field.type_name())
                     .expect(format!("can not find the map type {}", field.type_name()).as_str());
-
-                Stmt::Block(BlockStmt {
-                    span: DUMMY_SP,
-                    stmts: vec![
-                        Stmt::Decl(Decl::Var(Box::new(crate::let_decl_uinit!("key")))),
-                        Stmt::Decl(Decl::Var(Box::new(crate::let_decl_uinit!("value")))),
-                        self.deserialize_stmt(ctx, &descriptor, field::bare_field_member),
-                        crate::expr_stmt!(crate::call_expr!(
-                            crate::member_expr_bare!(accessor(field.name()), "set"),
+                let key_field = &descriptor.field[0];
+                let value_field = &descriptor.field[1];
+                crate::expr_stmt!(crate::call_expr!(
+                    crate::member_expr!("br", "readMessage"),
+                    vec![
+                        crate::expr_or_spread!(quote_ident!("undefined").into()),
+                        crate::expr_or_spread!(crate::arrow_func!(
+                            vec![],
                             vec![
-                                crate::expr_or_spread!(Expr::Ident(quote_ident!("key"))),
-                                crate::expr_or_spread!(Expr::Ident(quote_ident!("value")))
+                                Stmt::Decl(crate::let_decl!("key", key_field.type_annotation(ctx))),
+                                Stmt::Decl(crate::let_decl!(
+                                    "value",
+                                    value_field.type_annotation(ctx)
+                                )),
+                                self.deserialize_stmt(ctx, &descriptor, field::bare_field_member),
+                                crate::expr_stmt!(crate::call_expr!(
+                                    crate::member_expr_bare!(accessor(field.name()), "set"),
+                                    vec![
+                                        crate::expr_or_spread!(Expr::TsNonNull(TsNonNullExpr {
+                                            expr: Box::new(Expr::Ident(quote_ident!("key"))),
+                                            span: DUMMY_SP
+                                        })),
+                                        crate::expr_or_spread!(Expr::TsNonNull(TsNonNullExpr {
+                                            expr: Box::new(Expr::Ident(quote_ident!("value"))),
+                                            span: DUMMY_SP
+                                        })),
+                                    ]
+                                ))
                             ]
-                        )),
-                    ],
-                })
+                        ))
+                    ]
+                ))
             } else if field.is_repeated() && !field.is_packed(ctx) {
                 crate::expr_stmt!(crate::call_expr!(
                     crate::member_expr_bare!(accessor(field.name()), "push"),
                     vec![crate::expr_or_spread!(read_expr)]
                 ))
+            } else if field.is_packed(ctx) {
+                crate::if_stmt!(
+                    crate::call_expr!(crate::member_expr!("br", "isDelimited")),
+                    crate::expr_stmt!(crate::call_expr!(
+                        crate::member_expr_bare!(accessor(field.name()), "push"),
+                        vec![crate::expr_or_spread!(read_expr, true)]
+                    )),
+                    crate::expr_stmt!(crate::call_expr!(
+                        crate::member_expr_bare!(accessor(field.name()), "push"),
+                        vec![crate::expr_or_spread!(
+                            self.deserialize_field_expr(ctx, field, true)
+                        )]
+                    ))
+                )
             } else {
                 crate::expr_stmt!(crate::assign_expr!(
                     PatOrExpr::Expr(Box::new(accessor(field.name()))),
@@ -130,10 +168,10 @@ impl GooglePBRuntime {
         cases.push(SwitchCase {
             span: DUMMY_SP,
             test: None,
-            cons: vec![Stmt::Expr(ExprStmt {
-                span: DUMMY_SP,
-                expr: Box::new(crate::call_expr!(crate::member_expr!("br", "skipField"))),
-            })],
+            cons: vec![crate::expr_stmt!(crate::call_expr!(crate::member_expr!(
+                "br",
+                "skipField"
+            )))],
         });
 
         let switch_stmt = Stmt::Switch(SwitchStmt {
@@ -145,15 +183,11 @@ impl GooglePBRuntime {
             cases,
         });
 
-        let while_stmt_test_expr = Expr::Bin(BinExpr {
-            op: BinaryOp::LogicalAnd,
-            left: Box::new(crate::call_expr!(crate::member_expr!("br", "nextField"))),
-            right: Box::new(crate::unary_expr!(crate::call_expr!(crate::member_expr!(
-                "br",
-                "isEndGroup"
-            )))),
-            span: DUMMY_SP,
-        });
+        let while_stmt_test_expr = crate::bin_expr!(
+            crate::call_expr!(crate::member_expr!("br", "nextField")),
+            crate::unary_expr!(crate::call_expr!(crate::member_expr!("br", "isEndGroup"))),
+            BinaryOp::LogicalAnd
+        );
         Stmt::While(WhileStmt {
             span: DUMMY_SP,
             test: Box::new(while_stmt_test_expr),

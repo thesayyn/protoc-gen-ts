@@ -104,6 +104,9 @@ impl FieldDescriptorProto {
     }
 
     pub fn is_map(&self, ctx: &Context) -> bool {
+        if !self.is_repeated() {
+            return false;
+        }
         let r#type = ctx.get_map_type(self.type_name());
         return r#type.is_some()
     }
@@ -116,7 +119,7 @@ impl FieldDescriptorProto {
 
     #[inline]
     pub fn is_optional(&self) -> bool {
-        self.label() == Label::LABEL_OPTIONAL
+        self.label() == Label::LABEL_OPTIONAL || self.proto3_optional()
     }
 
     #[inline]

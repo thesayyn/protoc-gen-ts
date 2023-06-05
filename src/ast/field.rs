@@ -1,8 +1,12 @@
-use crate::{context::Context, descriptor::FieldDescriptorProto, runtime::Runtime};
+use crate::{
+    context::{Context, Syntax},
+    descriptor::FieldDescriptorProto,
+    runtime::Runtime,
+};
 use swc_common::DUMMY_SP;
 use swc_ecma_ast::{
-    ArrayLit, Bool, ClassMember, ClassProp, Expr, Lit, Number, PropName, TsArrayType, TsEntityName,
-    TsKeywordType, TsType, TsTypeAnn, TsTypeParamInstantiation, TsTypeRef, BinExpr, BinaryOp,
+    ArrayLit, BinaryOp, Bool, ClassMember, ClassProp, Expr, Lit, PropName, TsArrayType,
+    TsEntityName, TsKeywordType, TsType, TsTypeAnn, TsTypeParamInstantiation, TsTypeRef,
 };
 use swc_ecma_utils::{quote_ident, quote_str};
 
@@ -33,70 +37,103 @@ impl FieldDescriptorProto {
 }
 
 impl FieldDescriptorProto {
+    pub fn default_value_bin_expr(&self, ctx: &mut Context, accessor: FieldAccessorFn) -> Expr {
+        let neq_undefined_check = crate::bin_expr!(
+            accessor(self.name()),
+            quote_ident!("undefined").into(),
+            BinaryOp::NotEqEq
+        );
 
-    pub fn default_value_bin_expr(&self, ctx: &mut Context,  accessor: FieldAccessorFn,) -> Expr {
-        if self.is_bytes() || self.is_repeated() {
-            Expr::Bin(BinExpr {
-                span: DUMMY_SP,
-                op: BinaryOp::NotEqEq,
-                left: Box::new(crate::member_expr_bare!(accessor(self.name()), "length")),
-                right: Box::new(Expr::Lit(crate::lit_num!(0))),
-            })
+        let presence_check = if self.is_map(ctx) {
+            crate::bin_expr!(
+                neq_undefined_check,
+                crate::bin_expr!(
+                    crate::member_expr_bare!(accessor(self.name()), "size"),
+                    Expr::Lit(crate::lit_num!(0)),
+                    BinaryOp::NotEqEq
+                )
+            )
+        } else if self.is_bytes() || self.is_repeated() {
+            crate::bin_expr!(
+                neq_undefined_check,
+                crate::bin_expr!(
+                    crate::member_expr_bare!(accessor(self.name()), "length"),
+                    Expr::Lit(crate::lit_num!(0)),
+                    BinaryOp::NotEqEq
+                )
+            )
         } else {
-            Expr::Bin(BinExpr {
-                span: DUMMY_SP,
-                op: BinaryOp::NotEqEq,
-                left: Box::new(accessor(self.name())),
-                right: Box::new(self.default_value_expr(ctx)),
-            })
-        }
+            neq_undefined_check
+        };
 
+        if ctx.syntax == &Syntax::Proto3 {
+            let default_expr = self.proto3_default();
+            if let Some(default_expr) = default_expr {
+                crate::bin_expr!(
+                    presence_check,
+                    crate::bin_expr!(accessor(self.name()), default_expr, BinaryOp::NotEqEq)
+                )
+            } else {
+                presence_check
+            }
+        } else {
+            presence_check
+        }
     }
 
-    fn default_value_expr(&self, ctx: &mut Context) -> Expr {
-        // TODO: proto3 defaults
-        // TODO: proto2 defaults
+    pub fn proto3_default(&self) -> Option<Expr> {
+        if self.is_repeated() {
+            return None;
+        }
+        if self.is_string() {
+            Some(Expr::Lit(Lit::Str(quote_str!(""))))
+        } else if self.is_number() {
+            Some(Expr::Lit(crate::lit_num!(0)))
+        } else if self.is_booelan() {
+            Some(Expr::Lit(Lit::Bool(false.into())))
+        } else {
+            None
+        }
+    }
 
-        if self.is_repeated() && self.is_map(ctx) {
+    pub fn default_value_expr(&self, ctx: &mut Context) -> Expr {
+        if self.is_map(ctx) {
             crate::new_expr!(Expr::Ident(quote_ident!("Map")))
         } else if self.is_repeated() {
             Expr::Array(ArrayLit {
                 elems: vec![],
                 span: DUMMY_SP,
             })
-        } else if self.is_string() {
-            Expr::Lit(Lit::Str(quote_str!(
-                self.default_value()
-            )))
-        } else if self.is_number() {
-            Expr::Lit(crate::lit_num!(self
-                .default_value
-                .clone()
-                .unwrap_or("0".to_string())
-                .parse::<f64>()
-                .expect("can not parse the default")))
-        } else if self.is_booelan() {
-            Expr::Lit(Lit::Bool(Bool {
-                value: self
-                .default_value
-                .clone()
-                .unwrap_or("false".to_string())
-                .parse()
-                .expect("can not parse the default"),
-                span: DUMMY_SP,
-            }))
         } else if self.is_bytes() {
-            crate::new_expr!(Expr::Ident(quote_ident!(
-                "Uint8Array"
-            )))
+            crate::new_expr!(Expr::Ident(quote_ident!("Uint8Array")))
+
+        // } else if self.is_string() {
+        //     Expr::Lit(Lit::Str(quote_str!(
+        //         self.default_value()
+        //     )))
+        // } else if self.is_number() {
+        //     Expr::Lit(crate::lit_num!(self
+        //         .default_value
+        //         .clone()
+        //         .unwrap_or("0".to_string())
+        //         .parse::<f64>()
+        //         .expect("can not parse the default")))
+        // } else if self.is_booelan() {
+        //     Expr::Lit(Lit::Bool(Bool {
+        //         value: self
+        //         .default_value
+        //         .clone()
+        //         .unwrap_or("false".to_string())
+        //         .parse()
+        //         .expect("can not parse the default"),
+        //         span: DUMMY_SP,
+        //     }))
         } else {
-            Expr::Ident(quote_ident!(
-                "undefined"
-            ))
+            Expr::Ident(quote_ident!("undefined"))
         }
     }
 
-    fn type_annotation(&self, ctx: &mut Context) -> Option<Box<TsTypeAnn>> {
+    pub fn type_annotation(&self, ctx: &mut Context) -> Option<Box<TsTypeAnn>> {
         let mut ts_type: Option<TsType> = None;
 
         if let Some(typref) = self.type_ref(ctx) {
@@ -145,9 +182,11 @@ impl FieldDescriptorProto {
         None
     }
     pub fn print_prop<T: Runtime>(&self, ctx: &mut Context, _runtime: &mut T) -> ClassMember {
+        let mut ident = quote_ident!(self.name());
+        ident.optional = self.is_optional();
         ClassMember::ClassProp(ClassProp {
             span: DUMMY_SP,
-            key: PropName::Ident(quote_ident!(self.name())),
+            key: PropName::Ident(ident),
             value: Some(Box::new(self.default_value_expr(ctx))),
             type_ann: self.type_annotation(ctx),
             declare: false,
@@ -155,7 +194,7 @@ impl FieldDescriptorProto {
             decorators: vec![],
             accessibility: None,
             is_abstract: false,
-            is_optional: self.is_optional(),
+            is_optional: false,
             is_override: false,
             readonly: false,
             definite: false,
