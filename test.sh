@@ -12,7 +12,8 @@ conformance_test() {
     rm -f $bin
     echo "# Creating a conformance binary executor"
     deno compile --allow-read --allow-write --allow-env --no-check --output $bin tests/conformance/bin/main.ts
-    /Users/thesayyn/Documents/thesayyn/protobuf/bazel-bin/conformance/conformance_test_runner $bin
+    # /Users/thesayyn/Documents/thesayyn/protobuf/bazel-bin/conformance/conformance_test_runner $bin
+    tests/conformance/bin/conformance_test_runner $bin
 }
 
 
