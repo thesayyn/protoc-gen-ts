@@ -98,12 +98,15 @@ macro_rules! const_decl_uinit {
 #[macro_export]
 macro_rules! let_decl {
     ($name:expr) => {
-        crate::let_decl!($name, None, None)
+        crate::let_decl!($name, None, None,)
     };
     ($name:expr, $type:expr) => {
-        crate::let_decl!($name, $type, None)
+        crate::let_decl!($name, $type, None,)
     };
     ($name:expr, $type:expr, $init:expr) => {
+        crate::let_decl!($name, $type, Some(Box::new($init)),)
+    };
+    ($name:expr, $type:expr, $init:expr,) => {
         swc_ecma_ast::Decl::Var(Box::new(swc_ecma_ast::VarDecl {
             kind: swc_ecma_ast::VarDeclKind::Let,
             declare: false,

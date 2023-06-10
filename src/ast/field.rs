@@ -96,7 +96,8 @@ impl FieldDescriptorProto {
         }
     }
 
-    pub fn default_value_expr(&self, ctx: &mut Context) -> Expr {
+    pub fn default_value_expr(&self, ctx: &mut Context, primitives: bool) -> Expr {
+        // TODO: primitives is not a good name. it should be something about the field.
         if self.is_map(ctx) {
             crate::new_expr!(Expr::Ident(quote_ident!("Map")))
         } else if self.is_repeated() {
@@ -104,30 +105,32 @@ impl FieldDescriptorProto {
                 elems: vec![],
                 span: DUMMY_SP,
             })
-        } else if self.is_bytes() {
+        } else if self.is_message() && primitives {
+            crate::new_expr!(Expr::Ident(ctx.lazy_type_ref(self.type_name())))
+        } else if self.is_bytes() && primitives {
             crate::new_expr!(Expr::Ident(quote_ident!("Uint8Array")))
-
-        // } else if self.is_string() {
-        //     Expr::Lit(Lit::Str(quote_str!(
-        //         self.default_value()
-        //     )))
-        // } else if self.is_number() {
-        //     Expr::Lit(crate::lit_num!(self
-        //         .default_value
-        //         .clone()
-        //         .unwrap_or("0".to_string())
-        //         .parse::<f64>()
-        //         .expect("can not parse the default")))
-        // } else if self.is_booelan() {
-        //     Expr::Lit(Lit::Bool(Bool {
-        //         value: self
-        //         .default_value
-        //         .clone()
-        //         .unwrap_or("false".to_string())
-        //         .parse()
-        //         .expect("can not parse the default"),
-        //         span: DUMMY_SP,
-        //     }))
+        } else if self.is_string() && primitives {
+            Expr::Lit(quote_str!(self.default_value()).into())
+        } else if self.is_number() && primitives {
+            Expr::Lit(crate::lit_num!(self
+                .default_value
+                .clone()
+                .unwrap_or("0".to_string())
+                .parse::<f64>()
+                .expect("can not parse the default")))
+        } else if self.is_booelan() && primitives {
+            Expr::Lit(
+                Bool {
+                    value: self
+                        .default_value
+                        .clone()
+                        .unwrap_or("false".to_string())
+                        .parse()
+                        .expect("can not parse the default"),
+                    span: DUMMY_SP,
+                }
+                .into(),
+            )
         } else {
             Expr::Ident(quote_ident!("undefined"))
         }
@@ -187,7 +190,7 @@ impl FieldDescriptorProto {
         ClassMember::ClassProp(ClassProp {
             span: DUMMY_SP,
             key: PropName::Ident(ident),
-            value: Some(Box::new(self.default_value_expr(ctx))),
+            value: Some(Box::new(self.default_value_expr(ctx, false))),
             type_ann: self.type_annotation(ctx),
             declare: false,
             is_static: false,

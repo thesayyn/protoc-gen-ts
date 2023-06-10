@@ -14,7 +14,6 @@ Required.Proto2.ProtobufInput.ValidDataMap.STRING.MESSAGE.DuplicateKey.ProtobufO
 Required.Proto2.ProtobufInput.ValidDataMap.STRING.MESSAGE.DuplicateKeyInMapEntry.ProtobufOutput
 Required.Proto2.ProtobufInput.ValidDataMap.STRING.MESSAGE.DuplicateValueInMapEntry.ProtobufOutput
 Required.Proto2.ProtobufInput.ValidDataMap.STRING.MESSAGE.MergeValue.ProtobufOutput
-Required.Proto2.ProtobufInput.ValidDataMap.STRING.MESSAGE.MissingDefault.ProtobufOutput
 Required.Proto2.ProtobufInput.ValidDataMap.STRING.MESSAGE.NonDefault.ProtobufOutput
 Required.Proto2.ProtobufInput.ValidDataMap.STRING.MESSAGE.Unordered.ProtobufOutput
 Required.Proto2.ProtobufInput.ValidDataOneof.BYTES.DefaultValue.ProtobufOutput
@@ -68,7 +67,6 @@ Required.Proto3.ProtobufInput.ValidDataMap.STRING.MESSAGE.DuplicateKey.ProtobufO
 Required.Proto3.ProtobufInput.ValidDataMap.STRING.MESSAGE.DuplicateKeyInMapEntry.ProtobufOutput
 Required.Proto3.ProtobufInput.ValidDataMap.STRING.MESSAGE.DuplicateValueInMapEntry.ProtobufOutput
 Required.Proto3.ProtobufInput.ValidDataMap.STRING.MESSAGE.MergeValue.ProtobufOutput
-Required.Proto3.ProtobufInput.ValidDataMap.STRING.MESSAGE.MissingDefault.ProtobufOutput
 Required.Proto3.ProtobufInput.ValidDataMap.STRING.MESSAGE.NonDefault.ProtobufOutput
 Required.Proto3.ProtobufInput.ValidDataMap.STRING.MESSAGE.Unordered.ProtobufOutput
 Required.Proto3.ProtobufInput.ValidDataOneof.BOOL.DefaultValue.ProtobufOutput

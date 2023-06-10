@@ -27,7 +27,7 @@ impl GooglePBRuntime {
                     "bytes"
                 )))])
             );
-            let br_decl = Stmt::Decl(crate::let_decl!("br", None, Some(Box::new(br_decl_init))));
+            let br_decl = Stmt::Decl(crate::let_decl!("br", None, br_decl_init));
             stmts.push(br_decl)
         }
 
@@ -99,10 +99,15 @@ impl GooglePBRuntime {
                         crate::expr_or_spread!(crate::arrow_func!(
                             vec![],
                             vec![
-                                Stmt::Decl(crate::let_decl!("key", key_field.type_annotation(ctx))),
+                                Stmt::Decl(crate::let_decl!(
+                                    "key",
+                                    key_field.type_annotation(ctx),
+                                    key_field.default_value_expr(ctx, true)
+                                )),
                                 Stmt::Decl(crate::let_decl!(
                                     "value",
-                                    value_field.type_annotation(ctx)
+                                    value_field.type_annotation(ctx),
+                                    value_field.default_value_expr(ctx, true)
                                 )),
                                 self.deserialize_stmt(ctx, &descriptor, field::bare_field_member),
                                 crate::expr_stmt!(crate::call_expr!(
