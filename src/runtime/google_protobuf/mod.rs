@@ -6,6 +6,7 @@ use crate::{
 use crate::ast::field;
 use swc_ecma_ast::Stmt;
 
+#[derive(Clone)]
 pub struct GooglePBRuntime {}
 
 

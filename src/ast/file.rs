@@ -8,7 +8,7 @@ impl<T> Print<T> for FileDescriptorProto
 where
     T: Runtime + Sized,
 {
-    fn print(&self, ctx: &mut Context, runtime: &mut T) -> Vec<ModuleItem> {
+    fn print(&self, ctx: &mut Context, runtime: &T) -> Vec<ModuleItem> {
         let mut ctx = context::descend_if_necessary!(ctx, self);
 
         let mut modules: Vec<ModuleItem> = Vec::new();

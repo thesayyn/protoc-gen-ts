@@ -9,7 +9,7 @@ impl<T> Print<T> for EnumDescriptorProto
 where
     T: Runtime + Sized,
 {
-    fn print(&self, ctx: &mut Context, _runtime: &mut T) -> Vec<ModuleItem> {
+    fn print(&self, ctx: &mut Context, _runtime: &T) -> Vec<ModuleItem> {
         let mut members: Vec<TsEnumMember> = Vec::new();
         for member in &self.value {
             members.push(TsEnumMember {

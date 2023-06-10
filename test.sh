@@ -17,5 +17,5 @@ conformance_test() {
 }
 
 
-# cargo_test
+cargo_test
 conformance_test

@@ -181,7 +181,7 @@ impl FieldDescriptorProto {
         }
         None
     }
-    pub fn print_prop<T: Runtime>(&self, ctx: &mut Context, _runtime: &mut T) -> ClassMember {
+    pub fn print_prop<T: Runtime>(&self, ctx: &mut Context, _runtime: &T) -> ClassMember {
         let mut ident = quote_ident!(self.name());
         ident.optional = self.is_optional();
         ClassMember::ClassProp(ClassProp {

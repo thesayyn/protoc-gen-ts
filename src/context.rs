@@ -1,14 +1,14 @@
 use crate::{ast, options::Options, descriptor};
+use dashmap::DashMap;
 use pathdiff::diff_paths;
 use std::{
     cell::RefCell,
-    collections::HashMap,
     path::PathBuf,
     rc::Rc,
     str::FromStr,
     sync::{
         atomic::{AtomicU64, Ordering},
-        Arc,
+        Arc, Mutex,
     },
 };
 use swc_common::DUMMY_SP;
@@ -62,17 +62,16 @@ fn resolve_relative(from: PathBuf, to: PathBuf) -> PathBuf {
     root.join(from.file_name().expect("expected path to have filename"))
 }
 
-#[derive(Debug)]
 pub struct Context<'a> {
     pub options: &'a Options,
     pub syntax: &'a Syntax,
     namespace: Vec<String>,
     name: String,
     counter: Arc<AtomicU64>,
-    imports: Rc<RefCell<Vec<ImportDecl>>>,
-    import_identifier_map: Rc<RefCell<HashMap<String, u64>>>,
-    type_reg: Rc<RefCell<HashMap<String, String>>>,
-    map_type_reg: Rc<RefCell<HashMap<String, descriptor::DescriptorProto>>>,
+    imports: Arc<Mutex<Vec<ImportDecl>>>,
+    import_identifier_map: Arc<DashMap<String, u64>>,
+    type_reg: Arc<DashMap<String, String>>,
+    map_type_reg: Arc<DashMap<String, descriptor::DescriptorProto>>,
 }
 
 impl<'a> Clone for Context<'a> {
@@ -83,10 +82,10 @@ impl<'a> Clone for Context<'a> {
             namespace: self.namespace.clone(),
             name: self.name.clone(),
             counter: self.counter.clone(),
-            imports: Rc::new(RefCell::new(Vec::new())),
-            import_identifier_map: Rc::new(RefCell::new(HashMap::new())),
-            type_reg: Rc::clone(&self.type_reg),
-            map_type_reg: Rc::clone(&self.map_type_reg),
+            imports: Arc::new(Mutex::new(Vec::new())),
+            import_identifier_map: Arc::new(DashMap::new()),
+            type_reg: Arc::clone(&self.type_reg),
+            map_type_reg: Arc::clone(&self.map_type_reg),
         }
     }
 }
@@ -99,10 +98,10 @@ impl<'a> Context<'a> {
             syntax,
             namespace: vec![],
             name: String::new(),
-            imports: Rc::new(RefCell::new(Vec::new())),
-            import_identifier_map: Rc::new(RefCell::new(HashMap::new())),
-            type_reg: Rc::new(RefCell::new(HashMap::new())),
-            map_type_reg: Rc::new(RefCell::new(HashMap::new())),
+            imports: Arc::new(Mutex::new(Vec::new())),
+            import_identifier_map: Arc::new(DashMap::new()),
+            type_reg: Arc::new(DashMap::new()),
+            map_type_reg: Arc::new(DashMap::new()),
         }
     }
 
@@ -133,23 +132,21 @@ impl<'a> Context<'a> {
     }
 
     pub fn drain_imports(&mut self) -> Vec<ModuleItem> {
-        let mut imports = vec![];
-        for import in self.imports.borrow().to_vec() {
-            imports.push(ModuleItem::ModuleDecl(ModuleDecl::Import(import)))
+        let mut imps = vec![];
+        let mut imports = self.imports.lock().unwrap();
+        for import in imports.to_vec() {
+            imps.push(ModuleItem::ModuleDecl(ModuleDecl::Import(import)))
         }
-        self.imports.borrow_mut().clear();
-        imports
+        imports.clear();
+        imps
     }
 
     pub fn get_import(&mut self, source: &str) -> Ident {
-        let import_identifier_map = self.import_identifier_map.borrow();
-        let cached_counter = import_identifier_map.get(&String::from(source));
+        let cached_counter = self.import_identifier_map.get(&String::from(source));
 
         if let Some(counter) = cached_counter {
-            return quote_ident!(format!("imp_{}", counter));
+            return quote_ident!(format!("imp_{}", *counter));
         }
-
-        drop(import_identifier_map);
 
         let counter = self.counter.fetch_add(1, Ordering::Relaxed);
         let name = quote_ident!(format!("imp_{}", counter));
@@ -168,10 +165,8 @@ impl<'a> Context<'a> {
             type_only: false,
             asserts: None,
         };
-        self.imports.borrow_mut().push(decl);
-        self.import_identifier_map
-            .borrow_mut()
-            .insert(String::from(source), counter);
+        self.imports.lock().unwrap().push(decl);
+        self.import_identifier_map.insert(String::from(source), counter);
 
         return quote_ident!(format!("imp_{}", counter));
     }
@@ -204,7 +199,7 @@ impl<'a> Context<'a> {
     }
 
     fn find_type_provider(&self, type_name: &String) -> Option<String> {
-        if let Some(val) = self.type_reg.borrow().get(type_name) {
+        if let Some(val) = self.type_reg.get(type_name) {
             return Some(val.clone());
         }
         None
@@ -257,18 +252,17 @@ impl<'a> Context<'a> {
     pub fn register_type_name(&mut self, type_name: &str) {
         let fns = self.calculate_type_name(type_name);
         dbg!("{} provides {}", &self.name, &fns);
-        self.type_reg.borrow_mut().insert(fns, self.name.clone());
+        self.type_reg.insert(fns, self.name.clone());
     }
 
     pub fn register_map_type(&mut self, descriptor: &descriptor::DescriptorProto) {
         let fns = self.calculate_type_name(descriptor.name());
         dbg!("{} provides {}", &self.name, &fns);
-        self.map_type_reg.borrow_mut().insert(fns, descriptor.clone());
+        self.map_type_reg.insert(fns, descriptor.clone());
     }
 
     pub fn get_map_type(&self, type_name: &str) -> Option<descriptor::DescriptorProto> {
-        let map_type_reg = self.map_type_reg.borrow();
-        let res = map_type_reg.get(type_name);
+        let res = self.map_type_reg.get(type_name);
         if let Some(descriptor) = res {
             return Some(descriptor.clone());
         }

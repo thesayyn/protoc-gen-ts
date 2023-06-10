@@ -16,7 +16,7 @@ impl DescriptorProto {
     fn print_serialize<T: Runtime + Sized>(
         &self,
         ctx: &mut Context,
-        runtime: &mut T,
+        runtime: &T,
     ) -> ClassMember {
 
         let mut statements = vec![];
@@ -52,7 +52,7 @@ impl DescriptorProto {
     fn print_deserialize<T: Runtime + Sized>(
         &self,
         ctx: &mut Context,
-        runtime: &mut T,
+        runtime: &T,
     ) -> ClassMember {
 
         let message_const_init = crate::new_expr!(Expr::Ident(quote_ident!(ctx.normalize_name(self.name()))));
@@ -100,7 +100,7 @@ impl<T> Print<T> for DescriptorProto
 where
     T: Runtime + Sized,
 {
-    fn print(&self, ctx: &mut Context, runtime: &mut T) -> Vec<ModuleItem> {
+    fn print(&self, ctx: &mut Context, runtime: &T) -> Vec<ModuleItem> {
 
         if self.options.map_entry() {
             return vec![]
