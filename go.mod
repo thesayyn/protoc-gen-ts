@@ -4,8 +4,8 @@ go 1.19
 
 require (
 	github.com/improbable-eng/grpc-web v0.15.0
-	google.golang.org/grpc v1.50.1
-	google.golang.org/protobuf v1.27.1
+	google.golang.org/grpc v1.53.0
+	google.golang.org/protobuf v1.28.1
 )
 
 require (
@@ -17,6 +17,6 @@ require (
 	golang.org/x/net v0.7.0 // indirect
 	golang.org/x/sys v0.5.0 // indirect
 	golang.org/x/text v0.7.0 // indirect
-	google.golang.org/genproto v0.0.0-20210126160654-44e461bb6506 // indirect
+	google.golang.org/genproto v0.0.0-20230110181048-76db0878b65f // indirect
 	nhooyr.io/websocket v1.8.6 // indirect
 )
