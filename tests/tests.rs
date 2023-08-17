@@ -27,7 +27,9 @@ macro_rules! gen_test {
     
             cmd.arg(format!("--proto_path={}", proto_path));
             cmd.arg(format!("--plugin=protoc-gen-ts={}", protoc_gen_ts));
+            cmd.arg(format!("--plugin=protoc-gen-js={}", "/Users/thesayyn/Documents/protoc-gen-ts/protoc-gen-js"));
             cmd.arg(format!("--ts_out={}", ts_out));
+            cmd.arg(format!("--js_out={}", ts_out));
             cmd.arg("--ts_opt=namespaces=false");
             cmd.arg("--ts_opt=import_suffix=.ts");
             cmd.arg("--ts_opt=runtime_package=https://cdn.skypack.dev/google-protobuf?dts");

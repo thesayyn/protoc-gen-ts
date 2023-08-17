@@ -5,8 +5,8 @@ use crate::{context::Context, descriptor};
 use std::vec;
 use swc_common::DUMMY_SP;
 use swc_ecma_ast::{
-    ArrayLit, BinaryOp, BlockStmt, BreakStmt, CondExpr, Expr, Lit, Number, PatOrExpr, Stmt,
-    SwitchCase, SwitchStmt, ThrowStmt, TsNonNullExpr, WhileStmt,
+    BinaryOp, BlockStmt, BreakStmt, Expr, Lit, Number, PatOrExpr, Stmt,
+    SwitchCase, SwitchStmt, TsNonNullExpr, WhileStmt,
 };
 use swc_ecma_utils::quote_ident;
 
@@ -87,7 +87,6 @@ impl GooglePBRuntime {
         for field in &descriptor.field {
             let read_expr = self.deserialize_field_expr(ctx, field, false);
             let read_stmt = if field.is_map(ctx) {
-                let import = ctx.get_import(ctx.options.runtime_package.as_str());
                 let descriptor = ctx
                     .get_map_type(field.type_name())
                     .expect(format!("can not find the map type {}", field.type_name()).as_str());
@@ -123,17 +122,15 @@ impl GooglePBRuntime {
                         ))
                     ]
                 ))
-            } else if field.is_repeated() && !field.is_packed(ctx) {
-                crate::expr_stmt!(crate::call_expr!(
-                    crate::member_expr_bare!(accessor(field.name()), "push"),
-                    vec![crate::expr_or_spread!(read_expr)]
-                ))
-            } else if field.is_packed(ctx) {
+            } else if field.is_packable() {
                 crate::if_stmt!(
                     crate::call_expr!(crate::member_expr!("br", "isDelimited")),
                     crate::expr_stmt!(crate::call_expr!(
                         crate::member_expr_bare!(accessor(field.name()), "push"),
-                        vec![crate::expr_or_spread!(read_expr, true)]
+                        vec![crate::expr_or_spread!(
+                            self.deserialize_field_expr(ctx, field, false),
+                            true
+                        )]
                     )),
                     crate::expr_stmt!(crate::call_expr!(
                         crate::member_expr_bare!(accessor(field.name()), "push"),
@@ -142,6 +139,11 @@ impl GooglePBRuntime {
                         )]
                     ))
                 )
+            } else if field.is_repeated() && !field.is_packed(ctx) {
+                crate::expr_stmt!(crate::call_expr!(
+                    crate::member_expr_bare!(accessor(field.name()), "push"),
+                    vec![crate::expr_or_spread!(read_expr)]
+                ))
             } else {
                 crate::expr_stmt!(crate::assign_expr!(
                     PatOrExpr::Expr(Box::new(accessor(field.name()))),

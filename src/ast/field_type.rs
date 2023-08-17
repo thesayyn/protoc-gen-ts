@@ -43,7 +43,7 @@ impl FieldDescriptorProto {
 
 impl FieldDescriptorProto {
 
-    fn is_packable(&self) -> bool {
+    pub fn is_packable(&self) -> bool {
         return (!self.is_string() && !self.is_group() && !self.is_message() && !self.is_bytes()) && self.is_repeated()
     }
 

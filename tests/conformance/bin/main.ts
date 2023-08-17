@@ -9,7 +9,15 @@ import {
 } from "conformance/conformance.ts";
 import { Buffer } from "https://deno.land/std@0.136.0/node/buffer.ts";
 
+try {
+  Deno.removeSync("./tests/failures.log")
+} catch {}
+
+
+let i = 0;
+
 while (true) {
+  i++;
   const lengthBuffer = Buffer.alloc(4);
   Deno.stdin.readSync(lengthBuffer);
 
@@ -28,6 +36,7 @@ while (true) {
     if (req.message_type == "conformance.FailureSet") {
       const failure_set = new conformance_FailureSet();
       res.protobuf_payload = failure_set.serialize();
+      
     } else if (
       req.message_type == "protobuf_test_messages.proto3.TestAllTypesProto3"
     ) {
@@ -58,9 +67,11 @@ while (true) {
   }
 
   if (res.parse_error) {
+
     Deno.writeTextFileSync(
-      "/Users/thesayyn/Documents/thesayyn/protoc-gen-ts/failures.txt",
-  `${req.message_type} ${req.test_category}
+      "./tests/failures.log",
+  `# ${i} ${req.message_type} ${req.test_category}
+
   ${res.parse_error}
 
   `,
