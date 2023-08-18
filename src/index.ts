@@ -33,7 +33,9 @@ function replaceExtension(filename: string, extension: string = ".ts"): string {
 
 
 const request = plugin.CodeGeneratorRequest.deserialize(
-  new Uint8Array(fs.readFileSync(process.stdin.fd)),
+  // Using 0 instead of process.stdin.fd.
+  // see: https://github.com/thesayyn/protoc-gen-ts/issues/222
+  new Uint8Array(fs.readFileSync(0)),
 );
 const response = new plugin.CodeGeneratorResponse({
   supported_features:
