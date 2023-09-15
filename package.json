@@ -1,7 +1,7 @@
 {
   "name": "protoc-gen-ts",
   "description": "Compile protocol buffers descriptors to Typescript.",
-  "version": "0.8.7",
+  "version": "0.8.8",
   "license": "MIT",
   "author": {
     "email": "thesayyn@gmail.com",
@@ -26,7 +26,7 @@
   },
   "peerDependencies": {
     "google-protobuf": "^3.13.0",
-    "typescript": "4.x.x"
+    "typescript": ">= 4.9.x"
   },
   "devDependencies": {
     "@bazel/bazelisk": "^1.9.0",
