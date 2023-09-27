@@ -15,9 +15,14 @@ jobs:
       - run: npm ci
       - run: bazel build package
       - run: rsync --copy-links --recursive --times --group --no-perms --chmod=ugo=rwX ./bazel-bin/package/package/ ./tmp_pkg
-      - run: npm version ${{ github.ref_name }}
-        working-directory: ./tmp_pkg
-      - run: npm publish --dry-run
-        working-directory: ./tmp_pkg
+      - name: publish 
+        run: |
+          npm version ${{ github.ref_name }}
+          npm publish
+        working-directory: tmp_pkg
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_RELEASE_TOKEN }} 
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        with:
+          generate_release_notes: true
