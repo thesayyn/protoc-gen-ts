@@ -15,12 +15,20 @@ jobs:
 
     strategy:
       matrix:
-        os: [ubuntu-latest, macos-latest, windows-latest]
-        node_version: [14.x, 16.x]
+        os: [ubuntu-latest, windows-latest]
+        node_version: [16.x, 18.x, 20.x]
         protoc_version: [3.x]
         folder:
           - '.'
+          - 'examples/grpc'
           - 'examples/pure'
+        exclude:
+            - os: windows-latest
+              node_version: 16.x
+            - os: windows-latest
+              node_version: 18.x
+            - os: windows-latest
+              folder: .
 
     steps:
       - uses: actions/checkout@v2
@@ -39,25 +47,23 @@ jobs:
         with:
             path: |
                 "~/.cache/bazel"
-                "~/.cache/bazel-repo"
             key: bazel-cache-${{ hashFiles('**/BUILD.bazel', '**/*.bzl', 'WORKSPACE') }}
             restore-keys: bazel-cache-
 
       - run: |
           type .github/workflows/ci.bazelrc >> user.bazelrc
           type .github/workflows/ci.windows.bazelrc >> user.bazelrc
+          Add-Content user.bazelrc "`ntest --test_tag_filters=-no-${{ matrix.os }}"
         if: ${{ matrix.os == 'windows-latest' }}
 
       - run: | 
           cat .github/workflows/ci.bazelrc >> user.bazelrc
           cat .github/workflows/ci.nix.bazelrc >> user.bazelrc
+          echo "test --test_tag_filters=-no-${{ matrix.os }}" >> user.bazelrc
         if: ${{ matrix.os != 'windows-latest' }}
-
-      - name: install dependencies
-        run: yarn --frozen-lockfile
+      
+      - run: npm ci && npm rebuild
         working-directory: ${{ matrix.folder }}
-        if: ${{ matrix.folder != '.' }}
 
-      - name: test
-        run: yarn test --test_tag_filters=-no-${{ matrix.os }}
+      - run: npm test
         working-directory: ${{ matrix.folder }}

@@ -1,1 +1,2 @@
+# This directory is configured in GitHub actions to be persisted between runs.
 startup --output_user_root=C:/tmp

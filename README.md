@@ -7,16 +7,13 @@
 
 Compile `.proto` files to plain TypeScript. Supports gRPC Node and gRPC Web.
 
-## Key Differences
+## Usage
 
-- No `d.ts` files. Just plain typescript sources with actual code.
-- Fields as **getter** **setters**.
-- Enums as **enums**.
-- Messages within a **namespace** if the proto has a **package** directive. (can be controlled via --ts_opt=no_namespace)
-- **fromObject** and **toObject** methods to work with json data.
-- Support for gRPC Node and gRPC Web.
-- You get what you define in proto files. No such prefixes as "getField" or "getFieldList".
-- Generates bindings with either as-is names (`message.field_name`) or JSON-compatible names (`message.fieldName`).
+```properties
+npm install -g protoc-gen-ts
+
+protoc -I=sourcedir --ts_out=dist myproto.proto
+```
 
 ## Example
 
@@ -97,7 +94,6 @@ const change = Change.fromObject({
 console.log(change.author instanceof Author) // true
 ```
 
-
 ## Usage with `@grpc/grpc-js` or `grpc`
 
 There is a seperate documentation for the usage of protoc-gen-ts along with either `@grpc/grpc-js` or `grpc`.  By default
@@ -105,29 +101,18 @@ this generated gRPC interfaces will use `@grpc/grpc-js`.
 
 Checkout [rpcs](docs/rpc.md).
 
-## Usage
 
-### Without Bazel
-```properties
-npm install -g protoc-gen-ts
+## Key Differences
 
-protoc -I=sourcedir --ts_out=dist myproto.proto
-```
-### With Bazel
-```py
-# Add protoc-gen-ts to dependencies section of your package.json file.
+- No `d.ts` files. Just plain typescript sources with actual code.
+- Fields as **getter** **setters**.
+- Enums as **enums**.
+- Messages within a **namespace** if the proto has a **package** directive. (can be controlled via --ts_opt=no_namespace)
+- **fromObject** and **toObject** methods to work with json data.
+- Support for gRPC Node and gRPC Web.
+- You get what you define in proto files. No such prefixes as "getField" or "getFieldList".
+- Generates bindings with either as-is names (`message.field_name`) or JSON-compatible names (`message.fieldName`).
 
-load("@npm//protoc-gen-ts:index.bzl", "ts_proto_library")
-
-ts_proto_library(
-    name = "protos",
-    deps = [
-        ":some_proto_library_target"
-    ]
-)
-
-# Checkout the examples/bazel directory for an example.
-```
 
 ## Supported Options
 

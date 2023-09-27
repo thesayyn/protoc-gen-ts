@@ -95,7 +95,7 @@ ts_proto_library_ = rule(
             executable = True,
             cfg = "exec",
             default = (
-                "//protoc-gen-ts/bin:protoc-gen-ts"
+                "//private:bin"
             ),
         ),
         "_protoc": attr.label(

@@ -1,5 +1,5 @@
 load("@rules_proto//proto:defs.bzl", "proto_library")
-load("//:index.bzl", "ts_proto_library")
+load("//private:defs.bzl", "ts_proto_library")
 
 SRCS = glob(["**/*.proto"])
 

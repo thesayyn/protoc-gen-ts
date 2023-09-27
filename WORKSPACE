@@ -13,14 +13,13 @@ http_archive(
 load("@build_bazel_rules_nodejs//:repositories.bzl", "build_bazel_rules_nodejs_dependencies")
 build_bazel_rules_nodejs_dependencies()
 
-load("@build_bazel_rules_nodejs//:index.bzl", "node_repositories", "yarn_install")
+load("@build_bazel_rules_nodejs//:index.bzl", "node_repositories", "npm_install")
 node_repositories(node_version = "16.3.0")
 
-yarn_install(
+npm_install(
     name = "npm",
-    exports_directories_only = False,
     package_json = "//:package.json",
-    yarn_lock = "//:yarn.lock",
+    package_lock_json = "//:package-lock.json",
 )
 
 load("@build_bazel_rules_nodejs//toolchains/cypress:cypress_repositories.bzl", "cypress_repositories")
@@ -74,8 +73,8 @@ http_archive(
 load("@bazel_gazelle//:deps.bzl", "gazelle_dependencies")
 gazelle_dependencies()
 
-load("//:deps.bzl", "go_dependencies")
-# gazelle:repository_macro deps.bzl%go_dependencies
+load("//private:deps.bzl", "go_dependencies")
+# gazelle:repository_macro private/deps.bzl%go_dependencies
 go_dependencies()
 
 

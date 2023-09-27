@@ -6,7 +6,4 @@ build --incompatible_strict_action_env
 run --incompatible_strict_action_env
 test --incompatible_strict_action_env
 
-build --deleted_packages=examples/bazel
-query --deleted_packages=examples/bazel
-
 try-import  %workspace%/user.bazelrc

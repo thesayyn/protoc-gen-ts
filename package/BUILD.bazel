@@ -1,0 +1,28 @@
+load("@npm//@bazel/rollup:index.bzl", "rollup_bundle")
+load("@build_bazel_rules_nodejs//:index.bzl", "pkg_npm")
+load("@aspect_bazel_lib//lib:copy_to_directory.bzl", "copy_to_directory")
+
+package(default_visibility = ["//visibility:public"])
+
+rollup_bundle(
+    name = "protoc-gen-ts",
+    config_file = "rollup.config.js",
+    entry_point = "//src:index.ts",
+    format = "cjs",
+    deps = [
+        "//src",
+        "@npm//@rollup/plugin-commonjs",
+        "@npm//@rollup/plugin-node-resolve",
+        "@npm//google-protobuf",
+        "@npm//typescript",
+    ],
+)
+
+copy_to_directory(
+    name = "package",
+    srcs = [
+        "package.json",
+        "protoc-gen-ts.js",
+        "//:README.md",
+    ]
+)

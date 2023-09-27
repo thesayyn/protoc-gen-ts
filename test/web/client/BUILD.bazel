@@ -3,7 +3,7 @@ load("@rules_proto//proto:defs.bzl", "proto_library")
 load("@npm//@bazel/typescript:index.bzl", "ts_project")
 load("@npm//@bazel/rollup:index.bzl", "rollup_bundle")
 load("@npm//http-server:index.bzl", "http_server")
-load("//:index.bzl", "ts_proto_library")
+load("//private:defs.bzl", "ts_proto_library")
 load("@aspect_bazel_lib//lib:write_source_files.bzl", "write_source_files")
 
 write_source_files(

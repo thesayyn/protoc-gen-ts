@@ -1,7 +1,6 @@
-load("@build_bazel_rules_nodejs//:index.bzl", "pkg_npm")
 load("@bazel_gazelle//:def.bzl", "gazelle")
 
-package(default_visibility = ["//visibility:public"])
+exports_files(["README.md"])
 
 # gazelle:prefix github.com/thesayyn/protoc-gen-ts
 gazelle(name = "gazelle")
@@ -9,23 +8,9 @@ gazelle(name = "gazelle")
 gazelle(
     name = "gazelle-update-repos",
     args = [
-        "-from_file=go.mod",
-        "-to_macro=deps.bzl%go_dependencies",
+        "-from_file=private/go.mod",
+        "-to_macro=private/deps.bzl%go_dependencies",
         "-prune",
     ],
     command = "update-repos",
-)
-
-pkg_npm(
-    name = "package",
-    package_name = "protoc-gen-ts",
-    srcs = [
-        "README.md",
-        "index.bzl",
-        "package.json",
-        "//bin:protoc-gen-ts.js",
-    ],
-    deps = [
-        "//src:pkg",
-    ],
 )

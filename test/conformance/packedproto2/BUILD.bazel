@@ -1,7 +1,7 @@
 load("@rules_proto//proto:defs.bzl", "proto_library")
 load("@npm//@bazel/jasmine:index.bzl", "jasmine_node_test")
 load("@npm//@bazel/typescript:index.bzl", "ts_project")
-load("//:index.bzl", "ts_proto_library")
+load("//private:defs.bzl", "ts_proto_library")
 load("@aspect_bazel_lib//lib:write_source_files.bzl", "write_source_files")
 
 # gazelle:go_generate_proto false

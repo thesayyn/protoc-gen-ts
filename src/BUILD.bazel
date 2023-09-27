@@ -18,7 +18,8 @@ ts_project(
     tsconfig = {
         "compilerOptions": {
             "target": "ES2020",
-            "module": "CommonJS",
+            "module": "EsNext",
+            "moduleResolution": "node",
             "noImplicitAny": True,
         },
     },
@@ -28,12 +29,5 @@ ts_project(
         "@npm//@types/node",
         "@npm//google-protobuf",
         "@npm//typescript",
-    ],
-)
-
-js_library(
-    name = "pkg",
-    deps = [
-        ":src",
     ],
 )

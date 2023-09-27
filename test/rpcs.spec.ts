@@ -13,9 +13,9 @@ describe("RPCs", () => {
     server = new grpc.Server();
     storageServer = jasmine.createSpyObj<UnimplementedStorageService>(["query", "get", "put", "chunk"]);
     server.addService(UnimplementedStorageService.definition, storageServer);
-    await util.promisify(server.bindAsync).bind(server)("0.0.0.0:4884", grpc.ServerCredentials.createInsecure());
+    let port = await util.promisify(server.bindAsync).bind(server)("0.0.0.0:0", grpc.ServerCredentials.createInsecure());
     server.start();
-    client = new StorageClient("0.0.0.0:4884", grpc.credentials.createInsecure(), {
+    client = new StorageClient(`0.0.0.0:${port}`, grpc.credentials.createInsecure(), {
       'grpc.lb_policy_name': 'round_robin',
       'grpc.keepalive_time_ms': 1500,
       'grpc.keepalive_timeout_ms': 1500,
@@ -30,7 +30,7 @@ describe("RPCs", () => {
   })
 
   it("should set channel options", () => {
-    expect((<any>client.getChannel()).options).toEqual({
+    expect((<any>client.getChannel()).internalChannel.options).toEqual({
       'grpc.lb_policy_name': 'round_robin',
       'grpc.keepalive_time_ms': 1500,
       'grpc.keepalive_timeout_ms': 1500,
