@@ -3,20 +3,15 @@
   "description": "gRPC example with protoc-gen-ts",
   "private": true,
   "scripts": {
-    "bazel": "bazelisk",
-    "grpc:client": "bazel run :client",
-    "grpc:server": "bazel run :server"
+    "test": "protoc -I=src --ts_out=src type.proto && tsc",
+    "preinstall": "cd ../../ && bazel build package"
   },
   "dependencies": {
     "@grpc/grpc-js": "^1.2.12",
-    "google-protobuf": "^3.15.8",
-    "protoc-gen-ts": "^0.8.1"
+    "google-protobuf": "^3.15.8"
   },
   "devDependencies": {
-    "@bazel/bazelisk": "^1.7.5",
-    "@bazel/typescript": "^3.4.0",
-    "@types/google-protobuf": "^3.15.0",
-    "@types/node": "^14.14.41",
-    "typescript": "^4.2.4"
+    "protoc-gen-ts": "file:../../bazel-bin/package/package",
+    "typescript": "^4.9.3"
   }
 }

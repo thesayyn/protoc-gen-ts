@@ -13,9 +13,9 @@ describe("Experimental RPCs", () => {
     server = new grpc.Server();
     storageServer = jasmine.createSpyObj<UnimplementedStorageService>(["query", "get", "put", "chunk"]);
     server.addService(UnimplementedStorageService.definition, storageServer);
-    await util.promisify(server.bindAsync).bind(server)("0.0.0.0:4824", grpc.ServerCredentials.createInsecure());
+    let port = await util.promisify(server.bindAsync).bind(server)("0.0.0.0:0", grpc.ServerCredentials.createInsecure());
     server.start();
-    client = new StorageClient("0.0.0.0:4824", grpc.credentials.createInsecure());
+    client = new StorageClient(`0.0.0.0:${port}`, grpc.credentials.createInsecure());
   });
 
   afterEach(() => {

@@ -1,3 +1,1 @@
-# This directory is configured in GitHub actions to be persisted between runs.
-build --disk_cache=~/.cache/bazel
-build --repository_cache=~/.cache/bazel-repo
+

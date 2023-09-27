@@ -1,4 +1,4 @@
-load("@protoc_gen_ts//:index.bzl", "ts_proto_library")
+load("@protoc_gen_ts//private:defs.bzl", "ts_proto_library")
 load("@rules_proto//proto:defs.bzl", "proto_library")
 
 genrule(

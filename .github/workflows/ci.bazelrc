@@ -6,3 +6,7 @@ build --noshow_progress
 # Don't rely on test logs being easily accessible from the test runner,
 # though it makes the log noisier.
 test --test_output=errors
+
+# This directory is configured in GitHub actions to be persisted between runs.
+common --disk_cache=~/.cache/bazel/disk
+common --repository_cache=~/.cache/bazel/repo
