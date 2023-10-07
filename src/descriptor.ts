@@ -499,7 +499,7 @@ function createToObject(
     undefined,
     undefined,
     [],
-    undefined,
+    createPrimitiveMessageSignature(rootDescriptor, messageDescriptor),
     ts.factory.createBlock(statements, true),
   );
 }
