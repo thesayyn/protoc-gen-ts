@@ -62,6 +62,7 @@ export function createEnum(
 function createFromObject(
   rootDescriptor: descriptor.FileDescriptorProto,
   messageDescriptor: descriptor.DescriptorProto,
+  objectTypeName: string,
   parentName: string = ''
 ): ts.MethodDeclaration {
   const dataIdentifier = ts.factory.createIdentifier("data");
@@ -297,7 +298,9 @@ function createFromObject(
         undefined,
         dataIdentifier,
         undefined,
-        createPrimitiveMessageSignature(rootDescriptor, messageDescriptor),
+        ts.factory.createTypeReferenceNode(
+          ts.factory.createIdentifier(objectTypeName)
+        ),
       ),
     ],
     ts.factory.createTypeReferenceNode(
@@ -311,6 +314,7 @@ function createFromObject(
 function createToObject(
   rootDescriptor: descriptor.FileDescriptorProto,
   messageDescriptor: descriptor.DescriptorProto,
+  objectTypeName: string
 ): ts.MethodDeclaration {
   const statements = [];
   const properties = [];
@@ -481,7 +485,9 @@ function createToObject(
           ts.factory.createVariableDeclaration(
             "data",
             undefined,
-            createPrimitiveMessageSignature(rootDescriptor, messageDescriptor),
+            ts.factory.createTypeReferenceNode(
+              ts.factory.createIdentifier(objectTypeName)
+            ),
             ts.factory.createObjectLiteralExpression(properties, true),
           ),
         ],
@@ -499,7 +505,9 @@ function createToObject(
     undefined,
     undefined,
     [],
-    createPrimitiveMessageSignature(rootDescriptor, messageDescriptor),
+    ts.factory.createTypeReferenceNode(
+      ts.factory.createIdentifier(objectTypeName)
+    ),
     ts.factory.createBlock(statements, true),
   );
 }
@@ -2182,6 +2190,7 @@ function createMessage(
   messageDescriptor: descriptor.DescriptorProto,
   pbIdentifier: ts.Identifier,
   parentName: string,
+  objectTypeName: string
 ): ts.ClassDeclaration {
   const statements: ts.ClassElement[] = [
     createOneOfDecls(messageDescriptor),
@@ -2209,9 +2218,9 @@ function createMessage(
 
   statements.push(
     // Create fromObject method
-    createFromObject(rootDescriptor, messageDescriptor, parentName),
+    createFromObject(rootDescriptor, messageDescriptor, objectTypeName, parentName),
     // Create toObject method
-    createToObject(rootDescriptor, messageDescriptor),
+    createToObject(rootDescriptor, messageDescriptor, objectTypeName),
   );
 
   statements.push(
@@ -2258,8 +2267,16 @@ export function processDescriptorRecursively(
   no_namespace: boolean,
   parentName: string = '',
 ): ts.Statement[] {
+  const objectTypeName = `ObjectTypeFor${parentName}${descriptor.name}`;
   const statements: ts.Statement[] = [
-    createMessage(rootDescriptor, descriptor, pbIdentifier, parentName),
+    ts.factory.createTypeAliasDeclaration(
+      undefined,
+      [ts.factory.createModifier(ts.SyntaxKind.ExportKeyword)],
+      ts.factory.createIdentifier(objectTypeName),
+      undefined,
+      createPrimitiveMessageSignature(rootDescriptor, descriptor),
+    ),
+    createMessage(rootDescriptor, descriptor, pbIdentifier, parentName, objectTypeName),
   ];
 
   const namespacedStatements: ts.Statement[] = [];
