@@ -5,8 +5,7 @@ use crate::{context::Context, descriptor};
 use std::vec;
 use swc_common::DUMMY_SP;
 use swc_ecma_ast::{
-    BinaryOp, BindingIdent, BlockStmt, Expr, ExprStmt, ForHead, ForOfStmt, Lit, Number, Stmt,
-    TsNonNullExpr, VarDecl,
+    BindingIdent, BlockStmt, Expr, ForHead, ForOfStmt, Stmt, TsNonNullExpr, VarDecl,
 };
 use swc_ecma_utils::quote_ident;
 
@@ -17,15 +16,13 @@ impl GooglePBRuntime {
         field: &descriptor::FieldDescriptorProto,
         field_accessor: field::FieldAccessorFn,
     ) -> Vec<Stmt> {
-        vec![
-            crate::expr_stmt!(crate::call_expr!(
-                crate::member_expr!("bw", self.rw_function_name("write", false, ctx, field)),
-                vec![
-                    crate::expr_or_spread!(crate::lit_num!(field.number()).into()),
-                    crate::expr_or_spread!(field_accessor(field.name())),
-                ]
-            ))
-        ]
+        vec![crate::expr_stmt!(crate::call_expr!(
+            crate::member_expr!("bw", self.rw_function_name("write", false, ctx, field)),
+            vec![
+                crate::expr_or_spread!(crate::lit_num!(field.number()).into()),
+                crate::expr_or_spread!(field_accessor(field.name())),
+            ]
+        ))]
     }
 
     pub fn serialize_message_field_stmts(

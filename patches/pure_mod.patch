@@ -1,0 +1,12 @@
+diff --git a/src/pure/mod.rs b/src/pure/mod.rs
+index c60fb2f..eb803d9 100644
+--- a/src/pure/mod.rs
++++ b/src/pure/mod.rs
+@@ -2,7 +2,7 @@
+ 
+ pub(crate) mod convert;
+ pub(crate) mod model;
+-pub(crate) mod parse_and_typecheck;
++pub mod parse_and_typecheck;
+ pub(crate) mod parse_dependencies;
+ mod parser;

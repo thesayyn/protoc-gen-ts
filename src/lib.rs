@@ -7,3 +7,4 @@ pub mod runtime;
 pub mod context;
 pub mod ast;
 pub mod mapper;
+pub mod emit;

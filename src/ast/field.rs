@@ -5,8 +5,9 @@ use crate::{
 };
 use swc_common::DUMMY_SP;
 use swc_ecma_ast::{
-    ArrayLit, BinaryOp, Bool, ClassMember, ClassProp, Expr, Lit, PropName, TsArrayType,
+    ArrayLit, BinaryOp, ClassMember, ClassProp, Expr, Lit, PropName, TsArrayType,
     TsEntityName, TsKeywordType, TsType, TsTypeAnn, TsTypeParamInstantiation, TsTypeRef,
+    Bool,
 };
 use swc_ecma_utils::{quote_ident, quote_str};
 

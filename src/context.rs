@@ -2,9 +2,7 @@ use crate::{ast, options::Options, descriptor};
 use dashmap::DashMap;
 use pathdiff::diff_paths;
 use std::{
-    cell::RefCell,
     path::PathBuf,
-    rc::Rc,
     str::FromStr,
     sync::{
         atomic::{AtomicU64, Ordering},
@@ -106,7 +104,6 @@ impl<'a> Context<'a> {
     }
 
     pub fn fork(&self, name: String, syntax: &'a Syntax) -> Self {
-        dbg!("forking {}", &name);
         let mut copy = self.clone();
         copy.name = name;
         copy.syntax = syntax;
@@ -114,7 +111,6 @@ impl<'a> Context<'a> {
     }
 
     pub fn descend(&self, ns: String) -> Self {
-        dbg!("descending {}", &ns);
         let mut namespace = self.namespace.clone();
         namespace.push(ns);
 
@@ -208,7 +204,6 @@ impl<'a> Context<'a> {
     pub fn lazy_type_ref(&mut self, type_name: &str) -> Ident {
         let provided_by = self.find_type_provider(&type_name.to_string());
         if let Some(provided_by) = provided_by {
-            dbg!("{} {}", &provided_by, &self.name);
             if self.name == provided_by {
                 return quote_ident!(type_name
                     .strip_prefix(".")
@@ -251,13 +246,11 @@ impl<'a> Context<'a> {
 
     pub fn register_type_name(&mut self, type_name: &str) {
         let fns = self.calculate_type_name(type_name);
-        dbg!("{} provides {}", &self.name, &fns);
         self.type_reg.insert(fns, self.name.clone());
     }
 
     pub fn register_map_type(&mut self, descriptor: &descriptor::DescriptorProto) {
         let fns = self.calculate_type_name(descriptor.name());
-        dbg!("{} provides {}", &self.name, &fns);
         self.map_type_reg.insert(fns, descriptor.clone());
     }
 

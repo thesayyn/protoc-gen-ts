@@ -4,10 +4,7 @@ use std::str::FromStr;
 use std::string::*;
 use std::sync::{Mutex, Arc};
 
-use swc_common::FilePathMapping;
-use swc_common::{source_map::SourceMap, sync::Lrc, DUMMY_SP};
-use swc_ecma_ast::*;
-use swc_ecma_codegen::{text_writer::JsWriter, Emitter};
+
 
 use crate::context::{Context, Syntax};
 use crate::mapper::Mapper;
@@ -17,6 +14,7 @@ use crate::print::Print;
 use crate::runtime::google_protobuf::GooglePBRuntime;
 use protobuf::Message;
 use protoc_gen_ts::*;
+use protoc_gen_ts::emit::emit;
 
 use std::thread;
 
@@ -59,31 +57,11 @@ fn main() {
                 let imports = ctx.drain_imports();
                 body.splice(0..0, imports);
     
-                let module = Module {
-                    span: DUMMY_SP,
-                    body,
-                    shebang: None,
-                };
-    
-                let cm = Lrc::new(SourceMap::new(FilePathMapping::empty()));
-                let mut buf = vec![];
-                let mut emitter = Emitter {
-                    cfg: swc_ecma_codegen::Config {
-                        minify: false,
-                        ascii_only: false,
-                        target: EsVersion::Es2022,
-                        omit_last_semi: true,
-                    },
-                    cm: cm.clone(),
-                    comments: None,
-                    wr: JsWriter::new(cm, "\n", &mut buf, None),
-                };
-    
-                emitter.emit_module(&module).unwrap();
+                let ts = emit(body);
     
                 let mut file = File::new();
                 file.set_name(descriptor.name().replace(".proto", ".ts"));
-                file.set_content(String::from_utf8_lossy(&buf).to_string());
+                file.set_content(ts);
                 outputs.lock().unwrap().push(file)
             });
         }
@@ -94,6 +72,7 @@ fn main() {
     let mut response = CodeGeneratorResponse::new();
     response.file = outputs.lock().unwrap().to_vec();
 
-    let bytes = &response.write_to_bytes().expect("");
+    let bytes = &response.write_to_bytes().unwrap();
+
     stdout().write(bytes).unwrap();
 }

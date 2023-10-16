@@ -1,7 +1,7 @@
 use crate::{context::Context, descriptor::EnumDescriptorProto, print::Print, runtime::Runtime};
 use swc_common::DUMMY_SP;
 use swc_ecma_ast::{
-    Decl, Expr, Lit, ModuleItem, Number, TsEnumDecl, TsEnumMember, TsEnumMemberId, ModuleDecl, ExportDecl,
+    Decl, ModuleItem, TsEnumDecl, TsEnumMember, TsEnumMemberId, ModuleDecl, ExportDecl,
 };
 use swc_ecma_utils::quote_ident;
 
