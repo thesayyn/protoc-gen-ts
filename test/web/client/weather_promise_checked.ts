@@ -252,7 +252,7 @@ export namespace weather {
             }): Result {
                 const message = new Result({});
                 if (data.cities != null) {
-                    message.cities = data.cities.map(item => City.fromObject(item));
+                    message.cities = (data.cities?.map)(item => City.fromObject(item)) ?? [];
                 }
                 return message;
             }

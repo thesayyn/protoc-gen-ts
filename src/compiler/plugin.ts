@@ -212,7 +212,7 @@ export class CodeGeneratorRequest extends pb_1.Message {
     }): CodeGeneratorRequest {
         const message = new CodeGeneratorRequest({
             file_to_generate: data.file_to_generate,
-            proto_file: data.proto_file.map(item => dependency_1.FileDescriptorProto.fromObject(item))
+            proto_file: (data.proto_file?.map)(item => dependency_1.FileDescriptorProto.fromObject(item)) ?? []
         });
         if (data.parameter != null) {
             message.parameter = data.parameter;
@@ -336,7 +336,7 @@ export class CodeGeneratorResponse extends pb_1.Message {
         file?: ReturnType<typeof CodeGeneratorResponse.File.prototype.toObject>[];
     }): CodeGeneratorResponse {
         const message = new CodeGeneratorResponse({
-            file: data.file.map(item => CodeGeneratorResponse.File.fromObject(item))
+            file: (data.file?.map)(item => CodeGeneratorResponse.File.fromObject(item)) ?? []
         });
         if (data.error != null) {
             message.error = data.error;

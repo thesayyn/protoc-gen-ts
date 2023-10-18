@@ -373,7 +373,7 @@ export class DefaultMessageV3 extends pb_1.Message {
             message.array_int32 = data.array_int32;
         }
         if (data.array_message != null) {
-            message.array_message = data.array_message.map(item => dependency_1.DefaultCommonMessage.fromObject(item));
+            message.array_message = (data.array_message?.map)(item => dependency_1.DefaultCommonMessage.fromObject(item)) ?? [];
         }
         if (data.one_of_int32 != null) {
             message.one_of_int32 = data.one_of_int32;
