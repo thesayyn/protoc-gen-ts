@@ -5,10 +5,22 @@ import * as ts from "typescript";
 /**
  * @param {*} type
  * @param {descriptor.FieldDescriptorProto} fieldDescriptor
+ * @param {boolean=} makeReadonly
  */
-export function wrapRepeatedType(type: any, fieldDescriptor: descriptor.FieldDescriptorProto) {
+export function wrapRepeatedType(
+  type: any,
+  fieldDescriptor: descriptor.FieldDescriptorProto,
+  makeReadonly = false
+) {
   if (isRepeated(fieldDescriptor) && !isMap(fieldDescriptor)) {
     type = ts.factory.createArrayTypeNode(type);
+
+    if (makeReadonly) {
+      type = ts.factory.createTypeOperatorNode(
+        ts.SyntaxKind.ReadonlyKeyword,
+        type,
+      );
+    }
   }
 
   return type;
