@@ -592,6 +592,7 @@ function createMessageSignature(
             field.wrapRepeatedType(
               field.getType(fieldDescriptor, rootDescriptor),
               fieldDescriptor,
+              true
             ),
           ),
           fieldDescriptor.options?.deprecated,
@@ -672,7 +673,7 @@ function createPrimitiveMessageSignature(
         )
           ? ts.factory.createToken(ts.SyntaxKind.QuestionToken)
           : undefined,
-        field.wrapRepeatedType(fieldType as ts.TypeNode, fieldDescriptor),
+        field.wrapRepeatedType(fieldType as ts.TypeNode, fieldDescriptor, true),
       ),
     );
   }
@@ -1116,6 +1117,7 @@ function createSetter(
   const type = field.wrapRepeatedType(
     field.getType(fieldDescriptor, rootDescriptor),
     fieldDescriptor,
+    true
   );
   const valueParameter = ts.factory.createIdentifier("value");
 
