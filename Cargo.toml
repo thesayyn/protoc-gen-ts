@@ -10,7 +10,7 @@ path = "src/main.rs"
 
 [[bin]]
 name = "ast-dump"
-path = "bin/main.rs"
+path = "tests/helper/ast.rs"
 
 [dependencies]
 swc_atoms = "0.5.5"
