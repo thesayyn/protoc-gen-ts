@@ -1,0 +1,2144 @@
+TAP version 14
+not ok - Required.Proto3.ProtobufInput.PrematureEofInPackedFieldValue.BOOL
+# Should have failed to parse, but didn't.
+# 
+# protobuf_payload: "\332\002\001\200"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# protobuf_payload: "\332\002\001\001"
+# 
+
+not ok - Required.Proto2.ProtobufInput.PrematureEofInPackedFieldValue.BOOL
+# Should have failed to parse, but didn't.
+# 
+# protobuf_payload: "\332\002\001\200"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
+# test_category: BINARY_TEST
+# protobuf_payload: "\330\002\001"
+# 
+
+not ok - Required.Proto3.ProtobufInput.PrematureEofInSubmessageValue.MESSAGE
+# Should have failed to parse, but didn't.
+# 
+# protobuf_payload: "\222\001\002(\200"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# 
+
+not ok - Required.Proto2.ProtobufInput.PrematureEofInSubmessageValue.MESSAGE
+# Should have failed to parse, but didn't.
+# 
+# protobuf_payload: "\222\001\002(\200"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
+# test_category: BINARY_TEST
+# 
+
+not ok - Required.Proto3.ProtobufInput.IllegalZeroFieldNum_Case_0
+# Should have failed to parse, but didn't.
+# 
+# protobuf_payload: "\001DEADBEEF"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# 
+
+not ok - Required.Proto2.ProtobufInput.IllegalZeroFieldNum_Case_0
+# Should have failed to parse, but didn't.
+# 
+# protobuf_payload: "\001DEADBEEF"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
+# test_category: BINARY_TEST
+# 
+
+not ok - Required.Proto3.ProtobufInput.IllegalZeroFieldNum_Case_1
+# Should have failed to parse, but didn't.
+# 
+# protobuf_payload: "\002\001\001"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# 
+
+not ok - Required.Proto2.ProtobufInput.IllegalZeroFieldNum_Case_1
+# Should have failed to parse, but didn't.
+# 
+# protobuf_payload: "\002\001\001"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
+# test_category: BINARY_TEST
+# 
+
+not ok - Required.Proto3.ProtobufInput.IllegalZeroFieldNum_Case_2
+# Should have failed to parse, but didn't.
+# 
+# protobuf_payload: "\003\004"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# 
+
+not ok - Required.Proto2.ProtobufInput.IllegalZeroFieldNum_Case_2
+# Should have failed to parse, but didn't.
+# 
+# protobuf_payload: "\003\004"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
+# test_category: BINARY_TEST
+# 
+
+not ok - Required.Proto3.ProtobufInput.IllegalZeroFieldNum_Case_3
+# Should have failed to parse, but didn't.
+# 
+# protobuf_payload: "\005DEAD"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# 
+
+not ok - Required.Proto2.ProtobufInput.IllegalZeroFieldNum_Case_3
+# Should have failed to parse, but didn't.
+# 
+# protobuf_payload: "\005DEAD"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
+# test_category: BINARY_TEST
+# 
+
+not ok - Required.Proto3.ProtobufInput.ValidDataScalar.DOUBLE[0].ProtobufOutput
+# response didn't have any field in the return.
+# 
+# protobuf_payload: "a\000\000\000\000\000\000\000\000"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# 
+
+not ok - Recommended.Proto3.ProtobufInput.ValidDataScalarBinary.DOUBLE[0].ProtobufOutput
+# response didn't have any field in the return.
+# 
+# protobuf_payload: "a\000\000\000\000\000\000\000\000"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# 
+
+not ok - Required.Proto3.ProtobufInput.ValidDataScalar.FLOAT[0].ProtobufOutput
+# response didn't have any field in the return.
+# 
+# protobuf_payload: "]\000\000\000\000"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# 
+
+not ok - Recommended.Proto3.ProtobufInput.ValidDataScalarBinary.FLOAT[0].ProtobufOutput
+# response didn't have any field in the return.
+# 
+# protobuf_payload: "]\000\000\000\000"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# 
+
+not ok - Required.Proto3.ProtobufInput.ValidDataScalar.INT64[0].ProtobufOutput
+# response didn't have any field in the return.
+# 
+# protobuf_payload: "\020\000"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# 
+
+not ok - Recommended.Proto3.ProtobufInput.ValidDataScalarBinary.INT64[0].ProtobufOutput
+# response didn't have any field in the return.
+# 
+# protobuf_payload: "\020\000"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# 
+
+not ok - Required.Proto3.ProtobufInput.ValidDataScalar.UINT64[0].ProtobufOutput
+# response didn't have any field in the return.
+# 
+# protobuf_payload: " \000"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# 
+
+not ok - Recommended.Proto3.ProtobufInput.ValidDataScalarBinary.UINT64[0].ProtobufOutput
+# response didn't have any field in the return.
+# 
+# protobuf_payload: " \000"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# 
+
+not ok - Required.Proto3.ProtobufInput.ValidDataScalar.INT32[0].ProtobufOutput
+# response didn't have any field in the return.
+# 
+# protobuf_payload: "\010\000"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# 
+
+not ok - Recommended.Proto3.ProtobufInput.ValidDataScalarBinary.INT32[0].ProtobufOutput
+# response didn't have any field in the return.
+# 
+# protobuf_payload: "\010\000"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# 
+
+not ok - Required.Proto3.ProtobufInput.ValidDataScalar.INT32[6].ProtobufOutput
+# response didn't have any field in the return.
+# 
+# protobuf_payload: "\010\200\200\200\200 "
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# 
+
+not ok - Recommended.Proto3.ProtobufInput.ValidDataScalarBinary.INT32[6].ProtobufOutput
+# response didn't have any field in the return.
+# 
+# protobuf_payload: "\010\200\200\200\200 "
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# 
+
+not ok - Required.Proto2.ProtobufInput.ValidDataScalar.UINT32[8].ProtobufOutput
+# failed to parse input or produce output.
+# 
+# protobuf_payload: "\030\377\377\377\377\377\377\377\377\177"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
+# test_category: BINARY_TEST
+# serialize_error: "Error: Assertion failed
+#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
+#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
+#     at jspb.BinaryWriter.writeUint32 (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:5227:32)
+#     at protobuf_test_messages_proto2_TestAllTypesProto2.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:2150:16)
+#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:38:48"
+# 
+
+not ok - Recommended.Proto2.ProtobufInput.ValidDataScalarBinary.UINT32[8].ProtobufOutput
+# failed to parse input or produce output.
+# 
+# protobuf_payload: "\030\377\377\377\377\377\377\377\377\177"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
+# test_category: BINARY_TEST
+# serialize_error: "Error: Assertion failed
+#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
+#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
+#     at jspb.BinaryWriter.writeUint32 (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:5227:32)
+#     at protobuf_test_messages_proto2_TestAllTypesProto2.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:2150:16)
+#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:38:48"
+# 
+
+not ok - Required.Proto2.ProtobufInput.ValidDataRepeated.UINT32.UnpackedInput.ProtobufOutput
+# failed to parse input or produce output.
+# 
+# protobuf_payload: "\210\002\000\210\002\271`\210\002\271\340\200\000\210\002\271\340\200\200\200\200\200\200\000\210\002\377\377\377\377\017\210\002\200\200\200\200 \210\002\201\200\200\200 \210\002\377\377\377\377\037\210\002\377\377\377\377\377\377\377\377\177\210\002\201\200\200\200\200\200\200\200\200\001"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
+# test_category: BINARY_TEST
+# serialize_error: "Error: Assertion failed
+#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
+#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
+#     at jspb.BinaryWriter.writeUint32 (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:5227:32)
+#     at protobuf_test_messages_proto2_TestAllTypesProto2.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:2219:16)
+#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:38:48"
+# 
+
+not ok - Required.Proto2.ProtobufInput.ValidDataRepeated.UINT32.PackedInput.ProtobufOutput
+# failed to parse input or produce output.
+# 
+# protobuf_payload: "\212\0027\000\271`\271\340\200\000\271\340\200\200\200\200\200\200\000\377\377\377\377\017\200\200\200\200 \201\200\200\200 \377\377\377\377\037\377\377\377\377\377\377\377\377\177\201\200\200\200\200\200\200\200\200\001"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
+# test_category: BINARY_TEST
+# serialize_error: "Error: Assertion failed
+#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
+#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
+#     at jspb.BinaryWriter.writeUint32 (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:5227:32)
+#     at protobuf_test_messages_proto2_TestAllTypesProto2.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:2219:16)
+#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:38:48"
+# 
+
+not ok - Recommended.Proto2.ProtobufInput.ValidDataRepeated.UINT32.UnpackedInput.DefaultOutput.ProtobufOutput
+# failed to parse input or produce output.
+# 
+# protobuf_payload: "\210\002\000\210\002\271`\210\002\271\340\200\000\210\002\271\340\200\200\200\200\200\200\000\210\002\377\377\377\377\017\210\002\200\200\200\200 \210\002\201\200\200\200 \210\002\377\377\377\377\037\210\002\377\377\377\377\377\377\377\377\177\210\002\201\200\200\200\200\200\200\200\200\001"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
+# test_category: BINARY_TEST
+# serialize_error: "Error: Assertion failed
+#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
+#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
+#     at jspb.BinaryWriter.writeUint32 (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:5227:32)
+#     at protobuf_test_messages_proto2_TestAllTypesProto2.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:2219:16)
+#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:38:48"
+# 
+
+not ok - Recommended.Proto2.ProtobufInput.ValidDataRepeated.UINT32.PackedInput.DefaultOutput.ProtobufOutput
+# failed to parse input or produce output.
+# 
+# protobuf_payload: "\212\0027\000\271`\271\340\200\000\271\340\200\200\200\200\200\200\000\377\377\377\377\017\200\200\200\200 \201\200\200\200 \377\377\377\377\037\377\377\377\377\377\377\377\377\177\201\200\200\200\200\200\200\200\200\001"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
+# test_category: BINARY_TEST
+# serialize_error: "Error: Assertion failed
+#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
+#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
+#     at jspb.BinaryWriter.writeUint32 (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:5227:32)
+#     at protobuf_test_messages_proto2_TestAllTypesProto2.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:2219:16)
+#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:38:48"
+# 
+
+not ok - Recommended.Proto2.ProtobufInput.ValidDataRepeated.UINT32.UnpackedInput.PackedOutput.ProtobufOutput
+# failed to parse input or produce output.
+# 
+# protobuf_payload: "\350\004\000\350\004\271`\350\004\271\340\200\000\350\004\271\340\200\200\200\200\200\200\000\350\004\377\377\377\377\017\350\004\200\200\200\200 \350\004\201\200\200\200 \350\004\377\377\377\377\037\350\004\377\377\377\377\377\377\377\377\177\350\004\201\200\200\200\200\200\200\200\200\001"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
+# test_category: BINARY_TEST
+# serialize_error: "Error: Assertion failed
+#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
+#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
+#     at jspb.BinaryEncoder.writeUnsignedVarint32 (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4791:23)
+#     at jspb.BinaryWriter.writePackedUint32 (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:5575:23)
+#     at protobuf_test_messages_proto2_TestAllTypesProto2.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:2284:16)
+#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:38:48"
+# 
+
+not ok - Recommended.Proto2.ProtobufInput.ValidDataRepeated.UINT32.PackedInput.PackedOutput.ProtobufOutput
+# failed to parse input or produce output.
+# 
+# protobuf_payload: "\352\0047\000\271`\271\340\200\000\271\340\200\200\200\200\200\200\000\377\377\377\377\017\200\200\200\200 \201\200\200\200 \377\377\377\377\037\377\377\377\377\377\377\377\377\177\201\200\200\200\200\200\200\200\200\001"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
+# test_category: BINARY_TEST
+# serialize_error: "Error: Assertion failed
+#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
+#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
+#     at jspb.BinaryEncoder.writeUnsignedVarint32 (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4791:23)
+#     at jspb.BinaryWriter.writePackedUint32 (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:5575:23)
+#     at protobuf_test_messages_proto2_TestAllTypesProto2.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:2284:16)
+#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:38:48"
+# 
+
+not ok - Recommended.Proto2.ProtobufInput.ValidDataRepeated.UINT32.UnpackedInput.UnpackedOutput.ProtobufOutput
+# failed to parse input or produce output.
+# 
+# protobuf_payload: "\210\002\000\210\002\271`\210\002\271\340\200\000\210\002\271\340\200\200\200\200\200\200\000\210\002\377\377\377\377\017\210\002\200\200\200\200 \210\002\201\200\200\200 \210\002\377\377\377\377\037\210\002\377\377\377\377\377\377\377\377\177\210\002\201\200\200\200\200\200\200\200\200\001"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
+# test_category: BINARY_TEST
+# serialize_error: "Error: Assertion failed
+#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
+#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
+#     at jspb.BinaryWriter.writeUint32 (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:5227:32)
+#     at protobuf_test_messages_proto2_TestAllTypesProto2.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:2219:16)
+#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:38:48"
+# 
+
+not ok - Recommended.Proto2.ProtobufInput.ValidDataRepeated.UINT32.PackedInput.UnpackedOutput.ProtobufOutput
+# failed to parse input or produce output.
+# 
+# protobuf_payload: "\212\0027\000\271`\271\340\200\000\271\340\200\200\200\200\200\200\000\377\377\377\377\017\200\200\200\200 \201\200\200\200 \377\377\377\377\037\377\377\377\377\377\377\377\377\177\201\200\200\200\200\200\200\200\200\001"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
+# test_category: BINARY_TEST
+# serialize_error: "Error: Assertion failed
+#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
+#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
+#     at jspb.BinaryWriter.writeUint32 (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:5227:32)
+#     at protobuf_test_messages_proto2_TestAllTypesProto2.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:2219:16)
+#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:38:48"
+# 
+
+not ok - Required.Proto3.ProtobufInput.ValidDataScalar.UINT32[0].ProtobufOutput
+# response didn't have any field in the return.
+# 
+# protobuf_payload: "\030\000"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# 
+
+not ok - Recommended.Proto3.ProtobufInput.ValidDataScalarBinary.UINT32[0].ProtobufOutput
+# response didn't have any field in the return.
+# 
+# protobuf_payload: "\030\000"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# 
+
+not ok - Required.Proto3.ProtobufInput.ValidDataScalar.UINT32[5].ProtobufOutput
+# response didn't have any field in the return.
+# 
+# protobuf_payload: "\030\200\200\200\200 "
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# 
+
+not ok - Recommended.Proto3.ProtobufInput.ValidDataScalarBinary.UINT32[5].ProtobufOutput
+# response didn't have any field in the return.
+# 
+# protobuf_payload: "\030\200\200\200\200 "
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# 
+
+not ok - Required.Proto3.ProtobufInput.ValidDataScalar.UINT32[8].ProtobufOutput
+# failed to parse input or produce output.
+# 
+# protobuf_payload: "\030\377\377\377\377\377\377\377\377\177"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# serialize_error: "Error: Assertion failed
+#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
+#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
+#     at jspb.BinaryWriter.writeUint32 (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:5227:32)
+#     at protobuf_test_messages_proto3_TestAllTypesProto3.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:2546:16)
+#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:38:48"
+# 
+
+not ok - Recommended.Proto3.ProtobufInput.ValidDataScalarBinary.UINT32[8].ProtobufOutput
+# failed to parse input or produce output.
+# 
+# protobuf_payload: "\030\377\377\377\377\377\377\377\377\177"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# serialize_error: "Error: Assertion failed
+#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
+#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
+#     at jspb.BinaryWriter.writeUint32 (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:5227:32)
+#     at protobuf_test_messages_proto3_TestAllTypesProto3.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:2546:16)
+#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:38:48"
+# 
+
+not ok - Required.Proto3.ProtobufInput.ValidDataRepeated.UINT32.UnpackedInput.ProtobufOutput
+# failed to parse input or produce output.
+# 
+# protobuf_payload: "\210\002\000\210\002\271`\210\002\271\340\200\000\210\002\271\340\200\200\200\200\200\200\000\210\002\377\377\377\377\017\210\002\200\200\200\200 \210\002\201\200\200\200 \210\002\377\377\377\377\037\210\002\377\377\377\377\377\377\377\377\177\210\002\201\200\200\200\200\200\200\200\200\001"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# serialize_error: "Error: Assertion failed
+#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
+#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
+#     at jspb.BinaryEncoder.writeUnsignedVarint32 (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4791:23)
+#     at jspb.BinaryWriter.writePackedUint32 (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:5575:23)
+#     at protobuf_test_messages_proto3_TestAllTypesProto3.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:2618:16)
+#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:38:48"
+# 
+
+not ok - Required.Proto3.ProtobufInput.ValidDataRepeated.UINT32.PackedInput.ProtobufOutput
+# failed to parse input or produce output.
+# 
+# protobuf_payload: "\212\0027\000\271`\271\340\200\000\271\340\200\200\200\200\200\200\000\377\377\377\377\017\200\200\200\200 \201\200\200\200 \377\377\377\377\037\377\377\377\377\377\377\377\377\177\201\200\200\200\200\200\200\200\200\001"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# serialize_error: "Error: Assertion failed
+#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
+#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
+#     at jspb.BinaryEncoder.writeUnsignedVarint32 (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4791:23)
+#     at jspb.BinaryWriter.writePackedUint32 (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:5575:23)
+#     at protobuf_test_messages_proto3_TestAllTypesProto3.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:2618:16)
+#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:38:48"
+# 
+
+not ok - Recommended.Proto3.ProtobufInput.ValidDataRepeated.UINT32.UnpackedInput.DefaultOutput.ProtobufOutput
+# failed to parse input or produce output.
+# 
+# protobuf_payload: "\210\002\000\210\002\271`\210\002\271\340\200\000\210\002\271\340\200\200\200\200\200\200\000\210\002\377\377\377\377\017\210\002\200\200\200\200 \210\002\201\200\200\200 \210\002\377\377\377\377\037\210\002\377\377\377\377\377\377\377\377\177\210\002\201\200\200\200\200\200\200\200\200\001"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# serialize_error: "Error: Assertion failed
+#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
+#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
+#     at jspb.BinaryEncoder.writeUnsignedVarint32 (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4791:23)
+#     at jspb.BinaryWriter.writePackedUint32 (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:5575:23)
+#     at protobuf_test_messages_proto3_TestAllTypesProto3.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:2618:16)
+#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:38:48"
+# 
+
+not ok - Recommended.Proto3.ProtobufInput.ValidDataRepeated.UINT32.PackedInput.DefaultOutput.ProtobufOutput
+# failed to parse input or produce output.
+# 
+# protobuf_payload: "\212\0027\000\271`\271\340\200\000\271\340\200\200\200\200\200\200\000\377\377\377\377\017\200\200\200\200 \201\200\200\200 \377\377\377\377\037\377\377\377\377\377\377\377\377\177\201\200\200\200\200\200\200\200\200\001"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# serialize_error: "Error: Assertion failed
+#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
+#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
+#     at jspb.BinaryEncoder.writeUnsignedVarint32 (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4791:23)
+#     at jspb.BinaryWriter.writePackedUint32 (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:5575:23)
+#     at protobuf_test_messages_proto3_TestAllTypesProto3.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:2618:16)
+#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:38:48"
+# 
+
+not ok - Recommended.Proto3.ProtobufInput.ValidDataRepeated.UINT32.UnpackedInput.PackedOutput.ProtobufOutput
+# failed to parse input or produce output.
+# 
+# protobuf_payload: "\210\002\000\210\002\271`\210\002\271\340\200\000\210\002\271\340\200\200\200\200\200\200\000\210\002\377\377\377\377\017\210\002\200\200\200\200 \210\002\201\200\200\200 \210\002\377\377\377\377\037\210\002\377\377\377\377\377\377\377\377\177\210\002\201\200\200\200\200\200\200\200\200\001"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# serialize_error: "Error: Assertion failed
+#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
+#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
+#     at jspb.BinaryEncoder.writeUnsignedVarint32 (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4791:23)
+#     at jspb.BinaryWriter.writePackedUint32 (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:5575:23)
+#     at protobuf_test_messages_proto3_TestAllTypesProto3.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:2618:16)
+#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:38:48"
+# 
+
+not ok - Recommended.Proto3.ProtobufInput.ValidDataRepeated.UINT32.PackedInput.PackedOutput.ProtobufOutput
+# failed to parse input or produce output.
+# 
+# protobuf_payload: "\212\0027\000\271`\271\340\200\000\271\340\200\200\200\200\200\200\000\377\377\377\377\017\200\200\200\200 \201\200\200\200 \377\377\377\377\037\377\377\377\377\377\377\377\377\177\201\200\200\200\200\200\200\200\200\001"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# serialize_error: "Error: Assertion failed
+#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
+#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
+#     at jspb.BinaryEncoder.writeUnsignedVarint32 (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4791:23)
+#     at jspb.BinaryWriter.writePackedUint32 (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:5575:23)
+#     at protobuf_test_messages_proto3_TestAllTypesProto3.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:2618:16)
+#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:38:48"
+# 
+
+not ok - Recommended.Proto3.ProtobufInput.ValidDataRepeated.UINT32.UnpackedInput.UnpackedOutput.ProtobufOutput
+# failed to parse input or produce output.
+# 
+# protobuf_payload: "\330\005\000\330\005\271`\330\005\271\340\200\000\330\005\271\340\200\200\200\200\200\200\000\330\005\377\377\377\377\017\330\005\200\200\200\200 \330\005\201\200\200\200 \330\005\377\377\377\377\037\330\005\377\377\377\377\377\377\377\377\177\330\005\201\200\200\200\200\200\200\200\200\001"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# serialize_error: "Error: Assertion failed
+#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
+#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
+#     at jspb.BinaryWriter.writeUint32 (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:5227:32)
+#     at protobuf_test_messages_proto3_TestAllTypesProto3.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:2725:16)
+#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:38:48"
+# 
+
+not ok - Recommended.Proto3.ProtobufInput.ValidDataRepeated.UINT32.PackedInput.UnpackedOutput.ProtobufOutput
+# failed to parse input or produce output.
+# 
+# protobuf_payload: "\332\0057\000\271`\271\340\200\000\271\340\200\200\200\200\200\200\000\377\377\377\377\017\200\200\200\200 \201\200\200\200 \377\377\377\377\037\377\377\377\377\377\377\377\377\177\201\200\200\200\200\200\200\200\200\001"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# serialize_error: "Error: Assertion failed
+#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
+#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
+#     at jspb.BinaryWriter.writeUint32 (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:5227:32)
+#     at protobuf_test_messages_proto3_TestAllTypesProto3.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:2725:16)
+#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:38:48"
+# 
+
+not ok - Required.Proto3.ProtobufInput.ValidDataScalar.FIXED64[0].ProtobufOutput
+# response didn't have any field in the return.
+# 
+# protobuf_payload: "A\000\000\000\000\000\000\000\000"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# 
+
+not ok - Recommended.Proto3.ProtobufInput.ValidDataScalarBinary.FIXED64[0].ProtobufOutput
+# response didn't have any field in the return.
+# 
+# protobuf_payload: "A\000\000\000\000\000\000\000\000"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# 
+
+not ok - Required.Proto3.ProtobufInput.ValidDataScalar.FIXED32[0].ProtobufOutput
+# response didn't have any field in the return.
+# 
+# protobuf_payload: "=\000\000\000\000"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# 
+
+not ok - Recommended.Proto3.ProtobufInput.ValidDataScalarBinary.FIXED32[0].ProtobufOutput
+# response didn't have any field in the return.
+# 
+# protobuf_payload: "=\000\000\000\000"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# 
+
+not ok - Required.Proto3.ProtobufInput.ValidDataScalar.SFIXED64[0].ProtobufOutput
+# response didn't have any field in the return.
+# 
+# protobuf_payload: "Q\000\000\000\000\000\000\000\000"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# 
+
+not ok - Recommended.Proto3.ProtobufInput.ValidDataScalarBinary.SFIXED64[0].ProtobufOutput
+# response didn't have any field in the return.
+# 
+# protobuf_payload: "Q\000\000\000\000\000\000\000\000"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# 
+
+not ok - Required.Proto3.ProtobufInput.ValidDataScalar.SFIXED32[0].ProtobufOutput
+# response didn't have any field in the return.
+# 
+# protobuf_payload: "M\000\000\000\000"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# 
+
+not ok - Recommended.Proto3.ProtobufInput.ValidDataScalarBinary.SFIXED32[0].ProtobufOutput
+# response didn't have any field in the return.
+# 
+# protobuf_payload: "M\000\000\000\000"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# 
+
+not ok - Required.Proto2.ProtobufInput.ValidDataScalar.BOOL[4].ProtobufOutput
+# output was not equivalent to reference message: 
+# modified: optional_bool: true -> false
+# 
+# 
+# protobuf_payload: "h\200\200\200\200 "
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
+# test_category: BINARY_TEST
+# protobuf_payload: "h\000"
+# 
+
+not ok - Recommended.Proto2.ProtobufInput.ValidDataScalarBinary.BOOL[4].ProtobufOutput
+# output was not equivalent to reference message: 
+# expected: \150\001
+# got: \150\000
+# 
+# protobuf_payload: "h\200\200\200\200 "
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
+# test_category: BINARY_TEST
+# protobuf_payload: "h\000"
+# 
+
+not ok - Required.Proto2.ProtobufInput.ValidDataScalar.BOOL[6].ProtobufOutput
+# output was not equivalent to reference message: 
+# modified: optional_bool: true -> false
+# 
+# 
+# protobuf_payload: "h\200\200\200\200\200\200\200\200\200\001"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
+# test_category: BINARY_TEST
+# protobuf_payload: "h\000"
+# 
+
+not ok - Recommended.Proto2.ProtobufInput.ValidDataScalarBinary.BOOL[6].ProtobufOutput
+# output was not equivalent to reference message: 
+# expected: \150\001
+# got: \150\000
+# 
+# protobuf_payload: "h\200\200\200\200\200\200\200\200\200\001"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
+# test_category: BINARY_TEST
+# protobuf_payload: "h\000"
+# 
+
+not ok - Required.Proto2.ProtobufInput.RepeatedScalarSelectsLast.BOOL.ProtobufOutput
+# output was not equivalent to reference message: 
+# modified: optional_bool: true -> false
+# 
+# 
+# protobuf_payload: "h\000h\001h\377\377\377\377\377\377\377\377\377\001h\316\302\361\005h\200\200\200\200 h\377\377\377\377\377\377\377\377\177h\200\200\200\200\200\200\200\200\200\001"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
+# test_category: BINARY_TEST
+# protobuf_payload: "h\000"
+# 
+
+not ok - Required.Proto2.ProtobufInput.ValidDataRepeated.BOOL.UnpackedInput.ProtobufOutput
+# output was not equivalent to reference message: 
+# modified: repeated_bool[4]: true -> false
+# modified: repeated_bool[6]: true -> false
+# 
+# 
+# protobuf_payload: "\330\002\000\330\002\001\330\002\377\377\377\377\377\377\377\377\377\001\330\002\316\302\361\005\330\002\200\200\200\200 \330\002\377\377\377\377\377\377\377\377\177\330\002\200\200\200\200\200\200\200\200\200\001"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
+# test_category: BINARY_TEST
+# protobuf_payload: "\330\002\000\330\002\001\330\002\001\330\002\001\330\002\000\330\002\001\330\002\000"
+# 
+
+not ok - Required.Proto2.ProtobufInput.ValidDataRepeated.BOOL.PackedInput.ProtobufOutput
+# output was not equivalent to reference message: 
+# added: repeated_bool[7]: true
+# added: repeated_bool[8]: true
+# added: repeated_bool[9]: true
+# added: repeated_bool[10]: true
+# added: repeated_bool[11]: true
+# added: repeated_bool[12]: true
+# added: repeated_bool[13]: true
+# added: repeated_bool[14]: true
+# added: repeated_bool[15]: true
+# added: repeated_bool[16]: true
+# added: repeated_bool[17]: true
+# added: repeated_bool[18]: true
+# added: repeated_bool[19]: true
+# added: repeated_bool[20]: true
+# added: repeated_bool[21]: true
+# added: repeated_bool[22]: true
+# added: repeated_bool[23]: true
+# added: repeated_bool[24]: true
+# added: repeated_bool[25]: true
+# added: repeated_bool[26]: true
+# added: repeated_bool[27]: true
+# added: repeated_bool[28]: true
+# added: repeated_bool[29]: true
+# added: repeated_bool[30]: true
+# added: repeated_bool[31]: true
+# added: repeated_bool[32]: true
+# added: repeated_bool[33]: true
+# added: repeated_bool[34]: true
+# added: repeated_bool[35]: true
+# added: repeated_bool[36]: true
+# added: repeated_bool[37]: true
+# added: repeated_bool[38]: true
+# added: repeated_bool[39]: true
+# 
+# 
+# protobuf_payload: "\332\002(\000\001\377\377\377\377\377\377\377\377\377\001\316\302\361\005\200\200\200\200 \377\377\377\377\377\377\377\377\177\200\200\200\200\200\200\200\200\200\001"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
+# test_category: BINARY_TEST
+# protobuf_payload: "\330\002\000\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001"
+# 
+
+not ok - Recommended.Proto2.ProtobufInput.ValidDataRepeated.BOOL.UnpackedInput.DefaultOutput.ProtobufOutput
+# output was not equivalent to reference message: 
+# expected: \330\002\000\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001
+# got: \330\002\000\330\002\001\330\002\001\330\002\001\330\002\000\330\002\001\330\002\000
+# 
+# protobuf_payload: "\330\002\000\330\002\001\330\002\377\377\377\377\377\377\377\377\377\001\330\002\316\302\361\005\330\002\200\200\200\200 \330\002\377\377\377\377\377\377\377\377\177\330\002\200\200\200\200\200\200\200\200\200\001"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
+# test_category: BINARY_TEST
+# protobuf_payload: "\330\002\000\330\002\001\330\002\001\330\002\001\330\002\000\330\002\001\330\002\000"
+# 
+
+not ok - Recommended.Proto2.ProtobufInput.ValidDataRepeated.BOOL.PackedInput.DefaultOutput.ProtobufOutput
+# output was not equivalent to reference message: 
+# expected: \330\002\000\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001
+# got: \330\002\000\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001
+# 
+# protobuf_payload: "\332\002(\000\001\377\377\377\377\377\377\377\377\377\001\316\302\361\005\200\200\200\200 \377\377\377\377\377\377\377\377\177\200\200\200\200\200\200\200\200\200\001"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
+# test_category: BINARY_TEST
+# protobuf_payload: "\330\002\000\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001"
+# 
+
+not ok - Recommended.Proto2.ProtobufInput.ValidDataRepeated.BOOL.UnpackedInput.PackedOutput.ProtobufOutput
+# output was not equivalent to reference message: 
+# expected: \272\005\007\000\001\001\001\001\001\001
+# got: \272\005\007\000\001\001\001\000\001\000
+# 
+# protobuf_payload: "\270\005\000\270\005\001\270\005\377\377\377\377\377\377\377\377\377\001\270\005\316\302\361\005\270\005\200\200\200\200 \270\005\377\377\377\377\377\377\377\377\177\270\005\200\200\200\200\200\200\200\200\200\001"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
+# test_category: BINARY_TEST
+# protobuf_payload: "\272\005\007\000\001\001\001\000\001\000"
+# 
+
+not ok - Recommended.Proto2.ProtobufInput.ValidDataRepeated.BOOL.PackedInput.PackedOutput.ProtobufOutput
+# output was not equivalent to reference message: 
+# expected: \272\005\007\000\001\001\001\001\001\001
+# got: \272\005\050\000\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001
+# 
+# protobuf_payload: "\272\005(\000\001\377\377\377\377\377\377\377\377\377\001\316\302\361\005\200\200\200\200 \377\377\377\377\377\377\377\377\177\200\200\200\200\200\200\200\200\200\001"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
+# test_category: BINARY_TEST
+# protobuf_payload: "\272\005(\000\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001"
+# 
+
+not ok - Recommended.Proto2.ProtobufInput.ValidDataRepeated.BOOL.UnpackedInput.UnpackedOutput.ProtobufOutput
+# output was not equivalent to reference message: 
+# expected: \330\002\000\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001
+# got: \330\002\000\330\002\001\330\002\001\330\002\001\330\002\000\330\002\001\330\002\000
+# 
+# protobuf_payload: "\330\002\000\330\002\001\330\002\377\377\377\377\377\377\377\377\377\001\330\002\316\302\361\005\330\002\200\200\200\200 \330\002\377\377\377\377\377\377\377\377\177\330\002\200\200\200\200\200\200\200\200\200\001"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
+# test_category: BINARY_TEST
+# protobuf_payload: "\330\002\000\330\002\001\330\002\001\330\002\001\330\002\000\330\002\001\330\002\000"
+# 
+
+not ok - Recommended.Proto2.ProtobufInput.ValidDataRepeated.BOOL.PackedInput.UnpackedOutput.ProtobufOutput
+# output was not equivalent to reference message: 
+# expected: \330\002\000\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001
+# got: \330\002\000\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001
+# 
+# protobuf_payload: "\332\002(\000\001\377\377\377\377\377\377\377\377\377\001\316\302\361\005\200\200\200\200 \377\377\377\377\377\377\377\377\177\200\200\200\200\200\200\200\200\200\001"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
+# test_category: BINARY_TEST
+# protobuf_payload: "\330\002\000\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001"
+# 
+
+not ok - Required.Proto3.ProtobufInput.ValidDataScalar.BOOL[0].ProtobufOutput
+# response didn't have any field in the return.
+# 
+# protobuf_payload: "h\000"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# 
+
+not ok - Recommended.Proto3.ProtobufInput.ValidDataScalarBinary.BOOL[0].ProtobufOutput
+# response didn't have any field in the return.
+# 
+# protobuf_payload: "h\000"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# 
+
+not ok - Required.Proto3.ProtobufInput.ValidDataScalar.BOOL[4].ProtobufOutput
+# response didn't have any field in the return.
+# 
+# protobuf_payload: "h\200\200\200\200 "
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# 
+
+not ok - Recommended.Proto3.ProtobufInput.ValidDataScalarBinary.BOOL[4].ProtobufOutput
+# response didn't have any field in the return.
+# 
+# protobuf_payload: "h\200\200\200\200 "
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# 
+
+not ok - Required.Proto3.ProtobufInput.ValidDataScalar.BOOL[6].ProtobufOutput
+# response didn't have any field in the return.
+# 
+# protobuf_payload: "h\200\200\200\200\200\200\200\200\200\001"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# 
+
+not ok - Recommended.Proto3.ProtobufInput.ValidDataScalarBinary.BOOL[6].ProtobufOutput
+# response didn't have any field in the return.
+# 
+# protobuf_payload: "h\200\200\200\200\200\200\200\200\200\001"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# 
+
+not ok - Required.Proto3.ProtobufInput.RepeatedScalarSelectsLast.BOOL.ProtobufOutput
+# response didn't have any field in the return.
+# 
+# protobuf_payload: "h\000h\001h\377\377\377\377\377\377\377\377\377\001h\316\302\361\005h\200\200\200\200 h\377\377\377\377\377\377\377\377\177h\200\200\200\200\200\200\200\200\200\001"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# 
+
+not ok - Required.Proto3.ProtobufInput.ValidDataRepeated.BOOL.UnpackedInput.ProtobufOutput
+# output was not equivalent to reference message: 
+# modified: repeated_bool[4]: true -> false
+# modified: repeated_bool[6]: true -> false
+# 
+# 
+# protobuf_payload: "\330\002\000\330\002\001\330\002\377\377\377\377\377\377\377\377\377\001\330\002\316\302\361\005\330\002\200\200\200\200 \330\002\377\377\377\377\377\377\377\377\177\330\002\200\200\200\200\200\200\200\200\200\001"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# protobuf_payload: "\332\002\007\000\001\001\001\000\001\000"
+# 
+
+not ok - Required.Proto3.ProtobufInput.ValidDataRepeated.BOOL.PackedInput.ProtobufOutput
+# output was not equivalent to reference message: 
+# added: repeated_bool[7]: true
+# added: repeated_bool[8]: true
+# added: repeated_bool[9]: true
+# added: repeated_bool[10]: true
+# added: repeated_bool[11]: true
+# added: repeated_bool[12]: true
+# added: repeated_bool[13]: true
+# added: repeated_bool[14]: true
+# added: repeated_bool[15]: true
+# added: repeated_bool[16]: true
+# added: repeated_bool[17]: true
+# added: repeated_bool[18]: true
+# added: repeated_bool[19]: true
+# added: repeated_bool[20]: true
+# added: repeated_bool[21]: true
+# added: repeated_bool[22]: true
+# added: repeated_bool[23]: true
+# added: repeated_bool[24]: true
+# added: repeated_bool[25]: true
+# added: repeated_bool[26]: true
+# added: repeated_bool[27]: true
+# added: repeated_bool[28]: true
+# added: repeated_bool[29]: true
+# added: repeated_bool[30]: true
+# added: repeated_bool[31]: true
+# added: repeated_bool[32]: true
+# added: repeated_bool[33]: true
+# added: repeated_bool[34]: true
+# added: repeated_bool[35]: true
+# added: repeated_bool[36]: true
+# added: repeated_bool[37]: true
+# added: repeated_bool[38]: true
+# added: repeated_bool[39]: true
+# 
+# 
+# protobuf_payload: "\332\002(\000\001\377\377\377\377\377\377\377\377\377\001\316\302\361\005\200\200\200\200 \377\377\377\377\377\377\377\377\177\200\200\200\200\200\200\200\200\200\001"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# protobuf_payload: "\332\002(\000\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001"
+# 
+
+not ok - Recommended.Proto3.ProtobufInput.ValidDataRepeated.BOOL.UnpackedInput.DefaultOutput.ProtobufOutput
+# output was not equivalent to reference message: 
+# expected: \332\002\007\000\001\001\001\001\001\001
+# got: \332\002\007\000\001\001\001\000\001\000
+# 
+# protobuf_payload: "\330\002\000\330\002\001\330\002\377\377\377\377\377\377\377\377\377\001\330\002\316\302\361\005\330\002\200\200\200\200 \330\002\377\377\377\377\377\377\377\377\177\330\002\200\200\200\200\200\200\200\200\200\001"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# protobuf_payload: "\332\002\007\000\001\001\001\000\001\000"
+# 
+
+not ok - Recommended.Proto3.ProtobufInput.ValidDataRepeated.BOOL.PackedInput.DefaultOutput.ProtobufOutput
+# output was not equivalent to reference message: 
+# expected: \332\002\007\000\001\001\001\001\001\001
+# got: \332\002\050\000\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001
+# 
+# protobuf_payload: "\332\002(\000\001\377\377\377\377\377\377\377\377\377\001\316\302\361\005\200\200\200\200 \377\377\377\377\377\377\377\377\177\200\200\200\200\200\200\200\200\200\001"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# protobuf_payload: "\332\002(\000\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001"
+# 
+
+not ok - Recommended.Proto3.ProtobufInput.ValidDataRepeated.BOOL.UnpackedInput.PackedOutput.ProtobufOutput
+# output was not equivalent to reference message: 
+# expected: \332\002\007\000\001\001\001\001\001\001
+# got: \332\002\007\000\001\001\001\000\001\000
+# 
+# protobuf_payload: "\330\002\000\330\002\001\330\002\377\377\377\377\377\377\377\377\377\001\330\002\316\302\361\005\330\002\200\200\200\200 \330\002\377\377\377\377\377\377\377\377\177\330\002\200\200\200\200\200\200\200\200\200\001"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# protobuf_payload: "\332\002\007\000\001\001\001\000\001\000"
+# 
+
+not ok - Recommended.Proto3.ProtobufInput.ValidDataRepeated.BOOL.PackedInput.PackedOutput.ProtobufOutput
+# output was not equivalent to reference message: 
+# expected: \332\002\007\000\001\001\001\001\001\001
+# got: \332\002\050\000\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001
+# 
+# protobuf_payload: "\332\002(\000\001\377\377\377\377\377\377\377\377\377\001\316\302\361\005\200\200\200\200 \377\377\377\377\377\377\377\377\177\200\200\200\200\200\200\200\200\200\001"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# protobuf_payload: "\332\002(\000\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001"
+# 
+
+not ok - Recommended.Proto3.ProtobufInput.ValidDataRepeated.BOOL.UnpackedInput.UnpackedOutput.ProtobufOutput
+# output was not equivalent to reference message: 
+# expected: \250\006\000\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001
+# got: \250\006\000\250\006\001\250\006\001\250\006\001\250\006\000\250\006\001\250\006\000
+# 
+# protobuf_payload: "\250\006\000\250\006\001\250\006\377\377\377\377\377\377\377\377\377\001\250\006\316\302\361\005\250\006\200\200\200\200 \250\006\377\377\377\377\377\377\377\377\177\250\006\200\200\200\200\200\200\200\200\200\001"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# protobuf_payload: "\250\006\000\250\006\001\250\006\001\250\006\001\250\006\000\250\006\001\250\006\000"
+# 
+
+not ok - Recommended.Proto3.ProtobufInput.ValidDataRepeated.BOOL.PackedInput.UnpackedOutput.ProtobufOutput
+# output was not equivalent to reference message: 
+# expected: \250\006\000\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001
+# got: \250\006\000\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001
+# 
+# protobuf_payload: "\252\006(\000\001\377\377\377\377\377\377\377\377\377\001\316\302\361\005\200\200\200\200 \377\377\377\377\377\377\377\377\177\200\200\200\200\200\200\200\200\200\001"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# protobuf_payload: "\250\006\000\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001"
+# 
+
+not ok - Required.Proto3.ProtobufInput.ValidDataScalar.SINT32[0].ProtobufOutput
+# response didn't have any field in the return.
+# 
+# protobuf_payload: "(\000"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# 
+
+not ok - Recommended.Proto3.ProtobufInput.ValidDataScalarBinary.SINT32[0].ProtobufOutput
+# response didn't have any field in the return.
+# 
+# protobuf_payload: "(\000"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# 
+
+not ok - Required.Proto3.ProtobufInput.ValidDataScalar.SINT64[0].ProtobufOutput
+# response didn't have any field in the return.
+# 
+# protobuf_payload: "0\000"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# 
+
+not ok - Recommended.Proto3.ProtobufInput.ValidDataScalarBinary.SINT64[0].ProtobufOutput
+# response didn't have any field in the return.
+# 
+# protobuf_payload: "0\000"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# 
+
+not ok - Required.Proto3.ProtobufInput.ValidDataScalar.STRING[0].ProtobufOutput
+# response didn't have any field in the return.
+# 
+# protobuf_payload: "r\000"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# 
+
+not ok - Recommended.Proto3.ProtobufInput.ValidDataScalarBinary.STRING[0].ProtobufOutput
+# response didn't have any field in the return.
+# 
+# protobuf_payload: "r\000"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# 
+
+not ok - Required.Proto2.ProtobufInput.ValidDataScalar.BYTES[0].ProtobufOutput
+# response didn't have any field in the return.
+# 
+# protobuf_payload: "z\000"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
+# test_category: BINARY_TEST
+# 
+
+not ok - Recommended.Proto2.ProtobufInput.ValidDataScalarBinary.BYTES[0].ProtobufOutput
+# response didn't have any field in the return.
+# 
+# protobuf_payload: "z\000"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
+# test_category: BINARY_TEST
+# 
+
+not ok - Required.Proto3.ProtobufInput.ValidDataScalar.BYTES[0].ProtobufOutput
+# response didn't have any field in the return.
+# 
+# protobuf_payload: "z\000"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# 
+
+not ok - Recommended.Proto3.ProtobufInput.ValidDataScalarBinary.BYTES[0].ProtobufOutput
+# response didn't have any field in the return.
+# 
+# protobuf_payload: "z\000"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# 
+
+not ok - Required.Proto2.ProtobufInput.ValidDataScalar.ENUM[4].ProtobufOutput
+# failed to parse input or produce output.
+# 
+# protobuf_payload: "\250\001\377\377\377\377\377\377\377\377\177"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
+# test_category: BINARY_TEST
+# serialize_error: "Error: Assertion failed
+#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
+#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
+#     at jspb.BinaryWriter.writeEnum (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:5289:32)
+#     at protobuf_test_messages_proto2_TestAllTypesProto2.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:2197:16)
+#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:38:48"
+# 
+
+not ok - Recommended.Proto2.ProtobufInput.ValidDataScalarBinary.ENUM[4].ProtobufOutput
+# failed to parse input or produce output.
+# 
+# protobuf_payload: "\250\001\377\377\377\377\377\377\377\377\177"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
+# test_category: BINARY_TEST
+# serialize_error: "Error: Assertion failed
+#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
+#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
+#     at jspb.BinaryWriter.writeEnum (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:5289:32)
+#     at protobuf_test_messages_proto2_TestAllTypesProto2.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:2197:16)
+#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:38:48"
+# 
+
+not ok - Required.Proto2.ProtobufInput.ValidDataScalar.ENUM[5].ProtobufOutput
+# failed to parse input or produce output.
+# 
+# protobuf_payload: "\250\001\201\200\200\200\200\200\200\200\200\001"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
+# test_category: BINARY_TEST
+# serialize_error: "Error: Assertion failed
+#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
+#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
+#     at jspb.BinaryWriter.writeEnum (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:5289:32)
+#     at protobuf_test_messages_proto2_TestAllTypesProto2.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:2197:16)
+#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:38:48"
+# 
+
+not ok - Recommended.Proto2.ProtobufInput.ValidDataScalarBinary.ENUM[5].ProtobufOutput
+# failed to parse input or produce output.
+# 
+# protobuf_payload: "\250\001\201\200\200\200\200\200\200\200\200\001"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
+# test_category: BINARY_TEST
+# serialize_error: "Error: Assertion failed
+#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
+#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
+#     at jspb.BinaryWriter.writeEnum (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:5289:32)
+#     at protobuf_test_messages_proto2_TestAllTypesProto2.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:2197:16)
+#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:38:48"
+# 
+
+not ok - Required.Proto2.ProtobufInput.RepeatedScalarSelectsLast.ENUM.ProtobufOutput
+# failed to parse input or produce output.
+# 
+# protobuf_payload: "\250\001\000\250\001\001\250\001\002\250\001\377\377\377\377\377\377\377\377\377\001\250\001\377\377\377\377\377\377\377\377\177\250\001\201\200\200\200\200\200\200\200\200\001"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
+# test_category: BINARY_TEST
+# serialize_error: "Error: Assertion failed
+#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
+#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
+#     at jspb.BinaryWriter.writeEnum (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:5289:32)
+#     at protobuf_test_messages_proto2_TestAllTypesProto2.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:2197:16)
+#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:38:48"
+# 
+
+not ok - Required.Proto2.ProtobufInput.ValidDataRepeated.ENUM.UnpackedInput.ProtobufOutput
+# failed to parse input or produce output.
+# 
+# protobuf_payload: "\230\003\000\230\003\001\230\003\002\230\003\377\377\377\377\377\377\377\377\377\001\230\003\377\377\377\377\377\377\377\377\177\230\003\201\200\200\200\200\200\200\200\200\001"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
+# test_category: BINARY_TEST
+# serialize_error: "Error: Assertion failed
+#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
+#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
+#     at jspb.BinaryWriter.writeEnum (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:5289:32)
+#     at protobuf_test_messages_proto2_TestAllTypesProto2.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:2266:16)
+#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:38:48"
+# 
+
+not ok - Recommended.Proto2.ProtobufInput.ValidDataRepeated.ENUM.UnpackedInput.DefaultOutput.ProtobufOutput
+# failed to parse input or produce output.
+# 
+# protobuf_payload: "\230\003\000\230\003\001\230\003\002\230\003\377\377\377\377\377\377\377\377\377\001\230\003\377\377\377\377\377\377\377\377\177\230\003\201\200\200\200\200\200\200\200\200\001"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
+# test_category: BINARY_TEST
+# serialize_error: "Error: Assertion failed
+#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
+#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
+#     at jspb.BinaryWriter.writeEnum (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:5289:32)
+#     at protobuf_test_messages_proto2_TestAllTypesProto2.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:2266:16)
+#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:38:48"
+# 
+
+not ok - Recommended.Proto2.ProtobufInput.ValidDataRepeated.ENUM.UnpackedInput.PackedOutput.ProtobufOutput
+# failed to parse input or produce output.
+# 
+# protobuf_payload: "\300\005\000\300\005\001\300\005\002\300\005\377\377\377\377\377\377\377\377\377\001\300\005\377\377\377\377\377\377\377\377\177\300\005\201\200\200\200\200\200\200\200\200\001"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
+# test_category: BINARY_TEST
+# serialize_error: "Error: Assertion failed
+#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
+#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
+#     at jspb.BinaryEncoder.writeEnum (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4913:18)
+#     at jspb.BinaryWriter.writePackedEnum (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:5699:23)
+#     at protobuf_test_messages_proto2_TestAllTypesProto2.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:2317:16)
+#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:38:48"
+# 
+
+not ok - Recommended.Proto2.ProtobufInput.ValidDataRepeated.ENUM.UnpackedInput.UnpackedOutput.ProtobufOutput
+# failed to parse input or produce output.
+# 
+# protobuf_payload: "\230\003\000\230\003\001\230\003\002\230\003\377\377\377\377\377\377\377\377\377\001\230\003\377\377\377\377\377\377\377\377\177\230\003\201\200\200\200\200\200\200\200\200\001"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
+# test_category: BINARY_TEST
+# serialize_error: "Error: Assertion failed
+#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
+#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
+#     at jspb.BinaryWriter.writeEnum (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:5289:32)
+#     at protobuf_test_messages_proto2_TestAllTypesProto2.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:2266:16)
+#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:38:48"
+# 
+
+not ok - Recommended.Proto3.ProtobufInput.ValidDataScalarBinary.ENUM[0].ProtobufOutput
+# output was not equivalent to reference message: 
+# expected: 
+# got: \250\001\000
+# 
+# protobuf_payload: "\250\001\000"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# protobuf_payload: "\250\001\000"
+# 
+
+not ok - Required.Proto3.ProtobufInput.ValidDataScalar.ENUM[4].ProtobufOutput
+# failed to parse input or produce output.
+# 
+# protobuf_payload: "\250\001\377\377\377\377\377\377\377\377\177"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# serialize_error: "Error: Assertion failed
+#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
+#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
+#     at jspb.BinaryWriter.writeEnum (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:5289:32)
+#     at protobuf_test_messages_proto3_TestAllTypesProto3.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:2593:16)
+#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:38:48"
+# 
+
+not ok - Recommended.Proto3.ProtobufInput.ValidDataScalarBinary.ENUM[4].ProtobufOutput
+# failed to parse input or produce output.
+# 
+# protobuf_payload: "\250\001\377\377\377\377\377\377\377\377\177"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# serialize_error: "Error: Assertion failed
+#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
+#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
+#     at jspb.BinaryWriter.writeEnum (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:5289:32)
+#     at protobuf_test_messages_proto3_TestAllTypesProto3.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:2593:16)
+#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:38:48"
+# 
+
+not ok - Required.Proto3.ProtobufInput.ValidDataScalar.ENUM[5].ProtobufOutput
+# failed to parse input or produce output.
+# 
+# protobuf_payload: "\250\001\201\200\200\200\200\200\200\200\200\001"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# serialize_error: "Error: Assertion failed
+#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
+#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
+#     at jspb.BinaryWriter.writeEnum (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:5289:32)
+#     at protobuf_test_messages_proto3_TestAllTypesProto3.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:2593:16)
+#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:38:48"
+# 
+
+not ok - Recommended.Proto3.ProtobufInput.ValidDataScalarBinary.ENUM[5].ProtobufOutput
+# failed to parse input or produce output.
+# 
+# protobuf_payload: "\250\001\201\200\200\200\200\200\200\200\200\001"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# serialize_error: "Error: Assertion failed
+#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
+#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
+#     at jspb.BinaryWriter.writeEnum (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:5289:32)
+#     at protobuf_test_messages_proto3_TestAllTypesProto3.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:2593:16)
+#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:38:48"
+# 
+
+not ok - Required.Proto3.ProtobufInput.RepeatedScalarSelectsLast.ENUM.ProtobufOutput
+# failed to parse input or produce output.
+# 
+# protobuf_payload: "\250\001\000\250\001\001\250\001\002\250\001\377\377\377\377\377\377\377\377\377\001\250\001\377\377\377\377\377\377\377\377\177\250\001\201\200\200\200\200\200\200\200\200\001"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# serialize_error: "Error: Assertion failed
+#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
+#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
+#     at jspb.BinaryWriter.writeEnum (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:5289:32)
+#     at protobuf_test_messages_proto3_TestAllTypesProto3.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:2593:16)
+#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:38:48"
+# 
+
+not ok - Required.Proto3.ProtobufInput.ValidDataRepeated.ENUM.UnpackedInput.ProtobufOutput
+# failed to parse input or produce output.
+# 
+# protobuf_payload: "\230\003\000\230\003\001\230\003\002\230\003\377\377\377\377\377\377\377\377\377\001\230\003\377\377\377\377\377\377\377\377\177\230\003\201\200\200\200\200\200\200\200\200\001"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# serialize_error: "Error: Assertion failed
+#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
+#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
+#     at jspb.BinaryEncoder.writeEnum (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4913:18)
+#     at jspb.BinaryWriter.writePackedEnum (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:5699:23)
+#     at protobuf_test_messages_proto3_TestAllTypesProto3.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:2665:16)
+#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:38:48"
+# 
+
+not ok - Recommended.Proto3.ProtobufInput.ValidDataRepeated.ENUM.UnpackedInput.DefaultOutput.ProtobufOutput
+# failed to parse input or produce output.
+# 
+# protobuf_payload: "\230\003\000\230\003\001\230\003\002\230\003\377\377\377\377\377\377\377\377\377\001\230\003\377\377\377\377\377\377\377\377\177\230\003\201\200\200\200\200\200\200\200\200\001"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# serialize_error: "Error: Assertion failed
+#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
+#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
+#     at jspb.BinaryEncoder.writeEnum (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4913:18)
+#     at jspb.BinaryWriter.writePackedEnum (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:5699:23)
+#     at protobuf_test_messages_proto3_TestAllTypesProto3.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:2665:16)
+#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:38:48"
+# 
+
+not ok - Recommended.Proto3.ProtobufInput.ValidDataRepeated.ENUM.UnpackedInput.PackedOutput.ProtobufOutput
+# failed to parse input or produce output.
+# 
+# protobuf_payload: "\230\003\000\230\003\001\230\003\002\230\003\377\377\377\377\377\377\377\377\377\001\230\003\377\377\377\377\377\377\377\377\177\230\003\201\200\200\200\200\200\200\200\200\001"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# serialize_error: "Error: Assertion failed
+#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
+#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
+#     at jspb.BinaryEncoder.writeEnum (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4913:18)
+#     at jspb.BinaryWriter.writePackedEnum (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:5699:23)
+#     at protobuf_test_messages_proto3_TestAllTypesProto3.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:2665:16)
+#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:38:48"
+# 
+
+not ok - Recommended.Proto3.ProtobufInput.ValidDataRepeated.ENUM.UnpackedInput.UnpackedOutput.ProtobufOutput
+# failed to parse input or produce output.
+# 
+# protobuf_payload: "\260\006\000\260\006\001\260\006\002\260\006\377\377\377\377\377\377\377\377\377\001\260\006\377\377\377\377\377\377\377\377\177\260\006\201\200\200\200\200\200\200\200\200\001"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# serialize_error: "Error: Assertion failed
+#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
+#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
+#     at jspb.BinaryWriter.writeEnum (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:5289:32)
+#     at protobuf_test_messages_proto3_TestAllTypesProto3.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:2758:16)
+#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:38:48"
+# 
+
+not ok - Required.Proto2.ProtobufInput.RepeatedScalarMessageMerge.ProtobufOutput
+# response didn't have any field in the return.
+# 
+# protobuf_payload: "\222\001\014\022
+# \010\322\t\020\322\t\370\001\322\t\222\001\014\022
+# \010\341!\030\341!\370\001\341!"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
+# test_category: BINARY_TEST
+# 
+
+not ok - Required.Proto3.ProtobufInput.RepeatedScalarMessageMerge.ProtobufOutput
+# response didn't have any field in the return.
+# 
+# protobuf_payload: "\222\001\014\022
+# \010\322\t\020\322\t\370\001\322\t\222\001\014\022
+# \010\341!\030\341!\370\001\341!"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# 
+
+not ok - Required.Proto2.ProtobufInput.ValidDataScalar.MESSAGE[0].ProtobufOutput
+# response didn't have any field in the return.
+# 
+# protobuf_payload: "\222\001\000"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
+# test_category: BINARY_TEST
+# 
+
+not ok - Recommended.Proto2.ProtobufInput.ValidDataScalarBinary.MESSAGE[0].ProtobufOutput
+# response didn't have any field in the return.
+# 
+# protobuf_payload: "\222\001\000"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
+# test_category: BINARY_TEST
+# 
+
+not ok - Required.Proto2.ProtobufInput.ValidDataScalar.MESSAGE[1].ProtobufOutput
+# response didn't have any field in the return.
+# 
+# protobuf_payload: "\222\001\003\010\322\t"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
+# test_category: BINARY_TEST
+# 
+
+not ok - Recommended.Proto2.ProtobufInput.ValidDataScalarBinary.MESSAGE[1].ProtobufOutput
+# response didn't have any field in the return.
+# 
+# protobuf_payload: "\222\001\003\010\322\t"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
+# test_category: BINARY_TEST
+# 
+
+not ok - Required.Proto2.ProtobufInput.ValidDataRepeated.MESSAGE.ProtobufOutput
+# response didn't have any field in the return.
+# 
+# protobuf_payload: "\202\003\000\202\003\003\010\322\t"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
+# test_category: BINARY_TEST
+# 
+
+not ok - Required.Proto3.ProtobufInput.ValidDataScalar.MESSAGE[0].ProtobufOutput
+# response didn't have any field in the return.
+# 
+# protobuf_payload: "\222\001\000"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# 
+
+not ok - Recommended.Proto3.ProtobufInput.ValidDataScalarBinary.MESSAGE[0].ProtobufOutput
+# response didn't have any field in the return.
+# 
+# protobuf_payload: "\222\001\000"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# 
+
+not ok - Required.Proto3.ProtobufInput.ValidDataScalar.MESSAGE[1].ProtobufOutput
+# response didn't have any field in the return.
+# 
+# protobuf_payload: "\222\001\003\010\322\t"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# 
+
+not ok - Recommended.Proto3.ProtobufInput.ValidDataScalarBinary.MESSAGE[1].ProtobufOutput
+# response didn't have any field in the return.
+# 
+# protobuf_payload: "\222\001\003\010\322\t"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# 
+
+not ok - Required.Proto3.ProtobufInput.ValidDataRepeated.MESSAGE.ProtobufOutput
+# response didn't have any field in the return.
+# 
+# protobuf_payload: "\202\003\000\202\003\003\010\322\t"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# 
+
+not ok - Required.Proto2.ProtobufInput.ValidDataMap.STRING.MESSAGE.NonDefault.ProtobufOutput
+# output was not equivalent to reference message: 
+# deleted: map_string_nested_message[a].a: 1234
+# 
+# 
+# protobuf_payload: "\272\004\010
+# \001a\022\003\010\322\t"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
+# test_category: BINARY_TEST
+# protobuf_payload: "\272\004\003
+# \001a"
+# 
+
+not ok - Required.Proto2.ProtobufInput.ValidDataMap.STRING.MESSAGE.Unordered.ProtobufOutput
+# output was not equivalent to reference message: 
+# deleted: map_string_nested_message[a].a: 1234
+# 
+# 
+# protobuf_payload: "\272\004\010\022\003\010\322\t
+# \001a"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
+# test_category: BINARY_TEST
+# protobuf_payload: "\272\004\003
+# \001a"
+# 
+
+not ok - Required.Proto2.ProtobufInput.ValidDataMap.STRING.MESSAGE.DuplicateKey.ProtobufOutput
+# output was not equivalent to reference message: 
+# deleted: map_string_nested_message[a].a: 1234
+# 
+# 
+# protobuf_payload: "\272\004\005
+# \001a\022\000\272\004\010
+# \001a\022\003\010\322\t"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
+# test_category: BINARY_TEST
+# protobuf_payload: "\272\004\003
+# \001a"
+# 
+
+not ok - Required.Proto2.ProtobufInput.ValidDataMap.STRING.MESSAGE.DuplicateKeyInMapEntry.ProtobufOutput
+# output was not equivalent to reference message: 
+# deleted: map_string_nested_message[a].a: 1234
+# 
+# 
+# protobuf_payload: "\272\004
+# 
+# \000
+# \001a\022\003\010\322\t"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
+# test_category: BINARY_TEST
+# protobuf_payload: "\272\004\003
+# \001a"
+# 
+
+not ok - Required.Proto2.ProtobufInput.ValidDataMap.STRING.MESSAGE.DuplicateValueInMapEntry.ProtobufOutput
+# output was not equivalent to reference message: 
+# deleted: map_string_nested_message[a].a: 1234
+# 
+# 
+# protobuf_payload: "\272\004
+# 
+# \001a\022\000\022\003\010\322\t"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
+# test_category: BINARY_TEST
+# protobuf_payload: "\272\004\003
+# \001a"
+# 
+
+not ok - Required.Proto3.ProtobufInput.ValidDataMap.STRING.MESSAGE.NonDefault.ProtobufOutput
+# output was not equivalent to reference message: 
+# deleted: map_string_nested_message[a].a: 1234
+# 
+# 
+# protobuf_payload: "\272\004\010
+# \001a\022\003\010\322\t"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# protobuf_payload: "\272\004\003
+# \001a"
+# 
+
+not ok - Required.Proto3.ProtobufInput.ValidDataMap.STRING.MESSAGE.Unordered.ProtobufOutput
+# output was not equivalent to reference message: 
+# deleted: map_string_nested_message[a].a: 1234
+# 
+# 
+# protobuf_payload: "\272\004\010\022\003\010\322\t
+# \001a"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# protobuf_payload: "\272\004\003
+# \001a"
+# 
+
+not ok - Required.Proto3.ProtobufInput.ValidDataMap.STRING.MESSAGE.DuplicateKey.ProtobufOutput
+# output was not equivalent to reference message: 
+# deleted: map_string_nested_message[a].a: 1234
+# 
+# 
+# protobuf_payload: "\272\004\005
+# \001a\022\000\272\004\010
+# \001a\022\003\010\322\t"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# protobuf_payload: "\272\004\003
+# \001a"
+# 
+
+not ok - Required.Proto3.ProtobufInput.ValidDataMap.STRING.MESSAGE.DuplicateKeyInMapEntry.ProtobufOutput
+# output was not equivalent to reference message: 
+# deleted: map_string_nested_message[a].a: 1234
+# 
+# 
+# protobuf_payload: "\272\004
+# 
+# \000
+# \001a\022\003\010\322\t"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# protobuf_payload: "\272\004\003
+# \001a"
+# 
+
+not ok - Required.Proto3.ProtobufInput.ValidDataMap.STRING.MESSAGE.DuplicateValueInMapEntry.ProtobufOutput
+# output was not equivalent to reference message: 
+# deleted: map_string_nested_message[a].a: 1234
+# 
+# 
+# protobuf_payload: "\272\004
+# 
+# \001a\022\000\022\003\010\322\t"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# protobuf_payload: "\272\004\003
+# \001a"
+# 
+
+not ok - Required.Proto2.ProtobufInput.ValidDataMap.STRING.MESSAGE.MergeValue.ProtobufOutput
+# output was not equivalent to reference message: 
+# deleted: map_string_nested_message[''].corecursive: { optional_int64: 1 repeated_int32: 1 }
+# 
+# 
+# protobuf_payload: "\272\004\013
+# \000\022\007\022\005\010\001\370\001\001\272\004\013
+# \000\022\007\022\005\020\001\370\001\001"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
+# test_category: BINARY_TEST
+# protobuf_payload: "\272\004\002
+# \000"
+# 
+
+not ok - Required.Proto3.ProtobufInput.ValidDataMap.STRING.MESSAGE.MergeValue.ProtobufOutput
+# output was not equivalent to reference message: 
+# deleted: map_string_nested_message[''].corecursive: { optional_int64: 1 repeated_int32: 1 }
+# 
+# 
+# protobuf_payload: "\272\004\013
+# \000\022\007\022\005\010\001\370\001\001\272\004\013
+# \000\022\007\022\005\020\001\370\001\001"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# protobuf_payload: "\272\004\002
+# \000"
+# 
+
+not ok - Required.Proto3.ProtobufInput.ValidDataOneof.UINT32.DefaultValue.ProtobufOutput
+# response didn't have any field in the return.
+# 
+# protobuf_payload: "\370\006\000"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# 
+
+not ok - Recommended.Proto3.ProtobufInput.ValidDataOneofBinary.UINT32.DefaultValue.ProtobufOutput
+# response didn't have any field in the return.
+# 
+# protobuf_payload: "\370\006\000"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# 
+
+not ok - Required.Proto3.ProtobufInput.ValidDataOneof.BOOL.DefaultValue.ProtobufOutput
+# response didn't have any field in the return.
+# 
+# protobuf_payload: "\230\007\000"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# 
+
+not ok - Recommended.Proto3.ProtobufInput.ValidDataOneofBinary.BOOL.DefaultValue.ProtobufOutput
+# response didn't have any field in the return.
+# 
+# protobuf_payload: "\230\007\000"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# 
+
+not ok - Required.Proto3.ProtobufInput.ValidDataOneof.UINT64.DefaultValue.ProtobufOutput
+# response didn't have any field in the return.
+# 
+# protobuf_payload: "\240\007\000"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# 
+
+not ok - Recommended.Proto3.ProtobufInput.ValidDataOneofBinary.UINT64.DefaultValue.ProtobufOutput
+# response didn't have any field in the return.
+# 
+# protobuf_payload: "\240\007\000"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# 
+
+not ok - Required.Proto3.ProtobufInput.ValidDataOneof.FLOAT.DefaultValue.ProtobufOutput
+# response didn't have any field in the return.
+# 
+# protobuf_payload: "\255\007\000\000\000\000"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# 
+
+not ok - Recommended.Proto3.ProtobufInput.ValidDataOneofBinary.FLOAT.DefaultValue.ProtobufOutput
+# response didn't have any field in the return.
+# 
+# protobuf_payload: "\255\007\000\000\000\000"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# 
+
+not ok - Required.Proto3.ProtobufInput.ValidDataOneof.DOUBLE.DefaultValue.ProtobufOutput
+# response didn't have any field in the return.
+# 
+# protobuf_payload: "\261\007\000\000\000\000\000\000\000\000"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# 
+
+not ok - Recommended.Proto3.ProtobufInput.ValidDataOneofBinary.DOUBLE.DefaultValue.ProtobufOutput
+# response didn't have any field in the return.
+# 
+# protobuf_payload: "\261\007\000\000\000\000\000\000\000\000"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# 
+
+not ok - Required.Proto3.ProtobufInput.ValidDataOneof.STRING.DefaultValue.ProtobufOutput
+# response didn't have any field in the return.
+# 
+# protobuf_payload: "\212\007\000"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# 
+
+not ok - Recommended.Proto3.ProtobufInput.ValidDataOneofBinary.STRING.DefaultValue.ProtobufOutput
+# response didn't have any field in the return.
+# 
+# protobuf_payload: "\212\007\000"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# 
+
+not ok - Required.Proto2.ProtobufInput.ValidDataOneof.BYTES.DefaultValue.ProtobufOutput
+# response didn't have any field in the return.
+# 
+# protobuf_payload: "\222\007\000"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
+# test_category: BINARY_TEST
+# 
+
+not ok - Recommended.Proto2.ProtobufInput.ValidDataOneofBinary.BYTES.DefaultValue.ProtobufOutput
+# response didn't have any field in the return.
+# 
+# protobuf_payload: "\222\007\000"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
+# test_category: BINARY_TEST
+# 
+
+not ok - Required.Proto3.ProtobufInput.ValidDataOneof.BYTES.DefaultValue.ProtobufOutput
+# response didn't have any field in the return.
+# 
+# protobuf_payload: "\222\007\000"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# 
+
+not ok - Recommended.Proto3.ProtobufInput.ValidDataOneofBinary.BYTES.DefaultValue.ProtobufOutput
+# response didn't have any field in the return.
+# 
+# protobuf_payload: "\222\007\000"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# 
+
+not ok - Required.Proto2.ProtobufInput.ValidDataOneof.MESSAGE.DefaultValue.ProtobufOutput
+# response didn't have any field in the return.
+# 
+# protobuf_payload: "\202\007\000"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
+# test_category: BINARY_TEST
+# 
+
+not ok - Recommended.Proto2.ProtobufInput.ValidDataOneofBinary.MESSAGE.DefaultValue.ProtobufOutput
+# response didn't have any field in the return.
+# 
+# protobuf_payload: "\202\007\000"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
+# test_category: BINARY_TEST
+# 
+
+not ok - Required.Proto2.ProtobufInput.ValidDataOneof.MESSAGE.NonDefaultValue.ProtobufOutput
+# response didn't have any field in the return.
+# 
+# protobuf_payload: "\202\007\003\010\322\t"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
+# test_category: BINARY_TEST
+# 
+
+not ok - Recommended.Proto2.ProtobufInput.ValidDataOneofBinary.MESSAGE.NonDefaultValue.ProtobufOutput
+# response didn't have any field in the return.
+# 
+# protobuf_payload: "\202\007\003\010\322\t"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
+# test_category: BINARY_TEST
+# 
+
+not ok - Required.Proto2.ProtobufInput.ValidDataOneof.MESSAGE.MultipleValuesForSameField.ProtobufOutput
+# response didn't have any field in the return.
+# 
+# protobuf_payload: "\202\007\000\202\007\003\010\322\t"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
+# test_category: BINARY_TEST
+# 
+
+not ok - Recommended.Proto2.ProtobufInput.ValidDataOneofBinary.MESSAGE.MultipleValuesForSameField.ProtobufOutput
+# response didn't have any field in the return.
+# 
+# protobuf_payload: "\202\007\000\202\007\003\010\322\t"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
+# test_category: BINARY_TEST
+# 
+
+not ok - Required.Proto2.ProtobufInput.ValidDataOneof.MESSAGE.MultipleValuesForDifferentField.ProtobufOutput
+# response didn't have any field in the return.
+# 
+# protobuf_payload: "\370\006\000\202\007\003\010\322\t"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
+# test_category: BINARY_TEST
+# 
+
+not ok - Recommended.Proto2.ProtobufInput.ValidDataOneofBinary.MESSAGE.MultipleValuesForDifferentField.ProtobufOutput
+# response didn't have any field in the return.
+# 
+# protobuf_payload: "\370\006\000\202\007\003\010\322\t"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
+# test_category: BINARY_TEST
+# 
+
+not ok - Required.Proto3.ProtobufInput.ValidDataOneof.MESSAGE.DefaultValue.ProtobufOutput
+# response didn't have any field in the return.
+# 
+# protobuf_payload: "\202\007\000"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# 
+
+not ok - Recommended.Proto3.ProtobufInput.ValidDataOneofBinary.MESSAGE.DefaultValue.ProtobufOutput
+# response didn't have any field in the return.
+# 
+# protobuf_payload: "\202\007\000"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# 
+
+not ok - Required.Proto3.ProtobufInput.ValidDataOneof.MESSAGE.NonDefaultValue.ProtobufOutput
+# response didn't have any field in the return.
+# 
+# protobuf_payload: "\202\007\003\010\322\t"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# 
+
+not ok - Recommended.Proto3.ProtobufInput.ValidDataOneofBinary.MESSAGE.NonDefaultValue.ProtobufOutput
+# response didn't have any field in the return.
+# 
+# protobuf_payload: "\202\007\003\010\322\t"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# 
+
+not ok - Required.Proto3.ProtobufInput.ValidDataOneof.MESSAGE.MultipleValuesForSameField.ProtobufOutput
+# response didn't have any field in the return.
+# 
+# protobuf_payload: "\202\007\000\202\007\003\010\322\t"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# 
+
+not ok - Recommended.Proto3.ProtobufInput.ValidDataOneofBinary.MESSAGE.MultipleValuesForSameField.ProtobufOutput
+# response didn't have any field in the return.
+# 
+# protobuf_payload: "\202\007\000\202\007\003\010\322\t"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# 
+
+not ok - Required.Proto3.ProtobufInput.ValidDataOneof.MESSAGE.MultipleValuesForDifferentField.ProtobufOutput
+# response didn't have any field in the return.
+# 
+# protobuf_payload: "\370\006\000\202\007\003\010\322\t"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# 
+
+not ok - Recommended.Proto3.ProtobufInput.ValidDataOneofBinary.MESSAGE.MultipleValuesForDifferentField.ProtobufOutput
+# response didn't have any field in the return.
+# 
+# protobuf_payload: "\370\006\000\202\007\003\010\322\t"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# 
+
+not ok - Required.Proto2.ProtobufInput.ValidDataOneof.MESSAGE.Merge.ProtobufOutput
+# response didn't have any field in the return.
+# 
+# protobuf_payload: "\202\007\t\022\007\010\001\020\001\310\005\001\202\007\007\022\005\020\001\310\005\001"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
+# test_category: BINARY_TEST
+# 
+
+not ok - Recommended.Proto2.ProtobufInput.ValidDataOneofBinary.MESSAGE.Merge.ProtobufOutput
+# response didn't have any field in the return.
+# 
+# protobuf_payload: "\202\007\t\022\007\010\001\020\001\310\005\001\202\007\007\022\005\020\001\310\005\001"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
+# test_category: BINARY_TEST
+# 
+
+not ok - Required.Proto3.ProtobufInput.ValidDataOneof.MESSAGE.Merge.ProtobufOutput
+# response didn't have any field in the return.
+# 
+# protobuf_payload: "\202\007\t\022\007\010\001\020\001\310\005\001\202\007\007\022\005\020\001\310\005\001"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# 
+
+not ok - Recommended.Proto3.ProtobufInput.ValidDataOneofBinary.MESSAGE.Merge.ProtobufOutput
+# response didn't have any field in the return.
+# 
+# protobuf_payload: "\202\007\t\022\007\010\001\020\001\310\005\001\202\007\007\022\005\020\001\310\005\001"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# 
+
+not ok - Required.Proto3.ProtobufInput.UnknownVarint.ProtobufOutput
+# response didn't have any field in the return.
+# 
+# protobuf_payload: "\250\037\001"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# 
+
+not ok - Required.Proto2.ProtobufInput.UnknownVarint.ProtobufOutput
+# response didn't have any field in the return.
+# 
+# protobuf_payload: "\250\037\001"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
+# test_category: BINARY_TEST
+# 
+
+not ok - Recommended.Proto3.ProtobufInput.OneofZeroUint32.ProtobufOutput
+# response didn't have any field in the return.
+# 
+# protobuf_payload: "\370\006\000"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# 
+
+not ok - Recommended.Proto3.ProtobufInput.OneofZeroMessage.ProtobufOutput
+# response didn't have any field in the return.
+# 
+# protobuf_payload: "\202\007\000"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# 
+
+not ok - Recommended.Proto3.ProtobufInput.OneofZeroMessageSetTwice.ProtobufOutput
+# response didn't have any field in the return.
+# 
+# protobuf_payload: "\202\007\002\010\001"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# 
+
+not ok - Recommended.Proto3.ProtobufInput.OneofZeroString.ProtobufOutput
+# response didn't have any field in the return.
+# 
+# protobuf_payload: "\212\007\000"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# 
+
+not ok - Recommended.Proto3.ProtobufInput.OneofZeroBytes.ProtobufOutput
+# response didn't have any field in the return.
+# 
+# protobuf_payload: "\222\007\000"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# 
+
+not ok - Recommended.Proto3.ProtobufInput.OneofZeroBool.ProtobufOutput
+# response didn't have any field in the return.
+# 
+# protobuf_payload: "\230\007\000"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# 
+
+not ok - Recommended.Proto3.ProtobufInput.OneofZeroUint64.ProtobufOutput
+# response didn't have any field in the return.
+# 
+# protobuf_payload: "\240\007\000"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# 
+
+not ok - Recommended.Proto3.ProtobufInput.OneofZeroFloat.ProtobufOutput
+# response didn't have any field in the return.
+# 
+# protobuf_payload: "\255\007\000\000\000\000"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# 
+
+not ok - Recommended.Proto3.ProtobufInput.OneofZeroDouble.ProtobufOutput
+# response didn't have any field in the return.
+# 
+# protobuf_payload: "\261\007\000\000\000\000\000\000\000\000"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# 
+
+not ok - Recommended.Proto2.ProtobufInput.OneofZeroMessage.ProtobufOutput
+# response didn't have any field in the return.
+# 
+# protobuf_payload: "\202\007\002\010\000"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
+# test_category: BINARY_TEST
+# 
+
+not ok - Recommended.Proto2.ProtobufInput.OneofZeroMessageSetTwice.ProtobufOutput
+# response didn't have any field in the return.
+# 
+# protobuf_payload: "\202\007\002\010\001"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
+# test_category: BINARY_TEST
+# 
+
+not ok - Recommended.Proto2.ProtobufInput.OneofZeroBytes.ProtobufOutput
+# response didn't have any field in the return.
+# 
+# protobuf_payload: "\222\007\000"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
+# test_category: BINARY_TEST
+# 
+
+# CONFORMANCE SUITE PASSED
+#	917 succeses
+#	927 skipped
+#	0 expected failures
+#	0 unexpected failures
+
+# CONFORMANCE SUITE PASSED
+#	0 succeses
+#	120 skipped
+#	0 expected failures
+#	0 unexpected failures
+
