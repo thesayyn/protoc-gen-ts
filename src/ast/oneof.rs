@@ -5,10 +5,9 @@ use crate::{
 };
 use swc_common::DUMMY_SP;
 use swc_ecma_ast::{
-    ArrayLit, BinaryOp, Bool, ClassMember, ClassProp, Expr, Lit, PropName, TsArrayType,
-    TsEntityName, TsKeywordType, TsType, TsTypeAnn, TsTypeParamInstantiation, TsTypeRef, ClassMethod, MethodKind, Function, Param, BindingIdent, Pat, PatOrExpr,
+    ClassMember, ClassMethod, MethodKind, Function, Param, BindingIdent, Pat,
 };
-use swc_ecma_utils::{quote_ident, quote_str, ExprFactory};
+use swc_ecma_utils::{quote_ident, ExprFactory};
 
 impl FieldDescriptorProto {
 

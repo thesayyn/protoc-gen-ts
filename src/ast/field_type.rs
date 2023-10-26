@@ -1,5 +1,5 @@
 use swc_common::DUMMY_SP;
-use swc_ecma_ast::{TsEntityName, TsKeywordTypeKind, TsTypeRef, TsUnionOrIntersectionType, TsUnionType};
+use swc_ecma_ast::{TsEntityName, TsKeywordTypeKind, TsTypeRef};
 use swc_ecma_utils::quote_ident;
 
 use crate::{
