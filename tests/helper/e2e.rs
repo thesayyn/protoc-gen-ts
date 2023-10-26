@@ -41,12 +41,7 @@ macro_rules! gen_test {
 
             cmd.arg(format!("--proto_path={}", proto_path));
             cmd.arg(format!("--plugin=protoc-gen-ts={}", protoc_gen_ts));
-            // cmd.arg(format!(
-            //     "--plugin=protoc-gen-js={}",
-            //     "/Users/thesayyn/Documents/protoc-gen-ts/protoc-gen-js"
-            // ));
             cmd.arg(format!("--ts_out={}", ts_out));
-            // cmd.arg(format!("--js_out={}", ts_out));
             cmd.arg("--ts_opt=namespaces=false");
             cmd.arg("--ts_opt=import_suffix=.ts");
             cmd.arg("--ts_opt=runtime_package=https://cdn.skypack.dev/google-protobuf?dts");
@@ -55,12 +50,6 @@ macro_rules! gen_test {
             // make sure it succedded
             assert!(cmd.status().is_ok(), "protoc has failed");
             assert_eq!(cmd.status().unwrap().code(), Some(0), "protoc has failed");
-
-            cfg_if::cfg_if! {
-                if #[cfg(debug_assertions)] {
-                    dbg!("output: {}", &ts_out);
-                }
-            }
         }
     };
 }

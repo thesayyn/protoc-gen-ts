@@ -9,12 +9,6 @@ import {
 } from "../../tests/conformance/gen/conformance.ts";
 import { Buffer } from "https://deno.land/std@0.136.0/node/buffer.ts";
 
-try {
-  Deno.removeSync("./tests/failures.log");
-} catch {}
-
-let i = 0;
-
 while (true) {
   const lengthBuffer = Buffer.alloc(4);
   Deno.stdin.readSync(lengthBuffer);
@@ -23,13 +17,14 @@ while (true) {
   const requestBuffer = Buffer.alloc(length);
   Deno.stdin.readSync(requestBuffer);
 
-
-
   const req = conformance_ConformanceRequest.deserialize(requestBuffer);
   const res = new conformance_ConformanceResponse();
   res.skipped = "unsupported";
 
-  let message = undefined;
+  let message:
+    | typeof conformance_FailureSet
+    | typeof protobuf_test_messages_proto3_TestAllTypesProto3
+    | typeof protobuf_test_messages_proto2_TestAllTypesProto2;
 
   switch (req.message_type) {
     case "conformance.FailureSet":
@@ -67,22 +62,6 @@ while (true) {
       res.runtime_error = `unknown message ${req.message_type}`;
     }
   }
-
-  const error = res.parse_error || res.serialize_error || res.runtime_error;
-  if (error) {
-    i++;
-    Deno.writeTextFileSync(
-      "./tests/failures.log",
-      `# ${i} ${req.message_type} ${req.test_category}\n${error}\n`,
-      { append: true, create: true }
-    );
-
-    if (error.indexOf("64") != -1) {
-      res.parse_error = res.serialize_error = res.runtime_error = undefined;
-      res.skipped = "int64";
-    }
-  }
-
   const resBytes = res.serialize();
   const lenBytes = Buffer.alloc(4);
   lenBytes.writeInt32LE(resBytes.length, 0);
@@ -90,11 +69,10 @@ while (true) {
   try {
     Deno.writeSync(1, lenBytes);
     Deno.writeSync(1, resBytes);
-  } catch(e) {
+  } catch (e) {
     if (e.code == "EPIPE") {
       Deno.exit();
-    } 
+    }
     throw e;
   }
-
 }
