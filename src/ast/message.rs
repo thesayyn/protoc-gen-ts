@@ -1,6 +1,6 @@
 use std::vec;
 
-use crate::context::Context;
+use crate::{context::Context, descriptor::FieldDescriptorProto};
 use crate::descriptor::DescriptorProto;
 use crate::print::Print;
 use crate::runtime::Runtime;
@@ -94,12 +94,24 @@ impl DescriptorProto {
             kind: MethodKind::Method,
         })
     }
+
+    pub fn get_oneof_fields(&self, index: i32, exclude: usize) -> Vec<FieldDescriptorProto> {
+        let mut fields = vec![];
+        for (i, field) in self.field.clone().into_iter().enumerate() {
+            if i == exclude || field.oneof_index() != index {
+                continue;
+            }
+            fields.push(field)
+        }
+        fields
+    }
 }
 
 impl<T> Print<T> for DescriptorProto
 where
     T: Runtime + Sized,
-{
+{   
+
     fn print(&self, ctx: &mut Context, runtime: &T) -> Vec<ModuleItem> {
 
         if self.options.map_entry() {
@@ -108,8 +120,14 @@ where
 
         let mut members: Vec<ClassMember> = Vec::new();
 
-        for member in &self.field {
+        for (i, member) in self.field.clone().into_iter().enumerate() {
             members.push(member.print_prop(ctx, runtime));
+            
+            if member.has_oneof_index() {
+                let other_oneofs = self.get_oneof_fields(member.oneof_index(), i);
+                members.push(member.print_oneof_getter(ctx, runtime));
+                members.push(member.print_oneof_setter(ctx, runtime, &other_oneofs));
+            }
         }
 
         members.push(self.print_deserialize(ctx, runtime));

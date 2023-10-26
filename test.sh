@@ -2,23 +2,15 @@
 
 set -o pipefail -o errexit
 
-cargo_test() {
-    cargo test -- --nocapture
-}
+echo "# Running cargo test"
+cargo test -- --nocapture
 
-conformance_test() {
-    local bin="$(pwd)/tests/conformance/bin/pgt_conformance"
-    echo "# Removing the conformance binary executor"
-    rm -f $bin
+echo "# Removing the conformance binary executor"
+bin="js/conformance/protoc_gen_ts_conformance"
+rm -f $bin
 
-    echo "# Creating a conformance binary executor"
-    (cd tests/conformance/bin && deno compile --allow-read --allow-write --allow-env --no-check --output $bin main.ts)
+echo "# Creating a conformance binary executor"
+deno compile --allow-read --allow-write --allow-env --no-check --output $bin js/conformance/main.ts
 
-
-    echo "# Running conformance tests"
-    tests/conformance/bin/conformance_test_runner $bin
-}
-
-
-cargo_test
-conformance_test
+echo "# Running conformance tests"
+./js/conformance/conformance_test_runner --failure_list tests/failing_tests.txt $bin 

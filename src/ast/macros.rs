@@ -233,6 +233,24 @@ macro_rules! arrow_func {
 }
 
 #[macro_export]
+macro_rules! func {
+    ($params:expr, $stmts:expr) => {
+        swc_ecma_ast::Expr::Arrow(swc_ecma_ast::ArrowExpr {
+            is_async: false,
+            is_generator: false,
+            params: vec![],
+            return_type: None,
+            span: DUMMY_SP,
+            type_params: None,
+            body: Box::new(swc_ecma_ast::BlockStmtOrExpr::BlockStmt(swc_ecma_ast::BlockStmt {
+                span: DUMMY_SP,
+                stmts: $stmts,
+            })),
+        })
+    };
+}
+
+#[macro_export]
 macro_rules! expr_stmt {
     ($expr:expr) => {
         swc_ecma_ast::Stmt::Expr(swc_ecma_ast::ExprStmt {

@@ -1,5 +1,0 @@
-{
-    "imports": {
-        "conformance/": "../../../target/debug/build/protoc_gen_ts-6d1229d7fde24470/out/test_conformance/"
-    }   
-}

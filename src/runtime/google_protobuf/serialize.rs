@@ -139,18 +139,13 @@ impl GooglePBRuntime {
                 })
             };
 
-            let block_stmt = Stmt::Block(BlockStmt {
-                span: DUMMY_SP,
-                stmts: vec![write_stmt],
-            });
-
             if prevent_defaults {
                 stmts.push(crate::if_stmt!(
                     field.default_value_bin_expr(ctx, accessor),
-                    block_stmt
+                    write_stmt
                 ));
             } else {
-                stmts.push(block_stmt);
+                stmts.push(write_stmt);
             }
         }
 

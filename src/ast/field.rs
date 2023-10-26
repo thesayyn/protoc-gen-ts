@@ -1,3 +1,5 @@
+use std::process::id;
+
 use crate::{
     context::{Context, Syntax},
     descriptor::FieldDescriptorProto,
@@ -7,7 +9,7 @@ use swc_common::DUMMY_SP;
 use swc_ecma_ast::{
     ArrayLit, BinaryOp, ClassMember, ClassProp, Expr, Lit, PropName, TsArrayType,
     TsEntityName, TsKeywordType, TsType, TsTypeAnn, TsTypeParamInstantiation, TsTypeRef,
-    Bool,
+    Bool, TsUnionOrIntersectionType, TsUnionType, TsKeywordTypeKind,
 };
 use swc_ecma_utils::{quote_ident, quote_str};
 
@@ -38,6 +40,14 @@ impl FieldDescriptorProto {
 }
 
 impl FieldDescriptorProto {
+    pub fn prop_name(&self) -> String {
+        if self.has_oneof_index() {
+            format!("#_{}", self.name())
+        } else {
+            self.name().to_string()
+        }
+    }
+
     pub fn default_value_bin_expr(&self, ctx: &mut Context, accessor: FieldAccessorFn) -> Expr {
         let neq_undefined_check = crate::bin_expr!(
             accessor(self.name()),
@@ -136,8 +146,7 @@ impl FieldDescriptorProto {
             Expr::Ident(quote_ident!("undefined"))
         }
     }
-
-    pub fn type_annotation(&self, ctx: &mut Context) -> Option<Box<TsTypeAnn>> {
+    fn ts_type(&self, ctx: &mut Context) -> Option<TsType> {
         let mut ts_type: Option<TsType> = None;
 
         if let Some(typref) = self.type_ref(ctx) {
@@ -177,16 +186,34 @@ impl FieldDescriptorProto {
                 span: DUMMY_SP,
             }))
         }
-        if let Some(ts_type) = ts_type {
-            return Some(Box::new(TsTypeAnn {
-                span: DUMMY_SP,
-                type_ann: Box::new(ts_type),
-            }));
-        }
-        None
+        ts_type
     }
+    pub fn type_annotation(&self, ctx: &mut Context) -> Option<Box<TsTypeAnn>> {
+        Some(Box::new(TsTypeAnn {
+            span: DUMMY_SP,
+            type_ann: Box::new(self.ts_type(ctx)?),
+        }))
+    }
+    pub fn nullish_type_annotation(&self, ctx: &mut Context) -> Option<Box<TsTypeAnn>> {
+        let union = TsUnionOrIntersectionType::TsUnionType(TsUnionType {
+            span: DUMMY_SP,
+            types: vec![
+                Box::new(self.ts_type(ctx)?),
+                Box::new(TsType::TsKeywordType(TsKeywordType {
+                    span: DUMMY_SP,
+                    kind: TsKeywordTypeKind::TsUndefinedKeyword,
+                })),
+            ],
+        });
+
+        Some(Box::new(TsTypeAnn {
+            span: DUMMY_SP,
+            type_ann: Box::new(TsType::TsUnionOrIntersectionType(union)),
+        }))
+    }
+
     pub fn print_prop<T: Runtime>(&self, ctx: &mut Context, _runtime: &T) -> ClassMember {
-        let mut ident = quote_ident!(self.name());
+        let mut ident = quote_ident!(self.prop_name());
         ident.optional = self.is_optional();
         ClassMember::ClassProp(ClassProp {
             span: DUMMY_SP,

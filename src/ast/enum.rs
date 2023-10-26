@@ -18,15 +18,13 @@ where
                 init: Some(Box::new(crate::lit_num!(member.number()).into())),
             })
         }
-        let r#enum = Decl::TsEnum(Box::new(
-            TsEnumDecl {
-                span: DUMMY_SP,
-                declare: false,
-                is_const: false,
-                id: quote_ident!(ctx.normalize_name(self.name())),
-                members,
-            },
-        ));
+        let r#enum = Decl::TsEnum(Box::new(TsEnumDecl {
+            span: DUMMY_SP,
+            declare: false,
+            is_const: false,
+            id: quote_ident!(ctx.normalize_name(self.name())),
+            members,
+        }));
         let module = ModuleItem::ModuleDecl(ModuleDecl::ExportDecl(ExportDecl {
             decl: r#enum,
             span: DUMMY_SP,
