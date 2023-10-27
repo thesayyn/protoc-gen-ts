@@ -31,6 +31,17 @@ impl GooglePBRuntime {
                 access_expr = crate::call_expr!(crate::member_expr_bare!(access_expr, "toString"))
             }
         }
+
+        if field.is_enum() {
+            access_expr = crate::call_expr!(
+                crate::member_expr!("Math", "max"),
+                vec![
+                    crate::expr_or_spread!(crate::lit_num!(-1).into()),
+                    crate::expr_or_spread!(access_expr),
+                ]
+            )
+        }
+
         crate::expr_stmt!(crate::call_expr!(
             crate::member_expr!("bw", self.rw_function_name("write", false, ctx, field)),
             vec![
