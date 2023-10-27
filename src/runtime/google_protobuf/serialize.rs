@@ -10,46 +10,85 @@ use swc_ecma_ast::{
 use swc_ecma_utils::quote_ident;
 
 impl GooglePBRuntime {
-    pub fn serialize_primitive_field_stmts(
+    pub fn serialize_primitive_field_stmt(
         &self,
         ctx: &mut Context,
         field: &descriptor::FieldDescriptorProto,
         field_accessor: field::FieldAccessorFn,
-    ) -> Vec<Stmt> {
-        vec![crate::expr_stmt!(crate::call_expr!(
+    ) -> Stmt {
+        crate::expr_stmt!(crate::call_expr!(
             crate::member_expr!("bw", self.rw_function_name("write", false, ctx, field)),
             vec![
                 crate::expr_or_spread!(crate::lit_num!(field.number()).into()),
                 crate::expr_or_spread!(field_accessor(field.name())),
             ]
-        ))]
+        ))
     }
 
-    pub fn serialize_message_field_stmts(
+    pub fn serialize_message_field_stmt(
         &self,
         field: &descriptor::FieldDescriptorProto,
         field_accessor: field::FieldAccessorFn,
-    ) -> Vec<Stmt> {
-        vec![
-            Stmt::Decl(crate::const_decl!(
-                "result",
-                crate::call_expr!(crate::member_expr_bare!(
+    ) -> Stmt {
+        crate::expr_stmt!(crate::call_expr!(
+            crate::member_expr!("bw", "writeBytes"),
+            vec![
+                crate::expr_or_spread!(crate::lit_num!(field.number()).into()),
+                crate::expr_or_spread!(crate::call_expr!(crate::member_expr_bare!(
                     Expr::TsNonNull(TsNonNullExpr {
                         expr: Box::new(field_accessor(field.name())),
                         span: DUMMY_SP
                     }),
                     "serialize"
-                ))
-            )),
-            crate::expr_stmt!(crate::call_expr!(
-                crate::member_expr!("bw", "writeSerializedMessage"),
-                vec![
-                    crate::expr_or_spread!(quote_ident!("result").into()),
-                    crate::expr_or_spread!(crate::lit_num!(0).into()),
-                    crate::expr_or_spread!(crate::member_expr!("result", "length")),
-                ]
-            )),
-        ]
+                ))),
+            ]
+        ))
+    }
+
+    fn serialize_map_field_stmt(
+        &self,
+        ctx: &mut Context,
+        field: &descriptor::FieldDescriptorProto,
+    ) -> Stmt {
+        let descriptor = ctx
+            .get_map_type(field.type_name())
+            .expect(format!("can not find the map type {}", field.type_name()).as_str());
+
+        let mut stmts = vec![crate::expr_stmt!(crate::call_expr!(
+            crate::member_expr!("bw", "beginSubMessage"),
+            vec![crate::expr_or_spread!(
+                crate::lit_num!(field.number()).into()
+            )]
+        ))];
+
+        stmts.append(&mut self.serialize_setup_inner(
+            ctx,
+            &descriptor,
+            field::bare_field_member,
+            false,
+            false,
+        ));
+
+        stmts.push(crate::expr_stmt!(crate::call_expr!(
+            crate::member_expr!("bw", "endSubMessage"),
+            vec![crate::expr_or_spread!(Expr::Lit(crate::lit_num!(
+                field.number()
+            )))]
+        )));
+
+        Stmt::ForOf(ForOfStmt {
+            is_await: false,
+            left: ForHead::VarDecl(Box::new(crate::array_var_decl!(vec![
+                Some(crate::binding_ident!("key")),
+                Some(crate::binding_ident!("value"))
+            ]))),
+            right: Box::new(crate::member_expr!("this", field.name())),
+            body: Box::new(Stmt::Block(BlockStmt {
+                span: DUMMY_SP,
+                stmts,
+            })),
+            span: DUMMY_SP,
+        })
     }
 }
 
@@ -77,75 +116,40 @@ impl GooglePBRuntime {
             } else {
                 field.into_accessor(ctx)
             };
-            let write_stmts = if field.is_message() {
-                self.serialize_message_field_stmts(field, field_accessor)
+
+            let mut field_stmt: Stmt;
+            
+            if field.is_message() {
+                field_stmt = self.serialize_message_field_stmt(field, field_accessor)
             } else {
-                self.serialize_primitive_field_stmts(ctx, field, field_accessor)
+                field_stmt = self.serialize_primitive_field_stmt(ctx, field, field_accessor)
             };
 
-            let write_stmt = if field.is_map(ctx) {
-                let descriptor = ctx
-                    .get_map_type(field.type_name())
-                    .expect(format!("can not find the map type {}", field.type_name()).as_str());
-                let mut stmts = vec![crate::expr_stmt!(crate::call_expr!(
-                    crate::member_expr!("bw", "beginSubMessage"),
-                    vec![crate::expr_or_spread!(
-                        crate::lit_num!(field.number()).into()
-                    )]
-                ))];
-                let mut inner_stmts = self.serialize_setup_inner(
-                    ctx,
-                    &descriptor,
-                    field::bare_field_member,
-                    false,
-                    false,
-                );
-                stmts.append(&mut inner_stmts);
-                stmts.push(crate::expr_stmt!(crate::call_expr!(
-                    crate::member_expr!("bw", "endSubMessage"),
-                    vec![crate::expr_or_spread!(Expr::Lit(crate::lit_num!(
-                        field.number()
-                    )))]
-                )));
-
-                Stmt::ForOf(ForOfStmt {
-                    is_await: false,
-                    left: ForHead::VarDecl(Box::new(crate::array_var_decl!(vec![
-                        Some(crate::binding_ident!("key")),
-                        Some(crate::binding_ident!("value"))
-                    ]))),
-                    right: Box::new(crate::member_expr!("this", field.name())),
-                    body: Box::new(Stmt::Block(BlockStmt {
-                        span: DUMMY_SP,
-                        stmts,
-                    })),
-                    span: DUMMY_SP,
-                })
+            if field.is_map(ctx) {
+                field_stmt = self.serialize_map_field_stmt(ctx, field)
             } else if field.is_repeated() && !field.is_packed(ctx) {
-                Stmt::ForOf(ForOfStmt {
+                field_stmt = Stmt::ForOf(ForOfStmt {
                     is_await: false,
                     left: ForHead::VarDecl(Box::new(crate::const_decl_uinit!(field.name()))),
                     right: Box::new(accessor(field.name())),
                     body: Box::new(Stmt::Block(BlockStmt {
                         span: DUMMY_SP,
-                        stmts: write_stmts,
+                        stmts: vec![field_stmt],
                     })),
                     span: DUMMY_SP,
                 })
-            } else {
-                Stmt::Block(BlockStmt {
-                    span: DUMMY_SP,
-                    stmts: write_stmts,
-                })
-            };
+            }
 
             if prevent_defaults {
                 stmts.push(crate::if_stmt!(
                     field.default_value_bin_expr(ctx, accessor),
-                    write_stmt
+                    Stmt::Block(BlockStmt {
+                        span: DUMMY_SP,
+                        stmts: vec![field_stmt]
+                    })
                 ));
             } else {
-                stmts.push(write_stmt);
+                stmts.push(field_stmt);
             }
         }
 
