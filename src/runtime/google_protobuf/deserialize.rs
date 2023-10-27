@@ -5,8 +5,8 @@ use crate::{context::Context, descriptor};
 use std::vec;
 use swc_common::DUMMY_SP;
 use swc_ecma_ast::{
-    BinaryOp, BlockStmt, BreakStmt, Expr, Lit, Number, PatOrExpr, Stmt,
-    SwitchCase, SwitchStmt, TsNonNullExpr, WhileStmt,
+    BinaryOp, BlockStmt, BreakStmt, Expr, Lit, Number, PatOrExpr, Stmt, SwitchCase, SwitchStmt,
+    TsNonNullExpr, WhileStmt,
 };
 use swc_ecma_utils::quote_ident;
 
@@ -55,10 +55,23 @@ impl GooglePBRuntime {
         field: &descriptor::FieldDescriptorProto,
         force_unpacked: bool,
     ) -> Expr {
-        crate::call_expr!(crate::member_expr!(
+        let mut call = crate::call_expr!(crate::member_expr!(
             "br",
-            self.rw_function_name("read", force_unpacked, ctx, field)
-        ))
+            self.rw_function_name("read", field.is_bigint() || force_unpacked, ctx, field)
+        ));
+        if field.is_bigint() {
+            call = crate::call_expr!(
+                quote_ident!("BigInt").into(),
+                vec![crate::expr_or_spread!(call)]
+            );
+            if (field.is_packed(ctx) || field.is_packable()) && !force_unpacked {
+                call = crate::call_expr!(
+                    crate::member_expr!("br", "readPackedField_"),
+                    vec![crate::expr_or_spread!(crate::arrow_func_short!(call))]
+                )
+            }
+        }
+        call
     }
 
     fn deserialize_field_expr(
@@ -83,6 +96,7 @@ impl GooglePBRuntime {
         let mut cases: Vec<SwitchCase> = vec![];
         for field in &descriptor.field {
             let read_expr = self.deserialize_field_expr(ctx, field, false);
+
             let read_stmt = if field.is_map(ctx) {
                 let descriptor = ctx
                     .get_map_type(field.type_name())

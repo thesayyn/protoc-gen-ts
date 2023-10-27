@@ -28,7 +28,7 @@ impl FieldDescriptorProto {
                 span: DUMMY_SP,
                 type_name: TsEntityName::Ident(quote_ident!("Uint8Array")),
                 type_params: None,
-            })
+            });
         }
         if self.has_type_name() {
             return Some(TsTypeRef {
@@ -42,17 +42,17 @@ impl FieldDescriptorProto {
 }
 
 impl FieldDescriptorProto {
-
     pub fn is_packable(&self) -> bool {
-        return (!self.is_string() && !self.is_group() && !self.is_message() && !self.is_bytes()) && self.is_repeated()
+        return (!self.is_string() && !self.is_group() && !self.is_message() && !self.is_bytes())
+            && self.is_repeated();
     }
 
     pub fn is_packed(&self, ctx: &Context) -> bool {
         if !self.is_packable() {
-            return false
+            return false;
         }
         if let Syntax::Proto2 = ctx.syntax {
-            return self.options.has_packed() && self.options.packed()
+            return self.options.has_packed() && self.options.packed();
         }
         !self.options.has_packed() || self.options.packed()
     }
@@ -60,12 +60,12 @@ impl FieldDescriptorProto {
     #[inline]
     pub fn is_bytes(&self) -> bool {
         self.type_() == Type::TYPE_BYTES
-    }  
+    }
 
     #[inline]
     pub fn is_group(&self) -> bool {
         self.type_() == Type::TYPE_GROUP
-    }  
+    }
 
     #[inline]
     pub fn is_message(&self) -> bool {
@@ -100,6 +100,13 @@ impl FieldDescriptorProto {
             || self.type_() == Type::TYPE_FIXED64
             || self.type_() == Type::TYPE_SFIXED32
             || self.type_() == Type::TYPE_SFIXED64
+    }
+
+    pub fn is_bigint(&self) -> bool {
+        self.type_() == Type::TYPE_INT64
+            || self.type_() == Type::TYPE_UINT64
+            || self.type_() == Type::TYPE_SINT64
+            || self.type_() == Type::TYPE_FIXED64
             || self.type_() == Type::TYPE_SFIXED64
     }
 
@@ -108,7 +115,7 @@ impl FieldDescriptorProto {
             return false;
         }
         let r#type = ctx.get_map_type(self.type_name());
-        return r#type.is_some()
+        return r#type.is_some();
     }
 
     // Label

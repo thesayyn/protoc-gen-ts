@@ -120,6 +120,124 @@ not ok - Required.Proto2.ProtobufInput.IllegalZeroFieldNum_Case_3
 # 
 # 
 
+not ok - Required.Proto2.ProtobufInput.ValidDataRepeated.INT64.UnpackedInput.ProtobufOutput
+# failed to parse input or produce output.
+# 
+# protobuf_payload: "\200\002\000\200\002\271`\200\002\377\377\377\377\377\377\377\377\177\200\002\200\200\200\200\200\200\200\200\200\001"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
+# test_category: BINARY_TEST
+# 
+# serialize_error: "TypeError: repeated_int64.map is not a function
+#     at protobuf_test_messages_proto2_TestAllTypesProto2.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:1100:56)
+#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
+# 
+# 
+
+not ok - Required.Proto2.ProtobufInput.ValidDataRepeated.INT64.PackedInput.ProtobufOutput
+# failed to parse input or produce output.
+# 
+# protobuf_payload: "\202\002\026\000\271`\377\377\377\377\377\377\377\377\177\200\200\200\200\200\200\200\200\200\001"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
+# test_category: BINARY_TEST
+# 
+# parse_error: "Error: Assertion failed
+#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
+#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
+#     at jspb.BinaryReader.readInt64String (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4546:18)
+#     at jspb.BinaryDecoder.<anonymous> (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:344:108)
+#     at jspb.BinaryReader.readPackedField_ (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4676:16)
+#     at Function.deserialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:344:77)
+#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:32:37"
+# 
+# 
+
+not ok - Recommended.Proto2.ProtobufInput.ValidDataRepeated.INT64.UnpackedInput.DefaultOutput.ProtobufOutput
+# failed to parse input or produce output.
+# 
+# protobuf_payload: "\200\002\000\200\002\271`\200\002\377\377\377\377\377\377\377\377\177\200\002\200\200\200\200\200\200\200\200\200\001"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
+# test_category: BINARY_TEST
+# 
+# serialize_error: "TypeError: repeated_int64.map is not a function
+#     at protobuf_test_messages_proto2_TestAllTypesProto2.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:1100:56)
+#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
+# 
+# 
+
+not ok - Recommended.Proto2.ProtobufInput.ValidDataRepeated.INT64.PackedInput.DefaultOutput.ProtobufOutput
+# failed to parse input or produce output.
+# 
+# protobuf_payload: "\202\002\026\000\271`\377\377\377\377\377\377\377\377\177\200\200\200\200\200\200\200\200\200\001"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
+# test_category: BINARY_TEST
+# 
+# parse_error: "Error: Assertion failed
+#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
+#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
+#     at jspb.BinaryReader.readInt64String (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4546:18)
+#     at jspb.BinaryDecoder.<anonymous> (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:344:108)
+#     at jspb.BinaryReader.readPackedField_ (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4676:16)
+#     at Function.deserialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:344:77)
+#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:32:37"
+# 
+# 
+
+not ok - Recommended.Proto2.ProtobufInput.ValidDataRepeated.INT64.PackedInput.PackedOutput.ProtobufOutput
+# failed to parse input or produce output.
+# 
+# protobuf_payload: "\342\004\026\000\271`\377\377\377\377\377\377\377\377\177\200\200\200\200\200\200\200\200\200\001"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
+# test_category: BINARY_TEST
+# 
+# parse_error: "Error: Assertion failed
+#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
+#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
+#     at jspb.BinaryReader.readInt64String (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4546:18)
+#     at jspb.BinaryDecoder.<anonymous> (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:422:106)
+#     at jspb.BinaryReader.readPackedField_ (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4676:16)
+#     at Function.deserialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:422:75)
+#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:32:37"
+# 
+# 
+
+not ok - Recommended.Proto2.ProtobufInput.ValidDataRepeated.INT64.UnpackedInput.UnpackedOutput.ProtobufOutput
+# failed to parse input or produce output.
+# 
+# protobuf_payload: "\200\002\000\200\002\271`\200\002\377\377\377\377\377\377\377\377\177\200\002\200\200\200\200\200\200\200\200\200\001"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
+# test_category: BINARY_TEST
+# 
+# serialize_error: "TypeError: repeated_int64.map is not a function
+#     at protobuf_test_messages_proto2_TestAllTypesProto2.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:1100:56)
+#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
+# 
+# 
+
+not ok - Recommended.Proto2.ProtobufInput.ValidDataRepeated.INT64.PackedInput.UnpackedOutput.ProtobufOutput
+# failed to parse input or produce output.
+# 
+# protobuf_payload: "\202\002\026\000\271`\377\377\377\377\377\377\377\377\177\200\200\200\200\200\200\200\200\200\001"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
+# test_category: BINARY_TEST
+# 
+# parse_error: "Error: Assertion failed
+#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
+#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
+#     at jspb.BinaryReader.readInt64String (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4546:18)
+#     at jspb.BinaryDecoder.<anonymous> (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:344:108)
+#     at jspb.BinaryReader.readPackedField_ (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4676:16)
+#     at Function.deserialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:344:77)
+#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:32:37"
+# 
+# 
+
 not ok - Recommended.Proto3.ProtobufInput.ValidDataScalarBinary.INT64[0].ProtobufOutput
 # output was not equivalent to reference message: 
 # expected: 
@@ -134,6 +252,214 @@ not ok - Recommended.Proto3.ProtobufInput.ValidDataScalarBinary.INT64[0].Protobu
 # 
 # 
 
+not ok - Required.Proto3.ProtobufInput.ValidDataRepeated.INT64.PackedInput.ProtobufOutput
+# failed to parse input or produce output.
+# 
+# protobuf_payload: "\202\002\026\000\271`\377\377\377\377\377\377\377\377\177\200\200\200\200\200\200\200\200\200\001"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# 
+# parse_error: "Error: Assertion failed
+#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
+#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
+#     at jspb.BinaryReader.readInt64String (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4546:18)
+#     at jspb.BinaryDecoder.<anonymous> (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:395:108)
+#     at jspb.BinaryReader.readPackedField_ (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4676:16)
+#     at Function.deserialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:395:77)
+#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:32:37"
+# 
+# 
+
+not ok - Recommended.Proto3.ProtobufInput.ValidDataRepeated.INT64.PackedInput.DefaultOutput.ProtobufOutput
+# failed to parse input or produce output.
+# 
+# protobuf_payload: "\202\002\026\000\271`\377\377\377\377\377\377\377\377\177\200\200\200\200\200\200\200\200\200\001"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# 
+# parse_error: "Error: Assertion failed
+#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
+#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
+#     at jspb.BinaryReader.readInt64String (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4546:18)
+#     at jspb.BinaryDecoder.<anonymous> (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:395:108)
+#     at jspb.BinaryReader.readPackedField_ (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4676:16)
+#     at Function.deserialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:395:77)
+#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:32:37"
+# 
+# 
+
+not ok - Recommended.Proto3.ProtobufInput.ValidDataRepeated.INT64.PackedInput.PackedOutput.ProtobufOutput
+# failed to parse input or produce output.
+# 
+# protobuf_payload: "\202\002\026\000\271`\377\377\377\377\377\377\377\377\177\200\200\200\200\200\200\200\200\200\001"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# 
+# parse_error: "Error: Assertion failed
+#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
+#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
+#     at jspb.BinaryReader.readInt64String (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4546:18)
+#     at jspb.BinaryDecoder.<anonymous> (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:395:108)
+#     at jspb.BinaryReader.readPackedField_ (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4676:16)
+#     at Function.deserialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:395:77)
+#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:32:37"
+# 
+# 
+
+not ok - Recommended.Proto3.ProtobufInput.ValidDataRepeated.INT64.UnpackedInput.UnpackedOutput.ProtobufOutput
+# failed to parse input or produce output.
+# 
+# protobuf_payload: "\320\005\000\320\005\271`\320\005\377\377\377\377\377\377\377\377\177\320\005\200\200\200\200\200\200\200\200\200\001"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# 
+# serialize_error: "TypeError: unpacked_int64.map is not a function
+#     at protobuf_test_messages_proto3_TestAllTypesProto3.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:1322:56)
+#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
+# 
+# 
+
+not ok - Recommended.Proto3.ProtobufInput.ValidDataRepeated.INT64.PackedInput.UnpackedOutput.ProtobufOutput
+# failed to parse input or produce output.
+# 
+# protobuf_payload: "\322\005\026\000\271`\377\377\377\377\377\377\377\377\177\200\200\200\200\200\200\200\200\200\001"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# 
+# parse_error: "Error: Assertion failed
+#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
+#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
+#     at jspb.BinaryReader.readInt64String (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4546:18)
+#     at jspb.BinaryDecoder.<anonymous> (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:529:108)
+#     at jspb.BinaryReader.readPackedField_ (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4676:16)
+#     at Function.deserialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:529:77)
+#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:32:37"
+# 
+# 
+
+not ok - Required.Proto2.ProtobufInput.ValidDataRepeated.UINT64.UnpackedInput.ProtobufOutput
+# failed to parse input or produce output.
+# 
+# protobuf_payload: "\220\002\000\220\002\271`\220\002\377\377\377\377\377\377\377\377\377\001"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
+# test_category: BINARY_TEST
+# 
+# serialize_error: "TypeError: repeated_uint64.map is not a function
+#     at protobuf_test_messages_proto2_TestAllTypesProto2.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:1110:58)
+#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
+# 
+# 
+
+not ok - Required.Proto2.ProtobufInput.ValidDataRepeated.UINT64.PackedInput.ProtobufOutput
+# failed to parse input or produce output.
+# 
+# protobuf_payload: "\222\002\r\000\271`\377\377\377\377\377\377\377\377\377\001"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
+# test_category: BINARY_TEST
+# 
+# parse_error: "Error: Assertion failed
+#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
+#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
+#     at jspb.BinaryReader.readUint64String (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4564:18)
+#     at jspb.BinaryDecoder.<anonymous> (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:352:109)
+#     at jspb.BinaryReader.readPackedField_ (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4676:16)
+#     at Function.deserialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:352:78)
+#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:32:37"
+# 
+# 
+
+not ok - Recommended.Proto2.ProtobufInput.ValidDataRepeated.UINT64.UnpackedInput.DefaultOutput.ProtobufOutput
+# failed to parse input or produce output.
+# 
+# protobuf_payload: "\220\002\000\220\002\271`\220\002\377\377\377\377\377\377\377\377\377\001"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
+# test_category: BINARY_TEST
+# 
+# serialize_error: "TypeError: repeated_uint64.map is not a function
+#     at protobuf_test_messages_proto2_TestAllTypesProto2.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:1110:58)
+#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
+# 
+# 
+
+not ok - Recommended.Proto2.ProtobufInput.ValidDataRepeated.UINT64.PackedInput.DefaultOutput.ProtobufOutput
+# failed to parse input or produce output.
+# 
+# protobuf_payload: "\222\002\r\000\271`\377\377\377\377\377\377\377\377\377\001"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
+# test_category: BINARY_TEST
+# 
+# parse_error: "Error: Assertion failed
+#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
+#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
+#     at jspb.BinaryReader.readUint64String (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4564:18)
+#     at jspb.BinaryDecoder.<anonymous> (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:352:109)
+#     at jspb.BinaryReader.readPackedField_ (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4676:16)
+#     at Function.deserialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:352:78)
+#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:32:37"
+# 
+# 
+
+not ok - Recommended.Proto2.ProtobufInput.ValidDataRepeated.UINT64.PackedInput.PackedOutput.ProtobufOutput
+# failed to parse input or produce output.
+# 
+# protobuf_payload: "\362\004\r\000\271`\377\377\377\377\377\377\377\377\377\001"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
+# test_category: BINARY_TEST
+# 
+# parse_error: "Error: Assertion failed
+#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
+#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
+#     at jspb.BinaryReader.readUint64String (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4564:18)
+#     at jspb.BinaryDecoder.<anonymous> (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:430:107)
+#     at jspb.BinaryReader.readPackedField_ (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4676:16)
+#     at Function.deserialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:430:76)
+#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:32:37"
+# 
+# 
+
+not ok - Recommended.Proto2.ProtobufInput.ValidDataRepeated.UINT64.UnpackedInput.UnpackedOutput.ProtobufOutput
+# failed to parse input or produce output.
+# 
+# protobuf_payload: "\220\002\000\220\002\271`\220\002\377\377\377\377\377\377\377\377\377\001"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
+# test_category: BINARY_TEST
+# 
+# serialize_error: "TypeError: repeated_uint64.map is not a function
+#     at protobuf_test_messages_proto2_TestAllTypesProto2.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:1110:58)
+#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
+# 
+# 
+
+not ok - Recommended.Proto2.ProtobufInput.ValidDataRepeated.UINT64.PackedInput.UnpackedOutput.ProtobufOutput
+# failed to parse input or produce output.
+# 
+# protobuf_payload: "\222\002\r\000\271`\377\377\377\377\377\377\377\377\377\001"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
+# test_category: BINARY_TEST
+# 
+# parse_error: "Error: Assertion failed
+#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
+#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
+#     at jspb.BinaryReader.readUint64String (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4564:18)
+#     at jspb.BinaryDecoder.<anonymous> (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:352:109)
+#     at jspb.BinaryReader.readPackedField_ (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4676:16)
+#     at Function.deserialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:352:78)
+#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:32:37"
+# 
+# 
+
 not ok - Recommended.Proto3.ProtobufInput.ValidDataScalarBinary.UINT64[0].ProtobufOutput
 # output was not equivalent to reference message: 
 # expected: 
@@ -145,6 +471,96 @@ not ok - Recommended.Proto3.ProtobufInput.ValidDataScalarBinary.UINT64[0].Protob
 # test_category: BINARY_TEST
 # 
 # protobuf_payload: " \000"
+# 
+# 
+
+not ok - Required.Proto3.ProtobufInput.ValidDataRepeated.UINT64.PackedInput.ProtobufOutput
+# failed to parse input or produce output.
+# 
+# protobuf_payload: "\222\002\r\000\271`\377\377\377\377\377\377\377\377\377\001"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# 
+# parse_error: "Error: Assertion failed
+#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
+#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
+#     at jspb.BinaryReader.readUint64String (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4564:18)
+#     at jspb.BinaryDecoder.<anonymous> (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:403:109)
+#     at jspb.BinaryReader.readPackedField_ (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4676:16)
+#     at Function.deserialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:403:78)
+#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:32:37"
+# 
+# 
+
+not ok - Recommended.Proto3.ProtobufInput.ValidDataRepeated.UINT64.PackedInput.DefaultOutput.ProtobufOutput
+# failed to parse input or produce output.
+# 
+# protobuf_payload: "\222\002\r\000\271`\377\377\377\377\377\377\377\377\377\001"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# 
+# parse_error: "Error: Assertion failed
+#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
+#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
+#     at jspb.BinaryReader.readUint64String (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4564:18)
+#     at jspb.BinaryDecoder.<anonymous> (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:403:109)
+#     at jspb.BinaryReader.readPackedField_ (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4676:16)
+#     at Function.deserialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:403:78)
+#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:32:37"
+# 
+# 
+
+not ok - Recommended.Proto3.ProtobufInput.ValidDataRepeated.UINT64.PackedInput.PackedOutput.ProtobufOutput
+# failed to parse input or produce output.
+# 
+# protobuf_payload: "\222\002\r\000\271`\377\377\377\377\377\377\377\377\377\001"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# 
+# parse_error: "Error: Assertion failed
+#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
+#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
+#     at jspb.BinaryReader.readUint64String (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4564:18)
+#     at jspb.BinaryDecoder.<anonymous> (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:403:109)
+#     at jspb.BinaryReader.readPackedField_ (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4676:16)
+#     at Function.deserialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:403:78)
+#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:32:37"
+# 
+# 
+
+not ok - Recommended.Proto3.ProtobufInput.ValidDataRepeated.UINT64.UnpackedInput.UnpackedOutput.ProtobufOutput
+# failed to parse input or produce output.
+# 
+# protobuf_payload: "\340\005\000\340\005\271`\340\005\377\377\377\377\377\377\377\377\377\001"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# 
+# serialize_error: "TypeError: unpacked_uint64.map is not a function
+#     at protobuf_test_messages_proto3_TestAllTypesProto3.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:1332:58)
+#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
+# 
+# 
+
+not ok - Recommended.Proto3.ProtobufInput.ValidDataRepeated.UINT64.PackedInput.UnpackedOutput.ProtobufOutput
+# failed to parse input or produce output.
+# 
+# protobuf_payload: "\342\005\r\000\271`\377\377\377\377\377\377\377\377\377\001"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# 
+# parse_error: "Error: Assertion failed
+#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
+#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
+#     at jspb.BinaryReader.readUint64String (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4564:18)
+#     at jspb.BinaryDecoder.<anonymous> (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:537:109)
+#     at jspb.BinaryReader.readPackedField_ (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4676:16)
+#     at Function.deserialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:537:78)
+#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:32:37"
 # 
 # 
 
@@ -496,6 +912,124 @@ not ok - Recommended.Proto3.ProtobufInput.ValidDataRepeated.UINT32.PackedInput.U
 # 
 # 
 
+not ok - Required.Proto2.ProtobufInput.ValidDataRepeated.FIXED64.UnpackedInput.ProtobufOutput
+# failed to parse input or produce output.
+# 
+# protobuf_payload: "\261\002\000\000\000\000\000\000\000\000\261\00290\000\000\000\000\000\000\261\002\377\377\377\377\377\377\377\377"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
+# test_category: BINARY_TEST
+# 
+# serialize_error: "TypeError: repeated_fixed64.map is not a function
+#     at protobuf_test_messages_proto2_TestAllTypesProto2.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:1130:60)
+#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
+# 
+# 
+
+not ok - Required.Proto2.ProtobufInput.ValidDataRepeated.FIXED64.PackedInput.ProtobufOutput
+# failed to parse input or produce output.
+# 
+# protobuf_payload: "\262\002\030\000\000\000\000\000\000\000\00090\000\000\000\000\000\000\377\377\377\377\377\377\377\377"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
+# test_category: BINARY_TEST
+# 
+# parse_error: "Error: Assertion failed
+#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
+#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
+#     at jspb.BinaryReader.readFixed64String (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4592:18)
+#     at jspb.BinaryDecoder.<anonymous> (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:368:110)
+#     at jspb.BinaryReader.readPackedField_ (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4676:16)
+#     at Function.deserialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:368:79)
+#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:32:37"
+# 
+# 
+
+not ok - Recommended.Proto2.ProtobufInput.ValidDataRepeated.FIXED64.UnpackedInput.DefaultOutput.ProtobufOutput
+# failed to parse input or produce output.
+# 
+# protobuf_payload: "\261\002\000\000\000\000\000\000\000\000\261\00290\000\000\000\000\000\000\261\002\377\377\377\377\377\377\377\377"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
+# test_category: BINARY_TEST
+# 
+# serialize_error: "TypeError: repeated_fixed64.map is not a function
+#     at protobuf_test_messages_proto2_TestAllTypesProto2.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:1130:60)
+#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
+# 
+# 
+
+not ok - Recommended.Proto2.ProtobufInput.ValidDataRepeated.FIXED64.PackedInput.DefaultOutput.ProtobufOutput
+# failed to parse input or produce output.
+# 
+# protobuf_payload: "\262\002\030\000\000\000\000\000\000\000\00090\000\000\000\000\000\000\377\377\377\377\377\377\377\377"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
+# test_category: BINARY_TEST
+# 
+# parse_error: "Error: Assertion failed
+#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
+#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
+#     at jspb.BinaryReader.readFixed64String (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4592:18)
+#     at jspb.BinaryDecoder.<anonymous> (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:368:110)
+#     at jspb.BinaryReader.readPackedField_ (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4676:16)
+#     at Function.deserialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:368:79)
+#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:32:37"
+# 
+# 
+
+not ok - Recommended.Proto2.ProtobufInput.ValidDataRepeated.FIXED64.PackedInput.PackedOutput.ProtobufOutput
+# failed to parse input or produce output.
+# 
+# protobuf_payload: "\222\005\030\000\000\000\000\000\000\000\00090\000\000\000\000\000\000\377\377\377\377\377\377\377\377"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
+# test_category: BINARY_TEST
+# 
+# parse_error: "Error: Assertion failed
+#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
+#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
+#     at jspb.BinaryReader.readFixed64String (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4592:18)
+#     at jspb.BinaryDecoder.<anonymous> (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:446:108)
+#     at jspb.BinaryReader.readPackedField_ (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4676:16)
+#     at Function.deserialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:446:77)
+#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:32:37"
+# 
+# 
+
+not ok - Recommended.Proto2.ProtobufInput.ValidDataRepeated.FIXED64.UnpackedInput.UnpackedOutput.ProtobufOutput
+# failed to parse input or produce output.
+# 
+# protobuf_payload: "\261\002\000\000\000\000\000\000\000\000\261\00290\000\000\000\000\000\000\261\002\377\377\377\377\377\377\377\377"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
+# test_category: BINARY_TEST
+# 
+# serialize_error: "TypeError: repeated_fixed64.map is not a function
+#     at protobuf_test_messages_proto2_TestAllTypesProto2.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:1130:60)
+#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
+# 
+# 
+
+not ok - Recommended.Proto2.ProtobufInput.ValidDataRepeated.FIXED64.PackedInput.UnpackedOutput.ProtobufOutput
+# failed to parse input or produce output.
+# 
+# protobuf_payload: "\262\002\030\000\000\000\000\000\000\000\00090\000\000\000\000\000\000\377\377\377\377\377\377\377\377"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
+# test_category: BINARY_TEST
+# 
+# parse_error: "Error: Assertion failed
+#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
+#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
+#     at jspb.BinaryReader.readFixed64String (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4592:18)
+#     at jspb.BinaryDecoder.<anonymous> (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:368:110)
+#     at jspb.BinaryReader.readPackedField_ (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4676:16)
+#     at Function.deserialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:368:79)
+#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:32:37"
+# 
+# 
+
 not ok - Recommended.Proto3.ProtobufInput.ValidDataScalarBinary.FIXED64[0].ProtobufOutput
 # output was not equivalent to reference message: 
 # expected: 
@@ -507,6 +1041,162 @@ not ok - Recommended.Proto3.ProtobufInput.ValidDataScalarBinary.FIXED64[0].Proto
 # test_category: BINARY_TEST
 # 
 # protobuf_payload: "A\000\000\000\000\000\000\000\000"
+# 
+# 
+
+not ok - Required.Proto3.ProtobufInput.ValidDataRepeated.FIXED64.PackedInput.ProtobufOutput
+# failed to parse input or produce output.
+# 
+# protobuf_payload: "\262\002\030\000\000\000\000\000\000\000\00090\000\000\000\000\000\000\377\377\377\377\377\377\377\377"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# 
+# parse_error: "Error: Assertion failed
+#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
+#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
+#     at jspb.BinaryReader.readFixed64String (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4592:18)
+#     at jspb.BinaryDecoder.<anonymous> (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:419:110)
+#     at jspb.BinaryReader.readPackedField_ (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4676:16)
+#     at Function.deserialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:419:79)
+#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:32:37"
+# 
+# 
+
+not ok - Recommended.Proto3.ProtobufInput.ValidDataRepeated.FIXED64.PackedInput.DefaultOutput.ProtobufOutput
+# failed to parse input or produce output.
+# 
+# protobuf_payload: "\262\002\030\000\000\000\000\000\000\000\00090\000\000\000\000\000\000\377\377\377\377\377\377\377\377"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# 
+# parse_error: "Error: Assertion failed
+#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
+#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
+#     at jspb.BinaryReader.readFixed64String (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4592:18)
+#     at jspb.BinaryDecoder.<anonymous> (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:419:110)
+#     at jspb.BinaryReader.readPackedField_ (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4676:16)
+#     at Function.deserialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:419:79)
+#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:32:37"
+# 
+# 
+
+not ok - Recommended.Proto3.ProtobufInput.ValidDataRepeated.FIXED64.PackedInput.PackedOutput.ProtobufOutput
+# failed to parse input or produce output.
+# 
+# protobuf_payload: "\262\002\030\000\000\000\000\000\000\000\00090\000\000\000\000\000\000\377\377\377\377\377\377\377\377"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# 
+# parse_error: "Error: Assertion failed
+#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
+#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
+#     at jspb.BinaryReader.readFixed64String (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4592:18)
+#     at jspb.BinaryDecoder.<anonymous> (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:419:110)
+#     at jspb.BinaryReader.readPackedField_ (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4676:16)
+#     at Function.deserialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:419:79)
+#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:32:37"
+# 
+# 
+
+not ok - Recommended.Proto3.ProtobufInput.ValidDataRepeated.FIXED64.UnpackedInput.UnpackedOutput.ProtobufOutput
+# failed to parse input or produce output.
+# 
+# protobuf_payload: "\201\006\000\000\000\000\000\000\000\000\201\00690\000\000\000\000\000\000\201\006\377\377\377\377\377\377\377\377"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# 
+# serialize_error: "TypeError: unpacked_fixed64.map is not a function
+#     at protobuf_test_messages_proto3_TestAllTypesProto3.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:1352:60)
+#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
+# 
+# 
+
+not ok - Recommended.Proto3.ProtobufInput.ValidDataRepeated.FIXED64.PackedInput.UnpackedOutput.ProtobufOutput
+# failed to parse input or produce output.
+# 
+# protobuf_payload: "\202\006\030\000\000\000\000\000\000\000\00090\000\000\000\000\000\000\377\377\377\377\377\377\377\377"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# 
+# parse_error: "Error: Assertion failed
+#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
+#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
+#     at jspb.BinaryReader.readFixed64String (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4592:18)
+#     at jspb.BinaryDecoder.<anonymous> (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:553:110)
+#     at jspb.BinaryReader.readPackedField_ (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4676:16)
+#     at Function.deserialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:553:79)
+#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:32:37"
+# 
+# 
+
+not ok - Required.Proto2.ProtobufInput.ValidDataRepeated.SFIXED64.UnpackedInput.ProtobufOutput
+# failed to parse input or produce output.
+# 
+# protobuf_payload: "\301\002\000\000\000\000\000\000\000\000\301\00290\000\000\000\000\000\000\301\002\377\377\377\377\377\377\377\177\301\002\000\000\000\000\000\000\000\200"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
+# test_category: BINARY_TEST
+# 
+# serialize_error: "TypeError: repeated_sfixed64.map is not a function
+#     at protobuf_test_messages_proto2_TestAllTypesProto2.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:1140:62)
+#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
+# 
+# 
+
+not ok - Required.Proto2.ProtobufInput.ValidDataRepeated.SFIXED64.PackedInput.ProtobufOutput
+# failed to parse input or produce output.
+# 
+# protobuf_payload: "\302\002 \000\000\000\000\000\000\000\00090\000\000\000\000\000\000\377\377\377\377\377\377\377\177\000\000\000\000\000\000\000\200"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
+# test_category: BINARY_TEST
+# 
+# parse_error: "Error: Assertion failed
+#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
+#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
+#     at jspb.BinaryReader.readSfixed64String (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4610:18)
+#     at jspb.BinaryDecoder.<anonymous> (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:376:111)
+#     at jspb.BinaryReader.readPackedField_ (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4676:16)
+#     at Function.deserialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:376:80)
+#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:32:37"
+# 
+# 
+
+not ok - Recommended.Proto2.ProtobufInput.ValidDataRepeated.SFIXED64.UnpackedInput.DefaultOutput.ProtobufOutput
+# failed to parse input or produce output.
+# 
+# protobuf_payload: "\301\002\000\000\000\000\000\000\000\000\301\00290\000\000\000\000\000\000\301\002\377\377\377\377\377\377\377\177\301\002\000\000\000\000\000\000\000\200"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
+# test_category: BINARY_TEST
+# 
+# serialize_error: "TypeError: repeated_sfixed64.map is not a function
+#     at protobuf_test_messages_proto2_TestAllTypesProto2.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:1140:62)
+#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
+# 
+# 
+
+not ok - Recommended.Proto2.ProtobufInput.ValidDataRepeated.SFIXED64.PackedInput.DefaultOutput.ProtobufOutput
+# failed to parse input or produce output.
+# 
+# protobuf_payload: "\302\002 \000\000\000\000\000\000\000\00090\000\000\000\000\000\000\377\377\377\377\377\377\377\177\000\000\000\000\000\000\000\200"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
+# test_category: BINARY_TEST
+# 
+# parse_error: "Error: Assertion failed
+#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
+#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
+#     at jspb.BinaryReader.readSfixed64String (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4610:18)
+#     at jspb.BinaryDecoder.<anonymous> (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:376:111)
+#     at jspb.BinaryReader.readPackedField_ (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4676:16)
+#     at Function.deserialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:376:80)
+#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:32:37"
 # 
 # 
 
@@ -536,13 +1226,47 @@ not ok - Recommended.Proto2.ProtobufInput.ValidDataRepeated.SFIXED64.PackedInput
 # message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
 # test_category: BINARY_TEST
 # 
-# serialize_error: "Error: Assertion failed
+# parse_error: "Error: Assertion failed
 #     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
 #     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
-#     at jspb.BinaryEncoder.writeInt64String (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4892:18)
-#     at jspb.BinaryWriter.writePackedSfixed64String (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:5675:23)
-#     at protobuf_test_messages_proto2_TestAllTypesProto2.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:1226:16)
+#     at jspb.BinaryReader.readSfixed64String (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4610:18)
+#     at jspb.BinaryDecoder.<anonymous> (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:454:109)
+#     at jspb.BinaryReader.readPackedField_ (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4676:16)
+#     at Function.deserialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:454:78)
+#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:32:37"
+# 
+# 
+
+not ok - Recommended.Proto2.ProtobufInput.ValidDataRepeated.SFIXED64.UnpackedInput.UnpackedOutput.ProtobufOutput
+# failed to parse input or produce output.
+# 
+# protobuf_payload: "\301\002\000\000\000\000\000\000\000\000\301\00290\000\000\000\000\000\000\301\002\377\377\377\377\377\377\377\177\301\002\000\000\000\000\000\000\000\200"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
+# test_category: BINARY_TEST
+# 
+# serialize_error: "TypeError: repeated_sfixed64.map is not a function
+#     at protobuf_test_messages_proto2_TestAllTypesProto2.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:1140:62)
 #     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
+# 
+# 
+
+not ok - Recommended.Proto2.ProtobufInput.ValidDataRepeated.SFIXED64.PackedInput.UnpackedOutput.ProtobufOutput
+# failed to parse input or produce output.
+# 
+# protobuf_payload: "\302\002 \000\000\000\000\000\000\000\00090\000\000\000\000\000\000\377\377\377\377\377\377\377\177\000\000\000\000\000\000\000\200"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
+# test_category: BINARY_TEST
+# 
+# parse_error: "Error: Assertion failed
+#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
+#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
+#     at jspb.BinaryReader.readSfixed64String (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4610:18)
+#     at jspb.BinaryDecoder.<anonymous> (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:376:111)
+#     at jspb.BinaryReader.readPackedField_ (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4676:16)
+#     at Function.deserialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:376:80)
+#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:32:37"
 # 
 # 
 
@@ -586,13 +1310,14 @@ not ok - Required.Proto3.ProtobufInput.ValidDataRepeated.SFIXED64.PackedInput.Pr
 # message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
 # test_category: BINARY_TEST
 # 
-# serialize_error: "Error: Assertion failed
+# parse_error: "Error: Assertion failed
 #     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
 #     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
-#     at jspb.BinaryEncoder.writeInt64String (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4892:18)
-#     at jspb.BinaryWriter.writePackedSfixed64String (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:5675:23)
-#     at protobuf_test_messages_proto3_TestAllTypesProto3.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:1226:16)
-#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
+#     at jspb.BinaryReader.readSfixed64String (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4610:18)
+#     at jspb.BinaryDecoder.<anonymous> (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:427:111)
+#     at jspb.BinaryReader.readPackedField_ (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4676:16)
+#     at Function.deserialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:427:80)
+#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:32:37"
 # 
 # 
 
@@ -622,13 +1347,14 @@ not ok - Recommended.Proto3.ProtobufInput.ValidDataRepeated.SFIXED64.PackedInput
 # message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
 # test_category: BINARY_TEST
 # 
-# serialize_error: "Error: Assertion failed
+# parse_error: "Error: Assertion failed
 #     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
 #     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
-#     at jspb.BinaryEncoder.writeInt64String (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4892:18)
-#     at jspb.BinaryWriter.writePackedSfixed64String (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:5675:23)
-#     at protobuf_test_messages_proto3_TestAllTypesProto3.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:1226:16)
-#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
+#     at jspb.BinaryReader.readSfixed64String (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4610:18)
+#     at jspb.BinaryDecoder.<anonymous> (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:427:111)
+#     at jspb.BinaryReader.readPackedField_ (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4676:16)
+#     at Function.deserialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:427:80)
+#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:32:37"
 # 
 # 
 
@@ -658,13 +1384,47 @@ not ok - Recommended.Proto3.ProtobufInput.ValidDataRepeated.SFIXED64.PackedInput
 # message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
 # test_category: BINARY_TEST
 # 
-# serialize_error: "Error: Assertion failed
+# parse_error: "Error: Assertion failed
 #     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
 #     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
-#     at jspb.BinaryEncoder.writeInt64String (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4892:18)
-#     at jspb.BinaryWriter.writePackedSfixed64String (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:5675:23)
-#     at protobuf_test_messages_proto3_TestAllTypesProto3.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:1226:16)
+#     at jspb.BinaryReader.readSfixed64String (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4610:18)
+#     at jspb.BinaryDecoder.<anonymous> (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:427:111)
+#     at jspb.BinaryReader.readPackedField_ (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4676:16)
+#     at Function.deserialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:427:80)
+#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:32:37"
+# 
+# 
+
+not ok - Recommended.Proto3.ProtobufInput.ValidDataRepeated.SFIXED64.UnpackedInput.UnpackedOutput.ProtobufOutput
+# failed to parse input or produce output.
+# 
+# protobuf_payload: "\221\006\000\000\000\000\000\000\000\000\221\00690\000\000\000\000\000\000\221\006\377\377\377\377\377\377\377\177\221\006\000\000\000\000\000\000\000\200"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# 
+# serialize_error: "TypeError: unpacked_sfixed64.map is not a function
+#     at protobuf_test_messages_proto3_TestAllTypesProto3.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:1362:62)
 #     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
+# 
+# 
+
+not ok - Recommended.Proto3.ProtobufInput.ValidDataRepeated.SFIXED64.PackedInput.UnpackedOutput.ProtobufOutput
+# failed to parse input or produce output.
+# 
+# protobuf_payload: "\222\006 \000\000\000\000\000\000\000\00090\000\000\000\000\000\000\377\377\377\377\377\377\377\177\000\000\000\000\000\000\000\200"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# 
+# parse_error: "Error: Assertion failed
+#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
+#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
+#     at jspb.BinaryReader.readSfixed64String (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4610:18)
+#     at jspb.BinaryDecoder.<anonymous> (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:561:111)
+#     at jspb.BinaryReader.readPackedField_ (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4676:16)
+#     at Function.deserialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:561:80)
+#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:32:37"
 # 
 # 
 
@@ -1098,6 +1858,124 @@ not ok - Recommended.Proto3.ProtobufInput.ValidDataRepeated.BOOL.PackedInput.Unp
 # 
 # 
 
+not ok - Required.Proto2.ProtobufInput.ValidDataRepeated.SINT64.UnpackedInput.ProtobufOutput
+# failed to parse input or produce output.
+# 
+# protobuf_payload: "\240\002\000\240\002\362\300\001\240\002\376\377\377\377\377\377\377\377\377\001\240\002\377\377\377\377\377\377\377\377\377\001"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
+# test_category: BINARY_TEST
+# 
+# serialize_error: "TypeError: repeated_sint64.map is not a function
+#     at protobuf_test_messages_proto2_TestAllTypesProto2.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:1120:58)
+#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
+# 
+# 
+
+not ok - Required.Proto2.ProtobufInput.ValidDataRepeated.SINT64.PackedInput.ProtobufOutput
+# failed to parse input or produce output.
+# 
+# protobuf_payload: "\242\002\030\000\362\300\001\376\377\377\377\377\377\377\377\377\001\377\377\377\377\377\377\377\377\377\001"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
+# test_category: BINARY_TEST
+# 
+# parse_error: "Error: Assertion failed
+#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
+#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
+#     at jspb.BinaryReader.readSint64String (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4578:18)
+#     at jspb.BinaryDecoder.<anonymous> (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:360:109)
+#     at jspb.BinaryReader.readPackedField_ (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4676:16)
+#     at Function.deserialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:360:78)
+#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:32:37"
+# 
+# 
+
+not ok - Recommended.Proto2.ProtobufInput.ValidDataRepeated.SINT64.UnpackedInput.DefaultOutput.ProtobufOutput
+# failed to parse input or produce output.
+# 
+# protobuf_payload: "\240\002\000\240\002\362\300\001\240\002\376\377\377\377\377\377\377\377\377\001\240\002\377\377\377\377\377\377\377\377\377\001"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
+# test_category: BINARY_TEST
+# 
+# serialize_error: "TypeError: repeated_sint64.map is not a function
+#     at protobuf_test_messages_proto2_TestAllTypesProto2.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:1120:58)
+#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
+# 
+# 
+
+not ok - Recommended.Proto2.ProtobufInput.ValidDataRepeated.SINT64.PackedInput.DefaultOutput.ProtobufOutput
+# failed to parse input or produce output.
+# 
+# protobuf_payload: "\242\002\030\000\362\300\001\376\377\377\377\377\377\377\377\377\001\377\377\377\377\377\377\377\377\377\001"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
+# test_category: BINARY_TEST
+# 
+# parse_error: "Error: Assertion failed
+#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
+#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
+#     at jspb.BinaryReader.readSint64String (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4578:18)
+#     at jspb.BinaryDecoder.<anonymous> (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:360:109)
+#     at jspb.BinaryReader.readPackedField_ (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4676:16)
+#     at Function.deserialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:360:78)
+#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:32:37"
+# 
+# 
+
+not ok - Recommended.Proto2.ProtobufInput.ValidDataRepeated.SINT64.PackedInput.PackedOutput.ProtobufOutput
+# failed to parse input or produce output.
+# 
+# protobuf_payload: "\202\005\030\000\362\300\001\376\377\377\377\377\377\377\377\377\001\377\377\377\377\377\377\377\377\377\001"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
+# test_category: BINARY_TEST
+# 
+# parse_error: "Error: Assertion failed
+#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
+#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
+#     at jspb.BinaryReader.readSint64String (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4578:18)
+#     at jspb.BinaryDecoder.<anonymous> (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:438:107)
+#     at jspb.BinaryReader.readPackedField_ (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4676:16)
+#     at Function.deserialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:438:76)
+#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:32:37"
+# 
+# 
+
+not ok - Recommended.Proto2.ProtobufInput.ValidDataRepeated.SINT64.UnpackedInput.UnpackedOutput.ProtobufOutput
+# failed to parse input or produce output.
+# 
+# protobuf_payload: "\240\002\000\240\002\362\300\001\240\002\376\377\377\377\377\377\377\377\377\001\240\002\377\377\377\377\377\377\377\377\377\001"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
+# test_category: BINARY_TEST
+# 
+# serialize_error: "TypeError: repeated_sint64.map is not a function
+#     at protobuf_test_messages_proto2_TestAllTypesProto2.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:1120:58)
+#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
+# 
+# 
+
+not ok - Recommended.Proto2.ProtobufInput.ValidDataRepeated.SINT64.PackedInput.UnpackedOutput.ProtobufOutput
+# failed to parse input or produce output.
+# 
+# protobuf_payload: "\242\002\030\000\362\300\001\376\377\377\377\377\377\377\377\377\001\377\377\377\377\377\377\377\377\377\001"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
+# test_category: BINARY_TEST
+# 
+# parse_error: "Error: Assertion failed
+#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
+#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
+#     at jspb.BinaryReader.readSint64String (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4578:18)
+#     at jspb.BinaryDecoder.<anonymous> (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:360:109)
+#     at jspb.BinaryReader.readPackedField_ (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4676:16)
+#     at Function.deserialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:360:78)
+#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:32:37"
+# 
+# 
+
 not ok - Recommended.Proto3.ProtobufInput.ValidDataScalarBinary.SINT64[0].ProtobufOutput
 # output was not equivalent to reference message: 
 # expected: 
@@ -1109,6 +1987,96 @@ not ok - Recommended.Proto3.ProtobufInput.ValidDataScalarBinary.SINT64[0].Protob
 # test_category: BINARY_TEST
 # 
 # protobuf_payload: "0\000"
+# 
+# 
+
+not ok - Required.Proto3.ProtobufInput.ValidDataRepeated.SINT64.PackedInput.ProtobufOutput
+# failed to parse input or produce output.
+# 
+# protobuf_payload: "\242\002\030\000\362\300\001\376\377\377\377\377\377\377\377\377\001\377\377\377\377\377\377\377\377\377\001"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# 
+# parse_error: "Error: Assertion failed
+#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
+#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
+#     at jspb.BinaryReader.readSint64String (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4578:18)
+#     at jspb.BinaryDecoder.<anonymous> (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:411:109)
+#     at jspb.BinaryReader.readPackedField_ (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4676:16)
+#     at Function.deserialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:411:78)
+#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:32:37"
+# 
+# 
+
+not ok - Recommended.Proto3.ProtobufInput.ValidDataRepeated.SINT64.PackedInput.DefaultOutput.ProtobufOutput
+# failed to parse input or produce output.
+# 
+# protobuf_payload: "\242\002\030\000\362\300\001\376\377\377\377\377\377\377\377\377\001\377\377\377\377\377\377\377\377\377\001"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# 
+# parse_error: "Error: Assertion failed
+#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
+#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
+#     at jspb.BinaryReader.readSint64String (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4578:18)
+#     at jspb.BinaryDecoder.<anonymous> (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:411:109)
+#     at jspb.BinaryReader.readPackedField_ (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4676:16)
+#     at Function.deserialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:411:78)
+#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:32:37"
+# 
+# 
+
+not ok - Recommended.Proto3.ProtobufInput.ValidDataRepeated.SINT64.PackedInput.PackedOutput.ProtobufOutput
+# failed to parse input or produce output.
+# 
+# protobuf_payload: "\242\002\030\000\362\300\001\376\377\377\377\377\377\377\377\377\001\377\377\377\377\377\377\377\377\377\001"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# 
+# parse_error: "Error: Assertion failed
+#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
+#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
+#     at jspb.BinaryReader.readSint64String (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4578:18)
+#     at jspb.BinaryDecoder.<anonymous> (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:411:109)
+#     at jspb.BinaryReader.readPackedField_ (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4676:16)
+#     at Function.deserialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:411:78)
+#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:32:37"
+# 
+# 
+
+not ok - Recommended.Proto3.ProtobufInput.ValidDataRepeated.SINT64.UnpackedInput.UnpackedOutput.ProtobufOutput
+# failed to parse input or produce output.
+# 
+# protobuf_payload: "\360\005\000\360\005\362\300\001\360\005\376\377\377\377\377\377\377\377\377\001\360\005\377\377\377\377\377\377\377\377\377\001"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# 
+# serialize_error: "TypeError: unpacked_sint64.map is not a function
+#     at protobuf_test_messages_proto3_TestAllTypesProto3.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:1342:58)
+#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
+# 
+# 
+
+not ok - Recommended.Proto3.ProtobufInput.ValidDataRepeated.SINT64.PackedInput.UnpackedOutput.ProtobufOutput
+# failed to parse input or produce output.
+# 
+# protobuf_payload: "\362\005\030\000\362\300\001\376\377\377\377\377\377\377\377\377\001\377\377\377\377\377\377\377\377\377\001"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: BINARY_TEST
+# 
+# parse_error: "Error: Assertion failed
+#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
+#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
+#     at jspb.BinaryReader.readSint64String (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4578:18)
+#     at jspb.BinaryDecoder.<anonymous> (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:545:109)
+#     at jspb.BinaryReader.readPackedField_ (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4676:16)
+#     at Function.deserialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:545:78)
+#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:32:37"
 # 
 # 
 
@@ -1487,46 +2455,6 @@ not ok - Required.Proto3.ProtobufInput.RepeatedScalarMessageMerge.ProtobufOutput
 # 
 # 
 
-not ok - Required.Proto2.ProtobufInput.ValidDataMap.SINT64.SINT64.MissingDefault.ProtobufOutput
-# failed to parse input or produce output.
-# 
-# protobuf_payload: "\352\003\000"
-# requested_output_format: PROTOBUF
-# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
-# test_category: BINARY_TEST
-# 
-# serialize_error: "Error: Assertion failed
-#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
-#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
-#     at Object.jspb.utils.decimalStringToHash64 (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:3874:18)
-#     at jspb.BinaryEncoder.writeZigzagVarint64String (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4830:45)
-#     at jspb.BinaryWriter.writeZigzagVarint64String_ (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:5207:98)
-#     at jspb.BinaryWriter.writeSint64String (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:5252:23)
-#     at protobuf_test_messages_proto2_TestAllTypesProto2.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:1353:20)
-#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
-# 
-# 
-
-not ok - Required.Proto3.ProtobufInput.ValidDataMap.SINT64.SINT64.MissingDefault.ProtobufOutput
-# failed to parse input or produce output.
-# 
-# protobuf_payload: "\352\003\000"
-# requested_output_format: PROTOBUF
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: BINARY_TEST
-# 
-# serialize_error: "Error: Assertion failed
-#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
-#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
-#     at Object.jspb.utils.decimalStringToHash64 (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:3874:18)
-#     at jspb.BinaryEncoder.writeZigzagVarint64String (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4830:45)
-#     at jspb.BinaryWriter.writeZigzagVarint64String_ (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:5207:98)
-#     at jspb.BinaryWriter.writeSint64String (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:5252:23)
-#     at protobuf_test_messages_proto3_TestAllTypesProto3.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:1428:20)
-#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
-# 
-# 
-
 not ok - Required.Proto3.ProtobufInput.ValidDataOneof.UINT32.DefaultValue.ProtobufOutput
 # output was not equivalent to reference message: 
 # deleted: oneof_uint32: 0
@@ -1824,10 +2752,10 @@ not ok - Recommended.Proto3.ProtobufInput.OneofZeroDouble.ProtobufOutput
 # 
 
 # CONFORMANCE SUITE FAILED
-#	1188 succeses
+#	1134 succeses
 #	729 skipped
 #	0 expected failures
-#	49 unexpected failures
+#	61 unexpected failures
 
 # 
 # These tests failed.  If they can't be fixed right now, you can add them to the failure list so the overall suite can succeed.  Add them to the failure list by running:
@@ -1842,13 +2770,22 @@ not ok - Recommended.Proto3.ProtobufInput.OneofZeroDouble.ProtobufOutput
 #   Required.Proto2.ProtobufInput.RepeatedScalarSelectsLast.BOOL.ProtobufOutput
 #   Required.Proto2.ProtobufInput.RepeatedScalarSelectsLast.ENUM.ProtobufOutput
 #   Required.Proto2.ProtobufInput.UnknownVarint.ProtobufOutput
-#   Required.Proto2.ProtobufInput.ValidDataMap.SINT64.SINT64.MissingDefault.ProtobufOutput
 #   Required.Proto2.ProtobufInput.ValidDataOneof.MESSAGE.Merge.ProtobufOutput
 #   Required.Proto2.ProtobufInput.ValidDataRepeated.BOOL.PackedInput.ProtobufOutput
 #   Required.Proto2.ProtobufInput.ValidDataRepeated.BOOL.UnpackedInput.ProtobufOutput
 #   Required.Proto2.ProtobufInput.ValidDataRepeated.ENUM.UnpackedInput.ProtobufOutput
+#   Required.Proto2.ProtobufInput.ValidDataRepeated.FIXED64.PackedInput.ProtobufOutput
+#   Required.Proto2.ProtobufInput.ValidDataRepeated.FIXED64.UnpackedInput.ProtobufOutput
+#   Required.Proto2.ProtobufInput.ValidDataRepeated.INT64.PackedInput.ProtobufOutput
+#   Required.Proto2.ProtobufInput.ValidDataRepeated.INT64.UnpackedInput.ProtobufOutput
+#   Required.Proto2.ProtobufInput.ValidDataRepeated.SFIXED64.PackedInput.ProtobufOutput
+#   Required.Proto2.ProtobufInput.ValidDataRepeated.SFIXED64.UnpackedInput.ProtobufOutput
+#   Required.Proto2.ProtobufInput.ValidDataRepeated.SINT64.PackedInput.ProtobufOutput
+#   Required.Proto2.ProtobufInput.ValidDataRepeated.SINT64.UnpackedInput.ProtobufOutput
 #   Required.Proto2.ProtobufInput.ValidDataRepeated.UINT32.PackedInput.ProtobufOutput
 #   Required.Proto2.ProtobufInput.ValidDataRepeated.UINT32.UnpackedInput.ProtobufOutput
+#   Required.Proto2.ProtobufInput.ValidDataRepeated.UINT64.PackedInput.ProtobufOutput
+#   Required.Proto2.ProtobufInput.ValidDataRepeated.UINT64.UnpackedInput.ProtobufOutput
 #   Required.Proto2.ProtobufInput.ValidDataScalar.BOOL[4].ProtobufOutput
 #   Required.Proto2.ProtobufInput.ValidDataScalar.BOOL[6].ProtobufOutput
 #   Required.Proto2.ProtobufInput.ValidDataScalar.ENUM[4].ProtobufOutput
@@ -1863,7 +2800,6 @@ not ok - Recommended.Proto3.ProtobufInput.OneofZeroDouble.ProtobufOutput
 #   Required.Proto3.ProtobufInput.RepeatedScalarSelectsLast.BOOL.ProtobufOutput
 #   Required.Proto3.ProtobufInput.RepeatedScalarSelectsLast.ENUM.ProtobufOutput
 #   Required.Proto3.ProtobufInput.UnknownVarint.ProtobufOutput
-#   Required.Proto3.ProtobufInput.ValidDataMap.SINT64.SINT64.MissingDefault.ProtobufOutput
 #   Required.Proto3.ProtobufInput.ValidDataOneof.BOOL.DefaultValue.ProtobufOutput
 #   Required.Proto3.ProtobufInput.ValidDataOneof.DOUBLE.DefaultValue.ProtobufOutput
 #   Required.Proto3.ProtobufInput.ValidDataOneof.FLOAT.DefaultValue.ProtobufOutput
@@ -1873,10 +2809,14 @@ not ok - Recommended.Proto3.ProtobufInput.OneofZeroDouble.ProtobufOutput
 #   Required.Proto3.ProtobufInput.ValidDataRepeated.BOOL.PackedInput.ProtobufOutput
 #   Required.Proto3.ProtobufInput.ValidDataRepeated.BOOL.UnpackedInput.ProtobufOutput
 #   Required.Proto3.ProtobufInput.ValidDataRepeated.ENUM.UnpackedInput.ProtobufOutput
+#   Required.Proto3.ProtobufInput.ValidDataRepeated.FIXED64.PackedInput.ProtobufOutput
+#   Required.Proto3.ProtobufInput.ValidDataRepeated.INT64.PackedInput.ProtobufOutput
 #   Required.Proto3.ProtobufInput.ValidDataRepeated.SFIXED64.PackedInput.ProtobufOutput
 #   Required.Proto3.ProtobufInput.ValidDataRepeated.SFIXED64.UnpackedInput.ProtobufOutput
+#   Required.Proto3.ProtobufInput.ValidDataRepeated.SINT64.PackedInput.ProtobufOutput
 #   Required.Proto3.ProtobufInput.ValidDataRepeated.UINT32.PackedInput.ProtobufOutput
 #   Required.Proto3.ProtobufInput.ValidDataRepeated.UINT32.UnpackedInput.ProtobufOutput
+#   Required.Proto3.ProtobufInput.ValidDataRepeated.UINT64.PackedInput.ProtobufOutput
 #   Required.Proto3.ProtobufInput.ValidDataScalar.BOOL[4].ProtobufOutput
 #   Required.Proto3.ProtobufInput.ValidDataScalar.BOOL[6].ProtobufOutput
 #   Required.Proto3.ProtobufInput.ValidDataScalar.ENUM[4].ProtobufOutput

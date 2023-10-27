@@ -54,6 +54,16 @@ macro_rules! unary_expr {
     };
 }
 
+#[macro_export]
+macro_rules! pat_ident {
+    ($name:expr) => {
+        swc_ecma_ast::Pat::Ident(swc_ecma_ast::BindingIdent {
+            id: swc_ecma_utils::quote_ident!($name),
+            type_ann: None,
+        })
+    };
+}
+
 
 #[macro_export]
 macro_rules! const_decl {
@@ -63,10 +73,7 @@ macro_rules! const_decl {
             declare: false,
             decls: vec![swc_ecma_ast::VarDeclarator {
                 definite: false,
-                name: swc_ecma_ast::Pat::Ident(swc_ecma_ast::BindingIdent {
-                    id: swc_ecma_utils::quote_ident!($name),
-                    type_ann: None,
-                }),
+                name: crate::pat_ident!($name),
                 init: Some(Box::new($init)),
                 span: DUMMY_SP,
             }],
@@ -74,6 +81,7 @@ macro_rules! const_decl {
         }))
     };
 }
+
 
 #[macro_export]
 macro_rules! const_decl_uinit {
@@ -220,7 +228,7 @@ macro_rules! arrow_func {
         swc_ecma_ast::Expr::Arrow(swc_ecma_ast::ArrowExpr {
             is_async: false,
             is_generator: false,
-            params: vec![],
+            params: $params,
             return_type: None,
             span: DUMMY_SP,
             type_params: None,
@@ -233,19 +241,19 @@ macro_rules! arrow_func {
 }
 
 #[macro_export]
-macro_rules! func {
-    ($params:expr, $stmts:expr) => {
+macro_rules! arrow_func_short {
+    ($expr:expr) => {
+        crate::arrow_func_short!($expr, vec![])
+    };
+    ($expr:expr, $params:expr) => {
         swc_ecma_ast::Expr::Arrow(swc_ecma_ast::ArrowExpr {
             is_async: false,
             is_generator: false,
-            params: vec![],
+            params: $params,
             return_type: None,
             span: DUMMY_SP,
             type_params: None,
-            body: Box::new(swc_ecma_ast::BlockStmtOrExpr::BlockStmt(swc_ecma_ast::BlockStmt {
-                span: DUMMY_SP,
-                stmts: $stmts,
-            })),
+            body: Box::new(swc_ecma_ast::BlockStmtOrExpr::Expr(Box::new($expr))),
         })
     };
 }

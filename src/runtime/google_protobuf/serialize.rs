@@ -5,7 +5,7 @@ use crate::{context::Context, descriptor};
 use std::vec;
 use swc_common::DUMMY_SP;
 use swc_ecma_ast::{
-    BindingIdent, BlockStmt, Expr, ForHead, ForOfStmt, Stmt, TsNonNullExpr, VarDecl,
+    BindingIdent, BlockStmt, Expr, ForHead, ForOfStmt, Stmt, TsNonNullExpr, VarDecl
 };
 use swc_ecma_utils::quote_ident;
 
@@ -16,11 +16,26 @@ impl GooglePBRuntime {
         field: &descriptor::FieldDescriptorProto,
         field_accessor: field::FieldAccessorFn,
     ) -> Stmt {
+        let mut access_expr = field_accessor(field.name());
+        if field.is_bigint() {
+            if field.is_repeated() {
+                access_expr = crate::call_expr!(crate::member_expr_bare!(access_expr, "map"), vec![
+                    crate::expr_or_spread!(
+                        crate::arrow_func_short!(
+                            crate::call_expr!(crate::member_expr!("v", "toString")),
+                            vec![crate::pat_ident!("v")]
+                        )
+                    )
+                ])
+            } else {
+                access_expr = crate::call_expr!(crate::member_expr_bare!(access_expr, "toString"))
+            }
+        }
         crate::expr_stmt!(crate::call_expr!(
             crate::member_expr!("bw", self.rw_function_name("write", false, ctx, field)),
             vec![
                 crate::expr_or_spread!(crate::lit_num!(field.number()).into()),
-                crate::expr_or_spread!(field_accessor(field.name())),
+                crate::expr_or_spread!(access_expr),
             ]
         ))
     }
