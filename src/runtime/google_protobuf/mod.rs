@@ -54,16 +54,16 @@ impl GooglePBRuntime {
             Type::TYPE_BYTES => "_placeholder_Bytes",
 
             Type::TYPE_INT32 => "_placeholder_Int32",
-            Type::TYPE_INT64 => "_placeholder_Int64",
+            Type::TYPE_INT64 => "_placeholder_Int64String",
             Type::TYPE_UINT32 => "_placeholder_Uint32",
-            Type::TYPE_UINT64 => "_placeholder_Uint64",
+            Type::TYPE_UINT64 => "_placeholder_Uint64String",
             Type::TYPE_SINT32 => "_placeholder_Sint32",
-            Type::TYPE_SINT64 => "_placeholder_Sint64",
+            Type::TYPE_SINT64 => "_placeholder_Sint64String",
 
             Type::TYPE_FIXED32 => "_placeholder_Fixed32",
-            Type::TYPE_FIXED64 => "_placeholder_Fixed64",
+            Type::TYPE_FIXED64 => "_placeholder_Fixed64String",
             Type::TYPE_SFIXED32 => "_placeholder_Sfixed32",
-            Type::TYPE_SFIXED64 => "_placeholder_Sfixed64",
+            Type::TYPE_SFIXED64 => "_placeholder_Sfixed64String",
 
             Type::TYPE_GROUP => "skipField",
             Type::TYPE_MESSAGE => "skipField",
