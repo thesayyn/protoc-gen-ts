@@ -44,10 +44,7 @@ impl GooglePBRuntime {
         crate::call_expr!(
             crate::member_expr!(ctx.lazy_type_ref(field.type_name()), "deserialize"),
             vec![crate::expr_or_spread!(crate::call_expr!(
-                crate::member_expr_bare!(
-                    crate::call_expr!(crate::member_expr!("br", "getFieldDecoder")),
-                    "getBuffer"
-                )
+                crate::member_expr!("br", "readBytes")
             ))]
         )
     }

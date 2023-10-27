@@ -95,13 +95,12 @@ impl DescriptorProto {
         })
     }
 
-    pub fn get_oneof_fields(&self, index: i32, exclude: usize) -> Vec<FieldDescriptorProto> {
+    pub fn get_oneof_fields(&self, current: &FieldDescriptorProto) -> Vec<FieldDescriptorProto> {
         let mut fields = vec![];
-        for (i, field) in self.field.clone().into_iter().enumerate() {
-            if i == exclude || field.oneof_index() != index {
-                continue;
+        for field in self.field.clone() {
+            if field.has_oneof_index() && field.oneof_index() == current.oneof_index() && field.number() != current.number() {
+                fields.push(field)
             }
-            fields.push(field)
         }
         fields
     }
@@ -120,11 +119,11 @@ where
 
         let mut members: Vec<ClassMember> = Vec::new();
 
-        for (i, member) in self.field.clone().into_iter().enumerate() {
+        for member in self.field.clone() {
             members.push(member.print_prop(ctx, runtime));
             
             if member.has_oneof_index() {
-                let other_oneofs = self.get_oneof_fields(member.oneof_index(), i);
+                let other_oneofs = self.get_oneof_fields(&member);
                 members.push(member.print_oneof_getter(ctx, runtime));
                 members.push(member.print_oneof_setter(ctx, runtime, &other_oneofs));
             }
