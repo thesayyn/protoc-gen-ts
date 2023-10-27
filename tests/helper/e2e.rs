@@ -44,7 +44,7 @@ macro_rules! gen_test {
             cmd.arg(format!("--ts_out={}", ts_out));
             cmd.arg("--ts_opt=namespaces=false");
             cmd.arg("--ts_opt=import_suffix=.ts");
-            cmd.arg("--ts_opt=runtime_package=https://cdn.skypack.dev/google-protobuf?dts");
+            cmd.arg("--ts_opt=runtime_package=npm:google-protobuf");
             cmd.args(sources);
 
             // make sure it succedded

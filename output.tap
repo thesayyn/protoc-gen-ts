@@ -143,11 +143,11 @@ not ok - Required.Proto2.ProtobufInput.ValidDataRepeated.INT64.PackedInput.Proto
 # test_category: BINARY_TEST
 # 
 # parse_error: "Error: Assertion failed
-#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
-#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
-#     at jspb.BinaryReader.readInt64String (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4546:18)
+#     at Object.jspb.asserts.doAssertFailure (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:597)
+#     at Object.jspb.asserts.assert (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:729)
+#     at jspb.BinaryReader.readInt64String (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:397:168)
 #     at jspb.BinaryDecoder.<anonymous> (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:344:108)
-#     at jspb.BinaryReader.readPackedField_ (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4676:16)
+#     at jspb.BinaryReader.readPackedField_ (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:411:263)
 #     at Function.deserialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:344:77)
 #     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:32:37"
 # 
@@ -176,11 +176,11 @@ not ok - Recommended.Proto2.ProtobufInput.ValidDataRepeated.INT64.PackedInput.De
 # test_category: BINARY_TEST
 # 
 # parse_error: "Error: Assertion failed
-#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
-#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
-#     at jspb.BinaryReader.readInt64String (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4546:18)
+#     at Object.jspb.asserts.doAssertFailure (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:597)
+#     at Object.jspb.asserts.assert (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:729)
+#     at jspb.BinaryReader.readInt64String (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:397:168)
 #     at jspb.BinaryDecoder.<anonymous> (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:344:108)
-#     at jspb.BinaryReader.readPackedField_ (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4676:16)
+#     at jspb.BinaryReader.readPackedField_ (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:411:263)
 #     at Function.deserialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:344:77)
 #     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:32:37"
 # 
@@ -195,11 +195,11 @@ not ok - Recommended.Proto2.ProtobufInput.ValidDataRepeated.INT64.PackedInput.Pa
 # test_category: BINARY_TEST
 # 
 # parse_error: "Error: Assertion failed
-#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
-#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
-#     at jspb.BinaryReader.readInt64String (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4546:18)
+#     at Object.jspb.asserts.doAssertFailure (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:597)
+#     at Object.jspb.asserts.assert (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:729)
+#     at jspb.BinaryReader.readInt64String (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:397:168)
 #     at jspb.BinaryDecoder.<anonymous> (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:422:106)
-#     at jspb.BinaryReader.readPackedField_ (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4676:16)
+#     at jspb.BinaryReader.readPackedField_ (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:411:263)
 #     at Function.deserialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:422:75)
 #     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:32:37"
 # 
@@ -228,11 +228,11 @@ not ok - Recommended.Proto2.ProtobufInput.ValidDataRepeated.INT64.PackedInput.Un
 # test_category: BINARY_TEST
 # 
 # parse_error: "Error: Assertion failed
-#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
-#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
-#     at jspb.BinaryReader.readInt64String (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4546:18)
+#     at Object.jspb.asserts.doAssertFailure (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:597)
+#     at Object.jspb.asserts.assert (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:729)
+#     at jspb.BinaryReader.readInt64String (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:397:168)
 #     at jspb.BinaryDecoder.<anonymous> (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:344:108)
-#     at jspb.BinaryReader.readPackedField_ (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4676:16)
+#     at jspb.BinaryReader.readPackedField_ (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:411:263)
 #     at Function.deserialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:344:77)
 #     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:32:37"
 # 
@@ -261,11 +261,11 @@ not ok - Required.Proto3.ProtobufInput.ValidDataRepeated.INT64.PackedInput.Proto
 # test_category: BINARY_TEST
 # 
 # parse_error: "Error: Assertion failed
-#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
-#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
-#     at jspb.BinaryReader.readInt64String (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4546:18)
+#     at Object.jspb.asserts.doAssertFailure (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:597)
+#     at Object.jspb.asserts.assert (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:729)
+#     at jspb.BinaryReader.readInt64String (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:397:168)
 #     at jspb.BinaryDecoder.<anonymous> (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:395:108)
-#     at jspb.BinaryReader.readPackedField_ (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4676:16)
+#     at jspb.BinaryReader.readPackedField_ (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:411:263)
 #     at Function.deserialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:395:77)
 #     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:32:37"
 # 
@@ -280,11 +280,11 @@ not ok - Recommended.Proto3.ProtobufInput.ValidDataRepeated.INT64.PackedInput.De
 # test_category: BINARY_TEST
 # 
 # parse_error: "Error: Assertion failed
-#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
-#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
-#     at jspb.BinaryReader.readInt64String (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4546:18)
+#     at Object.jspb.asserts.doAssertFailure (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:597)
+#     at Object.jspb.asserts.assert (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:729)
+#     at jspb.BinaryReader.readInt64String (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:397:168)
 #     at jspb.BinaryDecoder.<anonymous> (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:395:108)
-#     at jspb.BinaryReader.readPackedField_ (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4676:16)
+#     at jspb.BinaryReader.readPackedField_ (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:411:263)
 #     at Function.deserialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:395:77)
 #     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:32:37"
 # 
@@ -299,11 +299,11 @@ not ok - Recommended.Proto3.ProtobufInput.ValidDataRepeated.INT64.PackedInput.Pa
 # test_category: BINARY_TEST
 # 
 # parse_error: "Error: Assertion failed
-#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
-#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
-#     at jspb.BinaryReader.readInt64String (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4546:18)
+#     at Object.jspb.asserts.doAssertFailure (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:597)
+#     at Object.jspb.asserts.assert (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:729)
+#     at jspb.BinaryReader.readInt64String (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:397:168)
 #     at jspb.BinaryDecoder.<anonymous> (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:395:108)
-#     at jspb.BinaryReader.readPackedField_ (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4676:16)
+#     at jspb.BinaryReader.readPackedField_ (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:411:263)
 #     at Function.deserialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:395:77)
 #     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:32:37"
 # 
@@ -332,11 +332,11 @@ not ok - Recommended.Proto3.ProtobufInput.ValidDataRepeated.INT64.PackedInput.Un
 # test_category: BINARY_TEST
 # 
 # parse_error: "Error: Assertion failed
-#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
-#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
-#     at jspb.BinaryReader.readInt64String (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4546:18)
+#     at Object.jspb.asserts.doAssertFailure (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:597)
+#     at Object.jspb.asserts.assert (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:729)
+#     at jspb.BinaryReader.readInt64String (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:397:168)
 #     at jspb.BinaryDecoder.<anonymous> (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:529:108)
-#     at jspb.BinaryReader.readPackedField_ (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4676:16)
+#     at jspb.BinaryReader.readPackedField_ (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:411:263)
 #     at Function.deserialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:529:77)
 #     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:32:37"
 # 
@@ -365,11 +365,11 @@ not ok - Required.Proto2.ProtobufInput.ValidDataRepeated.UINT64.PackedInput.Prot
 # test_category: BINARY_TEST
 # 
 # parse_error: "Error: Assertion failed
-#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
-#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
-#     at jspb.BinaryReader.readUint64String (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4564:18)
+#     at Object.jspb.asserts.doAssertFailure (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:597)
+#     at Object.jspb.asserts.assert (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:729)
+#     at jspb.BinaryReader.readUint64String (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:399:171)
 #     at jspb.BinaryDecoder.<anonymous> (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:352:109)
-#     at jspb.BinaryReader.readPackedField_ (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4676:16)
+#     at jspb.BinaryReader.readPackedField_ (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:411:263)
 #     at Function.deserialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:352:78)
 #     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:32:37"
 # 
@@ -398,11 +398,11 @@ not ok - Recommended.Proto2.ProtobufInput.ValidDataRepeated.UINT64.PackedInput.D
 # test_category: BINARY_TEST
 # 
 # parse_error: "Error: Assertion failed
-#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
-#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
-#     at jspb.BinaryReader.readUint64String (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4564:18)
+#     at Object.jspb.asserts.doAssertFailure (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:597)
+#     at Object.jspb.asserts.assert (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:729)
+#     at jspb.BinaryReader.readUint64String (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:399:171)
 #     at jspb.BinaryDecoder.<anonymous> (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:352:109)
-#     at jspb.BinaryReader.readPackedField_ (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4676:16)
+#     at jspb.BinaryReader.readPackedField_ (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:411:263)
 #     at Function.deserialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:352:78)
 #     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:32:37"
 # 
@@ -417,11 +417,11 @@ not ok - Recommended.Proto2.ProtobufInput.ValidDataRepeated.UINT64.PackedInput.P
 # test_category: BINARY_TEST
 # 
 # parse_error: "Error: Assertion failed
-#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
-#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
-#     at jspb.BinaryReader.readUint64String (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4564:18)
+#     at Object.jspb.asserts.doAssertFailure (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:597)
+#     at Object.jspb.asserts.assert (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:729)
+#     at jspb.BinaryReader.readUint64String (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:399:171)
 #     at jspb.BinaryDecoder.<anonymous> (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:430:107)
-#     at jspb.BinaryReader.readPackedField_ (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4676:16)
+#     at jspb.BinaryReader.readPackedField_ (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:411:263)
 #     at Function.deserialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:430:76)
 #     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:32:37"
 # 
@@ -450,11 +450,11 @@ not ok - Recommended.Proto2.ProtobufInput.ValidDataRepeated.UINT64.PackedInput.U
 # test_category: BINARY_TEST
 # 
 # parse_error: "Error: Assertion failed
-#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
-#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
-#     at jspb.BinaryReader.readUint64String (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4564:18)
+#     at Object.jspb.asserts.doAssertFailure (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:597)
+#     at Object.jspb.asserts.assert (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:729)
+#     at jspb.BinaryReader.readUint64String (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:399:171)
 #     at jspb.BinaryDecoder.<anonymous> (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:352:109)
-#     at jspb.BinaryReader.readPackedField_ (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4676:16)
+#     at jspb.BinaryReader.readPackedField_ (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:411:263)
 #     at Function.deserialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:352:78)
 #     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:32:37"
 # 
@@ -483,11 +483,11 @@ not ok - Required.Proto3.ProtobufInput.ValidDataRepeated.UINT64.PackedInput.Prot
 # test_category: BINARY_TEST
 # 
 # parse_error: "Error: Assertion failed
-#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
-#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
-#     at jspb.BinaryReader.readUint64String (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4564:18)
+#     at Object.jspb.asserts.doAssertFailure (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:597)
+#     at Object.jspb.asserts.assert (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:729)
+#     at jspb.BinaryReader.readUint64String (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:399:171)
 #     at jspb.BinaryDecoder.<anonymous> (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:403:109)
-#     at jspb.BinaryReader.readPackedField_ (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4676:16)
+#     at jspb.BinaryReader.readPackedField_ (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:411:263)
 #     at Function.deserialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:403:78)
 #     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:32:37"
 # 
@@ -502,11 +502,11 @@ not ok - Recommended.Proto3.ProtobufInput.ValidDataRepeated.UINT64.PackedInput.D
 # test_category: BINARY_TEST
 # 
 # parse_error: "Error: Assertion failed
-#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
-#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
-#     at jspb.BinaryReader.readUint64String (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4564:18)
+#     at Object.jspb.asserts.doAssertFailure (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:597)
+#     at Object.jspb.asserts.assert (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:729)
+#     at jspb.BinaryReader.readUint64String (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:399:171)
 #     at jspb.BinaryDecoder.<anonymous> (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:403:109)
-#     at jspb.BinaryReader.readPackedField_ (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4676:16)
+#     at jspb.BinaryReader.readPackedField_ (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:411:263)
 #     at Function.deserialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:403:78)
 #     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:32:37"
 # 
@@ -521,11 +521,11 @@ not ok - Recommended.Proto3.ProtobufInput.ValidDataRepeated.UINT64.PackedInput.P
 # test_category: BINARY_TEST
 # 
 # parse_error: "Error: Assertion failed
-#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
-#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
-#     at jspb.BinaryReader.readUint64String (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4564:18)
+#     at Object.jspb.asserts.doAssertFailure (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:597)
+#     at Object.jspb.asserts.assert (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:729)
+#     at jspb.BinaryReader.readUint64String (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:399:171)
 #     at jspb.BinaryDecoder.<anonymous> (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:403:109)
-#     at jspb.BinaryReader.readPackedField_ (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4676:16)
+#     at jspb.BinaryReader.readPackedField_ (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:411:263)
 #     at Function.deserialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:403:78)
 #     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:32:37"
 # 
@@ -554,11 +554,11 @@ not ok - Recommended.Proto3.ProtobufInput.ValidDataRepeated.UINT64.PackedInput.U
 # test_category: BINARY_TEST
 # 
 # parse_error: "Error: Assertion failed
-#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
-#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
-#     at jspb.BinaryReader.readUint64String (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4564:18)
+#     at Object.jspb.asserts.doAssertFailure (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:597)
+#     at Object.jspb.asserts.assert (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:729)
+#     at jspb.BinaryReader.readUint64String (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:399:171)
 #     at jspb.BinaryDecoder.<anonymous> (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:537:109)
-#     at jspb.BinaryReader.readPackedField_ (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4676:16)
+#     at jspb.BinaryReader.readPackedField_ (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:411:263)
 #     at Function.deserialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:537:78)
 #     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:32:37"
 # 
@@ -573,9 +573,9 @@ not ok - Required.Proto2.ProtobufInput.ValidDataScalar.UINT32[8].ProtobufOutput
 # test_category: BINARY_TEST
 # 
 # serialize_error: "Error: Assertion failed
-#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
-#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
-#     at jspb.BinaryWriter.writeUint32 (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:5227:32)
+#     at Object.jspb.asserts.doAssertFailure (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:597)
+#     at Object.jspb.asserts.assert (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:729)
+#     at jspb.BinaryWriter.writeUint32 (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:460:78)
 #     at protobuf_test_messages_proto2_TestAllTypesProto2.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:1034:16)
 #     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
 # 
@@ -590,9 +590,9 @@ not ok - Recommended.Proto2.ProtobufInput.ValidDataScalarBinary.UINT32[8].Protob
 # test_category: BINARY_TEST
 # 
 # serialize_error: "Error: Assertion failed
-#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
-#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
-#     at jspb.BinaryWriter.writeUint32 (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:5227:32)
+#     at Object.jspb.asserts.doAssertFailure (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:597)
+#     at Object.jspb.asserts.assert (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:729)
+#     at jspb.BinaryWriter.writeUint32 (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:460:78)
 #     at protobuf_test_messages_proto2_TestAllTypesProto2.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:1034:16)
 #     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
 # 
@@ -607,9 +607,9 @@ not ok - Required.Proto2.ProtobufInput.ValidDataRepeated.UINT32.UnpackedInput.Pr
 # test_category: BINARY_TEST
 # 
 # serialize_error: "Error: Assertion failed
-#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
-#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
-#     at jspb.BinaryWriter.writeUint32 (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:5227:32)
+#     at Object.jspb.asserts.doAssertFailure (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:597)
+#     at Object.jspb.asserts.assert (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:729)
+#     at jspb.BinaryWriter.writeUint32 (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:460:78)
 #     at protobuf_test_messages_proto2_TestAllTypesProto2.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:1105:20)
 #     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
 # 
@@ -624,9 +624,9 @@ not ok - Required.Proto2.ProtobufInput.ValidDataRepeated.UINT32.PackedInput.Prot
 # test_category: BINARY_TEST
 # 
 # serialize_error: "Error: Assertion failed
-#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
-#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
-#     at jspb.BinaryWriter.writeUint32 (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:5227:32)
+#     at Object.jspb.asserts.doAssertFailure (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:597)
+#     at Object.jspb.asserts.assert (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:729)
+#     at jspb.BinaryWriter.writeUint32 (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:460:78)
 #     at protobuf_test_messages_proto2_TestAllTypesProto2.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:1105:20)
 #     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
 # 
@@ -641,9 +641,9 @@ not ok - Recommended.Proto2.ProtobufInput.ValidDataRepeated.UINT32.UnpackedInput
 # test_category: BINARY_TEST
 # 
 # serialize_error: "Error: Assertion failed
-#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
-#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
-#     at jspb.BinaryWriter.writeUint32 (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:5227:32)
+#     at Object.jspb.asserts.doAssertFailure (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:597)
+#     at Object.jspb.asserts.assert (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:729)
+#     at jspb.BinaryWriter.writeUint32 (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:460:78)
 #     at protobuf_test_messages_proto2_TestAllTypesProto2.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:1105:20)
 #     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
 # 
@@ -658,9 +658,9 @@ not ok - Recommended.Proto2.ProtobufInput.ValidDataRepeated.UINT32.PackedInput.D
 # test_category: BINARY_TEST
 # 
 # serialize_error: "Error: Assertion failed
-#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
-#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
-#     at jspb.BinaryWriter.writeUint32 (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:5227:32)
+#     at Object.jspb.asserts.doAssertFailure (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:597)
+#     at Object.jspb.asserts.assert (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:729)
+#     at jspb.BinaryWriter.writeUint32 (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:460:78)
 #     at protobuf_test_messages_proto2_TestAllTypesProto2.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:1105:20)
 #     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
 # 
@@ -675,10 +675,10 @@ not ok - Recommended.Proto2.ProtobufInput.ValidDataRepeated.UINT32.UnpackedInput
 # test_category: BINARY_TEST
 # 
 # serialize_error: "Error: Assertion failed
-#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
-#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
-#     at jspb.BinaryEncoder.writeUnsignedVarint32 (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4791:23)
-#     at jspb.BinaryWriter.writePackedUint32 (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:5575:23)
+#     at Object.jspb.asserts.doAssertFailure (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:597)
+#     at Object.jspb.asserts.assert (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:729)
+#     at jspb.BinaryEncoder.writeUnsignedVarint32 (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:423:119)
+#     at jspb.BinaryWriter.writePackedUint32 (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:495:150)
 #     at protobuf_test_messages_proto2_TestAllTypesProto2.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:1205:16)
 #     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
 # 
@@ -693,10 +693,10 @@ not ok - Recommended.Proto2.ProtobufInput.ValidDataRepeated.UINT32.PackedInput.P
 # test_category: BINARY_TEST
 # 
 # serialize_error: "Error: Assertion failed
-#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
-#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
-#     at jspb.BinaryEncoder.writeUnsignedVarint32 (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4791:23)
-#     at jspb.BinaryWriter.writePackedUint32 (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:5575:23)
+#     at Object.jspb.asserts.doAssertFailure (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:597)
+#     at Object.jspb.asserts.assert (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:729)
+#     at jspb.BinaryEncoder.writeUnsignedVarint32 (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:423:119)
+#     at jspb.BinaryWriter.writePackedUint32 (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:495:150)
 #     at protobuf_test_messages_proto2_TestAllTypesProto2.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:1205:16)
 #     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
 # 
@@ -711,9 +711,9 @@ not ok - Recommended.Proto2.ProtobufInput.ValidDataRepeated.UINT32.UnpackedInput
 # test_category: BINARY_TEST
 # 
 # serialize_error: "Error: Assertion failed
-#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
-#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
-#     at jspb.BinaryWriter.writeUint32 (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:5227:32)
+#     at Object.jspb.asserts.doAssertFailure (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:597)
+#     at Object.jspb.asserts.assert (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:729)
+#     at jspb.BinaryWriter.writeUint32 (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:460:78)
 #     at protobuf_test_messages_proto2_TestAllTypesProto2.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:1105:20)
 #     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
 # 
@@ -728,9 +728,9 @@ not ok - Recommended.Proto2.ProtobufInput.ValidDataRepeated.UINT32.PackedInput.U
 # test_category: BINARY_TEST
 # 
 # serialize_error: "Error: Assertion failed
-#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
-#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
-#     at jspb.BinaryWriter.writeUint32 (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:5227:32)
+#     at Object.jspb.asserts.doAssertFailure (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:597)
+#     at Object.jspb.asserts.assert (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:729)
+#     at jspb.BinaryWriter.writeUint32 (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:460:78)
 #     at protobuf_test_messages_proto2_TestAllTypesProto2.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:1105:20)
 #     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
 # 
@@ -745,9 +745,9 @@ not ok - Required.Proto3.ProtobufInput.ValidDataScalar.UINT32[8].ProtobufOutput
 # test_category: BINARY_TEST
 # 
 # serialize_error: "Error: Assertion failed
-#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
-#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
-#     at jspb.BinaryWriter.writeUint32 (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:5227:32)
+#     at Object.jspb.asserts.doAssertFailure (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:597)
+#     at Object.jspb.asserts.assert (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:729)
+#     at jspb.BinaryWriter.writeUint32 (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:460:78)
 #     at protobuf_test_messages_proto3_TestAllTypesProto3.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:1136:16)
 #     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
 # 
@@ -762,9 +762,9 @@ not ok - Recommended.Proto3.ProtobufInput.ValidDataScalarBinary.UINT32[8].Protob
 # test_category: BINARY_TEST
 # 
 # serialize_error: "Error: Assertion failed
-#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
-#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
-#     at jspb.BinaryWriter.writeUint32 (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:5227:32)
+#     at Object.jspb.asserts.doAssertFailure (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:597)
+#     at Object.jspb.asserts.assert (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:729)
+#     at jspb.BinaryWriter.writeUint32 (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:460:78)
 #     at protobuf_test_messages_proto3_TestAllTypesProto3.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:1136:16)
 #     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
 # 
@@ -779,10 +779,10 @@ not ok - Required.Proto3.ProtobufInput.ValidDataRepeated.UINT32.UnpackedInput.Pr
 # test_category: BINARY_TEST
 # 
 # serialize_error: "Error: Assertion failed
-#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
-#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
-#     at jspb.BinaryEncoder.writeUnsignedVarint32 (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4791:23)
-#     at jspb.BinaryWriter.writePackedUint32 (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:5575:23)
+#     at Object.jspb.asserts.doAssertFailure (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:597)
+#     at Object.jspb.asserts.assert (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:729)
+#     at jspb.BinaryEncoder.writeUnsignedVarint32 (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:423:119)
+#     at jspb.BinaryWriter.writePackedUint32 (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:495:150)
 #     at protobuf_test_messages_proto3_TestAllTypesProto3.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:1205:16)
 #     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
 # 
@@ -797,10 +797,10 @@ not ok - Required.Proto3.ProtobufInput.ValidDataRepeated.UINT32.PackedInput.Prot
 # test_category: BINARY_TEST
 # 
 # serialize_error: "Error: Assertion failed
-#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
-#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
-#     at jspb.BinaryEncoder.writeUnsignedVarint32 (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4791:23)
-#     at jspb.BinaryWriter.writePackedUint32 (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:5575:23)
+#     at Object.jspb.asserts.doAssertFailure (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:597)
+#     at Object.jspb.asserts.assert (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:729)
+#     at jspb.BinaryEncoder.writeUnsignedVarint32 (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:423:119)
+#     at jspb.BinaryWriter.writePackedUint32 (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:495:150)
 #     at protobuf_test_messages_proto3_TestAllTypesProto3.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:1205:16)
 #     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
 # 
@@ -815,10 +815,10 @@ not ok - Recommended.Proto3.ProtobufInput.ValidDataRepeated.UINT32.UnpackedInput
 # test_category: BINARY_TEST
 # 
 # serialize_error: "Error: Assertion failed
-#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
-#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
-#     at jspb.BinaryEncoder.writeUnsignedVarint32 (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4791:23)
-#     at jspb.BinaryWriter.writePackedUint32 (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:5575:23)
+#     at Object.jspb.asserts.doAssertFailure (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:597)
+#     at Object.jspb.asserts.assert (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:729)
+#     at jspb.BinaryEncoder.writeUnsignedVarint32 (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:423:119)
+#     at jspb.BinaryWriter.writePackedUint32 (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:495:150)
 #     at protobuf_test_messages_proto3_TestAllTypesProto3.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:1205:16)
 #     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
 # 
@@ -833,10 +833,10 @@ not ok - Recommended.Proto3.ProtobufInput.ValidDataRepeated.UINT32.PackedInput.D
 # test_category: BINARY_TEST
 # 
 # serialize_error: "Error: Assertion failed
-#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
-#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
-#     at jspb.BinaryEncoder.writeUnsignedVarint32 (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4791:23)
-#     at jspb.BinaryWriter.writePackedUint32 (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:5575:23)
+#     at Object.jspb.asserts.doAssertFailure (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:597)
+#     at Object.jspb.asserts.assert (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:729)
+#     at jspb.BinaryEncoder.writeUnsignedVarint32 (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:423:119)
+#     at jspb.BinaryWriter.writePackedUint32 (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:495:150)
 #     at protobuf_test_messages_proto3_TestAllTypesProto3.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:1205:16)
 #     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
 # 
@@ -851,10 +851,10 @@ not ok - Recommended.Proto3.ProtobufInput.ValidDataRepeated.UINT32.UnpackedInput
 # test_category: BINARY_TEST
 # 
 # serialize_error: "Error: Assertion failed
-#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
-#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
-#     at jspb.BinaryEncoder.writeUnsignedVarint32 (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4791:23)
-#     at jspb.BinaryWriter.writePackedUint32 (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:5575:23)
+#     at Object.jspb.asserts.doAssertFailure (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:597)
+#     at Object.jspb.asserts.assert (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:729)
+#     at jspb.BinaryEncoder.writeUnsignedVarint32 (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:423:119)
+#     at jspb.BinaryWriter.writePackedUint32 (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:495:150)
 #     at protobuf_test_messages_proto3_TestAllTypesProto3.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:1205:16)
 #     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
 # 
@@ -869,10 +869,10 @@ not ok - Recommended.Proto3.ProtobufInput.ValidDataRepeated.UINT32.PackedInput.P
 # test_category: BINARY_TEST
 # 
 # serialize_error: "Error: Assertion failed
-#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
-#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
-#     at jspb.BinaryEncoder.writeUnsignedVarint32 (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4791:23)
-#     at jspb.BinaryWriter.writePackedUint32 (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:5575:23)
+#     at Object.jspb.asserts.doAssertFailure (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:597)
+#     at Object.jspb.asserts.assert (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:729)
+#     at jspb.BinaryEncoder.writeUnsignedVarint32 (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:423:119)
+#     at jspb.BinaryWriter.writePackedUint32 (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:495:150)
 #     at protobuf_test_messages_proto3_TestAllTypesProto3.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:1205:16)
 #     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
 # 
@@ -887,9 +887,9 @@ not ok - Recommended.Proto3.ProtobufInput.ValidDataRepeated.UINT32.UnpackedInput
 # test_category: BINARY_TEST
 # 
 # serialize_error: "Error: Assertion failed
-#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
-#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
-#     at jspb.BinaryWriter.writeUint32 (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:5227:32)
+#     at Object.jspb.asserts.doAssertFailure (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:597)
+#     at Object.jspb.asserts.assert (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:729)
+#     at jspb.BinaryWriter.writeUint32 (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:460:78)
 #     at protobuf_test_messages_proto3_TestAllTypesProto3.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:1327:20)
 #     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
 # 
@@ -904,9 +904,9 @@ not ok - Recommended.Proto3.ProtobufInput.ValidDataRepeated.UINT32.PackedInput.U
 # test_category: BINARY_TEST
 # 
 # serialize_error: "Error: Assertion failed
-#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
-#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
-#     at jspb.BinaryWriter.writeUint32 (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:5227:32)
+#     at Object.jspb.asserts.doAssertFailure (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:597)
+#     at Object.jspb.asserts.assert (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:729)
+#     at jspb.BinaryWriter.writeUint32 (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:460:78)
 #     at protobuf_test_messages_proto3_TestAllTypesProto3.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:1327:20)
 #     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
 # 
@@ -935,11 +935,11 @@ not ok - Required.Proto2.ProtobufInput.ValidDataRepeated.FIXED64.PackedInput.Pro
 # test_category: BINARY_TEST
 # 
 # parse_error: "Error: Assertion failed
-#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
-#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
-#     at jspb.BinaryReader.readFixed64String (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4592:18)
+#     at Object.jspb.asserts.doAssertFailure (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:597)
+#     at Object.jspb.asserts.assert (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:729)
+#     at jspb.BinaryReader.readFixed64String (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:402:339)
 #     at jspb.BinaryDecoder.<anonymous> (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:368:110)
-#     at jspb.BinaryReader.readPackedField_ (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4676:16)
+#     at jspb.BinaryReader.readPackedField_ (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:411:263)
 #     at Function.deserialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:368:79)
 #     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:32:37"
 # 
@@ -968,11 +968,11 @@ not ok - Recommended.Proto2.ProtobufInput.ValidDataRepeated.FIXED64.PackedInput.
 # test_category: BINARY_TEST
 # 
 # parse_error: "Error: Assertion failed
-#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
-#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
-#     at jspb.BinaryReader.readFixed64String (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4592:18)
+#     at Object.jspb.asserts.doAssertFailure (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:597)
+#     at Object.jspb.asserts.assert (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:729)
+#     at jspb.BinaryReader.readFixed64String (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:402:339)
 #     at jspb.BinaryDecoder.<anonymous> (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:368:110)
-#     at jspb.BinaryReader.readPackedField_ (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4676:16)
+#     at jspb.BinaryReader.readPackedField_ (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:411:263)
 #     at Function.deserialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:368:79)
 #     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:32:37"
 # 
@@ -987,11 +987,11 @@ not ok - Recommended.Proto2.ProtobufInput.ValidDataRepeated.FIXED64.PackedInput.
 # test_category: BINARY_TEST
 # 
 # parse_error: "Error: Assertion failed
-#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
-#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
-#     at jspb.BinaryReader.readFixed64String (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4592:18)
+#     at Object.jspb.asserts.doAssertFailure (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:597)
+#     at Object.jspb.asserts.assert (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:729)
+#     at jspb.BinaryReader.readFixed64String (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:402:339)
 #     at jspb.BinaryDecoder.<anonymous> (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:446:108)
-#     at jspb.BinaryReader.readPackedField_ (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4676:16)
+#     at jspb.BinaryReader.readPackedField_ (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:411:263)
 #     at Function.deserialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:446:77)
 #     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:32:37"
 # 
@@ -1020,11 +1020,11 @@ not ok - Recommended.Proto2.ProtobufInput.ValidDataRepeated.FIXED64.PackedInput.
 # test_category: BINARY_TEST
 # 
 # parse_error: "Error: Assertion failed
-#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
-#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
-#     at jspb.BinaryReader.readFixed64String (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4592:18)
+#     at Object.jspb.asserts.doAssertFailure (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:597)
+#     at Object.jspb.asserts.assert (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:729)
+#     at jspb.BinaryReader.readFixed64String (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:402:339)
 #     at jspb.BinaryDecoder.<anonymous> (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:368:110)
-#     at jspb.BinaryReader.readPackedField_ (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4676:16)
+#     at jspb.BinaryReader.readPackedField_ (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:411:263)
 #     at Function.deserialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:368:79)
 #     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:32:37"
 # 
@@ -1053,11 +1053,11 @@ not ok - Required.Proto3.ProtobufInput.ValidDataRepeated.FIXED64.PackedInput.Pro
 # test_category: BINARY_TEST
 # 
 # parse_error: "Error: Assertion failed
-#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
-#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
-#     at jspb.BinaryReader.readFixed64String (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4592:18)
+#     at Object.jspb.asserts.doAssertFailure (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:597)
+#     at Object.jspb.asserts.assert (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:729)
+#     at jspb.BinaryReader.readFixed64String (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:402:339)
 #     at jspb.BinaryDecoder.<anonymous> (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:419:110)
-#     at jspb.BinaryReader.readPackedField_ (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4676:16)
+#     at jspb.BinaryReader.readPackedField_ (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:411:263)
 #     at Function.deserialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:419:79)
 #     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:32:37"
 # 
@@ -1072,11 +1072,11 @@ not ok - Recommended.Proto3.ProtobufInput.ValidDataRepeated.FIXED64.PackedInput.
 # test_category: BINARY_TEST
 # 
 # parse_error: "Error: Assertion failed
-#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
-#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
-#     at jspb.BinaryReader.readFixed64String (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4592:18)
+#     at Object.jspb.asserts.doAssertFailure (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:597)
+#     at Object.jspb.asserts.assert (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:729)
+#     at jspb.BinaryReader.readFixed64String (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:402:339)
 #     at jspb.BinaryDecoder.<anonymous> (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:419:110)
-#     at jspb.BinaryReader.readPackedField_ (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4676:16)
+#     at jspb.BinaryReader.readPackedField_ (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:411:263)
 #     at Function.deserialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:419:79)
 #     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:32:37"
 # 
@@ -1091,11 +1091,11 @@ not ok - Recommended.Proto3.ProtobufInput.ValidDataRepeated.FIXED64.PackedInput.
 # test_category: BINARY_TEST
 # 
 # parse_error: "Error: Assertion failed
-#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
-#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
-#     at jspb.BinaryReader.readFixed64String (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4592:18)
+#     at Object.jspb.asserts.doAssertFailure (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:597)
+#     at Object.jspb.asserts.assert (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:729)
+#     at jspb.BinaryReader.readFixed64String (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:402:339)
 #     at jspb.BinaryDecoder.<anonymous> (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:419:110)
-#     at jspb.BinaryReader.readPackedField_ (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4676:16)
+#     at jspb.BinaryReader.readPackedField_ (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:411:263)
 #     at Function.deserialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:419:79)
 #     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:32:37"
 # 
@@ -1124,11 +1124,11 @@ not ok - Recommended.Proto3.ProtobufInput.ValidDataRepeated.FIXED64.PackedInput.
 # test_category: BINARY_TEST
 # 
 # parse_error: "Error: Assertion failed
-#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
-#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
-#     at jspb.BinaryReader.readFixed64String (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4592:18)
+#     at Object.jspb.asserts.doAssertFailure (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:597)
+#     at Object.jspb.asserts.assert (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:729)
+#     at jspb.BinaryReader.readFixed64String (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:402:339)
 #     at jspb.BinaryDecoder.<anonymous> (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:553:110)
-#     at jspb.BinaryReader.readPackedField_ (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4676:16)
+#     at jspb.BinaryReader.readPackedField_ (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:411:263)
 #     at Function.deserialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:553:79)
 #     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:32:37"
 # 
@@ -1157,11 +1157,11 @@ not ok - Required.Proto2.ProtobufInput.ValidDataRepeated.SFIXED64.PackedInput.Pr
 # test_category: BINARY_TEST
 # 
 # parse_error: "Error: Assertion failed
-#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
-#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
-#     at jspb.BinaryReader.readSfixed64String (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4610:18)
+#     at Object.jspb.asserts.doAssertFailure (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:597)
+#     at Object.jspb.asserts.assert (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:729)
+#     at jspb.BinaryReader.readSfixed64String (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:404:342)
 #     at jspb.BinaryDecoder.<anonymous> (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:376:111)
-#     at jspb.BinaryReader.readPackedField_ (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4676:16)
+#     at jspb.BinaryReader.readPackedField_ (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:411:263)
 #     at Function.deserialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:376:80)
 #     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:32:37"
 # 
@@ -1190,11 +1190,11 @@ not ok - Recommended.Proto2.ProtobufInput.ValidDataRepeated.SFIXED64.PackedInput
 # test_category: BINARY_TEST
 # 
 # parse_error: "Error: Assertion failed
-#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
-#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
-#     at jspb.BinaryReader.readSfixed64String (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4610:18)
+#     at Object.jspb.asserts.doAssertFailure (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:597)
+#     at Object.jspb.asserts.assert (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:729)
+#     at jspb.BinaryReader.readSfixed64String (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:404:342)
 #     at jspb.BinaryDecoder.<anonymous> (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:376:111)
-#     at jspb.BinaryReader.readPackedField_ (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4676:16)
+#     at jspb.BinaryReader.readPackedField_ (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:411:263)
 #     at Function.deserialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:376:80)
 #     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:32:37"
 # 
@@ -1209,10 +1209,10 @@ not ok - Recommended.Proto2.ProtobufInput.ValidDataRepeated.SFIXED64.UnpackedInp
 # test_category: BINARY_TEST
 # 
 # serialize_error: "Error: Assertion failed
-#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
-#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
-#     at jspb.BinaryEncoder.writeInt64String (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4892:18)
-#     at jspb.BinaryWriter.writePackedSfixed64String (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:5675:23)
+#     at Object.jspb.asserts.doAssertFailure (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:597)
+#     at Object.jspb.asserts.assert (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:729)
+#     at jspb.BinaryEncoder.writeInt64String (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:434:110)
+#     at jspb.BinaryWriter.writePackedSfixed64String (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:505:241)
 #     at protobuf_test_messages_proto2_TestAllTypesProto2.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:1226:16)
 #     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
 # 
@@ -1227,11 +1227,11 @@ not ok - Recommended.Proto2.ProtobufInput.ValidDataRepeated.SFIXED64.PackedInput
 # test_category: BINARY_TEST
 # 
 # parse_error: "Error: Assertion failed
-#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
-#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
-#     at jspb.BinaryReader.readSfixed64String (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4610:18)
+#     at Object.jspb.asserts.doAssertFailure (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:597)
+#     at Object.jspb.asserts.assert (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:729)
+#     at jspb.BinaryReader.readSfixed64String (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:404:342)
 #     at jspb.BinaryDecoder.<anonymous> (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:454:109)
-#     at jspb.BinaryReader.readPackedField_ (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4676:16)
+#     at jspb.BinaryReader.readPackedField_ (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:411:263)
 #     at Function.deserialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:454:78)
 #     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:32:37"
 # 
@@ -1260,11 +1260,11 @@ not ok - Recommended.Proto2.ProtobufInput.ValidDataRepeated.SFIXED64.PackedInput
 # test_category: BINARY_TEST
 # 
 # parse_error: "Error: Assertion failed
-#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
-#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
-#     at jspb.BinaryReader.readSfixed64String (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4610:18)
+#     at Object.jspb.asserts.doAssertFailure (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:597)
+#     at Object.jspb.asserts.assert (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:729)
+#     at jspb.BinaryReader.readSfixed64String (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:404:342)
 #     at jspb.BinaryDecoder.<anonymous> (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:376:111)
-#     at jspb.BinaryReader.readPackedField_ (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4676:16)
+#     at jspb.BinaryReader.readPackedField_ (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:411:263)
 #     at Function.deserialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:376:80)
 #     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:32:37"
 # 
@@ -1293,10 +1293,10 @@ not ok - Required.Proto3.ProtobufInput.ValidDataRepeated.SFIXED64.UnpackedInput.
 # test_category: BINARY_TEST
 # 
 # serialize_error: "Error: Assertion failed
-#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
-#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
-#     at jspb.BinaryEncoder.writeInt64String (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4892:18)
-#     at jspb.BinaryWriter.writePackedSfixed64String (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:5675:23)
+#     at Object.jspb.asserts.doAssertFailure (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:597)
+#     at Object.jspb.asserts.assert (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:729)
+#     at jspb.BinaryEncoder.writeInt64String (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:434:110)
+#     at jspb.BinaryWriter.writePackedSfixed64String (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:505:241)
 #     at protobuf_test_messages_proto3_TestAllTypesProto3.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:1226:16)
 #     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
 # 
@@ -1311,11 +1311,11 @@ not ok - Required.Proto3.ProtobufInput.ValidDataRepeated.SFIXED64.PackedInput.Pr
 # test_category: BINARY_TEST
 # 
 # parse_error: "Error: Assertion failed
-#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
-#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
-#     at jspb.BinaryReader.readSfixed64String (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4610:18)
+#     at Object.jspb.asserts.doAssertFailure (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:597)
+#     at Object.jspb.asserts.assert (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:729)
+#     at jspb.BinaryReader.readSfixed64String (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:404:342)
 #     at jspb.BinaryDecoder.<anonymous> (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:427:111)
-#     at jspb.BinaryReader.readPackedField_ (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4676:16)
+#     at jspb.BinaryReader.readPackedField_ (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:411:263)
 #     at Function.deserialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:427:80)
 #     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:32:37"
 # 
@@ -1330,10 +1330,10 @@ not ok - Recommended.Proto3.ProtobufInput.ValidDataRepeated.SFIXED64.UnpackedInp
 # test_category: BINARY_TEST
 # 
 # serialize_error: "Error: Assertion failed
-#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
-#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
-#     at jspb.BinaryEncoder.writeInt64String (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4892:18)
-#     at jspb.BinaryWriter.writePackedSfixed64String (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:5675:23)
+#     at Object.jspb.asserts.doAssertFailure (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:597)
+#     at Object.jspb.asserts.assert (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:729)
+#     at jspb.BinaryEncoder.writeInt64String (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:434:110)
+#     at jspb.BinaryWriter.writePackedSfixed64String (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:505:241)
 #     at protobuf_test_messages_proto3_TestAllTypesProto3.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:1226:16)
 #     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
 # 
@@ -1348,11 +1348,11 @@ not ok - Recommended.Proto3.ProtobufInput.ValidDataRepeated.SFIXED64.PackedInput
 # test_category: BINARY_TEST
 # 
 # parse_error: "Error: Assertion failed
-#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
-#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
-#     at jspb.BinaryReader.readSfixed64String (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4610:18)
+#     at Object.jspb.asserts.doAssertFailure (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:597)
+#     at Object.jspb.asserts.assert (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:729)
+#     at jspb.BinaryReader.readSfixed64String (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:404:342)
 #     at jspb.BinaryDecoder.<anonymous> (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:427:111)
-#     at jspb.BinaryReader.readPackedField_ (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4676:16)
+#     at jspb.BinaryReader.readPackedField_ (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:411:263)
 #     at Function.deserialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:427:80)
 #     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:32:37"
 # 
@@ -1367,10 +1367,10 @@ not ok - Recommended.Proto3.ProtobufInput.ValidDataRepeated.SFIXED64.UnpackedInp
 # test_category: BINARY_TEST
 # 
 # serialize_error: "Error: Assertion failed
-#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
-#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
-#     at jspb.BinaryEncoder.writeInt64String (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4892:18)
-#     at jspb.BinaryWriter.writePackedSfixed64String (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:5675:23)
+#     at Object.jspb.asserts.doAssertFailure (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:597)
+#     at Object.jspb.asserts.assert (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:729)
+#     at jspb.BinaryEncoder.writeInt64String (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:434:110)
+#     at jspb.BinaryWriter.writePackedSfixed64String (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:505:241)
 #     at protobuf_test_messages_proto3_TestAllTypesProto3.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:1226:16)
 #     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
 # 
@@ -1385,11 +1385,11 @@ not ok - Recommended.Proto3.ProtobufInput.ValidDataRepeated.SFIXED64.PackedInput
 # test_category: BINARY_TEST
 # 
 # parse_error: "Error: Assertion failed
-#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
-#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
-#     at jspb.BinaryReader.readSfixed64String (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4610:18)
+#     at Object.jspb.asserts.doAssertFailure (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:597)
+#     at Object.jspb.asserts.assert (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:729)
+#     at jspb.BinaryReader.readSfixed64String (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:404:342)
 #     at jspb.BinaryDecoder.<anonymous> (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:427:111)
-#     at jspb.BinaryReader.readPackedField_ (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4676:16)
+#     at jspb.BinaryReader.readPackedField_ (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:411:263)
 #     at Function.deserialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:427:80)
 #     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:32:37"
 # 
@@ -1418,11 +1418,11 @@ not ok - Recommended.Proto3.ProtobufInput.ValidDataRepeated.SFIXED64.PackedInput
 # test_category: BINARY_TEST
 # 
 # parse_error: "Error: Assertion failed
-#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
-#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
-#     at jspb.BinaryReader.readSfixed64String (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4610:18)
+#     at Object.jspb.asserts.doAssertFailure (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:597)
+#     at Object.jspb.asserts.assert (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:729)
+#     at jspb.BinaryReader.readSfixed64String (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:404:342)
 #     at jspb.BinaryDecoder.<anonymous> (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:561:111)
-#     at jspb.BinaryReader.readPackedField_ (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4676:16)
+#     at jspb.BinaryReader.readPackedField_ (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:411:263)
 #     at Function.deserialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:561:80)
 #     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:32:37"
 # 
@@ -1881,11 +1881,11 @@ not ok - Required.Proto2.ProtobufInput.ValidDataRepeated.SINT64.PackedInput.Prot
 # test_category: BINARY_TEST
 # 
 # parse_error: "Error: Assertion failed
-#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
-#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
-#     at jspb.BinaryReader.readSint64String (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4578:18)
+#     at Object.jspb.asserts.doAssertFailure (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:597)
+#     at Object.jspb.asserts.assert (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:729)
+#     at jspb.BinaryReader.readSint64String (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:401:70)
 #     at jspb.BinaryDecoder.<anonymous> (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:360:109)
-#     at jspb.BinaryReader.readPackedField_ (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4676:16)
+#     at jspb.BinaryReader.readPackedField_ (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:411:263)
 #     at Function.deserialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:360:78)
 #     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:32:37"
 # 
@@ -1914,11 +1914,11 @@ not ok - Recommended.Proto2.ProtobufInput.ValidDataRepeated.SINT64.PackedInput.D
 # test_category: BINARY_TEST
 # 
 # parse_error: "Error: Assertion failed
-#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
-#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
-#     at jspb.BinaryReader.readSint64String (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4578:18)
+#     at Object.jspb.asserts.doAssertFailure (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:597)
+#     at Object.jspb.asserts.assert (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:729)
+#     at jspb.BinaryReader.readSint64String (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:401:70)
 #     at jspb.BinaryDecoder.<anonymous> (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:360:109)
-#     at jspb.BinaryReader.readPackedField_ (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4676:16)
+#     at jspb.BinaryReader.readPackedField_ (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:411:263)
 #     at Function.deserialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:360:78)
 #     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:32:37"
 # 
@@ -1933,11 +1933,11 @@ not ok - Recommended.Proto2.ProtobufInput.ValidDataRepeated.SINT64.PackedInput.P
 # test_category: BINARY_TEST
 # 
 # parse_error: "Error: Assertion failed
-#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
-#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
-#     at jspb.BinaryReader.readSint64String (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4578:18)
+#     at Object.jspb.asserts.doAssertFailure (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:597)
+#     at Object.jspb.asserts.assert (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:729)
+#     at jspb.BinaryReader.readSint64String (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:401:70)
 #     at jspb.BinaryDecoder.<anonymous> (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:438:107)
-#     at jspb.BinaryReader.readPackedField_ (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4676:16)
+#     at jspb.BinaryReader.readPackedField_ (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:411:263)
 #     at Function.deserialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:438:76)
 #     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:32:37"
 # 
@@ -1966,11 +1966,11 @@ not ok - Recommended.Proto2.ProtobufInput.ValidDataRepeated.SINT64.PackedInput.U
 # test_category: BINARY_TEST
 # 
 # parse_error: "Error: Assertion failed
-#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
-#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
-#     at jspb.BinaryReader.readSint64String (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4578:18)
+#     at Object.jspb.asserts.doAssertFailure (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:597)
+#     at Object.jspb.asserts.assert (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:729)
+#     at jspb.BinaryReader.readSint64String (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:401:70)
 #     at jspb.BinaryDecoder.<anonymous> (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:360:109)
-#     at jspb.BinaryReader.readPackedField_ (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4676:16)
+#     at jspb.BinaryReader.readPackedField_ (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:411:263)
 #     at Function.deserialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:360:78)
 #     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:32:37"
 # 
@@ -1999,11 +1999,11 @@ not ok - Required.Proto3.ProtobufInput.ValidDataRepeated.SINT64.PackedInput.Prot
 # test_category: BINARY_TEST
 # 
 # parse_error: "Error: Assertion failed
-#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
-#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
-#     at jspb.BinaryReader.readSint64String (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4578:18)
+#     at Object.jspb.asserts.doAssertFailure (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:597)
+#     at Object.jspb.asserts.assert (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:729)
+#     at jspb.BinaryReader.readSint64String (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:401:70)
 #     at jspb.BinaryDecoder.<anonymous> (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:411:109)
-#     at jspb.BinaryReader.readPackedField_ (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4676:16)
+#     at jspb.BinaryReader.readPackedField_ (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:411:263)
 #     at Function.deserialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:411:78)
 #     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:32:37"
 # 
@@ -2018,11 +2018,11 @@ not ok - Recommended.Proto3.ProtobufInput.ValidDataRepeated.SINT64.PackedInput.D
 # test_category: BINARY_TEST
 # 
 # parse_error: "Error: Assertion failed
-#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
-#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
-#     at jspb.BinaryReader.readSint64String (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4578:18)
+#     at Object.jspb.asserts.doAssertFailure (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:597)
+#     at Object.jspb.asserts.assert (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:729)
+#     at jspb.BinaryReader.readSint64String (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:401:70)
 #     at jspb.BinaryDecoder.<anonymous> (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:411:109)
-#     at jspb.BinaryReader.readPackedField_ (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4676:16)
+#     at jspb.BinaryReader.readPackedField_ (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:411:263)
 #     at Function.deserialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:411:78)
 #     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:32:37"
 # 
@@ -2037,11 +2037,11 @@ not ok - Recommended.Proto3.ProtobufInput.ValidDataRepeated.SINT64.PackedInput.P
 # test_category: BINARY_TEST
 # 
 # parse_error: "Error: Assertion failed
-#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
-#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
-#     at jspb.BinaryReader.readSint64String (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4578:18)
+#     at Object.jspb.asserts.doAssertFailure (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:597)
+#     at Object.jspb.asserts.assert (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:729)
+#     at jspb.BinaryReader.readSint64String (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:401:70)
 #     at jspb.BinaryDecoder.<anonymous> (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:411:109)
-#     at jspb.BinaryReader.readPackedField_ (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4676:16)
+#     at jspb.BinaryReader.readPackedField_ (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:411:263)
 #     at Function.deserialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:411:78)
 #     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:32:37"
 # 
@@ -2070,11 +2070,11 @@ not ok - Recommended.Proto3.ProtobufInput.ValidDataRepeated.SINT64.PackedInput.U
 # test_category: BINARY_TEST
 # 
 # parse_error: "Error: Assertion failed
-#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
-#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
-#     at jspb.BinaryReader.readSint64String (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4578:18)
+#     at Object.jspb.asserts.doAssertFailure (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:597)
+#     at Object.jspb.asserts.assert (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:729)
+#     at jspb.BinaryReader.readSint64String (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:401:70)
 #     at jspb.BinaryDecoder.<anonymous> (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:545:109)
-#     at jspb.BinaryReader.readPackedField_ (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4676:16)
+#     at jspb.BinaryReader.readPackedField_ (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:411:263)
 #     at Function.deserialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:545:78)
 #     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:32:37"
 # 
@@ -2103,9 +2103,9 @@ not ok - Required.Proto2.ProtobufInput.ValidDataScalar.ENUM[4].ProtobufOutput
 # test_category: BINARY_TEST
 # 
 # serialize_error: "Error: Assertion failed
-#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
-#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
-#     at jspb.BinaryWriter.writeEnum (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:5289:32)
+#     at Object.jspb.asserts.doAssertFailure (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:597)
+#     at Object.jspb.asserts.assert (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:729)
+#     at jspb.BinaryWriter.writeEnum (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:470:175)
 #     at protobuf_test_messages_proto2_TestAllTypesProto2.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:1079:16)
 #     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
 # 
@@ -2120,9 +2120,9 @@ not ok - Recommended.Proto2.ProtobufInput.ValidDataScalarBinary.ENUM[4].Protobuf
 # test_category: BINARY_TEST
 # 
 # serialize_error: "Error: Assertion failed
-#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
-#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
-#     at jspb.BinaryWriter.writeEnum (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:5289:32)
+#     at Object.jspb.asserts.doAssertFailure (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:597)
+#     at Object.jspb.asserts.assert (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:729)
+#     at jspb.BinaryWriter.writeEnum (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:470:175)
 #     at protobuf_test_messages_proto2_TestAllTypesProto2.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:1079:16)
 #     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
 # 
@@ -2137,9 +2137,9 @@ not ok - Required.Proto2.ProtobufInput.ValidDataScalar.ENUM[5].ProtobufOutput
 # test_category: BINARY_TEST
 # 
 # serialize_error: "Error: Assertion failed
-#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
-#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
-#     at jspb.BinaryWriter.writeEnum (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:5289:32)
+#     at Object.jspb.asserts.doAssertFailure (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:597)
+#     at Object.jspb.asserts.assert (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:729)
+#     at jspb.BinaryWriter.writeEnum (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:470:175)
 #     at protobuf_test_messages_proto2_TestAllTypesProto2.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:1079:16)
 #     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
 # 
@@ -2154,9 +2154,9 @@ not ok - Recommended.Proto2.ProtobufInput.ValidDataScalarBinary.ENUM[5].Protobuf
 # test_category: BINARY_TEST
 # 
 # serialize_error: "Error: Assertion failed
-#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
-#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
-#     at jspb.BinaryWriter.writeEnum (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:5289:32)
+#     at Object.jspb.asserts.doAssertFailure (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:597)
+#     at Object.jspb.asserts.assert (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:729)
+#     at jspb.BinaryWriter.writeEnum (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:470:175)
 #     at protobuf_test_messages_proto2_TestAllTypesProto2.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:1079:16)
 #     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
 # 
@@ -2171,9 +2171,9 @@ not ok - Required.Proto2.ProtobufInput.RepeatedScalarSelectsLast.ENUM.ProtobufOu
 # test_category: BINARY_TEST
 # 
 # serialize_error: "Error: Assertion failed
-#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
-#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
-#     at jspb.BinaryWriter.writeEnum (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:5289:32)
+#     at Object.jspb.asserts.doAssertFailure (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:597)
+#     at Object.jspb.asserts.assert (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:729)
+#     at jspb.BinaryWriter.writeEnum (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:470:175)
 #     at protobuf_test_messages_proto2_TestAllTypesProto2.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:1079:16)
 #     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
 # 
@@ -2188,9 +2188,9 @@ not ok - Required.Proto2.ProtobufInput.ValidDataRepeated.ENUM.UnpackedInput.Prot
 # test_category: BINARY_TEST
 # 
 # serialize_error: "Error: Assertion failed
-#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
-#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
-#     at jspb.BinaryWriter.writeEnum (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:5289:32)
+#     at Object.jspb.asserts.doAssertFailure (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:597)
+#     at Object.jspb.asserts.assert (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:729)
+#     at jspb.BinaryWriter.writeEnum (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:470:175)
 #     at protobuf_test_messages_proto2_TestAllTypesProto2.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:1180:20)
 #     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
 # 
@@ -2205,9 +2205,9 @@ not ok - Recommended.Proto2.ProtobufInput.ValidDataRepeated.ENUM.UnpackedInput.D
 # test_category: BINARY_TEST
 # 
 # serialize_error: "Error: Assertion failed
-#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
-#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
-#     at jspb.BinaryWriter.writeEnum (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:5289:32)
+#     at Object.jspb.asserts.doAssertFailure (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:597)
+#     at Object.jspb.asserts.assert (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:729)
+#     at jspb.BinaryWriter.writeEnum (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:470:175)
 #     at protobuf_test_messages_proto2_TestAllTypesProto2.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:1180:20)
 #     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
 # 
@@ -2222,10 +2222,10 @@ not ok - Recommended.Proto2.ProtobufInput.ValidDataRepeated.ENUM.UnpackedInput.P
 # test_category: BINARY_TEST
 # 
 # serialize_error: "Error: Assertion failed
-#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
-#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
-#     at jspb.BinaryEncoder.writeEnum (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4913:18)
-#     at jspb.BinaryWriter.writePackedEnum (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:5699:23)
+#     at Object.jspb.asserts.doAssertFailure (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:597)
+#     at Object.jspb.asserts.assert (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:729)
+#     at jspb.BinaryEncoder.writeEnum (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:437:103)
+#     at jspb.BinaryWriter.writePackedEnum (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:508:148)
 #     at protobuf_test_messages_proto2_TestAllTypesProto2.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:1238:16)
 #     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
 # 
@@ -2240,9 +2240,9 @@ not ok - Recommended.Proto2.ProtobufInput.ValidDataRepeated.ENUM.UnpackedInput.U
 # test_category: BINARY_TEST
 # 
 # serialize_error: "Error: Assertion failed
-#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
-#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
-#     at jspb.BinaryWriter.writeEnum (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:5289:32)
+#     at Object.jspb.asserts.doAssertFailure (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:597)
+#     at Object.jspb.asserts.assert (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:729)
+#     at jspb.BinaryWriter.writeEnum (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:470:175)
 #     at protobuf_test_messages_proto2_TestAllTypesProto2.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:1180:20)
 #     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
 # 
@@ -2271,9 +2271,9 @@ not ok - Required.Proto3.ProtobufInput.ValidDataScalar.ENUM[4].ProtobufOutput
 # test_category: BINARY_TEST
 # 
 # serialize_error: "Error: Assertion failed
-#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
-#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
-#     at jspb.BinaryWriter.writeEnum (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:5289:32)
+#     at Object.jspb.asserts.doAssertFailure (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:597)
+#     at Object.jspb.asserts.assert (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:729)
+#     at jspb.BinaryWriter.writeEnum (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:470:175)
 #     at protobuf_test_messages_proto3_TestAllTypesProto3.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:1181:16)
 #     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
 # 
@@ -2288,9 +2288,9 @@ not ok - Recommended.Proto3.ProtobufInput.ValidDataScalarBinary.ENUM[4].Protobuf
 # test_category: BINARY_TEST
 # 
 # serialize_error: "Error: Assertion failed
-#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
-#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
-#     at jspb.BinaryWriter.writeEnum (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:5289:32)
+#     at Object.jspb.asserts.doAssertFailure (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:597)
+#     at Object.jspb.asserts.assert (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:729)
+#     at jspb.BinaryWriter.writeEnum (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:470:175)
 #     at protobuf_test_messages_proto3_TestAllTypesProto3.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:1181:16)
 #     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
 # 
@@ -2305,9 +2305,9 @@ not ok - Required.Proto3.ProtobufInput.ValidDataScalar.ENUM[5].ProtobufOutput
 # test_category: BINARY_TEST
 # 
 # serialize_error: "Error: Assertion failed
-#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
-#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
-#     at jspb.BinaryWriter.writeEnum (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:5289:32)
+#     at Object.jspb.asserts.doAssertFailure (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:597)
+#     at Object.jspb.asserts.assert (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:729)
+#     at jspb.BinaryWriter.writeEnum (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:470:175)
 #     at protobuf_test_messages_proto3_TestAllTypesProto3.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:1181:16)
 #     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
 # 
@@ -2322,9 +2322,9 @@ not ok - Recommended.Proto3.ProtobufInput.ValidDataScalarBinary.ENUM[5].Protobuf
 # test_category: BINARY_TEST
 # 
 # serialize_error: "Error: Assertion failed
-#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
-#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
-#     at jspb.BinaryWriter.writeEnum (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:5289:32)
+#     at Object.jspb.asserts.doAssertFailure (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:597)
+#     at Object.jspb.asserts.assert (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:729)
+#     at jspb.BinaryWriter.writeEnum (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:470:175)
 #     at protobuf_test_messages_proto3_TestAllTypesProto3.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:1181:16)
 #     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
 # 
@@ -2339,9 +2339,9 @@ not ok - Required.Proto3.ProtobufInput.RepeatedScalarSelectsLast.ENUM.ProtobufOu
 # test_category: BINARY_TEST
 # 
 # serialize_error: "Error: Assertion failed
-#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
-#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
-#     at jspb.BinaryWriter.writeEnum (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:5289:32)
+#     at Object.jspb.asserts.doAssertFailure (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:597)
+#     at Object.jspb.asserts.assert (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:729)
+#     at jspb.BinaryWriter.writeEnum (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:470:175)
 #     at protobuf_test_messages_proto3_TestAllTypesProto3.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:1181:16)
 #     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
 # 
@@ -2356,10 +2356,10 @@ not ok - Required.Proto3.ProtobufInput.ValidDataRepeated.ENUM.UnpackedInput.Prot
 # test_category: BINARY_TEST
 # 
 # serialize_error: "Error: Assertion failed
-#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
-#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
-#     at jspb.BinaryEncoder.writeEnum (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4913:18)
-#     at jspb.BinaryWriter.writePackedEnum (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:5699:23)
+#     at Object.jspb.asserts.doAssertFailure (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:597)
+#     at Object.jspb.asserts.assert (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:729)
+#     at jspb.BinaryEncoder.writeEnum (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:437:103)
+#     at jspb.BinaryWriter.writePackedEnum (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:508:148)
 #     at protobuf_test_messages_proto3_TestAllTypesProto3.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:1258:16)
 #     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
 # 
@@ -2374,10 +2374,10 @@ not ok - Recommended.Proto3.ProtobufInput.ValidDataRepeated.ENUM.UnpackedInput.D
 # test_category: BINARY_TEST
 # 
 # serialize_error: "Error: Assertion failed
-#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
-#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
-#     at jspb.BinaryEncoder.writeEnum (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4913:18)
-#     at jspb.BinaryWriter.writePackedEnum (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:5699:23)
+#     at Object.jspb.asserts.doAssertFailure (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:597)
+#     at Object.jspb.asserts.assert (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:729)
+#     at jspb.BinaryEncoder.writeEnum (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:437:103)
+#     at jspb.BinaryWriter.writePackedEnum (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:508:148)
 #     at protobuf_test_messages_proto3_TestAllTypesProto3.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:1258:16)
 #     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
 # 
@@ -2392,10 +2392,10 @@ not ok - Recommended.Proto3.ProtobufInput.ValidDataRepeated.ENUM.UnpackedInput.P
 # test_category: BINARY_TEST
 # 
 # serialize_error: "Error: Assertion failed
-#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
-#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
-#     at jspb.BinaryEncoder.writeEnum (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:4913:18)
-#     at jspb.BinaryWriter.writePackedEnum (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:5699:23)
+#     at Object.jspb.asserts.doAssertFailure (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:597)
+#     at Object.jspb.asserts.assert (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:729)
+#     at jspb.BinaryEncoder.writeEnum (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:437:103)
+#     at jspb.BinaryWriter.writePackedEnum (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:508:148)
 #     at protobuf_test_messages_proto3_TestAllTypesProto3.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:1258:16)
 #     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
 # 
@@ -2410,9 +2410,9 @@ not ok - Recommended.Proto3.ProtobufInput.ValidDataRepeated.ENUM.UnpackedInput.U
 # test_category: BINARY_TEST
 # 
 # serialize_error: "Error: Assertion failed
-#     at Object.jspb.asserts.doAssertFailure (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:778:11)
-#     at Object.jspb.asserts.assert (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:783:23)
-#     at jspb.BinaryWriter.writeEnum (https://cdn.skypack.dev/-/google-protobuf@v3.21.2-YDUqZL2TTSsy2lGtfuND/dist=es2019,mode=imports/optimized/google-protobuf.js:5289:32)
+#     at Object.jspb.asserts.doAssertFailure (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:597)
+#     at Object.jspb.asserts.assert (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:729)
+#     at jspb.BinaryWriter.writeEnum (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:470:175)
 #     at protobuf_test_messages_proto3_TestAllTypesProto3.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:1382:20)
 #     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
 # 
