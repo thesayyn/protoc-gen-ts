@@ -1,5 +1,6 @@
 use super::GooglePBRuntime;
 use crate::ast::field;
+use crate::descriptor::field_descriptor_proto;
 use crate::{context::Context, descriptor};
 
 use std::vec;
@@ -64,12 +65,18 @@ impl GooglePBRuntime {
                 quote_ident!("BigInt").into(),
                 vec![crate::expr_or_spread!(call)]
             );
-            if (field.is_packed(ctx) || field.is_packable()) && !force_unpacked {
-                call = crate::call_expr!(
-                    crate::member_expr!("br", "readPackedField_"),
-                    vec![crate::expr_or_spread!(crate::arrow_func_short!(call))]
-                )
-            }
+        } else if field.type_() == field_descriptor_proto::Type::TYPE_UINT32 {
+            call = crate::bin_expr!(
+                call, 
+                crate::lit_num!(0).into(),
+                BinaryOp::ZeroFillRShift
+            )
+        }
+        if (field.is_packed(ctx) || field.is_packable()) && !force_unpacked {
+            call = crate::call_expr!(
+                crate::member_expr!("br", "readPackedField_"),
+                vec![crate::expr_or_spread!(crate::arrow_func_short!(call))]
+            )
         }
         call
     }

@@ -42,7 +42,7 @@ impl GooglePBRuntime {
 
     ) -> String {
         let mut placeholder = format!("{}", rw);
-        if (field.is_packed(ctx) || (field.is_packable() && rw == "read")) && !force_unpacked {
+        if field.is_packed(ctx) && !force_unpacked && rw == "write" {
             placeholder = format!("{}Packed", rw);
         } 
         match field.type_() {
