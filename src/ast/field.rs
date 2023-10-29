@@ -7,7 +7,7 @@ use crate::{
 };
 use swc_common::DUMMY_SP;
 use swc_ecma_ast::{
-    ArrayLit, BinaryOp, ClassMember, ClassProp, Expr, Lit, PropName, TsArrayType,
+    ArrayLit, BinaryOp, ClassMember, ClassProp, Expr, PropName, TsArrayType,
     TsEntityName, TsKeywordType, TsType, TsTypeAnn, TsTypeParamInstantiation, TsTypeRef,
     Bool, TsUnionOrIntersectionType, TsUnionType, TsKeywordTypeKind,
 };
@@ -97,11 +97,11 @@ impl FieldDescriptorProto {
             return None;
         }
         if self.is_string() {
-            Some(Expr::Lit(Lit::Str(quote_str!(""))))
+            Some(crate::lit_str!("").into())
         } else if self.is_number() {
-            Some(Expr::Lit(crate::lit_num!(0)))
+            Some(crate::lit_num!(0).into())
         } else if self.is_booelan() {
-            Some(Expr::Lit(Lit::Bool(false.into())))
+            Some(crate::lit_bool!(false).into())
         } else {
             None
         }

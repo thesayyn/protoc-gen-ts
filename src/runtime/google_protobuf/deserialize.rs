@@ -6,10 +6,10 @@ use crate::{context::Context, descriptor};
 use std::vec;
 use swc_common::DUMMY_SP;
 use swc_ecma_ast::{
-    BinaryOp, BlockStmt, BreakStmt, Expr, Lit, Number, PatOrExpr, Stmt, SwitchCase, SwitchStmt,
-    TsNonNullExpr, WhileStmt,
+    BinaryOp, BlockStmt, BreakStmt, Expr, PatOrExpr, Stmt, SwitchCase, SwitchStmt,
+    ThrowStmt, TsNonNullExpr, WhileStmt,
 };
-use swc_ecma_utils::quote_ident;
+use swc_ecma_utils::{quote_ident, quote_str};
 
 impl GooglePBRuntime {
     pub(super) fn deserialize_setup_inner(
@@ -24,9 +24,7 @@ impl GooglePBRuntime {
             let import = ctx.get_import(&ctx.options.runtime_package);
             let br_decl_init = crate::new_expr!(
                 crate::member_expr!(import, "BinaryReader"),
-                Some(vec![crate::expr_or_spread!(Expr::Ident(quote_ident!(
-                    "bytes"
-                )))])
+                vec![crate::expr_or_spread!(quote_ident!("bytes").into())]
             );
             let br_decl = Stmt::Decl(crate::let_decl!("br", None, br_decl_init));
             stmts.push(br_decl)
@@ -66,11 +64,7 @@ impl GooglePBRuntime {
                 vec![crate::expr_or_spread!(call)]
             );
         } else if field.type_() == field_descriptor_proto::Type::TYPE_UINT32 {
-            call = crate::bin_expr!(
-                call, 
-                crate::lit_num!(0).into(),
-                BinaryOp::ZeroFillRShift
-            )
+            call = crate::bin_expr!(call, crate::lit_num!(0).into(), BinaryOp::ZeroFillRShift)
         }
         if (field.is_packed(ctx) || field.is_packable()) && !force_unpacked {
             call = crate::call_expr!(
@@ -176,11 +170,7 @@ impl GooglePBRuntime {
 
             cases.push(SwitchCase {
                 span: DUMMY_SP,
-                test: Some(Box::new(Expr::Lit(Lit::Num(Number {
-                    span: DUMMY_SP,
-                    value: field.number() as f64,
-                    raw: None,
-                })))),
+                test: Some(Box::new(crate::lit_num!(field.number() as f64).into())),
                 cons: vec![
                     read_stmt,
                     Stmt::Break(BreakStmt {
@@ -190,6 +180,26 @@ impl GooglePBRuntime {
                 ],
             })
         }
+        // illegal zero case
+        cases.push(SwitchCase {
+            span: DUMMY_SP,
+            test: Some(Box::new(crate::lit_num!(0.0).into())),
+            cons: vec![
+                Stmt::Throw(ThrowStmt {
+                    span: DUMMY_SP,
+                    arg: Box::new(
+                        crate::new_expr!(quote_ident!("Error").into(),
+                        vec![
+                            crate::expr_or_spread!(crate::lit_str!("illegal zero tag.").into())
+                        ])
+                    ),
+                }),
+                Stmt::Break(BreakStmt {
+                    label: None,
+                    span: DUMMY_SP,
+                }),
+            ],
+        });
         cases.push(SwitchCase {
             span: DUMMY_SP,
             test: None,

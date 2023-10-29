@@ -4,7 +4,7 @@ import {TestAllTypesProto2} from "./test_messages_proto2_pb.ts"
 import {TestAllTypesProto3} from "./test_messages_proto3_pb.ts"
 
 let proto2octal = String.raw``
-let proto3octal = String.raw`\230\003\000\230\003\001\230\003\002\230\003\377\377\377\377\377\377\377\377\377\001\230\003\377\377\377\377\377\377\377\377\177\230\003\201\200\200\200\200\200\200\200\200\001`
+let proto3octal = String.raw`\005`
 
 let octal: string;
 let type: typeof protobuf_test_messages_proto2_TestAllTypesProto2 | typeof protobuf_test_messages_proto3_TestAllTypesProto3;

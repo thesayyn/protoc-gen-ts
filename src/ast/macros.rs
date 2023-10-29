@@ -168,10 +168,13 @@ macro_rules! array_var_decl {
 #[macro_export]
 macro_rules! new_expr {
     ($callee:expr) => {
-        $crate::new_expr!($callee, None)
+        $crate::new_expr!($callee, None, never)
     };
     ($callee:expr, $args:expr) => {
-        swc_ecma_ast::Expr::New( swc_ecma_ast::NewExpr {
+        $crate::new_expr!($callee, Some($args), never)
+    };
+    ($callee:expr, $args:expr, never) => {
+        swc_ecma_ast::Expr::New(swc_ecma_ast::NewExpr {
             span: DUMMY_SP,
             callee: Box::new($callee),
             args: $args,
@@ -290,6 +293,20 @@ macro_rules! lit_num {
             value: $lit as f64,
             raw: None
         })
+    };
+}
+
+#[macro_export]
+macro_rules! lit_str {
+    ($lit:expr) => {
+        swc_ecma_ast::Lit::Str(swc_ecma_utils::quote_str!($lit))
+    };
+}
+
+#[macro_export]
+macro_rules! lit_bool {
+    ($lit:expr) => {
+        swc_ecma_ast::Lit::Bool($lit.into())
     };
 }
 

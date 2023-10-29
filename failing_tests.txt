@@ -1,7 +1,3 @@
-Required.Proto2.ProtobufInput.IllegalZeroFieldNum_Case_0
-Required.Proto2.ProtobufInput.IllegalZeroFieldNum_Case_1
-Required.Proto2.ProtobufInput.IllegalZeroFieldNum_Case_2
-Required.Proto2.ProtobufInput.IllegalZeroFieldNum_Case_3
 Required.Proto2.ProtobufInput.RepeatedScalarMessageMerge.ProtobufOutput
 Required.Proto2.ProtobufInput.RepeatedScalarSelectsLast.BOOL.ProtobufOutput
 Required.Proto2.ProtobufInput.UnknownVarint.ProtobufOutput
@@ -28,10 +24,6 @@ Required.Proto2.ProtobufInput.ValidDataRepeated.UINT64.PackedInput.ProtobufOutpu
 Required.Proto2.ProtobufInput.ValidDataRepeated.UINT64.UnpackedInput.ProtobufOutput
 Required.Proto2.ProtobufInput.ValidDataScalar.BOOL[4].ProtobufOutput
 Required.Proto2.ProtobufInput.ValidDataScalar.BOOL[6].ProtobufOutput
-Required.Proto3.ProtobufInput.IllegalZeroFieldNum_Case_0
-Required.Proto3.ProtobufInput.IllegalZeroFieldNum_Case_1
-Required.Proto3.ProtobufInput.IllegalZeroFieldNum_Case_2
-Required.Proto3.ProtobufInput.IllegalZeroFieldNum_Case_3
 Required.Proto3.ProtobufInput.RepeatedScalarMessageMerge.ProtobufOutput
 Required.Proto3.ProtobufInput.RepeatedScalarSelectsLast.BOOL.ProtobufOutput
 Required.Proto3.ProtobufInput.UnknownVarint.ProtobufOutput
