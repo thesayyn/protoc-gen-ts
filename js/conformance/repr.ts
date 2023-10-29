@@ -3,8 +3,8 @@ import { protobuf_test_messages_proto3_TestAllTypesProto3 } from "../../tests/co
 import {TestAllTypesProto2} from "./test_messages_proto2_pb.ts"
 import {TestAllTypesProto3} from "./test_messages_proto3_pb.ts"
 
-let proto2octal = String.raw``
-let proto3octal = String.raw`\250\001\201\200\200\200\200\200\200\200\200\001`
+let proto2octal = String.raw`\250\001\201\200\200\200\200\200\200\200\200\001`
+let proto3octal = String.raw``
 
 let octal: string;
 let type: typeof protobuf_test_messages_proto2_TestAllTypesProto2 | typeof protobuf_test_messages_proto3_TestAllTypesProto3;

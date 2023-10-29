@@ -50,7 +50,7 @@ impl GooglePBRuntime {
             Type::TYPE_BOOL => "_placeholder_Bool",
             Type::TYPE_FLOAT => "_placeholder_Float",
             Type::TYPE_DOUBLE => "_placeholder_Double",
-            Type::TYPE_ENUM => "_placeholder_Enum",
+            Type::TYPE_ENUM => "_placeholder_Int32",
             Type::TYPE_BYTES => "_placeholder_Bytes",
 
             Type::TYPE_INT32 => "_placeholder_Int32",
