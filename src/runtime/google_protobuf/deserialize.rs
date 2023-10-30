@@ -56,8 +56,14 @@ impl GooglePBRuntime {
     ) -> Expr {
         let mut call = crate::call_expr!(crate::member_expr!(
             "br",
-            self.rw_function_name("read", field.is_bigint() || force_unpacked, ctx, field)
+            self.rw_function_name("read", ctx, field)
         ));
+        if (field.is_packed(ctx) || field.is_packable()) && !force_unpacked {
+            call = crate::call_expr!(crate::member_expr!(
+                "br.decoder_",
+                self.decoder_fn_name(field)
+            ));
+        }
         if field.is_bigint() {
             call = crate::call_expr!(
                 quote_ident!("BigInt").into(),

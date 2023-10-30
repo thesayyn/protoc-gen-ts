@@ -1,5 +1,3 @@
-
-
 use crate::{
     context::{Context, Syntax},
     descriptor::FieldDescriptorProto,
@@ -7,9 +5,9 @@ use crate::{
 };
 use swc_common::DUMMY_SP;
 use swc_ecma_ast::{
-    ArrayLit, BinaryOp, ClassMember, ClassProp, Expr, PropName, TsArrayType,
-    TsEntityName, TsKeywordType, TsType, TsTypeAnn, TsTypeParamInstantiation, TsTypeRef,
-    Bool, TsUnionOrIntersectionType, TsUnionType, TsKeywordTypeKind,
+    ArrayLit, BinaryOp, Bool, ClassMember, ClassProp, Expr, PropName, TsArrayType, TsEntityName,
+    TsKeywordType, TsKeywordTypeKind, TsType, TsTypeAnn, TsTypeParamInstantiation, TsTypeRef,
+    TsUnionOrIntersectionType, TsUnionType,
 };
 use swc_ecma_utils::{quote_ident, quote_str};
 
@@ -55,6 +53,11 @@ impl FieldDescriptorProto {
             BinaryOp::NotEqEq
         );
 
+
+        // if self.has_oneof_index() {
+        //     return neq_undefined_check
+        // }
+
         let presence_check = if self.is_map(ctx) {
             crate::bin_expr!(
                 neq_undefined_check,
@@ -64,7 +67,9 @@ impl FieldDescriptorProto {
                     BinaryOp::NotEqEq
                 )
             )
-        } else if /*self.is_bytes() TODO*/ false || self.is_repeated() {
+        } else if
+        /*self.is_bytes() TODO*/
+        false || self.is_repeated() {
             crate::bin_expr!(
                 neq_undefined_check,
                 crate::bin_expr!(
@@ -98,6 +103,11 @@ impl FieldDescriptorProto {
         }
         if self.is_string() {
             Some(crate::lit_str!("").into())
+        } else if self.is_bigint() {
+            Some(crate::call_expr!(
+                quote_ident!("BigInt").into(),
+                vec![crate::expr_or_spread!(crate::lit_num!(0).into())]
+            ))
         } else if self.is_number() {
             Some(crate::lit_num!(0).into())
         } else if self.is_booelan() {

@@ -15,6 +15,8 @@ impl FieldDescriptorProto {
         let mut kind: Option<TsKeywordTypeKind> = None;
         if self.is_string() {
             kind = Some(TsKeywordTypeKind::TsStringKeyword);
+        } else if self.is_bigint() {
+            kind = Some(TsKeywordTypeKind::TsBigIntKeyword);
         } else if self.is_number() {
             kind = Some(TsKeywordTypeKind::TsNumberKeyword);
         } else if self.is_booelan() {

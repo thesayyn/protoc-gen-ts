@@ -36,13 +36,12 @@ impl GooglePBRuntime {
     fn rw_function_name(
         &self,
         rw: &str,
-        force_unpacked: bool,
         ctx: &mut Context,
         field: &FieldDescriptorProto,
 
     ) -> String {
         let mut placeholder = format!("{}", rw);
-        if field.is_packed(ctx) && !force_unpacked && rw == "write" {
+        if field.is_packed(ctx) && rw == "write" {
             placeholder = format!("{}Packed", rw);
         } 
         match field.type_() {
@@ -70,6 +69,33 @@ impl GooglePBRuntime {
             // _ => unimplemented!("rw_function_name {:?}", field.type_()),
         }
         .replace("_placeholder_", placeholder.as_str())
+    }
+
+    fn decoder_fn_name(
+        &self,
+        field: &FieldDescriptorProto,
+    ) -> String {
+
+        match field.type_() {
+            Type::TYPE_BOOL => "_placeholder_Bool",
+            Type::TYPE_FLOAT => "readFloat",
+            Type::TYPE_DOUBLE => "readDouble",
+            Type::TYPE_ENUM => "readInt32",
+
+            Type::TYPE_INT32 => "readSignedVarint32",
+            Type::TYPE_INT64 => "readSignedVarint64String",
+            Type::TYPE_UINT32 => "readUnsignedVarint32",
+            Type::TYPE_UINT64 => "readUnsignedVarint64String",
+            Type::TYPE_SINT32 => "readZigzagVarint32",
+            Type::TYPE_SINT64 => "readZigzagVarint64String",
+
+            Type::TYPE_FIXED32 => "readUint32",
+            Type::TYPE_FIXED64 => "readUint64String",
+            Type::TYPE_SFIXED32 => "readInt32",
+            Type::TYPE_SFIXED64 => "readInt64String",
+
+            typ => unimplemented!("decoder_fn_name {:?}", typ),
+        }.to_string()
     }
 }
 
