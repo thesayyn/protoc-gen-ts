@@ -11,6 +11,23 @@ use swc_ecma_ast::{
 };
 use swc_ecma_utils::{quote_ident, quote_str};
 
+pub type AccessNormalizerFn = fn(expr: &Expr) -> Expr;
+
+pub(crate) fn map_to_string_normalizer(expr: &Expr) -> Expr {
+    crate::call_expr!(crate::member_expr_bare!(expr.clone(), "map"), vec![
+        crate::expr_or_spread!(
+            crate::arrow_func_short!(
+                crate::call_expr!(crate::member_expr!("v", "toString")),
+                vec![crate::pat_ident!("v")]
+            )
+        )
+    ])
+}
+
+pub(crate) fn to_string_normalizer(expr: &Expr) -> Expr {
+    crate::call_expr!(crate::member_expr_bare!(expr.clone(), "toString"))
+}
+
 pub type FieldAccessorFn = fn(name: &str) -> Expr;
 
 pub(crate) fn this_field_member(name: &str) -> Expr {

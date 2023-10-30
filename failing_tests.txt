@@ -1,3 +1,4 @@
+Required.Proto2.ProtobufInput.PrematureEofInPackedFieldValue.BOOL
 Required.Proto2.ProtobufInput.RepeatedScalarMessageMerge.ProtobufOutput
 Required.Proto2.ProtobufInput.RepeatedScalarSelectsLast.BOOL.ProtobufOutput
 Required.Proto2.ProtobufInput.UnknownVarint.ProtobufOutput
@@ -5,18 +6,9 @@ Required.Proto2.ProtobufInput.ValidDataOneof.MESSAGE.Merge.ProtobufOutput
 Required.Proto2.ProtobufInput.ValidDataRepeated.BOOL.PackedInput.ProtobufOutput
 Required.Proto2.ProtobufInput.ValidDataRepeated.BOOL.UnpackedInput.ProtobufOutput
 Required.Proto2.ProtobufInput.ValidDataRepeated.ENUM.PackedInput.ProtobufOutput
-Required.Proto2.ProtobufInput.ValidDataRepeated.FIXED64.PackedInput.ProtobufOutput
-Required.Proto2.ProtobufInput.ValidDataRepeated.FIXED64.UnpackedInput.ProtobufOutput
-Required.Proto2.ProtobufInput.ValidDataRepeated.INT64.PackedInput.ProtobufOutput
-Required.Proto2.ProtobufInput.ValidDataRepeated.INT64.UnpackedInput.ProtobufOutput
-Required.Proto2.ProtobufInput.ValidDataRepeated.SFIXED64.PackedInput.ProtobufOutput
-Required.Proto2.ProtobufInput.ValidDataRepeated.SFIXED64.UnpackedInput.ProtobufOutput
-Required.Proto2.ProtobufInput.ValidDataRepeated.SINT64.PackedInput.ProtobufOutput
-Required.Proto2.ProtobufInput.ValidDataRepeated.SINT64.UnpackedInput.ProtobufOutput
-Required.Proto2.ProtobufInput.ValidDataRepeated.UINT64.PackedInput.ProtobufOutput
-Required.Proto2.ProtobufInput.ValidDataRepeated.UINT64.UnpackedInput.ProtobufOutput
 Required.Proto2.ProtobufInput.ValidDataScalar.BOOL[4].ProtobufOutput
 Required.Proto2.ProtobufInput.ValidDataScalar.BOOL[6].ProtobufOutput
+Required.Proto3.ProtobufInput.PrematureEofInPackedFieldValue.BOOL
 Required.Proto3.ProtobufInput.RepeatedScalarMessageMerge.ProtobufOutput
 Required.Proto3.ProtobufInput.RepeatedScalarSelectsLast.BOOL.ProtobufOutput
 Required.Proto3.ProtobufInput.UnknownVarint.ProtobufOutput

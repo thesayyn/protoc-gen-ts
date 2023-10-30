@@ -1,394 +1,26 @@
 TAP version 14
 
-not ok - Required.Proto2.ProtobufInput.ValidDataRepeated.INT64.UnpackedInput.ProtobufOutput
-# failed to parse input or produce output.
+not ok - Required.Proto3.ProtobufInput.PrematureEofInPackedFieldValue.BOOL
+# Should have failed to parse, but didn't.
 # 
-# protobuf_payload: "\200\002\000\200\002\271`\200\002\377\377\377\377\377\377\377\377\177\200\002\200\200\200\200\200\200\200\200\200\001"
-# requested_output_format: PROTOBUF
-# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
-# test_category: BINARY_TEST
-# 
-# serialize_error: "TypeError: repeated_int64.map is not a function
-#     at protobuf_test_messages_proto2_TestAllTypesProto2.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:1160:56)
-#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
-# 
-# 
-
-not ok - Required.Proto2.ProtobufInput.ValidDataRepeated.INT64.PackedInput.ProtobufOutput
-# failed to parse input or produce output.
-# 
-# protobuf_payload: "\202\002\026\000\271`\377\377\377\377\377\377\377\377\177\200\200\200\200\200\200\200\200\200\001"
-# requested_output_format: PROTOBUF
-# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
-# test_category: BINARY_TEST
-# 
-# serialize_error: "TypeError: repeated_int64.map is not a function
-#     at protobuf_test_messages_proto2_TestAllTypesProto2.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:1160:56)
-#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
-# 
-# 
-
-not ok - Recommended.Proto2.ProtobufInput.ValidDataRepeated.INT64.UnpackedInput.DefaultOutput.ProtobufOutput
-# failed to parse input or produce output.
-# 
-# protobuf_payload: "\200\002\000\200\002\271`\200\002\377\377\377\377\377\377\377\377\177\200\002\200\200\200\200\200\200\200\200\200\001"
-# requested_output_format: PROTOBUF
-# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
-# test_category: BINARY_TEST
-# 
-# serialize_error: "TypeError: repeated_int64.map is not a function
-#     at protobuf_test_messages_proto2_TestAllTypesProto2.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:1160:56)
-#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
-# 
-# 
-
-not ok - Recommended.Proto2.ProtobufInput.ValidDataRepeated.INT64.PackedInput.DefaultOutput.ProtobufOutput
-# failed to parse input or produce output.
-# 
-# protobuf_payload: "\202\002\026\000\271`\377\377\377\377\377\377\377\377\177\200\200\200\200\200\200\200\200\200\001"
-# requested_output_format: PROTOBUF
-# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
-# test_category: BINARY_TEST
-# 
-# serialize_error: "TypeError: repeated_int64.map is not a function
-#     at protobuf_test_messages_proto2_TestAllTypesProto2.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:1160:56)
-#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
-# 
-# 
-
-not ok - Recommended.Proto2.ProtobufInput.ValidDataRepeated.INT64.UnpackedInput.UnpackedOutput.ProtobufOutput
-# failed to parse input or produce output.
-# 
-# protobuf_payload: "\200\002\000\200\002\271`\200\002\377\377\377\377\377\377\377\377\177\200\002\200\200\200\200\200\200\200\200\200\001"
-# requested_output_format: PROTOBUF
-# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
-# test_category: BINARY_TEST
-# 
-# serialize_error: "TypeError: repeated_int64.map is not a function
-#     at protobuf_test_messages_proto2_TestAllTypesProto2.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:1160:56)
-#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
-# 
-# 
-
-not ok - Recommended.Proto2.ProtobufInput.ValidDataRepeated.INT64.PackedInput.UnpackedOutput.ProtobufOutput
-# failed to parse input or produce output.
-# 
-# protobuf_payload: "\202\002\026\000\271`\377\377\377\377\377\377\377\377\177\200\200\200\200\200\200\200\200\200\001"
-# requested_output_format: PROTOBUF
-# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
-# test_category: BINARY_TEST
-# 
-# serialize_error: "TypeError: repeated_int64.map is not a function
-#     at protobuf_test_messages_proto2_TestAllTypesProto2.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:1160:56)
-#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
-# 
-# 
-
-not ok - Recommended.Proto3.ProtobufInput.ValidDataRepeated.INT64.UnpackedInput.UnpackedOutput.ProtobufOutput
-# failed to parse input or produce output.
-# 
-# protobuf_payload: "\320\005\000\320\005\271`\320\005\377\377\377\377\377\377\377\377\177\320\005\200\200\200\200\200\200\200\200\200\001"
+# protobuf_payload: "\332\002\001\200"
 # requested_output_format: PROTOBUF
 # message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
 # test_category: BINARY_TEST
 # 
-# serialize_error: "TypeError: unpacked_int64.map is not a function
-#     at protobuf_test_messages_proto3_TestAllTypesProto3.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:1382:56)
-#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
+# protobuf_payload: "\332\002\001\001"
 # 
 # 
 
-not ok - Recommended.Proto3.ProtobufInput.ValidDataRepeated.INT64.PackedInput.UnpackedOutput.ProtobufOutput
-# failed to parse input or produce output.
+not ok - Required.Proto2.ProtobufInput.PrematureEofInPackedFieldValue.BOOL
+# Should have failed to parse, but didn't.
 # 
-# protobuf_payload: "\322\005\026\000\271`\377\377\377\377\377\377\377\377\177\200\200\200\200\200\200\200\200\200\001"
-# requested_output_format: PROTOBUF
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: BINARY_TEST
-# 
-# serialize_error: "TypeError: unpacked_int64.map is not a function
-#     at protobuf_test_messages_proto3_TestAllTypesProto3.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:1382:56)
-#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
-# 
-# 
-
-not ok - Required.Proto2.ProtobufInput.ValidDataRepeated.UINT64.UnpackedInput.ProtobufOutput
-# failed to parse input or produce output.
-# 
-# protobuf_payload: "\220\002\000\220\002\271`\220\002\377\377\377\377\377\377\377\377\377\001"
+# protobuf_payload: "\332\002\001\200"
 # requested_output_format: PROTOBUF
 # message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
 # test_category: BINARY_TEST
 # 
-# serialize_error: "TypeError: repeated_uint64.map is not a function
-#     at protobuf_test_messages_proto2_TestAllTypesProto2.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:1170:58)
-#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
-# 
-# 
-
-not ok - Required.Proto2.ProtobufInput.ValidDataRepeated.UINT64.PackedInput.ProtobufOutput
-# failed to parse input or produce output.
-# 
-# protobuf_payload: "\222\002\r\000\271`\377\377\377\377\377\377\377\377\377\001"
-# requested_output_format: PROTOBUF
-# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
-# test_category: BINARY_TEST
-# 
-# serialize_error: "TypeError: repeated_uint64.map is not a function
-#     at protobuf_test_messages_proto2_TestAllTypesProto2.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:1170:58)
-#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
-# 
-# 
-
-not ok - Recommended.Proto2.ProtobufInput.ValidDataRepeated.UINT64.UnpackedInput.DefaultOutput.ProtobufOutput
-# failed to parse input or produce output.
-# 
-# protobuf_payload: "\220\002\000\220\002\271`\220\002\377\377\377\377\377\377\377\377\377\001"
-# requested_output_format: PROTOBUF
-# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
-# test_category: BINARY_TEST
-# 
-# serialize_error: "TypeError: repeated_uint64.map is not a function
-#     at protobuf_test_messages_proto2_TestAllTypesProto2.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:1170:58)
-#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
-# 
-# 
-
-not ok - Recommended.Proto2.ProtobufInput.ValidDataRepeated.UINT64.PackedInput.DefaultOutput.ProtobufOutput
-# failed to parse input or produce output.
-# 
-# protobuf_payload: "\222\002\r\000\271`\377\377\377\377\377\377\377\377\377\001"
-# requested_output_format: PROTOBUF
-# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
-# test_category: BINARY_TEST
-# 
-# serialize_error: "TypeError: repeated_uint64.map is not a function
-#     at protobuf_test_messages_proto2_TestAllTypesProto2.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:1170:58)
-#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
-# 
-# 
-
-not ok - Recommended.Proto2.ProtobufInput.ValidDataRepeated.UINT64.UnpackedInput.UnpackedOutput.ProtobufOutput
-# failed to parse input or produce output.
-# 
-# protobuf_payload: "\220\002\000\220\002\271`\220\002\377\377\377\377\377\377\377\377\377\001"
-# requested_output_format: PROTOBUF
-# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
-# test_category: BINARY_TEST
-# 
-# serialize_error: "TypeError: repeated_uint64.map is not a function
-#     at protobuf_test_messages_proto2_TestAllTypesProto2.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:1170:58)
-#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
-# 
-# 
-
-not ok - Recommended.Proto2.ProtobufInput.ValidDataRepeated.UINT64.PackedInput.UnpackedOutput.ProtobufOutput
-# failed to parse input or produce output.
-# 
-# protobuf_payload: "\222\002\r\000\271`\377\377\377\377\377\377\377\377\377\001"
-# requested_output_format: PROTOBUF
-# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
-# test_category: BINARY_TEST
-# 
-# serialize_error: "TypeError: repeated_uint64.map is not a function
-#     at protobuf_test_messages_proto2_TestAllTypesProto2.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:1170:58)
-#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
-# 
-# 
-
-not ok - Recommended.Proto3.ProtobufInput.ValidDataRepeated.UINT64.UnpackedInput.UnpackedOutput.ProtobufOutput
-# failed to parse input or produce output.
-# 
-# protobuf_payload: "\340\005\000\340\005\271`\340\005\377\377\377\377\377\377\377\377\377\001"
-# requested_output_format: PROTOBUF
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: BINARY_TEST
-# 
-# serialize_error: "TypeError: unpacked_uint64.map is not a function
-#     at protobuf_test_messages_proto3_TestAllTypesProto3.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:1392:58)
-#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
-# 
-# 
-
-not ok - Recommended.Proto3.ProtobufInput.ValidDataRepeated.UINT64.PackedInput.UnpackedOutput.ProtobufOutput
-# failed to parse input or produce output.
-# 
-# protobuf_payload: "\342\005\r\000\271`\377\377\377\377\377\377\377\377\377\001"
-# requested_output_format: PROTOBUF
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: BINARY_TEST
-# 
-# serialize_error: "TypeError: unpacked_uint64.map is not a function
-#     at protobuf_test_messages_proto3_TestAllTypesProto3.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:1392:58)
-#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
-# 
-# 
-
-not ok - Required.Proto2.ProtobufInput.ValidDataRepeated.FIXED64.UnpackedInput.ProtobufOutput
-# failed to parse input or produce output.
-# 
-# protobuf_payload: "\261\002\000\000\000\000\000\000\000\000\261\00290\000\000\000\000\000\000\261\002\377\377\377\377\377\377\377\377"
-# requested_output_format: PROTOBUF
-# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
-# test_category: BINARY_TEST
-# 
-# serialize_error: "TypeError: repeated_fixed64.map is not a function
-#     at protobuf_test_messages_proto2_TestAllTypesProto2.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:1190:60)
-#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
-# 
-# 
-
-not ok - Required.Proto2.ProtobufInput.ValidDataRepeated.FIXED64.PackedInput.ProtobufOutput
-# failed to parse input or produce output.
-# 
-# protobuf_payload: "\262\002\030\000\000\000\000\000\000\000\00090\000\000\000\000\000\000\377\377\377\377\377\377\377\377"
-# requested_output_format: PROTOBUF
-# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
-# test_category: BINARY_TEST
-# 
-# serialize_error: "TypeError: repeated_fixed64.map is not a function
-#     at protobuf_test_messages_proto2_TestAllTypesProto2.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:1190:60)
-#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
-# 
-# 
-
-not ok - Recommended.Proto2.ProtobufInput.ValidDataRepeated.FIXED64.UnpackedInput.DefaultOutput.ProtobufOutput
-# failed to parse input or produce output.
-# 
-# protobuf_payload: "\261\002\000\000\000\000\000\000\000\000\261\00290\000\000\000\000\000\000\261\002\377\377\377\377\377\377\377\377"
-# requested_output_format: PROTOBUF
-# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
-# test_category: BINARY_TEST
-# 
-# serialize_error: "TypeError: repeated_fixed64.map is not a function
-#     at protobuf_test_messages_proto2_TestAllTypesProto2.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:1190:60)
-#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
-# 
-# 
-
-not ok - Recommended.Proto2.ProtobufInput.ValidDataRepeated.FIXED64.PackedInput.DefaultOutput.ProtobufOutput
-# failed to parse input or produce output.
-# 
-# protobuf_payload: "\262\002\030\000\000\000\000\000\000\000\00090\000\000\000\000\000\000\377\377\377\377\377\377\377\377"
-# requested_output_format: PROTOBUF
-# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
-# test_category: BINARY_TEST
-# 
-# serialize_error: "TypeError: repeated_fixed64.map is not a function
-#     at protobuf_test_messages_proto2_TestAllTypesProto2.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:1190:60)
-#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
-# 
-# 
-
-not ok - Recommended.Proto2.ProtobufInput.ValidDataRepeated.FIXED64.UnpackedInput.UnpackedOutput.ProtobufOutput
-# failed to parse input or produce output.
-# 
-# protobuf_payload: "\261\002\000\000\000\000\000\000\000\000\261\00290\000\000\000\000\000\000\261\002\377\377\377\377\377\377\377\377"
-# requested_output_format: PROTOBUF
-# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
-# test_category: BINARY_TEST
-# 
-# serialize_error: "TypeError: repeated_fixed64.map is not a function
-#     at protobuf_test_messages_proto2_TestAllTypesProto2.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:1190:60)
-#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
-# 
-# 
-
-not ok - Recommended.Proto2.ProtobufInput.ValidDataRepeated.FIXED64.PackedInput.UnpackedOutput.ProtobufOutput
-# failed to parse input or produce output.
-# 
-# protobuf_payload: "\262\002\030\000\000\000\000\000\000\000\00090\000\000\000\000\000\000\377\377\377\377\377\377\377\377"
-# requested_output_format: PROTOBUF
-# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
-# test_category: BINARY_TEST
-# 
-# serialize_error: "TypeError: repeated_fixed64.map is not a function
-#     at protobuf_test_messages_proto2_TestAllTypesProto2.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:1190:60)
-#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
-# 
-# 
-
-not ok - Recommended.Proto3.ProtobufInput.ValidDataRepeated.FIXED64.UnpackedInput.UnpackedOutput.ProtobufOutput
-# failed to parse input or produce output.
-# 
-# protobuf_payload: "\201\006\000\000\000\000\000\000\000\000\201\00690\000\000\000\000\000\000\201\006\377\377\377\377\377\377\377\377"
-# requested_output_format: PROTOBUF
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: BINARY_TEST
-# 
-# serialize_error: "TypeError: unpacked_fixed64.map is not a function
-#     at protobuf_test_messages_proto3_TestAllTypesProto3.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:1412:60)
-#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
-# 
-# 
-
-not ok - Recommended.Proto3.ProtobufInput.ValidDataRepeated.FIXED64.PackedInput.UnpackedOutput.ProtobufOutput
-# failed to parse input or produce output.
-# 
-# protobuf_payload: "\202\006\030\000\000\000\000\000\000\000\00090\000\000\000\000\000\000\377\377\377\377\377\377\377\377"
-# requested_output_format: PROTOBUF
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: BINARY_TEST
-# 
-# serialize_error: "TypeError: unpacked_fixed64.map is not a function
-#     at protobuf_test_messages_proto3_TestAllTypesProto3.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:1412:60)
-#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
-# 
-# 
-
-not ok - Required.Proto2.ProtobufInput.ValidDataRepeated.SFIXED64.UnpackedInput.ProtobufOutput
-# failed to parse input or produce output.
-# 
-# protobuf_payload: "\301\002\000\000\000\000\000\000\000\000\301\00290\000\000\000\000\000\000\301\002\377\377\377\377\377\377\377\177\301\002\000\000\000\000\000\000\000\200"
-# requested_output_format: PROTOBUF
-# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
-# test_category: BINARY_TEST
-# 
-# serialize_error: "TypeError: repeated_sfixed64.map is not a function
-#     at protobuf_test_messages_proto2_TestAllTypesProto2.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:1200:62)
-#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
-# 
-# 
-
-not ok - Required.Proto2.ProtobufInput.ValidDataRepeated.SFIXED64.PackedInput.ProtobufOutput
-# failed to parse input or produce output.
-# 
-# protobuf_payload: "\302\002 \000\000\000\000\000\000\000\00090\000\000\000\000\000\000\377\377\377\377\377\377\377\177\000\000\000\000\000\000\000\200"
-# requested_output_format: PROTOBUF
-# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
-# test_category: BINARY_TEST
-# 
-# serialize_error: "TypeError: repeated_sfixed64.map is not a function
-#     at protobuf_test_messages_proto2_TestAllTypesProto2.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:1200:62)
-#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
-# 
-# 
-
-not ok - Recommended.Proto2.ProtobufInput.ValidDataRepeated.SFIXED64.UnpackedInput.DefaultOutput.ProtobufOutput
-# failed to parse input or produce output.
-# 
-# protobuf_payload: "\301\002\000\000\000\000\000\000\000\000\301\00290\000\000\000\000\000\000\301\002\377\377\377\377\377\377\377\177\301\002\000\000\000\000\000\000\000\200"
-# requested_output_format: PROTOBUF
-# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
-# test_category: BINARY_TEST
-# 
-# serialize_error: "TypeError: repeated_sfixed64.map is not a function
-#     at protobuf_test_messages_proto2_TestAllTypesProto2.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:1200:62)
-#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
-# 
-# 
-
-not ok - Recommended.Proto2.ProtobufInput.ValidDataRepeated.SFIXED64.PackedInput.DefaultOutput.ProtobufOutput
-# failed to parse input or produce output.
-# 
-# protobuf_payload: "\302\002 \000\000\000\000\000\000\000\00090\000\000\000\000\000\000\377\377\377\377\377\377\377\177\000\000\000\000\000\000\000\200"
-# requested_output_format: PROTOBUF
-# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
-# test_category: BINARY_TEST
-# 
-# serialize_error: "TypeError: repeated_sfixed64.map is not a function
-#     at protobuf_test_messages_proto2_TestAllTypesProto2.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:1200:62)
-#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
+# protobuf_payload: "\330\002\001"
 # 
 # 
 
@@ -424,34 +56,6 @@ not ok - Recommended.Proto2.ProtobufInput.ValidDataRepeated.SFIXED64.PackedInput
 #     at jspb.BinaryEncoder.writeInt64String (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:434:110)
 #     at jspb.BinaryWriter.writePackedSfixed64String (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:505:241)
 #     at protobuf_test_messages_proto2_TestAllTypesProto2.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:1286:16)
-#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
-# 
-# 
-
-not ok - Recommended.Proto2.ProtobufInput.ValidDataRepeated.SFIXED64.UnpackedInput.UnpackedOutput.ProtobufOutput
-# failed to parse input or produce output.
-# 
-# protobuf_payload: "\301\002\000\000\000\000\000\000\000\000\301\00290\000\000\000\000\000\000\301\002\377\377\377\377\377\377\377\177\301\002\000\000\000\000\000\000\000\200"
-# requested_output_format: PROTOBUF
-# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
-# test_category: BINARY_TEST
-# 
-# serialize_error: "TypeError: repeated_sfixed64.map is not a function
-#     at protobuf_test_messages_proto2_TestAllTypesProto2.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:1200:62)
-#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
-# 
-# 
-
-not ok - Recommended.Proto2.ProtobufInput.ValidDataRepeated.SFIXED64.PackedInput.UnpackedOutput.ProtobufOutput
-# failed to parse input or produce output.
-# 
-# protobuf_payload: "\302\002 \000\000\000\000\000\000\000\00090\000\000\000\000\000\000\377\377\377\377\377\377\377\177\000\000\000\000\000\000\000\200"
-# requested_output_format: PROTOBUF
-# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
-# test_category: BINARY_TEST
-# 
-# serialize_error: "TypeError: repeated_sfixed64.map is not a function
-#     at protobuf_test_messages_proto2_TestAllTypesProto2.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:1200:62)
 #     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
 # 
 # 
@@ -564,34 +168,6 @@ not ok - Recommended.Proto3.ProtobufInput.ValidDataRepeated.SFIXED64.PackedInput
 # 
 # 
 
-not ok - Recommended.Proto3.ProtobufInput.ValidDataRepeated.SFIXED64.UnpackedInput.UnpackedOutput.ProtobufOutput
-# failed to parse input or produce output.
-# 
-# protobuf_payload: "\221\006\000\000\000\000\000\000\000\000\221\00690\000\000\000\000\000\000\221\006\377\377\377\377\377\377\377\177\221\006\000\000\000\000\000\000\000\200"
-# requested_output_format: PROTOBUF
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: BINARY_TEST
-# 
-# serialize_error: "TypeError: unpacked_sfixed64.map is not a function
-#     at protobuf_test_messages_proto3_TestAllTypesProto3.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:1422:62)
-#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
-# 
-# 
-
-not ok - Recommended.Proto3.ProtobufInput.ValidDataRepeated.SFIXED64.PackedInput.UnpackedOutput.ProtobufOutput
-# failed to parse input or produce output.
-# 
-# protobuf_payload: "\222\006 \000\000\000\000\000\000\000\00090\000\000\000\000\000\000\377\377\377\377\377\377\377\177\000\000\000\000\000\000\000\200"
-# requested_output_format: PROTOBUF
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: BINARY_TEST
-# 
-# serialize_error: "TypeError: unpacked_sfixed64.map is not a function
-#     at protobuf_test_messages_proto3_TestAllTypesProto3.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:1422:62)
-#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
-# 
-# 
-
 not ok - Required.Proto2.ProtobufInput.ValidDataScalar.BOOL[4].ProtobufOutput
 # output was not equivalent to reference message: 
 # modified: optional_bool: true -> false
@@ -678,18 +254,48 @@ not ok - Required.Proto2.ProtobufInput.ValidDataRepeated.BOOL.UnpackedInput.Prot
 # 
 
 not ok - Required.Proto2.ProtobufInput.ValidDataRepeated.BOOL.PackedInput.ProtobufOutput
-# failed to parse input or produce output.
+# output was not equivalent to reference message: 
+# added: repeated_bool[7]: true
+# added: repeated_bool[8]: true
+# added: repeated_bool[9]: true
+# added: repeated_bool[10]: true
+# added: repeated_bool[11]: true
+# added: repeated_bool[12]: true
+# added: repeated_bool[13]: true
+# added: repeated_bool[14]: true
+# added: repeated_bool[15]: true
+# added: repeated_bool[16]: true
+# added: repeated_bool[17]: true
+# added: repeated_bool[18]: true
+# added: repeated_bool[19]: true
+# added: repeated_bool[20]: true
+# added: repeated_bool[21]: true
+# added: repeated_bool[22]: true
+# added: repeated_bool[23]: true
+# added: repeated_bool[24]: true
+# added: repeated_bool[25]: true
+# added: repeated_bool[26]: true
+# added: repeated_bool[27]: true
+# added: repeated_bool[28]: true
+# added: repeated_bool[29]: true
+# added: repeated_bool[30]: true
+# added: repeated_bool[31]: true
+# added: repeated_bool[32]: true
+# added: repeated_bool[33]: true
+# added: repeated_bool[34]: true
+# added: repeated_bool[35]: true
+# added: repeated_bool[36]: true
+# added: repeated_bool[37]: true
+# added: repeated_bool[38]: true
+# added: repeated_bool[39]: true
+# 
 # 
 # protobuf_payload: "\332\002(\000\001\377\377\377\377\377\377\377\377\377\001\316\302\361\005\200\200\200\200 \377\377\377\377\377\377\377\377\177\200\200\200\200\200\200\200\200\200\001"
 # requested_output_format: PROTOBUF
 # message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
 # test_category: BINARY_TEST
 # 
-# parse_error: "TypeError: br.decoder_._placeholder_Bool is not a function
-#     at jspb.BinaryDecoder.<anonymous> (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:388:109)
-#     at jspb.BinaryReader.readPackedField_ (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:411:263)
-#     at Function.deserialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:388:76)
-#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:32:37"
+# protobuf_payload: "\330\002\000\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001"
 # 
 # 
 
@@ -708,18 +314,16 @@ not ok - Recommended.Proto2.ProtobufInput.ValidDataRepeated.BOOL.UnpackedInput.D
 # 
 
 not ok - Recommended.Proto2.ProtobufInput.ValidDataRepeated.BOOL.PackedInput.DefaultOutput.ProtobufOutput
-# failed to parse input or produce output.
+# output was not equivalent to reference message: 
+# expected: \330\002\000\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001
+# got: \330\002\000\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001
 # 
 # protobuf_payload: "\332\002(\000\001\377\377\377\377\377\377\377\377\377\001\316\302\361\005\200\200\200\200 \377\377\377\377\377\377\377\377\177\200\200\200\200\200\200\200\200\200\001"
 # requested_output_format: PROTOBUF
 # message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
 # test_category: BINARY_TEST
 # 
-# parse_error: "TypeError: br.decoder_._placeholder_Bool is not a function
-#     at jspb.BinaryDecoder.<anonymous> (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:388:109)
-#     at jspb.BinaryReader.readPackedField_ (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:411:263)
-#     at Function.deserialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:388:76)
-#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:32:37"
+# protobuf_payload: "\330\002\000\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001"
 # 
 # 
 
@@ -738,18 +342,16 @@ not ok - Recommended.Proto2.ProtobufInput.ValidDataRepeated.BOOL.UnpackedInput.P
 # 
 
 not ok - Recommended.Proto2.ProtobufInput.ValidDataRepeated.BOOL.PackedInput.PackedOutput.ProtobufOutput
-# failed to parse input or produce output.
+# output was not equivalent to reference message: 
+# expected: \272\005\007\000\001\001\001\001\001\001
+# got: \272\005\050\000\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001
 # 
 # protobuf_payload: "\272\005(\000\001\377\377\377\377\377\377\377\377\377\001\316\302\361\005\200\200\200\200 \377\377\377\377\377\377\377\377\177\200\200\200\200\200\200\200\200\200\001"
 # requested_output_format: PROTOBUF
 # message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
 # test_category: BINARY_TEST
 # 
-# parse_error: "TypeError: br.decoder_._placeholder_Bool is not a function
-#     at jspb.BinaryDecoder.<anonymous> (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:466:107)
-#     at jspb.BinaryReader.readPackedField_ (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:411:263)
-#     at Function.deserialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:466:74)
-#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:32:37"
+# protobuf_payload: "\272\005(\000\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001"
 # 
 # 
 
@@ -768,18 +370,16 @@ not ok - Recommended.Proto2.ProtobufInput.ValidDataRepeated.BOOL.UnpackedInput.U
 # 
 
 not ok - Recommended.Proto2.ProtobufInput.ValidDataRepeated.BOOL.PackedInput.UnpackedOutput.ProtobufOutput
-# failed to parse input or produce output.
+# output was not equivalent to reference message: 
+# expected: \330\002\000\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001
+# got: \330\002\000\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001
 # 
 # protobuf_payload: "\332\002(\000\001\377\377\377\377\377\377\377\377\377\001\316\302\361\005\200\200\200\200 \377\377\377\377\377\377\377\377\177\200\200\200\200\200\200\200\200\200\001"
 # requested_output_format: PROTOBUF
 # message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
 # test_category: BINARY_TEST
 # 
-# parse_error: "TypeError: br.decoder_._placeholder_Bool is not a function
-#     at jspb.BinaryDecoder.<anonymous> (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:388:109)
-#     at jspb.BinaryReader.readPackedField_ (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:411:263)
-#     at Function.deserialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:388:76)
-#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:32:37"
+# protobuf_payload: "\330\002\000\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001\330\002\001"
 # 
 # 
 
@@ -869,18 +469,48 @@ not ok - Required.Proto3.ProtobufInput.ValidDataRepeated.BOOL.UnpackedInput.Prot
 # 
 
 not ok - Required.Proto3.ProtobufInput.ValidDataRepeated.BOOL.PackedInput.ProtobufOutput
-# failed to parse input or produce output.
+# output was not equivalent to reference message: 
+# added: repeated_bool[7]: true
+# added: repeated_bool[8]: true
+# added: repeated_bool[9]: true
+# added: repeated_bool[10]: true
+# added: repeated_bool[11]: true
+# added: repeated_bool[12]: true
+# added: repeated_bool[13]: true
+# added: repeated_bool[14]: true
+# added: repeated_bool[15]: true
+# added: repeated_bool[16]: true
+# added: repeated_bool[17]: true
+# added: repeated_bool[18]: true
+# added: repeated_bool[19]: true
+# added: repeated_bool[20]: true
+# added: repeated_bool[21]: true
+# added: repeated_bool[22]: true
+# added: repeated_bool[23]: true
+# added: repeated_bool[24]: true
+# added: repeated_bool[25]: true
+# added: repeated_bool[26]: true
+# added: repeated_bool[27]: true
+# added: repeated_bool[28]: true
+# added: repeated_bool[29]: true
+# added: repeated_bool[30]: true
+# added: repeated_bool[31]: true
+# added: repeated_bool[32]: true
+# added: repeated_bool[33]: true
+# added: repeated_bool[34]: true
+# added: repeated_bool[35]: true
+# added: repeated_bool[36]: true
+# added: repeated_bool[37]: true
+# added: repeated_bool[38]: true
+# added: repeated_bool[39]: true
+# 
 # 
 # protobuf_payload: "\332\002(\000\001\377\377\377\377\377\377\377\377\377\001\316\302\361\005\200\200\200\200 \377\377\377\377\377\377\377\377\177\200\200\200\200\200\200\200\200\200\001"
 # requested_output_format: PROTOBUF
 # message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
 # test_category: BINARY_TEST
 # 
-# parse_error: "TypeError: br.decoder_._placeholder_Bool is not a function
-#     at jspb.BinaryDecoder.<anonymous> (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:439:109)
-#     at jspb.BinaryReader.readPackedField_ (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:411:263)
-#     at Function.deserialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:439:76)
-#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:32:37"
+# protobuf_payload: "\332\002(\000\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001"
 # 
 # 
 
@@ -899,18 +529,16 @@ not ok - Recommended.Proto3.ProtobufInput.ValidDataRepeated.BOOL.UnpackedInput.D
 # 
 
 not ok - Recommended.Proto3.ProtobufInput.ValidDataRepeated.BOOL.PackedInput.DefaultOutput.ProtobufOutput
-# failed to parse input or produce output.
+# output was not equivalent to reference message: 
+# expected: \332\002\007\000\001\001\001\001\001\001
+# got: \332\002\050\000\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001
 # 
 # protobuf_payload: "\332\002(\000\001\377\377\377\377\377\377\377\377\377\001\316\302\361\005\200\200\200\200 \377\377\377\377\377\377\377\377\177\200\200\200\200\200\200\200\200\200\001"
 # requested_output_format: PROTOBUF
 # message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
 # test_category: BINARY_TEST
 # 
-# parse_error: "TypeError: br.decoder_._placeholder_Bool is not a function
-#     at jspb.BinaryDecoder.<anonymous> (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:439:109)
-#     at jspb.BinaryReader.readPackedField_ (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:411:263)
-#     at Function.deserialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:439:76)
-#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:32:37"
+# protobuf_payload: "\332\002(\000\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001"
 # 
 # 
 
@@ -929,18 +557,16 @@ not ok - Recommended.Proto3.ProtobufInput.ValidDataRepeated.BOOL.UnpackedInput.P
 # 
 
 not ok - Recommended.Proto3.ProtobufInput.ValidDataRepeated.BOOL.PackedInput.PackedOutput.ProtobufOutput
-# failed to parse input or produce output.
+# output was not equivalent to reference message: 
+# expected: \332\002\007\000\001\001\001\001\001\001
+# got: \332\002\050\000\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001
 # 
 # protobuf_payload: "\332\002(\000\001\377\377\377\377\377\377\377\377\377\001\316\302\361\005\200\200\200\200 \377\377\377\377\377\377\377\377\177\200\200\200\200\200\200\200\200\200\001"
 # requested_output_format: PROTOBUF
 # message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
 # test_category: BINARY_TEST
 # 
-# parse_error: "TypeError: br.decoder_._placeholder_Bool is not a function
-#     at jspb.BinaryDecoder.<anonymous> (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:439:109)
-#     at jspb.BinaryReader.readPackedField_ (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:411:263)
-#     at Function.deserialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:439:76)
-#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:32:37"
+# protobuf_payload: "\332\002(\000\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001\001"
 # 
 # 
 
@@ -959,130 +585,16 @@ not ok - Recommended.Proto3.ProtobufInput.ValidDataRepeated.BOOL.UnpackedInput.U
 # 
 
 not ok - Recommended.Proto3.ProtobufInput.ValidDataRepeated.BOOL.PackedInput.UnpackedOutput.ProtobufOutput
-# failed to parse input or produce output.
+# output was not equivalent to reference message: 
+# expected: \250\006\000\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001
+# got: \250\006\000\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001
 # 
 # protobuf_payload: "\252\006(\000\001\377\377\377\377\377\377\377\377\377\001\316\302\361\005\200\200\200\200 \377\377\377\377\377\377\377\377\177\200\200\200\200\200\200\200\200\200\001"
 # requested_output_format: PROTOBUF
 # message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
 # test_category: BINARY_TEST
 # 
-# parse_error: "TypeError: br.decoder_._placeholder_Bool is not a function
-#     at jspb.BinaryDecoder.<anonymous> (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:573:109)
-#     at jspb.BinaryReader.readPackedField_ (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:411:263)
-#     at Function.deserialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:573:76)
-#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:32:37"
-# 
-# 
-
-not ok - Required.Proto2.ProtobufInput.ValidDataRepeated.SINT64.UnpackedInput.ProtobufOutput
-# failed to parse input or produce output.
-# 
-# protobuf_payload: "\240\002\000\240\002\362\300\001\240\002\376\377\377\377\377\377\377\377\377\001\240\002\377\377\377\377\377\377\377\377\377\001"
-# requested_output_format: PROTOBUF
-# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
-# test_category: BINARY_TEST
-# 
-# serialize_error: "TypeError: repeated_sint64.map is not a function
-#     at protobuf_test_messages_proto2_TestAllTypesProto2.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:1180:58)
-#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
-# 
-# 
-
-not ok - Required.Proto2.ProtobufInput.ValidDataRepeated.SINT64.PackedInput.ProtobufOutput
-# failed to parse input or produce output.
-# 
-# protobuf_payload: "\242\002\030\000\362\300\001\376\377\377\377\377\377\377\377\377\001\377\377\377\377\377\377\377\377\377\001"
-# requested_output_format: PROTOBUF
-# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
-# test_category: BINARY_TEST
-# 
-# serialize_error: "TypeError: repeated_sint64.map is not a function
-#     at protobuf_test_messages_proto2_TestAllTypesProto2.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:1180:58)
-#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
-# 
-# 
-
-not ok - Recommended.Proto2.ProtobufInput.ValidDataRepeated.SINT64.UnpackedInput.DefaultOutput.ProtobufOutput
-# failed to parse input or produce output.
-# 
-# protobuf_payload: "\240\002\000\240\002\362\300\001\240\002\376\377\377\377\377\377\377\377\377\001\240\002\377\377\377\377\377\377\377\377\377\001"
-# requested_output_format: PROTOBUF
-# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
-# test_category: BINARY_TEST
-# 
-# serialize_error: "TypeError: repeated_sint64.map is not a function
-#     at protobuf_test_messages_proto2_TestAllTypesProto2.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:1180:58)
-#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
-# 
-# 
-
-not ok - Recommended.Proto2.ProtobufInput.ValidDataRepeated.SINT64.PackedInput.DefaultOutput.ProtobufOutput
-# failed to parse input or produce output.
-# 
-# protobuf_payload: "\242\002\030\000\362\300\001\376\377\377\377\377\377\377\377\377\001\377\377\377\377\377\377\377\377\377\001"
-# requested_output_format: PROTOBUF
-# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
-# test_category: BINARY_TEST
-# 
-# serialize_error: "TypeError: repeated_sint64.map is not a function
-#     at protobuf_test_messages_proto2_TestAllTypesProto2.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:1180:58)
-#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
-# 
-# 
-
-not ok - Recommended.Proto2.ProtobufInput.ValidDataRepeated.SINT64.UnpackedInput.UnpackedOutput.ProtobufOutput
-# failed to parse input or produce output.
-# 
-# protobuf_payload: "\240\002\000\240\002\362\300\001\240\002\376\377\377\377\377\377\377\377\377\001\240\002\377\377\377\377\377\377\377\377\377\001"
-# requested_output_format: PROTOBUF
-# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
-# test_category: BINARY_TEST
-# 
-# serialize_error: "TypeError: repeated_sint64.map is not a function
-#     at protobuf_test_messages_proto2_TestAllTypesProto2.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:1180:58)
-#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
-# 
-# 
-
-not ok - Recommended.Proto2.ProtobufInput.ValidDataRepeated.SINT64.PackedInput.UnpackedOutput.ProtobufOutput
-# failed to parse input or produce output.
-# 
-# protobuf_payload: "\242\002\030\000\362\300\001\376\377\377\377\377\377\377\377\377\001\377\377\377\377\377\377\377\377\377\001"
-# requested_output_format: PROTOBUF
-# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
-# test_category: BINARY_TEST
-# 
-# serialize_error: "TypeError: repeated_sint64.map is not a function
-#     at protobuf_test_messages_proto2_TestAllTypesProto2.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:1180:58)
-#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
-# 
-# 
-
-not ok - Recommended.Proto3.ProtobufInput.ValidDataRepeated.SINT64.UnpackedInput.UnpackedOutput.ProtobufOutput
-# failed to parse input or produce output.
-# 
-# protobuf_payload: "\360\005\000\360\005\362\300\001\360\005\376\377\377\377\377\377\377\377\377\001\360\005\377\377\377\377\377\377\377\377\377\001"
-# requested_output_format: PROTOBUF
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: BINARY_TEST
-# 
-# serialize_error: "TypeError: unpacked_sint64.map is not a function
-#     at protobuf_test_messages_proto3_TestAllTypesProto3.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:1402:58)
-#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
-# 
-# 
-
-not ok - Recommended.Proto3.ProtobufInput.ValidDataRepeated.SINT64.PackedInput.UnpackedOutput.ProtobufOutput
-# failed to parse input or produce output.
-# 
-# protobuf_payload: "\362\005\030\000\362\300\001\376\377\377\377\377\377\377\377\377\001\377\377\377\377\377\377\377\377\377\001"
-# requested_output_format: PROTOBUF
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: BINARY_TEST
-# 
-# serialize_error: "TypeError: unpacked_sint64.map is not a function
-#     at protobuf_test_messages_proto3_TestAllTypesProto3.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:1402:58)
-#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
+# protobuf_payload: "\250\006\000\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001\250\006\001"
 # 
 # 
 
@@ -1366,15 +878,16 @@ not ok - Required.Proto2.ProtobufInput.UnknownVarint.ProtobufOutput
 # 
 
 # CONFORMANCE SUITE FAILED
-#	1210 succeses
+#	1248 succeses
 #	729 skipped
 #	0 expected failures
-#	30 unexpected failures
+#	22 unexpected failures
 
 # 
 # These tests failed.  If they can't be fixed right now, you can add them to the failure list so the overall suite can succeed.  Add them to the failure list by running:
 #   ./update_failure_list.py  --add failing_tests.txt
 # 
+#   Required.Proto2.ProtobufInput.PrematureEofInPackedFieldValue.BOOL
 #   Required.Proto2.ProtobufInput.RepeatedScalarMessageMerge.ProtobufOutput
 #   Required.Proto2.ProtobufInput.RepeatedScalarSelectsLast.BOOL.ProtobufOutput
 #   Required.Proto2.ProtobufInput.UnknownVarint.ProtobufOutput
@@ -1382,18 +895,9 @@ not ok - Required.Proto2.ProtobufInput.UnknownVarint.ProtobufOutput
 #   Required.Proto2.ProtobufInput.ValidDataRepeated.BOOL.PackedInput.ProtobufOutput
 #   Required.Proto2.ProtobufInput.ValidDataRepeated.BOOL.UnpackedInput.ProtobufOutput
 #   Required.Proto2.ProtobufInput.ValidDataRepeated.ENUM.PackedInput.ProtobufOutput
-#   Required.Proto2.ProtobufInput.ValidDataRepeated.FIXED64.PackedInput.ProtobufOutput
-#   Required.Proto2.ProtobufInput.ValidDataRepeated.FIXED64.UnpackedInput.ProtobufOutput
-#   Required.Proto2.ProtobufInput.ValidDataRepeated.INT64.PackedInput.ProtobufOutput
-#   Required.Proto2.ProtobufInput.ValidDataRepeated.INT64.UnpackedInput.ProtobufOutput
-#   Required.Proto2.ProtobufInput.ValidDataRepeated.SFIXED64.PackedInput.ProtobufOutput
-#   Required.Proto2.ProtobufInput.ValidDataRepeated.SFIXED64.UnpackedInput.ProtobufOutput
-#   Required.Proto2.ProtobufInput.ValidDataRepeated.SINT64.PackedInput.ProtobufOutput
-#   Required.Proto2.ProtobufInput.ValidDataRepeated.SINT64.UnpackedInput.ProtobufOutput
-#   Required.Proto2.ProtobufInput.ValidDataRepeated.UINT64.PackedInput.ProtobufOutput
-#   Required.Proto2.ProtobufInput.ValidDataRepeated.UINT64.UnpackedInput.ProtobufOutput
 #   Required.Proto2.ProtobufInput.ValidDataScalar.BOOL[4].ProtobufOutput
 #   Required.Proto2.ProtobufInput.ValidDataScalar.BOOL[6].ProtobufOutput
+#   Required.Proto3.ProtobufInput.PrematureEofInPackedFieldValue.BOOL
 #   Required.Proto3.ProtobufInput.RepeatedScalarMessageMerge.ProtobufOutput
 #   Required.Proto3.ProtobufInput.RepeatedScalarSelectsLast.BOOL.ProtobufOutput
 #   Required.Proto3.ProtobufInput.UnknownVarint.ProtobufOutput

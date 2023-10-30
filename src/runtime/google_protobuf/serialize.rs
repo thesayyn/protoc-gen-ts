@@ -15,23 +15,12 @@ impl GooglePBRuntime {
         ctx: &mut Context,
         field: &descriptor::FieldDescriptorProto,
         field_accessor: field::FieldAccessorFn,
+        access_normalizer: Option<field::AccessNormalizerFn>
     ) -> Stmt {
         let mut access_expr = field_accessor(field.name());
-        if field.is_bigint() {
-            if field.is_repeated() {
-                access_expr = crate::call_expr!(crate::member_expr_bare!(access_expr, "map"), vec![
-                    crate::expr_or_spread!(
-                        crate::arrow_func_short!(
-                            crate::call_expr!(crate::member_expr!("v", "toString")),
-                            vec![crate::pat_ident!("v")]
-                        )
-                    )
-                ])
-            } else {
-                access_expr = crate::call_expr!(crate::member_expr_bare!(access_expr, "toString"))
-            }
+        if let Some(an) = access_normalizer {
+            access_expr = an(&access_expr)
         }
-
         crate::expr_stmt!(crate::call_expr!(
             crate::member_expr!("bw", self.rw_function_name("write", ctx, field)),
             vec![
@@ -133,12 +122,20 @@ impl GooglePBRuntime {
                 field.into_accessor(ctx)
             };
 
+            let access_normalizer: Option<field::AccessNormalizerFn> = if field.is_bigint() && field.is_packed(&ctx) {
+                Some(field::map_to_string_normalizer)
+            } else if field.is_bigint() {
+                Some(field::to_string_normalizer)
+            } else {
+                None
+            };
+
             let mut field_stmt: Stmt;
             
             if field.is_message() {
                 field_stmt = self.serialize_message_field_stmt(field, field_accessor)
             } else {
-                field_stmt = self.serialize_primitive_field_stmt(ctx, field, field_accessor)
+                field_stmt = self.serialize_primitive_field_stmt(ctx, field, field_accessor, access_normalizer)
             };
 
             if field.is_map(ctx) {

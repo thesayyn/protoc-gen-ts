@@ -77,7 +77,7 @@ impl GooglePBRuntime {
     ) -> String {
 
         match field.type_() {
-            Type::TYPE_BOOL => "_placeholder_Bool",
+            Type::TYPE_BOOL => "readBool",
             Type::TYPE_FLOAT => "readFloat",
             Type::TYPE_DOUBLE => "readDouble",
             Type::TYPE_ENUM => "readInt32",
