@@ -53,10 +53,11 @@ impl FieldDescriptorProto {
             BinaryOp::NotEqEq
         );
 
-
-        // if self.has_oneof_index() {
-        //     return neq_undefined_check
-        // }
+        // for oneof field we have to serialize the value unconditionally 
+        // even if the value is the default.
+        if self.has_oneof_index() {
+            return neq_undefined_check
+        }
 
         let presence_check = if self.is_map(ctx) {
             crate::bin_expr!(
