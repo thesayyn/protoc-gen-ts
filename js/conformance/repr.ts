@@ -2,9 +2,10 @@ import { protobuf_test_messages_proto2_TestAllTypesProto2 } from "../../tests/co
 import { protobuf_test_messages_proto3_TestAllTypesProto3 } from "../../tests/conformance/gen/test_messages_proto3.ts";
 import {TestAllTypesProto2} from "./test_messages_proto2_pb.ts"
 import {TestAllTypesProto3} from "./test_messages_proto3_pb.ts"
+import * as base64 from "https://deno.land/std@0.202.0/encoding/base64.ts";
 
 let proto2octal = String.raw``
-let proto3octal = String.raw`\005`
+let proto3octal = String.raw``
 
 let octal: string;
 let type: typeof protobuf_test_messages_proto2_TestAllTypesProto2 | typeof protobuf_test_messages_proto3_TestAllTypesProto3;
@@ -20,7 +21,8 @@ if (proto2octal) {
     secondType = TestAllTypesProto3
 }
 
-const bytes = new Uint8Array(octal.slice(octal.startsWith("\\") ? 1 : 0).split("\\").map(r => parseInt(r.trim(), 8)))
+//const bytes = new Uint8Array(octal.split("\\").slice(1).map(r => parseInt(r, 8)))
+const bytes = base64.decode("wgIgAAAAAAAAAAA5MAAAAAAAAP////////9/AAAAAAAAAIA=")
 console.log(bytes)
 
 console.log("###")
@@ -29,7 +31,7 @@ console.log("###")
 console.log("-> es")
 // second
 const secondMessage = secondType.fromBinary(bytes);
-console.log(secondMessage.optionalUint32)
+console.log(secondMessage)
 
 const secondSerialized = secondMessage.toBinary();
 console.log(secondSerialized)
@@ -38,7 +40,7 @@ console.log(secondSerialized)
 console.log("-> me")
 // first
 const message = type.deserialize(bytes);
-console.log(message.optional_uint32)
+console.log(message)
 
 const serialized = message.serialize();
 console.log(serialized)

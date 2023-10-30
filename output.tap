@@ -24,150 +24,6 @@ not ok - Required.Proto2.ProtobufInput.PrematureEofInPackedFieldValue.BOOL
 # 
 # 
 
-not ok - Recommended.Proto2.ProtobufInput.ValidDataRepeated.SFIXED64.UnpackedInput.PackedOutput.ProtobufOutput
-# failed to parse input or produce output.
-# 
-# protobuf_payload: "\241\005\000\000\000\000\000\000\000\000\241\00590\000\000\000\000\000\000\241\005\377\377\377\377\377\377\377\177\241\005\000\000\000\000\000\000\000\200"
-# requested_output_format: PROTOBUF
-# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
-# test_category: BINARY_TEST
-# 
-# serialize_error: "Error: Assertion failed
-#     at Object.jspb.asserts.doAssertFailure (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:597)
-#     at Object.jspb.asserts.assert (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:729)
-#     at jspb.BinaryEncoder.writeInt64String (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:434:110)
-#     at jspb.BinaryWriter.writePackedSfixed64String (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:505:241)
-#     at protobuf_test_messages_proto2_TestAllTypesProto2.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:1286:16)
-#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
-# 
-# 
-
-not ok - Recommended.Proto2.ProtobufInput.ValidDataRepeated.SFIXED64.PackedInput.PackedOutput.ProtobufOutput
-# failed to parse input or produce output.
-# 
-# protobuf_payload: "\242\005 \000\000\000\000\000\000\000\00090\000\000\000\000\000\000\377\377\377\377\377\377\377\177\000\000\000\000\000\000\000\200"
-# requested_output_format: PROTOBUF
-# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
-# test_category: BINARY_TEST
-# 
-# serialize_error: "Error: Assertion failed
-#     at Object.jspb.asserts.doAssertFailure (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:597)
-#     at Object.jspb.asserts.assert (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:729)
-#     at jspb.BinaryEncoder.writeInt64String (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:434:110)
-#     at jspb.BinaryWriter.writePackedSfixed64String (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:505:241)
-#     at protobuf_test_messages_proto2_TestAllTypesProto2.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto2.ts:1286:16)
-#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
-# 
-# 
-
-not ok - Required.Proto3.ProtobufInput.ValidDataRepeated.SFIXED64.UnpackedInput.ProtobufOutput
-# failed to parse input or produce output.
-# 
-# protobuf_payload: "\301\002\000\000\000\000\000\000\000\000\301\00290\000\000\000\000\000\000\301\002\377\377\377\377\377\377\377\177\301\002\000\000\000\000\000\000\000\200"
-# requested_output_format: PROTOBUF
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: BINARY_TEST
-# 
-# serialize_error: "Error: Assertion failed
-#     at Object.jspb.asserts.doAssertFailure (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:597)
-#     at Object.jspb.asserts.assert (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:729)
-#     at jspb.BinaryEncoder.writeInt64String (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:434:110)
-#     at jspb.BinaryWriter.writePackedSfixed64String (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:505:241)
-#     at protobuf_test_messages_proto3_TestAllTypesProto3.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:1286:16)
-#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
-# 
-# 
-
-not ok - Required.Proto3.ProtobufInput.ValidDataRepeated.SFIXED64.PackedInput.ProtobufOutput
-# failed to parse input or produce output.
-# 
-# protobuf_payload: "\302\002 \000\000\000\000\000\000\000\00090\000\000\000\000\000\000\377\377\377\377\377\377\377\177\000\000\000\000\000\000\000\200"
-# requested_output_format: PROTOBUF
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: BINARY_TEST
-# 
-# serialize_error: "Error: Assertion failed
-#     at Object.jspb.asserts.doAssertFailure (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:597)
-#     at Object.jspb.asserts.assert (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:729)
-#     at jspb.BinaryEncoder.writeInt64String (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:434:110)
-#     at jspb.BinaryWriter.writePackedSfixed64String (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:505:241)
-#     at protobuf_test_messages_proto3_TestAllTypesProto3.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:1286:16)
-#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
-# 
-# 
-
-not ok - Recommended.Proto3.ProtobufInput.ValidDataRepeated.SFIXED64.UnpackedInput.DefaultOutput.ProtobufOutput
-# failed to parse input or produce output.
-# 
-# protobuf_payload: "\301\002\000\000\000\000\000\000\000\000\301\00290\000\000\000\000\000\000\301\002\377\377\377\377\377\377\377\177\301\002\000\000\000\000\000\000\000\200"
-# requested_output_format: PROTOBUF
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: BINARY_TEST
-# 
-# serialize_error: "Error: Assertion failed
-#     at Object.jspb.asserts.doAssertFailure (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:597)
-#     at Object.jspb.asserts.assert (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:729)
-#     at jspb.BinaryEncoder.writeInt64String (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:434:110)
-#     at jspb.BinaryWriter.writePackedSfixed64String (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:505:241)
-#     at protobuf_test_messages_proto3_TestAllTypesProto3.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:1286:16)
-#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
-# 
-# 
-
-not ok - Recommended.Proto3.ProtobufInput.ValidDataRepeated.SFIXED64.PackedInput.DefaultOutput.ProtobufOutput
-# failed to parse input or produce output.
-# 
-# protobuf_payload: "\302\002 \000\000\000\000\000\000\000\00090\000\000\000\000\000\000\377\377\377\377\377\377\377\177\000\000\000\000\000\000\000\200"
-# requested_output_format: PROTOBUF
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: BINARY_TEST
-# 
-# serialize_error: "Error: Assertion failed
-#     at Object.jspb.asserts.doAssertFailure (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:597)
-#     at Object.jspb.asserts.assert (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:729)
-#     at jspb.BinaryEncoder.writeInt64String (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:434:110)
-#     at jspb.BinaryWriter.writePackedSfixed64String (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:505:241)
-#     at protobuf_test_messages_proto3_TestAllTypesProto3.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:1286:16)
-#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
-# 
-# 
-
-not ok - Recommended.Proto3.ProtobufInput.ValidDataRepeated.SFIXED64.UnpackedInput.PackedOutput.ProtobufOutput
-# failed to parse input or produce output.
-# 
-# protobuf_payload: "\301\002\000\000\000\000\000\000\000\000\301\00290\000\000\000\000\000\000\301\002\377\377\377\377\377\377\377\177\301\002\000\000\000\000\000\000\000\200"
-# requested_output_format: PROTOBUF
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: BINARY_TEST
-# 
-# serialize_error: "Error: Assertion failed
-#     at Object.jspb.asserts.doAssertFailure (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:597)
-#     at Object.jspb.asserts.assert (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:729)
-#     at jspb.BinaryEncoder.writeInt64String (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:434:110)
-#     at jspb.BinaryWriter.writePackedSfixed64String (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:505:241)
-#     at protobuf_test_messages_proto3_TestAllTypesProto3.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:1286:16)
-#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
-# 
-# 
-
-not ok - Recommended.Proto3.ProtobufInput.ValidDataRepeated.SFIXED64.PackedInput.PackedOutput.ProtobufOutput
-# failed to parse input or produce output.
-# 
-# protobuf_payload: "\302\002 \000\000\000\000\000\000\000\00090\000\000\000\000\000\000\377\377\377\377\377\377\377\177\000\000\000\000\000\000\000\200"
-# requested_output_format: PROTOBUF
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: BINARY_TEST
-# 
-# serialize_error: "Error: Assertion failed
-#     at Object.jspb.asserts.doAssertFailure (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:597)
-#     at Object.jspb.asserts.assert (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:729)
-#     at jspb.BinaryEncoder.writeInt64String (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:434:110)
-#     at jspb.BinaryWriter.writePackedSfixed64String (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:505:241)
-#     at protobuf_test_messages_proto3_TestAllTypesProto3.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:1286:16)
-#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:34:48"
-# 
-# 
-
 not ok - Required.Proto2.ProtobufInput.ValidDataScalar.BOOL[4].ProtobufOutput
 # output was not equivalent to reference message: 
 # modified: optional_bool: true -> false
@@ -878,10 +734,10 @@ not ok - Required.Proto2.ProtobufInput.UnknownVarint.ProtobufOutput
 # 
 
 # CONFORMANCE SUITE FAILED
-#	1248 succeses
+#	1256 succeses
 #	729 skipped
 #	0 expected failures
-#	22 unexpected failures
+#	20 unexpected failures
 
 # 
 # These tests failed.  If they can't be fixed right now, you can add them to the failure list so the overall suite can succeed.  Add them to the failure list by running:
@@ -905,8 +761,6 @@ not ok - Required.Proto2.ProtobufInput.UnknownVarint.ProtobufOutput
 #   Required.Proto3.ProtobufInput.ValidDataRepeated.BOOL.PackedInput.ProtobufOutput
 #   Required.Proto3.ProtobufInput.ValidDataRepeated.BOOL.UnpackedInput.ProtobufOutput
 #   Required.Proto3.ProtobufInput.ValidDataRepeated.ENUM.PackedInput.ProtobufOutput
-#   Required.Proto3.ProtobufInput.ValidDataRepeated.SFIXED64.PackedInput.ProtobufOutput
-#   Required.Proto3.ProtobufInput.ValidDataRepeated.SFIXED64.UnpackedInput.ProtobufOutput
 #   Required.Proto3.ProtobufInput.ValidDataScalar.BOOL[4].ProtobufOutput
 #   Required.Proto3.ProtobufInput.ValidDataScalar.BOOL[6].ProtobufOutput
 # 

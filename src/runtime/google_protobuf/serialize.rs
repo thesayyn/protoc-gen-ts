@@ -10,6 +10,29 @@ use swc_ecma_ast::{
 use swc_ecma_utils::quote_ident;
 
 impl GooglePBRuntime {
+    // const MAX_UINT32 = BigInt(2 ** 32);
+    // bw.writePackedSplitFixed64(
+    //   40,
+    //   this.repeated_sfixed64,
+    //   (i) => Number(i & 4294967295n),
+    //   (i) => Number((i >> 32n) & 4294967295n)
+    // );
+    pub fn serialize_workaround_sfixed64_field_stmt(
+        &self,
+        field: &descriptor::FieldDescriptorProto,
+        field_accessor: field::FieldAccessorFn,
+    ) -> Stmt {
+        crate::expr_stmt!(crate::call_expr!(
+            crate::member_expr!("bw", "writePackedSplitFixed64"),
+            vec![
+                crate::expr_or_spread!(crate::lit_num!(field.number()).into()),
+                crate::expr_or_spread!(field_accessor(field.name())),
+                crate::expr_or_spread!(quote_ident!("(i) => Number(i & 4294967295n)").into()),
+                crate::expr_or_spread!(quote_ident!("(i) => Number((i >> 32n) & 4294967295n)").into()),
+            ]
+        ))
+    }
+
     pub fn serialize_primitive_field_stmt(
         &self,
         ctx: &mut Context,
@@ -134,6 +157,8 @@ impl GooglePBRuntime {
             
             if field.is_message() {
                 field_stmt = self.serialize_message_field_stmt(field, field_accessor)
+            } else if field.type_() == descriptor::field_descriptor_proto::Type::TYPE_SFIXED64 && field.is_packed(ctx) {
+                field_stmt = self.serialize_workaround_sfixed64_field_stmt(field, field_accessor) 
             } else {
                 field_stmt = self.serialize_primitive_field_stmt(ctx, field, field_accessor, access_normalizer)
             };

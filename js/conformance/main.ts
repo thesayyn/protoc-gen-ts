@@ -8,6 +8,7 @@ import {
   conformance_TestCategory,
 } from "../../tests/conformance/gen/conformance.ts";
 import { Buffer } from "https://deno.land/std@0.136.0/node/buffer.ts";
+import * as base64 from "https://deno.land/std@0.202.0/encoding/base64.ts";
 
 while (true) {
   const lengthBuffer = Buffer.alloc(4);
@@ -53,10 +54,10 @@ while (true) {
         try {
           res.protobuf_payload = msg.serialize();
         } catch (e) {
-          res.serialize_error = e.stack;
+          res.serialize_error = e.stack + `\n\n     ${base64.encode(req.protobuf_payload!)}`;
         }
       } catch (e) {
-        res.parse_error = e.stack;
+        res.parse_error = e.stack + `\n\n     ${base64.encode(req.protobuf_payload!)}`;
       }
     } else {
       res.runtime_error = `unknown message ${req.message_type}`;
