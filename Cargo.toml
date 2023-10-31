@@ -16,6 +16,7 @@ path = "tests/helper/ast.rs"
 swc_atoms = "0.5.5"
 swc_common = {version = "0.31.8", features = ["tty-emitter"]}
 swc_ecma_ast = {version = "0.104.1", features = ["serde"]}
+num-bigint = { version = "0.4", features = ["serde"] }
 swc_ecma_codegen = "0.139.2"
 swc_ecma_codegen_macros = "0.7.2"
 swc_ecma_parser = "0.134.1"
@@ -30,6 +31,7 @@ pathdiff = "0.2.1"
 dashmap = "5.4.0"
 crossbeam-utils = "0.8.15"
 anyhow = "1.0.75"
+
 
 [build-dependencies]
 protobuf-codegen = "3.1.0"

@@ -286,8 +286,6 @@ macro_rules! assign_expr {
     };
 }
 
-
-
 #[macro_export]
 macro_rules! lit_num {
     ($lit:expr) => {
@@ -298,6 +296,19 @@ macro_rules! lit_num {
         })
     };
 }
+
+
+#[macro_export]
+macro_rules! lit_bigint {
+    ($lit:expr) => {
+        swc_ecma_ast::Lit::BigInt(swc_ecma_ast::BigInt {
+            span: DUMMY_SP,
+            value: Box::new($lit),
+            raw: None
+        })
+    };
+}
+
 
 #[macro_export]
 macro_rules! lit_str {
@@ -312,6 +323,7 @@ macro_rules! lit_bool {
         swc_ecma_ast::Lit::Bool($lit.into())
     };
 }
+
 
 #[macro_export]
 macro_rules! bin_expr {

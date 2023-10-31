@@ -2390,6 +2390,7 @@ dependencies = [
  "crossbeam-utils",
  "dashmap",
  "glob",
+ "num-bigint",
  "once_cell",
  "pathdiff",
  "pretty_assertions_sorted",

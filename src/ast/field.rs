@@ -5,23 +5,22 @@ use crate::{
 };
 use swc_common::DUMMY_SP;
 use swc_ecma_ast::{
-    ArrayLit, BinaryOp, Bool, ClassMember, ClassProp, Expr, PropName, TsArrayType, TsEntityName,
-    TsKeywordType, TsKeywordTypeKind, TsType, TsTypeAnn, TsTypeParamInstantiation, TsTypeRef,
-    TsUnionOrIntersectionType, TsUnionType,
+    ArrayLit, BigInt, BinaryOp, ClassMember, ClassProp, Expr, Lit, PropName, TsArrayType,
+    TsEntityName, TsKeywordType, TsKeywordTypeKind, TsType, TsTypeAnn, TsTypeParamInstantiation,
+    TsTypeRef, TsUnionOrIntersectionType, TsUnionType,
 };
 use swc_ecma_utils::{quote_ident, quote_str};
 
 pub type AccessNormalizerFn = fn(expr: &Expr) -> Expr;
 
 pub(crate) fn map_to_string_normalizer(expr: &Expr) -> Expr {
-    crate::call_expr!(crate::member_expr_bare!(expr.clone(), "map"), vec![
-        crate::expr_or_spread!(
-            crate::arrow_func_short!(
-                crate::call_expr!(crate::member_expr!("v", "toString")),
-                vec![crate::pat_ident!("v")]
-            )
-        )
-    ])
+    crate::call_expr!(
+        crate::member_expr_bare!(expr.clone(), "map"),
+        vec![crate::expr_or_spread!(crate::arrow_func_short!(
+            crate::call_expr!(crate::member_expr!("v", "toString")),
+            vec![crate::pat_ident!("v")]
+        ))]
+    )
 }
 
 pub(crate) fn to_string_normalizer(expr: &Expr) -> Expr {
@@ -66,10 +65,10 @@ impl FieldDescriptorProto {
             BinaryOp::NotEqEq
         );
 
-        // for oneof field we have to serialize the value unconditionally 
+        // for oneof field we have to serialize the value unconditionally
         // even if the value is the default.
         if self.has_oneof_index() {
-            return neq_undefined_check
+            return neq_undefined_check;
         }
 
         let presence_check = if self.is_map(ctx) {
@@ -118,10 +117,7 @@ impl FieldDescriptorProto {
         if self.is_string() {
             Some(crate::lit_str!("").into())
         } else if self.is_bigint() {
-            Some(crate::call_expr!(
-                quote_ident!("BigInt").into(),
-                vec![crate::expr_or_spread!(crate::lit_num!(0).into())]
-            ))
+            Some(crate::lit_bigint!(0.into()).into())
         } else if self.is_number() {
             Some(crate::lit_num!(0).into())
         } else if self.is_booelan() {
@@ -148,6 +144,19 @@ impl FieldDescriptorProto {
             crate::new_expr!(Expr::Ident(quote_ident!("Uint8Array")))
         } else if self.is_string() && primitives {
             Expr::Lit(quote_str!(self.default_value()).into())
+        } else if self.is_bigint()  && primitives {
+            Expr::Lit(Lit::BigInt(BigInt {
+                span: DUMMY_SP,
+                value: Box::new(
+                    self.default_value
+                        .clone()
+                        .unwrap_or("0".to_string())
+                        .parse::<num_bigint::BigInt>()
+                        .expect("can not parse the default")
+                        .into(),
+                ),
+                raw: None,
+            }))
         } else if self.is_number() && primitives {
             Expr::Lit(crate::lit_num!(self
                 .default_value
@@ -156,18 +165,12 @@ impl FieldDescriptorProto {
                 .parse::<f64>()
                 .expect("can not parse the default")))
         } else if self.is_booelan() && primitives {
-            Expr::Lit(
-                Bool {
-                    value: self
-                        .default_value
-                        .clone()
-                        .unwrap_or("false".to_string())
-                        .parse()
-                        .expect("can not parse the default"),
-                    span: DUMMY_SP,
-                }
-                .into(),
-            )
+            Expr::Lit(crate::lit_bool!(self
+                .default_value
+                .clone()
+                .unwrap_or("false".to_string())
+                .parse::<bool>()
+                .expect("can not parse the default")))
         } else {
             Expr::Ident(quote_ident!("undefined"))
         }
