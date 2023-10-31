@@ -80,9 +80,7 @@ impl FieldDescriptorProto {
                     BinaryOp::NotEqEq
                 )
             )
-        } else if
-        /*self.is_bytes() TODO*/
-        false || self.is_repeated() {
+        } else if (self.is_bytes() && ctx.syntax == &Syntax::Proto3) || self.is_repeated() {
             crate::bin_expr!(
                 neq_undefined_check,
                 crate::bin_expr!(

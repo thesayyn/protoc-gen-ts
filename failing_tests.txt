@@ -1,1 +1,0 @@
-Recommended.Proto3.ProtobufInput.ValidDataScalarBinary.BYTES[0].ProtobufOutput
