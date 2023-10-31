@@ -6,8 +6,9 @@ use crate::{context::Context, descriptor};
 use std::vec;
 use swc_common::DUMMY_SP;
 use swc_ecma_ast::{
-    BinaryOp, BlockStmt, BreakStmt, Expr, ParenExpr, PatOrExpr, Stmt, SwitchCase, SwitchStmt,
-    ThrowStmt, TsNonNullExpr, WhileStmt, AssignOp,
+    AssignOp, BinaryOp, BlockStmt, BreakStmt, Expr, KeyValueProp, ObjectLit, PatOrExpr,
+    Prop, PropName, PropOrSpread, Stmt, SwitchCase, SwitchStmt, ThrowStmt, TsNonNullExpr,
+    WhileStmt,
 };
 use swc_ecma_utils::{quote_ident, quote_str};
 
@@ -47,7 +48,6 @@ impl GooglePBRuntime {
             AssignOp::NullishAssign
         )
     }
-
 
     fn deserialize_message_field_expr(
         &self,
@@ -215,7 +215,12 @@ impl GooglePBRuntime {
                 }),
             ];
             if field.is_message() && !field.is_repeated() {
-               stmts.insert(0, crate::expr_stmt!(self.deserialize_message_field_preread_expr(ctx, field, accessor))) 
+                stmts.insert(
+                    0,
+                    crate::expr_stmt!(
+                        self.deserialize_message_field_preread_expr(ctx, field, accessor)
+                    ),
+                )
             }
 
             cases.push(SwitchCase {
@@ -238,13 +243,54 @@ impl GooglePBRuntime {
                 )),
             })],
         });
+        // unknown fields
         cases.push(SwitchCase {
             span: DUMMY_SP,
             test: None,
-            cons: vec![crate::expr_stmt!(crate::call_expr!(crate::member_expr!(
-                "br",
-                "skipField"
-            )))],
+            cons: vec![
+                Stmt::Decl(crate::const_decl!(
+                    "prev",
+                    crate::call_expr!(crate::member_expr!("br", "getCursor"))
+                )),
+                crate::expr_stmt!(crate::call_expr!(crate::member_expr!("br", "skipField"))),
+                crate::expr_stmt!(crate::call_expr!(
+                    crate::member_expr_bare!(
+                        crate::member_expr!("this", "#unknown_fields"),
+                        "push"
+                    ),
+                    vec![crate::expr_or_spread!(Expr::Object(ObjectLit {
+                        span: DUMMY_SP,
+                        props: vec![
+                            PropOrSpread::Prop(Box::new(Prop::KeyValue(KeyValueProp {
+                                key: PropName::Ident(quote_ident!("no")),
+                                value: Box::new(crate::call_expr!(crate::member_expr!(
+                                    "br",
+                                    "getFieldNumber"
+                                )))
+                            }))),
+                            PropOrSpread::Prop(Box::new(Prop::KeyValue(KeyValueProp {
+                                key: PropName::Ident(quote_ident!("wireType")),
+                                value: Box::new(crate::call_expr!(crate::member_expr!(
+                                    "br",
+                                    "getWireType"
+                                )))
+                            }))),
+                            PropOrSpread::Prop(Box::new(Prop::KeyValue(KeyValueProp {
+                                key: PropName::Ident(quote_ident!("data")),
+                                value: Box::new(crate::call_expr!(
+                                    crate::member_expr!("bytes", "subarray"),
+                                    vec![
+                                        crate::expr_or_spread!(quote_ident!("prev").into()),
+                                        crate::expr_or_spread!(crate::call_expr!(
+                                            crate::member_expr!("br", "getCursor")
+                                        ))
+                                    ]
+                                ))
+                            })))
+                        ]
+                    }))]
+                )),
+            ],
         });
 
         let switch_stmt = Stmt::Switch(SwitchStmt {

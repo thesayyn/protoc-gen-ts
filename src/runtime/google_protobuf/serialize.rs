@@ -5,7 +5,7 @@ use crate::{context::Context, descriptor};
 use std::vec;
 use swc_common::DUMMY_SP;
 use swc_ecma_ast::{
-    BindingIdent, BlockStmt, Expr, ForHead, ForOfStmt, Stmt, TsNonNullExpr, VarDecl
+    BindingIdent, BlockStmt, Expr, ForHead, ForOfStmt, Stmt, TsNonNullExpr, VarDecl,
 };
 use swc_ecma_utils::quote_ident;
 
@@ -28,7 +28,9 @@ impl GooglePBRuntime {
                 crate::expr_or_spread!(crate::lit_num!(field.number()).into()),
                 crate::expr_or_spread!(field_accessor(field.name())),
                 crate::expr_or_spread!(quote_ident!("(i) => Number(i & 4294967295n)").into()),
-                crate::expr_or_spread!(quote_ident!("(i) => Number((i >> 32n) & 4294967295n)").into()),
+                crate::expr_or_spread!(
+                    quote_ident!("(i) => Number((i >> 32n) & 4294967295n)").into()
+                ),
             ]
         ))
     }
@@ -38,7 +40,7 @@ impl GooglePBRuntime {
         ctx: &mut Context,
         field: &descriptor::FieldDescriptorProto,
         field_accessor: field::FieldAccessorFn,
-        access_normalizer: Option<field::AccessNormalizerFn>
+        access_normalizer: Option<field::AccessNormalizerFn>,
     ) -> Stmt {
         let mut access_expr = field_accessor(field.name());
         if let Some(an) = access_normalizer {
@@ -145,22 +147,30 @@ impl GooglePBRuntime {
                 field.into_accessor(ctx)
             };
 
-            let access_normalizer: Option<field::AccessNormalizerFn> = if field.is_bigint() && field.is_packed(&ctx) {
-                Some(field::map_to_string_normalizer)
-            } else if field.is_bigint() {
-                Some(field::to_string_normalizer)
-            } else {
-                None
-            };
+            let access_normalizer: Option<field::AccessNormalizerFn> =
+                if field.is_bigint() && field.is_packed(&ctx) {
+                    Some(field::map_to_string_normalizer)
+                } else if field.is_bigint() {
+                    Some(field::to_string_normalizer)
+                } else {
+                    None
+                };
 
             let mut field_stmt: Stmt;
-            
+
             if field.is_message() {
                 field_stmt = self.serialize_message_field_stmt(field, field_accessor)
-            } else if field.type_() == descriptor::field_descriptor_proto::Type::TYPE_SFIXED64 && field.is_packed(ctx) {
-                field_stmt = self.serialize_workaround_sfixed64_field_stmt(field, field_accessor) 
+            } else if field.type_() == descriptor::field_descriptor_proto::Type::TYPE_SFIXED64
+                && field.is_packed(ctx)
+            {
+                field_stmt = self.serialize_workaround_sfixed64_field_stmt(field, field_accessor)
             } else {
-                field_stmt = self.serialize_primitive_field_stmt(ctx, field, field_accessor, access_normalizer)
+                field_stmt = self.serialize_primitive_field_stmt(
+                    ctx,
+                    field,
+                    field_accessor,
+                    access_normalizer,
+                )
             };
 
             if field.is_map(ctx) {
@@ -189,6 +199,32 @@ impl GooglePBRuntime {
             } else {
                 stmts.push(field_stmt);
             }
+        }
+
+        // serialize unknown fields
+        if create_bw {
+            stmts.push(Stmt::ForOf(ForOfStmt {
+                is_await: false,
+                left: ForHead::VarDecl(Box::new(crate::const_decl_uinit!("uf"))),
+                right: Box::new(crate::member_expr!("this", "#unknown_fields")),
+                body: Box::new(Stmt::Block(BlockStmt {
+                    span: DUMMY_SP,
+                    stmts: vec![
+                        crate::expr_stmt!(crate::call_expr!(
+                            crate::member_expr!("bw", "writeFieldHeader_"),
+                            vec![
+                                crate::expr_or_spread!(crate::member_expr!("uf", "no")),
+                                crate::expr_or_spread!(crate::member_expr!("uf", "wireType"))
+                            ]
+                        )),
+                        crate::expr_stmt!(crate::call_expr!(
+                            crate::member_expr!("bw", "appendUint8Array_"),
+                            vec![crate::expr_or_spread!(crate::member_expr!("uf", "data")),]
+                        )),
+                    ],
+                })),
+                span: DUMMY_SP,
+            }));
         }
 
         stmts

@@ -8,11 +8,35 @@ use crate::{context::Context, descriptor::FieldDescriptorProto};
 use swc_common::DUMMY_SP;
 use swc_ecma_ast::{
     BlockStmt, Class, ClassDecl, ClassMember, ClassMethod, Decl, ExportDecl, Expr, Function,
-    MethodKind, ModuleDecl, ModuleItem, Param, PropName, Stmt,
+    MethodKind, ModuleDecl, ModuleItem, Param, PropName, Stmt, PrivateProp, PrivateName, ArrayLit,
 };
 use swc_ecma_utils::quote_ident;
 
 impl DescriptorProto {
+
+    fn print_unknown_fields(&self) -> ClassMember {
+        ClassMember::PrivateProp(PrivateProp {
+            span: DUMMY_SP,
+            key: PrivateName {
+                id: quote_ident!("unknown_fields"),
+                span: DUMMY_SP
+            },
+            value: Some(Box::new(Expr::Array(ArrayLit {
+                            elems: vec![],
+                            span: DUMMY_SP
+                        }))),
+            type_ann: None,
+            is_static: false,
+            decorators: vec![],
+            accessibility: None,
+            is_optional: false,
+            is_override: false,
+            readonly: false,
+            definite: false,
+        })
+    }
+
+
     fn print_serialize<T: Runtime + Sized>(&self, ctx: &mut Context, runtime: &T) -> ClassMember {
         let mut statements = vec![];
 
@@ -153,7 +177,7 @@ where
         }
 
         let mut members: Vec<ClassMember> = Vec::new();
-
+        members.push(self.print_unknown_fields());
         for member in self.field.clone() {
             members.push(member.print_prop(ctx, runtime));
 

@@ -28,45 +28,16 @@ not ok - Recommended.Proto3.ProtobufInput.ValidDataScalarBinary.ENUM[0].Protobuf
 # 
 # 
 
-not ok - Required.Proto3.ProtobufInput.UnknownVarint.ProtobufOutput
-# output was not equivalent to reference message: 
-# expected: \250\037\001
-# got: 
-# 
-# protobuf_payload: "\250\037\001"
-# requested_output_format: PROTOBUF
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: BINARY_TEST
-# 
-# protobuf_payload: ""
-# 
-# 
-
-not ok - Required.Proto2.ProtobufInput.UnknownVarint.ProtobufOutput
-# output was not equivalent to reference message: 
-# expected: \250\037\001
-# got: 
-# 
-# protobuf_payload: "\250\037\001"
-# requested_output_format: PROTOBUF
-# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
-# test_category: BINARY_TEST
-# 
-# protobuf_payload: ""
-# 
-# 
-
-# CONFORMANCE SUITE FAILED
-#	1298 succeses
+# CONFORMANCE SUITE PASSED
+#	1300 succeses
 #	729 skipped
 #	0 expected failures
-#	2 unexpected failures
+#	0 unexpected failures
 
-# 
-# These tests failed.  If they can't be fixed right now, you can add them to the failure list so the overall suite can succeed.  Add them to the failure list by running:
-#   ./update_failure_list.py  --add failing_tests.txt
-# 
-#   Required.Proto2.ProtobufInput.UnknownVarint.ProtobufOutput
-#   Required.Proto3.ProtobufInput.UnknownVarint.ProtobufOutput
-# 
+# # CONFORMANCE SUITE PASSED
+#	0 succeses
+#	120 skipped
+#	0 expected failures
+#	0 unexpected failures
+
 # 
