@@ -1,28 +1,26 @@
 use std::vec;
 
-use crate::{context::Context, descriptor::FieldDescriptorProto};
 use crate::descriptor::DescriptorProto;
 use crate::print::Print;
 use crate::runtime::Runtime;
+use crate::{context::Context, descriptor::FieldDescriptorProto};
 
 use swc_common::DUMMY_SP;
 use swc_ecma_ast::{
     BlockStmt, Class, ClassDecl, ClassMember, ClassMethod, Decl, ExportDecl, Expr, Function,
-    MethodKind, ModuleDecl, ModuleItem, Param, PropName, Stmt
+    MethodKind, ModuleDecl, ModuleItem, Param, PropName, Stmt,
 };
 use swc_ecma_utils::quote_ident;
 
 impl DescriptorProto {
-    fn print_serialize<T: Runtime + Sized>(
-        &self,
-        ctx: &mut Context,
-        runtime: &T,
-    ) -> ClassMember {
-
+    fn print_serialize<T: Runtime + Sized>(&self, ctx: &mut Context, runtime: &T) -> ClassMember {
         let mut statements = vec![];
 
         statements.extend(runtime.serialize_setup(ctx, &self));
-        statements.push(crate::return_stmt!(crate::call_expr!(crate::member_expr!("bw", "getResultBuffer"))));
+        statements.push(crate::return_stmt!(crate::call_expr!(crate::member_expr!(
+            "bw",
+            "getResultBuffer"
+        ))));
 
         ClassMember::Method(ClassMethod {
             span: DUMMY_SP,
@@ -49,19 +47,18 @@ impl DescriptorProto {
         })
     }
 
-    fn print_deserialize<T: Runtime + Sized>(
-        &self,
-        ctx: &mut Context,
-        runtime: &T,
-    ) -> ClassMember {
-
-        let message_const_init = crate::new_expr!(Expr::Ident(quote_ident!(ctx.normalize_name(self.name()))));
-        let message_const = crate::const_decl!("message", message_const_init);
-
-        let mut statements = vec![Stmt::Decl(message_const)];
-
-        statements.extend(runtime.deserialize_setup(ctx, &self));
-        statements.push(crate::return_stmt!(Expr::Ident(quote_ident!("message"))));
+    fn print_deserialize(&self, ctx: &mut Context) -> ClassMember {
+        let statements = vec![
+            Stmt::Decl(crate::const_decl!(
+                "message",
+                crate::new_expr!(Expr::Ident(quote_ident!(ctx.normalize_name(self.name()))))
+            )),
+            crate::expr_stmt!(crate::call_expr!(
+                crate::member_expr!("message", "mergeFrom"),
+                vec![crate::expr_or_spread!(quote_ident!("bytes").into())]
+            )),
+            crate::return_stmt!(quote_ident!("message").into()),
+        ];
 
         ClassMember::Method(ClassMethod {
             span: DUMMY_SP,
@@ -95,10 +92,50 @@ impl DescriptorProto {
         })
     }
 
+    fn print_merge_from<T: Runtime + Sized>(&self, ctx: &mut Context, runtime: &T) -> ClassMember {
+        let mut statements = runtime.deserialize_setup(ctx, &self);
+
+        statements.push(crate::return_stmt!(quote_ident!("this").into()));
+
+        ClassMember::Method(ClassMethod {
+            span: DUMMY_SP,
+            accessibility: None,
+            key: PropName::Ident(quote_ident!("mergeFrom")),
+            is_abstract: false,
+            is_optional: false,
+            is_override: false,
+            is_static: false,
+            function: Box::new(Function {
+                body: Some(BlockStmt {
+                    span: DUMMY_SP,
+                    stmts: statements,
+                }),
+                decorators: vec![],
+                is_async: false,
+                is_generator: false,
+                params: vec![Param {
+                    span: DUMMY_SP,
+                    decorators: vec![],
+                    pat: swc_ecma_ast::Pat::Ident(swc_ecma_ast::BindingIdent {
+                        id: quote_ident!("bytes"),
+                        type_ann: Some(crate::type_annotation!("Uint8Array")),
+                    }),
+                }],
+                return_type: None,
+                span: DUMMY_SP,
+                type_params: None,
+            }),
+            kind: MethodKind::Method,
+        })
+    }
+
     pub fn get_oneof_fields(&self, current: &FieldDescriptorProto) -> Vec<FieldDescriptorProto> {
         let mut fields = vec![];
         for field in self.field.clone() {
-            if field.has_oneof_index() && field.oneof_index() == current.oneof_index() && field.number() != current.number() {
+            if field.has_oneof_index()
+                && field.oneof_index() == current.oneof_index()
+                && field.number() != current.number()
+            {
                 fields.push(field)
             }
         }
@@ -109,29 +146,27 @@ impl DescriptorProto {
 impl<T> Print<T> for DescriptorProto
 where
     T: Runtime + Sized,
-{   
-
+{
     fn print(&self, ctx: &mut Context, runtime: &T) -> Vec<ModuleItem> {
-
         if self.options.map_entry() {
-            return vec![]
+            return vec![];
         }
 
         let mut members: Vec<ClassMember> = Vec::new();
 
         for member in self.field.clone() {
             members.push(member.print_prop(ctx, runtime));
-            
+
             if member.has_oneof_index() {
                 let other_oneofs = self.get_oneof_fields(&member);
                 members.push(member.print_oneof_getter(ctx, runtime));
                 members.push(member.print_oneof_setter(ctx, runtime, &other_oneofs));
             }
         }
-
-        members.push(self.print_deserialize(ctx, runtime));
+        members.push(self.print_merge_from(ctx, runtime));
+        members.push(self.print_deserialize(ctx));
         members.push(self.print_serialize(ctx, runtime));
-        
+
         let class_decl = ClassDecl {
             ident: quote_ident!(ctx.normalize_name(self.name())),
             declare: false,

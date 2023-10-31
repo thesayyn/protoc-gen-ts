@@ -38,10 +38,6 @@ pub(crate) fn bare_field_member(name: &str) -> Expr {
     Expr::Ident(quote_ident!(name))
 }
 
-pub(crate) fn message_field_member(name: &str) -> Expr {
-    crate::member_expr!("message", name)
-}
-
 impl FieldDescriptorProto {
     pub(crate) fn into_accessor(&self, ctx: &Context) -> FieldAccessorFn {
         if self.is_repeated() && self.is_map(ctx) {

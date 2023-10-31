@@ -274,9 +274,12 @@ macro_rules! expr_stmt {
 #[macro_export]
 macro_rules! assign_expr {
     ($left:expr, $right:expr) => {
+        crate::assign_expr!($left, $right, swc_ecma_ast::AssignOp::Assign)
+    };
+    ($left:expr, $right:expr, $op:expr) => {
         swc_ecma_ast::Expr::Assign(swc_ecma_ast::AssignExpr {
             span: DUMMY_SP,
-            op: swc_ecma_ast::AssignOp::Assign,
+            op: $op,
             left: $left,
             right: Box::new($right),
         })

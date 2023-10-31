@@ -1,13 +1,13 @@
 use super::GooglePBRuntime;
-use crate::ast::field;
+use crate::ast::field::{self, this_field_member};
 use crate::descriptor::field_descriptor_proto;
 use crate::{context::Context, descriptor};
 
 use std::vec;
 use swc_common::DUMMY_SP;
 use swc_ecma_ast::{
-    BinaryOp, BlockStmt, BreakStmt, Expr, PatOrExpr, Stmt, SwitchCase, SwitchStmt,
-    ThrowStmt, TsNonNullExpr, WhileStmt,
+    BinaryOp, BlockStmt, BreakStmt, Expr, ParenExpr, PatOrExpr, Stmt, SwitchCase, SwitchStmt,
+    ThrowStmt, TsNonNullExpr, WhileStmt, AssignOp,
 };
 use swc_ecma_utils::{quote_ident, quote_str};
 
@@ -26,22 +26,42 @@ impl GooglePBRuntime {
                 crate::member_expr!(import, "BinaryReader"),
                 vec![crate::expr_or_spread!(quote_ident!("bytes").into())]
             );
-            let br_decl = Stmt::Decl(crate::let_decl!("br", None, br_decl_init));
+            let br_decl = Stmt::Decl(crate::const_decl!("br", br_decl_init));
             stmts.push(br_decl)
         }
 
-        stmts.push(self.deserialize_stmt(ctx, descriptor, field::message_field_member));
+        stmts.push(self.deserialize_stmt(ctx, descriptor, field::this_field_member));
 
         stmts
     }
+
+    fn deserialize_message_field_preread_expr(
+        &self,
+        ctx: &mut Context,
+        field: &descriptor::FieldDescriptorProto,
+        accessor: field::FieldAccessorFn,
+    ) -> Expr {
+        crate::assign_expr!(
+            PatOrExpr::Expr(Box::new(accessor(field.name()))),
+            crate::new_expr!(ctx.lazy_type_ref(field.type_name()).into()),
+            AssignOp::NullishAssign
+        )
+    }
+
 
     fn deserialize_message_field_expr(
         &self,
         ctx: &mut Context,
         field: &descriptor::FieldDescriptorProto,
+        accessor: field::FieldAccessorFn,
     ) -> Expr {
+        let member_expr = if field.is_repeated() {
+            crate::member_expr!(ctx.lazy_type_ref(field.type_name()), "deserialize")
+        } else {
+            crate::member_expr_bare!(accessor(field.name()).into(), "mergeFrom")
+        };
         crate::call_expr!(
-            crate::member_expr!(ctx.lazy_type_ref(field.type_name()), "deserialize"),
+            member_expr,
             vec![crate::expr_or_spread!(crate::call_expr!(
                 crate::member_expr!("br", "readBytes")
             ))]
@@ -71,6 +91,8 @@ impl GooglePBRuntime {
             );
         } else if field.type_() == field_descriptor_proto::Type::TYPE_UINT32 {
             call = crate::bin_expr!(call, crate::lit_num!(0).into(), BinaryOp::ZeroFillRShift)
+        } else if field.is_booelan() {
+            call = crate::bin_expr!(call, crate::lit_num!(0).into(), BinaryOp::NotEqEq)
         }
         if (field.is_packed(ctx) || field.is_packable()) && !force_unpacked {
             call = crate::call_expr!(
@@ -81,14 +103,66 @@ impl GooglePBRuntime {
         call
     }
 
+    fn deserialize_map_field_expr(
+        &self,
+        ctx: &mut Context,
+        field: &descriptor::FieldDescriptorProto,
+        accessor: field::FieldAccessorFn,
+    ) -> Expr {
+        let descriptor = ctx
+            .get_map_type(field.type_name())
+            .expect(format!("can not find the map type {}", field.type_name()).as_str());
+        let key_field = &descriptor.field[0];
+        let value_field = &descriptor.field[1];
+
+        crate::call_expr!(
+            crate::member_expr!("br", "readMessage"),
+            vec![
+                crate::expr_or_spread!(quote_ident!("undefined").into()),
+                crate::expr_or_spread!(crate::arrow_func!(
+                    vec![],
+                    vec![
+                        Stmt::Decl(crate::let_decl!(
+                            "key",
+                            key_field.type_annotation(ctx),
+                            key_field.default_value_expr(ctx, true)
+                        )),
+                        Stmt::Decl(crate::let_decl!(
+                            "value",
+                            value_field.type_annotation(ctx),
+                            value_field.default_value_expr(ctx, true)
+                        )),
+                        self.deserialize_stmt(ctx, &descriptor, field::bare_field_member),
+                        crate::expr_stmt!(crate::call_expr!(
+                            crate::member_expr_bare!(accessor(field.name()), "set"),
+                            vec![
+                                crate::expr_or_spread!(Expr::TsNonNull(TsNonNullExpr {
+                                    expr: Box::new(Expr::Ident(quote_ident!("key"))),
+                                    span: DUMMY_SP
+                                })),
+                                crate::expr_or_spread!(Expr::TsNonNull(TsNonNullExpr {
+                                    expr: Box::new(Expr::Ident(quote_ident!("value"))),
+                                    span: DUMMY_SP
+                                })),
+                            ]
+                        ))
+                    ]
+                ))
+            ]
+        )
+    }
+
     fn deserialize_field_expr(
         &self,
         ctx: &mut Context,
         field: &descriptor::FieldDescriptorProto,
+        accessor: field::FieldAccessorFn,
         force_unpacked: bool,
     ) -> Expr {
-        if field.is_message() {
-            self.deserialize_message_field_expr(ctx, field)
+        if field.is_map(ctx) {
+            self.deserialize_map_field_expr(ctx, field, accessor)
+        } else if field.is_message() {
+            self.deserialize_message_field_expr(ctx, field, accessor)
         } else {
             self.deserialize_primitive_field_expr(ctx, field, force_unpacked)
         }
@@ -102,63 +176,22 @@ impl GooglePBRuntime {
     ) -> Stmt {
         let mut cases: Vec<SwitchCase> = vec![];
         for field in &descriptor.field {
-            let read_expr = self.deserialize_field_expr(ctx, field, false);
-
+            let read_expr = self.deserialize_field_expr(ctx, field, accessor, false);
             let read_stmt = if field.is_map(ctx) {
-                let descriptor = ctx
-                    .get_map_type(field.type_name())
-                    .expect(format!("can not find the map type {}", field.type_name()).as_str());
-                let key_field = &descriptor.field[0];
-                let value_field = &descriptor.field[1];
-                crate::expr_stmt!(crate::call_expr!(
-                    crate::member_expr!("br", "readMessage"),
-                    vec![
-                        crate::expr_or_spread!(quote_ident!("undefined").into()),
-                        crate::expr_or_spread!(crate::arrow_func!(
-                            vec![],
-                            vec![
-                                Stmt::Decl(crate::let_decl!(
-                                    "key",
-                                    key_field.type_annotation(ctx),
-                                    key_field.default_value_expr(ctx, true)
-                                )),
-                                Stmt::Decl(crate::let_decl!(
-                                    "value",
-                                    value_field.type_annotation(ctx),
-                                    value_field.default_value_expr(ctx, true)
-                                )),
-                                self.deserialize_stmt(ctx, &descriptor, field::bare_field_member),
-                                crate::expr_stmt!(crate::call_expr!(
-                                    crate::member_expr_bare!(accessor(field.name()), "set"),
-                                    vec![
-                                        crate::expr_or_spread!(Expr::TsNonNull(TsNonNullExpr {
-                                            expr: Box::new(Expr::Ident(quote_ident!("key"))),
-                                            span: DUMMY_SP
-                                        })),
-                                        crate::expr_or_spread!(Expr::TsNonNull(TsNonNullExpr {
-                                            expr: Box::new(Expr::Ident(quote_ident!("value"))),
-                                            span: DUMMY_SP
-                                        })),
-                                    ]
-                                ))
-                            ]
-                        ))
-                    ]
-                ))
+                crate::expr_stmt!(read_expr)
+            } else if field.is_message() && !field.is_repeated() {
+                crate::expr_stmt!(read_expr)
             } else if field.is_packable() {
                 crate::if_stmt!(
                     crate::call_expr!(crate::member_expr!("br", "isDelimited")),
-                    crate::expr_stmt!(crate::call_expr!(
-                        crate::member_expr_bare!(accessor(field.name()), "push"),
-                        vec![crate::expr_or_spread!(
-                            self.deserialize_field_expr(ctx, field, false),
-                            true
-                        )]
+                    crate::expr_stmt!(crate::assign_expr!(
+                        PatOrExpr::Expr(Box::new(accessor(field.name()))),
+                        self.deserialize_field_expr(ctx, field, accessor, false)
                     )),
                     crate::expr_stmt!(crate::call_expr!(
                         crate::member_expr_bare!(accessor(field.name()), "push"),
                         vec![crate::expr_or_spread!(
-                            self.deserialize_field_expr(ctx, field, true)
+                            self.deserialize_field_expr(ctx, field, accessor, true)
                         )]
                     ))
                 )
@@ -174,37 +207,36 @@ impl GooglePBRuntime {
                 ))
             };
 
+            let mut stmts = vec![
+                read_stmt,
+                Stmt::Break(BreakStmt {
+                    label: None,
+                    span: DUMMY_SP,
+                }),
+            ];
+            if field.is_message() && !field.is_repeated() {
+               stmts.insert(0, crate::expr_stmt!(self.deserialize_message_field_preread_expr(ctx, field, accessor))) 
+            }
+
             cases.push(SwitchCase {
                 span: DUMMY_SP,
                 test: Some(Box::new(crate::lit_num!(field.number() as f64).into())),
-                cons: vec![
-                    read_stmt,
-                    Stmt::Break(BreakStmt {
-                        label: None,
-                        span: DUMMY_SP,
-                    }),
-                ],
+                cons: stmts,
             })
         }
         // illegal zero case
         cases.push(SwitchCase {
             span: DUMMY_SP,
             test: Some(Box::new(crate::lit_num!(0.0).into())),
-            cons: vec![
-                Stmt::Throw(ThrowStmt {
-                    span: DUMMY_SP,
-                    arg: Box::new(
-                        crate::new_expr!(quote_ident!("Error").into(),
-                        vec![
-                            crate::expr_or_spread!(crate::lit_str!("illegal zero tag.").into())
-                        ])
-                    ),
-                }),
-                Stmt::Break(BreakStmt {
-                    label: None,
-                    span: DUMMY_SP,
-                }),
-            ],
+            cons: vec![Stmt::Throw(ThrowStmt {
+                span: DUMMY_SP,
+                arg: Box::new(crate::new_expr!(
+                    quote_ident!("Error").into(),
+                    vec![crate::expr_or_spread!(
+                        crate::lit_str!("illegal zero tag.").into()
+                    )]
+                )),
+            })],
         });
         cases.push(SwitchCase {
             span: DUMMY_SP,

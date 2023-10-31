@@ -22,7 +22,7 @@ if (proto2octal) {
 }
 
 //const bytes = new Uint8Array(octal.split("\\").slice(1).map(r => parseInt(r, 8)))
-const bytes = base64.decode("wgIgAAAAAAAAAAA5MAAAAAAAAP////////9/AAAAAAAAAIA=")
+const bytes = base64.decode("kgEMEgoI0gkQ0gn4AdIJkgEMEgoI4SEY4SH4AeEh")
 console.log(bytes)
 
 console.log("###")
@@ -31,7 +31,7 @@ console.log("###")
 console.log("-> es")
 // second
 const secondMessage = secondType.fromBinary(bytes);
-console.log(secondMessage)
+console.log(secondMessage.optionalNestedMessage)
 
 const secondSerialized = secondMessage.toBinary();
 console.log(secondSerialized)
@@ -40,7 +40,7 @@ console.log(secondSerialized)
 console.log("-> me")
 // first
 const message = type.deserialize(bytes);
-console.log(message)
+console.log(message.optional_nested_message)
 
 const serialized = message.serialize();
 console.log(serialized)

@@ -46,7 +46,7 @@ impl GooglePBRuntime {
         } 
         match field.type_() {
             Type::TYPE_STRING => "_placeholder_String",
-            Type::TYPE_BOOL => "_placeholder_Bool",
+            Type::TYPE_BOOL => "_placeholder_Int64",
             Type::TYPE_FLOAT => "_placeholder_Float",
             Type::TYPE_DOUBLE => "_placeholder_Double",
             Type::TYPE_ENUM => "_placeholder_Int32",
@@ -77,10 +77,10 @@ impl GooglePBRuntime {
     ) -> String {
 
         match field.type_() {
-            Type::TYPE_BOOL => "readBool",
+            Type::TYPE_BOOL => "readSignedVarint64",
             Type::TYPE_FLOAT => "readFloat",
             Type::TYPE_DOUBLE => "readDouble",
-            Type::TYPE_ENUM => "readInt32",
+            Type::TYPE_ENUM => "readSignedVarint32",
 
             Type::TYPE_INT32 => "readSignedVarint32",
             Type::TYPE_INT64 => "readSignedVarint64String",
