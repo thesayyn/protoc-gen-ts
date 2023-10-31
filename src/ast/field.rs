@@ -97,7 +97,7 @@ impl FieldDescriptorProto {
         };
 
         if ctx.syntax == &Syntax::Proto3 {
-            let default_expr = self.proto3_default();
+            let default_expr = self.proto3_default(ctx);
             if let Some(default_expr) = default_expr {
                 crate::bin_expr!(
                     presence_check,
@@ -111,7 +111,7 @@ impl FieldDescriptorProto {
         }
     }
 
-    pub fn proto3_default(&self) -> Option<Expr> {
+    pub fn proto3_default(&self, ctx: &mut Context) -> Option<Expr> {
         if self.is_repeated() {
             return None;
         }
@@ -126,6 +126,8 @@ impl FieldDescriptorProto {
             Some(crate::lit_num!(0).into())
         } else if self.is_booelan() {
             Some(crate::lit_bool!(false).into())
+        } else if self.is_enum() {
+            Some(crate::lit_num!(ctx.get_leading_enum_member(self.type_name())).into())
         } else {
             None
         }

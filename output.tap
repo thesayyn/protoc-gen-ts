@@ -14,30 +14,16 @@ not ok - Recommended.Proto3.ProtobufInput.ValidDataScalarBinary.BYTES[0].Protobu
 # 
 # 
 
-not ok - Recommended.Proto3.ProtobufInput.ValidDataScalarBinary.ENUM[0].ProtobufOutput
-# output was not equivalent to reference message: 
-# expected: 
-# got: \250\001\000
-# 
-# protobuf_payload: "\250\001\000"
-# requested_output_format: PROTOBUF
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: BINARY_TEST
-# 
-# protobuf_payload: "\250\001\000"
-# 
-# 
-
-# CONFORMANCE SUITE PASSED
-#	1300 succeses
+# CONFORMANCE SUITE FAILED
+#	1301 succeses
 #	729 skipped
 #	0 expected failures
-#	0 unexpected failures
+#	1 unexpected failures
 
-# # CONFORMANCE SUITE PASSED
-#	0 succeses
-#	120 skipped
-#	0 expected failures
-#	0 unexpected failures
-
+# 
+# These tests failed.  If they can't be fixed right now, you can add them to the failure list so the overall suite can succeed.  Add them to the failure list by running:
+#   ./update_failure_list.py  --add failing_tests.txt
+# 
+#   Recommended.Proto3.ProtobufInput.ValidDataScalarBinary.BYTES[0].ProtobufOutput
+# 
 # 

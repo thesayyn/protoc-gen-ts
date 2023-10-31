@@ -1,5 +1,5 @@
 use super::GooglePBRuntime;
-use crate::ast::field::{self, this_field_member};
+use crate::ast::field;
 use crate::descriptor::field_descriptor_proto;
 use crate::{context::Context, descriptor};
 

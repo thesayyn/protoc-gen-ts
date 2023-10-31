@@ -70,6 +70,7 @@ pub struct Context<'a> {
     import_identifier_map: Arc<DashMap<String, u64>>,
     type_reg: Arc<DashMap<String, String>>,
     map_type_reg: Arc<DashMap<String, descriptor::DescriptorProto>>,
+    leading_enum_member_reg: Arc<DashMap<String, i32>>,
 }
 
 impl<'a> Clone for Context<'a> {
@@ -84,6 +85,7 @@ impl<'a> Clone for Context<'a> {
             import_identifier_map: Arc::new(DashMap::new()),
             type_reg: Arc::clone(&self.type_reg),
             map_type_reg: Arc::clone(&self.map_type_reg),
+            leading_enum_member_reg: Arc::clone(&self.leading_enum_member_reg),
         }
     }
 }
@@ -100,6 +102,7 @@ impl<'a> Context<'a> {
             import_identifier_map: Arc::new(DashMap::new()),
             type_reg: Arc::new(DashMap::new()),
             map_type_reg: Arc::new(DashMap::new()),
+            leading_enum_member_reg: Arc::new(DashMap::new()),
         }
     }
 
@@ -124,6 +127,7 @@ impl<'a> Context<'a> {
             imports: self.imports.clone(),
             type_reg: self.type_reg.clone(),
             map_type_reg: self.map_type_reg.clone(),
+            leading_enum_member_reg: self.leading_enum_member_reg.clone(),
         }
     }
 
@@ -260,5 +264,18 @@ impl<'a> Context<'a> {
             return Some(descriptor.clone());
         }
         None
+    }
+
+    pub fn register_leading_enum_member(&mut self, descriptor: &descriptor::EnumDescriptorProto) {
+        let fns = self.calculate_type_name(descriptor.name());
+        self.leading_enum_member_reg.insert(fns, descriptor.value.get(0).unwrap().number());
+    }
+
+    pub fn get_leading_enum_member(&self, type_name: &str) -> i32 {
+        let res = self.leading_enum_member_reg.get(type_name);
+        if let Some(num) = res {
+            return *num
+        }
+        panic!("no proto provides enum {}", &type_name)
     }
 }

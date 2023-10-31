@@ -33,7 +33,8 @@ impl Mapper for FileDescriptorProto {
 
 impl Mapper for EnumDescriptorProto {
     fn map(&self, ctx: &mut Context) {
-        ctx.register_type_name(self.name())
+        ctx.register_type_name(self.name());
+        ctx.register_leading_enum_member(self)
     }
 }
 
@@ -58,6 +59,7 @@ impl Mapper for DescriptorProto {
 
         for r#enum in &self.enum_type {
             ctx.register_type_name(r#enum.name());
+            r#enum.map(&mut ctx)
         }
     }
 }
