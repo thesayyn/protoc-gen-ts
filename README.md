@@ -1,11 +1,19 @@
 # Protoc Gen Typescript 
 
-[![test](https://github.com/thesayyn/protoc-gen-ts/actions/workflows/test.yaml/badge.svg?branch=master)](https://github.com/thesayyn/protoc-gen-ts/actions/workflows/test.yaml)
-![npm](https://img.shields.io/npm/v/protoc-gen-ts)
-![npm](https://img.shields.io/npm/dm/protoc-gen-ts)
+[![test](https://github.com/thesayyn/protoc-gen-ts/actions/workflows/test.yaml/badge.svg)](https://github.com/thesayyn/protoc-gen-ts/actions/workflows/test.yaml)
+[![npm](https://img.shields.io/npm/v/protoc-gen-ts)](https://www.npmjs.com/package/protoc-gen-ts?activeTab=versions)
+[![npm](https://img.shields.io/npm/dm/protoc-gen-ts)](https://www.npmjs.com/package/protoc-gen-ts?activeTab=versions)
+[![npm](https://opencollective.com/protoc-gen-ts/tiers/backer/badge.svg?label=Backer&color=brightgreen)](https://opencollective.com/protoc-gen-ts)
 
-Aim of this protoc plugin is to make usage of protocol buffers easy in Javascript/Typescript by taking modern approaches.  This plugin generates plain **Typescript** files that can be used AMD, UMD, CommonJS module systems.
+Compile `.proto` files to plain TypeScript. Supports gRPC Node and gRPC Web.
 
+## Usage
+
+```properties
+npm install -g protoc-gen-ts
+
+protoc -I=sourcedir --ts_out=dist myproto.proto
+```
 
 ## Example
 
@@ -86,7 +94,6 @@ const change = Change.fromObject({
 console.log(change.author instanceof Author) // true
 ```
 
-
 ## Usage with `@grpc/grpc-js` or `grpc`
 
 There is a seperate documentation for the usage of protoc-gen-ts along with either `@grpc/grpc-js` or `grpc`.  By default
@@ -94,46 +101,46 @@ this generated gRPC interfaces will use `@grpc/grpc-js`.
 
 Checkout [rpcs](docs/rpc.md).
 
+
 ## Key Differences
 
-This protoc plugin does generate;
-
+- No `d.ts` files. Just plain typescript sources with actual code.
 - Fields as **getter** **setters**.
-- No such prefixes as "getField" or "getFieldList". If you have repeated field named `users`, then the generated message class will have a `getter` named `users` not `getUsersList` 
 - Enums as **enums**.
-- Messages within a **namespace** if the proto has a **package** directive.
+- Messages within a **namespace** if the proto has a **package** directive. (can be controlled via --ts_opt=no_namespace)
+- **fromObject** and **toObject** methods to work with json data.
+- Support for gRPC Node and gRPC Web.
+- You get what you define in proto files. No such prefixes as "getField" or "getFieldList".
+- Generates bindings with either as-is names (`message.field_name`) or JSON-compatible names (`message.fieldName`).
 
-
-## Usage
-
-### Without Bazel
-```properties
-npm install -g protoc-gen-ts
-
-protoc -I=sourcedir --ts_out=dist myproto.proto
-```
-### With Bazel
-```py
-# Add protoc-gen-ts to dependencies section of your package.json file.
-# Then use it like you would use the other bazel compatible npm packages.
-
-load("@npm//protoc-gen-ts//:index.bzl", "ts_proto_library")
-
-ts_proto_library(
-    name = "protos",
-    deps = [
-        ":some_proto_library_target"
-    ]
-)
-
-# Checkout the examples/bazel directory for an example.
-```
 
 ## Supported Options
 
-* With `--ts_opt=unary_rpc_promise=true`, the service definition will contain a promise based rpc with a calling pattern of `const result = await client.METHOD(message)`.  Note: all othe `metadata` and `options` parameters are still available to you.
+* With `--ts_opt=unary_rpc_promise=true`, the service definition will contain a promise based rpc with a calling pattern of `const result = await client.METHOD(message)`.  Note: all of the `metadata` and `options` parameters are still available to you.
 
 * With `--ts_opt=grpc_package=xxxx`, you can specify a different package to import rather than `@grpc/grpc-js`.
+
+* With `--ts_opt=no_namespace`, you can control whether you get nested messages inside namespaces or prefixed with their parent message or directive.
+
+* With `--ts_opt=json_names`, fields will be converted to lowerCamelCase, for compatibility with the [JSON mapping][] done by the first-party protobuf libraries.
+
+[JSON mapping]: https://developers.google.com/protocol-buffers/docs/proto3#json
+
+* With `--ts_opt=target=node`, the generated client class will be compatible with gRPC Node `@grpc/grpc-js` or `grpc`. 
+
+* With `--ts_opt=target=web`, the generated client class will be compatible with gRPC Web via `grpc-web`. 
+
+* With `--ts_opt=no_grpc`, grpc service code won't be generated. 
+
+## Support
+
+We need your constant support to keep protoc-gen-ts well maintained and add new features.
+
+If your corporate has a OSS funding scheme, please consider supporting us monthly through open collective.
+
+<a href="https://opencollective.com/protoc-gen-ts">
+<img height="100px" src="https://opencollective.com/protoc-gen-ts/tiers/backer.svg?avatarHeight=36">
+</a>
 
 ## Roadmap
 
@@ -145,7 +152,8 @@ ts_proto_library(
 - <s>Make services strongly typed.</s>
 - <s>Support oneof fields</s>
 - <s>Support `map<TYPE, TYPE>` types as ES `Map`.</s>
-- Support grpc-web without any manual intervention.
+- <s>Support for `@deprecated` annotations via deprecated option.</s>
+- <s>Support for grpc-web without any manual intervention.</s>
 - Interopability with well knowns.
 
 
@@ -153,34 +161,15 @@ ts_proto_library(
 
 | Plugin | google-protobuf | Typescript | Declarations | gRPC Node | gRPC Web | ES6 Support | Notes |
 |------------------------------|-----------------|:----------:|:------------:|:---------:|:--------:|:-----------:|:-----------------------------------------------------------------------------------------------------------------------------------:|
-| thesayyn/protoc-gen-ts | Yes | Yes | Yes | Yes | Partial | Yes | The generated messages are compatible with ever-green browsers.<br>However, you might need to use third-party packages to use rpcs. |
+| thesayyn/protoc-gen-ts | Yes | Yes | Yes | Yes | Yes | Yes |  |
 | improbable-eng/ts-protoc-gen | Yes | No | Yes | No | Yes | Partial | Drawback: You can't bundle generated files with rollup since<br>they are not >= ES6 compatible. |
 | stephenh/ts-proto | No | Yes | Yes | No | No | Yes | There is no support for rpcs.<br>See: https://github.com/stephenh/ts-proto/issues/2 |
-
-
 ## Development
 
-Generates appropriate Protocol Buffer sources from Proto files directly through _TypeScript Compiler API_.
-
 ```sh
-# to run test invoke
-yarn test
-# additionally if you want to see error details
-yarn test --test_output=errors
-
+./scripts/test.sh
 ```
 
 ## Contributors
 
 ![GitHub Contributors Image](https://contrib.rocks/image?repo=thesayyn/protoc-gen-ts)
-
-
-## Support
-
-If you find this plugin useful please consider giving us a star to get into open collective.
-
-You can also support me directly by buying us some coffees.
-
-<a href="https://www.buymeacoffee.com/thesayyn">
-<img height="40px" src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=🙌&slug=thesayyn&button_colour=FFDD00&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=ffffff">
-</a>

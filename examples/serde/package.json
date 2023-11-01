@@ -1,0 +1,8 @@
+{
+    "scripts": {
+        "generate": "protoc --ts_out=. help.proto --ts_opt=runtime_package=npm:google-protobuf"
+    },
+    "dependencies": {
+        "protoc-gen-ts": "workspace:*"
+    }
+}

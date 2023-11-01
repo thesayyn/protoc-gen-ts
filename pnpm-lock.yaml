@@ -1,0 +1,15 @@
+lockfileVersion: '6.0'
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
+importers:
+
+  examples/serde:
+    dependencies:
+      protoc-gen-ts:
+        specifier: workspace:*
+        version: link:../../js/plugin
+
+  js/plugin: {}
