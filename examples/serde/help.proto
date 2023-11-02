@@ -10,4 +10,5 @@ message Help {
     Topic topic = 1;
     string message = 2;
     string short = 3;
+    string generated_via = 4;
 }

@@ -4,29 +4,24 @@ macro_rules! call_expr {
         $crate::call_expr!($expr, vec![])
     };
     ($expr:expr, $args:expr) => {
-        swc_ecma_ast::Expr::Call( swc_ecma_ast::CallExpr {
+        swc_ecma_ast::Expr::Call(swc_ecma_ast::CallExpr {
             span: swc_common::DUMMY_SP,
-            callee: swc_ecma_ast::Callee::Expr(Box::new(
-                $expr
-            )),
+            callee: swc_ecma_ast::Callee::Expr(Box::new($expr)),
             args: $args,
             type_args: None,
         })
     };
 }
 
-
 #[macro_export]
 macro_rules! member_expr {
     ($left:literal, $right:expr) => {
-       $crate::member_expr!(swc_ecma_utils::quote_ident!($left), $right)
+        $crate::member_expr!(swc_ecma_utils::quote_ident!($left), $right)
     };
     ($left:expr, $right:expr) => {
         swc_ecma_ast::Expr::Member(swc_ecma_ast::MemberExpr {
             span: swc_common::DUMMY_SP,
-            obj: Box::new(
-                swc_ecma_ast::Expr::Ident($left)
-            ),
+            obj: Box::new(swc_ecma_ast::Expr::Ident($left)),
             prop: swc_ecma_ast::MemberProp::Ident(swc_ecma_utils::quote_ident!($right)),
         })
     };
@@ -39,6 +34,20 @@ macro_rules! member_expr_bare {
             span: swc_common::DUMMY_SP,
             obj: Box::new($left),
             prop: swc_ecma_ast::MemberProp::Ident(swc_ecma_utils::quote_ident!($right)),
+        })
+    };
+}
+
+#[macro_export]
+macro_rules! member_expr_computed {
+    ($left:expr, $right:expr) => {
+        swc_ecma_ast::Expr::Member(swc_ecma_ast::MemberExpr {
+            span: swc_common::DUMMY_SP,
+            obj: Box::new($left),
+            prop: swc_ecma_ast::MemberProp::Computed(swc_ecma_ast::ComputedPropName {
+                span: DUMMY_SP,
+                expr: Box::new($right),
+            }),
         })
     };
 }
@@ -64,7 +73,6 @@ macro_rules! pat_ident {
     };
 }
 
-
 #[macro_export]
 macro_rules! const_decl {
     ($name:expr, $init:expr) => {
@@ -81,7 +89,6 @@ macro_rules! const_decl {
         }))
     };
 }
-
 
 #[macro_export]
 macro_rules! const_decl_uinit {
@@ -132,7 +139,6 @@ macro_rules! let_decl {
     };
 }
 
-
 #[macro_export]
 macro_rules! binding_ident {
     ($name:literal) => {
@@ -153,7 +159,7 @@ macro_rules! array_var_decl {
             decls: vec![swc_ecma_ast::VarDeclarator {
                 definite: false,
                 init: None,
-                name:swc_ecma_ast::Pat::Array(swc_ecma_ast::ArrayPat {
+                name: swc_ecma_ast::Pat::Array(swc_ecma_ast::ArrayPat {
                     optional: false,
                     type_ann: None,
                     elems: $elems,
@@ -188,21 +194,20 @@ macro_rules! return_stmt {
     ($expr:expr) => {
         swc_ecma_ast::Stmt::Return(swc_ecma_ast::ReturnStmt {
             span: DUMMY_SP,
-            arg: Some(Box::new($expr))
+            arg: Some(Box::new($expr)),
         })
     };
 }
-
 
 #[macro_export]
 macro_rules! type_annotation {
     ($lit:literal) => {
         Box::new(swc_ecma_ast::TsTypeAnn {
             span: swc_common::DUMMY_SP,
-            type_ann: Box::new(swc_ecma_ast::TsType::TsTypeRef(swc_ecma_ast::TsTypeRef{
+            type_ann: Box::new(swc_ecma_ast::TsType::TsTypeRef(swc_ecma_ast::TsTypeRef {
                 span: swc_common::DUMMY_SP,
                 type_name: swc_ecma_ast::TsEntityName::Ident(quote_ident!($lit)),
-                type_params: None
+                type_params: None,
             })),
         })
     };
@@ -224,7 +229,6 @@ macro_rules! expr_or_spread {
     };
 }
 
-
 #[macro_export]
 macro_rules! arrow_func {
     ($params:expr, $stmts:expr) => {
@@ -235,10 +239,12 @@ macro_rules! arrow_func {
             return_type: None,
             span: DUMMY_SP,
             type_params: None,
-            body: Box::new(swc_ecma_ast::BlockStmtOrExpr::BlockStmt(swc_ecma_ast::BlockStmt {
-                span: DUMMY_SP,
-                stmts: $stmts,
-            })),
+            body: Box::new(swc_ecma_ast::BlockStmtOrExpr::BlockStmt(
+                swc_ecma_ast::BlockStmt {
+                    span: DUMMY_SP,
+                    stmts: $stmts,
+                },
+            )),
         })
     };
 }
@@ -292,11 +298,10 @@ macro_rules! lit_num {
         swc_ecma_ast::Lit::Num(swc_ecma_ast::Number {
             span: DUMMY_SP,
             value: $lit as f64,
-            raw: None
+            raw: None,
         })
     };
 }
-
 
 #[macro_export]
 macro_rules! lit_bigint {
@@ -304,11 +309,10 @@ macro_rules! lit_bigint {
         swc_ecma_ast::Lit::BigInt(swc_ecma_ast::BigInt {
             span: DUMMY_SP,
             value: Box::new($lit),
-            raw: None
+            raw: None,
         })
     };
 }
-
 
 #[macro_export]
 macro_rules! lit_str {
@@ -323,7 +327,6 @@ macro_rules! lit_bool {
         swc_ecma_ast::Lit::Bool($lit.into())
     };
 }
-
 
 #[macro_export]
 macro_rules! bin_expr {

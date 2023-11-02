@@ -190,6 +190,7 @@ where
         members.push(self.print_merge_from(ctx, runtime));
         members.push(self.print_deserialize(ctx));
         members.push(self.print_serialize(ctx, runtime));
+        members.push(self.print_to_json(ctx));
 
         let class_decl = ClassDecl {
             ident: quote_ident!(ctx.normalize_name(self.name())),
