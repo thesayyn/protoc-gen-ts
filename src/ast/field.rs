@@ -41,6 +41,10 @@ pub(crate) fn static_field_member(_name: &str) -> Expr {
     Expr::Ident(quote_ident!("r"))
 }
 
+pub(crate) fn json_field_member(name: &str) -> Expr {
+    crate::member_expr!("json", name)
+}
+
 impl FieldDescriptorProto {
     pub(crate) fn into_accessor(&self, ctx: &Context) -> FieldAccessorFn {
         if self.is_repeated() && self.is_map(ctx) {
