@@ -278,6 +278,17 @@ macro_rules! expr_stmt {
 }
 
 #[macro_export]
+macro_rules! block_stmt {
+    ($stmts:expr) => {
+        swc_ecma_ast::Stmt::Block(swc_ecma_ast::BlockStmt {
+            span: DUMMY_SP,
+            stmts: $stmts
+        })
+    };
+}
+
+
+#[macro_export]
 macro_rules! assign_expr {
     ($left:expr, $right:expr) => {
         crate::assign_expr!($left, $right, swc_ecma_ast::AssignOp::Assign)
@@ -342,6 +353,38 @@ macro_rules! bin_expr {
         })
     };
 }
+
+#[macro_export]
+macro_rules! chain_bin_exprs_or {
+    ($e1:expr, $e2:expr) => {
+        crate::bin_expr!($e1, $e2, BinaryOp::LogicalOr)
+    };
+    ($e1:expr, $e2:expr, $($rest:tt)*) => {
+        crate::chain_bin_exprs_or! { crate::bin_expr!($e1, $e2, BinaryOp::LogicalOr), $($rest)* }
+    };
+}
+
+#[macro_export]
+macro_rules! chain_bin_exprs_and {
+    ($e1:expr, $e2:expr) => {
+        crate::bin_expr!($e1, $e2)
+    };
+    ($e1:expr, $e2:expr, $($rest:tt)*) => {
+        crate::chain_bin_exprs_and! { crate::bin_expr!($e1, $e2), $($rest)* }
+    };
+}
+
+#[macro_export]
+macro_rules! paren_expr {
+    ($expr:expr) => {
+        swc_ecma_ast::Expr::Paren(swc_ecma_ast::ParenExpr {
+            span: DUMMY_SP,
+            expr: Box::new($expr)
+        })
+    };
+}
+
+
 
 #[macro_export]
 macro_rules! if_stmt {

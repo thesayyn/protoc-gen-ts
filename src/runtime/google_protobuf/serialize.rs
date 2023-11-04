@@ -26,7 +26,7 @@ impl GooglePBRuntime {
             crate::member_expr!("bw", "writePackedSplitFixed64"),
             vec![
                 crate::expr_or_spread!(crate::lit_num!(field.number()).into()),
-                crate::expr_or_spread!(field_accessor(field.name())),
+                crate::expr_or_spread!(field_accessor(field)),
                 crate::expr_or_spread!(quote_ident!("(i) => Number(i & 4294967295n)").into()),
                 crate::expr_or_spread!(
                     quote_ident!("(i) => Number((i >> 32n) & 4294967295n)").into()
@@ -42,7 +42,7 @@ impl GooglePBRuntime {
         field_accessor: field::FieldAccessorFn,
         access_normalizer: Option<field::AccessNormalizerFn>,
     ) -> Stmt {
-        let mut access_expr = field_accessor(field.name());
+        let mut access_expr = field_accessor(field);
         if let Some(an) = access_normalizer {
             access_expr = an(&access_expr)
         }
@@ -66,7 +66,7 @@ impl GooglePBRuntime {
                 crate::expr_or_spread!(crate::lit_num!(field.number()).into()),
                 crate::expr_or_spread!(crate::call_expr!(crate::member_expr_bare!(
                     Expr::TsNonNull(TsNonNullExpr {
-                        expr: Box::new(field_accessor(field.name())),
+                        expr: Box::new(field_accessor(field)),
                         span: DUMMY_SP
                     }),
                     "serialize"
@@ -179,7 +179,7 @@ impl GooglePBRuntime {
                 field_stmt = Stmt::ForOf(ForOfStmt {
                     is_await: false,
                     left: ForHead::VarDecl(Box::new(crate::const_decl_uinit!(field.name()))),
-                    right: Box::new(accessor(field.name())),
+                    right: Box::new(accessor(field)),
                     body: Box::new(Stmt::Block(BlockStmt {
                         span: DUMMY_SP,
                         stmts: vec![field_stmt],

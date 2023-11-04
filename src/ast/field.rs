@@ -27,22 +27,18 @@ pub(crate) fn to_string_normalizer(expr: &Expr) -> Expr {
     crate::call_expr!(crate::member_expr_bare!(expr.clone(), "toString"))
 }
 
-pub type FieldAccessorFn = fn(name: &str) -> Expr;
+pub type FieldAccessorFn = fn(field: &FieldDescriptorProto) -> Expr;
 
-pub(crate) fn this_field_member(name: &str) -> Expr {
-    crate::member_expr!("this", name)
+pub(crate) fn this_field_member(field: &FieldDescriptorProto) -> Expr {
+    crate::member_expr!("this", field.name())
 }
 
-pub(crate) fn bare_field_member(name: &str) -> Expr {
-    Expr::Ident(quote_ident!(name))
+pub(crate) fn bare_field_member(field: &FieldDescriptorProto) -> Expr {
+    Expr::Ident(quote_ident!(field.name()))
 }
 
-pub(crate) fn static_field_member(_name: &str) -> Expr {
+pub(crate) fn static_field_member(_field: &FieldDescriptorProto) -> Expr {
     Expr::Ident(quote_ident!("r"))
-}
-
-pub(crate) fn json_field_member(name: &str) -> Expr {
-    crate::member_expr!("json", name)
 }
 
 impl FieldDescriptorProto {
@@ -68,7 +64,7 @@ impl FieldDescriptorProto {
 
     pub fn default_value_bin_expr(&self, ctx: &mut Context, accessor: FieldAccessorFn) -> Expr {
         let neq_undefined_check = crate::bin_expr!(
-            accessor(self.name()),
+            accessor(self),
             quote_ident!("undefined").into(),
             BinaryOp::NotEqEq
         );
@@ -83,7 +79,7 @@ impl FieldDescriptorProto {
             crate::bin_expr!(
                 neq_undefined_check,
                 crate::bin_expr!(
-                    crate::member_expr_bare!(accessor(self.name()), "size"),
+                    crate::member_expr_bare!(accessor(self), "size"),
                     Expr::Lit(crate::lit_num!(0)),
                     BinaryOp::NotEqEq
                 )
@@ -92,7 +88,7 @@ impl FieldDescriptorProto {
             crate::bin_expr!(
                 neq_undefined_check,
                 crate::bin_expr!(
-                    crate::member_expr_bare!(accessor(self.name()), "length"),
+                    crate::member_expr_bare!(accessor(self), "length"),
                     Expr::Lit(crate::lit_num!(0)),
                     BinaryOp::NotEqEq
                 )
@@ -106,7 +102,7 @@ impl FieldDescriptorProto {
             if let Some(default_expr) = default_expr {
                 crate::bin_expr!(
                     presence_check,
-                    crate::bin_expr!(accessor(self.name()), default_expr, BinaryOp::NotEqEq)
+                    crate::bin_expr!(accessor(self), default_expr, BinaryOp::NotEqEq)
                 )
             } else {
                 presence_check

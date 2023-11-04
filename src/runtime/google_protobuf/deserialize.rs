@@ -43,7 +43,7 @@ impl GooglePBRuntime {
         accessor: field::FieldAccessorFn,
     ) -> Expr {
         crate::assign_expr!(
-            PatOrExpr::Expr(Box::new(accessor(field.name()))),
+            PatOrExpr::Expr(Box::new(accessor(field))),
             crate::new_expr!(ctx.lazy_type_ref(field.type_name()).into()),
             AssignOp::NullishAssign
         )
@@ -58,7 +58,7 @@ impl GooglePBRuntime {
         let member_expr = if field.is_repeated() {
             crate::member_expr!(ctx.lazy_type_ref(field.type_name()), "deserialize")
         } else {
-            crate::member_expr_bare!(accessor(field.name()).into(), "mergeFrom")
+            crate::member_expr_bare!(accessor(field).into(), "mergeFrom")
         };
         crate::call_expr!(
             member_expr,
@@ -134,7 +134,7 @@ impl GooglePBRuntime {
                         )),
                         self.deserialize_stmt(ctx, &descriptor, field::bare_field_member),
                         crate::expr_stmt!(crate::call_expr!(
-                            crate::member_expr_bare!(accessor(field.name()), "set"),
+                            crate::member_expr_bare!(accessor(field), "set"),
                             vec![
                                 crate::expr_or_spread!(Expr::TsNonNull(TsNonNullExpr {
                                     expr: Box::new(Expr::Ident(quote_ident!("key"))),
@@ -185,11 +185,11 @@ impl GooglePBRuntime {
                 crate::if_stmt!(
                     crate::call_expr!(crate::member_expr!("br", "isDelimited")),
                     crate::expr_stmt!(crate::assign_expr!(
-                        PatOrExpr::Expr(Box::new(accessor(field.name()))),
+                        PatOrExpr::Expr(Box::new(accessor(field))),
                         self.deserialize_field_expr(ctx, field, accessor, false)
                     )),
                     crate::expr_stmt!(crate::call_expr!(
-                        crate::member_expr_bare!(accessor(field.name()), "push"),
+                        crate::member_expr_bare!(accessor(field), "push"),
                         vec![crate::expr_or_spread!(
                             self.deserialize_field_expr(ctx, field, accessor, true)
                         )]
@@ -197,12 +197,12 @@ impl GooglePBRuntime {
                 )
             } else if field.is_repeated() && !field.is_packed(ctx) {
                 crate::expr_stmt!(crate::call_expr!(
-                    crate::member_expr_bare!(accessor(field.name()), "push"),
+                    crate::member_expr_bare!(accessor(field), "push"),
                     vec![crate::expr_or_spread!(read_expr)]
                 ))
             } else {
                 crate::expr_stmt!(crate::assign_expr!(
-                    PatOrExpr::Expr(Box::new(accessor(field.name()))),
+                    PatOrExpr::Expr(Box::new(accessor(field))),
                     read_expr
                 ))
             };

@@ -38,31 +38,40 @@ while (true) {
       message = protobuf_test_messages_proto2_TestAllTypesProto2;
       break;
     default:
+      res.runtime_error = `unknown message ${req.message_type}`;
       break;
   }
 
-  if (
-    req.test_category == conformance_TestCategory.BINARY_TEST &&
-    req.requested_output_format == conformance_WireFormat.PROTOBUF &&
-    message
-  ) {
-    res.skipped = undefined;
+  let msg: InstanceType<typeof message> | undefined = undefined;
 
-    if (message) {
-      try {
-        const msg = message.deserialize(req.protobuf_payload!);
-        try {
-          res.protobuf_payload = msg.serialize();
-        } catch (e) {
-          res.serialize_error = e.stack + `\n\n     ${base64.encode(req.protobuf_payload!)}`;
-        }
-      } catch (e) {
-        res.parse_error = e.stack + `\n\n     ${base64.encode(req.protobuf_payload!)}`;
-      }
+  try {
+    if (req.json_payload) {
+      msg = message!.fromJson(JSON.parse(req.json_payload!));
+    } else if (req.protobuf_payload) {
+      msg = message!.deserialize(req.protobuf_payload!);
     } else {
-      res.runtime_error = `unknown message ${req.message_type}`;
+      res.skipped = "unsupported payload";
+    }
+  } catch (e) {
+    res.parse_error = e.stack + `\n\n     ${base64.encode(req.protobuf_payload!)}`;
+  }
+
+  if (msg != undefined) {
+    try {
+      if (req.requested_output_format == conformance_WireFormat.JSON) {
+        res.json_payload = JSON.stringify(msg.toJson());
+      } else if (req.requested_output_format == conformance_WireFormat.PROTOBUF) {
+        res.protobuf_payload = msg!.serialize();
+      } else {
+        res.skipped = "unsupported output type";
+      }
+      
+    } catch (e) {
+      res.serialize_error = e.stack + `\n\n     ${base64.encode(req.protobuf_payload!)}`;
     }
   }
+
+  
   const resBytes = res.serialize();
   const lenBytes = Buffer.alloc(4);
   lenBytes.writeInt32LE(resBytes.length, 0);
