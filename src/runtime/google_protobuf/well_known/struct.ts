@@ -1,0 +1,8 @@
+class Struct {
+    fromJson() {
+
+    }
+    toJson() {
+        
+    }
+}

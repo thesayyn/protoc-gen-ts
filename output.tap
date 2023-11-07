@@ -1,157 +1,5 @@
 TAP version 14
 
-not ok - Required.Proto3.ProtobufInput.ValidDataScalar.BYTES[1].JsonOutput
-# JSON output we received from test was unparseable.
-# 
-# protobuf_payload: "z\014Hello world!"
-# requested_output_format: JSON
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: BINARY_TEST
-# 
-# json_payload: "{\"optionalBytes\":{\"0\":72,\"1\":101,\"2\":108,\"3\":108,\"4\":111,\"5\":32,\"6\":119,\"7\":111,\"8\":114,\"9\":108,\"10\":100,\"11\":33}}"
-# 
-# 
-
-not ok - Required.Proto3.ProtobufInput.ValidDataScalar.BYTES[2].JsonOutput
-# JSON output we received from test was unparseable.
-# 
-# protobuf_payload: "z\002\001\002"
-# requested_output_format: JSON
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: BINARY_TEST
-# 
-# json_payload: "{\"optionalBytes\":{\"0\":1,\"1\":2}}"
-# 
-# 
-
-not ok - Required.Proto3.ProtobufInput.ValidDataScalar.BYTES[3].JsonOutput
-# JSON output we received from test was unparseable.
-# 
-# protobuf_payload: "z\001\373"
-# requested_output_format: JSON
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: BINARY_TEST
-# 
-# json_payload: "{\"optionalBytes\":{\"0\":251}}"
-# 
-# 
-
-not ok - Required.Proto3.ProtobufInput.RepeatedScalarSelectsLast.BYTES.JsonOutput
-# JSON output we received from test was unparseable.
-# 
-# protobuf_payload: "z\000z\014Hello world!z\002\001\002z\001\373"
-# requested_output_format: JSON
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: BINARY_TEST
-# 
-# json_payload: "{\"optionalBytes\":{\"0\":251}}"
-# 
-# 
-
-not ok - Required.Proto3.ProtobufInput.ValidDataRepeated.BYTES.JsonOutput
-# JSON output we received from test was unparseable.
-# 
-# protobuf_payload: "\352\002\000\352\002\014Hello world!\352\002\002\001\002\352\002\001\373"
-# requested_output_format: JSON
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: BINARY_TEST
-# 
-# json_payload: "{\"repeatedBytes\":[{},{\"0\":72,\"1\":101,\"2\":108,\"3\":108,\"4\":111,\"5\":32,\"6\":119,\"7\":111,\"8\":114,\"9\":108,\"10\":100,\"11\":33},{\"0\":1,\"1\":2},{\"0\":251}]}"
-# 
-# 
-
-not ok - Required.Proto3.ProtobufInput.ValidDataMap.STRING.BYTES.Default.JsonOutput
-# JSON output we received from test was unparseable.
-# 
-# protobuf_payload: "\262\004\004
-# \000\022\000"
-# requested_output_format: JSON
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: BINARY_TEST
-# 
-# json_payload: "{\"mapStringBytes\":{\"\":{}}}"
-# 
-# 
-
-not ok - Required.Proto3.ProtobufInput.ValidDataMap.STRING.BYTES.MissingDefault.JsonOutput
-# JSON output we received from test was unparseable.
-# 
-# protobuf_payload: "\262\004\000"
-# requested_output_format: JSON
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: BINARY_TEST
-# 
-# json_payload: "{\"mapStringBytes\":{\"\":{}}}"
-# 
-# 
-
-not ok - Required.Proto3.ProtobufInput.ValidDataMap.STRING.BYTES.NonDefault.JsonOutput
-# JSON output we received from test was unparseable.
-# 
-# protobuf_payload: "\262\004\006
-# \001a\022\001a"
-# requested_output_format: JSON
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: BINARY_TEST
-# 
-# json_payload: "{\"mapStringBytes\":{\"a\":{\"0\":97}}}"
-# 
-# 
-
-not ok - Required.Proto3.ProtobufInput.ValidDataMap.STRING.BYTES.Unordered.JsonOutput
-# JSON output we received from test was unparseable.
-# 
-# protobuf_payload: "\262\004\006\022\001a
-# \001a"
-# requested_output_format: JSON
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: BINARY_TEST
-# 
-# json_payload: "{\"mapStringBytes\":{\"a\":{\"0\":97}}}"
-# 
-# 
-
-not ok - Required.Proto3.ProtobufInput.ValidDataMap.STRING.BYTES.DuplicateKey.JsonOutput
-# JSON output we received from test was unparseable.
-# 
-# protobuf_payload: "\262\004\005
-# \001a\022\000\262\004\006
-# \001a\022\001a"
-# requested_output_format: JSON
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: BINARY_TEST
-# 
-# json_payload: "{\"mapStringBytes\":{\"a\":{\"0\":97}}}"
-# 
-# 
-
-not ok - Required.Proto3.ProtobufInput.ValidDataMap.STRING.BYTES.DuplicateKeyInMapEntry.JsonOutput
-# JSON output we received from test was unparseable.
-# 
-# protobuf_payload: "\262\004\010
-# \000
-# \001a\022\001a"
-# requested_output_format: JSON
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: BINARY_TEST
-# 
-# json_payload: "{\"mapStringBytes\":{\"a\":{\"0\":97}}}"
-# 
-# 
-
-not ok - Required.Proto3.ProtobufInput.ValidDataMap.STRING.BYTES.DuplicateValueInMapEntry.JsonOutput
-# JSON output we received from test was unparseable.
-# 
-# protobuf_payload: "\262\004\010
-# \001a\022\000\022\001a"
-# requested_output_format: JSON
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: BINARY_TEST
-# 
-# json_payload: "{\"mapStringBytes\":{\"a\":{\"0\":97}}}"
-# 
-# 
-
 not ok - Required.Proto3.ProtobufInput.ValidDataMap.STRING.ENUM.MissingDefault.JsonOutput
 # output was not equivalent to reference message: 
 # deleted: map_string_nested_enum['']: FOO
@@ -163,54 +11,6 @@ not ok - Required.Proto3.ProtobufInput.ValidDataMap.STRING.ENUM.MissingDefault.J
 # test_category: BINARY_TEST
 # 
 # json_payload: "{\"mapStringNestedEnum\":{}}"
-# 
-# 
-
-not ok - Required.Proto3.ProtobufInput.ValidDataOneof.BYTES.DefaultValue.JsonOutput
-# JSON output we received from test was unparseable.
-# 
-# protobuf_payload: "\222\007\000"
-# requested_output_format: JSON
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: BINARY_TEST
-# 
-# json_payload: "{\"oneofBytes\":{}}"
-# 
-# 
-
-not ok - Required.Proto3.ProtobufInput.ValidDataOneof.BYTES.NonDefaultValue.JsonOutput
-# JSON output we received from test was unparseable.
-# 
-# protobuf_payload: "\222\007\001a"
-# requested_output_format: JSON
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: BINARY_TEST
-# 
-# json_payload: "{\"oneofBytes\":{\"0\":97}}"
-# 
-# 
-
-not ok - Required.Proto3.ProtobufInput.ValidDataOneof.BYTES.MultipleValuesForSameField.JsonOutput
-# JSON output we received from test was unparseable.
-# 
-# protobuf_payload: "\222\007\000\222\007\001a"
-# requested_output_format: JSON
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: BINARY_TEST
-# 
-# json_payload: "{\"oneofBytes\":{\"0\":97}}"
-# 
-# 
-
-not ok - Required.Proto3.ProtobufInput.ValidDataOneof.BYTES.MultipleValuesForDifferentField.JsonOutput
-# JSON output we received from test was unparseable.
-# 
-# protobuf_payload: "\370\006\000\222\007\001a"
-# requested_output_format: JSON
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: BINARY_TEST
-# 
-# json_payload: "{\"oneofBytes\":{\"0\":97}}"
 # 
 # 
 
@@ -320,42 +120,6 @@ not ok - Recommended.Proto2.JsonInput.FieldNameExtension.Validator
 # 
 # 
 
-not ok - Required.Proto3.JsonInput.Int64FieldTooLarge
-# Should have failed to parse, but didn't.
-# 
-# json_payload: "{\"optionalInt64\": \"9223372036854775808\"}"
-# requested_output_format: JSON
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# json_payload: "{\"optionalInt64\":\"9223372036854775808\"}"
-# 
-# 
-
-not ok - Required.Proto3.JsonInput.Int64FieldTooSmall
-# Should have failed to parse, but didn't.
-# 
-# json_payload: "{\"optionalInt64\": \"-9223372036854775809\"}"
-# requested_output_format: JSON
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# json_payload: "{\"optionalInt64\":\"-9223372036854775809\"}"
-# 
-# 
-
-not ok - Required.Proto3.JsonInput.Uint64FieldTooLarge
-# Should have failed to parse, but didn't.
-# 
-# json_payload: "{\"optionalUint64\": \"18446744073709551616\"}"
-# requested_output_format: JSON
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# json_payload: "{\"optionalUint64\":\"18446744073709551616\"}"
-# 
-# 
-
 not ok - Required.Proto3.JsonInput.Int32FieldNotInteger
 # Should have failed to parse, but didn't.
 # 
@@ -388,7 +152,7 @@ not ok - Required.Proto3.JsonInput.Int32FieldLeadingSpace
 # message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
 # test_category: JSON_TEST
 # 
-# json_payload: "{\"optionalInt32\":\" 1\"}"
+# json_payload: "{\"optionalInt32\":1}"
 # 
 # 
 
@@ -400,203 +164,7 @@ not ok - Required.Proto3.JsonInput.Int32FieldTrailingSpace
 # message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
 # test_category: JSON_TEST
 # 
-# json_payload: "{\"optionalInt32\":\"1 \"}"
-# 
-# 
-
-not ok - Recommended.Proto3.JsonInput.BoolFieldIntegerZero
-# Should have failed to parse, but didn't.
-# 
-# json_payload: "{\"optionalBool\":0}"
-# requested_output_format: JSON
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# json_payload: "{\"optionalBool\":0}"
-# 
-# 
-
-not ok - Recommended.Proto3.JsonInput.BoolFieldIntegerOne
-# Should have failed to parse, but didn't.
-# 
-# json_payload: "{\"optionalBool\":1}"
-# requested_output_format: JSON
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# json_payload: "{\"optionalBool\":1}"
-# 
-# 
-
-not ok - Recommended.Proto3.JsonInput.BoolFieldDoubleQuotedTrue
-# Should have failed to parse, but didn't.
-# 
-# json_payload: "{\"optionalBool\":\"true\"}"
-# requested_output_format: JSON
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# json_payload: "{\"optionalBool\":\"true\"}"
-# 
-# 
-
-not ok - Recommended.Proto3.JsonInput.BoolFieldDoubleQuotedFalse
-# Should have failed to parse, but didn't.
-# 
-# json_payload: "{\"optionalBool\":\"false\"}"
-# requested_output_format: JSON
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# json_payload: "{\"optionalBool\":\"false\"}"
-# 
-# 
-
-not ok - Required.Proto3.JsonInput.FloatFieldInfinity.ProtobufOutput
-# failed to parse input or produce output.
-# 
-# json_payload: "{\"optionalFloat\": \"Infinity\"}"
-# requested_output_format: PROTOBUF
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# serialize_error: "Error: Assertion failed
-#     at Object.jspb.asserts.doAssertFailure (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:597)
-#     at Object.jspb.asserts.assert (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:729)
-#     at jspb.BinaryEncoder.writeFloat (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:435:66)
-#     at jspb.BinaryWriter.writeFloat (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:468:356)
-#     at protobuf_test_messages_proto3_TestAllTypesProto3.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:1346:16)
-#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:47:44
-# 
-#      "
-# 
-# 
-
-not ok - Required.Proto3.JsonInput.FloatFieldNegativeInfinity.ProtobufOutput
-# failed to parse input or produce output.
-# 
-# json_payload: "{\"optionalFloat\": \"-Infinity\"}"
-# requested_output_format: PROTOBUF
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# serialize_error: "Error: Assertion failed
-#     at Object.jspb.asserts.doAssertFailure (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:597)
-#     at Object.jspb.asserts.assert (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:729)
-#     at jspb.BinaryEncoder.writeFloat (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:435:66)
-#     at jspb.BinaryWriter.writeFloat (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:468:356)
-#     at protobuf_test_messages_proto3_TestAllTypesProto3.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:1346:16)
-#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:47:44
-# 
-#      "
-# 
-# 
-
-not ok - Required.Proto3.ProtobufInput.FloatFieldNormalizeQuietNan.JsonOutput
-# output was not equivalent to reference message: 
-# deleted: optional_float: nan
-# 
-# 
-# protobuf_payload: "]E#\241\177"
-# requested_output_format: JSON
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# json_payload: "{\"optionalFloat\":null}"
-# 
-# 
-
-not ok - Required.Proto3.ProtobufInput.FloatFieldNormalizeSignalingNan.JsonOutput
-# output was not equivalent to reference message: 
-# deleted: optional_float: nan
-# 
-# 
-# protobuf_payload: "]!C\265\377"
-# requested_output_format: JSON
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# json_payload: "{\"optionalFloat\":null}"
-# 
-# 
-
-not ok - Required.Proto3.JsonInput.DoubleFieldInfinity.ProtobufOutput
-# failed to parse input or produce output.
-# 
-# json_payload: "{\"optionalDouble\": \"Infinity\"}"
-# requested_output_format: PROTOBUF
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# serialize_error: "Error: Assertion failed
-#     at Object.jspb.asserts.doAssertFailure (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:597)
-#     at Object.jspb.asserts.assert (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:729)
-#     at jspb.BinaryEncoder.writeDouble (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:436:67)
-#     at jspb.BinaryWriter.writeDouble (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:469:143)
-#     at protobuf_test_messages_proto3_TestAllTypesProto3.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:1349:16)
-#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:47:44
-# 
-#      "
-# 
-# 
-
-not ok - Required.Proto3.JsonInput.DoubleFieldNegativeInfinity.ProtobufOutput
-# failed to parse input or produce output.
-# 
-# json_payload: "{\"optionalDouble\": \"-Infinity\"}"
-# requested_output_format: PROTOBUF
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# serialize_error: "Error: Assertion failed
-#     at Object.jspb.asserts.doAssertFailure (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:597)
-#     at Object.jspb.asserts.assert (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:729)
-#     at jspb.BinaryEncoder.writeDouble (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:436:67)
-#     at jspb.BinaryWriter.writeDouble (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:469:143)
-#     at protobuf_test_messages_proto3_TestAllTypesProto3.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:1349:16)
-#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:47:44
-# 
-#      "
-# 
-# 
-
-not ok - Required.Proto3.ProtobufInput.DoubleFieldNormalizeQuietNan.JsonOutput
-# output was not equivalent to reference message: 
-# deleted: optional_double: nan
-# 
-# 
-# protobuf_payload: "a\274\232xV4\022\372\177"
-# requested_output_format: JSON
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# json_payload: "{\"optionalDouble\":null}"
-# 
-# 
-
-not ok - Required.Proto3.ProtobufInput.DoubleFieldNormalizeSignalingNan.JsonOutput
-# output was not equivalent to reference message: 
-# deleted: optional_double: nan
-# 
-# 
-# protobuf_payload: "a!Ce\207\251\313\373\377"
-# requested_output_format: JSON
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# json_payload: "{\"optionalDouble\":null}"
-# 
-# 
-
-not ok - Required.Proto3.JsonInput.DoubleFieldTooSmall
-# Should have failed to parse, but didn't.
-# 
-# json_payload: "{\"optionalDouble\": -1.89769e+308}"
-# requested_output_format: JSON
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# json_payload: "{\"optionalDouble\":null}"
+# json_payload: "{\"optionalInt32\":1}"
 # 
 # 
 
@@ -609,11 +177,11 @@ not ok - Required.Proto3.JsonInput.EnumFieldNumericValueNonZero.ProtobufOutput
 # test_category: JSON_TEST
 # 
 # serialize_error: "Error: Assertion failed
-#     at Object.jspb.asserts.doAssertFailure (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:597)
-#     at Object.jspb.asserts.assert (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:729)
-#     at jspb.BinaryWriter.writeInt32 (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:458:77)
-#     at protobuf_test_messages_proto3_TestAllTypesProto3.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:1367:16)
-#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:47:44
+#     at Object.jspb.asserts.doAssertFailure (file:///private/var/folders/tg/07vw4wzj2gbbbkr8kqktm36c0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:597)
+#     at Object.jspb.asserts.assert (file:///private/var/folders/tg/07vw4wzj2gbbbkr8kqktm36c0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:729)
+#     at jspb.BinaryWriter.writeInt32 (file:///private/var/folders/tg/07vw4wzj2gbbbkr8kqktm36c0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:458:77)
+#     at protobuf_test_messages_proto3_TestAllTypesProto3.serialize (file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:1368:16)
+#     at file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/js/conformance/main.ts:47:44
 # 
 #      "
 # 
@@ -667,18 +235,6 @@ not ok - Recommended.Proto3.JsonInput.StringFieldSurrogateInWrongOrder
 # 
 # 
 
-not ok - Required.Proto3.JsonInput.StringFieldNotAString
-# Should have failed to parse, but didn't.
-# 
-# json_payload: "{\"optionalString\": 12345}"
-# requested_output_format: JSON
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# json_payload: "{\"optionalString\":12345}"
-# 
-# 
-
 not ok - Required.Proto3.JsonInput.OneofFieldDuplicate
 # Should have failed to parse, but didn't.
 # 
@@ -691,142 +247,6 @@ not ok - Required.Proto3.JsonInput.OneofFieldDuplicate
 # 
 # 
 
-not ok - Recommended.Proto3.ProtobufInput.OneofZeroBytes.JsonOutput
-# JSON output we received from test was unparseable.
-# 
-# protobuf_payload: "\222\007\000"
-# requested_output_format: JSON
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: BINARY_TEST
-# 
-# json_payload: "{\"oneofBytes\":{}}"
-# 
-# 
-
-not ok - Required.Proto3.JsonInput.Int32MapField.ProtobufOutput
-# failed to parse input or produce output.
-# 
-# json_payload: "{\"mapInt32Int32\": {\"1\": 2, \"3\": 4}}"
-# requested_output_format: PROTOBUF
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# serialize_error: "TypeError: this.map_int32_int32 is not iterable
-#     at protobuf_test_messages_proto3_TestAllTypesProto3.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:1572:45)
-#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:47:44
-# 
-#      "
-# 
-# 
-
-not ok - Required.Proto3.JsonInput.Int32MapField.JsonOutput
-# output was not equivalent to reference message: 
-# deleted: map_int32_int32[3]: 4
-# deleted: map_int32_int32[1]: 2
-# 
-# 
-# json_payload: "{\"mapInt32Int32\": {\"1\": 2, \"3\": 4}}"
-# requested_output_format: JSON
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# json_payload: "{\"mapInt32Int32\":{}}"
-# 
-# 
-
-not ok - Required.Proto3.JsonInput.Uint32MapField.ProtobufOutput
-# failed to parse input or produce output.
-# 
-# json_payload: "{\"mapUint32Uint32\": {\"1\": 2, \"3\": 4}}"
-# requested_output_format: PROTOBUF
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# serialize_error: "TypeError: this.map_uint32_uint32 is not iterable
-#     at protobuf_test_messages_proto3_TestAllTypesProto3.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:1588:45)
-#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:47:44
-# 
-#      "
-# 
-# 
-
-not ok - Required.Proto3.JsonInput.Uint32MapField.JsonOutput
-# output was not equivalent to reference message: 
-# deleted: map_uint32_uint32[1]: 2
-# deleted: map_uint32_uint32[3]: 4
-# 
-# 
-# json_payload: "{\"mapUint32Uint32\": {\"1\": 2, \"3\": 4}}"
-# requested_output_format: JSON
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# json_payload: "{\"mapUint32Uint32\":{}}"
-# 
-# 
-
-not ok - Required.Proto3.JsonInput.Int64MapField.ProtobufOutput
-# failed to parse input or produce output.
-# 
-# json_payload: "{\"mapInt64Int64\": {\"1\": 2, \"3\": 4}}"
-# requested_output_format: PROTOBUF
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# serialize_error: "TypeError: this.map_int64_int64 is not iterable
-#     at protobuf_test_messages_proto3_TestAllTypesProto3.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:1580:45)
-#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:47:44
-# 
-#      "
-# 
-# 
-
-not ok - Required.Proto3.JsonInput.Int64MapField.JsonOutput
-# output was not equivalent to reference message: 
-# deleted: map_int64_int64[3]: 4
-# deleted: map_int64_int64[1]: 2
-# 
-# 
-# json_payload: "{\"mapInt64Int64\": {\"1\": 2, \"3\": 4}}"
-# requested_output_format: JSON
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# json_payload: "{\"mapInt64Int64\":{}}"
-# 
-# 
-
-not ok - Required.Proto3.JsonInput.Uint64MapField.ProtobufOutput
-# failed to parse input or produce output.
-# 
-# json_payload: "{\"mapUint64Uint64\": {\"1\": 2, \"3\": 4}}"
-# requested_output_format: PROTOBUF
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# serialize_error: "TypeError: this.map_uint64_uint64 is not iterable
-#     at protobuf_test_messages_proto3_TestAllTypesProto3.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:1596:45)
-#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:47:44
-# 
-#      "
-# 
-# 
-
-not ok - Required.Proto3.JsonInput.Uint64MapField.JsonOutput
-# output was not equivalent to reference message: 
-# deleted: map_uint64_uint64[3]: 4
-# deleted: map_uint64_uint64[1]: 2
-# 
-# 
-# json_payload: "{\"mapUint64Uint64\": {\"1\": 2, \"3\": 4}}"
-# requested_output_format: JSON
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# json_payload: "{\"mapUint64Uint64\":{}}"
-# 
-# 
-
 not ok - Required.Proto3.JsonInput.BoolMapField.ProtobufOutput
 # failed to parse input or produce output.
 # 
@@ -835,127 +255,14 @@ not ok - Required.Proto3.JsonInput.BoolMapField.ProtobufOutput
 # message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
 # test_category: JSON_TEST
 # 
-# serialize_error: "TypeError: this.map_bool_bool is not iterable
-#     at protobuf_test_messages_proto3_TestAllTypesProto3.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:1668:45)
-#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:47:44
+# serialize_error: "Error: Assertion failed
+#     at Object.jspb.asserts.doAssertFailure (file:///private/var/folders/tg/07vw4wzj2gbbbkr8kqktm36c0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:597)
+#     at Object.jspb.asserts.assert (file:///private/var/folders/tg/07vw4wzj2gbbbkr8kqktm36c0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:729)
+#     at jspb.BinaryWriter.writeInt64 (file:///private/var/folders/tg/07vw4wzj2gbbbkr8kqktm36c0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:459:77)
+#     at protobuf_test_messages_proto3_TestAllTypesProto3.serialize (file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:1671:20)
+#     at file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/js/conformance/main.ts:47:44
 # 
 #      "
-# 
-# 
-
-not ok - Required.Proto3.JsonInput.BoolMapField.JsonOutput
-# output was not equivalent to reference message: 
-# deleted: map_bool_bool[true]: true
-# deleted: map_bool_bool[false]: false
-# 
-# 
-# json_payload: "{\"mapBoolBool\": {\"true\": true, \"false\": false}}"
-# requested_output_format: JSON
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# json_payload: "{\"mapBoolBool\":{}}"
-# 
-# 
-
-not ok - Required.Proto3.JsonInput.MessageMapField.ProtobufOutput
-# failed to parse input or produce output.
-# 
-# json_payload: "{
-#         \"mapStringNestedMessage\": {
-#           \"hello\": {\"a\": 1234},
-#           \"world\": {\"a\": 5678}
-#         }
-#       }"
-# requested_output_format: PROTOBUF
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# serialize_error: "TypeError: this.map_string_nested_message is not iterable
-#     at protobuf_test_messages_proto3_TestAllTypesProto3.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:1692:45)
-#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:47:44
-# 
-#      "
-# 
-# 
-
-not ok - Required.Proto3.JsonInput.MessageMapField.JsonOutput
-# output was not equivalent to reference message: 
-# deleted: map_string_nested_message[world]: { a: 5678 }
-# deleted: map_string_nested_message[hello]: { a: 1234 }
-# 
-# 
-# json_payload: "{
-#         \"mapStringNestedMessage\": {
-#           \"hello\": {\"a\": 1234},
-#           \"world\": {\"a\": 5678}
-#         }
-#       }"
-# requested_output_format: JSON
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# json_payload: "{\"mapStringNestedMessage\":{}}"
-# 
-# 
-
-not ok - Required.Proto3.JsonInput.Int32MapEscapedKey.ProtobufOutput
-# failed to parse input or produce output.
-# 
-# json_payload: "{\"mapInt32Int32\": {\"\\u0031\": 2}}"
-# requested_output_format: PROTOBUF
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# serialize_error: "TypeError: this.map_int32_int32 is not iterable
-#     at protobuf_test_messages_proto3_TestAllTypesProto3.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:1572:45)
-#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:47:44
-# 
-#      "
-# 
-# 
-
-not ok - Required.Proto3.JsonInput.Int32MapEscapedKey.JsonOutput
-# output was not equivalent to reference message: 
-# deleted: map_int32_int32[1]: 2
-# 
-# 
-# json_payload: "{\"mapInt32Int32\": {\"\\u0031\": 2}}"
-# requested_output_format: JSON
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# json_payload: "{\"mapInt32Int32\":{}}"
-# 
-# 
-
-not ok - Required.Proto3.JsonInput.Int64MapEscapedKey.ProtobufOutput
-# failed to parse input or produce output.
-# 
-# json_payload: "{\"mapInt64Int64\": {\"\\u0031\": 2}}"
-# requested_output_format: PROTOBUF
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# serialize_error: "TypeError: this.map_int64_int64 is not iterable
-#     at protobuf_test_messages_proto3_TestAllTypesProto3.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:1580:45)
-#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:47:44
-# 
-#      "
-# 
-# 
-
-not ok - Required.Proto3.JsonInput.Int64MapEscapedKey.JsonOutput
-# output was not equivalent to reference message: 
-# deleted: map_int64_int64[1]: 2
-# 
-# 
-# json_payload: "{\"mapInt64Int64\": {\"\\u0031\": 2}}"
-# requested_output_format: JSON
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# json_payload: "{\"mapInt64Int64\":{}}"
 # 
 # 
 
@@ -967,25 +274,14 @@ not ok - Required.Proto3.JsonInput.BoolMapEscapedKey.ProtobufOutput
 # message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
 # test_category: JSON_TEST
 # 
-# serialize_error: "TypeError: this.map_bool_bool is not iterable
-#     at protobuf_test_messages_proto3_TestAllTypesProto3.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:1668:45)
-#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:47:44
+# serialize_error: "Error: Assertion failed
+#     at Object.jspb.asserts.doAssertFailure (file:///private/var/folders/tg/07vw4wzj2gbbbkr8kqktm36c0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:597)
+#     at Object.jspb.asserts.assert (file:///private/var/folders/tg/07vw4wzj2gbbbkr8kqktm36c0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:729)
+#     at jspb.BinaryWriter.writeInt64 (file:///private/var/folders/tg/07vw4wzj2gbbbkr8kqktm36c0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:459:77)
+#     at protobuf_test_messages_proto3_TestAllTypesProto3.serialize (file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:1671:20)
+#     at file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/js/conformance/main.ts:47:44
 # 
 #      "
-# 
-# 
-
-not ok - Required.Proto3.JsonInput.BoolMapEscapedKey.JsonOutput
-# output was not equivalent to reference message: 
-# deleted: map_bool_bool[true]: true
-# 
-# 
-# json_payload: "{\"mapBoolBool\": {\"tr\\u0075e\": true}}"
-# requested_output_format: JSON
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# json_payload: "{\"mapBoolBool\":{}}"
 # 
 # 
 
@@ -997,79 +293,7 @@ not ok - Required.Proto3.JsonInput.RepeatedFieldWrongElementTypeExpectingInteger
 # message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
 # test_category: JSON_TEST
 # 
-# json_payload: "{\"repeatedInt32\":[1,false,3,4]}"
-# 
-# 
-
-not ok - Required.Proto3.JsonInput.RepeatedFieldWrongElementTypeExpectingStringsGotInt
-# Should have failed to parse, but didn't.
-# 
-# json_payload: "{\"repeatedString\": [\"1\", 2, \"3\", \"4\"]}"
-# requested_output_format: JSON
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# json_payload: "{\"repeatedString\":[\"1\",2,\"3\",\"4\"]}"
-# 
-# 
-
-not ok - Required.Proto3.JsonInput.RepeatedFieldWrongElementTypeExpectingStringsGotBool
-# Should have failed to parse, but didn't.
-# 
-# json_payload: "{\"repeatedString\": [\"1\", \"2\", false, \"4\"]}"
-# requested_output_format: JSON
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# json_payload: "{\"repeatedString\":[\"1\",\"2\",false,\"4\"]}"
-# 
-# 
-
-not ok - Required.Proto3.JsonInput.RepeatedFieldWrongElementTypeExpectingStringsGotMessage
-# Should have failed to parse, but didn't.
-# 
-# json_payload: "{\"repeatedString\": [\"1\", 2, \"3\", {\"a\": 4}]}"
-# requested_output_format: JSON
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# json_payload: "{\"repeatedString\":[\"1\",2,\"3\",{\"a\":4}]}"
-# 
-# 
-
-not ok - Required.Proto3.JsonInput.RepeatedFieldWrongElementTypeExpectingMessagesGotInt
-# Should have failed to parse, but didn't.
-# 
-# json_payload: "{\"repeatedNestedMessage\": [{\"a\": 1}, 2]}"
-# requested_output_format: JSON
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# json_payload: "{\"repeatedNestedMessage\":[{\"a\":1},{}]}"
-# 
-# 
-
-not ok - Required.Proto3.JsonInput.RepeatedFieldWrongElementTypeExpectingMessagesGotBool
-# Should have failed to parse, but didn't.
-# 
-# json_payload: "{\"repeatedNestedMessage\": [{\"a\": 1}, false]}"
-# requested_output_format: JSON
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# json_payload: "{\"repeatedNestedMessage\":[{\"a\":1},{}]}"
-# 
-# 
-
-not ok - Required.Proto3.JsonInput.RepeatedFieldWrongElementTypeExpectingMessagesGotString
-# Should have failed to parse, but didn't.
-# 
-# json_payload: "{\"repeatedNestedMessage\": [{\"a\": 1}, \"2\"]}"
-# requested_output_format: JSON
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# json_payload: "{\"repeatedNestedMessage\":[{\"a\":1},{}]}"
+# json_payload: "{\"repeatedInt32\":[1,0,3,4]}"
 # 
 # 
 
@@ -1119,10 +343,9 @@ not ok - Required.Proto3.JsonInput.AllFieldAcceptNull.ProtobufOutput
 # message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
 # test_category: JSON_TEST
 # 
-# parse_error: "TypeError: Cannot convert null to a BigInt
-#     at BigInt (<anonymous>)
-#     at Function.fromJson (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:2158:38)
-#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:33:27
+# parse_error: "TypeError: Cannot read properties of null (reading \'length\')
+#     at Function.fromJson (file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:2223:68)
+#     at file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/js/conformance/main.ts:33:27
 # 
 #      "
 # 
@@ -1174,10 +397,9 @@ not ok - Required.Proto3.JsonInput.AllFieldAcceptNull.JsonOutput
 # message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
 # test_category: JSON_TEST
 # 
-# parse_error: "TypeError: Cannot convert null to a BigInt
-#     at BigInt (<anonymous>)
-#     at Function.fromJson (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:2158:38)
-#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:33:27
+# parse_error: "TypeError: Cannot read properties of null (reading \'length\')
+#     at Function.fromJson (file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:2223:68)
+#     at file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/js/conformance/main.ts:33:27
 # 
 #      "
 # 
@@ -1191,7 +413,7 @@ not ok - Recommended.Proto3.JsonInput.RepeatedFieldPrimitiveElementIsNull
 # message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
 # test_category: JSON_TEST
 # 
-# json_payload: "{\"repeatedInt32\":[1,null,2]}"
+# json_payload: "{\"repeatedInt32\":[1,0,2]}"
 # 
 # 
 
@@ -1203,7 +425,7 @@ not ok - Recommended.Proto3.JsonInput.MapFieldValueIsNull
 # message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
 # test_category: JSON_TEST
 # 
-# json_payload: "{\"mapInt32Int32\":{}}"
+# json_payload: "{\"mapInt32Int32\":{\"0\":0}}"
 # 
 # 
 
@@ -2867,7 +2089,7 @@ not ok - Recommended.ValueRejectNanNumberValue.JsonOutput
 # message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
 # test_category: JSON_TEST
 # 
-# json_payload: "{\"optionalValue\":{\"numberValue\":null}}"
+# json_payload: "{\"optionalValue\":{\"numberValue\":\"NaN\"}}"
 # 
 # 
 
@@ -2879,7 +2101,7 @@ not ok - Recommended.ValueRejectInfNumberValue.JsonOutput
 # message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
 # test_category: JSON_TEST
 # 
-# json_payload: "{\"optionalValue\":{\"numberValue\":null}}"
+# json_payload: "{\"optionalValue\":{\"numberValue\":\"Infinity\"}}"
 # 
 # 
 
@@ -3320,46 +2542,15 @@ not ok - Recommended.Proto3.JsonInput.RejectUnknownEnumStringValueInMapValue
 # 
 
 # CONFORMANCE SUITE FAILED
-#	1815 succeses
+#	1871 succeses
 #	0 skipped
 #	0 expected failures
-#	216 unexpected failures
+#	134 unexpected failures
 
 # 
 # These tests failed.  If they can't be fixed right now, you can add them to the failure list so the overall suite can succeed.  Add them to the failure list by running:
 #   ./update_failure_list.py  --add failing_tests.txt
 # 
-#   Recommended.FieldMaskNumbersDontRoundTrip.JsonOutput
-#   Recommended.FieldMaskPathsDontRoundTrip.JsonOutput
-#   Recommended.FieldMaskTooManyUnderscore.JsonOutput
-#   Recommended.Proto2.JsonInput.FieldNameExtension.Validator
-#   Recommended.Proto3.JsonInput.BoolFieldDoubleQuotedFalse
-#   Recommended.Proto3.JsonInput.BoolFieldDoubleQuotedTrue
-#   Recommended.Proto3.JsonInput.BoolFieldIntegerOne
-#   Recommended.Proto3.JsonInput.BoolFieldIntegerZero
-#   Recommended.Proto3.JsonInput.DurationHas3FractionalDigits.Validator
-#   Recommended.Proto3.JsonInput.DurationHas6FractionalDigits.Validator
-#   Recommended.Proto3.JsonInput.DurationHas9FractionalDigits.Validator
-#   Recommended.Proto3.JsonInput.DurationHasZeroFractionalDigit.Validator
-#   Recommended.Proto3.JsonInput.FieldMaskInvalidCharacter
-#   Recommended.Proto3.JsonInput.MapFieldValueIsNull
-#   Recommended.Proto3.JsonInput.NullValueInOtherOneofNewFormat.Validator
-#   Recommended.Proto3.JsonInput.NullValueInOtherOneofOldFormat.Validator
-#   Recommended.Proto3.JsonInput.RejectUnknownEnumStringValueInMapValue
-#   Recommended.Proto3.JsonInput.RejectUnknownEnumStringValueInOptionalField
-#   Recommended.Proto3.JsonInput.RejectUnknownEnumStringValueInRepeatedField
-#   Recommended.Proto3.JsonInput.RepeatedFieldPrimitiveElementIsNull
-#   Recommended.Proto3.JsonInput.StringFieldSurrogateInWrongOrder
-#   Recommended.Proto3.JsonInput.StringFieldUnpairedHighSurrogate
-#   Recommended.Proto3.JsonInput.StringFieldUnpairedLowSurrogate
-#   Recommended.Proto3.JsonInput.TimestampHas3FractionalDigits.Validator
-#   Recommended.Proto3.JsonInput.TimestampHas6FractionalDigits.Validator
-#   Recommended.Proto3.JsonInput.TimestampHas9FractionalDigits.Validator
-#   Recommended.Proto3.JsonInput.TimestampHasZeroFractionalDigit.Validator
-#   Recommended.Proto3.JsonInput.TimestampZeroNormalized.Validator
-#   Recommended.Proto3.ProtobufInput.OneofZeroBytes.JsonOutput
-#   Recommended.ValueRejectInfNumberValue.JsonOutput
-#   Recommended.ValueRejectNanNumberValue.JsonOutput
 #   Required.DurationProtoInputTooLarge.JsonOutput
 #   Required.DurationProtoInputTooSmall.JsonOutput
 #   Required.Proto3.JsonInput.AllFieldAcceptNull.JsonOutput
@@ -3384,13 +2575,8 @@ not ok - Recommended.Proto3.JsonInput.RejectUnknownEnumStringValueInMapValue
 #   Required.Proto3.JsonInput.AnyWithValueForInteger.ProtobufOutput
 #   Required.Proto3.JsonInput.AnyWithValueForJsonObject.JsonOutput
 #   Required.Proto3.JsonInput.AnyWithValueForJsonObject.ProtobufOutput
-#   Required.Proto3.JsonInput.BoolMapEscapedKey.JsonOutput
 #   Required.Proto3.JsonInput.BoolMapEscapedKey.ProtobufOutput
-#   Required.Proto3.JsonInput.BoolMapField.JsonOutput
 #   Required.Proto3.JsonInput.BoolMapField.ProtobufOutput
-#   Required.Proto3.JsonInput.DoubleFieldInfinity.ProtobufOutput
-#   Required.Proto3.JsonInput.DoubleFieldNegativeInfinity.ProtobufOutput
-#   Required.Proto3.JsonInput.DoubleFieldTooSmall
 #   Required.Proto3.JsonInput.DurationJsonInputTooLarge
 #   Required.Proto3.JsonInput.DurationJsonInputTooSmall
 #   Required.Proto3.JsonInput.DurationMaxValue.JsonOutput
@@ -3410,23 +2596,9 @@ not ok - Recommended.Proto3.JsonInput.RejectUnknownEnumStringValueInMapValue
 #   Required.Proto3.JsonInput.EnumFieldUnknownValue.Validator
 #   Required.Proto3.JsonInput.FieldMask.JsonOutput
 #   Required.Proto3.JsonInput.FieldMask.ProtobufOutput
-#   Required.Proto3.JsonInput.FloatFieldInfinity.ProtobufOutput
-#   Required.Proto3.JsonInput.FloatFieldNegativeInfinity.ProtobufOutput
 #   Required.Proto3.JsonInput.Int32FieldLeadingSpace
 #   Required.Proto3.JsonInput.Int32FieldNotInteger
 #   Required.Proto3.JsonInput.Int32FieldTrailingSpace
-#   Required.Proto3.JsonInput.Int32MapEscapedKey.JsonOutput
-#   Required.Proto3.JsonInput.Int32MapEscapedKey.ProtobufOutput
-#   Required.Proto3.JsonInput.Int32MapField.JsonOutput
-#   Required.Proto3.JsonInput.Int32MapField.ProtobufOutput
-#   Required.Proto3.JsonInput.Int64FieldTooLarge
-#   Required.Proto3.JsonInput.Int64FieldTooSmall
-#   Required.Proto3.JsonInput.Int64MapEscapedKey.JsonOutput
-#   Required.Proto3.JsonInput.Int64MapEscapedKey.ProtobufOutput
-#   Required.Proto3.JsonInput.Int64MapField.JsonOutput
-#   Required.Proto3.JsonInput.Int64MapField.ProtobufOutput
-#   Required.Proto3.JsonInput.MessageMapField.JsonOutput
-#   Required.Proto3.JsonInput.MessageMapField.ProtobufOutput
 #   Required.Proto3.JsonInput.OneofFieldDuplicate
 #   Required.Proto3.JsonInput.OptionalBoolWrapper.JsonOutput
 #   Required.Proto3.JsonInput.OptionalBoolWrapper.ProtobufOutput
@@ -3457,12 +2629,6 @@ not ok - Recommended.Proto3.JsonInput.RejectUnknownEnumStringValueInMapValue
 #   Required.Proto3.JsonInput.RepeatedDoubleWrapper.JsonOutput
 #   Required.Proto3.JsonInput.RepeatedDoubleWrapper.ProtobufOutput
 #   Required.Proto3.JsonInput.RepeatedFieldWrongElementTypeExpectingIntegersGotBool
-#   Required.Proto3.JsonInput.RepeatedFieldWrongElementTypeExpectingMessagesGotBool
-#   Required.Proto3.JsonInput.RepeatedFieldWrongElementTypeExpectingMessagesGotInt
-#   Required.Proto3.JsonInput.RepeatedFieldWrongElementTypeExpectingMessagesGotString
-#   Required.Proto3.JsonInput.RepeatedFieldWrongElementTypeExpectingStringsGotBool
-#   Required.Proto3.JsonInput.RepeatedFieldWrongElementTypeExpectingStringsGotInt
-#   Required.Proto3.JsonInput.RepeatedFieldWrongElementTypeExpectingStringsGotMessage
 #   Required.Proto3.JsonInput.RepeatedFloatWrapper.JsonOutput
 #   Required.Proto3.JsonInput.RepeatedFloatWrapper.ProtobufOutput
 #   Required.Proto3.JsonInput.RepeatedInt32Wrapper.JsonOutput
@@ -3479,7 +2645,6 @@ not ok - Recommended.Proto3.JsonInput.RejectUnknownEnumStringValueInMapValue
 #   Required.Proto3.JsonInput.RepeatedUint64Wrapper.ProtobufOutput
 #   Required.Proto3.JsonInput.RepeatedValue.JsonOutput
 #   Required.Proto3.JsonInput.RepeatedValue.ProtobufOutput
-#   Required.Proto3.JsonInput.StringFieldNotAString
 #   Required.Proto3.JsonInput.Struct.JsonOutput
 #   Required.Proto3.JsonInput.Struct.ProtobufOutput
 #   Required.Proto3.JsonInput.StructWithEmptyListValue.JsonOutput
@@ -3503,11 +2668,6 @@ not ok - Recommended.Proto3.JsonInput.RejectUnknownEnumStringValueInMapValue
 #   Required.Proto3.JsonInput.TimestampWithPositiveOffset.JsonOutput
 #   Required.Proto3.JsonInput.TimestampWithPositiveOffset.ProtobufOutput
 #   Required.Proto3.JsonInput.Uint32FieldNotInteger
-#   Required.Proto3.JsonInput.Uint32MapField.JsonOutput
-#   Required.Proto3.JsonInput.Uint32MapField.ProtobufOutput
-#   Required.Proto3.JsonInput.Uint64FieldTooLarge
-#   Required.Proto3.JsonInput.Uint64MapField.JsonOutput
-#   Required.Proto3.JsonInput.Uint64MapField.ProtobufOutput
 #   Required.Proto3.JsonInput.ValueAcceptBool.JsonOutput
 #   Required.Proto3.JsonInput.ValueAcceptBool.ProtobufOutput
 #   Required.Proto3.JsonInput.ValueAcceptFloat.JsonOutput
@@ -3522,27 +2682,7 @@ not ok - Recommended.Proto3.JsonInput.RejectUnknownEnumStringValueInMapValue
 #   Required.Proto3.JsonInput.ValueAcceptObject.ProtobufOutput
 #   Required.Proto3.JsonInput.ValueAcceptString.JsonOutput
 #   Required.Proto3.JsonInput.ValueAcceptString.ProtobufOutput
-#   Required.Proto3.ProtobufInput.DoubleFieldNormalizeQuietNan.JsonOutput
-#   Required.Proto3.ProtobufInput.DoubleFieldNormalizeSignalingNan.JsonOutput
-#   Required.Proto3.ProtobufInput.FloatFieldNormalizeQuietNan.JsonOutput
-#   Required.Proto3.ProtobufInput.FloatFieldNormalizeSignalingNan.JsonOutput
-#   Required.Proto3.ProtobufInput.RepeatedScalarSelectsLast.BYTES.JsonOutput
-#   Required.Proto3.ProtobufInput.ValidDataMap.STRING.BYTES.Default.JsonOutput
-#   Required.Proto3.ProtobufInput.ValidDataMap.STRING.BYTES.DuplicateKey.JsonOutput
-#   Required.Proto3.ProtobufInput.ValidDataMap.STRING.BYTES.DuplicateKeyInMapEntry.JsonOutput
-#   Required.Proto3.ProtobufInput.ValidDataMap.STRING.BYTES.DuplicateValueInMapEntry.JsonOutput
-#   Required.Proto3.ProtobufInput.ValidDataMap.STRING.BYTES.MissingDefault.JsonOutput
-#   Required.Proto3.ProtobufInput.ValidDataMap.STRING.BYTES.NonDefault.JsonOutput
-#   Required.Proto3.ProtobufInput.ValidDataMap.STRING.BYTES.Unordered.JsonOutput
 #   Required.Proto3.ProtobufInput.ValidDataMap.STRING.ENUM.MissingDefault.JsonOutput
-#   Required.Proto3.ProtobufInput.ValidDataOneof.BYTES.DefaultValue.JsonOutput
-#   Required.Proto3.ProtobufInput.ValidDataOneof.BYTES.MultipleValuesForDifferentField.JsonOutput
-#   Required.Proto3.ProtobufInput.ValidDataOneof.BYTES.MultipleValuesForSameField.JsonOutput
-#   Required.Proto3.ProtobufInput.ValidDataOneof.BYTES.NonDefaultValue.JsonOutput
-#   Required.Proto3.ProtobufInput.ValidDataRepeated.BYTES.JsonOutput
-#   Required.Proto3.ProtobufInput.ValidDataScalar.BYTES[1].JsonOutput
-#   Required.Proto3.ProtobufInput.ValidDataScalar.BYTES[2].JsonOutput
-#   Required.Proto3.ProtobufInput.ValidDataScalar.BYTES[3].JsonOutput
 #   Required.TimestampProtoInputTooLarge.JsonOutput
 #   Required.TimestampProtoInputTooSmall.JsonOutput
 # 

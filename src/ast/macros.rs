@@ -55,9 +55,12 @@ macro_rules! member_expr_computed {
 #[macro_export]
 macro_rules! unary_expr {
     ($arg:expr) => {
+        crate::unary_expr!($arg, swc_ecma_ast::UnaryOp::Bang)
+    };
+    ($arg:expr, $op:expr) => {
         swc_ecma_ast::Expr::Unary(swc_ecma_ast::UnaryExpr {
             span: swc_common::DUMMY_SP,
-            op: swc_ecma_ast::UnaryOp::Bang,
+            op: $op,
             arg: Box::new($arg),
         })
     };
@@ -282,11 +285,10 @@ macro_rules! block_stmt {
     ($stmts:expr) => {
         swc_ecma_ast::Stmt::Block(swc_ecma_ast::BlockStmt {
             span: DUMMY_SP,
-            stmts: $stmts
+            stmts: $stmts,
         })
     };
 }
-
 
 #[macro_export]
 macro_rules! assign_expr {
@@ -310,6 +312,17 @@ macro_rules! lit_num {
             span: DUMMY_SP,
             value: $lit as f64,
             raw: None,
+        })
+    };
+}
+
+#[macro_export]
+macro_rules! lit_num_raw {
+    ($lit:expr, $raw:expr) => {
+        swc_ecma_ast::Lit::Num(swc_ecma_ast::Number {
+            span: DUMMY_SP,
+            value: $lit,
+            raw: Some($raw),
         })
     };
 }
@@ -365,6 +378,18 @@ macro_rules! chain_bin_exprs_or {
 }
 
 #[macro_export]
+macro_rules! typeof_unary_expr {
+    ($expr:expr, $type:literal) => {
+        crate::bin_expr!(
+            crate::unary_expr!($expr, UnaryOp::TypeOf),
+            quote_str!($type).into(),
+            BinaryOp::EqEqEq
+        )
+    };
+}
+
+
+#[macro_export]
 macro_rules! chain_bin_exprs_and {
     ($e1:expr, $e2:expr) => {
         crate::bin_expr!($e1, $e2)
@@ -379,12 +404,22 @@ macro_rules! paren_expr {
     ($expr:expr) => {
         swc_ecma_ast::Expr::Paren(swc_ecma_ast::ParenExpr {
             span: DUMMY_SP,
-            expr: Box::new($expr)
+            expr: Box::new($expr),
         })
     };
 }
 
-
+#[macro_export]
+macro_rules! cond_expr {
+    ($test:expr, $cons:expr, $alt:expr) => {
+        swc_ecma_ast::Expr::Cond(swc_ecma_ast::CondExpr {
+            span: DUMMY_SP,
+            test: Box::new($test),
+            cons: Box::new($cons),
+            alt: Box::new($alt),
+        })
+    };
+}
 
 #[macro_export]
 macro_rules! if_stmt {

@@ -1,18 +1,16 @@
-use std::fmt::Display;
+use std::fmt::{Display, LowerExp};
 use std::vec;
 
-use crate::ast::field;
 use crate::context::Syntax;
 use crate::descriptor::field_descriptor_proto::Type;
 use crate::descriptor::DescriptorProto;
 use crate::{context::Context, descriptor::FieldDescriptorProto};
-use crate::{member_expr, member_expr_bare};
 
 use convert_case::{Case, Casing};
 use swc_common::DUMMY_SP;
 use swc_ecma_ast::{
-    ArrayLit, ArrayPat, BinaryOp, BlockStmt, ClassMember, ClassMethod, Expr, Function, MethodKind,
-    ObjectLit, Param, Pat, PatOrExpr, PropName, Stmt, ThrowStmt,
+    ArrayLit, ArrayPat, BinaryOp, BlockStmt, ClassMember, ClassMethod, Expr, Function, Invalid,
+    MethodKind, ObjectLit, Param, Pat, PatOrExpr, PropName, Stmt, ThrowStmt, UnaryOp,
 };
 use swc_ecma_utils::{quote_ident, quote_str};
 
@@ -25,76 +23,59 @@ pub(crate) fn json_key_name_field_member(field: &FieldDescriptorProto) -> Expr {
 impl FieldDescriptorProto {
     pub(self) fn infinity_and_nan_check(&self, accessor: FieldAccessorFn) -> Expr {
         crate::chain_bin_exprs_or!(
+            crate::bin_expr!(accessor(self), quote_ident!("null").into(), BinaryOp::EqEq),
             crate::bin_expr!(
                 accessor(self),
                 crate::lit_str!("NaN").into(),
-                BinaryOp::EqEq
+                BinaryOp::EqEqEq
             ),
             crate::bin_expr!(
                 accessor(self),
                 crate::lit_str!("Infinity").into(),
-                BinaryOp::EqEq
+                BinaryOp::EqEqEq
             ),
             crate::bin_expr!(
                 accessor(self),
                 crate::lit_str!("-Infinity").into(),
-                BinaryOp::EqEq
+                BinaryOp::EqEqEq
             )
         )
     }
 
     pub(self) fn min_max_check<T>(&self, accessor: FieldAccessorFn, min: T, max: T) -> Expr
     where
-        T: Display,
+        T: Display + LowerExp,
     {
         crate::paren_expr!(crate::chain_bin_exprs_and!(
             crate::bin_expr!(
                 accessor(self),
-                quote_ident!(format!("{}", min)).into(),
+                quote_ident!(format!("{:+e}", min)).into(),
                 BinaryOp::GtEq
             ),
             crate::bin_expr!(
                 accessor(self),
-                quote_ident!(format!("{}", max)).into(),
+                quote_ident!(format!("{:+e}", max)).into(),
                 BinaryOp::LtEq
             )
         ))
     }
 
-    pub(self) fn valid_value_bin_expr(&self, ctx: &mut Context, accessor: FieldAccessorFn) -> Option<Expr> {
-        match self.type_() {
-            Type::TYPE_FLOAT => Some(crate::chain_bin_exprs_or!(
-                self.infinity_and_nan_check(accessor),
-                self.min_max_check(accessor, f32::MIN, f32::MAX)
-            )),
-            Type::TYPE_DOUBLE => Some(crate::chain_bin_exprs_or!(
-                self.infinity_and_nan_check(accessor),
-                self.min_max_check(accessor, f64::MIN, f64::MAX)
-            )),
-            Type::TYPE_UINT32 | Type::TYPE_FIXED32 => Some(crate::chain_bin_exprs_or!(
-                self.infinity_and_nan_check(accessor),
-                self.min_max_check(accessor, u32::MIN, u32::MAX)
-            )),
-            Type::TYPE_UINT64 | Type::TYPE_FIXED64 => Some(crate::chain_bin_exprs_or!(
-                self.infinity_and_nan_check(accessor),
-                self.min_max_check(accessor, u64::MIN, u64::MAX)
-            )),
-            Type::TYPE_INT32 | Type::TYPE_SFIXED32 | Type::TYPE_SINT32 => Some(crate::chain_bin_exprs_or!(
-                self.infinity_and_nan_check(accessor),
-                self.min_max_check(accessor, i32::MIN, i32::MAX)
-            )),
-            Type::TYPE_INT64 | Type::TYPE_SFIXED64 | Type::TYPE_SINT64 => Some(crate::chain_bin_exprs_or!(
-                self.infinity_and_nan_check(accessor),
-                self.min_max_check(accessor, i64::MIN, i64::MAX)
-            )),
-            // Type::TYPE_BOOL => todo!(),
-            // Type::TYPE_STRING => todo!(),
-            // Type::TYPE_GROUP => todo!(),
-            // Type::TYPE_MESSAGE => todo!(),
-            // Type::TYPE_BYTES => todo!(),
-            // Type::TYPE_ENUM => todo!(),
-            _ => None,
-        }
+    pub(self) fn min_max_check_bigint<T>(&self, accessor: FieldAccessorFn, min: T, max: T) -> Expr
+    where
+        T: Into<num_bigint::BigInt>,
+    {
+        crate::paren_expr!(crate::chain_bin_exprs_and!(
+            crate::bin_expr!(
+                accessor(self),
+                crate::lit_bigint!(min.into()).into(),
+                BinaryOp::GtEq
+            ),
+            crate::bin_expr!(
+                accessor(self),
+                crate::lit_bigint!(max.into()).into(),
+                BinaryOp::LtEq
+            )
+        ))
     }
 
     pub(self) fn default_value_bin_expr_for_json(
@@ -145,27 +126,85 @@ impl FieldDescriptorProto {
         }
     }
 
-    pub(self) fn value_check_stmt(&self, ctx: &mut Context, accessor: FieldAccessorFn) -> Option<Stmt> {
-        let valid_value_bin = self.valid_value_bin_expr(ctx, accessor);
-        if valid_value_bin.is_none() {
-            return None
-        }
-        Some(crate::if_stmt!(
-            crate::bin_expr!(
-                crate::paren_expr!(valid_value_bin.unwrap()),
-                crate::lit_bool!(false).into(),
-                BinaryOp::EqEq
-            ),
+    pub(self) fn value_check_stmt(&self, ctx: &mut Context, accessor: FieldAccessorFn) -> Stmt {
+        let min_max_check: Option<Expr> = match self.type_() {
+            Type::TYPE_FLOAT => Some(self.min_max_check(accessor, f32::MIN, f32::MAX)),
+            Type::TYPE_DOUBLE => Some(self.min_max_check(accessor, f64::MIN, f64::MAX)),
+            Type::TYPE_UINT32 | Type::TYPE_FIXED32 => {
+                Some(self.min_max_check(accessor, u32::MIN, u32::MAX))
+            }
+            Type::TYPE_UINT64 | Type::TYPE_FIXED64 => {
+                Some(self.min_max_check_bigint(accessor, u64::MIN, u64::MAX))
+            }
+            Type::TYPE_INT32 | Type::TYPE_SFIXED32 | Type::TYPE_SINT32 => {
+                Some(self.min_max_check(accessor, i32::MIN, i32::MAX))
+            }
+            Type::TYPE_INT64 | Type::TYPE_SFIXED64 | Type::TYPE_SINT64 => {
+                Some(self.min_max_check_bigint(accessor, i64::MIN, i64::MAX))
+            }
+            _ => None,
+        };
+
+        let num_check = if min_max_check.is_some() {
+            Some(crate::chain_bin_exprs_or!(
+                self.infinity_and_nan_check(accessor),
+                min_max_check.unwrap()
+            ))
+        } else {
+            None
+        };
+
+        let typeof_check = if self.is_string() || self.is_bytes() {
+            crate::typeof_unary_expr!(accessor(self).into(), "string")
+        } else if self.is_booelan() {
+            crate::paren_expr!(crate::chain_bin_exprs_or!(
+                crate::bin_expr!(
+                    accessor(self),
+                    quote_ident!("true").into(),
+                    BinaryOp::EqEqEq
+                ),
+                crate::bin_expr!(
+                    accessor(self),
+                    quote_ident!("false").into(),
+                    BinaryOp::EqEqEq
+                )
+            ))
+        } else if self.is_message()
+        /* also map */
+        {
+            crate::typeof_unary_expr!(accessor(self).into(), "object")
+        } else if self.is_number() || self.is_enum() {
+            crate::paren_expr!(crate::chain_bin_exprs_or!(
+                crate::typeof_unary_expr!(accessor(self).into(), "string"),
+                crate::typeof_unary_expr!(accessor(self).into(), "number")
+            ))
+        } else {
+            crate::typeof_unary_expr!(accessor(self).into(), "never!ever")
+        };
+
+        let check = if num_check.is_some() {
+            crate::paren_expr!(crate::chain_bin_exprs_and!(
+                typeof_check,
+                num_check.unwrap()
+            ))
+        } else {
+            typeof_check
+        };
+
+        crate::if_stmt!(
+            crate::unary_expr!(crate::paren_expr!(check)),
             Stmt::Throw(ThrowStmt {
                 span: DUMMY_SP,
                 arg: Box::new(crate::new_expr!(
                     quote_ident!("Error").into(),
-                    vec![crate::expr_or_spread!(
-                        crate::lit_str!(format!("illegal value for {}", self.json_key_name())).into()
-                    )]
+                    vec![crate::expr_or_spread!(crate::lit_str!(format!(
+                        "illegal value for {}",
+                        self.json_key_name()
+                    ))
+                    .into())]
                 )),
             })
-        ))
+        )
     }
 
     pub(self) fn json_key_name(&self) -> String {
@@ -174,10 +213,6 @@ impl FieldDescriptorProto {
         } else {
             self.name().to_case(Case::Camel)
         }
-    }
-
-    pub(self) fn needs_mapping(&self) -> bool {
-        !((self.is_number() && !self.is_bigint()) || self.is_booelan() || self.is_string())
     }
 
     pub(self) fn into_to_stringified_map_expr(&self, ctx: &mut Context) -> Expr {
@@ -197,12 +232,27 @@ impl FieldDescriptorProto {
         accessor_fn: super::field::FieldAccessorFn,
     ) -> Expr {
         let accessor = accessor_fn(self);
+        let base64 = ctx.get_import("https://deno.land/std@0.205.0/encoding/base64url.ts");
         if self.is_enum() {
             crate::member_expr_computed!(ctx.lazy_type_ref(self.type_name()).into(), accessor)
+        } else if self.is_bytes() {
+            crate::call_expr!(
+                crate::member_expr!(base64, "encode"),
+                vec![crate::expr_or_spread!(accessor)]
+            )
         } else if self.is_bigint() {
-            crate::call_expr!(member_expr_bare!(accessor, "toString"))
+            crate::call_expr!(crate::member_expr_bare!(accessor, "toString"))
+        } else if self.is_number() {
+            crate::cond_expr!(
+                crate::call_expr!(
+                    crate::member_expr!("Number", "isFinite"),
+                    vec![crate::expr_or_spread!(accessor.clone())]
+                ),
+                accessor.clone().into(),
+                super::field::to_string_normalizer(&accessor)
+            )
         } else if self.is_message() && !self.is_map(ctx) {
-            crate::call_expr!(member_expr_bare!(accessor, "toJson"))
+            crate::call_expr!(crate::member_expr_bare!(accessor, "toJson"))
         } else {
             accessor
         }
@@ -214,16 +264,27 @@ impl FieldDescriptorProto {
         accessor_fn: super::field::FieldAccessorFn,
     ) -> Expr {
         let accessor = accessor_fn(self);
+        let base64 = ctx.get_import("https://deno.land/std@0.205.0/encoding/base64url.ts");
         if self.is_enum() {
             crate::member_expr_computed!(ctx.lazy_type_ref(self.type_name()).into(), accessor)
+        } else if self.is_bytes() {
+            crate::call_expr!(
+                crate::member_expr!(base64, "decode"),
+                vec![crate::expr_or_spread!(accessor)]
+            )
         } else if self.is_bigint() {
             crate::call_expr!(
                 quote_ident!("BigInt").into(),
                 vec![crate::expr_or_spread!(accessor)]
             )
+        } else if self.is_number() {
+            crate::call_expr!(
+                quote_ident!("Number").into(),
+                vec![crate::expr_or_spread!(accessor)]
+            )
         } else if self.is_message() && !self.is_map(ctx) {
             crate::call_expr!(
-                member_expr_bare!(ctx.lazy_type_ref(self.type_name()).into(), "fromJson"),
+                crate::member_expr_bare!(ctx.lazy_type_ref(self.type_name()).into(), "fromJson"),
                 vec![crate::expr_or_spread!(accessor)]
             )
         } else {
@@ -243,8 +304,7 @@ impl DescriptorProto {
         ))];
 
         for field in self.field.clone() {
-            let accessor_fn = if field.is_repeated() && !field.is_map(ctx) && field.needs_mapping()
-            {
+            let accessor_fn = if field.is_repeated() && !field.is_map(ctx) {
                 super::field::static_field_member
             } else {
                 super::field::this_field_member
@@ -259,7 +319,7 @@ impl DescriptorProto {
                 let key_field = &descriptor.field[0];
                 let value_field = &descriptor.field[1];
                 value_expr = crate::call_expr!(
-                    member_expr!("Array", "from"),
+                    crate::member_expr!("Array", "from"),
                     vec![crate::expr_or_spread!(value_expr)]
                 );
                 if !(key_field.is_string() && value_field.is_string()) {
@@ -290,12 +350,12 @@ impl DescriptorProto {
                     );
                 }
                 value_expr = crate::call_expr!(
-                    member_expr!("Object", "fromEntries"),
+                    crate::member_expr!("Object", "fromEntries"),
                     vec![crate::expr_or_spread!(value_expr)]
                 );
-            } else if field.is_repeated() && field.needs_mapping() {
+            } else if field.is_repeated() {
                 value_expr = crate::call_expr!(
-                    crate::member_expr_bare!(member_expr!("this", field.name()), "map"),
+                    crate::member_expr_bare!(crate::member_expr!("this", field.name()), "map"),
                     vec![crate::expr_or_spread!(crate::arrow_func_short!(
                         value_expr,
                         vec![crate::pat_ident!("r")]
@@ -346,12 +406,8 @@ impl DescriptorProto {
         ))];
 
         for field in self.field.clone() {
-            let accessor_fn = if field.is_repeated() && !field.is_map(ctx)
-            {
-                super::field::static_field_member
-            } else {
-                json_key_name_field_member
-            };
+            let accessor_fn = super::field::static_field_member;
+
             let mut value_expr = field.into_from_json_expr(ctx, accessor_fn);
 
             // TODO: wkt
@@ -359,74 +415,85 @@ impl DescriptorProto {
                 continue;
             }
 
-            let validation_stmt = field.value_check_stmt(ctx, accessor_fn);
-
             if field.is_map(ctx) {
-                // let descriptor = ctx
-                //     .get_map_type(field.type_name())
-                //     .expect(format!("can not find the map type {}", field.type_name()).as_str());
-                // let key_field = &descriptor.field[0];
-                // let value_field = &descriptor.field[1];
-                // value_expr = crate::call_expr!(
-                //     member_expr!("Array", "from"),
-                //     vec![crate::expr_or_spread!(value_expr)]
-                // );
-                // if !(key_field.is_string() && value_field.is_string()) {
-                //     value_expr = crate::call_expr!(
-                //         crate::member_expr_bare!(value_expr, "map"),
-                //         vec![crate::expr_or_spread!(crate::arrow_func_short!(
-                //             Expr::Array(ArrayLit {
-                //                 span: DUMMY_SP,
-                //                 elems: vec![
-                //                     Some(crate::expr_or_spread!(
-                //                         key_field.into_to_stringified_map_expr(ctx)
-                //                     )),
-                //                     Some(crate::expr_or_spread!(
-                //                         value_field.into_to_stringified_map_expr(ctx)
-                //                     ))
-                //                 ]
-                //             }),
-                //             vec![Pat::Array(ArrayPat {
-                //                 optional: false,
-                //                 elems: vec![
-                //                     Some(crate::pat_ident!(key_field.name())),
-                //                     Some(crate::pat_ident!(value_field.name()))
-                //                 ],
-                //                 span: DUMMY_SP,
-                //                 type_ann: None
-                //             })]
-                //         ))]
-                //     );
-                // }
-                // value_expr = crate::call_expr!(
-                //     member_expr!("Object", "fromEntries"),
-                //     vec![crate::expr_or_spread!(value_expr)]
-                // );
-            } else if field.is_repeated() {
-                let mut stmts = vec![];
-                if validation_stmt.is_some() {
-                    stmts.push(validation_stmt.clone().unwrap())
-                }
-                stmts.push(crate::return_stmt!(value_expr));
+                let descriptor = ctx
+                    .get_map_type(field.type_name())
+                    .expect(format!("can not find the map type {}", field.type_name()).as_str());
+                let key_field = &descriptor.field[0];
+                let value_field = &descriptor.field[1];
                 value_expr = crate::call_expr!(
-                    crate::member_expr_bare!(json_key_name_field_member(&field), "map"),
+                    crate::member_expr!("Object", "entries"),
+                    vec![crate::expr_or_spread!(value_expr)]
+                );
+                if !(key_field.is_string() && value_field.is_string()) {
+                    value_expr = crate::call_expr!(
+                        crate::member_expr_bare!(value_expr, "map"),
+                        vec![crate::expr_or_spread!(crate::arrow_func_short!(
+                            Expr::Array(ArrayLit {
+                                span: DUMMY_SP,
+                                elems: vec![
+                                    Some(crate::expr_or_spread!(key_field.into_from_json_expr(
+                                        ctx,
+                                        super::field::bare_field_member
+                                    ))),
+                                    Some(crate::expr_or_spread!(value_field.into_from_json_expr(
+                                        ctx,
+                                        super::field::bare_field_member
+                                    )))
+                                ]
+                            }),
+                            vec![Pat::Array(ArrayPat {
+                                optional: false,
+                                elems: vec![
+                                    Some(crate::pat_ident!(key_field.name())),
+                                    Some(crate::pat_ident!(value_field.name()))
+                                ],
+                                span: DUMMY_SP,
+                                type_ann: None
+                            })]
+                        ))]
+                    );
+                }
+                value_expr = crate::new_expr!(
+                    quote_ident!("Map").into(),
+                    vec![crate::expr_or_spread!(value_expr)]
+                );
+            } else if field.is_repeated() {
+                value_expr = crate::call_expr!(
+                    crate::member_expr_bare!(accessor_fn(&field), "map"),
                     vec![crate::expr_or_spread!(crate::arrow_func!(
                         vec![crate::pat_ident!("r")],
-                        stmts
+                        vec![
+                            field.value_check_stmt(ctx, accessor_fn),
+                            crate::return_stmt!(value_expr)
+                        ]
                     ))]
                 );
             }
-            let mut substmts = vec![];
-            if !field.is_repeated() && validation_stmt.is_some() {
-                substmts.push(validation_stmt.unwrap())
+
+            let mut stmts = vec![Stmt::Decl(crate::const_decl!(
+                "r",
+                crate::cond_expr!(
+                    crate::bin_expr!(
+                        json_key_name_field_member(&field),
+                        quote_ident!("null").into(),
+                        BinaryOp::EqEqEq
+                    ),
+                    field.default_value_expr(ctx, true),
+                    json_key_name_field_member(&field)
+                )
+            ))];
+
+            if !field.is_repeated() {
+                stmts.push(field.value_check_stmt(ctx, accessor_fn))
             }
-            substmts.push(crate::expr_stmt!(crate::assign_expr!(
+            stmts.push(crate::expr_stmt!(crate::assign_expr!(
                 PatOrExpr::Expr(Box::new(crate::member_expr!("message", field.name()))),
                 value_expr
             )));
             statements.push(crate::if_stmt!(
                 field.default_value_bin_expr_for_json(ctx, json_key_name_field_member),
-                crate::block_stmt!(substmts)
+                crate::block_stmt!(stmts)
             ))
         }
 
