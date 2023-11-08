@@ -13,7 +13,7 @@ use swc_ecma_utils::{quote_ident, quote_str};
 
 pub type AccessNormalizerFn = fn(expr: &Expr) -> Expr;
 
-pub(crate) fn map_to_string_normalizer(expr: &Expr) -> Expr {
+pub fn map_to_string_normalizer(expr: &Expr) -> Expr {
     crate::call_expr!(
         crate::member_expr_bare!(expr.clone(), "map"),
         vec![crate::expr_or_spread!(crate::arrow_func_short!(
@@ -23,26 +23,26 @@ pub(crate) fn map_to_string_normalizer(expr: &Expr) -> Expr {
     )
 }
 
-pub(crate) fn to_string_normalizer(expr: &Expr) -> Expr {
+pub fn to_string_normalizer(expr: &Expr) -> Expr {
     crate::call_expr!(crate::member_expr_bare!(expr.clone(), "toString"))
 }
 
 pub type FieldAccessorFn = fn(field: &FieldDescriptorProto) -> Expr;
 
-pub(crate) fn this_field_member(field: &FieldDescriptorProto) -> Expr {
+pub fn this_field_member(field: &FieldDescriptorProto) -> Expr {
     crate::member_expr!("this", field.name())
 }
 
-pub(crate) fn bare_field_member(field: &FieldDescriptorProto) -> Expr {
+pub fn bare_field_member(field: &FieldDescriptorProto) -> Expr {
     Expr::Ident(quote_ident!(field.name()))
 }
 
-pub(crate) fn static_field_member(_field: &FieldDescriptorProto) -> Expr {
+pub fn static_field_member(_field: &FieldDescriptorProto) -> Expr {
     Expr::Ident(quote_ident!("r"))
 }
 
 impl FieldDescriptorProto {
-    pub(crate) fn into_accessor(&self, ctx: &Context) -> FieldAccessorFn {
+    pub fn into_accessor(&self, ctx: &Context) -> FieldAccessorFn {
         if self.is_repeated() && self.is_map(ctx) {
             bare_field_member
         } else if self.is_repeated() && !self.is_packed(ctx) {

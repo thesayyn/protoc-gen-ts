@@ -135,4 +135,9 @@ impl FieldDescriptorProto {
     pub fn is_jstype_string(&self) -> bool {
         self.options.jstype() == JSType::JS_STRING
     }
+
+    #[inline]
+    pub fn is_well_known_message(&self) -> bool {
+        self.is_message() && self.type_name().contains("google.protobuf")
+    }
 }

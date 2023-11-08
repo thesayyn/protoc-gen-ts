@@ -1,6 +1,8 @@
 use std::io::prelude::*;
 use std::io::*;
 
+pub mod runtime;
+
 use protoc_gen_ts::*;
 use crate::compile::compile;
 
@@ -14,3 +16,4 @@ fn main() {
 
     stdout().write(&bytes).unwrap();
 }
+

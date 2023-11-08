@@ -1,8 +1,1 @@
-
-
-const STRUCT_SOURCE: &str = include_str!("./well_known/struct.ts");
-
-
-const fn Struct() {
-    
-}
+include!(concat!(env!("OUT_DIR"), "/wkt/mod.rs"));

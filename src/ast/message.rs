@@ -1,30 +1,29 @@
 use std::vec;
 
+use crate::context::Context;
 use crate::descriptor::DescriptorProto;
 use crate::print::Print;
 use crate::runtime::Runtime;
-use crate::{context::Context, descriptor::FieldDescriptorProto};
 
 use swc_common::DUMMY_SP;
 use swc_ecma_ast::{
-    BlockStmt, Class, ClassDecl, ClassMember, ClassMethod, Decl, ExportDecl, Expr, Function,
-    MethodKind, ModuleDecl, ModuleItem, Param, PropName, Stmt, PrivateProp, PrivateName, ArrayLit,
+    ArrayLit, BlockStmt, Class, ClassDecl, ClassMember, ClassMethod, Decl, ExportDecl, Expr,
+    Function, MethodKind, ModuleDecl, ModuleItem, Param, PrivateName, PrivateProp, PropName, Stmt,
 };
 use swc_ecma_utils::quote_ident;
 
 impl DescriptorProto {
-
     fn print_unknown_fields(&self) -> ClassMember {
         ClassMember::PrivateProp(PrivateProp {
             span: DUMMY_SP,
             key: PrivateName {
                 id: quote_ident!("unknown_fields"),
-                span: DUMMY_SP
+                span: DUMMY_SP,
             },
             value: Some(Box::new(Expr::Array(ArrayLit {
-                            elems: vec![],
-                            span: DUMMY_SP
-                        }))),
+                elems: vec![],
+                span: DUMMY_SP,
+            }))),
             type_ann: None,
             is_static: false,
             decorators: vec![],
@@ -35,7 +34,6 @@ impl DescriptorProto {
             definite: false,
         })
     }
-
 
     fn print_serialize<T: Runtime + Sized>(&self, ctx: &mut Context, runtime: &T) -> ClassMember {
         let mut statements = vec![];
@@ -152,19 +150,6 @@ impl DescriptorProto {
             kind: MethodKind::Method,
         })
     }
-
-    pub fn get_oneof_fields(&self, current: &FieldDescriptorProto) -> Vec<FieldDescriptorProto> {
-        let mut fields = vec![];
-        for field in self.field.clone() {
-            if field.has_oneof_index()
-                && field.oneof_index() == current.oneof_index()
-                && field.number() != current.number()
-            {
-                fields.push(field)
-            }
-        }
-        fields
-    }
 }
 
 impl<T> Print<T> for DescriptorProto
@@ -190,8 +175,17 @@ where
         members.push(self.print_merge_from(ctx, runtime));
         members.push(self.print_deserialize(ctx));
         members.push(self.print_serialize(ctx, runtime));
-        members.push(self.print_to_json(ctx));
-        members.push(self.print_from_json(ctx));
+
+        members.push(
+            runtime
+                .to_json(ctx, self)
+                .unwrap_or_else(|| self.print_to_json(ctx)),
+        );
+        members.push(
+            runtime
+                .from_json(ctx, self)
+                .unwrap_or_else(|| self.print_from_json(ctx)),
+        );
 
         let class_decl = ClassDecl {
             ident: quote_ident!(ctx.normalize_name(self.name())),

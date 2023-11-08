@@ -379,7 +379,7 @@ macro_rules! chain_bin_exprs_or {
 
 #[macro_export]
 macro_rules! typeof_unary_expr {
-    ($expr:expr, $type:literal) => {
+    ($expr:expr, $type:expr) => {
         crate::bin_expr!(
             crate::unary_expr!($expr, UnaryOp::TypeOf),
             quote_str!($type).into(),

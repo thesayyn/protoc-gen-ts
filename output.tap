@@ -177,11 +177,11 @@ not ok - Required.Proto3.JsonInput.EnumFieldNumericValueNonZero.ProtobufOutput
 # test_category: JSON_TEST
 # 
 # serialize_error: "Error: Assertion failed
-#     at Object.jspb.asserts.doAssertFailure (file:///private/var/folders/tg/07vw4wzj2gbbbkr8kqktm36c0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:597)
-#     at Object.jspb.asserts.assert (file:///private/var/folders/tg/07vw4wzj2gbbbkr8kqktm36c0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:729)
-#     at jspb.BinaryWriter.writeInt32 (file:///private/var/folders/tg/07vw4wzj2gbbbkr8kqktm36c0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:458:77)
-#     at protobuf_test_messages_proto3_TestAllTypesProto3.serialize (file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:1368:16)
-#     at file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/js/conformance/main.ts:47:44
+#     at Object.jspb.asserts.doAssertFailure (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:597)
+#     at Object.jspb.asserts.assert (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:729)
+#     at jspb.BinaryWriter.writeInt32 (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:458:77)
+#     at protobuf_test_messages_proto3_TestAllTypesProto3.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:1368:16)
+#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:47:44
 # 
 #      "
 # 
@@ -256,11 +256,11 @@ not ok - Required.Proto3.JsonInput.BoolMapField.ProtobufOutput
 # test_category: JSON_TEST
 # 
 # serialize_error: "Error: Assertion failed
-#     at Object.jspb.asserts.doAssertFailure (file:///private/var/folders/tg/07vw4wzj2gbbbkr8kqktm36c0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:597)
-#     at Object.jspb.asserts.assert (file:///private/var/folders/tg/07vw4wzj2gbbbkr8kqktm36c0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:729)
-#     at jspb.BinaryWriter.writeInt64 (file:///private/var/folders/tg/07vw4wzj2gbbbkr8kqktm36c0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:459:77)
-#     at protobuf_test_messages_proto3_TestAllTypesProto3.serialize (file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:1671:20)
-#     at file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/js/conformance/main.ts:47:44
+#     at Object.jspb.asserts.doAssertFailure (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:597)
+#     at Object.jspb.asserts.assert (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:729)
+#     at jspb.BinaryWriter.writeInt64 (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:459:77)
+#     at protobuf_test_messages_proto3_TestAllTypesProto3.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:1671:20)
+#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:47:44
 # 
 #      "
 # 
@@ -275,11 +275,11 @@ not ok - Required.Proto3.JsonInput.BoolMapEscapedKey.ProtobufOutput
 # test_category: JSON_TEST
 # 
 # serialize_error: "Error: Assertion failed
-#     at Object.jspb.asserts.doAssertFailure (file:///private/var/folders/tg/07vw4wzj2gbbbkr8kqktm36c0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:597)
-#     at Object.jspb.asserts.assert (file:///private/var/folders/tg/07vw4wzj2gbbbkr8kqktm36c0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:729)
-#     at jspb.BinaryWriter.writeInt64 (file:///private/var/folders/tg/07vw4wzj2gbbbkr8kqktm36c0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:459:77)
-#     at protobuf_test_messages_proto3_TestAllTypesProto3.serialize (file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:1671:20)
-#     at file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/js/conformance/main.ts:47:44
+#     at Object.jspb.asserts.doAssertFailure (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:597)
+#     at Object.jspb.asserts.assert (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:729)
+#     at jspb.BinaryWriter.writeInt64 (file:///private/var/folders/c3/qcpmmp4s0_1cy0b3bxjwcsqh0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:459:77)
+#     at protobuf_test_messages_proto3_TestAllTypesProto3.serialize (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:1671:20)
+#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:47:44
 # 
 #      "
 # 
@@ -344,8 +344,8 @@ not ok - Required.Proto3.JsonInput.AllFieldAcceptNull.ProtobufOutput
 # test_category: JSON_TEST
 # 
 # parse_error: "TypeError: Cannot read properties of null (reading \'length\')
-#     at Function.fromJson (file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:2223:68)
-#     at file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/js/conformance/main.ts:33:27
+#     at Function.fromJson (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:2223:68)
+#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:33:27
 # 
 #      "
 # 
@@ -398,8 +398,8 @@ not ok - Required.Proto3.JsonInput.AllFieldAcceptNull.JsonOutput
 # test_category: JSON_TEST
 # 
 # parse_error: "TypeError: Cannot read properties of null (reading \'length\')
-#     at Function.fromJson (file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:2223:68)
-#     at file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/js/conformance/main.ts:33:27
+#     at Function.fromJson (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:2223:68)
+#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:33:27
 # 
 #      "
 # 
@@ -429,589 +429,73 @@ not ok - Recommended.Proto3.JsonInput.MapFieldValueIsNull
 # 
 # 
 
-not ok - Required.Proto3.JsonInput.OptionalBoolWrapper.ProtobufOutput
-# output was not equivalent to reference message: 
-# deleted: optional_bool_wrapper: { }
-# 
-# 
-# json_payload: "{\"optionalBoolWrapper\": false}"
-# requested_output_format: PROTOBUF
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# protobuf_payload: ""
-# 
-# 
-
-not ok - Required.Proto3.JsonInput.OptionalBoolWrapper.JsonOutput
-# output was not equivalent to reference message: 
-# deleted: optional_bool_wrapper: { }
-# 
-# 
-# json_payload: "{\"optionalBoolWrapper\": false}"
-# requested_output_format: JSON
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# json_payload: "{}"
-# 
-# 
-
-not ok - Required.Proto3.JsonInput.OptionalInt32Wrapper.ProtobufOutput
-# output was not equivalent to reference message: 
-# deleted: optional_int32_wrapper: { }
-# 
-# 
-# json_payload: "{\"optionalInt32Wrapper\": 0}"
-# requested_output_format: PROTOBUF
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# protobuf_payload: ""
-# 
-# 
-
-not ok - Required.Proto3.JsonInput.OptionalInt32Wrapper.JsonOutput
-# output was not equivalent to reference message: 
-# deleted: optional_int32_wrapper: { }
-# 
-# 
-# json_payload: "{\"optionalInt32Wrapper\": 0}"
-# requested_output_format: JSON
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# json_payload: "{}"
-# 
-# 
-
-not ok - Required.Proto3.JsonInput.OptionalUint32Wrapper.ProtobufOutput
-# output was not equivalent to reference message: 
-# deleted: optional_uint32_wrapper: { }
-# 
-# 
-# json_payload: "{\"optionalUint32Wrapper\": 0}"
-# requested_output_format: PROTOBUF
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# protobuf_payload: ""
-# 
-# 
-
-not ok - Required.Proto3.JsonInput.OptionalUint32Wrapper.JsonOutput
-# output was not equivalent to reference message: 
-# deleted: optional_uint32_wrapper: { }
-# 
-# 
-# json_payload: "{\"optionalUint32Wrapper\": 0}"
-# requested_output_format: JSON
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# json_payload: "{}"
-# 
-# 
-
-not ok - Required.Proto3.JsonInput.OptionalInt64Wrapper.ProtobufOutput
-# output was not equivalent to reference message: 
-# deleted: optional_int64_wrapper: { }
-# 
-# 
-# json_payload: "{\"optionalInt64Wrapper\": 0}"
-# requested_output_format: PROTOBUF
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# protobuf_payload: ""
-# 
-# 
-
-not ok - Required.Proto3.JsonInput.OptionalInt64Wrapper.JsonOutput
-# output was not equivalent to reference message: 
-# deleted: optional_int64_wrapper: { }
-# 
-# 
-# json_payload: "{\"optionalInt64Wrapper\": 0}"
-# requested_output_format: JSON
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# json_payload: "{}"
-# 
-# 
-
-not ok - Required.Proto3.JsonInput.OptionalUint64Wrapper.ProtobufOutput
-# output was not equivalent to reference message: 
-# deleted: optional_uint64_wrapper: { }
-# 
-# 
-# json_payload: "{\"optionalUint64Wrapper\": 0}"
-# requested_output_format: PROTOBUF
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# protobuf_payload: ""
-# 
-# 
-
-not ok - Required.Proto3.JsonInput.OptionalUint64Wrapper.JsonOutput
-# output was not equivalent to reference message: 
-# deleted: optional_uint64_wrapper: { }
-# 
-# 
-# json_payload: "{\"optionalUint64Wrapper\": 0}"
-# requested_output_format: JSON
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# json_payload: "{}"
-# 
-# 
-
-not ok - Required.Proto3.JsonInput.OptionalFloatWrapper.ProtobufOutput
-# output was not equivalent to reference message: 
-# deleted: optional_float_wrapper: { }
-# 
-# 
-# json_payload: "{\"optionalFloatWrapper\": 0}"
-# requested_output_format: PROTOBUF
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# protobuf_payload: ""
-# 
-# 
-
-not ok - Required.Proto3.JsonInput.OptionalFloatWrapper.JsonOutput
-# output was not equivalent to reference message: 
-# deleted: optional_float_wrapper: { }
-# 
-# 
-# json_payload: "{\"optionalFloatWrapper\": 0}"
-# requested_output_format: JSON
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# json_payload: "{}"
-# 
-# 
-
-not ok - Required.Proto3.JsonInput.OptionalDoubleWrapper.ProtobufOutput
-# output was not equivalent to reference message: 
-# deleted: optional_double_wrapper: { }
-# 
-# 
-# json_payload: "{\"optionalDoubleWrapper\": 0}"
-# requested_output_format: PROTOBUF
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# protobuf_payload: ""
-# 
-# 
-
-not ok - Required.Proto3.JsonInput.OptionalDoubleWrapper.JsonOutput
-# output was not equivalent to reference message: 
-# deleted: optional_double_wrapper: { }
-# 
-# 
-# json_payload: "{\"optionalDoubleWrapper\": 0}"
-# requested_output_format: JSON
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# json_payload: "{}"
-# 
-# 
-
-not ok - Required.Proto3.JsonInput.OptionalStringWrapper.ProtobufOutput
-# output was not equivalent to reference message: 
-# deleted: optional_string_wrapper: { }
-# 
-# 
-# json_payload: "{\"optionalStringWrapper\": \"\"}"
-# requested_output_format: PROTOBUF
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# protobuf_payload: ""
-# 
-# 
-
-not ok - Required.Proto3.JsonInput.OptionalStringWrapper.JsonOutput
-# output was not equivalent to reference message: 
-# deleted: optional_string_wrapper: { }
-# 
-# 
-# json_payload: "{\"optionalStringWrapper\": \"\"}"
-# requested_output_format: JSON
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# json_payload: "{}"
-# 
-# 
-
-not ok - Required.Proto3.JsonInput.OptionalBytesWrapper.ProtobufOutput
-# output was not equivalent to reference message: 
-# deleted: optional_bytes_wrapper: { }
-# 
-# 
-# json_payload: "{\"optionalBytesWrapper\": \"\"}"
-# requested_output_format: PROTOBUF
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# protobuf_payload: ""
-# 
-# 
-
-not ok - Required.Proto3.JsonInput.OptionalBytesWrapper.JsonOutput
-# output was not equivalent to reference message: 
-# deleted: optional_bytes_wrapper: { }
-# 
-# 
-# json_payload: "{\"optionalBytesWrapper\": \"\"}"
-# requested_output_format: JSON
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# json_payload: "{}"
-# 
-# 
-
-not ok - Required.Proto3.JsonInput.OptionalWrapperTypesWithNonDefaultValue.ProtobufOutput
-# output was not equivalent to reference message: 
-# deleted: optional_bool_wrapper: { value: true }
-# deleted: optional_int32_wrapper: { value: 1 }
-# deleted: optional_int64_wrapper: { value: 1 }
-# deleted: optional_uint32_wrapper: { value: 1 }
-# deleted: optional_uint64_wrapper: { value: 1 }
-# deleted: optional_float_wrapper: { value: 1 }
-# deleted: optional_double_wrapper: { value: 1 }
-# deleted: optional_string_wrapper: { value: "1" }
-# deleted: optional_bytes_wrapper: { value: "\001\002" }
-# 
+not ok - Required.Proto3.JsonInput.WrapperTypesWithNullValue.ProtobufOutput
+# failed to parse input or produce output.
 # 
 # json_payload: "{
-#         \"optionalBoolWrapper\": true,
-#         \"optionalInt32Wrapper\": 1,
-#         \"optionalUint32Wrapper\": 1,
-#         \"optionalInt64Wrapper\": \"1\",
-#         \"optionalUint64Wrapper\": \"1\",
-#         \"optionalFloatWrapper\": 1,
-#         \"optionalDoubleWrapper\": 1,
-#         \"optionalStringWrapper\": \"1\",
-#         \"optionalBytesWrapper\": \"AQI=\"
+#         \"optionalBoolWrapper\": null,
+#         \"optionalInt32Wrapper\": null,
+#         \"optionalUint32Wrapper\": null,
+#         \"optionalInt64Wrapper\": null,
+#         \"optionalUint64Wrapper\": null,
+#         \"optionalFloatWrapper\": null,
+#         \"optionalDoubleWrapper\": null,
+#         \"optionalStringWrapper\": null,
+#         \"optionalBytesWrapper\": null,
+#         \"repeatedBoolWrapper\": null,
+#         \"repeatedInt32Wrapper\": null,
+#         \"repeatedUint32Wrapper\": null,
+#         \"repeatedInt64Wrapper\": null,
+#         \"repeatedUint64Wrapper\": null,
+#         \"repeatedFloatWrapper\": null,
+#         \"repeatedDoubleWrapper\": null,
+#         \"repeatedStringWrapper\": null,
+#         \"repeatedBytesWrapper\": null
 #       }"
 # requested_output_format: PROTOBUF
 # message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
 # test_category: JSON_TEST
 # 
-# protobuf_payload: ""
+# parse_error: "Error: illegal value for optionalBoolWrapper
+#     at Function.fromJson (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:2793:50)
+#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:33:27
+# 
+#      "
 # 
 # 
 
-not ok - Required.Proto3.JsonInput.OptionalWrapperTypesWithNonDefaultValue.JsonOutput
-# output was not equivalent to reference message: 
-# deleted: optional_bool_wrapper: { value: true }
-# deleted: optional_int32_wrapper: { value: 1 }
-# deleted: optional_int64_wrapper: { value: 1 }
-# deleted: optional_uint32_wrapper: { value: 1 }
-# deleted: optional_uint64_wrapper: { value: 1 }
-# deleted: optional_float_wrapper: { value: 1 }
-# deleted: optional_double_wrapper: { value: 1 }
-# deleted: optional_string_wrapper: { value: "1" }
-# deleted: optional_bytes_wrapper: { value: "\001\002" }
-# 
+not ok - Required.Proto3.JsonInput.WrapperTypesWithNullValue.JsonOutput
+# failed to parse input or produce output.
 # 
 # json_payload: "{
-#         \"optionalBoolWrapper\": true,
-#         \"optionalInt32Wrapper\": 1,
-#         \"optionalUint32Wrapper\": 1,
-#         \"optionalInt64Wrapper\": \"1\",
-#         \"optionalUint64Wrapper\": \"1\",
-#         \"optionalFloatWrapper\": 1,
-#         \"optionalDoubleWrapper\": 1,
-#         \"optionalStringWrapper\": \"1\",
-#         \"optionalBytesWrapper\": \"AQI=\"
+#         \"optionalBoolWrapper\": null,
+#         \"optionalInt32Wrapper\": null,
+#         \"optionalUint32Wrapper\": null,
+#         \"optionalInt64Wrapper\": null,
+#         \"optionalUint64Wrapper\": null,
+#         \"optionalFloatWrapper\": null,
+#         \"optionalDoubleWrapper\": null,
+#         \"optionalStringWrapper\": null,
+#         \"optionalBytesWrapper\": null,
+#         \"repeatedBoolWrapper\": null,
+#         \"repeatedInt32Wrapper\": null,
+#         \"repeatedUint32Wrapper\": null,
+#         \"repeatedInt64Wrapper\": null,
+#         \"repeatedUint64Wrapper\": null,
+#         \"repeatedFloatWrapper\": null,
+#         \"repeatedDoubleWrapper\": null,
+#         \"repeatedStringWrapper\": null,
+#         \"repeatedBytesWrapper\": null
 #       }"
 # requested_output_format: JSON
 # message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
 # test_category: JSON_TEST
 # 
-# json_payload: "{}"
-# 
-# 
-
-not ok - Required.Proto3.JsonInput.RepeatedBoolWrapper.ProtobufOutput
-# output was not equivalent to reference message: 
-# deleted: repeated_bool_wrapper[0]: { value: true }
-# deleted: repeated_bool_wrapper[1]: { }
-# 
-# 
-# json_payload: "{\"repeatedBoolWrapper\": [true, false]}"
-# requested_output_format: PROTOBUF
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# protobuf_payload: ""
-# 
-# 
-
-not ok - Required.Proto3.JsonInput.RepeatedBoolWrapper.JsonOutput
-# output was not equivalent to reference message: 
-# deleted: repeated_bool_wrapper[0]: { value: true }
-# deleted: repeated_bool_wrapper[1]: { }
-# 
-# 
-# json_payload: "{\"repeatedBoolWrapper\": [true, false]}"
-# requested_output_format: JSON
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# json_payload: "{}"
-# 
-# 
-
-not ok - Required.Proto3.JsonInput.RepeatedInt32Wrapper.ProtobufOutput
-# output was not equivalent to reference message: 
-# deleted: repeated_int32_wrapper[0]: { }
-# deleted: repeated_int32_wrapper[1]: { value: 1 }
-# 
-# 
-# json_payload: "{\"repeatedInt32Wrapper\": [0, 1]}"
-# requested_output_format: PROTOBUF
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# protobuf_payload: ""
-# 
-# 
-
-not ok - Required.Proto3.JsonInput.RepeatedInt32Wrapper.JsonOutput
-# output was not equivalent to reference message: 
-# deleted: repeated_int32_wrapper[0]: { }
-# deleted: repeated_int32_wrapper[1]: { value: 1 }
-# 
-# 
-# json_payload: "{\"repeatedInt32Wrapper\": [0, 1]}"
-# requested_output_format: JSON
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# json_payload: "{}"
-# 
-# 
-
-not ok - Required.Proto3.JsonInput.RepeatedUint32Wrapper.ProtobufOutput
-# output was not equivalent to reference message: 
-# deleted: repeated_uint32_wrapper[0]: { }
-# deleted: repeated_uint32_wrapper[1]: { value: 1 }
-# 
-# 
-# json_payload: "{\"repeatedUint32Wrapper\": [0, 1]}"
-# requested_output_format: PROTOBUF
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# protobuf_payload: ""
-# 
-# 
-
-not ok - Required.Proto3.JsonInput.RepeatedUint32Wrapper.JsonOutput
-# output was not equivalent to reference message: 
-# deleted: repeated_uint32_wrapper[0]: { }
-# deleted: repeated_uint32_wrapper[1]: { value: 1 }
-# 
-# 
-# json_payload: "{\"repeatedUint32Wrapper\": [0, 1]}"
-# requested_output_format: JSON
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# json_payload: "{}"
-# 
-# 
-
-not ok - Required.Proto3.JsonInput.RepeatedInt64Wrapper.ProtobufOutput
-# output was not equivalent to reference message: 
-# deleted: repeated_int64_wrapper[0]: { }
-# deleted: repeated_int64_wrapper[1]: { value: 1 }
-# 
-# 
-# json_payload: "{\"repeatedInt64Wrapper\": [0, 1]}"
-# requested_output_format: PROTOBUF
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# protobuf_payload: ""
-# 
-# 
-
-not ok - Required.Proto3.JsonInput.RepeatedInt64Wrapper.JsonOutput
-# output was not equivalent to reference message: 
-# deleted: repeated_int64_wrapper[0]: { }
-# deleted: repeated_int64_wrapper[1]: { value: 1 }
-# 
-# 
-# json_payload: "{\"repeatedInt64Wrapper\": [0, 1]}"
-# requested_output_format: JSON
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# json_payload: "{}"
-# 
-# 
-
-not ok - Required.Proto3.JsonInput.RepeatedUint64Wrapper.ProtobufOutput
-# output was not equivalent to reference message: 
-# deleted: repeated_uint64_wrapper[0]: { }
-# deleted: repeated_uint64_wrapper[1]: { value: 1 }
-# 
-# 
-# json_payload: "{\"repeatedUint64Wrapper\": [0, 1]}"
-# requested_output_format: PROTOBUF
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# protobuf_payload: ""
-# 
-# 
-
-not ok - Required.Proto3.JsonInput.RepeatedUint64Wrapper.JsonOutput
-# output was not equivalent to reference message: 
-# deleted: repeated_uint64_wrapper[0]: { }
-# deleted: repeated_uint64_wrapper[1]: { value: 1 }
-# 
-# 
-# json_payload: "{\"repeatedUint64Wrapper\": [0, 1]}"
-# requested_output_format: JSON
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# json_payload: "{}"
-# 
-# 
-
-not ok - Required.Proto3.JsonInput.RepeatedFloatWrapper.ProtobufOutput
-# output was not equivalent to reference message: 
-# deleted: repeated_float_wrapper[0]: { }
-# deleted: repeated_float_wrapper[1]: { value: 1 }
-# 
-# 
-# json_payload: "{\"repeatedFloatWrapper\": [0, 1]}"
-# requested_output_format: PROTOBUF
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# protobuf_payload: ""
-# 
-# 
-
-not ok - Required.Proto3.JsonInput.RepeatedFloatWrapper.JsonOutput
-# output was not equivalent to reference message: 
-# deleted: repeated_float_wrapper[0]: { }
-# deleted: repeated_float_wrapper[1]: { value: 1 }
-# 
-# 
-# json_payload: "{\"repeatedFloatWrapper\": [0, 1]}"
-# requested_output_format: JSON
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# json_payload: "{}"
-# 
-# 
-
-not ok - Required.Proto3.JsonInput.RepeatedDoubleWrapper.ProtobufOutput
-# output was not equivalent to reference message: 
-# deleted: repeated_double_wrapper[0]: { }
-# deleted: repeated_double_wrapper[1]: { value: 1 }
-# 
-# 
-# json_payload: "{\"repeatedDoubleWrapper\": [0, 1]}"
-# requested_output_format: PROTOBUF
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# protobuf_payload: ""
-# 
-# 
-
-not ok - Required.Proto3.JsonInput.RepeatedDoubleWrapper.JsonOutput
-# output was not equivalent to reference message: 
-# deleted: repeated_double_wrapper[0]: { }
-# deleted: repeated_double_wrapper[1]: { value: 1 }
-# 
-# 
-# json_payload: "{\"repeatedDoubleWrapper\": [0, 1]}"
-# requested_output_format: JSON
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# json_payload: "{}"
-# 
-# 
-
-not ok - Required.Proto3.JsonInput.RepeatedStringWrapper.ProtobufOutput
-# output was not equivalent to reference message: 
-# deleted: repeated_string_wrapper[0]: { }
-# deleted: repeated_string_wrapper[1]: { value: "AQI=" }
-# 
-# 
-# json_payload: "{\"repeatedStringWrapper\": [\"\", \"AQI=\"]}"
-# requested_output_format: PROTOBUF
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# protobuf_payload: ""
-# 
-# 
-
-not ok - Required.Proto3.JsonInput.RepeatedStringWrapper.JsonOutput
-# output was not equivalent to reference message: 
-# deleted: repeated_string_wrapper[0]: { }
-# deleted: repeated_string_wrapper[1]: { value: "AQI=" }
-# 
-# 
-# json_payload: "{\"repeatedStringWrapper\": [\"\", \"AQI=\"]}"
-# requested_output_format: JSON
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# json_payload: "{}"
-# 
-# 
-
-not ok - Required.Proto3.JsonInput.RepeatedBytesWrapper.ProtobufOutput
-# output was not equivalent to reference message: 
-# deleted: repeated_bytes_wrapper[0]: { }
-# deleted: repeated_bytes_wrapper[1]: { value: "\001\002" }
-# 
-# 
-# json_payload: "{\"repeatedBytesWrapper\": [\"\", \"AQI=\"]}"
-# requested_output_format: PROTOBUF
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# protobuf_payload: ""
-# 
-# 
-
-not ok - Required.Proto3.JsonInput.RepeatedBytesWrapper.JsonOutput
-# output was not equivalent to reference message: 
-# deleted: repeated_bytes_wrapper[0]: { }
-# deleted: repeated_bytes_wrapper[1]: { value: "\001\002" }
-# 
-# 
-# json_payload: "{\"repeatedBytesWrapper\": [\"\", \"AQI=\"]}"
-# requested_output_format: JSON
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# json_payload: "{}"
+# parse_error: "Error: illegal value for optionalBoolWrapper
+#     at Function.fromJson (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:2793:50)
+#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:33:27
+# 
+#      "
 # 
 # 
 
@@ -1799,7 +1283,7 @@ not ok - Required.Proto3.JsonInput.StructWithEmptyListValue.JsonOutput
 
 not ok - Required.Proto3.JsonInput.ValueAcceptInteger.ProtobufOutput
 # output was not equivalent to reference message: 
-# deleted: optional_value: { number_value: 1 }
+# deleted: optional_value.number_value: 1
 # 
 # 
 # json_payload: "{\"optionalValue\": 1}"
@@ -1807,13 +1291,14 @@ not ok - Required.Proto3.JsonInput.ValueAcceptInteger.ProtobufOutput
 # message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
 # test_category: JSON_TEST
 # 
-# protobuf_payload: ""
+# protobuf_payload: "\222\023\000"
 # 
 # 
 
 not ok - Required.Proto3.JsonInput.ValueAcceptInteger.JsonOutput
 # output was not equivalent to reference message: 
-# deleted: optional_value: { number_value: 1 }
+# deleted: optional_value.number_value: 1
+# added: optional_value.struct_value: { }
 # 
 # 
 # json_payload: "{\"optionalValue\": 1}"
@@ -1821,13 +1306,13 @@ not ok - Required.Proto3.JsonInput.ValueAcceptInteger.JsonOutput
 # message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
 # test_category: JSON_TEST
 # 
-# json_payload: "{}"
+# json_payload: "{\"optionalValue\":{}}"
 # 
 # 
 
 not ok - Required.Proto3.JsonInput.ValueAcceptFloat.ProtobufOutput
 # output was not equivalent to reference message: 
-# deleted: optional_value: { number_value: 1.5 }
+# deleted: optional_value.number_value: 1.5
 # 
 # 
 # json_payload: "{\"optionalValue\": 1.5}"
@@ -1835,13 +1320,14 @@ not ok - Required.Proto3.JsonInput.ValueAcceptFloat.ProtobufOutput
 # message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
 # test_category: JSON_TEST
 # 
-# protobuf_payload: ""
+# protobuf_payload: "\222\023\000"
 # 
 # 
 
 not ok - Required.Proto3.JsonInput.ValueAcceptFloat.JsonOutput
 # output was not equivalent to reference message: 
-# deleted: optional_value: { number_value: 1.5 }
+# deleted: optional_value.number_value: 1.5
+# added: optional_value.struct_value: { }
 # 
 # 
 # json_payload: "{\"optionalValue\": 1.5}"
@@ -1849,13 +1335,13 @@ not ok - Required.Proto3.JsonInput.ValueAcceptFloat.JsonOutput
 # message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
 # test_category: JSON_TEST
 # 
-# json_payload: "{}"
+# json_payload: "{\"optionalValue\":{}}"
 # 
 # 
 
 not ok - Required.Proto3.JsonInput.ValueAcceptBool.ProtobufOutput
 # output was not equivalent to reference message: 
-# deleted: optional_value: { bool_value: false }
+# deleted: optional_value.bool_value: false
 # 
 # 
 # json_payload: "{\"optionalValue\": false}"
@@ -1863,13 +1349,14 @@ not ok - Required.Proto3.JsonInput.ValueAcceptBool.ProtobufOutput
 # message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
 # test_category: JSON_TEST
 # 
-# protobuf_payload: ""
+# protobuf_payload: "\222\023\000"
 # 
 # 
 
 not ok - Required.Proto3.JsonInput.ValueAcceptBool.JsonOutput
 # output was not equivalent to reference message: 
-# deleted: optional_value: { bool_value: false }
+# deleted: optional_value.bool_value: false
+# added: optional_value.struct_value: { }
 # 
 # 
 # json_payload: "{\"optionalValue\": false}"
@@ -1877,13 +1364,13 @@ not ok - Required.Proto3.JsonInput.ValueAcceptBool.JsonOutput
 # message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
 # test_category: JSON_TEST
 # 
-# json_payload: "{}"
+# json_payload: "{\"optionalValue\":{}}"
 # 
 # 
 
 not ok - Required.Proto3.JsonInput.ValueAcceptNull.ProtobufOutput
 # output was not equivalent to reference message: 
-# deleted: optional_value: { null_value: NULL_VALUE }
+# deleted: optional_value.null_value: NULL_VALUE
 # 
 # 
 # json_payload: "{\"optionalValue\": null}"
@@ -1891,13 +1378,14 @@ not ok - Required.Proto3.JsonInput.ValueAcceptNull.ProtobufOutput
 # message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
 # test_category: JSON_TEST
 # 
-# protobuf_payload: ""
+# protobuf_payload: "\222\023\000"
 # 
 # 
 
 not ok - Required.Proto3.JsonInput.ValueAcceptNull.JsonOutput
 # output was not equivalent to reference message: 
-# deleted: optional_value: { null_value: NULL_VALUE }
+# deleted: optional_value.null_value: NULL_VALUE
+# added: optional_value.struct_value: { }
 # 
 # 
 # json_payload: "{\"optionalValue\": null}"
@@ -1905,13 +1393,13 @@ not ok - Required.Proto3.JsonInput.ValueAcceptNull.JsonOutput
 # message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
 # test_category: JSON_TEST
 # 
-# json_payload: "{}"
+# json_payload: "{\"optionalValue\":{}}"
 # 
 # 
 
 not ok - Required.Proto3.JsonInput.ValueAcceptString.ProtobufOutput
 # output was not equivalent to reference message: 
-# deleted: optional_value: { string_value: "hello" }
+# deleted: optional_value.string_value: "hello"
 # 
 # 
 # json_payload: "{\"optionalValue\": \"hello\"}"
@@ -1919,13 +1407,14 @@ not ok - Required.Proto3.JsonInput.ValueAcceptString.ProtobufOutput
 # message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
 # test_category: JSON_TEST
 # 
-# protobuf_payload: ""
+# protobuf_payload: "\222\023\000"
 # 
 # 
 
 not ok - Required.Proto3.JsonInput.ValueAcceptString.JsonOutput
 # output was not equivalent to reference message: 
-# deleted: optional_value: { string_value: "hello" }
+# deleted: optional_value.string_value: "hello"
+# added: optional_value.struct_value: { }
 # 
 # 
 # json_payload: "{\"optionalValue\": \"hello\"}"
@@ -1933,13 +1422,13 @@ not ok - Required.Proto3.JsonInput.ValueAcceptString.JsonOutput
 # message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
 # test_category: JSON_TEST
 # 
-# json_payload: "{}"
+# json_payload: "{\"optionalValue\":{}}"
 # 
 # 
 
 not ok - Required.Proto3.JsonInput.ValueAcceptList.ProtobufOutput
 # output was not equivalent to reference message: 
-# deleted: optional_value: { list_value { values { number_value: 0 } values { string_value: "hello" } } }
+# deleted: optional_value.list_value: { values { number_value: 0 } values { string_value: "hello" } }
 # 
 # 
 # json_payload: "{\"optionalValue\": [0, \"hello\"]}"
@@ -1947,13 +1436,14 @@ not ok - Required.Proto3.JsonInput.ValueAcceptList.ProtobufOutput
 # message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
 # test_category: JSON_TEST
 # 
-# protobuf_payload: ""
+# protobuf_payload: "\222\023\000"
 # 
 # 
 
 not ok - Required.Proto3.JsonInput.ValueAcceptList.JsonOutput
 # output was not equivalent to reference message: 
-# deleted: optional_value: { list_value { values { number_value: 0 } values { string_value: "hello" } } }
+# added: optional_value.struct_value: { }
+# deleted: optional_value.list_value: { values { number_value: 0 } values { string_value: "hello" } }
 # 
 # 
 # json_payload: "{\"optionalValue\": [0, \"hello\"]}"
@@ -1961,13 +1451,13 @@ not ok - Required.Proto3.JsonInput.ValueAcceptList.JsonOutput
 # message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
 # test_category: JSON_TEST
 # 
-# json_payload: "{}"
+# json_payload: "{\"optionalValue\":{}}"
 # 
 # 
 
 not ok - Required.Proto3.JsonInput.ValueAcceptObject.ProtobufOutput
 # output was not equivalent to reference message: 
-# deleted: optional_value: { struct_value { fields { key: "value" value { number_value: 1 } } } }
+# deleted: optional_value.struct_value: { fields { key: "value" value { number_value: 1 } } }
 # 
 # 
 # json_payload: "{\"optionalValue\": {\"value\": 1}}"
@@ -1975,13 +1465,13 @@ not ok - Required.Proto3.JsonInput.ValueAcceptObject.ProtobufOutput
 # message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
 # test_category: JSON_TEST
 # 
-# protobuf_payload: ""
+# protobuf_payload: "\222\023\000"
 # 
 # 
 
 not ok - Required.Proto3.JsonInput.ValueAcceptObject.JsonOutput
 # output was not equivalent to reference message: 
-# deleted: optional_value: { struct_value { fields { key: "value" value { number_value: 1 } } } }
+# deleted: optional_value.struct_value.fields[value]: { number_value: 1 }
 # 
 # 
 # json_payload: "{\"optionalValue\": {\"value\": 1}}"
@@ -1989,13 +1479,13 @@ not ok - Required.Proto3.JsonInput.ValueAcceptObject.JsonOutput
 # message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
 # test_category: JSON_TEST
 # 
-# json_payload: "{}"
+# json_payload: "{\"optionalValue\":{}}"
 # 
 # 
 
 not ok - Required.Proto3.JsonInput.RepeatedValue.ProtobufOutput
 # output was not equivalent to reference message: 
-# deleted: repeated_value[0]: { list_value { values { string_value: "a" } } }
+# deleted: repeated_value[0].list_value: { values { string_value: "a" } }
 # 
 # 
 # json_payload: "{
@@ -2005,13 +1495,14 @@ not ok - Required.Proto3.JsonInput.RepeatedValue.ProtobufOutput
 # message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
 # test_category: JSON_TEST
 # 
-# protobuf_payload: ""
+# protobuf_payload: "\342\023\000"
 # 
 # 
 
 not ok - Required.Proto3.JsonInput.RepeatedValue.JsonOutput
 # output was not equivalent to reference message: 
-# deleted: repeated_value[0]: { list_value { values { string_value: "a" } } }
+# added: repeated_value[0].struct_value: { }
+# deleted: repeated_value[0].list_value: { values { string_value: "a" } }
 # 
 # 
 # json_payload: "{
@@ -2021,13 +1512,13 @@ not ok - Required.Proto3.JsonInput.RepeatedValue.JsonOutput
 # message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
 # test_category: JSON_TEST
 # 
-# json_payload: "{}"
+# json_payload: "{\"repeatedValue\":[{}]}"
 # 
 # 
 
 not ok - Required.Proto3.JsonInput.RepeatedListValue.ProtobufOutput
 # output was not equivalent to reference message: 
-# deleted: repeated_list_value[0]: { values { string_value: "a" } }
+# deleted: repeated_list_value[0].values[0]: { string_value: "a" }
 # 
 # 
 # json_payload: "{
@@ -2037,13 +1528,13 @@ not ok - Required.Proto3.JsonInput.RepeatedListValue.ProtobufOutput
 # message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
 # test_category: JSON_TEST
 # 
-# protobuf_payload: ""
+# protobuf_payload: "\352\023\000"
 # 
 # 
 
 not ok - Required.Proto3.JsonInput.RepeatedListValue.JsonOutput
 # output was not equivalent to reference message: 
-# deleted: repeated_list_value[0]: { values { string_value: "a" } }
+# deleted: repeated_list_value[0].values[0]: { string_value: "a" }
 # 
 # 
 # json_payload: "{
@@ -2053,7 +1544,7 @@ not ok - Required.Proto3.JsonInput.RepeatedListValue.JsonOutput
 # message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
 # test_category: JSON_TEST
 # 
-# json_payload: "{}"
+# json_payload: "{\"repeatedListValue\":[{}]}"
 # 
 # 
 
@@ -2065,19 +1556,39 @@ not ok - Recommended.Proto3.JsonInput.NullValueInOtherOneofOldFormat.Validator
 # message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
 # test_category: JSON_TEST
 # 
-# json_payload: "{}"
+# json_payload: "{\"oneofNullValue\":\"NULL_VALUE\"}"
 # 
 # 
 
 not ok - Recommended.Proto3.JsonInput.NullValueInOtherOneofNewFormat.Validator
-# JSON payload validation failed.
+# Expected JSON payload but got type 1
 # 
 # json_payload: "{\"oneofNullValue\": null}"
 # requested_output_format: JSON
 # message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
 # test_category: JSON_TEST
 # 
-# json_payload: "{}"
+# parse_error: "Error: illegal value for oneofNullValue
+#     at Function.fromJson (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:2788:74)
+#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:33:27
+# 
+#      "
+# 
+# 
+
+not ok - Recommended.Proto3.JsonInput.NullValueInNormalMessage.Validator
+# Expected JSON payload but got type 1
+# 
+# json_payload: "{\"optionalNullValue\": null}"
+# requested_output_format: JSON
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: JSON_TEST
+# 
+# parse_error: "Error: illegal value for optionalNullValue
+#     at Function.fromJson (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:2906:74)
+#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:33:27
+# 
+#      "
 # 
 # 
 
@@ -2542,15 +2053,42 @@ not ok - Recommended.Proto3.JsonInput.RejectUnknownEnumStringValueInMapValue
 # 
 
 # CONFORMANCE SUITE FAILED
-#	1871 succeses
+#	1906 succeses
 #	0 skipped
 #	0 expected failures
-#	134 unexpected failures
+#	125 unexpected failures
 
 # 
 # These tests failed.  If they can't be fixed right now, you can add them to the failure list so the overall suite can succeed.  Add them to the failure list by running:
 #   ./update_failure_list.py  --add failing_tests.txt
 # 
+#   Recommended.FieldMaskNumbersDontRoundTrip.JsonOutput
+#   Recommended.FieldMaskPathsDontRoundTrip.JsonOutput
+#   Recommended.FieldMaskTooManyUnderscore.JsonOutput
+#   Recommended.Proto2.JsonInput.FieldNameExtension.Validator
+#   Recommended.Proto3.JsonInput.DurationHas3FractionalDigits.Validator
+#   Recommended.Proto3.JsonInput.DurationHas6FractionalDigits.Validator
+#   Recommended.Proto3.JsonInput.DurationHas9FractionalDigits.Validator
+#   Recommended.Proto3.JsonInput.DurationHasZeroFractionalDigit.Validator
+#   Recommended.Proto3.JsonInput.FieldMaskInvalidCharacter
+#   Recommended.Proto3.JsonInput.MapFieldValueIsNull
+#   Recommended.Proto3.JsonInput.NullValueInNormalMessage.Validator
+#   Recommended.Proto3.JsonInput.NullValueInOtherOneofNewFormat.Validator
+#   Recommended.Proto3.JsonInput.NullValueInOtherOneofOldFormat.Validator
+#   Recommended.Proto3.JsonInput.RejectUnknownEnumStringValueInMapValue
+#   Recommended.Proto3.JsonInput.RejectUnknownEnumStringValueInOptionalField
+#   Recommended.Proto3.JsonInput.RejectUnknownEnumStringValueInRepeatedField
+#   Recommended.Proto3.JsonInput.RepeatedFieldPrimitiveElementIsNull
+#   Recommended.Proto3.JsonInput.StringFieldSurrogateInWrongOrder
+#   Recommended.Proto3.JsonInput.StringFieldUnpairedHighSurrogate
+#   Recommended.Proto3.JsonInput.StringFieldUnpairedLowSurrogate
+#   Recommended.Proto3.JsonInput.TimestampHas3FractionalDigits.Validator
+#   Recommended.Proto3.JsonInput.TimestampHas6FractionalDigits.Validator
+#   Recommended.Proto3.JsonInput.TimestampHas9FractionalDigits.Validator
+#   Recommended.Proto3.JsonInput.TimestampHasZeroFractionalDigit.Validator
+#   Recommended.Proto3.JsonInput.TimestampZeroNormalized.Validator
+#   Recommended.ValueRejectInfNumberValue.JsonOutput
+#   Recommended.ValueRejectNanNumberValue.JsonOutput
 #   Required.DurationProtoInputTooLarge.JsonOutput
 #   Required.DurationProtoInputTooSmall.JsonOutput
 #   Required.Proto3.JsonInput.AllFieldAcceptNull.JsonOutput
@@ -2600,49 +2138,11 @@ not ok - Recommended.Proto3.JsonInput.RejectUnknownEnumStringValueInMapValue
 #   Required.Proto3.JsonInput.Int32FieldNotInteger
 #   Required.Proto3.JsonInput.Int32FieldTrailingSpace
 #   Required.Proto3.JsonInput.OneofFieldDuplicate
-#   Required.Proto3.JsonInput.OptionalBoolWrapper.JsonOutput
-#   Required.Proto3.JsonInput.OptionalBoolWrapper.ProtobufOutput
-#   Required.Proto3.JsonInput.OptionalBytesWrapper.JsonOutput
-#   Required.Proto3.JsonInput.OptionalBytesWrapper.ProtobufOutput
-#   Required.Proto3.JsonInput.OptionalDoubleWrapper.JsonOutput
-#   Required.Proto3.JsonInput.OptionalDoubleWrapper.ProtobufOutput
-#   Required.Proto3.JsonInput.OptionalFloatWrapper.JsonOutput
-#   Required.Proto3.JsonInput.OptionalFloatWrapper.ProtobufOutput
-#   Required.Proto3.JsonInput.OptionalInt32Wrapper.JsonOutput
-#   Required.Proto3.JsonInput.OptionalInt32Wrapper.ProtobufOutput
-#   Required.Proto3.JsonInput.OptionalInt64Wrapper.JsonOutput
-#   Required.Proto3.JsonInput.OptionalInt64Wrapper.ProtobufOutput
-#   Required.Proto3.JsonInput.OptionalStringWrapper.JsonOutput
-#   Required.Proto3.JsonInput.OptionalStringWrapper.ProtobufOutput
-#   Required.Proto3.JsonInput.OptionalUint32Wrapper.JsonOutput
-#   Required.Proto3.JsonInput.OptionalUint32Wrapper.ProtobufOutput
-#   Required.Proto3.JsonInput.OptionalUint64Wrapper.JsonOutput
-#   Required.Proto3.JsonInput.OptionalUint64Wrapper.ProtobufOutput
-#   Required.Proto3.JsonInput.OptionalWrapperTypesWithNonDefaultValue.JsonOutput
-#   Required.Proto3.JsonInput.OptionalWrapperTypesWithNonDefaultValue.ProtobufOutput
 #   Required.Proto3.JsonInput.OriginalProtoFieldName.JsonOutput
 #   Required.Proto3.JsonInput.OriginalProtoFieldName.ProtobufOutput
-#   Required.Proto3.JsonInput.RepeatedBoolWrapper.JsonOutput
-#   Required.Proto3.JsonInput.RepeatedBoolWrapper.ProtobufOutput
-#   Required.Proto3.JsonInput.RepeatedBytesWrapper.JsonOutput
-#   Required.Proto3.JsonInput.RepeatedBytesWrapper.ProtobufOutput
-#   Required.Proto3.JsonInput.RepeatedDoubleWrapper.JsonOutput
-#   Required.Proto3.JsonInput.RepeatedDoubleWrapper.ProtobufOutput
 #   Required.Proto3.JsonInput.RepeatedFieldWrongElementTypeExpectingIntegersGotBool
-#   Required.Proto3.JsonInput.RepeatedFloatWrapper.JsonOutput
-#   Required.Proto3.JsonInput.RepeatedFloatWrapper.ProtobufOutput
-#   Required.Proto3.JsonInput.RepeatedInt32Wrapper.JsonOutput
-#   Required.Proto3.JsonInput.RepeatedInt32Wrapper.ProtobufOutput
-#   Required.Proto3.JsonInput.RepeatedInt64Wrapper.JsonOutput
-#   Required.Proto3.JsonInput.RepeatedInt64Wrapper.ProtobufOutput
 #   Required.Proto3.JsonInput.RepeatedListValue.JsonOutput
 #   Required.Proto3.JsonInput.RepeatedListValue.ProtobufOutput
-#   Required.Proto3.JsonInput.RepeatedStringWrapper.JsonOutput
-#   Required.Proto3.JsonInput.RepeatedStringWrapper.ProtobufOutput
-#   Required.Proto3.JsonInput.RepeatedUint32Wrapper.JsonOutput
-#   Required.Proto3.JsonInput.RepeatedUint32Wrapper.ProtobufOutput
-#   Required.Proto3.JsonInput.RepeatedUint64Wrapper.JsonOutput
-#   Required.Proto3.JsonInput.RepeatedUint64Wrapper.ProtobufOutput
 #   Required.Proto3.JsonInput.RepeatedValue.JsonOutput
 #   Required.Proto3.JsonInput.RepeatedValue.ProtobufOutput
 #   Required.Proto3.JsonInput.Struct.JsonOutput
@@ -2682,6 +2182,8 @@ not ok - Recommended.Proto3.JsonInput.RejectUnknownEnumStringValueInMapValue
 #   Required.Proto3.JsonInput.ValueAcceptObject.ProtobufOutput
 #   Required.Proto3.JsonInput.ValueAcceptString.JsonOutput
 #   Required.Proto3.JsonInput.ValueAcceptString.ProtobufOutput
+#   Required.Proto3.JsonInput.WrapperTypesWithNullValue.JsonOutput
+#   Required.Proto3.JsonInput.WrapperTypesWithNullValue.ProtobufOutput
 #   Required.Proto3.ProtobufInput.ValidDataMap.STRING.ENUM.MissingDefault.JsonOutput
 #   Required.TimestampProtoInputTooLarge.JsonOutput
 #   Required.TimestampProtoInputTooSmall.JsonOutput

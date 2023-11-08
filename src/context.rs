@@ -180,7 +180,7 @@ impl<'a> Context<'a> {
         vec![ast::util::wrap(name, modules)]
     }
 
-    pub fn normalize_type_name(&mut self, name: &str) -> String {
+    pub fn normalize_type_name(&self, name: &str) -> String {
         let name = name.strip_prefix(".").unwrap_or(name);
         if self.options.namespaces {
             return name.to_string();
@@ -188,7 +188,7 @@ impl<'a> Context<'a> {
         return name.to_string().replace(".", "_");
     }
 
-    pub fn normalize_name(&mut self, name: &str) -> String {
+    pub fn normalize_name(&self, name: &str) -> String {
         if self.options.namespaces {
             return name.to_string();
         }
@@ -198,7 +198,7 @@ impl<'a> Context<'a> {
         ns.join(".").replace(".", "_")
     }
 
-    fn find_type_provider(&self, type_name: &String) -> Option<String> {
+    pub fn find_type_provider(&self, type_name: &String) -> Option<String> {
         if let Some(val) = self.type_reg.get(type_name) {
             return Some(val.clone());
         }
@@ -238,7 +238,7 @@ impl<'a> Context<'a> {
         }
     }
 
-    fn calculate_type_name(&self, type_name: &str) -> String {
+    pub fn calculate_type_name(&self, type_name: &str) -> String {
         let mut fns = String::from(".");
         if self.namespace.len() > 0 {
             fns.push_str(self.namespace.join(".").as_str());

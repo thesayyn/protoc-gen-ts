@@ -9,8 +9,8 @@ use crate::{context::Context, descriptor::FieldDescriptorProto};
 use convert_case::{Case, Casing};
 use swc_common::DUMMY_SP;
 use swc_ecma_ast::{
-    ArrayLit, ArrayPat, BinaryOp, BlockStmt, ClassMember, ClassMethod, Expr, Function, Invalid,
-    MethodKind, ObjectLit, Param, Pat, PatOrExpr, PropName, Stmt, ThrowStmt, UnaryOp,
+    ArrayLit, ArrayPat, BinaryOp, BlockStmt, ClassMember, ClassMethod, Expr, Function, MethodKind,
+    ObjectLit, Param, Pat, PatOrExpr, PropName, Stmt, ThrowStmt, UnaryOp,
 };
 use swc_ecma_utils::{quote_ident, quote_str};
 
@@ -21,6 +21,54 @@ pub(crate) fn json_key_name_field_member(field: &FieldDescriptorProto) -> Expr {
 }
 
 impl FieldDescriptorProto {
+    fn typeof_expr_for_well_known_type(&self, accessor: FieldAccessorFn) -> Expr {
+        let typ = match self.type_name().trim_start_matches(".") {
+            "google.protobuf.BoolValue" => "boolean",
+            "google.protobuf.BytesValue" => "string",
+            "google.protobuf.DoubleValue" => "number",
+            "google.protobuf.Duration" => "string",
+            "google.protobuf.FieldMask" => "string",
+            "google.protobuf.FloatValue" => "number",
+            "google.protobuf.Int32Value" => "number",
+            "google.protobuf.Int64Value" => "number|string",
+            "google.protobuf.ListValue" => "array",
+            "google.protobuf.StringValue" => "string",
+            "google.protobuf.Timestamp" => "string",
+            "google.protobuf.UInt32Value" => "number",
+            "google.protobuf.UInt64Value" => "number|string",
+            "google.protobuf.Value" => "unknown",
+            "google.protobuf.NullValue" => "null",
+            _ => "object",
+        };
+
+        self.typeof_expr_for_type(accessor, typ)
+    }
+
+    fn typeof_expr_for_type(&self, accessor: FieldAccessorFn, typ: &str) -> Expr {
+        match typ {
+            "unknown" => crate::paren_expr!(crate::chain_bin_exprs_or!(
+                crate::typeof_unary_expr!(accessor(self).into(), "number"),
+                crate::typeof_unary_expr!(accessor(self).into(), "string"),
+                crate::typeof_unary_expr!(accessor(self).into(), "boolean"),
+                crate::typeof_unary_expr!(accessor(self).into(), "object")
+            )),
+            "number|string" => crate::paren_expr!(crate::chain_bin_exprs_or!(
+                crate::typeof_unary_expr!(accessor(self).into(), "number"),
+                crate::typeof_unary_expr!(accessor(self).into(), "string")
+            )),
+            "array" => crate::call_expr!(
+                crate::member_expr!("Array", "isArray"),
+                vec![crate::expr_or_spread!(accessor(self).into())]
+            ),
+            "null" => crate::bin_expr!(
+                accessor(self).into(),
+                quote_ident!("null").into(),
+                BinaryOp::EqEqEq
+            ),
+            typ => crate::typeof_unary_expr!(accessor(self).into(), typ),
+        }
+    }
+
     pub(self) fn infinity_and_nan_check(&self, accessor: FieldAccessorFn) -> Expr {
         crate::chain_bin_exprs_or!(
             crate::bin_expr!(accessor(self), quote_ident!("null").into(), BinaryOp::EqEq),
@@ -126,7 +174,7 @@ impl FieldDescriptorProto {
         }
     }
 
-    pub(self) fn value_check_stmt(&self, ctx: &mut Context, accessor: FieldAccessorFn) -> Stmt {
+    pub(self) fn value_check_stmt(&self, accessor: FieldAccessorFn) -> Stmt {
         let min_max_check: Option<Expr> = match self.type_() {
             Type::TYPE_FLOAT => Some(self.min_max_check(accessor, f32::MIN, f32::MAX)),
             Type::TYPE_DOUBLE => Some(self.min_max_check(accessor, f64::MIN, f64::MAX)),
@@ -154,32 +202,26 @@ impl FieldDescriptorProto {
             None
         };
 
-        let typeof_check = if self.is_string() || self.is_bytes() {
-            crate::typeof_unary_expr!(accessor(self).into(), "string")
+        let typeof_check = if self.is_well_known_message() {
+            self.typeof_expr_for_well_known_type(accessor)
+        } else if self.is_string() || self.is_bytes() {
+            self.typeof_expr_for_type(accessor, "string")
         } else if self.is_booelan() {
-            crate::paren_expr!(crate::chain_bin_exprs_or!(
-                crate::bin_expr!(
-                    accessor(self),
-                    quote_ident!("true").into(),
-                    BinaryOp::EqEqEq
-                ),
-                crate::bin_expr!(
-                    accessor(self),
-                    quote_ident!("false").into(),
-                    BinaryOp::EqEqEq
-                )
-            ))
-        } else if self.is_message()
-        /* also map */
-        {
-            crate::typeof_unary_expr!(accessor(self).into(), "object")
+            self.typeof_expr_for_type(accessor, "boolean")
+        } else if self.is_message() {
+            /* also map */
+            self.typeof_expr_for_type(accessor, "object")
         } else if self.is_number() || self.is_enum() {
-            crate::paren_expr!(crate::chain_bin_exprs_or!(
-                crate::typeof_unary_expr!(accessor(self).into(), "string"),
-                crate::typeof_unary_expr!(accessor(self).into(), "number")
-            ))
+            // crate::paren_expr!(crate::chain_bin_exprs_and!(
+            //     self.typeof_expr_for_type(accessor, "number|string"),
+            //     crate::call_expr!(
+            //         crate::member_expr!("Number", "isInteger"),
+            //         vec![crate::expr_or_spread!(accessor(self).into())]
+            //     )
+            // ))
+            self.typeof_expr_for_type(accessor, "number|string")
         } else {
-            crate::typeof_unary_expr!(accessor(self).into(), "never!ever")
+            self.typeof_expr_for_type(accessor, "never!")
         };
 
         let check = if num_check.is_some() {
@@ -410,8 +452,9 @@ impl DescriptorProto {
 
             let mut value_expr = field.into_from_json_expr(ctx, accessor_fn);
 
-            // TODO: wkt
-            if field.type_name().contains("google.protobuf") {
+            // // TODO: wkt
+            if field.type_name().contains("google.protobuf") && !field.type_name().contains("Value")
+            {
                 continue;
             }
 
@@ -464,7 +507,7 @@ impl DescriptorProto {
                     vec![crate::expr_or_spread!(crate::arrow_func!(
                         vec![crate::pat_ident!("r")],
                         vec![
-                            field.value_check_stmt(ctx, accessor_fn),
+                            field.value_check_stmt(accessor_fn),
                             crate::return_stmt!(value_expr)
                         ]
                     ))]
@@ -485,7 +528,7 @@ impl DescriptorProto {
             ))];
 
             if !field.is_repeated() {
-                stmts.push(field.value_check_stmt(ctx, accessor_fn))
+                stmts.push(field.value_check_stmt(accessor_fn))
             }
             stmts.push(crate::expr_stmt!(crate::assign_expr!(
                 PatOrExpr::Expr(Box::new(crate::member_expr!("message", field.name()))),

@@ -1,0 +1,8 @@
+class Any {
+    fromJson() {
+
+    }
+    toJson() {
+        
+    }
+}
