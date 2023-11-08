@@ -14,7 +14,6 @@ Recommended.Proto3.JsonInput.NullValueInOtherOneofOldFormat.Validator
 Recommended.Proto3.JsonInput.RejectUnknownEnumStringValueInMapValue
 Recommended.Proto3.JsonInput.RejectUnknownEnumStringValueInOptionalField
 Recommended.Proto3.JsonInput.RejectUnknownEnumStringValueInRepeatedField
-Recommended.Proto3.JsonInput.RepeatedFieldPrimitiveElementIsNull
 Recommended.Proto3.JsonInput.StringFieldSurrogateInWrongOrder
 Recommended.Proto3.JsonInput.StringFieldUnpairedHighSurrogate
 Recommended.Proto3.JsonInput.StringFieldUnpairedLowSurrogate
@@ -71,12 +70,10 @@ Required.Proto3.JsonInput.EnumFieldUnknownValue.Validator
 Required.Proto3.JsonInput.FieldMask.JsonOutput
 Required.Proto3.JsonInput.FieldMask.ProtobufOutput
 Required.Proto3.JsonInput.Int32FieldLeadingSpace
-Required.Proto3.JsonInput.Int32FieldNotInteger
 Required.Proto3.JsonInput.Int32FieldTrailingSpace
 Required.Proto3.JsonInput.OneofFieldDuplicate
 Required.Proto3.JsonInput.OriginalProtoFieldName.JsonOutput
 Required.Proto3.JsonInput.OriginalProtoFieldName.ProtobufOutput
-Required.Proto3.JsonInput.RepeatedFieldWrongElementTypeExpectingIntegersGotBool
 Required.Proto3.JsonInput.RepeatedListValue.JsonOutput
 Required.Proto3.JsonInput.RepeatedListValue.ProtobufOutput
 Required.Proto3.JsonInput.RepeatedValue.JsonOutput
@@ -103,7 +100,6 @@ Required.Proto3.JsonInput.TimestampWithNegativeOffset.JsonOutput
 Required.Proto3.JsonInput.TimestampWithNegativeOffset.ProtobufOutput
 Required.Proto3.JsonInput.TimestampWithPositiveOffset.JsonOutput
 Required.Proto3.JsonInput.TimestampWithPositiveOffset.ProtobufOutput
-Required.Proto3.JsonInput.Uint32FieldNotInteger
 Required.Proto3.JsonInput.ValueAcceptBool.JsonOutput
 Required.Proto3.JsonInput.ValueAcceptBool.ProtobufOutput
 Required.Proto3.JsonInput.ValueAcceptFloat.JsonOutput

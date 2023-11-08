@@ -104,6 +104,13 @@ impl FieldDescriptorProto {
             || self.type_() == Type::TYPE_SFIXED64
     }
 
+    pub fn is_integer(&self) -> bool {
+        self.is_number()
+            && !self.is_bigint()
+            && self.type_() != Type::TYPE_DOUBLE
+            && self.type_() != Type::TYPE_FLOAT
+    }
+
     pub fn is_bigint(&self) -> bool {
         self.type_() == Type::TYPE_INT64
             || self.type_() == Type::TYPE_UINT64

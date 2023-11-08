@@ -120,30 +120,6 @@ not ok - Recommended.Proto2.JsonInput.FieldNameExtension.Validator
 # 
 # 
 
-not ok - Required.Proto3.JsonInput.Int32FieldNotInteger
-# Should have failed to parse, but didn't.
-# 
-# json_payload: "{\"optionalInt32\": 0.5}"
-# requested_output_format: JSON
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# json_payload: "{\"optionalInt32\":0.5}"
-# 
-# 
-
-not ok - Required.Proto3.JsonInput.Uint32FieldNotInteger
-# Should have failed to parse, but didn't.
-# 
-# json_payload: "{\"optionalUint32\": 0.5}"
-# requested_output_format: JSON
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# json_payload: "{\"optionalUint32\":0.5}"
-# 
-# 
-
 not ok - Required.Proto3.JsonInput.Int32FieldLeadingSpace
 # Should have failed to parse, but didn't.
 # 
@@ -285,18 +261,6 @@ not ok - Required.Proto3.JsonInput.BoolMapEscapedKey.ProtobufOutput
 # 
 # 
 
-not ok - Required.Proto3.JsonInput.RepeatedFieldWrongElementTypeExpectingIntegersGotBool
-# Should have failed to parse, but didn't.
-# 
-# json_payload: "{\"repeatedInt32\": [1, false, 3, 4]}"
-# requested_output_format: JSON
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# json_payload: "{\"repeatedInt32\":[1,0,3,4]}"
-# 
-# 
-
 not ok - Required.Proto3.JsonInput.AllFieldAcceptNull.ProtobufOutput
 # failed to parse input or produce output.
 # 
@@ -343,8 +307,8 @@ not ok - Required.Proto3.JsonInput.AllFieldAcceptNull.ProtobufOutput
 # message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
 # test_category: JSON_TEST
 # 
-# parse_error: "TypeError: Cannot read properties of null (reading \'length\')
-#     at Function.fromJson (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:2223:68)
+# parse_error: "Error: illegal value for optionalInt64
+#     at Function.fromJson (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:2160:193)
 #     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:33:27
 # 
 #      "
@@ -397,23 +361,11 @@ not ok - Required.Proto3.JsonInput.AllFieldAcceptNull.JsonOutput
 # message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
 # test_category: JSON_TEST
 # 
-# parse_error: "TypeError: Cannot read properties of null (reading \'length\')
-#     at Function.fromJson (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:2223:68)
+# parse_error: "Error: illegal value for optionalInt64
+#     at Function.fromJson (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:2160:193)
 #     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:33:27
 # 
 #      "
-# 
-# 
-
-not ok - Recommended.Proto3.JsonInput.RepeatedFieldPrimitiveElementIsNull
-# Should have failed to parse, but didn't.
-# 
-# json_payload: "{\"repeatedInt32\": [1, null, 2]}"
-# requested_output_format: JSON
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# json_payload: "{\"repeatedInt32\":[1,0,2]}"
 # 
 # 
 
@@ -2053,10 +2005,10 @@ not ok - Recommended.Proto3.JsonInput.RejectUnknownEnumStringValueInMapValue
 # 
 
 # CONFORMANCE SUITE FAILED
-#	1906 succeses
+#	1910 succeses
 #	0 skipped
 #	0 expected failures
-#	125 unexpected failures
+#	121 unexpected failures
 
 # 
 # These tests failed.  If they can't be fixed right now, you can add them to the failure list so the overall suite can succeed.  Add them to the failure list by running:
@@ -2078,7 +2030,6 @@ not ok - Recommended.Proto3.JsonInput.RejectUnknownEnumStringValueInMapValue
 #   Recommended.Proto3.JsonInput.RejectUnknownEnumStringValueInMapValue
 #   Recommended.Proto3.JsonInput.RejectUnknownEnumStringValueInOptionalField
 #   Recommended.Proto3.JsonInput.RejectUnknownEnumStringValueInRepeatedField
-#   Recommended.Proto3.JsonInput.RepeatedFieldPrimitiveElementIsNull
 #   Recommended.Proto3.JsonInput.StringFieldSurrogateInWrongOrder
 #   Recommended.Proto3.JsonInput.StringFieldUnpairedHighSurrogate
 #   Recommended.Proto3.JsonInput.StringFieldUnpairedLowSurrogate
@@ -2135,12 +2086,10 @@ not ok - Recommended.Proto3.JsonInput.RejectUnknownEnumStringValueInMapValue
 #   Required.Proto3.JsonInput.FieldMask.JsonOutput
 #   Required.Proto3.JsonInput.FieldMask.ProtobufOutput
 #   Required.Proto3.JsonInput.Int32FieldLeadingSpace
-#   Required.Proto3.JsonInput.Int32FieldNotInteger
 #   Required.Proto3.JsonInput.Int32FieldTrailingSpace
 #   Required.Proto3.JsonInput.OneofFieldDuplicate
 #   Required.Proto3.JsonInput.OriginalProtoFieldName.JsonOutput
 #   Required.Proto3.JsonInput.OriginalProtoFieldName.ProtobufOutput
-#   Required.Proto3.JsonInput.RepeatedFieldWrongElementTypeExpectingIntegersGotBool
 #   Required.Proto3.JsonInput.RepeatedListValue.JsonOutput
 #   Required.Proto3.JsonInput.RepeatedListValue.ProtobufOutput
 #   Required.Proto3.JsonInput.RepeatedValue.JsonOutput
@@ -2167,7 +2116,6 @@ not ok - Recommended.Proto3.JsonInput.RejectUnknownEnumStringValueInMapValue
 #   Required.Proto3.JsonInput.TimestampWithNegativeOffset.ProtobufOutput
 #   Required.Proto3.JsonInput.TimestampWithPositiveOffset.JsonOutput
 #   Required.Proto3.JsonInput.TimestampWithPositiveOffset.ProtobufOutput
-#   Required.Proto3.JsonInput.Uint32FieldNotInteger
 #   Required.Proto3.JsonInput.ValueAcceptBool.JsonOutput
 #   Required.Proto3.JsonInput.ValueAcceptBool.ProtobufOutput
 #   Required.Proto3.JsonInput.ValueAcceptFloat.JsonOutput

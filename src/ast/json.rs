@@ -4,6 +4,7 @@ use std::vec;
 use crate::context::Syntax;
 use crate::descriptor::field_descriptor_proto::Type;
 use crate::descriptor::DescriptorProto;
+use crate::paren_expr;
 use crate::{context::Context, descriptor::FieldDescriptorProto};
 
 use convert_case::{Case, Casing};
@@ -71,7 +72,6 @@ impl FieldDescriptorProto {
 
     pub(self) fn infinity_and_nan_check(&self, accessor: FieldAccessorFn) -> Expr {
         crate::chain_bin_exprs_or!(
-            crate::bin_expr!(accessor(self), quote_ident!("null").into(), BinaryOp::EqEq),
             crate::bin_expr!(
                 accessor(self),
                 crate::lit_str!("NaN").into(),
@@ -211,24 +211,26 @@ impl FieldDescriptorProto {
         } else if self.is_message() {
             /* also map */
             self.typeof_expr_for_type(accessor, "object")
-        } else if self.is_number() || self.is_enum() {
-            // crate::paren_expr!(crate::chain_bin_exprs_and!(
-            //     self.typeof_expr_for_type(accessor, "number|string"),
-            //     crate::call_expr!(
-            //         crate::member_expr!("Number", "isInteger"),
-            //         vec![crate::expr_or_spread!(accessor(self).into())]
-            //     )
-            // ))
+        } else if self.is_integer() {
+            // integer (non-bigint-float-double) needs special check
+            crate::paren_expr!(crate::chain_bin_exprs_and!(
+                self.typeof_expr_for_type(accessor, "number|string"),
+                crate::call_expr!(
+                    crate::member_expr!("Number", "isInteger"),
+                    vec![crate::expr_or_spread!(crate::unary_expr!(
+                        accessor(self).into(),
+                        UnaryOp::Plus
+                    ))]
+                )
+            ))
+        } else if self.is_enum() || self.is_number() {
             self.typeof_expr_for_type(accessor, "number|string")
         } else {
             self.typeof_expr_for_type(accessor, "never!")
         };
 
         let check = if num_check.is_some() {
-            crate::paren_expr!(crate::chain_bin_exprs_and!(
-                typeof_check,
-                num_check.unwrap()
-            ))
+            crate::chain_bin_exprs_and!(typeof_check, paren_expr!(num_check.unwrap()))
         } else {
             typeof_check
         };
