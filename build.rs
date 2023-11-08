@@ -177,6 +177,8 @@ pub fn get_member(proto: &str, type_name: &str, member: &str) -> Option<swc_ecma
 pub const STRUCT: &str = include_str!("./js/runtime/google_protobuf/struct.ts");
 pub const ANY: &str = include_str!("./js/runtime/google_protobuf/any.ts");
 pub const WRAPPERS: &str = include_str!("./js/runtime/google_protobuf/wrappers.ts");
+pub const TIMESTAMP: &str = include_str!("./js/runtime/google_protobuf/timestamp.ts");
+pub const DURATION: &str = include_str!("./js/runtime/google_protobuf/duration.ts");
 
 fn main() {
     Codegen::new()
@@ -191,5 +193,7 @@ fn main() {
         .build("struct".to_string(), STRUCT.to_string())
         .build("any".to_string(), ANY.to_string())
         .build("wrappers".to_string(), WRAPPERS.to_string())
+        .build("timestamp".to_string(), TIMESTAMP.to_string())
+        .build("duration".to_string(), DURATION.to_string())
         .yield_mod();
 }

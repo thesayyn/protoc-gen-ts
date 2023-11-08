@@ -59,7 +59,7 @@ while (true) {
   if (msg != undefined) {
     try {
       if (req.requested_output_format == conformance_WireFormat.JSON) {
-        res.json_payload = JSON.stringify(msg.toJson());
+        res.json_payload = JSON.stringify(msg.toJson(), undefined, "  ");
       } else if (req.requested_output_format == conformance_WireFormat.PROTOBUF) {
         res.protobuf_payload = msg!.serialize();
       } else {

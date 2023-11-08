@@ -453,13 +453,7 @@ impl DescriptorProto {
             let accessor_fn = super::field::static_field_member;
 
             let mut value_expr = field.into_from_json_expr(ctx, accessor_fn);
-
-            // // TODO: wkt
-            if field.type_name().contains("google.protobuf") && !field.type_name().contains("Value")
-            {
-                continue;
-            }
-
+            
             if field.is_map(ctx) {
                 let descriptor = ctx
                     .get_map_type(field.type_name())
@@ -516,8 +510,9 @@ impl DescriptorProto {
                 );
             }
 
-            let mut stmts = vec![Stmt::Decl(crate::const_decl!(
-                "r",
+            let access_expr = if field.is_well_known_message() {
+                json_key_name_field_member(&field)
+            } else {
                 crate::cond_expr!(
                     crate::bin_expr!(
                         json_key_name_field_member(&field),
@@ -527,7 +522,10 @@ impl DescriptorProto {
                     field.default_value_expr(ctx, true),
                     json_key_name_field_member(&field)
                 )
-            ))];
+            };
+
+
+            let mut stmts = vec![Stmt::Decl(crate::const_decl!("r", access_expr))];
 
             if !field.is_repeated() {
                 stmts.push(field.value_check_stmt(accessor_fn))

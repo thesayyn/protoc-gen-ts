@@ -15,16 +15,16 @@ impl<'a, 'b> VisitMut for LazyTypeRefWkt<'a, 'b> {
     noop_visit_mut_type!();
 
     fn visit_mut_ident(&mut self, s: &mut Ident) {
-        if s.sym.starts_with("wkt_") {
+        if s.sym.starts_with("$wkt_") {
             let v = format!(
                 ".{}",
                 s.sym
                     .to_string()
-                    .trim_start_matches("wkt_")
+                    .trim_start_matches("$wkt_")
                     .replace("_", ".")
             );
             *s = self.ctx.lazy_type_ref(&v);
-        } else if s.sym.to_string() == "base64_lib" {
+        } else if s.sym.to_string() == "$base64$" {
             *s = self
                 .ctx
                 .get_import("https://deno.land/std@0.205.0/encoding/base64url.ts")
