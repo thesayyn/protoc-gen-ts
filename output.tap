@@ -506,20 +506,6 @@ not ok - Required.Proto3.JsonInput.DurationNull.JsonOutput
 # 
 # 
 
-not ok - Required.Proto3.JsonInput.DurationNegativeSeconds.JsonOutput
-# JSON output we received from test was unparseable.
-# 
-# json_payload: "{\"optionalDuration\": \"-5s\"}"
-# requested_output_format: JSON
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# json_payload: "{
-#   \"optionalDuration\": \"-5.000000NaNs\"
-# }"
-# 
-# 
-
 not ok - Required.Proto3.JsonInput.TimestampNull.ProtobufOutput
 # failed to parse input or produce output.
 # 
@@ -715,7 +701,7 @@ not ok - Required.Proto3.JsonInput.Any.ProtobufOutput
 # message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
 # test_category: JSON_TEST
 # 
-# parse_error: "TypeError: imp_14.google_protobuf_Any.fromJson is not a function
+# parse_error: "TypeError: imp_11.google_protobuf_Any.fromJson is not a function
 #     at Function.fromJson (file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:2922:63)
 #     at file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/js/conformance/main.ts:33:27
 # 
@@ -736,7 +722,7 @@ not ok - Required.Proto3.JsonInput.Any.JsonOutput
 # message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
 # test_category: JSON_TEST
 # 
-# parse_error: "TypeError: imp_14.google_protobuf_Any.fromJson is not a function
+# parse_error: "TypeError: imp_11.google_protobuf_Any.fromJson is not a function
 #     at Function.fromJson (file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:2922:63)
 #     at file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/js/conformance/main.ts:33:27
 # 
@@ -760,7 +746,7 @@ not ok - Required.Proto3.JsonInput.AnyNested.ProtobufOutput
 # message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
 # test_category: JSON_TEST
 # 
-# parse_error: "TypeError: imp_14.google_protobuf_Any.fromJson is not a function
+# parse_error: "TypeError: imp_11.google_protobuf_Any.fromJson is not a function
 #     at Function.fromJson (file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:2922:63)
 #     at file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/js/conformance/main.ts:33:27
 # 
@@ -784,7 +770,7 @@ not ok - Required.Proto3.JsonInput.AnyNested.JsonOutput
 # message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
 # test_category: JSON_TEST
 # 
-# parse_error: "TypeError: imp_14.google_protobuf_Any.fromJson is not a function
+# parse_error: "TypeError: imp_11.google_protobuf_Any.fromJson is not a function
 #     at Function.fromJson (file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:2922:63)
 #     at file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/js/conformance/main.ts:33:27
 # 
@@ -805,7 +791,7 @@ not ok - Required.Proto3.JsonInput.AnyUnorderedTypeTag.ProtobufOutput
 # message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
 # test_category: JSON_TEST
 # 
-# parse_error: "TypeError: imp_14.google_protobuf_Any.fromJson is not a function
+# parse_error: "TypeError: imp_11.google_protobuf_Any.fromJson is not a function
 #     at Function.fromJson (file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:2922:63)
 #     at file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/js/conformance/main.ts:33:27
 # 
@@ -826,7 +812,7 @@ not ok - Required.Proto3.JsonInput.AnyUnorderedTypeTag.JsonOutput
 # message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
 # test_category: JSON_TEST
 # 
-# parse_error: "TypeError: imp_14.google_protobuf_Any.fromJson is not a function
+# parse_error: "TypeError: imp_11.google_protobuf_Any.fromJson is not a function
 #     at Function.fromJson (file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:2922:63)
 #     at file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/js/conformance/main.ts:33:27
 # 
@@ -847,7 +833,7 @@ not ok - Required.Proto3.JsonInput.AnyWithInt32ValueWrapper.ProtobufOutput
 # message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
 # test_category: JSON_TEST
 # 
-# parse_error: "TypeError: imp_14.google_protobuf_Any.fromJson is not a function
+# parse_error: "TypeError: imp_11.google_protobuf_Any.fromJson is not a function
 #     at Function.fromJson (file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:2922:63)
 #     at file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/js/conformance/main.ts:33:27
 # 
@@ -868,7 +854,7 @@ not ok - Required.Proto3.JsonInput.AnyWithInt32ValueWrapper.JsonOutput
 # message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
 # test_category: JSON_TEST
 # 
-# parse_error: "TypeError: imp_14.google_protobuf_Any.fromJson is not a function
+# parse_error: "TypeError: imp_11.google_protobuf_Any.fromJson is not a function
 #     at Function.fromJson (file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:2922:63)
 #     at file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/js/conformance/main.ts:33:27
 # 
@@ -889,7 +875,7 @@ not ok - Required.Proto3.JsonInput.AnyWithDuration.ProtobufOutput
 # message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
 # test_category: JSON_TEST
 # 
-# parse_error: "TypeError: imp_14.google_protobuf_Any.fromJson is not a function
+# parse_error: "TypeError: imp_11.google_protobuf_Any.fromJson is not a function
 #     at Function.fromJson (file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:2922:63)
 #     at file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/js/conformance/main.ts:33:27
 # 
@@ -910,7 +896,7 @@ not ok - Required.Proto3.JsonInput.AnyWithDuration.JsonOutput
 # message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
 # test_category: JSON_TEST
 # 
-# parse_error: "TypeError: imp_14.google_protobuf_Any.fromJson is not a function
+# parse_error: "TypeError: imp_11.google_protobuf_Any.fromJson is not a function
 #     at Function.fromJson (file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:2922:63)
 #     at file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/js/conformance/main.ts:33:27
 # 
@@ -931,7 +917,7 @@ not ok - Required.Proto3.JsonInput.AnyWithTimestamp.ProtobufOutput
 # message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
 # test_category: JSON_TEST
 # 
-# parse_error: "TypeError: imp_14.google_protobuf_Any.fromJson is not a function
+# parse_error: "TypeError: imp_11.google_protobuf_Any.fromJson is not a function
 #     at Function.fromJson (file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:2922:63)
 #     at file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/js/conformance/main.ts:33:27
 # 
@@ -952,7 +938,7 @@ not ok - Required.Proto3.JsonInput.AnyWithTimestamp.JsonOutput
 # message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
 # test_category: JSON_TEST
 # 
-# parse_error: "TypeError: imp_14.google_protobuf_Any.fromJson is not a function
+# parse_error: "TypeError: imp_11.google_protobuf_Any.fromJson is not a function
 #     at Function.fromJson (file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:2922:63)
 #     at file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/js/conformance/main.ts:33:27
 # 
@@ -973,7 +959,7 @@ not ok - Required.Proto3.JsonInput.AnyWithFieldMask.ProtobufOutput
 # message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
 # test_category: JSON_TEST
 # 
-# parse_error: "TypeError: imp_14.google_protobuf_Any.fromJson is not a function
+# parse_error: "TypeError: imp_11.google_protobuf_Any.fromJson is not a function
 #     at Function.fromJson (file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:2922:63)
 #     at file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/js/conformance/main.ts:33:27
 # 
@@ -994,7 +980,7 @@ not ok - Required.Proto3.JsonInput.AnyWithFieldMask.JsonOutput
 # message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
 # test_category: JSON_TEST
 # 
-# parse_error: "TypeError: imp_14.google_protobuf_Any.fromJson is not a function
+# parse_error: "TypeError: imp_11.google_protobuf_Any.fromJson is not a function
 #     at Function.fromJson (file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:2922:63)
 #     at file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/js/conformance/main.ts:33:27
 # 
@@ -1017,7 +1003,7 @@ not ok - Required.Proto3.JsonInput.AnyWithStruct.ProtobufOutput
 # message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
 # test_category: JSON_TEST
 # 
-# parse_error: "TypeError: imp_14.google_protobuf_Any.fromJson is not a function
+# parse_error: "TypeError: imp_11.google_protobuf_Any.fromJson is not a function
 #     at Function.fromJson (file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:2922:63)
 #     at file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/js/conformance/main.ts:33:27
 # 
@@ -1040,7 +1026,7 @@ not ok - Required.Proto3.JsonInput.AnyWithStruct.JsonOutput
 # message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
 # test_category: JSON_TEST
 # 
-# parse_error: "TypeError: imp_14.google_protobuf_Any.fromJson is not a function
+# parse_error: "TypeError: imp_11.google_protobuf_Any.fromJson is not a function
 #     at Function.fromJson (file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:2922:63)
 #     at file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/js/conformance/main.ts:33:27
 # 
@@ -1063,7 +1049,7 @@ not ok - Required.Proto3.JsonInput.AnyWithValueForJsonObject.ProtobufOutput
 # message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
 # test_category: JSON_TEST
 # 
-# parse_error: "TypeError: imp_14.google_protobuf_Any.fromJson is not a function
+# parse_error: "TypeError: imp_11.google_protobuf_Any.fromJson is not a function
 #     at Function.fromJson (file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:2922:63)
 #     at file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/js/conformance/main.ts:33:27
 # 
@@ -1086,7 +1072,7 @@ not ok - Required.Proto3.JsonInput.AnyWithValueForJsonObject.JsonOutput
 # message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
 # test_category: JSON_TEST
 # 
-# parse_error: "TypeError: imp_14.google_protobuf_Any.fromJson is not a function
+# parse_error: "TypeError: imp_11.google_protobuf_Any.fromJson is not a function
 #     at Function.fromJson (file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:2922:63)
 #     at file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/js/conformance/main.ts:33:27
 # 
@@ -1107,7 +1093,7 @@ not ok - Required.Proto3.JsonInput.AnyWithValueForInteger.ProtobufOutput
 # message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
 # test_category: JSON_TEST
 # 
-# parse_error: "TypeError: imp_14.google_protobuf_Any.fromJson is not a function
+# parse_error: "TypeError: imp_11.google_protobuf_Any.fromJson is not a function
 #     at Function.fromJson (file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:2922:63)
 #     at file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/js/conformance/main.ts:33:27
 # 
@@ -1128,7 +1114,7 @@ not ok - Required.Proto3.JsonInput.AnyWithValueForInteger.JsonOutput
 # message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
 # test_category: JSON_TEST
 # 
-# parse_error: "TypeError: imp_14.google_protobuf_Any.fromJson is not a function
+# parse_error: "TypeError: imp_11.google_protobuf_Any.fromJson is not a function
 #     at Function.fromJson (file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:2922:63)
 #     at file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/js/conformance/main.ts:33:27
 # 
@@ -1179,10 +1165,10 @@ not ok - Recommended.Proto3.JsonInput.RejectUnknownEnumStringValueInMapValue
 # 
 
 # CONFORMANCE SUITE FAILED
-#	1975 succeses
+#	1976 succeses
 #	0 skipped
 #	0 expected failures
-#	56 unexpected failures
+#	55 unexpected failures
 
 # 
 # These tests failed.  If they can't be fixed right now, you can add them to the failure list so the overall suite can succeed.  Add them to the failure list by running:
@@ -1227,7 +1213,6 @@ not ok - Recommended.Proto3.JsonInput.RejectUnknownEnumStringValueInMapValue
 #   Required.Proto3.JsonInput.AnyWithValueForJsonObject.ProtobufOutput
 #   Required.Proto3.JsonInput.BoolMapEscapedKey.ProtobufOutput
 #   Required.Proto3.JsonInput.BoolMapField.ProtobufOutput
-#   Required.Proto3.JsonInput.DurationNegativeSeconds.JsonOutput
 #   Required.Proto3.JsonInput.DurationNull.JsonOutput
 #   Required.Proto3.JsonInput.DurationNull.ProtobufOutput
 #   Required.Proto3.JsonInput.EnumFieldNumericValueNonZero.ProtobufOutput

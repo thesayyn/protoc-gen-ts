@@ -17,7 +17,7 @@ class Duration extends $wkt_google_protobuf_Duration {
     if (typeof match[2] == "string") {
       const nanosStr = match[2] + "0".repeat(9 - match[2].length);
       m.nanos = Number(nanosStr);
-      if (longSeconds < 0 || Object.is(longSeconds, -0)) {
+      if (longSeconds < 0 || longSeconds === -0) {
         m.nanos = -m.nanos;
       }
     }
@@ -25,11 +25,11 @@ class Duration extends $wkt_google_protobuf_Duration {
   }
 
   toJson() {
-     if (Number(this.seconds) > 315576000000 || Number(this.seconds) < -315576000000) {
+     if (this.seconds > 315576000000n || this.seconds < -315576000000n) {
       throw new Error(`cannot encode google.protobuf.Duration to JSON: value out of range`);
     }
     let text = this.seconds.toString();
-    if (this.nanos !== 0) {
+    if (this.nanos !== 0 && this.nanos != undefined) {
       let nanosStr = Math.abs(this.nanos).toString();
       nanosStr = "0".repeat(9 - nanosStr.length) + nanosStr;
       if (nanosStr.substring(3) === "000000") {
@@ -38,7 +38,7 @@ class Duration extends $wkt_google_protobuf_Duration {
         nanosStr = nanosStr.substring(0, 6);
       }
       text += "." + nanosStr;
-      if (this.nanos < 0 && Number(this.seconds) == 0) {
+      if (this.nanos < 0 && this.seconds === 0n) {
           text = "-" + text;
       }
     }
