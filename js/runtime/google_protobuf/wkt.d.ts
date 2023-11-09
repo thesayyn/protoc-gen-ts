@@ -3,12 +3,39 @@ declare const $base64$: {
   decode(v: string): Uint8Array;
 };
 
+declare const $type_registry$: {
+    get(qualified_name: string): typeof Message;
+}
+
+
+// message
+declare abstract class Message<JsonRepr> {
+    static type: string;
+    toJson(): JsonRepr;
+    serialize(): Uint8Array;
+    static fromJson(v: unknown): Message<unknown>;
+    static deserialize(v: Uint8Array): Message<unknown>;
+}
+
 declare function $wkt_Message<JsonRepr>(): {
     new (): {
         toJson(): JsonRepr;
     };
     fromJson(v: JsonRepr): typeof this;
 };
+
+
+// field_mask.ts
+declare class $wkt_google_protobuf_FieldMask extends $wkt_Message<string>() {
+    paths: string[];
+}
+
+// any.ts
+declare class $wkt_google_protobuf_Any extends $wkt_Message<object>() {
+    type_url: string;
+    value: Uint8Array;
+}
+
 
 // duration.ts
 declare class $wkt_google_protobuf_Duration extends $wkt_Message<string>() {

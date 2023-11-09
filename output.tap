@@ -167,8 +167,8 @@ not ok - Required.Proto3.JsonInput.EnumFieldNumericValueNonZero.ProtobufOutput
 #     at Object.jspb.asserts.doAssertFailure (file:///private/var/folders/tg/07vw4wzj2gbbbkr8kqktm36c0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:597)
 #     at Object.jspb.asserts.assert (file:///private/var/folders/tg/07vw4wzj2gbbbkr8kqktm36c0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:729)
 #     at jspb.BinaryWriter.writeInt32 (file:///private/var/folders/tg/07vw4wzj2gbbbkr8kqktm36c0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:458:77)
-#     at protobuf_test_messages_proto3_TestAllTypesProto3.serialize (file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:1368:16)
-#     at file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/js/conformance/main.ts:47:44
+#     at protobuf_test_messages_proto3_TestAllTypesProto3.serialize (file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:1369:16)
+#     at file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/js/conformance/main.ts:77:46
 # 
 #      "
 # 
@@ -254,8 +254,8 @@ not ok - Required.Proto3.JsonInput.BoolMapField.ProtobufOutput
 #     at Object.jspb.asserts.doAssertFailure (file:///private/var/folders/tg/07vw4wzj2gbbbkr8kqktm36c0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:597)
 #     at Object.jspb.asserts.assert (file:///private/var/folders/tg/07vw4wzj2gbbbkr8kqktm36c0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:729)
 #     at jspb.BinaryWriter.writeInt64 (file:///private/var/folders/tg/07vw4wzj2gbbbkr8kqktm36c0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:459:77)
-#     at protobuf_test_messages_proto3_TestAllTypesProto3.serialize (file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:1671:20)
-#     at file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/js/conformance/main.ts:47:44
+#     at protobuf_test_messages_proto3_TestAllTypesProto3.serialize (file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:1672:20)
+#     at file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/js/conformance/main.ts:77:46
 # 
 #      "
 # 
@@ -273,116 +273,8 @@ not ok - Required.Proto3.JsonInput.BoolMapEscapedKey.ProtobufOutput
 #     at Object.jspb.asserts.doAssertFailure (file:///private/var/folders/tg/07vw4wzj2gbbbkr8kqktm36c0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:597)
 #     at Object.jspb.asserts.assert (file:///private/var/folders/tg/07vw4wzj2gbbbkr8kqktm36c0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:729)
 #     at jspb.BinaryWriter.writeInt64 (file:///private/var/folders/tg/07vw4wzj2gbbbkr8kqktm36c0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:459:77)
-#     at protobuf_test_messages_proto3_TestAllTypesProto3.serialize (file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:1671:20)
-#     at file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/js/conformance/main.ts:47:44
-# 
-#      "
-# 
-# 
-
-not ok - Required.Proto3.JsonInput.AllFieldAcceptNull.ProtobufOutput
-# failed to parse input or produce output.
-# 
-# json_payload: "{
-#         \"optionalInt32\": null,
-#         \"optionalInt64\": null,
-#         \"optionalUint32\": null,
-#         \"optionalUint64\": null,
-#         \"optionalSint32\": null,
-#         \"optionalSint64\": null,
-#         \"optionalFixed32\": null,
-#         \"optionalFixed64\": null,
-#         \"optionalSfixed32\": null,
-#         \"optionalSfixed64\": null,
-#         \"optionalFloat\": null,
-#         \"optionalDouble\": null,
-#         \"optionalBool\": null,
-#         \"optionalString\": null,
-#         \"optionalBytes\": null,
-#         \"optionalNestedEnum\": null,
-#         \"optionalNestedMessage\": null,
-#         \"repeatedInt32\": null,
-#         \"repeatedInt64\": null,
-#         \"repeatedUint32\": null,
-#         \"repeatedUint64\": null,
-#         \"repeatedSint32\": null,
-#         \"repeatedSint64\": null,
-#         \"repeatedFixed32\": null,
-#         \"repeatedFixed64\": null,
-#         \"repeatedSfixed32\": null,
-#         \"repeatedSfixed64\": null,
-#         \"repeatedFloat\": null,
-#         \"repeatedDouble\": null,
-#         \"repeatedBool\": null,
-#         \"repeatedString\": null,
-#         \"repeatedBytes\": null,
-#         \"repeatedNestedEnum\": null,
-#         \"repeatedNestedMessage\": null,
-#         \"mapInt32Int32\": null,
-#         \"mapBoolBool\": null,
-#         \"mapStringNestedMessage\": null
-#       }"
-# requested_output_format: PROTOBUF
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# parse_error: "Error: illegal value for optionalInt64
-#     at Function.fromJson (file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:2160:193)
-#     at file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/js/conformance/main.ts:33:27
-# 
-#      "
-# 
-# 
-
-not ok - Required.Proto3.JsonInput.AllFieldAcceptNull.JsonOutput
-# failed to parse input or produce output.
-# 
-# json_payload: "{
-#         \"optionalInt32\": null,
-#         \"optionalInt64\": null,
-#         \"optionalUint32\": null,
-#         \"optionalUint64\": null,
-#         \"optionalSint32\": null,
-#         \"optionalSint64\": null,
-#         \"optionalFixed32\": null,
-#         \"optionalFixed64\": null,
-#         \"optionalSfixed32\": null,
-#         \"optionalSfixed64\": null,
-#         \"optionalFloat\": null,
-#         \"optionalDouble\": null,
-#         \"optionalBool\": null,
-#         \"optionalString\": null,
-#         \"optionalBytes\": null,
-#         \"optionalNestedEnum\": null,
-#         \"optionalNestedMessage\": null,
-#         \"repeatedInt32\": null,
-#         \"repeatedInt64\": null,
-#         \"repeatedUint32\": null,
-#         \"repeatedUint64\": null,
-#         \"repeatedSint32\": null,
-#         \"repeatedSint64\": null,
-#         \"repeatedFixed32\": null,
-#         \"repeatedFixed64\": null,
-#         \"repeatedSfixed32\": null,
-#         \"repeatedSfixed64\": null,
-#         \"repeatedFloat\": null,
-#         \"repeatedDouble\": null,
-#         \"repeatedBool\": null,
-#         \"repeatedString\": null,
-#         \"repeatedBytes\": null,
-#         \"repeatedNestedEnum\": null,
-#         \"repeatedNestedMessage\": null,
-#         \"mapInt32Int32\": null,
-#         \"mapBoolBool\": null,
-#         \"mapStringNestedMessage\": null
-#       }"
-# requested_output_format: JSON
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# parse_error: "Error: illegal value for optionalInt64
-#     at Function.fromJson (file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:2160:193)
-#     at file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/js/conformance/main.ts:33:27
+#     at protobuf_test_messages_proto3_TestAllTypesProto3.serialize (file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:1672:20)
+#     at file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/js/conformance/main.ts:77:46
 # 
 #      "
 # 
@@ -404,244 +296,6 @@ not ok - Recommended.Proto3.JsonInput.MapFieldValueIsNull
 # 
 # 
 
-not ok - Required.Proto3.JsonInput.WrapperTypesWithNullValue.ProtobufOutput
-# failed to parse input or produce output.
-# 
-# json_payload: "{
-#         \"optionalBoolWrapper\": null,
-#         \"optionalInt32Wrapper\": null,
-#         \"optionalUint32Wrapper\": null,
-#         \"optionalInt64Wrapper\": null,
-#         \"optionalUint64Wrapper\": null,
-#         \"optionalFloatWrapper\": null,
-#         \"optionalDoubleWrapper\": null,
-#         \"optionalStringWrapper\": null,
-#         \"optionalBytesWrapper\": null,
-#         \"repeatedBoolWrapper\": null,
-#         \"repeatedInt32Wrapper\": null,
-#         \"repeatedUint32Wrapper\": null,
-#         \"repeatedInt64Wrapper\": null,
-#         \"repeatedUint64Wrapper\": null,
-#         \"repeatedFloatWrapper\": null,
-#         \"repeatedDoubleWrapper\": null,
-#         \"repeatedStringWrapper\": null,
-#         \"repeatedBytesWrapper\": null
-#       }"
-# requested_output_format: PROTOBUF
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# parse_error: "Error: illegal value for optionalBoolWrapper
-#     at Function.fromJson (file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:2793:50)
-#     at file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/js/conformance/main.ts:33:27
-# 
-#      "
-# 
-# 
-
-not ok - Required.Proto3.JsonInput.WrapperTypesWithNullValue.JsonOutput
-# failed to parse input or produce output.
-# 
-# json_payload: "{
-#         \"optionalBoolWrapper\": null,
-#         \"optionalInt32Wrapper\": null,
-#         \"optionalUint32Wrapper\": null,
-#         \"optionalInt64Wrapper\": null,
-#         \"optionalUint64Wrapper\": null,
-#         \"optionalFloatWrapper\": null,
-#         \"optionalDoubleWrapper\": null,
-#         \"optionalStringWrapper\": null,
-#         \"optionalBytesWrapper\": null,
-#         \"repeatedBoolWrapper\": null,
-#         \"repeatedInt32Wrapper\": null,
-#         \"repeatedUint32Wrapper\": null,
-#         \"repeatedInt64Wrapper\": null,
-#         \"repeatedUint64Wrapper\": null,
-#         \"repeatedFloatWrapper\": null,
-#         \"repeatedDoubleWrapper\": null,
-#         \"repeatedStringWrapper\": null,
-#         \"repeatedBytesWrapper\": null
-#       }"
-# requested_output_format: JSON
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# parse_error: "Error: illegal value for optionalBoolWrapper
-#     at Function.fromJson (file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:2793:50)
-#     at file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/js/conformance/main.ts:33:27
-# 
-#      "
-# 
-# 
-
-not ok - Required.Proto3.JsonInput.DurationNull.ProtobufOutput
-# failed to parse input or produce output.
-# 
-# json_payload: "{\"optionalDuration\": null}"
-# requested_output_format: PROTOBUF
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# parse_error: "Error: illegal value for optionalDuration
-#     at Function.fromJson (file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:2901:49)
-#     at file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/js/conformance/main.ts:33:27
-# 
-#      "
-# 
-# 
-
-not ok - Required.Proto3.JsonInput.DurationNull.JsonOutput
-# failed to parse input or produce output.
-# 
-# json_payload: "{\"optionalDuration\": null}"
-# requested_output_format: JSON
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# parse_error: "Error: illegal value for optionalDuration
-#     at Function.fromJson (file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:2901:49)
-#     at file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/js/conformance/main.ts:33:27
-# 
-#      "
-# 
-# 
-
-not ok - Required.Proto3.JsonInput.TimestampNull.ProtobufOutput
-# failed to parse input or produce output.
-# 
-# json_payload: "{\"optionalTimestamp\": null}"
-# requested_output_format: PROTOBUF
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# parse_error: "Error: illegal value for optionalTimestamp
-#     at Function.fromJson (file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:2906:49)
-#     at file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/js/conformance/main.ts:33:27
-# 
-#      "
-# 
-# 
-
-not ok - Required.Proto3.JsonInput.TimestampNull.JsonOutput
-# failed to parse input or produce output.
-# 
-# json_payload: "{\"optionalTimestamp\": null}"
-# requested_output_format: JSON
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# parse_error: "Error: illegal value for optionalTimestamp
-#     at Function.fromJson (file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:2906:49)
-#     at file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/js/conformance/main.ts:33:27
-# 
-#      "
-# 
-# 
-
-not ok - Required.Proto3.JsonInput.FieldMask.ProtobufOutput
-# output was not equivalent to reference message: 
-# deleted: optional_field_mask.paths[0]: "foo"
-# deleted: optional_field_mask.paths[1]: "bar_baz"
-# 
-# 
-# json_payload: "{\"optionalFieldMask\": \"foo,barBaz\"}"
-# requested_output_format: PROTOBUF
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# protobuf_payload: "\372\022\000"
-# 
-# 
-
-not ok - Required.Proto3.JsonInput.FieldMask.JsonOutput
-# output was not equivalent to reference message: 
-# deleted: optional_field_mask.paths[0]: "foo"
-# deleted: optional_field_mask.paths[1]: "bar_baz"
-# 
-# 
-# json_payload: "{\"optionalFieldMask\": \"foo,barBaz\"}"
-# requested_output_format: JSON
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# json_payload: "{
-#   \"optionalFieldMask\": {}
-# }"
-# 
-# 
-
-not ok - Recommended.Proto3.JsonInput.FieldMaskInvalidCharacter
-# Should have failed to parse, but didn't.
-# 
-# json_payload: "{\"optionalFieldMask\": \"foo,bar_bar\"}"
-# requested_output_format: JSON
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# json_payload: "{
-#   \"optionalFieldMask\": {}
-# }"
-# 
-# 
-
-not ok - Recommended.FieldMaskPathsDontRoundTrip.JsonOutput
-# Should have failed to serialize, but didn't.
-# 
-# protobuf_payload: "\372\022\010
-# \006fooBar"
-# requested_output_format: JSON
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# json_payload: "{
-#   \"optionalFieldMask\": {
-#     \"paths\": [
-#       \"fooBar\"
-#     ]
-#   }
-# }"
-# 
-# 
-
-not ok - Recommended.FieldMaskNumbersDontRoundTrip.JsonOutput
-# Should have failed to serialize, but didn't.
-# 
-# protobuf_payload: "\372\022\013
-# \tfoo_3_bar"
-# requested_output_format: JSON
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# json_payload: "{
-#   \"optionalFieldMask\": {
-#     \"paths\": [
-#       \"foo_3_bar\"
-#     ]
-#   }
-# }"
-# 
-# 
-
-not ok - Recommended.FieldMaskTooManyUnderscore.JsonOutput
-# Should have failed to serialize, but didn't.
-# 
-# protobuf_payload: "\372\022
-# 
-# \010foo__bar"
-# requested_output_format: JSON
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# json_payload: "{
-#   \"optionalFieldMask\": {
-#     \"paths\": [
-#       \"foo__bar\"
-#     ]
-#   }
-# }"
-# 
-# 
-
 not ok - Recommended.Proto3.JsonInput.NullValueInOtherOneofOldFormat.Validator
 # JSON payload validation failed.
 # 
@@ -657,271 +311,14 @@ not ok - Recommended.Proto3.JsonInput.NullValueInOtherOneofOldFormat.Validator
 # 
 
 not ok - Recommended.Proto3.JsonInput.NullValueInOtherOneofNewFormat.Validator
-# Expected JSON payload but got type 1
+# JSON payload validation failed.
 # 
 # json_payload: "{\"oneofNullValue\": null}"
 # requested_output_format: JSON
 # message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
 # test_category: JSON_TEST
 # 
-# parse_error: "Error: illegal value for oneofNullValue
-#     at Function.fromJson (file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:2788:74)
-#     at file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/js/conformance/main.ts:33:27
-# 
-#      "
-# 
-# 
-
-not ok - Recommended.Proto3.JsonInput.NullValueInNormalMessage.Validator
-# Expected JSON payload but got type 1
-# 
-# json_payload: "{\"optionalNullValue\": null}"
-# requested_output_format: JSON
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# parse_error: "Error: illegal value for optionalNullValue
-#     at Function.fromJson (file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:2931:74)
-#     at file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/js/conformance/main.ts:33:27
-# 
-#      "
-# 
-# 
-
-not ok - Required.Proto3.JsonInput.Any.ProtobufOutput
-# failed to parse input or produce output.
-# 
-# json_payload: "{
-#         \"optionalAny\": {
-#           \"@type\": \"type.googleapis.com/protobuf_test_messages.proto3.TestAllTypesProto3\",
-#           \"optionalInt32\": 12345
-#         }
-#       }"
-# requested_output_format: PROTOBUF
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# parse_error: "TypeError: imp_11.google_protobuf_Any.fromJson is not a function
-#     at Function.fromJson (file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:2922:63)
-#     at file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/js/conformance/main.ts:33:27
-# 
-#      "
-# 
-# 
-
-not ok - Required.Proto3.JsonInput.Any.JsonOutput
-# failed to parse input or produce output.
-# 
-# json_payload: "{
-#         \"optionalAny\": {
-#           \"@type\": \"type.googleapis.com/protobuf_test_messages.proto3.TestAllTypesProto3\",
-#           \"optionalInt32\": 12345
-#         }
-#       }"
-# requested_output_format: JSON
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# parse_error: "TypeError: imp_11.google_protobuf_Any.fromJson is not a function
-#     at Function.fromJson (file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:2922:63)
-#     at file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/js/conformance/main.ts:33:27
-# 
-#      "
-# 
-# 
-
-not ok - Required.Proto3.JsonInput.AnyNested.ProtobufOutput
-# failed to parse input or produce output.
-# 
-# json_payload: "{
-#         \"optionalAny\": {
-#           \"@type\": \"type.googleapis.com/google.protobuf.Any\",
-#           \"value\": {
-#             \"@type\": \"type.googleapis.com/protobuf_test_messages.proto3.TestAllTypesProto3\",
-#             \"optionalInt32\": 12345
-#           }
-#         }
-#       }"
-# requested_output_format: PROTOBUF
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# parse_error: "TypeError: imp_11.google_protobuf_Any.fromJson is not a function
-#     at Function.fromJson (file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:2922:63)
-#     at file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/js/conformance/main.ts:33:27
-# 
-#      "
-# 
-# 
-
-not ok - Required.Proto3.JsonInput.AnyNested.JsonOutput
-# failed to parse input or produce output.
-# 
-# json_payload: "{
-#         \"optionalAny\": {
-#           \"@type\": \"type.googleapis.com/google.protobuf.Any\",
-#           \"value\": {
-#             \"@type\": \"type.googleapis.com/protobuf_test_messages.proto3.TestAllTypesProto3\",
-#             \"optionalInt32\": 12345
-#           }
-#         }
-#       }"
-# requested_output_format: JSON
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# parse_error: "TypeError: imp_11.google_protobuf_Any.fromJson is not a function
-#     at Function.fromJson (file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:2922:63)
-#     at file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/js/conformance/main.ts:33:27
-# 
-#      "
-# 
-# 
-
-not ok - Required.Proto3.JsonInput.AnyUnorderedTypeTag.ProtobufOutput
-# failed to parse input or produce output.
-# 
-# json_payload: "{
-#         \"optionalAny\": {
-#           \"optionalInt32\": 12345,
-#           \"@type\": \"type.googleapis.com/protobuf_test_messages.proto3.TestAllTypesProto3\"
-#         }
-#       }"
-# requested_output_format: PROTOBUF
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# parse_error: "TypeError: imp_11.google_protobuf_Any.fromJson is not a function
-#     at Function.fromJson (file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:2922:63)
-#     at file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/js/conformance/main.ts:33:27
-# 
-#      "
-# 
-# 
-
-not ok - Required.Proto3.JsonInput.AnyUnorderedTypeTag.JsonOutput
-# failed to parse input or produce output.
-# 
-# json_payload: "{
-#         \"optionalAny\": {
-#           \"optionalInt32\": 12345,
-#           \"@type\": \"type.googleapis.com/protobuf_test_messages.proto3.TestAllTypesProto3\"
-#         }
-#       }"
-# requested_output_format: JSON
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# parse_error: "TypeError: imp_11.google_protobuf_Any.fromJson is not a function
-#     at Function.fromJson (file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:2922:63)
-#     at file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/js/conformance/main.ts:33:27
-# 
-#      "
-# 
-# 
-
-not ok - Required.Proto3.JsonInput.AnyWithInt32ValueWrapper.ProtobufOutput
-# failed to parse input or produce output.
-# 
-# json_payload: "{
-#         \"optionalAny\": {
-#           \"@type\": \"type.googleapis.com/google.protobuf.Int32Value\",
-#           \"value\": 12345
-#         }
-#       }"
-# requested_output_format: PROTOBUF
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# parse_error: "TypeError: imp_11.google_protobuf_Any.fromJson is not a function
-#     at Function.fromJson (file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:2922:63)
-#     at file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/js/conformance/main.ts:33:27
-# 
-#      "
-# 
-# 
-
-not ok - Required.Proto3.JsonInput.AnyWithInt32ValueWrapper.JsonOutput
-# failed to parse input or produce output.
-# 
-# json_payload: "{
-#         \"optionalAny\": {
-#           \"@type\": \"type.googleapis.com/google.protobuf.Int32Value\",
-#           \"value\": 12345
-#         }
-#       }"
-# requested_output_format: JSON
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# parse_error: "TypeError: imp_11.google_protobuf_Any.fromJson is not a function
-#     at Function.fromJson (file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:2922:63)
-#     at file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/js/conformance/main.ts:33:27
-# 
-#      "
-# 
-# 
-
-not ok - Required.Proto3.JsonInput.AnyWithDuration.ProtobufOutput
-# failed to parse input or produce output.
-# 
-# json_payload: "{
-#         \"optionalAny\": {
-#           \"@type\": \"type.googleapis.com/google.protobuf.Duration\",
-#           \"value\": \"1.5s\"
-#         }
-#       }"
-# requested_output_format: PROTOBUF
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# parse_error: "TypeError: imp_11.google_protobuf_Any.fromJson is not a function
-#     at Function.fromJson (file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:2922:63)
-#     at file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/js/conformance/main.ts:33:27
-# 
-#      "
-# 
-# 
-
-not ok - Required.Proto3.JsonInput.AnyWithDuration.JsonOutput
-# failed to parse input or produce output.
-# 
-# json_payload: "{
-#         \"optionalAny\": {
-#           \"@type\": \"type.googleapis.com/google.protobuf.Duration\",
-#           \"value\": \"1.5s\"
-#         }
-#       }"
-# requested_output_format: JSON
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# parse_error: "TypeError: imp_11.google_protobuf_Any.fromJson is not a function
-#     at Function.fromJson (file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:2922:63)
-#     at file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/js/conformance/main.ts:33:27
-# 
-#      "
-# 
-# 
-
-not ok - Required.Proto3.JsonInput.AnyWithTimestamp.ProtobufOutput
-# failed to parse input or produce output.
-# 
-# json_payload: "{
-#         \"optionalAny\": {
-#           \"@type\": \"type.googleapis.com/google.protobuf.Timestamp\",
-#           \"value\": \"1970-01-01T00:00:00Z\"
-#         }
-#       }"
-# requested_output_format: PROTOBUF
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# parse_error: "TypeError: imp_11.google_protobuf_Any.fromJson is not a function
-#     at Function.fromJson (file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:2922:63)
-#     at file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/js/conformance/main.ts:33:27
-# 
-#      "
+# json_payload: "{}"
 # 
 # 
 
@@ -938,185 +335,12 @@ not ok - Required.Proto3.JsonInput.AnyWithTimestamp.JsonOutput
 # message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
 # test_category: JSON_TEST
 # 
-# parse_error: "TypeError: imp_11.google_protobuf_Any.fromJson is not a function
-#     at Function.fromJson (file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:2922:63)
-#     at file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/js/conformance/main.ts:33:27
-# 
-#      "
-# 
-# 
-
-not ok - Required.Proto3.JsonInput.AnyWithFieldMask.ProtobufOutput
-# failed to parse input or produce output.
-# 
-# json_payload: "{
-#         \"optionalAny\": {
-#           \"@type\": \"type.googleapis.com/google.protobuf.FieldMask\",
-#           \"value\": \"foo,barBaz\"
-#         }
-#       }"
-# requested_output_format: PROTOBUF
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# parse_error: "TypeError: imp_11.google_protobuf_Any.fromJson is not a function
-#     at Function.fromJson (file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:2922:63)
-#     at file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/js/conformance/main.ts:33:27
-# 
-#      "
-# 
-# 
-
-not ok - Required.Proto3.JsonInput.AnyWithFieldMask.JsonOutput
-# failed to parse input or produce output.
-# 
-# json_payload: "{
-#         \"optionalAny\": {
-#           \"@type\": \"type.googleapis.com/google.protobuf.FieldMask\",
-#           \"value\": \"foo,barBaz\"
-#         }
-#       }"
-# requested_output_format: JSON
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# parse_error: "TypeError: imp_11.google_protobuf_Any.fromJson is not a function
-#     at Function.fromJson (file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:2922:63)
-#     at file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/js/conformance/main.ts:33:27
-# 
-#      "
-# 
-# 
-
-not ok - Required.Proto3.JsonInput.AnyWithStruct.ProtobufOutput
-# failed to parse input or produce output.
-# 
-# json_payload: "{
-#         \"optionalAny\": {
-#           \"@type\": \"type.googleapis.com/google.protobuf.Struct\",
-#           \"value\": {
-#             \"foo\": 1
-#           }
-#         }
-#       }"
-# requested_output_format: PROTOBUF
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# parse_error: "TypeError: imp_11.google_protobuf_Any.fromJson is not a function
-#     at Function.fromJson (file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:2922:63)
-#     at file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/js/conformance/main.ts:33:27
-# 
-#      "
-# 
-# 
-
-not ok - Required.Proto3.JsonInput.AnyWithStruct.JsonOutput
-# failed to parse input or produce output.
-# 
-# json_payload: "{
-#         \"optionalAny\": {
-#           \"@type\": \"type.googleapis.com/google.protobuf.Struct\",
-#           \"value\": {
-#             \"foo\": 1
-#           }
-#         }
-#       }"
-# requested_output_format: JSON
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# parse_error: "TypeError: imp_11.google_protobuf_Any.fromJson is not a function
-#     at Function.fromJson (file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:2922:63)
-#     at file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/js/conformance/main.ts:33:27
-# 
-#      "
-# 
-# 
-
-not ok - Required.Proto3.JsonInput.AnyWithValueForJsonObject.ProtobufOutput
-# failed to parse input or produce output.
-# 
-# json_payload: "{
-#         \"optionalAny\": {
-#           \"@type\": \"type.googleapis.com/google.protobuf.Value\",
-#           \"value\": {
-#             \"foo\": 1
-#           }
-#         }
-#       }"
-# requested_output_format: PROTOBUF
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# parse_error: "TypeError: imp_11.google_protobuf_Any.fromJson is not a function
-#     at Function.fromJson (file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:2922:63)
-#     at file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/js/conformance/main.ts:33:27
-# 
-#      "
-# 
-# 
-
-not ok - Required.Proto3.JsonInput.AnyWithValueForJsonObject.JsonOutput
-# failed to parse input or produce output.
-# 
-# json_payload: "{
-#         \"optionalAny\": {
-#           \"@type\": \"type.googleapis.com/google.protobuf.Value\",
-#           \"value\": {
-#             \"foo\": 1
-#           }
-#         }
-#       }"
-# requested_output_format: JSON
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# parse_error: "TypeError: imp_11.google_protobuf_Any.fromJson is not a function
-#     at Function.fromJson (file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:2922:63)
-#     at file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/js/conformance/main.ts:33:27
-# 
-#      "
-# 
-# 
-
-not ok - Required.Proto3.JsonInput.AnyWithValueForInteger.ProtobufOutput
-# failed to parse input or produce output.
-# 
-# json_payload: "{
-#         \"optionalAny\": {
-#           \"@type\": \"type.googleapis.com/google.protobuf.Value\",
-#           \"value\": 1
-#         }
-#       }"
-# requested_output_format: PROTOBUF
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# parse_error: "TypeError: imp_11.google_protobuf_Any.fromJson is not a function
-#     at Function.fromJson (file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:2922:63)
-#     at file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/js/conformance/main.ts:33:27
-# 
-#      "
-# 
-# 
-
-not ok - Required.Proto3.JsonInput.AnyWithValueForInteger.JsonOutput
-# failed to parse input or produce output.
-# 
-# json_payload: "{
-#         \"optionalAny\": {
-#           \"@type\": \"type.googleapis.com/google.protobuf.Value\",
-#           \"value\": 1
-#         }
-#       }"
-# requested_output_format: JSON
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# parse_error: "TypeError: imp_11.google_protobuf_Any.fromJson is not a function
-#     at Function.fromJson (file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:2922:63)
-#     at file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/js/conformance/main.ts:33:27
+# serialize_error: "RangeError: Invalid time value
+#     at Date.toISOString (<anonymous>)
+#     at google_protobuf_Timestamp.toJson (file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/tests/well_known/gen/google/protobuf/timestamp.ts:69:29)
+#     at google_protobuf_Any.toJson (file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/tests/conformance/gen/google/protobuf/any.ts:60:28)
+#     at protobuf_test_messages_proto3_TestAllTypesProto3.toJson (file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:2122:83)
+#     at file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/js/conformance/main.ts:75:57
 # 
 #      "
 # 
@@ -1165,22 +389,17 @@ not ok - Recommended.Proto3.JsonInput.RejectUnknownEnumStringValueInMapValue
 # 
 
 # CONFORMANCE SUITE FAILED
-#	1976 succeses
+#	2010 succeses
 #	0 skipped
 #	0 expected failures
-#	55 unexpected failures
+#	21 unexpected failures
 
 # 
 # These tests failed.  If they can't be fixed right now, you can add them to the failure list so the overall suite can succeed.  Add them to the failure list by running:
 #   ./update_failure_list.py  --add failing_tests.txt
 # 
-#   Recommended.FieldMaskNumbersDontRoundTrip.JsonOutput
-#   Recommended.FieldMaskPathsDontRoundTrip.JsonOutput
-#   Recommended.FieldMaskTooManyUnderscore.JsonOutput
 #   Recommended.Proto2.JsonInput.FieldNameExtension.Validator
-#   Recommended.Proto3.JsonInput.FieldMaskInvalidCharacter
 #   Recommended.Proto3.JsonInput.MapFieldValueIsNull
-#   Recommended.Proto3.JsonInput.NullValueInNormalMessage.Validator
 #   Recommended.Proto3.JsonInput.NullValueInOtherOneofNewFormat.Validator
 #   Recommended.Proto3.JsonInput.NullValueInOtherOneofOldFormat.Validator
 #   Recommended.Proto3.JsonInput.RejectUnknownEnumStringValueInMapValue
@@ -1189,45 +408,16 @@ not ok - Recommended.Proto3.JsonInput.RejectUnknownEnumStringValueInMapValue
 #   Recommended.Proto3.JsonInput.StringFieldSurrogateInWrongOrder
 #   Recommended.Proto3.JsonInput.StringFieldUnpairedHighSurrogate
 #   Recommended.Proto3.JsonInput.StringFieldUnpairedLowSurrogate
-#   Required.Proto3.JsonInput.AllFieldAcceptNull.JsonOutput
-#   Required.Proto3.JsonInput.AllFieldAcceptNull.ProtobufOutput
-#   Required.Proto3.JsonInput.Any.JsonOutput
-#   Required.Proto3.JsonInput.Any.ProtobufOutput
-#   Required.Proto3.JsonInput.AnyNested.JsonOutput
-#   Required.Proto3.JsonInput.AnyNested.ProtobufOutput
-#   Required.Proto3.JsonInput.AnyUnorderedTypeTag.JsonOutput
-#   Required.Proto3.JsonInput.AnyUnorderedTypeTag.ProtobufOutput
-#   Required.Proto3.JsonInput.AnyWithDuration.JsonOutput
-#   Required.Proto3.JsonInput.AnyWithDuration.ProtobufOutput
-#   Required.Proto3.JsonInput.AnyWithFieldMask.JsonOutput
-#   Required.Proto3.JsonInput.AnyWithFieldMask.ProtobufOutput
-#   Required.Proto3.JsonInput.AnyWithInt32ValueWrapper.JsonOutput
-#   Required.Proto3.JsonInput.AnyWithInt32ValueWrapper.ProtobufOutput
-#   Required.Proto3.JsonInput.AnyWithStruct.JsonOutput
-#   Required.Proto3.JsonInput.AnyWithStruct.ProtobufOutput
 #   Required.Proto3.JsonInput.AnyWithTimestamp.JsonOutput
-#   Required.Proto3.JsonInput.AnyWithTimestamp.ProtobufOutput
-#   Required.Proto3.JsonInput.AnyWithValueForInteger.JsonOutput
-#   Required.Proto3.JsonInput.AnyWithValueForInteger.ProtobufOutput
-#   Required.Proto3.JsonInput.AnyWithValueForJsonObject.JsonOutput
-#   Required.Proto3.JsonInput.AnyWithValueForJsonObject.ProtobufOutput
 #   Required.Proto3.JsonInput.BoolMapEscapedKey.ProtobufOutput
 #   Required.Proto3.JsonInput.BoolMapField.ProtobufOutput
-#   Required.Proto3.JsonInput.DurationNull.JsonOutput
-#   Required.Proto3.JsonInput.DurationNull.ProtobufOutput
 #   Required.Proto3.JsonInput.EnumFieldNumericValueNonZero.ProtobufOutput
 #   Required.Proto3.JsonInput.EnumFieldUnknownValue.Validator
-#   Required.Proto3.JsonInput.FieldMask.JsonOutput
-#   Required.Proto3.JsonInput.FieldMask.ProtobufOutput
 #   Required.Proto3.JsonInput.Int32FieldLeadingSpace
 #   Required.Proto3.JsonInput.Int32FieldTrailingSpace
 #   Required.Proto3.JsonInput.OneofFieldDuplicate
 #   Required.Proto3.JsonInput.OriginalProtoFieldName.JsonOutput
 #   Required.Proto3.JsonInput.OriginalProtoFieldName.ProtobufOutput
-#   Required.Proto3.JsonInput.TimestampNull.JsonOutput
-#   Required.Proto3.JsonInput.TimestampNull.ProtobufOutput
-#   Required.Proto3.JsonInput.WrapperTypesWithNullValue.JsonOutput
-#   Required.Proto3.JsonInput.WrapperTypesWithNullValue.ProtobufOutput
 #   Required.Proto3.ProtobufInput.ValidDataMap.STRING.ENUM.MissingDefault.JsonOutput
 # 
 # 

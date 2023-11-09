@@ -1,5 +1,6 @@
 class Timestamp extends $wkt_google_protobuf_Timestamp {
   static fromJson(json: string) {
+    const m = new $wkt_google_protobuf_Timestamp();
     if (typeof json !== "string") {
       throw new Error(`cannot decode google.protobuf.Timestamp from JSON`);
     }
@@ -38,7 +39,7 @@ class Timestamp extends $wkt_google_protobuf_Timestamp {
         `cannot decode message google.protobuf.Timestamp from JSON: must be from 0001-01-01T00:00:00Z to 9999-12-31T23:59:59Z inclusive`
       );
     }
-    const m = new $wkt_google_protobuf_Timestamp();
+
     m.seconds = BigInt(ms / 1000);
     m.nanos = 0;
     if (matches[7]) {

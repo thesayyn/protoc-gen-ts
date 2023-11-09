@@ -22,8 +22,8 @@ pub(crate) fn json_key_name_field_member(field: &FieldDescriptorProto) -> Expr {
 }
 
 impl FieldDescriptorProto {
-    fn typeof_expr_for_well_known_type(&self, accessor: FieldAccessorFn) -> Expr {
-        let typ = match self.type_name().trim_start_matches(".") {
+    fn json_repr_for_well_known_type(&self) -> &str {
+        match self.type_name().trim_start_matches(".") {
             "google.protobuf.BoolValue" => "boolean",
             "google.protobuf.BytesValue" => "string",
             "google.protobuf.DoubleValue" => "number",
@@ -40,9 +40,10 @@ impl FieldDescriptorProto {
             "google.protobuf.Value" => "unknown",
             "google.protobuf.NullValue" => "null",
             _ => "object",
-        };
-
-        self.typeof_expr_for_type(accessor, typ)
+        }
+    }
+    fn typeof_expr_for_well_known_type(&self, accessor: FieldAccessorFn) -> Expr {
+        self.typeof_expr_for_type(accessor, self.json_repr_for_well_known_type())
     }
 
     fn typeof_expr_for_type(&self, accessor: FieldAccessorFn, typ: &str) -> Expr {
@@ -137,12 +138,27 @@ impl FieldDescriptorProto {
             BinaryOp::NotEqEq
         );
 
+        let neq_null_check = crate::bin_expr!(
+            accessor(self),
+            quote_ident!("null").into(),
+            BinaryOp::NotEqEq
+        );
+
+        let neq_null_or_undefined_check = if self.json_repr_for_well_known_type() == "unknown" {
+            neq_undefined_check
+        } else {
+            crate::paren_expr!(crate::chain_bin_exprs_and!(
+                neq_null_check,
+                neq_undefined_check
+            ))
+        };
+
         let presence_check = if self.has_oneof_index() {
             // for oneof field we have to serialize the value unconditionally even if the value is the default.
-            neq_undefined_check
+            neq_null_or_undefined_check
         } else if self.is_map(ctx) {
             crate::bin_expr!(
-                neq_undefined_check,
+                neq_null_or_undefined_check,
                 crate::bin_expr!(
                     crate::member_expr_bare!(accessor(self), "size"),
                     Expr::Lit(crate::lit_num!(0)),
@@ -151,7 +167,7 @@ impl FieldDescriptorProto {
             )
         } else if (self.is_bytes() && ctx.syntax == &Syntax::Proto3) || self.is_repeated() {
             crate::bin_expr!(
-                neq_undefined_check,
+                neq_null_or_undefined_check,
                 crate::bin_expr!(
                     crate::member_expr_bare!(accessor(self), "length"),
                     Expr::Lit(crate::lit_num!(0)),
@@ -159,7 +175,7 @@ impl FieldDescriptorProto {
                 )
             )
         } else {
-            neq_undefined_check
+            neq_null_or_undefined_check
         };
 
         let default_expr = self.proto3_default(ctx);
@@ -453,7 +469,7 @@ impl DescriptorProto {
             let accessor_fn = super::field::static_field_member;
 
             let mut value_expr = field.into_from_json_expr(ctx, accessor_fn);
-            
+
             if field.is_map(ctx) {
                 let descriptor = ctx
                     .get_map_type(field.type_name())
@@ -523,7 +539,6 @@ impl DescriptorProto {
                     json_key_name_field_member(&field)
                 )
             };
-
 
             let mut stmts = vec![Stmt::Decl(crate::const_decl!("r", access_expr))];
 

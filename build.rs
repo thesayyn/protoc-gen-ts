@@ -179,6 +179,7 @@ pub const ANY: &str = include_str!("./js/runtime/google_protobuf/any.ts");
 pub const WRAPPERS: &str = include_str!("./js/runtime/google_protobuf/wrappers.ts");
 pub const TIMESTAMP: &str = include_str!("./js/runtime/google_protobuf/timestamp.ts");
 pub const DURATION: &str = include_str!("./js/runtime/google_protobuf/duration.ts");
+pub const FIELD_MASK: &str = include_str!("./js/runtime/google_protobuf/field_mask.ts");
 
 fn main() {
     Codegen::new()
@@ -195,5 +196,6 @@ fn main() {
         .build("wrappers".to_string(), WRAPPERS.to_string())
         .build("timestamp".to_string(), TIMESTAMP.to_string())
         .build("duration".to_string(), DURATION.to_string())
+        .build("field_mask".to_string(), FIELD_MASK.to_string())
         .yield_mod();
 }

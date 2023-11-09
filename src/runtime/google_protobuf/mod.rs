@@ -4,33 +4,8 @@ use crate::{
     descriptor::{self, field_descriptor_proto::Type, FieldDescriptorProto},
     runtime::Runtime,
 };
-use swc_ecma_ast::{Ident, Stmt};
-use swc_ecma_visit::{noop_visit_mut_type, VisitMut, VisitMutWith};
-
-struct LazyTypeRefWkt<'a, 'b> {
-    ctx: &'a mut Context<'b>,
-}
-
-impl<'a, 'b> VisitMut for LazyTypeRefWkt<'a, 'b> {
-    noop_visit_mut_type!();
-
-    fn visit_mut_ident(&mut self, s: &mut Ident) {
-        if s.sym.starts_with("$wkt_") {
-            let v = format!(
-                ".{}",
-                s.sym
-                    .to_string()
-                    .trim_start_matches("$wkt_")
-                    .replace("_", ".")
-            );
-            *s = self.ctx.lazy_type_ref(&v);
-        } else if s.sym.to_string() == "$base64$" {
-            *s = self
-                .ctx
-                .get_import("https://deno.land/std@0.205.0/encoding/base64url.ts")
-        }
-    }
-}
+use swc_ecma_ast::Stmt;
+use swc_ecma_visit::VisitMutWith;
 
 #[derive(Clone)]
 pub struct GooglePBRuntime {}
@@ -66,7 +41,7 @@ impl Runtime for GooglePBRuntime {
 
             if member.is_some() {
                 let mut member = member.unwrap();
-                let mut visit = LazyTypeRefWkt { ctx };
+                let mut visit = well_known::LazyTypeRefWkt { ctx };
                 member.visit_mut_with(&mut visit);
                 return Some(member);
             }
@@ -88,7 +63,7 @@ impl Runtime for GooglePBRuntime {
 
             if member.is_some() {
                 let mut member = member.unwrap();
-                let mut visit = LazyTypeRefWkt { ctx };
+                let mut visit = well_known::LazyTypeRefWkt { ctx };
                 member.visit_mut_with(&mut visit);
                 return Some(member);
             }
@@ -134,7 +109,6 @@ impl GooglePBRuntime {
 
             Type::TYPE_GROUP => "skipField",
             Type::TYPE_MESSAGE => "skipField",
-            // _ => unimplemented!("rw_function_name {:?}", field.type_()),
         }
         .replace("_placeholder_", placeholder.as_str())
     }

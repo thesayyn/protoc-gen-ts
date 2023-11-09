@@ -8,9 +8,9 @@ use crate::runtime::Runtime;
 use swc_common::DUMMY_SP;
 use swc_ecma_ast::{
     ArrayLit, BlockStmt, Class, ClassDecl, ClassMember, ClassMethod, Decl, ExportDecl, Expr,
-    Function, MethodKind, ModuleDecl, ModuleItem, Param, PrivateName, PrivateProp, PropName, Stmt,
+    Function, MethodKind, ModuleDecl, ModuleItem, Param, PrivateName, PrivateProp, PropName, Stmt, ClassProp,
 };
-use swc_ecma_utils::quote_ident;
+use swc_ecma_utils::{quote_ident, quote_str};
 
 impl DescriptorProto {
     fn print_unknown_fields(&self) -> ClassMember {
@@ -28,6 +28,25 @@ impl DescriptorProto {
             is_static: false,
             decorators: vec![],
             accessibility: None,
+            is_optional: false,
+            is_override: false,
+            readonly: false,
+            definite: false,
+        })
+    }
+
+    fn print_message_type(&self, ctx: &mut Context) -> ClassMember {
+        let type_name = ctx.calculate_type_name(self.name());
+        ClassMember::ClassProp(ClassProp {
+            span: DUMMY_SP,
+            key: PropName::Ident(quote_ident!("type")),
+            value: Some(Box::new(crate::lit_str!(type_name.trim_start_matches(".")).into())),
+            type_ann: None,
+            declare: false,
+            is_static: true,
+            decorators: vec![],
+            accessibility: None,
+            is_abstract: false,
             is_optional: false,
             is_override: false,
             readonly: false,
@@ -162,7 +181,10 @@ where
         }
 
         let mut members: Vec<ClassMember> = Vec::new();
+
+        members.push(self.print_message_type(ctx));
         members.push(self.print_unknown_fields());
+
         for member in self.field.clone() {
             members.push(member.print_prop(ctx, runtime));
 
