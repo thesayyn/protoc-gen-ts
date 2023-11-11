@@ -100,7 +100,7 @@ impl FieldDescriptorProto {
         if ctx.syntax == &Syntax::Proto3 {
             let default_expr = self.proto3_default(ctx);
             if let Some(default_expr) = default_expr {
-                crate::bin_expr!(
+                crate::chain_bin_exprs_and!(
                     presence_check,
                     crate::bin_expr!(accessor(self), default_expr, BinaryOp::NotEqEq)
                 )
@@ -113,7 +113,7 @@ impl FieldDescriptorProto {
     }
 
     pub fn proto3_default(&self, ctx: &mut Context) -> Option<Expr> {
-        if self.is_repeated() {
+        if self.is_repeated() ||  self.has_oneof_index(){
             return None;
         }
         if self.is_string() {
@@ -131,7 +131,10 @@ impl FieldDescriptorProto {
         }
     }
 
-    pub fn default_value_expr(&self, ctx: &mut Context, primitives: bool) -> Expr {
+    pub fn default_value_expr(&self, ctx: &mut Context, include_message: bool) -> Expr {
+        if self.has_oneof_index() {
+            return Expr::Ident(quote_ident!("undefined"))
+        }
         // TODO: primitives is not a good name. it should be something about the field.
         if self.is_map(ctx) {
             crate::new_expr!(Expr::Ident(quote_ident!("Map")))
@@ -140,13 +143,13 @@ impl FieldDescriptorProto {
                 elems: vec![],
                 span: DUMMY_SP,
             })
-        } else if self.is_message() && primitives {
+        } else if self.is_message() && include_message {
             crate::new_expr!(Expr::Ident(ctx.lazy_type_ref(self.type_name())))
-        } else if self.is_bytes() && primitives {
+        } else if self.is_bytes() {
             crate::new_expr!(Expr::Ident(quote_ident!("Uint8Array")))
-        } else if self.is_string() && primitives {
+        } else if self.is_string() {
             Expr::Lit(quote_str!(self.default_value()).into())
-        } else if self.is_bigint()  && primitives {
+        } else if self.is_bigint() {
             Expr::Lit(Lit::BigInt(BigInt {
                 span: DUMMY_SP,
                 value: Box::new(
@@ -159,14 +162,14 @@ impl FieldDescriptorProto {
                 ),
                 raw: None,
             }))
-        } else if self.is_number() && primitives {
+        } else if self.is_number() {
             Expr::Lit(crate::lit_num!(self
                 .default_value
                 .clone()
                 .unwrap_or("0".to_string())
                 .parse::<f64>()
                 .expect("can not parse the default")))
-        } else if self.is_booelan() && primitives {
+        } else if self.is_booelan() {
             Expr::Lit(crate::lit_bool!(self
                 .default_value
                 .clone()
@@ -246,10 +249,16 @@ impl FieldDescriptorProto {
     pub fn print_prop<T: Runtime>(&self, ctx: &mut Context, _runtime: &T) -> ClassMember {
         let mut ident = quote_ident!(self.prop_name());
         ident.optional = self.is_optional();
+        let mut value: Option<Box<Expr>> = None;
+        if ctx.syntax == &Syntax::Proto3 || self.is_repeated() || self.is_map(&ctx) {
+            value = Some(Box::new(
+                self.default_value_expr(ctx, false),
+            ))
+        }
         ClassMember::ClassProp(ClassProp {
             span: DUMMY_SP,
             key: PropName::Ident(ident),
-            value: Some(Box::new(self.default_value_expr(ctx, false))),
+            value: value,
             type_ann: self.type_annotation(ctx),
             declare: false,
             is_static: false,

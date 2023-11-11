@@ -29,7 +29,7 @@ class Duration extends $wkt_google_protobuf_Duration {
       throw new Error(`cannot encode google.protobuf.Duration to JSON: value out of range`);
     }
     let text = this.seconds.toString();
-    if (this.nanos !== 0 && this.nanos != undefined) {
+    if (this.nanos !== 0) {
       let nanosStr = Math.abs(this.nanos).toString();
       nanosStr = "0".repeat(9 - nanosStr.length) + nanosStr;
       if (nanosStr.substring(3) === "000000") {

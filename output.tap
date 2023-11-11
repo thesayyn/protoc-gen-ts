@@ -322,30 +322,6 @@ not ok - Recommended.Proto3.JsonInput.NullValueInOtherOneofNewFormat.Validator
 # 
 # 
 
-not ok - Required.Proto3.JsonInput.AnyWithTimestamp.JsonOutput
-# failed to parse input or produce output.
-# 
-# json_payload: "{
-#         \"optionalAny\": {
-#           \"@type\": \"type.googleapis.com/google.protobuf.Timestamp\",
-#           \"value\": \"1970-01-01T00:00:00Z\"
-#         }
-#       }"
-# requested_output_format: JSON
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# serialize_error: "RangeError: Invalid time value
-#     at Date.toISOString (<anonymous>)
-#     at google_protobuf_Timestamp.toJson (file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/tests/well_known/gen/google/protobuf/timestamp.ts:69:29)
-#     at google_protobuf_Any.toJson (file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/tests/conformance/gen/google/protobuf/any.ts:60:28)
-#     at protobuf_test_messages_proto3_TestAllTypesProto3.toJson (file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:2122:83)
-#     at file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/js/conformance/main.ts:75:57
-# 
-#      "
-# 
-# 
-
 not ok - Recommended.Proto3.JsonInput.RejectUnknownEnumStringValueInOptionalField
 # Should have failed to parse, but didn't.
 # 
@@ -389,10 +365,10 @@ not ok - Recommended.Proto3.JsonInput.RejectUnknownEnumStringValueInMapValue
 # 
 
 # CONFORMANCE SUITE FAILED
-#	2010 succeses
+#	2011 succeses
 #	0 skipped
 #	0 expected failures
-#	21 unexpected failures
+#	20 unexpected failures
 
 # 
 # These tests failed.  If they can't be fixed right now, you can add them to the failure list so the overall suite can succeed.  Add them to the failure list by running:
@@ -408,7 +384,6 @@ not ok - Recommended.Proto3.JsonInput.RejectUnknownEnumStringValueInMapValue
 #   Recommended.Proto3.JsonInput.StringFieldSurrogateInWrongOrder
 #   Recommended.Proto3.JsonInput.StringFieldUnpairedHighSurrogate
 #   Recommended.Proto3.JsonInput.StringFieldUnpairedLowSurrogate
-#   Required.Proto3.JsonInput.AnyWithTimestamp.JsonOutput
 #   Required.Proto3.JsonInput.BoolMapEscapedKey.ProtobufOutput
 #   Required.Proto3.JsonInput.BoolMapField.ProtobufOutput
 #   Required.Proto3.JsonInput.EnumFieldNumericValueNonZero.ProtobufOutput

@@ -8,7 +8,6 @@ Recommended.Proto3.JsonInput.RejectUnknownEnumStringValueInRepeatedField
 Recommended.Proto3.JsonInput.StringFieldSurrogateInWrongOrder
 Recommended.Proto3.JsonInput.StringFieldUnpairedHighSurrogate
 Recommended.Proto3.JsonInput.StringFieldUnpairedLowSurrogate
-Required.Proto3.JsonInput.AnyWithTimestamp.JsonOutput
 Required.Proto3.JsonInput.BoolMapEscapedKey.ProtobufOutput
 Required.Proto3.JsonInput.BoolMapField.ProtobufOutput
 Required.Proto3.JsonInput.EnumFieldNumericValueNonZero.ProtobufOutput
