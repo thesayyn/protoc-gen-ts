@@ -1231,7 +1231,7 @@ export class InteractiveAnnotation extends pb_1.Message {
         location?: ReturnType<typeof Location.prototype.toObject>;
     }): InteractiveAnnotation {
         const message = new InteractiveAnnotation({
-            polygonVertices: data.polygonVertices.map(item => Point.fromObject(item))
+            polygonVertices: (data.polygonVertices?.map)(item => Point.fromObject(item)) ?? []
         });
         if (data.location != null) {
             message.location = Location.fromObject(data.location);
@@ -2260,7 +2260,7 @@ export class ImageMessage extends pb_1.Message {
         midQualityFileEncSha256?: Uint8Array;
     }): ImageMessage {
         const message = new ImageMessage({
-            interactiveAnnotations: data.interactiveAnnotations.map(item => InteractiveAnnotation.fromObject(item)),
+            interactiveAnnotations: (data.interactiveAnnotations?.map)(item => InteractiveAnnotation.fromObject(item)) ?? [],
             scanLengths: data.scanLengths
         });
         if (data.url != null) {
@@ -4385,7 +4385,7 @@ export class VideoMessage extends pb_1.Message {
         gifAttribution?: VideoMessage.VIDEO_MESSAGE_ATTRIBUTION;
     }): VideoMessage {
         const message = new VideoMessage({
-            interactiveAnnotations: data.interactiveAnnotations.map(item => InteractiveAnnotation.fromObject(item))
+            interactiveAnnotations: (data.interactiveAnnotations?.map)(item => InteractiveAnnotation.fromObject(item)) ?? []
         });
         if (data.url != null) {
             message.url = data.url;
@@ -5297,7 +5297,7 @@ export class ContactsArrayMessage extends pb_1.Message {
         contextInfo?: ReturnType<typeof ContextInfo.prototype.toObject>;
     }): ContactsArrayMessage {
         const message = new ContactsArrayMessage({
-            contacts: data.contacts.map(item => ContactMessage.fromObject(item))
+            contacts: (data.contacts?.map)(item => ContactMessage.fromObject(item)) ?? []
         });
         if (data.displayName != null) {
             message.displayName = data.displayName;
@@ -6145,7 +6145,7 @@ export class HighlyStructuredMessage extends pb_1.Message {
     }): HighlyStructuredMessage {
         const message = new HighlyStructuredMessage({
             params: data.params,
-            localizableParams: data.localizableParams.map(item => HSMLocalizableParameter.fromObject(item))
+            localizableParams: (data.localizableParams?.map)(item => HSMLocalizableParameter.fromObject(item)) ?? []
         });
         if (data.namespace != null) {
             message.namespace = data.namespace;
@@ -7585,7 +7585,7 @@ export class FourRowTemplate extends pb_1.Message {
         locationMessage?: ReturnType<typeof LocationMessage.prototype.toObject>;
     }): FourRowTemplate {
         const message = new FourRowTemplate({
-            buttons: data.buttons.map(item => TemplateButton.fromObject(item))
+            buttons: (data.buttons?.map)(item => TemplateButton.fromObject(item)) ?? []
         });
         if (data.content != null) {
             message.content = HighlyStructuredMessage.fromObject(data.content);
@@ -7883,7 +7883,7 @@ export class HydratedFourRowTemplate extends pb_1.Message {
         locationMessage?: ReturnType<typeof LocationMessage.prototype.toObject>;
     }): HydratedFourRowTemplate {
         const message = new HydratedFourRowTemplate({
-            hydratedButtons: data.hydratedButtons.map(item => HydratedTemplateButton.fromObject(item))
+            hydratedButtons: (data.hydratedButtons?.map)(item => HydratedTemplateButton.fromObject(item)) ?? []
         });
         if (data.hydratedContentText != null) {
             message.hydratedContentText = data.hydratedContentText;
@@ -11095,7 +11095,7 @@ export class TabletNotificationsInfo extends pb_1.Message {
         notifyMessage?: ReturnType<typeof NotificationMessageInfo.prototype.toObject>[];
     }): TabletNotificationsInfo {
         const message = new TabletNotificationsInfo({
-            notifyMessage: data.notifyMessage.map(item => NotificationMessageInfo.fromObject(item))
+            notifyMessage: (data.notifyMessage?.map)(item => NotificationMessageInfo.fromObject(item)) ?? []
         });
         if (data.timestamp != null) {
             message.timestamp = data.timestamp;
@@ -11385,7 +11385,7 @@ export class WebNotificationsInfo extends pb_1.Message {
         notifyMessages?: ReturnType<typeof WebMessageInfo.prototype.toObject>[];
     }): WebNotificationsInfo {
         const message = new WebNotificationsInfo({
-            notifyMessages: data.notifyMessages.map(item => WebMessageInfo.fromObject(item))
+            notifyMessages: (data.notifyMessages?.map)(item => WebMessageInfo.fromObject(item)) ?? []
         });
         if (data.timestamp != null) {
             message.timestamp = data.timestamp;

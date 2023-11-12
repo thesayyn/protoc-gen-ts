@@ -62,7 +62,7 @@ export class SchedulingContext extends pb_1.Message {
     }): SchedulingContext {
         const message = new SchedulingContext({});
         if (data.env != null) {
-            message.env = data.env.map(item => SchedulingContextEnv.fromObject(item));
+            message.env = (data.env?.map)(item => SchedulingContextEnv.fromObject(item)) ?? [];
         }
         if (data.timeout != null) {
             message.timeout = data.timeout;

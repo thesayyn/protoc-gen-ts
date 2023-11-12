@@ -528,7 +528,7 @@ export namespace Query {
         }): Result {
             const message = new Result({});
             if (data.objects != null) {
-                message.objects = data.objects.map(item => _Object.fromObject(item));
+                message.objects = (data.objects?.map)(item => _Object.fromObject(item)) ?? [];
             }
             return message;
         }

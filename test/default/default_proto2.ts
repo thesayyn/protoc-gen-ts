@@ -339,7 +339,7 @@ export class DefaultMessageV2WithoutDefault extends pb_1.Message {
             map_string_string: new Map(Object.entries(data.map_string_string)),
             map_string_message: new Map(Object.entries(data.map_string_message).map(([key, value]) => [key, dependency_1.DefaultCommonMessage.fromObject(value)])),
             array_int32: data.array_int32,
-            array_message: data.array_message.map(item => dependency_1.DefaultCommonMessage.fromObject(item)),
+            array_message: (data.array_message?.map)(item => dependency_1.DefaultCommonMessage.fromObject(item)) ?? [],
             bytes: data.bytes
         });
         if (data.one_of_int32 != null) {

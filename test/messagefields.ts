@@ -45,7 +45,7 @@ export class MessageFields extends pb_1.Message {
             message.sub_message = SubMessage.fromObject(data.sub_message);
         }
         if (data.array_prop != null) {
-            message.array_prop = data.array_prop.map(item => SubMessage.fromObject(item));
+            message.array_prop = (data.array_prop?.map)(item => SubMessage.fromObject(item)) ?? [];
         }
         return message;
     }
