@@ -438,3 +438,14 @@ macro_rules! if_stmt {
         })
     };
 }
+
+
+#[macro_export]
+macro_rules! throw_stmt {
+    ($expr:expr) => {
+        Stmt::Throw(ThrowStmt {
+            span: DUMMY_SP,
+            arg: Box::new($expr),
+        })
+    };
+}

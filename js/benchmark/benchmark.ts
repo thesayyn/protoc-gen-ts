@@ -1,6 +1,4 @@
-import { protobuf_test_messages_proto2_TestAllTypesProto2 } from "../../tests/conformance/gen/test_messages_proto2.ts";
 import { protobuf_test_messages_proto3_TestAllTypesProto3 } from "../../tests/conformance/gen/test_messages_proto3.ts";
-import { TestAllTypesProto2 } from "./test_messages_proto2_pb.ts";
 import { TestAllTypesProto3 } from "./test_messages_proto3_pb.ts";
 import Benchmarkify from "npm:benchmarkify";
 import * as base64 from "https://deno.land/std@0.202.0/encoding/base64.ts";
@@ -40,4 +38,4 @@ serialize
     const result = des2.toBinary();
   });
 
-benchmark.run();
+benchmark.run()

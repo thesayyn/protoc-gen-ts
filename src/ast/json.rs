@@ -283,17 +283,14 @@ impl FieldDescriptorProto {
 
         crate::if_stmt!(
             crate::unary_expr!(crate::paren_expr!(check)),
-            Stmt::Throw(ThrowStmt {
-                span: DUMMY_SP,
-                arg: Box::new(crate::new_expr!(
-                    quote_ident!("Error").into(),
-                    vec![crate::expr_or_spread!(crate::lit_str!(format!(
-                        "illegal value for {}",
-                        self.json_key_name()
-                    ))
-                    .into())]
-                )),
-            })
+            crate::throw_stmt!(crate::new_expr!(
+                quote_ident!("Error").into(),
+                vec![crate::expr_or_spread!(crate::lit_str!(format!(
+                    "illegal value for {}",
+                    self.json_key_name()
+                ))
+                .into())]
+            ))
         )
     }
 
@@ -516,10 +513,16 @@ impl DescriptorProto {
     }
 
     pub(super) fn print_from_json(&self, ctx: &mut Context) -> ClassMember {
-        let mut statements = vec![Stmt::Decl(crate::const_decl!(
-            "message",
-            crate::new_expr!(Expr::Ident(quote_ident!(ctx.normalize_name(self.name()))))
-        ))];
+        let mut statements = vec![
+            Stmt::Decl(crate::const_decl!(
+                "message",
+                crate::new_expr!(Expr::Ident(quote_ident!(ctx.normalize_name(self.name()))))
+            )),
+            Stmt::Decl(crate::const_decl!(
+                "oneof",
+                crate::new_expr!(Expr::Ident(quote_ident!("Set")))
+            )),
+        ];
 
         for field in self.field.clone() {
             let accessor_fn = if field.is_repeated() && !field.is_map(ctx) {
@@ -591,6 +594,30 @@ impl DescriptorProto {
 
             if !field.is_repeated() {
                 stmts.push(field.value_check_stmt(ctx, accessor_fn))
+            }
+            if field.has_oneof_index() {
+                stmts.push(crate::if_stmt!(
+                    crate::call_expr!(
+                        crate::member_expr!("oneof", "has"),
+                        vec![crate::expr_or_spread!(
+                            crate::lit_num!(field.oneof_index()).into()
+                        )]
+                    ),
+                    crate::throw_stmt!(crate::new_expr!(
+                        quote_ident!("Error").into(),
+                        vec![crate::expr_or_spread!(crate::lit_str!(format!(
+                            "duplicate oneof field {}",
+                            field.json_key_name()
+                        ))
+                        .into())]
+                    ))
+                ));
+                stmts.push(crate::expr_stmt!(crate::call_expr!(
+                    crate::member_expr!("oneof", "add"),
+                    vec![crate::expr_or_spread!(
+                        crate::lit_num!(field.oneof_index()).into()
+                    )]
+                )))
             }
             stmts.push(crate::expr_stmt!(crate::assign_expr!(
                 PatOrExpr::Expr(Box::new(crate::member_expr!("message", field.name()))),
