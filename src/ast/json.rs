@@ -4,7 +4,6 @@ use std::vec;
 use crate::context::Syntax;
 use crate::descriptor::field_descriptor_proto::Type;
 use crate::descriptor::DescriptorProto;
-use crate::paren_expr;
 use crate::{context::Context, descriptor::FieldDescriptorProto};
 
 use convert_case::{Case, Casing};
@@ -235,8 +234,21 @@ impl FieldDescriptorProto {
             self.typeof_expr_for_type(accessor, "object")
         } else if self.is_integer() {
             // integer (non-bigint-float-double) needs special check
-            crate::paren_expr!(crate::chain_bin_exprs_and!(
-                self.typeof_expr_for_type(accessor, "number|string"),
+            crate::chain_bin_exprs_and!(
+                crate::paren_expr!(crate::chain_bin_exprs_or!(
+                    self.typeof_expr_for_type(accessor, "number"),
+                    crate::chain_bin_exprs_and!(
+                        self.typeof_expr_for_type(accessor, "string"),
+                        crate::bin_expr!(
+                            crate::call_expr!(
+                                crate::member_expr_bare!(accessor(self), "indexOf"),
+                                vec![crate::expr_or_spread!(crate::lit_str!(" ").into())]
+                            ),
+                            crate::lit_num!(-1).into(),
+                            BinaryOp::EqEqEq
+                        )
+                    )
+                )),
                 crate::call_expr!(
                     crate::member_expr!("Number", "isInteger"),
                     vec![crate::expr_or_spread!(crate::unary_expr!(
@@ -244,7 +256,7 @@ impl FieldDescriptorProto {
                         UnaryOp::Plus
                     ))]
                 )
-            ))
+            )
         } else if self.is_number() {
             self.typeof_expr_for_type(accessor, "number|string")
         } else if self.is_enum() {
@@ -264,7 +276,7 @@ impl FieldDescriptorProto {
         };
 
         let check = if num_check.is_some() {
-            crate::chain_bin_exprs_and!(typeof_check, paren_expr!(num_check.unwrap()))
+            crate::chain_bin_exprs_and!(typeof_check, crate::paren_expr!(num_check.unwrap()))
         } else {
             typeof_check
         };

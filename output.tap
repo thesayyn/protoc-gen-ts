@@ -14,34 +14,6 @@ not ok - Recommended.Proto2.JsonInput.FieldNameExtension.Validator
 # 
 # 
 
-not ok - Required.Proto3.JsonInput.Int32FieldLeadingSpace
-# Should have failed to parse, but didn't.
-# 
-# json_payload: "{\"optionalInt32\": \" 1\"}"
-# requested_output_format: JSON
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# json_payload: "{
-#   \"optionalInt32\": 1
-# }"
-# 
-# 
-
-not ok - Required.Proto3.JsonInput.Int32FieldTrailingSpace
-# Should have failed to parse, but didn't.
-# 
-# json_payload: "{\"optionalInt32\": \"1 \"}"
-# requested_output_format: JSON
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# json_payload: "{
-#   \"optionalInt32\": 1
-# }"
-# 
-# 
-
 not ok - Recommended.Proto3.JsonInput.StringFieldUnpairedHighSurrogate
 # Should have failed to parse, but didn't.
 # 
@@ -212,10 +184,10 @@ not ok - Recommended.Proto3.JsonInput.IgnoreUnknownEnumStringValueInMapValue.Pro
 # 
 
 # CONFORMANCE SUITE FAILED
-#	2017 succeses
+#	2019 succeses
 #	0 skipped
 #	0 expected failures
-#	14 unexpected failures
+#	12 unexpected failures
 
 # 
 # These tests failed.  If they can't be fixed right now, you can add them to the failure list so the overall suite can succeed.  Add them to the failure list by running:
@@ -232,8 +204,6 @@ not ok - Recommended.Proto3.JsonInput.IgnoreUnknownEnumStringValueInMapValue.Pro
 #   Recommended.Proto3.JsonInput.StringFieldSurrogateInWrongOrder
 #   Recommended.Proto3.JsonInput.StringFieldUnpairedHighSurrogate
 #   Recommended.Proto3.JsonInput.StringFieldUnpairedLowSurrogate
-#   Required.Proto3.JsonInput.Int32FieldLeadingSpace
-#   Required.Proto3.JsonInput.Int32FieldTrailingSpace
 #   Required.Proto3.JsonInput.OneofFieldDuplicate
 # 
 # 

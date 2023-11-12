@@ -9,6 +9,4 @@ Recommended.Proto3.JsonInput.RejectUnknownEnumStringValueInMapValue
 Recommended.Proto3.JsonInput.StringFieldSurrogateInWrongOrder
 Recommended.Proto3.JsonInput.StringFieldUnpairedHighSurrogate
 Recommended.Proto3.JsonInput.StringFieldUnpairedLowSurrogate
-Required.Proto3.JsonInput.Int32FieldLeadingSpace
-Required.Proto3.JsonInput.Int32FieldTrailingSpace
 Required.Proto3.JsonInput.OneofFieldDuplicate
