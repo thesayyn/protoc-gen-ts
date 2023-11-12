@@ -141,7 +141,7 @@ impl<'a> Context<'a> {
         imps
     }
 
-    pub fn get_import(&mut self, source: &str) -> Ident {
+    pub fn get_import(&self, source: &str) -> Ident {
         let cached_counter = self.import_identifier_map.get(&String::from(source));
 
         if let Some(counter) = cached_counter {
@@ -205,7 +205,7 @@ impl<'a> Context<'a> {
         None
     }
 
-    pub fn lazy_type_ref(&mut self, type_name: &str) -> Ident {
+    pub fn lazy_type_ref(&self, type_name: &str) -> Ident {
         let provided_by = self.find_type_provider(&type_name.to_string());
         if let Some(provided_by) = provided_by {
             if self.name == provided_by {

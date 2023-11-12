@@ -58,7 +58,6 @@ impl Mapper for DescriptorProto {
         }
 
         for r#enum in &self.enum_type {
-            ctx.register_type_name(r#enum.name());
             r#enum.map(&mut ctx)
         }
     }

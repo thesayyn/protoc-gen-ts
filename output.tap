@@ -16,103 +16,6 @@ not ok - Required.Proto3.ProtobufInput.ValidDataMap.STRING.ENUM.MissingDefault.J
 # 
 # 
 
-not ok - Required.Proto3.JsonInput.OriginalProtoFieldName.ProtobufOutput
-# output was not equivalent to reference message: 
-# deleted: field_name2: 2
-# deleted: _field_name3: 3
-# deleted: field__name4_: 4
-# deleted: field_0_name6: 6
-# deleted: field_Name9: 9
-# deleted: Field_Name10: 10
-# deleted: FIELD_NAME11: 11
-# deleted: FIELD_name12: 12
-# deleted: __field_name13: 13
-# deleted: __Field_name14: 14
-# deleted: field__name15: 15
-# deleted: field__Name16: 16
-# deleted: field_name17__: 17
-# deleted: Field_name18__: 18
-# 
-# 
-# json_payload: "{
-#         \"fieldname1\": 1,
-#         \"field_name2\": 2,
-#         \"_field_name3\": 3,
-#         \"field__name4_\": 4,
-#         \"field0name5\": 5,
-#         \"field_0_name6\": 6,
-#         \"fieldName7\": 7,
-#         \"FieldName8\": 8,
-#         \"field_Name9\": 9,
-#         \"Field_Name10\": 10,
-#         \"FIELD_NAME11\": 11,
-#         \"FIELD_name12\": 12,
-#         \"__field_name13\": 13,
-#         \"__Field_name14\": 14,
-#         \"field__name15\": 15,
-#         \"field__Name16\": 16,
-#         \"field_name17__\": 17,
-#         \"Field_name18__\": 18
-#       }"
-# requested_output_format: PROTOBUF
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# protobuf_payload: "\210\031\001\250\031\005\270\031\007\300\031\010"
-# 
-# 
-
-not ok - Required.Proto3.JsonInput.OriginalProtoFieldName.JsonOutput
-# output was not equivalent to reference message: 
-# deleted: field_name2: 2
-# deleted: _field_name3: 3
-# deleted: field__name4_: 4
-# deleted: field_0_name6: 6
-# deleted: field_Name9: 9
-# deleted: Field_Name10: 10
-# deleted: FIELD_NAME11: 11
-# deleted: FIELD_name12: 12
-# deleted: __field_name13: 13
-# deleted: __Field_name14: 14
-# deleted: field__name15: 15
-# deleted: field__Name16: 16
-# deleted: field_name17__: 17
-# deleted: Field_name18__: 18
-# 
-# 
-# json_payload: "{
-#         \"fieldname1\": 1,
-#         \"field_name2\": 2,
-#         \"_field_name3\": 3,
-#         \"field__name4_\": 4,
-#         \"field0name5\": 5,
-#         \"field_0_name6\": 6,
-#         \"fieldName7\": 7,
-#         \"FieldName8\": 8,
-#         \"field_Name9\": 9,
-#         \"Field_Name10\": 10,
-#         \"FIELD_NAME11\": 11,
-#         \"FIELD_name12\": 12,
-#         \"__field_name13\": 13,
-#         \"__Field_name14\": 14,
-#         \"field__name15\": 15,
-#         \"field__Name16\": 16,
-#         \"field_name17__\": 17,
-#         \"Field_name18__\": 18
-#       }"
-# requested_output_format: JSON
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# json_payload: "{
-#   \"fieldname1\": 1,
-#   \"field0name5\": 5,
-#   \"fieldName7\": 7,
-#   \"FieldName8\": 8
-# }"
-# 
-# 
-
 not ok - Recommended.Proto2.JsonInput.FieldNameExtension.Validator
 # JSON payload validation failed.
 # 
@@ -152,37 +55,6 @@ not ok - Required.Proto3.JsonInput.Int32FieldTrailingSpace
 # json_payload: "{
 #   \"optionalInt32\": 1
 # }"
-# 
-# 
-
-not ok - Required.Proto3.JsonInput.EnumFieldNumericValueNonZero.ProtobufOutput
-# failed to parse input or produce output.
-# 
-# json_payload: "{\"optionalNestedEnum\": 1}"
-# requested_output_format: PROTOBUF
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# serialize_error: "Error: Assertion failed
-#     at Object.jspb.asserts.doAssertFailure (file:///private/var/folders/tg/07vw4wzj2gbbbkr8kqktm36c0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:597)
-#     at Object.jspb.asserts.assert (file:///private/var/folders/tg/07vw4wzj2gbbbkr8kqktm36c0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:729)
-#     at jspb.BinaryWriter.writeInt32 (file:///private/var/folders/tg/07vw4wzj2gbbbkr8kqktm36c0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:458:77)
-#     at protobuf_test_messages_proto3_TestAllTypesProto3.serialize (file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:1369:16)
-#     at file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/js/conformance/main.ts:77:46
-# 
-#      "
-# 
-# 
-
-not ok - Required.Proto3.JsonInput.EnumFieldUnknownValue.Validator
-# JSON payload validation failed.
-# 
-# json_payload: "{\"optionalNestedEnum\": 123}"
-# requested_output_format: JSON
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# json_payload: "{}"
 # 
 # 
 
@@ -242,44 +114,6 @@ not ok - Required.Proto3.JsonInput.OneofFieldDuplicate
 # 
 # 
 
-not ok - Required.Proto3.JsonInput.BoolMapField.ProtobufOutput
-# failed to parse input or produce output.
-# 
-# json_payload: "{\"mapBoolBool\": {\"true\": true, \"false\": false}}"
-# requested_output_format: PROTOBUF
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# serialize_error: "Error: Assertion failed
-#     at Object.jspb.asserts.doAssertFailure (file:///private/var/folders/tg/07vw4wzj2gbbbkr8kqktm36c0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:597)
-#     at Object.jspb.asserts.assert (file:///private/var/folders/tg/07vw4wzj2gbbbkr8kqktm36c0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:729)
-#     at jspb.BinaryWriter.writeInt64 (file:///private/var/folders/tg/07vw4wzj2gbbbkr8kqktm36c0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:459:77)
-#     at protobuf_test_messages_proto3_TestAllTypesProto3.serialize (file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:1672:20)
-#     at file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/js/conformance/main.ts:77:46
-# 
-#      "
-# 
-# 
-
-not ok - Required.Proto3.JsonInput.BoolMapEscapedKey.ProtobufOutput
-# failed to parse input or produce output.
-# 
-# json_payload: "{\"mapBoolBool\": {\"tr\\u0075e\": true}}"
-# requested_output_format: PROTOBUF
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
-# 
-# serialize_error: "Error: Assertion failed
-#     at Object.jspb.asserts.doAssertFailure (file:///private/var/folders/tg/07vw4wzj2gbbbkr8kqktm36c0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:597)
-#     at Object.jspb.asserts.assert (file:///private/var/folders/tg/07vw4wzj2gbbbkr8kqktm36c0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:88:729)
-#     at jspb.BinaryWriter.writeInt64 (file:///private/var/folders/tg/07vw4wzj2gbbbkr8kqktm36c0000gn/T/deno-compile-protoc_gen_ts_conformance/node_modules/localhost/google-protobuf/3.21.2/google-protobuf.js:459:77)
-#     at protobuf_test_messages_proto3_TestAllTypesProto3.serialize (file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:1672:20)
-#     at file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/js/conformance/main.ts:77:46
-# 
-#      "
-# 
-# 
-
 not ok - Recommended.Proto3.JsonInput.MapFieldValueIsNull
 # Should have failed to parse, but didn't.
 # 
@@ -322,31 +156,41 @@ not ok - Recommended.Proto3.JsonInput.NullValueInOtherOneofNewFormat.Validator
 # 
 # 
 
-not ok - Recommended.Proto3.JsonInput.RejectUnknownEnumStringValueInOptionalField
-# Should have failed to parse, but didn't.
+not ok - Recommended.Proto3.JsonInput.IgnoreUnknownEnumStringValueInOptionalField.ProtobufOutput
+# failed to parse input or produce output.
 # 
 # json_payload: "{
 #       \"optional_nested_enum\": \"UNKNOWN_ENUM_VALUE\"
 #     }"
-# requested_output_format: JSON
+# requested_output_format: PROTOBUF
 # message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
+# test_category: JSON_IGNORE_UNKNOWN_PARSING_TEST
 # 
-# json_payload: "{}"
+# parse_error: "Error: illegal value for optionalNestedEnum
+#     at Function.fromJson (file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:2241:199)
+#     at file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/js/conformance/main.ts:63:29
+# 
+#      "
 # 
 # 
 
-not ok - Recommended.Proto3.JsonInput.RejectUnknownEnumStringValueInRepeatedField
-# Should have failed to parse, but didn't.
+not ok - Recommended.Proto3.JsonInput.IgnoreUnknownEnumStringValueInRepeatedField.ProtobufOutput
+# failed to parse input or produce output.
 # 
 # json_payload: "{
 #       \"repeated_nested_enum\": [\"UNKNOWN_ENUM_VALUE\"]
 #     }"
-# requested_output_format: JSON
+# requested_output_format: PROTOBUF
 # message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: JSON_TEST
+# test_category: JSON_IGNORE_UNKNOWN_PARSING_TEST
 # 
-# json_payload: "{}"
+# parse_error: "Error: illegal value for repeatedNestedEnum
+#     at file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:2391:146
+#     at Array.map (<anonymous>)
+#     at Function.fromJson (file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:2390:65)
+#     at file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/js/conformance/main.ts:63:29
+# 
+#      "
 # 
 # 
 
@@ -360,39 +204,53 @@ not ok - Recommended.Proto3.JsonInput.RejectUnknownEnumStringValueInMapValue
 # message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
 # test_category: JSON_TEST
 # 
-# json_payload: "{}"
+# json_payload: "{
+#   \"mapStringNestedEnum\": {}
+# }"
+# 
+# 
+
+not ok - Recommended.Proto3.JsonInput.IgnoreUnknownEnumStringValueInMapValue.ProtobufOutput
+# output was not equivalent to reference message: 
+# added: map_string_nested_enum[key]: FOO
+# 
+# 
+# json_payload: "{
+#       \"map_string_nested_enum\": {\"key\": \"UNKNOWN_ENUM_VALUE\"}
+#     }"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: JSON_IGNORE_UNKNOWN_PARSING_TEST
+# 
+# protobuf_payload: "\312\004\005
+# \003key"
 # 
 # 
 
 # CONFORMANCE SUITE FAILED
-#	2011 succeses
+#	2016 succeses
 #	0 skipped
 #	0 expected failures
-#	20 unexpected failures
+#	15 unexpected failures
 
 # 
 # These tests failed.  If they can't be fixed right now, you can add them to the failure list so the overall suite can succeed.  Add them to the failure list by running:
 #   ./update_failure_list.py  --add failing_tests.txt
 # 
 #   Recommended.Proto2.JsonInput.FieldNameExtension.Validator
+#   Recommended.Proto3.JsonInput.IgnoreUnknownEnumStringValueInMapValue.ProtobufOutput
+#   Recommended.Proto3.JsonInput.IgnoreUnknownEnumStringValueInOptionalField.ProtobufOutput
+#   Recommended.Proto3.JsonInput.IgnoreUnknownEnumStringValueInRepeatedField.ProtobufOutput
 #   Recommended.Proto3.JsonInput.MapFieldValueIsNull
 #   Recommended.Proto3.JsonInput.NullValueInOtherOneofNewFormat.Validator
 #   Recommended.Proto3.JsonInput.NullValueInOtherOneofOldFormat.Validator
 #   Recommended.Proto3.JsonInput.RejectUnknownEnumStringValueInMapValue
-#   Recommended.Proto3.JsonInput.RejectUnknownEnumStringValueInOptionalField
-#   Recommended.Proto3.JsonInput.RejectUnknownEnumStringValueInRepeatedField
 #   Recommended.Proto3.JsonInput.StringFieldSurrogateInWrongOrder
 #   Recommended.Proto3.JsonInput.StringFieldUnpairedHighSurrogate
 #   Recommended.Proto3.JsonInput.StringFieldUnpairedLowSurrogate
-#   Required.Proto3.JsonInput.BoolMapEscapedKey.ProtobufOutput
-#   Required.Proto3.JsonInput.BoolMapField.ProtobufOutput
-#   Required.Proto3.JsonInput.EnumFieldNumericValueNonZero.ProtobufOutput
-#   Required.Proto3.JsonInput.EnumFieldUnknownValue.Validator
 #   Required.Proto3.JsonInput.Int32FieldLeadingSpace
 #   Required.Proto3.JsonInput.Int32FieldTrailingSpace
 #   Required.Proto3.JsonInput.OneofFieldDuplicate
-#   Required.Proto3.JsonInput.OriginalProtoFieldName.JsonOutput
-#   Required.Proto3.JsonInput.OriginalProtoFieldName.ProtobufOutput
 #   Required.Proto3.ProtobufInput.ValidDataMap.STRING.ENUM.MissingDefault.JsonOutput
 # 
 # 

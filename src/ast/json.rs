@@ -21,6 +21,10 @@ pub(crate) fn json_key_name_field_member(field: &FieldDescriptorProto) -> Expr {
     crate::member_expr!("json", field.json_key_name())
 }
 
+pub(crate) fn name_field_member(field: &FieldDescriptorProto) -> Expr {
+    crate::member_expr!("json", field.name())
+}
+
 impl FieldDescriptorProto {
     fn json_repr_for_well_known_type(&self) -> &str {
         match self.type_name().trim_start_matches(".") {
@@ -52,7 +56,12 @@ impl FieldDescriptorProto {
                 crate::typeof_unary_expr!(accessor(self).into(), "number"),
                 crate::typeof_unary_expr!(accessor(self).into(), "string"),
                 crate::typeof_unary_expr!(accessor(self).into(), "boolean"),
-                crate::typeof_unary_expr!(accessor(self).into(), "object")
+                crate::typeof_unary_expr!(accessor(self).into(), "object"),
+                crate::bin_expr!(
+                    accessor(self).into(),
+                    quote_ident!("null").into(),
+                    BinaryOp::EqEqEq
+                )
             )),
             "number|string" => crate::paren_expr!(crate::chain_bin_exprs_or!(
                 crate::typeof_unary_expr!(accessor(self).into(), "number"),
@@ -147,10 +156,7 @@ impl FieldDescriptorProto {
         let neq_null_or_undefined_check = if self.json_repr_for_well_known_type() == "unknown" {
             neq_undefined_check
         } else {
-            crate::paren_expr!(crate::chain_bin_exprs_and!(
-                neq_null_check,
-                neq_undefined_check
-            ))
+            crate::chain_bin_exprs_and!(neq_null_check, neq_undefined_check)
         };
 
         let presence_check = if self.has_oneof_index() {
@@ -190,7 +196,7 @@ impl FieldDescriptorProto {
         }
     }
 
-    pub(self) fn value_check_stmt(&self, accessor: FieldAccessorFn) -> Stmt {
+    pub(self) fn value_check_stmt(&self, ctx: &Context, accessor: FieldAccessorFn) -> Stmt {
         let min_max_check: Option<Expr> = match self.type_() {
             Type::TYPE_FLOAT => Some(self.min_max_check(accessor, f32::MIN, f32::MAX)),
             Type::TYPE_DOUBLE => Some(self.min_max_check(accessor, f64::MIN, f64::MAX)),
@@ -239,8 +245,20 @@ impl FieldDescriptorProto {
                     ))]
                 )
             ))
-        } else if self.is_enum() || self.is_number() {
+        } else if self.is_number() {
             self.typeof_expr_for_type(accessor, "number|string")
+        } else if self.is_enum() {
+            crate::chain_bin_exprs_or!(
+                self.typeof_expr_for_type(accessor, "number"),
+                crate::chain_bin_exprs_and!(
+                    self.typeof_expr_for_type(accessor, "string"),
+                    crate::bin_expr!(
+                        accessor(self).into(),
+                        ctx.lazy_type_ref(self.type_name()).into(),
+                        BinaryOp::In
+                    )
+                )
+            )
         } else {
             self.typeof_expr_for_type(accessor, "never!")
         };
@@ -294,7 +312,11 @@ impl FieldDescriptorProto {
         let accessor = accessor_fn(self);
         let base64 = ctx.get_import("https://deno.land/std@0.205.0/encoding/base64url.ts");
         if self.is_enum() {
-            crate::member_expr_computed!(ctx.lazy_type_ref(self.type_name()).into(), accessor)
+            crate::bin_expr!(
+                crate::member_expr_computed!(ctx.lazy_type_ref(self.type_name()).into(), accessor),
+                accessor_fn(self).into(),
+                BinaryOp::NullishCoalescing
+            )
         } else if self.is_bytes() {
             crate::call_expr!(
                 crate::member_expr!(base64, "encode"),
@@ -318,18 +340,40 @@ impl FieldDescriptorProto {
         }
     }
 
+    pub(self) fn into_from_json_expr_for_map_key(
+        &self,
+        ctx: &mut Context,
+        accessor_fn: super::field::FieldAccessorFn,
+    ) -> Expr {
+        let accessor = accessor_fn(self);
+        if self.is_booelan() {
+            crate::bin_expr!(accessor, quote_str!("true").into(), BinaryOp::EqEqEq)
+        } else {
+            self.into_from_json_expr(ctx, accessor_fn)
+        }
+    }
+
     pub(self) fn into_from_json_expr(
         &self,
         ctx: &mut Context,
         accessor_fn: super::field::FieldAccessorFn,
     ) -> Expr {
         let accessor = accessor_fn(self);
-        let base64 = ctx.get_import("https://deno.land/std@0.205.0/encoding/base64url.ts");
         if self.is_enum() {
-            crate::member_expr_computed!(ctx.lazy_type_ref(self.type_name()).into(), accessor)
+            crate::cond_expr!(
+                crate::typeof_unary_expr!(accessor_fn(self).into(), "number"),
+                accessor_fn(self).into(),
+                crate::member_expr_computed!(ctx.lazy_type_ref(self.type_name()).into(), accessor)
+            )
         } else if self.is_bytes() {
+            let base64 = ctx.get_import("https://deno.land/std@0.205.0/encoding/base64url.ts");
             crate::call_expr!(
                 crate::member_expr!(base64, "decode"),
+                vec![crate::expr_or_spread!(accessor)]
+            )
+        } else if self.is_bigint() {
+            crate::call_expr!(
+                quote_ident!("BigInt").into(),
                 vec![crate::expr_or_spread!(accessor)]
             )
         } else if self.is_bigint() {
@@ -466,7 +510,11 @@ impl DescriptorProto {
         ))];
 
         for field in self.field.clone() {
-            let accessor_fn = super::field::static_field_member;
+            let accessor_fn = if field.is_repeated() && !field.is_map(ctx) {
+                super::field::static_field_member
+            } else {
+                super::field::bare_field_member
+            };
 
             let mut value_expr = field.into_from_json_expr(ctx, accessor_fn);
 
@@ -487,10 +535,11 @@ impl DescriptorProto {
                             Expr::Array(ArrayLit {
                                 span: DUMMY_SP,
                                 elems: vec![
-                                    Some(crate::expr_or_spread!(key_field.into_from_json_expr(
-                                        ctx,
-                                        super::field::bare_field_member
-                                    ))),
+                                    Some(crate::expr_or_spread!(key_field
+                                        .into_from_json_expr_for_map_key(
+                                            ctx,
+                                            super::field::bare_field_member
+                                        ))),
                                     Some(crate::expr_or_spread!(value_field.into_from_json_expr(
                                         ctx,
                                         super::field::bare_field_member
@@ -515,42 +564,39 @@ impl DescriptorProto {
                 );
             } else if field.is_repeated() {
                 value_expr = crate::call_expr!(
-                    crate::member_expr_bare!(accessor_fn(&field), "map"),
+                    crate::member_expr_bare!(super::field::bare_field_member(&field), "map"),
                     vec![crate::expr_or_spread!(crate::arrow_func!(
                         vec![crate::pat_ident!("r")],
                         vec![
-                            field.value_check_stmt(accessor_fn),
+                            field.value_check_stmt(ctx, super::field::static_field_member),
                             crate::return_stmt!(value_expr)
                         ]
                     ))]
                 );
             }
 
-            let access_expr = if field.is_well_known_message() {
-                json_key_name_field_member(&field)
-            } else {
-                crate::cond_expr!(
-                    crate::bin_expr!(
-                        json_key_name_field_member(&field),
-                        quote_ident!("null").into(),
-                        BinaryOp::EqEqEq
-                    ),
-                    field.default_value_expr(ctx, true),
-                    json_key_name_field_member(&field)
-                )
-            };
-
-            let mut stmts = vec![Stmt::Decl(crate::const_decl!("r", access_expr))];
+            let mut stmts = vec![];
 
             if !field.is_repeated() {
-                stmts.push(field.value_check_stmt(accessor_fn))
+                stmts.push(field.value_check_stmt(ctx, accessor_fn))
             }
             stmts.push(crate::expr_stmt!(crate::assign_expr!(
                 PatOrExpr::Expr(Box::new(crate::member_expr!("message", field.name()))),
                 value_expr
             )));
+            statements.push(Stmt::Decl(crate::const_decl!(
+                field.name(),
+                crate::cond_expr!(
+                    crate::call_expr!(
+                        crate::member_expr!("json", "hasOwnProperty"),
+                        vec![crate::expr_or_spread!(field.json_key_name().into())]
+                    ),
+                    json_key_name_field_member(&field),
+                    name_field_member(&field)
+                )
+            )));
             statements.push(crate::if_stmt!(
-                field.default_value_bin_expr_for_json(ctx, json_key_name_field_member),
+                field.default_value_bin_expr_for_json(ctx, super::field::bare_field_member),
                 crate::block_stmt!(stmts)
             ))
         }
