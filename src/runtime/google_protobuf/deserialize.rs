@@ -6,9 +6,8 @@ use crate::{context::Context, descriptor};
 use std::vec;
 use swc_common::DUMMY_SP;
 use swc_ecma_ast::{
-    AssignOp, BinaryOp, BlockStmt, BreakStmt, Expr, KeyValueProp, ObjectLit, PatOrExpr,
-    Prop, PropName, PropOrSpread, Stmt, SwitchCase, SwitchStmt, ThrowStmt, TsNonNullExpr,
-    WhileStmt,
+    AssignOp, BinaryOp, BlockStmt, BreakStmt, Expr, KeyValueProp, ObjectLit, PatOrExpr, Prop,
+    PropName, PropOrSpread, Stmt, SwitchCase, SwitchStmt, ThrowStmt, TsNonNullExpr, WhileStmt,
 };
 use swc_ecma_utils::{quote_ident, quote_str};
 
@@ -31,7 +30,7 @@ impl GooglePBRuntime {
             stmts.push(br_decl)
         }
 
-        stmts.push(self.deserialize_stmt(ctx, descriptor, field::this_field_member));
+        stmts.push(self.deserialize_stmt(ctx, descriptor, field::this_field_member, true));
 
         stmts
     }
@@ -132,7 +131,7 @@ impl GooglePBRuntime {
                             value_field.type_annotation(ctx),
                             value_field.default_value_expr(ctx, true)
                         )),
-                        self.deserialize_stmt(ctx, &descriptor, field::bare_field_member),
+                        self.deserialize_stmt(ctx, &descriptor, field::bare_field_member, false),
                         crate::expr_stmt!(crate::call_expr!(
                             crate::member_expr_bare!(accessor(field), "set"),
                             vec![
@@ -173,6 +172,7 @@ impl GooglePBRuntime {
         ctx: &mut Context,
         descriptor: &descriptor::DescriptorProto,
         accessor: field::FieldAccessorFn,
+        add_unknown_fields: bool,
     ) -> Stmt {
         let mut cases: Vec<SwitchCase> = vec![];
         for field in &descriptor.field {
@@ -243,54 +243,64 @@ impl GooglePBRuntime {
                 )),
             })],
         });
+
         // unknown fields
+
         cases.push(SwitchCase {
             span: DUMMY_SP,
             test: None,
-            cons: vec![
-                Stmt::Decl(crate::const_decl!(
-                    "prev",
-                    crate::call_expr!(crate::member_expr!("br", "getCursor"))
-                )),
-                crate::expr_stmt!(crate::call_expr!(crate::member_expr!("br", "skipField"))),
-                crate::expr_stmt!(crate::call_expr!(
-                    crate::member_expr_bare!(
-                        crate::member_expr!("this", "#unknown_fields"),
-                        "push"
-                    ),
-                    vec![crate::expr_or_spread!(Expr::Object(ObjectLit {
-                        span: DUMMY_SP,
-                        props: vec![
-                            PropOrSpread::Prop(Box::new(Prop::KeyValue(KeyValueProp {
-                                key: PropName::Ident(quote_ident!("no")),
-                                value: Box::new(crate::call_expr!(crate::member_expr!(
-                                    "br",
-                                    "getFieldNumber"
-                                )))
-                            }))),
-                            PropOrSpread::Prop(Box::new(Prop::KeyValue(KeyValueProp {
-                                key: PropName::Ident(quote_ident!("wireType")),
-                                value: Box::new(crate::call_expr!(crate::member_expr!(
-                                    "br",
-                                    "getWireType"
-                                )))
-                            }))),
-                            PropOrSpread::Prop(Box::new(Prop::KeyValue(KeyValueProp {
-                                key: PropName::Ident(quote_ident!("data")),
-                                value: Box::new(crate::call_expr!(
-                                    crate::member_expr!("bytes", "subarray"),
-                                    vec![
-                                        crate::expr_or_spread!(quote_ident!("prev").into()),
-                                        crate::expr_or_spread!(crate::call_expr!(
-                                            crate::member_expr!("br", "getCursor")
-                                        ))
-                                    ]
-                                ))
-                            })))
-                        ]
-                    }))]
-                )),
-            ],
+            cons: if add_unknown_fields {
+                vec![
+                    Stmt::Decl(crate::const_decl!(
+                        "prev",
+                        crate::call_expr!(crate::member_expr!("br", "getCursor"))
+                    )),
+                    crate::expr_stmt!(crate::call_expr!(crate::member_expr!("br", "skipField"))),
+                    crate::expr_stmt!(crate::call_expr!(
+                        crate::member_expr_bare!(
+                            crate::member_expr!("this", "#unknown_fields"),
+                            "push"
+                        ),
+                        vec![crate::expr_or_spread!(Expr::Object(ObjectLit {
+                            span: DUMMY_SP,
+                            props: vec![
+                                PropOrSpread::Prop(Box::new(Prop::KeyValue(KeyValueProp {
+                                    key: PropName::Ident(quote_ident!("no")),
+                                    value: Box::new(crate::call_expr!(crate::member_expr!(
+                                        "br",
+                                        "getFieldNumber"
+                                    )))
+                                }))),
+                                PropOrSpread::Prop(Box::new(Prop::KeyValue(KeyValueProp {
+                                    key: PropName::Ident(quote_ident!("wireType")),
+                                    value: Box::new(crate::call_expr!(crate::member_expr!(
+                                        "br",
+                                        "getWireType"
+                                    )))
+                                }))),
+                                PropOrSpread::Prop(Box::new(Prop::KeyValue(KeyValueProp {
+                                    key: PropName::Ident(quote_ident!("data")),
+                                    value: Box::new(crate::call_expr!(
+                                        crate::member_expr!("bytes", "subarray"),
+                                        vec![
+                                            crate::expr_or_spread!(quote_ident!("prev").into()),
+                                            crate::expr_or_spread!(crate::call_expr!(
+                                                crate::member_expr!("br", "getCursor")
+                                            ))
+                                        ]
+                                    ))
+                                })))
+                            ]
+                        }))]
+                    )),
+                ]
+            } else {
+                // just skip the field.
+                vec![crate::expr_stmt!(crate::call_expr!(crate::member_expr!(
+                    "br",
+                    "skipField"
+                )))]
+            },
         });
 
         let switch_stmt = Stmt::Switch(SwitchStmt {

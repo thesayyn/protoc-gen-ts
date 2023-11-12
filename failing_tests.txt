@@ -12,4 +12,3 @@ Recommended.Proto3.JsonInput.StringFieldUnpairedLowSurrogate
 Required.Proto3.JsonInput.Int32FieldLeadingSpace
 Required.Proto3.JsonInput.Int32FieldTrailingSpace
 Required.Proto3.JsonInput.OneofFieldDuplicate
-Required.Proto3.ProtobufInput.ValidDataMap.STRING.ENUM.MissingDefault.JsonOutput

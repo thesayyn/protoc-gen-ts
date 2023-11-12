@@ -5,7 +5,7 @@ use crate::{
 };
 use swc_common::DUMMY_SP;
 use swc_ecma_ast::{
-    ArrayLit, BigInt, BinaryOp, ClassMember, ClassProp, Expr, Lit, PropName, TsArrayType,
+    ArrayLit, BinaryOp, ClassMember, ClassProp, Expr, PropName, TsArrayType,
     TsEntityName, TsKeywordType, TsKeywordTypeKind, TsType, TsTypeAnn, TsTypeParamInstantiation,
     TsTypeRef, TsUnionOrIntersectionType, TsUnionType,
 };
@@ -113,7 +113,7 @@ impl FieldDescriptorProto {
     }
 
     pub fn proto3_default(&self, ctx: &mut Context) -> Option<Expr> {
-        if self.is_repeated() ||  self.has_oneof_index(){
+        if self.is_repeated() || self.has_oneof_index() {
             return None;
         }
         if self.is_string() {
@@ -133,9 +133,8 @@ impl FieldDescriptorProto {
 
     pub fn default_value_expr(&self, ctx: &mut Context, include_message: bool) -> Expr {
         if self.has_oneof_index() {
-            return Expr::Ident(quote_ident!("undefined"))
+            return Expr::Ident(quote_ident!("undefined"));
         }
-        // TODO: primitives is not a good name. it should be something about the field.
         if self.is_map(ctx) {
             crate::new_expr!(Expr::Ident(quote_ident!("Map")))
         } else if self.is_repeated() {
@@ -143,41 +142,41 @@ impl FieldDescriptorProto {
                 elems: vec![],
                 span: DUMMY_SP,
             })
+        } else if self.is_enum() {
+            crate::lit_num!(ctx.get_leading_enum_member(self.type_name())).into()
         } else if self.is_message() && include_message {
-            crate::new_expr!(Expr::Ident(ctx.lazy_type_ref(self.type_name())))
+            crate::new_expr!(ctx.lazy_type_ref(self.type_name()).into())
         } else if self.is_bytes() {
-            crate::new_expr!(Expr::Ident(quote_ident!("Uint8Array")))
+            crate::new_expr!(quote_ident!("Uint8Array").into())
         } else if self.is_string() {
-            Expr::Lit(quote_str!(self.default_value()).into())
+            quote_str!(self.default_value()).into()
         } else if self.is_bigint() {
-            Expr::Lit(Lit::BigInt(BigInt {
-                span: DUMMY_SP,
-                value: Box::new(
-                    self.default_value
-                        .clone()
-                        .unwrap_or("0".to_string())
-                        .parse::<num_bigint::BigInt>()
-                        .expect("can not parse the default")
-                        .into(),
-                ),
-                raw: None,
-            }))
+            crate::lit_bigint!(self
+                .default_value
+                .clone()
+                .unwrap_or("0".to_string())
+                .parse::<num_bigint::BigInt>()
+                .expect("can not parse the default")
+                .into())
+            .into()
         } else if self.is_number() {
-            Expr::Lit(crate::lit_num!(self
+            crate::lit_num!(self
                 .default_value
                 .clone()
                 .unwrap_or("0".to_string())
                 .parse::<f64>()
-                .expect("can not parse the default")))
+                .expect("can not parse the default"))
+            .into()
         } else if self.is_booelan() {
-            Expr::Lit(crate::lit_bool!(self
+            crate::lit_bool!(self
                 .default_value
                 .clone()
                 .unwrap_or("false".to_string())
                 .parse::<bool>()
-                .expect("can not parse the default")))
+                .expect("can not parse the default"))
+            .into()
         } else {
-            Expr::Ident(quote_ident!("undefined"))
+            quote_ident!("undefined").into()
         }
     }
     fn ts_type(&self, ctx: &mut Context) -> Option<TsType> {
@@ -251,9 +250,7 @@ impl FieldDescriptorProto {
         ident.optional = self.is_optional();
         let mut value: Option<Box<Expr>> = None;
         if ctx.syntax == &Syntax::Proto3 || self.is_repeated() || self.is_map(&ctx) {
-            value = Some(Box::new(
-                self.default_value_expr(ctx, false),
-            ))
+            value = Some(Box::new(self.default_value_expr(ctx, false)))
         }
         ClassMember::ClassProp(ClassProp {
             span: DUMMY_SP,

@@ -1,21 +1,5 @@
 TAP version 14
 
-not ok - Required.Proto3.ProtobufInput.ValidDataMap.STRING.ENUM.MissingDefault.JsonOutput
-# output was not equivalent to reference message: 
-# deleted: map_string_nested_enum['']: FOO
-# 
-# 
-# protobuf_payload: "\312\004\000"
-# requested_output_format: JSON
-# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
-# test_category: BINARY_TEST
-# 
-# json_payload: "{
-#   \"mapStringNestedEnum\": {}
-# }"
-# 
-# 
-
 not ok - Recommended.Proto2.JsonInput.FieldNameExtension.Validator
 # JSON payload validation failed.
 # 
@@ -167,7 +151,7 @@ not ok - Recommended.Proto3.JsonInput.IgnoreUnknownEnumStringValueInOptionalFiel
 # test_category: JSON_IGNORE_UNKNOWN_PARSING_TEST
 # 
 # parse_error: "Error: illegal value for optionalNestedEnum
-#     at Function.fromJson (file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:2241:199)
+#     at Function.fromJson (file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:2127:199)
 #     at file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/js/conformance/main.ts:63:29
 # 
 #      "
@@ -185,9 +169,9 @@ not ok - Recommended.Proto3.JsonInput.IgnoreUnknownEnumStringValueInRepeatedFiel
 # test_category: JSON_IGNORE_UNKNOWN_PARSING_TEST
 # 
 # parse_error: "Error: illegal value for repeatedNestedEnum
-#     at file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:2391:146
+#     at file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:2277:146
 #     at Array.map (<anonymous>)
-#     at Function.fromJson (file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:2390:65)
+#     at Function.fromJson (file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:2276:65)
 #     at file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/js/conformance/main.ts:63:29
 # 
 #      "
@@ -228,10 +212,10 @@ not ok - Recommended.Proto3.JsonInput.IgnoreUnknownEnumStringValueInMapValue.Pro
 # 
 
 # CONFORMANCE SUITE FAILED
-#	2016 succeses
+#	2017 succeses
 #	0 skipped
 #	0 expected failures
-#	15 unexpected failures
+#	14 unexpected failures
 
 # 
 # These tests failed.  If they can't be fixed right now, you can add them to the failure list so the overall suite can succeed.  Add them to the failure list by running:
@@ -251,6 +235,5 @@ not ok - Recommended.Proto3.JsonInput.IgnoreUnknownEnumStringValueInMapValue.Pro
 #   Required.Proto3.JsonInput.Int32FieldLeadingSpace
 #   Required.Proto3.JsonInput.Int32FieldTrailingSpace
 #   Required.Proto3.JsonInput.OneofFieldDuplicate
-#   Required.Proto3.ProtobufInput.ValidDataMap.STRING.ENUM.MissingDefault.JsonOutput
 # 
 # 
