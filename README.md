@@ -1,5 +1,6 @@
 # Protoc Gen Typescript 
 
+![conformance](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fthesayyn%2Fprotoc-gen-ts%2Frust-rewrite%2Finfra%2Fstats.json&query=percentile&suffix=%25&label=conformance)
 [![test](https://github.com/thesayyn/protoc-gen-ts/actions/workflows/test.yaml/badge.svg)](https://github.com/thesayyn/protoc-gen-ts/actions/workflows/test.yaml)
 [![npm](https://img.shields.io/npm/v/protoc-gen-ts)](https://www.npmjs.com/package/protoc-gen-ts?activeTab=versions)
 [![npm](https://img.shields.io/npm/dm/protoc-gen-ts)](https://www.npmjs.com/package/protoc-gen-ts?activeTab=versions)
@@ -14,6 +15,10 @@ npm install -g protoc-gen-ts
 
 protoc -I=sourcedir --ts_out=dist myproto.proto
 ```
+
+## Benchmark
+
+There is an automatically generated benchmark result available at [benchmark.md](docs/benchmark.md).
 
 ## Example
 
