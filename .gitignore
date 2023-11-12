@@ -5,3 +5,4 @@ tests/*/gen
 js/conformance/protoc_gen_ts_conformance
 .DS_Store
 node_modules/
+pprof-profile-*

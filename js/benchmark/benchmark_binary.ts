@@ -1,6 +1,6 @@
 
 import { protobuf_test_messages_proto3_TestAllTypesProto3 } from "../../tests/conformance/gen/test_messages_proto3.ts";
-import { TestAllTypesProto3 } from "./test_messages_proto3_pb.ts";
+import { TestAllTypesProto3 } from "./protobuf-es/test_messages_proto3_pb.ts";
 import * as base64 from "https://deno.land/std@0.202.0/encoding/base64.ts";
 
 // 2AQA2AS5YNgEueCAANgEueCAgICAgIAA2AT/////B9gEgICAgPj/////AdgEgICAgCDYBP////8f2AT//////////3/YBIGAgICAgICAgAE=
