@@ -8,6 +8,16 @@
 
 Compile `.proto` files to plain TypeScript. Supports gRPC Node and gRPC Web.
 
+## Features
+
+- Passes all required conformance tests
+- Supports well-known types
+- Supports [gRPC](docs/rpc.md) (`@grpc/grpc-js`)
+- Supports [gRPC Web](docs/rpc.md) (`grpc-web`)
+- Supports json encoding (`toJson`, `fromJson`)
+- Supports binary encoding (`toBinary`, `fromBinary`)
+- Optimized for [de]serialization speed.
+
 ## Usage
 
 ```properties
@@ -15,127 +25,50 @@ npm install -g protoc-gen-ts
 
 protoc -I=sourcedir --ts_out=dist myproto.proto
 ```
-
-## Benchmark
-
-There is an automatically generated benchmark result available at [benchmark.md](docs/benchmark.md).
-
-## Example
+### Example
 
 ```proto
 syntax = "proto3";
 
+enum Role {
+    ADMIN = 0;
+    MOD = 1;
+}
+
 message Author {
-    string name = 1;
-    string role = 2;
-}
-
-message Change {
-    Kind kind = 1;
-    string patch = 2;
-    repeated string tags = 3; 
-    oneof name_or_id {
-        string name = 4;
-        string id = 5;
+    Role role = 2;
+    oneof id_or_name {
+        string id = 4;
+        string name = 5;
     }
-    Author author = 6;
-}
-
-enum Kind {
-    UPDATED = 0;
-    DELETED = 1;
 }
 ```
 
 
 ```typescript
-// Constructed message
-const change = new Change({
-    kind: Kind.UPDATED,
-    patch: "@@ -7,11 +7,15 @@",
-    tags: ["no prefix", "as is"],
-    name: "patch for typescript 4.5",
-    author: new Author({
-        name: "mary poppins",
-        role: "maintainer"
-    })
+const author = Author.fromJson({
+    role: Kind.ADMIN,
+    name: "mary poppins",
 });
 
-// Sent over the wire
-const bytes: Uint8Array = change.serialize();
+// Serialize to binary
+const bytes: Uint8Array = author.toBinary();
 
-const receivedChange: Change = Change.deserialize(bytes);
+// Deserialize from binary
+const received: Change = Change.fromBinary(bytes);
 
-console.log(receivedChange.kind == Kind.UPDATED) // true
-console.log(receivedChange.patch) // "@@ -7,11 +7,15 @@"
-console.log(receivedChange.tags) // ["no prefix", "as is"]
-console.log(receivedChange.name) // "patch for typescript 4.5"
-// see which one of the fields were filled
-console.log(receivedChange.name_or_id) // "name"
-console.log(receivedChange.author.name) // "mary poppins"
+console.log(received.toJson())
 ```
 
-## Support for Message.fromObject and Message.toObject
+## Development
 
-When mapping raw json data to message classes, dealing with nested structures can be rather annoying.
-To overcome this problem, every generated message class has a static method called `fromObject` and `toObject` 
-which can handle the mapping bidirectionally for you, even with the deeply structured messages. since it is 
-aware of the field graph, it does not rely on any runtime type information thus we get the chance to keep it fast.
-
-One can write code as;
-
-```typescript
-const change = Change.fromObject({
-    kind: Kind.UPDATED,
-    patch: "@@ -7,11 +7,15 @@",
-    tags: ["no prefix", "as is"],
-    name: "patch for typescript 4.5",
-    author: {
-        name: "mary poppins",
-        role: "maintainer"
-    }
-});
-
-console.log(change.author instanceof Author) // true
+```sh
+./infra/test.sh
 ```
 
-## Usage with `@grpc/grpc-js` or `grpc`
+## Contributors
 
-There is a seperate documentation for the usage of protoc-gen-ts along with either `@grpc/grpc-js` or `grpc`.  By default
-this generated gRPC interfaces will use `@grpc/grpc-js`.
-
-Checkout [rpcs](docs/rpc.md).
-
-
-## Key Differences
-
-- No `d.ts` files. Just plain typescript sources with actual code.
-- Fields as **getter** **setters**.
-- Enums as **enums**.
-- Messages within a **namespace** if the proto has a **package** directive. (can be controlled via --ts_opt=no_namespace)
-- **fromObject** and **toObject** methods to work with json data.
-- Support for gRPC Node and gRPC Web.
-- You get what you define in proto files. No such prefixes as "getField" or "getFieldList".
-- Generates bindings with either as-is names (`message.field_name`) or JSON-compatible names (`message.fieldName`).
-
-
-## Supported Options
-
-* With `--ts_opt=unary_rpc_promise=true`, the service definition will contain a promise based rpc with a calling pattern of `const result = await client.METHOD(message)`.  Note: all of the `metadata` and `options` parameters are still available to you.
-
-* With `--ts_opt=grpc_package=xxxx`, you can specify a different package to import rather than `@grpc/grpc-js`.
-
-* With `--ts_opt=no_namespace`, you can control whether you get nested messages inside namespaces or prefixed with their parent message or directive.
-
-* With `--ts_opt=json_names`, fields will be converted to lowerCamelCase, for compatibility with the [JSON mapping][] done by the first-party protobuf libraries.
-
-[JSON mapping]: https://developers.google.com/protocol-buffers/docs/proto3#json
-
-* With `--ts_opt=target=node`, the generated client class will be compatible with gRPC Node `@grpc/grpc-js` or `grpc`. 
-
-* With `--ts_opt=target=web`, the generated client class will be compatible with gRPC Web via `grpc-web`. 
-
-* With `--ts_opt=no_grpc`, grpc service code won't be generated. 
+![GitHub Contributors Image](https://contrib.rocks/image?repo=thesayyn/protoc-gen-ts)
 
 ## Support
 
@@ -146,35 +79,3 @@ If your corporate has a OSS funding scheme, please consider supporting us monthl
 <a href="https://opencollective.com/protoc-gen-ts">
 <img height="100px" src="https://opencollective.com/protoc-gen-ts/tiers/backer.svg?avatarHeight=36">
 </a>
-
-## Roadmap
-
-- <s>Support for repeated non-integer fields</s>
-- <s>Generate appropriate service code that is usable with node **grpc** package.</s>
-- <s>Support for creating protocol buffer messages directly from their constructors with an object.</s>
-- <s>Support for `import` directive.</s>
-- <s>Support for `Promise` in rpcs.</s>
-- <s>Make services strongly typed.</s>
-- <s>Support oneof fields</s>
-- <s>Support `map<TYPE, TYPE>` types as ES `Map`.</s>
-- <s>Support for `@deprecated` annotations via deprecated option.</s>
-- <s>Support for grpc-web without any manual intervention.</s>
-- Interopability with well knowns.
-
-
-## Alternatives
-
-| Plugin | google-protobuf | Typescript | Declarations | gRPC Node | gRPC Web | ES6 Support | Notes |
-|------------------------------|-----------------|:----------:|:------------:|:---------:|:--------:|:-----------:|:-----------------------------------------------------------------------------------------------------------------------------------:|
-| thesayyn/protoc-gen-ts | Yes | Yes | Yes | Yes | Yes | Yes |  |
-| improbable-eng/ts-protoc-gen | Yes | No | Yes | No | Yes | Partial | Drawback: You can't bundle generated files with rollup since<br>they are not >= ES6 compatible. |
-| stephenh/ts-proto | No | Yes | Yes | No | No | Yes | There is no support for rpcs.<br>See: https://github.com/stephenh/ts-proto/issues/2 |
-## Development
-
-```sh
-./scripts/test.sh
-```
-
-## Contributors
-
-![GitHub Contributors Image](https://contrib.rocks/image?repo=thesayyn/protoc-gen-ts)
