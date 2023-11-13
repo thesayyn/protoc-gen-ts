@@ -5,6 +5,7 @@ pub struct Options {
     pub unary_rpc_promise: bool,
     pub grpc_package: String,
     pub runtime_package: String,
+    pub base64_package: String,
     pub namespaces: bool,
     pub import_suffix: String
 }
@@ -13,6 +14,7 @@ impl Options {
     pub fn parse(raw: &str) -> Options {
         let mut grpc_package = "@grpc/grpc-js";
         let mut runtime_package = "google-protobuf";
+        let mut base64_package = "js-base64";
         let mut unary_rpc_promise = false;
         let mut namespaces = true;
         let mut import_suffix = "";
@@ -42,6 +44,9 @@ impl Options {
                 Some("runtime_package") => {
                     runtime_package = kv.next().expect("expected a value for runtime_package")
                 }
+                Some("base64_package") => {
+                    base64_package = kv.next().expect("expected a value for base64_package")
+                },
                 // just silently ignore
                 Some(option) => {
                     eprintln!("WARNING: unknown option {}", option)
@@ -51,9 +56,10 @@ impl Options {
         }
 
         Options {
-            grpc_package: String::from(grpc_package),
-            runtime_package: String::from(runtime_package),
-            import_suffix: String::from(import_suffix),
+            grpc_package: grpc_package.to_string(),
+            runtime_package: runtime_package.to_string(),
+            import_suffix: import_suffix.to_string(),
+            base64_package: base64_package.to_string(),
             namespaces,
             unary_rpc_promise
         }
@@ -98,6 +104,13 @@ fn should_parse_and_override() {
     assert_eq!(opt.grpc_package, "mygrpcpackage");
     assert_eq!(opt.unary_rpc_promise, true);
 }
+
+#[test]
+fn should_parse_base64_package() {
+    let opt = Options::parse("base64_package=mypkg");
+    assert_eq!(opt.base64_package, "mypkg");
+}
+
 
 #[test]
 fn should_parse_import_suffix() {

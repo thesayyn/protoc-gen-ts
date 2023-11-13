@@ -22,7 +22,7 @@ class Any extends $wkt_google_protobuf_Any {
     }
     const m = new $wkt_google_protobuf_Any();
     m.type_url = `type.googleapis.com/${message_type.type}`;
-    m.value = message.serialize();
+    m.value = message.toBinary();
     return m;
   }
   toJson() {
@@ -35,7 +35,7 @@ class Any extends $wkt_google_protobuf_Any {
       throw new Error(`unknown message type ${this.type_url}}`);
     }
 
-    const message = message_type.deserialize(this.value);
+    const message = message_type.fromBinary(this.value);
 
     let json: any = message.toJson();
 

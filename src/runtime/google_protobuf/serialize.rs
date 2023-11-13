@@ -69,7 +69,7 @@ impl GooglePBRuntime {
                         expr: Box::new(field_accessor(field)),
                         span: DUMMY_SP
                     }),
-                    "serialize"
+                    "toBinary"
                 ))),
             ]
         ))

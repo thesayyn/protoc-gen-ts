@@ -14,7 +14,7 @@ const json = JSON.parse(`{
 }`);
 
 let sb1 = TestAllTypesProto3.fromBinary(binary);
-let sb2 = protobuf_test_messages_proto3_TestAllTypesProto3.deserialize(binary);
+let sb2 = protobuf_test_messages_proto3_TestAllTypesProto3.fromBinary(binary);
 
 // fromJson
 Deno.bench(

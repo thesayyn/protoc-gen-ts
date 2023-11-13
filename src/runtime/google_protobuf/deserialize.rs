@@ -55,7 +55,7 @@ impl GooglePBRuntime {
         accessor: field::FieldAccessorFn,
     ) -> Expr {
         let member_expr = if field.is_repeated() {
-            crate::member_expr!(ctx.lazy_type_ref(field.type_name()), "deserialize")
+            crate::member_expr!(ctx.lazy_type_ref(field.type_name()), "fromBinary")
         } else {
             crate::member_expr_bare!(accessor(field).into(), "mergeFrom")
         };

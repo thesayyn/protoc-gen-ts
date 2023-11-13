@@ -12,4 +12,4 @@ and more recently with desktop publishing software like Aldus PageMaker includin
 help.short =
   "Lorem Ipsum is simply dummy text of the printing and typesetting industry.";
 help.generated_via = "cli";
-console.log(base64.encode(help.serialize()));
+console.log(base64.encode(help.toBinary()));

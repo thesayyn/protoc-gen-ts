@@ -23,7 +23,7 @@ impl<'a, 'b> VisitMut for LazyTypeRefWkt<'a, 'b> {
         } else if s.sym.to_string() == "$base64$" {
             *s = self
                 .ctx
-                .get_import("https://deno.land/std@0.205.0/encoding/base64url.ts")
+                .get_import(self.ctx.options.base64_package.as_str())
         } else if s.sym.to_string() == "$type_registry$" {
             *s = quote_ident!("globalThis.protobuf")
         }

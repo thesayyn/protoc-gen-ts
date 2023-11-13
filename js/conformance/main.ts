@@ -58,7 +58,7 @@ while (true) {
   const requestBuffer = Buffer.alloc(length);
   Deno.stdin.readSync(requestBuffer);
 
-  const req = conformance.conformance_ConformanceRequest.deserialize(requestBuffer);
+  const req = conformance.conformance_ConformanceRequest.fromBinary(requestBuffer);
   const res = new conformance.conformance_ConformanceResponse();
 
   let message = globalThis.protobuf.get(req.message_type);
@@ -72,7 +72,7 @@ while (true) {
       if (req.json_payload) {
         i = message!.fromJson(JSON.parse(req.json_payload!));
       } else if (req.protobuf_payload) {
-        i = message!.deserialize(req.protobuf_payload!);
+        i = message!.fromBinary(req.protobuf_payload!);
       } else {
         res.skipped = "unsupported payload";
       }
@@ -85,7 +85,7 @@ while (true) {
         if (req.requested_output_format == conformance.conformance_WireFormat.JSON) {
           res.json_payload = JSON.stringify(i.toJson(), undefined, "  ");
         } else if (req.requested_output_format == conformance.conformance_WireFormat.PROTOBUF) {
-          res.protobuf_payload = i!.serialize();
+          res.protobuf_payload = i!.toBinary();
         } else {
           res.skipped = "unsupported output type";
         }
@@ -95,7 +95,7 @@ while (true) {
     }
   }
 
-  const resBytes = res.serialize();
+  const resBytes = res.toBinary();
   const lenBytes = Buffer.alloc(4);
   lenBytes.writeInt32LE(resBytes.length, 0);
 

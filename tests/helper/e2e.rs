@@ -45,6 +45,7 @@ macro_rules! gen_test {
             cmd.arg("--ts_opt=namespaces=false");
             cmd.arg("--ts_opt=import_suffix=.ts");
             cmd.arg("--ts_opt=runtime_package=npm:google-protobuf");
+            cmd.arg("--ts_opt=base64_package=https://deno.land/std@0.205.0/encoding/base64url.ts");
             cmd.args(sources);
 
             // make sure it succedded

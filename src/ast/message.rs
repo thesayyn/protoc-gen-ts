@@ -66,7 +66,7 @@ impl DescriptorProto {
         ClassMember::Method(ClassMethod {
             span: DUMMY_SP,
             accessibility: None,
-            key: PropName::Ident(quote_ident!("serialize")),
+            key: PropName::Ident(quote_ident!("toBinary")),
             is_abstract: false,
             is_optional: false,
             is_override: false,
@@ -104,7 +104,7 @@ impl DescriptorProto {
         ClassMember::Method(ClassMethod {
             span: DUMMY_SP,
             accessibility: None,
-            key: PropName::Ident(quote_ident!("deserialize")),
+            key: PropName::Ident(quote_ident!("fromBinary")),
             is_abstract: false,
             is_optional: false,
             is_override: false,

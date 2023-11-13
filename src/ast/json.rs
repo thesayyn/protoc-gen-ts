@@ -319,7 +319,6 @@ impl FieldDescriptorProto {
         accessor_fn: super::field::FieldAccessorFn,
     ) -> Expr {
         let accessor = accessor_fn(self);
-        let base64 = ctx.get_import("https://deno.land/std@0.205.0/encoding/base64url.ts");
         if self.is_enum() {
             crate::bin_expr!(
                 crate::member_expr_computed!(ctx.lazy_type_ref(self.type_name()).into(), accessor),
@@ -327,6 +326,7 @@ impl FieldDescriptorProto {
                 BinaryOp::NullishCoalescing
             )
         } else if self.is_bytes() {
+            let base64 = ctx.get_import(ctx.options.base64_package.as_str());
             crate::call_expr!(
                 crate::member_expr!(base64, "encode"),
                 vec![crate::expr_or_spread!(accessor)]
@@ -375,7 +375,7 @@ impl FieldDescriptorProto {
                 crate::member_expr_computed!(ctx.lazy_type_ref(self.type_name()).into(), accessor)
             )
         } else if self.is_bytes() {
-            let base64 = ctx.get_import("https://deno.land/std@0.205.0/encoding/base64url.ts");
+            let base64 = ctx.get_import(ctx.options.base64_package.as_str());
             crate::call_expr!(
                 crate::member_expr!(base64, "decode"),
                 vec![crate::expr_or_spread!(accessor)]

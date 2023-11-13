@@ -12,9 +12,9 @@ declare const $type_registry$: {
 declare abstract class Message<JsonRepr> {
     static type: string;
     toJson(): JsonRepr;
-    serialize(): Uint8Array;
+    toBinary(): Uint8Array;
     static fromJson(v: unknown): Message<unknown>;
-    static deserialize(v: Uint8Array): Message<unknown>;
+    static fromBinary(v: Uint8Array): Message<unknown>;
 }
 
 declare function $wkt_Message<JsonRepr>(): {

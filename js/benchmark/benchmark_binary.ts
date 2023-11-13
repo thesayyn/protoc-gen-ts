@@ -1,4 +1,3 @@
-
 import { protobuf_test_messages_proto3_TestAllTypesProto3 } from "../../tests/conformance/gen/test_messages_proto3.ts";
 import { TestAllTypesProto3 } from "./protobuf-es/test_messages_proto3_pb.ts";
 import * as base64 from "https://deno.land/std@0.202.0/encoding/base64.ts";
@@ -9,33 +8,31 @@ import * as base64 from "https://deno.land/std@0.202.0/encoding/base64.ts";
 // +AEA+AG5YPgBueCAAPgBueCAgICAgIAA+AH/////B/gBgICAgPj/////AfgBgICAgCD4Af////8f+AH//////////3/4AYGAgICAgICAgAE=
 // +gE8ALlgueCAALnggICAgICAAP////8HgICAgPj/////AYCAgIAg/////x///////////3+BgICAgICAgIAB
 
-
 const binary = base64.decode(
   "+AEA+AG5YPgBueCAAPgBueCAgICAgIAA+AH/////B/gBgICAgPj/////AfgBgICAgCD4Af////8f+AH//////////3/4AYGAgICAgICAgAE="
 );
 
-
 // fromBinary
 Deno.bench(
   "protobuf-es@fromBinary",
-  { group: "deserialize", baseline: true },
+  { group: "fromBinary", baseline: true },
   () => TestAllTypesProto3.fromBinary(binary)
 );
-Deno.bench("protoc-gen-ts@fromBinary", { group: "deserialize" }, () =>
-  protobuf_test_messages_proto3_TestAllTypesProto3.deserialize(binary)
+Deno.bench("protoc-gen-ts@fromBinary", { group: "fromBinary" }, () =>
+  protobuf_test_messages_proto3_TestAllTypesProto3.fromBinary(binary)
 );
 
 let sb1 = TestAllTypesProto3.fromBinary(binary);
-let sb2 = protobuf_test_messages_proto3_TestAllTypesProto3.deserialize(binary);
+let sb2 = protobuf_test_messages_proto3_TestAllTypesProto3.fromBinary(binary);
 
 // toBinary
 Deno.bench(
   "protobuf-es@toBinary",
-  { group: "serialize", baseline: true },
+  { group: "toBinary", baseline: true },
   () => {
     sb1.toBinary();
   }
 );
-Deno.bench("protoc-gen-ts@toBinary", { group: "serialize" }, () => {
-  sb2.serialize();
+Deno.bench("protoc-gen-ts@toBinary", { group: "toBinary" }, () => {
+  sb2.toBinary();
 });

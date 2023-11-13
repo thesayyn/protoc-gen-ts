@@ -14,7 +14,7 @@ deno compile --allow-read --allow-write --allow-env --no-check --output $bin js/
 
 echo "# Running conformance tests"
 pushd infra
-../js/conformance/conformance_test_runner --enforce_recommended ../$bin 2> ./output.tap || code="$?"
+(../js/conformance/conformance_test_runner --enforce_recommended ../$bin 2> ./output.tap && code="$?") || code="$?"
 popd
 
 
@@ -35,6 +35,8 @@ jq -n "{percentile: $percentile, total: $total, err: $err, pass: $pass}" > ./inf
 
 if [[ "$code" -eq 0 ]]; then 
     echo "All tests have passed!"
+else 
+    echo "Some tests have failed!"
 fi
 
 exit $code

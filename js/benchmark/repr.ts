@@ -33,19 +33,19 @@ console.log("-> es")
 const secondMessage = secondType.fromBinary(bytes);
 console.log(secondMessage)
 
-const secondSerialized = secondMessage.toBinary();
-console.log(secondSerialized)
+const secondbinary = secondMessage.toBinary();
+console.log(secondbinary)
 
 
 console.log("-> me")
 // first
-const message = type.deserialize(bytes);
+const message = type.fromBinary(bytes);
 console.log(message.optional_nested_message)
 
-const serialized = message.serialize();
-console.log(serialized)
+const binary = message.toBinary();
+console.log(binary)
 
-console.log(arraysEqual(secondSerialized, serialized))
+console.log(arraysEqual(secondbinary, binary))
 
 function arraysEqual(a, b) {
     if (a === b) return true;
