@@ -13,11 +13,13 @@ echo "# Creating a conformance binary executor"
 deno compile --allow-read --allow-write --allow-env --no-check --output $bin js/conformance/main.ts
 
 echo "# Running conformance tests"
-cd infra && js/conformance/conformance_test_runner --enforce_recommended $bin 2> ./output.tap || code="$?"
+pushd infra
+../js/conformance/conformance_test_runner --enforce_recommended ../$bin 2> ./output.tap || code="$?"
+popd
 
 
 echo "# Updating stats"
-suite=$(sed -n '/CONFORMANCE SUITE FAILED/,/unexpected failures/p' output.tap)
+suite=$(sed -n '/CONFORMANCE SUITE FAILED/,/unexpected failures/p' ./infra/output.tap)
 
 stats=($(grep -Eo '[0-9]{1,4}' <<< $suite))
 pass="${stats[0]}"

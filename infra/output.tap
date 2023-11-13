@@ -1,1 +1,194 @@
-./infra/test.sh: line 16: js/conformance/conformance_test_runner: No such file or directory
+TAP version 14
+
+not ok - Recommended.Proto2.JsonInput.FieldNameExtension.Validator
+# JSON payload validation failed.
+# 
+# json_payload: "{
+#         \"[protobuf_test_messages.proto2.extension_int32]\": 1
+#       }"
+# requested_output_format: JSON
+# message_type: "protobuf_test_messages.proto2.TestAllTypesProto2"
+# test_category: JSON_TEST
+# 
+# json_payload: "{}"
+# 
+# 
+
+not ok - Recommended.Proto3.JsonInput.StringFieldUnpairedHighSurrogate
+# Should have failed to parse, but didn't.
+# 
+# json_payload: "{\"optionalString\": \"\\uD800\"}"
+# requested_output_format: JSON
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: JSON_TEST
+# 
+# json_payload: "{
+#   \"optionalString\": \"\\ud800\"
+# }"
+# 
+# 
+
+not ok - Recommended.Proto3.JsonInput.StringFieldUnpairedLowSurrogate
+# Should have failed to parse, but didn't.
+# 
+# json_payload: "{\"optionalString\": \"\\uDC00\"}"
+# requested_output_format: JSON
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: JSON_TEST
+# 
+# json_payload: "{
+#   \"optionalString\": \"\\udc00\"
+# }"
+# 
+# 
+
+not ok - Recommended.Proto3.JsonInput.StringFieldSurrogateInWrongOrder
+# Should have failed to parse, but didn't.
+# 
+# json_payload: "{\"optionalString\": \"\\uDE01\\uD83D\"}"
+# requested_output_format: JSON
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: JSON_TEST
+# 
+# json_payload: "{
+#   \"optionalString\": \"\\ude01\\ud83d\"
+# }"
+# 
+# 
+
+not ok - Recommended.Proto3.JsonInput.MapFieldValueIsNull
+# Should have failed to parse, but didn't.
+# 
+# json_payload: "{\"mapInt32Int32\": {\"0\": null}}"
+# requested_output_format: JSON
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: JSON_TEST
+# 
+# json_payload: "{
+#   \"mapInt32Int32\": {
+#     \"0\": 0
+#   }
+# }"
+# 
+# 
+
+not ok - Recommended.Proto3.JsonInput.NullValueInOtherOneofOldFormat.Validator
+# JSON payload validation failed.
+# 
+# json_payload: "{\"oneofNullValue\": \"NULL_VALUE\"}"
+# requested_output_format: JSON
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: JSON_TEST
+# 
+# json_payload: "{
+#   \"oneofNullValue\": \"NULL_VALUE\"
+# }"
+# 
+# 
+
+not ok - Recommended.Proto3.JsonInput.NullValueInOtherOneofNewFormat.Validator
+# JSON payload validation failed.
+# 
+# json_payload: "{\"oneofNullValue\": null}"
+# requested_output_format: JSON
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: JSON_TEST
+# 
+# json_payload: "{}"
+# 
+# 
+
+not ok - Recommended.Proto3.JsonInput.IgnoreUnknownEnumStringValueInOptionalField.ProtobufOutput
+# failed to parse input or produce output.
+# 
+# json_payload: "{
+#       \"optional_nested_enum\": \"UNKNOWN_ENUM_VALUE\"
+#     }"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: JSON_IGNORE_UNKNOWN_PARSING_TEST
+# 
+# parse_error: "Error: illegal value for optionalNestedEnum
+#     at Function.fromJson (file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:2128:199)
+#     at file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/js/conformance/main.ts:63:29
+# 
+#      "
+# 
+# 
+
+not ok - Recommended.Proto3.JsonInput.IgnoreUnknownEnumStringValueInRepeatedField.ProtobufOutput
+# failed to parse input or produce output.
+# 
+# json_payload: "{
+#       \"repeated_nested_enum\": [\"UNKNOWN_ENUM_VALUE\"]
+#     }"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: JSON_IGNORE_UNKNOWN_PARSING_TEST
+# 
+# parse_error: "Error: illegal value for repeatedNestedEnum
+#     at file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:2278:146
+#     at Array.map (<anonymous>)
+#     at Function.fromJson (file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:2277:65)
+#     at file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/js/conformance/main.ts:63:29
+# 
+#      "
+# 
+# 
+
+not ok - Recommended.Proto3.JsonInput.RejectUnknownEnumStringValueInMapValue
+# Should have failed to parse, but didn't.
+# 
+# json_payload: "{
+#       \"map_string_nested_enum\": {\"key\": \"UNKNOWN_ENUM_VALUE\"}
+#     }"
+# requested_output_format: JSON
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: JSON_TEST
+# 
+# json_payload: "{
+#   \"mapStringNestedEnum\": {}
+# }"
+# 
+# 
+
+not ok - Recommended.Proto3.JsonInput.IgnoreUnknownEnumStringValueInMapValue.ProtobufOutput
+# output was not equivalent to reference message: 
+# added: map_string_nested_enum[key]: FOO
+# 
+# 
+# json_payload: "{
+#       \"map_string_nested_enum\": {\"key\": \"UNKNOWN_ENUM_VALUE\"}
+#     }"
+# requested_output_format: PROTOBUF
+# message_type: "protobuf_test_messages.proto3.TestAllTypesProto3"
+# test_category: JSON_IGNORE_UNKNOWN_PARSING_TEST
+# 
+# protobuf_payload: "\312\004\005
+# \003key"
+# 
+# 
+
+# CONFORMANCE SUITE FAILED
+#	2020 succeses
+#	0 skipped
+#	0 expected failures
+#	11 unexpected failures
+
+# 
+# These tests failed.  If they can't be fixed right now, you can add them to the failure list so the overall suite can succeed.  Add them to the failure list by running:
+#   ./update_failure_list.py  --add failing_tests.txt
+# 
+#   Recommended.Proto2.JsonInput.FieldNameExtension.Validator
+#   Recommended.Proto3.JsonInput.IgnoreUnknownEnumStringValueInMapValue.ProtobufOutput
+#   Recommended.Proto3.JsonInput.IgnoreUnknownEnumStringValueInOptionalField.ProtobufOutput
+#   Recommended.Proto3.JsonInput.IgnoreUnknownEnumStringValueInRepeatedField.ProtobufOutput
+#   Recommended.Proto3.JsonInput.MapFieldValueIsNull
+#   Recommended.Proto3.JsonInput.NullValueInOtherOneofNewFormat.Validator
+#   Recommended.Proto3.JsonInput.NullValueInOtherOneofOldFormat.Validator
+#   Recommended.Proto3.JsonInput.RejectUnknownEnumStringValueInMapValue
+#   Recommended.Proto3.JsonInput.StringFieldSurrogateInWrongOrder
+#   Recommended.Proto3.JsonInput.StringFieldUnpairedHighSurrogate
+#   Recommended.Proto3.JsonInput.StringFieldUnpairedLowSurrogate
+# 
+# 
