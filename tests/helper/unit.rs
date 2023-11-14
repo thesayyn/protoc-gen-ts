@@ -4,8 +4,8 @@ use protoc_gen_ts::context::{Context, Syntax};
 use protoc_gen_ts::descriptor::FileDescriptorProto;
 use protoc_gen_ts::emit::emit;
 use protoc_gen_ts::options::Options;
-use protoc_gen_ts::print::Print;
 use protoc_gen_ts::runtime::google_protobuf::GooglePBRuntime;
+use protoc_gen_ts::runtime::grpc_web::GrpcWebRuntime;
 use std::fmt;
 use std::str::FromStr;
 
@@ -45,10 +45,11 @@ pub(crate) fn compile(proto: &str) -> String {
     let options = Options::parse("");
     let syntax = Syntax::from_str(descriptor.syntax()).unwrap();
     let runtime = GooglePBRuntime::new();
+    let grpc_runtime = GrpcWebRuntime::new();
 
     let mut ctx = Context::new(&options, &syntax);
 
-    let mut body = descriptor.print(&mut ctx, &runtime);
+    let mut body = descriptor.print(&mut ctx, &runtime, &grpc_runtime);
     body.splice(0..0, ctx.drain_imports());
 
     emit(body)

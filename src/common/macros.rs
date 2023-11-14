@@ -205,11 +205,14 @@ macro_rules! return_stmt {
 #[macro_export]
 macro_rules! type_annotation {
     ($lit:literal) => {
+        crate::type_annotation!(quote_ident!($lit))
+    };
+    ($expr:expr) => {
         Box::new(swc_ecma_ast::TsTypeAnn {
             span: swc_common::DUMMY_SP,
             type_ann: Box::new(swc_ecma_ast::TsType::TsTypeRef(swc_ecma_ast::TsTypeRef {
                 span: swc_common::DUMMY_SP,
-                type_name: swc_ecma_ast::TsEntityName::Ident(quote_ident!($lit)),
+                type_name: swc_ecma_ast::TsEntityName::Ident($expr),
                 type_params: None,
             })),
         })

@@ -1,4 +1,4 @@
-use crate::{ast, options::Options, descriptor};
+use crate::{common, options::Options, descriptor};
 use dashmap::DashMap;
 use pathdiff::diff_paths;
 use std::{
@@ -177,7 +177,7 @@ impl<'a> Context<'a> {
         }
         let last_item = self.namespace.last().unwrap().clone();
         let name = last_item.as_str();
-        vec![ast::util::wrap(name, modules)]
+        vec![common::util::wrap(name, modules)]
     }
 
     pub fn normalize_type_name(&self, name: &str) -> String {

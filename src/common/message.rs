@@ -57,7 +57,7 @@ impl DescriptorProto {
     fn print_serialize<T: Runtime + Sized>(&self, ctx: &mut Context, runtime: &T) -> ClassMember {
         let mut statements = vec![];
 
-        statements.extend(runtime.serialize_setup(ctx, &self));
+        statements.extend(runtime.to_binary(ctx, &self));
         statements.push(crate::return_stmt!(crate::call_expr!(crate::member_expr!(
             "bw",
             "getResultBuffer"
@@ -134,7 +134,7 @@ impl DescriptorProto {
     }
 
     fn print_merge_from<T: Runtime + Sized>(&self, ctx: &mut Context, runtime: &T) -> ClassMember {
-        let mut statements = runtime.deserialize_setup(ctx, &self);
+        let mut statements = runtime.from_binary(ctx, &self);
 
         statements.push(crate::return_stmt!(quote_ident!("this").into()));
 

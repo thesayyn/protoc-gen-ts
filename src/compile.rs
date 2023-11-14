@@ -9,8 +9,8 @@ use crate::emit::emit;
 use crate::mapper::Mapper;
 use crate::options::Options;
 use crate::plugin::{code_generator_response::File, CodeGeneratorRequest, CodeGeneratorResponse};
-use crate::print::Print;
 use crate::runtime::google_protobuf::GooglePBRuntime;
+use crate::runtime::grpc_web::GrpcWebRuntime;
 
 pub fn compile(buffer: Vec<u8>) -> Vec<u8> {
     let request = CodeGeneratorRequest::parse_from_bytes(&buffer).unwrap();
@@ -21,6 +21,7 @@ pub fn compile(buffer: Vec<u8>) -> Vec<u8> {
     request.map(&mut ctx);
 
     let runtime = GooglePBRuntime::new();
+    let grpc_runtime = GrpcWebRuntime::new();
     let outputs = Arc::new(Mutex::new(vec![]));
 
     thread::scope(|_s| {
@@ -34,13 +35,14 @@ pub fn compile(buffer: Vec<u8>) -> Vec<u8> {
 
             let ctx = ctx.clone();
             let runtime = runtime.clone();
+            let grpc_runtime = grpc_runtime.clone();
             let outputs = outputs.clone();
 
             let closure = move || {
                 let syntax = Syntax::from_str(descriptor.syntax()).expect("unknown syntax");
                 let mut ctx = ctx.fork(descriptor.name().to_string(), &syntax);
 
-                let mut body = descriptor.print(&mut ctx, &runtime);
+                let mut body = descriptor.print(&mut ctx, &runtime, &grpc_runtime);
 
                 let imports = ctx.drain_imports();
                 body.splice(0..0, imports);

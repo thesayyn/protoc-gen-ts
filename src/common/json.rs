@@ -13,7 +13,6 @@ use swc_ecma_ast::{
     ObjectLit, Param, Pat, PatOrExpr, PropName, Stmt, ThrowStmt, UnaryOp,
 };
 use swc_ecma_utils::{quote_ident, quote_str};
-
 use super::field::FieldAccessorFn;
 
 pub(crate) fn json_key_name_field_member(field: &FieldDescriptorProto) -> Expr {

@@ -42,6 +42,9 @@ macro_rules! gen_test {
             cmd.arg(format!("--proto_path={}", proto_path));
             cmd.arg(format!("--plugin=protoc-gen-ts={}", protoc_gen_ts));
             cmd.arg(format!("--ts_out={}", ts_out));
+            cmd.arg(format!("--grpc-web_opt=import_style=typescript"));
+            cmd.arg(format!("--grpc-web_opt=mode=grpcwebtext"));
+            cmd.arg(format!("--grpc-web_out={}", ts_out));
             cmd.arg("--ts_opt=namespaces=false");
             cmd.arg("--ts_opt=import_suffix=.ts");
             cmd.arg("--ts_opt=runtime_package=npm:google-protobuf");

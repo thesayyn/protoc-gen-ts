@@ -8,3 +8,4 @@ pub mod file;
 pub mod macros;
 pub mod oneof;
 pub mod json;
+pub mod service;

@@ -1,4 +1,4 @@
-use crate::ast::field;
+use crate::common::field;
 use crate::{
     context::Context,
     descriptor::{self, field_descriptor_proto::Type, FieldDescriptorProto},
@@ -11,7 +11,7 @@ use swc_ecma_visit::VisitMutWith;
 pub struct GooglePBRuntime {}
 
 impl Runtime for GooglePBRuntime {
-    fn deserialize_setup(
+    fn from_binary(
         &self,
         ctx: &mut Context,
         descriptor: &descriptor::DescriptorProto,
@@ -19,7 +19,7 @@ impl Runtime for GooglePBRuntime {
         self.deserialize_setup_inner(ctx, descriptor, true)
     }
 
-    fn serialize_setup(
+    fn to_binary(
         &self,
         ctx: &mut Context,
         descriptor: &descriptor::DescriptorProto,
