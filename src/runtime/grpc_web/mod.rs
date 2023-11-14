@@ -1,6 +1,6 @@
 use swc_ecma_ast::ClassMember;
 
-use crate::{context::Context, descriptor::ServiceDescriptorProto};
+use crate::{context::Context, descriptor::{ServiceDescriptorProto, MethodDescriptorProto}};
 
 use super::GrpcRuntime;
 
@@ -20,10 +20,14 @@ impl GrpcRuntime for GrpcWebRuntime {
 
     fn method(
         &self,
-        ctx: &mut crate::context::Context,
-        method: &crate::descriptor::MethodDescriptorProto,
-    ) -> Option<swc_ecma_ast::ClassMember> {
-        Some(self.print_method(ctx, method))
+        ctx: &mut Context,
+        method: &MethodDescriptorProto,
+        service: &ServiceDescriptorProto
+    ) -> Vec<ClassMember> {
+        vec![
+            self.print_descriptor(ctx, method, service),
+            self.print_method(ctx, method, service)
+        ]
     }
 }
 

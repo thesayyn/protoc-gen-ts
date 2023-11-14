@@ -6,14 +6,14 @@ use crate::descriptor::field_descriptor_proto::Type;
 use crate::descriptor::DescriptorProto;
 use crate::{context::Context, descriptor::FieldDescriptorProto};
 
+use super::field::FieldAccessorFn;
 use convert_case::{Case, Casing};
 use swc_common::DUMMY_SP;
 use swc_ecma_ast::{
     ArrayLit, ArrayPat, BinaryOp, BlockStmt, ClassMember, ClassMethod, Expr, Function, MethodKind,
-    ObjectLit, Param, Pat, PatOrExpr, PropName, Stmt, ThrowStmt, UnaryOp,
+    ObjectLit, Param, Pat, PatOrExpr, PropName, Stmt, UnaryOp,
 };
 use swc_ecma_utils::{quote_ident, quote_str};
-use super::field::FieldAccessorFn;
 
 pub(crate) fn json_key_name_field_member(field: &FieldDescriptorProto) -> Expr {
     crate::member_expr!("json", field.json_key_name())
@@ -452,8 +452,8 @@ impl DescriptorProto {
                             vec![Pat::Array(ArrayPat {
                                 optional: false,
                                 elems: vec![
-                                    Some(crate::pat_ident!(key_field.name())),
-                                    Some(crate::pat_ident!(value_field.name()))
+                                    Some(crate::pat_ident!(quote_ident!(key_field.name()))),
+                                    Some(crate::pat_ident!(quote_ident!(value_field.name())))
                                 ],
                                 span: DUMMY_SP,
                                 type_ann: None
@@ -470,7 +470,7 @@ impl DescriptorProto {
                     crate::member_expr_bare!(crate::member_expr!("this", field.name()), "map"),
                     vec![crate::expr_or_spread!(crate::arrow_func_short!(
                         value_expr,
-                        vec![crate::pat_ident!("r")]
+                        vec![crate::pat_ident!(quote_ident!("r"))]
                     ))]
                 );
             }
@@ -563,8 +563,8 @@ impl DescriptorProto {
                             vec![Pat::Array(ArrayPat {
                                 optional: false,
                                 elems: vec![
-                                    Some(crate::pat_ident!(key_field.name())),
-                                    Some(crate::pat_ident!(value_field.name()))
+                                    Some(crate::pat_ident!(quote_ident!(key_field.name()))),
+                                    Some(crate::pat_ident!(quote_ident!(value_field.name())))
                                 ],
                                 span: DUMMY_SP,
                                 type_ann: None
@@ -580,7 +580,7 @@ impl DescriptorProto {
                 value_expr = crate::call_expr!(
                     crate::member_expr_bare!(super::field::bare_field_member(&field), "map"),
                     vec![crate::expr_or_spread!(crate::arrow_func!(
-                        vec![crate::pat_ident!("r")],
+                        vec![crate::pat_ident!(quote_ident!("r"))],
                         vec![
                             field.value_check_stmt(ctx, super::field::static_field_member),
                             crate::return_stmt!(value_expr)
@@ -662,7 +662,7 @@ impl DescriptorProto {
                     decorators: vec![],
                     pat: swc_ecma_ast::Pat::Ident(swc_ecma_ast::BindingIdent {
                         id: quote_ident!("json"),
-                        type_ann: Some(crate::type_annotation!("unknown")),
+                        type_ann: Some(Box::new(crate::type_annotation!("unknown"))),
                     }),
                 }],
                 return_type: None,

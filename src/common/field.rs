@@ -5,9 +5,8 @@ use crate::{
 };
 use swc_common::DUMMY_SP;
 use swc_ecma_ast::{
-    ArrayLit, BinaryOp, ClassMember, ClassProp, Expr, PropName, TsArrayType,
-    TsEntityName, TsKeywordType, TsKeywordTypeKind, TsType, TsTypeAnn, TsTypeParamInstantiation,
-    TsTypeRef, TsUnionOrIntersectionType, TsUnionType,
+    ArrayLit, BinaryOp, ClassMember, ClassProp, Expr, PropName, TsArrayType, TsEntityName,
+    TsKeywordType, TsType, TsTypeAnn, TsTypeParamInstantiation, TsTypeRef,
 };
 use swc_ecma_utils::{quote_ident, quote_str};
 
@@ -18,7 +17,7 @@ pub fn map_to_string_normalizer(expr: &Expr) -> Expr {
         crate::member_expr_bare!(expr.clone(), "map"),
         vec![crate::expr_or_spread!(crate::arrow_func_short!(
             crate::call_expr!(crate::member_expr!("v", "toString")),
-            vec![crate::pat_ident!("v")]
+            vec![crate::pat_ident!(quote_ident!("v"))]
         ))]
     )
 }
@@ -228,21 +227,10 @@ impl FieldDescriptorProto {
         }))
     }
     pub fn nullish_type_annotation(&self, ctx: &mut Context) -> Option<Box<TsTypeAnn>> {
-        let union = TsUnionOrIntersectionType::TsUnionType(TsUnionType {
-            span: DUMMY_SP,
-            types: vec![
-                Box::new(self.ts_type(ctx)?),
-                Box::new(TsType::TsKeywordType(TsKeywordType {
-                    span: DUMMY_SP,
-                    kind: TsKeywordTypeKind::TsUndefinedKeyword,
-                })),
-            ],
-        });
-
-        Some(Box::new(TsTypeAnn {
-            span: DUMMY_SP,
-            type_ann: Box::new(TsType::TsUnionOrIntersectionType(union)),
-        }))
+        Some(Box::new(crate::type_union!(
+            self.ts_type(ctx)?,
+            crate::undefined_type!()
+        )))
     }
 
     pub fn print_prop<T: Runtime>(&self, ctx: &mut Context, _runtime: &T) -> ClassMember {

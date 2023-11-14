@@ -16,7 +16,7 @@ pub trait GrpcRuntime {
     fn constructor(&self, ctx: &mut Context, service: &ServiceDescriptorProto) -> Vec<ClassMember>;
 
     // json for well known types
-    fn method(&self, ctx: &mut Context, method: &MethodDescriptorProto) -> Option<ClassMember>;
+    fn method(&self, ctx: &mut Context, method: &MethodDescriptorProto, svc: &ServiceDescriptorProto) -> Vec<ClassMember>;
 }
 
 pub mod grpc_web;

@@ -131,6 +131,10 @@ impl<'a> Context<'a> {
         }
     }
 
+    pub fn get_namespace(&self) -> String {
+        self.namespace.clone().join(".")
+    }
+
     pub fn drain_imports(&mut self) -> Vec<ModuleItem> {
         let mut imps = vec![];
         let mut imports = self.imports.lock().unwrap();

@@ -14,7 +14,7 @@ where
         let mut members: Vec<ClassMember> = Vec::new();
 
         for method in &self.method {
-            members.push(runtime.method(ctx, method).unwrap())
+            members.append(&mut runtime.method(ctx, method, &self))
         }
         vec![ModuleItem::ModuleDecl(ModuleDecl::ExportDecl(ExportDecl {
             decl: Decl::Class(ClassDecl {

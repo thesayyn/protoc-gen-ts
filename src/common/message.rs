@@ -120,10 +120,7 @@ impl DescriptorProto {
                 params: vec![Param {
                     span: DUMMY_SP,
                     decorators: vec![],
-                    pat: swc_ecma_ast::Pat::Ident(swc_ecma_ast::BindingIdent {
-                        id: quote_ident!("bytes"),
-                        type_ann: Some(crate::type_annotation!("Uint8Array")),
-                    }),
+                    pat: crate::pat_ident!(quote_ident!("bytes"), crate::type_annotation!("Uint8Array")),
                 }],
                 return_type: None,
                 span: DUMMY_SP,
@@ -159,7 +156,7 @@ impl DescriptorProto {
                     decorators: vec![],
                     pat: swc_ecma_ast::Pat::Ident(swc_ecma_ast::BindingIdent {
                         id: quote_ident!("bytes"),
-                        type_ann: Some(crate::type_annotation!("Uint8Array")),
+                        type_ann: Some(Box::new(crate::type_annotation!("Uint8Array"))),
                     }),
                 }],
                 return_type: None,

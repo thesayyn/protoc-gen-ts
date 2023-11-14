@@ -9,3 +9,4 @@ pub mod macros;
 pub mod oneof;
 pub mod json;
 pub mod service;
+pub mod method;
