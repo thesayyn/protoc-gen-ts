@@ -3,8 +3,8 @@ use crate::member_expr;
 use crate::{context::Context, descriptor::ServiceDescriptorProto};
 use swc_common::DUMMY_SP;
 use swc_ecma_ast::{
-    ArrayLit, BlockStmt, ClassMember, ClassMethod, Expr, Function, MethodKind, Param, PrivateName,
-    PrivateProp, PropName, TsTypeAnn,
+    BlockStmt, ClassMember, ClassMethod, Function, MethodKind, Param, PrivateName, PrivateProp,
+    PropName,
 };
 use swc_ecma_utils::{quote_ident, quote_str};
 

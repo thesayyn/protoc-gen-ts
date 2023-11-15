@@ -14,11 +14,11 @@ impl GrpcWebRuntime {
 }
 
 impl GrpcRuntime for GrpcWebRuntime {
-    fn constructor(&self, ctx: &mut Context, service: &ServiceDescriptorProto) -> Vec<ClassMember> {
-        vec![]
+    fn print_setup(&self, ctx: &mut Context) -> Vec<ClassMember> {
+        vec![self.print_constructor(ctx)]
     }
 
-    fn method(
+    fn print_method(
         &self,
         ctx: &mut Context,
         method: &MethodDescriptorProto,
@@ -31,4 +31,5 @@ impl GrpcRuntime for GrpcWebRuntime {
     }
 }
 
-pub mod method;
+mod method;
+mod setup;

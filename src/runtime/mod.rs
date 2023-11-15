@@ -12,11 +12,10 @@ pub trait Runtime {
 }
 
 pub trait GrpcRuntime {
-    // binary
-    fn constructor(&self, ctx: &mut Context, service: &ServiceDescriptorProto) -> Vec<ClassMember>;
+    fn print_setup(&self, ctx: &mut Context) -> Vec<ClassMember>;
 
     // json for well known types
-    fn method(&self, ctx: &mut Context, method: &MethodDescriptorProto, svc: &ServiceDescriptorProto) -> Vec<ClassMember>;
+    fn print_method(&self, ctx: &mut Context, method: &MethodDescriptorProto, svc: &ServiceDescriptorProto) -> Vec<ClassMember>;
 }
 
 pub mod grpc_web;

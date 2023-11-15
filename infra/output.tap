@@ -109,8 +109,8 @@ not ok - Recommended.Proto3.JsonInput.IgnoreUnknownEnumStringValueInOptionalFiel
 # test_category: JSON_IGNORE_UNKNOWN_PARSING_TEST
 # 
 # parse_error: "Error: illegal value for optionalNestedEnum
-#     at Function.fromJson (file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:2128:199)
-#     at file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/js/conformance/main.ts:63:29
+#     at Function.fromJson (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:2128:199)
+#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:63:29
 # 
 #      "
 # 
@@ -127,10 +127,10 @@ not ok - Recommended.Proto3.JsonInput.IgnoreUnknownEnumStringValueInRepeatedFiel
 # test_category: JSON_IGNORE_UNKNOWN_PARSING_TEST
 # 
 # parse_error: "Error: illegal value for repeatedNestedEnum
-#     at file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:2278:146
+#     at file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:2278:146
 #     at Array.map (<anonymous>)
-#     at Function.fromJson (file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:2277:65)
-#     at file:///Users/thesayyn/Documents/thesayyn/protoc-gen-ts/js/conformance/main.ts:63:29
+#     at Function.fromJson (file:///Users/thesayyn/Documents/protoc-gen-ts/tests/conformance/gen/test_messages_proto3.ts:2277:65)
+#     at file:///Users/thesayyn/Documents/protoc-gen-ts/js/conformance/main.ts:63:29
 # 
 #      "
 # 

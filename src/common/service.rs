@@ -11,10 +11,11 @@ where
     T: GrpcRuntime + Sized,
 {
     fn print(&self, ctx: &mut Context, runtime: &T) -> Vec<ModuleItem> {
-        let mut members: Vec<ClassMember> = Vec::new();
+        let mut members: Vec<ClassMember> = runtime.print_setup(ctx);
 
         for method in &self.method {
-            members.append(&mut runtime.method(ctx, method, &self))
+
+            members.append(&mut runtime.print_method(ctx, method, &self))
         }
         vec![ModuleItem::ModuleDecl(ModuleDecl::ExportDecl(ExportDecl {
             decl: Decl::Class(ClassDecl {
