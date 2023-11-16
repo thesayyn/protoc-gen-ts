@@ -1,0 +1,6 @@
+syntax = "proto3";
+
+enum HelpTopic {
+    BUILD = 0;
+    RUN = 2;
+}

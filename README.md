@@ -1,186 +1,81 @@
 # Protoc Gen Typescript 
 
-[![test](https://github.com/thesayyn/protoc-gen-ts/actions/workflows/test.yaml/badge.svg?branch=master)](https://github.com/thesayyn/protoc-gen-ts/actions/workflows/test.yaml)
-![npm](https://img.shields.io/npm/v/protoc-gen-ts)
-![npm](https://img.shields.io/npm/dm/protoc-gen-ts)
+![conformance](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fthesayyn%2Fprotoc-gen-ts%2Frust-rewrite%2Finfra%2Fstats.json&query=percentile&suffix=%25&label=conformance)
+[![test](https://github.com/thesayyn/protoc-gen-ts/actions/workflows/test.yaml/badge.svg)](https://github.com/thesayyn/protoc-gen-ts/actions/workflows/test.yaml)
+[![npm](https://img.shields.io/npm/v/protoc-gen-ts)](https://www.npmjs.com/package/protoc-gen-ts?activeTab=versions)
+[![npm](https://img.shields.io/npm/dm/protoc-gen-ts)](https://www.npmjs.com/package/protoc-gen-ts?activeTab=versions)
+[![npm](https://opencollective.com/protoc-gen-ts/tiers/backer/badge.svg?label=Backer&color=brightgreen)](https://opencollective.com/protoc-gen-ts)
 
-Aim of this protoc plugin is to make usage of protocol buffers easy in Javascript/Typescript by taking modern approaches.  This plugin generates plain **Typescript** files that can be used AMD, UMD, CommonJS module systems.
+Compile `.proto` files to plain TypeScript. Supports gRPC Node and gRPC Web.
 
+## Features
 
-## Example
-
-```proto
-syntax = "proto3";
-
-message Author {
-    string name = 1;
-    string role = 2;
-}
-
-message Change {
-    Kind kind = 1;
-    string patch = 2;
-    repeated string tags = 3; 
-    oneof name_or_id {
-        string name = 4;
-        string id = 5;
-    }
-    Author author = 6;
-}
-
-enum Kind {
-    UPDATED = 0;
-    DELETED = 1;
-}
-```
-
-
-```typescript
-// Constructed message
-const change = new Change({
-    kind: Kind.UPDATED,
-    patch: "@@ -7,11 +7,15 @@",
-    tags: ["no prefix", "as is"],
-    name: "patch for typescript 4.5",
-    author: new Author({
-        name: "mary poppins",
-        role: "maintainer"
-    })
-});
-
-// Sent over the wire
-const bytes: Uint8Array = change.serialize();
-
-const receivedChange: Change = Change.deserialize(bytes);
-
-console.log(receivedChange.kind == Kind.UPDATED) // true
-console.log(receivedChange.patch) // "@@ -7,11 +7,15 @@"
-console.log(receivedChange.tags) // ["no prefix", "as is"]
-console.log(receivedChange.name) // "patch for typescript 4.5"
-// see which one of the fields were filled
-console.log(receivedChange.name_or_id) // "name"
-console.log(receivedChange.author.name) // "mary poppins"
-```
-
-## Support for Message.fromObject and Message.toObject
-
-When mapping raw json data to message classes, dealing with nested structures can be rather annoying.
-To overcome this problem, every generated message class has a static method called `fromObject` and `toObject` 
-which can handle the mapping bidirectionally for you, even with the deeply structured messages. since it is 
-aware of the field graph, it does not rely on any runtime type information thus we get the chance to keep it fast.
-
-One can write code as;
-
-```typescript
-const change = Change.fromObject({
-    kind: Kind.UPDATED,
-    patch: "@@ -7,11 +7,15 @@",
-    tags: ["no prefix", "as is"],
-    name: "patch for typescript 4.5",
-    author: {
-        name: "mary poppins",
-        role: "maintainer"
-    }
-});
-
-console.log(change.author instanceof Author) // true
-```
-
-
-## Usage with `@grpc/grpc-js` or `grpc`
-
-There is a seperate documentation for the usage of protoc-gen-ts along with either `@grpc/grpc-js` or `grpc`.  By default
-this generated gRPC interfaces will use `@grpc/grpc-js`.
-
-Checkout [rpcs](docs/rpc.md).
-
-## Key Differences
-
-This protoc plugin does generate;
-
-- Fields as **getter** **setters**.
-- No such prefixes as "getField" or "getFieldList". If you have repeated field named `users`, then the generated message class will have a `getter` named `users` not `getUsersList` 
-- Enums as **enums**.
-- Messages within a **namespace** if the proto has a **package** directive.
-
+- Passes all required conformance tests
+- Supports well-known types
+- Supports [gRPC](docs/rpc.md) (`@grpc/grpc-js`)
+- Supports [gRPC Web](docs/rpc.md) (`grpc-web`)
+- Supports json encoding (`toJson`, `fromJson`)
+- Supports binary encoding (`toBinary`, `fromBinary`)
+- Optimized for [de]serialization speed.
 
 ## Usage
 
-### Without Bazel
 ```properties
 npm install -g protoc-gen-ts
 
 protoc -I=sourcedir --ts_out=dist myproto.proto
 ```
-### With Bazel
-```py
-# Add protoc-gen-ts to dependencies section of your package.json file.
-# Then use it like you would use the other bazel compatible npm packages.
+### Example
 
-load("@npm//protoc-gen-ts//:index.bzl", "ts_proto_library")
+```proto
+syntax = "proto3";
 
-ts_proto_library(
-    name = "protos",
-    deps = [
-        ":some_proto_library_target"
-    ]
-)
+enum Role {
+    ADMIN = 0;
+    MOD = 1;
+}
 
-# Checkout the examples/bazel directory for an example.
+message Author {
+    Role role = 2;
+    oneof id_or_name {
+        string id = 4;
+        string name = 5;
+    }
+}
 ```
 
-## Supported Options
 
-* With `--ts_opt=unary_rpc_promise=true`, the service definition will contain a promise based rpc with a calling pattern of `const result = await client.METHOD(message)`.  Note: all othe `metadata` and `options` parameters are still available to you.
+```typescript
+const author = Author.fromJson({
+    role: Kind.ADMIN,
+    name: "mary poppins",
+});
 
-* With `--ts_opt=grpc_package=xxxx`, you can specify a different package to import rather than `@grpc/grpc-js`.
+// Serialize to binary
+const bytes: Uint8Array = author.toBinary();
 
-## Roadmap
+// Deserialize from binary
+const received: Change = Change.fromBinary(bytes);
 
-- <s>Support for repeated non-integer fields</s>
-- <s>Generate appropriate service code that is usable with node **grpc** package.</s>
-- <s>Support for creating protocol buffer messages directly from their constructors with an object.</s>
-- <s>Support for `import` directive.</s>
-- <s>Support for `Promise` in rpcs.</s>
-- <s>Make services strongly typed.</s>
-- <s>Support oneof fields</s>
-- <s>Support `map<TYPE, TYPE>` types as ES `Map`.</s>
-- Support grpc-web without any manual intervention.
-- Interopability with well knowns.
-
-
-## Alternatives
-
-| Plugin | google-protobuf | Typescript | Declarations | gRPC Node | gRPC Web | ES6 Support | Notes |
-|------------------------------|-----------------|:----------:|:------------:|:---------:|:--------:|:-----------:|:-----------------------------------------------------------------------------------------------------------------------------------:|
-| thesayyn/protoc-gen-ts | Yes | Yes | Yes | Yes | Partial | Yes | The generated messages are compatible with ever-green browsers.<br>However, you might need to use third-party packages to use rpcs. |
-| improbable-eng/ts-protoc-gen | Yes | No | Yes | No | Yes | Partial | Drawback: You can't bundle generated files with rollup since<br>they are not >= ES6 compatible. |
-| stephenh/ts-proto | No | Yes | Yes | No | No | Yes | There is no support for rpcs.<br>See: https://github.com/stephenh/ts-proto/issues/2 |
-
+console.log(received.toJson())
+```
 
 ## Development
 
-Generates appropriate Protocol Buffer sources from Proto files directly through _TypeScript Compiler API_.
-
 ```sh
-# to run test invoke
-yarn test
-# additionally if you want to see error details
-yarn test --test_output=errors
-
+./infra/test.sh
 ```
 
 ## Contributors
 
 ![GitHub Contributors Image](https://contrib.rocks/image?repo=thesayyn/protoc-gen-ts)
 
-
 ## Support
 
-If you find this plugin useful please consider giving us a star to get into open collective.
+We need your constant support to keep protoc-gen-ts well maintained and add new features.
 
-You can also support me directly by buying us some coffees.
+If your corporate has a OSS funding scheme, please consider supporting us monthly through open collective.
 
-<a href="https://www.buymeacoffee.com/thesayyn">
-<img height="40px" src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=🙌&slug=thesayyn&button_colour=FFDD00&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=ffffff">
+<a href="https://opencollective.com/protoc-gen-ts">
+<img height="100px" src="https://opencollective.com/protoc-gen-ts/tiers/backer.svg?avatarHeight=36">
 </a>

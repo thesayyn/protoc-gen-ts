@@ -1,0 +1,6 @@
+{
+    "dependencies": {
+        "google-protobuf": "^3.21.2",
+        "js-base64": "^3.7.5"
+    }
+}

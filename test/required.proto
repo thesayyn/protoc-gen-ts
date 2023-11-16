@@ -1,7 +1,0 @@
-syntax = "proto2";
-
-
-message NoOptionalValues {
-    required string test = 1;
-    required string test2 = 2;
-}

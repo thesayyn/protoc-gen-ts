@@ -1,0 +1,10 @@
+{
+    "scripts": {
+        "generate": "protoc --ts_out=cl --go_out=. --go-grpc_out=. weather.proto --ts_opt=runtime_package=npm:google-protobuf --ts_opt=grpc_web_package=npm:grpc-web",
+        "srv": "go run srv/server.go",
+        "cl": "deno run --allow-net cl/client.ts"
+    },
+    "dependencies": {
+        "protoc-gen-ts": "workspace:*"
+    }
+}

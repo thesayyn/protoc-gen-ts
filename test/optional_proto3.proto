@@ -1,6 +1,0 @@
-syntax = "proto3";
-
-
-message Optional {
-    repeated string should_not_be_required = 1;
-}

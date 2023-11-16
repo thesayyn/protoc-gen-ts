@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package theater;
+
+import "enum.proto";
+
+message Theater {
+   string t_string = 1;
+   bool t_bool = 2;
+   int32 t_int32 = 3;
+   int64 t_int64 = 4;
+   HelpTopic t_enum = 5;
+   
+   message MessageName {
+      
+   }
+}

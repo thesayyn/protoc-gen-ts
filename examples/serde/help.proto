@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+enum Topic {
+    BUILD = 0;
+    PACK = 1;
+    INIT = 2;
+}
+
+message Help {
+    Topic topic = 1;
+    string message = 2;
+    string short = 3;
+    string generated_via = 4;
+}

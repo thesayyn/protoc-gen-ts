@@ -1,0 +1,4 @@
+- packages:
+  - examples/serde
+  - js/plugin
+  - js/benchmark
