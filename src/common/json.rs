@@ -662,7 +662,7 @@ impl DescriptorProto {
                     decorators: vec![],
                     pat: swc_ecma_ast::Pat::Ident(swc_ecma_ast::BindingIdent {
                         id: quote_ident!("json"),
-                        type_ann: Some(Box::new(crate::type_annotation!("unknown"))),
+                        type_ann: Some(Box::new(crate::type_annotation!("object"))),
                     }),
                 }],
                 return_type: None,

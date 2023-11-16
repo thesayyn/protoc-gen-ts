@@ -234,16 +234,14 @@ impl FieldDescriptorProto {
     }
 
     pub fn print_prop<T: Runtime>(&self, ctx: &mut Context, _runtime: &T) -> ClassMember {
-        let mut ident = quote_ident!(self.prop_name());
-        ident.optional = self.is_optional();
         let mut value: Option<Box<Expr>> = None;
         if ctx.syntax == &Syntax::Proto3 || self.is_repeated() || self.is_map(&ctx) {
             value = Some(Box::new(self.default_value_expr(ctx, false)))
         }
         ClassMember::ClassProp(ClassProp {
             span: DUMMY_SP,
-            key: PropName::Ident(ident),
-            value: value,
+            key: PropName::Ident(crate::quote_ident_optional!(self.prop_name())),
+            value,
             type_ann: self.type_annotation(ctx),
             declare: false,
             is_static: false,

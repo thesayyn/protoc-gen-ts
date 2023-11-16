@@ -82,7 +82,6 @@ macro_rules! pat_ident {
     };
 }
 
-
 #[macro_export]
 macro_rules! const_decl {
     ($name:expr, $init:expr) => {
@@ -157,6 +156,17 @@ macro_rules! binding_ident {
             type_ann: None,
         })
     };
+}
+
+#[macro_export]
+macro_rules! quote_ident_optional {
+    ($s:expr) => {{
+        swc_ecma_ast::Ident {
+            sym: $s.into(),
+            optional: true,
+            span: swc_common::DUMMY_SP,
+        }
+    }};
 }
 
 #[macro_export]
@@ -278,6 +288,8 @@ macro_rules! assign_expr {
     };
 }
 
+// LIT
+
 #[macro_export]
 macro_rules! lit_num {
     ($lit:expr) => {
@@ -325,6 +337,7 @@ macro_rules! lit_bool {
     };
 }
 
+// EXPR
 #[macro_export]
 macro_rules! bin_expr {
     ($left:expr, $right:expr) => {
@@ -361,7 +374,6 @@ macro_rules! typeof_unary_expr {
     };
 }
 
-
 #[macro_export]
 macro_rules! chain_bin_exprs_and {
     ($e1:expr, $e2:expr) => {
@@ -394,7 +406,6 @@ macro_rules! cond_expr {
     };
 }
 
-
 // STATEMENT
 #[macro_export]
 macro_rules! if_stmt {
@@ -414,7 +425,6 @@ macro_rules! if_stmt {
     };
 }
 
-
 #[macro_export]
 macro_rules! throw_stmt {
     ($expr:expr) => {
@@ -424,7 +434,6 @@ macro_rules! throw_stmt {
         })
     };
 }
-
 
 #[macro_export]
 macro_rules! expr_stmt {
@@ -446,8 +455,6 @@ macro_rules! block_stmt {
     };
 }
 
-
-
 // TYPE MACROS
 
 #[macro_export]
@@ -466,41 +473,58 @@ macro_rules! type_union {
 }
 
 #[macro_export]
-macro_rules! undefined_type {
-    () => (
+macro_rules! keyword_type {
+    ($kind:expr) => {
         swc_ecma_ast::TsType::TsKeywordType(swc_ecma_ast::TsKeywordType {
             span: DUMMY_SP,
-            kind: swc_ecma_ast::TsKeywordTypeKind::TsUndefinedKeyword,
+            kind: $kind,
         })
-    );
+    };
 }
 
 #[macro_export]
-macro_rules! entity_name_qualified {
-    ($left:expr, $right:expr) => (
-        swc_ecma_ast::TsEntityName::TsQualifiedName(Box::new(swc_ecma_ast::TsQualifiedName{
-            left: $left,
-            right: $right
-        }))
-    );
+macro_rules! undefined_type {
+    () => {
+        crate::keyword_type!(swc_ecma_ast::TsKeywordTypeKind::TsUndefinedKeyword)
+    };
 }
+
+
+#[macro_export]
+macro_rules! type_ref {
+    ($lit:literal) => {
+        crate::type_ref!(crate::entity_name_ident!(quote_ident!($lit)))
+    };
+    ($type:expr) => {
+        crate::type_ref!($type, None;)
+    };
+    ($type:expr, $params:expr) => {
+        crate::type_ref!($type, Some(Box::new($params));)
+    };
+    ($type:expr, $params:expr;) => {
+        swc_ecma_ast::TsType::TsTypeRef(swc_ecma_ast::TsTypeRef {
+            span: swc_common::DUMMY_SP,
+            type_name: $type,
+            type_params: $params,
+        })
+    };
+}
+
 
 #[macro_export]
 macro_rules! type_annotation {
     ($lit:literal) => {
-        crate::type_annotation!(swc_ecma_ast::TsEntityName::Ident(quote_ident!($lit)))
+        crate::type_annotation!(crate::type_ref!($lit))
     };
     ($expr:expr) => {
         swc_ecma_ast::TsTypeAnn {
             span: swc_common::DUMMY_SP,
-            type_ann: Box::new(swc_ecma_ast::TsType::TsTypeRef(swc_ecma_ast::TsTypeRef {
-                span: swc_common::DUMMY_SP,
-                type_name: $expr,
-                type_params: None,
-            })),
+            type_ann: Box::new($expr),
         }
     };
 }
+
+
 
 
 #[macro_export]
@@ -518,4 +542,24 @@ macro_rules! type_query_entity {
             type_args: $args
         })
     );
+}
+
+#[macro_export]
+macro_rules! entity_name_qualified {
+    ($left:expr, $right:expr) => {
+        swc_ecma_ast::TsEntityName::TsQualifiedName(Box::new(swc_ecma_ast::TsQualifiedName {
+            left: $left,
+            right: $right,
+        }))
+    };
+}
+
+#[macro_export]
+macro_rules! entity_name_ident {
+    ($id:literal) => {
+        swc_ecma_ast::TsEntityName::Ident(quote_ident!($id))
+    };
+    ($id:expr) => {
+        swc_ecma_ast::TsEntityName::Ident($id)
+    };
 }

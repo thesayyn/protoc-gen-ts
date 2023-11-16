@@ -15,7 +15,9 @@ impl GrpcWebRuntime {
 
 impl GrpcRuntime for GrpcWebRuntime {
     fn print_setup(&self, ctx: &mut Context) -> Vec<ClassMember> {
-        vec![self.print_constructor(ctx)]
+        let mut members = self.print_props(ctx);
+        members.push(self.print_constructor(ctx));
+        members
     }
 
     fn print_method(
