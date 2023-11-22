@@ -1,0 +1,35 @@
+name: Publish at Head
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  publish:
+    name: Publish to Github Packages
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          registry-url: "https://npm.pkg.github.com"
+      - uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+      - uses: jetli/wasm-pack-action@v0.4.0
+      - uses: Swatinem/rust-cache@v2
+      - name: install and run cargo-patch
+        run: cargo install cargo-patch && cargo-patch
+      - name: compile
+        run: ./infra/compile.sh
+      - name: publish
+        run: |
+            tmp=$(mktemp)
+            cat package.json > $tmp
+            jq --arg sha $(git rev-parse --short HEAD) '.name = "@thesayyn/protoc-gen-ts" | .version += "-" + $sha' $tmp > package.json
+            npm publish
+        working-directory: js/plugin
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
