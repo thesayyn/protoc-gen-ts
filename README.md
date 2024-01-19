@@ -20,11 +20,25 @@ Compile `.proto` files to plain TypeScript. Supports gRPC Node and gRPC Web.
 
 ## Usage
 
-```properties
+```sh
 npm install -g protoc-gen-ts
+```
 
+### Protoc
+
+```properties
 protoc -I=sourcedir --ts_out=dist myproto.proto
 ```
+
+### Buf
+```yaml
+version: v1
+plugins:
+  - name: ts
+    path: ./node_modules/.bin/protoc-gen-ts
+    out: ./dist
+```
+
 ### Example
 
 ```proto
