@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 const fs = require("fs");
 const plugin = require("./dist/plugin.js");
 
