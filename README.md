@@ -12,9 +12,15 @@ Compile `.proto` files to plain TypeScript. Supports gRPC Node and gRPC Web.
 > As of 2024, this project has adopted Rust as its primary programming language, replacing JavaScript.
 > See [the issue](https://github.com/thesayyn/protoc-gen-ts/issues/255) for the details.
 
-## Important
+## Contributing
 
+I have limited availability to consistently maintain this project, as my time is primarily allocated to cutting new releases and implementing fixes on an ad hoc basis.
 
+[See issues that needs help](https://github.com/thesayyn/protoc-gen-ts/issues?q=is%3Aopen+is%3Aissue+label%3A%22help+wanted%22)
+
+[See issues that for newcomers](https://github.com/thesayyn/protoc-gen-ts/issues?q=is%3Aopen+is%3Aissue+label%3A%22good+first+issue%22)
+ 
+Become a maintainer? Send an [email](mailto:thesayyn@gmail.com?subject=Become%20a%20maintainer)
 
 ## Features
 
