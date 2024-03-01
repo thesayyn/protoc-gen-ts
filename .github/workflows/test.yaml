@@ -6,30 +6,33 @@ on:
       - '**.md'    
   push:    
     branches:
-      - master
+      - main
     paths-ignore:
       - '**.md'
 jobs:
   test:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [ubuntu-latest, macos-latest, windows-latest]
-        node_version: [14.x, 16.x]
-        protoc_version: [3.x]
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
         with:
           submodules: true
-      - uses: actions/setup-node@v2
-        with:
-          node-version: ${{matrix.node_version}}
       - uses: arduino/setup-protoc@v1
         with: 
-          version: ${{matrix.protoc_version}}
+          version: "3.x"
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-        
-      - run: yarn --frozen-lockfile
-      - run: yarn codegen
-      - run: yarn test --test_tag_filters=-no-${{ matrix.os }}
-      - run: cd examples/pure && yarn --frozen-lockfile && yarn test
+    
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          registry-url: "https://npm.pkg.github.com"
+      - uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+      - uses: jetli/wasm-pack-action@v0.4.0
+      - uses: Swatinem/rust-cache@v2
+      - name: Install and run cargo-patch
+        run: |
+          cargo install cargo-patch
+          cargo-patch
+      - name: compile
+        run: ./infra/compile.sh

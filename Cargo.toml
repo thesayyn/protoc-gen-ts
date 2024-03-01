@@ -50,13 +50,14 @@ serde_json = "1.0.96"
 [dev-dependencies]
 glob = "0.3.1"
 cfg-if = "1.0.0"
-protobuf-parse = "3.3.0"
+protobuf-parse = "=3.4.0"
 pretty_assertions_sorted = "1.2.3"
 
 [patch.crates-io]
-protobuf-parse = { path = './target/patch/protobuf-parse-3.3.0' }
+protobuf-parse = { path = './target/patch/protobuf-parse-3.4.0' }
 
 [package.metadata.patch.protobuf-parse]
+version = "3.4.0"
 patches = [
     { path = "./patches/pure_mod.patch", source = "GithubPrDiff" },
 ]
