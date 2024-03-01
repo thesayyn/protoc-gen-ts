@@ -18,7 +18,7 @@ I have limited availability to consistently maintain this project, as my time is
 
 [See issues that needs help](https://github.com/thesayyn/protoc-gen-ts/issues?q=is%3Aopen+is%3Aissue+label%3A%22help+wanted%22)
 
-[See issues that for newcomers](https://github.com/thesayyn/protoc-gen-ts/issues?q=is%3Aopen+is%3Aissue+label%3A%22good+first+issue%22)
+[See issues for newcomers](https://github.com/thesayyn/protoc-gen-ts/issues?q=is%3Aopen+is%3Aissue+label%3A%22good+first+issue%22)
  
 Become a maintainer? Send an [email](mailto:thesayyn@gmail.com?subject=Become%20a%20maintainer)
 
