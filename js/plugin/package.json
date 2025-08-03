@@ -18,5 +18,9 @@
     },
     "bin": {
         "protoc-gen-ts": "main.js"
-    }
+    },
+    "files":[
+        "main.js",
+        "dist"
+    ]
 }
