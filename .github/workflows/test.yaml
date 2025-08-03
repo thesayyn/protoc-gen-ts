@@ -27,12 +27,13 @@ jobs:
           registry-url: "https://npm.pkg.github.com"
       - uses: actions-rs/toolchain@v1
         with:
-          toolchain: stable
+          toolchain: 1.79.0
+          default: true
       - uses: jetli/wasm-pack-action@v0.4.0
       - uses: Swatinem/rust-cache@v2
       - name: Install and run cargo-patch
         run: |
-          cargo install cargo-patch
+          cargo install cargo-patch --locked
           cargo-patch
       - name: compile
         run: ./infra/compile.sh
